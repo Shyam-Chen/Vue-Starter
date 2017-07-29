@@ -3,16 +3,58 @@
     <div class="message">
       {{ message }}
     </div>
+
+    <ul>
+      <li v-for="item in list">
+        {{ item.primary }} {{ item.accent }}
+      </li>
+    </ul>
+
+    <input type="text" v-model="thing">
+
+    <div>
+      <button v-on:click="counter++">Increment</button>
+      <span>Clicked: {{ counter }} times</span>
+    </div>
+
+    <div v-bind:class="{ active: isActive }">Vue + Vuex</div>
+
+    <button @click="onLog">Click Me</button>
+
+    <home></home>
+    <about></about>
   </div>
 </template>
 
 <script>
+import Home from './Home.vue';
+import About from './About.vue';
+
 export default {
   data() {
     return {
-      message: 'Helo, Vue'
+      message: 'Helo, Vue',
+
+      list: [
+        { id: 3, primary: 'Angular', accent: 'Ngrx' },
+        { id: 2, primary: 'React', accent: 'Redux' },
+        { id: 1, primary: 'Vue', accent: 'Vuex' },
+      ],
+
+      thing: 'foo bar',
+
+      counter: 0,
+
+      isActive: true,
     }
-  }
+  },
+  methods: {
+    onLog() {
+      console.log(123);
+    }
+  },
+
+  components: { Home, About }
 }
 </script>
 
@@ -20,6 +62,10 @@ export default {
 .message {
   color: pink;
   font-size: 1.4em;
+}
+
+.active {
+  color: blue;
 }
 </style>
 
