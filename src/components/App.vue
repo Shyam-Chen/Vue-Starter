@@ -23,12 +23,16 @@
 
     <home></home>
     <about></about>
+
+    <counter></counter>
   </div>
 </template>
 
 <script>
 import Home from './Home.vue';
 import About from './About.vue';
+
+import Counter from '../containers/Counter.vue';
 
 export default {
   data() {
@@ -54,7 +58,7 @@ export default {
     }
   },
 
-  components: { Home, About }
+  components: { Home, About, Counter }
 }
 </script>
 
