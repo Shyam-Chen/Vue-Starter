@@ -19,7 +19,7 @@
 
     <div v-bind:class="{ active: isActive }">Vue + Vuex</div>
 
-    <button @click="onLog">Click Me</button>
+    <button @click="onLog">Click Me (Log)</button>
 
     <home></home>
     <about></about>

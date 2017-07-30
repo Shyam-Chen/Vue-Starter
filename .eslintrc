@@ -1,0 +1,47 @@
+{
+  "env": {
+    "browser": true,
+    "node": true,
+    "commonjs": true,
+    "es6": true,
+    "jest": true
+  },
+  "globals": {
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:vue/recommended"
+  ],
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "sourceType": "module"
+  },
+  "rules": {
+    // Possible Errors
+    "no-console": "off",
+    "no-extra-parens": "off",
+    "no-prototype-builtins": "error",
+    "no-template-curly-in-string": "off",
+    "valid-jsdoc": "error",
+
+    // Best Practices
+    "no-alert": "error",
+    "no-caller": "error",
+
+    // Variables
+
+    // Node.js and CommonJS
+    "callback-return": "error",
+
+    // Stylistic Issues
+
+    // JS.Next
+    "arrow-spacing": ["error"],
+    "no-useless-constructor": "error",
+    "no-var": "error",
+    "prefer-template": "error",
+    "symbol-description": "error",
+    "template-curly-spacing": ["error", "never"],
+    "yield-star-spacing": ["error", "after"]
+  }
+}
