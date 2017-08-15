@@ -1,6 +1,9 @@
-# Vue Starter Kit
+# Vue Fullstack Starter
 
-A boilerplate for Vue and Vuex.
+A boilerplate for Vue, Material, Express, and Mongoose.
+
+[![dependencies Status](https://david-dm.org/Shyam-Chen/Vue-Fullstack-Starter/status.svg)](https://david-dm.org/Shyam-Chen/Vue-Fullstack-Starter)
+[![devDependencies Status](https://david-dm.org/Shyam-Chen/Vue-Fullstack-Starter/dev-status.svg)](https://david-dm.org/Shyam-Chen/Vue-Fullstack-Starter?type=dev)
 
 ```bash
 $ npm install
@@ -9,6 +12,3 @@ $ npm install
 ```bash
 $ npm start
 ```
-
-[![dependencies Status](https://david-dm.org/Shyam-Chen/Vue-Starter-Kit/status.svg)](https://david-dm.org/Shyam-Chen/Vue-Starter-Kit)
-[![devDependencies Status](https://david-dm.org/Shyam-Chen/Vue-Starter-Kit/dev-status.svg)](https://david-dm.org/Shyam-Chen/Vue-Starter-Kit?type=dev)

@@ -28,7 +28,13 @@ module.exports = {
             options: {
               babelrc: false,
               presets: [
-                'latest',
+                [
+                  'env', {
+                    'targets': {
+                      'browsers': ['last 2 versions']
+                    }
+                  }
+                ],
               ],
               plugins: [
                 'transform-runtime',
