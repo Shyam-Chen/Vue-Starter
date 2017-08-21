@@ -12,3 +12,12 @@ $ npm install
 ```bash
 $ npm start
 ```
+
+## TODO List
+
+* CRUD
+* REST
+* GraphQL
+* DataTable
+* Simple Build
+* Simple Server
