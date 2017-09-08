@@ -79,7 +79,7 @@
 import Home from './Home.vue';
 import About from './About.vue';
 
-import Counter from '../containers/Counter.vue';
+import Counter from './counter/Counter.vue';
 
 export default {
   data() {
