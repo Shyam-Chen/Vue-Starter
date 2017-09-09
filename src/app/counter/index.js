@@ -1,30 +1,33 @@
 export const state = { value: 0 };
 
+export const INCREMENT = '[Counter] INCREMENT';
+export const DECREMENT = '[Counter] DECREMENT';
+
 export const mutations = {
-  increment(state) {
+  [INCREMENT](state) {
     state.value++
   },
-  decrement(state) {
+  [DECREMENT](state) {
     state.value--
   }
 };
 
 export const actions = {
   increment({ commit }) {
-    commit('increment');
+    commit(INCREMENT);
   },
   decrement({ commit }) {
-    commit('decrement');
+    commit(DECREMENT);
   },
   incrementIfOdd({ commit, state }) {
     if ((state.value + 1) % 2 === 0) {
-      commit('increment');
+      commit(INCREMENT);
     }
   },
   incrementAsync({ commit }) {
     return new Promise(resolve => {
       setTimeout(() => {
-        commit('increment');
+        commit(INCREMENT);
         resolve();
       }, 1000)
     })
