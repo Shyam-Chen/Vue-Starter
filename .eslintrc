@@ -9,8 +9,7 @@
   "globals": {
   },
   "extends": [
-    "eslint:recommended",
-    "plugin:vue/recommended"
+    "eslint:recommended"
   ],
   "parser": "babel-eslint",
   "parserOptions": {

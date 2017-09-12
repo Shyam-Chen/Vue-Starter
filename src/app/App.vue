@@ -21,13 +21,7 @@
 
     <button @click="onLog">Click Me (Log)</button>
 
-    <home></home>
-    <about></about>
-
     <counter></counter>
-
-    <md-button class="md-primary">Primary</md-button>
-    <md-button class="md-accent">Accent</md-button>
 
     <md-table-card>
       <md-toolbar>
@@ -76,10 +70,7 @@
 </template>
 
 <script>
-import Home from './Home.vue';
-import About from './About.vue';
-
-import Counter from './counter/Counter.vue';
+import { Counter } from './counter';
 
 export default {
   data() {
@@ -139,7 +130,7 @@ export default {
     }
   },
 
-  components: { Home, About, Counter }
+  components: { Counter }
 }
 </script>
 

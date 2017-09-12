@@ -66,6 +66,9 @@ module.exports = {
       }
     ]
   },
+  resolve: {
+    extensions: ['.js', '.vue']
+  },
   plugins: [
     new HtmlWebpackPlugin({
       filename: 'index.html',

@@ -1,9 +1,8 @@
 import Vue from 'vue';
 import material from 'vue-material';
 
-import App from './app/App.vue';
-
-import store from './root';
+import App from './app/App';
+import store from './app/store';
 
 Vue.use(material);
 

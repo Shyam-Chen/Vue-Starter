@@ -1,10 +1,10 @@
 <template>
   <div>
     Clicked: {{ $store.state.counter.value }} times, count is {{ evenOrOdd }}.
-    <button @click="increment">+</button>
-    <button @click="decrement">-</button>
-    <button @click="incrementIfOdd">Increment if odd</button>
-    <button @click="incrementAsync">Increment async</button>
+    <md-button class="md-primary" @click="increment">Increment</md-button>
+    <md-button class="md-primary" @click="decrement">Decrement</md-button>
+    <md-button class="md-accent" @click="incrementIfOdd">Increment if odd</md-button>
+    <md-button class="md-accent" @click="incrementAsync">Increment async</md-button>
   </div>
 </template>
 
