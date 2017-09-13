@@ -17,7 +17,7 @@ export default {
       setTimeout(() => {
         commit(INCREMENT);
         resolve();
-      }, 1000)
-    })
+      }, 1000);
+    });
   }
 };

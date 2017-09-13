@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "A boilerplate for Vue, Material, Express, and Mongoose.",
   "scripts": {
-    "start": "webpack-dev-server --progress"
+    "start": "webpack-dev-server --progress",
+    "lint": "eslint src"
   },
   "repository": {
     "type": "git",

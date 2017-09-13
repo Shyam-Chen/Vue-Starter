@@ -1,0 +1,36 @@
+version: 2
+
+jobs:
+  build:
+    docker:
+      - image: circleci/node:8
+
+    working_directory: ~/Vue-FullStarter-Kit
+
+    branches:
+      only:
+        - master
+
+    steps:
+      - checkout
+
+      - setup_remote_docker
+
+      - run:
+          name: Build application
+          command: docker-compose up -d
+
+      - run:
+          name: Test application
+          command: |
+            # docker-compose exec app yarn prod
+            docker-compose exec app yarn lint
+            # docker-compose exec app yarn unit
+            # docker-compose exec app yarn e2e
+
+      # - deploy:
+      #     name: Deploy application
+      #     command: |
+      #       if [ "${CIRCLE_BRANCH}" == "master" ]; then
+      #
+      #       fi

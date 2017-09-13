@@ -1,4 +1,4 @@
-# Vue Fullstack Starter
+# Vue Fullstack Starter [![Build Status](https://circleci.com/gh/Shyam-Chen/Vue-Fullstack-Starter.png)](https://circleci.com/gh/Shyam-Chen/Vue-Fullstack-Starter)
 
 A boilerplate for Vue, Material, Express, and Mongoose.
 
@@ -15,9 +15,12 @@ $ npm start
 
 ## TODO List
 
+* Vue Router
 * CRUD
 * REST
 * GraphQL
-* DataTable
+* Data Table
+* Form Controls
+* Authorization
 * Simple Build
 * Simple Server
