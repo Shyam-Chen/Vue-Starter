@@ -1,10 +1,17 @@
 <template>
   <div>
-    Clicked: {{ $store.state.counter.value }} times, count is {{ evenOrOdd }}.
-    <md-button class="md-primary" @click="increment">Increment</md-button>
-    <md-button class="md-primary" @click="decrement">Decrement</md-button>
-    <md-button class="md-accent" @click="incrementIfOdd">Increment if odd</md-button>
-    <md-button class="md-accent" @click="incrementAsync">Increment async</md-button>
+    <div class="text">
+      <span class="md-title">
+        Clicked: {{ $store.state.counter.value }} times, count is {{ evenOrOdd }}.
+      </span>
+    </div>
+
+    <div>
+      <md-button class="md-raised md-primary" @click="increment">Increment</md-button>
+      <md-button class="md-raised md-primary" @click="decrement">Decrement</md-button>
+      <md-button class="md-raised md-accent" @click="incrementIfOdd">Increment if odd</md-button>
+      <md-button class="md-raised md-accent" @click="incrementAsync">Increment async</md-button>
+    </div>
   </div>
 </template>
 
@@ -24,3 +31,9 @@ export default {
   ])
 }
 </script>
+
+<style scoped>
+.text {
+  padding: 1rem;
+}
+</style>
