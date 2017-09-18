@@ -23,7 +23,7 @@ jobs:
       - run:
           name: Test application
           command: |
-            # docker-compose exec app yarn prod
+            docker-compose exec app yarn build
             docker-compose exec app yarn lint
             # docker-compose exec app yarn unit
             # docker-compose exec app yarn e2e

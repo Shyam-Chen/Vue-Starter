@@ -4,6 +4,7 @@
   "description": "A boilerplate for Vue, Material, Express, and Mongoose.",
   "scripts": {
     "start": "webpack-dev-server --progress",
+    "build": "webpack -p",
     "lint": "eslint src"
   },
   "repository": {
