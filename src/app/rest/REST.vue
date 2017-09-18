@@ -1,6 +1,12 @@
 <template>
   <div>
     <md-button class="md-primary" @click="search">Search</md-button>
+
+    <ul>
+      <li v-for="item in $store.state.rest.dataset">
+        {{ item.text }}
+      </li>
+    </ul>
   </div>
 </template>
 

@@ -7,17 +7,12 @@ export default {
   decrement({ commit }) {
     commit(DECREMENT);
   },
+  incrementAsync({ commit }) {
+    setTimeout(() => commit(INCREMENT), 1000);
+  },
   incrementIfOdd({ commit, state }) {
-    if ((state.value + 1) % 2 === 0) {
+    if (state.value % 2 === 1) {
       commit(INCREMENT);
     }
-  },
-  incrementAsync({ commit }) {
-    return new Promise(resolve => {
-      setTimeout(() => {
-        commit(INCREMENT);
-        resolve();
-      }, 1000);
-    });
   }
 };

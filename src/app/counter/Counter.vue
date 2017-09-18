@@ -9,8 +9,8 @@
     <div>
       <md-button class="md-raised md-primary" @click="increment">Increment</md-button>
       <md-button class="md-raised md-primary" @click="decrement">Decrement</md-button>
-      <md-button class="md-raised md-accent" @click="incrementIfOdd">Increment if odd</md-button>
-      <md-button class="md-raised md-accent" @click="incrementAsync">Increment async</md-button>
+      <md-button class="md-raised md-accent" @click="incrementAsync">Increment (Async)</md-button>
+      <md-button class="md-raised md-accent" @click="incrementIfOdd">Increment (If Odd)</md-button>
     </div>
   </div>
 </template>
