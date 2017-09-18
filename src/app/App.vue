@@ -1,7 +1,7 @@
 <template>
   <div>
-    <counter></counter>
-    <rest></rest>
+    <Counter />
+    <REST />
   </div>
 </template>
 

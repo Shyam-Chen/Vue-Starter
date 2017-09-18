@@ -19,7 +19,7 @@
 import { mapGetters, mapActions } from 'vuex';
 
 export default {
-  name: 'counter',
+  // name: 'counter',
   computed: mapGetters([
     'evenOrOdd'
   ]),
@@ -29,7 +29,7 @@ export default {
     'incrementIfOdd',
     'incrementAsync'
   ])
-}
+};
 </script>
 
 <style scoped>

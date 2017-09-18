@@ -8,8 +8,8 @@
 import { mapGetters, mapActions } from 'vuex';
 
 export default {
-  name: 'rest',
-  computed: mapGetters([]),
+  // name: 'rest',
+  // computed: mapGetters([]),
   methods: mapActions([
     'search'
   ])

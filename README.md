@@ -15,7 +15,7 @@ $ npm start
 
 ## TODO List
 
-* Vue Router
+* Router
 * CRUD
 * REST
 * GraphQL
