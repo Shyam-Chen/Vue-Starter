@@ -7,8 +7,8 @@ module.exports = {
     main: './main.js'
   },
   output: {
-    path: join(__dirname, 'dist'),
-    filename: '[name].js'
+    path: join(__dirname, 'build'),
+    filename: '[name].[hash].js'
   },
   module: {
     rules: [
@@ -76,10 +76,10 @@ module.exports = {
     })
   ],
   devServer: {
-    contentBase: join(__dirname, 'dist'),
+    contentBase: join(__dirname, 'build'),
     historyApiFallback: true,
     inline: true,
     port: 8000,
   },
-  devtool: 'source-map',
+  devtool: 'source-map'
 };
