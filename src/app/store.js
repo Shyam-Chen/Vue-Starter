@@ -1,10 +1,10 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
-Vue.use(Vuex);
-
 import * as counter from './counter';
 import * as rest from './rest';
+
+Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {},
