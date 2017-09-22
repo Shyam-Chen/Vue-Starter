@@ -16,18 +16,17 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
-  // name: 'counter',
-  computed: mapGetters([
-    'evenOrOdd'
-  ]),
   methods: mapActions([
     'increment',
     'decrement',
     'incrementIfOdd',
     'incrementAsync'
+  ]),
+  computed: mapGetters([
+    'evenOrOdd'
   ])
 };
 </script>

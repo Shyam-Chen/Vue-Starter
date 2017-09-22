@@ -15,12 +15,29 @@ $ npm start
 
 ## TODO List
 
-* Router
-* CRUD
-* REST
-* GraphQL
-* Data Table
-* Form Controls
-* Authorization
-* Simple Build
-* Simple Server
+* Examples:
+  * Router (Integration with Vuex)
+  * CRUD
+  * REST
+  * Data Table
+  * Form Controls
+  * Authorization
+  * GraphQL
+    * Query & Mutation
+    * Pagination
+    * Authorization
+  * Chat
+  * Data Chart
+    * SVG (D3 + Immutable)
+    * Canvas (D3 + Immutable)
+    * WebGL (Three + Immutable)
+* Build:
+  * Dev/Prod Mode
+* Test:
+  * Unit Tests
+  * E2E Tests
+* Deploy:
+  * Circle
+  * Docker
+  * Firebase
+  * Heroku

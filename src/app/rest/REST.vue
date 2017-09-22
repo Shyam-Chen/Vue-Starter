@@ -3,9 +3,9 @@
     <div class="search">
       <md-input-container>
         <label>Text</label>
-        <md-input></md-input>
+        <md-input v-model="text"></md-input>
       </md-input-container>
-      <md-button class="md-primary" @click="searchItem">Search</md-button>
+      <md-button class="md-primary" @click="onSearch">Search</md-button>
     </div>
 
     <ul>
@@ -20,11 +20,26 @@
 import { mapGetters, mapActions } from 'vuex';
 
 export default {
-  // name: 'rest',
-  // computed: mapGetters([]),
-  methods: mapActions([
-    'searchItem'
-  ])
+  data() {
+    return {
+      text: ''
+    };
+  },
+  methods: Object.assign(
+    {},
+    mapActions([
+      'addItem',
+      'searchItem',
+      'editItem',
+      'deleteItem'
+    ]),
+    {
+      onSearch() {
+        this.$store.dispatch('searchItem', this.text);
+        this.text = '';
+      }
+    }
+  )
 }
 </script>
 
