@@ -1,6 +1,12 @@
 <template>
   <div>
-    <md-button class="md-primary" @click="search">Search</md-button>
+    <div class="search">
+      <md-input-container>
+        <label>Text</label>
+        <md-input></md-input>
+      </md-input-container>
+      <md-button class="md-primary" @click="searchItem">Search</md-button>
+    </div>
 
     <ul>
       <li v-for="item in $store.state.rest.dataset">
@@ -17,7 +23,13 @@ export default {
   // name: 'rest',
   // computed: mapGetters([]),
   methods: mapActions([
-    'search'
+    'searchItem'
   ])
 }
 </script>
+
+<style scoped>
+.search {
+  width: 10rem;
+}
+</style>

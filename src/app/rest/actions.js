@@ -10,11 +10,26 @@ export default {
     commit(FAILURE, error);
   },
 
-  search({ commit }, text) {
+  addItem({ dispatch }, text) {
+    axios.post(API_LIST, { text })
+      .then(() => dispatch('searchItem'))
+      .catch(error => dispatch('failure', error));
+  },
+  searchItem({ dispatch }, text) {
     axios.get(text ? `${API_LIST}?text=${text}` : API_LIST)
-      .then(response => commit(SUCCESS, response.data))
-      .then(() => commit(SET_DATA, { loading: false }))
-      .catch(error => commit(FAILURE, error));
+      .then(response => dispatch('success', response.data))
+      .then(() => dispatch('setData', { loading: false }))
+      .catch(error => dispatch('failure', error));
+  },
+  editItem({ dispatch }, id, text) {
+    axios.put(`${API_LIST}/${id}`, { text })
+      .then(() => dispatch('searchItem'))
+      .catch(error => dispatch('failure', error));
+  },
+  deleteItem({ dispatch }, id) {
+    axios.delete(`${API_LIST}/${id}`)
+      .then(() => dispatch('searchItem'))
+      .catch(error => dispatch('failure', error));
   },
 
   setData({ commit }, data) {
