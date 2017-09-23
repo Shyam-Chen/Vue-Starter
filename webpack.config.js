@@ -16,7 +16,10 @@ module.exports = {
         test: /\.vue$/,
         use: [
           {
-            loader: 'vue-loader'
+            loader: 'vue-loader',
+            options: {
+              loaders: {}
+            }
           }
         ]
       }, {

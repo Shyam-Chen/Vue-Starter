@@ -28,7 +28,8 @@
 import { mapGetters, mapActions } from 'vuex';
 
 export default {
-  data() {
+  // data() {
+  data: function () {
     return {
       text: ''
     };
@@ -42,7 +43,8 @@ export default {
       'deleteItem'
     ]),
     {
-      onSearch() {
+      // onSearch() {
+      onSearch: function () {
         this.$store.dispatch('searchItem', this.text);
         this.text = '';
       }
