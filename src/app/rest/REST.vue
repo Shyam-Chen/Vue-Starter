@@ -1,12 +1,20 @@
 <template>
   <div>
-    <div class="search">
-      <md-input-container>
-        <label>Text</label>
-        <md-input v-model="text"></md-input>
-      </md-input-container>
-      <md-button class="md-primary" @click="onSearch">Search</md-button>
-    </div>
+    <md-layout md-gutter>
+      <md-layout md-flex="20">
+
+          <md-input-container>
+            <label>Text</label>
+            <md-input v-model="text"></md-input>
+          </md-input-container>
+
+      </md-layout>
+      <md-layout md-flex="20">
+        <div>
+        <md-button class="md-raised md-primary" @click="onSearch">Search</md-button>
+      </div>
+      </md-layout>
+    </md-layout>
 
     <ul>
       <li v-for="item in $store.state.rest.dataset">
@@ -44,7 +52,4 @@ export default {
 </script>
 
 <style scoped>
-.search {
-  width: 10rem;
-}
 </style>
