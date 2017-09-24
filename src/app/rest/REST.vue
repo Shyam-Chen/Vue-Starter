@@ -5,7 +5,7 @@
 
           <md-input-container>
             <label>Text</label>
-            <md-input v-model="text"></md-input>
+            <md-input v-model="$store.state.rest.searchData.text"></md-input>
           </md-input-container>
 
       </md-layout>
@@ -28,12 +28,6 @@
 import { mapGetters, mapActions } from 'vuex';
 
 export default {
-  // data() {
-  data: function () {
-    return {
-      text: ''
-    };
-  },
   methods: Object.assign(
     {},
     mapActions([
@@ -45,8 +39,10 @@ export default {
     {
       // onSearch() {
       onSearch: function () {
-        this.$store.dispatch('searchItem', this.text);
-        this.text = '';
+        const { searchData } = this.$store.state.rest;
+
+        this.$store.dispatch('searchItem', searchData.text);
+        searchData.text = '';
       }
     }
   )
