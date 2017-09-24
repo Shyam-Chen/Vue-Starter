@@ -2,7 +2,7 @@
   <div>
     <div class="text">
       <span class="md-title">
-        Clicked: {{ $store.state.counter.value }} times, count is {{ evenOrOdd }}.
+        Clicked: {{ $store.state.counter.value }} times, value is {{ evenOrOdd }}.
       </span>
     </div>
 
