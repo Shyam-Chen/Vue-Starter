@@ -5,7 +5,8 @@
   "scripts": {
     "start": "webpack-dev-server --progress",
     "build": "webpack -p",
-    "lint": "eslint src"
+    "lint": "eslint src",
+    "deploy": "firebase deploy"
   },
   "repository": {
     "type": "git",
@@ -42,6 +43,7 @@
     "css-loader": "0.28.7",
     "eslint": "4.7.0",
     "eslint-plugin-vue": "3.8.0",
+    "firebase-tools": "3.12.0",
     "html-webpack-plugin": "2.30.1",
     "style-loader": "0.18.2",
     "vue-loader": "13.0.4",
