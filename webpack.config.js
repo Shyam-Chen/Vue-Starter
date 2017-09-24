@@ -13,16 +13,6 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.vue$/,
-        use: [
-          {
-            loader: 'vue-loader',
-            options: {
-              loaders: {}
-            }
-          }
-        ]
-      }, {
         test: /\.js$/,
         exclude: /node_modules/,
         use: [
@@ -37,7 +27,7 @@ module.exports = {
                       'browsers': ['last 2 versions']
                     }
                   }
-                ],
+                ]
               ],
               plugins: [
                 'transform-runtime',
@@ -63,6 +53,67 @@ module.exports = {
                   }
                 ]
               ]
+            }
+          }
+        ]
+      }, {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1
+            }
+          }
+        ]
+      }, {
+        test: /\.vue$/,
+        use: [
+          {
+            loader: 'vue-loader',
+            options: {
+              loaders: {
+                js: {
+                  loader: 'babel-loader',
+                  options: {
+                    babelrc: false,
+                    presets: [
+                      [
+                        'env', {
+                          'targets': {
+                            'browsers': ['last 2 versions']
+                          }
+                        }
+                      ]
+                    ],
+                    plugins: [
+                      'transform-runtime',
+                      'transform-function-bind',
+                      'transform-object-rest-spread',
+                      [
+                        'transform-imports', {
+                          'rxjs': {
+                            transform: 'rxjs/${member}',
+                            preventFullImport: true,
+                            skipDefaultConversion: true
+                          },
+                          'rxjs/observable': {
+                            transform: 'rxjs/observable/${member}',
+                            preventFullImport: true,
+                            skipDefaultConversion: true
+                          },
+                          'rxjs/operator': {
+                            transform: 'rxjs/operator/${member}',
+                            preventFullImport: true,
+                            skipDefaultConversion: true
+                          }
+                        }
+                      ]
+                    ]
+                  }
+                }
+              }
             }
           }
         ]

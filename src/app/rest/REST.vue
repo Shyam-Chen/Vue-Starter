@@ -37,8 +37,7 @@ export default {
       'deleteItem'
     ]),
     {
-      // onSearch() {
-      onSearch: function () {
+      onSearch() {
         const { searchData } = this.$store.state.rest;
 
         this.$store.dispatch('searchItem', searchData.text);
