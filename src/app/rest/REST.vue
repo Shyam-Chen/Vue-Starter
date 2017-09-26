@@ -34,7 +34,7 @@
     <ul>
       <li v-for="item in $store.state.rest.dataset">
         {{ item.text }}
-        <md-button class="md-accent" id="dialog-delete" @click="onOpenDialog('dialog-delete')">Delete</md-button>
+        <md-button class="md-accent" id="dialog-delete" @click="onOpenDelete('dialog-delete', item._id)">Delete</md-button>
         <md-button class="md-primary" id="dialog-edit" @click="onOpenDialog('dialog-edit')">Edit</md-button>
       </li>
     </ul>
@@ -60,7 +60,7 @@
       <md-dialog-content>Are you sure you want to delete it?</md-dialog-content>
       <md-dialog-actions>
         <md-button class="md-accent" @click="onCloseDialog('dialog-delete')">Cancel</md-button>
-        <md-button class="md-primary" @click="onCloseDialog('dialog-delete')">Confirm</md-button>
+        <md-button class="md-primary" @click="onDeleteItem('dialog-delete')">Confirm</md-button>
       </md-dialog-actions>
     </md-dialog>
   </div>
@@ -84,14 +84,22 @@ export default {
       this.$store.dispatch('addItem', addData.text);
       addData.text = '';
     },
-    onDelete() {
-      // const { deleteData } = this.$store.state.rest;
-      //
-      // this.$store.dispatch('setData', {
-      //   deleteData: { ...deleteData, _id, dialog: true }
-      // });
+    onOpenDelete(ref, _id) {
+      const { deleteData } = this.$store.state.rest;
+
+      this.$refs[ref].open();
+      this.$store.dispatch('setData', {
+        deleteData: { ...deleteData, _id, dialog: true }
+      });
+    },
+    onDeleteItem(ref) {
+      const { deleteData } = this.$store.state.rest;
+      console.log(this.$store.state.rest);
+
+      this.$refs[ref].close();
       // this.$store.dispatch('deleteItem', deleteData._id);
     },
+
     onOpenDialog(ref) {
       this.$refs[ref].open();
     },
