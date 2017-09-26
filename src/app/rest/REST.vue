@@ -10,7 +10,7 @@
       </md-layout>
       <md-layout md-flex="20">
         <div>
-        <md-button class="md-raised md-primary" @click="onSearch">Search</md-button>
+        <md-button class="md-raised md-primary" @click="onSearchItem">Search</md-button>
       </div>
       </md-layout>
     </md-layout>
@@ -25,7 +25,7 @@
       </md-layout>
       <md-layout md-flex="20">
         <div>
-        <md-button class="md-raised md-primary" @click="onAdd">Add</md-button>
+        <md-button class="md-raised md-primary" @click="onAddItem">Add</md-button>
       </div>
       </md-layout>
     </md-layout>
@@ -35,7 +35,7 @@
       <li v-for="item in $store.state.rest.dataset">
         {{ item.text }}
         <md-button class="md-accent" id="dialog-delete" @click="onOpenDelete('dialog-delete', item._id)">Delete</md-button>
-        <md-button class="md-primary" id="dialog-edit" @click="onOpenDialog('dialog-edit')">Edit</md-button>
+        <md-button class="md-primary" id="dialog-edit" @click="onOpenEdit('dialog-edit', item)">Edit</md-button>
       </li>
     </ul>
 
@@ -45,12 +45,12 @@
       <md-dialog-content>
         <md-input-container>
           <label>Text</label>
-          <md-input></md-input>
+          <md-input v-model="$store.state.rest.editData.text"></md-input>
         </md-input-container>
       </md-dialog-content>
       <md-dialog-actions>
         <md-button class="md-accent" @click="onCloseDialog('dialog-edit')">Cancel</md-button>
-        <md-button class="md-primary" @click="onCloseDialog('dialog-edit')">Save</md-button>
+        <md-button class="md-primary" @click="onEditItem('dialog-edit')">Save</md-button>
       </md-dialog-actions>
     </md-dialog>
 
@@ -71,18 +71,33 @@ import { mapGetters, mapActions } from 'vuex';
 
 export default {
   methods: {
-    onSearch() {
+    onSearchItem() {
       const { searchData } = this.$store.state.rest;
 
       this.$store.dispatch('setData', { loading: true });
       this.$store.dispatch('searchItem', searchData.text);
       searchData.text = '';
     },
-    onAdd() {
+    onAddItem() {
       const { addData } = this.$store.state.rest;
 
       this.$store.dispatch('addItem', addData.text);
       addData.text = '';
+    },
+    onOpenEdit(ref, item) {
+      const { editData } = this.$store.state.rest;
+      const { _id, text } = item;
+
+      this.$refs[ref].open();
+      this.$store.dispatch('setData', {
+        editData: { ...editData, _id, text, dialog: true }
+      });
+    },
+    onEditItem(ref) {
+      const { editData } = this.$store.state.rest;
+      console.log(this.$store.state.rest);
+
+      this.$refs[ref].close();
     },
     onOpenDelete(ref, _id) {
       const { deleteData } = this.$store.state.rest;
@@ -99,14 +114,9 @@ export default {
       this.$refs[ref].close();
       // this.$store.dispatch('deleteItem', deleteData._id);
     },
-
-    onOpenDialog(ref) {
-      this.$refs[ref].open();
-    },
     onCloseDialog(ref) {
       this.$refs[ref].close();
-    },
-
+    }
   }
 };
 </script>
