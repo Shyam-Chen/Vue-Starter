@@ -1,4 +1,4 @@
-import { SUCCESS, FAILURE, SET_DATA } from './constants';
+import { SUCCESS, FAILURE } from './constants';
 
 export default {
   [SUCCESS](state, data) {
@@ -6,9 +6,5 @@ export default {
   },
   [FAILURE](state, error) {
     console.error(error.message);
-  },
-  [SET_DATA](state, data) {
-    state = { ...state, ...data };
-    console.log(state);
   }
 };

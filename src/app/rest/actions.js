@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { API_LIST, SUCCESS, FAILURE, SET_DATA } from './constants';
+import { API_LIST, SUCCESS, FAILURE } from './constants';
 
 export default {
   success({ commit }, data) {
@@ -18,11 +18,11 @@ export default {
   searchItem({ dispatch }, text) {
     axios.get(text ? `${API_LIST}?text=${text}` : API_LIST)
       .then(response => dispatch('success', response.data))
-      .then(() => dispatch('setData', { loading: false }))
+      // .then(() => dispatch('setData', { loading: false }))
       .catch(error => dispatch('failure', error));
   },
-  editItem({ dispatch }, item) {
-    axios.put(`${API_LIST}/${item._id}`, { text: item.text })
+  editItem({ dispatch }, { _id, text }) {
+    axios.put(`${API_LIST}/${_id}`, { text })
       .then(() => dispatch('searchItem'))
       .catch(error => dispatch('failure', error));
   },
@@ -30,9 +30,5 @@ export default {
     axios.delete(`${API_LIST}/${id}`)
       .then(() => dispatch('searchItem'))
       .catch(error => dispatch('failure', error));
-  },
-
-  setData({ commit }, data) {
-    commit(SET_DATA, data);
   }
 };
