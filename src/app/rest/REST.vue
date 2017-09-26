@@ -1,5 +1,7 @@
 <template>
   <div>
+    <Navigation />
+
     <!-- Search -->
     <md-layout md-gutter>
       <md-layout md-flex="20">
@@ -71,6 +73,8 @@
 <script>
 import { mapGetters, mapActions } from 'vuex';
 
+import Navigation from '../shared/Navigation';
+
 export default {
   methods: {
     onSearchItem() {
@@ -117,9 +121,11 @@ export default {
     onCloseDialog(ref) {
       this.$refs[ref].close();
     }
-  }
+  },
+  components: { Navigation }
 };
 </script>
 
 <style scoped>
+/* TODO */
 </style>

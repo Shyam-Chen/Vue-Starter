@@ -1,7 +1,7 @@
 {
   "name": "Vue-Fullstack-Starter",
   "version": "1.0.0",
-  "description": "A boilerplate for Vue, Material, Express, and Mongoose.",
+  "description": "A boilerplate for Vue, Material, and Express.",
   "scripts": {
     "start": "webpack-dev-server --progress",
     "build": "webpack -p",

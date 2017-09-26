@@ -1,5 +1,7 @@
 <template>
   <div>
+    <Navigation />
+
     <div class="text">
       <span class="md-title">
         Clicked: {{ $store.state.counter.value }} times, value is {{ evenOrOdd }}.
@@ -18,6 +20,8 @@
 <script>
 import { mapActions, mapGetters } from 'vuex';
 
+import Navigation from '../shared/Navigation';
+
 export default {
   methods: mapActions([
     'increment',
@@ -27,7 +31,8 @@ export default {
   ]),
   computed: mapGetters([
     'evenOrOdd'
-  ])
+  ]),
+  components: { Navigation }
 };
 </script>
 
