@@ -21,8 +21,8 @@ export default {
       .then(() => dispatch('setData', { loading: false }))
       .catch(error => dispatch('failure', error));
   },
-  editItem({ dispatch }, id, text) {
-    axios.put(`${API_LIST}/${id}`, { text })
+  editItem({ dispatch }, item) {
+    axios.put(`${API_LIST}/${item._id}`, { text: item.text })
       .then(() => dispatch('searchItem'))
       .catch(error => dispatch('failure', error));
   },

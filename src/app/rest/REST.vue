@@ -89,30 +89,26 @@ export default {
       const { _id, text } = item;
 
       this.$refs[ref].open();
-      this.$store.dispatch('setData', {
-        editData: { ...editData, _id, text, dialog: true }
-      });
+      editData._id = _id;
+      editData.text = text;
     },
     onEditItem(ref) {
       const { editData } = this.$store.state.rest;
-      console.log(this.$store.state.rest);
 
       this.$refs[ref].close();
+      this.$store.dispatch('editItem', editData);
     },
     onOpenDelete(ref, _id) {
       const { deleteData } = this.$store.state.rest;
 
       this.$refs[ref].open();
-      this.$store.dispatch('setData', {
-        deleteData: { ...deleteData, _id, dialog: true }
-      });
+      deleteData._id = _id;
     },
     onDeleteItem(ref) {
       const { deleteData } = this.$store.state.rest;
-      console.log(this.$store.state.rest);
 
       this.$refs[ref].close();
-      // this.$store.dispatch('deleteItem', deleteData._id);
+      this.$store.dispatch('deleteItem', deleteData._id);
     },
     onCloseDialog(ref) {
       this.$refs[ref].close();
