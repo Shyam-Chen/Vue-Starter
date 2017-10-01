@@ -89,6 +89,7 @@ export default {
     onAddItem() {
       const { addData } = this.$store.state.rest;
 
+      this.$store.state.rest.loading = true;
       this.$store.dispatch('addItem', addData.text)
         .then(() => { addData.text = ''; });
     },
@@ -105,6 +106,7 @@ export default {
 
       this.$refs[ref].close();
 
+      this.$store.state.rest.loading = true;
       this.$store.dispatch('editItem', editData);
     },
     onOpenDelete(ref, _id) {
@@ -119,6 +121,7 @@ export default {
 
       this.$refs[ref].close();
 
+      this.$store.state.rest.loading = true;
       this.$store.dispatch('deleteItem', deleteData._id);
     },
     onCloseDialog(ref) {
