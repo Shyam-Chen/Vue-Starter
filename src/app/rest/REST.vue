@@ -41,6 +41,10 @@
       </li>
     </ul>
 
+    <div class="progress" :style="{ display: $store.state.rest.loading ? '' : 'none' }">
+      <md-spinner md-indeterminate></md-spinner>
+    </div>
+
     <aside>
       <!-- Edit -->
       <md-dialog md-open-from="#dialog-edit" md-close-to="#dialog-edit" ref="dialog-edit">
@@ -71,8 +75,6 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex';
-
 import Navigation from '../shared/Navigation';
 
 export default {
@@ -80,6 +82,7 @@ export default {
     onSearchItem() {
       const { searchData } = this.$store.state.rest;
 
+      this.$store.state.rest.loading = true;
       this.$store.dispatch('searchItem', searchData.text)
         .then(() => { searchData.text = ''; });
     },
@@ -127,5 +130,17 @@ export default {
 </script>
 
 <style scoped>
-/* TODO */
+.progress {
+  position: absolute;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(225, 225, 255, .7);
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
 </style>
