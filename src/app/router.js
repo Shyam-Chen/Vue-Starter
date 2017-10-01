@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import router from 'vue-router';
 
-import { App } from './App';
+import App from './App';
 import { Counter } from './counter';
 import { REST } from './rest';
 import { NotFound } from './not-found';
