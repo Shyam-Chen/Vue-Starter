@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import material from 'vue-material';
 
-import App from './app/App';
+import Render from './app/Render';
 import router from './app/router';
 import store from './app/store';
 
@@ -11,5 +11,5 @@ new Vue({
   el: '#app',
   router,
   store,
-  render: handle => handle(App)
+  render: handle => handle(Render)
 });

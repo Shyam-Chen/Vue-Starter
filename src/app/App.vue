@@ -1,9 +1,13 @@
 <template>
   <div>
-    <router-view />
+    <Navigation />
   </div>
 </template>
 
 <script>
-export default {};
+import Navigation from './shared/Navigation';
+
+export default {
+  components: { Navigation }
+};
 </script>

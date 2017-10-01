@@ -16,6 +16,11 @@
     </md-whiteframe>
 
     <div class="filling"></div>
+
+    <div v-if="location === '/'">
+      <router-link to="/counter" tag="md-button" class="md-raised md-primary">Counter</router-link>
+      <router-link to="/rest" tag="md-button" class="md-raised md-primary">REST</router-link>
+    </div>
   </div>
 </template>
 
@@ -39,6 +44,6 @@ export default {
 }
 
 .filling {
-  margin-top: 64px
+  padding-top: 64px
 }
 </style>
