@@ -41,10 +41,6 @@
       </li>
     </ul>
 
-    <div class="progress" :style="{ display: $store.state.rest.loading ? '' : 'none' }">
-      <md-spinner md-indeterminate></md-spinner>
-    </div>
-
     <aside>
       <!-- Edit -->
       <md-dialog md-open-from="#dialog-edit" md-close-to="#dialog-edit" ref="dialog-edit">
@@ -70,6 +66,11 @@
           <md-button class="md-primary" @click="onDeleteItem('dialog-delete')">Confirm</md-button>
         </md-dialog-actions>
       </md-dialog>
+
+      <!-- Loading -->
+      <div class="progress" :style="{ display: $store.state.rest.loading ? '' : 'none' }">
+        <md-spinner md-indeterminate></md-spinner>
+      </div>
     </aside>
   </div>
 </template>

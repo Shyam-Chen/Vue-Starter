@@ -11,7 +11,7 @@ export default {
     setTimeout(() => commit(INCREMENT), 1000);
   },
   incrementIfOdd({ commit, state }) {
-    if (state.value % 2 === 1) {
+    if (Math.abs(state.value % 2) === 1) {
       commit(INCREMENT);
     }
   }
