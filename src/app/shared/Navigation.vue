@@ -1,12 +1,12 @@
 <template>
   <div>
     <md-whiteframe md-tag="md-toolbar" md-elevation="2" class="toolbar">
-      <div v-if="location === '/'">
+      <div v-if="location === '/'" key="location-index">
         <md-button class="md-icon-button">
           <md-icon>toys</md-icon>
         </md-button>
       </div>
-      <div v-else>
+      <div v-else key="location-back">
         <router-link to="/" tag="md-button" class="md-icon-button">
           <md-icon>arrow_back</md-icon>
         </router-link>
@@ -44,6 +44,6 @@ export default {
 }
 
 .filling {
-  padding-top: 64px
+  padding-top: 64px;
 }
 </style>

@@ -34,7 +34,7 @@
 
     <!-- Data Display -->
     <ul>
-      <li v-for="item in $store.state.rest.dataset">
+      <li v-for="item in $store.state.rest.dataset" :key="item._id">
         {{ item.text }}
         <md-button class="md-accent" id="dialog-delete" @click="onOpenDelete('dialog-delete', item._id)">Delete</md-button>
         <md-button class="md-primary" id="dialog-edit" @click="onOpenEdit('dialog-edit', item)">Edit</md-button>
