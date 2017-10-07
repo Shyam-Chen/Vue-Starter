@@ -12,7 +12,9 @@
       <md-button class="md-raised md-primary" @click="increment">Increment</md-button>
       <md-button class="md-raised md-primary" @click="decrement">Decrement</md-button>
       <md-button class="md-raised md-accent" @click="incrementAsync">Increment (Async)</md-button>
+      <md-button class="md-raised md-accent" @click="decrementAsync">Decrement (Async)</md-button>
       <md-button class="md-raised md-accent" @click="incrementIfOdd">Increment (If Odd)</md-button>
+      <md-button class="md-raised md-accent" @click="decrementIfEven">Decrement (If Even)</md-button>
     </div>
   </div>
 </template>
@@ -26,8 +28,10 @@ export default {
   methods: mapActions([
     'increment',
     'decrement',
+    'incrementAsync',
+    'decrementAsync',
     'incrementIfOdd',
-    'incrementAsync'
+    'decrementIfEven'
   ]),
   computed: mapGetters([
     'evenOrOdd'
