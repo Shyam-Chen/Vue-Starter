@@ -19,6 +19,14 @@ const BABEL_LOADER = {
       'transform-function-bind',
       'transform-object-rest-spread',
       [
+        'babel-plugin-root-import', [
+          {
+            rootPathPrefix: '~',
+            rootPathSuffix: 'src/app'
+          }
+        ]
+      ],
+      [
         'transform-imports', {
           'rxjs': {
             transform: 'rxjs/${member}',

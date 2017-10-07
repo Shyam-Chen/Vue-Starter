@@ -1,10 +1,11 @@
 import Vue from 'vue';
 import router from 'vue-router';
 
+import { Counter } from '~/counter';
+import { REST } from '~/rest';
+import { NotFound } from '~/not-found';
+
 import App from './App';
-import { Counter } from './counter';
-import { REST } from './rest';
-import { NotFound } from './not-found';
 
 Vue.use(router);
 

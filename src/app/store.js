@@ -1,8 +1,8 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
-import { counter } from './counter';
-import { rest } from './rest';
+import { counter } from '~/counter';
+import { rest } from '~/rest';
 
 import { INITIAL as state } from './constants';
 import actions from './actions';

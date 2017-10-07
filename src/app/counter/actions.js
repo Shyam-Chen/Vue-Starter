@@ -1,8 +1,6 @@
-import 'rxjs/add/observable/of';
-import 'rxjs/add/operator/delay';
-import 'rxjs/add/operator/filter';
-
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
+import { of } from 'rxjs/observable';
+import { delay, filter } from 'rxjs/operator';
 
 import { INCREMENT, DECREMENT } from './constants';
 
@@ -17,8 +15,8 @@ export default {
     setTimeout(() => commit(INCREMENT), 1000);
   },
   decrementAsync({ commit }) {
-    Observable.of(null)
-      .delay(1000)
+    Observable::of(null)
+      ::delay(1000)
       .subscribe(() => commit(DECREMENT));
   },
   incrementIfOdd({ commit, state }) {
@@ -27,8 +25,8 @@ export default {
     }
   },
   decrementIfEven({ commit, state }) {
-    Observable.of(null)
-      .filter(() => state.value % 2 === 0)
+    Observable::of(null)
+      ::filter(() => state.value % 2 === 0)
       .subscribe(() => commit(DECREMENT));
   }
 };

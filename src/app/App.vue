@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Navigation from './shared/Navigation';
+import Navigation from '~/shared/Navigation';
 
 export default {
   components: { Navigation }
