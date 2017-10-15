@@ -1,5 +1,6 @@
 const { join } = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+// const PrerenderSpaPlugin = require('prerender-spa-plugin');
 
 const BABEL_LOADER = {
   loader: 'babel-loader',
@@ -96,6 +97,11 @@ module.exports = {
     extensions: ['.js', '.vue']
   },
   plugins: [
+    // new PrerenderSpaPlugin(
+    //   join(__dirname, './build'),
+    //   [ '/', '/counter', '/rest' ],
+    //   {}
+    // ),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'index.html'
