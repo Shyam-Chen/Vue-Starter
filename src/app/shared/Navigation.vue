@@ -1,6 +1,6 @@
 <template>
   <div>
-    <md-whiteframe md-tag="md-toolbar" md-elevation="2" class="toolbar">
+    <md-whiteframe md-tag="md-toolbar" md-elevation="4" class="toolbar">
       <div v-if="location === '/'" key="location-index">
         <md-button class="md-icon-button">
           <md-icon>toys</md-icon>
