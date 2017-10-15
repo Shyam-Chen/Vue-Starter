@@ -81,49 +81,44 @@ import Navigation from '~/shared/Navigation';
 export default {
   methods: {
     onSearchItem() {
-      const { searchData } = this.$store.state.rest;
+      const { rest } = this.$store.state;
 
-      this.$store.state.rest.loading = true;
-      this.$store.dispatch('searchItem', searchData.text)
-        .then(() => { searchData.text = ''; });
+      rest.loading = true;
+      this.$store.dispatch('searchItem', rest.searchData.text)
+        .then(() => { rest.searchData.text = ''; });
     },
     onAddItem() {
-      const { addData } = this.$store.state.rest;
+      const { rest } = this.$store.state;
 
-      this.$store.state.rest.loading = true;
-      this.$store.dispatch('addItem', addData.text)
-        .then(() => { addData.text = ''; });
+      rest.loading = true;
+      this.$store.dispatch('addItem', rest.addData.text)
+        .then(() => { rest.addData.text = ''; });
     },
-    onOpenEdit(ref, item) {
-      const { editData } = this.$store.state.rest;
+    onOpenEdit(ref, { _id, text }) {
+      const { rest } = this.$store.state;
 
       this.$refs[ref].open();
-
-      editData._id = item._id;
-      editData.text = item.text;
+      rest.editData = { _id, text };
     },
     onEditItem(ref) {
-      const { editData } = this.$store.state.rest;
+      const { rest } = this.$store.state;
 
       this.$refs[ref].close();
-
-      this.$store.state.rest.loading = true;
-      this.$store.dispatch('editItem', editData);
+      rest.loading = true;
+      this.$store.dispatch('editItem', rest.editData);
     },
     onOpenDelete(ref, _id) {
-      const { deleteData } = this.$store.state.rest;
+      const { rest } = this.$store.state;
 
       this.$refs[ref].open();
-
-      deleteData._id = _id;
+      rest.deleteData = { _id };
     },
     onDeleteItem(ref) {
-      const { deleteData } = this.$store.state.rest;
+      const { rest } = this.$store.state;
 
       this.$refs[ref].close();
-
-      this.$store.state.rest.loading = true;
-      this.$store.dispatch('deleteItem', deleteData._id);
+      rest.loading = true;
+      this.$store.dispatch('deleteItem', rest.deleteData._id);
     },
     onCloseDialog(ref) {
       this.$refs[ref].close();
