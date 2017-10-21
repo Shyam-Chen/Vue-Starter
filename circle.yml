@@ -17,31 +17,35 @@ jobs:
       - setup_remote_docker
 
       - run:
-          name: Build application - Image
+          name: Build the image
           command: docker-compose up -d
 
       - run:
-          name: Test application - Build
+          name: Build the application
           command: docker-compose exec app yarn build
 
       - run:
-          name: Test application - Lint
+          name: Static code analysis
           command: docker-compose exec app yarn lint
 
-      # - run:
-      #     name: Test application - Unit
-      #     command: docker-compose exec app yarn unit
+      - run:
+          name: Unit testing
+          command: docker-compose exec app yarn unit
 
       # - run:
-      #     name: Test application - E2E
+      #     name: End-to-end testing
       #     command: docker-compose exec app yarn e2e
 
+      - run:
+          name: Test coverage integration
+          command: docker-compose exec app yarn codecov -- --token=${CODECOV_TOKEN}
+
       - deploy:
-          name: Deploy application - Firebase
+          name: Deploy to Firebase
           command: docker-compose exec app yarn deploy -- --token ${FIREBASE_TOKEN}
 
       # - deploy:
-      #     name: Deploy application - Heroku
+      #     name: Deploy to Heroku
       #     command: |
       #       docker login -u="Shyam Chen" -p="${HEROKU_TOKEN}" registry.heroku.com
       #       docker build -f Dockerfile.prod -t registry.heroku.com/vue-by-example/web .
