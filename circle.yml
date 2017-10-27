@@ -32,9 +32,11 @@ jobs:
           name: Unit testing
           command: docker-compose exec app yarn unit
 
-      # - run:
-      #     name: End-to-end testing
-      #     command: docker-compose exec app yarn e2e
+      - run:
+          name: End-to-end testing
+          command: |
+            docker-compose exec app yarn webdriver
+            docker-compose exec app yarn e2e
 
       - run:
           name: Test coverage integration

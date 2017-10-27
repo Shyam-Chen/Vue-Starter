@@ -4,7 +4,9 @@
     "node": true,
     "commonjs": true,
     "es6": true,
-    "jest": true
+    "jest": true,
+    "jasmine": true,
+    "protractor": true
   },
   "globals": {
   },
