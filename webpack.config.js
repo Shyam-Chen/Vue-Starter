@@ -53,7 +53,7 @@ const BABEL_LOADER = {
 module.exports = {
   context: join(__dirname, 'src'),
   entry: {
-    main: './main.js'
+    client: './client.js'
   },
   output: {
     path: join(__dirname, 'build'),
