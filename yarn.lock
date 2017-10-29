@@ -8395,9 +8395,11 @@ vue-loader@13.3.0:
     vue-style-loader "^3.0.0"
     vue-template-es2015-compiler "^1.6.0"
 
-vue-material@0.7.5:
-  version "0.7.5"
-  resolved "https://registry.yarnpkg.com/vue-material/-/vue-material-0.7.5.tgz#045517403c1338aceabd73030f3dd6b5c744fe55"
+vue-material@0.8.1:
+  version "0.8.1"
+  resolved "https://registry.yarnpkg.com/vue-material/-/vue-material-0.8.1.tgz#8f54666f52ef07b546ca0da93fbcd71574c599b2"
+  dependencies:
+    vue "^2.4.4"
 
 vue-property-decorator@6.0.0:
   version "6.0.0"
@@ -8438,7 +8440,7 @@ vue-test-utils@1.0.0-beta.2:
   dependencies:
     lodash "^4.17.4"
 
-vue@2.5.2:
+vue@2.5.2, vue@^2.4.4:
   version "2.5.2"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.5.2.tgz#fd367a87bae7535e47f9dc5c9ec3b496e5feb5a4"
 

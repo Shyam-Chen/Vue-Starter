@@ -32,7 +32,7 @@
     "express-history-api-fallback": "^2.2.1",
     "rxjs": "5.5.0",
     "vue": "2.5.2",
-    "vue-material": "0.7.5",
+    "vue-material": "0.8.1",
     "vue-router": "3.0.1",
     "vue-rx": "5.0.0",
     "vuex": "3.0.0",

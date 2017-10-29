@@ -2,35 +2,29 @@
   <div>
     <Navigation />
 
-    <!-- Search -->
-    <md-layout md-gutter>
-      <md-layout md-flex="20">
+    <div class="actions">
+      <!-- Search -->
+      <div class="search">
         <md-input-container>
           <label>Text</label>
-          <md-input v-model="$store.state.rest.searchData.text"></md-input>
+          <md-input v-model="$store.state.rest.searchData.text" ></md-input>
         </md-input-container>
-      </md-layout>
-      <md-layout md-flex="20">
         <div>
-        <md-button class="md-raised md-primary" @click="onSearchItem">Search</md-button>
+          <md-button class="md-raised md-primary" @click="onSearchItem">Search</md-button>
+        </div>
       </div>
-      </md-layout>
-    </md-layout>
 
-    <!-- Add -->
-    <md-layout md-gutter>
-      <md-layout md-flex="20">
+      <!-- Add -->
+      <div class="add">
         <md-input-container>
           <label>Text</label>
           <md-input v-model="$store.state.rest.addData.text"></md-input>
         </md-input-container>
-      </md-layout>
-      <md-layout md-flex="20">
         <div>
-        <md-button class="md-raised md-primary" @click="onAddItem">Add</md-button>
+          <md-button class="md-raised md-primary" @click="onAddItem">Add</md-button>
+        </div>
       </div>
-      </md-layout>
-    </md-layout>
+    </div>
 
     <!-- Data Display -->
     <ul>
@@ -87,13 +81,17 @@ export default {
       this.$store.dispatch('searchItem', rest.searchData.text)
         .then(() => { rest.searchData.text = ''; });
     },
+
     onAddItem() {
       const { rest } = this.$store.state;
 
-      rest.loading = true;
-      this.$store.dispatch('addItem', rest.addData.text)
-        .then(() => { rest.addData.text = ''; });
+      if (rest.addData.text) {
+        rest.loading = true;
+        this.$store.dispatch('addItem', rest.addData.text)
+          .then(() => { rest.addData.text = ''; });
+      }
     },
+
     onOpenEdit(ref, { _id, text }) {
       const { rest } = this.$store.state;
 
@@ -103,10 +101,13 @@ export default {
     onEditItem(ref) {
       const { rest } = this.$store.state;
 
-      this.$refs[ref].close();
-      rest.loading = true;
-      this.$store.dispatch('editItem', rest.editData);
+      if (rest.editData.text) {
+        this.$refs[ref].close();
+        rest.loading = true;
+        this.$store.dispatch('editItem', rest.editData);
+      }
     },
+
     onOpenDelete(ref, _id) {
       const { rest } = this.$store.state;
 
@@ -120,6 +121,7 @@ export default {
       rest.loading = true;
       this.$store.dispatch('deleteItem', rest.deleteData._id);
     },
+
     onCloseDialog(ref) {
       this.$refs[ref].close();
     }
@@ -129,6 +131,17 @@ export default {
 </script>
 
 <style scoped>
+.actions {
+  margin: 1rem;
+}
+
+.search,
+.add {
+  width: 17.5rem;
+  display: flex;
+  flex-direction: row;
+}
+
 .progress {
   position: absolute;
   position: fixed;
