@@ -27,13 +27,31 @@
     </div>
 
     <!-- Data Display -->
-    <ul>
-      <li v-for="item in $store.state.rest.dataset" :key="item._id">
-        {{ item.text }}
-        <md-button class="md-accent" id="dialog-delete" @click="onOpenDelete('dialog-delete', item._id)">Delete</md-button>
-        <md-button class="md-primary" id="dialog-edit" @click="onOpenEdit('dialog-edit', item)">Edit</md-button>
-      </li>
-    </ul>
+    <div style="width: 30rem; margin: 1rem">
+      <md-table-card>
+        <md-table>
+          <md-table-header>
+            <md-table-row>
+              <md-table-head>Text</md-table-head>
+              <md-table-head></md-table-head>
+              <md-table-head></md-table-head>
+            </md-table-row>
+          </md-table-header>
+
+          <md-table-body>
+            <md-table-row v-for="item in $store.state.rest.dataset" :key="item._id" :md-item="item">
+              <md-table-cell>{{ item.text }}</md-table-cell>
+              <md-table-cell>
+                <md-button style="width: 100%" class="md-accent" id="dialog-delete" @click="onOpenDelete('dialog-delete', item._id)">Delete</md-button>
+              </md-table-cell>
+              <md-table-cell>
+                <md-button style="width: 100%" class="md-primary" id="dialog-edit" @click="onOpenEdit('dialog-edit', item)">Edit</md-button>
+              </md-table-cell>
+            </md-table-row>
+          </md-table-body>
+        </md-table>
+      </md-table-card>
+    </div>
 
     <aside>
       <!-- Edit -->
