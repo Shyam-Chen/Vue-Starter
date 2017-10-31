@@ -1,0 +1,13 @@
+[include]
+
+[ignore]
+.*/node_modules/*
+.*\.spec\.js
+.*\.e2e-spec\.js
+
+[libs]
+flow-typed/
+
+[lints]
+
+[options]

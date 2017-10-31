@@ -1,4 +1,5 @@
 node_modules
+npm
 build
 coverage
 *.log

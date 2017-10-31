@@ -31,7 +31,6 @@ $ npm start
   * SVG & Canvas (D3)
   * WebGL (Three)
 * WebSockets (Socket.IO)
-* Google Analytics
 * Service Workers
 * Hot Module Replacement
 * Flow Types

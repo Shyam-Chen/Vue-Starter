@@ -1,12 +1,10 @@
-// @flow
-
 import pm2 from 'pm2';
 
 pm2.connect(() => {
   pm2.start(
     {
       name: 'Vue-Fullstack-Starter',
-      script: `${__dirname}/api/api.js`,
+      script: `${__dirname}/api/index.js`,
       max_memory_restart: `${process.env.WEB_MEMORY || 512}M`,
       exec_mode: 'cluster',
       instances: process.env.WEB_CONCURRENCY || -1
