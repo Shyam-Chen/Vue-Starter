@@ -28,11 +28,13 @@
   },
   "homepage": "https://github.com/Shyam-Chen/Vue-Fullstack-Starter#readme",
   "dependencies": {
+    "apollo-client": "2.0.1",
     "axios": "0.17.0",
     "express": "4.16.2",
     "express-history-api-fallback": "2.2.1",
     "rxjs": "5.5.2",
     "vue": "2.5.2",
+    "vue-apollo": "2.1.0-rc.8",
     "vue-material": "0.8.1",
     "vue-router": "3.0.1",
     "vue-rx": "5.0.0",
