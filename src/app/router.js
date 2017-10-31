@@ -3,6 +3,7 @@ import router from 'vue-router';
 
 import { Counter } from '~/counter';
 import { REST } from '~/rest';
+import { FormControls } from '~/form-controls';
 import { NotFound } from '~/not-found';
 
 import App from './App';
@@ -15,6 +16,7 @@ export default new router({
     { path: '/', component: App },
     { path: '/counter', component: Counter },
     { path: '/rest', component: REST },
+    { path: '/form-controls', component: FormControls },
     { path: '*', component: NotFound }
   ]
 });

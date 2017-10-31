@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <Navigation />
 
     <div class="text">
@@ -41,6 +41,12 @@ export default {
 </script>
 
 <style scoped>
+.container {
+  background: #FAFAFA;
+  height: 100vh;
+  padding: 1rem;
+}
+
 .text {
   padding: 1rem;
 }

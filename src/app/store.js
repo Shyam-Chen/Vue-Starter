@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 
 import { counter } from '~/counter';
 import { rest } from '~/rest';
+import { formControls } from '~/form-controls';
 
 import { INITIAL as state } from './constants';
 import actions from './actions';
@@ -18,6 +19,7 @@ export default new Vuex.Store({
   getters,
   modules: {
     counter,
-    rest
+    rest,
+    formControls
   }
 });

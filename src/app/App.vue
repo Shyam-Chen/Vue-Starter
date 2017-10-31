@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <Navigation />
   </div>
 </template>
@@ -11,3 +11,11 @@ export default {
   components: { Navigation }
 };
 </script>
+
+<style scoped>
+.container {
+  background: #FAFAFA;
+  height: 100vh;
+  padding: 1rem;
+}
+</style>
