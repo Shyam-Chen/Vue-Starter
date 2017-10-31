@@ -22,7 +22,7 @@
 <script>
 import { mapActions, mapGetters } from 'vuex';
 
-import Navigation from '../shared/Navigation';
+import Navigation from '~/shared/Navigation';
 
 export default {
   methods: mapActions([
