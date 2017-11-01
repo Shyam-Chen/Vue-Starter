@@ -1,1 +1,3 @@
-export const INITIAL = {};
+export const INITIAL = {
+  nickname: ''
+};

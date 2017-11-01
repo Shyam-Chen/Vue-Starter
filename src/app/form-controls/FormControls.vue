@@ -4,12 +4,15 @@
 
     <md-whiteframe md-elevation="2">
       <form class="form">
-        <div class="row input">
+        <div class="row">
           <!-- input -->
-          <md-input-container>
+          <md-input-container class="input">
             <label>Nickname</label>
-            <md-input v-model="nickname"></md-input>
+            <md-input v-model="$store.state.formControls.nickname"></md-input>
           </md-input-container>
+          <div class="outputs">
+            {{ $store.state.formControls.nickname }}
+          </div>
         </div>
 
         <div class="row">
@@ -48,5 +51,11 @@ export default {
 
 .input {
   max-width: 10rem;
+}
+
+.outputs {
+  align-self: center;
+  margin: 0 0 .5rem .5rem;
+  color: #009688;
 }
 </style>
