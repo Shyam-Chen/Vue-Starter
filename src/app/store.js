@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 
 import { counter } from '~/counter';
 import { rest } from '~/rest';
+import { graphql } from '~/graphql';
 import { formControls } from '~/form-controls';
 
 import { INITIAL as state } from './constants';
@@ -20,6 +21,7 @@ export default new Vuex.Store({
   modules: {
     counter,
     rest,
+    graphql,
     formControls
   }
 });

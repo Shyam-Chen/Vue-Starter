@@ -2,6 +2,7 @@
   <div class="container">
     <Navigation />
 
+    <h1>Switch to apollo-client v2</h1>
   </div>
 </template>
 
