@@ -17,7 +17,7 @@
 
         <div class="row">
           <div>
-            <div>Gender</div>
+            <div class="md-body-2">Gender</div>
             <md-radio v-model="$store.state.formControls.gender" name="gender" md-value="Male">Male</md-radio>
             <md-radio v-model="$store.state.formControls.gender" name="gender" md-value="Female">Female</md-radio>
             <md-radio v-model="$store.state.formControls.gender" name="gender" md-value="Other">Other</md-radio>
@@ -28,12 +28,17 @@
         </div>
 
         <div class="row">
-          <div style="align-self: center">Autoplay</div>
+          <div class="md-body-2" style="align-self: center">Autoplay</div>
           <div style="margin-left: 1rem">
             <md-switch v-model="$store.state.formControls.autoplay" name="autoplay"></md-switch>
           </div>
           <div class="outputs">
-            {{ $store.state.formControls.gender }}
+            {{
+              $store.state.formControls.autoplay
+                ? `${$store.state.formControls.autoplay}`.charAt(0).toUpperCase() +
+                  `${$store.state.formControls.autoplay}`.slice(1)
+                : ''
+            }}
           </div>
         </div>
 
