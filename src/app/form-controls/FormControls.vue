@@ -28,6 +28,16 @@
         </div>
 
         <div class="row">
+          <div style="align-self: center">Autoplay</div>
+          <div style="margin-left: 1rem">
+            <md-switch v-model="$store.state.formControls.autoplay" name="autoplay"></md-switch>
+          </div>
+          <div class="outputs">
+            {{ $store.state.formControls.gender }}
+          </div>
+        </div>
+
+        <div class="row">
           ...
         </div>
       </form>
