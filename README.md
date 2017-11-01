@@ -24,7 +24,6 @@ $ npm start
 * REST & GraphQL
   * Authorization
   * Pagination
-* Form Controls
 * Data Table
 * Internationalization
 * Data Chart
@@ -33,8 +32,5 @@ $ npm start
 * WebSockets (Socket.IO)
 * Service Workers
 * Hot Module Replacement
-* Flow Types
-* Unit Tests
-* E2E Tests
 * Prerender
 * Server-side Rendering

@@ -22,7 +22,7 @@
             <md-radio v-model="$store.state.formControls.gender" name="gender" md-value="Female">Female</md-radio>
             <md-radio v-model="$store.state.formControls.gender" name="gender" md-value="Other">Other</md-radio>
           </div>
-          <div class="outputs">
+          <div class="outputs" style="padding-top: 2rem">
             {{ $store.state.formControls.gender }}
           </div>
         </div>
@@ -32,7 +32,7 @@
           <div style="margin-left: 1rem">
             <md-switch v-model="autoplay" name="autoplay"></md-switch>
           </div>
-          <div class="outputs">
+          <div class="outputs" style="padding-top: .5rem">
             {{ autoplay ? `${autoplay}`.charAt(0).toUpperCase() + `${autoplay}`.slice(1) : '' }}
           </div>
         </div>
@@ -52,12 +52,8 @@ import Navigation from '~/shared/Navigation';
 export default {
   computed: {
     autoplay: {
-      get() {
-        return this.$store.state.formControls.autoplay;
-      },
-      set(value) {
-        this.$store.state.formControls.autoplay = value;
-      }
+      get() { return this.$store.state.formControls.autoplay; },
+      set(autoplay) { this.$store.commit('autoplay', { autoplay }) }
     }
   },
   components: { Navigation }

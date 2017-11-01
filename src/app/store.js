@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import createLogger from 'vuex/dist/logger';
 
 import { counter } from '~/counter';
 import { rest } from '~/rest';
@@ -23,5 +24,8 @@ export default new Vuex.Store({
     rest,
     graphql,
     formControls
-  }
+  },
+  plugins: [
+    createLogger({ collapsed: false })
+  ]
 });
