@@ -30,15 +30,10 @@
         <div class="row">
           <div class="md-body-2" style="align-self: center">Autoplay</div>
           <div style="margin-left: 1rem">
-            <md-switch v-model="$store.state.formControls.autoplay" name="autoplay"></md-switch>
+            <md-switch v-model="autoplay" name="autoplay"></md-switch>
           </div>
           <div class="outputs">
-            {{
-              $store.state.formControls.autoplay
-                ? `${$store.state.formControls.autoplay}`.charAt(0).toUpperCase() +
-                  `${$store.state.formControls.autoplay}`.slice(1)
-                : ''
-            }}
+            {{ autoplay ? `${autoplay}`.charAt(0).toUpperCase() + `${autoplay}`.slice(1) : '' }}
           </div>
         </div>
 
@@ -55,6 +50,16 @@
 import Navigation from '~/shared/Navigation';
 
 export default {
+  computed: {
+    autoplay: {
+      get() {
+        return this.$store.state.formControls.autoplay;
+      },
+      set(value) {
+        this.$store.state.formControls.autoplay = value;
+      }
+    }
+  },
   components: { Navigation }
 };
 </script>
