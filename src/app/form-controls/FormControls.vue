@@ -16,6 +16,18 @@
         </div>
 
         <div class="row">
+          <div>
+            <div>Gender</div>
+            <md-radio v-model="$store.state.formControls.gender" name="gender" md-value="Male">Male</md-radio>
+            <md-radio v-model="$store.state.formControls.gender" name="gender" md-value="Female">Female</md-radio>
+            <md-radio v-model="$store.state.formControls.gender" name="gender" md-value="Other">Other</md-radio>
+          </div>
+          <div class="outputs">
+            {{ $store.state.formControls.gender }}
+          </div>
+        </div>
+
+        <div class="row">
           ...
         </div>
       </form>
@@ -45,6 +57,7 @@ export default {
 }
 
 .row {
+  padding: .66rem;
   display: flex;
   flex-direction: row;
 }
