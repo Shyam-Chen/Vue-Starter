@@ -256,7 +256,7 @@ apollo-cache@^1.0.0:
   dependencies:
     apollo-utilities "^1.0.0"
 
-apollo-client@^2.0.1:
+apollo-client@2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/apollo-client/-/apollo-client-2.0.1.tgz#7f50b5281ff53796f8548c35a85aa73a5d62b2a2"
   dependencies:
@@ -8486,7 +8486,7 @@ vm-browserify@0.0.4:
   dependencies:
     indexof "0.0.1"
 
-vue-apollo@^2.1.0-rc.8:
+vue-apollo@2.1.0-rc.8:
   version "2.1.0-rc.8"
   resolved "https://registry.yarnpkg.com/vue-apollo/-/vue-apollo-2.1.0-rc.8.tgz#eeb0e4d600cb45f565750ded6d3b3ac0df8db6f5"
   dependencies:
@@ -8512,6 +8512,10 @@ vue-eslint-parser@^1.1.0-7:
 vue-hot-reload-api@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/vue-hot-reload-api/-/vue-hot-reload-api-2.2.0.tgz#9a21b35ced3634434a43ee80efb7350ea8fb206d"
+
+vue-i18n@^7.3.2:
+  version "7.3.2"
+  resolved "https://registry.yarnpkg.com/vue-i18n/-/vue-i18n-7.3.2.tgz#1205bb8811323fd5c44e57e4fd619beaf2f7a9a1"
 
 vue-loader@13.3.0:
   version "13.3.0"
