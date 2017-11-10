@@ -2,6 +2,11 @@
   <div class="container">
     <Navigation />
 
+    <router-link to="/form-controls/basic-forms" tag="md-button" class="md-raised md-accent">Basic Forms</router-link>
+    <router-link to="/form-controls/reactive-forms" tag="md-button" class="md-raised md-accent">Reactive Forms</router-link>
+
+    <router-view></router-view>
+
     <md-whiteframe md-elevation="2">
       <form class="form">
         <div class="row">
@@ -42,7 +47,6 @@
         </div>
       </form>
     </md-whiteframe>
-
   </div>
 </template>
 
@@ -53,7 +57,7 @@ export default {
   computed: {
     autoplay: {
       get() { return this.$store.state.formControls.autoplay; },
-      set(autoplay) { this.$store.commit('autoplay', { autoplay }) }
+      set(autoplay) { this.$store.commit('autoplay', { autoplay }); }
     }
   },
   components: { Navigation }
