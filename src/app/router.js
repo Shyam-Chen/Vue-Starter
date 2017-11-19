@@ -5,7 +5,8 @@ import { Counter } from '~/counter';
 import { REST } from '~/rest';
 import { GraphQL } from '~/graphql';
 import { FormControls, BasicForms, ReactiveForms } from '~/form-controls';
-import { NotFound } from '~/not-found';
+
+import NotFound from '~/shared/NotFound';
 
 import App from './App';
 
