@@ -21,16 +21,18 @@ $ npm start
 ## TODO List
 
 * CRUD
-* REST & GraphQL
-  * Authorization
-  * Pagination
+  * Static
+  * GraphQL
 * Data Table
-* Internationalization
+  * Static
+  * REST
+  * GraphQL
+* Authorization
+* Internationalization (`vue-i18n`)
 * Data Chart
-  * SVG & Canvas (D3)
-  * WebGL (Three)
-* WebSockets (Socket.IO)
-* Service Workers
-* Hot Module Replacement
-* Prerender
-* Server-side Rendering
+  * SVG & Canvas (`d3`)
+  * WebGL (`three`)
+* WebSockets (`socket.io`)
+* Service Workers (`sw-precache`)
+* Prerender (`rendertron`)
+* Server-side Rendering (`vue-server-renderer`)
