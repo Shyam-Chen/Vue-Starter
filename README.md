@@ -10,29 +10,71 @@ A boilerplate for Vue, Material, and Express.
 
 [Live Demo](https://vue-by-example.firebaseapp.com/)
 
-```bash
-$ npm install
-```
+## Getting Started
+
+1. Clone this Boilerplate
 
 ```bash
-$ npm start
+$ git clone --depth 1 https://github.com/Shyam-Chen/Vue-Fullstack-Starter <PROJECT_NAME>
+$ cd <PROJECT_NAME>
 ```
 
-## TODO List
+2. Install Dependencies
 
-* CRUD
-  * Static
-  * GraphQL
-* Data Table
-  * Static
-  * REST
-  * GraphQL
-* Authorization
-* Internationalization (`vue-i18n`)
-* Data Chart
-  * SVG & Canvas (`d3`)
-  * WebGL (`three`)
-* WebSockets (`socket.io`)
-* Service Workers (`sw-precache`)
-* Prerender (`rendertron`)
-* Server-side Rendering (`vue-server-renderer`)
+```bash
+$ yarn install
+
+# then install types
+$ yarn typed
+```
+
+3. Run the Application
+
+```bash
+$ yarn start
+```
+
+4. Build the Application
+
+```bash
+$ yarn build
+```
+
+5. Test the Application
+
+```bash
+$ yarn test
+```
+
+## Example List
+
+* [x] Counter
+  * [x] State management (`vuex`)
+  * [x] Asynchronous
+    * [x] Thunk
+    * [x] Observable (`rxjs`, `vue-rx`)
+* [ ] CRUD
+  * [ ] Static
+  * [x] REST
+  * [ ] GraphQL
+* [ ] Form Controls
+  * [ ] Basic Forms
+  * [ ] Reactive Forms
+* [ ] Data Table
+  * [ ] Static
+  * [ ] REST
+  * [ ] GraphQL
+* [ ] Authorization
+  * [ ] REST
+  * [ ] GraphQL
+* [ ] Internationalization (`vue-i18n`)
+* [ ] Data Chart
+  * [ ] SVG & Canvas (`d3`)
+  * [ ] WebGL (`three`)
+* [ ] WebSockets (`socket.io`)
+* [ ] Lazy Loading
+* [ ] Preload
+* [ ] Service Workers (`sw-precache`)
+* [ ] Metadata (`vue-meta`)
+* [ ] Prerender (`rendertron`)
+* [ ] Server-side Rendering (`vue-server-renderer`)
