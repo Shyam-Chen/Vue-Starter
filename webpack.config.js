@@ -1,5 +1,7 @@
 const { join } = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 // const PrerenderSpaPlugin = require('prerender-spa-plugin');
 
 const BABEL_LOADER = {
@@ -51,11 +53,54 @@ const BABEL_LOADER = {
 };
 
 module.exports = ({ prod = false } = {}) => {
-  // if (prod) {
-  //
-  // } else {
-  //
-  // }
+  const rules = [
+    {
+      test: /\.js$/,
+      exclude: /node_modules/,
+      use: [
+        BABEL_LOADER
+      ]
+    }, {
+      test: /\.css$/,
+      use: [
+        'style-loader',
+        {
+          loader: 'css-loader',
+          options: {
+            importLoaders: 1
+          }
+        }
+      ]
+    }, {
+      test: /\.vue$/,
+      use: [
+        {
+          loader: 'vue-loader',
+          options: {
+            loaders: {
+              js: BABEL_LOADER
+            }
+          }
+        }
+      ]
+    }
+  ];
+
+  const plugins = [
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      template: 'index.html'
+    })
+  ];
+
+  if (prod) {
+    plugins.push(new UglifyJSPlugin({ sourceMap: false }));
+  } else {
+    plugins.push(
+      new webpack.NamedModulesPlugin(),
+      new webpack.HotModuleReplacementPlugin()
+    );
+  }
 
   return {
     context: join(__dirname, 'src'),
@@ -67,58 +112,18 @@ module.exports = ({ prod = false } = {}) => {
       filename: '[name].[hash].js'
     },
     module: {
-      rules: [
-        {
-          test: /\.js$/,
-          exclude: /node_modules/,
-          use: [
-            BABEL_LOADER
-          ]
-        }, {
-          test: /\.css$/,
-          use: [
-            'style-loader',
-            {
-              loader: 'css-loader',
-              options: {
-                importLoaders: 1
-              }
-            }
-          ]
-        }, {
-          test: /\.vue$/,
-          use: [
-            {
-              loader: 'vue-loader',
-              options: {
-                loaders: {
-                  js: BABEL_LOADER
-                }
-              }
-            }
-          ]
-        }
-      ]
+      rules
     },
     resolve: {
       extensions: ['.js', '.vue']
     },
-    plugins: [
-      // new PrerenderSpaPlugin(
-      //   join(__dirname, './build'),
-      //   [ '/', '/counter', '/rest' ],
-      //   {}
-      // ),
-      new HtmlWebpackPlugin({
-        filename: 'index.html',
-        template: 'index.html'
-      })
-    ],
+    plugins,
     devServer: {
       contentBase: join(__dirname, 'build'),
       historyApiFallback: true,
+      hot: true,
       inline: true,
-      port: 8000,
+      port: 8000
     },
     devtool: 'source-map'
   };

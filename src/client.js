@@ -41,3 +41,7 @@ new Vue({
   i18n,
   render: mount => mount('router-view')
 });
+
+if (module.hot) {
+  module.hot.accept();
+}
