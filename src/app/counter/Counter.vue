@@ -2,11 +2,9 @@
   <div class="container">
     <Navigation />
 
-    <div class="text">
-      <span class="md-title">
-        Clicked: {{ $store.state.counter.value }} times, value is {{ evenOrOdd }}.
-      </span>
-    </div>
+    <md-content>
+      <p class="md-title">Clicked: {{ $store.state.counter.value }} times, value is {{ evenOrOdd }}.</p>
+    </md-content>
 
     <div>
       <md-button class="md-raised md-primary" @click="increment">Increment</md-button>
@@ -44,10 +42,6 @@ export default {
 .container {
   background: #FAFAFA;
   height: 100vh;
-  padding: 1rem;
-}
-
-.text {
   padding: 1rem;
 }
 </style>

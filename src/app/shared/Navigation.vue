@@ -1,6 +1,6 @@
 <template>
   <div>
-    <md-whiteframe md-tag="md-toolbar" md-elevation="4" class="toolbar" style="z-index: 99">
+    <md-toolbar class="md-primary toolbar">
       <div v-if="location === '/'" key="location-index">
         <md-button class="md-icon-button">
           <md-icon>toys</md-icon>
@@ -13,7 +13,7 @@
       </div>
 
       <h2 class="md-title" style="flex: 1">Vue by Example</h2>
-    </md-whiteframe>
+    </md-toolbar>
 
     <div class="filling"></div>
 
@@ -43,6 +43,7 @@ export default {
   right: 0;
   position: fixed;
   width: 100%;
+  z-index: 10;
 }
 
 .filling {

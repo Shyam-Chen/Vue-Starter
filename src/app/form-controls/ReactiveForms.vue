@@ -2,13 +2,13 @@
   <div class="container">
     <h1>Reactive Forms</h1>
 
-    <md-whiteframe md-elevation="2">
+    <md-content class="md-elevation-2">
       <form class="form">
         <div class="row">
           ...
         </div>
       </form>
-    </md-whiteframe>
+    </md-content>
   </div>
 </template>
 

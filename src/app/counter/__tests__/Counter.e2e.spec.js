@@ -32,13 +32,13 @@ describe('Counter', () => {
   });
 
   it('should display count', async () => {
-    const text = await page.$eval('.text > .md-title', el => el.textContent);
+    const text = await page.$eval('body > div > div.md-content > p', el => el.textContent);
     expect(text).toMatch('Clicked: 0 times, value is even.');
   });
 
   it('should click increment button', async () => {
-    await page.click('body > div > div:nth-child(3) > button:nth-child(1)');
-    const text = await page.$eval('.text > .md-title', el => el.textContent);
+    await page.click('body > div > div:nth-child(3) > button:nth-child(1) > div > div');
+    const text = await page.$eval('body > div > div.md-content > p', el => el.textContent);
     expect(text).toMatch('Clicked: 1 times, value is odd.');
   });
 });

@@ -2,14 +2,14 @@
   <div class="container">
     <h1>Basic Forms</h1>
 
-    <md-whiteframe md-elevation="2">
+    <md-content class="md-elevation-2">
       <form class="form">
         <div class="row">
           <!-- input -->
-          <md-input-container class="input">
+          <md-field class="input">
             <label>Nickname</label>
             <md-input v-model="$store.state.formControls.nickname"></md-input>
-          </md-input-container>
+          </md-field>
           <div class="outputs">
             {{ $store.state.formControls.nickname }}
           </div>
@@ -18,9 +18,9 @@
         <div class="row">
           <div>
             <div class="md-body-2">Gender</div>
-            <md-radio v-model="$store.state.formControls.gender" name="gender" md-value="Male">Male</md-radio>
-            <md-radio v-model="$store.state.formControls.gender" name="gender" md-value="Female">Female</md-radio>
-            <md-radio v-model="$store.state.formControls.gender" name="gender" md-value="Other">Other</md-radio>
+            <md-radio v-model="$store.state.formControls.gender" value="Male">Male</md-radio>
+            <md-radio v-model="$store.state.formControls.gender" value="Female">Female</md-radio>
+            <md-radio v-model="$store.state.formControls.gender" value="Other">Other</md-radio>
           </div>
           <div class="outputs" style="padding-top: 2rem">
             {{ $store.state.formControls.gender }}
@@ -41,7 +41,7 @@
           ...
         </div>
       </form>
-    </md-whiteframe>
+    </md-content>
   </div>
 </template>
 
