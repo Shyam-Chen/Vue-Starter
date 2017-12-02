@@ -6,12 +6,28 @@
       <form class="form">
         <div class="row">
           <!-- input -->
-          <md-field class="input">
+          <md-field class="field">
             <label>Nickname</label>
             <md-input v-model="$store.state.formControls.nickname"></md-input>
           </md-field>
           <div class="outputs">
             {{ $store.state.formControls.nickname }}
+          </div>
+        </div>
+
+        <div class="row">
+          <!-- select -->
+          <md-field class="field">
+            <label for="age">Age</label>
+            <md-select v-model="$store.state.formControls.age" name="age" id="age">
+              <!-- <md-option value=""><em>None</em></md-option> -->
+              <md-option :key="item.value" :value="item.value" v-for="item in $store.state.formControls.listOfage">
+                {{ item.label }}
+              </md-option>
+            </md-select>
+          </md-field>
+          <div class="outputs">
+            {{ $store.state.formControls.age }}
           </div>
         </div>
 
@@ -74,7 +90,7 @@ export default {
   flex-direction: row;
 }
 
-.input {
+.field {
   max-width: 10rem;
 }
 
