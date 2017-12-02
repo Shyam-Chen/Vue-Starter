@@ -73,8 +73,8 @@ $ yarn test
   * [ ] WebGL (`three`)
 * [ ] WebSockets (`socket.io`)
 * [ ] Lazy Loading
-* [ ] Preload
 * [ ] Service Workers (`sw-precache`)
+* [ ] Preload Content
 * [ ] Metadata (`vue-meta`)
-* [ ] Prerender (`rendertron`)
+* [ ] Prerenders static HTML (`rendertron`)
 * [ ] Server-side Rendering (`vue-server-renderer`)
