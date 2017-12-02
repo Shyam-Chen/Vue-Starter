@@ -1,23 +1,50 @@
-import pm2 from 'pm2';
+import { join } from 'path';
+import { readFileSync } from 'fs';
+import express from 'express';
+import compression from 'compression';
+import cors from 'cors';
+import morgan from 'morgan';
+import bodyParser from 'body-parser';
+import history from 'express-history-api-fallback';
+import Vue from 'vue';
+import { createRenderer } from 'vue-server-renderer';
 
-pm2.connect(() => {
-  pm2.start(
-    {
-      name: 'Vue-Fullstack-Starter',
-      script: `${__dirname}/api/index.js`,
-      max_memory_restart: `${process.env.WEB_MEMORY || 512}M`,
-      exec_mode: 'cluster',
-      instances: process.env.WEB_CONCURRENCY || -1
+const app = express();
+const root = join(__dirname, '../build');
+
+app.set('port', process.env.PORT || 3000);
+
+app.use(compression());
+app.use(cors());
+app.use(morgan('tiny'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.static(root));
+app.use(history('index.html', { root }));
+
+app.get('*', (req, res) => {
+  const vue = new Vue({
+    data: {
+      url: req.url
     },
-    err => {
-      if (err) return console.error(`Error while launching applications ${err.stack || err}.`);
-      console.log('PM2 and application has been succesfully started.');
+    template: `<div>{{ url }}</div>`
+  });
 
-      pm2.launchBus((err, bus) => {
-        console.log('PM2: Log streaming started.');
-        bus.on('log:out', packet => console.log(`App (out): ${packet.process.name} - ${packet.data}`));
-        bus.on('log:err', packet => console.error(`App (err): ${packet.process.name} - ${packet.data}`));
-      });
+  const renderer = createRenderer({
+    template: readFileSync('./index.html', 'utf-8')
+  });
+
+  renderer.renderToString(vue, (err, html) => {
+    if (err) {
+      res.status(500).end('Internal Server Error');
+      return;
     }
-  );
+
+    res.end(html);
+  });
+})
+
+app.listen(app.get('port'), () => {
+  console.log('App: Bootstrap Succeeded.');
+  console.log(`Port: ${app.get('port')}.`);
 });

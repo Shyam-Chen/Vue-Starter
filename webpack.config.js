@@ -1,6 +1,7 @@
 const { join } = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 // const PrerenderSpaPlugin = require('prerender-spa-plugin');
 
@@ -90,7 +91,10 @@ module.exports = ({ prod = false } = {}) => {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'index.html'
-    })
+    }),
+    new CopyWebpackPlugin([
+      'assets/images/favicon.ico'
+    ])
   ];
 
   if (prod) {
