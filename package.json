@@ -6,14 +6,10 @@
     "start": "webpack-dev-server --progress",
     "build": "webpack --env.prod",
     "test": "eslint src && jest --coverage --forceExit",
-    "lint": "eslint src",
-    "unit": "jest --coverage",
-    "e2e": "gulp e2e",
     "deploy": "firebase deploy",
     "flow": "flow",
     "typed": "flow-typed install",
-    "codecov": "codecov",
-    "webdriver": "gulp webdriver"
+    "codecov": "codecov"
   },
   "repository": {
     "type": "git",

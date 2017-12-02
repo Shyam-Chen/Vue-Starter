@@ -16,7 +16,7 @@ export const INITIAL = {
   gender: '',
 
   // switch
-  autoplay: false,
+  autoplay: false
 
   // slider
 

@@ -1,6 +1,6 @@
 FROM buildpack-deps:jessie
 
-ENV HOME /React-FullStarter-Kit
+ENV HOME /Vue-FullStarter-Kit
 
 WORKDIR ${HOME}
 ADD . $HOME
