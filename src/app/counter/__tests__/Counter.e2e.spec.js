@@ -28,7 +28,7 @@ describe('Counter', () => {
   });
 
   beforeEach(async () => {
-    await page.goto('http://localhost:3000/counter');
+    await page.goto('http://localhost:3000/#/counter');
   });
 
   it('should display count', async () => {
