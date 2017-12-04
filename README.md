@@ -49,10 +49,8 @@ $ yarn test
 ## Example List
 
 * [x] Counter
-  * [x] State management (`vuex`)
+  * [x] Simple
   * [x] Asynchronous
-    * [x] Thunk
-    * [x] Observable (`rxjs`, `vue-rx`)
 * [ ] CRUD
   * [ ] Static
   * [x] REST

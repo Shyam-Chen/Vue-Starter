@@ -8,10 +8,10 @@
           <!-- input -->
           <md-field class="field">
             <label>Nickname</label>
-            <md-input v-model="$store.state.formControls.nickname"></md-input>
+            <md-input v-model="$store.state.formControls.basicForms.nickname"></md-input>
           </md-field>
           <div class="outputs">
-            {{ $store.state.formControls.nickname }}
+            {{ $store.state.formControls.basicForms.nickname }}
           </div>
         </div>
 
@@ -19,27 +19,27 @@
           <!-- select -->
           <md-field class="field">
             <label for="age">Age</label>
-            <md-select v-model="$store.state.formControls.age" name="age" id="age">
+            <md-select v-model="$store.state.formControls.basicForms.age" name="age" id="age">
               <!-- <md-option value=""><em>None</em></md-option> -->
-              <md-option :key="item.value" :value="item.value" v-for="item in $store.state.formControls.listOfage">
+              <md-option :key="item.value" :value="item.value" v-for="item in $store.state.formControls.basicForms.listOfage">
                 {{ item.label }}
               </md-option>
             </md-select>
           </md-field>
           <div class="outputs">
-            {{ $store.state.formControls.age }}
+            {{ $store.state.formControls.basicForms.age }}
           </div>
         </div>
 
         <div class="row">
           <div>
             <div class="md-body-2">Gender</div>
-            <md-radio v-model="$store.state.formControls.gender" value="Male">Male</md-radio>
-            <md-radio v-model="$store.state.formControls.gender" value="Female">Female</md-radio>
-            <md-radio v-model="$store.state.formControls.gender" value="Other">Other</md-radio>
+            <md-radio v-model="$store.state.formControls.basicForms.gender" value="Male">Male</md-radio>
+            <md-radio v-model="$store.state.formControls.basicForms.gender" value="Female">Female</md-radio>
+            <md-radio v-model="$store.state.formControls.basicForms.gender" value="Other">Other</md-radio>
           </div>
           <div class="outputs" style="padding-top: 2rem">
-            {{ $store.state.formControls.gender }}
+            {{ $store.state.formControls.basicForms.gender }}
           </div>
         </div>
 
@@ -65,7 +65,7 @@
 export default {
   computed: {
     autoplay: {
-      get() { return this.$store.state.formControls.autoplay; },
+      get() { return this.$store.state.formControls.basicForms.autoplay; },
       set(autoplay) { this.$store.commit('autoplay', { autoplay }); }
     }
   },

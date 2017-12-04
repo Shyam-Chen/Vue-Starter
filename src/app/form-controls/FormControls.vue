@@ -12,8 +12,8 @@
 <script>
 import Navigation from '~/shared/Navigation';
 
-import BasicForms from './BasicForms';
-import ReactiveForms from './ReactiveForms';
+import { BasicForms } from './basic-forms';
+import { ReactiveForms } from './reactive-forms';
 
 export default {
   components: {
