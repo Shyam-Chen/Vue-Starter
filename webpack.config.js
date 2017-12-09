@@ -53,82 +53,70 @@ const BABEL_LOADER = {
   }
 };
 
-module.exports = ({ prod = false } = {}) => {
-  const rules = [
-    {
-      test: /\.js$/,
-      exclude: /node_modules/,
-      use: [
-        BABEL_LOADER
-      ]
-    }, {
-      test: /\.css$/,
-      use: [
-        'style-loader',
-        {
-          loader: 'css-loader',
-          options: {
-            importLoaders: 1
-          }
-        }
-      ]
-    }, {
-      test: /\.vue$/,
-      use: [
-        {
-          loader: 'vue-loader',
-          options: {
-            loaders: {
-              js: BABEL_LOADER
+module.exports = ({ prod = false } = {}) => ({
+  context: join(__dirname, 'src'),
+  entry: {
+    client: './client.js'
+  },
+  output: {
+    path: join(__dirname, 'build'),
+    filename: '[name].[hash].js'
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: [
+          BABEL_LOADER
+        ]
+      }, {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1
             }
           }
-        }
-      ]
-    }
-  ];
-
-  const plugins = [
+        ]
+      }, {
+        test: /\.vue$/,
+        use: [
+          {
+            loader: 'vue-loader',
+            options: {
+              loaders: {
+                js: BABEL_LOADER
+              }
+            }
+          }
+        ]
+      }
+    ].filter(Boolean)
+  },
+  resolve: {
+    extensions: ['.js', '.vue']
+  },
+  plugins: [
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'index.html'
     }),
     new CopyWebpackPlugin([
       'assets/images/favicon.ico'
-    ])
-  ];
-
-  if (prod) {
-    plugins.push(new UglifyJSPlugin({ sourceMap: false }));
-  } else {
-    plugins.push(
-      new webpack.NamedModulesPlugin(),
-      new webpack.HotModuleReplacementPlugin()
-    );
-  }
-
-  return {
-    context: join(__dirname, 'src'),
-    entry: {
-      client: './client.js'
-    },
-    output: {
-      path: join(__dirname, 'build'),
-      filename: '[name].[hash].js'
-    },
-    module: {
-      rules
-    },
-    resolve: {
-      extensions: ['.js', '.vue']
-    },
-    plugins,
-    devServer: {
-      contentBase: join(__dirname, 'build'),
-      historyApiFallback: true,
-      hot: true,
-      inline: true,
-      port: 8000
-    },
-    devtool: 'source-map'
-  };
-};
+    ]),
+    prod && new UglifyJSPlugin({ sourceMap: false }),
+    !prod && new webpack.NamedModulesPlugin(),
+    !prod && new webpack.HotModuleReplacementPlugin()
+  ].filter(Boolean),
+  devServer: {
+    contentBase: join(__dirname, 'build'),
+    historyApiFallback: true,
+    hot: true,
+    inline: true,
+    port: 8000
+  },
+  devtool: 'source-map'
+});
