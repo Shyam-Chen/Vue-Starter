@@ -10,7 +10,6 @@ import Vue from 'vue';
 import { createRenderer } from 'vue-server-renderer';
 
 const app = express();
-const root = join(__dirname, '../build');
 
 app.set('port', process.env.PORT || 3000);
 
@@ -19,30 +18,36 @@ app.use(cors());
 app.use(morgan('tiny'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(express.static(root));
-app.use(history('index.html', { root }));
 
-app.get('*', (req, res) => {
-  const vue = new Vue({
-    data: {
-      url: req.url
-    },
-    template: `<div>{{ url }}</div>`
+if (process.env.NODE_ENV === 'production') {
+  const root = join(__dirname, '../build');
+
+  app.use(express.static(root));
+  app.use(history('index.html', { root }));
+
+  app.get('*', (req, res) => {
+    const vue = new Vue({
+      data: {
+        url: req.url
+      },
+      template: `<div>{{ url }}</div>`
+    });
+
+    const renderer = createRenderer({
+      template: readFileSync('./index.html', 'utf-8')
+    });
+
+    renderer.renderToString(vue, (err, html) => {
+      if (err) {
+        res.status(500).end('Internal Server Error');
+        return;
+      }
+
+      res.end(html);
+    });
   });
+}
 
-  const renderer = createRenderer({
-    template: readFileSync('./index.html', 'utf-8')
-  });
-
-  renderer.renderToString(vue, (err, html) => {
-    if (err) {
-      res.status(500).end('Internal Server Error');
-      return;
-    }
-
-    res.end(html);
-  });
-})
 
 app.listen(app.get('port'), () => {
   console.log('App: Bootstrap Succeeded.');
