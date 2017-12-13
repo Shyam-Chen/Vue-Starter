@@ -46,33 +46,31 @@ $ yarn build
 $ yarn test
 ```
 
-## Example List
+## Practical Examples
 
 * [x] Counter
-  * [x] Simple
-  * [x] Asynchronous
+  * [x] State Management (`vuex`)
+  * [x] Asynchronous (`rxjs`)
 * [ ] CRUD
   * [ ] Static
   * [x] REST
   * [ ] GraphQL
 * [ ] Form Controls
-  * [ ] Basic Forms
+  * [ ] Template-driven
   * [ ] Reactive Forms
 * [ ] Data Table
   * [ ] Static
   * [ ] REST
   * [ ] GraphQL
+* [ ] Globalization
+  * [ ] Internationalization (`vue-i18n`)
+  * [ ] Localization
 * [ ] Authorization
   * [ ] REST
   * [ ] GraphQL
-* [ ] Internationalization (`vue-i18n`)
 * [ ] Data Chart
   * [ ] SVG & Canvas (`d3`)
   * [ ] WebGL (`three`)
-* [ ] WebSockets (`socket.io`)
-* [ ] Lazy Loading
-* [ ] Service Workers (`sw-precache`)
-* [ ] Preload Content
-* [ ] Metadata (`vue-meta`)
-* [ ] Prerenders static HTML (`rendertron`)
-* [ ] Server-side Rendering (`vue-server-renderer`)
+* [ ] Realtime
+  * [ ] WebSockets
+  * [ ] GraphQL Subscriptions
