@@ -60,7 +60,7 @@ module.exports = ({ prod = false } = {}) => ({
   },
   output: {
     path: join(__dirname, 'build'),
-    filename: '[name].[hash].js'
+    filename: prod ? '[name].[hash].js' : '[name].js'
   },
   module: {
     rules: [
@@ -102,7 +102,8 @@ module.exports = ({ prod = false } = {}) => ({
   plugins: [
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: 'index.html'
+      template: 'index.html',
+      inject: false
     }),
     new CopyWebpackPlugin([
       'assets/images/favicon.ico'

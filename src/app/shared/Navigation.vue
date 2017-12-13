@@ -1,7 +1,7 @@
 <template>
   <div>
     <md-toolbar class="md-primary toolbar">
-      <div v-if="location === '#/'" key="location-index">
+      <div v-if="location === '/'" key="location-index">
         <md-button class="md-icon-button">
           <md-icon>toys</md-icon>
         </md-button>
@@ -17,7 +17,7 @@
 
     <div class="filling"></div>
 
-    <div v-if="location === '#/'">
+    <div v-if="location === '/'">
       <router-link to="/counter" tag="md-button" class="md-raised md-primary">Counter</router-link>
       <router-link to="/rest" tag="md-button" class="md-raised md-primary">REST</router-link>
       <router-link to="/graphql" tag="md-button" class="md-raised md-primary">GraphQL</router-link>
@@ -30,7 +30,7 @@
 export default {
   data() {
     return {
-      location: location.hash
+      location: location.pathname
     };
   }
 };

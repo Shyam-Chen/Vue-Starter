@@ -69,7 +69,8 @@ $ yarn test
   * [ ] REST
   * [ ] GraphQL
 * [ ] Data Chart
-  * [ ] SVG & Canvas (`d3`)
+  * [ ] SVG (`d3`)
+  * [ ] Canvas (`d3`)
   * [ ] WebGL (`three`)
 * [ ] Realtime
   * [ ] WebSockets

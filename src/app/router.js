@@ -13,7 +13,7 @@ import App from './App';
 Vue.use(router);
 
 export default new router({
-  // mode: 'history',
+  mode: 'history',
   routes: [
     { path: '/', component: App },
     { path: '/counter', component: Counter },
