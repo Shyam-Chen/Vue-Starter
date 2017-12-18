@@ -22,11 +22,11 @@ jobs:
 
       - run:
           name: Build the application
-          command: docker-compose exec app yarn build
+          command: docker-compose exec app yarn build:app
 
       - run:
           name: Test the application
-          command: docker-compose exec app yarn test
+          command: docker-compose exec app yarn test:app
 
       - run:
           name: Test coverage integration

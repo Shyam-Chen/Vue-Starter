@@ -31,27 +31,37 @@ $ yarn typed
 3. Run the Application
 
 ```bash
-$ yarn start
+# front-end
+$ yarn start:app
+
+# back-end
+$ yarn start:api
 ```
 
 4. Build the Application
 
 ```bash
-$ yarn build
+# front-end
+$ yarn build:app
+
+# back-end
+$ yarn build:api
 ```
 
 5. Test the Application
 
 ```bash
-$ yarn test
+# front-end
+$ yarn test:app
+
+# back-end
+$ yarn test:api
 ```
 
 ## Practical Examples
 
-* [x] Counter
-  * [x] State Management (`vuex`)
-  * [x] Asynchronous (`rxjs`)
-* [ ] CRUD
+* ---------- **App** ----------
+* [ ] CRUD Operations
   * [ ] Static
   * [x] REST
   * [ ] GraphQL
@@ -75,3 +85,10 @@ $ yarn test
 * [ ] Realtime
   * [ ] WebSockets
   * [ ] GraphQL Subscriptions
+* [ ] Playground
+  * [x] Counter
+    * [x] State Management (`vuex`)
+    * [x] Asynchronous (`rxjs`)
+  * ...
+* ---------- **Api** ----------
+* ...
