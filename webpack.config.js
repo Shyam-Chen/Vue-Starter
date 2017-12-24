@@ -3,7 +3,6 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
-// const PrerenderSpaPlugin = require('prerender-spa-plugin');
 
 const BABEL_LOADER = {
   loader: 'babel-loader',
@@ -74,12 +73,8 @@ module.exports = ({ prod = false } = {}) => ({
         test: /\.css$/,
         use: [
           'style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 1
-            }
-          }
+          { loader: 'css-loader', options: { importLoaders: 1 } },
+          'postcss-loader'
         ]
       }, {
         test: /\.vue$/,

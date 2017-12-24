@@ -60,7 +60,6 @@ $ yarn test:api
 
 ## Practical Examples
 
-* ---------- **App** ----------
 * [ ] CRUD Operations
   * [ ] Static
   * [x] REST
@@ -89,6 +88,4 @@ $ yarn test:api
   * [x] Counter
     * [x] State Management (`vuex`)
     * [x] Asynchronous (`rxjs`)
-  * ...
-* ---------- **Api** ----------
-* ...
+  * [ ] ...

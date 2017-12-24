@@ -1,6 +1,8 @@
 import 'vue-material/dist/vue-material.min.css';
 import 'vue-material/dist/theme/default.css';
 
+import './assets/styles/global.css';
+
 import Vue from 'vue';
 import { sync } from 'vuex-router-sync';
 import material from 'vue-material';

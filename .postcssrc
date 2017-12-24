@@ -1,6 +1,8 @@
 {
   "plugins": {
+    "postcss-import": {},
     "postcss-cssnext": { "warnForDuplicates": false },
-    "rucksack-css": { "autoprefixer": true }
+    "rucksack-css": { "autoprefixer": true },
+    "cssnano": {}
   }
 }
