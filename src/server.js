@@ -48,8 +48,9 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-
-app.listen(app.get('port'), () => {
+const server = app.listen(app.get('port'), () => {
   console.log('App: Bootstrap Succeeded.');
   console.log(`Port: ${app.get('port')}.`);
 });
+
+export default server;
