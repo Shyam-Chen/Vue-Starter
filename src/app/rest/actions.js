@@ -16,9 +16,14 @@ export default {
       .catch(error => dispatch('failure', error));
   },
   searchItem({ dispatch, state }, text) {
+    state.loading = true;
+
     axios.get(text ? `${API_LIST}?text=${text}` : API_LIST)
       .then(response => dispatch('success', response.data))
-      .then(() => { state.loading = false; })
+      .then(() => {
+        state.loading = false;
+        state.searchData.text = '';
+      })
       .catch(error => dispatch('failure', error));
   },
   editItem({ dispatch }, { _id, text }) {

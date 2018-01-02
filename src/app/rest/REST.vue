@@ -7,10 +7,10 @@
       <div class="search">
         <md-field>
           <label>Text</label>
-          <md-input v-model="$store.state.rest.searchData.text"></md-input>
+          <md-input v-model="$r.searchData.text"></md-input>
         </md-field>
         <div>
-          <md-button class="md-raised md-primary" @click="onSearchItem">Search</md-button>
+          <md-button class="md-raised md-primary" @click="searchItem($r.searchData.text)">Search</md-button>
         </div>
       </div>
 
@@ -88,6 +88,8 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex';
+
 import Navigation from '~/shared/Navigation';
 
 export default {
@@ -98,13 +100,7 @@ export default {
     };
   },
   methods: {
-    onSearchItem() {
-      const { rest } = this.$store.state;
-
-      rest.loading = true;
-      this.$store.dispatch('searchItem', rest.searchData.text)
-        .then(() => { rest.searchData.text = ''; });
-    },
+    ...mapActions(['searchItem']),
 
     onAddItem() {
       const { rest } = this.$store.state;
@@ -150,6 +146,11 @@ export default {
       this.showDeleteDialog = false;
       rest.loading = true;
       this.$store.dispatch('deleteItem', rest.deleteData._id);
+    }
+  },
+  computed: {
+    ['$r']() {
+      return this.$store.state.rest;
     }
   },
   components: { Navigation }
