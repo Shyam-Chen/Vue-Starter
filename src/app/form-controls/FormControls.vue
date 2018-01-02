@@ -2,7 +2,7 @@
   <div class="container">
     <Navigation />
 
-    <router-link to="/form-controls/basic-forms" name="basicForms" tag="md-button" class="md-raised md-accent">Basic Forms</router-link>
+    <router-link to="/form-controls/template-driven" name="templateDriven" tag="md-button" class="md-raised md-accent">Template-driven</router-link>
     <router-link to="/form-controls/reactive-forms" name="reactiveForms" tag="md-button" class="md-raised md-accent">Reactive Forms</router-link>
 
     <router-view></router-view>
@@ -12,14 +12,14 @@
 <script>
 import Navigation from '~/shared/Navigation';
 
-import { BasicForms } from './basic-forms';
+import { TemplateDriven } from './template-driven';
 import { ReactiveForms } from './reactive-forms';
 
 export default {
   components: {
     Navigation,
 
-    BasicForms,
+    TemplateDriven,
     ReactiveForms
   }
 };

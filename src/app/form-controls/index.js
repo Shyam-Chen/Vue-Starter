@@ -4,7 +4,7 @@ import actions from './actions';
 import mutations from './mutations';
 import getters from './getters';
 
-import { BasicForms, basicForms } from './basic-forms';
+import { TemplateDriven, templateDriven } from './template-driven';
 import { ReactiveForms } from './reactive-forms';
 
 const formControls = {
@@ -13,8 +13,8 @@ const formControls = {
   mutations,
   getters,
   modules: {
-    basicForms
+    templateDriven
   }
 };
 
-export { FormControls, formControls, BasicForms, ReactiveForms };
+export { FormControls, formControls, TemplateDriven, ReactiveForms };

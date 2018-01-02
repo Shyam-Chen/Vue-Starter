@@ -4,7 +4,7 @@ import router from 'vue-router';
 import { Counter } from '~/counter';
 import { REST } from '~/rest';
 import { GraphQL } from '~/graphql';
-import { FormControls, BasicForms, ReactiveForms } from '~/form-controls';
+import { FormControls, TemplateDriven, ReactiveForms } from '~/form-controls';
 
 import NotFound from '~/shared/NotFound';
 
@@ -22,7 +22,7 @@ export default new router({
     {
       path: '/form-controls', component: FormControls,
       children: [
-        { path: 'basic-forms', component: BasicForms },
+        { path: 'template-driven', component: TemplateDriven },
         { path: 'reactive-forms', component: ReactiveForms }
       ]
     },

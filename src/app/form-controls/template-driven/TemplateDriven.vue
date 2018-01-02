@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h1>Basic Forms</h1>
+    <h1>Template-driven</h1>
 
     <md-content class="md-elevation-2">
       <form class="form">
@@ -8,10 +8,10 @@
           <!-- input -->
           <md-field class="field">
             <label>Nickname</label>
-            <md-input v-model="$store.state.formControls.basicForms.nickname"></md-input>
+            <md-input v-model="$td.nickname"></md-input>
           </md-field>
           <div class="outputs">
-            {{ $store.state.formControls.basicForms.nickname }}
+            {{ $td.nickname }}
           </div>
         </div>
 
@@ -19,27 +19,27 @@
           <!-- select -->
           <md-field class="field">
             <label for="age">Age</label>
-            <md-select v-model="$store.state.formControls.basicForms.age" name="age" id="age">
+            <md-select v-model="$td.age" name="age" id="age">
               <!-- <md-option value=""><em>None</em></md-option> -->
-              <md-option :key="item.value" :value="item.value" v-for="item in $store.state.formControls.basicForms.listOfage">
+              <md-option :key="item.value" :value="item.value" v-for="item in $td.listOfage">
                 {{ item.label }}
               </md-option>
             </md-select>
           </md-field>
           <div class="outputs">
-            {{ $store.state.formControls.basicForms.age }}
+            {{ $td.age }}
           </div>
         </div>
 
         <div class="row">
           <div>
             <div class="md-body-2">Gender</div>
-            <md-radio v-model="$store.state.formControls.basicForms.gender" value="Male">Male</md-radio>
-            <md-radio v-model="$store.state.formControls.basicForms.gender" value="Female">Female</md-radio>
-            <md-radio v-model="$store.state.formControls.basicForms.gender" value="Other">Other</md-radio>
+            <md-radio v-model="$td.gender" value="Male">Male</md-radio>
+            <md-radio v-model="$td.gender" value="Female">Female</md-radio>
+            <md-radio v-model="$td.gender" value="Other">Other</md-radio>
           </div>
           <div class="outputs" style="padding-top: 2rem">
-            {{ $store.state.formControls.basicForms.gender }}
+            {{ $td.gender }}
           </div>
         </div>
 
@@ -48,8 +48,8 @@
           <div style="margin-left: 1rem">
             <md-switch v-model="autoplay" name="autoplay"></md-switch>
           </div>
-          <div class="outputs" style="padding-top: .5rem">
-            {{ autoplay ? `${autoplay}`.charAt(0).toUpperCase() + `${autoplay}`.slice(1) : '' }}
+          <div class="outputs" style="padding-top: .5rem; text-transform: capitalize">
+            {{ autoplay ? autoplay : '' }}
           </div>
         </div>
 
@@ -64,8 +64,11 @@
 <script>
 export default {
   computed: {
+    ['$td']() {
+      return this.$store.state.formControls.templateDriven;
+    },
     autoplay: {
-      get() { return this.$store.state.formControls.basicForms.autoplay; },
+      get() { return this.$td.autoplay; },
       set(autoplay) { this.$store.commit('autoplay', { autoplay }); }
     }
   },
