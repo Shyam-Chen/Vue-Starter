@@ -31,10 +31,15 @@ export default {
       })
       .catch(error => dispatch('failure', error));
   },
-  editItem({ dispatch }, { _id, text }) {
-    axios.put(`${API_LIST}/${_id}`, { text })
-      .then(() => dispatch('searchItem'))
-      .catch(error => dispatch('failure', error));
+  editItem({ dispatch, state }, item) {
+    if (item.text) {
+      state.editData.dialog = false;
+      state.loading = true;
+
+      axios.put(`${API_LIST}/${item._id}`, { text: item.text })
+        .then(() => dispatch('searchItem'))
+        .catch(error => dispatch('failure', error));
+    }
   },
   deleteItem({ dispatch }, id) {
     axios.delete(`${API_LIST}/${id}`)

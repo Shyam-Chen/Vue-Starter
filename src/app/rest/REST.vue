@@ -53,7 +53,7 @@
 
     <aside>
       <!-- Edit -->
-      <md-dialog :md-active.sync="showEditDialog">
+      <md-dialog :md-active.sync="$r.editData.dialog">
         <md-dialog-title>Edit</md-dialog-title>
         <div style="padding: .5rem 1.5rem">
           <md-field>
@@ -63,7 +63,7 @@
         </div>
         <md-dialog-actions>
           <md-button class="md-primary" @click="onCloseEdit()">Close</md-button>
-          <md-button class="md-primary" @click="onEditItem()">Save</md-button>
+          <md-button class="md-primary" @click="editItem($r.editData)">Save</md-button>
         </md-dialog-actions>
       </md-dialog>
 
@@ -95,33 +95,23 @@ import Navigation from '~/shared/Navigation';
 export default {
   data() {
     return {
-      showEditDialog: false,
       showDeleteDialog: false
     };
   },
   methods: {
     ...mapActions([
       'addItem',
-      'searchItem'
+      'searchItem',
+      'editItem'
     ]),
 
-    onOpenEdit({ _id, text }) {
-      const { rest } = this.$store.state;
-
-      this.showEditDialog = true;
-      rest.editData = { _id, text };
+    onOpenEdit(item) {
+      this.$r.editData.dialog = true;
+      this.$r.editData._id = item._id;
+      this.$r.editData.text = item.text;
     },
     onCloseEdit() {
-      this.showEditDialog = false;
-    },
-    onEditItem() {
-      const { rest } = this.$store.state;
-
-      if (rest.editData.text) {
-        this.showEditDialog = false;
-        rest.loading = true;
-        this.$store.dispatch('editItem', rest.editData);
-      }
+      this.$r.editData.dialog = false;
     },
 
     onOpenDelete(_id) {

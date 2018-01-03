@@ -3,7 +3,7 @@
     <Navigation />
 
     <md-content>
-      <p class="md-title">Clicked: {{ $store.state.counter.value }} times, value is {{ evenOrOdd }}.</p>
+      <p class="md-title">Clicked: {{ $c.value }} times, value is {{ evenOrOdd }}.</p>
     </md-content>
 
     <div>
@@ -31,9 +31,12 @@ export default {
     'incrementIfOdd',
     'decrementIfEven'
   ]),
-  computed: mapGetters([
-    'evenOrOdd'
-  ]),
+  computed: {
+    ['$c']() {
+      return this.$store.state.counter;
+    },
+    ...mapGetters(['evenOrOdd'])
+  },
   components: { Navigation }
 };
 </script>

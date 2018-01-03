@@ -4,7 +4,7 @@ export const INITIAL = {
   dataset: [],
   addData: { text: '' },
   searchData: { text: '' },
-  editData: { _id: 0, text: '' },
+  editData: { _id: 0, text: '', dialog: false },
   deleteData: { _id: 0 },
   loading: false
 };
