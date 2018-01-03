@@ -10,10 +10,15 @@ export default {
     commit(FAILURE, error);
   },
 
-  addItem({ dispatch }, text) {
-    axios.post(API_LIST, { text })
-      .then(() => dispatch('searchItem'))
-      .catch(error => dispatch('failure', error));
+  addItem({ dispatch, state }, text) {
+    if (text) {
+      state.loading = true;
+
+      axios.post(API_LIST, { text })
+        .then(() => { state.addData.text = ''; })
+        .then(() => dispatch('searchItem'))
+        .catch(error => dispatch('failure', error));
+    }
   },
   searchItem({ dispatch, state }, text) {
     state.loading = true;

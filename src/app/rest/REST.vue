@@ -18,10 +18,10 @@
       <div class="add">
         <md-field>
           <label>Text</label>
-          <md-input v-model="$store.state.rest.addData.text"></md-input>
+          <md-input v-model="$r.addData.text"></md-input>
         </md-field>
         <div>
-          <md-button class="md-raised md-primary" @click="onAddItem">Add</md-button>
+          <md-button class="md-raised md-primary" @click="addItem($r.addData.text)">Add</md-button>
         </div>
       </div>
     </div>
@@ -38,7 +38,7 @@
         <!-- </md-table-header> -->
 
         <!-- <md-table-body> -->
-          <md-table-row v-for="item in $store.state.rest.dataset" :key="item._id" :md-item="item">
+          <md-table-row v-for="item in $r.dataset" :key="item._id" :md-item="item">
             <md-table-cell>{{ item.text }}</md-table-cell>
             <md-table-cell>
               <md-button style="width: 100%" class="md-accent" id="dialog-delete" @click="onOpenDelete(item._id)">Delete</md-button>
@@ -58,7 +58,7 @@
         <div style="padding: .5rem 1.5rem">
           <md-field>
             <label>Text</label>
-            <md-input v-model="$store.state.rest.editData.text"></md-input>
+            <md-input v-model="$r.editData.text"></md-input>
           </md-field>
         </div>
         <md-dialog-actions>
@@ -80,7 +80,7 @@
       </md-dialog>
 
       <!-- Loading -->
-      <div class="progress" :style="{ display: $store.state.rest.loading ? '' : 'none' }">
+      <div class="progress" :style="{ display: $r.loading ? '' : 'none' }">
         <md-progress-spinner md-mode="indeterminate"></md-progress-spinner>
       </div>
     </aside>
@@ -100,17 +100,10 @@ export default {
     };
   },
   methods: {
-    ...mapActions(['searchItem']),
-
-    onAddItem() {
-      const { rest } = this.$store.state;
-
-      if (rest.addData.text) {
-        rest.loading = true;
-        this.$store.dispatch('addItem', rest.addData.text)
-          .then(() => { rest.addData.text = ''; });
-      }
-    },
+    ...mapActions([
+      'addItem',
+      'searchItem'
+    ]),
 
     onOpenEdit({ _id, text }) {
       const { rest } = this.$store.state;
