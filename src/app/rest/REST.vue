@@ -68,14 +68,14 @@
       </md-dialog>
 
       <!-- Delete -->
-      <md-dialog :md-active.sync="showDeleteDialog">
+      <md-dialog :md-active.sync="$r.deleteData.dialog">
         <md-dialog-title>Delete</md-dialog-title>
         <div style="padding: .5rem 1.5rem">
           Are you sure you want to delete it?
         </div>
         <md-dialog-actions>
           <md-button class="md-accent" @click="onCloseDelete()">Cancel</md-button>
-          <md-button class="md-primary" @click="onDeleteItem()">Confirm</md-button>
+          <md-button class="md-primary" @click="deleteItem($r.deleteData._id)">Confirm</md-button>
         </md-dialog-actions>
       </md-dialog>
 
@@ -102,7 +102,8 @@ export default {
     ...mapActions([
       'addItem',
       'searchItem',
-      'editItem'
+      'editItem',
+      'deleteItem'
     ]),
 
     onOpenEdit(item) {
@@ -115,20 +116,11 @@ export default {
     },
 
     onOpenDelete(_id) {
-      const { rest } = this.$store.state;
-
-      this.showDeleteDialog = true;
-      rest.deleteData = { _id };
+      this.$r.deleteData.dialog = true;
+      this.$r.deleteData._id = _id;
     },
     onCloseDelete() {
-      this.showDeleteDialog = false;
-    },
-    onDeleteItem() {
-      const { rest } = this.$store.state;
-
-      this.showDeleteDialog = false;
-      rest.loading = true;
-      this.$store.dispatch('deleteItem', rest.deleteData._id);
+      this.$r.deleteData.dialog = false;
     }
   },
   computed: {
@@ -169,6 +161,6 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 10;
+  z-index: 100;
 }
 </style>

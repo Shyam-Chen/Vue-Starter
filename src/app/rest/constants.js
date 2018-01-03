@@ -5,7 +5,7 @@ export const INITIAL = {
   addData: { text: '' },
   searchData: { text: '' },
   editData: { _id: 0, text: '', dialog: false },
-  deleteData: { _id: 0 },
+  deleteData: { _id: 0, dialog: false },
   loading: false
 };
 
