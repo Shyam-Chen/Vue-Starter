@@ -1,15 +1,52 @@
-// import { shallow } from 'vue-test-utils';
+import Vuex from 'vuex';
+import { shallow, createLocalVue } from 'vue-test-utils';
 
+import { INITIAL, INCREMENT, DECREMENT } from '../constants';
 import Counter from '../Counter';
 
+const localVue = createLocalVue();
+localVue.use(Vuex);
+
 describe('Counter', () => {
-  // let component;
+  let [wrapper, store] = [];
+  let [state, actions, mutations, getters] = [];
 
   beforeEach(() => {
-    // component = shallow(Counter, {});
+    state = INITIAL;
+
+    actions = {
+      increment: jest.fn(),
+      decrement: jest.fn(),
+      incrementAsync: jest.fn(),
+      decrementAsync: jest.fn(),
+      incrementIfOdd: jest.fn(),
+      decrementIfEven: jest.fn()
+    };
+
+    mutations = {
+      [INCREMENT]: jest.fn(),
+      [DECREMENT]: jest.fn()
+    };
+
+    getters = {
+      evenOrOdd: jest.fn()
+    };
+
+    store = new Vuex.Store({
+      modules: {
+        counter: {
+          state,
+          actions,
+          mutations,
+          getters
+        }
+      }
+    });
+
+    wrapper = shallow(Counter, { store, localVue });
   });
 
   it('should render initial component', () => {
-    expect(Counter).toBeDefined();
+    expect(wrapper.vm).toBeDefined();
   });
 });
