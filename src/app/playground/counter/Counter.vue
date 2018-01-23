@@ -9,10 +9,18 @@
     <div>
       <md-button class="md-raised md-primary" @click="increment">Increment</md-button>
       <md-button class="md-raised md-primary" @click="decrement">Decrement</md-button>
-      <md-button class="md-raised md-accent" @click="incrementAsync">Increment (Async)</md-button>
-      <md-button class="md-raised md-accent" @click="decrementAsync">Decrement (Async)</md-button>
-      <md-button class="md-raised md-accent" @click="incrementIfOdd">Increment (If Odd)</md-button>
-      <md-button class="md-raised md-accent" @click="decrementIfEven">Decrement (If Even)</md-button>
+    </div>
+
+    <div>
+      <md-button class="md-raised md-primary" @click="incrementAsync">Increment (Async)</md-button>
+      <md-button class="md-raised md-primary" @click="decrementAsync">Decrement (Async)</md-button>
+      <md-button class="md-raised md-primary" @click="incrementIfOdd">Increment (If Odd)</md-button>
+      <md-button class="md-raised md-primary" @click="decrementIfEven">Decrement (If Even)</md-button>
+    </div>
+
+    <div>
+      <md-button class="md-raised md-primary">Start Count</md-button>
+      <md-button class="md-raised md-primary">Cancel Count</md-button>
     </div>
   </div>
 </template>
@@ -32,7 +40,7 @@ export default {
     'decrementIfEven'
   ]),
   computed: {
-    ['$c']() {
+    $c() {
       return this.$store.state.counter;
     },
     ...mapGetters(['evenOrOdd'])

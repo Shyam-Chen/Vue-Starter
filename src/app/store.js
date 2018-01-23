@@ -2,10 +2,10 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import createLogger from 'vuex/dist/logger';
 
-import { counter } from '~/counter';
-import { rest } from '~/rest';
-import { graphql } from '~/graphql';
+import { rest } from '~/crud-operations/rest';
+import { graphql } from '~/crud-operations/graphql';
 import { formControls } from '~/form-controls';
+import { counter } from '~/playground/counter';
 
 import { INITIAL as state } from './constants';
 import actions from './actions';
@@ -20,10 +20,10 @@ export default new Vuex.Store({
   mutations,
   getters,
   modules: {
-    counter,
     rest,
     graphql,
-    formControls
+    formControls,
+    counter
   },
   plugins: [
     createLogger({ collapsed: false })

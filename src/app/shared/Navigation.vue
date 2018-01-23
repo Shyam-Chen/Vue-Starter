@@ -44,6 +44,8 @@ export default {
   position: fixed;
   width: 100%;
   z-index: 10;
+  display: flex;
+  flex-flow: row;
 }
 
 .filling {

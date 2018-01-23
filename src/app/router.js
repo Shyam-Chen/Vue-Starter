@@ -1,10 +1,10 @@
 import Vue from 'vue';
 import router from 'vue-router';
 
-import { Counter } from '~/counter';
-import { REST } from '~/rest';
-import { GraphQL } from '~/graphql';
+import { REST } from '~/crud-operations/rest';
+import { GraphQL } from '~/crud-operations/graphql';
 import { FormControls, TemplateDriven, ReactiveForms } from '~/form-controls';
+import { Counter } from '~/playground/counter';
 
 import NotFound from '~/shared/NotFound';
 
