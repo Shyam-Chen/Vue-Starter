@@ -124,7 +124,7 @@ export default {
     }
   },
   computed: {
-    ['$r']() {
+    $r() {
       return this.$store.state.rest;
     }
   },

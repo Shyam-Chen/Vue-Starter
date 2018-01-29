@@ -64,14 +64,15 @@
 <script>
 export default {
   computed: {
-    ['$td']() {
+    $td() {
       return this.$store.state.formControls.templateDriven;
     },
+    // TODO: auto commit
     autoplay: {
       get() { return this.$td.autoplay; },
       set(autoplay) { this.$store.commit('autoplay', { autoplay }); }
     }
-  },
+  }
 };
 </script>
 
