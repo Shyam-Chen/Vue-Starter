@@ -7,7 +7,7 @@ import './assets/styles/global.css';
 import Vue from 'vue';
 import { sync } from 'vuex-router-sync';
 import material from 'vue-material';
-import Vuetify from 'vuetify';
+// import Vuetify from 'vuetify';
 import reactivex from 'vue-rx';
 import { Observable } from 'rxjs';
 // import Apollo from 'vue-apollo';
@@ -19,7 +19,7 @@ import { router, store } from './app';
 sync(store, router);
 
 Vue.use(material);
-Vue.use(Vuetify);
+// Vue.use(Vuetify);
 Vue.use(reactivex, { Observable });
 // Vue.use(Apollo);
 Vue.use(I18n);
