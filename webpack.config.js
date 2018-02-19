@@ -21,6 +21,7 @@ const BABEL_LOADER = {
       'transform-runtime',
       'transform-function-bind',
       'transform-object-rest-spread',
+      'transform-vue-jsx',
       [
         'babel-plugin-root-import', [
           {

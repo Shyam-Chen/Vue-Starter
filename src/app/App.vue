@@ -1,15 +1,15 @@
-<template>
-  <div class="container">
-    <Navigation />
-    <router-view></router-view>
-  </div>
-</template>
-
 <script>
 import Navigation from '~/shared/Navigation';
 
 export default {
-  components: { Navigation }
+  render() {
+    return (
+      <div class="container">
+        <Navigation />
+        <router-view></router-view>
+      </div>
+    );
+  }
 };
 </script>
 
