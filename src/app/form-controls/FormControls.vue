@@ -1,24 +1,25 @@
 <template>
-  <div class="container">
-    <Navigation />
-
-    <router-link to="/form-controls/template-driven" name="templateDriven" tag="md-button" class="md-raised md-accent">Template-driven</router-link>
-    <router-link to="/form-controls/reactive-forms" name="reactiveForms" tag="md-button" class="md-raised md-accent">Reactive Forms</router-link>
+  <div>
+    <div v-if="location === '/form-controls'">
+      <router-link to="/form-controls/template-driven" name="templateDriven" tag="md-button" class="md-raised md-primary">Template-driven</router-link>
+      <router-link to="/form-controls/reactive-forms" name="reactiveForms" tag="md-button" class="md-raised md-primary">Reactive Forms</router-link>
+    </div>
 
     <router-view></router-view>
   </div>
 </template>
 
 <script>
-import Navigation from '~/shared/Navigation';
-
 import { TemplateDriven } from './template-driven';
 import { ReactiveForms } from './reactive-forms';
 
 export default {
+  data() {
+    return {
+      location: location.pathname
+    }
+  },
   components: {
-    Navigation,
-
     TemplateDriven,
     ReactiveForms
   }
@@ -26,9 +27,4 @@ export default {
 </script>
 
 <style scoped>
-.container {
-  background: #FAFAFA;
-  height: 100vh;
-  padding: 1rem;
-}
 </style>

@@ -1,10 +1,10 @@
 <template>
-  <div class="container">
-    <Navigation />
-
-    <md-content>
-      <p class="md-title">Clicked: {{ $c.value }} times, value is {{ evenOrOdd }}.</p>
-    </md-content>
+  <div>
+    <div class="title">
+      <p class="md-title">
+        Clicked: <span class="title--highlight">{{ $c.value }}</span> times, value is <span class="title--highlight">{{ evenOrOdd }}</span>.
+      </p>
+    </div>
 
     <div>
       <md-button class="md-raised md-primary" @click="increment">Increment</md-button>
@@ -28,8 +28,6 @@
 <script>
 import { mapActions, mapGetters } from 'vuex';
 
-import Navigation from '~/shared/Navigation';
-
 export default {
   methods: mapActions([
     'increment',
@@ -44,15 +42,17 @@ export default {
       return this.$store.state.counter;
     },
     ...mapGetters(['evenOrOdd'])
-  },
-  components: { Navigation }
+  }
 };
 </script>
 
 <style scoped>
-.container {
-  background: #FAFAFA;
-  height: 100vh;
-  padding: 1rem;
+.title {
+  padding: 0 .5rem;
+
+  /* BUG: vue-jest, https://github.com/vuejs/vue-jest/issues/51 */
+  /* &--highlight {
+    font-weight: bold;
+  } */
 }
 </style>

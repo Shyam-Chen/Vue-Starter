@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div>
     <h1>Reactive Forms</h1>
 
     <md-content class="md-elevation-2">
@@ -17,12 +17,6 @@ export default {};
 </script>
 
 <style scoped>
-.container {
-  background: #FAFAFA;
-  height: 100vh;
-  padding: 1rem;
-}
-
 .form {
   padding: 1rem;
   background: #FFFFFF;

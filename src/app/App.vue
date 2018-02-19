@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <Navigation />
+    <router-view></router-view>
   </div>
 </template>
 
@@ -14,7 +15,7 @@ export default {
 
 <style scoped>
 .container {
-  background: #FAFAFA;
+  background: #E3F2FD;
   height: 100vh;
   padding: 1rem;
 }

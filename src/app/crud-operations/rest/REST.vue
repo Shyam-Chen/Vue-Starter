@@ -1,7 +1,5 @@
 <template>
-  <div class="container">
-    <Navigation />
-
+  <div>
     <div class="actions">
       <!-- Search -->
       <div class="search">
@@ -90,8 +88,6 @@
 <script>
 import { mapActions, mapGetters } from 'vuex';
 
-import Navigation from '~/shared/Navigation';
-
 export default {
   data() {
     return {
@@ -127,18 +123,11 @@ export default {
     $r() {
       return this.$store.state.rest;
     }
-  },
-  components: { Navigation }
+  }
 };
 </script>
 
 <style scoped>
-.container {
-  background: #FAFAFA;
-  height: 100vh;
-  padding: 1rem;
-}
-
 .actions {
   margin: 1rem;
 }

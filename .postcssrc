@@ -3,6 +3,7 @@
     "postcss-import": {},
     "postcss-cssnext": { "warnForDuplicates": false },
     "rucksack-css": { "autoprefixer": true },
+    "postcss-nested": {},
     "cssnano": {}
   }
 }

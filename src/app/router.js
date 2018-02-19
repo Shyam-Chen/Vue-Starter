@@ -7,15 +7,14 @@ import { FormControls, TemplateDriven, ReactiveForms } from '~/form-controls';
 import { Counter } from '~/playground/counter';
 
 import NotFound from '~/shared/NotFound';
-
-import App from './App';
+import CardLink from '~/shared/CardLink';
 
 Vue.use(router);
 
 export default new router({
   mode: 'history',
   routes: [
-    { path: '/', component: App },
+    { path: '/', component: CardLink },
     { path: '/counter', component: Counter },
     { path: '/rest', component: REST },
     { path: '/graphql', component: GraphQL },

@@ -1,6 +1,6 @@
 import 'vue-material/dist/vue-material.min.css';
 import 'vue-material/dist/theme/default.css';
-import 'vuetify/dist/vuetify.min.css';
+// import 'vuetify/dist/vuetify.min.css';
 
 import './assets/styles/global.css';
 
@@ -14,7 +14,7 @@ import { Observable } from 'rxjs';
 // import { ApolloClient, createBatchingNetworkInterface } from 'apollo-client';
 import I18n from 'vue-i18n';
 
-import { router, store } from './app';
+import { App, router, store } from './app';
 
 sync(store, router);
 
@@ -47,7 +47,7 @@ new Vue({
   store,
   // apolloProvider,
   i18n,
-  render: mount => mount('router-view')
+  render: mount => mount(App)
 });
 
 if (module.hot) {

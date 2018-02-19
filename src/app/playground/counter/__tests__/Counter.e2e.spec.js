@@ -3,8 +3,7 @@ import puppeteer from 'puppeteer';
 import server from '~/e2e';
 
 describe('Counter', () => {
-  let page = null;
-  let browser = null;
+  let [page, browser] = [];
 
   beforeAll(async () => {
     const width = 1280;
@@ -32,13 +31,13 @@ describe('Counter', () => {
   });
 
   it('should display count', async () => {
-    const text = await page.$eval('body > div > div.md-content > p', el => el.textContent);
+    const text = await page.$eval('body > div > div:nth-child(2) > div.title > p', el => el.textContent);
     expect(text).toMatch('Clicked: 0 times, value is even.');
   });
 
   it('should click increment button', async () => {
-    await page.click('body > div > div:nth-child(3) > button:nth-child(1) > div > div');
-    const text = await page.$eval('body > div > div.md-content > p', el => el.textContent);
+    await page.click('body > div > div:nth-child(2) > div:nth-child(2) > button:nth-child(1) > div > div');
+    const text = await page.$eval('body > div > div:nth-child(2) > div.title > p', el => el.textContent);
     expect(text).toMatch('Clicked: 1 times, value is odd.');
   });
 });
