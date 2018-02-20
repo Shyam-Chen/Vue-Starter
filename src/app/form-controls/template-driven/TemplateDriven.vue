@@ -62,16 +62,41 @@
 </template>
 
 <script>
+export const mapModelsToState = (store, keys) => {
+  const obj = {};
+
+  for (let i = 0, l = keys.length; i < l; i++) {
+    obj[keys[i]] = {
+      get() {
+        const arr = store.split('.');
+
+        if (arr.length === 1) {
+          return this.$store.state[arr[0]][keys[i]];
+        }
+
+        if (arr.length === 2) {
+          return this.$store.state[arr[0]][arr[1]][keys[i]];
+        }
+
+        if (arr.length === 3) {
+          return this.$store.state[arr[0]][arr[1]][arr[2]][keys[i]];
+        }
+      },
+      set(value) {
+        this.$store.commit(keys[i], { [keys[i]]: value });
+      }
+    };
+  }
+
+  return obj;
+};
+
 export default {
   computed: {
     $td() {
       return this.$store.state.formControls.templateDriven;
     },
-    // TODO: auto commit
-    autoplay: {
-      get() { return this.$td.autoplay; },
-      set(autoplay) { this.$store.commit('autoplay', { autoplay }); }
-    }
+    ...mapModelsToState('formControls.templateDriven', ['autoplay'])
   }
 };
 </script>
