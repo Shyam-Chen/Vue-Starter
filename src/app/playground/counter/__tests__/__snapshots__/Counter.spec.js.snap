@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Counter should render initial component 1`] = `
+<div>
+  <div
+    class="title"
+  >
+    <p
+      class="md-title"
+    >
+      Clicked: 
+      <span
+        class="title--highlight"
+      >
+        0
+      </span>
+       times, value is 
+      <span
+        class="title--highlight"
+      >
+        even
+      </span>
+      .
+    </p>
+  </div>
+  <div>
+    <md-button
+      class="md-raised md-primary"
+    >
+      Increment
+    </md-button>
+    <md-button
+      class="md-raised md-primary"
+    >
+      Decrement
+    </md-button>
+  </div>
+  <div>
+    <md-button
+      class="md-raised md-primary"
+    >
+      Increment (Async)
+    </md-button>
+    <md-button
+      class="md-raised md-primary"
+    >
+      Decrement (Async)
+    </md-button>
+    <md-button
+      class="md-raised md-primary"
+    >
+      Increment (If Odd)
+    </md-button>
+    <md-button
+      class="md-raised md-primary"
+    >
+      Decrement (If Even)
+    </md-button>
+  </div>
+  <div>
+    <md-button
+      class="md-raised md-primary"
+    >
+      Start Count
+    </md-button>
+    <md-button
+      class="md-raised md-primary"
+    >
+      Cancel Count
+    </md-button>
+  </div>
+</div>
+`;

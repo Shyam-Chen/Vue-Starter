@@ -29,7 +29,7 @@ describe('Counter', () => {
     };
 
     getters = {
-      evenOrOdd: jest.fn()
+      evenOrOdd: jest.fn(() => 'even')
     };
 
     store = new Vuex.Store({
@@ -47,6 +47,6 @@ describe('Counter', () => {
   });
 
   it('should render initial component', () => {
-    expect(wrapper.vm).toBeDefined();
+    expect(wrapper.vm.$el).toMatchSnapshot();
   });
 });
