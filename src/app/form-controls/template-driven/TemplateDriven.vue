@@ -8,7 +8,7 @@
           <!-- input -->
           <md-field class="field">
             <label>Nickname</label>
-            <md-input v-model="$td.nickname"></md-input>
+            <md-input v-model="nickname"></md-input>
           </md-field>
           <div class="outputs">
             {{ $td.nickname }}
@@ -19,7 +19,7 @@
           <!-- select -->
           <md-field class="field">
             <label for="age">Age</label>
-            <md-select v-model="$td.age" name="age" id="age">
+            <md-select v-model="age" name="age" id="age">
               <!-- <md-option value=""><em>None</em></md-option> -->
               <md-option :key="item.value" :value="item.value" v-for="item in $td.listOfage">
                 {{ item.label }}
@@ -34,9 +34,9 @@
         <div class="row">
           <div>
             <div class="md-body-2">Gender</div>
-            <md-radio v-model="$td.gender" value="Male">Male</md-radio>
-            <md-radio v-model="$td.gender" value="Female">Female</md-radio>
-            <md-radio v-model="$td.gender" value="Other">Other</md-radio>
+            <md-radio v-model="gender" value="Male">Male</md-radio>
+            <md-radio v-model="gender" value="Female">Female</md-radio>
+            <md-radio v-model="gender" value="Other">Other</md-radio>
           </div>
           <div class="outputs" style="padding-top: 2rem">
             {{ $td.gender }}
@@ -49,7 +49,7 @@
             <md-switch v-model="autoplay" name="autoplay"></md-switch>
           </div>
           <div class="outputs" style="padding-top: .5rem; text-transform: capitalize">
-            {{ autoplay ? autoplay : '' }}
+            {{ $td.autoplay ? $td.autoplay : '' }}
           </div>
         </div>
 
@@ -62,14 +62,15 @@
 </template>
 
 <script>
-export const mapModelsToState = (store, keys) => {
+export const mapModelsToState = (state, keys) => {
   const obj = {};
 
   for (let i = 0, l = keys.length; i < l; i++) {
     obj[keys[i]] = {
       get() {
-        const arr = store.split('.');
+        const arr = state.split('.');
 
+        // TODO: repeat
         if (arr.length === 1) {
           return this.$store.state[arr[0]][keys[i]];
         }
@@ -83,7 +84,8 @@ export const mapModelsToState = (store, keys) => {
         }
       },
       set(value) {
-        this.$store.commit(keys[i], { [keys[i]]: value });
+        // TODO: scope
+        this.$store.commit(`update`, { label: [keys[i]], value });
       }
     };
   }
@@ -96,7 +98,12 @@ export default {
     $td() {
       return this.$store.state.formControls.templateDriven;
     },
-    ...mapModelsToState('formControls.templateDriven', ['autoplay'])
+    ...mapModelsToState('formControls.templateDriven', [
+      'nickname',
+      'age',
+      'gender',
+      'autoplay'
+    ])
   }
 };
 </script>
