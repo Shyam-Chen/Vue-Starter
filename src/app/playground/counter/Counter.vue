@@ -26,20 +26,20 @@ export default {
         </div>
 
         <div>
-          <md-button class="md-raised md-primary" onClick={this.increment}>Increment</md-button>
-          <md-button class="md-raised md-primary" onClick={this.decrement}>Decrement</md-button>
+          <v-btn color="info" onClick={this.increment}>Increment</v-btn>
+          <v-btn color="info" onClick={this.decrement}>Decrement</v-btn>
         </div>
 
         <div>
-          <md-button class="md-raised md-primary" onClick={this.incrementAsync}>Increment (Async)</md-button>
-          <md-button class="md-raised md-primary" onClick={this.decrementAsync}>Decrement (Async)</md-button>
-          <md-button class="md-raised md-primary" onClick={this.incrementIfOdd}>Increment (If Odd)</md-button>
-          <md-button class="md-raised md-primary" onClick={this.decrementIfEven}>Decrement (If Even)</md-button>
+          <v-btn color="info" onClick={this.incrementAsync}>Increment (Async)</v-btn>
+          <v-btn color="info" onClick={this.decrementAsync}>Decrement (Async)</v-btn>
+          <v-btn color="info" onClick={this.incrementIfOdd}>Increment (If Odd)</v-btn>
+          <v-btn color="info" onClick={this.decrementIfEven}>Decrement (If Even)</v-btn>
         </div>
 
         <div>
-          <md-button class="md-raised md-primary">Start Count</md-button>
-          <md-button class="md-raised md-primary">Cancel Count</md-button>
+          <v-btn color="info">Start Count</v-btn>
+          <v-btn color="info">Cancel Count</v-btn>
         </div>
       </div>
     );
