@@ -18,40 +18,38 @@ export default {
   },
   render() {
     return (
-      <div>
-        <div class="title">
-          Clicked: <span class="title--highlight">{this.$c.value}</span> times, value is <span class="title--highlight">{this.evenOrOdd}</span>.
-        </div>
+      <v-layout row wrap>
+        <v-flex xs12>
+          <div class="headline">
+            Clicked: <strong>{this.$c.value}</strong> times,
+            value is <strong>{this.evenOrOdd}</strong>.
+          </div>
+        </v-flex>
 
-        <div>
-          <v-btn color="info" onClick={this.increment}>Increment</v-btn>
-          <v-btn color="info" onClick={this.decrement}>Decrement</v-btn>
-        </div>
+        <v-flex xs12>
+          <v-btn color="primary" onClick={this.increment}>Increment</v-btn>
+          <v-btn color="primary" onClick={this.decrement}>Decrement</v-btn>
+        </v-flex>
 
-        <div>
-          <v-btn color="info" onClick={this.incrementAsync}>Increment (Async)</v-btn>
-          <v-btn color="info" onClick={this.decrementAsync}>Decrement (Async)</v-btn>
-          <v-btn color="info" onClick={this.incrementIfOdd}>Increment (If Odd)</v-btn>
-          <v-btn color="info" onClick={this.decrementIfEven}>Decrement (If Even)</v-btn>
-        </div>
+        <v-flex xs12>
+          <v-btn color="primary" onClick={this.incrementAsync}>Increment (Async)</v-btn>
+          <v-btn color="primary" onClick={this.decrementAsync}>Decrement (Async)</v-btn>
+          <v-btn color="primary" onClick={this.incrementIfOdd}>Increment (If Odd)</v-btn>
+          <v-btn color="primary" onClick={this.decrementIfEven}>Decrement (If Even)</v-btn>
+        </v-flex>
 
-        <div>
-          <v-btn color="info">Start Count</v-btn>
-          <v-btn color="info">Cancel Count</v-btn>
-        </div>
-      </div>
+        <v-flex xs12>
+          <v-btn color="primary" disabled>Start Count</v-btn>
+          <v-btn color="primary" disabled>Cancel Count</v-btn>
+        </v-flex>
+      </v-layout>
     );
   }
 };
 </script>
 
 <style scoped>
-.title {
-  padding: 1rem .5rem;
-
-  /* BUG: vue-jest, https://github.com/vuejs/vue-jest/issues/51 */
-  /* &--highlight {
-    font-weight: bold;
-  } */
+.headline {
+  padding: .5rem;
 }
 </style>
