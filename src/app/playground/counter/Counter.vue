@@ -20,9 +20,7 @@ export default {
     return (
       <div>
         <div class="title">
-          <p class="md-title">
-            Clicked: <span class="title--highlight">{this.$c.value}</span> times, value is <span class="title--highlight">{this.evenOrOdd}</span>.
-          </p>
+          Clicked: <span class="title--highlight">{this.$c.value}</span> times, value is <span class="title--highlight">{this.evenOrOdd}</span>.
         </div>
 
         <div>
@@ -49,7 +47,7 @@ export default {
 
 <style scoped>
 .title {
-  padding: 0 .5rem;
+  padding: 1rem .5rem;
 
   /* BUG: vue-jest, https://github.com/vuejs/vue-jest/issues/51 */
   /* &--highlight {

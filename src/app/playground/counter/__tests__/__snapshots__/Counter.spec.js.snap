@@ -5,69 +5,65 @@ exports[`Counter should render initial component 1`] = `
   <div
     class="title"
   >
-    <p
-      class="md-title"
+    Clicked: 
+    <span
+      class="title--highlight"
     >
-      Clicked: 
-      <span
-        class="title--highlight"
-      >
-        0
-      </span>
-       times, value is 
-      <span
-        class="title--highlight"
-      >
-        even
-      </span>
-      .
-    </p>
+      0
+    </span>
+     times, value is 
+    <span
+      class="title--highlight"
+    >
+      even
+    </span>
+    .
   </div>
   <div>
-    <md-button
-      class="md-raised md-primary"
+    <v-btn
+      color="info"
     >
       Increment
-    </md-button>
-    <md-button
-      class="md-raised md-primary"
+    </v-btn>
+    <v-btn
+      color="info"
     >
       Decrement
-    </md-button>
+    </v-btn>
   </div>
   <div>
-    <md-button
-      class="md-raised md-primary"
+    <v-btn
+      color="info"
     >
       Increment (Async)
-    </md-button>
-    <md-button
-      class="md-raised md-primary"
+    </v-btn>
+    <v-btn
+      color="info"
     >
       Decrement (Async)
-    </md-button>
-    <md-button
-      class="md-raised md-primary"
+    </v-btn>
+    <v-btn
+      color="info"
     >
       Increment (If Odd)
-    </md-button>
-    <md-button
-      class="md-raised md-primary"
+    </v-btn>
+    <v-btn
+      color="info"
     >
       Decrement (If Even)
-    </md-button>
+    </v-btn>
   </div>
   <div>
-    <md-button
-      class="md-raised md-primary"
+    <v-btn
+      color="info"
     >
       Start Count
-    </md-button>
-    <md-button
-      class="md-raised md-primary"
+    </v-btn>
+    <v-btn
+      color="info"
     >
       Cancel Count
-    </md-button>
+    </v-btn>
   </div>
 </div>
 `;
