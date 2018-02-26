@@ -1,6 +1,6 @@
 # Vue Fullstack Starter
 
-A boilerplate for Vue, Material, and Express.
+:poodle: A boilerplate for Vue, Material, Express, Babel, Flow, and ReactiveX.
 
 [![Build Status](https://img.shields.io/circleci/project/Shyam-Chen/Vue-Fullstack-Starter/master.svg)](https://circleci.com/gh/Shyam-Chen/Vue-Fullstack-Starter)
 [![Coverage Status](https://img.shields.io/codecov/c/github/Shyam-Chen/Vue-Fullstack-Starter/master.svg)](https://codecov.io/gh/Shyam-Chen/Vue-Fullstack-Starter)
