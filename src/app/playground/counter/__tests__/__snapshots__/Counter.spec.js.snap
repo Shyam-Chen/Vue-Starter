@@ -1,69 +1,80 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Counter should render initial component 1`] = `
-<div>
-  <div
-    class="title"
+<v-layout
+  row="true"
+  wrap="true"
+>
+  <v-flex
+    xs12="true"
   >
-    Clicked: 
-    <span
-      class="title--highlight"
+    <div
+      class="headline"
     >
-      0
-    </span>
-     times, value is 
-    <span
-      class="title--highlight"
-    >
-      even
-    </span>
-    .
-  </div>
-  <div>
+      Clicked: 
+      <strong>
+        0
+      </strong>
+       times, value is 
+      <strong>
+        even
+      </strong>
+      .
+    </div>
+  </v-flex>
+  <v-flex
+    xs12="true"
+  >
     <v-btn
-      color="info"
+      color="primary"
     >
       Increment
     </v-btn>
     <v-btn
-      color="info"
+      color="primary"
     >
       Decrement
     </v-btn>
-  </div>
-  <div>
+  </v-flex>
+  <v-flex
+    xs12="true"
+  >
     <v-btn
-      color="info"
+      color="primary"
     >
       Increment (Async)
     </v-btn>
     <v-btn
-      color="info"
+      color="primary"
     >
       Decrement (Async)
     </v-btn>
     <v-btn
-      color="info"
+      color="primary"
     >
       Increment (If Odd)
     </v-btn>
     <v-btn
-      color="info"
+      color="primary"
     >
       Decrement (If Even)
     </v-btn>
-  </div>
-  <div>
+  </v-flex>
+  <v-flex
+    xs12="true"
+  >
     <v-btn
-      color="info"
+      color="primary"
+      disabled="disabled"
     >
       Start Count
     </v-btn>
     <v-btn
-      color="info"
+      color="primary"
+      disabled="disabled"
     >
       Cancel Count
     </v-btn>
-  </div>
-</div>
+  </v-flex>
+</v-layout>
 `;
