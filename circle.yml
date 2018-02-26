@@ -24,9 +24,9 @@ jobs:
           name: Build the app
           command: docker-compose exec app yarn build:app
 
-      # - run:
-      #     name: Build the api
-      #     command: docker-compose exec app yarn build:api
+      - run:
+          name: Build the api
+          command: docker-compose exec app yarn build:api
 
       - run:
           name: Test the app
