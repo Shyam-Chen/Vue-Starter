@@ -2,9 +2,9 @@ import { INCREMENT, DECREMENT } from './constants';
 
 export default {
   [INCREMENT](state) {
-    state.value++;
+    state.value += 1;
   },
   [DECREMENT](state) {
-    state.value--;
-  }
+    state.value -= 1;
+  },
 };

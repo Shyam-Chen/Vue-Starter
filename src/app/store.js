@@ -23,9 +23,9 @@ export default new Vuex.Store({
     rest,
     graphql,
     formControls,
-    counter
+    counter,
   },
   plugins: [
-    createLogger({ collapsed: false })
-  ]
+    createLogger({ collapsed: false }),
+  ],
 });

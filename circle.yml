@@ -41,11 +41,11 @@ jobs:
       #       docker-compose exec app yarn codecov -- --token=${CODECOV_TOKEN}
 
       - deploy:
-          name: Deploy to Firebase
+          name: Deploy the app
           command: docker-compose exec app yarn deploy -- --token ${FIREBASE_TOKEN}
 
       # - deploy:
-      #     name: Deploy to Heroku
+      #     name: Deploy the api
       #     command: |
       #       docker login -u="Shyam Chen" -p="${HEROKU_TOKEN}" registry.heroku.com
       #       docker build -f Dockerfile.prod -t registry.heroku.com/vue-by-example/web .
