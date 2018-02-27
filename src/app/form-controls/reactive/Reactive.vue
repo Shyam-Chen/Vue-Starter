@@ -1,19 +1,19 @@
-<template>
-  <div>
-    <h1>Reactive Forms</h1>
-
-    <md-content class="md-elevation-2">
-      <form class="form">
-        <div class="row">
-          ...
-        </div>
-      </form>
-    </md-content>
-  </div>
-</template>
-
 <script>
-export default {};
+export default {
+  render() {
+    return (
+      <v-layout column>
+        <div class="display-1">Reactive</div>
+
+        <form class="form">
+          <div class="row">
+            ...
+          </div>
+        </form>
+      </v-layout>
+    );
+  }
+};
 </script>
 
 <style scoped>

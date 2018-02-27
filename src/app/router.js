@@ -3,7 +3,7 @@ import Router from 'vue-router';
 
 import { REST } from '~/crud-operations/rest';
 import { GraphQL } from '~/crud-operations/graphql';
-import { FormControls, TemplateDriven, ReactiveForms } from '~/form-controls';
+import { FormControls, TemplateDriven, Reactive } from '~/form-controls';
 import { Counter } from '~/playground/counter';
 
 import NotFound from '~/shared/NotFound';
@@ -23,7 +23,7 @@ export default new Router({
       component: FormControls,
       children: [
         { path: 'template-driven', component: TemplateDriven },
-        { path: 'reactive-forms', component: ReactiveForms },
+        { path: 'reactive', component: Reactive },
       ],
     },
     { path: '*', component: NotFound },

@@ -1,28 +1,32 @@
-<template>
-  <div>
-    <div v-if="location === '/form-controls'">
-      <router-link to="/form-controls/template-driven" name="templateDriven" tag="md-button" class="md-raised md-primary">Template-driven</router-link>
-      <router-link to="/form-controls/reactive-forms" name="reactiveForms" tag="md-button" class="md-raised md-primary">Reactive Forms</router-link>
-    </div>
-
-    <router-view></router-view>
-  </div>
-</template>
-
 <script>
 import { TemplateDriven } from './template-driven';
-import { ReactiveForms } from './reactive-forms';
+import { Reactive } from './reactive';
 
 export default {
-  data() {
-    return {
-      location: location.pathname
-    }
-  },
   components: {
     TemplateDriven,
-    ReactiveForms
-  }
+    Reactive,
+  },
+  data() {
+    return {
+      location: window.location.pathname,
+    };
+  },
+  render() {
+    return (
+      <div>
+        {
+          this.location === '/form-controls' &&
+          <div>
+            <v-btn color="info" to="/form-controls/template-driven">Template-driven</v-btn>
+            <v-btn color="info" to="/form-controls/reactive">Reactive</v-btn>
+          </div>
+        }
+
+        <router-view></router-view>
+      </div>
+    );
+  },
 };
 </script>
 

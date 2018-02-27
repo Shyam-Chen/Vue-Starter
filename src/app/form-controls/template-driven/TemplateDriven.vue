@@ -2,14 +2,14 @@
   <div>
     <h1>Template-driven</h1>
 
-    <md-content class="md-elevation-2">
+    <div class="md-elevation-2">
       <form class="form">
         <div class="row">
           <!-- input -->
-          <md-field class="field">
-            <label>Nickname</label>
-            <md-input v-model="nickname"></md-input>
-          </md-field>
+          <div>
+            <v-text-field name="nickname" label="Nickname" v-model="nickname"></v-text-field>
+          </div>
+
           <div class="outputs">
             {{ $td.nickname }}
           </div>
@@ -17,38 +17,34 @@
 
         <div class="row">
           <!-- select -->
-          <md-field class="field">
-            <label for="age">Age</label>
-            <md-select v-model="age" name="age" id="age">
-              <!-- <md-option value=""><em>None</em></md-option> -->
-              <md-option :key="item.value" :value="item.value" v-for="item in $td.listOfage">
-                {{ item.label }}
-              </md-option>
-            </md-select>
-          </md-field>
+          <div>
+            <v-select :items="$td.listOfage" v-model="age" label="Age" style="width: 167px" single-line bottom></v-select>
+          </div>
+
           <div class="outputs">
             {{ $td.age }}
           </div>
         </div>
 
         <div class="row">
-          <div>
-            <div class="md-body-2">Gender</div>
-            <md-radio v-model="gender" value="Male">Male</md-radio>
-            <md-radio v-model="gender" value="Female">Female</md-radio>
-            <md-radio v-model="gender" value="Other">Other</md-radio>
+          <!-- Radios -->
+          <div class="">
+            <v-radio-group row style="width: 300px" v-model="gender">
+              <v-radio v-for="item in ['Male', 'Female',' Other']" :key="item" :label="item" :value="item"></v-radio>
+            </v-radio-group>
           </div>
-          <div class="outputs" style="padding-top: 2rem">
+
+          <div class="outputs">
             {{ $td.gender }}
           </div>
         </div>
 
         <div class="row">
-          <div class="md-body-2" style="align-self: center">Autoplay</div>
-          <div style="margin-left: 1rem">
-            <md-switch v-model="autoplay" name="autoplay"></md-switch>
+          <div>
+            <v-switch label="Autoplay" style="width: 120px" v-model="autoplay"></v-switch>
           </div>
-          <div class="outputs" style="padding-top: .5rem; text-transform: capitalize">
+
+          <div class="outputs" style="text-transform: capitalize">
             {{ $td.autoplay ? $td.autoplay : '' }}
           </div>
         </div>
@@ -57,7 +53,7 @@
           ...
         </div>
       </form>
-    </md-content>
+    </div>
   </div>
 </template>
 

@@ -7,20 +7,20 @@ export const INITIAL = {
   // select
   age: '',
   listOfage: [
-    { value: 12, label: 'Twelve' },
-    { value: 13, label: 'Thirteen' },
-    { value: 14, label: 'Fourteen' },
-    { value: 15, label: 'Fifteen' },
-    { value: 16, label: 'Sixteen' },
-    { value: 17, label: 'Seventeen' },
-    { value: 18, label: 'Eighteen' },
-    { value: 19, label: 'Nineteen' },
-    { value: 20, label: 'Twenty' },
-    { value: 21, label: 'Twenty one' },
-    { value: 22, label: 'Twenty two' },
-    { value: 23, label: 'Twenty three' },
-    { value: 24, label: 'Twenty four' },
-    { value: 25, label: 'Twenty five' }
+    { value: 12, text: 'Twelve' },
+    { value: 13, text: 'Thirteen' },
+    { value: 14, text: 'Fourteen' },
+    { value: 15, text: 'Fifteen' },
+    { value: 16, text: 'Sixteen' },
+    { value: 17, text: 'Seventeen' },
+    { value: 18, text: 'Eighteen' },
+    { value: 19, text: 'Nineteen' },
+    { value: 20, text: 'Twenty' },
+    { value: 21, text: 'Twenty one' },
+    { value: 22, text: 'Twenty two' },
+    { value: 23, text: 'Twenty three' },
+    { value: 24, text: 'Twenty four' },
+    { value: 25, text: 'Twenty five' },
   ],
 
   // multiple select
@@ -33,7 +33,7 @@ export const INITIAL = {
   gender: '',
 
   // switch
-  autoplay: false
+  autoplay: false,
 
   // slider
 

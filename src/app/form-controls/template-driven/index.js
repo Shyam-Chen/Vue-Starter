@@ -4,7 +4,7 @@ import mutations from './mutations';
 
 const templateDriven = {
   state,
-  mutations
+  mutations,
 };
 
 export { TemplateDriven, templateDriven };
