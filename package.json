@@ -9,9 +9,7 @@
     "build:api": "cross-env BABEL_ENV=api babel src -d dist --ignore client.js,app",
     "test:app": "cross-env BABEL_ENV=app jest \"src/app/.*\\.js$\" --coverage --forceExit",
     "test:api": "cross-env BABEL_ENV=api jest \"src/api/.*\\.js$\" --coverage --forceExit",
-    "eslint": "eslint",
-    "typed": "flow-typed install",
-    "flow": "flow",
+    "postinstall": "flow-typed install",
     "codecov": "codecov",
     "firebase": "firebase"
   },

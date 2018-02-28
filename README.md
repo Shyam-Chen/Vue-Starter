@@ -23,9 +23,6 @@ $ cd <PROJECT_NAME>
 
 ```bash
 $ yarn install
-
-# then install types
-$ yarn typed
 ```
 
 3. Run the Application
