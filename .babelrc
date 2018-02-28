@@ -1,15 +1,57 @@
 {
-  "presets": [
-    [
-      "env", {
-        "targets": {
-          "node": "current"
-        }
-      }
-    ]
-  ],
-  "plugins": [
-    "transform-object-rest-spread",
-    "transform-vue-jsx"
-  ]
+  "env": {
+    "app": {
+      "presets": [
+        [
+          "env", {
+            "targets": {
+              "browsers": ["last 2 versions"]
+            }
+          }
+        ]
+      ],
+      "plugins": [
+        "transform-runtime",
+        "transform-function-bind",
+        "transform-object-rest-spread",
+        "transform-vue-jsx",
+        [
+          "babel-plugin-root-import", [
+            {
+              "rootPathPrefix": "~",
+              "rootPathSuffix": "src/app"
+            }
+          ]
+        ],
+        [
+          "transform-imports", {
+            "rxjs/observable": {
+              "transform": "rxjs/observable/${member}",
+              "preventFullImport": true,
+              "skipDefaultConversion": true
+            },
+            "rxjs/operator": {
+              "transform": "rxjs/operator/${member}",
+              "preventFullImport": true,
+              "skipDefaultConversion": true
+            }
+          }
+        ]
+      ]
+    },
+    "api": {
+      "presets": [
+        [
+          "env", {
+            "targets": {
+              "node": "current"
+            }
+          }
+        ]
+      ],
+      "plugins": [
+        "transform-runtime"
+      ]
+    }
+  }
 }
