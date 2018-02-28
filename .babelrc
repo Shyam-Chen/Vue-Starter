@@ -8,7 +8,8 @@
               "browsers": ["last 2 versions"]
             }
           }
-        ]
+        ],
+        "flow"
       ],
       "plugins": [
         "transform-runtime",
@@ -47,7 +48,8 @@
               "node": "current"
             }
           }
-        ]
+        ],
+        "flow"
       ],
       "plugins": [
         "transform-runtime"

@@ -32,17 +32,17 @@ jobs:
           name: Test the app
           command: |
             docker-compose exec app yarn test:app
-            docker-compose exec app yarn codecov -- --token=${CODECOV_TOKEN}
+            docker-compose exec app yarn codecov --token=${CODECOV_TOKEN}
 
       # - run:
       #     name: Test the api
       #     command: |
       #       docker-compose exec app yarn test:app
-      #       docker-compose exec app yarn codecov -- --token=${CODECOV_TOKEN}
+      #       docker-compose exec app yarn codecov --token=${CODECOV_TOKEN}
 
       - deploy:
           name: Deploy the app
-          command: docker-compose exec app yarn deploy -- --token ${FIREBASE_TOKEN}
+          command: docker-compose exec app yarn firebase deploy --token ${FIREBASE_TOKEN}
 
       # - deploy:
       #     name: Deploy the api
