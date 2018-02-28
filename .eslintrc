@@ -23,18 +23,26 @@
   },
   "settings": {
     "import/resolver": {
-      "webpack": {
-        "config": "webpack.config.js"
+      "node": {
+        "extensions": [
+          ".js",
+          ".vue"
+        ]
+      },
+      "babel-plugin-root-import": {
+        "rootPathPrefix": "~",
+        "rootPathSuffix": "src/app"
       }
     }
   },
   "rules": {
     // Plugins
+    "import/extensions": ["error", { "js": "never", "vue": "never" }],
 
     // Possible Errors
 
     // Best Practices
-    "no-param-reassign": ["error", { props: false }],
+    "no-param-reassign": ["error", { "props": false }],
 
     // Variables
 
