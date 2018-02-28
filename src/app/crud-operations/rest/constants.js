@@ -1,4 +1,4 @@
-export const API_LIST = 'https://web-go-demo.herokuapp.com/__/list';
+export const API_LIST = `${process.env.API_URL}/__/list`;
 
 export const INITIAL = {
   dataset: [],
@@ -6,7 +6,7 @@ export const INITIAL = {
   searchData: { text: '' },
   editData: { _id: 0, text: '', dialog: false },
   deleteData: { _id: 0, dialog: false },
-  loading: false
+  loading: false,
 };
 
 export const SUCCESS = '[REST] SUCCESS';

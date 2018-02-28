@@ -21,13 +21,20 @@
     "parser": "babel-eslint",
     "sourceType": "module"
   },
+  "settings": {
+    "import/resolver": {
+      "webpack": {
+        "config": "webpack.config.js"
+      }
+    }
+  },
   "rules": {
     // Plugins
-    "import/prefer-default-export": "off",
 
     // Possible Errors
 
     // Best Practices
+    "no-param-reassign": ["error", { props: false }],
 
     // Variables
 
@@ -35,7 +42,7 @@
 
     // Stylistic Issues
     "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
-    "no-underscore-dangle": "off"
+    "object-curly-newline": ["error", { "consistent": true }]
 
     // JS.Next
   }

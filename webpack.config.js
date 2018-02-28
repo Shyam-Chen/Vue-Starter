@@ -4,6 +4,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
+const API_URL = 'https://web-go-demo.herokuapp.com';
+
 module.exports = ({ prod = false } = {}) => ({
   context: join(__dirname, 'src'),
   entry: {
@@ -44,6 +46,12 @@ module.exports = ({ prod = false } = {}) => ({
     new CopyWebpackPlugin([
       'assets/images/favicon.ico',
     ]),
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify(prod ? 'production' : 'development'),
+        API_URL: JSON.stringify(API_URL),
+      },
+    }),
     prod && new UglifyJSPlugin({ sourceMap: false }),
     !prod && new webpack.NamedModulesPlugin(),
     !prod && new webpack.HotModuleReplacementPlugin(),

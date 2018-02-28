@@ -4,6 +4,5 @@ import actions from './actions';
 import mutations from './mutations';
 import getters from './getters';
 
-const counter = { state, actions, mutations, getters };
-
-export { Counter, counter };
+export { Counter };
+export const counter = { state, actions, mutations, getters };

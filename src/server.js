@@ -28,13 +28,13 @@ if (process.env.NODE_ENV === 'production') {
   app.get('*', (req, res) => {
     const vue = new Vue({
       data: {
-        url: req.url
+        url: req.url,
       },
-      template: `<div>{{ url }}</div>`
+      template: '<div>{{ url }}</div>',
     });
 
     const renderer = createRenderer({
-      template: readFileSync('./index.html', 'utf-8')
+      template: readFileSync('./index.html', 'utf-8'),
     });
 
     renderer.renderToString(vue, (err, html) => {
@@ -49,6 +49,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 const server = app.listen(app.get('port'), () => {
+  /* eslint-disable no-console */
   console.log('App: Bootstrap Succeeded.');
   console.log(`Port: ${app.get('port')}.`);
 });

@@ -1,7 +1,4 @@
 import 'vuetify/dist/vuetify.min.css';
-
-import './assets/styles/global.css';
-
 import Vue from 'vue';
 import { sync } from 'vuex-router-sync';
 import material from 'vuetify';
@@ -11,6 +8,7 @@ import { Observable } from 'rxjs';
 // import { ApolloClient, createBatchingNetworkInterface } from 'apollo-client';
 import I18n from 'vue-i18n';
 
+import './assets/styles/global.css';
 import { App, router, store } from './app';
 
 sync(store, router);
@@ -33,17 +31,18 @@ Vue.use(I18n);
 const i18n = new I18n({
   locale: 'en-US',
   messages: {
-    'en-US': {}
-  }
+    'en-US': {},
+  },
 });
 
+/* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
   store,
   // apolloProvider,
   i18n,
-  render: mount => mount(App)
+  render: mount => mount(App),
 });
 
 if (module.hot) {
