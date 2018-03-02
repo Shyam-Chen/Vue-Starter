@@ -35,7 +35,7 @@ const i18n = new I18n({
   },
 });
 
-/* eslint-disable no-new */
+/* eslint-disable-next-line no-new */
 new Vue({
   el: '#app',
   router,

@@ -1,4 +1,4 @@
-export const API_LIST = `${process.env.API_URL}/__/list`;
+export const API_LIST = `${process.env.API_URL}/__/text-list`;
 
 export const INITIAL = {
   dataset: [],
