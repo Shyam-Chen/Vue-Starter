@@ -27,8 +27,21 @@
         </div>
 
         <div class="row">
-          <!-- Radios -->
-          <div class="">
+          <!-- checkboxes -->
+          <div>
+            <v-layout row wrap>
+              <v-checkbox style="width: 10rem" v-for="item in ['ECMAScript', 'HTML5', 'Node.js', 'Docker']" :key="item" :label="item" :value="item" v-model="technologies"></v-checkbox>
+            </v-layout>
+          </div>
+
+          <div class="outputs">
+            {{ $td.technologies }}
+          </div>
+        </div>
+
+        <div class="row">
+          <!-- radios -->
+          <div>
             <v-radio-group row style="width: 300px" v-model="gender">
               <v-radio v-for="item in ['Male', 'Female',' Other']" :key="item" :label="item" :value="item"></v-radio>
             </v-radio-group>
@@ -40,12 +53,13 @@
         </div>
 
         <div class="row">
+          <!-- switch -->
           <div>
             <v-switch label="Autoplay" style="width: 120px" v-model="autoplay"></v-switch>
           </div>
 
-          <div class="outputs" style="text-transform: capitalize">
-            {{ $td.autoplay ? $td.autoplay : '' }}
+          <div class="outputs">
+            {{ $td.autoplay }}
           </div>
         </div>
 
@@ -68,8 +82,9 @@ export default {
     ...mapModelsToState('formControls.templateDriven', [
       'nickname',
       'age',
+      'technologies',
       'gender',
-      'autoplay'
+      'autoplay',
     ])
   }
 };

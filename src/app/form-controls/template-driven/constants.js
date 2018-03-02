@@ -6,6 +6,7 @@ export const INITIAL = {
 
   // select
   age: '',
+
   listOfage: [
     { value: 12, text: 'Twelve' },
     { value: 13, text: 'Thirteen' },
@@ -24,12 +25,15 @@ export const INITIAL = {
   ],
 
   // multiple select
+  countries: [],
 
   // nested select
+  pet: '',
 
   // checkboxes
+  technologies: [],
 
-  // radio buttons
+  // radios
   gender: '',
 
   // switch
@@ -39,13 +43,13 @@ export const INITIAL = {
 
   // autocomplete
 
-  // datepicker
+  // date picker
 
-  // datepicker with range
+  // date range picker
 
-  // timepicker
+  // time picker
 
-  // colorpicker
+  // color picker
 
   // file upload
 };
