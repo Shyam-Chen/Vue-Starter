@@ -18,11 +18,22 @@
         <div class="row">
           <!-- select -->
           <div>
-            <v-select :items="$td.listOfage" v-model="age" label="Age" style="width: 167px" single-line bottom></v-select>
+            <v-select :items="$td.dessertList" v-model="dessert" label="Dessert" style="width: 167px" single-line bottom></v-select>
           </div>
 
           <div class="outputs">
-            {{ $td.age }}
+            {{ $td.dessert }}
+          </div>
+        </div>
+
+        <div class="row">
+          <!-- multiple select -->
+          <div>
+            <v-select :items="$td.statesList" v-model="states" label="States" style="width: 300px" multiple chips single-line bottom></v-select>
+          </div>
+
+          <div class="outputs">
+            {{ $td.states }}
           </div>
         </div>
 
@@ -30,7 +41,7 @@
           <!-- checkboxes -->
           <div>
             <v-layout row wrap>
-              <v-checkbox style="width: 10rem" v-for="item in ['ECMAScript', 'HTML5', 'Node.js', 'Docker']" :key="item" :label="item" :value="item" v-model="technologies"></v-checkbox>
+              <v-checkbox style="width: 10rem" v-for="item in $td.technologiesList" :key="item" :label="item" :value="item" v-model="technologies"></v-checkbox>
             </v-layout>
           </div>
 
@@ -43,7 +54,7 @@
           <!-- radios -->
           <div>
             <v-radio-group row style="width: 300px" v-model="gender">
-              <v-radio v-for="item in ['Male', 'Female',' Other']" :key="item" :label="item" :value="item"></v-radio>
+              <v-radio v-for="item in $td.genderList" :key="item" :label="item" :value="item"></v-radio>
             </v-radio-group>
           </div>
 
@@ -81,7 +92,8 @@ export default {
     },
     ...mapModelsToState('formControls.templateDriven', [
       'nickname',
-      'age',
+      'dessert',
+      'states',
       'technologies',
       'gender',
       'autoplay',
