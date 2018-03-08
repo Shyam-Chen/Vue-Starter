@@ -59,12 +59,17 @@ module.exports = ({ prod = false } = {}) => ({
   },
   resolve: {
     extensions: ['.js', '.vue'],
+    alias: {
+      vue$: 'vue/dist/vue.esm.js',
+      '~': join(__dirname, 'src/app'),
+    },
   },
   plugins: [
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'index.html',
       inject: true,
+      chunksSortMode: prod ? 'dependency' : 'auto',
     }),
     new CopyWebpackPlugin([
       'assets/images/favicon.ico',

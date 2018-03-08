@@ -15,7 +15,7 @@ export default new Router({
   mode: 'history',
   routes: [
     { path: '/', component: CardLink },
-    { path: '/counter', component: () => import('./playground/counter/Counter') },
+    { path: '/counter', component: () => import('~/playground/counter/Counter') },
     { path: '/rest', component: REST },
     { path: '/graphql', component: GraphQL },
     {
