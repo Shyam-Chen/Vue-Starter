@@ -9,7 +9,7 @@
     "build:api": "cross-env BABEL_ENV=api babel src -d dist --ignore client.js,app",
     "test:app": "cross-env BABEL_ENV=app jest \"src/app/.*\\.js$\" --coverage --forceExit",
     "test:api": "cross-env BABEL_ENV=api jest \"src/api/.*\\.js$\" --coverage --forceExit",
-    "postinstall": "flow-typed install",
+    "typed": "flow-typed install",
     "codecov": "codecov",
     "firebase": "firebase"
   },
@@ -98,6 +98,7 @@
     "sw-precache": "5.2.1",
     "sw-precache-webpack-plugin": "0.11.4",
     "uglifyjs-webpack-plugin": "1.1.8",
+    "url-loader": "^1.0.1",
     "vue-jest": "2.1.0",
     "vue-loader": "14.1.1",
     "vue-template-compiler": "2.5.13",
