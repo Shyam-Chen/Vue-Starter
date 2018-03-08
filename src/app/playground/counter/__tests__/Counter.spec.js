@@ -1,10 +1,11 @@
 import Vuex from 'vuex';
-import { shallow, createLocalVue } from 'vue-test-utils';
+import { createLocalVue, shallow } from '@vue/test-utils';
 
 import { INITIAL, INCREMENT, DECREMENT } from '../constants';
 import Counter from '../Counter';
 
 const localVue = createLocalVue();
+
 localVue.use(Vuex);
 
 describe('Counter', () => {
@@ -20,16 +21,16 @@ describe('Counter', () => {
       incrementAsync: jest.fn(),
       decrementAsync: jest.fn(),
       incrementIfOdd: jest.fn(),
-      decrementIfEven: jest.fn()
+      decrementIfEven: jest.fn(),
     };
 
     mutations = {
       [INCREMENT]: jest.fn(),
-      [DECREMENT]: jest.fn()
+      [DECREMENT]: jest.fn(),
     };
 
     getters = {
-      evenOrOdd: jest.fn(() => 'even')
+      evenOrOdd: jest.fn(() => 'even'),
     };
 
     store = new Vuex.Store({
@@ -38,15 +39,15 @@ describe('Counter', () => {
           state,
           actions,
           mutations,
-          getters
-        }
-      }
+          getters,
+        },
+      },
     });
 
     wrapper = shallow(Counter, { store, localVue });
   });
 
   it('should render initial component', () => {
-    expect(wrapper.vm.$el).toMatchSnapshot();
+    expect(wrapper.html()).toMatchSnapshot();
   });
 });
