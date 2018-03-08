@@ -4,7 +4,7 @@ import Router from 'vue-router';
 import { REST } from '~/crud-operations/rest';
 import { GraphQL } from '~/crud-operations/graphql';
 import { FormControls, TemplateDriven, Reactive } from '~/form-controls';
-import { Counter } from '~/playground/counter';
+// import { Counter } from '~/playground/counter';
 
 import NotFound from '~/shared/NotFound';
 import CardLink from '~/shared/CardLink';
@@ -15,7 +15,7 @@ export default new Router({
   mode: 'history',
   routes: [
     { path: '/', component: CardLink },
-    { path: '/counter', component: Counter },
+    { path: '/counter', component: () => import('./playground/counter/Counter') },
     { path: '/rest', component: REST },
     { path: '/graphql', component: GraphQL },
     {

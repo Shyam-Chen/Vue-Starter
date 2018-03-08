@@ -16,6 +16,7 @@
         "transform-function-bind",
         "transform-object-rest-spread",
         "transform-vue-jsx",
+        "syntax-dynamic-import",
         [
           "babel-plugin-root-import", [
             {
