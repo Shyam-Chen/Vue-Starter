@@ -28,5 +28,5 @@ export default {
     Observable::of(null)
       ::filter(() => state.value % 2 === 0)
       .subscribe(() => commit(DECREMENT));
-  }
+  },
 };

@@ -14,7 +14,7 @@ describe('Counter', () => {
     const launch = {
       headless: false,
       slowMo: 80,
-      args: [`--window-size=${width},${height}`, '--no-sandbox']
+      args: [`--window-size=${width},${height}`, '--no-sandbox'],
     };
 
     await server;

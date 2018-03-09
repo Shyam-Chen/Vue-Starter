@@ -8,13 +8,13 @@ export default {
     'incrementAsync',
     'decrementAsync',
     'incrementIfOdd',
-    'decrementIfEven'
+    'decrementIfEven',
   ]),
   computed: {
     $c() {
       return this.$store.state.counter;
     },
-    ...mapGetters(['evenOrOdd'])
+    ...mapGetters(['evenOrOdd']),
   },
   render() {
     return (
@@ -44,7 +44,7 @@ export default {
         </v-flex>
       </v-layout>
     );
-  }
+  },
 };
 </script>
 

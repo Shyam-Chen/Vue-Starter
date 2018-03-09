@@ -2,22 +2,22 @@
 
 exports[`Counter should render initial component 1`] = `
 <v-layout row="true" wrap="true">
-    <v-flex xs12="true">
-        <div class="headline">Clicked: <strong>0</strong> times, value is <strong>even</strong>.</div>
-    </v-flex>
-    <v-flex xs12="true">
-        <v-btn color="primary">Increment</v-btn>
-        <v-btn color="primary">Decrement</v-btn>
-    </v-flex>
-    <v-flex xs12="true">
-        <v-btn color="primary">Increment (Async)</v-btn>
-        <v-btn color="primary">Decrement (Async)</v-btn>
-        <v-btn color="primary">Increment (If Odd)</v-btn>
-        <v-btn color="primary">Decrement (If Even)</v-btn>
-    </v-flex>
-    <v-flex xs12="true">
-        <v-btn color="primary" disabled="disabled">Start Count</v-btn>
-        <v-btn color="primary" disabled="disabled">Cancel Count</v-btn>
-    </v-flex>
+  <v-flex xs12="true">
+    <div class="headline">Clicked: <strong>0</strong> times, value is <strong>even</strong>.</div>
+  </v-flex>
+  <v-flex xs12="true">
+    <v-btn color="primary">Increment</v-btn>
+    <v-btn color="primary">Decrement</v-btn>
+  </v-flex>
+  <v-flex xs12="true">
+    <v-btn color="primary">Increment (Async)</v-btn>
+    <v-btn color="primary">Decrement (Async)</v-btn>
+    <v-btn color="primary">Increment (If Odd)</v-btn>
+    <v-btn color="primary">Decrement (If Even)</v-btn>
+  </v-flex>
+  <v-flex xs12="true">
+    <v-btn color="primary" disabled="disabled">Start Count</v-btn>
+    <v-btn color="primary" disabled="disabled">Cancel Count</v-btn>
+  </v-flex>
 </v-layout>
 `;
