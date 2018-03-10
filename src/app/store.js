@@ -26,6 +26,6 @@ export default new Vuex.Store({
     counter,
   },
   plugins: [
-    createLogger({ collapsed: false }),
-  ],
+    process.env.NODE_ENV === 'development' && createLogger({ collapsed: false }),
+  ].filter(Boolean),
 });

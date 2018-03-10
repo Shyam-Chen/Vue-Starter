@@ -24,9 +24,12 @@ export default new Router({
   mode: 'history',
   routes: [
     { path: '/', component: CardLink },
-    { path: '/counter', component: () => import('~/playground/counter/Counter') },
+
+    /** @name crud-operations */
     { path: '/rest', component: REST },
     { path: '/graphql', component: GraphQL },
+
+    /** @name form-controls */
     {
       path: '/form-controls',
       component: FormControls,
@@ -36,6 +39,20 @@ export default new Router({
         { path: 'reactive', component: Reactive },
       ],
     },
+
+    /** @name data-table */
+
+    /** @name globalization */
+
+    /** @name authorization */
+
+    /** @name data-chart */
+
+    /** @name realtime */
+
+    /** @name playground */
+    { path: '/counter', component: () => import('~/playground/counter/Counter') },
+
     { path: '*', component: NotFound },
   ],
 });
