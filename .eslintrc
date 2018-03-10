@@ -23,27 +23,20 @@
   },
   "settings": {
     "import/resolver": {
-      "node": {
-        "extensions": [
-          ".js",
-          ".vue"
-        ]
-      },
-      "babel-plugin-root-import": {
-        "rootPathPrefix": "~",
-        "rootPathSuffix": "src/app"
+      "webpack": {
+        "config": "webpack.config.js"
       }
     }
   },
   "rules": {
     // Plugins
-    "import/extensions": ["error", { "js": "never", "vue": "never" }],
+    "import/extensions": ["error", "always", { "js": "never", "vue": "never" }],
     "import/prefer-default-export": "off",
 
     // Possible Errors
 
     // Best Practices
-    "no-param-reassign": ["error", { "props": false }],
+    "no-param-reassign": ["error", { "props": true, "ignorePropertyModificationsFor": ["state", "acc", "event"] }],
 
     // Variables
 

@@ -18,14 +18,6 @@
         "transform-vue-jsx",
         "syntax-dynamic-import",
         [
-          "babel-plugin-root-import", [
-            {
-              "rootPathPrefix": "~",
-              "rootPathSuffix": "src/app"
-            }
-          ]
-        ],
-        [
           "transform-imports", {
             "rxjs/observable": {
               "transform": "rxjs/observable/${member}",

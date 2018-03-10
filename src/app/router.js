@@ -11,6 +11,15 @@ import CardLink from '~/shared/CardLink';
 
 Vue.use(Router);
 
+const FormControlsLink = {
+  template: `
+    <div>
+      <v-btn color="info" to="/form-controls/template-driven">Template-driven</v-btn>
+      <v-btn color="info" disabled to="/form-controls/reactive">Reactive</v-btn>
+    </div>
+  `,
+};
+
 export default new Router({
   mode: 'history',
   routes: [
@@ -22,6 +31,7 @@ export default new Router({
       path: '/form-controls',
       component: FormControls,
       children: [
+        { path: '', component: FormControlsLink },
         { path: 'template-driven', component: TemplateDriven },
         { path: 'reactive', component: Reactive },
       ],

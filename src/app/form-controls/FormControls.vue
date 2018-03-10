@@ -8,16 +8,7 @@ export default {
     Reactive,
   },
   render() {
-    return (
-      <div>
-        <div>
-          <v-btn color="info" to="/form-controls/template-driven">Template-driven</v-btn>
-          <v-btn color="info" disabled to="/form-controls/reactive">Reactive</v-btn>
-        </div>
-
-        <router-view></router-view>
-      </div>
-    );
+    return (<router-view></router-view>);
   },
 };
 </script>
