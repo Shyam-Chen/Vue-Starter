@@ -65,6 +65,10 @@
 
     <v-content>
       <v-container fluid>
+        <v-btn @click="setLanguage('en')">English</v-btn>
+        <v-btn @click="setLanguage('zh')">中文</v-btn>
+        <v-btn @click="setLanguage('ja')">日本語</v-btn>
+        <p>{{ $t('message.hello') }}</p>
         <router-view></router-view>
       </v-container>
     </v-content>
@@ -73,11 +77,16 @@
 </template>
 
 <script>
-  export default {
-    computed: {
-      $app() {
-        return this.$store.state;
-      },
+export default {
+  computed: {
+    $app() {
+      return this.$store.state;
     },
-  }
+  },
+  methods: {
+    setLanguage(val) {
+      this.$i18n.locale = val;
+    },
+  },
+};
 </script>

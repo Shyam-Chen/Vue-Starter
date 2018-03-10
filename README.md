@@ -62,14 +62,14 @@ $ yarn test:api
   * [x] REST
   * [ ] GraphQL
 * [ ] Form Controls
-  * [ ] Template-driven
+  * [x] Template-driven
   * [ ] Reactive Forms
 * [ ] Data Table
   * [ ] Static
   * [ ] REST
   * [ ] GraphQL
 * [ ] Globalization
-  * [ ] Internationalization (`vue-i18n`)
+  * [x] Internationalization (`vue-i18n`)
   * [ ] Localization
 * [ ] Authorization
   * [ ] REST

@@ -29,9 +29,24 @@ Vue.use(I18n);
 // });
 
 const i18n = new I18n({
-  locale: 'en-US',
+  locale: 'en',
+  fallbackLocale: 'en',
   messages: {
-    'en-US': {},
+    en: {
+      message: {
+        hello: 'hello world',
+      },
+    },
+    zh: {
+      message: {
+        hello: '你好，世界',
+      },
+    },
+    ja: {
+      message: {
+        hello: 'こんにちは、世界',
+      },
+    },
   },
 });
 
