@@ -59,28 +59,28 @@ $ yarn test:api
 
 * [ ] CRUD Operations
   * [ ] Static
-  * [x] REST
-  * [ ] GraphQL
+  * [x] REST (`axios`)
+  * [ ] GraphQL (`vue-apollo`)
 * [ ] Form Controls
   * [x] Template-driven
-  * [ ] Reactive Forms
+  * [ ] Reactive Forms (`rxjs`)
 * [ ] Data Table
   * [ ] Static
-  * [ ] REST
-  * [ ] GraphQL
+  * [ ] REST (`axios`)
+  * [ ] GraphQL (`vue-apollo`)
 * [ ] Globalization
   * [x] Internationalization (`vue-i18n`)
   * [ ] Localization
 * [ ] Authorization
-  * [ ] REST
-  * [ ] GraphQL
+  * [ ] REST (`axios`)
+  * [ ] GraphQL (`vue-apollo`)
 * [ ] Data Chart
   * [ ] SVG (`d3`)
   * [ ] Canvas (`d3`)
   * [ ] WebGL (`three`)
 * [ ] Realtime
-  * [ ] WebSockets
-  * [ ] GraphQL Subscriptions
+  * [ ] Socket.IO (`socket.io`)
+  * [ ] GraphQL Subscriptions (`graphql-subscriptions`)
 * [ ] Playground
   * [x] Counter
     * [x] State Management (`vuex`)
