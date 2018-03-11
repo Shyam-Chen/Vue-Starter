@@ -29,7 +29,7 @@ export default new Router({
     /** @name data-table */
 
     /** @name globalization */
-    { path: '/i18n', component: () => import('~/globalization/internationalization/I18n') },
+    { path: '/i18n', component: () => import('~/globalization/i18n/I18n') },
 
     /** @name authorization */
 

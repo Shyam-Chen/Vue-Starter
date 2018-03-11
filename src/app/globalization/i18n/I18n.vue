@@ -8,11 +8,8 @@
 </template>
 
 <script>
-export default {
-  methods: {
-    setLanguage(val) {
-      this.$i18n.locale = val;
-    },
-  },
-};
+export default {};
 </script>
+
+<style scoped>
+</style>
