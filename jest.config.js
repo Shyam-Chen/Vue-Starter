@@ -1,8 +1,9 @@
 module.exports = {
+  moduleFileExtensions: ['js', 'vue'],
   moduleNameMapper: {
     '~(.*)': '<rootDir>/src/app$1',
   },
-  moduleFileExtensions: ['js', 'vue'],
+  setupTestFrameworkScriptFile: '<rootDir>/tools/setup-test.js',
   snapshotSerializers: [
     '<rootDir>/node_modules/jest-serializer-vue',
   ],
