@@ -1,24 +1,10 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-import { REST } from '~/crud-operations/rest';
-import { GraphQL } from '~/crud-operations/graphql';
-import { FormControls, TemplateDriven, Reactive } from '~/form-controls';
-// import { Counter } from '~/playground/counter';
-
 import NotFound from '~/shared/NotFound';
 import BtnLink from '~/shared/BtnLink';
 
 Vue.use(Router);
-
-const FormControlsLink = {
-  template: `
-    <div>
-      <v-btn color="info" to="/form-controls/template-driven">Template-driven</v-btn>
-      <v-btn color="info" disabled to="/form-controls/reactive">Reactive</v-btn>
-    </div>
-  `,
-};
 
 export default new Router({
   mode: 'history',
@@ -26,24 +12,24 @@ export default new Router({
     { path: '/', component: BtnLink },
 
     /** @name crud-operations */
-    { path: '/rest', component: REST },
-    { path: '/graphql', component: GraphQL },
+    { path: '/rest', component: () => import('~/crud-operations/rest/REST') },
+    { path: '/graphql', component: () => import('~/crud-operations/graphql/GraphQL') },
 
     /** @name form-controls */
     {
       path: '/form-controls',
-      component: FormControls,
+      component: () => import('~/form-controls/FormControls'),
       children: [
-        { path: '', component: FormControlsLink },
-        { path: 'template-driven', component: TemplateDriven },
-        { path: 'reactive', component: Reactive },
+        { path: '', component: () => import('~/form-controls/BtnLink') },
+        { path: 'template-driven', component: () => import('~/form-controls/template-driven/TemplateDriven') },
+        { path: 'reactive', component: () => import('~/form-controls/reactive/Reactive') },
       ],
     },
 
     /** @name data-table */
 
     /** @name globalization */
-    { path: '/i18n', component: () => import('~/globalization/i18n/I18n') },
+    { path: '/i18n', component: () => import('~/globalization/internationalization/I18n') },
 
     /** @name authorization */
 

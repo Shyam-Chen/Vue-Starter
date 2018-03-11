@@ -1,4 +1,5 @@
 import FormControls from './FormControls';
+import BtnLink from './BtnLink';
 import { INITIAL as state } from './constants';
 import actions from './actions';
 import mutations from './mutations';
@@ -17,4 +18,5 @@ const formControls = {
   },
 };
 
-export { FormControls, formControls, TemplateDriven, Reactive };
+export { FormControls, BtnLink, TemplateDriven, Reactive };
+export { formControls };
