@@ -7,7 +7,7 @@ import { FormControls, TemplateDriven, Reactive } from '~/form-controls';
 // import { Counter } from '~/playground/counter';
 
 import NotFound from '~/shared/NotFound';
-import CardLink from '~/shared/CardLink';
+import BtnLink from '~/shared/BtnLink';
 
 Vue.use(Router);
 
@@ -23,7 +23,7 @@ const FormControlsLink = {
 export default new Router({
   mode: 'history',
   routes: [
-    { path: '/', component: CardLink },
+    { path: '/', component: BtnLink },
 
     /** @name crud-operations */
     { path: '/rest', component: REST },
@@ -43,6 +43,7 @@ export default new Router({
     /** @name data-table */
 
     /** @name globalization */
+    { path: '/i18n', component: () => import('~/globalization/i18n/I18n') },
 
     /** @name authorization */
 
