@@ -1,8 +1,8 @@
 import 'vuetify/dist/vuetify.min.css';
 import Vue from 'vue';
 import { sync } from 'vuex-router-sync';
-import material from 'vuetify';
-import reactivex from 'vue-rx';
+import Material from 'vuetify';
+import ReactiveX from 'vue-rx';
 import { Observable } from 'rxjs';
 import Apollo from 'vue-apollo';
 import { ApolloClient } from 'apollo-client';
@@ -15,14 +15,14 @@ import { App, router, store } from './app';
 
 sync(store, router);
 
-Vue.use(material);
-Vue.use(reactivex, { Observable });
+Vue.use(Material);
+Vue.use(ReactiveX, { Observable });
 Vue.use(Apollo);
 Vue.use(I18n);
 
 const provide = new Apollo({
   defaultClient: new ApolloClient({
-    link: new HttpLink({ uri: 'https://web-go-demo.herokuapp.com/__/graphql' }),
+    link: new HttpLink({ uri: `${process.env.API_URL}/__/graphql` }),
     cache: new InMemoryCache(),
     connectToDevTools: true,
   }),

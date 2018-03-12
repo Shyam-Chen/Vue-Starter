@@ -58,14 +58,14 @@ $ yarn test:api
 ## Practical Examples
 
 * [ ] CRUD Operations
-  * [ ] Static
+  * [ ] Basic
   * [x] REST (`axios`)
   * [ ] GraphQL (`vue-apollo`)
 * [ ] Form Controls
   * [x] Template-driven
-  * [ ] Reactive Forms (`rxjs`)
+  * [ ] Reactive (`rxjs`)
 * [ ] Data Table
-  * [ ] Static
+  * [ ] Basic
   * [ ] REST (`axios`)
   * [ ] GraphQL (`vue-apollo`)
 * [ ] Globalization

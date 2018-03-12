@@ -12,7 +12,7 @@ export default new Router({
     { path: '/', component: BtnLink },
 
     /** @name crud-operations */
-    { path: '/static', component: () => import('~/crud-operations/static/Static') },
+    { path: '/basic', component: () => import('~/crud-operations/basic/Basic') },
     { path: '/rest', component: () => import('~/crud-operations/rest/REST') },
     { path: '/graphql', component: () => import('~/crud-operations/graphql/GraphQL') },
 
@@ -28,7 +28,7 @@ export default new Router({
     },
 
     /** @name data-table */
-    { path: '/data-table/static', component: () => import('~/data-table/static/Static') },
+    { path: '/data-table/basic', component: () => import('~/data-table/basic/Basic') },
 
     /** @name globalization */
     { path: '/i18n', component: () => import('~/globalization/i18n/I18n') },
