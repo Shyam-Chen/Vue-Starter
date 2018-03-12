@@ -9,14 +9,12 @@
             }
           }
         ],
+        "stage-0",
         "flow"
       ],
       "plugins": [
         "transform-runtime",
-        "transform-function-bind",
-        "transform-object-rest-spread",
         "transform-vue-jsx",
-        "syntax-dynamic-import",
         [
           "transform-imports", {
             "rxjs/observable": {
@@ -42,6 +40,7 @@
             }
           }
         ],
+        "stage-0",
         "flow"
       ],
       "plugins": [
