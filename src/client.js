@@ -4,8 +4,10 @@ import { sync } from 'vuex-router-sync';
 import material from 'vuetify';
 import reactivex from 'vue-rx';
 import { Observable } from 'rxjs';
-// import Apollo from 'vue-apollo';
-// import { ApolloClient, createBatchingNetworkInterface } from 'apollo-client';
+import Apollo from 'vue-apollo';
+import { ApolloClient } from 'apollo-client';
+import { HttpLink } from 'apollo-link-http';
+import { InMemoryCache } from 'apollo-cache-inmemory';
 import I18n from 'vue-i18n';
 
 import './assets/styles/global.css';
@@ -15,18 +17,16 @@ sync(store, router);
 
 Vue.use(material);
 Vue.use(reactivex, { Observable });
-// Vue.use(Apollo);
+Vue.use(Apollo);
 Vue.use(I18n);
 
-// const client = new ApolloClient({
-//   networkInterface: createBatchingNetworkInterface({
-//     uri: 'https://web-go-demo.herokuapp.com/__/graphql'
-//   })
-// });
-
-// const apolloProvider = new Apollo({
-//   defaultClient: client
-// });
+const provide = new Apollo({
+  defaultClient: new ApolloClient({
+    link: new HttpLink({ uri: 'https://web-go-demo.herokuapp.com/__/graphql' }),
+    cache: new InMemoryCache(),
+    connectToDevTools: true,
+  }),
+}).provide();
 
 const i18n = new I18n({
   locale: 'en',
@@ -55,7 +55,7 @@ new Vue({
   el: '#app',
   router,
   store,
-  // apolloProvider,
+  provide,
   i18n,
   render: mount => mount(App),
 });

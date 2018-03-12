@@ -1,7 +1,10 @@
 <template>
-  <div>
-    <h1>Apollo Client v2</h1>
-  </div>
+  <v-layout column>
+    <div class="display-1">GraphQL</div>
+      <div>
+        ...
+      </div>
+  </v-layout>
 </template>
 
 <script>

@@ -43,7 +43,7 @@
     "pm2": "2.10.1",
     "rxjs": "5.5.6",
     "vue": "2.5.13",
-    "vue-apollo": "3.0.0-beta.4",
+    "vue-apollo": "3.0.0-beta.5",
     "vue-i18n": "7.4.2",
     "vue-meta": "1.4.3",
     "vue-router": "3.0.1",
