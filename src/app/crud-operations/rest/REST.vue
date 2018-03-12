@@ -103,7 +103,7 @@ export default {
     $r() {
       return this.$store.state.rest;
     },
-  }
+  },
 };
 </script>
 

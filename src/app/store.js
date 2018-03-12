@@ -21,14 +21,34 @@ const store = new Vuex.Store({
   mutations,
   getters,
   modules: {
-    rest,
-    graphql,
     formControls,
   },
   plugins: [
     process.env.NODE_ENV === 'development' && createLogger({ collapsed: false }),
   ].filter(Boolean),
 });
+
+/** @name crud-operations */
+Observable
+  ::forkJoin(
+    import('~/crud-operations/basic'),
+    import('~/crud-operations/rest'),
+    import('~/crud-operations/graphql'),
+  )
+  .subscribe((result) => {
+    store.registerModule('basic', result[0].basic);
+    store.registerModule('rest', result[1].rest);
+    store.registerModule('graphql', result[2].graphql);
+  });
+
+/** @name form-controls */
+Observable
+  ::forkJoin(
+    import('~/form-controls'),
+  )
+  .subscribe((result) => {
+    store.registerModule('formControls', result[0].formControls);
+  });
 
 /** @name playground */
 Observable
