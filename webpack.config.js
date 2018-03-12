@@ -3,16 +3,22 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+// const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 
-const API_URL = 'https://web-go-demo.herokuapp.com';
+// const pkg = require('./package.json');
+
+const API_URL = process.env.API_URL || 'https://web-go-demo.herokuapp.com';
+
+const SOURCE_ROOT = join(__dirname, 'src');
+const DIST_ROOT = join(__dirname, 'build');
 
 module.exports = ({ prod = false } = {}) => ({
-  context: join(__dirname, 'src'),
+  context: SOURCE_ROOT,
   entry: {
     client: './client.js',
   },
   output: {
-    path: join(__dirname, 'build'),
+    path: DIST_ROOT,
     filename: prod ? '[name].[hash].js' : '[name].js',
     chunkFilename: prod ? '[id].[chunkhash].js' : '[name].js',
     publicPath: '/',
@@ -61,7 +67,7 @@ module.exports = ({ prod = false } = {}) => ({
     extensions: ['.js', '.vue'],
     alias: {
       vue$: 'vue/dist/vue.esm.js',
-      '~': join(__dirname, 'src/app'),
+      '~': join(SOURCE_ROOT, 'app'),
     },
   },
   plugins: [
@@ -69,7 +75,13 @@ module.exports = ({ prod = false } = {}) => ({
       filename: 'index.html',
       template: 'index.html',
       inject: true,
+      minify: prod && {
+        removeComments: true,
+        collapseWhitespace: true,
+        removeAttributeQuotes: true,
+      },
       chunksSortMode: prod ? 'dependency' : 'auto',
+      // serviceWorkerLoader: `<script>${join(__dirname, 'tools/service-worker.js')}</script>`,
     }),
     new CopyWebpackPlugin([
       'assets/images/favicon.ico',
@@ -111,12 +123,19 @@ module.exports = ({ prod = false } = {}) => ({
       children: true,
       minChunks: 3,
     }),
+    // prod && new SWPrecacheWebpackPlugin({
+    //   cacheId: pkg.name,
+    //   filename: 'service-worker.js',
+    //   staticFileGlobs: ['build/**/*.{js,html,css}'],
+    //   minify: true,
+    //   stripPrefix: DIST_ROOT,
+    // }),
     !prod && new webpack.HotModuleReplacementPlugin(),
     !prod && new webpack.NamedModulesPlugin(),
     !prod && new webpack.NoEmitOnErrorsPlugin(),
   ].filter(Boolean),
   devServer: {
-    contentBase: join(__dirname, 'build'),
+    contentBase: DIST_ROOT,
     historyApiFallback: true,
     hot: true,
     inline: true,
