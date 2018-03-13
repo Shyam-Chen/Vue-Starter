@@ -6,5 +6,5 @@ export default {
   },
   [FAILURE](state, error) {
     console.error(error.message);
-  }
+  },
 };

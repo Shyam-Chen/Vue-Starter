@@ -14,14 +14,15 @@
     <!-- Add -->
     <v-layout row>
       <div>
-        <v-text-field name="add-text" label="Add Text"></v-text-field>
+        <v-text-field v-model="$b.addData.primary" name="primary" label="Primary"></v-text-field>
+        <v-text-field v-model="$b.addData.accent" name="accent" label="Accent"></v-text-field>
       </div>
-      <v-btn>Add</v-btn>
+      <v-btn @click="addItem($b.addData)">Add</v-btn>
     </v-layout>
 
     <!-- Display -->
     <v-layout row>
-      <v-data-table class="elevation-1" :headers="$b.headers" :items="$b.dataset">
+      <v-data-table :headers="$b.headers" :items="$b.dataset" class="elevation-1">
         <template slot="items" slot-scope="props">
           <td>{{ props.item.id }}</td>
           <td>{{ props.item.primary }}</td>
@@ -38,11 +39,26 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+
+import { INITIAL as state, ADD_ITEM } from './constants';
+import actions from './actions';
+import mutations from './mutations';
+import getters from './getters';
+
 export default {
   computed: {
     $b() {
       return this.$store.state.basic;
     },
+  },
+  created() {
+    this.$store.registerModule('basic', { state, actions, mutations, getters });
+  },
+  methods: {
+    ...mapActions({
+      addItem: ADD_ITEM,
+    }),
   },
 };
 </script>
