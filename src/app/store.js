@@ -20,6 +20,7 @@ const store = new Vuex.Store({
   mutations,
   getters,
   modules: {
+    crudOperations: { namespaced: true },
     rest,
     graphql,
     formControls,

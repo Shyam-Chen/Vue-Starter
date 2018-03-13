@@ -15,8 +15,3 @@ export const INITIAL = {
 
   addData: { primary: '', accent: '' },
 };
-
-export const ADD_ITEM = '[Basic] ADD_ITEM';
-export const SEARCH_ITEM = '[Basic] SEARCH_ITEM';
-export const EDIT_ITEM = '[Basic] EDIT_ITEM';
-export const DELETE_ITEM = '[Basic] DELETE_ITEM';

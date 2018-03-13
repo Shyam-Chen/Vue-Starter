@@ -13,8 +13,10 @@
 
     <!-- Add -->
     <v-layout row>
-      <div>
+      <div class="text-field">
         <v-text-field v-model="$b.addData.primary" name="primary" label="Primary"></v-text-field>
+      </div>
+      <div class="text-field">
         <v-text-field v-model="$b.addData.accent" name="accent" label="Accent"></v-text-field>
       </div>
       <v-btn @click="addItem($b.addData)">Add</v-btn>
@@ -41,7 +43,7 @@
 <script>
 import { mapActions } from 'vuex';
 
-import { INITIAL as state, ADD_ITEM } from './constants';
+import { INITIAL as state } from './constants';
 import actions from './actions';
 import mutations from './mutations';
 import getters from './getters';
@@ -49,19 +51,23 @@ import getters from './getters';
 export default {
   computed: {
     $b() {
-      return this.$store.state.basic;
+      return this.$store.state.crudOperations.basic;
     },
   },
   created() {
-    this.$store.registerModule('basic', { state, actions, mutations, getters });
+    this.$store.registerModule(
+      ['crudOperations', 'basic'],
+      { namespaced: true, state, actions, mutations, getters },
+    );
   },
   methods: {
-    ...mapActions({
-      addItem: ADD_ITEM,
-    }),
+    ...mapActions('crudOperations/basic', ['addItem']),
   },
 };
 </script>
 
 <style scoped>
+.text-field {
+  margin: auto .33rem;
+}
 </style>
