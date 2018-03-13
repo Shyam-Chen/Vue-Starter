@@ -43,10 +43,10 @@ export default {
   },
   deleteItem({ dispatch, state }, _id) {
     state.deleteData.dialog = false;
-    state.loading = true
+    state.loading = true;
 
     axios.delete(`${API_LIST}/${_id}`)
       .then(() => dispatch('searchItem'))
       .catch(error => dispatch('failure', error));
-  }
+  },
 };

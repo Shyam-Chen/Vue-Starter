@@ -1,10 +1,8 @@
-import { INCREMENT, DECREMENT } from './constants';
-
 export default {
-  [INCREMENT](state) {
+  increment(state) {
     state.value += 1;
   },
-  [DECREMENT](state) {
+  decrement(state) {
     state.value -= 1;
   },
 };

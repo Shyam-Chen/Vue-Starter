@@ -3,7 +3,6 @@ import Vuex from 'vuex';
 import createLogger from 'vuex/dist/logger';
 
 import { formControls } from '~/form-controls';
-import { counter } from '~/playground/counter';
 
 import { INITIAL as state } from './constants';
 import actions from './actions';
@@ -20,7 +19,6 @@ const store = new Vuex.Store({
   modules: {
     crudOperations: { namespaced: true },
     formControls,
-    counter,
   },
   plugins: [
     process.env.NODE_ENV === 'development' && createLogger({ collapsed: false }),

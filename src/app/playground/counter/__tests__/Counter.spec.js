@@ -1,7 +1,6 @@
 import Vuex from 'vuex';
 import { createLocalVue, shallow } from '@vue/test-utils';
 
-import { INITIAL, INCREMENT, DECREMENT } from '../constants';
 import Counter from '../Counter';
 
 const localVue = createLocalVue();
@@ -13,7 +12,7 @@ describe('Counter', () => {
   let [state, actions, mutations, getters] = [];
 
   beforeEach(() => {
-    state = INITIAL;
+    state = { value: 0 };
 
     actions = {
       increment: jest.fn(),
@@ -25,8 +24,8 @@ describe('Counter', () => {
     };
 
     mutations = {
-      [INCREMENT]: jest.fn(),
-      [DECREMENT]: jest.fn(),
+      increment: jest.fn(),
+      decrement: jest.fn(),
     };
 
     getters = {

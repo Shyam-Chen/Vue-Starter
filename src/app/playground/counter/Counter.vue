@@ -1,21 +1,22 @@
 <script>
 import { mapActions, mapGetters } from 'vuex';
 
+import { INITIAL as state } from './constants';
+import actions from './actions';
+import mutations from './mutations';
+import getters from './getters';
+
 export default {
-  methods: mapActions([
-    'increment',
-    'decrement',
-    'incrementAsync',
-    'decrementAsync',
-    'incrementIfOdd',
-    'decrementIfEven',
-  ]),
   computed: {
     $c() {
       return this.$store.state.counter;
     },
-    ...mapGetters(['evenOrOdd']),
+    ...mapGetters('counter', Object.keys(getters)),
   },
+  created() {
+    this.$store.registerModule('counter', { namespaced: true, state, actions, mutations, getters });
+  },
+  methods: mapActions('counter', Object.keys(actions)),
   render() {
     return (
       <v-layout row wrap>

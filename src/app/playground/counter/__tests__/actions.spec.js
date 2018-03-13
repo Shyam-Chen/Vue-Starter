@@ -1,10 +1,9 @@
 import actions from '../actions';
-import { INCREMENT, DECREMENT } from '../constants';
 
 describe('actions', () => {
   it('should handle increment', () => {
     const commit = (type, payload) => {
-      expect(type).toBe(INCREMENT);
+      expect(type).toBe('increment');
       expect(payload).toBeUndefined();
     };
 
@@ -13,7 +12,7 @@ describe('actions', () => {
 
   it('should handle decrement', () => {
     const commit = (type, payload) => {
-      expect(type).toBe(DECREMENT);
+      expect(type).toBe('decrement');
       expect(payload).toBeUndefined();
     };
 
@@ -22,7 +21,7 @@ describe('actions', () => {
 
   it('should handle incrementAsync', () => {
     const commit = (type, payload) => {
-      expect(type).toBe(INCREMENT);
+      expect(type).toBe('increment');
       expect(payload).toBeUndefined();
     };
 
@@ -31,7 +30,7 @@ describe('actions', () => {
 
   it('should handle decrementAsync', () => {
     const commit = (type, payload) => {
-      expect(type).toBe(DECREMENT);
+      expect(type).toBe('decrement');
       expect(payload).toBeUndefined();
     };
 
@@ -40,7 +39,7 @@ describe('actions', () => {
 
   it('should handle incrementIfOdd', () => {
     const commit = (type, payload) => {
-      expect(type).toBe(INCREMENT);
+      expect(type).toBe('increment');
       expect(payload).toBeUndefined();
     };
 
@@ -51,7 +50,7 @@ describe('actions', () => {
 
   it('should handle decrementIfEven', () => {
     const commit = (type, payload) => {
-      expect(type).toBe(DECREMENT);
+      expect(type).toBe('decrement');
       expect(payload).toBeUndefined();
     };
 

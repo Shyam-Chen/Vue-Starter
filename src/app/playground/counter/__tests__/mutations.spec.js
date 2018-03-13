@@ -1,5 +1,4 @@
 import mutations from '../mutations';
-import { INCREMENT, DECREMENT } from '../constants';
 
 describe('mutations', () => {
   let [state] = [];
@@ -9,13 +8,13 @@ describe('mutations', () => {
   });
 
   it('should handle increment', () => {
-    const increment = mutations[INCREMENT];
+    const { increment } = mutations;
     increment(state);
     expect(state.value).toEqual(1);
   });
 
   it('should handle decrement', () => {
-    const decrement = mutations[DECREMENT];
+    const { decrement } = mutations;
     decrement(state);
     expect(state.value).toEqual(-1);
   });

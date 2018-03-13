@@ -48,6 +48,7 @@
     // Stylistic Issues
     "function-paren-newline": "off",
     "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
+    "no-underscore-dangle": "off",
     "object-curly-newline": ["error", { "consistent": true }]
 
     // JS.Next
