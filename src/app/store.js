@@ -2,8 +2,6 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import createLogger from 'vuex/dist/logger';
 
-import { rest } from '~/crud-operations/rest';
-import { graphql } from '~/crud-operations/graphql';
 import { formControls } from '~/form-controls';
 import { counter } from '~/playground/counter';
 
@@ -21,8 +19,6 @@ const store = new Vuex.Store({
   getters,
   modules: {
     crudOperations: { namespaced: true },
-    rest,
-    graphql,
     formControls,
     counter,
   },

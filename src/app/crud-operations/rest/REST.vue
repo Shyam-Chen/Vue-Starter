@@ -70,7 +70,12 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex';
+import { mapActions } from 'vuex';
+
+import { INITIAL as state } from './constants';
+import actions from './actions';
+import mutations from './mutations';
+import getters from './getters';
 
 export default {
   data() {
@@ -81,14 +86,24 @@ export default {
       ],
     };
   },
+  computed: {
+    $r() {
+      return this.$store.state.crudOperations.rest;
+    },
+  },
+  created() {
+    this.$store.registerModule(
+      ['crudOperations', 'rest'],
+      { namespaced: true, state, actions, mutations, getters },
+    );
+  },
   methods: {
-    ...mapActions([
+    ...mapActions('crudOperations/rest', [
       'addItem',
       'searchItem',
       'editItem',
       'deleteItem',
     ]),
-
     onOpenEdit(item) {
       this.$r.editData.dialog = true;
       this.$r.editData._id = item._id;
@@ -97,11 +112,6 @@ export default {
     onOpenDelete(_id) {
       this.$r.deleteData.dialog = true;
       this.$r.deleteData._id = _id;
-    },
-  },
-  computed: {
-    $r() {
-      return this.$store.state.rest;
     },
   },
 };
