@@ -36,9 +36,10 @@ Observable
     import('~/crud-operations/graphql'),
   )
   .subscribe((result) => {
-    store.registerModule('basic', result[0].basic);
-    store.registerModule('rest', result[1].rest);
-    store.registerModule('graphql', result[2].graphql);
+    result.forEach((item) => {
+      const key = Object.keys(item)[1];
+      store.registerModule(key, item[key]);
+    });
   });
 
 /** @name form-controls */
