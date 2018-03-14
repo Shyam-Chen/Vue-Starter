@@ -1,5 +1,7 @@
 import actions from '../actions';
 
+jest.useFakeTimers();
+
 describe('actions', () => {
   it('should handle increment', () => {
     const commit = (type, payload) => {
@@ -38,24 +40,38 @@ describe('actions', () => {
   });
 
   it('should handle incrementIfOdd', () => {
-    const commit = (type, payload) => {
-      expect(type).toBe('increment');
-      expect(payload).toBeUndefined();
-    };
+    actions.incrementIfOdd({
+      commit(type, payload) {
+        expect(type).toBe('increment');
+        expect(payload).toBeUndefined();
+      },
+      state: { value: 1 },
+    });
 
-    const state = { value: 1 };
-
-    actions.decrementAsync({ commit, state });
+    actions.incrementIfOdd({
+      commit(type, payload) {
+        expect(type).toBeUndefined();
+        expect(payload).toBeUndefined();
+      },
+      state: { value: 2 },
+    });
   });
 
   it('should handle decrementIfEven', () => {
-    const commit = (type, payload) => {
-      expect(type).toBe('decrement');
-      expect(payload).toBeUndefined();
-    };
+    actions.decrementIfEven({
+      commit(type, payload) {
+        expect(type).toBe('decrement');
+        expect(payload).toBeUndefined();
+      },
+      state: { value: 0 },
+    });
 
-    const state = { value: 0 };
-
-    actions.decrementAsync({ commit, state });
+    actions.decrementIfEven({
+      commit(type, payload) {
+        expect(type).toBeUndefined();
+        expect(payload).toBeUndefined();
+      },
+      state: { value: 1 },
+    });
   });
 });
