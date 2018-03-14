@@ -1,13 +1,13 @@
 import axios from 'axios';
 
-import { API_LIST, SUCCESS, FAILURE } from './constants';
+import { API_LIST } from './constants';
 
 export default {
   success({ commit }, data) {
-    commit(SUCCESS, data);
+    commit('success', data);
   },
   failure({ commit }, error) {
-    commit(FAILURE, error);
+    commit('failure', error);
   },
 
   addItem({ dispatch, state }, text) {

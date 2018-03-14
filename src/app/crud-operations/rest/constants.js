@@ -8,6 +8,3 @@ export const INITIAL = {
   deleteData: { _id: 0, dialog: false },
   loading: false,
 };
-
-export const SUCCESS = '[REST] SUCCESS';
-export const FAILURE = '[REST] FAILURE';
