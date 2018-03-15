@@ -1,35 +1,81 @@
 export const INITIAL = {
   drawer: null,
   navigation: [
-    { icon: 'contacts', text: 'Contacts' },
-    { icon: 'history', text: 'Frequently contacted' },
-    { icon: 'content_copy', text: 'Duplicates' },
+    { icon: 'loyalty', text: 'Overview', route: '/' },
     {
-      icon: 'keyboard_arrow_up',
-      'icon-alt': 'keyboard_arrow_down',
-      text: 'Labels',
+      icon: 'business',
+      text: 'CRUD Operations',
       model: false,
       children: [
-        { icon: 'add', text: 'Create label' },
+        { text: 'Basic', route: '/basic' },
+        { text: 'REST', route: '/rest' },
+        { text: 'GraphQL', disabled: true },
       ],
     },
     {
-      icon: 'keyboard_arrow_up',
-      'icon-alt': 'keyboard_arrow_down',
-      text: 'More',
+      icon: 'contacts',
+      text: 'Form Controls',
       model: false,
       children: [
-        { icon: 'history', text: 'Import' },
-        { icon: 'history', text: 'Export' },
-        { icon: 'history', text: 'Print' },
-        { icon: 'history', text: 'Undo changes' },
-        { icon: 'history', text: 'Other contacts' },
+        { text: 'Template-driven', route: '/form-controls/template-driven' },
+        { text: 'Reactive', disabled: true },
       ],
     },
-    { icon: 'settings', text: 'Settings' },
-    { icon: 'chat_bubble', text: 'Send feedback' },
-    { icon: 'help', text: 'Help' },
-    { icon: 'phonelink', text: 'App downloads' },
-    { icon: 'keyboard', text: 'Go to the old version' },
+    {
+      icon: 'dashboard',
+      text: 'Data Table',
+      model: false,
+      children: [
+        { text: 'Basic', disabled: true },
+        { text: 'REST', disabled: true },
+        { text: 'GraphQL', disabled: true },
+      ],
+    },
+    {
+      icon: 'language',
+      text: 'Globalization',
+      model: false,
+      children: [
+        { text: 'Internationalization', route: '/i18n' },
+        { text: 'Localization', disabled: true },
+      ],
+    },
+    {
+      icon: 'verified_user',
+      text: 'Authorization',
+      model: false,
+      children: [
+        { text: 'REST', disabled: true },
+        { text: 'GraphQL', disabled: true },
+      ],
+    },
+    {
+      icon: 'multiline_chart',
+      text: 'Data Chart',
+      model: false,
+      children: [
+        { text: 'SVG', disabled: true },
+        { text: 'Canvas', disabled: true },
+        { text: 'WebGL', disabled: true },
+      ],
+    },
+    {
+      icon: 'av_timer',
+      text: 'Realtime',
+      model: false,
+      children: [
+        { text: 'Socket.IO', disabled: true },
+        { text: 'GraphQL Subscriptions', disabled: true },
+      ],
+    },
+    {
+      icon: 'toys',
+      text: 'Playground',
+      model: false,
+      children: [
+        { text: 'Counter', route: '/counter' },
+        { text: 'QR Code', disabled: true },
+      ],
+    },
   ],
 };

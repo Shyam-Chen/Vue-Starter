@@ -28,32 +28,37 @@ module.exports = ({ prod = false } = {}) => ({
       {
         test: /\.vue$/,
         use: ['vue-loader'],
-      }, {
+      },
+      {
         test: /\.js$/,
         exclude: /node_modules/,
         use: ['babel-loader'],
-      }, {
+      },
+      {
         test: /\.css$/,
         use: [
           'style-loader',
           { loader: 'css-loader', options: { importLoaders: 1 } },
           'postcss-loader',
         ],
-      }, {
+      },
+      {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',
         options: {
           limit: 10000,
           name: posix.join('assets', 'images/[name].[hash].[ext]'),
         },
-      }, {
+      },
+      {
         test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
         loader: 'url-loader',
         options: {
           limit: 10000,
           name: posix.join('assets', 'medias/[name].[hash].[ext]'),
         },
-      }, {
+      },
+      {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
         loader: 'url-loader',
         options: {
