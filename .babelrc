@@ -44,7 +44,15 @@
         "flow"
       ],
       "plugins": [
-        "transform-runtime"
+        "transform-runtime",
+        [
+          "babel-plugin-root-import", [
+            {
+              "rootPathPrefix": "~",
+              "rootPathSuffix": "src/api"
+            }
+          ]
+        ]
       ]
     }
   }
