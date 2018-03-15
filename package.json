@@ -83,6 +83,7 @@
     "eslint-plugin-flowtype": "2.46.1",
     "eslint-plugin-import": "2.9.0",
     "eslint-plugin-vue": "4.3.0",
+    "file-loader": "1.1.11",
     "firebase-tools": "3.17.5",
     "flow-bin": "0.66.0",
     "flow-typed": "2.3.0",

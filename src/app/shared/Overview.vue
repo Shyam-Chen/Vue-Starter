@@ -1,8 +1,12 @@
 <script>
+import logo from '~assets/images/vue.png';
+
 export default {
   render() {
     return (
       <v-layout column>
+        <img src={logo} alt="Vue Logo" width="300" height="300" />
+
         <v-layout column>
           <div class="headline">CRUD Operations</div>
           <div>
