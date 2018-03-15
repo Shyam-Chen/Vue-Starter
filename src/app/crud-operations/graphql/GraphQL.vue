@@ -1,9 +1,11 @@
 <template>
   <v-layout column>
-    <div class="display-1">GraphQL</div>
-      <div>
-        ...
-      </div>
+    <div class="headline">CRUD Operations - GraphQL</div>
+
+    <v-layout row>
+      ...
+    </v-layout>
+
   </v-layout>
 </template>
 

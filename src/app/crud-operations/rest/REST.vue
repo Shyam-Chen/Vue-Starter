@@ -1,25 +1,22 @@
 <template>
-  <v-layout row wrap>
+  <v-layout column>
+    <div class="headline">CRUD Operations - REST</div>
 
     <!-- Search -->
-    <v-flex xs12>
-      <v-layout row>
-        <div>
-          <v-text-field name="search-text" label="Search Text" v-model="$r.searchData.text"></v-text-field>
-        </div>
-        <v-btn @click="searchItem($r.searchData.text)">Search</v-btn>
-      </v-layout>
-    </v-flex>
+    <v-layout row>
+      <div>
+        <v-text-field name="search-text" label="Search Text" v-model="$r.searchData.text"></v-text-field>
+      </div>
+      <v-btn @click="searchItem($r.searchData.text)">Search</v-btn>
+    </v-layout>
 
     <!-- Add -->
-    <v-flex xs12>
-      <v-layout row>
-        <div>
-          <v-text-field name="add-text" label="Add Text" v-model="$r.addData.text"></v-text-field>
-        </div>
-        <v-btn class="md-raised md-primary" @click="addItem($r.addData.text)">Add</v-btn>
-      </v-layout>
-    </v-flex>
+    <v-layout row>
+      <div>
+        <v-text-field name="add-text" label="Add Text" v-model="$r.addData.text"></v-text-field>
+      </div>
+      <v-btn class="md-raised md-primary" @click="addItem($r.addData.text)">Add</v-btn>
+    </v-layout>
 
     <!-- Display -->
     <v-flex xs12>

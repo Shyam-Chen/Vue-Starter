@@ -1,12 +1,14 @@
 <template>
   <v-layout column>
-
-    <div class="display-1">CRUD Operations - Basic</div>
+    <div class="headline">CRUD Operations - Basic</div>
 
     <!-- Search -->
     <v-layout row>
-      <div>
-        <v-text-field name="search-text" label="Search Text"></v-text-field>
+      <div class="text-field">
+        <v-text-field name="search-text" label="Primary"></v-text-field>
+      </div>
+      <div class="text-field">
+        <v-text-field name="search-text" label="Accent"></v-text-field>
       </div>
       <v-btn>Search</v-btn>
     </v-layout>
@@ -24,7 +26,7 @@
 
     <!-- Display -->
     <v-layout row>
-      <v-data-table :headers="$b.headers" :items="$b.dataset" class="elevation-1">
+      <v-data-table :headers="$b.headers" :items="$b.dataset" hide-actions class="elevation-1">
         <template slot="items" slot-scope="props">
           <td>{{ props.item.id }}</td>
           <td>{{ props.item.primary }}</td>
