@@ -1,85 +1,94 @@
 <template>
-  <div>
-    <h1>Template-driven</h1>
+  <v-layout column>
+    <div class="headline">Form Controls - Template-driven</div>
 
-    <div class="md-elevation-2">
-      <form class="form">
-        <div class="row">
-          <!-- input -->
-          <div>
-            <v-text-field name="nickname" label="Nickname" v-model="nickname"></v-text-field>
-          </div>
+    <form>
 
-          <div class="outputs">
-            {{ $td.nickname }}
-          </div>
+      <!-- input -->
+      <v-layout row>
+        <div>
+          <v-text-field name="nickname" label="Nickname" v-model="nickname"></v-text-field>
         </div>
+        <div class="outputs">{{ $td.nickname }}</div>
+      </v-layout>
 
-        <div class="row">
-          <!-- select -->
-          <div>
-            <v-select :items="$td.dessertList" v-model="dessert" label="Dessert" style="width: 167px" single-line bottom></v-select>
-          </div>
-
-          <div class="outputs">
-            {{ $td.dessert }}
-          </div>
+      <!-- select -->
+      <v-layout row>
+        <div>
+          <v-layout column>
+            <div class="body-1">Dessert</div>
+            <div>
+              <v-select :items="$td.dessertList" v-model="dessert" label="Choose a dessert" style="width: 167px" single-line bottom></v-select>
+            </div>
+          </v-layout>
         </div>
+        <div class="outputs">{{ $td.dessert }}</div>
+      </v-layout>
 
-        <div class="row">
-          <!-- multiple select -->
-          <div>
-            <v-select :items="$td.statesList" v-model="states" label="States" style="width: 300px" multiple chips single-line bottom></v-select>
-          </div>
-
-          <div class="outputs">
-            {{ $td.states }}
-          </div>
+      <!-- multiple select -->
+      <v-layout row>
+        <div>
+          <v-layout column>
+            <div class="body-1">States</div>
+            <div>
+              <v-select :items="$td.statesList" v-model="states" label="Select States" style="width: 300px" multiple chips single-line bottom></v-select>
+            </div>
+          </v-layout>
         </div>
+        <div class="outputs">{{ $td.states }}</div>
+      </v-layout>
 
-        <div class="row">
-          <!-- checkboxes -->
-          <div>
-            <v-layout row wrap>
-              <v-checkbox style="width: 10rem" v-for="item in $td.technologiesList" :key="item" :label="item" :value="item" v-model="technologies"></v-checkbox>
-            </v-layout>
-          </div>
-
-          <div class="outputs">
-            {{ $td.technologies }}
-          </div>
+      <!-- checkboxes -->
+      <v-layout row>
+        <div>
+          <v-layout column>
+            <div class="body-1">Technologies</div>
+            <div>
+              <v-layout row wrap>
+                <v-checkbox style="width: 10rem" v-for="item in $td.technologiesList" :key="item" :label="item" :value="item" v-model="technologies"></v-checkbox>
+              </v-layout>
+            </div>
+          </v-layout>
         </div>
+        <div class="outputs">{{ $td.technologies }}</div>
+      </v-layout>
 
-        <div class="row">
-          <!-- radios -->
-          <div>
-            <v-radio-group row style="width: 300px" v-model="gender">
-              <v-radio v-for="item in $td.genderList" :key="item" :label="item" :value="item"></v-radio>
-            </v-radio-group>
-          </div>
-
-          <div class="outputs">
-            {{ $td.gender }}
-          </div>
+      <!-- radios -->
+      <v-layout row>
+        <div>
+          <v-layout column>
+            <div class="body-1">Gender</div>
+            <div>
+              <v-radio-group row style="width: 300px" v-model="gender">
+                <v-radio v-for="item in $td.genderList" :key="item" :label="item" :value="item"></v-radio>
+              </v-radio-group>
+            </div>
+          </v-layout>
         </div>
+        <div class="outputs">{{ $td.gender }}</div>
+      </v-layout>
 
-        <div class="row">
-          <!-- switch -->
-          <div>
-            <v-switch label="Autoplay" style="width: 120px" v-model="autoplay"></v-switch>
-          </div>
-
-          <div class="outputs">
-            {{ $td.autoplay }}
-          </div>
+      <!-- switch -->
+      <v-layout row>
+        <div>
+          <v-layout column>
+            <div class="body-1">Video Player</div>
+            <div>
+              <v-switch label="Autoplay" style="width: 120px" v-model="autoplay"></v-switch>
+            </div>
+          </v-layout>
         </div>
+        <div class="outputs">{{ $td.autoplay }}</div>
+      </v-layout>
 
-        <div class="row">
-          ...
-        </div>
-      </form>
-    </div>
-  </div>
+      <!-- next -->
+      <v-layout row>
+        ...
+      </v-layout>
+
+    </form>
+
+  </v-layout>
 </template>
 
 <script>
@@ -103,10 +112,6 @@ export default {
 </script>
 
 <style scoped>
-.form {
-  padding: 1rem;
-  background: #FFFFFF;
-}
 
 .row {
   padding: .66rem;
