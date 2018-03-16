@@ -51,12 +51,11 @@ export const INITIAL = {
     },
     {
       icon: 'multiline_chart',
-      text: 'Data Chart',
+      text: 'Data Visualization',
       model: false,
       children: [
-        { text: 'SVG', disabled: true },
-        { text: 'Canvas', disabled: true },
-        { text: 'WebGL', disabled: true },
+        { text: 'Chart', disabled: true },
+        { text: 'Map', disabled: true },
       ],
     },
     {
@@ -74,6 +73,8 @@ export const INITIAL = {
       model: false,
       children: [
         { text: 'Counter', route: '/counter' },
+        { text: 'Calendar', disabled: true },
+        { text: 'Media', disabled: true },
         { text: 'QR Code', disabled: true },
       ],
     },

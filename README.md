@@ -75,10 +75,9 @@ $ yarn test:api
 * [ ] Authorization
   * [ ] REST (`axios`)
   * [ ] GraphQL (`vue-apollo`)
-* [ ] Data Chart
-  * [ ] SVG (`d3`)
-  * [ ] Canvas (`d3`)
-  * [ ] WebGL (`three`)
+* [ ] Data Visualization
+  * [ ] Chart (`vue-chartjs`)
+  * [ ] Map
 * [ ] Realtime
   * [ ] Socket.IO (`socket.io`)
   * [ ] GraphQL Subscriptions (`graphql-subscriptions`)
@@ -86,4 +85,6 @@ $ yarn test:api
   * [x] Counter
     * [x] State Management (`vuex`)
     * [x] Asynchronous (`rxjs`)
-  * [ ] ...
+  * [ ] Calendar
+  * [ ] Media
+  * [ ] QR Code

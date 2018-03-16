@@ -6,7 +6,7 @@ import Overview from '~/shared/Overview';
 
 Vue.use(Router);
 
-export default new Router({
+const router = new Router({
   mode: 'history',
   routes: [
     { path: '/', component: Overview },
@@ -45,3 +45,5 @@ export default new Router({
     { path: '*', component: NotFound },
   ],
 });
+
+export default router;
