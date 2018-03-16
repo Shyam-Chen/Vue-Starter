@@ -1,8 +1,19 @@
-version: "2"
+version: "3"
 
 services:
+
   app:
-    build: .
+    image: app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    hostname: app
     ports:
       - "8000:8000"
+      - "3000:3000"
+    volumes:
+      - yarn:/home/node/.cache/yarn
     tty: true
+
+volumes:
+  yarn:
