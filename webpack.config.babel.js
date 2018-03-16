@@ -1,18 +1,17 @@
-const { join, posix } = require('path');
-const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
-// const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
+import { join, posix } from 'path';
+import webpack from 'webpack';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import CopyWebpackPlugin from 'copy-webpack-plugin';
+import UglifyJSPlugin from 'uglifyjs-webpack-plugin';
+// import SWPrecacheWebpackPlugin from 'sw-precache-webpack-plugin';
 
-// const pkg = require('./package.json');
-
-const API_URL = process.env.API_URL || 'https://web-go-demo.herokuapp.com';
+// import pkg from './package.json';
+import { API_URL } from './src/env';
 
 const SOURCE_ROOT = join(__dirname, 'src');
 const DIST_ROOT = join(__dirname, 'build');
 
-module.exports = ({ prod = false } = {}) => ({
+export default ({ prod = false } = {}) => ({
   context: SOURCE_ROOT,
   entry: {
     client: './client.js',

@@ -9,9 +9,9 @@ import history from 'express-history-api-fallback';
 // import Vue from 'vue';
 // import { createRenderer } from 'vue-server-renderer';
 
-const app = express();
+import { PORT } from './env';
 
-app.set('port', process.env.PORT || 3000);
+const app = express();
 
 app.use(compression());
 app.use(cors({ origin: true }));
@@ -48,9 +48,9 @@ if (process.env.NODE_ENV === 'production') {
   // });
 }
 
-const server = app.listen(app.get('port'), () => {
-  console.log('App: Bootstrap Succeeded.');
-  console.log(`Port: ${app.get('port')}.`);
+const server = app.listen(PORT, () => {
+  console.log(' [*] App: Bootstrap Succeeded.');
+  console.log(` [*] Host: http://localhost:${PORT}/.`);
 });
 
 export default server;
