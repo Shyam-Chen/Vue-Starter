@@ -3,7 +3,7 @@
 [ignore]
 .*/node_modules/*
 .*\.spec\.js
-.*\.e2e-spec\.js
+.*\.e2e\.spec\.js
 
 [libs]
 flow-typed/
@@ -11,3 +11,4 @@ flow-typed/
 [lints]
 
 [options]
+include_warnings=true

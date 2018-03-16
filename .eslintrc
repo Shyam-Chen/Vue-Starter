@@ -1,7 +1,8 @@
 {
   "plugins": [
     "vue",
-    "flowtype"
+    "flowtype",
+    "flowtype-errors"
   ],
   "env": {
     "browser": true,
@@ -39,6 +40,9 @@
 
     "vue/max-attributes-per-line": "off",
     "vue/html-self-closing": "off",
+
+    "flowtype-errors/show-errors": "error",
+    "flowtype-errors/show-warnings": "warn",
 
     // Possible Errors
 
