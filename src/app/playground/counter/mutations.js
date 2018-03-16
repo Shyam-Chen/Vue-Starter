@@ -1,8 +1,12 @@
+// @flow
+
+import { ICounter } from './constants';
+
 export default {
-  increment(state) {
+  increment(state: ICounter): void {
     state.value += 1;
   },
-  decrement(state) {
+  decrement(state: ICounter): void {
     state.value -= 1;
   },
 };

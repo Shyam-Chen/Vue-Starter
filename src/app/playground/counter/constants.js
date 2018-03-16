@@ -4,4 +4,4 @@ export interface ICounter {
   value: number;
 }
 
-export const INITIAL = { value: 0 };
+export const INITIAL: ICounter = { value: 0 };

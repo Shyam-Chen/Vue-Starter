@@ -1,3 +1,5 @@
+// @flow
+
 import { Observable } from 'rxjs';
 import { of } from 'rxjs/observable';
 import { delay, filter } from 'rxjs/operator';

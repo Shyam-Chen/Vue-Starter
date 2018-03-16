@@ -1,14 +1,16 @@
 <script>
+// @flow
+
 import { mapActions, mapGetters } from 'vuex';
 
-import { INITIAL as state } from './constants';
+import { ICounter, INITIAL as state } from './constants';
 import actions from './actions';
 import mutations from './mutations';
 import getters from './getters';
 
 export default {
   computed: {
-    $c() {
+    $c(): ICounter {
       return this.$store.state.counter;
     },
     ...mapGetters('counter', Object.keys(getters)),
@@ -16,7 +18,9 @@ export default {
   created() {
     this.$store.registerModule('counter', { namespaced: true, state, actions, mutations, getters });
   },
-  methods: mapActions('counter', Object.keys(actions)),
+  methods: {
+    ...mapActions('counter', Object.keys(actions)),
+  },
   render() {
     return (
       <v-layout row wrap>
