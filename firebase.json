@@ -9,7 +9,7 @@
     "rules": "./tools/storage"
   },
   "hosting": {
-    "public": "build",
+    "public": "public",
     "rewrites": [
       {
         "source": "**",
@@ -27,5 +27,8 @@
         ]
       }
     ]
+  },
+  "functions": {
+    "source": "functions"
   }
 }

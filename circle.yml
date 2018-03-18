@@ -34,25 +34,28 @@ jobs:
             docker-compose exec app yarn test:app
             docker-compose exec app yarn codecov --token=${CODECOV_TOKEN}
 
-      # - run:
-      #     name: Test cloud functions
-      #     command: |
-      #       docker-compose exec app yarn test:app
-      #       docker-compose exec app yarn codecov --token=${CODECOV_TOKEN}
+      - run:
+          name: Test cloud functions
+          command: |
+            docker-compose exec app yarn test:api
+            docker-compose exec app yarn codecov --token=${CODECOV_TOKEN}
 
       - run:
           name: Deploy the project
           command: |
             case "${CIRCLE_BRANCH}" in
               "develop" )
+                docker-compose exec app bash -c "cd functions && yarn install"
                 docker-compose exec app yarn firebase use default --token ${FIREBASE_TOKEN}
                 docker-compose exec app yarn firebase deploy --token ${FIREBASE_TOKEN}
                 ;;
               "staging" )
+                docker-compose exec app bash -c "cd functions && yarn install"
                 docker-compose exec app yarn firebase use staging --token ${FIREBASE_TOKEN}
                 docker-compose exec app yarn firebase deploy --token ${FIREBASE_TOKEN}
                 ;;
               "master" )
+                docker-compose exec app bash -c "cd functions && yarn install"
                 docker-compose exec app yarn firebase use production --token ${FIREBASE_TOKEN}
                 docker-compose exec app yarn firebase deploy --token ${FIREBASE_TOKEN}
                 ;;

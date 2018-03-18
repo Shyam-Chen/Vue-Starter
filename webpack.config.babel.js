@@ -10,7 +10,7 @@ import UglifyJSPlugin from 'uglifyjs-webpack-plugin';
 import { API_URL } from './src/env';
 
 const SOURCE_ROOT = join(__dirname, 'src');
-const DIST_ROOT = join(__dirname, 'build');
+const DIST_ROOT = join(__dirname, 'public');
 
 export default ({ prod = false } = {}) => ({
   context: SOURCE_ROOT,
@@ -132,9 +132,9 @@ export default ({ prod = false } = {}) => ({
     // prod && new SWPrecacheWebpackPlugin({
     //   cacheId: pkg.name,
     //   filename: 'service-worker.js',
-    //   staticFileGlobs: ['build/**/*.{js,html,css}'],
     //   minify: true,
-    //   stripPrefix: DIST_ROOT,
+    //   staticFileGlobs: [`${basename(DIST_ROOT)}/*`],
+    //   stripPrefix: `${basename(DIST_ROOT)}/`,
     // }),
     // prod && new PrerenderSpaPlugin(
     //   DIST_ROOT,

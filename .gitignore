@@ -1,6 +1,6 @@
 node_modules
 npm
-build
-dist
+public
+functions
 coverage
 *.log
