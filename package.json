@@ -40,7 +40,6 @@
     "graphql": "0.13.1",
     "graphql-tag": "2.8.0",
     "morgan": "1.9.0",
-    "pm2": "2.10.1",
     "rxjs": "5.5.6",
     "vue": "2.5.13",
     "vue-apollo": "3.0.0-beta.5",

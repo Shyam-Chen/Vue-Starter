@@ -8,7 +8,7 @@
 [![dependencies Status](https://david-dm.org/Shyam-Chen/Vue-Fullstack-Starter/status.svg)](https://david-dm.org/Shyam-Chen/Vue-Fullstack-Starter)
 [![devDependencies Status](https://david-dm.org/Shyam-Chen/Vue-Fullstack-Starter/dev-status.svg)](https://david-dm.org/Shyam-Chen/Vue-Fullstack-Starter?type=dev)
 
-[Live Demo (Firebase)](https://vue-by-example.firebaseapp.com/) | [Live Demo (Heroku)](https://vue-by-example.herokuapp.com/)
+[Live Demo](https://vue-by-example.firebaseapp.com/)
 
 ## Getting Started
 
