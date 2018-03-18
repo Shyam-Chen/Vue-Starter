@@ -4,6 +4,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import UglifyJSPlugin from 'uglifyjs-webpack-plugin';
 // import SWPrecacheWebpackPlugin from 'sw-precache-webpack-plugin';
+// import PrerenderSpaPlugin from 'prerender-spa-plugin';
 
 // import pkg from './package.json';
 import { API_URL } from './src/env';
@@ -135,6 +136,11 @@ export default ({ prod = false } = {}) => ({
     //   minify: true,
     //   stripPrefix: DIST_ROOT,
     // }),
+    // prod && new PrerenderSpaPlugin(
+    //   DIST_ROOT,
+    //   ['/'],
+    //   {},
+    // ),
     !prod && new webpack.HotModuleReplacementPlugin(),
     !prod && new webpack.NamedModulesPlugin(),
     !prod && new webpack.NoEmitOnErrorsPlugin(),
