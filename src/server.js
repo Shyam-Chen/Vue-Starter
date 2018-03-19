@@ -2,6 +2,7 @@ import * as functions from 'firebase-functions';
 import * as admin from 'firebase-admin';
 import express from 'express';
 import cors from 'cors';
+import bodyParser from 'body-parser';
 
 import routes from './api';
 
@@ -10,6 +11,8 @@ admin.initializeApp(functions.config().firebase);
 const app = express();
 
 app.use(cors({ origin: true }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/', routes);
 

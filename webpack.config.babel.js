@@ -7,7 +7,7 @@ import UglifyJSPlugin from 'uglifyjs-webpack-plugin';
 // import PrerenderSpaPlugin from 'prerender-spa-plugin';
 
 // import pkg from './package.json';
-import { API_URL } from './src/env';
+import { INJECT_APP } from './src/env';
 
 const SOURCE_ROOT = join(__dirname, 'src');
 const DIST_ROOT = join(__dirname, 'public');
@@ -95,7 +95,7 @@ export default ({ prod = false } = {}) => ({
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify(prod ? 'production' : 'development'),
-        API_URL: JSON.stringify(API_URL),
+        ...INJECT_APP,
       },
     }),
     prod && new UglifyJSPlugin({

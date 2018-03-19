@@ -16,4 +16,16 @@ router.get('/', (req, res) => {
     });
 });
 
+router.post('/', (req, res) => {
+  const { text } = req.body;
+
+  if (!text) {
+    res.status(400).json({ message: 'Please pass the text.' });
+  }
+
+  admin.firestore().collection('text-list')
+    .add({ text })
+    .then(() => res.status(200).json({ message: 'Data saved.' }));
+});
+
 export default router;
