@@ -1,5 +1,5 @@
 export default {
-  success(state, data) {
+  success(state, { data }) {
     state.dataset = data;
   },
   failure(state, error) {

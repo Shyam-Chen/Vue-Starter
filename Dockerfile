@@ -1,6 +1,6 @@
 FROM buildpack-deps:jessie
 
-ENV HOME /Vue-FullStarter-Kit
+ENV HOME /Vue-FullStarter-Kit-Develop
 
 WORKDIR ${HOME}
 ADD . $HOME
