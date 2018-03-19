@@ -44,7 +44,6 @@
         "flow"
       ],
       "plugins": [
-        "transform-runtime",
         [
           "babel-plugin-root-import", [
             {

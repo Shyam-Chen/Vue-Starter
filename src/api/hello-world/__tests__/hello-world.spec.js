@@ -9,7 +9,7 @@ functions.config = jest.fn(() => ({
   },
 }));
 
-const { helloWorld } = require('../../server');
+const { helloWorld } = require('../');
 
 describe('helloWorld', () => {
   it('returns a string', (done) => {
