@@ -1,10 +1,9 @@
+import * as functions from 'firebase-functions';
+import * as admin from 'firebase-admin';
 import express from 'express';
 import cors from 'cors';
 
 import routes from './api';
-
-const functions = require('firebase-functions');
-const admin = require('firebase-admin');
 
 admin.initializeApp(functions.config().firebase);
 

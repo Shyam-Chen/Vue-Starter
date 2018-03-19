@@ -34,6 +34,7 @@ $ yarn start:app
 
 # back-end
 $ yarn start:api
+$ firebase serve --only functions
 ```
 
 4. Build the Application
@@ -53,7 +54,7 @@ $ yarn build:api
 $ yarn test:app
 
 # back-end
-$ yarn test:api
+# $ yarn test:api
 ```
 
 ## Practical Examples
