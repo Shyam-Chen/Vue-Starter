@@ -20,6 +20,8 @@ RUN \
   rm -rf /var/lib/apt/lists/* && \
   rm -rf /src/*.deb
 
+ENV FUNC_URL https://us-central1-vue-by-example.cloudfunctions.net
+
 RUN yarn install
 
 RUN yarn build:app

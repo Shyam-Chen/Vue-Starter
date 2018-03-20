@@ -24,7 +24,7 @@
         <template slot="items" slot-scope="props">
           <td>{{ props.item.text }}</td>
           <td class="text-xs-right">
-            <v-btn flat color="error" @click.stop="onOpenDelete(props.item._id)">Delete</v-btn>
+            <v-btn flat color="error" @click.stop="onOpenDelete(props.item.id)">Delete</v-btn>
             <v-btn flat color="info" @click.stop="onOpenEdit(props.item)">Edit</v-btn>
           </td>
         </template>
@@ -39,7 +39,7 @@
           <v-card-text>Are you sure you want to delete it?</v-card-text>
           <v-card-actions>
             <v-btn color="success" flat @click.stop="$r.deleteData.dialog = false">Cancel</v-btn>
-            <v-btn color="error" flat @click.stop="deleteItem($r.deleteData._id)">Confirm</v-btn>
+            <v-btn color="error" flat @click.stop="deleteItem($r.deleteData.id)">Confirm</v-btn>
           </v-card-actions>
         </v-card>
       </v-dialog>
@@ -103,12 +103,12 @@ export default {
     ]),
     onOpenEdit(item) {
       this.$r.editData.dialog = true;
-      this.$r.editData._id = item._id;
+      this.$r.editData.id = item.id;
       this.$r.editData.text = item.text;
     },
-    onOpenDelete(_id) {
+    onOpenDelete(id) {
       this.$r.deleteData.dialog = true;
-      this.$r.deleteData._id = _id;
+      this.$r.deleteData.id = id;
     },
   },
 };

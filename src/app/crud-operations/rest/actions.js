@@ -36,16 +36,16 @@ export default {
       state.editData.dialog = false;
       state.loading = true;
 
-      axios.put(`${API_LIST}/${item._id}`, { text: item.text })
+      axios.put(`${API_LIST}/${item.id}`, { text: item.text })
         .then(() => dispatch('searchItem'))
         .catch(error => dispatch('failure', error));
     }
   },
-  deleteItem({ dispatch, state }, _id) {
+  deleteItem({ dispatch, state }, id) {
     state.deleteData.dialog = false;
     state.loading = true;
 
-    axios.delete(`${API_LIST}/${_id}`)
+    axios.delete(`${API_LIST}/${id}`)
       .then(() => dispatch('searchItem'))
       .catch(error => dispatch('failure', error));
   },
