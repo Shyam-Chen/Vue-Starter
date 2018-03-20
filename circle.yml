@@ -1,15 +1,12 @@
 version: 2
 
 jobs:
+
   build:
     docker:
       - image: circleci/node:8
 
     working_directory: ~/Vue-FullStarter-Kit
-
-    branches:
-      only:
-        - master
 
     steps:
       - checkout
