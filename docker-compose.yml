@@ -2,8 +2,8 @@ version: "3"
 
 services:
 
-  develop:
-    image: develop
+  default:
+    image: default
     build:
       context: .
       dockerfile: Dockerfile
@@ -15,17 +15,30 @@ services:
       - yarn:/home/node/.cache/yarn
     tty: true
 
-  staging:
-    image: staging
+  dev:
+    image: dev
     build:
       context: .
-      dockerfile: Dockerfile.staging
+      dockerfile: Dockerfile.dev
+    env_file: .env
+    ports:
+      - "8000:8000"
+      - "3000:3000"
     volumes:
       - yarn:/home/node/.cache/yarn
     tty: true
 
-  master:
-    image: master
+  stage:
+    image: stage
+    build:
+      context: .
+      dockerfile: Dockerfile.stage
+    volumes:
+      - yarn:/home/node/.cache/yarn
+    tty: true
+
+  prod:
+    image: prod
     build:
       context: .
       dockerfile: Dockerfile.prod

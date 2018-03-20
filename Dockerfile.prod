@@ -1,17 +1,17 @@
 FROM node:8
 
-ENV HOME /Vue-FullStarter-Kit-Master
+ENV HOME /Vue-FullStarter-Kit
 
 WORKDIR ${HOME}
 ADD . $HOME
 
-# .env --
-ENV FUNC_URL https://us-central1-vue-by-example.cloudfunctions.net
-# -- .env
-
 RUN yarn install
 
+# .env --
 ENV NODE_ENV production
+
+ENV FUNC_URL https://us-central1-vue-by-example.cloudfunctions.net
+# -- .env
 
 RUN yarn build:app
 RUN yarn build:api && cd functions && yarn install
