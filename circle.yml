@@ -18,43 +18,44 @@ jobs:
 
       - run:
           name: Start up containers
-          command: docker-compose up -d
+          command: docker-compose up -d develop
 
       - run:
           name: Build the application
-          command: docker-compose exec app yarn build:app
+          command: docker-compose exec develop yarn build:app
 
       - run:
           name: Build cloud functions
-          command: docker-compose exec app yarn build:api
+          command: docker-compose exec develop yarn build:api
 
       - run:
           name: Test the application
           command: |
-            docker-compose exec app yarn test:app
-            docker-compose exec app yarn codecov --token=${CODECOV_TOKEN}
+            docker-compose exec develop yarn test:app
+            docker-compose exec develop yarn codecov --token=${CODECOV_TOKEN}
 
       # - run:
       #     name: Test cloud functions
       #     command: |
-      #       docker-compose exec app yarn test:api
-      #       docker-compose exec app yarn codecov --token=${CODECOV_TOKEN}
+      #       docker-compose exec develop yarn test:api
+      #       docker-compose exec develop yarn codecov --token=${CODECOV_TOKEN}
 
       - run:
           name: Deploy the project
           command: |
             case "${CIRCLE_BRANCH}" in
               "develop" )
-                docker-compose exec app bash -c "cd functions && yarn install"
-                docker-compose exec app yarn firebase use default --token ${FIREBASE_TOKEN}
-                docker-compose exec app yarn firebase deploy --token ${FIREBASE_TOKEN}
+                docker-compose exec develop bash -c "cd functions && yarn install"
+                docker-compose exec develop yarn firebase use default --token ${FIREBASE_TOKEN}
+                docker-compose exec develop yarn firebase deploy --token ${FIREBASE_TOKEN}
                 ;;
               "staging" )
-                docker-compose exec app bash -c "cd functions && yarn install"
-                docker-compose exec app yarn firebase use staging --token ${FIREBASE_TOKEN}
-                docker-compose exec app yarn firebase deploy --token ${FIREBASE_TOKEN}
+                docker-compose up -d staging
+                docker-compose exec staging yarn firebase use staging --token ${FIREBASE_TOKEN}
+                docker-compose exec staging yarn firebase deploy --token ${FIREBASE_TOKEN}
                 ;;
               "master" )
+                docker-compose up -d master
                 docker-compose exec master yarn firebase use production --token ${FIREBASE_TOKEN}
                 docker-compose exec master yarn firebase deploy --token ${FIREBASE_TOKEN}
                 ;;

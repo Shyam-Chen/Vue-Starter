@@ -2,12 +2,11 @@ version: "3"
 
 services:
 
-  app:
-    image: app
+  develop:
+    image: develop
     build:
       context: .
       dockerfile: Dockerfile
-    hostname: app
     ports:
       - "8000:8000"
       - "3000:3000"
@@ -15,12 +14,27 @@ services:
       - yarn:/home/node/.cache/yarn
     tty: true
 
+  staging:
+    image: staging
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+      args:
+        - FIREBASE_TOKEN
+    volumes:
+      - yarn:/home/node/.cache/yarn
+    environment:
+      - SITE_URL=https://vue-by-example.firebaseapp.com
+      - FUNC_URL=https://us-central1-vue-by-example.cloudfunctions.net
+    tty: true
+
   master:
     image: master
     build:
       context: .
       dockerfile: Dockerfile.prod
-    hostname: master
+      args:
+        - FIREBASE_TOKEN
     volumes:
       - yarn:/home/node/.cache/yarn
     environment:
