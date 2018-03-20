@@ -1,5 +1,6 @@
 import { join, posix } from 'path';
 import webpack from 'webpack';
+import Dotenv from 'dotenv-webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import UglifyJSPlugin from 'uglifyjs-webpack-plugin';
@@ -7,7 +8,6 @@ import UglifyJSPlugin from 'uglifyjs-webpack-plugin';
 // import PrerenderSpaPlugin from 'prerender-spa-plugin';
 
 // import pkg from './package.json';
-import { INJECT_APP } from './src/env';
 
 const SOURCE_ROOT = join(__dirname, 'src');
 const DIST_ROOT = join(__dirname, 'public');
@@ -77,6 +77,7 @@ export default ({ prod = false } = {}) => ({
     },
   },
   plugins: [
+    new Dotenv(),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'index.html',
@@ -95,7 +96,6 @@ export default ({ prod = false } = {}) => ({
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify(prod ? 'production' : 'development'),
-        ...INJECT_APP,
       },
     }),
     prod && new UglifyJSPlugin({

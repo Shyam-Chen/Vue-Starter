@@ -7,6 +7,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    env_file: .env
     ports:
       - "8000:8000"
       - "3000:3000"
@@ -18,14 +19,9 @@ services:
     image: staging
     build:
       context: .
-      dockerfile: Dockerfile.prod
-      args:
-        - FIREBASE_TOKEN
+      dockerfile: Dockerfile.staging
     volumes:
       - yarn:/home/node/.cache/yarn
-    environment:
-      - SITE_URL=https://vue-by-example.firebaseapp.com
-      - FUNC_URL=https://us-central1-vue-by-example.cloudfunctions.net
     tty: true
 
   master:
@@ -33,13 +29,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.prod
-      args:
-        - FIREBASE_TOKEN
     volumes:
       - yarn:/home/node/.cache/yarn
-    environment:
-      - SITE_URL=https://vue-by-example.firebaseapp.com
-      - FUNC_URL=https://us-central1-vue-by-example.cloudfunctions.net
     tty: true
 
 volumes:

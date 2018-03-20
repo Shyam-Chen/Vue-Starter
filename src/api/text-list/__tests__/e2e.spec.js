@@ -1,6 +1,6 @@
 import request from 'supertest';
 
-import { FUNC_URL } from '../../../env';
+const { FUNC_URL } = process.env;
 
 describe('Text List', () => {
   it('should get a text list', async () => {
