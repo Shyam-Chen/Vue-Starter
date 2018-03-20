@@ -55,6 +55,7 @@ jobs:
                 docker-compose exec app yarn firebase deploy --token ${FIREBASE_TOKEN}
                 ;;
               "master" )
-                docker-compose -f docker-compose.prod.yml up -d
+                docker-compose exec master yarn firebase use production --token ${FIREBASE_TOKEN}
+                docker-compose exec master yarn firebase deploy --token ${FIREBASE_TOKEN}
                 ;;
             esac

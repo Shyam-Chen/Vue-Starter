@@ -28,6 +28,3 @@ RUN yarn build:api
 ENV NODE_ENV production
 
 RUN cd functions && yarn install
-
-RUN yarn firebase use production --token ${FIREBASE_TOKEN}
-RUN yarn firebase deploy --token ${FIREBASE_TOKEN}
