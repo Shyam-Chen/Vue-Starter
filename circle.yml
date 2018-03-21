@@ -28,14 +28,17 @@ jobs:
       - run:
           name: Test the application
           command: |
+            docker-compose exec -d default yarn start:app
             docker-compose exec default yarn test:app
             docker-compose exec default yarn codecov --token=${CODECOV_TOKEN}
 
-      # - run:
-      #     name: Test cloud functions
-      #     command: |
-      #       docker-compose exec default yarn test:api
-      #       docker-compose exec default yarn codecov --token=${CODECOV_TOKEN}
+      - run:
+          name: Test cloud functions
+          command: |
+            docker-compose exec default yarn start:api
+            docker-compose exec -d default firebase serve --only functions --token ${FIREBASE_TOKEN}
+            docker-compose exec default yarn test:api
+            docker-compose exec default yarn codecov --token=${CODECOV_TOKEN}
 
       - run:
           name: Deploy the project

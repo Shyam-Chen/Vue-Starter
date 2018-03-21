@@ -103,6 +103,19 @@ $ yarn test:api
 
 ## Configuration
 
+### Project environments
+
+```js
+// .firebaserc
+{
+  "projects": {
+    "development": "vue-by-example",
+    "staging": "vue-by-example",
+    "production": "vue-by-example"
+  }
+}
+```
+
 ### Default environments
 
 ```bash
@@ -147,8 +160,8 @@ $ docker push DOCKER_ID_USER/IMAGE_NAME
 
 After you have a private image, you can login via Docker on the CircleCI.
 
-```bash
-$ docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
+```sh
+docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
 ```
 
 And then pull the private image in `docker-compose.yml`.

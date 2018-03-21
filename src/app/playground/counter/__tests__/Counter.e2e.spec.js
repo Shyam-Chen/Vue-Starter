@@ -1,7 +1,5 @@
 import puppeteer from 'puppeteer';
 
-import server from '~/e2e';
-
 describe('Counter', () => {
   let [page, browser] = [];
 
@@ -17,7 +15,6 @@ describe('Counter', () => {
       args: [`--window-size=${width},${height}`, '--no-sandbox'],
     };
 
-    await server;
     browser = await puppeteer.launch(launch);
     page = await browser.newPage();
     await page.setViewport({ width, height });
@@ -28,11 +25,10 @@ describe('Counter', () => {
 
   afterAll(async () => {
     await browser.close();
-    await server.close();
   });
 
   beforeEach(async () => {
-    await page.goto('http://localhost:3000/counter');
+    await page.goto('http://localhost:8000/counter');
   });
 
   it('should display count', async () => {
