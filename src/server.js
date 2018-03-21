@@ -19,5 +19,7 @@ app.use('/', routes);
 export const api = functions.https.onRequest(app);
 
 export const env = functions.https.onRequest((req, res) => {
-  res.send(process.env);
+  cors({ origin: true })(req, res, () => {
+    res.send(process.env.NODE_ENV);
+  });
 });
