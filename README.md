@@ -103,17 +103,16 @@ $ yarn test:api
 
 ## Configuration
 
-Default configuration
+### Default environments
 
 ```bash
 # .env
-
 NODE_ENV=development
 
 FUNC_URL=http://localhost:5000/vue-by-example/us-central1
 ```
 
-Deploy Configuration
+### Deploy environments
 
 ```dockerfile
 FROM node:8
@@ -135,13 +134,24 @@ RUN yarn build:app
 RUN yarn build:api && cd functions && yarn install
 ```
 
-How Secure?
+### How Secure?
 
-Don't add Docker.prod in version control. You need to push it onto the private Docker Hub and pull it off.
+Don't add `Docker.prod` in version control.
+
+So you need to push it to the private Docker Hub and pull it off.
+
+```bash
+$ docker login
+$ docker push DOCKER_ID_USER/IMAGE_NAME
+```
+
+After you have a private image, you can login via Docker on the CircleCI.
 
 ```bash
 $ docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
 ```
+
+And then pull the private image in `docker-compose.yml`.
 
 ```yml
 [...]
