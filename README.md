@@ -10,6 +10,15 @@
 
 [Live Demo](https://vue-by-example.firebaseapp.com/)
 
+## Table of Contents
+
+* [Getting Started](#getting-started)
+* Project Template
+* [Practical Examples](#practical-examples)
+* Dockerization
+* [Configuration](#configuration)
+* Directory Structure
+
 ## Getting Started
 
 1. Clone this Boilerplate
@@ -91,3 +100,55 @@ $ yarn test:api
   * [ ] Calendar
   * [ ] Media
   * [ ] QR Code
+
+## Configuration
+
+Default configuration
+
+```bash
+# .env
+
+NODE_ENV=development
+
+FUNC_URL=http://localhost:5000/vue-by-example/us-central1
+```
+
+Deploy Configuration
+
+```dockerfile
+FROM node:8
+
+ENV HOME /Vue-FullStarter-Kit
+
+WORKDIR ${HOME}
+ADD . $HOME
+
+RUN yarn install
+
+# .env --
+ENV NODE_ENV production
+
+ENV FUNC_URL https://us-central1-vue-by-example.cloudfunctions.net
+# -- .env
+
+RUN yarn build:app
+RUN yarn build:api && cd functions && yarn install
+```
+
+How Secure?
+
+Don't add Docker.prod in version control. You need to push it onto the private Docker Hub and pull it off.
+
+```bash
+$ docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
+```
+
+```yml
+[...]
+  prod:
+    image: <PRIVATE_IMAGE>
+    volumes:
+      - yarn:/home/node/.cache/yarn
+    tty: true
+[...]
+```
