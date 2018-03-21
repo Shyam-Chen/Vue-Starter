@@ -23,6 +23,8 @@ $ cd <PROJECT_NAME>
 
 ```bash
 $ yarn install
+
+# install flow types
 $ yarn typed
 ```
 
@@ -54,7 +56,7 @@ $ yarn build:api
 $ yarn test:app
 
 # back-end
-# $ yarn test:api
+$ yarn test:api
 ```
 
 ## Practical Examples

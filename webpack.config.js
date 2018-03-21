@@ -1,17 +1,20 @@
-import { join, posix } from 'path';
-import webpack from 'webpack';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import CopyWebpackPlugin from 'copy-webpack-plugin';
-import UglifyJSPlugin from 'uglifyjs-webpack-plugin';
-// import SWPrecacheWebpackPlugin from 'sw-precache-webpack-plugin';
-// import PrerenderSpaPlugin from 'prerender-spa-plugin';
+const fs = require('fs');
+const path = require('path');
+const webpack = require('webpack');
+const dotenv = require('dotenv');
+const DotenvPlugin = require('dotenv-webpack');
+const HtmlPlugin = require('html-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+// const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
+// const PrerenderSpaPlugin = require('prerender-spa-plugin');
 
-// import pkg from './package.json';
+// const pkg = require('./package.json');
 
-const SOURCE_ROOT = join(__dirname, 'src');
-const DIST_ROOT = join(__dirname, 'public');
+const SOURCE_ROOT = path.join(__dirname, 'src');
+const DIST_ROOT = path.join(__dirname, 'public');
 
-export default ({ prod = false } = {}) => ({
+module.exports = ({ prod = false } = {}) => ({
   context: SOURCE_ROOT,
   entry: {
     client: './client.js',
@@ -46,7 +49,7 @@ export default ({ prod = false } = {}) => ({
         loader: 'url-loader',
         options: {
           limit: 10000,
-          name: posix.join('assets', 'images/[name].[hash].[ext]'),
+          name: path.posix.join('assets', 'images/[name].[hash].[ext]'),
         },
       },
       {
@@ -54,7 +57,7 @@ export default ({ prod = false } = {}) => ({
         loader: 'url-loader',
         options: {
           limit: 10000,
-          name: posix.join('assets', 'medias/[name].[hash].[ext]'),
+          name: path.posix.join('assets', 'medias/[name].[hash].[ext]'),
         },
       },
       {
@@ -62,7 +65,7 @@ export default ({ prod = false } = {}) => ({
         loader: 'url-loader',
         options: {
           limit: 10000,
-          name: posix.join('assets', 'fonts/[name].[hash].[ext]'),
+          name: path.posix.join('assets', 'fonts/[name].[hash].[ext]'),
         },
       },
     ].filter(Boolean),
@@ -71,12 +74,15 @@ export default ({ prod = false } = {}) => ({
     extensions: ['.js', '.vue'],
     alias: {
       vue$: 'vue/dist/vue.esm.js',
-      '~': join(SOURCE_ROOT, 'app'),
-      '~assets': join(SOURCE_ROOT, 'assets'),
+      '~': path.join(SOURCE_ROOT, 'app'),
+      '~assets': path.join(SOURCE_ROOT, 'assets'),
     },
   },
   plugins: [
-    new HtmlWebpackPlugin({
+    /**
+     * @name common
+     */
+    new HtmlPlugin({
       filename: 'index.html',
       template: 'index.html',
       inject: true,
@@ -86,16 +92,34 @@ export default ({ prod = false } = {}) => ({
         removeAttributeQuotes: true,
       },
       chunksSortMode: prod ? 'dependency' : 'auto',
-      // serviceWorkerLoader: `<script>${join(__dirname, 'tools/service-worker.js')}</script>`,
+      // serviceWorkerLoader: `<script>${path.join(__dirname, 'tools/service-worker.js')}</script>`,
     }),
-    new CopyWebpackPlugin([
+    new CopyPlugin([
       'assets/images/favicon.ico',
     ]),
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify(process.env.NODE_ENV),
-        FUNC_URL: JSON.stringify(process.env.FUNC_URL),
-      },
+
+    /**
+     * @name development
+     */
+    !prod && new DotenvPlugin(),
+    !prod && new webpack.HotModuleReplacementPlugin(),
+    !prod && new webpack.NamedModulesPlugin(),
+    !prod && new webpack.NoEmitOnErrorsPlugin(),
+
+    /**
+     * @name production
+     */
+    prod && new webpack.DefinePlugin({
+      'process.env': (() => {
+        const envify = {};
+        const keys = Object.keys(dotenv.parse(fs.readFileSync('.env')));
+
+        for (let i = 0, l = keys.length; i < l; i++) {
+          envify[keys[i]] = JSON.stringify(process.env[keys[i]]);
+        }
+
+        return envify;
+      })(),
     }),
     prod && new UglifyJSPlugin({
       uglifyOptions: {
@@ -114,7 +138,7 @@ export default ({ prod = false } = {}) => ({
         return (
           module.resource &&
           /\.js$/.test(module.resource) &&
-          module.resource.indexOf(join(__dirname, 'node_modules')) === 0
+          module.resource.indexOf(path.join(__dirname, 'node_modules')) === 0
         );
       },
     }),
@@ -140,9 +164,6 @@ export default ({ prod = false } = {}) => ({
     //   ['/'],
     //   {},
     // ),
-    !prod && new webpack.HotModuleReplacementPlugin(),
-    !prod && new webpack.NamedModulesPlugin(),
-    !prod && new webpack.NoEmitOnErrorsPlugin(),
   ].filter(Boolean),
   devServer: {
     contentBase: DIST_ROOT,
