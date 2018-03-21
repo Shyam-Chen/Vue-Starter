@@ -16,7 +16,7 @@ services:
     tty: true
 
   dev:
-    image: dev
+    image: dev  # shyamchen/dev
     build:
       context: .
       dockerfile: Dockerfile.dev
@@ -28,7 +28,7 @@ services:
     tty: true
 
   stage:
-    image: stage
+    image: stage  # shyamchen/stage
     build:
       context: .
       dockerfile: Dockerfile.stage
@@ -37,7 +37,7 @@ services:
     tty: true
 
   prod:
-    image: prod
+    image: prod  # shyamchen/prod
     build:
       context: .
       dockerfile: Dockerfile.prod

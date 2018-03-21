@@ -43,18 +43,21 @@ jobs:
             case "${CIRCLE_BRANCH}" in
               # For Developer
               "develop" )
+                # docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
                 docker-compose up -d dev
                 docker-compose exec dev yarn firebase use development --token ${FIREBASE_TOKEN}
                 docker-compose exec dev yarn firebase deploy --token ${FIREBASE_TOKEN}
                 ;;
               # For Testers
               "staging" )
+                # docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
                 docker-compose up -d stage
                 docker-compose exec stage yarn firebase use staging --token ${FIREBASE_TOKEN}
                 docker-compose exec stage yarn firebase deploy --token ${FIREBASE_TOKEN}
                 ;;
               # For Users
               "master" )
+                # docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
                 docker-compose up -d prod
                 docker-compose exec prod yarn firebase use production --token ${FIREBASE_TOKEN}
                 docker-compose exec prod yarn firebase deploy --token ${FIREBASE_TOKEN}
