@@ -34,6 +34,8 @@ RUN yarn install
 
 RUN yarn global add firebase-tools
 
+EXPOSE 8000 5000
+
 # .env --
 ENV NODE_ENV development
 
