@@ -1,7 +1,6 @@
 {
   "projects": {
     "development": "vue-by-example",
-    "staging": "vue-by-example",
     "production": "vue-by-example"
   }
 }

@@ -2,8 +2,8 @@
 
 :poodle: A boilerplate for Vue, Material, Express, Babel, Flow, and ReactiveX.
 
-[![Build Status](https://img.shields.io/circleci/project/Shyam-Chen/Vue-Fullstack-Starter/master.svg)](https://circleci.com/gh/Shyam-Chen/Vue-Fullstack-Starter)
-[![Coverage Status](https://img.shields.io/codecov/c/github/Shyam-Chen/Vue-Fullstack-Starter/master.svg)](https://codecov.io/gh/Shyam-Chen/Vue-Fullstack-Starter)
+[![Build Status](https://img.shields.io/circleci/project/Shyam-Chen/Vue-Fullstack-Starter/develop.svg)](https://circleci.com/gh/Shyam-Chen/Vue-Fullstack-Starter)
+[![Coverage Status](https://img.shields.io/codecov/c/github/Shyam-Chen/Vue-Fullstack-Starter/develop.svg)](https://codecov.io/gh/Shyam-Chen/Vue-Fullstack-Starter)
  //
 [![dependencies Status](https://david-dm.org/Shyam-Chen/Vue-Fullstack-Starter/status.svg)](https://david-dm.org/Shyam-Chen/Vue-Fullstack-Starter)
 [![devDependencies Status](https://david-dm.org/Shyam-Chen/Vue-Fullstack-Starter/dev-status.svg)](https://david-dm.org/Shyam-Chen/Vue-Fullstack-Starter?type=dev)
@@ -112,7 +112,6 @@ Change to your projects
 {
   "projects": {
     "development": "vue-by-example",
-    "staging": "vue-by-example",
     "production": "vue-by-example"
   }
 }
@@ -140,18 +139,10 @@ module.exports = {
 
 ### Deploy environments
 
-`Dockerfile.dev`, `Dockerfile.stage`, and `Dockerfile.prod`
+`Dockerfile.dev` or `Dockerfile.prod`
 
 ```dockerfile
-FROM node:8
-
-ENV HOME /Vue-FullStarter-Kit
-
-WORKDIR ${HOME}
-ADD . $HOME
-
-RUN yarn install
-
+[...]
 # .env --
 ENV NODE_ENV production
 
@@ -159,9 +150,7 @@ ENV SITE_URL https://vue-by-example.firebaseapp.com
 
 ENV FUNC_URL https://us-central1-vue-by-example.cloudfunctions.net
 # -- .env
-
-RUN yarn build:app
-RUN yarn build:api && cd functions && yarn install
+[...]
 ```
 
 Don't add `Docker.<ENV>` in version control.

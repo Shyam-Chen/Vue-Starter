@@ -2,6 +2,8 @@ import puppeteer from 'puppeteer';
 
 import { SITE_URL } from '../../../../../env';
 
+jest.setTimeout(20000);
+
 describe('Counter', () => {
   let [page, browser] = [];
 

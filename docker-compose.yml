@@ -23,15 +23,6 @@ services:
       - yarn:/home/node/.cache/yarn
     tty: true
 
-  stage:
-    image: stage  # shyamchen/stage
-    build:
-      context: .
-      dockerfile: Dockerfile.stage
-    volumes:
-      - yarn:/home/node/.cache/yarn
-    tty: true
-
   prod:
     image: prod  # shyamchen/prod
     build:
