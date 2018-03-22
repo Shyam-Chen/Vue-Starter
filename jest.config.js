@@ -37,5 +37,9 @@ switch (process.env.TEST_ENV) {
     break;
 
   default:
-    module.exports = {};
+    module.exports = {
+      transform: {
+        '^.+\\.js$': '<rootDir>/node_modules/babel-jest',
+      },
+    };
 }

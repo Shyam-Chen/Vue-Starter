@@ -1,15 +1,13 @@
-const fs = require('fs');
 const path = require('path');
 const webpack = require('webpack');
-const dotenv = require('dotenv');
-const DotenvPlugin = require('dotenv-webpack');
 const HtmlPlugin = require('html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 // const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 // const PrerenderSpaPlugin = require('prerender-spa-plugin');
 
-// const pkg = require('./package.json');
+const env = require('./env');
+// const pkg = require('./package');
 
 const SOURCE_ROOT = path.join(__dirname, 'src');
 const DIST_ROOT = path.join(__dirname, 'public');
@@ -94,24 +92,24 @@ module.exports = ({ prod = false } = {}) => ({
     new CopyPlugin([
       'assets/images/favicon.ico',
     ]),
-
-    !prod && new DotenvPlugin(),
-    !prod && new webpack.HotModuleReplacementPlugin(),
-    !prod && new webpack.NamedModulesPlugin(),
-    !prod && new webpack.NoEmitOnErrorsPlugin(),
-
-    prod && new webpack.DefinePlugin({
+    new webpack.DefinePlugin({
       'process.env': (() => {
         const envify = {};
-        const keys = Object.keys(dotenv.parse(fs.readFileSync('.env')));
+        const keys = Object.keys(env);
+        const values = Object.values(env);
 
         for (let i = 0, l = keys.length; i < l; i++) {
-          envify[keys[i]] = JSON.stringify(process.env[keys[i]]);
+          envify[keys[i]] = JSON.stringify(values[i]);
         }
 
         return envify;
       })(),
     }),
+
+    !prod && new webpack.HotModuleReplacementPlugin(),
+    !prod && new webpack.NamedModulesPlugin(),
+    !prod && new webpack.NoEmitOnErrorsPlugin(),
+
     prod && new UglifyJSPlugin({
       uglifyOptions: {
         compress: {

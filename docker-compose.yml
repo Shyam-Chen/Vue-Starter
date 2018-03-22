@@ -7,10 +7,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    env_file: .env
     ports:
       - "8000:8000"
-      - "3000:3000"
+      - "5000:5000"
     volumes:
       - yarn:/home/node/.cache/yarn
     tty: true
@@ -22,7 +21,7 @@ services:
       dockerfile: Dockerfile.dev
     ports:
       - "8000:8000"
-      - "3000:3000"
+      - "5000:5000"
     volumes:
       - yarn:/home/node/.cache/yarn
     tty: true

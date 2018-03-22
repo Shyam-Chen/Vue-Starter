@@ -34,4 +34,4 @@ RUN yarn install
 
 RUN yarn global add firebase-tools
 
-EXPOSE 8000 3000
+EXPOSE 8000 5000

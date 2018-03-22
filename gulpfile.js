@@ -4,8 +4,9 @@ const batchReplace = require('gulp-batch-replace');
 const babel = require('gulp-babel');
 const rename = require('gulp-rename');
 const rimraf = require('gulp-rimraf');
-const dotenv = require('dotenv');
 const runSequence = require('run-sequence');
+
+const env = require('./env');
 
 gulp.task('clean', () =>
   gulp.src('./functions/**/*', { read: false })
@@ -14,8 +15,8 @@ gulp.task('clean', () =>
 
 gulp.task('build', () => {
   const replaces = {};
-  const keys = Object.keys(dotenv.config().parsed);
-  const values = Object.values(dotenv.config().parsed);
+  const keys = Object.keys(env);
+  const values = Object.values(env);
 
   for (let i = 0, l = keys.length; i < l; i++) {
     replaces[`process.env.${keys[i]}`] = JSON.stringify(values[i]);

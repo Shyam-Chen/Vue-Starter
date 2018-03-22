@@ -1,6 +1,6 @@
 import puppeteer from 'puppeteer';
 
-const { SITE_URL } = process.env;
+import { SITE_URL } from '../../../../../env';
 
 describe('Counter', () => {
   let [page, browser] = [];

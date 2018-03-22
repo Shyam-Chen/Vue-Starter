@@ -1,7 +1,4 @@
 import Vue from 'vue';
-import dotenv from 'dotenv';
-
-dotenv.config();
 
 Vue.config.productionTip = false;
 
