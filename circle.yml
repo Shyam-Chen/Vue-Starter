@@ -28,51 +28,57 @@ jobs:
       - run:
           name: Test the application
           command: |
-            # docker-compose exec -d default yarn start:app
             docker-compose exec default yarn test:app
             docker-compose exec default yarn codecov --token=${CODECOV_TOKEN}
 
       - run:
           name: Test cloud functions
           command: |
-            # docker-compose exec default yarn start:api
-            # docker-compose exec -d default firebase serve --only functions --token ${FIREBASE_TOKEN}
             docker-compose exec default yarn test:api
             docker-compose exec default yarn codecov --token=${CODECOV_TOKEN}
 
-      # - run:
-      #     name: Deploy
-      #     command: |
-      #       if [[ "${CIRCLE_BRANCH}" == "develop" ]]; then
-      #         docker-compose up -d dev
-      #         docker-compose exec dev yarn firebase use development --token ${FIREBASE_TOKEN}
-      #         docker-compose exec dev yarn firebase deploy --token ${FIREBASE_TOKEN}
-      #       fi
+      - run:
+          name: Deploy dev
+          command: |
+            if [[ "${CIRCLE_BRANCH}" == "master" ]]; then
+            # if [[ "${CIRCLE_BRANCH}" == "develop" ]]; then
+              docker-compose up -d dev
+              docker-compose exec dev yarn firebase use development --token ${FIREBASE_TOKEN}
+              docker-compose exec dev yarn firebase deploy --token ${FIREBASE_TOKEN}
+            fi
 
-      # - run:
-      #   name: E2E Testing - hosting
-      #   command: docker-compose exec default yarn e2e:app
+      - run:
+          name: E2E Testing hosting
+          command: |
+            if [[ "${CIRCLE_BRANCH}" == "master" ]]; then
+            # if [[ "${CIRCLE_BRANCH}" == "develop" ]]; then
+              docker-compose exec dev yarn e2e:app
+            fi
 
-      # - run:
-      #   name: E2E Testing - functions
-      #   command: docker-compose exec default yarn e2e:api
+      - run:
+          name: E2E Testing functions
+          command: |
+            if [[ "${CIRCLE_BRANCH}" == "master" ]]; then
+            # if [[ "${CIRCLE_BRANCH}" == "develop" ]]; then
+              docker-compose exec dev yarn e2e:api
+            fi
 
       - run:
           name: Deploy the project
           command: |
-            case "${CIRCLE_BRANCH}" in
-              # For Testers
-              "staging" )
-                # docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
-                docker-compose up -d stage
-                docker-compose exec stage yarn firebase use staging --token ${FIREBASE_TOKEN}
-                docker-compose exec stage yarn firebase deploy --token ${FIREBASE_TOKEN}
-                ;;
-              # For Users
-              "master" )
-                # docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
-                docker-compose up -d prod
-                docker-compose exec prod yarn firebase use production --token ${FIREBASE_TOKEN}
-                docker-compose exec prod yarn firebase deploy --token ${FIREBASE_TOKEN}
-                ;;
-            esac
+            # case "${CIRCLE_BRANCH}" in
+            #   # For Testers
+            #   "staging" )
+            #     # docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
+            #     docker-compose up -d stage
+            #     docker-compose exec stage yarn firebase use staging --token ${FIREBASE_TOKEN}
+            #     docker-compose exec stage yarn firebase deploy --token ${FIREBASE_TOKEN}
+            #     ;;
+            #   # For Users
+            #   "master" )
+            #     # docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
+            #     docker-compose up -d prod
+            #     docker-compose exec prod yarn firebase use production --token ${FIREBASE_TOKEN}
+            #     docker-compose exec prod yarn firebase deploy --token ${FIREBASE_TOKEN}
+            #     ;;
+            # esac

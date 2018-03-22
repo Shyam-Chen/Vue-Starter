@@ -176,15 +176,19 @@ $ docker push DOCKER_ID_USER/IMAGE_NAME
 After you have a private image, you can login via Docker on the CircleCI.
 
 ```sh
-docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
+docker login -u ${DOCKER_USERNAME} -p ${DOCKER_TOKEN}
 ```
 
 And then pull the private image in `docker-compose.yml`.
 
-```yml
+```diff
 [...]
-  prod:
-    image: <PRIVATE_IMAGE>
+  <dev|stage|prod>:
+-   image: prod
+-   build:
+-     context: .
+-     dockerfile: Dockerfile.prod
++   image: <PRIVATE_IMAGE>
     volumes:
       - yarn:/home/node/.cache/yarn
     tty: true

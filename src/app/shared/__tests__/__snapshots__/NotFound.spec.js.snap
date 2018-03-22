@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NotFound should render initial component 1`] = `
+<div>
+  <h1 class="title">404</h1>
+</div>
+`;
