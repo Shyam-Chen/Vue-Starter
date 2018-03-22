@@ -2,7 +2,7 @@ import 'vuetify/dist/vuetify.min.css';
 import Vue from 'vue';
 import { sync } from 'vuex-router-sync';
 import Material from 'vuetify';
-// import Meta from 'vue-meta';
+import Meta from 'vue-meta';
 
 import './assets/styles/global.css';
 import App from './app/App';
@@ -14,7 +14,7 @@ import i18n from './app/config/i18n';
 sync(store, router);
 
 Vue.use(Material);
-// Vue.use(Meta);
+Vue.use(Meta);
 
 /* eslint-disable-next-line no-new */
 new Vue({

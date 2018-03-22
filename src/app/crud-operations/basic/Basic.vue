@@ -51,9 +51,9 @@ import mutations from './mutations';
 import getters from './getters';
 
 export default {
-  // metaInfo: {
-  //   title: 'CRUD Operations - Basic | Vue by Example',
-  // },
+  metaInfo: {
+    title: 'CRUD Operations - Basic | Vue by Example',
+  },
   computed: {
     $b() {
       return this.$store.state.crudOperations.basic;

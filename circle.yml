@@ -47,13 +47,13 @@ jobs:
               docker-compose exec dev yarn firebase deploy --token ${FIREBASE_TOKEN}
             fi
 
-      # - run:
-      #     name: E2E Testing hosting
-      #     command: |
-      #       if [[ "${CIRCLE_BRANCH}" == "master" ]]; then
-      #       # if [[ "${CIRCLE_BRANCH}" == "develop" ]]; then
-      #         docker-compose exec dev yarn e2e:app
-      #       fi
+      - run:
+          name: E2E Testing hosting
+          command: |
+            if [[ "${CIRCLE_BRANCH}" == "master" ]]; then
+            # if [[ "${CIRCLE_BRANCH}" == "develop" ]]; then
+              docker-compose exec dev yarn e2e:app
+            fi
 
       - run:
           name: E2E Testing functions
