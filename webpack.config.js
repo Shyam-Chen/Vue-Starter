@@ -79,9 +79,6 @@ module.exports = ({ prod = false } = {}) => ({
     },
   },
   plugins: [
-    /**
-     * @name common
-     */
     new HtmlPlugin({
       filename: 'index.html',
       template: 'index.html',
@@ -98,17 +95,11 @@ module.exports = ({ prod = false } = {}) => ({
       'assets/images/favicon.ico',
     ]),
 
-    /**
-     * @name development
-     */
     !prod && new DotenvPlugin(),
     !prod && new webpack.HotModuleReplacementPlugin(),
     !prod && new webpack.NamedModulesPlugin(),
     !prod && new webpack.NoEmitOnErrorsPlugin(),
 
-    /**
-     * @name production
-     */
     prod && new webpack.DefinePlugin({
       'process.env': (() => {
         const envify = {};
