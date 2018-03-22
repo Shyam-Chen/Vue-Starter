@@ -1,5 +1,7 @@
 import puppeteer from 'puppeteer';
 
+const { SITE_URL } = process.env;
+
 describe('Counter', () => {
   let [page, browser] = [];
 
@@ -28,7 +30,7 @@ describe('Counter', () => {
   });
 
   beforeEach(async () => {
-    await page.goto('http://localhost:8000/counter');
+    await page.goto(`${SITE_URL}/counter`);
   });
 
   it('should display count', async () => {
