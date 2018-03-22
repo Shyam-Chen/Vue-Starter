@@ -105,7 +105,7 @@ $ yarn test:api
 
 ### Project environments
 
-Change to your projects
+Change to your projects.
 
 ```js
 // .firebaserc
@@ -118,6 +118,8 @@ Change to your projects
 ```
 
 ### Default environments
+
+Set your local env variables.
 
 ```js
 // env.js
@@ -139,12 +141,12 @@ module.exports = {
 
 ### Deploy environments
 
-`Dockerfile.dev` or `Dockerfile.prod`
+Create your `Dockerfile.dev` or `Dockerfile.prod` env image.
 
 ```dockerfile
 [...]
 # .env --
-ENV NODE_ENV production
+ENV NODE_ENV <development|production>
 
 ENV SITE_URL https://vue-by-example.firebaseapp.com
 
@@ -153,26 +155,26 @@ ENV FUNC_URL https://us-central1-vue-by-example.cloudfunctions.net
 [...]
 ```
 
-Don't add `Docker.<ENV>` in version control.
+Don't add `Docker.<dev|prod>` in version control.
 
-So you need to push it to the private Docker Hub and pull it off.
+So you need to push private images to Docker Hub.
 
 ```bash
 $ docker login
 $ docker push DOCKER_ID_USER/IMAGE_NAME
 ```
 
-After you have a private image, you can login via Docker on the CircleCI.
+After having a private image, you need to login to Docker Hub at `circle.yml`.
 
 ```sh
 docker login -u ${DOCKER_USERNAME} -p ${DOCKER_TOKEN}
 ```
 
-And then pull the private image in `docker-compose.yml`.
+And then pull your private image at `docker-compose.yml`.
 
 ```diff
 [...]
-  <dev|stage|prod>:
+  <dev|prod>:
 -   image: prod
 -   build:
 -     context: .
