@@ -4,10 +4,10 @@ import createLogger from 'vuex/dist/logger';
 
 import { formControls } from '~/form-controls';
 
-import { INITIAL as state } from './constants';
-import actions from './actions';
-import mutations from './mutations';
-import getters from './getters';
+import { INITIAL as state } from '../constants';
+import actions from '../actions';
+import mutations from '../mutations';
+import getters from '../getters';
 
 Vue.use(Vuex);
 
