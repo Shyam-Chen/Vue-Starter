@@ -7,13 +7,13 @@ ADD . $HOME
 
 RUN yarn install
 
-# .env --
 ENV NODE_ENV production
 
+# envs --
 ENV SITE_URL https://vue-by-example.firebaseapp.com
 
 ENV FUNC_URL https://us-central1-vue-by-example.cloudfunctions.net
-# -- .env
+# -- envs
 
 RUN yarn build:app
 RUN yarn build:api && cd functions && yarn install

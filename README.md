@@ -37,7 +37,7 @@ $ yarn install
 $ yarn typed
 ```
 
-3. Run the Application
+3. Run the code
 
 ```bash
 # front-end
@@ -48,7 +48,7 @@ $ yarn start:api
 $ firebase serve --only functions
 ```
 
-4. Build the Application
+4. Build the code
 
 ```bash
 # front-end
@@ -58,7 +58,7 @@ $ yarn build:app
 $ yarn build:api
 ```
 
-5. Test the Application
+5. Run the test
 
 ```bash
 # front-end
@@ -68,10 +68,20 @@ $ yarn test:app
 $ yarn test:api
 ```
 
+6. Run the e2e
+
+```bash
+# front-end
+$ yarn e2e:app
+
+# back-end
+$ yarn e2e:api
+```
+
 ## Practical Examples
 
 * [ ] CRUD Operations
-  * [ ] Basic
+  * [x] Basic
   * [x] REST (`axios`)
   * [ ] GraphQL (`vue-apollo`)
 * [ ] Form Controls
@@ -97,6 +107,7 @@ $ yarn test:api
   * [x] Counter
     * [x] State Management (`vuex`)
     * [x] Asynchronous (`rxjs`)
+  * [ ] Stepper
   * [ ] Calendar
   * [ ] Media
   * [ ] QR Code
@@ -145,13 +156,11 @@ Create your `Dockerfile.dev` or `Dockerfile.prod` env image.
 
 ```dockerfile
 [...]
-# .env --
-ENV NODE_ENV <development|production>
-
+# envs --
 ENV SITE_URL https://vue-by-example.firebaseapp.com
 
 ENV FUNC_URL https://us-central1-vue-by-example.cloudfunctions.net
-# -- .env
+# -- envs
 [...]
 ```
 
@@ -175,7 +184,7 @@ And then pull your private image at `docker-compose.yml`.
 ```diff
 [...]
   <dev|prod>:
--   image: prod
+-   image: <dev|prod>
 -   build:
 -     context: .
 -     dockerfile: Dockerfile.prod
