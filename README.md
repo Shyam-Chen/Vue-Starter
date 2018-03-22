@@ -105,6 +105,8 @@ $ yarn test:api
 
 ### Project environments
 
+Change to your projects
+
 ```js
 // .firebaserc
 {
@@ -118,14 +120,27 @@ $ yarn test:api
 
 ### Default environments
 
-```bash
-# .env
-NODE_ENV=development
+```js
+// env.js
+const NODE_ENV = process.env.NODE_ENV || 'development';
 
-FUNC_URL=http://localhost:5000/vue-by-example/us-central1
+const SITE_PORT = process.env.SITE_PORT || '8000';
+const SITE_URL = process.env.SITE_URL || `http://localhost:${SITE_PORT}`;
+
+const FUNC_PROJECT = process.env.FUNC_PROJECT || 'vue-by-example';
+const FUNC_URL = process.env.FUNC_URL || `http://localhost:5000/${FUNC_PROJECT}/us-central1`;
+
+/* eslint-disable object-property-newline */
+module.exports = {
+  NODE_ENV,
+  SITE_PORT, SITE_URL,
+  FUNC_PROJECT, FUNC_URL,
+};
 ```
 
 ### Deploy environments
+
+`Dockerfile.dev`, `Dockerfile.stage`, and `Dockerfile.prod`
 
 ```dockerfile
 FROM node:8
@@ -140,6 +155,8 @@ RUN yarn install
 # .env --
 ENV NODE_ENV production
 
+ENV SITE_URL https://vue-by-example.firebaseapp.com
+
 ENV FUNC_URL https://us-central1-vue-by-example.cloudfunctions.net
 # -- .env
 
@@ -147,9 +164,7 @@ RUN yarn build:app
 RUN yarn build:api && cd functions && yarn install
 ```
 
-### How Secure?
-
-Don't add `Docker.prod` in version control.
+Don't add `Docker.<ENV>` in version control.
 
 So you need to push it to the private Docker Hub and pull it off.
 
