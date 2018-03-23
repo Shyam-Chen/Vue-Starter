@@ -5,7 +5,19 @@ export default {
   render() {
     return (
       <v-layout column>
-        <img src={logo} alt="Vue Logo" width="300" height="300" />
+
+        <v-layout justify-center>
+          <div class="header">
+            <div class="display-1">Vue by Example</div>
+            <img src={logo} alt="Logo" />
+          </div>
+        </v-layout>
+
+        <v-layout>
+          <div>
+            <v-btn color="info" to="/hello-world">Hello World</v-btn>
+          </div>
+        </v-layout>
 
         <v-layout column>
           <div class="headline">CRUD Operations</div>
@@ -47,4 +59,8 @@ export default {
 </script>
 
 <style scoped>
+.header {
+  padding: 1rem;
+  text-align: center;
+}
 </style>

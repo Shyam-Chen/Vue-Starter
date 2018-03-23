@@ -67,9 +67,18 @@
     </v-toolbar>
 
     <v-content>
-      <v-container fluid>
-        <router-view></router-view>
-      </v-container>
+      <div class="vfs-content">
+        <div class="vfs-container">
+          <v-container fluid>
+            <router-view></router-view>
+          </v-container>
+        </div>
+
+        <v-footer class="pa-3">
+          <v-spacer></v-spacer>
+          <div>&copy; {{ new Date().getFullYear() }} - Vue by Example</div>
+        </v-footer>
+      </div>
     </v-content>
 
   </v-app>
@@ -84,3 +93,15 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.vfs-content {
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+}
+
+.vfs-container {
+  flex: 1 0 auto;
+}
+</style>
