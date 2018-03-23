@@ -2,6 +2,9 @@
 import logo from '~assets/images/vue.png';
 
 export default {
+  metaInfo: {
+    title: 'Vue by Example',
+  },
   render() {
     return (
       <v-layout column>
