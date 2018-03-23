@@ -4255,7 +4255,7 @@ event-emitter@~0.3.5:
     d "1"
     es5-ext "~0.10.14"
 
-event-stream@latest:
+event-stream@^3.3.4:
   version "3.3.4"
   resolved "http://registry.npmjs.org/event-stream/-/event-stream-3.3.4.tgz#4ab4c9a0f5a54db9338b4c34d86bfce8f4b35571"
   dependencies:
@@ -5595,15 +5595,15 @@ gulp-babel@7.0.1:
     through2 "^2.0.0"
     vinyl-sourcemaps-apply "^0.2.0"
 
-gulp-batch-replace@0.0.0:
-  version "0.0.0"
-  resolved "https://registry.yarnpkg.com/gulp-batch-replace/-/gulp-batch-replace-0.0.0.tgz#7e9826ad928862722c1eacb4421b4127bffd643e"
-  dependencies:
-    event-stream latest
-
 gulp-rename@1.2.2:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/gulp-rename/-/gulp-rename-1.2.2.tgz#3ad4428763f05e2764dec1c67d868db275687817"
+
+gulp-replaces@0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/gulp-replaces/-/gulp-replaces-0.1.1.tgz#48d96ae21e5b61cce80efacf5b159fce490dd70a"
+  dependencies:
+    event-stream "^3.3.4"
 
 gulp-rimraf@0.2.2:
   version "0.2.2"

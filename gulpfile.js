@@ -1,6 +1,6 @@
 const gulp = require('gulp');
 const util = require('gulp-util');
-const batchReplace = require('gulp-batch-replace');
+const replaces = require('gulp-replaces');
 const babel = require('gulp-babel');
 const rename = require('gulp-rename');
 const rimraf = require('gulp-rimraf');
@@ -14,12 +14,12 @@ gulp.task('clean', () =>
 );
 
 gulp.task('build', () => {
-  const replaces = {};
+  const envify = {};
   const keys = Object.keys(env);
   const values = Object.values(env);
 
   for (let i = 0, l = keys.length; i < l; i++) {
-    replaces[`process.env.${keys[i]}`] = JSON.stringify(values[i]);
+    envify[`process.env.${keys[i]}`] = JSON.stringify(values[i]);
   }
 
   return gulp
@@ -31,7 +31,7 @@ gulp.task('build', () => {
       '!src/assets', '!src/assets/**/*',
       '!src/**/__tests__', '!src/**/__tests__/**/*',
     ])
-    .pipe(!util.env.prod ? batchReplace(Object.entries(replaces)) : util.noop())
+    .pipe(!util.env.prod ? replaces(envify) : util.noop())
     .pipe(babel())
     .pipe(gulp.dest('functions'));
 });
