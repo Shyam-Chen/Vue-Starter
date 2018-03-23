@@ -5,6 +5,7 @@ const CopyPlugin = require('copy-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 // const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 // const PrerenderSpaPlugin = require('prerender-spa-plugin');
+const envify = require('process-envify');
 
 const env = require('./env');
 // const pkg = require('./package');
@@ -92,19 +93,7 @@ module.exports = ({ prod = false } = {}) => ({
     new CopyPlugin([
       'assets/images/favicon.ico',
     ]),
-    new webpack.DefinePlugin({
-      'process.env': (() => {
-        const envify = {};
-        const keys = Object.keys(env);
-        const values = Object.values(env);
-
-        for (let i = 0, l = keys.length; i < l; i++) {
-          envify[keys[i]] = JSON.stringify(values[i]);
-        }
-
-        return envify;
-      })(),
-    }),
+    new webpack.DefinePlugin(envify(env)),
 
     !prod && new webpack.HotModuleReplacementPlugin(),
     !prod && new webpack.NamedModulesPlugin(),

@@ -4,6 +4,7 @@ const replaces = require('gulp-replaces');
 const babel = require('gulp-babel');
 const rename = require('gulp-rename');
 const rimraf = require('gulp-rimraf');
+const envify = require('process-envify');
 const runSequence = require('run-sequence');
 
 const env = require('./env');
@@ -13,16 +14,8 @@ gulp.task('clean', () =>
     .pipe(rimraf({ force: true })),
 );
 
-gulp.task('build', () => {
-  const envify = {};
-  const keys = Object.keys(env);
-  const values = Object.values(env);
-
-  for (let i = 0, l = keys.length; i < l; i++) {
-    envify[`process.env.${keys[i]}`] = JSON.stringify(values[i]);
-  }
-
-  return gulp
+gulp.task('build', () =>
+  gulp
     .src([
       'src/**/*',
       '!src/index.html',
@@ -31,10 +24,10 @@ gulp.task('build', () => {
       '!src/assets', '!src/assets/**/*',
       '!src/**/__tests__', '!src/**/__tests__/**/*',
     ])
-    .pipe(!util.env.prod ? replaces(envify) : util.noop())
+    .pipe(!util.env.prod ? replaces(envify(env)) : util.noop())
     .pipe(babel())
-    .pipe(gulp.dest('functions'));
-});
+    .pipe(gulp.dest('functions')),
+);
 
 gulp.task('copy', () =>
   gulp.src(['./package.json', './yarn.lock'])

@@ -104,6 +104,7 @@
     "postcss-loader": "2.1.1",
     "postcss-nested": "3.0.0",
     "prerender-spa-plugin": "2.0.2",
+    "process-envify": "0.1.1",
     "puppeteer": "1.1.1",
     "rimraf": "2.6.2",
     "rucksack-css": "1.0.2",
