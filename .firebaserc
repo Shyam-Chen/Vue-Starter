@@ -1,6 +1,6 @@
 {
   "projects": {
-    "development": "vue-by-example",
-    "production": "vue-by-example"
+    "development": "vue-by-example-dev",
+    "production": "vue-by-example-prod"
   }
 }

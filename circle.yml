@@ -64,9 +64,9 @@ jobs:
       - run:
           name: Deploy to production
           command: |
-            # if [[ "${CIRCLE_BRANCH}" == "master" ]]; then
-            #   docker login -u ${DOCKER_USERNAME} -p ${DOCKER_TOKEN}
-            #   docker-compose up -d prod
-            #   docker-compose exec prod yarn firebase use production --token ${FIREBASE_TOKEN}
-            #   docker-compose exec prod yarn firebase deploy --token ${FIREBASE_TOKEN}
-            # fi
+            if [[ "${CIRCLE_BRANCH}" == "master" ]]; then
+              docker login -u ${DOCKER_USERNAME} -p ${DOCKER_TOKEN}
+              docker-compose up -d prod
+              docker-compose exec prod yarn firebase use production --token ${FIREBASE_TOKEN}
+              docker-compose exec prod yarn firebase deploy --token ${FIREBASE_TOKEN}
+            fi
