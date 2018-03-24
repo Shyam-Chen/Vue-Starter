@@ -8,8 +8,8 @@ export const INITIAL = {
       text: 'CRUD Operations',
       model: false,
       children: [
-        { text: 'Basic', route: '/basic' },
-        { text: 'REST', route: '/rest' },
+        { text: 'Basic', route: '/crud-operations/basic' },
+        { text: 'REST', route: '/crud-operations/rest' },
         { text: 'GraphQL', disabled: true },
       ],
     },

@@ -2,8 +2,6 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import createLogger from 'vuex/dist/logger';
 
-import { formControls } from '~/form-controls';
-
 import { INITIAL as state } from '../constants';
 import actions from '../actions';
 import mutations from '../mutations';
@@ -18,7 +16,7 @@ const store = new Vuex.Store({
   getters,
   modules: {
     crudOperations: { namespaced: true },
-    formControls,
+    formControls: { namespaced: true },
   },
   plugins: [
     process.env.NODE_ENV === 'development' && createLogger({ collapsed: false }),

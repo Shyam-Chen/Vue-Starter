@@ -94,6 +94,11 @@
 <script>
 import { mapModelsToState } from 'vuex-bound';
 
+import { INITIAL as state } from './constants';
+import actions from './actions';
+import mutations from './mutations';
+import getters from './getters';
+
 export default {
   computed: {
     $td() {
@@ -106,23 +111,18 @@ export default {
       'technologies',
       'gender',
       'autoplay',
-    ])
-  }
+    ]),
+  },
+  created() {
+    this.$store.registerModule(
+      ['formControls', 'templateDriven'],
+      { namespaced: true, state, actions, mutations, getters },
+    );
+  },
 };
 </script>
 
 <style scoped>
-
-.row {
-  padding: .66rem;
-  display: flex;
-  flex-direction: row;
-}
-
-.field {
-  max-width: 10rem;
-}
-
 .outputs {
   align-self: center;
   margin: 0 0 .5rem .5rem;

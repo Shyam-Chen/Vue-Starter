@@ -13,20 +13,13 @@ const router = new Router({
     { path: '/hello-world', component: () => import('~/hello-world/HelloWorld') },
 
     /** @name crud-operations */
-    { path: '/basic', component: () => import('~/crud-operations/basic/Basic') },
-    { path: '/rest', component: () => import('~/crud-operations/rest/REST') },
-    { path: '/graphql', component: () => import('~/crud-operations/graphql/GraphQL') },
+    { path: '/crud-operations/basic', component: () => import('~/crud-operations/basic/Basic') },
+    { path: '/crud-operations/rest', component: () => import('~/crud-operations/rest/REST') },
+    { path: '/crud-operations/graphql', component: () => import('~/crud-operations/graphql/GraphQL') },
 
     /** @name form-controls */
-    {
-      path: '/form-controls',
-      component: () => import('~/form-controls/FormControls'),
-      children: [
-        { path: '', component: () => import('~/form-controls/Overview') },
-        { path: 'template-driven', component: () => import('~/form-controls/template-driven/TemplateDriven') },
-        { path: 'reactive', component: () => import('~/form-controls/reactive/Reactive') },
-      ],
-    },
+    { path: '/form-controls/template-driven', component: () => import('~/form-controls/template-driven/TemplateDriven') },
+    { path: '/form-controls/reactive', component: () => import('~/form-controls/reactive/Reactive') },
 
     /** @name data-table */
     { path: '/data-table/basic', component: () => import('~/data-table/basic/Basic') },
