@@ -23,8 +23,8 @@ describe('Counter', () => {
     page = await browser.newPage();
     await page.setViewport({ width, height });
 
-    headline = '#app > div > main > div > div > div > div > div > div:nth-child(1) > div';
-    increment = '#app > div > main > div > div > div > div > div > div:nth-child(2) > button:nth-child(1) > div';
+    headline = '#app > div > main > div > div > div > div:nth-child(1) > div';
+    increment = '#app > div > main > div > div > div > div:nth-child(2) > button:nth-child(1) > div';
   });
 
   afterAll(async () => {
