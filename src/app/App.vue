@@ -46,9 +46,9 @@
     </v-navigation-drawer>
 
     <v-toolbar color="blue darken-3" dark app :clipped-left="$vuetify.breakpoint.mdAndUp" fixed>
-      <v-toolbar-title style="width: 300px" class="ml-0 pl-3">
+      <v-toolbar-title class="ml-0 pl-3" style="width: 300px">
         <v-toolbar-side-icon @click.stop="$app.drawer = !$app.drawer"></v-toolbar-side-icon>
-        <router-link class="hidden-sm-and-down" to="/" style="color: #fff; text-decoration: none">Vue by Example</router-link>
+        <router-link class="hidden-sm-and-down white--text" style="text-decoration: none" to="/">Vue by Example</router-link>
       </v-toolbar-title>
 
       <v-text-field flat solo-inverted prepend-icon="search" label="Search" class="hidden-sm-and-down"></v-text-field>
@@ -61,25 +61,21 @@
       <v-btn icon>
         <v-icon>notifications</v-icon>
       </v-btn>
-      <v-btn icon href="https://github.com/Shyam-Chen/Vue-Fullstack-Starter" style="margin-right: 16px">
-        <i class="fa fa-github" style="font-size: 24px"></i>
+      <v-btn icon href="https://github.com/Shyam-Chen/Vue-Fullstack-Starter" class="mr-3">
+        <i class="fa fa-github headline"></i>
       </v-btn>
     </v-toolbar>
 
     <v-content>
-      <div class="vfs-content">
-        <div class="vfs-container">
-          <v-container fluid>
-            <router-view></router-view>
-          </v-container>
-        </div>
-
-        <v-footer class="pa-3">
-          <v-spacer></v-spacer>
-          <div>&copy; {{ new Date().getFullYear() }} - Vue by Example</div>
-        </v-footer>
-      </div>
+      <v-container fluid>
+        <router-view></router-view>
+      </v-container>
     </v-content>
+
+    <v-footer inset class="pa-3 blue darken-3 white--text">
+      <v-spacer></v-spacer>
+      <div>&copy; {{ new Date().getFullYear() }} - Vue by Example</div>
+    </v-footer>
 
   </v-app>
 </template>
@@ -95,13 +91,4 @@ export default {
 </script>
 
 <style scoped>
-.vfs-content {
-  height: 100%;
-  display: flex;
-  flex-flow: column;
-}
-
-.vfs-container {
-  flex: 1 0 auto;
-}
 </style>
