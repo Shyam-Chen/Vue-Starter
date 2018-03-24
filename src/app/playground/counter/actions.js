@@ -1,6 +1,6 @@
 // @flow
 
-import { of } from 'rxjs/observable';
+import { of } from 'rxjs';
 import { delay, filter } from 'rxjs/operators';
 
 export default {
@@ -14,9 +14,9 @@ export default {
     setTimeout(() => commit('increment'), 1000);
   },
   decrementAsync({ commit }) {
-    of(null).pipe(
-      delay(1000),
-    ).subscribe(() => commit('decrement'));
+    of(null)
+      .pipe(delay(1000))
+      .subscribe(() => commit('decrement'));
   },
   incrementIfOdd({ commit, state }) {
     if (Math.abs(state.value % 2) === 1) {
@@ -24,8 +24,8 @@ export default {
     }
   },
   decrementIfEven({ commit, state }) {
-    of(null).pipe(
-      filter(() => state.value % 2 === 0),
-    ).subscribe(() => commit('decrement'));
+    of(null)
+      .pipe(filter(() => state.value % 2 === 0))
+      .subscribe(() => commit('decrement'));
   },
 };

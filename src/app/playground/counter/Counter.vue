@@ -9,6 +9,9 @@ import mutations from './mutations';
 import getters from './getters';
 
 export default {
+  metaInfo: {
+    title: 'Playground - Counter | Vue by Example',
+  },
   computed: {
     $c(): ICounter {
       return this.$store.state.counter;
