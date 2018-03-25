@@ -62,7 +62,7 @@
         <v-icon>notifications</v-icon>
       </v-btn>
       <v-btn icon href="https://github.com/Shyam-Chen/Vue-Fullstack-Starter" class="mr-3">
-        <i class="fa fa-github headline"></i>
+        <v-icon>fa fa-github</v-icon>
       </v-btn>
     </v-toolbar>
 
