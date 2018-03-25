@@ -13,11 +13,11 @@
 ## Table of Contents
 
 * [Getting Started](#getting-started)
-* Project Template
+* [Project Template](#project-template)
 * [Practical Examples](#practical-examples)
-* Dockerization
+* [Dockerization](#dockerization)
 * [Configuration](#configuration)
-* Directory Structure
+* [Directory Structure](#directory-structure)
 
 ## Getting Started
 
@@ -78,6 +78,22 @@ $ yarn e2e:app
 $ yarn e2e:api
 ```
 
+## Project Template
+
+Generate a blank project via Vue CLI
+
+1. Install Vue CLI
+
+```bash
+$ yarn global add vue-cli
+```
+
+2. Create your project
+
+```bash
+$ vue init Shyam-Chen/Vue-Fullstack-Template <PROJECT_NAME>
+```
+
 ## Practical Examples
 
 * [ ] CRUD Operations
@@ -111,6 +127,26 @@ $ yarn e2e:api
   * [ ] Calendar
   * [ ] Media
   * [ ] QR Code
+
+## Dockerization
+
+1. Build and run the Container in the background
+
+```bash
+$ docker-compose up -d <SERVICE>
+```
+
+2. Run a command in a running container
+
+```bash
+$ docker-compose exec <SERVICE> <COMMAND>
+```
+
+3. Remove the old container before creating the new one
+
+```bash
+$ docker-compose rm -fs
+```
 
 ## Configuration
 
@@ -193,4 +229,49 @@ And then pull your private image at `docker-compose.yml`.
       - yarn:/home/node/.cache/yarn
     tty: true
 [...]
+```
+
+## Directory Structure
+
+```
+.
+├── flow-typed  -> module types
+├── src
+│   ├── api
+│   ├── app
+│   │   ├── config
+│   │   ├── <FEATURE>
+│   │   │   ├── actions.js
+│   │   │   ├── constants.js
+│   │   │   ├── <FEATURE>.vue
+│   │   │   ├── getters.js
+│   │   │   └── mutations.js
+│   │   └── shared
+│   ├── assets  -> datas, fonts, images, medias, styles
+│   ├── client.js
+│   ├── index.html
+│   └── server.js
+├── tools
+├── .babelrc
+├── .editorconfig
+├── .eslintrc
+├── .firebaserc
+├── .flowconfig
+├── .gitignore
+├── .postcssrc
+├── .stylelintrc
+├── Dockerfile
+├── Dockerfile.dev
+├── Dockerfile.prod
+├── LICENSE
+├── README.md
+├── circle.yml
+├── docker-compose.yml
+├── env.js
+├── firebase.json
+├── gulpfile.js
+├── jest.config.js
+├── package.json
+├── webpack.config.js
+└── yarn.lock
 ```
