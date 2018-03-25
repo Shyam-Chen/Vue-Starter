@@ -1,7 +1,7 @@
 <template>
   <v-app>
 
-    <v-navigation-drawer fixed :clipped="$vuetify.breakpoint.mdAndUp" app v-model="$app.drawer">
+    <v-navigation-drawer :clipped="$vuetify.breakpoint.mdAndUp" v-model="$app.drawer" fixed app>
       <v-list dense>
         <template v-for="item in $app.navigation">
 
@@ -45,10 +45,10 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-toolbar color="blue darken-3" dark app :clipped-left="$vuetify.breakpoint.mdAndUp" fixed>
-      <v-toolbar-title class="ml-0 pl-3" style="width: 300px">
+    <v-toolbar :clipped-left="$vuetify.breakpoint.mdAndUp" color="blue darken-3" dark app fixed>
+      <v-toolbar-title class="ml-0 pl-3 vfs-toolbar-title">
         <v-toolbar-side-icon @click.stop="$app.drawer = !$app.drawer"></v-toolbar-side-icon>
-        <router-link class="hidden-sm-and-down white--text" style="text-decoration: none" to="/">Vue by Example</router-link>
+        <router-link class="hidden-sm-and-down white--text vfs-router-link" to="/">Vue by Example</router-link>
       </v-toolbar-title>
 
       <v-text-field flat solo-inverted prepend-icon="search" label="Search" class="hidden-sm-and-down"></v-text-field>
@@ -67,20 +67,22 @@
     </v-toolbar>
 
     <v-content>
-      <v-container fluid>
+      <v-container fluid class="vfs-container">
         <router-view></router-view>
       </v-container>
     </v-content>
 
     <v-footer inset class="pa-3 blue darken-3 white--text">
       <v-spacer></v-spacer>
-      <div>&copy; {{ new Date().getFullYear() }} - Vue by Example</div>
+      <div>Copyright &copy; {{ new Date().getFullYear() }} Vue by Example</div>
     </v-footer>
 
   </v-app>
 </template>
 
 <script>
+// @flow
+
 export default {
   computed: {
     $app() {
@@ -91,4 +93,15 @@ export default {
 </script>
 
 <style scoped>
+.vfs-toolbar-title {
+  width: 300px;
+}
+
+.vfs-router-link {
+  text-decoration: none;
+}
+
+.vfs-container {
+  height: 100%;
+}
 </style>

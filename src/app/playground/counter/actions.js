@@ -24,8 +24,8 @@ export default {
     }
   },
   decrementIfEven({ commit, state }) {
-    of(null)
-      .pipe(filter(() => state.value % 2 === 0))
+    of(state.value)
+      .pipe(filter(value => value % 2 === 0))
       .subscribe(() => commit('decrement'));
   },
 };

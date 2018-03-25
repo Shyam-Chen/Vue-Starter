@@ -2,16 +2,13 @@
 export default {
   render() {
     return (
-      <div>
-        <h1 class="title">Hello, World!</h1>
-      </div>
+      <v-layout>
+        <h1 class="title pa-3">Hello, World!</h1>
+      </v-layout>
     );
   },
 };
 </script>
 
 <style scoped>
-.title {
-  padding: 1rem;
-}
 </style>

@@ -6,7 +6,7 @@ export default {
   render() {
     return (
       <v-layout class="vfs-notfound">
-        <h1 class="title">404</h1>
+        <h1 class="pa-3">404</h1>
       </v-layout>
     );
   },
@@ -22,9 +22,5 @@ export default {
   width: 100%;
   height: 100%;
   background: #fff;
-}
-
-.title {
-  padding: 1rem;
 }
 </style>
