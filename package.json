@@ -20,7 +20,8 @@
     "url": "git+https://github.com/Shyam-Chen/Vue-Fullstack-Starter.git"
   },
   "keywords": [
-    "Vue"
+    "Vue",
+    "Fullstack"
   ],
   "author": "Yen-cheng Chen, 陳彥澄",
   "license": "MIT",
