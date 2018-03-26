@@ -1,6 +1,6 @@
 const NODE_ENV = process.env.NODE_ENV || 'development';
 
-const SITE_PORT = process.env.SITE_PORT || '8000';
+const SITE_PORT = process.env.SITE_PORT || 8000;
 const SITE_URL = process.env.SITE_URL || `http://localhost:${SITE_PORT}`;
 
 const FUNC_PROJECT = process.env.FUNC_PROJECT || 'vue-by-example';

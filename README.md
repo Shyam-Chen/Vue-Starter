@@ -88,10 +88,16 @@ Generate a blank project via Vue CLI
 $ yarn global add vue-cli
 ```
 
-2. Create your project
+2. Create a project
 
 ```bash
 $ vue init Shyam-Chen/Vue-Fullstack-Template <PROJECT_NAME>
+```
+
+3. Go to project folder to start your journey
+
+```bash
+$ cd <PROJECT_NAME>
 ```
 
 ## Practical Examples
@@ -172,7 +178,7 @@ Set your local env variables.
 // env.js
 const NODE_ENV = process.env.NODE_ENV || 'development';
 
-const SITE_PORT = process.env.SITE_PORT || '8000';
+const SITE_PORT = process.env.SITE_PORT || 8000;
 const SITE_URL = process.env.SITE_URL || `http://localhost:${SITE_PORT}`;
 
 const FUNC_PROJECT = process.env.FUNC_PROJECT || 'vue-by-example';
@@ -188,7 +194,7 @@ module.exports = {
 
 ### Deploy environments
 
-Create your `Dockerfile.dev` or `Dockerfile.prod` env image.
+Create your `Docker.<dev|prod>` env image.
 
 ```dockerfile
 [...]
