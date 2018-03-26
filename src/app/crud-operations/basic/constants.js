@@ -6,6 +6,8 @@ export const origin = [
 ];
 
 export const INITIAL = {
+  selected: [],
+
   headers: [
     { text: 'ID', value: 'id' },
     { text: 'Primary', value: 'primary' },

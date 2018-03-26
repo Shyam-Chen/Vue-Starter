@@ -100,7 +100,7 @@ module.exports = ({ prod = false } = {}) => ({
       chunksSortMode: prod ? 'dependency' : 'auto',
       serviceWorkerLoader: prod
         ? `<script>${uglify.minify(fs.readFileSync(path.join(__dirname, './tools/service-worker.js'), 'utf-8')).code}</script>`
-        : '',
+        : '',  // `<script>${fs.readFileSync(path.join(__dirname, './tools/service-worker.js'), 'utf-8')}</script>`
     }),
     new CopyPlugin([
       'assets/datas/robots.txt',

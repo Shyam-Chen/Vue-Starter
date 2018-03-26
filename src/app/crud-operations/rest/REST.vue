@@ -5,7 +5,7 @@
     <!-- Search -->
     <v-layout row>
       <div>
-        <v-text-field name="search-text" label="Search Text" v-model="$r.searchData.text"></v-text-field>
+        <v-text-field v-model="$r.searchData.text" name="search-text" label="Search Text"></v-text-field>
       </div>
       <v-btn @click="searchItem($r.searchData.text)">Search</v-btn>
     </v-layout>
@@ -13,15 +13,18 @@
     <!-- Add -->
     <v-layout row>
       <div>
-        <v-text-field name="add-text" label="Add Text" v-model="$r.addData.text"></v-text-field>
+        <v-text-field v-model="$r.addData.text" name="add-text" label="Add Text"></v-text-field>
       </div>
       <v-btn class="md-raised md-primary" @click="addItem($r.addData.text)">Add</v-btn>
     </v-layout>
 
     <!-- Display -->
     <v-flex xs12>
-      <v-data-table class="elevation-1" :headers="headers" :items="$r.dataset" :loading="$r.loading">
+      <v-data-table :headers="headers" :items="$r.dataset" :loading="$r.loading" v-model="$r.selected" select-all class="elevation-1">
         <template slot="items" slot-scope="props">
+          <td>
+            <v-checkbox v-model="props.selected" primary hide-details></v-checkbox>
+          </td>
           <td>{{ props.item.text }}</td>
           <td class="text-xs-right">
             <v-btn flat color="error" @click.stop="onOpenDelete(props.item.id)">Delete</v-btn>
@@ -51,7 +54,7 @@
           <v-card-text>
             <v-layout row>
               <div>
-                <v-text-field name="edit-text" label="Edit Text" v-model="$r.editData.text"></v-text-field>
+                <v-text-field v-model="$r.editData.text" name="edit-text" label="Edit Text"></v-text-field>
               </div>
             </v-layout>
           </v-card-text>

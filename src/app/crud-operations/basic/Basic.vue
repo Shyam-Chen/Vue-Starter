@@ -3,7 +3,7 @@
     <div class="headline">CRUD Operations - Basic</div>
 
     <!-- Search -->
-    <v-layout row>
+    <!-- <v-layout row>
       <div class="text-field">
         <v-text-field v-model="$b.searchData.primary" name="search-text" label="Primary"></v-text-field>
       </div>
@@ -11,7 +11,7 @@
         <v-text-field v-model="$b.searchData.accent" name="search-text" label="Accent"></v-text-field>
       </div>
       <v-btn @click="searchItem($b.searchData)">Search</v-btn>
-    </v-layout>
+    </v-layout> -->
 
     <!-- Add -->
     <v-layout row>
@@ -26,17 +26,32 @@
 
     <!-- Display -->
     <v-layout row>
-      <v-data-table :headers="$b.headers" :items="$b.dataset" hide-actions class="elevation-1">
-        <template slot="items" slot-scope="props">
-          <td>{{ props.item.id }}</td>
-          <td>{{ props.item.primary }}</td>
-          <td>{{ props.item.accent }}</td>
-          <td class="text-xs-right">
-            <v-btn flat color="error">Delete</v-btn>
-            <v-btn flat color="info">Edit</v-btn>
-          </td>
-        </template>
-      </v-data-table>
+      <v-card>
+        <v-card-title>
+          Board
+          <v-spacer></v-spacer>
+          <v-text-field append-icon="search" label="Search" single-line hide-details></v-text-field>
+        </v-card-title>
+
+        <v-data-table :headers="$b.headers" :items="$b.dataset" v-model="$b.selected" hide-actions select-all>
+          <template slot="items" slot-scope="props">
+            <td>
+              <v-checkbox v-model="props.selected" primary hide-details></v-checkbox>
+            </td>
+            <td>{{ props.item.id }}</td>
+            <td>{{ props.item.primary }}</td>
+            <td>{{ props.item.accent }}</td>
+            <td class="text-xs-right">
+              <v-btn icon class="mx-0">
+                <v-icon color="teal">edit</v-icon>
+              </v-btn>
+              <v-btn icon class="mx-0">
+                <v-icon color="pink">delete</v-icon>
+              </v-btn>
+            </td>
+          </template>
+        </v-data-table>
+      </v-card>
     </v-layout>
 
   </v-layout>

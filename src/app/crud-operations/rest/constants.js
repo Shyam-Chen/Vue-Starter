@@ -1,6 +1,7 @@
 export const API_LIST = `${process.env.FUNC_URL}/api/text-list`;
 
 export const INITIAL = {
+  selected: [],
   dataset: [],
   addData: { text: '' },
   searchData: { text: '' },

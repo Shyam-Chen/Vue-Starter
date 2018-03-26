@@ -47,6 +47,7 @@
     // Possible Errors
 
     // Best Practices
+    "no-multi-spaces": ["error", { "ignoreEOLComments": true }],
     "no-param-reassign": ["error", { "props": true, "ignorePropertyModificationsFor": ["state", "acc", "event"] }],
 
     // Variables
