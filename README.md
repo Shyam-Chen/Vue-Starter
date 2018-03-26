@@ -181,7 +181,7 @@ const NODE_ENV = process.env.NODE_ENV || 'development';
 const SITE_PORT = process.env.SITE_PORT || 8000;
 const SITE_URL = process.env.SITE_URL || `http://localhost:${SITE_PORT}`;
 
-const FUNC_PROJECT = process.env.FUNC_PROJECT || 'vue-by-example';
+const FUNC_PROJECT = process.env.FUNC_PROJECT || 'vue-by-example-dev';
 const FUNC_URL = process.env.FUNC_URL || `http://localhost:5000/${FUNC_PROJECT}/us-central1`;
 
 /* eslint-disable object-property-newline */
@@ -199,9 +199,9 @@ Create your `Docker.<dev|prod>` env image.
 ```dockerfile
 [...]
 # envs --
-ENV SITE_URL https://vue-by-example.firebaseapp.com
+ENV SITE_URL <SITE_URL>
 
-ENV FUNC_URL https://us-central1-vue-by-example.cloudfunctions.net
+ENV FUNC_URL <FUNC_URL>
 # -- envs
 [...]
 ```
