@@ -1,16 +1,4 @@
-<i18n>
-en:
-  message:
-    hello: "hello world!"
-
-zh:
-  message:
-    hello: "你好，世界！"
-
-ja:
-  message:
-    hello: "こんにちは、世界！"
-</i18n>
+<i18n src="./translation.yml"></i18n>
 
 <template>
   <v-layout column>
