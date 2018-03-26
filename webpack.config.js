@@ -7,6 +7,7 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 // const PrerenderSpaPlugin = require('prerender-spa-plugin');
 const envify = require('process-envify');
+const uglify = require('uglify-es');
 
 const env = require('./env');
 const pkg = require('./package');
@@ -97,7 +98,9 @@ module.exports = ({ prod = false } = {}) => ({
         removeAttributeQuotes: true,
       },
       chunksSortMode: prod ? 'dependency' : 'auto',
-      serviceWorkerLoader: prod ? `<script>${fs.readFileSync(path.join(__dirname, './tools/service-worker.js'), 'utf-8')}</script>` : '',
+      serviceWorkerLoader: prod
+        ? `<script>${uglify.minify(fs.readFileSync(path.join(__dirname, './tools/service-worker.js'), 'utf-8'))}</script>`
+        : '',  // `<script>${uglify.minify(fs.readFileSync(path.join(__dirname, './tools/service-worker.js'), 'utf-8'))}</script>`,
     }),
     new CopyPlugin([
       'assets/datas/robots.txt',
