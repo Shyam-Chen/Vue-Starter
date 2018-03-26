@@ -98,9 +98,7 @@ module.exports = ({ prod = false } = {}) => ({
       chunksSortMode: prod ? 'dependency' : 'auto',
       // serviceWorkerLoader: `<script>${path.join(__dirname, 'tools/service-worker.js')}</script>`,
     }),
-    new CopyPlugin([
-      'assets/images/favicon.ico',
-    ]),
+    new CopyPlugin(['assets/**/*']),
     new webpack.DefinePlugin(envify(env)),
 
     !prod && new webpack.HotModuleReplacementPlugin(),

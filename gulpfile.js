@@ -9,11 +9,6 @@ const runSequence = require('run-sequence');
 
 const env = require('./env');
 
-gulp.task('clean', () =>
-  gulp.src('./functions/**/*', { read: false })
-    .pipe(rimraf({ force: true })),
-);
-
 gulp.task('build', () =>
   gulp
     .src([
@@ -42,5 +37,5 @@ gulp.task('rename', () =>
 );
 
 gulp.task('default', done => runSequence(
-  'clean', 'build', ['copy', 'rename'], done,
+  'build', ['copy', 'rename'], done,
 ));
