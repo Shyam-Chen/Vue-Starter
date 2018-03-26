@@ -5,12 +5,12 @@
     <!-- Search -->
     <v-layout row>
       <div class="text-field">
-        <v-text-field name="search-text" label="Primary"></v-text-field>
+        <v-text-field v-model="$b.searchData.primary" name="search-text" label="Primary"></v-text-field>
       </div>
       <div class="text-field">
-        <v-text-field name="search-text" label="Accent"></v-text-field>
+        <v-text-field v-model="$b.searchData.accent" name="search-text" label="Accent"></v-text-field>
       </div>
-      <v-btn>Search</v-btn>
+      <v-btn @click="searchItem($b.searchData)">Search</v-btn>
     </v-layout>
 
     <!-- Add -->
@@ -66,7 +66,10 @@ export default {
     );
   },
   methods: {
-    ...mapActions('crudOperations/basic', ['addItem']),
+    ...mapActions('crudOperations/basic', [
+      'addItem',
+      'searchItem',
+    ]),
   },
 };
 </script>
