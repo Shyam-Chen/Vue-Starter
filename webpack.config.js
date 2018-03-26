@@ -101,7 +101,11 @@ module.exports = ({ prod = false } = {}) => ({
     }),
     new CopyPlugin([
       'assets/datas/robots.txt',
-      { from: 'assets/**/*', to: DIST_ROOT },
+      {
+        from: 'assets/**/*',
+        to: DIST_ROOT,
+        ignore: ['assets/datas/robots.txt', 'assets/styles/**/*'],
+      },
     ]),
     new webpack.DefinePlugin(envify(env)),
 
