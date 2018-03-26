@@ -28,7 +28,15 @@ module.exports = ({ prod = false } = {}) => ({
     rules: [
       {
         test: /\.vue$/,
-        use: ['vue-loader'],
+        loader: 'vue-loader',
+        options: {
+          preLoaders: {
+            i18n: 'yaml-loader',
+          },
+          loaders: {
+            i18n: '@kazupon/vue-i18n-loader',
+          },
+        },
       },
       {
         test: /\.js$/,

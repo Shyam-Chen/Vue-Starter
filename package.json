@@ -58,6 +58,7 @@
   "devDependencies": {
     "@babel/helper-module-imports": "7.0.0-beta.40",
     "@babel/plugin-syntax-jsx": "7.0.0-beta.40",
+    "@kazupon/vue-i18n-loader": "0.3.0",
     "@vue/test-utils": "1.0.0-beta.12",
     "babel-cli": "6.26.0",
     "babel-core": "6.26.0",
@@ -122,6 +123,7 @@
     "vue-loader": "14.2.1",
     "vue-template-compiler": "2.5.16",
     "webpack": "3.11.0",
-    "webpack-dev-server": "2.11.1"
+    "webpack-dev-server": "2.11.1",
+    "yaml-loader": "0.5.0"
   }
 }

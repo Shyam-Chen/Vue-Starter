@@ -1,4 +1,4 @@
-import textList from '../';
+// import textList from '../';
 
 describe('Text List', () => {
   it('should handle routes', () => {
