@@ -1,14 +1,15 @@
+const fs = require('fs');
 const path = require('path');
 const webpack = require('webpack');
 const HtmlPlugin = require('html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
-// const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
+const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 // const PrerenderSpaPlugin = require('prerender-spa-plugin');
 const envify = require('process-envify');
 
 const env = require('./env');
-// const pkg = require('./package');
+const pkg = require('./package');
 
 const SOURCE_ROOT = path.join(__dirname, 'src');
 const DIST_ROOT = path.join(__dirname, 'public');
@@ -96,9 +97,12 @@ module.exports = ({ prod = false } = {}) => ({
         removeAttributeQuotes: true,
       },
       chunksSortMode: prod ? 'dependency' : 'auto',
-      // serviceWorkerLoader: `<script>${path.join(__dirname, 'tools/service-worker.js')}</script>`,
+      serviceWorkerLoader: prod ? `<script>${fs.readFileSync(path.join(__dirname, './tools/service-worker.js'), 'utf-8')}</script>` : '',
     }),
-    new CopyPlugin(['assets/**/*']),
+    new CopyPlugin([
+      'assets/datas/robots.txt',
+      { from: 'assets/**/*', to: DIST_ROOT },
+    ]),
     new webpack.DefinePlugin(envify(env)),
 
     !prod && new webpack.HotModuleReplacementPlugin(),
@@ -136,13 +140,13 @@ module.exports = ({ prod = false } = {}) => ({
       children: true,
       minChunks: 3,
     }),
-    // prod && new SWPrecacheWebpackPlugin({
-    //   cacheId: pkg.name,
-    //   filename: 'service-worker.js',
-    //   minify: true,
-    //   staticFileGlobs: [`${basename(DIST_ROOT)}/*`],
-    //   stripPrefix: `${basename(DIST_ROOT)}/`,
-    // }),
+    prod && new SWPrecacheWebpackPlugin({
+      cacheId: pkg.name,
+      filename: 'service-worker.js',
+      minify: true,
+      staticFileGlobs: [`${path.basename(DIST_ROOT)}/*`],
+      stripPrefix: `${path.basename(DIST_ROOT)}/`,
+    }),
     // prod && new PrerenderSpaPlugin(
     //   DIST_ROOT,
     //   ['/'],

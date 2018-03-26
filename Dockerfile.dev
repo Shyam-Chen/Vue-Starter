@@ -39,7 +39,7 @@ EXPOSE 8000 5000
 ENV NODE_ENV development
 
 # envs --
-ENV SITE_URL https://vue-by-example.firebaseapp.com
+ENV SITE_URL https://vue-by-example-dev.firebaseapp.com
 
 ENV FUNC_URL https://us-central1-vue-by-example-dev.cloudfunctions.net
 # -- envs

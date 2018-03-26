@@ -10,7 +10,7 @@ RUN yarn install
 ENV NODE_ENV production
 
 # envs --
-ENV SITE_URL https://vue-by-example.firebaseapp.com
+ENV SITE_URL https://vue-by-example-prod.firebaseapp.com
 
 ENV FUNC_URL https://us-central1-vue-by-example-prod.cloudfunctions.net
 # -- envs
