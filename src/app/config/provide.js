@@ -8,7 +8,7 @@ Vue.use(Apollo);
 
 const provide = new Apollo({
   defaultClient: new ApolloClient({
-    link: new HttpLink({ uri: `${process.env.API_URL}/__/graphql` }),
+    link: new HttpLink({ uri: `${process.env.FUNC_URL}/api/graphql` }),
     cache: new InMemoryCache(),
     connectToDevTools: true,
   }),
