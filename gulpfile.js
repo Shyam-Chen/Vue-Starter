@@ -19,7 +19,7 @@ gulp.task('build', () =>
       '!src/assets', '!src/assets/**/*',
       '!src/**/__tests__', '!src/**/__tests__/**/*',
     ])
-    .pipe(!util.env.prod ? replaces(envify(env)) : util.noop())
+    .pipe(replaces(envify(env)))
     .pipe(babel())
     .pipe(gulp.dest('functions')),
 );
