@@ -36,10 +36,15 @@ switch (process.env.TEST_ENV) {
     };
     break;
 
-  default:
+  case 'e2e':
     module.exports = {
+      setupTestFrameworkScriptFile: '<rootDir>/tools/setup-e2e.js',
       transform: {
         '^.+\\.js$': '<rootDir>/node_modules/babel-jest',
       },
     };
+    break;
+
+  default:
+    module.exports = {};
 }

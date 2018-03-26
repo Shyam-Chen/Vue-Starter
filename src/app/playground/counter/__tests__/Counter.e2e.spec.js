@@ -1,9 +1,5 @@
 import puppeteer from 'puppeteer';
 
-import { SITE_URL } from '../../../../../env';
-
-jest.setTimeout(20000);
-
 describe('Counter', () => {
   let [page, browser] = [];
 
@@ -11,17 +7,9 @@ describe('Counter', () => {
   let [increment] = [];
 
   beforeAll(async () => {
-    const [width, height] = [1280, 800];
-
-    const launch = {
-      headless: false,
-      slowMo: 80,
-      args: [`--window-size=${width},${height}`, '--no-sandbox'],
-    };
-
-    browser = await puppeteer.launch(launch);
+    browser = await puppeteer.launch(global.launch);
     page = await browser.newPage();
-    await page.setViewport({ width, height });
+    await page.setViewport(global.viewport);
 
     headline = '#app > div > main > div > div > div > div:nth-child(1) > div';
     increment = '#app > div > main > div > div > div > div:nth-child(2) > button:nth-child(1) > div';
@@ -32,7 +20,7 @@ describe('Counter', () => {
   });
 
   beforeEach(async () => {
-    await page.goto(`${SITE_URL}/counter`);
+    await page.goto(`${global.SITE_URL}/counter`);
   });
 
   it('should display count', async () => {
