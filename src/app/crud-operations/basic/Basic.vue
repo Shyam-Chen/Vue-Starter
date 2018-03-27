@@ -2,17 +2,6 @@
   <v-layout column>
     <div class="headline">CRUD Operations - Basic</div>
 
-    <!-- Search -->
-    <!-- <v-layout row>
-      <div class="text-field">
-        <v-text-field v-model="$b.searchData.primary" name="search-text" label="Primary"></v-text-field>
-      </div>
-      <div class="text-field">
-        <v-text-field v-model="$b.searchData.accent" name="search-text" label="Accent"></v-text-field>
-      </div>
-      <v-btn @click="searchItem($b.searchData)">Search</v-btn>
-    </v-layout> -->
-
     <!-- Add -->
     <v-layout row>
       <div class="vfs-text-field">
@@ -33,6 +22,7 @@
               {{ $b.selected.length }} selected
             </div>
             <v-spacer></v-spacer>
+            <!-- Delete checked -->
             <v-btn icon class="mx-0">
               <v-icon color="pink">delete</v-icon>
             </v-btn>
@@ -43,7 +33,8 @@
           <v-card-title class="vfs-card-title">
             <div class="title">Board</div>
             <v-spacer></v-spacer>
-            <v-text-field append-icon="search" label="Search" single-line hide-details></v-text-field>
+            <!-- Search -->
+            <v-text-field v-model="$b.searchData" append-icon="search" label="Search" single-line hide-details></v-text-field>
           </v-card-title>
         </template>
 
@@ -56,10 +47,10 @@
             <td>{{ props.item.primary }}</td>
             <td>{{ props.item.accent }}</td>
             <td class="text-xs-right">
-              <v-btn icon class="mx-0">
+              <v-btn icon class="mx-0" @click.stop="openEditDialog(props.item)">
                 <v-icon color="teal">edit</v-icon>
               </v-btn>
-              <v-btn icon class="mx-0">
+              <v-btn icon class="mx-0" @click.stop="openDeleteDialog(props.item)">
                 <v-icon color="pink">delete</v-icon>
               </v-btn>
             </td>
@@ -68,6 +59,43 @@
       </v-card>
     </v-layout>
 
+    <!-- dialogs -->
+    <aside>
+      <!-- Edit -->
+      <v-dialog v-model="editDialog" max-width="500px">
+        <v-card>
+          <v-card-title>Edit</v-card-title>
+          <v-card-text>
+            <v-layout row v-if="$b.editData">
+              <div class="vfs-text-field">
+                <v-text-field v-model="$b.editData.primary" name="primary" label="Primary"></v-text-field>
+              </div>
+              <div class="vfs-text-field">
+                <v-text-field v-model="$b.editData.accent" name="accent" label="Accent"></v-text-field>
+              </div>
+            </v-layout>
+          </v-card-text>
+          <v-card-actions>
+            <v-btn color="red" flat @click.stop="editDialog = false">Cancel</v-btn>
+            <v-btn color="green" flat @click.stop="editItem($b.editData); editDialog = false">Save</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+
+      <!-- Delete -->
+      <v-dialog v-model="deleteDialog" max-width="500px">
+        <v-card>
+          <v-card-title>Delete</v-card-title>
+          <v-card-text>
+            Are you sure you want to delete it?
+          </v-card-text>
+          <v-card-actions>
+            <v-btn color="green" flat @click.stop="deleteDialog = false">Cancel</v-btn>
+            <v-btn color="red" flat @click.stop="deleteItem($b.deleteData); deleteDialog = false">Confirm</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+    </aside>
   </v-layout>
 </template>
 
@@ -83,6 +111,12 @@ export default {
   metaInfo: {
     title: 'CRUD Operations - Basic | Vue by Example',
   },
+  data() {
+    return {
+      editDialog: false,
+      deleteDialog: false,
+    };
+  },
   computed: {
     $b() {
       return this.$store.state.crudOperations.basic;
@@ -97,8 +131,17 @@ export default {
   methods: {
     ...mapActions('crudOperations/basic', [
       'addItem',
-      'searchItem',
+      'editItem',
+      'deleteItem',
     ]),
+    openEditDialog(item) {
+      this.editDialog = true;
+      this.$b.editData = { ...item };
+    },
+    openDeleteDialog({ id }) {
+      this.deleteDialog = true;
+      this.$b.deleteData = { id };
+    },
   },
 };
 </script>
@@ -110,6 +153,6 @@ export default {
 
 .vfs-card-title {
   height: 82px;
-  transition: background .33s;
+  transition: all .33s;
 }
 </style>

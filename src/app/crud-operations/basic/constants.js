@@ -1,10 +1,3 @@
-export const origin = [
-  { id: 1, primary: 'Vanilla', accent: 'MobX' },
-  { id: 2, primary: 'Angular', accent: 'NGXS' },
-  { id: 3, primary: 'React', accent: 'Redux' },
-  { id: 4, primary: 'Vue', accent: 'Vuex' },
-];
-
 export const INITIAL = {
   selected: [],
 
@@ -15,8 +8,14 @@ export const INITIAL = {
     { text: 'Actions', value: 'actions' },
   ],
 
-  dataset: [...origin],
+  dataset: [
+    { id: 1, primary: 'Vanilla', accent: 'MobX' },
+    { id: 2, primary: 'Angular', accent: 'NGXS' },
+    { id: 3, primary: 'React', accent: 'Redux' },
+    { id: 4, primary: 'Vue', accent: 'Vuex' },
+  ],
 
-  addData: { primary: '', accent: '' },
-  searchData: { primary: '', accent: '' },
+  addData: {},
+  searchData: '',
+  deleteData: {},
 };

@@ -1,14 +1,16 @@
-import { origin } from './constants';
-
 export default {
   addItem({ state }, { primary, accent }) {
     const id = state.dataset.reduce((maxId, item) => Math.max(item.id, maxId), -1) + 1;
     state.dataset = [...state.dataset, { id, primary, accent }];
   },
-  searchItem({ state }, { primary, accent }) {
-    state.dataset = origin.filter(item =>
-      (item.primary.toLowerCase().indexOf(primary.toLowerCase()) !== -1) &&
-      (item.accent.toLowerCase().indexOf(accent.toLowerCase()) !== -1),
-    );
+  editItem({ state }, { id, primary, accent }) {
+    state.dataset = [
+      ...state.dataset.map(item =>
+        (item.id === id ? { ...item, primary, accent } : item),
+      ),
+    ];
+  },
+  deleteItem({ state }, { id }) {
+    state.dataset = [...state.dataset.filter(item => item.id !== Number(id))];
   },
 };
