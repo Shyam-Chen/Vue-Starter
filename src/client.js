@@ -3,6 +3,8 @@ import Vue from 'vue';
 import { sync } from 'vuex-router-sync';
 import Material from 'vuetify';
 import Meta from 'vue-meta';
+// import Raven from 'raven-js';
+// import RavenVue from 'raven-js/plugins/vue';
 
 import './assets/styles/global.css';
 import App from './app/App';
@@ -15,6 +17,12 @@ sync(store, router);
 
 Vue.use(Material);
 Vue.use(Meta);
+
+// if (window.location.hostname !== 'localhost') {
+//   Raven.config('https://<key>@sentry.io/<project>')
+//     .addPlugin(RavenVue, Vue)
+//     .install();
+// }
 
 /* eslint-disable-next-line no-new */
 new Vue({
