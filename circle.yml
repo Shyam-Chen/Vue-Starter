@@ -51,14 +51,14 @@ jobs:
           name: End-to-end UI tests
           command: |
             if [[ "${CIRCLE_BRANCH}" == "develop" ]]; then
-              docker-compose exec dev yarn e2e:app
+              # docker-compose exec dev yarn e2e:app
             fi
 
       - run:
           name: End-to-end HTTP tests
           command: |
             if [[ "${CIRCLE_BRANCH}" == "develop" ]]; then
-              docker-compose exec dev yarn e2e:api
+              # docker-compose exec dev yarn e2e:api
             fi
 
       - run:
