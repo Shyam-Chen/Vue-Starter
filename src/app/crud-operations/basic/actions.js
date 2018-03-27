@@ -13,12 +13,6 @@ export default {
   deleteItem({ state }, { id }) {
     state.dataset = [...state.dataset.filter(item => item.id !== Number(id))];
   },
-  searchDataset({ state }, query) {
-    state.dataset = state.dataset.filter(item =>
-      // TODO: query
-      item.toLowerCase().indexOf(query.toLowerCase()) > -1,
-    );
-  },
   deleteChecked({ state }, selected) {
     state.dataset = [
       ...state.dataset.filter(item =>

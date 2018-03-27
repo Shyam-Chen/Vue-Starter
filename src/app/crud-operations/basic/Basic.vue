@@ -34,11 +34,11 @@
             <div class="title">Board</div>
             <v-spacer></v-spacer>
             <!-- Search -->
-            <v-text-field v-model="$b.searchData" append-icon="search" label="Search" single-line hide-details @keyup="searchDataset($b.searchData)"></v-text-field>
+            <v-text-field v-model="$b.searchData" append-icon="search" label="Search" single-line hide-details></v-text-field>
           </v-card-title>
         </template>
 
-        <v-data-table :headers="$b.headers" :items="$b.dataset" v-model="$b.selected" hide-actions select-all>
+        <v-data-table :headers="$b.headers" :items="$b.dataset" :search="$b.searchData" v-model="$b.selected" hide-actions select-all>
           <template slot="items" slot-scope="props">
             <td>
               <v-checkbox v-model="props.selected" primary hide-details></v-checkbox>
@@ -102,7 +102,7 @@
 <script>
 import { mapGetters, mapActions } from 'vuex';
 
-import { INITIAL as state } from './constants';
+import { state } from './constants';
 import actions from './actions';
 import mutations from './mutations';
 import getters from './getters';

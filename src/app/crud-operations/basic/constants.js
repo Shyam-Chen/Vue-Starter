@@ -1,4 +1,4 @@
-export const INITIAL = {
+export const state = {
   searchData: '',
   selected: [],
 
