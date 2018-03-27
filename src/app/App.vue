@@ -8,7 +8,7 @@
           <v-subheader v-if="item.subheader">{{ item.subheader }}</v-subheader>
 
           <!-- if children -->
-          <v-list-group v-if="item.children" v-model="item.model" :key="item.text" :prepend-icon="item.icon">
+          <v-list-group v-if="item.children" v-model="item.model" :key="item.text" :prepend-icon="item.icon" :disabled="item.disabled">
             <v-list-tile slot="activator">
               <v-list-tile-content>
                 <v-list-tile-title>

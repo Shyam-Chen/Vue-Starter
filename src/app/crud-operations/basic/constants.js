@@ -1,6 +1,6 @@
 export const origin = [
   { id: 1, primary: 'Vanilla', accent: 'MobX' },
-  { id: 2, primary: 'Angular', accent: 'NgRx' },
+  { id: 2, primary: 'Angular', accent: 'NGXS' },
   { id: 3, primary: 'React', accent: 'Redux' },
   { id: 4, primary: 'Vue', accent: 'Vuex' },
 ];

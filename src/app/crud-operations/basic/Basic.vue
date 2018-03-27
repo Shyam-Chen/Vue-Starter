@@ -15,10 +15,10 @@
 
     <!-- Add -->
     <v-layout row>
-      <div class="text-field">
+      <div class="vfs-text-field">
         <v-text-field v-model="$b.addData.primary" name="primary" label="Primary"></v-text-field>
       </div>
-      <div class="text-field">
+      <div class="vfs-text-field">
         <v-text-field v-model="$b.addData.accent" name="accent" label="Accent"></v-text-field>
       </div>
       <v-btn @click="addItem($b.addData)">Add</v-btn>
@@ -27,11 +27,25 @@
     <!-- Display -->
     <v-layout row>
       <v-card>
-        <v-card-title>
-          Board
-          <v-spacer></v-spacer>
-          <v-text-field append-icon="search" label="Search" single-line hide-details></v-text-field>
-        </v-card-title>
+        <template v-if="$b.selected.length !== 0">
+          <v-card-title class="pink lighten-4 vfs-card-title">
+            <div class="body-2 pink--text">
+              {{ $b.selected.length }} selected
+            </div>
+            <v-spacer></v-spacer>
+            <v-btn icon class="mx-0">
+              <v-icon color="pink">delete</v-icon>
+            </v-btn>
+          </v-card-title>
+        </template>
+
+        <template v-else>
+          <v-card-title class="vfs-card-title">
+            <div class="title">Board</div>
+            <v-spacer></v-spacer>
+            <v-text-field append-icon="search" label="Search" single-line hide-details></v-text-field>
+          </v-card-title>
+        </template>
 
         <v-data-table :headers="$b.headers" :items="$b.dataset" v-model="$b.selected" hide-actions select-all>
           <template slot="items" slot-scope="props">
@@ -90,7 +104,12 @@ export default {
 </script>
 
 <style scoped>
-.text-field {
+.vfs-text-field {
   margin: auto .33rem;
+}
+
+.vfs-card-title {
+  height: 82px;
+  transition: background .33s;
 }
 </style>

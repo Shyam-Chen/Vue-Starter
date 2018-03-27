@@ -1,14 +1,11 @@
 export const INITIAL = {
   drawer: null,
   navigation: [
-    { icon: 'home', text: 'Home', route: '/' },
-
     { icon: 'face', text: 'Hello World', route: '/hello-world', subheader: 'Basic' },
-
+    { icon: 'loyalty', text: '101 Guide', route: '/101-guide', disabled: true },
     {
       icon: 'business',
       text: 'CRUD Operations',
-      subheader: 'Advanced',
       model: false,
       children: [
         { text: 'Basic', route: '/crud-operations/basic' },
@@ -25,9 +22,12 @@ export const INITIAL = {
         { text: 'Reactive', disabled: true },
       ],
     },
+
     {
       icon: 'fa fa-table',
       text: 'Data Table',
+      disabled: true,
+      subheader: 'Advanced',
       model: false,
       children: [
         { text: 'Basic', disabled: true },
@@ -47,6 +47,7 @@ export const INITIAL = {
     {
       icon: 'verified_user',
       text: 'Authorization',
+      disabled: true,
       model: false,
       children: [
         { text: 'REST', disabled: true },
@@ -54,8 +55,9 @@ export const INITIAL = {
       ],
     },
     {
-      icon: 'multiline_chart',
+      icon: 'fa fa-pie-chart',
       text: 'Data Visualization',
+      disabled: true,
       model: false,
       children: [
         { text: 'Chart', disabled: true },
@@ -65,6 +67,7 @@ export const INITIAL = {
     {
       icon: 'av_timer',
       text: 'Realtime',
+      disabled: true,
       model: false,
       children: [
         { text: 'Socket.IO', disabled: true },
@@ -72,6 +75,7 @@ export const INITIAL = {
       ],
     },
 
-    { icon: 'face', text: 'Counter', route: '/counter', subheader: 'Playground' },
+    { icon: 'fa fa-calculator', text: 'Counter', route: '/counter', subheader: 'Playground' },
+    { icon: 'fa fa-qrcode', text: 'QR Code', route: '/qrcode', disabled: true },
   ],
 };
