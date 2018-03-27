@@ -5,9 +5,10 @@
       <v-list dense>
         <template v-for="item in $app.navigation">
 
-          <!-- if -->
-          <v-list-group v-if="item.children" v-model="item.model" :key="item.text" :prepend-icon="item.icon">
+          <v-subheader v-if="item.subheader">{{ item.subheader }}</v-subheader>
 
+          <!-- if children -->
+          <v-list-group v-if="item.children" v-model="item.model" :key="item.text" :prepend-icon="item.icon">
             <v-list-tile slot="activator">
               <v-list-tile-content>
                 <v-list-tile-title>
@@ -26,7 +27,6 @@
                 </v-list-tile-title>
               </v-list-tile-content>
             </v-list-tile>
-
           </v-list-group>
 
           <!-- else -->

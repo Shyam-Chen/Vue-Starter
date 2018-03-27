@@ -1,11 +1,14 @@
 export const INITIAL = {
   drawer: null,
   navigation: [
-    { icon: 'loyalty', text: 'Overview', route: '/' },
-    { icon: 'face', text: 'Hello World', route: '/hello-world' },
+    { icon: 'home', text: 'Home', route: '/' },
+
+    { icon: 'face', text: 'Hello World', route: '/hello-world', subheader: 'Basic' },
+
     {
       icon: 'business',
       text: 'CRUD Operations',
+      subheader: 'Advanced',
       model: false,
       children: [
         { text: 'Basic', route: '/crud-operations/basic' },
@@ -23,7 +26,7 @@ export const INITIAL = {
       ],
     },
     {
-      icon: 'dashboard',
+      icon: 'fa fa-table',
       text: 'Data Table',
       model: false,
       children: [
@@ -68,16 +71,7 @@ export const INITIAL = {
         { text: 'GraphQL Subscriptions', disabled: true },
       ],
     },
-    {
-      icon: 'toys',
-      text: 'Playground',
-      model: false,
-      children: [
-        { text: 'Counter', route: '/counter' },
-        { text: 'Calendar', disabled: true },
-        { text: 'Media', disabled: true },
-        { text: 'QR Code', disabled: true },
-      ],
-    },
+
+    { icon: 'face', text: 'Counter', route: '/counter', subheader: 'Playground' },
   ],
 };
