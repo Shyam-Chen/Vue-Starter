@@ -23,7 +23,7 @@
             </div>
             <v-spacer></v-spacer>
             <!-- Delete checked -->
-            <v-btn icon class="mx-0">
+            <v-btn icon class="mx-0" @click.stop="deleteChecked($b.selected)">
               <v-icon color="pink">delete</v-icon>
             </v-btn>
           </v-card-title>
@@ -34,7 +34,7 @@
             <div class="title">Board</div>
             <v-spacer></v-spacer>
             <!-- Search -->
-            <v-text-field v-model="$b.searchData" append-icon="search" label="Search" single-line hide-details></v-text-field>
+            <v-text-field v-model="$b.searchData" append-icon="search" label="Search" single-line hide-details @keyup="searchDataset($b.searchData)"></v-text-field>
           </v-card-title>
         </template>
 
@@ -66,7 +66,7 @@
         <v-card>
           <v-card-title>Edit</v-card-title>
           <v-card-text>
-            <v-layout row v-if="$b.editData">
+            <v-layout v-if="$b.editData" row>
               <div class="vfs-text-field">
                 <v-text-field v-model="$b.editData.primary" name="primary" label="Primary"></v-text-field>
               </div>
@@ -100,7 +100,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 
 import { INITIAL as state } from './constants';
 import actions from './actions';
@@ -121,6 +121,7 @@ export default {
     $b() {
       return this.$store.state.crudOperations.basic;
     },
+    ...mapGetters('crudOperations/basic', Object.keys(getters)),
   },
   created() {
     this.$store.registerModule(
@@ -129,11 +130,7 @@ export default {
     );
   },
   methods: {
-    ...mapActions('crudOperations/basic', [
-      'addItem',
-      'editItem',
-      'deleteItem',
-    ]),
+    ...mapActions('crudOperations/basic', Object.keys(actions)),
     openEditDialog(item) {
       this.editDialog = true;
       this.$b.editData = { ...item };

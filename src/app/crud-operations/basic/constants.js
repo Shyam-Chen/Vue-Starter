@@ -1,4 +1,5 @@
 export const INITIAL = {
+  searchData: '',
   selected: [],
 
   headers: [
@@ -16,6 +17,6 @@ export const INITIAL = {
   ],
 
   addData: {},
-  searchData: '',
+  editData: {},
   deleteData: {},
 };
