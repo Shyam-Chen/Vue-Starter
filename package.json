@@ -109,6 +109,7 @@
     "process-envify": "0.1.1",
     "puppeteer": "1.1.1",
     "rimraf": "2.6.2",
+    "robotstxt-webpack-plugin": "4.0.1",
     "rucksack-css": "1.0.2",
     "run-sequence": "2.2.1",
     "style-loader": "0.20.2",
