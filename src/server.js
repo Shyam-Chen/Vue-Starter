@@ -1,4 +1,4 @@
-import { URL } from 'url';
+// import { URL } from 'url';
 import * as functions from 'firebase-functions';
 import * as admin from 'firebase-admin';
 import express from 'express';
@@ -18,25 +18,25 @@ admin.initializeApp(functions.config().firebase);
 //   Raven.config(SENTRY_DSN).install();
 // }
 
-const app = express();
+const vm = express();
 
 // if (!isLocalhost) {
-//   app.use(Raven.requestHandler());
+//   vm.use(Raven.requestHandler());
 // }
 
-app.use(compression());
-app.use(cors({ origin: true }));
-app.use(morgan('tiny'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+vm.use(compression());
+vm.use(cors({ origin: true }));
+vm.use(morgan('tiny'));
+vm.use(bodyParser.json());
+vm.use(bodyParser.urlencoded({ extended: false }));
 
-app.use('/', routes);
+vm.use('/', routes);
 
 // if (!isLocalhost) {
-//   app.use(Raven.errorHandler());
+//   vm.use(Raven.errorHandler());
 // }
 
-export const api = functions.https.onRequest(app);
+export const api = functions.https.onRequest(vm);
 
 export const env = functions.https.onRequest((req, res) => {
   cors({ origin: true })(req, res, () => {

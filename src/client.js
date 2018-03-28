@@ -26,15 +26,15 @@ Vue.use(Validate);
 //     .install();
 // }
 
-/* eslint-disable-next-line no-new */
-new Vue({
-  el: '#app',
+const vm = new Vue({
   router,
   store,
   provide,
   i18n,
-  render: mount => mount(App),
+  render: handle => handle(App),
 });
+
+vm.$mount('#app');
 
 if (module.hot) {
   module.hot.accept();

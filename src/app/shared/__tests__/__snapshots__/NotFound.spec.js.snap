@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`NotFound should render initial component 1`] = `
+exports[`Not Found should render initial component 1`] = `
 <v-layout class="vfs-notfound">
   <h1 class="pa-3">404</h1>
 </v-layout>
