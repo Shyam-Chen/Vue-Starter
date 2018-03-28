@@ -1,11 +1,20 @@
 en:
-  message:
-    hello: "hello world!"
+  bubble: 'Bubble'
+  hello: 'Hello, {msg}!'
+  thinkIn: 'Think in {2}'
+  http: 'http | https'
+  framework: 'no framework | one framework | {num} frameworks'
 
 zh:
-  message:
-    hello: "你好，世界！"
+  bubble: '泡泡'
+  hello: '你好，{msg}！'
+  thinkIn: '在 {2} 中思考'
+  http: 'http | https'
+  framework: '無框架 | 一個框架 | {num} 個框架'
 
 ja:
-  message:
-    hello: "こんにちは、世界！"
+  bubble: 'バブル'
+  hello: 'こんにちは、{msg}！'
+  thinkIn: '{2} で考える'
+  http: 'http | https'
+  framework: 'フレームワークなし | ひとつのフレームワーク | {num} つのフレームワーク'
