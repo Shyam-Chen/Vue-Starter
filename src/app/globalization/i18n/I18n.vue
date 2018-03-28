@@ -20,6 +20,15 @@
 
 <script>
 export default {
+  created() {
+    const languages = ['en', 'zh', 'ja'];
+
+    languages.forEach((item) => {
+      if ((navigator.language).includes(item)) {
+        this.$i18n.locale = item;
+      }
+    });
+  },
   methods: {
     setLanguage(val) {
       this.$i18n.locale = val;
