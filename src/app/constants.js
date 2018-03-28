@@ -76,6 +76,7 @@ export const INITIAL = {
     },
 
     { icon: 'fa fa-calculator', text: 'Counter', route: '/counter', subheader: 'Playground' },
+    { icon: 'photo_library', text: 'Gallery', route: '/gallery', disabled: true },
     { icon: 'fa fa-qrcode', text: 'QR Code', route: '/qrcode', disabled: true },
   ],
 };

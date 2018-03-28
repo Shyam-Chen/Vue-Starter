@@ -14,7 +14,6 @@
 
 * [Getting Started](#getting-started)
 * [Project Template](#project-template)
-* [Practical Examples](#practical-examples)
 * [Dockerization](#dockerization)
 * [Configuration](#configuration)
 * [Directory Structure](#directory-structure)
@@ -99,40 +98,6 @@ $ vue init Shyam-Chen/Vue-Fullstack-Template <PROJECT_NAME>
 ```bash
 $ cd <PROJECT_NAME>
 ```
-
-## Practical Examples
-
-* [ ] CRUD Operations
-  * [x] Basic
-  * [x] REST (`axios`)
-  * [ ] GraphQL (`vue-apollo`)
-* [ ] Form Controls
-  * [x] Template-driven
-  * [ ] Reactive (`rxjs`)
-* [ ] Data Table
-  * [ ] Basic
-  * [ ] REST (`axios`)
-  * [ ] GraphQL (`vue-apollo`)
-* [ ] Globalization
-  * [x] Internationalization (`vue-i18n`)
-  * [ ] Localization
-* [ ] Authorization
-  * [ ] REST (`axios`)
-  * [ ] GraphQL (`vue-apollo`)
-* [ ] Data Visualization
-  * [ ] Chart (`vue-chartjs`)
-  * [ ] Map
-* [ ] Realtime
-  * [ ] Socket.IO (`socket.io`)
-  * [ ] GraphQL Subscriptions (`graphql-subscriptions`)
-* [ ] Playground
-  * [x] Counter
-    * [x] State Management (`vuex`)
-    * [x] Asynchronous (`rxjs`)
-  * [ ] Stepper
-  * [ ] Calendar
-  * [ ] Media
-  * [ ] QR Code
 
 ## Dockerization
 
