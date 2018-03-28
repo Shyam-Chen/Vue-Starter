@@ -3,6 +3,7 @@ import Vue from 'vue';
 import { sync } from 'vuex-router-sync';
 import Material from 'vuetify';
 import Meta from 'vue-meta';
+import Validate from 'vee-validate';
 // import Raven from 'raven-js';
 // import RavenVue from 'raven-js/plugins/vue';
 
@@ -17,6 +18,7 @@ sync(store, router);
 
 Vue.use(Material);
 Vue.use(Meta);
+Vue.use(Validate);
 
 // if (window.location.hostname !== 'localhost') {
 //   Raven.config('https://<key>@sentry.io/<project>')
