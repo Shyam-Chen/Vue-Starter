@@ -102,7 +102,7 @@
 <script>
 import { mapGetters, mapActions } from 'vuex';
 
-import { state } from './constants';
+import { INITIAL as state } from './constants';
 import actions from './actions';
 import mutations from './mutations';
 import getters from './getters';
