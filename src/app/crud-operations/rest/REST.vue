@@ -19,12 +19,13 @@
     </v-layout>
 
     <!-- Display -->
-    <v-flex xs12>
-      <v-data-table :headers="headers" :items="$r.dataset" :loading="$r.loading" v-model="$r.selected" select-all class="elevation-1">
+    <v-layout row>
+      <v-data-table :headers="headers" :items="$r.dataset" :loading="$r.loading" v-model="$r.selected" hide-actions select-all class="elevation-1">
         <template slot="items" slot-scope="props">
           <td>
             <v-checkbox v-model="props.selected" primary hide-details></v-checkbox>
           </td>
+          <td>{{ props.item.id }}</td>
           <td>{{ props.item.text }}</td>
           <td class="text-xs-right">
             <v-btn flat color="error" @click.stop="onOpenDelete(props.item.id)">Delete</v-btn>
@@ -32,7 +33,7 @@
           </td>
         </template>
       </v-data-table>
-    </v-flex>
+    </v-layout>
 
     <aside>
       <!-- Delete -->
@@ -81,6 +82,7 @@ export default {
   data() {
     return {
       headers: [
+        { text: 'ID', value: 'id' },
         { text: 'Text', value: 'text' },
         { text: 'Actions', value: 'actions' },
       ],
