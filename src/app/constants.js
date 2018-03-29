@@ -1,18 +1,31 @@
-export const INITIAL = {
-  drawer: null,
+// @flow
+
+export interface Navigation {
+  icon?: string;
+  text?: string;
+  route?: string;
+  disabled?: boolean;
+  subheader?: string;
+  children?: Navigation[];
+}
+
+export interface IApp {
+  drawer: boolean;
+  navigation: Navigation[];
+}
+
+export const INITIAL: IApp = {
+  drawer: true,
   navigation: [
     // Basic
     { icon: 'face', text: 'Hello World', route: '/hello-world', subheader: 'Basic' },
     {
       icon: 'loyalty',
       text: '101 Guide',
-      group: '101-guide',
-      model: false,
       children: [
         { text: 'Foo', route: '/foo' },
         {
           text: 'Bar',
-          group: 'bar',
           children: [
             { text: 'Bar - 1', route: '/bar-1' },
             { text: 'Bar - 2', route: '/bar-2' },
@@ -23,7 +36,6 @@ export const INITIAL = {
     {
       icon: 'business',
       text: 'CRUD Operations',
-      model: false,
       children: [
         { text: 'Basic', route: '/crud-operations/basic' },
         { text: 'REST', route: '/crud-operations/rest' },
@@ -33,7 +45,6 @@ export const INITIAL = {
     {
       icon: 'contacts',
       text: 'Form Controls',
-      model: false,
       children: [
         { text: 'Template-driven', route: '/form-controls/template-driven' },
       ],
@@ -45,14 +56,12 @@ export const INITIAL = {
       text: '201 Guide',
       disabled: true,
       subheader: 'Advanced',
-      model: false,
       children: [],
     },
     {
       icon: 'fa fa-table',
       text: 'Data Table',
       disabled: true,
-      model: false,
       children: [
         { text: 'Basic', disabled: true },
         { text: 'REST', disabled: true },
@@ -65,7 +74,6 @@ export const INITIAL = {
       icon: 'verified_user',
       text: 'Authorization',
       disabled: true,
-      model: false,
       children: [
         { text: 'REST', disabled: true },
         { text: 'GraphQL', disabled: true },
@@ -75,7 +83,6 @@ export const INITIAL = {
       icon: 'fa fa-pie-chart',
       text: 'Data Visualization',
       disabled: true,
-      model: false,
       children: [
         { text: 'Chart', disabled: true },
         { text: 'Map', disabled: true },
@@ -85,7 +92,6 @@ export const INITIAL = {
       icon: 'av_timer',
       text: 'Realtime',
       disabled: true,
-      model: false,
       children: [
         { text: 'Socket.IO', disabled: true },
         { text: 'GraphQL Subscriptions', disabled: true },
