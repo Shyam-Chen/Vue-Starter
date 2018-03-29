@@ -19,13 +19,12 @@ const router = new Router({
 
     /** @name form-controls */
     { path: '/form-controls/template-driven', component: () => import('~/form-controls/template-driven/TemplateDriven') },
-    { path: '/form-controls/reactive', component: () => import('~/form-controls/reactive/Reactive') },
 
     /** @name data-table */
     { path: '/data-table/basic', component: () => import('~/data-table/basic/Basic') },
 
-    /** @name globalization */
-    { path: '/i18n', component: () => import('~/globalization/i18n/I18n') },
+    /** @name internationalization */
+    { path: '/i18n', component: () => import('~/i18n/I18n') },
 
     /** @name authorization */
 

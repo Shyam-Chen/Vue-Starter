@@ -17,16 +17,42 @@
               </v-list-tile-content>
             </v-list-tile>
 
-            <v-list-tile v-for="(child, index) in item.children" :key="index" :to="child.route" :disabled="child.disabled">
-              <v-list-tile-action>
-                <v-icon>{{ child.icon }}</v-icon>
-              </v-list-tile-action>
-              <v-list-tile-content>
-                <v-list-tile-title>
-                  {{ child.text }}
-                </v-list-tile-title>
-              </v-list-tile-content>
-            </v-list-tile>
+            <template v-for="child in item.children">
+              <v-list-group v-if="child.children" :group="child.group" :key="child.text" :prepend-icon="child.icon" :disabled="child.disabled" sub-group>
+                <v-list-tile slot="activator">
+                  <v-list-tile-content>
+                    <v-list-tile-title>
+                      {{ child.text }}
+                    </v-list-tile-title>
+                  </v-list-tile-content>
+                </v-list-tile>
+
+                <v-list-tile v-for="subchild in child.children" :key="subchild.text" :to="subchild.route" :disabled="subchild.disabled">
+                  <v-list-tile-action>
+                    <v-icon>{{ subchild.icon }}</v-icon>
+                  </v-list-tile-action>
+                  <v-list-tile-content>
+                    <v-list-tile-title>
+                      {{ subchild.text }}
+                    </v-list-tile-title>
+                  </v-list-tile-content>
+                </v-list-tile>
+              </v-list-group>
+
+              <v-list-tile v-else :to="child.route" :disabled="child.disabled">
+                <v-list-tile-action>
+                  <v-icon>{{ child.icon }}</v-icon>
+                </v-list-tile-action>
+                <v-list-tile-content>
+                  <v-list-tile-title>
+                    {{ child.text }}
+                  </v-list-tile-title>
+                </v-list-tile-content>
+              </v-list-tile>
+            </template>
+
+
+
           </v-list-group>
 
           <!-- else -->
