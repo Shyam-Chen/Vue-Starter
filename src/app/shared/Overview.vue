@@ -1,5 +1,5 @@
 <script>
-import logo from '~assets/images/vue.png';
+import logo from '~assets/images/logo.svg';
 
 export default {
   metaInfo: {
@@ -10,7 +10,7 @@ export default {
       <v-layout fill-height justify-center align-center>
         <div class="text-xs-center">
           <div class="display-1 pa-3 blue--text">Vue by Example</div>
-          <img src={logo} alt="Logo" class="pa-3" />
+          <img src={logo} alt="Logo" width="300" height="300" />
         </div>
       </v-layout>
     );
