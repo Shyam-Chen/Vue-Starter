@@ -49,4 +49,23 @@ describe('actions', () => {
 
     expect(state.dataset.length).toBe(0);
   });
+
+  it('should handle handleDialog', () => {
+    const state = { ...INITIAL };
+    const dialog = { name: 'edit', value: true };
+
+    actions.handleDialog({ state }, dialog);
+
+    expect(state.dialogs.edit).toBe(true);
+  });
+
+  it('should handle dialogData', () => {
+    const state = { ...INITIAL };
+    const item = { id: 1, primary: 'foo', accent: 'bar' };
+    const dialog = { item, key: 'editData' };
+
+    actions.dialogData({ state }, dialog);
+
+    expect(state.editData).toEqual(item);
+  });
 });

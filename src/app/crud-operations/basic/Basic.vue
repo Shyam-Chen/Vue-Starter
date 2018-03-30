@@ -47,10 +47,10 @@
             <td>{{ props.item.primary }}</td>
             <td>{{ props.item.accent }}</td>
             <td class="text-xs-right">
-              <v-btn icon class="mx-0" @click.stop="openEditDialog(props.item)">
+              <v-btn icon class="mx-0" @click.stop="handleDialog({ name: 'edit', value: true }); dialogData({ item: props.item, key: 'editData' })">
                 <v-icon color="teal">edit</v-icon>
               </v-btn>
-              <v-btn icon class="mx-0" @click.stop="openDeleteDialog(props.item)">
+              <v-btn icon class="mx-0" @click.stop="handleDialog({ name: 'delete', value: true }); dialogData({ item: props.item, key: 'deleteData' })">
                 <v-icon color="pink">delete</v-icon>
               </v-btn>
             </td>
@@ -62,7 +62,7 @@
     <!-- dialogs -->
     <aside>
       <!-- Edit -->
-      <v-dialog v-model="editDialog" max-width="500px">
+      <v-dialog v-model="$b.dialogs.edit" max-width="500px">
         <v-card>
           <v-card-title>Edit</v-card-title>
           <v-card-text>
@@ -76,22 +76,22 @@
             </v-layout>
           </v-card-text>
           <v-card-actions>
-            <v-btn color="red" flat @click.stop="editDialog = false">Cancel</v-btn>
-            <v-btn color="green" flat @click.stop="editItem($b.editData); editDialog = false">Save</v-btn>
+            <v-btn color="red" flat @click.stop="handleDialog({ name: 'edit', value: false })">Cancel</v-btn>
+            <v-btn color="green" flat @click.stop="editItem($b.editData); handleDialog({ name: 'edit', value: false })">Save</v-btn>
           </v-card-actions>
         </v-card>
       </v-dialog>
 
       <!-- Delete -->
-      <v-dialog v-model="deleteDialog" max-width="500px">
+      <v-dialog v-model="$b.dialogs.delete" max-width="500px">
         <v-card>
           <v-card-title>Delete</v-card-title>
           <v-card-text>
             Are you sure you want to delete it?
           </v-card-text>
           <v-card-actions>
-            <v-btn color="green" flat @click.stop="deleteDialog = false">Cancel</v-btn>
-            <v-btn color="red" flat @click.stop="deleteItem($b.deleteData); deleteDialog = false">Confirm</v-btn>
+            <v-btn color="green" flat @click.stop="handleDialog({ name: 'delete', value: false })">Cancel</v-btn>
+            <v-btn color="red" flat @click.stop="deleteItem($b.deleteData); handleDialog({ name: 'delete', value: false })">Confirm</v-btn>
           </v-card-actions>
         </v-card>
       </v-dialog>
@@ -104,7 +104,7 @@
 
 import { mapGetters, mapActions } from 'vuex';
 
-import { IBasic, IData } from './types';
+import { IBasic } from './types';
 import { INITIAL as state } from './constants';
 import actions from './actions';
 import mutations from './mutations';
@@ -113,12 +113,6 @@ import getters from './getters';
 export default {
   metaInfo: {
     title: 'CRUD Operations - Basic | Vue by Example',
-  },
-  data(): IData {
-    return {
-      editDialog: false,
-      deleteDialog: false,
-    };
   },
   computed: {
     $b(): IBasic {
@@ -134,14 +128,6 @@ export default {
   },
   methods: {
     ...mapActions('crudOperations/basic', Object.keys(actions)),
-    openEditDialog(item): void {
-      this.editDialog = true;
-      this.$b.editData = { ...item };
-    },
-    openDeleteDialog({ id }): void {
-      this.deleteDialog = true;
-      this.$b.deleteData = { id };
-    },
   },
 };
 </script>

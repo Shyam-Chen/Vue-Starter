@@ -14,13 +14,24 @@ export interface IBasic {
   addData: Item;
   editData: Item;
   deleteData: Item;
+  dialogs: { edit: boolean, delete: boolean };
 }
 
-export interface IData {
-  editDialog: boolean;
-  deleteDialog: boolean;
+export interface IBasicKey extends IBasic {
+  [key: string]: { ...Item };
 }
 
 export interface IContext {
   state: IBasic;
+}
+
+export interface IContextKey {
+  state: IBasicKey;
+}
+
+export interface Dialog {
+  name: string;
+  value: boolean;
+  item: Item;
+  key: string;
 }

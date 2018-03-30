@@ -21,6 +21,12 @@ export const INITIAL: IBasic = {
   ],
 
   addData: {},
+
   editData: {},
   deleteData: {},
+
+  dialogs: {
+    edit: false,
+    delete: false,
+  },
 };
