@@ -8,15 +8,16 @@ export const textListTypeDefs = gql`
 
   type Query {
     textList: [TextList]
-    list(id: String, text: String): [TextList]
   }
 `;
 
 export const textListResolvers = {
   Query: {
-
-  },
-  Mutation: {
-
+    textList() {
+      return [
+        { id: 1, text: 'foo' },
+        { id: 2, text: 'bar' },
+      ];
+    },
   },
 };
