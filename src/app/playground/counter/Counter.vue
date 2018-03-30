@@ -1,3 +1,31 @@
+<template>
+  <v-layout column>
+    <v-layout row>
+      <div class="headline pa-2">
+        Clicked: <strong>{{ $c.value }}</strong> times,
+        value is <strong>{{ evenOrOdd }}</strong>.
+      </div>
+    </v-layout>
+
+    <v-layout row>
+      <v-btn color="primary" @click="increment">Increment</v-btn>
+      <v-btn color="primary" @click="decrement">Decrement</v-btn>
+    </v-layout>
+
+    <v-layout row>
+      <v-btn color="primary" @click="incrementAsync">Increment (Async)</v-btn>
+      <v-btn color="primary" @click="decrementAsync">Decrement (Async)</v-btn>
+      <v-btn color="primary" @click="incrementIfOdd">Increment (If Odd)</v-btn>
+      <v-btn color="primary" @click="decrementIfEven">Decrement (If Even)</v-btn>
+    </v-layout>
+
+    <v-layout row>
+      <v-btn color="primary" disabled>Start Count</v-btn>
+      <v-btn color="primary" disabled>Cancel Count</v-btn>
+    </v-layout>
+  </v-layout>
+</template>
+
 <script>
 // @flow
 
@@ -24,40 +52,8 @@ export default {
   methods: {
     ...mapActions('counter', Object.keys(actions)),
   },
-  render() {
-    return (
-      <v-layout row wrap>
-        <v-flex xs12>
-          <div class="headline">
-            Clicked: <strong>{this.$c.value}</strong> times,
-            value is <strong>{this.evenOrOdd}</strong>.
-          </div>
-        </v-flex>
-
-        <v-flex xs12>
-          <v-btn color="primary" onClick={this.increment}>Increment</v-btn>
-          <v-btn color="primary" onClick={this.decrement}>Decrement</v-btn>
-        </v-flex>
-
-        <v-flex xs12>
-          <v-btn color="primary" onClick={this.incrementAsync}>Increment (Async)</v-btn>
-          <v-btn color="primary" onClick={this.decrementAsync}>Decrement (Async)</v-btn>
-          <v-btn color="primary" onClick={this.incrementIfOdd}>Increment (If Odd)</v-btn>
-          <v-btn color="primary" onClick={this.decrementIfEven}>Decrement (If Even)</v-btn>
-        </v-flex>
-
-        <v-flex xs12>
-          <v-btn color="primary" disabled>Start Count</v-btn>
-          <v-btn color="primary" disabled>Cancel Count</v-btn>
-        </v-flex>
-      </v-layout>
-    );
-  },
 };
 </script>
 
 <style scoped>
-.headline {
-  padding: .5rem;
-}
 </style>

@@ -1,23 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Counter should render initial component 1`] = `
-<v-layout row="true" wrap="true">
-  <v-flex xs12="true">
-    <div class="headline">Clicked: <strong>0</strong> times, value is <strong>even</strong>.</div>
-  </v-flex>
-  <v-flex xs12="true">
+<v-layout column="">
+  <v-layout row="">
+    <div class="headline pa-2">
+      Clicked: <strong>0</strong> times, value is <strong>even</strong>.
+    </div>
+  </v-layout>
+  <v-layout row="">
     <v-btn color="primary">Increment</v-btn>
     <v-btn color="primary">Decrement</v-btn>
-  </v-flex>
-  <v-flex xs12="true">
+  </v-layout>
+  <v-layout row="">
     <v-btn color="primary">Increment (Async)</v-btn>
     <v-btn color="primary">Decrement (Async)</v-btn>
     <v-btn color="primary">Increment (If Odd)</v-btn>
     <v-btn color="primary">Decrement (If Even)</v-btn>
-  </v-flex>
-  <v-flex xs12="true">
-    <v-btn color="primary" disabled="true">Start Count</v-btn>
-    <v-btn color="primary" disabled="true">Cancel Count</v-btn>
-  </v-flex>
+  </v-layout>
+  <v-layout row="">
+    <v-btn color="primary" disabled="">Start Count</v-btn>
+    <v-btn color="primary" disabled="">Cancel Count</v-btn>
+  </v-layout>
 </v-layout>
 `;
