@@ -2,6 +2,7 @@
 import * as functions from 'firebase-functions';
 import * as admin from 'firebase-admin';
 import express from 'express';
+// import { graphqlExpress } from 'apollo-server-express';
 import compression from 'compression';
 import cors from 'cors';
 import morgan from 'morgan';
@@ -9,6 +10,7 @@ import bodyParser from 'body-parser';
 // import Raven from 'raven';
 
 import routes from './api';
+// import schema from './api/graphql';
 
 // const isLocalhost = new URL(process.env.FUNC_URL).hostname === 'localhost'
 
@@ -31,6 +33,7 @@ vm.use(bodyParser.json());
 vm.use(bodyParser.urlencoded({ extended: false }));
 
 vm.use('/', routes);
+// vm.use('/graphql', graphqlExpress({ schema }));
 
 // if (!isLocalhost) {
 //   vm.use(Raven.errorHandler());
