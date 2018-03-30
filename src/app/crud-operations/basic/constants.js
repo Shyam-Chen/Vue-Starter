@@ -1,4 +1,8 @@
-export const INITIAL = {
+// @flow
+
+import { IBasic } from './types';
+
+export const INITIAL: IBasic = {
   searchData: '',
   selected: [],
 

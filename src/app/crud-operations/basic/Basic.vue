@@ -100,8 +100,11 @@
 </template>
 
 <script>
+// @flow
+
 import { mapGetters, mapActions } from 'vuex';
 
+import { IBasic, IData } from './types';
 import { INITIAL as state } from './constants';
 import actions from './actions';
 import mutations from './mutations';
@@ -111,14 +114,14 @@ export default {
   metaInfo: {
     title: 'CRUD Operations - Basic | Vue by Example',
   },
-  data() {
+  data(): IData {
     return {
       editDialog: false,
       deleteDialog: false,
     };
   },
   computed: {
-    $b() {
+    $b(): IBasic {
       return this.$store.state.crudOperations.basic;
     },
     ...mapGetters('crudOperations/basic', Object.keys(getters)),
@@ -131,11 +134,11 @@ export default {
   },
   methods: {
     ...mapActions('crudOperations/basic', Object.keys(actions)),
-    openEditDialog(item) {
+    openEditDialog(item): void {
       this.editDialog = true;
       this.$b.editData = { ...item };
     },
-    openDeleteDialog({ id }) {
+    openDeleteDialog({ id }): void {
       this.deleteDialog = true;
       this.$b.deleteData = { id };
     },
