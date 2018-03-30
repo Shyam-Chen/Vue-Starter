@@ -25,12 +25,24 @@ describe('Counter', () => {
 
   it('should display count', async () => {
     const text = await page.$eval(headline, el => el.textContent);
-    expect(text).toMatch('Clicked: 0 times, value is even.');
+
+    const string = `
+      Clicked: 0 times,
+      value is even.
+    `;
+
+    expect(text).toMatch(string);
   });
 
   it('should click increment button', async () => {
     await page.click(increment);
     const text = await page.$eval(headline, el => el.textContent);
-    expect(text).toMatch('Clicked: 1 times, value is odd.');
+
+    const string = `
+      Clicked: 1 times,
+      value is odd.
+    `;
+
+    expect(text).toMatch(string);
   });
 });
