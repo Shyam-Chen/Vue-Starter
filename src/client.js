@@ -31,6 +31,9 @@ const vm = new Vue({
   store,
   provide,
   i18n,
+  mounted() {
+    document.dispatchEvent(new Event('render-event'));
+  },
   render: handle => handle(App),
 });
 

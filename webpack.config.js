@@ -162,6 +162,9 @@ module.exports = ({ prod = false } = {}) => ({
         '/crud-operations/basic',
         '/counter',
       ],
+      renderer: new PrerenderSpaPlugin.PuppeteerRenderer({
+        renderAfterDocumentEvent: 'render-event',
+      }),
     }),
   ].filter(Boolean),
   devServer: {
