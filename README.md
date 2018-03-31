@@ -111,7 +111,7 @@ $ cd <PROJECT_NAME>
 
 ## Dockerization
 
-1. Build and run the Container in the background
+1. Build and run the container in the background
 
 ```bash
 $ docker-compose up -d <SERVICE>
@@ -129,6 +129,12 @@ $ docker-compose exec <SERVICE> <COMMAND>
 $ docker-compose rm -fs
 ```
 
+4. Restart up the container in the background
+
+```bash
+$ docker-compose up -d --build <SERVICE>
+```
+
 ## Configuration
 
 ### Project environments
@@ -139,8 +145,8 @@ Change to your projects.
 // .firebaserc
 {
   "projects": {
-    "development": "vue-by-example",
-    "production": "vue-by-example"
+    "development": "vue-by-example-dev",
+    "production": "vue-by-example-prod"
   }
 }
 ```
