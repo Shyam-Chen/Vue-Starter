@@ -134,11 +134,11 @@ export default {
 
 <style scoped>
 .vfs-text-field {
-  margin: auto .33rem;
+  margin: auto 0.33rem;
 }
 
 .vfs-card-title {
   height: 82px;
-  transition: all .33s;
+  transition: all 0.33s;
 }
 </style>

@@ -9,7 +9,7 @@
         <div>
           <v-text-field name="nickname" label="Nickname" v-model="nickname"></v-text-field>
         </div>
-        <div class="outputs">{{ $td.nickname }}</div>
+        <div class="vfs-outputs">{{ $td.nickname }}</div>
       </v-layout>
 
       <!-- select -->
@@ -22,7 +22,7 @@
             </div>
           </v-layout>
         </div>
-        <div class="outputs">{{ $td.dessert }}</div>
+        <div class="vfs-outputs">{{ $td.dessert }}</div>
       </v-layout>
 
       <!-- multiple select -->
@@ -35,7 +35,7 @@
             </div>
           </v-layout>
         </div>
-        <div class="outputs">{{ $td.states }}</div>
+        <div class="vfs-outputs">{{ $td.states }}</div>
       </v-layout>
 
       <!-- checkboxes -->
@@ -50,7 +50,7 @@
             </div>
           </v-layout>
         </div>
-        <div class="outputs">{{ $td.technologies }}</div>
+        <div class="vfs-outputs">{{ $td.technologies }}</div>
       </v-layout>
 
       <!-- radios -->
@@ -65,7 +65,7 @@
             </div>
           </v-layout>
         </div>
-        <div class="outputs">{{ $td.gender }}</div>
+        <div class="vfs-outputs">{{ $td.gender }}</div>
       </v-layout>
 
       <!-- switch -->
@@ -78,7 +78,7 @@
             </div>
           </v-layout>
         </div>
-        <div class="outputs">{{ $td.autoplay }}</div>
+        <div class="vfs-outputs">{{ $td.autoplay }}</div>
       </v-layout>
 
       <!-- next -->
@@ -123,9 +123,9 @@ export default {
 </script>
 
 <style scoped>
-.outputs {
+.vfs-outputs {
   align-self: center;
-  margin: 0 0 .5rem .5rem;
+  margin: 0 0 0.5rem 0.5rem;
   color: #009688;
 }
 </style>

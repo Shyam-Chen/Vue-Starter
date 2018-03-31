@@ -57,7 +57,17 @@ $ yarn build:app
 $ yarn build:api
 ```
 
-5. Run the test
+5. Check the code
+
+```bash
+# scripts
+$ yarn lint:js
+
+# styles
+$ yarn lint:css
+```
+
+6. Run the test
 
 ```bash
 # front-end
@@ -67,7 +77,7 @@ $ yarn test:app
 $ yarn test:api
 ```
 
-6. Run the e2e
+7. Run the e2e
 
 ```bash
 # front-end

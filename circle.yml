@@ -26,6 +26,12 @@ jobs:
           command: docker-compose exec default yarn build:api
 
       - run:
+          name: Check the code
+          command: |
+            # docker-compose exec default yarn lint:js
+            # docker-compose exec default yarn lint:css
+
+      - run:
           name: Test the application
           command: |
             docker-compose exec default yarn test:app
@@ -51,6 +57,7 @@ jobs:
           name: End-to-end UI tests
           command: |
             # if [[ "${CIRCLE_BRANCH}" == "develop" ]]; then
+            #   docker-compose exec dev yarn firebase serve --only hosting --token ${FIREBASE_TOKEN} &
             #   docker-compose exec dev yarn e2e:app
             # fi
 
@@ -58,6 +65,7 @@ jobs:
           name: End-to-end HTTP tests
           command: |
             # if [[ "${CIRCLE_BRANCH}" == "develop" ]]; then
+            #   docker-compose exec dev yarn firebase serve --only functions --token ${FIREBASE_TOKEN} &
             #   docker-compose exec dev yarn e2e:api
             # fi
 
