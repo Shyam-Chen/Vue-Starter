@@ -32,6 +32,6 @@ RUN \
 
 RUN yarn install
 
-RUN yarn global add firebase-tools
+ENV CI_ENV true
 
 EXPOSE 8000 5000

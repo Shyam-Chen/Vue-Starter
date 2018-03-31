@@ -94,6 +94,7 @@
     "eslint-plugin-flowtype-errors": "3.5.1",
     "eslint-plugin-import": "2.9.0",
     "eslint-plugin-vue": "4.4.0",
+    "express-history-api-fallback": "2.2.1",
     "file-loader": "1.1.11",
     "firebase-tools": "3.17.7",
     "flow-bin": "0.69.0",
