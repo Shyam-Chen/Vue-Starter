@@ -158,7 +158,6 @@ module.exports = ({ prod = false } = {}) => ({
     prod && new PrerenderSpaPlugin({
       staticDir: DIST_ROOT,
       routes: [
-        '/',
         '/crud-operations/basic',
         '/counter',
       ],
