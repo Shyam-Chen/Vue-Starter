@@ -3,7 +3,7 @@ import puppeteer from 'puppeteer';
 describe('Basic', () => {
   let [page, browser] = [];
 
-  let [headline] = [];
+  let [headline, displayRow] = [];
 
   beforeAll(async () => {
     browser = await puppeteer.launch(global.launch);
@@ -11,6 +11,7 @@ describe('Basic', () => {
     await page.setViewport(global.viewport);
 
     headline = '#app > div.application--wrap > main > div > div > div > div.headline';
+    displayRow = '#app > div.application--wrap > main > div > div > div > div:nth-child(3) > div > div:nth-child(2) > div > table > tbody > tr';
   });
 
   afterAll(async () => {
@@ -26,12 +27,25 @@ describe('Basic', () => {
     expect(text).toMatch('CRUD Operations - Basic');
   });
 
-  it('should add a item', () => {
+  it('should add a item', async () => {
+    const primaryInput = '#app > div.application--wrap > main > div > div > div > div:nth-child(2) > div:nth-child(1) > div > div.input-group__input > input[type="text"]';
+    const accentInput = '#app > div.application--wrap > main > div > div > div > div:nth-child(2) > div:nth-child(2) > div > div.input-group__input > input[type="text"]';
+    const addButton = '#app > div.application--wrap > main > div > div > div > div:nth-child(2) > button > div';
 
+    await page.type(primaryInput, 'foo');
+    await page.type(accentInput, 'bar');
+    await page.click(addButton);
+    const length = await page.$$eval(displayRow, el => el.length);
+
+    expect(length).toBe(5);
   });
 
-  it('should search a board', () => {
+  it('should search a board', async () => {
+    const searchInput = '#app > div.application--wrap > main > div > div > div > div:nth-child(3) > div > div.card__title.vfs-card-title > div.input-group.input-group--append-icon.input-group--hide-details.input-group--text-field.input-group--single-line.primary--text > div.input-group__input > input[type="text"]';
 
+    await page.type(searchInput, 'v');
+    const length = await page.$$eval(displayRow, el => el.length);
+    expect(length).toBe(2);
   });
 
   it('should delete selected item', () => {
@@ -48,10 +62,8 @@ describe('Basic', () => {
 
     await page.click(deleteIcon);
     await page.click(confirm);
+    const length = await page.$$eval(displayRow, el => el.length);
 
-    const tbodyRow = '#app > div.application--wrap > main > div > div > div > div:nth-child(3) > div > div:nth-child(2) > div > table > tbody > tr';
-
-    const length = await page.$$eval(tbodyRow, el => el.length);
     expect(length).toBe(3);
   });
 });
