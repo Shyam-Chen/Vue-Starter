@@ -151,6 +151,7 @@ module.exports = ({ prod = false } = {}) => ({
       cacheId: pkg.name,
       filename: 'service-worker.js',
       minify: true,
+      navigateFallback: 'index.html',
       staticFileGlobs: [`${path.basename(DIST_ROOT)}/*`],
       stripPrefix: `${path.basename(DIST_ROOT)}/`,
     }),
