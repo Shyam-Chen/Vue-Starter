@@ -18,6 +18,7 @@ global.launch = {
 };
 
 if (CI_ENV) {
+  // TODO: firebase functions
   const express = require('express');
   const history = require('express-history-api-fallback');
 
