@@ -100,15 +100,15 @@
 <script>
 // @flow
 
-import { IApp } from './constants';
+import { IApp, IComponent } from './constants';
 
-export default {
+export default ({
   computed: {
     $app(): IApp {
       return this.$store.state;
     },
   },
-};
+}: IComponent);
 </script>
 
 <style scoped>

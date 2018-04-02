@@ -14,6 +14,8 @@ export interface IApp {
   navigation: Navigation[];
 }
 
+export interface IComponent {}
+
 export const INITIAL: IApp = {
   drawer: true,
   navigation: [
@@ -23,12 +25,31 @@ export const INITIAL: IApp = {
       icon: 'loyalty',
       text: '101 Guide',
       children: [
-        { text: 'Foo', route: '/foo' },
         {
-          text: 'Bar',
+          text: 'Components',
           children: [
-            { text: 'Bar - 1', route: '/bar-1' },
-            { text: 'Bar - 2', route: '/bar-2' },
+            { text: 'Module Systems', route: '/foo' },
+            { text: 'Props', route: '/foo' },
+            { text: 'Slots', route: '/foo' },
+          ],
+        },
+        {
+          text: 'Directives',
+          children: [
+            { text: 'Switch', route: '/foo' },
+          ],
+        },
+        {
+          text: 'Filters',
+          children: [
+            { text: 'Async', route: '/foo' },
+          ],
+        },
+        {
+          text: 'Router',
+          children: [
+            { text: 'Params', route: '/foo' },
+            { text: 'Guards', route: '/foo' },
           ],
         },
       ],
