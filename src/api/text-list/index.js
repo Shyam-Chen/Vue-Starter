@@ -3,6 +3,12 @@ import express from 'express';
 
 const router = express.Router();
 
+/**
+ * @return {{ data: Array<{ id: string, text: string }> }}
+ *
+ * @example GET /api/text-list
+ * @example GET /api/text-list?text=${text}
+ */
 router.get('/', (req, res) => {
   const { text } = req.query;
 
@@ -22,6 +28,11 @@ router.get('/', (req, res) => {
     });
 });
 
+/**
+ * @return {{ message: string }}
+ *
+ * @example POST /api/text-list { text: ${text} }
+ */
 router.post('/', (req, res) => {
   const { text } = req.body;
 
@@ -34,6 +45,11 @@ router.post('/', (req, res) => {
     .then(() => res.status(200).json({ message: 'Data saved.' }));
 });
 
+/**
+ * @return {{ message: string }}
+ *
+ * @example POST /api/text-list/${id}
+ */
 router.put('/:id', (req, res) => {
   const { id } = req.params;
 
@@ -43,6 +59,11 @@ router.put('/:id', (req, res) => {
     .then(() => res.status(200).json({ message: 'Data updated.' }));
 });
 
+/**
+ * @return {{ message: string }}
+ *
+ * @example DELETE /api/text-list/${id}
+ */
 router.delete('/:id', (req, res) => {
   const { id } = req.params;
 

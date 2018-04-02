@@ -26,11 +26,9 @@ export default {
 
     state.selected = [];
   },
-
   handleDialog({ state }: IContext, { name, value }: Dialog): void {
     state.dialogs[name] = value;
   },
-
   dialogData({ state }: IContextKey, { item, key }: Dialog): void {
     state[key] = { ...item };
   },

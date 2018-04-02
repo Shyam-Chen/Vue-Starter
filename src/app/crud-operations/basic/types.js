@@ -6,6 +6,13 @@ export interface Item {
   accent?: string;
 }
 
+export interface Dialog {
+  name: string;
+  value: boolean;
+  item: Item;
+  key: string;
+}
+
 export interface IBasic {
   searchData: string;
   selected: Item[];
@@ -17,21 +24,10 @@ export interface IBasic {
   dialogs: { edit: boolean, delete: boolean };
 }
 
-export interface IBasicKey extends IBasic {
-  [key: string]: { ...Item };
-}
-
 export interface IContext {
   state: IBasic;
 }
 
 export interface IContextKey {
-  state: IBasicKey;
-}
-
-export interface Dialog {
-  name: string;
-  value: boolean;
-  item: Item;
-  key: string;
+  state: { ...IBasic, [key: string]: { ...Item } };
 }
