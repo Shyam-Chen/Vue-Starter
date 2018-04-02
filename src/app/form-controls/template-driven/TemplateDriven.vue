@@ -7,7 +7,14 @@
       <!-- input -->
       <v-layout row>
         <div>
-          <v-text-field name="nickname" label="Nickname" v-model="nickname"></v-text-field>
+          <v-text-field v-model="nickname" name="nickname" label="Nickname" class="vfs-field"></v-text-field>
+        </div>
+        <div class="vfs-outputs">{{ $td.nickname }}</div>
+      </v-layout>
+
+      <v-layout row>
+        <div>
+          <v-text-field v-model="nickname" :rules="nicknameRules" name="nickname" label="Nickname" counter="15" class="vfs-field" required></v-text-field>
         </div>
         <div class="vfs-outputs">{{ $td.nickname }}</div>
       </v-layout>
@@ -18,7 +25,7 @@
           <v-layout column>
             <div class="body-1">Dessert</div>
             <div>
-              <v-select :items="$td.dessertList" v-model="dessert" label="Choose a dessert" style="width: 167px" single-line bottom></v-select>
+              <v-select :items="$td.dessertList" v-model="dessert" label="Choose a dessert" class="vfs-field" single-line bottom></v-select>
             </div>
           </v-layout>
         </div>
@@ -100,6 +107,14 @@ import mutations from './mutations';
 import getters from './getters';
 
 export default {
+  data() {
+    return {
+      nicknameRules: [
+        () => this.nickname.length > 0 || 'This field is required',
+        () => this.nickname.length <= 15 || 'too long',
+      ],
+    };
+  },
   computed: {
     $td() {
       return this.$store.state.formControls.templateDriven;
@@ -123,6 +138,10 @@ export default {
 </script>
 
 <style scoped>
+.vfs-field {
+  width: 167px;
+}
+
 .vfs-outputs {
   align-self: center;
   margin: 0 0 0.5rem 0.5rem;
