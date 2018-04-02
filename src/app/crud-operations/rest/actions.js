@@ -11,19 +11,19 @@ export default {
   },
 
   addItem({ dispatch, state }, text) {
-    if (text) {
-      state.loading = true;
+    if (!text) return;
 
-      axios.post(API_LIST, { text })
-        .then(() => { state.addData.text = ''; })
-        .then(() => dispatch('searchItem'))
-        .catch(error => dispatch('failure', error));
-    }
+    state.loading = true;
+
+    axios.post(API_LIST, { text })
+      .then(() => { state.addData.text = ''; })
+      .then(() => dispatch('searchItem'))
+      .catch(error => dispatch('failure', error));
   },
   searchItem({ dispatch, state }, text) {
     state.loading = true;
 
-    axios.get(text ? `${API_LIST}?text=${text}` : API_LIST)
+    axios.get(API_LIST, { params: { text } })
       .then(response => dispatch('success', response.data))
       .then(() => {
         state.loading = false;

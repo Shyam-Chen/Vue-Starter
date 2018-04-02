@@ -101,6 +101,7 @@
     "flow-typed": "2.4.0",
     "gulp": "3.9.1",
     "gulp-babel": "7.0.1",
+    "gulp-plumber": "1.2.0",
     "gulp-rename": "1.2.2",
     "gulp-replaces": "0.1.2",
     "gulp-rimraf": "0.2.2",

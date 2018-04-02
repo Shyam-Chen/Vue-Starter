@@ -12,10 +12,7 @@ const router = express.Router();
 router.get('/', (req, res) => {
   const { text } = req.query;
 
-  const coll = admin.firestore().collection('text-list');
-  const query = () => (text ? coll.where('text', '==', text) : coll);
-
-  query()
+  admin.firestore().collection('text-list')
     .get()
     .then((snapshot) => {
       const data = [];
@@ -24,7 +21,11 @@ router.get('/', (req, res) => {
         data.push({ id: doc.id, ...doc.data() });
       });
 
-      res.status(200).json({ data });
+      const result = text
+        ? data.filter(item => item.text.toLowerCase().indexOf(text.toLowerCase()) > -1)
+        : data;
+
+      res.status(200).json({ data: result });
     });
 });
 
