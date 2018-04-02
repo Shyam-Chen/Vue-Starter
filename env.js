@@ -1,5 +1,4 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-multi-assign */
+/* eslint-disable no-unused-vars, no-multi-assign */
 
 const NODE_ENV = exports.NODE_ENV = process.env.NODE_ENV || 'development';
 
