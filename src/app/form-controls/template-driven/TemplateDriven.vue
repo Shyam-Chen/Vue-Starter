@@ -19,6 +19,13 @@
         <div class="vfs-outputs">{{ $td.nickname }}</div>
       </v-layout>
 
+      <v-layout row>
+        <div>
+          <v-text-field v-model="nickname" placeholder="Type here" name="nickname" label="Nickname" class="vfs-field"></v-text-field>
+        </div>
+        <div class="vfs-outputs">{{ $td.nickname }}</div>
+      </v-layout>
+
       <!-- select -->
       <v-layout row>
         <div>
@@ -111,7 +118,7 @@ export default {
     return {
       nicknameRules: [
         () => this.nickname.length > 0 || 'This field is required',
-        () => this.nickname.length <= 15 || 'too long',
+        () => this.nickname.length <= 15 || 'Word length is too long',
       ],
     };
   },
