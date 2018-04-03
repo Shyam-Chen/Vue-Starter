@@ -14,7 +14,7 @@
 
       <v-layout row>
         <div>
-          <v-text-field v-model="nickname" :rules="nicknameRules" name="nickname" label="Nickname" counter="15" class="vfs-field" required></v-text-field>
+          <v-text-field v-model="nickname" :rules="$td.nicknameRules" name="nickname" label="Nickname" counter="15" class="vfs-field" required></v-text-field>
         </div>
         <div class="vfs-outputs">{{ $td.nickname }}</div>
       </v-layout>
@@ -95,6 +95,19 @@
         <div class="vfs-outputs">{{ $td.autoplay }}</div>
       </v-layout>
 
+      <!-- slider -->
+      <v-layout row>
+        <div>
+          <v-layout column>
+            <div class="body-1">Media Volume</div>
+            <div>
+              <v-slider v-model="volume" prepend-icon="volume_up" step="2" style="width: 300px" thumb-label></v-slider>
+            </div>
+          </v-layout>
+        </div>
+        <div class="vfs-outputs">{{ $td.volume }}</div>
+      </v-layout>
+
       <!-- next -->
       <v-layout row>
         ...
@@ -114,14 +127,6 @@ import mutations from './mutations';
 import getters from './getters';
 
 export default {
-  data() {
-    return {
-      nicknameRules: [
-        () => this.nickname.length > 0 || 'This field is required',
-        () => this.nickname.length <= 15 || 'Word length is too long',
-      ],
-    };
-  },
   computed: {
     $td() {
       return this.$store.state.formControls.templateDriven;
@@ -133,6 +138,7 @@ export default {
       'technologies',
       'gender',
       'autoplay',
+      'volume',
     ]),
   },
   created() {

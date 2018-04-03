@@ -1,8 +1,10 @@
 export const INITIAL = {
   // input
   nickname: '',
-
-  // input validation
+  nicknameRules: [
+    () => !!INITIAL.nickname || 'This field is required',
+    () => INITIAL.nickname.length <= 15 || 'Word length is too long',
+  ],
 
   // select
   dessert: '',
