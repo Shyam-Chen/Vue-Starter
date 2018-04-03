@@ -55,6 +55,10 @@ module.exports = ({ prod = false } = {}) => ({
         ],
       },
       {
+        test: /\.yml$/,
+        use: ['json5-loader', 'yaml-loader'],
+      },
+      {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',
         options: {
