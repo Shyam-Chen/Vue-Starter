@@ -10,17 +10,17 @@ export interface Navigation {
 }
 
 export interface IApp {
-  drawer: boolean;
   navigation: Navigation[];
+  drawer?: boolean;
+  languages?: Array<{ key: string, label: string }>;
 }
 
 export interface IComponent {}
 
 export const INITIAL: IApp = {
-  drawer: true,
   navigation: [
     // Basic
-    { icon: 'face', text: 'Hello World', route: '/hello-world', subheader: 'basic' },
+    { icon: 'face', text: 'helloWorld', route: '/hello-world', subheader: 'basic' },
     {
       icon: 'loyalty',
       text: '101 Guide',
@@ -124,6 +124,7 @@ export const INITIAL: IApp = {
     { icon: 'photo_library', text: 'Gallery', route: '/gallery', disabled: true },
     { icon: 'fa fa-qrcode', text: 'QR Code', route: '/qrcode', disabled: true },
   ],
+
   languages: [
     { key: 'en', label: 'English' },
     { key: 'zh', label: '中文' },

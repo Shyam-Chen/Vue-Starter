@@ -1,17 +1,20 @@
 en:
   basic: 'Basic'
+  helloWorld: 'Hello World'
   advanced: 'Advanced'
   playground: 'Playground'
   counter: 'Counter'
 
 zh:
   basic: '基本'
+  helloWorld: '你好世界'
   advanced: '進階'
   playground: '樂園'
   counter: '計數器'
 
 ja:
   basic: 'ベーシック'
+  helloWorld: 'こんにちは世界'
   advanced: '上級'
   playground: '遊び場'
   counter: 'カウンタ'
