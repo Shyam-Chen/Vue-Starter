@@ -20,6 +20,8 @@
 
 ## Getting Started
 
+Follow steps to execute this boilerplate.
+
 1. Clone this Boilerplate
 
 ```bash
@@ -89,7 +91,7 @@ $ yarn e2e:api
 
 ## Project Template
 
-Generate a blank project via Vue CLI
+Generate a blank project via Vue CLI.
 
 1. Install Vue CLI
 
@@ -112,6 +114,8 @@ $ cd <PROJECT_NAME>
 :vertical_traffic_light: [NOTE] Project template repository can be accessed from [here](https://github.com/Shyam-Chen/Vue-Fullstack-Template).
 
 ## Dockerization
+
+Dockerize an application.
 
 1. Build and run the container in the background
 
