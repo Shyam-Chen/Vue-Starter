@@ -20,7 +20,7 @@ export const INITIAL: IApp = {
   drawer: true,
   navigation: [
     // Basic
-    { icon: 'face', text: 'Hello World', route: '/hello-world', subheader: 'Basic' },
+    { icon: 'face', text: 'Hello World', route: '/hello-world', subheader: 'basic' },
     {
       icon: 'loyalty',
       text: '101 Guide',
@@ -76,7 +76,7 @@ export const INITIAL: IApp = {
       icon: 'loyalty',
       text: '201 Guide',
       disabled: true,
-      subheader: 'Advanced',
+      subheader: 'advanced',
       children: [],
     },
     {
@@ -120,7 +120,7 @@ export const INITIAL: IApp = {
     },
 
     // Playground
-    { icon: 'fa fa-calculator', text: 'Counter', route: '/counter', subheader: 'Playground' },
+    { icon: 'fa fa-calculator', text: 'counter', route: '/counter', subheader: 'playground' },
     { icon: 'photo_library', text: 'Gallery', route: '/gallery', disabled: true },
     { icon: 'fa fa-qrcode', text: 'QR Code', route: '/qrcode', disabled: true },
   ],

@@ -5,7 +5,7 @@
       <v-list dense>
         <template v-for="item in $app.navigation">
 
-          <v-subheader v-if="item.subheader" :key="item.subheader">{{ item.subheader }}</v-subheader>
+          <v-subheader v-if="item.subheader" :key="item.subheader">{{ $t(item.subheader) }}</v-subheader>
 
           <!-- if children -->
           <v-list-group v-if="item.children" :key="item.text" :prepend-icon="item.icon" :disabled="item.disabled">
@@ -54,7 +54,7 @@
               <v-icon>{{ item.icon }}</v-icon>
             </v-list-tile-action>
             <v-list-tile-content>
-              <v-list-tile-title>{{ item.text }}</v-list-tile-title>
+              <v-list-tile-title>{{ $t(item.text) }}</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
 
