@@ -1,14 +1,17 @@
 import Vuex from 'vuex';
 import { createLocalVue, shallow } from '@vue/test-utils';
+import I18n from 'vue-i18n';
 
 import Counter from '../Counter';
+import messages from '../translation.yml';
 
 const localVue = createLocalVue();
 
 localVue.use(Vuex);
+localVue.use(I18n);
 
 describe('Counter', () => {
-  let [wrapper, store] = [];
+  let [wrapper, store, i18n] = [];
   let [state, actions, mutations, getters] = [];
 
   beforeEach(() => {
@@ -43,7 +46,12 @@ describe('Counter', () => {
       },
     });
 
-    wrapper = shallow(Counter, { store, localVue });
+    i18n = new I18n({
+      locale: 'en',
+      messages,
+    });
+
+    wrapper = shallow(Counter, { localVue, store, i18n });
   });
 
   it('should render initial component', () => {

@@ -14,8 +14,9 @@ switch (process.env.JEST_ENV) {
         '.*\\.e2e-spec.js$',
       ],
       transform: {
-        '^.+\\.js$': '<rootDir>/node_modules/babel-jest',
-        '.*\\.(vue)$': '<rootDir>/node_modules/vue-jest',
+        '^.+\\.js$': 'babel-jest',
+        '^.+\\.vue$': 'vue-jest',
+        '^.+\\.yml$': 'yaml-jest',
       },
     };
     break;
@@ -31,7 +32,7 @@ switch (process.env.JEST_ENV) {
         '.*\\.e2e-spec.js$',
       ],
       transform: {
-        '^.+\\.js$': '<rootDir>/node_modules/babel-jest',
+        '^.+\\.js$': 'babel-jest',
       },
     };
     break;
@@ -44,7 +45,7 @@ switch (process.env.JEST_ENV) {
         '.*\\.spec.js$',
       ],
       transform: {
-        '^.+\\.js$': '<rootDir>/node_modules/babel-jest',
+        '^.+\\.js$': 'babel-jest',
       },
     };
     break;
