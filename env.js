@@ -7,5 +7,3 @@ const SITE_URL = exports.SITE_URL = process.env.SITE_URL || `http://localhost:${
 
 const FUNC_PROJECT = exports.FUNC_PROJECT = process.env.FUNC_PROJECT || 'vue-by-example-dev';
 const FUNC_URL = exports.FUNC_URL = process.env.FUNC_URL || `http://localhost:5000/${FUNC_PROJECT}/us-central1`;
-
-const CI_ENV = exports.CI_ENV = process.env.CI_ENV || false;

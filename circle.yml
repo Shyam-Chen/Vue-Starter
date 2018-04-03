@@ -46,13 +46,11 @@ jobs:
       - run:
           name: End-to-end UI tests
           command: |
-            # docker-compose exec default yarn firebase serve --only hosting --token ${FIREBASE_TOKEN} &
             docker-compose exec default yarn e2e:app
 
       - run:
           name: End-to-end HTTP tests
           command: |
-            # docker-compose exec dev yarn firebase serve --only functions --token ${FIREBASE_TOKEN} &
             # docker-compose exec dev yarn e2e:api
 
       - run:

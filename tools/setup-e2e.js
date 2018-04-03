@@ -1,6 +1,6 @@
 import { join } from 'path';
 
-import { SITE_URL, FUNC_URL, SITE_PORT, CI_ENV } from '../env';
+import { SITE_URL, FUNC_URL, SITE_PORT } from '../env';
 
 jest.setTimeout(20000);
 
@@ -17,7 +17,7 @@ global.launch = {
   args: [`--window-size=${width},${height}`, '--no-sandbox'],
 };
 
-if (CI_ENV) {
+if (process.env.CI_ENV) {
   // TODO: firebase functions
   const express = require('express');
   const history = require('express-history-api-fallback');
