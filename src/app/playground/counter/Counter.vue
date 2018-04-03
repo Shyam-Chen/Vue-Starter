@@ -1,3 +1,5 @@
+<i18n src="./translation.yml"></i18n>
+
 <template>
   <v-layout column>
     <v-layout row>
@@ -8,15 +10,15 @@
     </v-layout>
 
     <v-layout row>
-      <v-btn color="primary" @click="increment">Increment</v-btn>
-      <v-btn color="primary" @click="decrement">Decrement</v-btn>
+      <v-btn color="primary" @click="increment">{{ $t('increment') }}</v-btn>
+      <v-btn color="primary" @click="decrement">{{ $t('decrement') }}</v-btn>
     </v-layout>
 
     <v-layout row>
-      <v-btn color="primary" @click="incrementAsync">Increment (Async)</v-btn>
-      <v-btn color="primary" @click="decrementAsync">Decrement (Async)</v-btn>
-      <v-btn color="primary" @click="incrementIfOdd">Increment (If Odd)</v-btn>
-      <v-btn color="primary" @click="decrementIfEven">Decrement (If Even)</v-btn>
+      <v-btn color="primary" @click="incrementAsync">{{ $t('increment') }} ({{ $t('async') }})</v-btn>
+      <v-btn color="primary" @click="decrementAsync">{{ $t('decrement') }} ({{ $t('async') }})</v-btn>
+      <v-btn color="primary" @click="incrementIfOdd">{{ $t('increment') }} ({{ $t('ifOdd') }})</v-btn>
+      <v-btn color="primary" @click="decrementIfEven">{{ $t('decrement') }} ({{ $t('ifEven') }})</v-btn>
     </v-layout>
 
     <v-layout row>

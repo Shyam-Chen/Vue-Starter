@@ -124,4 +124,9 @@ export const INITIAL: IApp = {
     { icon: 'photo_library', text: 'Gallery', route: '/gallery', disabled: true },
     { icon: 'fa fa-qrcode', text: 'QR Code', route: '/qrcode', disabled: true },
   ],
+  languages: [
+    { key: 'en', label: 'English' },
+    { key: 'zh', label: '中文' },
+    { key: 'ja', label: '日本語' },
+  ],
 };

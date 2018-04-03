@@ -2,14 +2,7 @@
 
 <template>
   <v-layout column>
-
-    <v-layout row>
-      <div>
-        <v-btn @click="setLanguage('en')">English</v-btn>
-        <v-btn @click="setLanguage('zh')">中文</v-btn>
-        <v-btn @click="setLanguage('ja')">日本語</v-btn>
-      </div>
-    </v-layout>
+    <div class="headline">Internationalization</div>
 
     <v-layout row>
       <p class="pl-2 pt-4">
@@ -52,21 +45,7 @@
 </template>
 
 <script>
-export default {
-  created() {
-    const languages = ['en', 'zh', 'ja'];
-    languages.forEach((item) => {
-      if ((navigator.language).includes(item)) {
-        this.$i18n.locale = item;
-      }
-    });
-  },
-  methods: {
-    setLanguage(val) {
-      this.$i18n.locale = val;
-    },
-  },
-};
+export default {};
 </script>
 
 <style scoped>

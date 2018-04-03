@@ -25,7 +25,7 @@
                   </v-list-tile-content>
                 </v-list-tile>
 
-                <v-list-tile v-for="subchild in child.children" :key="subchild.text" :to="subchild.route" :disabled="subchild.disabled">
+                <v-list-tile v-for="subchild in child.children" :key="subchild.text" :to="subchild.route" :disabled="subchild.disabled" ripple>
                   <v-list-tile-action>
                     <v-icon>{{ subchild.icon }}</v-icon>
                   </v-list-tile-action>
@@ -36,7 +36,7 @@
               </v-list-group>
 
               <!-- else not sub-children -->
-              <v-list-tile v-else :key="child.text" :to="child.route" :disabled="child.disabled">
+              <v-list-tile v-else :key="child.text" :to="child.route" :disabled="child.disabled" ripple>
                 <v-list-tile-action>
                   <v-icon>{{ child.icon }}</v-icon>
                 </v-list-tile-action>
@@ -49,7 +49,7 @@
           </v-list-group>
 
           <!-- else not children -->
-          <v-list-tile v-else :key="item.text" :to="item.route" :disabled="item.disabled">
+          <v-list-tile v-else :key="item.text" :to="item.route" :disabled="item.disabled" ripple>
             <v-list-tile-action>
               <v-icon>{{ item.icon }}</v-icon>
             </v-list-tile-action>
@@ -72,15 +72,30 @@
 
       <v-spacer></v-spacer>
 
-      <v-btn icon>
-        <v-icon>apps</v-icon>
-      </v-btn>
-      <v-btn icon>
-        <v-icon>notifications</v-icon>
-      </v-btn>
-      <v-btn icon href="https://github.com/Shyam-Chen/Vue-Fullstack-Starter" class="mr-3">
-        <v-icon>fa fa-github</v-icon>
-      </v-btn>
+      <v-menu bottom left>
+        <v-btn icon slot="activator" dark>
+          <v-icon>language</v-icon>
+        </v-btn>
+        <v-list>
+          <v-list-tile v-for="lang in $app.languages" :key="lang.key" @click="setLanguage(lang.key)">
+            <v-list-tile-title>{{ lang.label }}</v-list-tile-title>
+          </v-list-tile>
+        </v-list>
+      </v-menu>
+
+      <v-menu bottom left>
+        <v-btn icon slot="activator" dark>
+          <v-icon>more_vert</v-icon>
+        </v-btn>
+        <v-list dense>
+          <v-list-tile href="https://github.com/Shyam-Chen/Vue-Fullstack-Starter" ripple>
+            <v-list-tile-title>Repository</v-list-tile-title>
+          </v-list-tile>
+          <v-list-tile href="https://github.com/Shyam-Chen/Vue-Fullstack-Template" ripple>
+            <v-list-tile-title>Template</v-list-tile-title>
+          </v-list-tile>
+        </v-list>
+      </v-menu>
     </v-toolbar>
 
     <v-content>
@@ -103,6 +118,21 @@
 import { IApp, IComponent } from './constants';
 
 export default ({
+  created() {
+    const languages = ['en', 'zh', 'ja'];
+
+    languages.forEach((lang) => {
+      if ((navigator.language).includes(lang)) {
+        this.setLanguage(lang);
+      }
+    });
+  },
+  methods: {
+    setLanguage(val) {
+      this.$i18n.locale = val;
+      document.documentElement.lang = val;
+    },
+  },
   computed: {
     $app(): IApp {
       return this.$store.state;
