@@ -14,21 +14,7 @@
       ],
       "plugins": [
         "transform-runtime",
-        "transform-vue-jsx",
-        [
-          "transform-imports", {
-            "rxjs/observable": {
-              "transform": "rxjs/observable/${member}",
-              "preventFullImport": true,
-              "skipDefaultConversion": true
-            },
-            "rxjs/operator": {
-              "transform": "rxjs/operator/${member}",
-              "preventFullImport": true,
-              "skipDefaultConversion": true
-            }
-          }
-        ]
+        "transform-vue-jsx"
       ]
     },
     "api": {
