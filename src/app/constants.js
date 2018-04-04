@@ -11,7 +11,7 @@ export interface Navigation {
 
 export interface IApp {
   navigation: Navigation[];
-  drawer?: boolean;
+  drawer: any;
   languages?: Array<{ key: string, label: string }>;
 }
 
@@ -124,6 +124,8 @@ export const INITIAL: IApp = {
     { icon: 'photo_library', text: 'Gallery', route: '/gallery', disabled: true },
     { icon: 'fa fa-qrcode', text: 'QR Code', route: '/qrcode', disabled: true },
   ],
+
+  drawer: null,
 
   languages: [
     { key: 'en', label: 'English' },
