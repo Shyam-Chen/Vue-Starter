@@ -21,7 +21,7 @@
 
       <v-layout row>
         <div>
-          <v-text-field v-model="nickname" placeholder="Type here" name="nickname" label="Nickname" class="vfs-field"></v-text-field>
+          <v-text-field v-model="nickname" placeholder="ex. Larva" name="nickname" label="Nickname" class="vfs-field"></v-text-field>
         </div>
         <div class="vfs-outputs">{{ $td.nickname }}</div>
       </v-layout>

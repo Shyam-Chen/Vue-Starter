@@ -1,7 +1,10 @@
 export const INITIAL = {
   // select
   dessert: '',
-  dessertList: ['Cakes', 'Cookies', 'Biscuits', 'Gelatins', 'Pastries', 'Ice Creams', 'Pies', 'Puddings', 'Candies'],
+  dessertList: [
+    'Cakes', 'Cookies', 'Biscuits', 'Gelatins', 'Pastries', 'Ice Creams',
+    'Pies', 'Puddings', 'Candies',
+  ],
 
   // multiple select
   states: [],

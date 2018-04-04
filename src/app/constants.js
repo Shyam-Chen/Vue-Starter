@@ -73,6 +73,7 @@ export const INITIAL: IApp = {
         { text: 'Pickers', route: '/form-controls/pickers', disabled: true },
       ],
     },
+    { icon: 'language', text: 'Internationalization', route: '/i18n' },
 
     // Advanced
     {
@@ -92,7 +93,6 @@ export const INITIAL: IApp = {
         { text: 'GraphQL', disabled: true },
       ],
     },
-    { icon: 'language', text: 'Internationalization', route: '/i18n' },
     { icon: 'fa fa-id-card', text: 'Reactive Forms ', route: '/reactive-forms', disabled: true },
     {
       icon: 'verified_user',
