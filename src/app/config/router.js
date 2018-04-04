@@ -18,7 +18,9 @@ const router = new Router({
     { path: '/crud-operations/graphql', component: () => import('~/crud-operations/graphql/GraphQL') },
 
     /** @name form-controls */
-    { path: '/form-controls/template-driven', component: () => import('~/form-controls/template-driven/TemplateDriven') },
+    { path: '/form-controls/text-fields', component: () => import('~/form-controls/text-fields/TextFields') },
+    { path: '/form-controls/selects', component: () => import('~/form-controls/selects/Selects') },
+    { path: '/form-controls/selection-controls', component: () => import('~/form-controls/selection-controls/SelectionControls') },
 
     /** @name data-table */
     { path: '/data-table/basic', component: () => import('~/data-table/basic/Basic') },

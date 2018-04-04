@@ -1,9 +1,7 @@
 <template>
   <v-layout column>
-    <div class="display-1">Basic</div>
-      <div>
-        data-table
-      </div>
+    <div class="headline">Data Table - Basic</div>
+
   </v-layout>
 </template>
 

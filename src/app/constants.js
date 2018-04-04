@@ -11,7 +11,7 @@ export interface Navigation {
 
 export interface IApp {
   navigation: Navigation[];
-  drawer: any;
+  drawer: boolean;
   languages?: Array<{ key: string, label: string }>;
 }
 
@@ -67,7 +67,10 @@ export const INITIAL: IApp = {
       icon: 'contacts',
       text: 'Form Controls',
       children: [
-        { text: 'Template-driven', route: '/form-controls/template-driven' },
+        { text: 'Text Fields', route: '/form-controls/text-fields' },
+        { text: 'Selects', route: '/form-controls/selects' },
+        { text: 'Selection Controls', route: '/form-controls/selection-controls' },
+        { text: 'Pickers', route: '/form-controls/pickers', disabled: true },
       ],
     },
 
@@ -125,7 +128,7 @@ export const INITIAL: IApp = {
     { icon: 'fa fa-qrcode', text: 'QR Code', route: '/qrcode', disabled: true },
   ],
 
-  drawer: null,
+  drawer: null,  // eslint-disable-line
 
   languages: [
     { key: 'en', label: 'English' },

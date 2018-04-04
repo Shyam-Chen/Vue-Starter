@@ -31,7 +31,7 @@
 <script>
 // @flow
 
-import { mapActions, mapGetters } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';  // eslint-disable-line
 
 import { ICounter, INITIAL as state } from './constants';
 import actions from './actions';

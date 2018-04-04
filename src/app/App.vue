@@ -73,7 +73,7 @@
       <v-spacer></v-spacer>
 
       <v-menu bottom left>
-        <v-btn icon slot="activator" dark>
+        <v-btn slot="activator" icon dark>
           <v-icon>language</v-icon>
         </v-btn>
         <v-list>
@@ -84,7 +84,7 @@
       </v-menu>
 
       <v-menu bottom left>
-        <v-btn icon slot="activator" dark>
+        <v-btn slot="activator" icon dark>
           <v-icon>more_vert</v-icon>
         </v-btn>
         <v-list dense>
@@ -130,7 +130,7 @@ export default ({
   methods: {
     setLanguage(val) {
       this.$i18n.locale = val;
-      document.documentElement.lang = val;
+      document.documentElement.lang = val;  // eslint-disable-line
     },
   },
   computed: {

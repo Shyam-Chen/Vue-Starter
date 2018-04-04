@@ -4,13 +4,13 @@ import { IContext, Item, Dialog, IContextKey } from './types';
 
 export default {
   addItem({ state }: IContext, { primary, accent }: Item): void {
-    const id = state.dataset.reduce((maxId, item) => Math.max(item.id, maxId), -1) + 1;
-    state.dataset = [...state.dataset, { id, primary, accent }];
+    const id = state.dataset.reduce((maxId, item) => Math.max(item.id, maxId), -1) + 1;  // eslint-disable-line
+    state.dataset = [...state.dataset, { id, primary, accent }];  // eslint-disable-line
   },
   editItem({ state }: IContext, { id, primary, accent }: Item): void {
     state.dataset = [
       ...state.dataset.map(item =>
-        (item.id === id ? { ...item, primary, accent } : item),
+        (item.id === id ? { ...item, primary, accent } : item),  // eslint-disable-line
       ),
     ];
   },

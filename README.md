@@ -111,7 +111,7 @@ $ vue init Shyam-Chen/Vue-Fullstack-Template <PROJECT_NAME>
 $ cd <PROJECT_NAME>
 ```
 
-:vertical_traffic_light: [NOTE] Project template repository can be accessed from [here](https://github.com/Shyam-Chen/Vue-Fullstack-Template).
+:vertical_traffic_light: Project template repository can be accessed from [here](https://github.com/Shyam-Chen/Vue-Fullstack-Template).
 
 ## Dockerization
 

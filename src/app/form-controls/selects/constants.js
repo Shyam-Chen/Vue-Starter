@@ -1,11 +1,4 @@
 export const INITIAL = {
-  // input
-  nickname: '',
-  nicknameRules: [
-    () => !!INITIAL.nickname || 'This field is required',
-    () => INITIAL.nickname.length <= 15 || 'Word length is too long',
-  ],
-
   // select
   dessert: '',
   dessertList: ['Cakes', 'Cookies', 'Biscuits', 'Gelatins', 'Pastries', 'Ice Creams', 'Pies', 'Puddings', 'Candies'],
@@ -27,31 +20,5 @@ export const INITIAL = {
   ],
 
   // nested select
-  pet: '',
 
-  // checkboxes
-  technologies: [],
-  technologiesList: ['ECMAScript', 'HTML5', 'Node.js', 'Docker'],
-
-  // radios
-  gender: '',
-  genderList: ['Male', 'Female', ' Other'],
-
-  // switch
-  autoplay: false,
-
-  // slider
-  volume: 0,
-
-  // autocomplete
-
-  // date picker
-
-  // date range picker
-
-  // time picker
-
-  // color picker
-
-  // file upload
 };
