@@ -1,5 +1,5 @@
 <template>
-  <v-app :dark="$app.theme">
+  <v-app :dark="$app.theme === 'dark'">
 
     <v-navigation-drawer :clipped="$vuetify.breakpoint.mdAndUp" v-model="$app.drawer" fixed app>
       <v-list dense>
@@ -77,10 +77,10 @@
           <v-icon>format_color_fill</v-icon>
         </v-btn>
         <v-list>
-          <v-list-tile @click="setTheme()">
+          <v-list-tile @click="setTheme('light')">
             <v-list-tile-title>Light</v-list-tile-title>
           </v-list-tile>
-          <v-list-tile @click="setTheme()">
+          <v-list-tile @click="setTheme('dark')">
             <v-list-tile-title>Dark</v-list-tile-title>
           </v-list-tile>
         </v-list>
@@ -142,8 +142,8 @@ export default ({
     });
   },
   methods: {
-    setTheme(): void {
-      this.$app.theme = !this.$app.theme;
+    setTheme(val): void {
+      this.$app.theme = val;
     },
     setLanguage(val): void {
       this.$i18n.locale = val;

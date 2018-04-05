@@ -1,7 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Not Found should render initial component 1`] = `
-<v-layout class="vfs-notfound">
-  <h1 class="pa-3">404</h1>
+exports[`Not Found should render dark component 1`] = `
+<v-layout justify-center="true" align-center="true" class="vfs-notfound" style="background: rgb(0, 0, 0);">
+  <div class="display-1 pa-3">404</div>
+</v-layout>
+`;
+
+exports[`Not Found should render light component 1`] = `
+<v-layout justify-center="true" align-center="true" class="vfs-notfound" style="background: rgb(255, 255, 255);">
+  <div class="display-1 pa-3">404</div>
 </v-layout>
 `;
