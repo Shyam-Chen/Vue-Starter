@@ -21,6 +21,7 @@ const router = new Router({
     { path: '/form-controls/text-fields', component: () => import('~/form-controls/text-fields/TextFields') },
     { path: '/form-controls/selects', component: () => import('~/form-controls/selects/Selects') },
     { path: '/form-controls/selection-controls', component: () => import('~/form-controls/selection-controls/SelectionControls') },
+    { path: '/form-controls/pickers', component: () => import('~/form-controls/pickers/Pickers') },
 
     /** @name data-table */
     { path: '/data-table/basic', component: () => import('~/data-table/basic/Basic') },

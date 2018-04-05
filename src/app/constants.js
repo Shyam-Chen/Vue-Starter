@@ -70,7 +70,7 @@ export const INITIAL: IApp = {
         { text: 'Text Fields', route: '/form-controls/text-fields' },
         { text: 'Selects', route: '/form-controls/selects' },
         { text: 'Selection Controls', route: '/form-controls/selection-controls' },
-        { text: 'Pickers', route: '/form-controls/pickers', disabled: true },
+        { text: 'Pickers', route: '/form-controls/pickers' },
       ],
     },
     { icon: 'language', text: 'Internationalization', route: '/i18n' },
