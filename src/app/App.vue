@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app :dark="$app.theme">
 
     <v-navigation-drawer :clipped="$vuetify.breakpoint.mdAndUp" v-model="$app.drawer" fixed app>
       <v-list dense>
@@ -74,6 +74,20 @@
 
       <v-menu bottom left>
         <v-btn slot="activator" icon dark>
+          <v-icon>format_color_fill</v-icon>
+        </v-btn>
+        <v-list>
+          <v-list-tile @click="setTheme()">
+            <v-list-tile-title>Light</v-list-tile-title>
+          </v-list-tile>
+          <v-list-tile @click="setTheme()">
+            <v-list-tile-title>Dark</v-list-tile-title>
+          </v-list-tile>
+        </v-list>
+      </v-menu>
+
+      <v-menu bottom left>
+        <v-btn slot="activator" icon dark>
           <v-icon>language</v-icon>
         </v-btn>
         <v-list>
@@ -119,16 +133,19 @@ import { IApp, IComponent } from './constants';
 
 export default ({
   created() {
-    const languages = ['en', 'zh', 'ja'];
+    const languages: string[] = ['en', 'zh', 'ja'];
 
-    languages.forEach((lang) => {
+    languages.forEach((lang: string): void => {
       if ((navigator.language).includes(lang)) {
         this.setLanguage(lang);
       }
     });
   },
   methods: {
-    setLanguage(val) {
+    setTheme(): void {
+      this.$app.theme = !this.$app.theme;
+    },
+    setLanguage(val): void {
       this.$i18n.locale = val;
       document.documentElement.lang = val;  // eslint-disable-line
     },

@@ -26,6 +26,13 @@
         <div class="vfs-outputs">{{ $td.nickname }}</div>
       </v-layout>
 
+      <v-layout row>
+        <div>
+          <v-text-field v-model="nickname" name="nickname" label="Nickname" class="vfs-field" textarea></v-text-field>
+        </div>
+        <div class="vfs-outputs">{{ $td.nickname }}</div>
+      </v-layout>
+
       <!-- next -->
       <v-layout row>
         ...

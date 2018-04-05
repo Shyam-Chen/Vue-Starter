@@ -10,6 +10,7 @@ export interface Navigation {
 }
 
 export interface IApp {
+  theme: boolean;
   navigation: Navigation[];
   drawer: boolean;
   languages?: Array<{ key: string, label: string }>;
@@ -18,6 +19,7 @@ export interface IApp {
 export interface IComponent {}
 
 export const INITIAL: IApp = {
+  theme: false,
   navigation: [
     // Basic
     { icon: 'face', text: 'helloWorld', route: '/hello-world', subheader: 'basic' },
