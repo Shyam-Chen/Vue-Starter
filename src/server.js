@@ -14,8 +14,7 @@ import schema from './api/graphql';
 
 // const isLocalhost = new URL(process.env.FUNC_URL).hostname === 'localhost'
 
-// TODO: local config
-admin.initializeApp(functions.config().firebase);
+admin.initializeApp();
 
 // if (!isLocalhost) {
 //   Raven.config(SENTRY_DSN).install();

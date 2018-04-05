@@ -353,7 +353,7 @@
     "@types/events" "*"
     "@types/node" "*"
 
-"@types/express@*", "@types/express@^4.0.33":
+"@types/express@*", "@types/express@^4.11.1":
   version "4.11.1"
   resolved "https://registry.yarnpkg.com/@types/express/-/express-4.11.1.tgz#f99663b3ab32d04cb11db612ef5dd7933f75465b"
   dependencies:
@@ -403,12 +403,6 @@
   dependencies:
     "@types/express-serve-static-core" "*"
     "@types/mime" "*"
-
-"@types/sha1@^1.1.0":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@types/sha1/-/sha1-1.1.1.tgz#ab34efa782ff948d402d896afc9f10f41e94dd44"
-  dependencies:
-    "@types/node" "*"
 
 "@types/strip-bom@^3.0.0":
   version "3.0.0"
@@ -2254,6 +2248,10 @@ buffer-equal@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/buffer-equal/-/buffer-equal-1.0.0.tgz#59616b498304d556abd466966b22eeda3eca5fbe"
 
+buffer-from@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/buffer-from/-/buffer-from-1.0.0.tgz#4cb8832d23612589b0406e9e2956c17f06fdf531"
+
 buffer-indexof-polyfill@~1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/buffer-indexof-polyfill/-/buffer-indexof-polyfill-1.0.1.tgz#a9fb806ce8145d5428510ce72f278bb363a638bf"
@@ -2535,7 +2533,7 @@ character-reference-invalid@^1.0.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/character-reference-invalid/-/character-reference-invalid-1.1.1.tgz#942835f750e4ec61a308e60c2ef8cc1011202efc"
 
-"charenc@>= 0.0.1", charenc@~0.0.1:
+charenc@~0.0.1:
   version "0.0.2"
   resolved "https://registry.yarnpkg.com/charenc/-/charenc-0.0.2.tgz#c0a1d2f3a7092e03774bfa83f14c0fc5790a8667"
 
@@ -3186,7 +3184,7 @@ cross-spawn@^5.0.1, cross-spawn@^5.1.0:
     shebang-command "^1.2.0"
     which "^1.2.9"
 
-"crypt@>= 0.0.1", crypt@~0.0.1:
+crypt@~0.0.1:
   version "0.0.2"
   resolved "https://registry.yarnpkg.com/crypt/-/crypt-0.0.2.tgz#88d7ff7ec0dfb86f713dc87bbb42d044d3e6c41b"
 
@@ -3843,6 +3841,12 @@ ecdsa-sig-formatter@1.0.9:
     base64url "^2.0.0"
     safe-buffer "^5.0.1"
 
+echarts@^4.0.4:
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/echarts/-/echarts-4.0.4.tgz#36aa8a47d33543d3dfe6a7bc1228ddc3a1e41157"
+  dependencies:
+    zrender "4.0.3"
+
 editorconfig@^0.13.2:
   version "0.13.3"
   resolved "https://registry.yarnpkg.com/editorconfig/-/editorconfig-0.13.3.tgz#e5219e587951d60958fd94ea9a9a008cdeff1b34"
@@ -4435,7 +4439,7 @@ express@4.16.2, express@^4.16.2:
     utils-merge "1.0.1"
     vary "~1.1.2"
 
-express@4.16.3, express@^4.0.33:
+express@4.16.3:
   version "4.16.3"
   resolved "https://registry.yarnpkg.com/express/-/express-4.16.3.tgz#6af8a502350db3246ecc4becf6b5a34d22f7ed53"
   dependencies:
@@ -4783,24 +4787,22 @@ firebase-admin@5.11.0:
     jsonwebtoken "8.1.0"
     node-forge "0.7.1"
 
-firebase-functions@0.9.1:
-  version "0.9.1"
-  resolved "https://registry.yarnpkg.com/firebase-functions/-/firebase-functions-0.9.1.tgz#9472b8d04a6fa3f11c4bc855fda2338657852527"
+firebase-functions@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/firebase-functions/-/firebase-functions-1.0.0.tgz#9a54c290bd5ec860d5d095df1e5b580190c97f05"
   dependencies:
     "@types/cors" "^2.8.1"
-    "@types/express" "^4.0.33"
+    "@types/express" "^4.11.1"
     "@types/jsonwebtoken" "^7.1.32"
     "@types/lodash" "^4.14.34"
-    "@types/sha1" "^1.1.0"
     cors "^2.8.4"
-    express "^4.0.33"
+    express "^4.16.2"
     jsonwebtoken "^7.1.9"
     lodash "^4.6.1"
-    sha1 "^1.1.1"
 
-firebase-tools@3.17.7:
-  version "3.17.7"
-  resolved "https://registry.yarnpkg.com/firebase-tools/-/firebase-tools-3.17.7.tgz#3d5a3011b917864e10389d2d87c9f92a87096707"
+firebase-tools@3.18.0:
+  version "3.18.0"
+  resolved "https://registry.yarnpkg.com/firebase-tools/-/firebase-tools-3.18.0.tgz#083628e47216ce78bec16fe2ea3f338c11dc4eea"
   dependencies:
     JSONStream "^1.2.1"
     archiver "^2.1.1"
@@ -4821,6 +4823,7 @@ firebase-tools@3.17.7:
     fstream-ignore "^1.0.5"
     glob "^7.1.2"
     google-auto-auth "^0.7.2"
+    gunzip-maybe "^1.4.1"
     inquirer "^0.12.0"
     is "^3.2.1"
     jsonschema "^1.0.2"
@@ -4835,6 +4838,7 @@ firebase-tools@3.17.7:
     semver "^5.0.3"
     superstatic "^5.0.1"
     tar "^4.3.0"
+    tar-fs "^1.16.0"
     tmp "0.0.33"
     universal-analytics "^0.3.9"
     update-notifier "^0.5.0"
@@ -5715,6 +5719,17 @@ gulplog@^1.0.0:
   dependencies:
     glogg "^1.0.0"
 
+gunzip-maybe@^1.4.1:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/gunzip-maybe/-/gunzip-maybe-1.4.1.tgz#39c72ed89d1b49ba708e18776500488902a52027"
+  dependencies:
+    browserify-zlib "^0.1.4"
+    is-deflate "^1.0.0"
+    is-gzip "^1.0.0"
+    peek-stream "^1.1.0"
+    pumpify "^1.3.3"
+    through2 "^2.0.3"
+
 handle-thing@^1.2.5:
   version "1.2.5"
   resolved "https://registry.yarnpkg.com/handle-thing/-/handle-thing-1.2.5.tgz#fd7aad726bf1a5fd16dfc29b2f7a6601d27139c4"
@@ -6382,6 +6397,10 @@ is-decimal@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/is-decimal/-/is-decimal-1.0.1.tgz#f5fb6a94996ad9e8e3761fbfbd091f1fca8c4e82"
 
+is-deflate@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/is-deflate/-/is-deflate-1.0.0.tgz#c862901c3c161fb09dac7cdc7e784f80e98f2f14"
+
 is-descriptor@^0.1.0:
   version "0.1.6"
   resolved "https://registry.yarnpkg.com/is-descriptor/-/is-descriptor-0.1.6.tgz#366d8240dde487ca51823b1ab9f07a10a78251ca"
@@ -6467,6 +6486,10 @@ is-glob@^4.0.0:
   resolved "https://registry.yarnpkg.com/is-glob/-/is-glob-4.0.0.tgz#9521c76845cc2610a85203ddf080a958c2ffabc0"
   dependencies:
     is-extglob "^2.1.1"
+
+is-gzip@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/is-gzip/-/is-gzip-1.0.0.tgz#6ca8b07b99c77998025900e555ced8ed80879a83"
 
 is-hexadecimal@^1.0.0:
   version "1.0.1"
@@ -9068,6 +9091,14 @@ pbkdf2@^3.0.3:
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
 
+peek-stream@^1.1.0:
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/peek-stream/-/peek-stream-1.1.3.tgz#3b35d84b7ccbbd262fff31dc10da56856ead6d67"
+  dependencies:
+    buffer-from "^1.0.0"
+    duplexify "^3.5.0"
+    through2 "^2.0.3"
+
 pend@~1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/pend/-/pend-1.2.0.tgz#7a57eb550a6783f9115331fcf4663d5c8e007a50"
@@ -10955,6 +10986,10 @@ requires-port@1.0.x, requires-port@1.x.x:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/requires-port/-/requires-port-1.0.0.tgz#925d2601d39ac485e091cf0da5c6e694dc3dcaff"
 
+resize-detector@^0.1.6:
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/resize-detector/-/resize-detector-0.1.6.tgz#8c3fcb9e44913576c9981d8bec0c7e02e31bc1b1"
+
 resolve-cwd@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/resolve-cwd/-/resolve-cwd-2.0.0.tgz#00a9f7387556e27038eae232caa372a6a59b665a"
@@ -11384,13 +11419,6 @@ sha.js@^2.4.0, sha.js@^2.4.8:
   resolved "https://registry.yarnpkg.com/sha.js/-/sha.js-2.4.8.tgz#37068c2c476b6baf402d14a49c67f597921f634f"
   dependencies:
     inherits "^2.0.1"
-
-sha1@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/sha1/-/sha1-1.1.1.tgz#addaa7a93168f393f19eb2b15091618e2700f848"
-  dependencies:
-    charenc ">= 0.0.1"
-    crypt ">= 0.0.1"
 
 shebang-command@^1.2.0:
   version "1.2.0"
@@ -12144,6 +12172,15 @@ tapable@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/tapable/-/tapable-1.0.0.tgz#cbb639d9002eed9c6b5975eb20598d7936f1f9f2"
 
+tar-fs@^1.16.0:
+  version "1.16.0"
+  resolved "https://registry.yarnpkg.com/tar-fs/-/tar-fs-1.16.0.tgz#e877a25acbcc51d8c790da1c57c9cf439817b896"
+  dependencies:
+    chownr "^1.0.1"
+    mkdirp "^0.5.1"
+    pump "^1.0.0"
+    tar-stream "^1.1.2"
+
 tar-pack@^3.4.0:
   version "3.4.0"
   resolved "https://registry.yarnpkg.com/tar-pack/-/tar-pack-3.4.0.tgz#23be2d7f671a8339376cbdb0b8fe3fdebf317984"
@@ -12157,7 +12194,7 @@ tar-pack@^3.4.0:
     tar "^2.2.1"
     uid-number "^0.0.6"
 
-tar-stream@^1.5.0:
+tar-stream@^1.1.2, tar-stream@^1.5.0:
   version "1.5.5"
   resolved "https://registry.yarnpkg.com/tar-stream/-/tar-stream-1.5.5.tgz#5cad84779f45c83b1f2508d96b09d88c7218af55"
   dependencies:
@@ -12988,6 +13025,14 @@ vue-apollo@3.0.0-beta.5:
     lodash.omit "^4.5.0"
     lodash.throttle "^4.1.1"
 
+vue-echarts@3.0.7:
+  version "3.0.7"
+  resolved "https://registry.yarnpkg.com/vue-echarts/-/vue-echarts-3.0.7.tgz#d1ce3a51156c7a83799e575ccbae53f7524eb655"
+  dependencies:
+    echarts "^4.0.4"
+    lodash "^4.17.4"
+    resize-detector "^0.1.6"
+
 vue-eslint-parser@^2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/vue-eslint-parser/-/vue-eslint-parser-2.0.3.tgz#c268c96c6d94cfe3d938a5f7593959b0ca3360d1"
@@ -13074,9 +13119,9 @@ vue@2.5.16:
   version "2.5.16"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.5.16.tgz#07edb75e8412aaeed871ebafa99f4672584a0085"
 
-vuetify@1.0.11:
-  version "1.0.11"
-  resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-1.0.11.tgz#c6b262f3b4d062e810d62a08481991e4c090e116"
+vuetify@1.0.13:
+  version "1.0.13"
+  resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-1.0.13.tgz#54a802932e1fda1f9d8d1d8586c477a09c179ef3"
 
 vuex-bound@0.2.1:
   version "0.2.1"
@@ -13602,3 +13647,7 @@ zip-stream@^1.2.0:
     compress-commons "^1.2.0"
     lodash "^4.8.0"
     readable-stream "^2.0.0"
+
+zrender@4.0.3:
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/zrender/-/zrender-4.0.3.tgz#801ef001101750a61857f84e64c4d5fb3c88cca7"
