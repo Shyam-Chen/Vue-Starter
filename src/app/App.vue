@@ -144,6 +144,7 @@ export default ({
   methods: {
     setTheme(val): void {
       this.$app.theme = val;
+      localStorage.setItem('theme', val);
     },
     setLanguage(val): void {
       this.$i18n.locale = val;

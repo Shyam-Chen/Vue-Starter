@@ -19,7 +19,7 @@ export interface IApp {
 export interface IComponent {}
 
 export const INITIAL: IApp = {
-  theme: 'light',
+  theme: localStorage.getItem('theme') || 'light',
   navigation: [
     // Basic
     { icon: 'face', text: 'helloWorld', route: '/hello-world', subheader: 'basic' },
