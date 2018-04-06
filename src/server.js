@@ -40,9 +40,3 @@ vm.use('/graphql', graphqlExpress({ schema }));
 // }
 
 export const api = functions.https.onRequest(vm);
-
-export const env = functions.https.onRequest((req, res) => {
-  cors({ origin: true })(req, res, () => {
-    res.send(process.env.NODE_ENV);
-  });
-});

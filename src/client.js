@@ -2,7 +2,6 @@ import 'vuetify/dist/vuetify.min.css';
 import Vue from 'vue';
 import { sync } from 'vuex-router-sync';
 import Material from 'vuetify';
-import Meta from 'vue-meta';
 // import Raven from 'raven-js';
 // import RavenVue from 'raven-js/plugins/vue';
 
@@ -16,7 +15,6 @@ import i18n from './app/config/i18n';
 sync(store, router);
 
 Vue.use(Material);
-Vue.use(Meta);
 
 // if (window.location.hostname !== 'localhost') {
 //   Raven.config('https://<key>@sentry.io/<project>')

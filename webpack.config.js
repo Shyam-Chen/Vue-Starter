@@ -104,8 +104,8 @@ module.exports = ({ prod = false } = {}) => ({
       },
       chunksSortMode: prod ? 'dependency' : 'auto',
       serviceWorkerLoader: prod
-        ? `<script>${uglify.minify(fs.readFileSync(path.join(__dirname, './tools/service-worker.js'), 'utf-8')).code}</script>`
-        : '',  // `<script>${fs.readFileSync(path.join(__dirname, './tools/service-worker.js'), 'utf-8')}</script>`
+        ? `<script>${uglify.minify(fs.readFileSync(path.join(__dirname, './tools/service-worker.prod.js'), 'utf-8')).code}</script>`
+        : `<script>${fs.readFileSync(path.join(__dirname, './tools/service-worker.dev.js'), 'utf-8')}</script>`,
     }),
     new CopyPlugin([
       {
@@ -163,6 +163,8 @@ module.exports = ({ prod = false } = {}) => ({
     prod && new PrerenderSpaPlugin({
       staticDir: DIST_ROOT,
       routes: [
+        '/',
+        '/hello-world',
         '/crud-operations/basic',
         '/counter',
       ],
@@ -176,7 +178,7 @@ module.exports = ({ prod = false } = {}) => ({
     historyApiFallback: true,
     hot: true,
     inline: true,
-    port: 8000,
+    port: env.SITE_PORT,
   },
   devtool: prod ? 'hidden-source-map' : 'cheap-module-eval-source-map',
   node: {
