@@ -1,22 +1,6 @@
 // @flow
 
-export interface Navigation {
-  icon?: string;
-  text?: string;
-  route?: string;
-  disabled?: boolean;
-  subheader?: string;
-  children?: Navigation[];
-}
-
-export interface IApp {
-  theme: string;
-  navigation: Navigation[];
-  drawer: boolean | null;
-  languages?: Array<{ key: string, label: string }>;
-}
-
-export interface IComponent {}
+import { IApp } from './types';
 
 export const INITIAL: IApp = {
   theme: localStorage.getItem('theme') || 'light',
@@ -30,28 +14,28 @@ export const INITIAL: IApp = {
         {
           text: 'Components',
           children: [
-            { text: 'Module Systems', route: '/foo' },
-            { text: 'Props', route: '/foo' },
-            { text: 'Slots', route: '/foo' },
+            { text: 'Module Systems', route: '/foo', disabled: true },
+            { text: 'Props', route: '/101-guide/components/props' },
+            { text: 'Slots', route: '/foo', disabled: true },
           ],
         },
         {
           text: 'Directives',
           children: [
-            { text: 'Switch', route: '/foo' },
+            { text: 'Switch', route: '/foo', disabled: true },
           ],
         },
         {
           text: 'Filters',
           children: [
-            { text: 'Async', route: '/foo' },
+            { text: 'Async', route: '/foo', disabled: true },
           ],
         },
         {
           text: 'Router',
           children: [
-            { text: 'Params', route: '/foo' },
-            { text: 'Guards', route: '/foo' },
+            { text: 'Params', route: '/foo', disabled: true },
+            { text: 'Guards', route: '/foo', disabled: true },
           ],
         },
       ],

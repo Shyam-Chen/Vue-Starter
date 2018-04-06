@@ -24,8 +24,6 @@ export interface IBasic {
   dialogs: { edit: boolean, delete: boolean };
 }
 
-export interface IComponent {}
-
 export interface IContext {
   state: IBasic;
 }

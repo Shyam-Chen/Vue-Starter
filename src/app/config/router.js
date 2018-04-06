@@ -10,7 +10,11 @@ const router = new Router({
   mode: 'history',
   routes: [
     { path: '/', component: Overview },
+
     { path: '/hello-world', component: () => import('~/hello-world/HelloWorld') },
+
+    /** @name 101-guide */
+    { path: '/101-guide/components/props', component: () => import('~/101-guide/components/props/Props') },
 
     /** @name crud-operations */
     { path: '/crud-operations/basic', component: () => import('~/crud-operations/basic/Basic') },

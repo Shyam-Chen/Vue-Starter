@@ -104,13 +104,13 @@
 
 import { mapGetters, mapActions } from 'vuex';  // eslint-disable-line
 
-import { IBasic, IComponent } from './types';
+import { IBasic } from './types';
 import { INITIAL as state } from './constants';
 import actions from './actions';
 import mutations from './mutations';
 import getters from './getters';
 
-export default ({
+export default {
   metaInfo: {
     title: 'CRUD Operations - Basic | Vue by Example',
   },
@@ -129,7 +129,7 @@ export default ({
   methods: {
     ...mapActions('crudOperations/basic', Object.keys(actions)),
   },
-}: IComponent);
+};
 </script>
 
 <style scoped>

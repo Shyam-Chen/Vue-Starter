@@ -129,34 +129,33 @@
 <script>
 // @flow
 
-import { IApp, IComponent } from './constants';
+import { IApp } from './types';
+import { INITIAL } from './constants';
 
-export default ({
-  created() {
-    const languages: string[] = ['en', 'zh', 'ja'];
-
-    languages.forEach((lang: string): void => {
-      if ((navigator.language).includes(lang)) {
-        this.setLanguage(lang);
-      }
-    });
-  },
-  methods: {
-    setTheme(val): void {
-      this.$app.theme = val;
-      localStorage.setItem('theme', val);
-    },
-    setLanguage(val): void {
-      this.$i18n.locale = val;
-      document.documentElement.lang = val;  // eslint-disable-line
-    },
-  },
+export default {
   computed: {
     $app(): IApp {
       return this.$store.state;
     },
   },
-}: IComponent);
+  created() {
+    INITIAL.languages.forEach(({ key }): void => {
+      if ((navigator.language).includes(key)) {
+        this.setLanguage(key);
+      }
+    });
+  },
+  methods: {
+    setTheme(val: string): void {
+      this.$app.theme = val;
+      localStorage.setItem('theme', val);
+    },
+    setLanguage(val: string): void {
+      this.$i18n.locale = val;
+      document.documentElement.lang = val;  // eslint-disable-line
+    },
+  },
+};
 </script>
 
 <style scoped>
