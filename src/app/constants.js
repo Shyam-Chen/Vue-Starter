@@ -12,7 +12,7 @@ export interface Navigation {
 export interface IApp {
   theme: string;
   navigation: Navigation[];
-  drawer: boolean;
+  drawer: boolean | null;
   languages?: Array<{ key: string, label: string }>;
 }
 
@@ -129,9 +129,7 @@ export const INITIAL: IApp = {
     { icon: 'photo_library', text: 'Gallery', route: '/gallery', disabled: true },
     { icon: 'fa fa-qrcode', text: 'QR Code', route: '/qrcode', disabled: true },
   ],
-
-  drawer: null,  // eslint-disable-line
-
+  drawer: false || null,
   languages: [
     { key: 'en', label: 'English' },
     { key: 'zh', label: '中文' },
