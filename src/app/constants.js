@@ -9,109 +9,109 @@ export const INITIAL: IApp = {
     { icon: 'face', text: 'helloWorld', route: '/hello-world', subheader: 'basic' },
     {
       icon: 'loyalty',
-      text: '101 Guide',
+      text: '101Guide',
       children: [
         {
-          text: 'Components',
+          text: 'components',
           children: [
-            { text: 'Module Systems', route: '/foo', disabled: true },
-            { text: 'Props', route: '/101-guide/components/props' },
-            { text: 'Slots', route: '/foo', disabled: true },
+            { text: 'moduleSystems', route: '/foo', disabled: true },
+            { text: 'props', route: '/101-guide/components/props' },
+            { text: 'slots', route: '/foo', disabled: true },
           ],
         },
         {
-          text: 'Directives',
+          text: 'directives',
           children: [
-            { text: 'Switch', route: '/foo', disabled: true },
+            { text: 'switch', route: '/foo', disabled: true },
           ],
         },
         {
-          text: 'Filters',
+          text: 'filters',
           children: [
-            { text: 'Async', route: '/foo', disabled: true },
+            { text: 'async', route: '/foo', disabled: true },
           ],
         },
         {
-          text: 'Router',
+          text: 'router',
           children: [
-            { text: 'Params', route: '/foo', disabled: true },
-            { text: 'Guards', route: '/foo', disabled: true },
+            { text: 'params', route: '/foo', disabled: true },
+            { text: 'guards', route: '/foo', disabled: true },
           ],
         },
       ],
     },
     {
       icon: 'business',
-      text: 'CRUD Operations',
+      text: 'crudOperations',
       children: [
-        { text: 'Basic', route: '/crud-operations/basic' },
-        { text: 'REST', route: '/crud-operations/rest' },
-        { text: 'GraphQL', disabled: true },
+        { text: 'basic', route: '/crud-operations/basic' },
+        { text: 'rest', route: '/crud-operations/rest' },
+        { text: 'graphql', disabled: true },
       ],
     },
     {
       icon: 'contacts',
-      text: 'Form Controls',
+      text: 'formControls',
       children: [
-        { text: 'Text Fields', route: '/form-controls/text-fields' },
-        { text: 'Selects', route: '/form-controls/selects' },
-        { text: 'Selection Controls', route: '/form-controls/selection-controls' },
-        { text: 'Pickers', route: '/form-controls/pickers' },
+        { text: 'textFields', route: '/form-controls/text-fields' },
+        { text: 'selects', route: '/form-controls/selects' },
+        { text: 'selectionControls', route: '/form-controls/selection-controls' },
+        { text: 'pickers', route: '/form-controls/pickers' },
       ],
     },
-    { icon: 'language', text: 'Internationalization', route: '/i18n' },
+    { icon: 'language', text: 'internationalization', route: '/i18n' },
 
     // Advanced
     {
       icon: 'loyalty',
-      text: '201 Guide',
+      text: '201Guide',
       disabled: true,
       subheader: 'advanced',
       children: [],
     },
     {
       icon: 'fa fa-table',
-      text: 'Data Table',
+      text: 'dataTable',
       disabled: true,
       children: [
-        { text: 'Basic', disabled: true },
-        { text: 'REST', disabled: true },
-        { text: 'GraphQL', disabled: true },
+        { text: 'basic', disabled: true },
+        { text: 'rest', disabled: true },
+        { text: 'graphql', disabled: true },
       ],
     },
-    { icon: 'fa fa-id-card', text: 'Reactive Forms ', route: '/reactive-forms', disabled: true },
+    { icon: 'fa fa-id-card', text: 'reactiveForms ', route: '/reactive-forms', disabled: true },
     {
       icon: 'verified_user',
-      text: 'Authorization',
+      text: 'authorization',
       disabled: true,
       children: [
-        { text: 'REST', disabled: true },
-        { text: 'GraphQL', disabled: true },
+        { text: 'rest', disabled: true },
+        { text: 'graphql', disabled: true },
       ],
     },
     {
       icon: 'fa fa-pie-chart',
-      text: 'Data Visualization',
+      text: 'dataVisualization',
       disabled: true,
       children: [
-        { text: 'Chart', disabled: true },
-        { text: 'Map', disabled: true },
+        { text: 'chart', disabled: true },
+        { text: 'map', disabled: true },
       ],
     },
     {
       icon: 'av_timer',
-      text: 'Realtime',
+      text: 'realtime',
       disabled: true,
       children: [
-        { text: 'Socket.IO', disabled: true },
-        { text: 'GraphQL Subscriptions', disabled: true },
+        { text: 'socketio', disabled: true },
+        { text: 'graphqlSubscriptions', disabled: true },
       ],
     },
 
     // Playground
     { icon: 'fa fa-calculator', text: 'counter', route: '/counter', subheader: 'playground' },
-    { icon: 'photo_library', text: 'Gallery', route: '/gallery', disabled: true },
-    { icon: 'fa fa-qrcode', text: 'QR Code', route: '/qrcode', disabled: true },
+    { icon: 'photo_library', text: 'gallery', route: '/gallery', disabled: true },
+    { icon: 'fa fa-qrcode', text: 'qrCode', route: '/qrcode', disabled: true },
   ],
   drawer: false || null,
   languages: [

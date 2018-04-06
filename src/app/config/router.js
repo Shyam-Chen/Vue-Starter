@@ -11,6 +11,7 @@ const router = new Router({
   routes: [
     { path: '/', component: Overview },
 
+    /** @name hello-world */
     { path: '/hello-world', component: () => import('~/hello-world/HelloWorld') },
 
     /** @name 101-guide */
