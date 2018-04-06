@@ -3,33 +3,27 @@ import { createLocalVue, shallow } from '@vue/test-utils';
 
 import Basic from '../Basic';
 import { INITIAL } from '../constants';
+import actions from '../actions';
+import mutations from '../mutations';
+import getters from '../getters';
 
 const localVue = createLocalVue();
 
 localVue.use(Vuex);
 
 describe('Basic', () => {
-  let [wrapper, store] = [];
-  let [state, actions, mutations, getters] = [];
+  let [wrapper, store, state] = [];
 
   beforeEach(() => {
-    state = INITIAL;
-
-    actions = {
-      addItem: jest.fn(),
-      editItem: jest.fn(),
-      deleteItem: jest.fn(),
-      deleteChecked: jest.fn(),
-    };
-
-    mutations = {};
-    getters = {};
+    state = { ...INITIAL };
 
     store = new Vuex.Store({
       modules: {
         crudOperations: {
+          namespaced: true,
           modules: {
             basic: {
+              namespaced: true,
               state,
               actions,
               mutations,
