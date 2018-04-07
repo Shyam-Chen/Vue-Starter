@@ -151,15 +151,15 @@ Change to your projects.
 // .firebaserc
 {
   "projects": {
-    "development": "vue-by-example-dev",
-    "production": "vue-by-example-prod"
+    "development": "<PROJECT_NAME>",
+    "production": "<PROJECT_NAME>"
   }
 }
 ```
 
 ### Default environments
 
-Set your local env variables.
+Set your local environment variables.
 
 ```js
 // env.js
@@ -168,13 +168,13 @@ const NODE_ENV = exports.NODE_ENV = process.env.NODE_ENV || 'development';
 const SITE_PORT = exports.SITE_PORT = process.env.SITE_PORT || 8000;
 const SITE_URL = exports.SITE_URL = process.env.SITE_URL || `http://localhost:${SITE_PORT}`;
 
-const FUNC_PROJECT = exports.FUNC_PROJECT = process.env.FUNC_PROJECT || 'vue-by-example-dev';
+const FUNC_PROJECT = exports.FUNC_PROJECT = process.env.FUNC_PROJECT || '<PROJECT_NAME>';
 const FUNC_URL = exports.FUNC_URL = process.env.FUNC_URL || `http://localhost:5000/${FUNC_PROJECT}/us-central1`;
 ```
 
 ### Deploy environments
 
-Create your `Docker.<dev|prod>` env image.
+Create your `Docker.<dev|prod>` env image and set the environment variables.
 
 ```dockerfile
 [...]
@@ -192,13 +192,7 @@ So you need to push private images to Docker Hub.
 
 ```bash
 $ docker login
-$ docker push DOCKER_ID_USER/IMAGE_NAME
-```
-
-After having a private image, you need to login to Docker Hub at `circle.yml`.
-
-```sh
-docker login -u ${DOCKER_USERNAME} -p ${DOCKER_TOKEN}
+$ docker push <DOCKER_ID_USER>/<IMAGE_NAME>
 ```
 
 And then pull your private image at `docker-compose.yml`.
@@ -209,13 +203,23 @@ And then pull your private image at `docker-compose.yml`.
 -   image: <dev|prod>
 -   build:
 -     context: .
--     dockerfile: Dockerfile.prod
+-     dockerfile: Dockerfile.<dev|prod>
 +   image: <PRIVATE_IMAGE>
     volumes:
       - yarn:/home/node/.cache/yarn
     tty: true
 [...]
 ```
+
+After that, you need to login to Docker Hub at `circle.yml`.
+
+Don't forget to set CI's environment variables in CircleCI.
+
+```sh
+docker login -u ${DOCKER_USERNAME} -p ${DOCKER_TOKEN}
+```
+
+Change deployment configuration is completed.
 
 ## Directory Structure
 
@@ -224,15 +228,19 @@ And then pull your private image at `docker-compose.yml`.
 ├── flow-typed  -> module types
 ├── src
 │   ├── api
+│   │   ├── <FEATURE>
+│   │   └── index.js
 │   ├── app
 │   │   ├── config
 │   │   ├── <FEATURE>
-│   │   │   ├── actions.js
-│   │   │   ├── constants.js
-│   │   │   ├── <FEATURE>.vue
-│   │   │   ├── getters.js
-│   │   │   └── mutations.js
-│   │   └── shared
+│   │   ├── shared
+│   │   ├── actions.js
+│   │   ├── App.vue
+│   │   ├── constants.js
+│   │   ├── getters.js
+│   │   ├── mutations.js
+│   │   ├── translation.yml
+│   │   └──types.js
 │   ├── assets  -> datas, fonts, images, medias, styles
 │   ├── client.js
 │   ├── index.html
