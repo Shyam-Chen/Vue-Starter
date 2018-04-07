@@ -18,6 +18,7 @@ const router = new Router({
 
     /** @name 101-guide */
     { path: '/101-guide/components/props', component: () => import('~/101-guide/components/props/Props') },
+    { path: '/101-guide/components/slots', component: () => import('~/101-guide/components/slots/Slots') },
 
     /** @name crud-operations */
     { path: '/crud-operations/basic', component: () => import('~/crud-operations/basic/Basic') },

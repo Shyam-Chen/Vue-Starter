@@ -16,7 +16,7 @@ export const INITIAL: IApp = {
           children: [
             { text: 'moduleSystems', route: '/foo', disabled: true },
             { text: 'props', route: '/101-guide/components/props' },
-            { text: 'slots', route: '/foo', disabled: true },
+            { text: 'slots', route: '/101-guide/components/slots' },
           ],
         },
         {
