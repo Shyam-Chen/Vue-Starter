@@ -2,6 +2,16 @@
   <v-app :dark="$app.theme === 'dark'">
 
     <v-navigation-drawer :clipped="$vuetify.breakpoint.mdAndUp" v-model="$app.drawer" fixed app>
+      <v-toolbar class="hidden-md-and-up" flat>
+        <v-list>
+          <v-list-tile>
+            <v-list-tile-title class="title">
+              <router-link class="vfs-router-link" to="/">Vue by Example</router-link>
+            </v-list-tile-title>
+          </v-list-tile>
+        </v-list>
+      </v-toolbar>
+
       <v-list dense>
         <template v-for="item in $app.navigation">
 
