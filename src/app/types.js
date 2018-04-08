@@ -15,3 +15,8 @@ export interface IApp {
   drawer: boolean | null;
   languages: Array<{ key: string, label: string }>;
 }
+
+export interface IContent {
+  dispatch(action: string, payload: any): void;
+  state: IApp;
+}
