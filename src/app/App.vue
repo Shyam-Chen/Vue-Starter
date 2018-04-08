@@ -140,6 +140,8 @@ export default {
   },
   created() {
     INITIAL.languages.forEach(({ key }): void => {
+      if (key === 'en') return;
+
       if ((navigator.language).includes(key)) {
         this.setLanguage(key);
       }
@@ -151,8 +153,11 @@ export default {
       localStorage.setItem('theme', val);
     },
     setLanguage(val: string): void {
-      this.$i18n.locale = val;
-      document.documentElement.lang = val;  // eslint-disable-line
+      import(`./_languages/${val}.yml`).then((data) => {  // eslint-disable-line
+        this.$i18n.setLocaleMessage(val, data);
+        this.$i18n.locale = val;
+        document.documentElement.lang = val;  // eslint-disable-line
+      });
     },
   },
 };
