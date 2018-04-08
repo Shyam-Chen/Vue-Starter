@@ -40,7 +40,7 @@ import getters from './getters';
 
 export default {
   metaInfo: {
-    title: 'Playground - Counter | Vue by Example',
+    title: 'Counter | Vue by Example',
   },
   computed: {
     $c(): ICounter {
@@ -50,6 +50,9 @@ export default {
   },
   created() {
     this.$store.registerModule('counter', { namespaced: true, state, actions, mutations, getters });
+  },
+  mounted() {
+    document.dispatchEvent(new Event('render-event'));
   },
   methods: {
     ...mapActions('counter', Object.keys(actions)),

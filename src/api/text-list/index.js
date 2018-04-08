@@ -4,7 +4,7 @@ import express from 'express';
 const router = express.Router();
 
 /**
- * @return {{ data: Array<{ id: string, text: string }> }}
+ * @return {Object<{ data: Array<{ id: string, text: string }> }>}
  *
  * @example GET /api/text-list
  * @example GET /api/text-list?text=${text}
@@ -30,7 +30,7 @@ router.get('/', (req, res) => {
 });
 
 /**
- * @return {{ message: string }}
+ * @return {Object<{ message: string }>}
  *
  * @example POST /api/text-list { text: ${text} }
  */
@@ -47,7 +47,7 @@ router.post('/', (req, res) => {
 });
 
 /**
- * @return {{ message: string }}
+ * @return {Object<{ message: string }>}
  *
  * @example POST /api/text-list/${id}
  */
@@ -61,7 +61,7 @@ router.put('/:id', (req, res) => {
 });
 
 /**
- * @return {{ message: string }}
+ * @return {Object<{ message: string }>}
  *
  * @example DELETE /api/text-list/${id}
  */

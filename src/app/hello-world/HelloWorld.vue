@@ -1,5 +1,8 @@
 <script>
 export default {
+  metaInfo: {
+    title: 'Hello World | Vue by Example',
+  },
   render() {
     return (
       <v-layout>
