@@ -51,9 +51,6 @@ export default {
   created() {
     this.$store.registerModule('counter', { namespaced: true, state, actions, mutations, getters });
   },
-  mounted() {
-    document.dispatchEvent(new Event('render-event'));
-  },
   methods: {
     ...mapActions('counter', Object.keys(actions)),
   },

@@ -129,8 +129,10 @@
 <script>
 // @flow
 
+import { mapActions } from 'vuex';  // eslint-disable-line
+
 import { IApp } from './types';
-import { INITIAL } from './constants';
+import actions from './actions';
 
 export default {
   computed: {
@@ -139,26 +141,10 @@ export default {
     },
   },
   created() {
-    INITIAL.languages.forEach(({ key }): void => {
-      if (key === 'en') return;
-
-      if ((navigator.language).includes(key)) {
-        this.setLanguage(key);
-      }
-    });
+    this.initialLanguage();
   },
   methods: {
-    setTheme(val: string): void {
-      this.$app.theme = val;
-      localStorage.setItem('theme', val);
-    },
-    setLanguage(val: string): void {
-      import(`./_languages/${val}.yml`).then((data) => {  // eslint-disable-line
-        this.$i18n.setLocaleMessage(val, data);
-        this.$i18n.locale = val;
-        document.documentElement.lang = val;  // eslint-disable-line
-      });
-    },
+    ...mapActions(Object.keys(actions)),
   },
 };
 </script>
