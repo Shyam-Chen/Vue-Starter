@@ -1,4 +1,4 @@
-import 'vuetify/dist/vuetify.min.css';
+import 'vuetify/dist/vuetify.css';
 import Vue from 'vue';
 import { sync } from 'vuex-router-sync';
 import Material from 'vuetify';
@@ -14,7 +14,13 @@ import i18n from './app/config/i18n';
 
 sync(store, router);
 
-Vue.use(Material);
+Vue.use(Material, {
+  theme: {
+    primary: '#3F51B5',
+    secondary: '#303F9F',
+    accent: '#E91E63',
+  },
+});
 
 // if (window.location.hostname !== 'localhost') {
 //   Raven.config('https://<key>@sentry.io/<project>')

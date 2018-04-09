@@ -72,7 +72,7 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-toolbar :clipped-left="$vuetify.breakpoint.mdAndUp" color="blue darken-3" dark app fixed>
+    <v-toolbar :clipped-left="$vuetify.breakpoint.mdAndUp" class="primary" dark app fixed>
       <v-toolbar-title class="ml-0 pl-3 vfs-toolbar-title">
         <v-toolbar-side-icon @click.stop="$app.drawer = !$app.drawer"></v-toolbar-side-icon>
         <router-link class="hidden-sm-and-down white--text vfs-router-link" to="/">Vue by Example</router-link>
@@ -128,7 +128,7 @@
       </v-container>
     </v-content>
 
-    <v-footer inset class="pa-3 blue darken-3 white--text">
+    <v-footer inset class="pa-3 primary white--text">
       <v-spacer></v-spacer>
       <div>Copyright &copy; {{ new Date().getFullYear() }} Vue by Example</div>
     </v-footer>
