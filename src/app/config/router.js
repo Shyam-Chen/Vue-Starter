@@ -35,7 +35,7 @@ const router = new Router({
     { path: '/data-table/basic', component: () => import('~/data-table/basic/Basic') },
 
     /** @name internationalization */
-    { path: '/i18n', component: () => import('~/i18n/I18n') },
+    { path: '/internationalization', component: () => import('~/internationalization/Internationalization') },
 
     /** @name authorization */
 

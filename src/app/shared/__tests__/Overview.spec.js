@@ -9,7 +9,7 @@ describe('Overview', () => {
     wrapper = shallow(Overview);
   });
 
-  it('should render light component', () => {
+  it('should render initial component', () => {
     expect(wrapper.html()).toMatchSnapshot();
   });
 });

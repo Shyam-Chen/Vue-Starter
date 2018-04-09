@@ -59,7 +59,7 @@ export const INITIAL: IApp = {
         { text: 'pickers', route: '/form-controls/pickers' },
       ],
     },
-    { icon: 'language', text: 'internationalization', route: '/i18n' },
+    { icon: 'language', text: 'internationalization', route: '/internationalization' },
 
     // Advanced
     {

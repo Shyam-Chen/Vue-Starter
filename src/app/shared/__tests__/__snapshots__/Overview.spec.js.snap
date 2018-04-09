@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Overview should render light component 1`] = `
+exports[`Overview should render initial component 1`] = `
 <v-layout fill-height="true" justify-center="true" align-center="true">
   <div class="text-xs-center">
     <div class="display-1 pa-3 blue--text">Vue by Example</div>

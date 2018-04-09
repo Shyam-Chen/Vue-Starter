@@ -50,11 +50,11 @@ describe('Basic', () => {
   });
 
   it('should delete selected item', async () => {
-    const selectAll = '#app > div.application--wrap > main > div > div > div > div:nth-child(3) > div > div:nth-child(2) > div > table > thead > tr:nth-child(1) > th:nth-child(1) > div > div.input-group__input > div';
-    const deleteIcon = '#app > div.application--wrap > main > div > div > div > div:nth-child(3) > div > div.card__title.pink.lighten-4.vfs-card-title > button > div';
+    const selectAllCheckbox = '#app > div.application--wrap > main > div > div > div > div:nth-child(3) > div > div:nth-child(2) > div > table > thead > tr:nth-child(1) > th:nth-child(1) > div > div.input-group__input > div';
+    const deleteCheckedIcon = '#app > div.application--wrap > main > div > div > div > div:nth-child(3) > div > div.card__title.vfs-card-title > button > div';
 
-    await page.click(selectAll);
-    await page.click(deleteIcon);
+    await page.click(selectAllCheckbox);
+    await page.click(deleteCheckedIcon);
     const length = await page.$$eval(displayRow, el => el.length);
 
     expect(length).toBe(1);
@@ -63,7 +63,7 @@ describe('Basic', () => {
   it('should edit a item', async () => {
     const firstEditIcon = '#app > div.application--wrap > main > div > div > div > div:nth-child(3) > div > div:nth-child(2) > div > table > tbody > tr:nth-child(1) > td.text-xs-right > button:nth-child(1) > div';
     const primaryInput = '#app > div.dialog__content.dialog__content__active > div > div > div.card__text > div > div:nth-child(1) > div > div.input-group__input > input[type="text"]';
-    const saveButton = '#app > div.dialog__content.dialog__content__active > div > div > div.card__actions > button.btn.btn--flat.green--text > div';
+    const saveButton = '#app > div.dialog__content.dialog__content__active > div > div > div.card__actions > button.btn.btn--flat.success--text > div';
     const firstPrimary = '#app > div.application--wrap > main > div > div > div > div:nth-child(3) > div > div:nth-child(2) > div > table > tbody > tr:nth-child(1) > td:nth-child(3)';
 
     await page.click(firstEditIcon);
@@ -76,10 +76,10 @@ describe('Basic', () => {
 
   it('should delete a item', async () => {
     const firstDeleteIcon = '#app > div.application--wrap > main > div > div > div > div:nth-child(3) > div > div:nth-child(2) > div > table > tbody > tr:nth-child(1) > td.text-xs-right > button:nth-child(2) > div';
-    const confirm = '#app > div.dialog__content.dialog__content__active > div > div > div.card__actions > button.btn.btn--flat.red--text > div';
+    const confirmButton = '#app > div.dialog__content.dialog__content__active > div > div > div.card__actions > button.btn.btn--flat.error--text > div';
 
     await page.click(firstDeleteIcon);
-    await page.click(confirm);
+    await page.click(confirmButton);
     const length = await page.$$eval(displayRow, el => el.length);
 
     expect(length).toBe(3);

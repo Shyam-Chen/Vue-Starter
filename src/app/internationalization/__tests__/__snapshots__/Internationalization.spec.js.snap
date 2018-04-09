@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Internationalization should render initial component 1`] = `
+<v-layout column="">
+  <div class="headline">Internationalization</div>
+  <v-layout row="">
+    <p class="pl-2 pt-4">
+      HTML formatting:
+      <b>Bubble</b>
+    </p>
+  </v-layout>
+  <v-layout row="">
+    <p class="pl-2">
+      Named formatting:
+      <b>Hello, Vue!</b>
+    </p>
+  </v-layout>
+  <v-layout row="">
+    <p class="pl-2">
+      List formatting:
+      <b>Think in Vue</b>
+    </p>
+  </v-layout>
+  <v-layout row="">
+    <p class="pl-2">
+      Pluralization:
+      <b>https://google.com</b>
+    </p>
+  </v-layout>
+  <v-layout row="">
+    <p class="pl-2">
+      Pluralizing i18n:
+      <b>no framework</b>,
+      <b>one framework</b>,
+      <b>3 frameworks</b>
+    </p>
+  </v-layout>
+</v-layout>
+`;
