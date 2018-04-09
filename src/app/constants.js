@@ -59,16 +59,6 @@ export const INITIAL: IApp = {
         { text: 'pickers', route: '/form-controls/pickers' },
       ],
     },
-    { icon: 'language', text: 'internationalization', route: '/internationalization' },
-
-    // Advanced
-    {
-      icon: 'loyalty',
-      text: '201Guide',
-      disabled: true,
-      subheader: 'advanced',
-      children: [],
-    },
     {
       icon: 'fa fa-table',
       text: 'dataTable',
@@ -78,6 +68,16 @@ export const INITIAL: IApp = {
         { text: 'rest', disabled: true },
         { text: 'graphql', disabled: true },
       ],
+    },
+    { icon: 'language', text: 'internationalization', route: '/internationalization' },
+
+    // Advanced
+    {
+      icon: 'loyalty',
+      text: '201Guide',
+      disabled: true,
+      subheader: 'advanced',
+      children: [],
     },
     { icon: 'fa fa-id-card', text: 'reactiveForms ', route: '/reactive-forms', disabled: true },
     {
@@ -100,12 +100,15 @@ export const INITIAL: IApp = {
     },
     {
       icon: 'av_timer',
-      text: 'realtime',
+      text: 'sockets',
       disabled: true,
-      children: [
-        { text: 'socketio', disabled: true },
-        { text: 'graphqlSubscriptions', disabled: true },
-      ],
+      children: [],
+    },
+    {
+      icon: 'video_library',
+      text: 'torrents',
+      disabled: true,
+      children: [],
     },
 
     // Playground
