@@ -10,21 +10,21 @@
       <div class="vfs-text-field">
         <v-text-field v-model="$b.addData.accent" name="accent" label="Accent"></v-text-field>
       </div>
-      <v-btn @click="addItem($b.addData)">Add</v-btn>
+      <v-btn @click="addItem($b.addData)" color="primary">Add</v-btn>
     </v-layout>
 
     <!-- Display -->
     <v-layout row>
       <v-card>
         <template v-if="$b.selected.length !== 0">
-          <v-card-title class="pink lighten-4 vfs-card-title">
-            <div class="body-2 pink--text">
+          <v-card-title class="vfs-card-title">
+            <div class="body-2 error--text">
               {{ $b.selected.length }} selected
             </div>
             <v-spacer></v-spacer>
             <!-- Delete checked -->
             <v-btn icon class="mx-0" @click.stop="deleteChecked($b.selected)">
-              <v-icon color="pink">delete</v-icon>
+              <v-icon color="error">delete</v-icon>
             </v-btn>
           </v-card-title>
         </template>
@@ -48,10 +48,10 @@
             <td>{{ props.item.accent }}</td>
             <td class="text-xs-right">
               <v-btn icon class="mx-0" @click.stop="handleDialog({ name: 'edit', value: true }); dialogData({ item: props.item, key: 'editData' })">
-                <v-icon color="teal">edit</v-icon>
+                <v-icon color="info">edit</v-icon>
               </v-btn>
               <v-btn icon class="mx-0" @click.stop="handleDialog({ name: 'delete', value: true }); dialogData({ item: props.item, key: 'deleteData' })">
-                <v-icon color="pink">delete</v-icon>
+                <v-icon color="error">delete</v-icon>
               </v-btn>
             </td>
           </template>
@@ -76,8 +76,8 @@
             </v-layout>
           </v-card-text>
           <v-card-actions>
-            <v-btn color="red" flat @click.stop="handleDialog({ name: 'edit', value: false })">Cancel</v-btn>
-            <v-btn color="green" flat @click.stop="editItem($b.editData); handleDialog({ name: 'edit', value: false })">Save</v-btn>
+            <v-btn color="error" flat @click.stop="handleDialog({ name: 'edit', value: false })">Cancel</v-btn>
+            <v-btn color="success" flat @click.stop="editItem($b.editData); handleDialog({ name: 'edit', value: false })">Save</v-btn>
           </v-card-actions>
         </v-card>
       </v-dialog>
@@ -90,8 +90,8 @@
             Are you sure you want to delete it?
           </v-card-text>
           <v-card-actions>
-            <v-btn color="green" flat @click.stop="handleDialog({ name: 'delete', value: false })">Cancel</v-btn>
-            <v-btn color="red" flat @click.stop="deleteItem($b.deleteData); handleDialog({ name: 'delete', value: false })">Confirm</v-btn>
+            <v-btn color="success" flat @click.stop="handleDialog({ name: 'delete', value: false })">Cancel</v-btn>
+            <v-btn color="error" flat @click.stop="deleteItem($b.deleteData); handleDialog({ name: 'delete', value: false })">Confirm</v-btn>
           </v-card-actions>
         </v-card>
       </v-dialog>

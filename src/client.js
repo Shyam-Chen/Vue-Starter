@@ -17,8 +17,12 @@ sync(store, router);
 Vue.use(Material, {
   theme: {
     primary: '#3F51B5',
-    secondary: '#303F9F',
+    secondary: '#7986CB',
     accent: '#E91E63',
+    error: '#f44336',
+    warning: '#ffeb3b',
+    info: '#2196f3',
+    success: '#4caf50',
   },
 });
 
