@@ -10,7 +10,7 @@
       <div class="vfs-text-field">
         <v-text-field v-model="$b.addData.accent" name="accent" label="Accent"></v-text-field>
       </div>
-      <v-btn @click="addItem($b.addData)" color="primary">Add</v-btn>
+      <v-btn color="primary" @click="addItem($b.addData)">Add</v-btn>
     </v-layout>
 
     <!-- Display -->

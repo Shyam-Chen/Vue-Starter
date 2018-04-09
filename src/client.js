@@ -16,9 +16,9 @@ sync(store, router);
 
 Vue.use(Material, {
   theme: {
-    primary: '#3F51B5',
-    secondary: '#7986CB',
-    accent: '#E91E63',
+    primary: '#3f51b5',
+    secondary: '#7986cb',
+    accent: '#e91e63',
     error: '#f44336',
     warning: '#ffeb3b',
     info: '#2196f3',
