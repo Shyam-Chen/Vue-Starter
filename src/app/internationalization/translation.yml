@@ -3,7 +3,7 @@ en:
   hello: 'Hello, {msg}!'
   thinkIn: 'Think in {2}'
   http: 'http | https'
-  framework: 'no framework | one framework | {num} frameworks'
+  framework: 'No framework | One framework | {num} frameworks'
 
 zh:
   bubble: '泡泡'

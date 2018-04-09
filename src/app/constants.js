@@ -62,9 +62,8 @@ export const INITIAL: IApp = {
     {
       icon: 'fa fa-table',
       text: 'dataTable',
-      disabled: true,
       children: [
-        { text: 'basic', disabled: true },
+        { text: 'basic', route: '/data-table/basic' },
         { text: 'rest', disabled: true },
         { text: 'graphql', disabled: true },
       ],
@@ -115,6 +114,7 @@ export const INITIAL: IApp = {
     { icon: 'fa fa-calculator', text: 'counter', route: '/counter', subheader: 'playground' },
     { icon: 'photo_library', text: 'gallery', route: '/gallery', disabled: true },
     { icon: 'fa fa-qrcode', text: 'qrCode', route: '/qrcode', disabled: true },
+    { icon: 'store', text: 'store', route: '/store', disabled: true },
   ],
   drawer: false || null,
   languages: [

@@ -10,11 +10,11 @@
           <v-layout column>
             <div class="body-1">Dessert</div>
             <div>
-              <v-select :items="$td.dessertList" v-model="dessert" label="Choose a dessert" class="vfs-select" single-line bottom></v-select>
+              <v-select :items="$s.dessertList" v-model="dessert" label="Choose a dessert" class="vfs-select" single-line bottom></v-select>
             </div>
           </v-layout>
         </div>
-        <div class="vfs-outputs">{{ $td.dessert }}</div>
+        <div class="primary--text vfs-outputs">{{ $s.dessert }}</div>
       </v-layout>
 
       <!-- multiple select -->
@@ -23,16 +23,16 @@
           <v-layout column>
             <div class="body-1">States</div>
             <div>
-              <v-select :items="$td.statesList" v-model="states" label="Select States" class="vfs-select--multiple" multiple chips single-line bottom></v-select>
+              <v-select :items="$s.statesList" v-model="states" label="Select States" class="vfs-select--multiple" multiple chips single-line bottom></v-select>
             </div>
           </v-layout>
         </div>
-        <div class="vfs-outputs">{{ $td.states }}</div>
+        <div class="primary--text vfs-outputs">{{ $s.states }}</div>
       </v-layout>
 
       <!-- next -->
       <v-layout row>
-        ...
+        more...
       </v-layout>
 
     </v-form>
@@ -50,7 +50,7 @@ import getters from './getters';
 
 export default {
   computed: {
-    $td() {
+    $s() {
       return this.$store.state.formControls.selects;
     },
     ...mapModelsToState('formControls.selects', [
@@ -79,6 +79,5 @@ export default {
 .vfs-outputs {
   align-self: center;
   margin: 0 0 0.5rem 0.5rem;
-  color: #009688;
 }
 </style>
