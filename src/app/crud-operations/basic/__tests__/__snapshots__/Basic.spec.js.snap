@@ -10,7 +10,7 @@ exports[`Basic should render initial component 1`] = `
     <div class="vfs-text-field">
       <v-text-field name="accent" label="Accent"></v-text-field>
     </div>
-    <v-btn>Add</v-btn>
+    <v-btn color="primary">Add</v-btn>
   </v-layout>
   <v-layout row="">
     <v-card>
@@ -37,8 +37,8 @@ exports[`Basic should render initial component 1`] = `
           </v-layout>
         </v-card-text>
         <v-card-actions>
-          <v-btn color="red" flat="">Cancel</v-btn>
-          <v-btn color="green" flat="">Save</v-btn>
+          <v-btn color="error" flat="">Cancel</v-btn>
+          <v-btn color="success" flat="">Save</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -49,8 +49,8 @@ exports[`Basic should render initial component 1`] = `
           Are you sure you want to delete it?
         </v-card-text>
         <v-card-actions>
-          <v-btn color="green" flat="">Cancel</v-btn>
-          <v-btn color="red" flat="">Confirm</v-btn>
+          <v-btn color="success" flat="">Cancel</v-btn>
+          <v-btn color="error" flat="">Confirm</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>

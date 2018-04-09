@@ -3,6 +3,7 @@ switch (process.env.JEST_ENV) {
     module.exports = {
       moduleFileExtensions: ['js', 'vue'],
       moduleNameMapper: {
+        '~assets(.*)': '<rootDir>/src/assets$1',
         '~(.*)': '<rootDir>/src/app$1',
       },
       setupTestFrameworkScriptFile: '<rootDir>/tools/setup-app.js',
@@ -17,6 +18,7 @@ switch (process.env.JEST_ENV) {
         '^.+\\.js$': 'babel-jest',
         '^.+\\.vue$': 'vue-jest',
         '^.+\\.yml$': 'yaml-jest',
+        '^[./a-zA-Z0-9$_-]+\\.(bmp|gif|jpg|jpeg|png|psd|svg|webp)$': '<rootDir>/tools/assets-transform.js',
       },
     };
     break;
