@@ -46,7 +46,7 @@ export const INITIAL: IApp = {
       children: [
         { text: 'basic', route: '/crud-operations/basic' },
         { text: 'rest', route: '/crud-operations/rest' },
-        { text: 'graphql', disabled: true },
+        { text: 'graphql', route: '/crud-operations/graphql' },
       ],
     },
     {

@@ -1,1 +1,4 @@
-export const INITIAL = {};
+export const INITIAL = {
+  dataset: [],
+  searchData: {},
+};
