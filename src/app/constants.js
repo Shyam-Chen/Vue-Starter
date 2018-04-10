@@ -20,6 +20,12 @@ export const INITIAL: IApp = {
           ],
         },
         {
+          text: 'transitions',
+          children: [
+            { text: 'state', route: '/foo', disabled: true },
+          ],
+        },
+        {
           text: 'directives',
           children: [
             { text: 'switch', route: '/foo', disabled: true },
@@ -32,10 +38,16 @@ export const INITIAL: IApp = {
           ],
         },
         {
-          text: 'router',
+          text: 'routing',
           children: [
             { text: 'params', route: '/foo', disabled: true },
             { text: 'guards', route: '/foo', disabled: true },
+          ],
+        },
+        {
+          text: 'stateManagement',
+          children: [
+            { text: 'modules', route: '/foo', disabled: true },
           ],
         },
       ],
@@ -74,9 +86,10 @@ export const INITIAL: IApp = {
     {
       icon: 'loyalty',
       text: '201Guide',
-      disabled: true,
       subheader: 'advanced',
-      children: [],
+      children: [
+        { text: 'observables', route: '/foo', disabled: true },
+      ],
     },
     { icon: 'fa fa-id-card', text: 'reactiveForms ', route: '/reactive-forms', disabled: true },
     {
