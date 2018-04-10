@@ -53,7 +53,7 @@ export default {
     $s() {
       return this.$store.state.formControls.selects;
     },
-    ...mapModelsToState('formControls.selects', [
+    ...mapModelsToState('formControls/selects', [
       'dessert',
       'states',
     ]),

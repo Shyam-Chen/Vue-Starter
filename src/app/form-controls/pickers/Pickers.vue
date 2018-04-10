@@ -53,7 +53,7 @@ export default {
     $p() {
       return this.$store.state.formControls.pickers;
     },
-    ...mapModelsToState('formControls.pickers', [
+    ...mapModelsToState('formControls/pickers', [
       'date', 'menu', 'dialog',
     ]),
   },

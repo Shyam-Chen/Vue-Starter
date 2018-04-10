@@ -83,7 +83,7 @@ export default {
     $sc() {
       return this.$store.state.formControls.selectionControls;
     },
-    ...mapModelsToState('formControls.selectionControls', [
+    ...mapModelsToState('formControls/selectionControls', [
       'technologies',
       'gender',
       'autoplay',

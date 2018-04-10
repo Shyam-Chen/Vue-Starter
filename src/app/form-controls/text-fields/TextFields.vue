@@ -56,7 +56,7 @@ export default {
     $tf() {
       return this.$store.state.formControls.textFields;
     },
-    ...mapModelsToState('formControls.textFields', [
+    ...mapModelsToState('formControls/textFields', [
       'nickname',
     ]),
   },
