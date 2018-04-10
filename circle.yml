@@ -5,54 +5,61 @@ jobs:
   build:
     docker:
       - image: circleci/node:8
-
-    working_directory: ~/Vue-FullStarter-Kit
-
     steps:
       - checkout
-
       - setup_remote_docker
-
       - run:
-          name: Start up containers
+          name: Combat preparation
           command: docker-compose up -d default
-
       - run:
           name: Build the application
           command: docker-compose exec default yarn build:app
-
       - run:
           name: Build cloud functions
           command: docker-compose exec default yarn build:api
 
+  test:
+    docker:
+      - image: circleci/node:8
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Combat preparation
+          command: |
+            docker-compose up -d default
+            docker-compose exec default yarn build:app
+            docker-compose exec default yarn build:api
       - run:
           name: Check the code
           command: |
             docker-compose exec default yarn lint:js
             docker-compose exec default yarn lint:css
-
       - run:
           name: Test the application
           command: |
             docker-compose exec default yarn test:app
             docker-compose exec default yarn codecov --token=${CODECOV_TOKEN}
-
       - run:
           name: Test cloud functions
           command: |
             docker-compose exec default yarn test:api
             docker-compose exec default yarn codecov --token=${CODECOV_TOKEN}
-
       - run:
           name: End-to-end UI tests
           command: |
             docker-compose exec default yarn e2e:app
-
       - run:
           name: End-to-end HTTP tests
           command: |
             # docker-compose exec dev yarn e2e:api
 
+  deploy:
+    docker:
+      - image: circleci/node:8
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Deploy to development
           command: |
@@ -62,7 +69,6 @@ jobs:
               docker-compose exec dev yarn firebase use development --token ${FIREBASE_TOKEN}
               docker-compose exec dev yarn firebase deploy --token ${FIREBASE_TOKEN}
             fi
-
       - run:
           name: Deploy to production
           command: |
@@ -72,3 +78,15 @@ jobs:
               docker-compose exec prod yarn firebase use production --token ${FIREBASE_TOKEN}
               docker-compose exec prod yarn firebase deploy --token ${FIREBASE_TOKEN}
             fi
+
+workflows:
+  version: 2
+  build-test-deploy:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
+      - deploy:
+          requires:
+            - test

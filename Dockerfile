@@ -32,6 +32,7 @@ RUN \
 
 RUN yarn install
 
+# IDEA: `firebase serve` in the background
 ENV CI_ENV true
 
 EXPOSE 8000 5000

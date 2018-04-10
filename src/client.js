@@ -16,13 +16,13 @@ sync(store, router);
 
 Vue.use(Material, {
   theme: {
-    primary: '#03A9F4',
-    secondary: '#4FC3F7',
-    accent: '#E91E63',
-    error: '#F44336',
-    warning: '#FFEB3B',
-    info: '#2196F3',
-    success: '#4CAF50',
+    primary: '#1E88E5',  // blue, darken-1
+    secondary: '#42A5F5',  // blue, lighten-1
+    accent: '#E91E63',  // pink
+    error: '#F44336',  // red
+    warning: '#FFEB3B',  // yellow
+    info: '#2196F3',  // blue
+    success: '#4CAF50',  // green
   },
 });
 
@@ -37,9 +37,6 @@ const vm = new Vue({
   store,
   provide,
   i18n,
-  mounted() {
-    document.dispatchEvent(new Event('render-event'));
-  },
   render: handle => handle(App),
 });
 

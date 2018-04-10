@@ -17,8 +17,8 @@ global.launch = {
   args: [`--window-size=${width},${height}`, '--no-sandbox'],
 };
 
+// IDEA: `firebase serve` in the background
 if (process.env.CI_ENV) {
-  // TODO: firebase functions
   const express = require('express');
   const history = require('express-history-api-fallback');
 
