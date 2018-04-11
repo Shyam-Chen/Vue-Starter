@@ -186,7 +186,7 @@ ENV FUNC_URL <FUNC_URL>
 [...]
 ```
 
-Don't add `Docker.<dev|prod>` in version control.
+For security, don't add `Docker.<dev|prod>` in version control.
 
 So you need to push private images to Docker Hub.
 
@@ -220,6 +220,25 @@ docker login -u ${DOCKER_USERNAME} -p ${DOCKER_TOKEN}
 ```
 
 Change deployment configuration is completed.
+
+### VS Code settings
+
+```js
+{
+  "window.zoomLevel": 1,
+  "workbench.colorTheme": "Material Theme",
+  "workbench.iconTheme": "material-icon-theme",
+  "eslint.validate": [
+    "javascript", {
+      "language": "vue"
+    },
+    "javascriptreact",
+    "html"
+  ],
+  "javascript.validate.enable": false,
+  "vetur.validation.script": false
+}
+```
 
 ## Directory Structure
 
