@@ -8,7 +8,7 @@
     "build:app": "rimraf public && cross-env BABEL_ENV=app webpack --env.prod --progress",
     "build:api": "rimraf functions && cross-env BABEL_ENV=api gulp --prod",
     "lint:js": "eslint src/**/*.{js,vue}",
-    "lint:css": "stylelint src/**/*.{css,vue}",
+    "lint:css": "stylelint 'src/**/*.{css,vue}'",
     "test:app": "cross-env BABEL_ENV=app JEST_ENV=app jest \"src/app/.*\\.js$\" --coverage --forceExit",
     "test:api": "cross-env BABEL_ENV=api JEST_ENV=api jest \"src/api/.*\\.js$\" --coverage --forceExit",
     "e2e:app": "cross-env BABEL_ENV=app JEST_ENV=e2e jest \"src/app/.*\\.js$\" --forceExit",
