@@ -32,8 +32,4 @@ RUN \
 
 RUN yarn install
 
-# IDEA: `firebase serve` in the background
-# ENV CI_ENV true
-ENV SITE_PORT 5000
-
 EXPOSE 8000 5000

@@ -1,6 +1,4 @@
-import { join } from 'path';
-
-import { SITE_URL, FUNC_URL, SITE_PORT } from '../env';
+import { SITE_URL, FUNC_URL } from '../env';
 
 jest.setTimeout(20000);
 
@@ -17,16 +15,3 @@ global.launch = {
   args: [`--window-size=${width},${height}`, '--no-sandbox'],
 };
 
-// IDEA: `firebase serve` in the background
-if (process.env.CI_ENV) {
-  const express = require('express');
-  const history = require('express-history-api-fallback');
-
-  const vm = express();
-  const root = join(__dirname, '../public');
-
-  vm.use(express.static(root));
-  vm.use(history('index.html', { root }));
-
-  vm.listen(SITE_PORT);
-}
