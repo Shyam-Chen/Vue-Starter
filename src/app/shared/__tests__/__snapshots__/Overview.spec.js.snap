@@ -1,10 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Overview should render initial component 1`] = `
-<v-layout fill-height="true" justify-center="true" align-center="true">
-  <div class="text-xs-center">
-    <div class="display-1 pa-3 primary--text">Vue by Example</div>
-    <img src="&quot;logo.svg&quot;" alt="Logo" width="300" height="300">
-  </div>
-</v-layout>
+<v-container fluid="true" fill-height="true">
+  <v-layout justify-center="true" align-center="true">
+    <div class="text-xs-center">
+      <div class="display-1 pa-3 primary--text">Vue by Example</div>
+      <img src="&quot;logo.svg&quot;" alt="Logo" width="300" height="300">
+    </div>
+  </v-layout>
+</v-container>
 `;

@@ -10,11 +10,13 @@ export default {
   },
   render() {
     return (
-      <v-layout style={{ background: this.$app.theme === 'light' ? '#fff' : '#000' }} class="vfs-notfound" column justify-center align-center>
-        <div class="display-2 primary--text pa-3">Whoops, 404</div>
-        <div class="pa-2">The page you were looking for does not exist</div>
-        <v-btn to='/' color="primary" outline>Get me out of here!</v-btn>
-      </v-layout>
+      <v-container fluid>
+        <v-layout style={{ background: this.$app.theme === 'light' ? '#fff' : '#000' }} class="vfs-notfound" column justify-center align-center>
+          <div class="display-2 primary--text pa-3">Whoops, 404</div>
+          <div class="pa-2">The page you were looking for does not exist</div>
+          <v-btn to='/' color="primary" outline>Get me out of here!</v-btn>
+        </v-layout>
+      </v-container>
     );
   },
 };

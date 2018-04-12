@@ -1,25 +1,27 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Counter should render initial component 1`] = `
-<v-layout column="">
-  <v-layout row="">
-    <div class="headline pa-2">
-      Clicked: <strong>0</strong> times, value is <strong>even</strong>.
-    </div>
+<v-container fluid="">
+  <v-layout column="">
+    <v-layout row="">
+      <div class="headline pa-2">
+        Clicked: <strong>0</strong> times, value is <strong>even</strong>.
+      </div>
+    </v-layout>
+    <v-layout row="">
+      <v-btn color="primary">Increment</v-btn>
+      <v-btn color="primary">Decrement</v-btn>
+    </v-layout>
+    <v-layout row="">
+      <v-btn color="primary">Increment (Async)</v-btn>
+      <v-btn color="primary">Decrement (Async)</v-btn>
+      <v-btn color="primary">Increment (If Odd)</v-btn>
+      <v-btn color="primary">Decrement (If Even)</v-btn>
+    </v-layout>
+    <v-layout row="">
+      <v-btn color="primary" disabled="">Start Count</v-btn>
+      <v-btn color="primary" disabled="">Cancel Count</v-btn>
+    </v-layout>
   </v-layout>
-  <v-layout row="">
-    <v-btn color="primary">Increment</v-btn>
-    <v-btn color="primary">Decrement</v-btn>
-  </v-layout>
-  <v-layout row="">
-    <v-btn color="primary">Increment (Async)</v-btn>
-    <v-btn color="primary">Decrement (Async)</v-btn>
-    <v-btn color="primary">Increment (If Odd)</v-btn>
-    <v-btn color="primary">Decrement (If Even)</v-btn>
-  </v-layout>
-  <v-layout row="">
-    <v-btn color="primary" disabled="">Start Count</v-btn>
-    <v-btn color="primary" disabled="">Cancel Count</v-btn>
-  </v-layout>
-</v-layout>
+</v-container>
 `;

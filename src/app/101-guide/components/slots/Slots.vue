@@ -1,31 +1,33 @@
 <template>
-  <v-layout column>
+  <v-container fluid>
+    <v-layout column>
 
-    <Card />  <!-- default slot content -->
+      <Card />  <!-- default slot content -->
 
-    <Card>
-      <div slot="title">Vue</div>  <!-- named slot -->
-      <div slot="body">Approachable! Versatile! Performant!</div>  <!-- named slot -->
-      <span>Awesome Vue!!!</span>  <!-- slot content -->
-      <span>Awesome Vue!!!</span>  <!-- slot content -->
-      <span>Awesome Vue!!!</span>  <!-- slot content -->
-      <v-btn slot="button" flat color="orange">Share</v-btn>  <!-- named slot -->
-      <v-btn slot="button" flat color="orange">{{ name }}</v-btn>  <!-- named slot -->
-    </Card>
+      <Card>
+        <div slot="title">Vue</div>  <!-- named slot -->
+        <div slot="body">Approachable! Versatile! Performant!</div>  <!-- named slot -->
+        <span>Awesome Vue!!!</span>  <!-- slot content -->
+        <span>Awesome Vue!!!</span>  <!-- slot content -->
+        <span>Awesome Vue!!!</span>  <!-- slot content -->
+        <v-btn slot="button" flat color="orange">Share</v-btn>  <!-- named slot -->
+        <v-btn slot="button" flat color="orange">{{ name }}</v-btn>  <!-- named slot -->
+      </Card>
 
-    <List :subheader="subheader" :items="items">
-      <!-- scoped slot -->
-      <template slot="items" slot-scope="props">
-        <v-list-tile avatar>
-          <v-list-tile-content>
-            <v-list-tile-title>{{ props.item.text }}</v-list-tile-title>
-            <v-list-tile-sub-title>{{ props.item.helperText }}</v-list-tile-sub-title>
-          </v-list-tile-content>
-        </v-list-tile>
-      </template>
-    </List>
+      <List :subheader="subheader" :items="items">
+        <!-- scoped slot -->
+        <template slot="items" slot-scope="props">
+          <v-list-tile avatar>
+            <v-list-tile-content>
+              <v-list-tile-title>{{ props.item.text }}</v-list-tile-title>
+              <v-list-tile-sub-title>{{ props.item.helperText }}</v-list-tile-sub-title>
+            </v-list-tile-content>
+          </v-list-tile>
+        </template>
+      </List>
 
-  </v-layout>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>

@@ -18,7 +18,7 @@ describe('Counter', () => {
   });
 
   it('should display count', async () => {
-    const selector = '#app > div > main > div > div > div > h1';
+    const selector = '#app > div.application--wrap > main > div > div > div > div';
     const text = await page.$eval(selector, el => el.textContent);
     expect(text).toMatch('Hello, World!');
   });

@@ -1,59 +1,61 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Basic should render initial component 1`] = `
-<v-layout column="">
-  <div class="headline">CRUD Operations - Basic</div>
-  <v-layout row="">
-    <div class="vfs-text-field">
-      <v-text-field name="primary" label="Primary"></v-text-field>
-    </div>
-    <div class="vfs-text-field">
-      <v-text-field name="accent" label="Accent"></v-text-field>
-    </div>
-    <v-btn color="primary">Add</v-btn>
-  </v-layout>
-  <v-layout row="">
-    <v-card>
-      <v-card-title class="vfs-card-title">
-        <div class="title">Board</div>
-        <v-spacer></v-spacer>
-        <v-text-field append-icon="search" label="Search" single-line="" hide-details=""></v-text-field>
-      </v-card-title>
-      <v-data-table headers="[object Object],[object Object],[object Object],[object Object]" items="[object Object],[object Object],[object Object],[object Object]" search="" hide-actions="" select-all=""></v-data-table>
-    </v-card>
-  </v-layout>
-  <aside>
-    <v-dialog max-width="500px">
+<v-container fluid="">
+  <v-layout column="">
+    <div class="headline">CRUD Operations - Basic</div>
+    <v-layout row="">
+      <div class="vfs-text-field">
+        <v-text-field name="primary" label="Primary"></v-text-field>
+      </div>
+      <div class="vfs-text-field">
+        <v-text-field name="accent" label="Accent"></v-text-field>
+      </div>
+      <v-btn color="primary">Add</v-btn>
+    </v-layout>
+    <v-layout row="">
       <v-card>
-        <v-card-title>Edit</v-card-title>
-        <v-card-text>
-          <v-layout row="">
-            <div class="vfs-text-field">
-              <v-text-field name="primary" label="Primary"></v-text-field>
-            </div>
-            <div class="vfs-text-field">
-              <v-text-field name="accent" label="Accent"></v-text-field>
-            </div>
-          </v-layout>
-        </v-card-text>
-        <v-card-actions>
-          <v-btn color="error" flat="">Cancel</v-btn>
-          <v-btn color="success" flat="">Save</v-btn>
-        </v-card-actions>
+        <v-card-title class="vfs-card-title">
+          <div class="title">Board</div>
+          <v-spacer></v-spacer>
+          <v-text-field append-icon="search" label="Search" single-line="" hide-details=""></v-text-field>
+        </v-card-title>
+        <v-data-table headers="[object Object],[object Object],[object Object],[object Object]" items="[object Object],[object Object],[object Object],[object Object]" search="" hide-actions="" select-all=""></v-data-table>
       </v-card>
-    </v-dialog>
-    <v-dialog max-width="500px">
-      <v-card>
-        <v-card-title>Delete</v-card-title>
-        <v-card-text>
-          Are you sure you want to delete it?
-        </v-card-text>
-        <v-card-actions>
-          <v-btn color="success" flat="">Cancel</v-btn>
-          <v-btn color="error" flat="">Confirm</v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
-  </aside>
-</v-layout>
+    </v-layout>
+    <aside>
+      <v-dialog max-width="500px">
+        <v-card>
+          <v-card-title>Edit</v-card-title>
+          <v-card-text>
+            <v-layout row="">
+              <div class="vfs-text-field">
+                <v-text-field name="primary" label="Primary"></v-text-field>
+              </div>
+              <div class="vfs-text-field">
+                <v-text-field name="accent" label="Accent"></v-text-field>
+              </div>
+            </v-layout>
+          </v-card-text>
+          <v-card-actions>
+            <v-btn color="error" flat="">Cancel</v-btn>
+            <v-btn color="success" flat="">Save</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+      <v-dialog max-width="500px">
+        <v-card>
+          <v-card-title>Delete</v-card-title>
+          <v-card-text>
+            Are you sure you want to delete it?
+          </v-card-text>
+          <v-card-actions>
+            <v-btn color="success" flat="">Cancel</v-btn>
+            <v-btn color="error" flat="">Confirm</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+    </aside>
+  </v-layout>
+</v-container>
 `;

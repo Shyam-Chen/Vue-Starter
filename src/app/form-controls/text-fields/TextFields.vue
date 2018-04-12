@@ -1,46 +1,48 @@
 <template>
-  <v-layout column>
-    <div class="headline">Form Controls - Text Fields</div>
+  <v-container fluid>
+    <v-layout column>
+      <div class="headline">Form Controls - Text Fields</div>
 
-    <v-form>
+      <v-form>
 
-      <!-- input -->
-      <v-layout row>
-        <div>
-          <v-text-field v-model="nickname" name="nickname" label="Nickname" class="vfs-field"></v-text-field>
-        </div>
-        <div class="primary--text vfs-outputs">{{ $tf.nickname }}</div>
-      </v-layout>
+        <!-- input -->
+        <v-layout row>
+          <div>
+            <v-text-field v-model="nickname" name="nickname" label="Nickname" class="vfs-field"></v-text-field>
+          </div>
+          <div class="primary--text vfs-outputs">{{ $tf.nickname }}</div>
+        </v-layout>
 
-      <v-layout row>
-        <div>
-          <v-text-field v-model="nickname" :rules="$tf.nicknameRules" name="nickname" label="Nickname" counter="15" class="vfs-field" required></v-text-field>
-        </div>
-        <div class="primary--text vfs-outputs">{{ $tf.nickname }}</div>
-      </v-layout>
+        <v-layout row>
+          <div>
+            <v-text-field v-model="nickname" :rules="$tf.nicknameRules" name="nickname" label="Nickname" counter="15" class="vfs-field" required></v-text-field>
+          </div>
+          <div class="primary--text vfs-outputs">{{ $tf.nickname }}</div>
+        </v-layout>
 
-      <v-layout row>
-        <div>
-          <v-text-field v-model="nickname" placeholder="ex. Larva" name="nickname" label="Nickname" class="vfs-field"></v-text-field>
-        </div>
-        <div class="primary--text vfs-outputs">{{ $tf.nickname }}</div>
-      </v-layout>
+        <v-layout row>
+          <div>
+            <v-text-field v-model="nickname" placeholder="ex. Larva" name="nickname" label="Nickname" class="vfs-field"></v-text-field>
+          </div>
+          <div class="primary--text vfs-outputs">{{ $tf.nickname }}</div>
+        </v-layout>
 
-      <v-layout row>
-        <div>
-          <v-text-field v-model="nickname" name="nickname" label="Nickname" class="vfs-field" textarea></v-text-field>
-        </div>
-        <div class="primary--text vfs-outputs">{{ $tf.nickname }}</div>
-      </v-layout>
+        <v-layout row>
+          <div>
+            <v-text-field v-model="nickname" name="nickname" label="Nickname" class="vfs-field" textarea></v-text-field>
+          </div>
+          <div class="primary--text vfs-outputs">{{ $tf.nickname }}</div>
+        </v-layout>
 
-      <!-- next -->
-      <v-layout row>
-        more...
-      </v-layout>
+        <!-- next -->
+        <v-layout row>
+          more...
+        </v-layout>
 
-    </v-form>
+      </v-form>
 
-  </v-layout>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>

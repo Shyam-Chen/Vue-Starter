@@ -1,73 +1,75 @@
 <template>
-  <v-layout column>
-    <div class="headline">Form Controls - Selection Controls</div>
+  <v-container fluid>
+    <v-layout column>
+      <div class="headline">Form Controls - Selection Controls</div>
 
-    <v-form>
+      <v-form>
 
-      <!-- checkboxes -->
-      <v-layout row>
-        <div>
-          <v-layout column>
-            <div class="body-1">Technologies</div>
-            <div>
-              <v-layout row wrap>
-                <v-checkbox v-for="item in $sc.technologiesList" :key="item" :label="item" :value="item" v-model="technologies" class="vfs-checkbox"></v-checkbox>
-              </v-layout>
-            </div>
-          </v-layout>
-        </div>
-        <div class="primary--text vfs-outputs">{{ $sc.technologies }}</div>
-      </v-layout>
+        <!-- checkboxes -->
+        <v-layout row>
+          <div>
+            <v-layout column>
+              <div class="body-1">Technologies</div>
+              <div>
+                <v-layout row wrap>
+                  <v-checkbox v-for="item in $sc.technologiesList" :key="item" :label="item" :value="item" v-model="technologies" class="vfs-checkbox"></v-checkbox>
+                </v-layout>
+              </div>
+            </v-layout>
+          </div>
+          <div class="primary--text vfs-outputs">{{ $sc.technologies }}</div>
+        </v-layout>
 
-      <!-- radios -->
-      <v-layout row>
-        <div>
-          <v-layout column>
-            <div class="body-1">Gender</div>
-            <div>
-              <v-radio-group v-model="gender" class="vfs-radio-group" row>
-                <v-radio v-for="item in $sc.genderList" :key="item" :label="item" :value="item"></v-radio>
-              </v-radio-group>
-            </div>
-          </v-layout>
-        </div>
-        <div class="primary--text vfs-outputs">{{ $sc.gender }}</div>
-      </v-layout>
+        <!-- radios -->
+        <v-layout row>
+          <div>
+            <v-layout column>
+              <div class="body-1">Gender</div>
+              <div>
+                <v-radio-group v-model="gender" class="vfs-radio-group" row>
+                  <v-radio v-for="item in $sc.genderList" :key="item" :label="item" :value="item"></v-radio>
+                </v-radio-group>
+              </div>
+            </v-layout>
+          </div>
+          <div class="primary--text vfs-outputs">{{ $sc.gender }}</div>
+        </v-layout>
 
-      <!-- switch -->
-      <v-layout row>
-        <div>
-          <v-layout column>
-            <div class="body-1">Video Player</div>
-            <div>
-              <v-switch v-model="autoplay" label="Autoplay" class="vfs-switch"></v-switch>
-            </div>
-          </v-layout>
-        </div>
-        <div class="primary--text vfs-outputs">{{ $sc.autoplay }}</div>
-      </v-layout>
+        <!-- switch -->
+        <v-layout row>
+          <div>
+            <v-layout column>
+              <div class="body-1">Video Player</div>
+              <div>
+                <v-switch v-model="autoplay" label="Autoplay" class="vfs-switch"></v-switch>
+              </div>
+            </v-layout>
+          </div>
+          <div class="primary--text vfs-outputs">{{ $sc.autoplay }}</div>
+        </v-layout>
 
-      <!-- slider -->
-      <v-layout row>
-        <div>
-          <v-layout column>
-            <div class="body-1">Media Volume</div>
-            <div>
-              <v-slider v-model="volume" prepend-icon="volume_up" step="2" class="vfs-slider" thumb-label></v-slider>
-            </div>
-          </v-layout>
-        </div>
-        <div class="primary--text vfs-outputs">{{ $sc.volume }}</div>
-      </v-layout>
+        <!-- slider -->
+        <v-layout row>
+          <div>
+            <v-layout column>
+              <div class="body-1">Media Volume</div>
+              <div>
+                <v-slider v-model="volume" prepend-icon="volume_up" step="2" class="vfs-slider" thumb-label></v-slider>
+              </div>
+            </v-layout>
+          </div>
+          <div class="primary--text vfs-outputs">{{ $sc.volume }}</div>
+        </v-layout>
 
-      <!-- next -->
-      <v-layout row>
-        more...
-      </v-layout>
+        <!-- next -->
+        <v-layout row>
+          more...
+        </v-layout>
 
-    </v-form>
+      </v-form>
 
-  </v-layout>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>

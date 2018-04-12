@@ -1,43 +1,45 @@
 <template>
-  <v-layout column>
-    <div class="headline">Form Controls - Selects</div>
+  <v-container fluid>
+    <v-layout column>
+      <div class="headline">Form Controls - Selects</div>
 
-    <v-form>
+      <v-form>
 
-      <!-- select -->
-      <v-layout row>
-        <div>
-          <v-layout column>
-            <div class="body-1">Dessert</div>
-            <div>
-              <v-select :items="$s.dessertList" v-model="dessert" label="Choose a dessert" class="vfs-select" single-line bottom></v-select>
-            </div>
-          </v-layout>
-        </div>
-        <div class="primary--text vfs-outputs">{{ $s.dessert }}</div>
-      </v-layout>
+        <!-- select -->
+        <v-layout row>
+          <div>
+            <v-layout column>
+              <div class="body-1">Dessert</div>
+              <div>
+                <v-select :items="$s.dessertList" v-model="dessert" label="Choose a dessert" class="vfs-select" single-line bottom></v-select>
+              </div>
+            </v-layout>
+          </div>
+          <div class="primary--text vfs-outputs">{{ $s.dessert }}</div>
+        </v-layout>
 
-      <!-- multiple select -->
-      <v-layout row>
-        <div>
-          <v-layout column>
-            <div class="body-1">States</div>
-            <div>
-              <v-select :items="$s.statesList" v-model="states" label="Select States" class="vfs-select--multiple" multiple chips single-line bottom></v-select>
-            </div>
-          </v-layout>
-        </div>
-        <div class="primary--text vfs-outputs">{{ $s.states }}</div>
-      </v-layout>
+        <!-- multiple select -->
+        <v-layout row>
+          <div>
+            <v-layout column>
+              <div class="body-1">States</div>
+              <div>
+                <v-select :items="$s.statesList" v-model="states" label="Select States" class="vfs-select--multiple" multiple chips single-line bottom></v-select>
+              </div>
+            </v-layout>
+          </div>
+          <div class="primary--text vfs-outputs">{{ $s.states }}</div>
+        </v-layout>
 
-      <!-- next -->
-      <v-layout row>
-        more...
-      </v-layout>
+        <!-- next -->
+        <v-layout row>
+          more...
+        </v-layout>
 
-    </v-form>
+      </v-form>
 
-  </v-layout>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>

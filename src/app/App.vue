@@ -124,9 +124,7 @@
 
     <v-content>
       <v-fade-transition mode="out-in">
-        <v-container fluid class="vfs-container">
-          <router-view></router-view>
-        </v-container>
+        <router-view></router-view>
       </v-fade-transition>
     </v-content>
 
@@ -168,9 +166,5 @@ export default {
 
 .vfs-router-link {
   text-decoration: none;
-}
-
-.vfs-container {
-  height: 100%;
 }
 </style>

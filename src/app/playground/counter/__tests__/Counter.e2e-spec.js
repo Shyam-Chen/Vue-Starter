@@ -11,8 +11,8 @@ describe('Counter', () => {
     page = await browser.newPage();
     await page.setViewport(global.viewport);
 
-    headline = '#app > div > main > div > div > div > div:nth-child(1) > div';
-    increment = '#app > div > main > div > div > div > div:nth-child(2) > button:nth-child(1) > div';
+    headline = '#app > div.application--wrap > main > div > div > div > div:nth-child(1) > div';
+    increment = '#app > div.application--wrap > main > div > div > div > div:nth-child(2) > button:nth-child(1) > div';
   });
 
   afterAll(async () => {
@@ -25,24 +25,16 @@ describe('Counter', () => {
 
   it('should display count', async () => {
     const text = await page.$eval(headline, el => el.textContent);
+    const string = 'Clicked: 0 times, value is even.';
 
-    const string = `
-      Clicked: 0 times,
-      value is even.
-    `;
-
-    expect(text).toMatch(string);
+    expect(text.trim()).toMatch(string);
   });
 
   it('should click increment button', async () => {
     await page.click(increment);
     const text = await page.$eval(headline, el => el.textContent);
+    const string = 'Clicked: 1 times, value is odd.';
 
-    const string = `
-      Clicked: 1 times,
-      value is odd.
-    `;
-
-    expect(text).toMatch(string);
+    expect(text.trim()).toMatch(string);
   });
 });

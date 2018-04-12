@@ -1,8 +1,10 @@
 <template>
-  <v-layout column>
-    <Title />
-    <Title label="Vue by Example" />
-  </v-layout>
+  <v-container fluid>
+    <v-layout column>
+      <Title />
+      <Title label="Vue by Example" />
+    </v-layout>
+  </v-container>
 </template>
 
 <script>
