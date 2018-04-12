@@ -123,9 +123,11 @@
     </v-toolbar>
 
     <v-content>
-      <v-container fluid class="vfs-container">
-        <router-view></router-view>
-      </v-container>
+      <v-fade-transition mode="out-in">
+        <v-container fluid class="vfs-container">
+          <router-view></router-view>
+        </v-container>
+      </v-fade-transition>
     </v-content>
 
     <v-footer inset class="pa-3 primary white--text">
