@@ -13,12 +13,16 @@ const router = new Router({
   routes: [
     { path: '/', component: Overview },
 
+    /**
+     * @name basic
+     */
     /** @name hello-world */
     { path: '/hello-world', component: () => import('~/hello-world/HelloWorld') },
 
     /** @name 101-guide */
     { path: '/101-guide/components/props', component: () => import('~/101-guide/components/props/Props') },
     { path: '/101-guide/components/slots', component: () => import('~/101-guide/components/slots/Slots') },
+    // ...
 
     /** @name crud-operations */
     { path: '/crud-operations/basic', component: () => import('~/crud-operations/basic/Basic') },
@@ -33,18 +37,31 @@ const router = new Router({
 
     /** @name data-table */
     { path: '/data-table/basic', component: () => import('~/data-table/basic/Basic') },
+    // { path: '/data-table/rest', component: () => import('~/data-table/rest/REST') },
+    // { path: '/data-table/graphql', component: () => import('~/data-table/graphql/GraphQL') },
 
     /** @name internationalization */
     { path: '/internationalization', component: () => import('~/internationalization/Internationalization') },
 
+    /** @name interactive-chart */
+    { path: '/interactive-chart', component: () => import('~/interactive-chart/InteractiveChart') },
+
+    /**
+     * @name advanced
+     */
+    /** @name 201-guide */
+    /** @name reactive-forms */
     /** @name authorization */
+    /** @name data-visualization */
+    /** @name sockets */
+    /** @name torrents */
+    /** @name virtual-reality */
 
-    /** @name data-chart */
-
-    /** @name realtime */
-
-    /** @name playground */
+    /**
+     * @name playground
+     */
     { path: '/counter', component: () => import('~/playground/counter/Counter') },
+    // ...
 
     { path: '*', component: NotFound },
   ],

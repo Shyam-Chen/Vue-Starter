@@ -81,6 +81,7 @@ export const INITIAL: IApp = {
       ],
     },
     { icon: 'language', text: 'internationalization', route: '/internationalization' },
+    { icon: 'fa fa-bar-chart', text: 'interactiveChart', route: '/interactive-chart' },
 
     // Advanced
     {
@@ -116,12 +117,8 @@ export const INITIAL: IApp = {
       disabled: true,
       children: [],
     },
-    {
-      icon: 'video_library',
-      text: 'torrents',
-      disabled: true,
-      children: [],
-    },
+    { icon: 'video_library', text: 'torrents', disabled: true },
+    { icon: 'fa fa-cube', text: 'virtualReality', disabled: true },
 
     // Playground
     { icon: 'fa fa-calculator', text: 'counter', route: '/counter', subheader: 'playground' },
