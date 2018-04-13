@@ -4,7 +4,7 @@ import express from 'express';
 const router = express.Router();
 
 /**
- * @return {Object<{ data: Array<{ id: string, text: string }> }>}
+ * @return {Object<{ data: Array<{ id: string, text: string }>, message: string }>}
  *
  * @example GET /api/text-list
  * @example GET /api/text-list?text=${text}
@@ -25,7 +25,7 @@ router.get('/', (req, res) => {
         ? data.filter(item => item.text.toLowerCase().indexOf(text.toLowerCase()) > -1)
         : data;
 
-      res.status(200).json({ data: result });
+      res.status(200).json({ data: result, message: 'Data obtained.' });
     });
 });
 
