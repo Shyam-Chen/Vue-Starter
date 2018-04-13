@@ -2,8 +2,10 @@
 
 const NODE_ENV = exports.NODE_ENV = process.env.NODE_ENV || 'development';
 
+const PROJECT_NAME = exports.PROJECT_NAME = process.env.PROJECT_NAME || 'vue-by-example-dev';
+
 const SITE_PORT = exports.SITE_PORT = process.env.SITE_PORT || 8000;
 const SITE_URL = exports.SITE_URL = process.env.SITE_URL || `http://localhost:${SITE_PORT}`;
 
-const FUNC_PROJECT = exports.FUNC_PROJECT = process.env.FUNC_PROJECT || 'vue-by-example-dev';
-const FUNC_URL = exports.FUNC_URL = process.env.FUNC_URL || `http://localhost:5000/${FUNC_PROJECT}/us-central1`;
+const FUNC_PORT = exports.FUNC_PORT = process.env.FUNC_PORT || 5000;
+const FUNC_URL = exports.FUNC_URL = process.env.FUNC_URL || `http://localhost:${FUNC_PORT}/${PROJECT_NAME}/us-central1`;
