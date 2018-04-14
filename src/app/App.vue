@@ -126,9 +126,11 @@
       </v-toolbar>
 
       <v-content>
-        <v-fade-transition mode="out-in">
+        <v-fade-transition v-if="$route.meta.statusCode !== 404" mode="out-in">
           <router-view></router-view>
         </v-fade-transition>
+
+        <router-view v-else></router-view>
       </v-content>
 
       <v-footer inset class="pa-3 primary white--text">

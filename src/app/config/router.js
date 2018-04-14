@@ -63,7 +63,7 @@ const router = new Router({
     { path: '/counter', component: () => import('~/playground/counter/Counter') },
     // ...
 
-    { path: '*', component: NotFound },
+    { path: '*', component: NotFound, meta: { statusCode: 404 } },
   ],
 });
 
