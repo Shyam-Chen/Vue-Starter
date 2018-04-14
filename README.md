@@ -105,10 +105,13 @@ $ yarn global add vue-cli
 $ vue init Shyam-Chen/Vue-Fullstack-Template <PROJECT_NAME>
 ```
 
-3. Go to project folder to start your journey
+3. Start your journey
 
 ```bash
 $ cd <PROJECT_NAME>
+$ yarn install && yarn typed
+$ yarn start:app
+$ yarn start:api
 ```
 
 :vertical_traffic_light: Project template repository can be accessed from [here](https://github.com/Shyam-Chen/Vue-Fullstack-Template).

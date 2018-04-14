@@ -31,7 +31,8 @@ jobs:
             docker-compose exec default yarn build:app
             docker-compose exec default yarn build:api
             docker-compose exec default yarn firebase use development --token ${FIREBASE_TOKEN}
-            docker-compose exec -d default yarn firebase serve --only hosting -p 8000 --token ${FIREBASE_TOKEN}
+            docker-compose exec -d default yarn start:app
+            # docker-compose exec -d default yarn firebase serve --only hosting -p 8000 --token ${FIREBASE_TOKEN}
             # docker-compose exec -d default yarn firebase serve --only functions -p 5000 --token ${FIREBASE_TOKEN}
       - run:
           name: Check the code

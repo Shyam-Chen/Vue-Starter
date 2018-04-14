@@ -30,12 +30,17 @@ gulp.task('build', () =>
 );
 
 gulp.task('copy', () =>
-  gulp.src(['./package.json', './yarn.lock'])
+  gulp
+    .src([
+      'package.json',
+      'yarn.lock',
+      'src/index.html',
+    ])
     .pipe(gulp.dest(DIST_ROOT)),
 );
 
 gulp.task('rename', () =>
-  gulp.src('./functions/server.js')
+  gulp.src('functions/server.js')
     .pipe(rimraf())
     .pipe(rename('index.js'))
     .pipe(gulp.dest(DIST_ROOT)),
