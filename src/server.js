@@ -1,6 +1,6 @@
-import { readFileSync } from 'fs';
-import { join } from 'path';
-import { URL, format } from 'url';
+// import { readFileSync } from 'fs';
+// import { join } from 'path';
+// import { URL, format } from 'url';
 import * as functions from 'firebase-functions';
 import * as admin from 'firebase-admin';
 import express from 'express';
@@ -9,7 +9,7 @@ import compression from 'compression';
 import cors from 'cors';
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
-import fetch from 'node-fetch';
+import request from 'request';
 // import Raven from 'raven';
 
 import routes from './api';
@@ -46,9 +46,9 @@ export const api = functions.https.onRequest(vm);
 
 // -
 
-const shell = express();
+const sh = express();
 
-shell.get('*', (req, res) => {
+sh.get('*', (req, res) => {
   const botUserAgents = [
     'W3C_Validator',
     'baiduspider',
@@ -67,26 +67,22 @@ shell.get('*', (req, res) => {
   ];
 
   const rendertronUrl = 'https://render-tron.appspot.com';
-  const targetUrl = format({
-    protocol: req.protocol,
-    hostname: new URL(process.env.SITE_URL).origin,
-    pathname: req.originalUrl,
-  });
+  const targetUrl = process.env.SITE_URL + req.originalUrl;
 
-  const template = readFileSync(join(__dirname, 'index.html'), 'utf-8');
+  // const template = readFileSync(join(__dirname, 'index.html'), 'utf-8');
 
   if (new RegExp(botUserAgents.join('|'), 'i').test(req.headers['user-agent'])) {
-    fetch(`${rendertronUrl}/render/${targetUrl}`)
-      .then(({ text }) => text())
-      .then((body) => {
-        res.set('Cache-Control', 'public, max-age=300, s-maxage=600');
-        res.set('Vary', 'User-Agent');
+    const url = `${rendertronUrl}/render/${targetUrl}`;
 
-        res.send(body.toString());
-      });
-  } else {
-    res.send(template);
+    request(url, (error, response, body) => {
+      res.set('Cache-Control', 'public, max-age=300, s-maxage=600');
+      res.set('Vary', 'User-Agent');
+
+      res.send(body);
+    });
+  // } else {
+  //   res.send(template);
   }
 });
 
-export const app = functions.https.onRequest(shell);
+export const app = functions.https.onRequest(sh);
