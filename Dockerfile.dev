@@ -7,7 +7,7 @@ ADD . $HOME
 
 RUN yarn install
 
-ENV NODE_ENV development
+ENV NODE_ENV production
 
 # envs --
 ENV SITE_URL https://vue-by-example-dev.firebaseapp.com
