@@ -66,7 +66,7 @@ sh.get('*', (req, res) => {
     'vkShare',
   ];
 
-  const rendertronUrl = 'https://render-tron.appspot.com';
+  const rendertronUrl = 'https://' + process.env.PROJECT_NAME + '.appspot.com';  // eslint-disable-line
   const targetUrl = process.env.SITE_URL + req.originalUrl;
 
   // const template = readFileSync(join(__dirname, 'index.html'), 'utf-8');
@@ -78,10 +78,12 @@ sh.get('*', (req, res) => {
       res.set('Cache-Control', 'public, max-age=300, s-maxage=600');
       res.set('Vary', 'User-Agent');
 
-      res.send(body);
+      res.send(body.toString());
     });
-  // } else {
-  //   res.send(template);
+  } else {
+    request(process.env.SITE_URL, (error, response, body) => {
+      res.send(body.toString());
+    });
   }
 });
 
