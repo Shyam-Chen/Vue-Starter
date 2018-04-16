@@ -1,21 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Not Found should render dark component 1`] = `
-<v-container fluid="true">
-  <v-layout column="true" justify-center="true" align-center="true" class="vfs-notfound" style="background: rgb(0, 0, 0);">
-    <div class="display-2 primary--text pa-3">Whoops, 404</div>
-    <div class="pa-2">The page you were looking for does not exist</div>
-    <v-btn to="/" color="primary" outline="true">Get me out of here!</v-btn>
-  </v-layout>
-</v-container>
-`;
-
-exports[`Not Found should render light component 1`] = `
-<v-container fluid="true">
-  <v-layout column="true" justify-center="true" align-center="true" class="vfs-notfound" style="background: rgb(255, 255, 255);">
-    <div class="display-2 primary--text pa-3">Whoops, 404</div>
-    <div class="pa-2">The page you were looking for does not exist</div>
-    <v-btn to="/" color="primary" outline="true">Get me out of here!</v-btn>
+exports[`NotFound should render initial component 1`] = `
+<v-container fluid="true" fill-height="true">
+  <v-layout justify-center="true" align-center="true">
+    <div class="text-xs-center">
+      <div class="display-2 primary--text pa-3">Whoops, 404</div>
+      <div class="pa-2">The page you were looking for does not exist</div>
+      <v-btn to="/" color="primary" outline="true">Get me out of here!</v-btn>
+    </div>
   </v-layout>
 </v-container>
 `;

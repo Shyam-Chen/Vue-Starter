@@ -1,31 +1,15 @@
-import Vuex from 'vuex';
-import { createLocalVue, shallow } from '@vue/test-utils';
+import { shallow } from '@vue/test-utils';
 
 import NotFound from '../NotFound';
 
-const localVue = createLocalVue();
-
-localVue.use(Vuex);
-
-describe('Not Found', () => {
-  let [wrapper, store] = [];
+describe('NotFound', () => {
+  let [wrapper] = [];
 
   beforeEach(() => {
-    store = new Vuex.Store({
-      state: {
-        theme: 'light',
-      },
-    });
-
-    wrapper = shallow(NotFound, { localVue, store });
+    wrapper = shallow(NotFound);
   });
 
-  it('should render light component', () => {
-    expect(wrapper.html()).toMatchSnapshot();
-  });
-
-  it('should render dark component', () => {
-    store.state.theme = 'dark';
+  it('should render initial component', () => {
     expect(wrapper.html()).toMatchSnapshot();
   });
 });
