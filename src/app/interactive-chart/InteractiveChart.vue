@@ -3,7 +3,15 @@
     <v-layout column>
       <div class="headline">Interactive Chart</div>
 
-      <ECharts :options="bar" :theme="$app.theme" auto-resize />
+      <v-layout column class="pa-3">
+        <div class="subheading pa-2">Bar Chart</div>
+        <ECharts :options="bar" :theme="$app.theme" auto-resize />
+      </v-layout>
+
+      <v-layout column class="pa-3">
+        <div class="subheading pa-2">Pie Chart</div>
+        <ECharts :options="pie" :theme="$app.theme" auto-resize />
+      </v-layout>
     </v-layout>
   </v-container>
 </template>
@@ -11,6 +19,7 @@
 <script>
 /* eslint-disable */
 import 'echarts/lib/chart/bar';
+import 'echarts/lib/chart/pie';
 
 import 'echarts/lib/component/dataset';
 import 'echarts/lib/component/legend';
@@ -20,6 +29,7 @@ import 'echarts/lib/component/tooltip';
 import ECharts from 'vue-echarts/components/ECharts';
 
 import bar from './bar';
+import pie from './pie';
 
 export default {
   components: {
@@ -27,7 +37,8 @@ export default {
   },
   data() {
     return {
-      bar: bar(),
+      bar,
+      pie,
     };
   },
   computed: {
