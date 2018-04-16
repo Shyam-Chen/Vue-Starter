@@ -81,10 +81,10 @@ $ yarn test:api
 7. Run the e2e
 
 ```bash
-# front-end
+# ui
 $ yarn e2e:app
 
-# back-end
+# http
 $ yarn e2e:api
 ```
 
@@ -224,6 +224,25 @@ docker login -u ${DOCKER_USERNAME} -p ${DOCKER_TOKEN}
 ```
 
 Change deployment configuration is completed.
+
+### Enable SEO
+
+```diff
+    "rewrites": [
+      {
+        "source": "**",
+-       "destination": "/index.html"
++       "function": "app"
+      }
+    ],
+```
+
+```bash
+$ git clone https://github.com/GoogleChrome/rendertron
+$ cd rendertron
+$ gcloud auth login
+$ gcloud app deploy app.yaml --project <PROJECT_NAME>
+```
 
 ### VS Code settings
 

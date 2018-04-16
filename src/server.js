@@ -66,7 +66,7 @@ sh.get('*', (req, res) => {
     'vkShare',
   ];
 
-  const rendertronUrl = 'https://render-tron.appspot.com';
+  const rendertronUrl = 'https://' + process.env.PROJECT_NAME + '.appspot.com';  // eslint-disable-line
   const targetUrl = process.env.SITE_URL + req.originalUrl;
 
   if (new RegExp(botUserAgents.join('|'), 'i').test(req.headers['user-agent'])) {
