@@ -34,7 +34,6 @@ gulp.task('copy', () =>
     .src([
       'package.json',
       'yarn.lock',
-      'src/index.html',
     ])
     .pipe(gulp.dest(DIST_ROOT)),
 );
@@ -54,10 +53,6 @@ gulp.task('watch', () => {
     'src/api/**/*',
     '!src/api/**/__tests__/**/*',
   ], ['rebuild']);
-});
-
-gulp.task('serve', () => {
-  // TODO: firebase serve
 });
 
 gulp.task('default', (done) => {

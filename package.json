@@ -4,7 +4,7 @@
   "description": "A boilerplate for Vue, Material, Express, Babel, Flow, and ReactiveX.",
   "scripts": {
     "start:app": "rimraf public && cross-env BABEL_ENV=app webpack-dev-server --progress",
-    "start:api": "rimraf functions && cross-env BABEL_ENV=api gulp",
+    "start:api": "rimraf functions && concurrently \"cross-env BABEL_ENV=api gulp\" \"firebase serve --only functions\"",
     "build:app": "rimraf public && cross-env BABEL_ENV=app webpack --env.prod --progress",
     "build:api": "rimraf functions && cross-env BABEL_ENV=api gulp --prod",
     "lint:js": "eslint src/**/*.{js,vue}",
@@ -82,6 +82,7 @@
     "babel-preset-stage-0": "6.24.1",
     "babel-register": "6.26.0",
     "codecov": "3.0.0",
+    "concurrently": "3.5.1",
     "copy-webpack-plugin": "4.5.1",
     "cross-env": "5.1.4",
     "css-loader": "0.28.11",
