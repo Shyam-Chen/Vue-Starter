@@ -65,6 +65,25 @@ const router = new Router({
 
     { path: '*', component: NotFound, meta: { standalone: true } },
   ],
+  async scrollBehavior(to, from, savedPosition) {
+    if (document.readyState !== 'complete') {
+      await new Promise((resolve) => {
+        const callback = () => {
+          window.requestAnimationFrame(resolve);
+          window.removeEventListener('load', callback);
+        };
+
+        window.addEventListener('load', callback);
+      });
+    }
+
+    if (to.hash) return { selector: to.hash };
+    if (savedPosition) return savedPosition;
+
+    return new Promise((resolve) => {
+      setTimeout(() => resolve({ y: 0 }), 200);
+    });
+  },
 });
 
 export default router;

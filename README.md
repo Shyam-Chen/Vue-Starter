@@ -239,7 +239,7 @@ After that, you need to login to Docker Hub at `circle.yml`.
 Don't forget to set CI's environment variables in CircleCI.
 
 ```sh
-docker login -u ${DOCKER_USERNAME} -p ${DOCKER_TOKEN}
+docker login -u $DOCKER_USERNAME -p $DOCKER_TOKEN
 ```
 
 Change deployment configuration is completed.

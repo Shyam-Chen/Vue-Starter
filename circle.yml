@@ -30,10 +30,9 @@ jobs:
             docker-compose up -d default
             docker-compose exec default yarn build:app
             docker-compose exec default yarn build:api
-            docker-compose exec default yarn firebase use development --token ${FIREBASE_TOKEN}
+            docker-compose exec default yarn firebase use development --token $FIREBASE_TOKEN
             docker-compose exec -d default yarn start:app
-            # docker-compose exec -d default yarn firebase serve --only hosting -p 8000 --token ${FIREBASE_TOKEN}
-            # docker-compose exec -d default yarn firebase serve --only functions -p 5000 --token ${FIREBASE_TOKEN}
+            docker-compose exec -d default yarn firebase serve --only functions --token $FIREBASE_TOKEN
       - run:
           name: Check the code
           command: |
@@ -43,12 +42,12 @@ jobs:
           name: Test the application
           command: |
             docker-compose exec default yarn test:app
-            docker-compose exec default yarn codecov --token=${CODECOV_TOKEN}
+            docker-compose exec default yarn codecov --token=$CODECOV_TOKEN
       - run:
           name: Test cloud functions
           command: |
             docker-compose exec default yarn test:api
-            docker-compose exec default yarn codecov --token=${CODECOV_TOKEN}
+            docker-compose exec default yarn codecov --token=$CODECOV_TOKEN
       - run:
           name: End-to-end UI tests
           command: |
@@ -70,19 +69,19 @@ jobs:
           name: Deploy to development
           command: |
             if [[ "${CIRCLE_BRANCH}" == "develop" ]]; then
-              # docker login -u ${DOCKER_USERNAME} -p ${DOCKER_TOKEN}
+              # docker login -u $DOCKER_USERNAME -p $DOCKER_TOKEN
               docker-compose up -d dev
-              docker-compose exec dev yarn firebase use development --token ${FIREBASE_TOKEN}
-              docker-compose exec dev yarn firebase deploy --token ${FIREBASE_TOKEN}
+              docker-compose exec dev yarn firebase use development --token $FIREBASE_TOKEN
+              docker-compose exec dev yarn firebase deploy --token $FIREBASE_TOKEN
             fi
       - run:
           name: Deploy to production
           command: |
             if [[ "${CIRCLE_BRANCH}" == "master" ]]; then
-              # docker login -u ${DOCKER_USERNAME} -p ${DOCKER_TOKEN}
+              # docker login -u $DOCKER_USERNAME -p $DOCKER_TOKEN
               docker-compose up -d prod
-              docker-compose exec prod yarn firebase use production --token ${FIREBASE_TOKEN}
-              docker-compose exec prod yarn firebase deploy --token ${FIREBASE_TOKEN}
+              docker-compose exec prod yarn firebase use production --token $FIREBASE_TOKEN
+              docker-compose exec prod yarn firebase deploy --token $FIREBASE_TOKEN
             fi
 
 workflows:
