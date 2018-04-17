@@ -2,7 +2,7 @@
 
 :poodle: A boilerplate for Vue, Material, Express, Babel, Flow, and ReactiveX.
 
-[![Build Status](https://img.shields.io/circleci/project/Shyam-Chen/Vue-Fullstack-Starter/develop.svg)](https://circleci.com/gh/Shyam-Chen/Vue-Fullstack-Starter)
+[![Build Status](https://img.shields.io/circleci/project/Shyam-Chen/Vue-Fullstack-Starter/develop.svg)](https://circleci.com/gh/Shyam-Chen/workflows/Vue-Fullstack-Starter)
 [![Coverage Status](https://img.shields.io/codecov/c/github/Shyam-Chen/Vue-Fullstack-Starter/develop.svg)](https://codecov.io/gh/Shyam-Chen/Vue-Fullstack-Starter)
  //
 [![dependencies Status](https://david-dm.org/Shyam-Chen/Vue-Fullstack-Starter/status.svg)](https://david-dm.org/Shyam-Chen/Vue-Fullstack-Starter)
@@ -216,18 +216,17 @@ $ docker images
 
 $ docker tag <IMAGE_NAME>:<IMAGE_TAG> <DOCKER_ID_USER>/<IMAGE_NAME>:<IMAGE_TAG>
 $ docker push <DOCKER_ID_USER>/<IMAGE_NAME>:<IMAGE_TAG>
+
+# remove
+$ docker rmi <IMAGE_ID>
 ```
 
 And then pull your private image at `docker-compose.yml`.
 
-```diff
+```yml
 [...]
   <dev|prod>:
--   image: <dev|prod>
--   build:
--     context: .
--     dockerfile: Dockerfile.<dev|prod>
-+   image: <PRIVATE_IMAGE>
+    image: <DOCKER_ID_USER>/<IMAGE_NAME>:<IMAGE_TAG>
     volumes:
       - yarn:/home/node/.cache/yarn
     tty: true
