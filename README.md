@@ -196,7 +196,8 @@ So you need to push private images to Docker Hub.
 
 ```bash
 $ docker login
-$ docker push <DOCKER_ID_USER>/<IMAGE_NAME>
+$ docker tag <IMAGE_NAME> <DOCKER_ID_USER>/<IMAGE_NAME>:<IMAGE_TAG>
+$ docker push <DOCKER_ID_USER>/<IMAGE_NAME>:<IMAGE_TAG>
 ```
 
 And then pull your private image at `docker-compose.yml`.
