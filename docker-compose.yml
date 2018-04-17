@@ -15,10 +15,7 @@ services:
     tty: true
 
   dev:
-    image: dev
-    build:
-      context: .
-      dockerfile: Dockerfile.dev
+    image: shyamchen1994/vue-fullstack:dev
     volumes:
       - yarn:/home/node/.cache/yarn
     tty: true

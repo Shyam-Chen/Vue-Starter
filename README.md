@@ -178,25 +178,43 @@ const FUNC_URL = exports.FUNC_URL = process.env.FUNC_URL || `http://localhost:${
 
 ### Deploy environments
 
-Create your `Docker.<dev|prod>` env image and set the environment variables.
+Create your `Dockerfile.<dev|prod>` env image and set the environment variables.
 
 ```dockerfile
-[...]
+# Dockerfile.<dev|prod>
+FROM node:8
+
+ENV HOME /Vue-FullStarter-Kit
+
+WORKDIR ${HOME}
+ADD . $HOME
+
+RUN yarn install
+
+ENV NODE_ENV production
+
 # envs --
 ENV SITE_URL <SITE_URL>
 
 ENV FUNC_URL <FUNC_URL>
 # -- envs
-[...]
+
+RUN yarn build:app
+RUN yarn build:api && cd functions && yarn install
 ```
 
-For security, don't add `Docker.<dev|prod>` in version control.
+For security, don't add `Dockerfile.<dev|prod>` in version control.
 
 So you need to push private images to Docker Hub.
 
 ```bash
 $ docker login
-$ docker tag <IMAGE_NAME> <DOCKER_ID_USER>/<IMAGE_NAME>:<IMAGE_TAG>
+$ docker build -f Dockerfile.<dev|prod> -t <IMAGE_NAME>:<IMAGE_TAG> .
+
+# checkout
+$ docker images
+
+$ docker tag <IMAGE_NAME>:<IMAGE_TAG> <DOCKER_ID_USER>/<IMAGE_NAME>:<IMAGE_TAG>
 $ docker push <DOCKER_ID_USER>/<IMAGE_NAME>:<IMAGE_TAG>
 ```
 
