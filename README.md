@@ -265,29 +265,50 @@ $ gcloud app deploy app.yaml --project <PROJECT_NAME>
 
 ## Directory Structure
 
-```
+```js
 .
 ├── flow-typed  -> module types
 ├── src
 │   ├── api
 │   │   ├── <FEATURE>
+│   │   │   ├── __tests__
+│   │   │   │   └── ...
+│   │   │   └── ...
 │   │   └── index.js
 │   ├── app
-│   │   ├── config
+│   │   ├── _languages
+│   │   │   └── ...
+│   │   ├── config  -> config plugins
+│   │   │   └── ...
 │   │   ├── <FEATURE>
-│   │   ├── shared
-│   │   ├── actions.js
+│   │   │   ├── __tests__
+│   │   │   │   ├── actions.spec.js
+│   │   │   │   ├── <FEATURE>.e2e-spec.js
+│   │   │   │   ├── <FEATURE>.spec.js
+│   │   │   │   ├── getters.spec.js
+│   │   │   │   └── mutations.spec.js
+│   │   │   ├── _languages
+│   │   │   │   └── ...
+│   │   │   ├── actions.js
+│   │   │   ├── constants.js
+│   │   │   ├── <FEATURE>.vue
+│   │   │   ├── getters.js
+│   │   │   ├── mutations.js
+│   │   │   └── types.js
+│   │   ├── shared  -> shared components
+│   │   │   └── ...
+│   │   ├── actions.js  -> root actions
 │   │   ├── App.vue
 │   │   ├── constants.js
-│   │   ├── getters.js
-│   │   ├── mutations.js
-│   │   ├── translation.yml
-│   │   └──types.js
+│   │   ├── getters.js  -> root getters
+│   │   ├── mutations.js  -> root mutations
+│   │   └── types.js
 │   ├── assets  -> datas, fonts, images, medias, styles
 │   ├── client.js
 │   ├── index.html
 │   └── server.js
 ├── tools
+│   └── ...
 ├── .babelrc
 ├── .editorconfig
 ├── .eslintrc
