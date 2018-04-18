@@ -22,7 +22,7 @@
                     registration.update();
                     break;
                   case 'activated':
-                    window.location.reload();
+                    window.location.reload(true);
                     break;
                   case 'redundant':
                     throw new Error('The installing service worker became redundant.');
