@@ -34,7 +34,8 @@ export const INITIAL: IApp = {
         {
           text: 'filters',
           children: [
-            { text: 'async', route: '/foo', disabled: true },
+            { text: 'truncate', route: '/101-guide/filters/truncate' },
+            { text: 'bytes', route: '/101-guide/filters/bytes' },
           ],
         },
         {

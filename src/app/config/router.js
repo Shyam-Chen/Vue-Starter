@@ -14,7 +14,7 @@ const router = new Router({
     { path: '/', component: Overview },
 
     /**
-     * @name basic
+     * @name standard
      */
     /** @name hello-world */
     { path: '/hello-world', component: () => import('~/hello-world/HelloWorld') },
@@ -22,6 +22,8 @@ const router = new Router({
     /** @name 101-guide */
     { path: '/101-guide/components/props', component: () => import('~/101-guide/components/props/Props') },
     { path: '/101-guide/components/slots', component: () => import('~/101-guide/components/slots/Slots') },
+    { path: '/101-guide/filters/truncate', component: () => import('~/101-guide/filters/truncate/Truncate') },
+    { path: '/101-guide/filters/bytes', component: () => import('~/101-guide/filters/bytes/Bytes.vue') },
     // ...
 
     /** @name crud-operations */
@@ -45,17 +47,6 @@ const router = new Router({
 
     /** @name interactive-chart */
     { path: '/interactive-chart', component: () => import('~/interactive-chart/InteractiveChart') },
-
-    /**
-     * @name advanced
-     */
-    /** @name 201-guide */
-    /** @name reactive-forms */
-    /** @name authorization */
-    /** @name data-visualization */
-    /** @name sockets */
-    /** @name torrents */
-    /** @name virtual-reality */
 
     /**
      * @name playground
