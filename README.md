@@ -182,66 +182,13 @@ Create your `Dockerfile.<dev|prod>` env image and set the environment variables.
 
 ```dockerfile
 # Dockerfile.<dev|prod>
-FROM node:8
-
-ENV HOME /Vue-FullStarter-Kit
-
-WORKDIR ${HOME}
-ADD . $HOME
-
-RUN yarn install
-
-ENV NODE_ENV production
 
 # envs --
 ENV SITE_URL <SITE_URL>
 
 ENV FUNC_URL <FUNC_URL>
 # -- envs
-
-RUN yarn build:app
-RUN yarn build:api && cd functions && yarn install
 ```
-
-For security, don't add `Dockerfile.<dev|prod>` in version control.
-
-So you need to push private images to Docker Hub.
-
-```bash
-$ docker login
-$ docker build -f Dockerfile.<dev|prod> -t <IMAGE_NAME>:<IMAGE_TAG> .
-
-# checkout
-$ docker images
-
-$ docker tag <IMAGE_NAME>:<IMAGE_TAG> <DOCKER_ID_USER>/<IMAGE_NAME>:<IMAGE_TAG>
-$ docker push <DOCKER_ID_USER>/<IMAGE_NAME>:<IMAGE_TAG>
-
-# remove
-$ docker rmi <IMAGE_ID>
-```
-
-And then pull your private image at `docker-compose.yml`.
-
-```yml
-[...]
-  <dev|prod>:
-    image: <DOCKER_ID_USER>/<IMAGE_NAME>:<IMAGE_TAG>
-    volumes:
-      - yarn:/home/node/.cache/yarn
-    tty: true
-[...]
-```
-
-After that, you need to login to Docker Hub at `circle.yml`.
-
-Don't forget to set CI's environment variables in CircleCI.
-
-```sh
-docker login -u $DOCKER_USERNAME -p $DOCKER_TOKEN
-```
-
-Change deployment configuration is completed.
 
 ### Enable SEO
 
