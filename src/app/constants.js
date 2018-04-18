@@ -5,8 +5,8 @@ import { IApp } from './types';
 export const INITIAL: IApp = {
   theme: localStorage.getItem('theme') || 'light',
   navigation: [
-    // Basic
-    { icon: 'face', text: 'helloWorld', route: '/hello-world', subheader: 'basic' },
+    // standard
+    { icon: 'face', text: 'helloWorld', route: '/hello-world', subheader: 'standard' },
     {
       icon: 'loyalty',
       text: '101Guide',
@@ -91,30 +91,15 @@ export const INITIAL: IApp = {
         { text: 'graphql', disabled: true },
       ],
     },
-
-    // Advanced
+    { icon: 'fa fa-credit-card', text: 'payment', disabled: true },
     {
-      icon: 'loyalty',
-      text: '201Guide',
-      subheader: 'advanced',
-      children: [
-        { text: 'observables', route: '/foo', disabled: true },
-      ],
-    },
-    {
-      icon: 'av_timer',
-      text: 'sockets',
+      icon: 'message',
+      text: 'messages',
       disabled: true,
       children: [],
     },
-    { icon: 'video_library', text: 'torrents', disabled: true },
-    { icon: 'fa fa-cube', text: 'virtualReality', disabled: true },
-    { icon: 'fa fa-space-shuttle', text: 'machineLearning', disabled: true },
-    { icon: 'fa fa-credit-card', text: 'payment', disabled: true },
-    { icon: 'fa fa-heartbeat', text: 'neuralNetworks', disabled: true },
-    { icon: 'fa fa-pencil-square-o', text: 'textEditor', disabled: true },
 
-    // Playground
+    // playground
     { icon: 'fa fa-calculator', text: 'counter', route: '/counter', subheader: 'playground' },
     { icon: 'photo_library', text: 'gallery', route: '/gallery', disabled: true },
     { icon: 'fa fa-qrcode', text: 'qrCode', route: '/qrcode', disabled: true },
