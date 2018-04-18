@@ -336,8 +336,6 @@ $ gcloud app deploy app.yaml --project <PROJECT_NAME>
 ├── .postcssrc
 ├── .stylelintrc
 ├── Dockerfile
-├── Dockerfile.dev
-├── Dockerfile.prod
 ├── LICENSE
 ├── README.md
 ├── circle.yml

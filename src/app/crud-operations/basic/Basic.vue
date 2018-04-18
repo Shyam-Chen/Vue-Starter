@@ -104,7 +104,7 @@
 <script>
 // @flow
 
-import { mapGetters, mapActions } from 'vuex';  // eslint-disable-line
+import { mapGetters, mapActions } from 'vuex';
 
 import { IBasic } from './types';
 import { INITIAL as state } from './constants';
