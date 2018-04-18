@@ -232,7 +232,6 @@ $ gcloud app deploy app.yaml --project <PROJECT_NAME>
 
 ```js
 .
-├── flow-typed  -> module types
 ├── src
 │   ├── api
 │   │   ├── <FEATURE>

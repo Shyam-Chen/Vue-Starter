@@ -18,7 +18,7 @@ services:
     image: dev
     build:
       context: .
-      dockerfile: Dockerfile.dev
+      dockerfile: tools/Dockerfile.dev
     volumes:
       - yarn:/home/node/.cache/yarn
     tty: true
@@ -27,7 +27,7 @@ services:
     image: prod
     build:
       context: .
-      dockerfile: Dockerfile.prod
+      dockerfile: tools/Dockerfile.prod
     volumes:
       - yarn:/home/node/.cache/yarn
     tty: true
