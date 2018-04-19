@@ -2,8 +2,8 @@ import 'vuetify/dist/vuetify.css';
 import Vue from 'vue';
 import { sync } from 'vuex-router-sync';
 import Material from 'vuetify';
-// import Raven from 'raven-js';
-// import RavenVue from 'raven-js/plugins/vue';
+import Raven from 'raven-js';
+import RavenVue from 'raven-js/plugins/vue';
 
 import './assets/styles/global.css';
 import App from './app/App';
@@ -26,11 +26,11 @@ Vue.use(Material, {
   },
 });
 
-// if (window.location.hostname !== 'localhost') {
-//   Raven.config('https://<key>@sentry.io/<project>')
-//     .addPlugin(RavenVue, Vue)
-//     .install();
-// }
+if (process.env.NODE_ENV === 'production') {
+  Raven.config(process.env.SENTRY_DSN)
+    .addPlugin(RavenVue, Vue)
+    .install();
+}
 
 const vm = new Vue({
   router,

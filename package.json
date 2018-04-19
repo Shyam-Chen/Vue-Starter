@@ -49,6 +49,8 @@
     "graphql-tools": "2.23.1",
     "merge-graphql-schemas": "1.5.1",
     "morgan": "1.9.0",
+    "raven": "2.5.0",
+    "raven-js": "3.24.2",
     "request": "2.85.0",
     "rxjs": "6.0.0-rc.0",
     "vue": "2.5.16",
