@@ -2,7 +2,7 @@
   <v-container fluid>
     <v-layout column>
       <Title />
-      <Title label="Vue by Example" />
+      <Title label="Oh My Vue" />
     </v-layout>
   </v-container>
 </template>

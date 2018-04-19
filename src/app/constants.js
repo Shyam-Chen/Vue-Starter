@@ -99,6 +99,9 @@ export const INITIAL: IApp = {
     { icon: 'photo_library', text: 'gallery', route: '/gallery', disabled: true },
     { icon: 'fa fa-qrcode', text: 'qrCode', route: '/qrcode', disabled: true },
     { icon: 'store', text: 'store', route: '/store', disabled: true },
+
+    // profound
+    { icon: 'av_timer', text: 'Real-time', route: '/counter', disabled: true, subheader: 'Profound' },
   ],
   drawer: false || null,
   languages: [

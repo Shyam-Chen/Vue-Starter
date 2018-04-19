@@ -43,7 +43,7 @@
 <script>
 // @flow
 
-import { mapModelsToState } from 'vuex-bound';  // eslint-disable-line
+import { mapModelsToState } from 'vuex-bound';
 
 import { INITIAL as state } from './constants';
 import actions from './actions';

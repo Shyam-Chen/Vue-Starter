@@ -1,7 +1,7 @@
 <script>
 export default {
   metaInfo: {
-    title: 'Page Not Found | Vue by Example',
+    title: 'Page Not Found | Oh My Vue',
   },
   render() {
     return (

@@ -8,7 +8,7 @@
             <v-toolbar-title class="ml-0 pl-3 vfs-toolbar-title">
               <router-link class="vfs-router-link" to="/">
                 <img src="/assets/images/icon-32x32.png" alt="Logo">
-                <span>Vue by Example</span>
+                <span>Oh My Vue</span>
               </router-link>
             </v-toolbar-title>
           </v-toolbar>
@@ -78,7 +78,7 @@
             <v-toolbar-side-icon v-if="!$route.meta.home" @click.stop="$app.drawer = !$app.drawer"></v-toolbar-side-icon>
             <router-link class="hidden-sm-and-down white--text vfs-router-link" to="/">
               <img src="/assets/images/icon-32x32.png" alt="Logo">
-              <span>Vue by Example</span>
+              <span>Oh My Vue</span>
             </router-link>
           </v-toolbar-title>
 
@@ -110,20 +110,6 @@
               </v-list-tile>
             </v-list>
           </v-menu>
-
-          <v-menu bottom left>
-            <v-btn slot="activator" icon dark>
-              <v-icon>more_vert</v-icon>
-            </v-btn>
-            <v-list dense>
-              <v-list-tile href="https://github.com/Shyam-Chen/Vue-Fullstack-Starter" ripple>
-                <v-list-tile-title>Repository</v-list-tile-title>
-              </v-list-tile>
-              <v-list-tile href="https://github.com/Shyam-Chen/Vue-Fullstack-Template" ripple>
-                <v-list-tile-title>Template</v-list-tile-title>
-              </v-list-tile>
-            </v-list>
-          </v-menu>
         </v-toolbar>
 
         <v-content>
@@ -134,7 +120,7 @@
 
         <v-footer inset class="pa-3 primary white--text">
           <v-spacer></v-spacer>
-          <div>Copyright &copy; {{ new Date().getFullYear() }} Vue by Example</div>
+          <div>Copyright &copy; {{ new Date().getFullYear() }} Oh My Vue</div>
         </v-footer>
       </template>
 
@@ -149,7 +135,7 @@
 <script>
 // @flow
 
-import { mapActions } from 'vuex';  // eslint-disable-line
+import { mapActions } from 'vuex';
 
 import { IApp } from './types';
 import actions from './actions';

@@ -1,6 +1,6 @@
 // @flow
 
-import { updateModel } from 'vuex-bound';  // eslint-disable-line
+import { updateModel } from 'vuex-bound';
 
 export default {
   ...updateModel(),

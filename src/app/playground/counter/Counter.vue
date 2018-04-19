@@ -32,7 +32,7 @@
 <script>
 // @flow
 
-import { mapActions, mapGetters } from 'vuex';  // eslint-disable-line
+import { mapActions, mapGetters } from 'vuex';
 
 import { ICounter, INITIAL as state } from './constants';
 import actions from './actions';
@@ -41,7 +41,7 @@ import getters from './getters';
 
 export default {
   metaInfo: {
-    title: 'Counter | Vue by Example',
+    title: 'Counter | Oh My Vue',
   },
   computed: {
     $c(): ICounter {

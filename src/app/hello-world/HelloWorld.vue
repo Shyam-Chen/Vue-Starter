@@ -9,7 +9,7 @@
 <script>
 export default {
   metaInfo: {
-    title: 'Hello World | Vue by Example',
+    title: 'Hello World | Oh My Vue',
   },
 };
 </script>
