@@ -14,10 +14,6 @@ const store = new Vuex.Store({
   actions,
   mutations,
   getters,
-  modules: {
-    crudOperations: { namespaced: true },
-    formControls: { namespaced: true },
-  },
   plugins: [
     process.env.NODE_ENV === 'development' && createLogger({ collapsed: false }),
   ].filter(Boolean),

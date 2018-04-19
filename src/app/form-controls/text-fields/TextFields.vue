@@ -63,6 +63,10 @@ export default {
     ]),
   },
   created() {
+    if (!this.$store.state.formControls) {
+      this.$store.registerModule(['formControls'], { namespaced: true });
+    }
+
     this.$store.registerModule(
       ['formControls', 'textFields'],
       { namespaced: true, state, actions, mutations, getters },

@@ -3,7 +3,7 @@
     <v-app v-cloak :dark="$app.theme === 'dark'">
 
       <template v-if="!$route.meta.standalone">
-        <v-navigation-drawer :clipped="$vuetify.breakpoint.mdAndUp" v-model="$app.drawer" fixed app>
+        <v-navigation-drawer v-if="!$route.meta.home" :clipped="$vuetify.breakpoint.mdAndUp" v-model="$app.drawer" fixed app>
           <v-toolbar class="hidden-md-and-up" flat>
             <v-toolbar-title class="ml-0 pl-3 vfs-toolbar-title">
               <router-link class="vfs-router-link" to="/">
@@ -73,16 +73,16 @@
           </v-list>
         </v-navigation-drawer>
 
-        <v-toolbar :clipped-left="$vuetify.breakpoint.mdAndUp" class="primary" dark app fixed>
+        <v-toolbar :clipped-left="$vuetify.breakpoint.mdAndUp" :flat="$route.meta.home" class="primary" dark app fixed>
           <v-toolbar-title class="ml-0 pl-3 vfs-toolbar-title">
-            <v-toolbar-side-icon @click.stop="$app.drawer = !$app.drawer"></v-toolbar-side-icon>
+            <v-toolbar-side-icon v-if="!$route.meta.home" @click.stop="$app.drawer = !$app.drawer"></v-toolbar-side-icon>
             <router-link class="hidden-sm-and-down white--text vfs-router-link" to="/">
               <img src="/assets/images/icon-32x32.png" alt="Logo">
               <span>Vue by Example</span>
             </router-link>
           </v-toolbar-title>
 
-          <v-text-field flat solo-inverted prepend-icon="search" label="Search" class="hidden-sm-and-down"></v-text-field>
+          <v-text-field v-if="!$route.meta.home" flat solo-inverted prepend-icon="search" label="Search" class="hidden-sm-and-down"></v-text-field>
 
           <v-spacer></v-spacer>
 

@@ -123,6 +123,10 @@ export default {
     ...mapGetters('crudOperations/basic', Object.keys(getters)),
   },
   created() {
+    if (!this.$store.state.crudOperations) {
+      this.$store.registerModule(['crudOperations'], { namespaced: true });
+    }
+
     this.$store.registerModule(
       ['crudOperations', 'basic'],
       { namespaced: true, state, actions, mutations, getters },

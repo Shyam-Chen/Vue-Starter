@@ -11,7 +11,7 @@ Vue.use(Meta);
 const router = new Router({
   mode: 'history',
   routes: [
-    { path: '/', component: Overview },
+    { path: '/', component: Overview, meta: { home: true } },
 
     /**
      * @name standard

@@ -78,6 +78,10 @@ export default {
     },
   },
   created() {
+    if (!this.$store.state.crudOperations) {
+      this.$store.registerModule(['crudOperations'], { namespaced: true });
+    }
+
     this.$store.registerModule(
       ['crudOperations', 'graphql'],
       { namespaced: true, state, actions, mutations, getters },
