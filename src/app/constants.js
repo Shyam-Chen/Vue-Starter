@@ -25,12 +25,7 @@ export const INITIAL: IApp = {
             { text: 'state', route: '/foo', disabled: true },
           ],
         },
-        {
-          text: 'directives',
-          children: [
-            { text: 'switch', route: '/foo', disabled: true },
-          ],
-        },
+        { text: 'directives', route: '/101-guide/directives' },
         { text: 'filters', route: '/101-guide/filters' },
         {
           text: 'routing',
@@ -101,7 +96,7 @@ export const INITIAL: IApp = {
     { icon: 'store', text: 'store', route: '/store', disabled: true },
 
     // profound
-    { icon: 'av_timer', text: 'Real-time', route: '/counter', disabled: true, subheader: 'Profound' },
+    { icon: 'av_timer', text: 'realTime', route: '/real-time', disabled: true, subheader: 'profound' },
   ],
   drawer: false || null,
   languages: [
