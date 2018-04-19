@@ -12,11 +12,15 @@ const localVue = createLocalVue();
 localVue.use(Vuex);
 
 describe('Basic', () => {
-  let [wrapper, store, state] = [];
+  let [wrapper, store] = [];
 
-  beforeEach(() => {
-    state = { ...INITIAL };
+  it('should render initial component', () => {
+    store = new Vuex.Store();
+    wrapper = shallow(Basic, { store, localVue });
+    expect(wrapper.html()).toMatchSnapshot();
+  });
 
+  it('should render initial component', () => {
     store = new Vuex.Store({
       modules: {
         crudOperations: {
@@ -24,7 +28,7 @@ describe('Basic', () => {
           modules: {
             basic: {
               namespaced: true,
-              state,
+              state: { ...INITIAL },
               actions,
               mutations,
               getters,
@@ -35,9 +39,7 @@ describe('Basic', () => {
     });
 
     wrapper = shallow(Basic, { store, localVue });
-  });
 
-  it('should render initial component', () => {
     expect(wrapper.html()).toMatchSnapshot();
   });
 });
