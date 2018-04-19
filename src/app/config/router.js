@@ -22,8 +22,7 @@ const router = new Router({
     /** @name 101-guide */
     { path: '/101-guide/components/props', component: () => import('~/101-guide/components/props/Props') },
     { path: '/101-guide/components/slots', component: () => import('~/101-guide/components/slots/Slots') },
-    { path: '/101-guide/filters/truncate', component: () => import('~/101-guide/filters/truncate/Truncate') },
-    { path: '/101-guide/filters/bytes', component: () => import('~/101-guide/filters/bytes/Bytes.vue') },
+    { path: '/101-guide/filters', component: () => import('~/101-guide/filters/Filters') },
     // ...
 
     /** @name crud-operations */
@@ -75,6 +74,12 @@ const router = new Router({
       setTimeout(() => resolve({ y: 0 }), 200);
     });
   },
+});
+
+router.beforeEach((to, from, next) => {
+  // ...
+
+  next();
 });
 
 export default router;
