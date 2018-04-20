@@ -3,13 +3,13 @@
     <v-jumbotron dark gradient="to bottom, #1E88E5, #42A5F5" height="auto">
       <v-container fill-height>
         <v-layout justify-center align-center wrap>
+          <img src="assets/images/logo.svg" alt="Logo" width="300" height="300" />
+
           <v-flex shrink>
-            <img src="assets/images/logo.svg" alt="Logo" width="300" height="300" />
-            <h3 class="display-3">Welcome to the site</h3>
-            <span class="subheading">3.14159265358979</span>
+            <h3 class="display-3">Vue Fullstack</h3>
+            <span class="subheading">Vue, Material, Express, Babel, Flow, and ReactiveX.</span>
             <v-divider class="my-3"></v-divider>
-            <div class="title mb-3">Check out our newest features!</div>
-            <v-btn large color="white" to="/hello-world" class="primary--text">See more</v-btn>
+            <v-btn large color="white" to="/hello-world" class="primary--text ml-0">See more</v-btn>
             <v-btn color="white" href="https://github.com/Shyam-Chen/Vue-Fullstack-Starter" large outline target="_blank">
               <v-icon left>fa fa-github</v-icon>
               GitHub

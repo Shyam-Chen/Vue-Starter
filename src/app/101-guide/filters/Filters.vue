@@ -2,7 +2,7 @@
   <v-container fluid grid-list-xl>
 
     <v-layout row justify-center>
-      <v-flex xs5>
+      <v-flex xs6>
         <v-card>
           <v-card-title primary-title>
             <div>
@@ -12,15 +12,12 @@
               <div class="body-1">{{ message | truncate(50) }}</div>
             </div>
           </v-card-title>
-          <v-card-actions>
-            <v-btn flat color="primary">Code</v-btn>
-          </v-card-actions>
         </v-card>
       </v-flex>
     </v-layout>
 
     <v-layout row justify-center>
-      <v-flex xs5>
+      <v-flex xs6>
         <v-card>
           <v-card-title primary-title>
             <div>
@@ -28,9 +25,6 @@
               <div class="body-1">...</div>
             </div>
           </v-card-title>
-          <v-card-actions>
-            <v-btn flat color="primary">Code</v-btn>
-          </v-card-actions>
         </v-card>
       </v-flex>
     </v-layout>

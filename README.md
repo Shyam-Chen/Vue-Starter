@@ -174,25 +174,33 @@ const SITE_URL = exports.SITE_URL = process.env.SITE_URL || `http://localhost:${
 
 const FUNC_PORT = exports.FUNC_PORT = process.env.FUNC_PORT || 5000;
 const FUNC_URL = exports.FUNC_URL = process.env.FUNC_URL || `http://localhost:${FUNC_PORT}/${PROJECT_NAME}/us-central1`;
+
+const SENTRY_DSN = exports.SENTRY_DSN = process.env.SENTRY_DSN;
 ```
 
 ### Deploy environments
 
-Create your `Dockerfile.<dev|prod>` env image and set the environment variables.
+Set your deploy environment variables.
 
 ```dockerfile
-# Dockerfile.<dev|prod>
+# tools/Dockerfile.<dev|prod>
 
 # envs --
-ENV SITE_URL <SITE_URL>
+ENV SITE_URL https://vue-by-example-prod.firebaseapp.com
+ENV FUNC_URL https://us-central1-vue-by-example-prod.cloudfunctions.net
 
-ENV FUNC_URL <FUNC_URL>
+ENV SENTRY_DSN https://cea15151a5984c6e80937903b07ae124@sentry.io/1192108
 # -- envs
 ```
 
 ### Enable SEO
 
+Enable Billing on your Firebase and Google Cloud Platform the project by switching to the Blaze plan.
+
+Serve dynamic content for bots.
+
 ```diff
+// firebase.json
     "rewrites": [
       {
         "source": "**",
@@ -201,6 +209,8 @@ ENV FUNC_URL <FUNC_URL>
       }
     ],
 ```
+
+Deploy rendertron instance to Google App Engine.
 
 ```bash
 $ git clone https://github.com/GoogleChrome/rendertron
