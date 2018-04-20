@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Meta from 'vue-meta';
+import Analytics from 'vue-analytics';
 
 import NotFound from '~/shared/NotFound';
 import Overview from '~/shared/Overview';
@@ -81,6 +82,14 @@ router.beforeEach((to, from, next) => {
   // ...
 
   next();
+});
+
+Vue.use(Analytics, {
+  id: 'UA-84381641-2',
+  router,
+  autoTracking: {
+    page: process.env.NODE_ENV === 'production',
+  },
 });
 
 export default router;

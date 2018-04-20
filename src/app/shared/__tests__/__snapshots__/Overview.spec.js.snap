@@ -23,27 +23,27 @@ exports[`Overview should render initial component 1`] = `
     </v-container>
   </v-jumbotron>
   <v-container grid-list-xl="" class="mt-5 mb-5">
-    <v-layout row="" justify-center="">
-      <v-flex xs4="">
+    <v-layout row="" justify-center="" wrap="">
+      <v-flex xs12="" sm8="" md4="">
         <div class="elevation-1" style="height: 256px;">
           Standard Image
         </div>
       </v-flex>
-      <v-flex xs4="">
-        <div>
+      <v-flex xs12="" sm8="" md4="">
+        <div class="elevation-1" style="height: 256px;">
           Standard Content
         </div>
       </v-flex>
     </v-layout>
   </v-container>
   <v-container grid-list-xl="" class="mt-5 mb-5">
-    <v-layout row="" justify-center="">
-      <v-flex xs4="">
-        <div>
+    <v-layout row="" justify-center="" wrap="">
+      <v-flex xs12="" sm8="" md4="">
+        <div class="elevation-1" style="height: 256px;">
           Playground Content
         </div>
       </v-flex>
-      <v-flex xs4="">
+      <v-flex xs12="" sm8="" md4="">
         <div class="elevation-1" style="height: 256px;">
           Playground Image
         </div>
@@ -51,14 +51,14 @@ exports[`Overview should render initial component 1`] = `
     </v-layout>
   </v-container>
   <v-container grid-list-xl="" class="mt-5 mb-5">
-    <v-layout row="" justify-center="">
-      <v-flex xs4="">
+    <v-layout row="" justify-center="" wrap="">
+      <v-flex xs12="" sm8="" md4="">
         <div class="elevation-1" style="height: 256px;">
           Profound Image
         </div>
       </v-flex>
-      <v-flex xs4="">
-        <div>
+      <v-flex xs12="" sm8="" md4="">
+        <div class="elevation-1" style="height: 256px;">
           Profound Content
         </div>
       </v-flex>

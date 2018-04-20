@@ -54,6 +54,7 @@
     "request": "2.85.0",
     "rxjs": "6.0.0-rc.0",
     "vue": "2.5.16",
+    "vue-analytics": "5.10.2",
     "vue-apollo": "3.0.0-beta.5",
     "vue-echarts": "3.0.7",
     "vue-i18n": "7.6.0",
