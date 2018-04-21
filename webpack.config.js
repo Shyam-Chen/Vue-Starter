@@ -5,6 +5,7 @@ const HtmlPlugin = require('html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const SWPrecachePlugin = require('sw-precache-webpack-plugin');
 const RobotstxtPlugin = require('robotstxt-webpack-plugin').default;
+const SitemapPlugin = require('sitemap-webpack-plugin').default;
 const envify = require('process-envify');
 const uglify = require('uglify-es');
 
@@ -124,6 +125,7 @@ module.exports = ({ prod = false } = {}) => ({
       stripPrefix: `${path.basename(DIST_ROOT)}/`,
     }),
     prod && new RobotstxtPlugin(),
+    prod && new SitemapPlugin(env.SITE_URL, [{ path: '/' }]),
   ].filter(Boolean),
   optimization: {
     splitChunks: {
@@ -147,12 +149,4 @@ module.exports = ({ prod = false } = {}) => ({
     port: env.SITE_PORT,
   },
   devtool: prod ? 'hidden-source-map' : 'cheap-module-eval-source-map',
-  node: {
-    setImmediate: false,
-    dgram: 'empty',
-    fs: 'empty',
-    net: 'empty',
-    tls: 'empty',
-    child_process: 'empty',
-  },
 });
