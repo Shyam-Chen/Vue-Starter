@@ -116,12 +116,12 @@
           <v-fade-transition mode="out-in">
             <router-view></router-view>
           </v-fade-transition>
-        </v-content>
 
-        <v-footer inset class="pa-3 primary white--text">
-          <v-spacer></v-spacer>
-          <div>Copyright &copy; {{ new Date().getFullYear() }} Oh My Vue</div>
-        </v-footer>
+          <v-footer class="pa-3 primary white--text">
+            <v-spacer></v-spacer>
+            <div>Copyright &copy; {{ new Date().getFullYear() }} Oh My Vue</div>
+          </v-footer>
+        </v-content>
       </template>
 
       <template v-else>
