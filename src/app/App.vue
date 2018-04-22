@@ -117,9 +117,17 @@
             <router-view></router-view>
           </v-fade-transition>
 
-          <v-footer class="pa-3 primary white--text">
+          <v-footer height="auto" class="pa-3 primary white--text">
+            <img src="/assets/images/logo.svg" alt="Logo" width="50" height="50">
+            <div>
+              <a href="https://vuejs.org/" class="subheading pa-2 white--text" style="text-decoration: none;">Learn Vue</a>
+            </div>
             <v-spacer></v-spacer>
-            <div>Copyright &copy; {{ new Date().getFullYear() }} Oh My Vue</div>
+            <div class="caption text-xs-center">
+              Powered by Oh My Vue &copy;{{ new Date().getFullYear() }}. <br>
+              Code licensed under an MIT-style License. <br>
+              Documentation licensed under CC BY 4.0.
+            </div>
           </v-footer>
         </v-content>
       </template>

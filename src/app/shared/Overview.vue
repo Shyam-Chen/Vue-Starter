@@ -3,7 +3,7 @@
     <v-jumbotron dark gradient="to bottom, #1E88E5, #42A5F5" height="auto">
       <v-container fill-height>
         <v-layout justify-center align-center wrap>
-          <img src="assets/images/logo.svg" alt="Logo" width="300" height="300" />
+          <img src="assets/images/logo.svg" alt="Logo" width="300" height="300">
 
           <v-flex shrink>
             <h3 class="display-3">Vue Fullstack</h3>
