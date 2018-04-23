@@ -117,7 +117,7 @@
             <router-view></router-view>
           </v-fade-transition>
 
-          <v-footer height="auto" class="pa-3 primary white--text">
+          <v-footer height="auto" class="pa-3 primary darken-1 white--text">
             <img src="/assets/images/logo.svg" alt="Logo" width="50" height="50">
             <div>
               <a href="https://vuejs.org/" class="subheading pa-2 white--text" style="text-decoration: none;">Learn Vue</a>

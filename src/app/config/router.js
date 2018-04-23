@@ -3,8 +3,8 @@ import Router from 'vue-router';
 import Meta from 'vue-meta';
 import Analytics from 'vue-analytics';
 
-import NotFound from '~/shared/NotFound';
-import Overview from '~/shared/Overview';
+import Home from '~/home/Home';
+import NotFound from '~/not-found/NotFound';
 
 Vue.use(Router);
 Vue.use(Meta);
@@ -12,7 +12,7 @@ Vue.use(Meta);
 const router = new Router({
   mode: 'history',
   routes: [
-    { path: '/', component: Overview, meta: { home: true } },
+    { path: '/', component: Home, meta: { home: true } },
 
     /**
      * @name standard

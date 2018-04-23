@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Overview should render initial component 1`] = `
+exports[`Home should render initial component 1`] = `
 <div>
   <v-jumbotron dark="" gradient="to bottom, #1E88E5, #42A5F5" height="auto">
     <v-container fill-height="">

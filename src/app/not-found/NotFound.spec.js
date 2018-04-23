@@ -1,12 +1,12 @@
 import { shallow } from '@vue/test-utils';
 
-import Overview from '../Overview';
+import NotFound from './NotFound';
 
-describe('Overview', () => {
+describe('NotFound', () => {
   let [wrapper] = [];
 
   beforeEach(() => {
-    wrapper = shallow(Overview);
+    wrapper = shallow(NotFound);
   });
 
   it('should render initial component', () => {
