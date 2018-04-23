@@ -14,7 +14,6 @@ export const INITIAL: IApp = {
         {
           text: 'components',
           children: [
-            { text: 'moduleSystems', route: '/foo', disabled: true },
             { text: 'props', route: '/101-guide/components/props' },
             { text: 'slots', route: '/101-guide/components/slots' },
           ],
