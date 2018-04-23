@@ -25,6 +25,7 @@ const router = new Router({
     { path: '/101-guide/components/slots', component: () => import('~/101-guide/components/slots/Slots') },
     { path: '/101-guide/directives', component: () => import('~/101-guide/directives/Directives') },
     { path: '/101-guide/filters', component: () => import('~/101-guide/filters/Filters') },
+    { path: '/101-guide/state-management', component: () => import('~/101-guide/state-management/StateManagement') },
     // ...
 
     /** @name crud-operations */
@@ -48,12 +49,6 @@ const router = new Router({
 
     /** @name interactive-chart */
     { path: '/interactive-chart', component: () => import('~/interactive-chart/InteractiveChart') },
-
-    /**
-     * @name playground
-     */
-    { path: '/counter', component: () => import('~/playground/counter/Counter') },
-    // ...
 
     { path: '*', component: NotFound, meta: { standalone: true } },
   ],

@@ -2,7 +2,7 @@ import Vuex from 'vuex';
 import { createLocalVue, shallow } from '@vue/test-utils';
 import I18n from 'vue-i18n';
 
-import Counter from '../Counter';
+import Counter from '../StateManagement';
 import messages from '../translation.yml';
 
 const localVue = createLocalVue();

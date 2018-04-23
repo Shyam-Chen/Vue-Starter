@@ -33,12 +33,7 @@ export const INITIAL: IApp = {
             { text: 'guards', route: '/foo', disabled: true },
           ],
         },
-        {
-          text: 'stateManagement',
-          children: [
-            { text: 'modules', route: '/foo', disabled: true },
-          ],
-        },
+        { text: 'stateManagement', route: '/101-guide/state-management' },
       ],
     },
     {
@@ -89,8 +84,7 @@ export const INITIAL: IApp = {
     },
 
     // playground
-    { icon: 'fa fa-calculator', text: 'counter', route: '/counter', subheader: 'playground' },
-    { icon: 'photo_library', text: 'gallery', route: '/gallery', disabled: true },
+    { icon: 'photo_library', text: 'gallery', route: '/gallery', disabled: true, subheader: 'playground' },
     { icon: 'fa fa-qrcode', text: 'qrCode', route: '/qrcode', disabled: true },
     { icon: 'store', text: 'store', route: '/store', disabled: true },
 

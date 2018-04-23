@@ -7,7 +7,8 @@ exports[`Home should render initial component 1`] = `
       <v-layout justify-center="" align-center="" wrap="">
         <img src="assets/images/logo.svg" alt="Logo" width="300" height="300">
         <v-flex shrink="">
-          <h3 class="display-3">Vue Fullstack</h3> <span class="subheading">Vue, Material, Express, Babel, Flow, and ReactiveX.</span>
+          <div class="display-3">Oh My Vue</div>
+          <div class="subheading">Vue Fullstack - Vue, Material, Express, Babel, Flow, and ReactiveX.</div>
           <v-divider class="my-3"></v-divider>
           <v-btn large="" color="white" to="/hello-world" class="primary--text ml-0">See more</v-btn>
           <v-btn color="white" href="https://github.com/Shyam-Chen/Vue-Fullstack-Starter" large="" outline="" target="_blank">
