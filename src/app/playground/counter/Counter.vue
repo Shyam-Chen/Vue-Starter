@@ -10,6 +10,13 @@
       </v-layout>
 
       <v-layout row>
+        <v-subheader class="pt-3">Step:</v-subheader>
+        <div>
+          <v-select :items="$c.stepList" v-model="$c.step" class="step" single-line></v-select>
+        </div>
+      </v-layout>
+
+      <v-layout row>
         <v-btn color="primary" @click="increment">{{ $t('increment') }}</v-btn>
         <v-btn color="primary" @click="decrement">{{ $t('decrement') }}</v-btn>
       </v-layout>
@@ -59,4 +66,7 @@ export default {
 </script>
 
 <style scoped>
+.step {
+  width: 5rem;
+}
 </style>

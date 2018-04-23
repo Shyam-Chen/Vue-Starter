@@ -1,77 +1,82 @@
+import { INITIAL } from '../constants';
 import actions from '../actions';
 
 jest.useFakeTimers();
 
 describe('actions', () => {
   it('should handle increment', () => {
+    const state = { ...INITIAL };
+
     const commit = (type, payload) => {
       expect(type).toBe('increment');
-      expect(payload).toBeUndefined();
+      expect(payload).toBe(1);
     };
 
-    actions.increment({ commit });
+    actions.increment({ state, commit });
   });
 
   it('should handle decrement', () => {
+    const state = { ...INITIAL };
+
     const commit = (type, payload) => {
       expect(type).toBe('decrement');
-      expect(payload).toBeUndefined();
+      expect(payload).toBe(1);
     };
 
-    actions.decrement({ commit });
+    actions.decrement({ state, commit });
   });
 
   it('should handle incrementAsync', () => {
-    const commit = (type, payload) => {
+    const dispatch = (type, payload) => {
       expect(type).toBe('increment');
       expect(payload).toBeUndefined();
     };
 
-    actions.incrementAsync({ commit });
+    actions.incrementAsync({ dispatch });
   });
 
   it('should handle decrementAsync', () => {
-    const commit = (type, payload) => {
+    const dispatch = (type, payload) => {
       expect(type).toBe('decrement');
       expect(payload).toBeUndefined();
     };
 
-    actions.decrementAsync({ commit });
+    actions.decrementAsync({ dispatch });
   });
 
   it('should handle incrementIfOdd', () => {
     actions.incrementIfOdd({
-      commit(type, payload) {
-        expect(type).toBe('increment');
-        expect(payload).toBeUndefined();
-      },
-      state: { value: 1 },
-    });
-
-    actions.incrementIfOdd({
-      commit(type, payload) {
+      dispatch(type, payload) {
         expect(type).toBeUndefined();
         expect(payload).toBeUndefined();
       },
-      state: { value: 2 },
+      state: { ...INITIAL },
+    });
+
+    actions.incrementIfOdd({
+      dispatch(type, payload) {
+        expect(type).toBe('increment');
+        expect(payload).toBeUndefined();
+      },
+      state: { ...INITIAL, value: 1 },
     });
   });
 
   it('should handle decrementIfEven', () => {
     actions.decrementIfEven({
-      commit(type, payload) {
+      dispatch(type, payload) {
         expect(type).toBe('decrement');
         expect(payload).toBeUndefined();
       },
-      state: { value: 0 },
+      state: { ...INITIAL },
     });
 
     actions.decrementIfEven({
-      commit(type, payload) {
+      dispatch(type, payload) {
         expect(type).toBeUndefined();
         expect(payload).toBeUndefined();
       },
-      state: { value: 1 },
+      state: { ...INITIAL },
     });
   });
 });

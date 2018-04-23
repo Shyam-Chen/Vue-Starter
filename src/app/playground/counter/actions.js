@@ -6,28 +6,28 @@ import { delay, filter } from 'rxjs/operators';  // eslint-disable-line
 import { IContent } from './constants';
 
 export default {
-  increment({ commit }: IContent): void {
-    commit('increment');
+  increment({ state, commit }: IContent): void {
+    commit('increment', state.step);
   },
-  decrement({ commit }: IContent): void {
-    commit('decrement');
+  decrement({ state, commit }: IContent): void {
+    commit('decrement', state.step);
   },
-  incrementAsync({ commit }: IContent): void {
-    setTimeout(() => commit('increment'), 1000);
+  incrementAsync({ dispatch }: IContent): void {
+    setTimeout(() => dispatch('increment'), 1000);
   },
-  decrementAsync({ commit }: IContent): void {
+  decrementAsync({ dispatch }: IContent): void {
     of(null)
       .pipe(delay(1000))
-      .subscribe(() => commit('decrement'));
+      .subscribe(() => dispatch('decrement'));
   },
-  incrementIfOdd({ commit, state }: IContent): void {
+  incrementIfOdd({ state, dispatch }: IContent): void {
     if (Math.abs(state.value % 2) === 1) {
-      commit('increment');
+      dispatch('increment');
     }
   },
-  decrementIfEven({ commit, state }: IContent): void {
+  decrementIfEven({ state, dispatch }: IContent): void {
     of(state.value)
       .pipe(filter(value => value % 2 === 0))
-      .subscribe(() => commit('decrement'));
+      .subscribe(() => dispatch('decrement'));
   },
 };

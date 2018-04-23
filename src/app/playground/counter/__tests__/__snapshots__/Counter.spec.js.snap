@@ -9,6 +9,12 @@ exports[`Counter should render initial component 1`] = `
       </div>
     </v-layout>
     <v-layout row="">
+      <v-subheader class="pt-3">Step:</v-subheader>
+      <div>
+        <v-select items="1,2,3,4,5,6,7,8,9,10" single-line="" class="step"></v-select>
+      </div>
+    </v-layout>
+    <v-layout row="">
       <v-btn color="primary">Increment</v-btn>
       <v-btn color="primary">Decrement</v-btn>
     </v-layout>

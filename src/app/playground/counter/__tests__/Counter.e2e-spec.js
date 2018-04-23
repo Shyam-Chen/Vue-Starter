@@ -12,7 +12,7 @@ describe('Counter', () => {
     await page.setViewport(global.viewport);
 
     headline = '#app > div.application--wrap > main > div > div > div > div:nth-child(1) > div';
-    increment = '#app > div.application--wrap > main > div > div > div > div:nth-child(2) > button:nth-child(1) > div';
+    increment = '#app > div.application--wrap > main > div > div > div > div:nth-child(3) > button:nth-child(1) > div';
   });
 
   afterAll(async () => {
