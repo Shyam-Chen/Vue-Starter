@@ -115,6 +115,9 @@ import getters from './getters';
 export default {
   metaInfo: {
     title: 'CRUD Operations - Basic | Oh My Vue',
+    meta: [
+      { property: 'og:title', content: 'CRUD Operations - Basic | Oh My Vue' },
+    ],
   },
   computed: {
     $b(): IBasic {

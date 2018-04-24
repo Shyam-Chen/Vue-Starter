@@ -10,6 +10,9 @@
 export default {
   metaInfo: {
     title: 'Hello World | Oh My Vue',
+    meta: [
+      { property: 'og:title', content: 'Hello World | Oh My Vue' },
+    ],
   },
 };
 </script>

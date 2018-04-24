@@ -244,17 +244,23 @@ $ gcloud app deploy app.yaml --project <PROJECT_NAME>
 
 ## Directory Structure
 
-```js
+```coffee
 .
 ├── src
 │   ├── api
+│   │   ├── config  -> config middlewares
+│   │   ├── graphql
+│   │   │   └── <FEATURE>
+│   │   │       ├── __tests__
+│   │   │       │   └── ...
+│   │   │       └── ...
 │   │   ├── <FEATURE>
 │   │   │   ├── __tests__
 │   │   │   │   └── ...
 │   │   │   └── ...
 │   │   └── index.js
 │   ├── app
-│   │   ├── _languages
+│   │   ├── _languages  -> app languages
 │   │   │   └── ...
 │   │   ├── config  -> config plugins
 │   │   │   └── ...
@@ -265,7 +271,7 @@ $ gcloud app deploy app.yaml --project <PROJECT_NAME>
 │   │   │   │   ├── <FEATURE>.spec.js
 │   │   │   │   ├── getters.spec.js
 │   │   │   │   └── mutations.spec.js
-│   │   │   ├── _languages
+│   │   │   ├── _languages  -> <FEATURE> languages
 │   │   │   │   └── ...
 │   │   │   ├── actions.js
 │   │   │   ├── constants.js
@@ -273,14 +279,12 @@ $ gcloud app deploy app.yaml --project <PROJECT_NAME>
 │   │   │   ├── getters.js
 │   │   │   ├── mutations.js
 │   │   │   └── types.js
-│   │   ├── shared  -> shared components
-│   │   │   └── ...
 │   │   ├── actions.js  -> root actions
-│   │   ├── App.vue
-│   │   ├── constants.js
+│   │   ├── App.vue  -> app root
+│   │   ├── constants.js  -> root constants
 │   │   ├── getters.js  -> root getters
 │   │   ├── mutations.js  -> root mutations
-│   │   └── types.js
+│   │   └── types.js  -> root types
 │   ├── assets  -> datas, fonts, images, medias, styles
 │   ├── client.js
 │   ├── index.html
