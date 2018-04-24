@@ -7,7 +7,7 @@
           <v-toolbar class="hidden-md-and-up" flat>
             <v-toolbar-title class="ml-0 pl-3 vfs-toolbar-title">
               <router-link class="vfs-router-link" to="/">
-                <img src="/assets/images/icon-32x32.png" alt="Logo">
+                <img src="assets/images/logo.svg" alt="Logo" width="40" height="40">
                 <span>Oh My Vue</span>
               </router-link>
             </v-toolbar-title>
@@ -77,7 +77,7 @@
           <v-toolbar-title class="ml-0 pl-3 vfs-toolbar-title">
             <v-toolbar-side-icon v-if="!$route.meta.home" @click.stop="$app.drawer = !$app.drawer"></v-toolbar-side-icon>
             <router-link class="hidden-sm-and-down white--text vfs-router-link" to="/">
-              <img src="/assets/images/icon-32x32.png" alt="Logo">
+              <img src="assets/images/logo.svg" alt="Logo" width="40" height="40">
               <span>Oh My Vue</span>
             </router-link>
           </v-toolbar-title>

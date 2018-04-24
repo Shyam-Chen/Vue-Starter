@@ -3,5 +3,5 @@
 }
 
 .container {
-  height: calc(100% - 86px);
+  height: calc(100% - 86px);  /* calc(100% - footer) */
 }
