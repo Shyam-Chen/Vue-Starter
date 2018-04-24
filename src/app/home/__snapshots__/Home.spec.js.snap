@@ -26,27 +26,14 @@ exports[`Home should render initial component 1`] = `
   <v-container grid-list-xl="" class="mt-5 mb-5">
     <v-layout row="" justify-center="" wrap="">
       <v-flex xs12="" sm8="" md4="">
-        <div class="elevation-1" style="height: 256px;">
-          Standard Image
+        <div>
+          <v-icon size="15rem">fa fa-cubes</v-icon>
         </div>
       </v-flex>
       <v-flex xs12="" sm8="" md4="">
-        <div class="elevation-1" style="height: 256px;">
-          Standard Content
-        </div>
-      </v-flex>
-    </v-layout>
-  </v-container>
-  <v-container grid-list-xl="" class="mt-5 mb-5">
-    <v-layout row="" justify-center="" wrap="">
-      <v-flex xs12="" sm8="" md4="">
-        <div class="elevation-1" style="height: 256px;">
-          Playground Content
-        </div>
-      </v-flex>
-      <v-flex xs12="" sm8="" md4="">
-        <div class="elevation-1" style="height: 256px;">
-          Playground Image
+        <div>
+          <div class="headline">Sprint from Zero to App</div>
+          <div class="body-1">Hit the ground running with comprehensive, modern UI components that work across the web, mobile and desktop.</div>
         </div>
       </v-flex>
     </v-layout>
@@ -54,13 +41,29 @@ exports[`Home should render initial component 1`] = `
   <v-container grid-list-xl="" class="mt-5 mb-5">
     <v-layout row="" justify-center="" wrap="">
       <v-flex xs12="" sm8="" md4="">
-        <div class="elevation-1" style="height: 256px;">
-          Profound Image
+        <div>
+          <div class="headline">Fast and Consistent</div>
+          <div class="body-1">Finely tuned performance, because every millisecond counts. Fully tested across modern browsers.</div>
         </div>
       </v-flex>
       <v-flex xs12="" sm8="" md4="">
-        <div class="elevation-1" style="height: 256px;">
-          Profound Content
+        <div>
+          <v-icon size="15rem">av_timer</v-icon>
+        </div>
+      </v-flex>
+    </v-layout>
+  </v-container>
+  <v-container grid-list-xl="" class="mt-5 mb-5">
+    <v-layout row="" justify-center="" wrap="">
+      <v-flex xs12="" sm8="" md4="">
+        <div>
+          <v-icon size="15rem">color_lens</v-icon>
+        </div>
+      </v-flex>
+      <v-flex xs12="" sm8="" md4="">
+        <div>
+          <div class="headline">Versatile</div>
+          <div class="body-1">Themable, for when you need to stay on brand or just have a favorite color. Accessible and internationalized so that all users are welcome.</div>
         </div>
       </v-flex>
     </v-layout>
