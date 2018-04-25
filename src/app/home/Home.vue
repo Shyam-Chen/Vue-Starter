@@ -1,13 +1,13 @@
 <template>
   <div>
     <v-jumbotron dark gradient="to bottom, #1E88E5, #42A5F5" height="auto">
-      <v-container fill-height>
+      <v-container fill-height class="pt-5 pb-5">
         <v-layout justify-center align-center wrap>
           <img src="assets/images/logo.svg" alt="Logo" width="256" height="256">
 
           <v-flex shrink class="text-xs-center text-md-left">
             <div class="display-3">Oh My Vue</div>
-            <div class="subheading">Vue Fullstack - Vue, Material, Express, Babel, Flow, and ReactiveX.</div>
+            <div class="subheading">Vue Fullstack • Firebase Platform • Google Cloud</div>
             <v-divider class="my-3"></v-divider>
             <v-btn large color="white" to="/hello-world" class="primary--text ml-0">See more</v-btn>
             <v-btn color="white" href="https://github.com/Shyam-Chen/Vue-Fullstack-Starter" large outline target="_blank">

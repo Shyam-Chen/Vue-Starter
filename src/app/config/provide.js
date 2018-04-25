@@ -6,12 +6,14 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 
 Vue.use(Apollo);
 
+const client = new ApolloClient({
+  link: new HttpLink({ uri: `${process.env.FUNC_URL}/api/graphql` }),
+  cache: new InMemoryCache(),
+  connectToDevTools: process.env.NODE_ENV === 'development',
+});
+
 const apollo = new Apollo({
-  defaultClient: new ApolloClient({
-    link: new HttpLink({ uri: `${process.env.FUNC_URL}/api/graphql` }),
-    cache: new InMemoryCache(),
-    connectToDevTools: process.env.NODE_ENV === 'development',
-  }),
+  defaultClient: client,
 });
 
 const provide = apollo.provide();

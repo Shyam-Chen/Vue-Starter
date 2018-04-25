@@ -2,6 +2,8 @@ import 'vuetify/dist/vuetify.css';
 import Vue from 'vue';
 import { sync } from 'vuex-router-sync';
 import Material from 'vuetify';
+// import * as firebase from 'firebase/app';
+// import 'firebase/auth';
 import Raven from 'raven-js';
 import RavenVue from 'raven-js/plugins/vue';
 
@@ -25,6 +27,8 @@ Vue.use(Material, {
     success: '#4CAF50',  // green
   },
 });
+
+// firebase.initializeApp(process.env.FIREBASE_CONFIG);
 
 if (process.env.NODE_ENV === 'production') {
   Raven.config(process.env.SENTRY_DSN)
