@@ -5,7 +5,7 @@ const plumber = require('gulp-plumber');
 const replaces = require('gulp-replaces');
 const babel = require('gulp-babel');
 const rename = require('gulp-rename');
-const rimraf = require('gulp-rimraf');
+const shell = require('gulp-shell');
 const envify = require('process-envify');
 const runSequence = require('run-sequence');
 
@@ -40,7 +40,7 @@ gulp.task('copy', () =>
 
 gulp.task('rename', () =>
   gulp.src('functions/server.js')
-    .pipe(rimraf())
+    .pipe(shell('rimraf functions/server.js'))
     .pipe(rename('index.js'))
     .pipe(gulp.dest(DIST_ROOT)),
 );
@@ -55,10 +55,12 @@ gulp.task('watch', () => {
   ], ['rebuild']);
 });
 
+gulp.task('serve', shell.task('firebase serve --only functions'));
+
 gulp.task('default', (done) => {
   if (util.env.prod) {
     return runSequence('build', ['copy', 'rename'], done);
   }
 
-  return runSequence('build', 'rename', 'watch', done);
+  return runSequence('build', 'rename', 'watch', 'serve', done);
 });
