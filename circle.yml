@@ -1,10 +1,14 @@
 version: 2
 
+base: &base
+  working_directory: ~/Vue-Fullstack-Starter
+  docker:
+    - image: circleci/node:8
+
 jobs:
 
   build:
-    docker:
-      - image: circleci/node:8
+    <<: *base
     steps:
       - checkout
       - setup_remote_docker
@@ -19,8 +23,7 @@ jobs:
           command: docker-compose exec default yarn build:api
 
   test:
-    docker:
-      - image: circleci/node:8
+    <<: *base
     steps:
       - checkout
       - setup_remote_docker
@@ -28,8 +31,6 @@ jobs:
           name: Combat preparation
           command: |
             docker-compose up -d default
-            docker-compose exec default yarn build:app
-            docker-compose exec default yarn build:api
             docker-compose exec default yarn firebase use development --token $FIREBASE_TOKEN
             docker-compose exec -d default yarn start:app
             docker-compose exec -d default yarn firebase serve --only functions --token $FIREBASE_TOKEN
@@ -60,25 +61,23 @@ jobs:
             # docker-compose exec default yarn e2e:api
 
   deploy:
-    docker:
-      - image: circleci/node:8
+    <<: *base
     steps:
       - checkout
       - setup_remote_docker
-      # - run:
-      #     name: Deploy to development
-      #     command: |
-      #       if [[ "${CIRCLE_BRANCH}" == "develop" ]]; then
-      #         # docker login -u $DOCKER_USERNAME -p $DOCKER_TOKEN
-      #         docker-compose up -d dev
-      #         docker-compose exec dev yarn firebase use development --token $FIREBASE_TOKEN
-      #         docker-compose exec dev yarn firebase deploy --token $FIREBASE_TOKEN
-      #       fi
       - run:
-          name: Deploy to production
+          name: Log in to Docker
+          command: echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+      - run:
+          name: Deploy the project
           command: |
+            # if [[ "${CIRCLE_BRANCH}" == "develop" ]]; then
+            #   docker-compose up -d dev
+            #   docker-compose exec dev yarn firebase use development --token $FIREBASE_TOKEN
+            #   docker-compose exec dev yarn firebase deploy --token $FIREBASE_TOKEN
+            # fi
+
             if [[ "${CIRCLE_BRANCH}" == "master" ]]; then
-              # docker login -u $DOCKER_USERNAME -p $DOCKER_TOKEN
               docker-compose up -d prod
               docker-compose exec prod yarn firebase use production --token $FIREBASE_TOKEN
               docker-compose exec prod yarn firebase deploy --token $FIREBASE_TOKEN
