@@ -143,11 +143,43 @@ $ docker-compose rm -fs
 $ docker-compose up -d --build <SERVICE>
 ```
 
+5. Push images to Docker Cloud
+
+```bash
+$ docker login
+$ docker build -f tools/Dockerfile.<dev|prod> -t <IMAGE_NAME>:<IMAGE_TAG> .
+
+# checkout
+$ docker images
+
+$ docker tag <IMAGE_NAME>:<IMAGE_TAG> <DOCKER_ID_USER>/<IMAGE_NAME>:<IMAGE_TAG>
+$ docker push <DOCKER_ID_USER>/<IMAGE_NAME>:<IMAGE_TAG>
+
+# remove
+$ docker rmi <IMAGE_ID>
+```
+
+6. Pull images from Docker Cloud
+
+```diff
+# docker-compose.yml
+
+  <dev|prod>:
+-   image: <dev|prod>
+-   build:
+-     context: .
+-     dockerfile: tools/Dockerfile.<dev|prod>
++   image: <DOCKER_ID_USER>/<IMAGE_NAME>:<IMAGE_TAG>
+    volumes:
+      - yarn:/home/node/.cache/yarn
+    tty: true
+```
+
 ## Configuration
 
 ### Project environments
 
-Change to your projects.
+Change to your project.
 
 ```js
 // .firebaserc
@@ -161,7 +193,7 @@ Change to your projects.
 
 ### Default environments
 
-Set your local environment variables.
+Set your local environment variables. (use `this.<ENV_NAME> = process.env.<ENV_NAME> || <LOCAL_ENV>;`)
 
 ```js
 // env.js
@@ -190,16 +222,16 @@ Set your deploy environment variables.
 # tools/Dockerfile.<dev|prod>
 
 # envs --
-ENV SITE_URL https://vue-by-example-prod.firebaseapp.com
-ENV FUNC_URL https://us-central1-vue-by-example-prod.cloudfunctions.net
+ENV SITE_URL <SITE_URL>
+ENV FUNC_URL <FUNC_URL>
 
-ENV SENTRY_DSN https://cea15151a5984c6e80937903b07ae124@sentry.io/1192108
+ENV SENTRY_DSN <SENTRY_DSN>
 # -- envs
 ```
 
-### Enable SEO
+### SEO friendly
 
-Enable Billing on your Firebase and Google Cloud Platform the project by switching to the Blaze plan.
+Enable billing on your Firebase Platform and Google Cloud the project by switching to the Blaze plan.
 
 Serve dynamic content for bots.
 
