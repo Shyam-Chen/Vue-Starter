@@ -73,7 +73,7 @@
           </v-list>
         </v-navigation-drawer>
 
-        <v-toolbar :clipped-left="$vuetify.breakpoint.mdAndUp" :flat="$route.meta.home" class="primary" dark app fixed>
+        <v-toolbar :clipped-left="$vuetify.breakpoint.mdAndUp" :flat="$route.meta.home" class="primary darken-1" dark app fixed>
           <v-toolbar-title class="ml-0 pl-3 vfs-toolbar-title">
             <v-toolbar-side-icon v-if="!$route.meta.home" @click.stop="$app.drawer = !$app.drawer"></v-toolbar-side-icon>
             <router-link class="hidden-sm-and-down white--text vfs-router-link" to="/">
@@ -119,11 +119,11 @@
 
           <v-footer height="auto" class="pa-3 primary darken-1 white--text">
             <img src="/assets/images/logo.svg" alt="Logo" width="50" height="50">
-            <div>
+            <div class="ml-3">
               <a href="https://vuejs.org/" class="subheading pa-2 white--text" style="text-decoration: none;">Learn Vue</a>
             </div>
             <v-spacer></v-spacer>
-            <div class="caption text-xs-center">
+            <div class="caption text-xs-center mr-3">
               Powered by Oh My Vue &copy;{{ new Date().getFullYear() }}. <br>
               Code licensed under an MIT-style License. <br>
               Documentation licensed under CC BY 4.0.
