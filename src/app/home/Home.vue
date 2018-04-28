@@ -7,7 +7,7 @@
 
           <v-flex shrink class="text-xs-center text-md-left">
             <div class="display-3">Oh My Vue</div>
-            <div class="subheading">Vue Fullstack • Firebase Platform • Google Cloud</div>
+            <div class="subheading">Web Fundamentals • Firebase Platform • Google Cloud</div>
             <v-divider class="my-3"></v-divider>
             <v-btn large color="white" to="/hello-world" class="primary--text ml-0">See more</v-btn>
             <v-btn color="white" href="https://github.com/Shyam-Chen/Vue-Fullstack-Starter" large outline target="_blank">

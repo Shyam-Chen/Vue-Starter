@@ -21,10 +21,6 @@ Vue.use(Material, {
     primary: '#1E88E5',  // blue, darken-1
     secondary: '#42A5F5',  // blue, lighten-1
     accent: '#E91E63',  // pink
-    error: '#F44336',  // red
-    warning: '#FFEB3B',  // yellow
-    info: '#2196F3',  // blue
-    success: '#4CAF50',  // green
   },
 });
 
