@@ -61,7 +61,7 @@ sh.get('*', (req, res) => {
     'vkShare',
   ];
 
-  const rendertronUrl = `https://${process.env.PROJECT_NAME}.appspot.com`;
+  const rendertronUrl = process.env.RENDERTRON_URL;
   const targetUrl = process.env.SITE_URL + req.originalUrl;
 
   if (new RegExp(botUserAgents.join('|'), 'i').test(req.headers['user-agent'])) {

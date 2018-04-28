@@ -208,15 +208,25 @@ function Environments() {
   this.FUNC_PORT = process.env.FUNC_PORT || 5000;
   this.FUNC_URL = process.env.FUNC_URL || `http://localhost:${this.FUNC_PORT}/${this.PROJECT_NAME}/us-central1`;
 
-  this.GOOGLE_ANALYTICS = process.env.GOOGLE_ANALYTICS || '<GOOGLE_ANALYTICS>';
+  this.FIREBASE_CONFIG = process.env.FIREBASE_CONFIG || {
+    apiKey: '<API_KEY>',
+    authDomain: '<AUTH_DOMAIN>',
+    databaseURL: '<DATABASE_URL>',
+    projectId: '<PROJECT_ID>',
+    storageBucket: '<STORAGE_BUCKET>',
+    messagingSenderId: '<MESSAGING_SENDER_ID>',
+  };
+
+  this.GOOGLE_ANALYTICS = process.env.GOOGLE_ANALYTICS || 'UA-84381641-2';
 
   this.SENTRY_DSN = process.env.SENTRY_DSN || null;
+  this.RENDERTRON_URL = process.env.RENDERTRON_URL || null;
 }
 ```
 
-### Deploy environments
+### Deployment environment
 
-Set your deploy environment variables.
+Set your deployment environment variables.
 
 ```dockerfile
 # tools/Dockerfile.<dev|prod>
@@ -252,7 +262,17 @@ Deploy rendertron instance to Google App Engine.
 $ git clone https://github.com/GoogleChrome/rendertron
 $ cd rendertron
 $ gcloud auth login
-$ gcloud app deploy app.yaml --project <PROJECT_NAME>
+$ gcloud app deploy app.yaml --project <RENDERTRON_NAME>
+```
+
+Set your rendertron instance in deployment environment.
+
+```dockerfile
+# tools/Dockerfile.<dev|prod>
+
+# envs --
+ENV RENDERTRON_URL <RENDERTRON_URL>
+# -- envs
 ```
 
 ### VS Code settings
