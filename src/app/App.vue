@@ -119,15 +119,18 @@
 
           <v-footer height="auto" class="pa-3 primary darken-1 white--text">
             <img src="/assets/images/logo.svg" alt="Logo" width="50" height="50">
-            <div class="ml-3">
-              <a href="https://vuejs.org/" class="subheading pa-2 white--text" style="text-decoration: none;">Learn Vue</a>
-            </div>
-            <v-spacer></v-spacer>
-            <div class="caption text-xs-center mr-3">
-              Powered by Oh My Vue &copy;{{ new Date().getFullYear() }}. <br>
-              Code licensed under an MIT-style License. <br>
-              Documentation licensed under CC BY 4.0.
-            </div>
+
+            <v-layout fill-height row wrap justify-space-between align-center class="ml-3 mr-3">
+              <div>
+                <a href="https://vuejs.org/" class="subheading pa-2 white--text" style="text-decoration: none;">Learn Vue</a>
+              </div>
+              <div>Current Version: 1.0.0</div>
+              <div class="caption text-xs-center">
+                Powered by Oh My Vue &copy;{{ new Date().getFullYear() }}. <br>
+                Code licensed under an MIT-style License. <br>
+                Documentation licensed under CC BY 4.0.
+              </div>
+            </v-layout>
           </v-footer>
         </v-content>
       </template>
