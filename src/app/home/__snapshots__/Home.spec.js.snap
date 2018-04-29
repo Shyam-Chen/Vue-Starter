@@ -29,31 +29,31 @@ exports[`Home should render initial component 1`] = `
         <svg width="100%" height="100%" viewBox="0 0 402 328" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet">
           <defs>
             <circle id="sza-b" cx="19.5" cy="19.5" r="19.5"></circle>
-            <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="sza-a">
+            <filter id="sza-a" x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox">
               <feoffset dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feoffset>
               <fegaussianblur stdDeviation=".5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></fegaussianblur>
               <fecolormatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.115913723 0" in="shadowBlurOuter1"></fecolormatrix>
             </filter>
             <rect id="sza-d" width="96" height="39" rx="1.331"></rect>
-            <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="sza-c">
+            <filter id="sza-c" x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox">
               <feoffset dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feoffset>
               <fegaussianblur stdDeviation=".5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></fegaussianblur>
               <fecolormatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.115913723 0" in="shadowBlurOuter1"></fecolormatrix>
             </filter>
             <rect id="sza-f" width="96" height="39" rx="1.331"></rect>
-            <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="sza-e">
+            <filter id="sza-e" x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox">
               <feoffset dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feoffset>
               <fegaussianblur stdDeviation=".5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></fegaussianblur>
               <fecolormatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.115913723 0" in="shadowBlurOuter1"></fecolormatrix>
             </filter>
             <rect id="sza-h" width="43" height="17" rx="8.5"></rect>
-            <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="sza-g">
+            <filter id="sza-g" x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox">
               <feoffset dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feoffset>
               <fegaussianblur stdDeviation=".5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></fegaussianblur>
               <fecolormatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.12 0" in="shadowBlurOuter1"></fecolormatrix>
             </filter>
             <path id="sza-j" d="M0 0h156v23H0z"></path>
-            <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="sza-i">
+            <filter id="sza-i" x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox">
               <feoffset dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feoffset>
               <fegaussianblur stdDeviation=".5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></fegaussianblur>
               <fecolormatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.12 0" in="shadowBlurOuter1"></fecolormatrix>
@@ -113,12 +113,12 @@ exports[`Home should render initial component 1`] = `
       <div class="pa-3 grid">
         <svg height="100%" viewBox="0 0 402 251" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet">
           <defs>
-            <rect height="218" id="fac-a" rx="4" width="367"></rect>
-            <mask fill="#fff" height="218" id="fac-d" width="367" x="0" y="0">
+            <rect id="fac-a" height="218" rx="4" width="367"></rect>
+            <mask id="fac-d" fill="#fff" height="218" width="367" x="0" y="0">
               <use xlink:href="#fac-a"></use>
             </mask>
-            <rect height="180" id="fac-b" rx="4" width="345"></rect>
-            <mask fill="#fff" height="180" id="fac-e" width="345" x="0" y="0">
+            <rect id="fac-b" height="180" rx="4" width="345"></rect>
+            <mask id="fac-e" fill="#fff" height="180" width="345" x="0" y="0">
               <use xlink:href="#fac-b"></use>
             </mask>
             <lineargradient id="fac-f" x1="0%" x2="0%" y1="31.325%" y2="0%">
@@ -129,11 +129,11 @@ exports[`Home should render initial component 1`] = `
               <stop offset="0%" stop-color="#1976D2" class="docs-svg-primary-light-40-stop-color"></stop>
               <stop offset="100%" stop-color="#64B5F6" stop-opacity=".152" class="docs-svg-primary-light-30-stop-color"></stop>
             </lineargradient>
-            <path d="M14.909 96.452c10.762 12.154 26.57 19.829 44.19 19.829 32.426 0 58.714-25.994 58.714-58.058 0-32.065-26.288-58.058-58.715-58.058C26.672.165.384 26.158.384 58.223c0 14.64 5.481 28.016 14.525 38.23z" id="fac-c"></path>
-            <mask fill="#fff" height="116.116" id="fac-h" width="117.428" x="0" y="0">
+            <path id="fac-c" d="M14.909 96.452c10.762 12.154 26.57 19.829 44.19 19.829 32.426 0 58.714-25.994 58.714-58.058 0-32.065-26.288-58.058-58.715-58.058C26.672.165.384 26.158.384 58.223c0 14.64 5.481 28.016 14.525 38.23z"></path>
+            <mask id="fac-h" fill="#fff" height="116.116" width="117.428" x="0" y="0">
               <use xlink:href="#fac-c"></use>
             </mask>
-            <mask fill="#fff" height="116.116" id="fac-i" width="117.428" x="0" y="0">
+            <mask id="fac-i" fill="#fff" height="116.116" width="117.428" x="0" y="0">
               <use xlink:href="#fac-c"></use>
             </mask>
           </defs>
@@ -170,25 +170,25 @@ exports[`Home should render initial component 1`] = `
       <div class="pa-3 grid">
         <svg height="100%" viewBox="0 0 402 328" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet">
           <defs>
-            <path d="M30.567 93.044c2.031.002 5.332.004 7.354.004h268.402A3.672 3.672 0 0 1 310 96.723v77.554a3.681 3.681 0 0 1-3.677 3.675H37.921c-2.03 0-5.33.044-7.354.004 0 0-40.567 3.092-40.567-42.456s40.567-42.456 40.567-42.456z" id="ver-a"></path>
-            <mask fill="#fff" height="85" id="ver-d" width="320" x="0" y="0">
+            <path id="ver-a" d="M30.567 93.044c2.031.002 5.332.004 7.354.004h268.402A3.672 3.672 0 0 1 310 96.723v77.554a3.681 3.681 0 0 1-3.677 3.675H37.921c-2.03 0-5.33.044-7.354.004 0 0-40.567 3.092-40.567-42.456s40.567-42.456 40.567-42.456z"></path>
+            <mask id="ver-d" fill="#fff" height="85" width="320" x="0" y="0">
               <use xlink:href="#ver-a"></use>
             </mask>
             <lineargradient id="ver-e" x1="0%" y1="50%" y2="50%">
               <stop offset="0%" stop-color="#1E88E5" class="docs-svg-primary-light-20-stop-color"></stop>
-              <stop offset="100%" stop-color="#EEFAFC"></stop>
+              <stop offset="100%" stop-color="#E3F2FD"></stop>
             </lineargradient>
-            <path d="M45.567 53.044c2.031.002 5.332.004 7.354.004h268.402A3.672 3.672 0 0 1 325 56.723v77.554a3.681 3.681 0 0 1-3.677 3.675H52.921c-2.03 0-5.33.044-7.354.004 0 0-40.567 3.092-40.567-42.456s40.567-42.456 40.567-42.456z" id="ver-b"></path>
-            <mask fill="#fff" height="85" id="ver-f" width="320" x="0" y="0">
+            <path id="ver-b" d="M45.567 53.044c2.031.002 5.332.004 7.354.004h268.402A3.672 3.672 0 0 1 325 56.723v77.554a3.681 3.681 0 0 1-3.677 3.675H52.921c-2.03 0-5.33.044-7.354.004 0 0-40.567 3.092-40.567-42.456s40.567-42.456 40.567-42.456z"></path>
+            <mask id="ver-f" fill="#fff" height="85" width="320" x="0" y="0">
               <use xlink:href="#ver-b"></use>
             </mask>
-            <path d="M40.567.044c2.031.002 5.332.004 7.354.004h268.402A3.672 3.672 0 0 1 320 3.723v77.554a3.681 3.681 0 0 1-3.677 3.675H47.921c-2.03 0-5.33.044-7.354.004C40.567 84.956 0 88.048 0 42.5S40.567.044 40.567.044z" id="ver-c"></path>
-            <mask fill="#fff" height="85" id="ver-g" width="320" x="0" y="0">
+            <path id="ver-c" d="M40.567.044c2.031.002 5.332.004 7.354.004h268.402A3.672 3.672 0 0 1 320 3.723v77.554a3.681 3.681 0 0 1-3.677 3.675H47.921c-2.03 0-5.33.044-7.354.004C40.567 84.956 0 88.048 0 42.5S40.567.044 40.567.044z"></path>
+            <mask id="ver-g" fill="#fff" height="85" width="320" x="0" y="0">
               <use xlink:href="#ver-c"></use>
             </mask>
             <lineargradient id="ver-h" x1="3.561%" y1="50%" y2="50%">
               <stop offset="0%" stop-color="#1E88E5" class="docs-svg-primary-light-20-stop-color"></stop>
-              <stop offset="100%" stop-color="#EEFAFC"></stop>
+              <stop offset="100%" stop-color="#E3F2FD"></stop>
             </lineargradient>
           </defs>
           <g fill="none" fill-rule="evenodd">
@@ -223,100 +223,100 @@ exports[`Home should render initial component 1`] = `
       <div class="pa-3 grid">
         <svg height="100%" viewBox="0 0 372 271" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet">
           <defs>
-            <path d="M0 38h39v39H0z" id="opt-a"></path>
-            <mask fill="#fff" height="39" id="opt-y" width="39" x="0" y="0">
+            <path id="opt-a" d="M0 38h39v39H0z"></path>
+            <mask id="opt-y" fill="#fff" height="39" width="39" x="0" y="0">
               <use xlink:href="#opt-a"></use>
             </mask>
-            <path d="M37 38h39v39H37z" id="opt-b"></path>
-            <mask fill="#fff" height="39" id="opt-z" width="39" x="0" y="0">
+            <path id="opt-b" d="M37 38h39v39H37z"></path>
+            <mask id="opt-z" fill="#fff" height="39" width="39" x="0" y="0">
               <use xlink:href="#opt-b"></use>
             </mask>
-            <path d="M0 0h39v39H0z" id="opt-c"></path>
-            <mask fill="#fff" height="39" id="opt-A" width="39" x="0" y="0">
+            <path id="opt-c" d="M0 0h39v39H0z"></path>
+            <mask id="opt-A" fill="#fff" height="39" width="39" x="0" y="0">
               <use xlink:href="#opt-c"></use>
             </mask>
-            <path d="M37 0h39v39H37z" id="opt-d"></path>
-            <mask fill="#fff" height="39" id="opt-B" width="39" x="0" y="0">
+            <path id="opt-d" d="M37 0h39v39H37z"></path>
+            <mask id="opt-B" fill="#fff" height="39" width="39" x="0" y="0">
               <use xlink:href="#opt-d"></use>
             </mask>
-            <path d="M75 38h39v39H75z" id="opt-e"></path>
-            <mask fill="#fff" height="39" id="opt-C" width="39" x="0" y="0">
+            <path id="opt-e" d="M75 38h39v39H75z"></path>
+            <mask id="opt-C" fill="#fff" height="39" width="39" x="0" y="0">
               <use xlink:href="#opt-e"></use>
             </mask>
-            <path d="M38 38h39v39H38z" id="opt-f"></path>
-            <mask fill="#fff" height="39" id="opt-D" width="39" x="0" y="0">
+            <path id="opt-f" d="M38 38h39v39H38z"></path>
+            <mask id="opt-D" fill="#fff" height="39" width="39" x="0" y="0">
               <use xlink:href="#opt-f"></use>
             </mask>
-            <path d="M0 38h39v39H0z" id="opt-g"></path>
-            <mask fill="#fff" height="39" id="opt-E" width="39" x="0" y="0">
+            <path id="opt-g" d="M0 38h39v39H0z"></path>
+            <mask id="opt-E" fill="#fff" height="39" width="39" x="0" y="0">
               <use xlink:href="#opt-g"></use>
             </mask>
-            <path d="M0 0h39v39H0z" id="opt-h"></path>
-            <mask fill="#fff" height="39" id="opt-F" width="39" x="0" y="0">
+            <path id="opt-h" d="M0 0h39v39H0z"></path>
+            <mask id="opt-F" fill="#fff" height="39" width="39" x="0" y="0">
               <use xlink:href="#opt-h"></use>
             </mask>
-            <path d="M75 38h39v39H75z" id="opt-i"></path>
-            <mask fill="#fff" height="39" id="opt-G" width="39" x="0" y="0">
+            <path id="opt-i" d="M75 38h39v39H75z"></path>
+            <mask id="opt-G" fill="#fff" height="39" width="39" x="0" y="0">
               <use xlink:href="#opt-i"></use>
             </mask>
-            <path d="M38 38h39v39H38z" id="opt-j"></path>
-            <mask fill="#fff" height="39" id="opt-H" width="39" x="0" y="0">
+            <path id="opt-j" d="M38 38h39v39H38z"></path>
+            <mask id="opt-H" fill="#fff" height="39" width="39" x="0" y="0">
               <use xlink:href="#opt-j"></use>
             </mask>
-            <path d="M38 0h39v39H38z" id="opt-k"></path>
-            <mask fill="#fff" height="39" id="opt-I" width="39" x="0" y="0">
+            <path id="opt-k" d="M38 0h39v39H38z"></path>
+            <mask id="opt-I" fill="#fff" height="39" width="39" x="0" y="0">
               <use xlink:href="#opt-k"></use>
             </mask>
-            <path d="M0 0h39v39H0z" id="opt-l"></path>
-            <mask fill="#fff" height="39" id="opt-J" width="39" x="0" y="0">
+            <path id="opt-l" d="M0 0h39v39H0z"></path>
+            <mask id="opt-J" fill="#fff" height="39" width="39" x="0" y="0">
               <use xlink:href="#opt-l"></use>
             </mask>
-            <path d="M0 74h39v39H0z" id="opt-m"></path>
-            <mask fill="#fff" height="39" id="opt-K" width="39" x="0" y="0">
+            <path id="opt-m" d="M0 74h39v39H0z"></path>
+            <mask id="opt-K" fill="#fff" height="39" width="39" x="0" y="0">
               <use xlink:href="#opt-m"></use>
             </mask>
-            <path d="M38 37h39v39H38z" id="opt-n"></path>
-            <mask fill="#fff" height="39" id="opt-L" width="39" x="0" y="0">
+            <path id="opt-n" d="M38 37h39v39H38z"></path>
+            <mask id="opt-L" fill="#fff" height="39" width="39" x="0" y="0">
               <use xlink:href="#opt-n"></use>
             </mask>
-            <path d="M0 37h39v39H0z" id="opt-o"></path>
-            <mask fill="#fff" height="39" id="opt-M" width="39" x="0" y="0">
+            <path id="opt-o" d="M0 37h39v39H0z"></path>
+            <mask id="opt-M" fill="#fff" height="39" width="39" x="0" y="0">
               <use xlink:href="#opt-o"></use>
             </mask>
-            <path d="M0 0h39v39H0z" id="opt-p"></path>
-            <mask fill="#fff" height="39" id="opt-N" width="39" x="0" y="0">
+            <path id="opt-p" d="M0 0h39v39H0z"></path>
+            <mask id="opt-N" fill="#fff" height="39" width="39" x="0" y="0">
               <use xlink:href="#opt-p"></use>
             </mask>
-            <path d="M75 38h39v39H75z" id="opt-q"></path>
-            <mask fill="#fff" height="39" id="opt-O" width="39" x="0" y="0">
+            <path id="opt-q" d="M75 38h39v39H75z"></path>
+            <mask id="opt-O" fill="#fff" height="39" width="39" x="0" y="0">
               <use xlink:href="#opt-q"></use>
             </mask>
-            <path d="M38 38h39v39H38z" id="opt-r"></path>
-            <mask fill="#fff" height="39" id="opt-P" width="39" x="0" y="0">
+            <path id="opt-r" d="M38 38h39v39H38z"></path>
+            <mask id="opt-P" fill="#fff" height="39" width="39" x="0" y="0">
               <use xlink:href="#opt-r"></use>
             </mask>
-            <path d="M0 38h39v39H0z" id="opt-s"></path>
-            <mask fill="#fff" height="39" id="opt-Q" width="39" x="0" y="0">
+            <path id="opt-s" d="M0 38h39v39H0z"></path>
+            <mask id="opt-Q" fill="#fff" height="39" width="39" x="0" y="0">
               <use xlink:href="#opt-s"></use>
             </mask>
-            <path d="M38 0h39v39H38z" id="opt-t"></path>
-            <mask fill="#fff" height="39" id="opt-R" width="39" x="0" y="0">
+            <path id="opt-t" d="M38 0h39v39H38z"></path>
+            <mask id="opt-R" fill="#fff" height="39" width="39" x="0" y="0">
               <use xlink:href="#opt-t"></use>
             </mask>
-            <path d="M37 75h39v39H37z" id="opt-u"></path>
-            <mask fill="#fff" height="39" id="opt-S" width="39" x="0" y="0">
+            <path id="opt-u" d="M37 75h39v39H37z"></path>
+            <mask id="opt-S" fill="#fff" height="39" width="39" x="0" y="0">
               <use xlink:href="#opt-u"></use>
             </mask>
-            <path d="M37 37h39v39H37z" id="opt-v"></path>
-            <mask fill="#fff" height="39" id="opt-T" width="39" x="0" y="0">
+            <path id="opt-v" d="M37 37h39v39H37z"></path>
+            <mask id="opt-T" fill="#fff" height="39" width="39" x="0" y="0">
               <use xlink:href="#opt-v"></use>
             </mask>
-            <path d="M37 0h39v39H37z" id="opt-w"></path>
-            <mask fill="#fff" height="39" id="opt-U" width="39" x="0" y="0">
+            <path id="opt-w" d="M37 0h39v39H37z"></path>
+            <mask id="opt-U" fill="#fff" height="39" width="39" x="0" y="0">
               <use xlink:href="#opt-w"></use>
             </mask>
-            <path d="M0 0h39v39H0z" id="opt-x"></path>
-            <mask fill="#fff" height="39" id="opt-V" width="39" x="0" y="0">
+            <path id="opt-x" d="M0 0h39v39H0z"></path>
+            <mask id="opt-V" fill="#fff" height="39" width="39" x="0" y="0">
               <use xlink:href="#opt-x"></use>
             </mask>
           </defs>
