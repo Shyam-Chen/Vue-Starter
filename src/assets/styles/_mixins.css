@@ -1,0 +1,13 @@
+:root {
+  /**
+   * @example
+   * @import '_mixins';
+   *
+   * <SELECTOR> {
+   *   @apply --foo-bar;
+   * }
+   */
+  --foo-bar: {
+    content: 'foo bar';
+  };
+}

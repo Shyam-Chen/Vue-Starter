@@ -1,6 +1,8 @@
 {
   "plugins": {
-    "postcss-import": {},
+    "postcss-import": {
+      "path": ["src/assets/styles"]
+    },
     "postcss-cssnext": {
       "warnForDuplicates": false
     },
