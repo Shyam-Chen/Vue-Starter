@@ -337,7 +337,7 @@
                 <use xlink:href="#opt-g" mask="url(#opt-E)"></use>
                 <use xlink:href="#opt-h" mask="url(#opt-F)"></use>
               </g>
-              <g fill="#42A5F5" class="docs-svg-primary-light-80-fill" transform="translate(81 63)">
+              <g fill="#BBDEFB" class="docs-svg-primary-light-80-fill" transform="translate(81 63)">
                 <use xlink:href="#opt-i" mask="url(#opt-G)"></use>
                 <use xlink:href="#opt-j" mask="url(#opt-H)"></use>
                 <use xlink:href="#opt-k" mask="url(#opt-I)"></use>
