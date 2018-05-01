@@ -71,11 +71,11 @@ jobs:
       - run:
           name: Deploy the project
           command: |
-            # if [[ "${CIRCLE_BRANCH}" == "develop" ]]; then
-            #   docker-compose up -d dev
-            #   docker-compose exec dev yarn firebase use development --token $FIREBASE_TOKEN
-            #   docker-compose exec dev yarn firebase deploy --token $FIREBASE_TOKEN
-            # fi
+            if [[ "${CIRCLE_BRANCH}" == "develop" ]]; then
+              docker-compose up -d dev
+              docker-compose exec dev yarn firebase use development --token $FIREBASE_TOKEN
+              docker-compose exec dev yarn firebase deploy --token $FIREBASE_TOKEN
+            fi
 
             if [[ "${CIRCLE_BRANCH}" == "master" ]]; then
               docker-compose up -d prod
