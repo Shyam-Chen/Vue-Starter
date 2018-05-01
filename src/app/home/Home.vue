@@ -3,7 +3,7 @@
     <v-jumbotron dark gradient="to bottom, #006fc9, #66c0ff" height="auto">
       <v-container fill-height class="pt-5 pb-5">
         <v-layout justify-center align-center wrap>
-          <img src="assets/images/logo.svg" alt="Logo" width="300" height="300">
+          <img src="/assets/images/logo.svg" alt="Logo" width="300" height="300">
 
           <v-flex shrink class="text-xs-center text-md-left">
             <div class="display-3">Oh My Vue</div>

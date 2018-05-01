@@ -24,6 +24,7 @@ export default {
       i18n.setLocaleMessage(val, data);
       i18n.locale = val;
       document.documentElement.lang = val;  // eslint-disable-line
+      localStorage.setItem('lang', val);
     });
   },
 };

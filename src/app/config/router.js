@@ -23,6 +23,7 @@ const router = new Router({
     /** @name 101-guide */
     { path: '/101-guide/components/props', component: () => import('~/101-guide/components/props/Props') },
     { path: '/101-guide/components/slots', component: () => import('~/101-guide/components/slots/Slots') },
+    { path: '/101-guide/transitions', component: () => import('~/101-guide/transitions/Transitions') },
     { path: '/101-guide/directives', component: () => import('~/101-guide/directives/Directives') },
     { path: '/101-guide/filters', component: () => import('~/101-guide/filters/Filters') },
     { path: '/101-guide/state-management', component: () => import('~/101-guide/state-management/StateManagement') },
@@ -74,8 +75,6 @@ const router = new Router({
 });
 
 router.beforeEach((to, from, next) => {
-  // ...
-
   next();
 });
 
