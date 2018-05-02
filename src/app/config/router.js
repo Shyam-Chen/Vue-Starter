@@ -14,9 +14,9 @@ const router = new Router({
   routes: [
     { path: '/', component: Home, meta: { home: true } },
 
-    /**
-     * @name standard
-     */
+    /** @name overview */
+    { path: '/overview', component: () => import('~/overview/Overview') },
+
     /** @name hello-world */
     { path: '/hello-world', component: () => import('~/hello-world/HelloWorld') },
 

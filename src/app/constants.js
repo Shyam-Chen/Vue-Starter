@@ -5,8 +5,8 @@ import { IApp } from './types';
 export const INITIAL: IApp = {
   theme: localStorage.getItem('theme') || 'light',
   navigation: [
-    // standard
-    { icon: 'face', text: 'helloWorld', route: '/hello-world', subheader: 'standard' },
+    { icon: 'pageview', text: 'overview', route: '/overview' },
+    { icon: 'face', text: 'helloWorld', route: '/hello-world' },
     {
       icon: 'loyalty',
       text: '101Guide',
@@ -78,14 +78,6 @@ export const INITIAL: IApp = {
       disabled: true,
       children: [],
     },
-
-    // playground
-    { icon: 'photo_library', text: 'gallery', route: '/gallery', disabled: true, subheader: 'playground' },
-    { icon: 'fa fa-qrcode', text: 'qrCode', route: '/qrcode', disabled: true },
-    { icon: 'store', text: 'store', route: '/store', disabled: true },
-
-    // profound
-    { icon: 'av_timer', text: 'realTime', route: '/real-time', disabled: true, subheader: 'profound' },
   ],
   drawer: false || null,
   languages: [

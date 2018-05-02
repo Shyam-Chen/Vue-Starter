@@ -9,7 +9,7 @@
             <div class="display-3">Oh My Vue</div>
             <div class="subheading">Web Fundamentals • Firebase Platform • Google Cloud</div>
             <v-divider class="my-3"></v-divider>
-            <v-btn large color="white" to="/hello-world" class="primary--text ml-0">See more</v-btn>
+            <v-btn large color="white" to="/overview" class="primary--text ml-0">See more</v-btn>
             <v-btn color="white" href="https://github.com/Shyam-Chen/Vue-Fullstack-Starter" large outline target="_blank">
               <v-icon left>fa fa-github</v-icon>
               GitHub
@@ -378,7 +378,7 @@
 
     <v-container grid-list-xl class="mt-5 mb-5">
       <v-layout row justify-center>
-        <v-btn large color="primary" to="/hello-world">See more</v-btn>
+        <v-btn large color="primary" to="/overview">See more</v-btn>
       </v-layout>
     </v-container>
   </div>
