@@ -18,12 +18,8 @@ export const INITIAL: IApp = {
             { text: 'slots', route: '/101-guide/components/slots' },
           ],
         },
-        {
-          text: 'transitions',
-          children: [
-            { text: 'state', route: '/foo', disabled: true },
-          ],
-        },
+        { text: 'transitions', route: '/101-guide/transitions' },
+        { text: 'mixins', disabled: true },
         { text: 'directives', route: '/101-guide/directives' },
         { text: 'filters', route: '/101-guide/filters' },
         {
