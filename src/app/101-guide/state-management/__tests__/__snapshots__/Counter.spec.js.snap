@@ -15,14 +15,14 @@ exports[`Counter should render initial component 1`] = `
       </div>
     </v-layout>
     <v-layout row="">
-      <v-btn color="primary">increment</v-btn>
-      <v-btn color="primary">decrement</v-btn>
+      <v-btn color="primary">Increment</v-btn>
+      <v-btn color="primary">Decrement</v-btn>
     </v-layout>
     <v-layout row="">
-      <v-btn color="primary">increment (async)</v-btn>
-      <v-btn color="primary">decrement (async)</v-btn>
-      <v-btn color="primary">increment (ifOdd)</v-btn>
-      <v-btn color="primary">decrement (ifEven)</v-btn>
+      <v-btn color="primary">Increment (Async)</v-btn>
+      <v-btn color="primary">Decrement (Async)</v-btn>
+      <v-btn color="primary">Increment (If Odd)</v-btn>
+      <v-btn color="primary">Decrement (If Even)</v-btn>
     </v-layout>
     <v-layout row="">
       <v-btn color="primary" disabled="">Start Count</v-btn>

@@ -7,33 +7,33 @@ exports[`Internationalization should render initial component 1`] = `
     <v-layout row="">
       <p class="pl-2 pt-4">
         HTML formatting:
-        <b class="primary--text">bubble</b>
+        <b class="primary--text">Bubble</b>
       </p>
     </v-layout>
     <v-layout row="">
       <p class="pl-2">
         Named formatting:
-        <b class="primary--text">hello</b>
+        <b class="primary--text">Hello, Vue!</b>
       </p>
     </v-layout>
     <v-layout row="">
       <p class="pl-2">
         List formatting:
-        <b class="primary--text">thinkIn</b>
+        <b class="primary--text">Think in Vue</b>
       </p>
     </v-layout>
     <v-layout row="">
       <p class="pl-2">
         Pluralization:
-        <b class="primary--text">http://google.com</b>
+        <b class="primary--text">https://google.com</b>
       </p>
     </v-layout>
     <v-layout row="">
       <p class="pl-2">
         Pluralizing i18n:
-        <b class="primary--text">framework</b>,
-        <b class="primary--text">framework</b>,
-        <b class="primary--text">framework</b>
+        <b class="primary--text">No framework</b>,
+        <b class="primary--text">One framework</b>,
+        <b class="primary--text">3 frameworks</b>
       </p>
     </v-layout>
   </v-layout>

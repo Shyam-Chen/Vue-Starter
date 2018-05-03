@@ -13,8 +13,8 @@ const env = require('./env');
 
 const DIST_ROOT = path.join(__dirname, 'functions');
 
-gulp.task('build', () =>
-  gulp
+gulp.task('build', () => {
+  return gulp
     .src([
       'src/**/*',
       '!src/index.html',
@@ -26,26 +26,28 @@ gulp.task('build', () =>
     .pipe(plumber())
     .pipe(replaces(envify(env)))
     .pipe(babel())
-    .pipe(gulp.dest(DIST_ROOT)),
-);
+    .pipe(gulp.dest(DIST_ROOT));
+});
 
-gulp.task('copy', () =>
-  gulp
+gulp.task('copy', () => {
+  return gulp
     .src([
       'package.json',
       'yarn.lock',
     ])
-    .pipe(gulp.dest(DIST_ROOT)),
-);
+    .pipe(gulp.dest(DIST_ROOT));
+});
 
-gulp.task('rename', () =>
-  gulp.src('functions/server.js')
+gulp.task('rename', () => {
+  return gulp.src('functions/server.js')
     .pipe(shell('rimraf functions/server.js'))
     .pipe(rename('index.js'))
-    .pipe(gulp.dest(DIST_ROOT)),
-);
+    .pipe(gulp.dest(DIST_ROOT));
+});
 
-gulp.task('rebuild', done => runSequence('build', 'rename', done));
+gulp.task('rebuild', (done) => {
+  return runSequence('build', 'rename', done);
+});
 
 gulp.task('watch', () => {
   gulp.watch([

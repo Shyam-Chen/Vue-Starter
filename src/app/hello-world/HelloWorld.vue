@@ -1,7 +1,7 @@
 <template>
   <v-container fluid>
     <v-layout>
-      <div class="title">Hello, World!</div>
+      <div class="title">{{ message }}</div>
     </v-layout>
   </v-container>
 </template>
@@ -13,6 +13,11 @@ export default {
     meta: [
       { property: 'og:title', content: 'Hello World | Oh My Vue' },
     ],
+  },
+  data() {
+    return {
+      message: 'Hello, World!',
+    };
   },
 };
 </script>

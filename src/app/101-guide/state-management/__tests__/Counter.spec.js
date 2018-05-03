@@ -3,7 +3,7 @@ import { createLocalVue, shallow } from '@vue/test-utils';
 import I18n from 'vue-i18n';
 
 import Counter from '../StateManagement';
-import messages from '../_languages/en.yml';
+import en from '../_languages/en.yml';
 
 const localVue = createLocalVue();
 
@@ -48,7 +48,7 @@ describe('Counter', () => {
 
     i18n = new I18n({
       locale: 'en',
-      messages,
+      messages: { en },
     });
 
     wrapper = shallow(Counter, { localVue, store, i18n });
