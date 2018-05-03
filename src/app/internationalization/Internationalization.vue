@@ -1,5 +1,3 @@
-<i18n src="./translation.yml"></i18n>
-
 <template>
   <v-container fluid>
     <v-layout column>

@@ -2,7 +2,7 @@ import { createLocalVue, shallow } from '@vue/test-utils';
 import I18n from 'vue-i18n';
 
 import Internationalization from '../Internationalization';
-import messages from '../translation.yml';
+import messages from '../_languages/en.yml';
 
 const localVue = createLocalVue();
 
