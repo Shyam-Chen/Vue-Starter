@@ -26,6 +26,15 @@ const router = new Router({
     { path: '/101-guide/transitions', component: () => import('~/101-guide/transitions/Transitions') },
     { path: '/101-guide/directives', component: () => import('~/101-guide/directives/Directives') },
     { path: '/101-guide/filters', component: () => import('~/101-guide/filters/Filters') },
+    {
+      path: '/101-guide/routing/nested-routes',
+      component: () => import('~/101-guide/routing/Routing'),
+      children: [
+        { path: '', component: () => import('~/101-guide/routing/Default') },
+        { path: 'first', component: () => import('~/101-guide/routing/First') },
+        { path: 'second', component: () => import('~/101-guide/routing/Second') },
+      ],
+    },
     { path: '/101-guide/state-management', component: () => import('~/101-guide/state-management/StateManagement') },
     // ...
 

@@ -25,7 +25,7 @@ export const INITIAL: IApp = {
         {
           text: 'routing',
           children: [
-            { text: 'params', route: '/foo', disabled: true },
+            { text: 'nestedRoutes', route: '/101-guide/routing/nested-routes' },
             { text: 'guards', route: '/foo', disabled: true },
           ],
         },
