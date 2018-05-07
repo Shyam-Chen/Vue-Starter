@@ -4838,17 +4838,11 @@ escodegen@^1.9.0:
   optionalDependencies:
     source-map "~0.5.6"
 
-eslint-config-airbnb-base@^12.1.0:
+eslint-config-airbnb-base@12.1.0:
   version "12.1.0"
   resolved "https://registry.yarnpkg.com/eslint-config-airbnb-base/-/eslint-config-airbnb-base-12.1.0.tgz#386441e54a12ccd957b0a92564a4bafebd747944"
   dependencies:
     eslint-restricted-globals "^0.1.1"
-
-eslint-config-airbnb@16.1.0:
-  version "16.1.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-airbnb/-/eslint-config-airbnb-16.1.0.tgz#2546bfb02cc9fe92284bf1723ccf2e87bc45ca46"
-  dependencies:
-    eslint-config-airbnb-base "^12.1.0"
 
 eslint-import-resolver-babel-plugin-root-import@1.1.1:
   version "1.1.1"
@@ -12659,9 +12653,9 @@ rx-lite@^3.1.2:
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/rx-lite/-/rx-lite-3.1.2.tgz#19ce502ca572665f3b647b10939f97fd1615f102"
 
-rxjs@6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.0.0.tgz#d647e029b5854617f994c82fe57a4c6747b352da"
+rxjs@6.1.0:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.1.0.tgz#833447de4e4f6427b9cec3e5eb9f56415cd28315"
   dependencies:
     tslib "^1.9.0"
 
@@ -14708,9 +14702,9 @@ vuetify@1.0.17:
   version "1.0.17"
   resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-1.0.17.tgz#646991024b327514b5fc50fb5c34e15451ad14b6"
 
-vuex-bound@0.4.1:
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/vuex-bound/-/vuex-bound-0.4.1.tgz#121f035367b727d716a21292f84df3e9888a9735"
+vuex-bound@0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/vuex-bound/-/vuex-bound-0.5.0.tgz#613fba79e07ab9da9db1c6a70a793f0ea50cf9d3"
 
 vuex-router-sync@5.0.0:
   version "5.0.0"
