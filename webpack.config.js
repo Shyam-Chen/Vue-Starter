@@ -132,10 +132,15 @@ module.exports = ({ prod = false } = {}) => ({
   optimization: {
     splitChunks: {
       cacheGroups: {
-        vendor: {
-          test: /node_modules/,
-          name: 'vendor',
+        common: {
+          name: 'common',
           chunks: 'initial',
+          minChunks: 2,
+        },
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendor',
+          chunks: 'all',
         },
       },
     },
