@@ -14,4 +14,3 @@ global.launch = {
   slowMo: 80,
   args: [`--window-size=${width},${height}`, '--no-sandbox'],
 };
-
