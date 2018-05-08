@@ -151,6 +151,7 @@ module.exports = ({ prod = false } = {}) => ({
   devServer: {
     contentBase: DIST_ROOT,
     historyApiFallback: true,
+    host: env.HOST_NAME,
     hot: true,
     inline: true,
     port: env.SITE_PORT,

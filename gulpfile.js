@@ -57,7 +57,7 @@ gulp.task('watch', () => {
   ], ['rebuild']);
 });
 
-gulp.task('serve', shell.task(`firebase serve --only functions --port ${env.FUNC_PORT}`));
+gulp.task('serve', shell.task(`firebase serve --only functions --host ${env.HOST_NAME} --port ${env.FUNC_PORT}`));
 
 gulp.task('default', (done) => {
   if (util.env.prod) {
