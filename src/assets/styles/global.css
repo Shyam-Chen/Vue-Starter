@@ -4,4 +4,8 @@
 
 .container {
   height: calc(100% - 86px);  /* calc(100% - footer) */
+
+  @media screen and (max-width: 599px) {
+    height: calc(100% - 128px);  /* calc(100% - footer) */
+  }
 }

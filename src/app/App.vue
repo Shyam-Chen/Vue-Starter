@@ -120,11 +120,11 @@
           <v-footer height="auto" class="pa-3 primary darken-1 white--text">
             <img src="/assets/images/logo.svg" alt="Logo" width="50" height="50">
 
-            <v-layout fill-height row wrap justify-space-between align-center class="ml-3 mr-3">
-              <div>
+            <v-layout :column="isMobile" fill-height justify-space-between align-center class="ml-3 mr-3">
+              <div class="subheading">
                 <a href="https://vuejs.org/" class="subheading pa-2 white--text" style="text-decoration: none;">Learn Vue</a>
               </div>
-              <div>Current Version: 1.0.0</div>
+              <div class="caption">Current Version: 2.5.16</div>
               <div class="caption text-xs-center">
                 Powered by Oh My Vue &copy;{{ new Date().getFullYear() }}. <br>
                 Code licensed under an MIT-style License. <br>
@@ -152,6 +152,11 @@ import { IApp } from './types';
 import actions from './actions';
 
 export default {
+  data() {
+    return {
+      isMobile: window.innerWidth < 600,
+    };
+  },
   computed: {
     $app(): IApp {
       return this.$store.state;
