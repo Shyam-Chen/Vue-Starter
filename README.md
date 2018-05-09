@@ -202,11 +202,13 @@ function Environments() {
 
   this.PROJECT_NAME = process.env.PROJECT_NAME || '<PROJECT_NAME>';
 
+  this.HOST_NAME = process.env.HOST_NAME || '0.0.0.0';
+
   this.SITE_PORT = process.env.SITE_PORT || 8000;
-  this.SITE_URL = process.env.SITE_URL || `http://localhost:${this.SITE_PORT}`;
+  this.SITE_URL = process.env.SITE_URL || `http://${this.HOST_NAME}:${this.SITE_PORT}`;
 
   this.FUNC_PORT = process.env.FUNC_PORT || 5000;
-  this.FUNC_URL = process.env.FUNC_URL || `http://localhost:${this.FUNC_PORT}/${this.PROJECT_NAME}/us-central1`;
+  this.FUNC_URL = process.env.FUNC_URL || `http://${this.HOST_NAME}:${this.FUNC_PORT}/${this.PROJECT_NAME}/us-central1`;
 
   this.FIREBASE_CONFIG = process.env.FIREBASE_CONFIG || {
     apiKey: '<API_KEY>',
@@ -217,7 +219,7 @@ function Environments() {
     messagingSenderId: '<MESSAGING_SENDER_ID>',
   };
 
-  this.GOOGLE_ANALYTICS = process.env.GOOGLE_ANALYTICS || 'UA-84381641-2';
+  this.GOOGLE_ANALYTICS = process.env.GOOGLE_ANALYTICS || '<GOOGLE_ANALYTICS>';
 
   this.SENTRY_DSN = process.env.SENTRY_DSN || null;
   this.RENDERTRON_URL = process.env.RENDERTRON_URL || null;

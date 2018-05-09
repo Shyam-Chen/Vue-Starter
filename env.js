@@ -3,7 +3,7 @@ function Environments() {
 
   this.PROJECT_NAME = process.env.PROJECT_NAME || 'vue-by-example-dev';
 
-  this.HOST_NAME = process.env.HOST_NAME || 'localhost';
+  this.HOST_NAME = process.env.HOST_NAME || '0.0.0.0';
 
   this.SITE_PORT = process.env.SITE_PORT || 8000;
   this.SITE_URL = process.env.SITE_URL || `http://${this.HOST_NAME}:${this.SITE_PORT}`;
