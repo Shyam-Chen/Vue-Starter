@@ -302,30 +302,38 @@ ENV RENDERTRON_URL <RENDERTRON_URL>
 .
 ├── src
 │   ├── api
-│   │   ├── config  -> config middlewares
+│   │   ├── _<THING>  -> private things
+│   │   │   └── ...
+│   │   ├── core  -> core feature module
 │   │   ├── graphql
-│   │   │   └── <FEATURE>
+│   │   │   └── <FEATURE>  -> feature modules
 │   │   │       ├── __tests__
 │   │   │       │   └── ...
+│   │   │       ├── _<THING>  -> private things
+│   │   │       │   └── ...
 │   │   │       └── ...
-│   │   ├── <FEATURE>
+│   │   ├── <FEATURE>  -> feature modules
 │   │   │   ├── __tests__
 │   │   │   │   └── ...
+│   │   │   ├── _<THING>  -> private things
+│   │   │   │   └── ...
+│   │   │   └── ...
+│   │   ├── shared  -> shared feature module
 │   │   │   └── ...
 │   │   └── index.js
 │   ├── app
-│   │   ├── _languages  -> app languages
+│   │   ├── _<THING>  -> private things
 │   │   │   └── ...
-│   │   ├── config  -> config plugins
+│   │   ├── core  -> core feature module
 │   │   │   └── ...
-│   │   ├── <FEATURE>
+│   │   ├── <FEATURE>  -> feature modules
 │   │   │   ├── __tests__
 │   │   │   │   ├── actions.spec.js
 │   │   │   │   ├── <FEATURE>.e2e-spec.js
 │   │   │   │   ├── <FEATURE>.spec.js
 │   │   │   │   ├── getters.spec.js
 │   │   │   │   └── mutations.spec.js
-│   │   │   ├── _languages  -> <FEATURE> languages
+│   │   │   ├── _<THING>  -> private things
 │   │   │   │   └── ...
 │   │   │   ├── actions.js
 │   │   │   ├── constants.js
@@ -333,8 +341,10 @@ ENV RENDERTRON_URL <RENDERTRON_URL>
 │   │   │   ├── getters.js
 │   │   │   ├── mutations.js
 │   │   │   └── types.js
+│   │   ├── shared  -> shared feature module
+│   │   │   └── ...
 │   │   ├── actions.js  -> root actions
-│   │   ├── App.vue  -> app root
+│   │   ├── App.vue  -> app root module
 │   │   ├── constants.js  -> root constants
 │   │   ├── getters.js  -> root getters
 │   │   ├── mutations.js  -> root mutations

@@ -9,10 +9,10 @@ import RavenVue from 'raven-js/plugins/vue';
 
 import './assets/styles/global.css';
 import App from './app/App';
-import router from './app/config/router';
-import store from './app/config/store';
-import provide from './app/config/provide';
-import i18n from './app/config/i18n';
+import router from './app/core/router';
+import store from './app/core/store';
+import provide from './app/core/provide';
+import i18n from './app/core/i18n';
 
 sync(store, router);
 

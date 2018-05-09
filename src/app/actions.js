@@ -1,6 +1,6 @@
 // @flow
 
-import i18n from '~/config/i18n';
+import i18n from '~/core/i18n';
 
 import { IContent } from './types';
 import { INITIAL } from './constants';
