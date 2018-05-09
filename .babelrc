@@ -13,8 +13,7 @@
         "flow"
       ],
       "plugins": [
-        "transform-runtime",
-        "transform-vue-jsx"
+        "transform-runtime"
       ]
     },
     "api": {

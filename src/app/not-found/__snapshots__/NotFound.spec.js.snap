@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`NotFound should render initial component 1`] = `
-<v-container fluid="true" fill-height="true">
-  <v-layout justify-center="true" align-center="true">
+<v-container fluid="" fill-height="">
+  <v-layout justify-center="" align-center="">
     <div class="text-xs-center">
       <div class="display-2 primary--text pa-3">Whoops, 404!</div>
       <div class="pa-2">The page you were looking for does not exist.</div>
-      <v-btn to="/" color="primary" outline="true">Get me out of here!</v-btn>
+      <v-btn to="/" color="primary" outline="">Get me out of here!</v-btn>
     </div>
   </v-layout>
 </v-container>
