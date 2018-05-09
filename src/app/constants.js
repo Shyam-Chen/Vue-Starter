@@ -19,7 +19,7 @@ export const INITIAL: IApp = {
           ],
         },
         { text: 'transitions', route: '/101-guide/transitions' },
-        { text: 'mixins', disabled: true },
+        { text: 'mixins', route: '/101-guide/mixins' },
         { text: 'directives', route: '/101-guide/directives' },
         { text: 'filters', route: '/101-guide/filters' },
         {
