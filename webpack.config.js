@@ -2,7 +2,6 @@ const fs = require('fs');
 const path = require('path');
 const webpack = require('webpack');
 const HtmlPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ScriptExtHtmlPlugin = require('script-ext-html-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
 const CopyPlugin = require('copy-webpack-plugin');
@@ -52,7 +51,7 @@ module.exports = ({ prod = false } = {}) => ({
       {
         test: /\.css$/,
         use: [
-          prod ? MiniCssExtractPlugin.loader : 'style-loader',
+          'style-loader',
           { loader: 'css-loader', options: { importLoaders: 1 } },
           { loader: 'postcss-loader', options: { sourceMap: true } },
         ],
@@ -108,11 +107,13 @@ module.exports = ({ prod = false } = {}) => ({
         ? `<script defer>${uglify.minify(fs.readFileSync(path.join(__dirname, './tools/service-worker.prod.js'), 'utf-8')).code}</script>`
         : `<script defer>${fs.readFileSync(path.join(__dirname, './tools/service-worker.dev.js'), 'utf-8')}</script>`,
     }),
-    new MiniCssExtractPlugin({
-      filename: prod ? '[name].[hash].css' : '[name].css',
-      chunkFilename: prod ? '[id].[hash].css' : '[id].css',
+    new ScriptExtHtmlPlugin({
+      defaultAttribute: 'defer',
+      preload: {
+        test: /\.js$/,
+        chunks: 'all',
+      },
     }),
-    new ScriptExtHtmlPlugin({ defaultAttribute: 'defer' }),
     new VueLoaderPlugin(),
     new CopyPlugin([
       {
