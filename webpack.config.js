@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const webpack = require('webpack');
 const HtmlPlugin = require('html-webpack-plugin');
+const ScriptExtHtmlPlugin = require('script-ext-html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const SWPrecachePlugin = require('sw-precache-webpack-plugin');
 const RobotstxtPlugin = require('robotstxt-webpack-plugin').default;
@@ -105,9 +106,10 @@ module.exports = ({ prod = false } = {}) => ({
       },
       chunksSortMode: prod ? 'dependency' : 'auto',
       serviceWorkerLoader: prod
-        ? `<script>${uglify.minify(fs.readFileSync(path.join(__dirname, './tools/service-worker.prod.js'), 'utf-8')).code}</script>`
-        : `<script>${fs.readFileSync(path.join(__dirname, './tools/service-worker.dev.js'), 'utf-8')}</script>`,
+        ? `<script defer>${uglify.minify(fs.readFileSync(path.join(__dirname, './tools/service-worker.prod.js'), 'utf-8')).code}</script>`
+        : `<script defer>${fs.readFileSync(path.join(__dirname, './tools/service-worker.dev.js'), 'utf-8')}</script>`,
     }),
+    new ScriptExtHtmlPlugin({ defaultAttribute: 'defer' }),
     new CopyPlugin([
       {
         from: 'assets/**/*',

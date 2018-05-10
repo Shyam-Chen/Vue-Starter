@@ -117,6 +117,7 @@
     "robotstxt-webpack-plugin": "4.0.1",
     "rucksack-css": "1.0.2",
     "run-sequence": "2.2.1",
+    "script-ext-html-webpack-plugin": "2.0.1",
     "sitemap-webpack-plugin": "0.6.0",
     "style-loader": "0.21.0",
     "stylelint": "9.2.0",
