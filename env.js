@@ -3,13 +3,15 @@ function Environments() {
 
   this.PROJECT_NAME = process.env.PROJECT_NAME || 'vue-by-example-dev';
 
-  this.HOST_NAME = process.env.HOST_NAME || '0.0.0.0';
+  this.HOST_NAME = process.env.HOST_NAME || 'localhost';
 
   this.SITE_PORT = process.env.SITE_PORT || 8000;
   this.SITE_URL = process.env.SITE_URL || `http://${this.HOST_NAME}:${this.SITE_PORT}`;
 
   this.FUNC_PORT = process.env.FUNC_PORT || 5000;
   this.FUNC_URL = process.env.FUNC_URL || `http://${this.HOST_NAME}:${this.FUNC_PORT}/${this.PROJECT_NAME}/us-central1`;
+
+  this.APP_BASE = process.env.APP_BASE || '/';
 
   this.FIREBASE_CONFIG = process.env.FIREBASE_CONFIG || {
     apiKey: 'AIzaSyCvhvJ1buNiNRxUzQub8Eg1PO65EtTIurA',
