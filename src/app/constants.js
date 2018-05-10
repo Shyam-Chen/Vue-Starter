@@ -25,8 +25,9 @@ export const INITIAL: IApp = {
         {
           text: 'routing',
           children: [
+            { text: 'dynamicMatching', route: '/101-guide/routing/dynamic-matching' },
             { text: 'nestedRoutes', route: '/101-guide/routing/nested-routes' },
-            { text: 'guards', route: '/foo', disabled: true },
+            { text: 'guards', route: '/101-guide/routing/guards', disabled: true },
           ],
         },
         { text: 'stateManagement', route: '/101-guide/state-management' },
@@ -66,10 +67,7 @@ export const INITIAL: IApp = {
       icon: 'verified_user',
       text: 'authorization',
       disabled: true,
-      children: [
-        { text: 'rest', disabled: true },
-        { text: 'graphql', disabled: true },
-      ],
+      children: [],
     },
     { icon: 'fa fa-credit-card', text: 'payment', disabled: true },
     {
