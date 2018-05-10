@@ -111,6 +111,10 @@ module.exports = ({ prod = false } = {}) => ({
       defaultAttribute: 'defer',
       preload: {
         test: /\.js$/,
+        chunks: 'initial',
+      },
+      prefetch: {
+        test: /\.js$/,
         chunks: 'all',
       },
     }),
