@@ -79,8 +79,8 @@ export const INITIAL: IApp = {
   ],
   drawer: false || null,
   languages: [
-    { key: 'en', label: 'English' },
-    { key: 'zh', label: '中文' },
-    { key: 'ja', label: '日本語' },
+    { key: 'en', country: 'us', label: 'English' },
+    { key: 'zh', country: 'tw', label: '中文' },
+    { key: 'ja', country: 'jp', label: '日本語' },
   ],
 };

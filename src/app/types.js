@@ -13,7 +13,7 @@ export interface IApp {
   theme: string;
   navigation: Navigation[];
   drawer: boolean | null;
-  languages: Array<{ key: string, label: string }>;
+  languages: Array<{ key: string, country: string, label: string }>;
 }
 
 export interface IContent {

@@ -92,10 +92,12 @@
             </v-btn>
             <v-list>
               <v-list-tile @click="setTheme('light')">
-                <v-list-tile-title>Light</v-list-tile-title>
+                <v-list-tile-avatar style="font-size: 2rem;">☀️</v-list-tile-avatar>
+                <v-list-tile-title>Light Theme</v-list-tile-title>
               </v-list-tile>
               <v-list-tile @click="setTheme('dark')">
-                <v-list-tile-title>Dark</v-list-tile-title>
+                <v-list-tile-avatar style="font-size: 2rem;">🌙</v-list-tile-avatar>
+                <v-list-tile-title>Dark Theme</v-list-tile-title>
               </v-list-tile>
             </v-list>
           </v-menu>
@@ -106,6 +108,9 @@
             </v-btn>
             <v-list>
               <v-list-tile v-for="lang in $app.languages" :key="lang.key" @click="setLanguage(lang.key)">
+                <v-list-tile-avatar>
+                  <img :src="`https://countryflags.io/${lang.country}/flat/24.png`">
+                </v-list-tile-avatar>
                 <v-list-tile-title>{{ lang.label }}</v-list-tile-title>
               </v-list-tile>
             </v-list>
