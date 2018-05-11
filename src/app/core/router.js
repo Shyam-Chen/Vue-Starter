@@ -54,9 +54,8 @@ const router = new Router({
     { path: '/form-controls/pickers', component: () => import('~/form-controls/pickers/Pickers') },
 
     /** @name data-table */
-    { path: '/data-table/basic', component: () => import('~/data-table/basic/Basic') },
-    // { path: '/data-table/rest', component: () => import('~/data-table/rest/REST') },
-    // { path: '/data-table/graphql', component: () => import('~/data-table/graphql/GraphQL') },
+    { path: '/data-table/paginator', component: () => import('~/data-table/paginator/Paginator') },
+    // { path: '/data-table/iterator', component: () => import('~/data-table/iterator/Iterator') },
 
     /** @name internationalization */
     { path: '/internationalization', component: () => import('~/internationalization/Internationalization') },
@@ -66,6 +65,9 @@ const router = new Router({
 
     /** @name authorization */
     { path: '/authorization', component: () => import('~/authorization/Authorization') },
+
+    /** @name payment */
+    { path: '/payment', component: () => import('~/payment/Payment') },
 
     { path: '*', component: NotFound, meta: { standalone: true } },
   ],

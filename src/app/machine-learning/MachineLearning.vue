@@ -1,6 +1,6 @@
 <template>
   <v-container fluid>
-    <div class="headline">Payment (TODO)</div>
+    <div class="headline">Machine Learning (TODO)</div>
   </v-container>
 </template>
 

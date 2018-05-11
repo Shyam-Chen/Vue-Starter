@@ -1,7 +1,7 @@
 <template>
   <v-container fluid>
     <v-layout column>
-      <div class="headline">Data Table - Basic</div>
+      <div class="headline">Data Table - Paginator</div>
 
       <v-data-table v-model="selected" :headers="headers" :items="items" :pagination.sync="pagination" select-all item-key="name" class="elevation-1">
         <template slot="headers" slot-scope="props">
