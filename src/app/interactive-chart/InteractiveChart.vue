@@ -17,14 +17,12 @@
 </template>
 
 <script>
-/* eslint-disable */
 import 'echarts/lib/chart/bar';
 import 'echarts/lib/chart/pie';
 
 import 'echarts/lib/component/dataset';
 import 'echarts/lib/component/legend';
 import 'echarts/lib/component/tooltip';
-/* eslint-enable */
 
 import ECharts from 'vue-echarts/components/ECharts';
 
