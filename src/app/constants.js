@@ -63,12 +63,7 @@ export const INITIAL: IApp = {
     },
     { icon: 'language', text: 'internationalization', route: '/internationalization' },
     { icon: 'fa fa-bar-chart', text: 'interactiveChart', route: '/interactive-chart' },
-    {
-      icon: 'verified_user',
-      text: 'authorization',
-      disabled: true,
-      children: [],
-    },
+    { icon: 'verified_user', text: 'authorization', route: '/authorization' },
     { icon: 'fa fa-credit-card', text: 'payment', disabled: true },
     {
       icon: 'message',

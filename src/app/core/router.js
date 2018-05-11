@@ -64,6 +64,9 @@ const router = new Router({
     /** @name interactive-chart */
     { path: '/interactive-chart', component: () => import('~/interactive-chart/InteractiveChart') },
 
+    /** @name authorization */
+    { path: '/authorization', component: () => import('~/authorization/Authorization') },
+
     { path: '*', component: NotFound, meta: { standalone: true } },
   ],
   async scrollBehavior(to, from, savedPosition) {
