@@ -24,21 +24,21 @@
 
     <v-layout column>
       <div>
-        <v-btn color="red">
+        <v-btn color="red" dark>
           <v-icon left>fa fa-google</v-icon>
           Sign in with Google
         </v-btn>
       </div>
 
       <div>
-        <v-btn color="indigo">
+        <v-btn color="indigo" dark>
           <v-icon left>fa fa-facebook-official</v-icon>
           Sign in with Facebook
         </v-btn>
       </div>
 
       <div>
-        <v-btn color="blue">
+        <v-btn color="blue" dark>
           <v-icon left>fa fa-twitter</v-icon>
           Sign in with Twitter
         </v-btn>
