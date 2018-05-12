@@ -1,6 +1,6 @@
 import { shallow } from '@vue/test-utils';
 
-import NotFound from './NotFound';
+import NotFound from '../NotFound';
 
 describe('NotFound', () => {
   let [wrapper] = [];

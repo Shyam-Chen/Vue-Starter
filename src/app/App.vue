@@ -87,7 +87,7 @@
           <v-spacer></v-spacer>
 
           <v-menu bottom left>
-            <v-btn slot="activator" name="theme" icon dark>
+            <v-btn slot="activator" aria-label="Theme" icon dark>
               <v-icon>format_color_fill</v-icon>
             </v-btn>
             <v-list>
@@ -103,7 +103,7 @@
           </v-menu>
 
           <v-menu bottom left>
-            <v-btn slot="activator" name="language" icon dark>
+            <v-btn slot="activator" aria-label="Language" icon dark>
               <v-icon>language</v-icon>
             </v-btn>
             <v-list>
