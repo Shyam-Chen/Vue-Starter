@@ -7,7 +7,7 @@
           <v-toolbar class="hidden-md-and-up" flat>
             <v-toolbar-title class="ml-0 pl-3 vfs-toolbar-title">
               <router-link class="vfs-router-link" to="/">
-                <img src="/assets/images/logo.svg" alt="Logo" width="40" height="40">
+                <img src="/assets/images/logo.svg" alt="Logo" class="vfs-toolbar-image">
                 <span>Oh My Vue</span>
               </router-link>
             </v-toolbar-title>
@@ -77,7 +77,7 @@
           <v-toolbar-title class="ml-0 pl-3 vfs-toolbar-title">
             <v-toolbar-side-icon v-if="!$route.meta.home" @click.stop="$app.drawer = !$app.drawer"></v-toolbar-side-icon>
             <router-link class="hidden-sm-and-down white--text vfs-router-link" to="/">
-              <img src="/assets/images/logo.svg" alt="Logo" width="40" height="40">
+              <img src="/assets/images/logo.svg" alt="Logo" class="vfs-toolbar-image">
               <span>Oh My Vue</span>
             </router-link>
           </v-toolbar-title>
@@ -87,24 +87,24 @@
           <v-spacer></v-spacer>
 
           <v-menu bottom left>
-            <v-btn slot="activator" aria-label="Theme" icon dark>
-              <v-icon>format_color_fill</v-icon>
+            <v-btn slot="activator" aria-label="Theme" icon>
+              <v-icon color="white" dark>format_color_fill</v-icon>
             </v-btn>
             <v-list>
               <v-list-tile @click="setTheme('light')">
-                <v-list-tile-avatar style="font-size: 2rem;">☀️</v-list-tile-avatar>
+                <v-list-tile-avatar class="vfs-list-tile-avatar">☀️</v-list-tile-avatar>
                 <v-list-tile-title>Light Theme</v-list-tile-title>
               </v-list-tile>
               <v-list-tile @click="setTheme('dark')">
-                <v-list-tile-avatar style="font-size: 2rem;">🌙</v-list-tile-avatar>
+                <v-list-tile-avatar class="vfs-list-tile-avatar">🌙</v-list-tile-avatar>
                 <v-list-tile-title>Dark Theme</v-list-tile-title>
               </v-list-tile>
             </v-list>
           </v-menu>
 
           <v-menu bottom left>
-            <v-btn slot="activator" aria-label="Language" icon dark>
-              <v-icon>language</v-icon>
+            <v-btn slot="activator" aria-label="Language" icon>
+              <v-icon color="white" dark>language</v-icon>
             </v-btn>
             <v-list>
               <v-list-tile v-for="lang in $app.languages" :key="lang.key" @click="setLanguage(lang.key)">
@@ -127,7 +127,7 @@
 
             <v-layout :column="isMobile" fill-height justify-space-between align-center class="ml-3 mr-3">
               <div class="subheading">
-                <a href="https://vuejs.org/" class="subheading pa-2 white--text" style="text-decoration: none;">Learn Vue</a>
+                <a href="https://vuejs.org/" class="subheading pa-2 white--text vfs-router-link">Learn Vue</a>
               </div>
               <div class="caption">Current Version: 2.5.16</div>
               <div class="caption text-xs-center">
@@ -179,13 +179,19 @@ export default {
 <style scoped>
 .vfs-toolbar-title {
   width: 300px;
-
-  & img {
-    vertical-align: middle;
-  }
 }
 
 .vfs-router-link {
   text-decoration: none;
+}
+
+.vfs-toolbar-image {
+  vertical-align: middle;
+  width: 40px;
+  height: 40px;
+}
+
+.vfs-list-tile-avatar {
+  font-size: 2rem;
 }
 </style>
