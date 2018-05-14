@@ -1,6 +1,10 @@
 switch (process.env.JEST_ENV) {
   case 'app':
     module.exports = {
+      coveragePathIgnorePatterns: [
+        '/node_modules/',
+        '/tools/',
+      ],
       moduleFileExtensions: ['js', 'vue'],
       moduleNameMapper: {
         '~assets(.*)': '<rootDir>/src/assets$1',

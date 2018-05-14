@@ -13,6 +13,7 @@
         "flow"
       ],
       "plugins": [
+        "dynamic-import-node",
         "transform-runtime"
       ]
     },

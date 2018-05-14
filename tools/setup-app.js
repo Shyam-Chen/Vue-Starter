@@ -22,6 +22,7 @@ Vue.config.ignoredElements = [
   'v-dialog',
   'v-divider',
   'v-expansion-panel', 'v-expansion-panel-content',
+  'v-fade-transition',
   'v-footer',
   'v-form',
   'v-container', 'v-content', 'v-flex', 'v-layout',
@@ -51,3 +52,21 @@ Vue.config.ignoredElements = [
   'v-toolbar', 'v-toolbar-side-icon',
   'v-tooltip',
 ];
+
+Object.defineProperty(window, 'localStorage', {
+  value: (() => {
+    let store = {};
+
+    return {
+      getItem(key) {
+        return store[key] || null;
+      },
+      setItem(key, value) {
+        store[key] = value.toString();
+      },
+      clear() {
+        store = {};
+      },
+    };
+  })(),
+});

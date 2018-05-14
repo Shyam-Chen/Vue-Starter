@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App should render initial component 1`] = `
+<v-fade-transition appear="">
+  <v-app>
+    <!---->
+  </v-app>
+</v-fade-transition>
+`;
