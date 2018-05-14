@@ -13,6 +13,22 @@
         "flow"
       ],
       "plugins": [
+        "transform-runtime"
+      ]
+    },
+    "test": {
+      "presets": [
+        [
+          "env", {
+            "targets": {
+              "node": "current"
+            }
+          }
+        ],
+        "stage-0",
+        "flow"
+      ],
+      "plugins": [
         "dynamic-import-node",
         "transform-runtime"
       ]
