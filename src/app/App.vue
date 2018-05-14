@@ -7,7 +7,7 @@
           <v-toolbar class="hidden-md-and-up" flat>
             <v-toolbar-title class="ml-0 pl-3 vfs-toolbar-title">
               <router-link class="vfs-router-link" to="/">
-                <img src="/assets/images/logo.svg" alt="Logo" class="vfs-toolbar-image">
+                <img src="/assets/images/logo.svg" alt="Logo" width="40" height="40" class="vfs-toolbar-image">
                 <span>Oh My Vue</span>
               </router-link>
             </v-toolbar-title>
@@ -77,7 +77,7 @@
           <v-toolbar-title class="ml-0 pl-3 vfs-toolbar-title">
             <v-toolbar-side-icon v-if="!$route.meta.home" @click.stop="$app.drawer = !$app.drawer"></v-toolbar-side-icon>
             <router-link class="hidden-sm-and-down white--text vfs-router-link" to="/">
-              <img src="/assets/images/logo.svg" alt="Logo" class="vfs-toolbar-image">
+              <img src="/assets/images/logo.svg" alt="Logo" width="40" height="40" class="vfs-toolbar-image">
               <span>Oh My Vue</span>
             </router-link>
           </v-toolbar-title>
@@ -88,7 +88,7 @@
 
           <v-menu bottom left>
             <v-btn slot="activator" aria-label="Theme" icon>
-              <v-icon color="white" dark>format_color_fill</v-icon>
+              <v-icon>format_color_fill</v-icon>
             </v-btn>
             <v-list>
               <v-list-tile @click="setTheme('light')">
@@ -104,12 +104,12 @@
 
           <v-menu bottom left>
             <v-btn slot="activator" aria-label="Language" icon>
-              <v-icon color="white" dark>language</v-icon>
+              <v-icon>language</v-icon>
             </v-btn>
             <v-list>
               <v-list-tile v-for="lang in $app.languages" :key="lang.key" @click="setLanguage(lang.key)">
                 <v-list-tile-avatar>
-                  <img :src="`https://countryflags.io/${lang.country}/flat/24.png`">
+                  <img :src="`https://countryflags.io/${lang.country}/flat/24.png`" alt="Country Flag">
                 </v-list-tile-avatar>
                 <v-list-tile-title>{{ lang.label }}</v-list-tile-title>
               </v-list-tile>
@@ -187,8 +187,6 @@ export default {
 
 .vfs-toolbar-image {
   vertical-align: middle;
-  width: 40px;
-  height: 40px;
 }
 
 .vfs-list-tile-avatar {

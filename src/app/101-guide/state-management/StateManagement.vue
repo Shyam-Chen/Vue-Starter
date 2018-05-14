@@ -39,7 +39,8 @@
 
 import { mapActions, mapGetters } from 'vuex';
 
-import { ICounter, INITIAL as state } from './constants';
+import { ICounter } from './types';
+import { INITIAL as state } from './constants';
 import actions from './actions';
 import mutations from './mutations';
 import getters from './getters';

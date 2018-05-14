@@ -1,16 +1,6 @@
 // @flow
 
-export interface ICounter {
-  value: number;
-  step: number;
-  stepList: number[];
-}
-
-export interface IContent {
-  state: ICounter;
-  commit(mutation: string, payload?: any): void;
-  dispatch(action: string): void;
-}
+import { ICounter } from './types';
 
 export const INITIAL: ICounter = {
   value: 0,
