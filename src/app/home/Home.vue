@@ -385,15 +385,13 @@
 </template>
 
 <script>
+import { layout } from '~/shared/mixins';
+
 export default {
   metaInfo: {
     title: 'Oh My Vue',
   },
-  data() {
-    return {
-      isMobile: window.innerWidth < 600,
-    };
-  },
+  mixins: [layout],
 };
 </script>
 

@@ -153,15 +153,13 @@
 
 import { mapActions } from 'vuex';
 
+import { layout } from '~/shared/mixins';
+
 import { IApp } from './types';
 import actions from './actions';
 
 export default {
-  data() {
-    return {
-      isMobile: window.innerWidth < 600,
-    };
-  },
+  mixins: [layout],
   computed: {
     $app(): IApp {
       return this.$store.state;
