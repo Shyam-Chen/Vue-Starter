@@ -283,6 +283,8 @@ ENV RENDERTRON_URL <RENDERTRON_URL>
 
 ### VS Code settings
 
+The most basic configuration.
+
 ```js
 {
   "window.zoomLevel": 1,
@@ -302,31 +304,38 @@ ENV RENDERTRON_URL <RENDERTRON_URL>
 
 ## Directory Structure
 
+The structure follows the LIFT Guidelines.
+
 ```coffee
 .
 ├── src
 │   ├── api
-│   │   ├── _<THING>  -> private things
+│   │   ├── __tests__
+│   │   │   └── ...
+│   │   ├── _<THING>  -> api of private things
 │   │   │   └── ...
 │   │   ├── core  -> core feature module
+│   │   │   └── ...
 │   │   ├── graphql
 │   │   │   └── <FEATURE>  -> feature modules
 │   │   │       ├── __tests__
 │   │   │       │   └── ...
-│   │   │       ├── _<THING>  -> private things
+│   │   │       ├── _<THING>  -> feature of private things
 │   │   │       │   └── ...
 │   │   │       └── ...
 │   │   ├── <FEATURE>  -> feature modules
 │   │   │   ├── __tests__
 │   │   │   │   └── ...
-│   │   │   ├── _<THING>  -> private things
+│   │   │   ├── _<THING>  -> feature of private things
 │   │   │   │   └── ...
 │   │   │   └── ...
 │   │   ├── shared  -> shared feature module
 │   │   │   └── ...
 │   │   └── index.js
 │   ├── app
-│   │   ├── _<THING>  -> private things
+│   │   ├── __tests__
+│   │   │   └── ...
+│   │   ├── _<THING>  -> app of private things
 │   │   │   └── ...
 │   │   ├── core  -> core feature module
 │   │   │   └── ...
@@ -337,7 +346,7 @@ ENV RENDERTRON_URL <RENDERTRON_URL>
 │   │   │   │   ├── <FEATURE>.spec.js
 │   │   │   │   ├── getters.spec.js
 │   │   │   │   └── mutations.spec.js
-│   │   │   ├── _<THING>  -> private things
+│   │   │   ├── _<THING>  -> feature of private things
 │   │   │   │   └── ...
 │   │   │   ├── actions.js
 │   │   │   ├── constants.js
@@ -347,12 +356,12 @@ ENV RENDERTRON_URL <RENDERTRON_URL>
 │   │   │   └── types.js
 │   │   ├── shared  -> shared feature module
 │   │   │   └── ...
-│   │   ├── actions.js  -> root actions
-│   │   ├── App.vue  -> app root module
-│   │   ├── constants.js  -> root constants
-│   │   ├── getters.js  -> root getters
-│   │   ├── mutations.js  -> root mutations
-│   │   └── types.js  -> root types
+│   │   ├── actions.js
+│   │   ├── App.vue
+│   │   ├── constants.js
+│   │   ├── getters.js
+│   │   ├── mutations.js
+│   │   └── types.js
 │   ├── assets  -> datas, fonts, images, medias, styles
 │   ├── client.js
 │   ├── index.html
