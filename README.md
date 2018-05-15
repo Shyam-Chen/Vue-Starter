@@ -61,11 +61,11 @@ $ yarn build:api
 5. Check the code
 
 ```bash
-# scripts
-$ yarn lint:js
+# front-end
+$ yarn lint:app
 
-# styles
-$ yarn lint:css
+# back-end
+$ yarn lint:api
 ```
 
 6. Run the test
@@ -101,19 +101,23 @@ $ yarn global add vue-cli
 2. Create a project
 
 ```bash
+# generate a blank Full-stack project
 $ vue init Shyam-Chen/Vue-Fullstack-Template <PROJECT_NAME>
+
+# generate a blank Front-end project
+$ vue init Shyam-Chen/Vue-Frontend-Template <PROJECT_NAME>
+
+# generate a blank Back-end project
+$ vue init Shyam-Chen/Vue-Backend-Template <PROJECT_NAME>
 ```
 
-3. Start your journey
+Now that you can start your journey.
 
-```bash
-$ cd <PROJECT_NAME>
-$ yarn install && yarn typed
-$ yarn start:app
-$ yarn start:api
-```
+Detailed template repository list below:
 
-:vertical_traffic_light: Project template repository can be accessed from [here](https://github.com/Shyam-Chen/Vue-Fullstack-Template).
+* [Vue Fullstack Template](https://github.com/Shyam-Chen/Vue-Fullstack-Template)
+* [Vue Frontend Template](https://github.com/Shyam-Chen/Vue-Frontend-Template)
+* [Vue Backend Template](https://github.com/Shyam-Chen/Vue-Backend-Template)
 
 ## Dockerization
 
