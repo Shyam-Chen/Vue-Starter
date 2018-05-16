@@ -1,3 +1,4 @@
+import 'jest-localstorage-mock';
 import Vue from 'vue';
 
 Vue.config.productionTip = false;
@@ -52,21 +53,3 @@ Vue.config.ignoredElements = [
   'v-toolbar', 'v-toolbar-side-icon',
   'v-tooltip',
 ];
-
-Object.defineProperty(window, 'localStorage', {
-  value: (() => {
-    let store = {};
-
-    return {
-      getItem(key) {
-        return store[key] || null;
-      },
-      setItem(key, value) {
-        store[key] = value.toString();
-      },
-      clear() {
-        store = {};
-      },
-    };
-  })(),
-});
