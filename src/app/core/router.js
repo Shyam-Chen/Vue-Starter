@@ -24,6 +24,7 @@ const router = new Router({
     /** @name 101-guide */
     { path: '/101-guide/components/props', component: () => import('~/101-guide/components/props/Props') },
     { path: '/101-guide/components/slots', component: () => import('~/101-guide/components/slots/Slots') },
+    { path: '/101-guide/lifecycle-hooks', component: () => import('~/101-guide/lifecycle-hooks/LifecycleHooks') },
     { path: '/101-guide/transitions', component: () => import('~/101-guide/transitions/Transitions') },
     { path: '/101-guide/mixins', component: () => import('~/101-guide/mixins/Mixins') },
     { path: '/101-guide/directives', component: () => import('~/101-guide/directives/Directives') },
@@ -40,7 +41,6 @@ const router = new Router({
       ],
     },
     { path: '/101-guide/state-management', component: () => import('~/101-guide/state-management/StateManagement') },
-    // ...
 
     /** @name crud-operations */
     { path: '/crud-operations/basic', component: () => import('~/crud-operations/basic/Basic') },

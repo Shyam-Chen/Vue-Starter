@@ -18,6 +18,7 @@ export const INITIAL: IApp = {
             { text: 'slots', route: '/101-guide/components/slots' },
           ],
         },
+        { text: 'lifecycleHooks', route: '/101-guide/lifecycle-hooks' },
         { text: 'transitions', route: '/101-guide/transitions' },
         { text: 'mixins', route: '/101-guide/mixins' },
         { text: 'directives', route: '/101-guide/directives' },
