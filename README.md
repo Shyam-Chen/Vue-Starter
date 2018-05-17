@@ -22,14 +22,14 @@
 
 Follow steps to execute this boilerplate.
 
-1. Clone this Boilerplate
+1. Clone this boilerplate
 
 ```bash
 $ git clone --depth 1 https://github.com/Shyam-Chen/Vue-Fullstack-Starter <PROJECT_NAME>
 $ cd <PROJECT_NAME>
 ```
 
-2. Install Dependencies
+2. Install dependencies
 
 ```bash
 $ yarn install
@@ -38,7 +38,13 @@ $ yarn install
 $ yarn typed
 ```
 
-3. Run the code
+3. Set an active project for working direct
+
+```bash
+$ yarn firebase use development
+```
+
+4. Start a local server
 
 ```bash
 # front-end
@@ -48,7 +54,7 @@ $ yarn start:app
 $ yarn start:api
 ```
 
-4. Build the code
+5. Compile and bundle code
 
 ```bash
 # front-end
@@ -58,7 +64,7 @@ $ yarn build:app
 $ yarn build:api
 ```
 
-5. Check the code
+6. Check the code quality
 
 ```bash
 # front-end
@@ -68,7 +74,7 @@ $ yarn lint:app
 $ yarn lint:api
 ```
 
-6. Run the test
+7. Run the unit tests
 
 ```bash
 # front-end
@@ -78,7 +84,7 @@ $ yarn test:app
 $ yarn test:api
 ```
 
-7. Run the e2e
+8. Run the end-to-end tests
 
 ```bash
 # ui
