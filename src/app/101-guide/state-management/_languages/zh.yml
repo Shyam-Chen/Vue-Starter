@@ -1,5 +1,0 @@
-increment: '增量'
-decrement: '減量'
-async: '非同步'
-ifOdd: '如果是奇數'
-ifEven: '如果是偶數'

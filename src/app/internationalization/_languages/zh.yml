@@ -1,5 +1,0 @@
-bubble: '泡泡'
-hello: '你好，{msg}！'
-thinkIn: '在 {2} 中思考'
-http: 'http | https'
-framework: '無框架 | 一個框架 | {num} 個框架'

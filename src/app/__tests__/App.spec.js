@@ -11,7 +11,7 @@ import { INITIAL as state } from '../constants';
 import actions from '../actions';
 import mutations from '../mutations';
 import getters from '../getters';
-import en from '../_languages/en.yml';
+import en from '../_languages/en';
 
 const localVue = createLocalVue();
 

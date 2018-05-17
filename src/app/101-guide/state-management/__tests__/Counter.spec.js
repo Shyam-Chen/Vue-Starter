@@ -3,7 +3,7 @@ import { createLocalVue, shallow } from '@vue/test-utils';
 import I18n from 'vue-i18n';
 
 import Counter from '../StateManagement';
-import en from '../_languages/en.yml';
+import en from '../_languages/en';
 
 const localVue = createLocalVue();
 

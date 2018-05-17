@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import I18n from 'vue-i18n';
 
-import en from '~/_languages/en.yml';
+import en from '~/_languages/en';
 
 Vue.use(I18n);
 

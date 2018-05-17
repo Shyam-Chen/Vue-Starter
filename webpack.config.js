@@ -34,19 +34,11 @@ module.exports = ({ prod = false } = {}) => ({
       {
         test: /\.vue$/,
         loader: 'vue-loader',
-        options: {
-          preLoaders: {
-            i18n: 'yaml-loader',
-          },
-          loaders: {
-            i18n: '@kazupon/vue-i18n-loader',
-          },
-        },
       },
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: ['babel-loader'],
+        loader: 'babel-loader',
       },
       {
         test: /\.css$/,
@@ -55,10 +47,6 @@ module.exports = ({ prod = false } = {}) => ({
           { loader: 'css-loader', options: { importLoaders: 1 } },
           { loader: 'postcss-loader', options: { sourceMap: true } },
         ],
-      },
-      {
-        test: /\.yml$/,
-        use: ['json5-loader', 'yaml-loader'],
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
