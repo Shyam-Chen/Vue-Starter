@@ -20,7 +20,7 @@ describe('Counter', () => {
   });
 
   beforeEach(async () => {
-    await page.goto(`${global.SITE_URL}/101-guide/state-management`);
+    await page.goto(`${global.SITE_URL}/guide/state-management`);
   });
 
   it('should display count', async () => {

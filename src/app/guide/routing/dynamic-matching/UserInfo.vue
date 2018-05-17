@@ -10,7 +10,7 @@
     </v-layout>
 
     <v-layout>
-      <v-btn to="/101-guide/routing/dynamic-matching" class="ml-0">Back to List</v-btn>
+      <v-btn to="/guide/routing/dynamic-matching" class="ml-0">Back to List</v-btn>
     </v-layout>
 
   </v-container>

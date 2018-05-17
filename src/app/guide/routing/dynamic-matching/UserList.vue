@@ -4,7 +4,7 @@
       <template v-for="item in items">
         <v-subheader v-if="item.header" :key="item.header">{{ item.header }}</v-subheader>
 
-        <v-list-tile v-else :key="item.title" avatar @click="$router.push(`/101-guide/routing/dynamic-matching/${item.title}`)">
+        <v-list-tile v-else :key="item.title" avatar @click="$router.push(`/guide/routing/dynamic-matching/${item.title}`)">
           <v-list-tile-avatar>
             <img :src="item.avatar">
           </v-list-tile-avatar>

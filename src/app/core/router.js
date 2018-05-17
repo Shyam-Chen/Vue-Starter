@@ -21,26 +21,26 @@ const router = new Router({
     /** @name hello-world */
     { path: '/hello-world', component: () => import('~/hello-world/HelloWorld') },
 
-    /** @name 101-guide */
-    { path: '/101-guide/components/props', component: () => import('~/101-guide/components/props/Props') },
-    { path: '/101-guide/components/slots', component: () => import('~/101-guide/components/slots/Slots') },
-    { path: '/101-guide/lifecycle-hooks', component: () => import('~/101-guide/lifecycle-hooks/LifecycleHooks') },
-    { path: '/101-guide/transitions', component: () => import('~/101-guide/transitions/Transitions') },
-    { path: '/101-guide/mixins', component: () => import('~/101-guide/mixins/Mixins') },
-    { path: '/101-guide/directives', component: () => import('~/101-guide/directives/Directives') },
-    { path: '/101-guide/filters', component: () => import('~/101-guide/filters/Filters') },
-    { path: '/101-guide/routing/dynamic-matching', component: () => import('~/101-guide/routing/dynamic-matching/DynamicMatching') },
-    { path: '/101-guide/routing/dynamic-matching/:username', component: () => import('~/101-guide/routing/dynamic-matching/UserInfo') },
+    /** @name guide */
+    { path: '/guide/components/props', component: () => import('~/guide/components/props/Props') },
+    { path: '/guide/components/slots', component: () => import('~/guide/components/slots/Slots') },
+    { path: '/guide/lifecycle-hooks', component: () => import('~/guide/lifecycle-hooks/LifecycleHooks') },
+    { path: '/guide/transitions', component: () => import('~/guide/transitions/Transitions') },
+    { path: '/guide/mixins', component: () => import('~/guide/mixins/Mixins') },
+    { path: '/guide/directives', component: () => import('~/guide/directives/Directives') },
+    { path: '/guide/filters', component: () => import('~/guide/filters/Filters') },
+    { path: '/guide/routing/dynamic-matching', component: () => import('~/guide/routing/dynamic-matching/DynamicMatching') },
+    { path: '/guide/routing/dynamic-matching/:username', component: () => import('~/guide/routing/dynamic-matching/UserInfo') },
     {
-      path: '/101-guide/routing/nested-routes',
-      component: () => import('~/101-guide/routing/nested-routes/NestedRoutes'),
+      path: '/guide/routing/nested-routes',
+      component: () => import('~/guide/routing/nested-routes/NestedRoutes'),
       children: [
-        { path: '', component: () => import('~/101-guide/routing/nested-routes/Default') },
-        { path: 'first', component: () => import('~/101-guide/routing/nested-routes/First') },
-        { path: 'second', component: () => import('~/101-guide/routing/nested-routes/Second') },
+        { path: '', component: () => import('~/guide/routing/nested-routes/Default') },
+        { path: 'first', component: () => import('~/guide/routing/nested-routes/First') },
+        { path: 'second', component: () => import('~/guide/routing/nested-routes/Second') },
       ],
     },
-    { path: '/101-guide/state-management', component: () => import('~/101-guide/state-management/StateManagement') },
+    { path: '/guide/state-management', component: () => import('~/guide/state-management/StateManagement') },
 
     /** @name crud-operations */
     { path: '/crud-operations/basic', component: () => import('~/crud-operations/basic/Basic') },

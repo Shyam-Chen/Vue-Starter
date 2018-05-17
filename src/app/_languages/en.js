@@ -1,10 +1,10 @@
-import stateManagement from '~/101-guide/state-management/_languages/en';
+import guideStateManagement from '~/guide/state-management/_languages/en';
 import internationalization from '~/internationalization/_languages/en';
 
 export default {
   overview: 'Overview',
   helloWorld: 'Hello World',
-  '101Guide': '101 Guide',
+  guide: 'Guide',
   components: 'Components',
   props: 'Props',
   slots: 'Slots',
@@ -36,6 +36,6 @@ export default {
   payment: 'Payment',
   messages: 'Messages',
   machineLearning: 'Machine Learning',
-  ...stateManagement,
+  ...guideStateManagement,
   ...internationalization,
 };

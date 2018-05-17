@@ -9,29 +9,29 @@ export const INITIAL: IApp = {
     { icon: 'face', text: 'helloWorld', route: '/hello-world' },
     {
       icon: 'loyalty',
-      text: '101Guide',
+      text: 'guide',
       children: [
         {
           text: 'components',
           children: [
-            { text: 'props', route: '/101-guide/components/props' },
-            { text: 'slots', route: '/101-guide/components/slots' },
+            { text: 'props', route: '/guide/components/props' },
+            { text: 'slots', route: '/guide/components/slots' },
           ],
         },
-        { text: 'lifecycleHooks', route: '/101-guide/lifecycle-hooks' },
-        { text: 'transitions', route: '/101-guide/transitions' },
-        { text: 'mixins', route: '/101-guide/mixins' },
-        { text: 'directives', route: '/101-guide/directives' },
-        { text: 'filters', route: '/101-guide/filters' },
+        { text: 'lifecycleHooks', route: '/guide/lifecycle-hooks' },
+        { text: 'transitions', route: '/guide/transitions' },
+        { text: 'mixins', route: '/guide/mixins' },
+        { text: 'directives', route: '/guide/directives' },
+        { text: 'filters', route: '/guide/filters' },
         {
           text: 'routing',
           children: [
-            { text: 'dynamicMatching', route: '/101-guide/routing/dynamic-matching' },
-            { text: 'nestedRoutes', route: '/101-guide/routing/nested-routes' },
-            { text: 'guards', route: '/101-guide/routing/guards', disabled: true },
+            { text: 'dynamicMatching', route: '/guide/routing/dynamic-matching' },
+            { text: 'nestedRoutes', route: '/guide/routing/nested-routes' },
+            { text: 'guards', route: '/guide/routing/guards', disabled: true },
           ],
         },
-        { text: 'stateManagement', route: '/101-guide/state-management' },
+        { text: 'stateManagement', route: '/guide/state-management' },
       ],
     },
     {

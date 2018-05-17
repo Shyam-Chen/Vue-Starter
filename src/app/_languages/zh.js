@@ -1,10 +1,10 @@
-import stateManagement from '~/101-guide/state-management/_languages/zh';
-import internationalization from '~/internationalization/_languages/ja';
+import guideStateManagement from '~/guide/state-management/_languages/zh';
+import internationalization from '~/internationalization/_languages/zh';
 
 export default {
   overview: '概观',
   helloWorld: '你好世界',
-  '101Guide': '101 指南',
+  guide: '指南',
   components: '组件',
   props: '属性',
   slots: '插槽',
@@ -36,6 +36,6 @@ export default {
   payment: '支付',
   messages: '讯息',
   machineLearning: '机器学习',
-  ...stateManagement,
+  ...guideStateManagement,
   ...internationalization,
 };
