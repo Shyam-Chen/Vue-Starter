@@ -814,6 +814,23 @@
   version "0.7.0"
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-0.7.0.tgz#9a06f4f137ee84d7df0460c1fdb1135ffa6c50fd"
 
+"@tensorflow/tfjs-core@0.8.4":
+  version "0.8.4"
+  resolved "https://registry.yarnpkg.com/@tensorflow/tfjs-core/-/tfjs-core-0.8.4.tgz#20c5bf017cb57486ca77cc01a92d6df85c2e38ff"
+  dependencies:
+    seedrandom "~2.4.3"
+
+"@tensorflow/tfjs-layers@0.5.3":
+  version "0.5.3"
+  resolved "https://registry.yarnpkg.com/@tensorflow/tfjs-layers/-/tfjs-layers-0.5.3.tgz#0b45624ba8bcbd8e904f68344f16cf6358c695af"
+
+"@tensorflow/tfjs@0.10.3":
+  version "0.10.3"
+  resolved "https://registry.yarnpkg.com/@tensorflow/tfjs/-/tfjs-0.10.3.tgz#29d44e57d53492532829c768958151fb8893b2ab"
+  dependencies:
+    "@tensorflow/tfjs-core" "0.8.4"
+    "@tensorflow/tfjs-layers" "0.5.3"
+
 "@types/async@2.0.49":
   version "2.0.49"
   resolved "https://registry.yarnpkg.com/@types/async/-/async-2.0.49.tgz#92e33d13f74c895cb9a7f38ba97db8431ed14bc0"
@@ -12759,6 +12776,10 @@ script-ext-html-webpack-plugin@2.0.1:
   resolved "https://registry.yarnpkg.com/script-ext-html-webpack-plugin/-/script-ext-html-webpack-plugin-2.0.1.tgz#90ac3d77f1892ad9054c3752f0e4673607f6d9a3"
   dependencies:
     debug "^3.1.0"
+
+seedrandom@~2.4.3:
+  version "2.4.3"
+  resolved "https://registry.yarnpkg.com/seedrandom/-/seedrandom-2.4.3.tgz#2438504dad33917314bff18ac4d794f16d6aaecc"
 
 select-hose@^2.0.0:
   version "2.0.0"
