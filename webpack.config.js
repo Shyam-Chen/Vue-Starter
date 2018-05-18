@@ -121,6 +121,7 @@ module.exports = ({ prod = false } = {}) => ({
       filename: 'service-worker.js',
       minify: true,
       navigateFallback: 'index.html',
+      navigateFallbackWhitelist: [/^(?!\/__).*/],
       staticFileGlobs: [`${path.basename(DIST_ROOT)}/*`],
       stripPrefix: `${path.basename(DIST_ROOT)}/`,
     }),

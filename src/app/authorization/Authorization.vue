@@ -31,14 +31,14 @@
       </div>
 
       <div>
-        <v-btn color="indigo" dark disabled>
+        <v-btn color="indigo" disabled>
           <v-icon left>fa fa-facebook-official</v-icon>
           Sign in with Facebook
         </v-btn>
       </div>
 
       <div>
-        <v-btn color="blue" dark disabled>
+        <v-btn color="blue" disabled>
           <v-icon left>fa fa-twitter</v-icon>
           Sign in with Twitter
         </v-btn>
