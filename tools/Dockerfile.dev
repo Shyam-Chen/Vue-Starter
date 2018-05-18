@@ -13,6 +13,16 @@ ENV NODE_ENV production
 ENV SITE_URL https://vue-by-example-dev.firebaseapp.com
 ENV FUNC_URL https://us-central1-vue-by-example-dev.cloudfunctions.net
 
+ENV FIREBASE_CONFIG \
+  { \
+    apiKey: 'AIzaSyCvhvJ1buNiNRxUzQub8Eg1PO65EtTIurA', \
+    authDomain: 'vue-by-example-dev.firebaseapp.com', \
+    databaseURL: 'https://vue-by-example-dev.firebaseio.com', \
+    projectId: 'vue-by-example-dev', \
+    storageBucket: 'vue-by-example-dev.appspot.com', \
+    messagingSenderId: '1097057218485', \
+  }
+
 ENV SENTRY_DSN https://cea15151a5984c6e80937903b07ae124@sentry.io/1192108
 # -- envs
 

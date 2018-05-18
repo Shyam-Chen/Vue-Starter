@@ -1,13 +1,21 @@
 <template>
   <v-container>
     <v-layout>
-      Empty
+      Text {{ text }}
+      {{ number + 1 }}
     </v-layout>
   </v-container>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      text: 'foo',
+      number: 10,
+    };
+  },
+};
 </script>
 
 <style scoped>

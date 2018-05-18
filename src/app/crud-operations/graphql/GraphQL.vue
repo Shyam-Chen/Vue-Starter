@@ -20,10 +20,10 @@
             <td>{{ props.item.id }}</td>
             <td>{{ props.item.text }}</td>
             <td class="text-xs-right">
-              <v-btn icon class="mx-0" @click.stop="">
+              <v-btn icon class="mx-0" @click.stop="void 0">
                 <v-icon color="info">edit</v-icon>
               </v-btn>
-              <v-btn icon class="mx-0" @click.stop="">
+              <v-btn icon class="mx-0" @click.stop="void 0">
                 <v-icon color="error">delete</v-icon>
               </v-btn>
             </td>
