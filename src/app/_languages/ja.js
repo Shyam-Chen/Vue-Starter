@@ -5,6 +5,7 @@ export default {
   overview: '概要',
   helloWorld: 'こんにちは世界',
   guide: 'ガイド',
+  templateRendering: 'テンプレートレンダリング',
   components: 'コンポーネント',
   props: 'プロパティ',
   slots: 'スロット',

@@ -22,6 +22,7 @@ const router = new Router({
     { path: '/hello-world', component: () => import('~/hello-world/HelloWorld') },
 
     /** @name guide */
+    { path: '/guide/template-rendering', component: () => import('~/guide/template-rendering/TemplateRendering') },
     { path: '/guide/components/props', component: () => import('~/guide/components/props/Props') },
     { path: '/guide/components/slots', component: () => import('~/guide/components/slots/Slots') },
     { path: '/guide/lifecycle-hooks', component: () => import('~/guide/lifecycle-hooks/LifecycleHooks') },

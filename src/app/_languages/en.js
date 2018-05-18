@@ -5,6 +5,7 @@ export default {
   overview: 'Overview',
   helloWorld: 'Hello World',
   guide: 'Guide',
+  templateRendering: 'Template Rendering',
   components: 'Components',
   props: 'Props',
   slots: 'Slots',

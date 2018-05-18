@@ -11,6 +11,7 @@ export const INITIAL: IApp = {
       icon: 'loyalty',
       text: 'guide',
       children: [
+        { text: 'templateRendering', route: '/guide/template-rendering' },
         {
           text: 'components',
           children: [

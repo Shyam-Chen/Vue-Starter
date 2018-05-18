@@ -5,6 +5,7 @@ export default {
   overview: '概观',
   helloWorld: '你好世界',
   guide: '指南',
+  templateRendering: '模板渲染',
   components: '组件',
   props: '属性',
   slots: '插槽',
