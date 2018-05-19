@@ -14,12 +14,12 @@ function Environments() {
   this.APP_BASE = process.env.APP_BASE || '/';
 
   this.FIREBASE_CONFIG = process.env.FIREBASE_CONFIG || {
-    apiKey: 'AIzaSyCvhvJ1buNiNRxUzQub8Eg1PO65EtTIurA',
-    authDomain: 'vue-by-example-dev.firebaseapp.com',
-    databaseURL: 'https://vue-by-example-dev.firebaseio.com',
-    projectId: 'vue-by-example-dev',
-    storageBucket: 'vue-by-example-dev.appspot.com',
-    messagingSenderId: '1097057218485',
+    apiKey: process.env.FIREBASE_API_KEY || 'AIzaSyCvhvJ1buNiNRxUzQub8Eg1PO65EtTIurA',
+    authDomain: process.env.FIREBASE_AUTH_DOMAIN || 'vue-by-example-dev.firebaseapp.com',
+    databaseURL: process.env.FIREBASE_DATABASE_URL || 'https://vue-by-example-dev.firebaseio.com',
+    projectId: process.env.FIREBASE_PROJECT_ID || 'vue-by-example-dev',
+    storageBucket: process.env.FIREBASE_STORAGE_BUCKET || 'vue-by-example-dev.appspot.com',
+    messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID || '1097057218485',
   };
 
   this.GOOGLE_ANALYTICS = process.env.GOOGLE_ANALYTICS || 'UA-84381641-2';
