@@ -1,7 +1,7 @@
 <template>
   <v-container fluid>
     <v-layout column>
-      <div class="headline">Interactive Chart</div>
+      <div class="headline">Data Visualization</div>
 
       <v-layout column class="pa-3">
         <div class="subheading pa-2">Bar Chart</div>

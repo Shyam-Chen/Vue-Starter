@@ -32,7 +32,7 @@ export default {
   paginator: 'Paginator',
   iterator: 'Iterator',
   internationalization: 'Internationalization',
-  interactiveChart: 'Interactive Chart',
+  dataVisualization: 'Data Visualization',
   authorization: 'Authorization',
   payment: 'Payment',
   messages: 'Messages',

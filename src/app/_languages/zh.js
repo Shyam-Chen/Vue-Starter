@@ -32,7 +32,7 @@ export default {
   paginator: '分页器',
   iterator: '迭代器',
   internationalization: '国际化',
-  interactiveChart: '交互式图表',
+  dataVisualization: '数据可视化',
   authorization: '授权',
   payment: '支付',
   messages: '讯息',

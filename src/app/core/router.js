@@ -61,14 +61,20 @@ const router = new Router({
     /** @name internationalization */
     { path: '/internationalization', component: () => import('~/internationalization/Internationalization') },
 
-    /** @name interactive-chart */
-    { path: '/interactive-chart', component: () => import('~/interactive-chart/InteractiveChart') },
+    /** @name data-visualization */
+    { path: '/data-visualization', component: () => import('~/data-visualization/DataVisualization') },
 
     /** @name authorization */
     { path: '/authorization', component: () => import('~/authorization/Authorization') },
 
     /** @name payment */
     { path: '/payment', component: () => import('~/payment/Payment') },
+
+    /** @name messages */
+    // { path: '/messages', component: () => import('~/messages/Messages') },
+
+    /** @name machine-learning */
+    { path: '/machine-learning', component: () => import('~/machine-learning/MachineLearning') },
 
     { path: '*', component: NotFound, meta: { standalone: true } },
   ],

@@ -32,7 +32,7 @@ export default {
   paginator: 'ページネータ',
   iterator: 'イテレータ',
   internationalization: '国際化',
-  interactiveChart: 'インタラクティブチャート',
+  dataVisualization: 'データの視覚化',
   authorization: 'オーソライズ',
   payment: '支払い',
   messages: 'メッセージ',
