@@ -9,14 +9,14 @@
             <div class="display-3">Oh My Vue</div>
             <div class="subheading">Web Fundamentals • Firebase Platform • Google Cloud</div>
             <v-divider class="my-3"></v-divider>
-            <v-btn large color="white" to="/overview" class="primary--text ml-0">See more</v-btn>
+            <v-btn large color="white" to="/overview" class="primary--text ml-0">{{ $t('home.seeMore') }}</v-btn>
             <v-btn color="white" href="https://github.com/Shyam-Chen/Vue-Fullstack-Starter" large outline target="_blank" rel="noopener">
               <v-icon left>fab fa-github</v-icon>
-              GitHub
+              {{ $t('home.sourceCode') }}
             </v-btn>
             <v-btn color="white" href="https://github.com/Shyam-Chen/Vue-Fullstack-Template" large outline target="_blank" rel="noopener">
               <v-icon left>far fa-file-code</v-icon>
-              Template
+              {{ $t('home.codeTemplate') }}
             </v-btn>
           </v-flex>
         </v-layout>
@@ -101,8 +101,8 @@
         <div class="pa-3 grid">
           <v-layout row justify-center align-center>
             <div>
-              <div class="headline pb-2">Sprint from Zero to App</div>
-              <div class="body-1">Hit the ground running with comprehensive, modern UI components that work across the web, mobile and desktop.</div>
+              <div class="headline pb-2">{{ $t('home.headline1') }}</div>
+              <div class="body-1">{{ $t('home.body1') }}</div>
             </div>
           </v-layout>
         </div>
@@ -159,8 +159,8 @@
         <div class="pa-3 grid">
           <v-layout row justify-center align-center>
             <div>
-              <div class="headline pb-2">Fast and Consistent</div>
-              <div class="body-1">Finely tuned performance, because every millisecond counts. Fully tested across modern browsers.</div>
+              <div class="headline pb-2">{{ $t('home.headline2') }}</div>
+              <div class="body-1">{{ $t('home.body2') }}</div>
             </div>
           </v-layout>
         </div>
@@ -214,8 +214,8 @@
         <div class="pa-3 grid">
           <v-layout row justify-center align-center>
             <div>
-              <div class="headline pb-2">Versatile</div>
-              <div class="body-1">Themable, for when you need to stay on brand or just have a favorite color. Accessible and internationalized so that all users are welcome.</div>
+              <div class="headline pb-2">{{ $t('home.headline3') }}</div>
+              <div class="body-1">{{ $t('home.body3') }}</div>
             </div>
           </v-layout>
         </div>
@@ -368,8 +368,8 @@
         <div class="pa-3 grid">
           <v-layout row justify-center align-center>
             <div>
-              <div class="headline pb-2">Optimized for Vue</div>
-              <div class="body-1">Built by the Vue community to integrate seamlessly with Vue.</div>
+              <div class="headline pb-2">{{ $t('home.headline4') }}</div>
+              <div class="body-1">{{ $t('home.body4') }}</div>
             </div>
           </v-layout>
         </div>
@@ -378,7 +378,7 @@
 
     <v-container grid-list-xl class="mt-5 mb-5">
       <v-layout row justify-center>
-        <v-btn large color="primary" to="/overview">See more</v-btn>
+        <v-btn large color="primary" to="/overview">{{ $t('home.seeMore') }}</v-btn>
       </v-layout>
     </v-container>
   </div>

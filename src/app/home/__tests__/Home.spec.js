@@ -1,12 +1,23 @@
-import { shallow } from '@vue/test-utils';
+import { createLocalVue, shallow } from '@vue/test-utils';
+import I18n from 'vue-i18n';
 
 import Home from '../Home';
+import en from '../_languages/en';
+
+const localVue = createLocalVue();
+
+localVue.use(I18n);
 
 describe('Home', () => {
-  let [wrapper] = [];
+  let [wrapper, i18n] = [];
 
   beforeEach(() => {
-    wrapper = shallow(Home);
+    i18n = new I18n({
+      locale: 'en',
+      messages: { en },
+    });
+
+    wrapper = shallow(Home, { localVue, i18n });
   });
 
   it('should render initial component', () => {

@@ -87,10 +87,10 @@ $ yarn test:api
 8. Run the end-to-end tests
 
 ```bash
-# ui
+# front-end
 $ yarn e2e:app
 
-# http
+# back-end
 $ yarn e2e:api
 ```
 
