@@ -1,7 +1,3 @@
-import home from '~/home/_languages/en';
-import guideStateManagement from '~/guide/state-management/_languages/en';
-import internationalization from '~/internationalization/_languages/en';
-
 export default {
   overview: 'Overview',
   helloWorld: 'Hello World',
@@ -38,7 +34,4 @@ export default {
   payment: 'Payment',
   messages: 'Messages',
   machineLearning: 'Machine Learning',
-  home,
-  ...guideStateManagement,
-  ...internationalization,
 };

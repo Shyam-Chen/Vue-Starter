@@ -14,7 +14,7 @@ describe('Home', () => {
   beforeEach(() => {
     i18n = new I18n({
       locale: 'en',
-      messages: { en },
+      messages: { en: { home: en } },
     });
 
     wrapper = shallow(Home, { localVue, i18n });

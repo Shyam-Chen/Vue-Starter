@@ -1,7 +1,3 @@
-import home from '~/home/_languages/ja';
-import guideStateManagement from '~/guide/state-management/_languages/ja';
-import internationalization from '~/internationalization/_languages/ja';
-
 export default {
   overview: '概要',
   helloWorld: 'こんにちは世界',
@@ -38,7 +34,4 @@ export default {
   payment: '支払い',
   messages: 'メッセージ',
   machineLearning: '機械学習',
-  home,
-  ...guideStateManagement,
-  ...internationalization,
 };

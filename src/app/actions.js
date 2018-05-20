@@ -20,7 +20,7 @@ export default {
     });
   },
   setLanguage(context: IContent, val: string): void {
-    import(`./_languages/${val}`).then((data): void => {  // eslint-disable-line
+    import(`~/core/i18n/${val}`).then((data): void => {  // eslint-disable-line
       i18n.setLocaleMessage(val, data.default);
       i18n.locale = val;
       document.documentElement.lang = val;  // eslint-disable-line

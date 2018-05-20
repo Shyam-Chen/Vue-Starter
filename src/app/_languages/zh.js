@@ -1,7 +1,3 @@
-import home from '~/home/_languages/zh';
-import guideStateManagement from '~/guide/state-management/_languages/zh';
-import internationalization from '~/internationalization/_languages/zh';
-
 export default {
   overview: '概观',
   helloWorld: '你好世界',
@@ -38,7 +34,4 @@ export default {
   payment: '支付',
   messages: '讯息',
   machineLearning: '机器学习',
-  home,
-  ...guideStateManagement,
-  ...internationalization,
 };
