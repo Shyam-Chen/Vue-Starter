@@ -25,21 +25,21 @@
     <v-layout column>
       <div>
         <v-btn color="red" dark @click="signInWithGoogle">
-          <v-icon left>fa fa-google</v-icon>
+          <v-icon left>fab fa-google</v-icon>
           Sign in with Google
         </v-btn>
       </div>
 
       <div>
         <v-btn color="indigo" disabled>
-          <v-icon left>fa fa-facebook-official</v-icon>
+          <v-icon left>fab fa-facebook</v-icon>
           Sign in with Facebook
         </v-btn>
       </div>
 
       <div>
         <v-btn color="blue" disabled>
-          <v-icon left>fa fa-twitter</v-icon>
+          <v-icon left>fab fa-twitter</v-icon>
           Sign in with Twitter
         </v-btn>
       </div>

@@ -55,7 +55,7 @@ export const INITIAL: IApp = {
       ],
     },
     {
-      icon: 'fa fa-table',
+      icon: 'fas fa-table',
       text: 'dataTable',
       children: [
         { text: 'paginator', route: '/data-table/paginator' },
@@ -63,16 +63,16 @@ export const INITIAL: IApp = {
       ],
     },
     { icon: 'language', text: 'internationalization', route: '/internationalization' },
-    { icon: 'fa fa-bar-chart', text: 'dataVisualization', route: '/data-visualization' },
+    { icon: 'fas fa-chart-bar', text: 'dataVisualization', route: '/data-visualization' },
     { icon: 'verified_user', text: 'authorization', route: '/authorization' },
-    { icon: 'fa fa-credit-card', text: 'payment', route: '/payment', disabled: true },
+    { icon: 'far fa-credit-card', text: 'payment', route: '/payment', disabled: true },
     {
       icon: 'message',
       text: 'messages',
       disabled: true,
       children: [],
     },
-    { icon: 'fa fa-cogs', text: 'machineLearning', route: '/machine-learning' },
+    { icon: 'fas fa-cogs', text: 'machineLearning', route: '/machine-learning' },
   ],
   drawer: false || null,
   languages: [

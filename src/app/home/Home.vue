@@ -11,11 +11,11 @@
             <v-divider class="my-3"></v-divider>
             <v-btn large color="white" to="/overview" class="primary--text ml-0">See more</v-btn>
             <v-btn color="white" href="https://github.com/Shyam-Chen/Vue-Fullstack-Starter" large outline target="_blank" rel="noopener">
-              <v-icon left>fa fa-github</v-icon>
+              <v-icon left>fab fa-github</v-icon>
               GitHub
             </v-btn>
             <v-btn color="white" href="https://github.com/Shyam-Chen/Vue-Fullstack-Template" large outline target="_blank" rel="noopener">
-              <v-icon left>fa fa-file-code-o</v-icon>
+              <v-icon left>far fa-file-code</v-icon>
               Template
             </v-btn>
           </v-flex>
