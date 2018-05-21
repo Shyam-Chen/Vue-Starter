@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import { mapModelsToState } from 'vuex-bound';
+import { mapModel } from 'vuex-bound';
 
 import { INITIAL as state } from './constants';
 import actions from './actions';
@@ -58,7 +58,7 @@ export default {
     $tf() {
       return this.$store.state.formControls.textFields;
     },
-    ...mapModelsToState('formControls/textFields', [
+    ...mapModel('formControls/textFields', [
       'nickname',
     ]),
   },

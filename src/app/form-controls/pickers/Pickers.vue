@@ -43,7 +43,7 @@
 <script>
 // @flow
 
-import { mapModelsToState } from 'vuex-bound';
+import { mapModel } from 'vuex-bound';
 
 import { INITIAL as state } from './constants';
 import actions from './actions';
@@ -55,7 +55,7 @@ export default {
     $p() {
       return this.$store.state.formControls.pickers;
     },
-    ...mapModelsToState('formControls/pickers', [
+    ...mapModel('formControls/pickers', [
       'date', 'menu', 'dialog',
     ]),
   },

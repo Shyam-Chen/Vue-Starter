@@ -73,7 +73,7 @@
 </template>
 
 <script>
-import { mapModelsToState } from 'vuex-bound';
+import { mapModel } from 'vuex-bound';
 
 import { INITIAL as state } from './constants';
 import actions from './actions';
@@ -85,7 +85,7 @@ export default {
     $sc() {
       return this.$store.state.formControls.selectionControls;
     },
-    ...mapModelsToState('formControls/selectionControls', [
+    ...mapModel('formControls/selectionControls', [
       'technologies',
       'gender',
       'autoplay',

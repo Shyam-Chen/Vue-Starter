@@ -14841,9 +14841,9 @@ vuetify@1.0.18:
   version "1.0.18"
   resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-1.0.18.tgz#56289ba7c6e5eee3d4ee4dacd5e7dded4aee4c08"
 
-vuex-bound@0.5.0:
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/vuex-bound/-/vuex-bound-0.5.0.tgz#613fba79e07ab9da9db1c6a70a793f0ea50cf9d3"
+vuex-bound@0.7.0:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/vuex-bound/-/vuex-bound-0.7.0.tgz#8c30a7cf27a438bed7896a26ae3a493d3db42711"
 
 vuex-router-sync@5.0.0:
   version "5.0.0"
