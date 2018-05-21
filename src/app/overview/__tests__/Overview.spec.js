@@ -1,4 +1,4 @@
-import { shallow } from '@vue/test-utils';
+import { shallowMount } from '@vue/test-utils';
 
 import Overview from '../Overview';
 
@@ -6,7 +6,7 @@ describe('Overview', () => {
   let [wrapper] = [];
 
   beforeEach(() => {
-    wrapper = shallow(Overview);
+    wrapper = shallowMount(Overview);
   });
 
   it('should render initial component', () => {

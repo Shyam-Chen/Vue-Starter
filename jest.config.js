@@ -28,6 +28,10 @@ switch (process.env.JEST_ENV) {
 
   case 'api':
     module.exports = {
+      coveragePathIgnorePatterns: [
+        '/node_modules/',
+        '/tools/',
+      ],
       moduleNameMapper: {
         '~(.*)': '<rootDir>/src/api$1',
       },

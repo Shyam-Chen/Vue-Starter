@@ -1,4 +1,4 @@
-import { createLocalVue, shallow } from '@vue/test-utils';
+import { createLocalVue, shallowMount } from '@vue/test-utils';
 import Vuex from 'vuex';
 import I18n from 'vue-i18n';
 import Router from 'vue-router';
@@ -48,7 +48,7 @@ describe('App', () => {
       ],
     });
 
-    wrapper = shallow(App, { localVue, store, i18n, router });
+    wrapper = shallowMount(App, { localVue, store, i18n, router });
   });
 
   it('should render initial component', () => {

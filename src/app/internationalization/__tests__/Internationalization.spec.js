@@ -1,4 +1,4 @@
-import { createLocalVue, shallow } from '@vue/test-utils';
+import { createLocalVue, shallowMount } from '@vue/test-utils';
 import I18n from 'vue-i18n';
 
 import Internationalization from '../Internationalization';
@@ -17,7 +17,7 @@ describe('Internationalization', () => {
       messages: { en },
     });
 
-    wrapper = shallow(Internationalization, { localVue, i18n });
+    wrapper = shallowMount(Internationalization, { localVue, i18n });
   });
 
   it('should render initial component', () => {

@@ -381,7 +381,10 @@
 
     <v-container grid-list-xl class="mt-5 mb-5">
       <v-layout row justify-center>
-        <v-btn large color="primary" to="/overview">{{ $t('home.seeMore') }}</v-btn>
+        <v-btn large color="primary" to="/overview">
+          <v-icon left>more</v-icon>
+          {{ $t('home.seeMore') }}
+        </v-btn>
       </v-layout>
     </v-container>
   </div>

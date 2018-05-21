@@ -1,5 +1,5 @@
 import Vuex from 'vuex';
-import { createLocalVue, shallow } from '@vue/test-utils';
+import { createLocalVue, shallowMount } from '@vue/test-utils';
 
 import Basic from '../Basic';
 import { INITIAL } from '../constants';
@@ -16,7 +16,7 @@ describe('Basic', () => {
 
   it('should render initial component', () => {
     store = new Vuex.Store();
-    wrapper = shallow(Basic, { store, localVue });
+    wrapper = shallowMount(Basic, { store, localVue });
     expect(wrapper.html()).toMatchSnapshot();
   });
 
@@ -38,7 +38,7 @@ describe('Basic', () => {
       },
     });
 
-    wrapper = shallow(Basic, { store, localVue });
+    wrapper = shallowMount(Basic, { store, localVue });
 
     expect(wrapper.html()).toMatchSnapshot();
   });

@@ -375,7 +375,10 @@ exports[`Home should render initial component 1`] = `
   </v-container>
   <v-container grid-list-xl="" class="mt-5 mb-5">
     <v-layout row="" justify-center="">
-      <v-btn large="" color="primary" to="/overview">See more</v-btn>
+      <v-btn large="" color="primary" to="/overview">
+        <v-icon left="">more</v-icon>
+        See more
+      </v-btn>
     </v-layout>
   </v-container>
 </div>

@@ -1,4 +1,4 @@
-import { shallow } from '@vue/test-utils';
+import { shallowMount } from '@vue/test-utils';
 
 import NotFound from '../NotFound';
 
@@ -6,7 +6,7 @@ describe('NotFound', () => {
   let [wrapper] = [];
 
   beforeEach(() => {
-    wrapper = shallow(NotFound);
+    wrapper = shallowMount(NotFound);
   });
 
   it('should render initial component', () => {

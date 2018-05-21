@@ -1,4 +1,4 @@
-import { createLocalVue, shallow } from '@vue/test-utils';
+import { createLocalVue, shallowMount } from '@vue/test-utils';
 import I18n from 'vue-i18n';
 
 import Home from '../Home';
@@ -17,7 +17,7 @@ describe('Home', () => {
       messages: { en: { home: en } },
     });
 
-    wrapper = shallow(Home, { localVue, i18n });
+    wrapper = shallowMount(Home, { localVue, i18n });
   });
 
   it('should render initial component', () => {

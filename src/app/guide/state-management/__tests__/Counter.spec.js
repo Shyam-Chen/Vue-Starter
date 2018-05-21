@@ -1,5 +1,5 @@
 import Vuex from 'vuex';
-import { createLocalVue, shallow } from '@vue/test-utils';
+import { createLocalVue, shallowMount } from '@vue/test-utils';
 import I18n from 'vue-i18n';
 
 import Counter from '../StateManagement';
@@ -51,7 +51,7 @@ describe('Counter', () => {
       messages: { en },
     });
 
-    wrapper = shallow(Counter, { localVue, store, i18n });
+    wrapper = shallowMount(Counter, { localVue, store, i18n });
   });
 
   it('should render initial component', () => {
