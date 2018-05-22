@@ -94,6 +94,8 @@ $ yarn e2e:app
 $ yarn e2e:api
 ```
 
+If you are looking for **Isomorphic JavaScript** you can go [here](https://github.com/Shyam-Chen/Universal-Vue-Starter).
+
 ## Project Template
 
 Generate a blank project via Vue CLI.
