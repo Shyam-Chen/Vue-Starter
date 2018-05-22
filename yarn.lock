@@ -831,6 +831,10 @@
   dependencies:
     "@types/node" "*"
 
+"@types/lodash@^4.14.104":
+  version "4.14.109"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.109.tgz#b1c4442239730bf35cabaf493c772b18c045886d"
+
 "@types/lodash@^4.14.34":
   version "4.14.105"
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.105.tgz#9fcc4627a1f98f8f8fce79ddb2bff4afd97e959b"
@@ -5601,6 +5605,13 @@ firebase-admin@5.12.1:
     "@types/node" "^8.0.53"
     jsonwebtoken "8.1.0"
     node-forge "0.7.4"
+
+firebase-functions-test@0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/firebase-functions-test/-/firebase-functions-test-0.1.2.tgz#5310da772497625aaa461d61e045daea3b2f2e91"
+  dependencies:
+    "@types/lodash" "^4.14.104"
+    lodash "^4.17.5"
 
 firebase-functions@1.0.2:
   version "1.0.2"

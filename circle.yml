@@ -32,8 +32,10 @@ jobs:
           command: |
             docker-compose up -d default
             docker-compose exec default yarn firebase use development --token $FIREBASE_TOKEN
-            docker-compose exec -d default yarn start:app
-            docker-compose exec -d default yarn firebase serve --only functions --token $FIREBASE_TOKEN
+            docker-compose exec default yarn build:app
+            docker-compose exec default yarn build:api
+            docker-compose exec -d default yarn firebase serve --only functions --port 5000 --token $FIREBASE_TOKEN
+            docker-compose exec -d default yarn firebase serve --only hosting --port 8000 --token $FIREBASE_TOKEN
       - run:
           name: Check the code
           command: |
