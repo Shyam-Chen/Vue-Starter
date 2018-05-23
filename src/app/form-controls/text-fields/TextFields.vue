@@ -48,12 +48,15 @@
 <script>
 import { mapModel } from 'vuex-bound';
 
+import { formControlsStore } from '~/form-controls/mixins';
+
 import { INITIAL as state } from './constants';
 import actions from './actions';
 import mutations from './mutations';
 import getters from './getters';
 
 export default {
+  mixins: [formControlsStore],
   computed: {
     $tf() {
       return this.$store.state.formControls.textFields;
@@ -63,10 +66,6 @@ export default {
     ]),
   },
   created() {
-    if (!this.$store.state.formControls) {
-      this.$store.registerModule(['formControls'], { namespaced: true });
-    }
-
     this.$store.registerModule(
       ['formControls', 'textFields'],
       { namespaced: true, state, actions, mutations, getters },

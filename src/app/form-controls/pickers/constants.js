@@ -2,6 +2,10 @@
 
 export const INITIAL = {
   date: null,
-  menu: false,
-  dialog: false,
+  dateMenu: false,
+  dateDialog: false,
+
+  time: null,
+  timeMenu: false,
+  timeDialog: false,
 };
