@@ -15,12 +15,15 @@ export default {
       i18n.setLocaleMessage(val, data.default);
       i18n.locale = val;
       document.documentElement.lang = val;  // eslint-disable-line
-      localStorage.setItem('lang', val);
+      sessionStorage.setItem('lang', val);
     });
   },
   initialLanguage({ dispatch }: IContent): void {
     INITIAL.languages.forEach(({ key }): void => {
       if (key === 'en') return;
+
+      const lang = sessionStorage.getItem('lang');
+      if (lang) dispatch('setLanguage', lang);
 
       if ((navigator.language).includes(key)) {
         dispatch('setLanguage', key);

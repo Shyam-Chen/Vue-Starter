@@ -15,6 +15,7 @@ describe('actions', () => {
 
   it('should handle setLanguage and initialLanguage', () => {
     Object.defineProperty(window.navigator, 'language', { value: 'zh' });
+    sessionStorage.setItem('lang', 'zh');
 
     const context = {};
     const payload = 'zh';
