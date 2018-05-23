@@ -2,6 +2,9 @@ import router from '../';
 
 describe('Hello World', () => {
   it('should handle routes', () => {
+    const api = router.stack[0];
+    const helloWorld = api.route.stack[0];
+
     const req = {};
 
     const res = {
@@ -15,6 +18,6 @@ describe('Hello World', () => {
       },
     };
 
-    router.stack[0].route.stack[0].handle(req, res);
+    helloWorld.handle(req, res);
   });
 });
