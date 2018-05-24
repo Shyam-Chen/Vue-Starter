@@ -16,23 +16,6 @@
         "transform-runtime"
       ]
     },
-    "test": {
-      "presets": [
-        [
-          "env", {
-            "targets": {
-              "node": "current"
-            }
-          }
-        ],
-        "stage-0",
-        "flow"
-      ],
-      "plugins": [
-        "dynamic-import-node",
-        "transform-runtime"
-      ]
-    },
     "api": {
       "presets": [
         [
@@ -54,6 +37,24 @@
             }
           ]
         ]
+      ]
+    },
+    "test": {
+      "presets": [
+        [
+          "env",
+          {
+            "targets": {
+              "node": "current"
+            }
+          }
+        ],
+        "stage-0",
+        "flow"
+      ],
+      "plugins": [
+        "dynamic-import-node",
+        "transform-runtime"
       ]
     }
   }
