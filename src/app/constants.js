@@ -17,12 +17,14 @@ export const INITIAL: IApp = {
           children: [
             { text: 'props', route: '/guide/components/props' },
             { text: 'slots', route: '/guide/components/slots' },
+            { text: 'refs', route: '/guide/components/ref', disabled: true },
           ],
         },
         { text: 'lifecycleHooks', route: '/guide/lifecycle-hooks' },
         { text: 'transitions', route: '/guide/transitions' },
         { text: 'mixins', route: '/guide/mixins' },
         { text: 'directives', route: '/guide/directives' },
+        { text: 'dependencyInjection', route: '/dependencyInjection', disabled: true },
         { text: 'filters', route: '/guide/filters' },
         {
           text: 'routing',

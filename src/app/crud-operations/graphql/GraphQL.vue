@@ -6,7 +6,7 @@
       <!-- Search -->
       <v-layout row>
         <div>
-          <v-text-field v-model="$g.searchData.text" name="search-text" label="Search Text" disabled></v-text-field>
+          <v-text-field v-model="g$.searchData.text" name="search-text" label="Search Text" disabled></v-text-field>
         </div>
         <v-btn color="primary" @click="onSearch()">Search</v-btn>
       </v-layout>
@@ -39,6 +39,8 @@
 import { mapActions } from 'vuex';
 import gql from 'graphql-tag';
 
+import { crudOperationsStore } from '~/crud-operations/mixins';
+
 import { INITIAL as state } from './constants';
 import actions from './actions';
 import mutations from './mutations';
@@ -61,6 +63,7 @@ export default {
       },
     },
   },
+  mixins: [crudOperationsStore],
   data() {
     return {
       textList: [],
@@ -73,15 +76,11 @@ export default {
     };
   },
   computed: {
-    $g() {
+    g$() {
       return this.$store.state.crudOperations.graphql;
     },
   },
   created() {
-    if (!this.$store.state.crudOperations) {
-      this.$store.registerModule(['crudOperations'], { namespaced: true });
-    }
-
     this.$store.registerModule(
       ['crudOperations', 'graphql'],
       { namespaced: true, state, actions, mutations, getters },

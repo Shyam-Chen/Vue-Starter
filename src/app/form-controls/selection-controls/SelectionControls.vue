@@ -12,12 +12,12 @@
               <div class="body-1">Technologies</div>
               <div>
                 <v-layout row wrap>
-                  <v-checkbox v-for="item in $sc.technologiesList" :key="item" :label="item" :value="item" v-model="technologies" class="vfs-checkbox"></v-checkbox>
+                  <v-checkbox v-for="item in sc$.technologiesList" :key="item" :label="item" :value="item" v-model="technologies" class="vfs-checkbox"></v-checkbox>
                 </v-layout>
               </div>
             </v-layout>
           </div>
-          <div class="primary--text vfs-outputs">{{ $sc.technologies }}</div>
+          <div class="primary--text vfs-outputs">{{ sc$.technologies }}</div>
         </v-layout>
 
         <!-- radios -->
@@ -27,12 +27,12 @@
               <div class="body-1">Gender</div>
               <div>
                 <v-radio-group v-model="gender" class="vfs-radio-group" row>
-                  <v-radio v-for="item in $sc.genderList" :key="item" :label="item" :value="item"></v-radio>
+                  <v-radio v-for="item in sc$.genderList" :key="item" :label="item" :value="item"></v-radio>
                 </v-radio-group>
               </div>
             </v-layout>
           </div>
-          <div class="primary--text vfs-outputs">{{ $sc.gender }}</div>
+          <div class="primary--text vfs-outputs">{{ sc$.gender }}</div>
         </v-layout>
 
         <!-- switch -->
@@ -45,7 +45,7 @@
               </div>
             </v-layout>
           </div>
-          <div class="primary--text vfs-outputs">{{ $sc.autoplay }}</div>
+          <div class="primary--text vfs-outputs">{{ sc$.autoplay }}</div>
         </v-layout>
 
         <!-- slider -->
@@ -58,7 +58,7 @@
               </div>
             </v-layout>
           </div>
-          <div class="primary--text vfs-outputs">{{ $sc.volume }}</div>
+          <div class="primary--text vfs-outputs">{{ sc$.volume }}</div>
         </v-layout>
 
         <!-- next -->
@@ -85,7 +85,7 @@ import getters from './getters';
 export default {
   mixins: [formControlsStore],
   computed: {
-    $sc() {
+    sc$() {
       return this.$store.state.formControls.selectionControls;
     },
     ...mapModel('formControls/selectionControls', [

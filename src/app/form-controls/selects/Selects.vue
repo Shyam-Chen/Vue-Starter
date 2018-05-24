@@ -11,11 +11,11 @@
             <v-layout column>
               <div class="body-1">Dessert</div>
               <div>
-                <v-select :items="$s.dessertList" v-model="dessert" label="Choose a dessert" class="vfs-select" single-line bottom></v-select>
+                <v-select :items="s$.dessertList" v-model="dessert" label="Choose a dessert" class="vfs-select" single-line bottom></v-select>
               </div>
             </v-layout>
           </div>
-          <div class="primary--text vfs-outputs">{{ $s.dessert }}</div>
+          <div class="primary--text vfs-outputs">{{ s$.dessert }}</div>
         </v-layout>
 
         <!-- multiple select -->
@@ -24,11 +24,11 @@
             <v-layout column>
               <div class="body-1">States</div>
               <div>
-                <v-select :items="$s.statesList" v-model="states" label="Select States" class="vfs-select--multiple" multiple chips single-line bottom></v-select>
+                <v-select :items="s$.statesList" v-model="states" label="Select States" class="vfs-select--multiple" multiple chips single-line bottom></v-select>
               </div>
             </v-layout>
           </div>
-          <div class="primary--text vfs-outputs">{{ $s.states }}</div>
+          <div class="primary--text vfs-outputs">{{ s$.states }}</div>
         </v-layout>
 
         <!-- next -->
@@ -55,7 +55,7 @@ import getters from './getters';
 export default {
   mixins: [formControlsStore],
   computed: {
-    $s() {
+    s$() {
       return this.$store.state.formControls.selects;
     },
     ...mapModel('formControls/selects', [

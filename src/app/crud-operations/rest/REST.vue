@@ -6,30 +6,30 @@
       <!-- Search -->
       <v-layout row>
         <div>
-          <v-text-field v-model="$r.searchData.text" name="search-text" label="Search Text"></v-text-field>
+          <v-text-field v-model="r$.searchData.text" name="search-text" label="Search Text"></v-text-field>
         </div>
-        <v-btn color="primary" @click="searchItem($r.searchData.text)">Search</v-btn>
+        <v-btn color="primary" @click="searchItem(r$.searchData.text)">Search</v-btn>
       </v-layout>
 
       <!-- Add -->
       <v-layout row>
         <div>
-          <v-text-field v-model="$r.addData.text" name="add-text" label="Add Text"></v-text-field>
+          <v-text-field v-model="r$.addData.text" name="add-text" label="Add Text"></v-text-field>
         </div>
-        <v-btn color="primary" @click="addItem($r.addData.text)">Add</v-btn>
+        <v-btn color="primary" @click="addItem(r$.addData.text)">Add</v-btn>
       </v-layout>
 
       <!-- Display -->
       <v-layout row>
         <v-card>
-          <template v-if="$r.selected.length !== 0">
+          <template v-if="r$.selected.length !== 0">
             <v-card-title class="vfs-card-title">
               <div class="body-2 error--text">
-                {{ $r.selected.length }} selected
+                {{ r$.selected.length }} selected
               </div>
               <v-spacer></v-spacer>
               <!-- Delete checked -->
-              <v-btn icon class="mx-0" @click.stop="">
+              <v-btn icon class="mx-0" @click.stop="void 0">
                 <v-icon color="error">delete</v-icon>
               </v-btn>
             </v-card-title>
@@ -41,7 +41,7 @@
             </v-card-title>
           </template>
 
-          <v-data-table :headers="headers" :items="$r.dataset" :loading="$r.loading" v-model="$r.selected" hide-actions select-all>
+          <v-data-table :headers="headers" :items="r$.dataset" :loading="r$.loading" v-model="r$.selected" hide-actions select-all>
             <template slot="items" slot-scope="props">
               <td>
                 <v-checkbox v-model="props.selected" primary hide-details></v-checkbox>
@@ -63,31 +63,31 @@
 
       <aside>
         <!-- Edit -->
-        <v-dialog v-model="$r.editData.dialog" max-width="500px">
+        <v-dialog v-model="r$.editData.dialog" max-width="500px">
           <v-card>
             <v-card-title>Edit</v-card-title>
             <v-card-text>
               <v-layout row>
                 <div>
-                  <v-text-field v-model="$r.editData.text" name="edit-text" label="Edit Text"></v-text-field>
+                  <v-text-field v-model="r$.editData.text" name="edit-text" label="Edit Text"></v-text-field>
                 </div>
               </v-layout>
             </v-card-text>
             <v-card-actions>
-              <v-btn color="error" flat @click.stop="$r.editData.dialog = false">Cancel</v-btn>
-              <v-btn color="success" flat @click.stop="editItem($r.editData)">Save</v-btn>
+              <v-btn color="error" flat @click.stop="r$.editData.dialog = false">Cancel</v-btn>
+              <v-btn color="success" flat @click.stop="editItem(r$.editData)">Save</v-btn>
             </v-card-actions>
           </v-card>
         </v-dialog>
 
         <!-- Delete -->
-        <v-dialog v-model="$r.deleteData.dialog" max-width="500px">
+        <v-dialog v-model="r$.deleteData.dialog" max-width="500px">
           <v-card>
             <v-card-title>Delete</v-card-title>
             <v-card-text>Are you sure you want to delete it?</v-card-text>
             <v-card-actions>
-              <v-btn color="success" flat @click.stop="$r.deleteData.dialog = false">Cancel</v-btn>
-              <v-btn color="error" flat @click.stop="deleteItem($r.deleteData.id)">Confirm</v-btn>
+              <v-btn color="success" flat @click.stop="r$.deleteData.dialog = false">Cancel</v-btn>
+              <v-btn color="error" flat @click.stop="deleteItem(r$.deleteData.id)">Confirm</v-btn>
             </v-card-actions>
           </v-card>
         </v-dialog>
@@ -100,12 +100,15 @@
 <script>
 import { mapActions } from 'vuex';
 
+import { crudOperationsStore } from '~/crud-operations/mixins';
+
 import { INITIAL as state } from './constants';
 import actions from './actions';
 import mutations from './mutations';
 import getters from './getters';
 
 export default {
+  mixins: [crudOperationsStore],
   data() {
     return {
       headers: [
@@ -116,15 +119,11 @@ export default {
     };
   },
   computed: {
-    $r() {
+    r$() {
       return this.$store.state.crudOperations.rest;
     },
   },
   created() {
-    if (!this.$store.state.crudOperations) {
-      this.$store.registerModule(['crudOperations'], { namespaced: true });
-    }
-
     this.$store.registerModule(
       ['crudOperations', 'rest'],
       { namespaced: true, state, actions, mutations, getters },
@@ -138,13 +137,13 @@ export default {
       'deleteItem',
     ]),
     onOpenEdit(item) {
-      this.$r.editData.dialog = true;
-      this.$r.editData.id = item.id;
-      this.$r.editData.text = item.text;
+      this.r$.editData.dialog = true;
+      this.r$.editData.id = item.id;
+      this.r$.editData.text = item.text;
     },
     onOpenDelete(id) {
-      this.$r.deleteData.dialog = true;
-      this.$r.deleteData.id = id;
+      this.r$.deleteData.dialog = true;
+      this.r$.deleteData.id = id;
     },
   },
 };

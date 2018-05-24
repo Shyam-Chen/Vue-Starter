@@ -3,14 +3,14 @@
     <v-layout column>
       <v-layout row>
         <div class="headline pa-2">
-          Clicked: <strong>{{ $c.value }}</strong> times, value is <strong>{{ evenOrOdd }}</strong>.
+          Clicked: <strong>{{ c$.value }}</strong> times, value is <strong>{{ evenOrOdd }}</strong>.
         </div>
       </v-layout>
 
       <v-layout row>
         <v-subheader class="pt-3">Step:</v-subheader>
         <div>
-          <v-select :items="$c.stepList" v-model="$c.step" class="step" single-line></v-select>
+          <v-select :items="c$.stepList" v-model="c$.step" class="step" single-line></v-select>
         </div>
       </v-layout>
 
@@ -50,7 +50,7 @@ export default {
     title: 'State Management | Oh My Vue',
   },
   computed: {
-    $c(): ICounter {
+    c$(): ICounter {
       return this.$store.state.counter;
     },
     ...mapGetters('counter', Object.keys(getters)),

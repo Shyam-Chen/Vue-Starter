@@ -6,25 +6,25 @@
       <!-- Add -->
       <v-layout row>
         <div class="vfs-text-field">
-          <v-text-field v-model="$b.addData.primary" name="primary" label="Primary"></v-text-field>
+          <v-text-field v-model="b$.addData.primary" name="primary" label="Primary"></v-text-field>
         </div>
         <div class="vfs-text-field">
-          <v-text-field v-model="$b.addData.accent" name="accent" label="Accent"></v-text-field>
+          <v-text-field v-model="b$.addData.accent" name="accent" label="Accent"></v-text-field>
         </div>
-        <v-btn color="primary" @click="addItem($b.addData)">Add</v-btn>
+        <v-btn color="primary" @click="addItem(b$.addData)">Add</v-btn>
       </v-layout>
 
       <!-- Display -->
       <v-layout row>
         <v-card>
-          <template v-if="$b.selected.length !== 0">
+          <template v-if="b$.selected.length !== 0">
             <v-card-title class="vfs-card-title">
               <div class="body-2 error--text">
-                {{ $b.selected.length }} selected
+                {{ b$.selected.length }} selected
               </div>
               <v-spacer></v-spacer>
               <!-- Delete checked -->
-              <v-btn icon class="mx-0" @click.stop="deleteChecked($b.selected)">
+              <v-btn icon class="mx-0" @click.stop="deleteChecked(b$.selected)">
                 <v-icon color="error">delete</v-icon>
               </v-btn>
             </v-card-title>
@@ -35,11 +35,11 @@
               <div class="title">Board</div>
               <v-spacer></v-spacer>
               <!-- Search -->
-              <v-text-field v-model="$b.searchData" append-icon="search" label="Search" single-line hide-details></v-text-field>
+              <v-text-field v-model="b$.searchData" append-icon="search" label="Search" single-line hide-details></v-text-field>
             </v-card-title>
           </template>
 
-          <v-data-table :headers="$b.headers" :items="$b.dataset" :search="$b.searchData" v-model="$b.selected" hide-actions select-all>
+          <v-data-table :headers="b$.headers" :items="b$.dataset" :search="b$.searchData" v-model="b$.selected" hide-actions select-all>
             <template slot="items" slot-scope="props">
               <td>
                 <v-checkbox v-model="props.selected" primary hide-details></v-checkbox>
@@ -63,28 +63,28 @@
       <!-- dialogs -->
       <aside>
         <!-- Edit -->
-        <v-dialog v-model="$b.dialogs.edit" max-width="500px">
+        <v-dialog v-model="b$.dialogs.edit" max-width="500px">
           <v-card>
             <v-card-title>Edit</v-card-title>
             <v-card-text>
-              <v-layout v-if="$b.editData" row>
+              <v-layout v-if="b$.editData" row>
                 <div class="vfs-text-field">
-                  <v-text-field v-model="$b.editData.primary" name="primary" label="Primary"></v-text-field>
+                  <v-text-field v-model="b$.editData.primary" name="primary" label="Primary"></v-text-field>
                 </div>
                 <div class="vfs-text-field">
-                  <v-text-field v-model="$b.editData.accent" name="accent" label="Accent"></v-text-field>
+                  <v-text-field v-model="b$.editData.accent" name="accent" label="Accent"></v-text-field>
                 </div>
               </v-layout>
             </v-card-text>
             <v-card-actions>
               <v-btn color="error" flat @click.stop="handleDialog({ name: 'edit', value: false })">Cancel</v-btn>
-              <v-btn color="success" flat @click.stop="editItem($b.editData); handleDialog({ name: 'edit', value: false })">Save</v-btn>
+              <v-btn color="success" flat @click.stop="editItem(b$.editData); handleDialog({ name: 'edit', value: false })">Save</v-btn>
             </v-card-actions>
           </v-card>
         </v-dialog>
 
         <!-- Delete -->
-        <v-dialog v-model="$b.dialogs.delete" max-width="500px">
+        <v-dialog v-model="b$.dialogs.delete" max-width="500px">
           <v-card>
             <v-card-title>Delete</v-card-title>
             <v-card-text>
@@ -92,7 +92,7 @@
             </v-card-text>
             <v-card-actions>
               <v-btn color="success" flat @click.stop="handleDialog({ name: 'delete', value: false })">Cancel</v-btn>
-              <v-btn color="error" flat @click.stop="deleteItem($b.deleteData); handleDialog({ name: 'delete', value: false })">Confirm</v-btn>
+              <v-btn color="error" flat @click.stop="deleteItem(b$.deleteData); handleDialog({ name: 'delete', value: false })">Confirm</v-btn>
             </v-card-actions>
           </v-card>
         </v-dialog>
@@ -105,6 +105,8 @@
 // @flow
 
 import { mapGetters, mapActions } from 'vuex';
+
+import { crudOperationsStore } from '~/crud-operations/mixins';
 
 import { IBasic } from './types';
 import { INITIAL as state } from './constants';
@@ -119,17 +121,14 @@ export default {
       { property: 'og:title', content: 'CRUD Operations - Basic | Oh My Vue' },
     ],
   },
+  mixins: [crudOperationsStore],
   computed: {
-    $b(): IBasic {
+    b$(): IBasic {
       return this.$store.state.crudOperations.basic;
     },
     ...mapGetters('crudOperations/basic', Object.keys(getters)),
   },
   created() {
-    if (!this.$store.state.crudOperations) {
-      this.$store.registerModule(['crudOperations'], { namespaced: true });
-    }
-
     this.$store.registerModule(
       ['crudOperations', 'basic'],
       { namespaced: true, state, actions, mutations, getters },
