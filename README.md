@@ -157,6 +157,20 @@ $ docker-compose up -d --build <SERVICE>
 
 5. Push images to Docker Cloud
 
+```diff
+# .gitignore
+
+  .DS_Store
+  node_modules
+  npm
+  public
+  functions
+  coverage
++ Dockerfile.dev
++ Dockerfile.prod
+  *.log
+```
+
 ```bash
 $ docker login
 $ docker build -f tools/Dockerfile.<dev|prod> -t <IMAGE_NAME>:<IMAGE_TAG> .
@@ -253,6 +267,17 @@ ENV FUNC_URL <FUNC_URL>
 
 ENV SENTRY_DSN <SENTRY_DSN>
 # -- envs
+```
+
+### CI environment
+
+Add environment variables to the CircleCI build.
+
+```yml
+CODECOV_TOKEN
+DOCKER_PASSWORD
+DOCKER_USERNAME
+FIREBASE_TOKEN
 ```
 
 ### SEO friendly
