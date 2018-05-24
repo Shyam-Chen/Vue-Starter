@@ -168,6 +168,8 @@ $ docker tag <IMAGE_NAME>:<IMAGE_TAG> <DOCKER_ID_USER>/<IMAGE_NAME>:<IMAGE_TAG>
 $ docker push <DOCKER_ID_USER>/<IMAGE_NAME>:<IMAGE_TAG>
 
 # remove
+$ docker rmi <REPOSITORY>:<TAG>
+# or
 $ docker rmi <IMAGE_ID>
 ```
 
