@@ -16,18 +16,20 @@ export default {
     state.loading = true;
 
     axios.post(API_LIST, { text })
-      .then(() => { state.addData.text = ''; })
-      .then(() => dispatch('searchItem'))
+      .then(() => {
+        state.addData.text = '';
+        dispatch('searchItem');
+      })
       .catch(error => dispatch('failure', error));
   },
   searchItem({ dispatch, state }, text) {
     state.loading = true;
 
     axios.get(API_LIST, { params: { text } })
-      .then(response => dispatch('success', response.data))
-      .then(() => {
+      .then((res) => {
         state.loading = false;
         state.searchData.text = '';
+        dispatch('success', res.data);
       })
       .catch(error => dispatch('failure', error));
   },
