@@ -29,4 +29,10 @@ describe('actions', () => {
 
     actions.initialLanguage({ dispatch });
   });
+
+  it('should handle backToHome', () => {
+    const state = { ...INITIAL };
+    actions.backToHome({ state });
+    expect(state.drawer).toBe(false);
+  });
 });

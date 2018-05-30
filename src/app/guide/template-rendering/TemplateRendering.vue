@@ -1,8 +1,12 @@
 <template>
   <v-container>
-    <v-layout>
-      Text {{ text }}
-      {{ number + 1 }}
+    <v-layout column>
+      <div>Text {{ text }}</div>
+      <div>{{ number + 1 }}</div>
+    </v-layout>
+
+    <v-layout column>
+      <div></div>
     </v-layout>
   </v-container>
 </template>

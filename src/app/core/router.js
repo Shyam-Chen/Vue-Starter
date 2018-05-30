@@ -104,7 +104,7 @@ router.beforeEach((to, from, next) => {
 });
 
 Vue.use(Analytics, {
-  id: process.env.GOOGLE_ANALYTICS,
+  id: process.env.GOOGLE_ANALYTICS || 'UA-XXXXXXXX-X',
   router,
   autoTracking: {
     page: process.env.NODE_ENV === 'production',

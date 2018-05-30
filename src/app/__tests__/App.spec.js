@@ -48,7 +48,13 @@ describe('App', () => {
       ],
     });
 
-    wrapper = shallowMount(App, { localVue, store, i18n, router });
+    wrapper = shallowMount(App, {
+      localVue,
+      store,
+      i18n,
+      router,
+      stubs: ['router-link', 'router-view'],
+    });
   });
 
   it('should render initial component', () => {

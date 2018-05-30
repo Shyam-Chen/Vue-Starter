@@ -5,12 +5,12 @@
 
       <v-layout column class="pa-3">
         <div class="subheading pa-2">Bar Chart</div>
-        <ECharts :options="bar" :theme="$app.theme" auto-resize />
+        <ECharts :options="bar" :theme="app$.theme" auto-resize />
       </v-layout>
 
       <v-layout column class="pa-3">
         <div class="subheading pa-2">Pie Chart</div>
-        <ECharts :options="pie" :theme="$app.theme" auto-resize />
+        <ECharts :options="pie" :theme="app$.theme" auto-resize />
       </v-layout>
     </v-layout>
   </v-container>
@@ -42,7 +42,7 @@ export default {
     };
   },
   computed: {
-    $app() {
+    app$() {
       return this.$store.state;
     },
   },

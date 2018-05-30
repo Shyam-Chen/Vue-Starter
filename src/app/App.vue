@@ -1,20 +1,21 @@
 <template>
   <v-fade-transition appear>
-    <v-app v-cloak :dark="$app.theme === 'dark'">
+    <v-app v-cloak :dark="app$.theme === 'dark'">
 
       <template v-if="!$route.meta.standalone">
-        <v-navigation-drawer v-if="!$route.meta.home" :clipped="$vuetify.breakpoint.mdAndUp" v-model="$app.drawer" fixed app>
+        <v-navigation-drawer v-if="!$route.meta.home" :clipped="$vuetify.breakpoint.mdAndUp" v-model="app$.drawer" fixed app>
+          <!-- mobile -->
           <v-toolbar class="hidden-md-and-up" flat>
             <v-toolbar-title class="ml-0 pl-3 vfs-toolbar-title">
-              <router-link class="vfs-router-link" to="/">
+              <div class="vfs-router-link" @click="backToHome">
                 <img src="/assets/images/logo.svg" alt="Logo" width="40" height="40" class="vfs-toolbar-image">
                 <span>Oh My Vue</span>
-              </router-link>
+              </div>
             </v-toolbar-title>
           </v-toolbar>
 
           <v-list dense>
-            <template v-for="item in $app.navigation">
+            <template v-for="item in app$.navigation">
 
               <v-subheader v-if="item.subheader" :key="item.subheader">{{ $t(item.subheader) }}</v-subheader>
 
@@ -73,9 +74,10 @@
           </v-list>
         </v-navigation-drawer>
 
+        <!-- desktop -->
         <v-toolbar :clipped-left="$vuetify.breakpoint.mdAndUp" :flat="$route.meta.home" class="primary darken-1" dark app fixed>
           <v-toolbar-title class="ml-0 pl-3 vfs-toolbar-title">
-            <v-toolbar-side-icon v-if="!$route.meta.home" @click.stop="$app.drawer = !$app.drawer"></v-toolbar-side-icon>
+            <v-toolbar-side-icon v-if="!$route.meta.home" @click.stop="app$.drawer = !app$.drawer"></v-toolbar-side-icon>
             <router-link class="hidden-sm-and-down white--text vfs-router-link" to="/">
               <img src="/assets/images/logo.svg" alt="Logo" width="40" height="40" class="vfs-toolbar-image">
               <span>Oh My Vue</span>
@@ -107,7 +109,7 @@
               <v-icon>language</v-icon>
             </v-btn>
             <v-list>
-              <v-list-tile v-for="lang in $app.languages" :key="lang.key" @click="setLanguage(lang.key)">
+              <v-list-tile v-for="lang in app$.languages" :key="lang.key" @click="setLanguage(lang.key)">
                 <v-list-tile-avatar>
                   <img :src="`https://countryflags.io/${lang.country}/flat/24.png`" alt="Country Flag">
                 </v-list-tile-avatar>
@@ -161,7 +163,7 @@ import actions from './actions';
 export default {
   mixins: [layout],
   computed: {
-    $app(): IApp {
+    app$(): IApp {
       return this.$store.state;
     },
   },

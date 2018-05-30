@@ -1,5 +1,6 @@
 // @flow
 
+import router from '~/core/router';
 import i18n from '~/core/i18n';
 
 import { IContent } from './types';
@@ -29,5 +30,9 @@ export default {
         dispatch('setLanguage', key);
       }
     });
+  },
+  backToHome({ state }: IContent): void {
+    router.push('/');
+    state.drawer = false;
   },
 };
