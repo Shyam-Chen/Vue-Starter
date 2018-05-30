@@ -4,7 +4,7 @@ exports[`Overview should render initial component 1`] = `
 <v-container fluid="">
   <v-layout column="">
     <div class="headline">Practical Examples</div>
-    <v-layout column="">
+    <v-layout column="" class="mt-1">
       <div>00. Hello World - A bare-bones Hello World example.</div>
       <div>01. Guide - Structure Vue, Vue Router, and Vuex for applications.</div>
       <div>02. CRUD Operations - The four major functions implemented in applications.</div>

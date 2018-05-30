@@ -7,6 +7,7 @@ export default {
   props: '属性',
   slots: '插槽',
   refs: '引用',
+  customEvents: '自定义事件',
   lifecycleHooks: '生命周期钩子',
   transitions: '过渡',
   mixins: '混入',

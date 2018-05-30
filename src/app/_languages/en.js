@@ -7,6 +7,7 @@ export default {
   props: 'Props',
   slots: 'Slots',
   refs: 'Refs',
+  customEvents: 'Custom Events',
   lifecycleHooks: 'Lifecycle Hooks',
   transitions: 'Transitions',
   mixins: 'Mixins',

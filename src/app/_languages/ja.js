@@ -7,6 +7,7 @@ export default {
   props: 'プロパティ',
   slots: 'スロット',
   refs: 'リファレンス',
+  customEvents: 'カスタムイベント',
   lifecycleHooks: 'ライフサイクルフック',
   transitions: 'トランジション',
   mixins: 'ミックスイン',
