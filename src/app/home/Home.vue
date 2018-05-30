@@ -7,7 +7,9 @@
 
           <v-flex shrink class="text-xs-center text-md-left">
             <div class="display-3">Oh My Vue</div>
-            <div class="subheading">Web Fundamentals • Firebase Platform • Google Cloud</div>
+            <div class="subheading">
+              Building scalable web apps from Web Fundamentals to Firebase Platform and then to Google Cloud.
+            </div>
             <v-divider class="my-3"></v-divider>
             <v-btn large color="white" to="/overview" class="primary--text ml-0">
               <v-icon left>more</v-icon>
