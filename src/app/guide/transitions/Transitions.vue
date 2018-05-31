@@ -116,11 +116,11 @@ export default {
 
 .fade-group-enter {
   opacity: 0;
-  transform: translateY(-20px);
+  transform: translateY(-1.25rem);
 }
 
 .fade-group-leave-to {
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(1.25rem);
 }
 </style>
