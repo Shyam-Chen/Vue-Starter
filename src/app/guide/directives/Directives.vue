@@ -13,7 +13,7 @@
 
     <v-layout row>
       <div>
-        <v-text-field :append-icon="isVisibility ? 'visibility' : 'visibility_off'" :append-icon-cb="() => (isVisibility = !isVisibility)" :type="isVisibility ? 'password' : 'text'" label="Password" value="qaz123456"></v-text-field>
+        <v-text-field :append-icon="isVisibility ? 'visibility' : 'visibility_off'" :append-icon-cb="() => (isVisibility = !isVisibility)" :type="isVisibility ? 'text' : 'password'" label="Password" value="qaz123456"></v-text-field>
       </div>
     </v-layout>
 
@@ -29,7 +29,7 @@ export default {
   },
   data() {
     return {
-      isVisibility: true,
+      isVisibility: false,
     };
   },
 };
