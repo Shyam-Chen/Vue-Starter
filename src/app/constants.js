@@ -17,7 +17,7 @@ export const INITIAL: IApp = {
           children: [
             { text: 'props', route: '/guide/components/props' },
             { text: 'slots', route: '/guide/components/slots' },
-            { text: 'refs', route: '/guide/components/ref', disabled: true },
+            { text: 'refs', route: '/guide/components/refs' },
             { text: 'customEvents', route: '/guide/components/custom-events', disabled: true },
           ],
         },

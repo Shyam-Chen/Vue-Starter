@@ -38,8 +38,7 @@ export default {
 </script>
 
 <style scoped>
-.layout {
-  border: 1px solid #e91e63;
+.layout:not(:first-child) {
   padding: 1rem;
 }
 </style>

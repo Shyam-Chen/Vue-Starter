@@ -25,6 +25,7 @@ const router = new Router({
     { path: '/guide/template-rendering', component: () => import('~/guide/template-rendering/TemplateRendering') },
     { path: '/guide/components/props', component: () => import('~/guide/components/props/Props') },
     { path: '/guide/components/slots', component: () => import('~/guide/components/slots/Slots') },
+    { path: '/guide/components/refs', component: () => import('~/guide/components/refs/Refs') },
     { path: '/guide/lifecycle-hooks', component: () => import('~/guide/lifecycle-hooks/LifecycleHooks') },
     { path: '/guide/transitions', component: () => import('~/guide/transitions/Transitions') },
     { path: '/guide/mixins', component: () => import('~/guide/mixins/Mixins') },
