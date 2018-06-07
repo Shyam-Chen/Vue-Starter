@@ -60,6 +60,7 @@
     "vue-apollo": "3.0.0-beta.5",
     "vue-echarts": "3.0.7",
     "vue-i18n": "7.7.0",
+    "vue-markdown": "2.2.4",
     "vue-meta": "1.5.0",
     "vue-router": "3.0.1",
     "vuetify": "1.0.18",

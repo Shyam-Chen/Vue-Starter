@@ -28,6 +28,7 @@ export default {
   selects: '选择',
   selectionControls: '选择控件',
   pickers: '拾取器',
+  markdownEditor: 'Markdown 编辑器',
   dataTable: '数据表',
   paginator: '分页器',
   iterator: '迭代器',

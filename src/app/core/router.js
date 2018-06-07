@@ -54,6 +54,7 @@ const router = new Router({
     { path: '/form-controls/selects', component: () => import('~/form-controls/selects/Selects') },
     { path: '/form-controls/selection-controls', component: () => import('~/form-controls/selection-controls/SelectionControls') },
     { path: '/form-controls/pickers', component: () => import('~/form-controls/pickers/Pickers') },
+    { path: '/form-controls/markdown-editor', component: () => import('~/form-controls/markdown-editor/MarkdownEditor') },
 
     /** @name data-table */
     { path: '/data-table/paginator', component: () => import('~/data-table/paginator/Paginator') },

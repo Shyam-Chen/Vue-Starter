@@ -55,6 +55,7 @@ export const INITIAL: IApp = {
         { text: 'selects', route: '/form-controls/selects' },
         { text: 'selectionControls', route: '/form-controls/selection-controls' },
         { text: 'pickers', route: '/form-controls/pickers' },
+        { text: 'markdownEditor', route: '/form-controls/markdown-editor' },
       ],
     },
     {

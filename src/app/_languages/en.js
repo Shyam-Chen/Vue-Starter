@@ -28,6 +28,7 @@ export default {
   selects: 'Selects',
   selectionControls: 'Selection Controls',
   pickers: 'Pickers',
+  markdownEditor: 'Markdown Editor',
   dataTable: 'Data Table',
   paginator: 'Paginator',
   iterator: 'Iterator',
