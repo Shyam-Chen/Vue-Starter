@@ -4,9 +4,9 @@
 
     <div :class="{ ['cyan-color']: activeCyan }">Cyan</div>
 
-    <div :style="{ color: teal800, backgroundColor: teal100 }">Teal</div>
-    <div :style="purple">Purple</div>
-    <div :style="[orange800, orange100]">Orange</div>
+    <div><span :style="{ color: teal800, backgroundColor: teal100 }">Teal</span></div>
+    <div><span :style="purple">Purple</span></div>
+    <div><span :style="[orange800, orange100]">Orange</span></div>
   </v-layout>
 </template>
 
