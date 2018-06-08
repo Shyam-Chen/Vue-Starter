@@ -8,37 +8,37 @@
         <!-- input -->
         <v-layout row>
           <div>
-            <v-text-field v-model="nickname" name="nickname" label="Nickname" class="vfs-field"></v-text-field>
+            <v-text-field v-model="nickname" name="nickname" label="Nickname" class="field"></v-text-field>
           </div>
-          <div class="primary--text vfs-outputs">{{ tf$.nickname }}</div>
+          <div class="primary--text outputs">{{ tf$.nickname }}</div>
         </v-layout>
 
         <v-layout row>
           <div>
-            <v-text-field v-model="nickname" :rules="tf$.nicknameRules" name="nickname" label="Nickname" counter="15" class="vfs-field" required></v-text-field>
+            <v-text-field v-model="nickname" :rules="tf$.nicknameRules" name="nickname" label="Nickname" counter="15" class="field" required></v-text-field>
           </div>
-          <div class="primary--text vfs-outputs">{{ tf$.nickname }}</div>
+          <div class="primary--text outputs">{{ tf$.nickname }}</div>
         </v-layout>
 
         <v-layout row>
           <div>
-            <v-text-field v-model="nickname" placeholder="ex. Larva" name="nickname" label="Nickname" class="vfs-field"></v-text-field>
+            <v-text-field v-model="nickname" placeholder="e.g. Larva" name="nickname" label="Nickname" class="field"></v-text-field>
           </div>
-          <div class="primary--text vfs-outputs">{{ tf$.nickname }}</div>
+          <div class="primary--text outputs">{{ tf$.nickname }}</div>
         </v-layout>
 
         <v-layout row>
           <div>
-            <v-text-field v-model="nickname" name="nickname" label="Nickname" class="vfs-field" textarea></v-text-field>
+            <v-text-field v-model="nickname" name="nickname" label="Nickname" class="field" textarea></v-text-field>
           </div>
-          <div class="primary--text vfs-outputs">{{ tf$.nickname }}</div>
+          <div class="primary--text outputs">{{ tf$.nickname }}</div>
         </v-layout>
 
         <v-layout row>
           <div>
             <v-text-field v-model="creditCard" mask="credit-card" label="Credit Card" class="credit-card"></v-text-field>
           </div>
-          <div class="primary--text vfs-outputs">{{ tf$.creditCard }}</div>
+          <div class="primary--text outputs">{{ tf$.creditCard }}</div>
         </v-layout>
 
         <!-- next -->
@@ -83,11 +83,11 @@ export default {
 </script>
 
 <style scoped>
-.vfs-field {
+.field {
   width: 167px;
 }
 
-.vfs-outputs {
+.outputs {
   align-self: center;
   margin: 0 0 0.5rem 0.5rem;
 }
