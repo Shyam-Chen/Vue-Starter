@@ -34,6 +34,13 @@
           <div class="primary--text vfs-outputs">{{ tf$.nickname }}</div>
         </v-layout>
 
+        <v-layout row>
+          <div>
+            <v-text-field v-model="creditCard" mask="credit-card" label="Credit Card" class="credit-card"></v-text-field>
+          </div>
+          <div class="primary--text vfs-outputs">{{ tf$.creditCard }}</div>
+        </v-layout>
+
         <!-- next -->
         <v-layout row>
           more...
@@ -63,6 +70,7 @@ export default {
     },
     ...mapModel('formControls/textFields', [
       'nickname',
+      'creditCard',
     ]),
   },
   created() {
@@ -82,5 +90,9 @@ export default {
 .vfs-outputs {
   align-self: center;
   margin: 0 0 0.5rem 0.5rem;
+}
+
+.credit-card {
+  width: 15rem;
 }
 </style>
