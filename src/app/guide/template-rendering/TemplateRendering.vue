@@ -5,6 +5,7 @@
 
       <TemplateSyntax />
       <ComputedProperties />
+      <Watchers />
       <ClassAndStyleBindings />
       <ConditionalRendering />
       <ListRendering />
@@ -16,6 +17,7 @@
 <script>
 import TemplateSyntax from './TemplateSyntax';
 import ComputedProperties from './ComputedProperties';
+import Watchers from './Watchers';
 import ClassAndStyleBindings from './ClassAndStyleBindings';
 import ConditionalRendering from './ConditionalRendering';
 import ListRendering from './ListRendering';
@@ -25,6 +27,7 @@ export default {
   components: {
     TemplateSyntax,
     ComputedProperties,
+    Watchers,
     ClassAndStyleBindings,
     ConditionalRendering,
     ListRendering,
