@@ -1,39 +1,25 @@
 <template>
-  <v-container>
+  <v-container fluid>
+    <v-layout column>
+      <div class="headline mb-1">Directives</div>
 
-    <v-layout row>
-      <div>
-        <v-text-field v-visibility="isVisibility" label="Password" value="qaz123456" type="password"></v-text-field>
-      </div>
-
-      <v-btn flat icon @click="isVisibility = !isVisibility">
-        <v-icon>{{ isVisibility ? 'visibility' : 'visibility_off' }}</v-icon>
-      </v-btn>
+      <Visibility />
     </v-layout>
-
-    <v-layout row>
-      <div>
-        <v-text-field :append-icon="isVisibility ? 'visibility' : 'visibility_off'" :append-icon-cb="() => (isVisibility = !isVisibility)" :type="isVisibility ? 'text' : 'password'" label="Password" value="qaz123456"></v-text-field>
-      </div>
-    </v-layout>
-
   </v-container>
 </template>
 
 <script>
-import visibility from './visibility';
+import Visibility from './Visibility';
 
 export default {
-  directives: {
-    visibility,  // v-visibility
-  },
-  data() {
-    return {
-      isVisibility: false,
-    };
+  components: {
+    Visibility,
   },
 };
 </script>
 
 <style scoped>
+.layout:not(:first-child) {
+  padding: 1rem;
+}
 </style>

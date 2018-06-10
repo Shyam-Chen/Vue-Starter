@@ -1,6 +1,10 @@
 <template>
-  <v-container>
-    <div>Message: {{ message }}</div>
+  <v-container fluid>
+    <v-layout column>
+      <div class="headline mb-1">Mixins</div>
+    </v-layout>
+
+    <div>Message1: {{ message1 }}</div>
     <div>Message2: {{ message2 }}</div>
   </v-container>
 </template>
@@ -13,7 +17,7 @@ export default {
   data() {
     return {
       // shallow merge
-      message: 'Goodbye',
+      message1: 'Goodbye',
     };
   },
 };

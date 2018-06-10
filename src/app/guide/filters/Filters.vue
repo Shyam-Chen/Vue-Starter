@@ -1,25 +1,26 @@
 <template>
-  <v-container>
+  <v-container fluid>
+    <v-layout column>
+      <div class="headline mb-1">Filters</div>
 
-    <v-layout>
-      <div class="mb-3">
-        <div class="headline">Reverse String/Array</div>
-        <div class="ml-3 mb-2">{{ 'Vanilla Angular React Vue' | reverse }}</div>
+      <v-layout column class="mt-1 mb-1">
+        <div class="title mb-2">Reverse String/Array</div>
+
+        <div>{{ 'Vanilla Angular React Vue' | reverse }}</div>
+
         <template v-for="item in reverse(list)">
-          <div :key="item" class="ml-3">{{ item }}</div>
+          <div :key="item">{{ item }}</div>
         </template>
-      </div>
-    </v-layout>
+      </v-layout>
 
-    <v-layout>
-      <div>
-        <div class="headline">Truncate String</div>
-        <div class="ml-3">{{ 'Approachable' | truncate }}</div>
-        <div class="ml-3">{{ message | truncate }}</div>
-        <div class="ml-3">{{ message | truncate(50) }}</div>
-      </div>
-    </v-layout>
+      <v-layout column class="mt-1 mb-1">
+        <div class="title mb-2">Truncate String</div>
 
+        <div>{{ 'Approachable' | truncate }}</div>
+        <div>{{ message | truncate }}</div>
+        <div>{{ message | truncate(50) }}</div>
+      </v-layout>
+    </v-layout>
   </v-container>
 </template>
 
@@ -47,4 +48,7 @@ export default {
 </script>
 
 <style scoped>
+.layout:not(:first-child) {
+  padding: 1rem;
+}
 </style>

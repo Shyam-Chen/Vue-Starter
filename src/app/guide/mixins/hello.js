@@ -1,7 +1,7 @@
 export const hello = {
   data() {
     return {
-      message: 'Hello',
+      message1: 'Hello',
       message2: 'Hi',
     };
   },
