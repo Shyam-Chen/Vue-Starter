@@ -7,17 +7,27 @@
 </template>
 
 <script>
+// @flow
+
+type Data = {
+  text: string,
+  isTyping: boolean,
+};
+
 export default {
-  data() {
+  data(): Data {
     return {
       text: '',
       isTyping: false,
     };
   },
   watch: {
-    text() {
+    text(): void {
       this.isTyping = true;
-      setTimeout(() => { this.isTyping = false; }, 750);
+
+      setTimeout((): void => {
+        this.isTyping = false;
+      }, 750);
     },
   },
 };

@@ -15,6 +15,8 @@
 </template>
 
 <script>
+// @flow
+
 import TemplateSyntax from './TemplateSyntax';
 import ComputedProperties from './ComputedProperties';
 import Watchers from './Watchers';

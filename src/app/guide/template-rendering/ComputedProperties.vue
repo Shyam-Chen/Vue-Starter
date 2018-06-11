@@ -11,15 +11,22 @@
 </template>
 
 <script>
+// @flow
+
+type Data = {
+  existingQuantity: number,
+  requiredQuantity: number,
+};
+
 export default {
-  data() {
+  data(): Data {
     return {
       existingQuantity: 372900,
       requiredQuantity: 435900,
     };
   },
   computed: {
-    percentage() {
+    percentage(): number {
       return Math.round((this.existingQuantity / this.requiredQuantity) * 100);
     },
   },
