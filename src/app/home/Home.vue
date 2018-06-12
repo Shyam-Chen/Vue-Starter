@@ -393,6 +393,8 @@
 </template>
 
 <script>
+// @flow
+
 import { layout } from '~/shared/mixins';
 
 export default {
