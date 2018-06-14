@@ -1,12 +1,12 @@
 import { shallowMount } from '@vue/test-utils';
 
-import HelloWorld from '../HelloWorld';
+import ListRendering from '../ListRendering';
 
-describe('HelloWorld', () => {
+describe('ListRendering', () => {
   let [wrapper] = [];
 
   beforeEach(() => {
-    wrapper = shallowMount(HelloWorld);
+    wrapper = shallowMount(ListRendering);
   });
 
   it('should render initial component', () => {

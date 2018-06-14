@@ -1,6 +1,6 @@
 import puppeteer from 'puppeteer';
 
-describe('Counter', () => {
+describe('HelloWorld', () => {
   let [page, browser] = [];
 
   beforeAll(async () => {

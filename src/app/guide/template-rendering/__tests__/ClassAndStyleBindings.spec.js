@@ -1,12 +1,12 @@
 import { shallowMount } from '@vue/test-utils';
 
-import HelloWorld from '../HelloWorld';
+import ClassAndStyleBindings from '../ClassAndStyleBindings';
 
-describe('HelloWorld', () => {
+describe('ClassAndStyleBindings', () => {
   let [wrapper] = [];
 
   beforeEach(() => {
-    wrapper = shallowMount(HelloWorld);
+    wrapper = shallowMount(ClassAndStyleBindings);
   });
 
   it('should render initial component', () => {

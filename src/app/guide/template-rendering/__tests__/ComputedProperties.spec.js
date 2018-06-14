@@ -1,12 +1,12 @@
 import { shallowMount } from '@vue/test-utils';
 
-import HelloWorld from '../HelloWorld';
+import ComputedProperties from '../ComputedProperties';
 
-describe('HelloWorld', () => {
+describe('ComputedProperties', () => {
   let [wrapper] = [];
 
   beforeEach(() => {
-    wrapper = shallowMount(HelloWorld);
+    wrapper = shallowMount(ComputedProperties);
   });
 
   it('should render initial component', () => {
