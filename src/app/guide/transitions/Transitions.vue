@@ -99,20 +99,12 @@ export default {
       });
   },
   methods: {
-    softList(array) {
-      if (this.soft === 'publish') {
-        return array.sort((a, b) => a.publish - b.publish).reverse();
+    softList(list) {
+      if (this.soft) {
+        return list.sort((a, b) => a[this.soft] - b[this.soft]).reverse();
       }
 
-      if (this.soft === 'views') {
-        return array.sort((a, b) => a.views - b.views).reverse();
-      }
-
-      if (this.soft === 'collectCount') {
-        return array.sort((a, b) => a.collectCount - b.collectCount).reverse();
-      }
-
-      return array;
+      return list;
     },
   },
 };
