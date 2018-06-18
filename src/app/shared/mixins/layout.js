@@ -1,15 +1,20 @@
 // @flow
 
-interface Layout {
-  data(): {
-    isMobile: boolean;
-  };
-}
+type Data = {
+  isMobile: boolean,
+};
 
-export default ({
-  data() {
+export default {
+  data(): Data {
     return {
       isMobile: window.innerWidth < 600,
     };
   },
-}: Layout);
+  mounted() {
+    this.$nextTick((): void => {
+      window.addEventListener('resize', (): void => {
+        this.isMobile = window.innerWidth < 600;
+      });
+    });
+  },
+};
