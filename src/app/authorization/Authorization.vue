@@ -76,7 +76,7 @@ export default {
         .signInWithEmailAndPassword(this.email, this.password)
         .then(() => {
           this.isSignIn = true;
-          console.log('signIn');
+          console.log('[*] Sign in');
           // this.$router.replace('');
         });
     },
@@ -89,7 +89,7 @@ export default {
         .signOut()
         .then(() => {
           this.isSignIn = false;
-          console.log('signOut');
+          console.log('[*] Sign out');
           // this.$router.replace('');
         });
     },

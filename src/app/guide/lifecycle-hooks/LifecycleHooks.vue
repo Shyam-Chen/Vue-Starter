@@ -45,28 +45,28 @@ export default {
     };
   },
   beforeCreate() {
-    console.log('[*] A: beforeCreate');
+    console.log('[*] Parent: beforeCreate');
   },
   created() {
-    console.log('[*] A: created');
+    console.log('[*] Parent: created');
   },
   beforeMount() {
-    console.log('[*] A: beforeMount');
+    console.log('[*] Parent: beforeMount');
   },
   mounted() {
-    console.log('[*] A: mounted');
+    console.log('[*] Parent: mounted');
   },
   beforeUpdate() {
-    console.log('[*] A: beforeUpdate');
+    console.log('[*] Parent: beforeUpdate');
   },
   updated() {
-    console.log('[*] A: updated');
+    console.log('[*] Parent: updated');
   },
   beforeDestroy() {
-    console.log('[*] A: beforeDestroy');
+    console.log('[*] Parent: beforeDestroy');
   },
   destroyed() {
-    console.log('[*] A: destroyed');
+    console.log('[*] Parent: destroyed');
   },
   methods: {
     destroy(): void {

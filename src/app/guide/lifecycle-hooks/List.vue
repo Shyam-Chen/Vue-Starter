@@ -17,28 +17,28 @@ export default {
     },
   },
   beforeCreate() {
-    console.log('[*] B: beforeCreate');
+    console.log('[*] Child: beforeCreate');
   },
   created() {
-    console.log('[*] B: created');
+    console.log('[*] Child: created');
   },
   beforeMount() {
-    console.log('[*] B: beforeMount');
+    console.log('[*] Child: beforeMount');
   },
   mounted() {
-    console.log('[*] B: mounted');
+    console.log('[*] Child: mounted');
   },
   beforeUpdate() {
-    console.log('[*] B: beforeUpdate');
+    console.log('[*] Child: beforeUpdate');
   },
   updated() {
-    console.log('[*] B: updated');
+    console.log('[*] Child: updated');
   },
   beforeDestroy() {
-    console.log('[*] B: beforeDestroy');
+    console.log('[*] Child: beforeDestroy');
   },
   destroyed() {
-    console.log('[*] B: destroyed');
+    console.log('[*] Child: destroyed');
   },
 };
 </script>
