@@ -30,6 +30,7 @@ const router = new Router({
     { path: '/guide/transitions', component: () => import('~/guide/transitions/Transitions') },
     { path: '/guide/mixins', component: () => import('~/guide/mixins/Mixins') },
     { path: '/guide/directives', component: () => import('~/guide/directives/Directives') },
+    { path: '/guide/dependency-injection', component: () => import('~/guide/dependency-injection/DependencyInjection') },
     { path: '/guide/filters', component: () => import('~/guide/filters/Filters') },
     { path: '/guide/routing/dynamic-matching', component: () => import('~/guide/routing/dynamic-matching/DynamicMatching') },
     { path: '/guide/routing/dynamic-matching/:username', component: () => import('~/guide/routing/dynamic-matching/UserInfo') },

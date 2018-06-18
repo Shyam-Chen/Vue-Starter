@@ -25,7 +25,7 @@ export const INITIAL: IApp = {
         { text: 'transitions', route: '/guide/transitions' },
         { text: 'mixins', route: '/guide/mixins' },
         { text: 'directives', route: '/guide/directives' },
-        { text: 'dependencyInjection', route: '/dependencyInjection', disabled: true },
+        { text: 'dependencyInjection', route: '/guide/dependency-injection' },
         { text: 'filters', route: '/guide/filters' },
         {
           text: 'routing',

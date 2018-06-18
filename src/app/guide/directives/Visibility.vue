@@ -31,7 +31,16 @@ export default {
     // v-visibility
     visibility: {
       bind: handler,
+      inserted() {
+        console.log('v-visibility inserted');
+      },
       update: handler,
+      componentUpdated() {
+        console.log('v-visibility componentUpdated');
+      },
+      unbind() {
+        console.log('v-visibility unbind');
+      },
     },
   },
   data() {
