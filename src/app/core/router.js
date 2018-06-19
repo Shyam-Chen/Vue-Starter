@@ -44,6 +44,20 @@ const router = new Router({
         { path: 'second', component: () => import('~/guide/routing/nested-routes/Second') },
       ],
     },
+    {
+      path: '/guide/routing/guards',
+      component: () => import('~/guide/routing/guards/Guards'),
+      beforeEnter(to, from, next) {
+        next();
+      },
+    },
+    {
+      path: '/guide/routing/guards/:id',
+      component: () => import('~/guide/routing/guards/Guards'),
+      beforeEnter(to, from, next) {
+        next();
+      },
+    },
     { path: '/guide/state-management', component: () => import('~/guide/state-management/StateManagement') },
 
     /** @name crud-operations */

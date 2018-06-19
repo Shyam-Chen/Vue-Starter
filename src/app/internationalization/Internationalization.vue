@@ -4,6 +4,12 @@
       <div class="headline">Internationalization</div>
 
       <v-layout row>
+        <v-btn @click="setLanguage('en')">English</v-btn>
+        <v-btn @click="setLanguage('zh')">中文</v-btn>
+        <v-btn @click="setLanguage('ja')">日本語</v-btn>
+      </v-layout>
+
+      <v-layout row>
         <p class="pl-2 pt-4">
           HTML formatting:
           <b class="primary--text">{{ $t('bubble') }}</b>
@@ -45,7 +51,13 @@
 </template>
 
 <script>
-export default {};
+import { mapActions } from 'vuex';
+
+export default {
+  methods: {
+    ...mapActions(['setLanguage']),
+  },
+};
 </script>
 
 <style scoped>

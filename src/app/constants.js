@@ -32,7 +32,7 @@ export const INITIAL: IApp = {
           children: [
             { text: 'dynamicMatching', route: '/guide/routing/dynamic-matching' },
             { text: 'nestedRoutes', route: '/guide/routing/nested-routes' },
-            { text: 'guards', route: '/guide/routing/guards', disabled: true },
+            { text: 'guards', route: '/guide/routing/guards' },
           ],
         },
         { text: 'stateManagement', route: '/guide/state-management' },

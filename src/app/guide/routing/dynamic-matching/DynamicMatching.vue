@@ -1,8 +1,10 @@
 <template>
-  <v-container>
+  <v-container fluid>
+    <v-layout column>
+      <div class="headline mb-1">Guards</div>
 
-    <UserList />
-
+      <UserList />
+    </v-layout>
   </v-container>
 </template>
 
