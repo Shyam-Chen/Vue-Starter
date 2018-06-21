@@ -7,11 +7,4 @@ describe('Utilities', () => {
 
     expect(compose(double, square)(5)).toBe(100);
   });
-
-  it('should be seeded with multiple arguments', () => {
-    const add = (x, y) => x + y;
-    const square = x => x * x;
-
-    expect(compose(add, square)(1, 2)).toBe(9);
-  });
 });
