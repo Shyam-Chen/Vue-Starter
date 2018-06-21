@@ -1,4 +1,5 @@
 export default {
+  description: 'Building scalable web apps from Web Fundamentals to Firebase Platform and then to Google Cloud.',
   seeMore: 'See more',
   sourceCode: 'Source code',
   codeTemplate: 'Code template',
