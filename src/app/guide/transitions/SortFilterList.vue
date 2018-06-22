@@ -11,9 +11,9 @@
     <v-layout row wrap align-center>
       <div>Length</div>
       <v-btn :class="{ primary: length === 'any' }" @click="length = 'any'">Any</v-btn>
-      <v-btn :class="{ primary: length === 'five' }" @click="length = 'five'">Less than five minutes</v-btn>
+      <v-btn :class="{ primary: length === 'lessThanFive' }" @click="length = 'lessThanFive'">Less than five minutes</v-btn>
       <v-btn :class="{ primary: length === 'fiveToTen' }" @click="length = 'fiveToTen'">Five to ten minutes</v-btn>
-      <v-btn :class="{ primary: length === 'ten' }" @click="length = 'ten'">More than ten minutes</v-btn>
+      <v-btn :class="{ primary: length === 'moreThanTen' }" @click="length = 'moreThanTen'">More than ten minutes</v-btn>
     </v-layout>
 
     <v-layout v-if="sortFilterList.length !== 0" row wrap>
@@ -29,9 +29,8 @@
           <div class="card-content">
             <div class="pl-2 pr-2">{{ item.title | truncate(55) }}</div>
             <div class="ma-2"><v-icon>headset</v-icon> {{ item.views.toLocaleString('en-US') }}</div>
-            <div>
-              {{ item.publish | timeSince }}
-            </div>
+            <div><v-icon>event</v-icon> {{ item.publish | timeSince }}</div>
+            <div><v-icon>video_library</v-icon> {{ item.collectCount.toLocaleString('en-US') }}</div>
           </div>
         </div>
       </template>
@@ -61,7 +60,7 @@ export default {
       return `${minute}:${second}`;
     },
     timeSince(date) {
-      const d = new Date(1529585376100);
+      const d = new Date(date * 1000);
       const now = new Date();
       console.log('[* 1]', date);
 
@@ -127,9 +126,11 @@ export default {
     compose,
     sortList(sort) {
       return (list) => {
-        if (sort) {
-          return list.sort((a, b) => a[sort] - b[sort]).reverse();
-        }
+        const typedList = type => list.sort((a, b) => a[type] - b[type]).reverse();
+
+        if (sort === 'published') return typedList('publish');
+        if (sort === 'views') return typedList('views');
+        if (sort === 'collections') return typedList('collectCount');
 
         return list;
       };
@@ -137,9 +138,9 @@ export default {
     filerList(length) {
       return list =>
         list.filter((item) => {
-          if (length === 'five') return item.duration < 300;
+          if (length === 'lessThanFive') return item.duration < 300;
           if (length === 'fiveToTen') return item.duration >= 300 && item.duration <= 600;
-          if (length === 'ten') return item.duration > 600;
+          if (length === 'moreThanTen') return item.duration > 600;
 
           return list;
         });
@@ -171,6 +172,6 @@ export default {
 
 .card-content {
   width: 240px;
-  height: 93px;
+  height: 150px;
 }
 </style>
