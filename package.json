@@ -53,6 +53,7 @@
     "morgan": "1.9.0",
     "raven": "2.6.2",
     "raven-js": "3.26.2",
+    "register-service-worker": "1.4.1",
     "request": "2.87.0",
     "rxjs": "6.2.1",
     "vue": "2.5.16",
@@ -125,14 +126,13 @@
     "stylelint": "9.2.1",
     "stylelint-config-standard": "18.2.0",
     "supertest": "3.1.0",
-    "sw-precache-webpack-plugin": "0.11.5",
-    "uglify-es": "3.3.9",
     "url-loader": "1.0.1",
     "vue-jest": "2.6.0",
     "vue-loader": "15.2.4",
     "vue-template-compiler": "2.5.16",
     "webpack": "4.12.0",
     "webpack-cli": "3.0.6",
-    "webpack-dev-server": "3.1.4"
+    "webpack-dev-server": "3.1.4",
+    "workbox-webpack-plugin": "3.3.0"
   }
 }

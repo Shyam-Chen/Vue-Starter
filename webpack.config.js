@@ -1,18 +1,15 @@
-// const fs = require('fs');
 const path = require('path');
 const webpack = require('webpack');
 const HtmlPlugin = require('html-webpack-plugin');
 const ScriptExtHtmlPlugin = require('script-ext-html-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
 const CopyPlugin = require('copy-webpack-plugin');
-// const SWPrecachePlugin = require('sw-precache-webpack-plugin');
+// const { GenerateSW } = require('workbox-webpack-plugin');
 const RobotstxtPlugin = require('robotstxt-webpack-plugin').default;
 const SitemapPlugin = require('sitemap-webpack-plugin').default;
 const envify = require('process-envify');
-// const uglify = require('uglify-es');
 
 const env = require('./env');
-// const pkg = require('./package');
 
 const SOURCE_ROOT = path.join(__dirname, 'src');
 const DIST_ROOT = path.join(__dirname, 'public');
@@ -91,10 +88,6 @@ module.exports = ({ prod = false } = {}) => ({
         removeAttributeQuotes: true,
       },
       chunksSortMode: prod ? 'dependency' : 'auto',
-      // <%= htmlWebpackPlugin.options.serviceWorkerLoader %>
-      // serviceWorkerLoader: prod
-      //   ? `<script defer>${uglify.minify(fs.readFileSync(path.join(__dirname, './tools/service-worker.prod.js'), 'utf-8')).code}</script>`
-      //   : `<script defer>${fs.readFileSync(path.join(__dirname, './tools/service-worker.dev.js'), 'utf-8')}</script>`,
     }),
     new ScriptExtHtmlPlugin({
       defaultAttribute: 'defer',
@@ -117,14 +110,8 @@ module.exports = ({ prod = false } = {}) => ({
     ]),
     new webpack.DefinePlugin(envify(env)),
     !prod && new webpack.HotModuleReplacementPlugin(),
-    // prod && new SWPrecachePlugin({
-    //   cacheId: pkg.name,
-    //   filename: 'service-worker.js',
-    //   minify: true,
-    //   navigateFallback: 'index.html',
-    //   navigateFallbackWhitelist: [/^(?!\/__).*/],
-    //   staticFileGlobs: [`${path.basename(DIST_ROOT)}/*`],
-    //   stripPrefix: `${path.basename(DIST_ROOT)}/`,
+    // prod && new GenerateSW({
+
     // }),
     prod && new RobotstxtPlugin(),
     prod && new SitemapPlugin(env.SITE_URL, [{ path: '/' }]),
