@@ -19,7 +19,13 @@
 <script>
 // @flow
 
-export default {};
+export default {
+  data() {
+    return {
+      type: null,
+    };
+  },
+};
 </script>
 
 <style scoped>

@@ -29,7 +29,7 @@
           <div class="card-content">
             <div class="pl-2 pr-2">{{ item.title | truncate(55) }}</div>
             <div class="ma-2"><v-icon>headset</v-icon> {{ item.views.toLocaleString('en-US') }}</div>
-            <div><v-icon>event</v-icon> {{ item.publish | timeSince }}</div>
+            <div><v-icon>event</v-icon> {{ item.publish * 1000 | timeSince }}</div>
             <div><v-icon>video_library</v-icon> {{ item.collectCount.toLocaleString('en-US') }}</div>
           </div>
         </div>
@@ -47,40 +47,14 @@ import axios from 'axios';
 import { compose } from '~/shared/utilities';
 
 import truncate from '../filters/truncate';
+import convertSeconds from '../filters/convert-seconds';
+import timeSince from '../filters/time-since';
 
 export default {
   filters: {
     truncate,
-    convertSeconds(value) {
-      const second = Math.round(value % 60);
-      const minute = Math.round(value / 60);
-
-      if (second < 10) return `${minute}:0${second}`;
-      return `${minute}:${second}`;
-    },
-    timeSince(value) {
-      const ago = new Date(value * 1000);
-      const now = new Date();
-
-      const seconds = Math.round(Math.abs((now.getTime() - ago.getTime()) / 1000));
-      const minutes = Math.round(Math.abs(seconds / 60));
-      const hours = Math.round(Math.abs(minutes / 60));
-      const days = Math.round(Math.abs(hours / 24));
-      const months = Math.round(Math.abs(days / 30.416));
-      const years = Math.round(Math.abs(days / 365));
-
-      if (seconds <= 45) return 'a few seconds ago';
-      if (seconds <= 90) return 'a minute ago';
-      if (minutes <= 45) return `${minutes} minutes ago`;
-      if (minutes <= 90) return 'an hour ago';
-      if (hours <= 22) return `${hours} hours ago`;
-      if (hours <= 36) return 'a day ago';
-      if (days <= 25) return `${days} days ago`;
-      if (days <= 45) return 'a month ago';
-      if (days <= 345) return `${months} months ago`;
-      if (days <= 545) return 'a year ago';
-      return `${years} years ago`;
-    },
+    convertSeconds,
+    timeSince,
   },
   data() {
     return {
