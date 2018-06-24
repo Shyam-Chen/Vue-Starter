@@ -8,6 +8,8 @@ export default {
   slots: 'Slots',
   refs: 'Refs',
   customEvents: 'Custom Events',
+  extends: 'Extends',
+  dynamic: 'Dynamic',
   lifecycleHooks: 'Lifecycle Hooks',
   transitions: 'Transitions',
   mixins: 'Mixins',

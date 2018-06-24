@@ -19,6 +19,8 @@ export const INITIAL: IApp = {
             { text: 'slots', route: '/guide/components/slots' },
             { text: 'refs', route: '/guide/components/refs' },
             { text: 'customEvents', route: '/guide/components/custom-events' },
+            { text: 'extends', route: '/guide/components/extends', disabled: true },
+            { text: 'dynamic', route: '/guide/components/dynamic', disabled: true },
           ],
         },
         { text: 'lifecycleHooks', route: '/guide/lifecycle-hooks' },

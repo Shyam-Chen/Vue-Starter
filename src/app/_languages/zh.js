@@ -8,6 +8,8 @@ export default {
   slots: '插槽',
   refs: '引用',
   customEvents: '自定义事件',
+  extends: '扩展',
+  dynamic: '动态',
   lifecycleHooks: '生命周期钩子',
   transitions: '过渡',
   mixins: '混入',

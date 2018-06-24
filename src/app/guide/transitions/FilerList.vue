@@ -62,7 +62,7 @@ export default {
 .fade-group-enter-active,
 .fade-group-leave-active,
 .fade-group-move {
-  transition: opacity 1s, transform 1s;
+  transition: opacity 0.5s, transform 0.5s;
 }
 
 .fade-group-leave-active {

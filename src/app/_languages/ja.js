@@ -8,6 +8,8 @@ export default {
   slots: 'スロット',
   refs: 'リファレンス',
   customEvents: 'カスタムイベント',
+  extends: '拡張する',
+  dynamic: '動的',
   lifecycleHooks: 'ライフサイクルフック',
   transitions: 'トランジション',
   mixins: 'ミックスイン',
