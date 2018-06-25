@@ -3,7 +3,6 @@ switch (process.env.JEST_ENV) {
     module.exports = {
       coveragePathIgnorePatterns: [
         '/node_modules/',
-        '/core/',  // TODO: remove it
         '/tools/',
       ],
       moduleFileExtensions: ['js', 'vue'],

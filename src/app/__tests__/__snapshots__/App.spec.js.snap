@@ -3,7 +3,7 @@
 exports[`App should render initial component 1`] = `
 <v-fade-transition appear="">
   <v-app>
-    <!---->
+    <router-view-stub></router-view-stub>
   </v-app>
 </v-fade-transition>
 `;
