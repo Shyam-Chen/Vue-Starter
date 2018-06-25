@@ -16,27 +16,29 @@
       <v-btn :class="{ primary: length === 'moreThanTen' }" @click="length = 'moreThanTen'">More than ten minutes</v-btn>
     </v-layout>
 
-    <v-layout v-if="sortFilterList.length !== 0" row wrap>
-      <template v-for="item in sortFilterList">
-        <div :key="item.id" class="card ma-3">
-          <div class="card-media">
-            <img :src="item.thumbnail" class="card-image">
-            <div>
-              <span class="black white--text pa-1 card-time">{{ item.duration | convertSeconds }}</span>
+    <v-layout>
+      <transition-group v-if="sortFilterList.length !== 0" tag="div" name="fade-group" class="row-wrap">
+        <template v-for="item in sortFilterList">
+          <div :key="item.id" class="card ma-3">
+            <div class="card-media">
+              <img :src="item.thumbnail" class="card-image">
+              <div>
+                <span class="black white--text pa-1 card-time">{{ item.duration | convertSeconds }}</span>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <div class="pl-2 pr-2">{{ item.title | truncate(55) }}</div>
+              <div class="ma-2"><v-icon>headset</v-icon> {{ item.views.toLocaleString('en-US') }}</div>
+              <div><v-icon>event</v-icon> {{ item.publish * 1000 | timeSince }}</div>
+              <div><v-icon>video_library</v-icon> {{ item.collectCount.toLocaleString('en-US') }}</div>
             </div>
           </div>
+        </template>
+      </transition-group>
 
-          <div class="card-content">
-            <div class="pl-2 pr-2">{{ item.title | truncate(55) }}</div>
-            <div class="ma-2"><v-icon>headset</v-icon> {{ item.views.toLocaleString('en-US') }}</div>
-            <div><v-icon>event</v-icon> {{ item.publish * 1000 | timeSince }}</div>
-            <div><v-icon>video_library</v-icon> {{ item.collectCount.toLocaleString('en-US') }}</div>
-          </div>
-        </div>
-      </template>
+      <div v-else>No results</div>
     </v-layout>
-
-    <div v-else>No results</div>
 
   </v-layout>
 </template>
@@ -44,7 +46,7 @@
 <script>
 import axios from 'axios';
 
-import { compose } from '~/shared/utilities';
+import { compose } from '~/shared/utils';
 
 import truncate from '../filters/truncate';
 import convertSeconds from '../filters/convert-seconds';
@@ -106,6 +108,31 @@ export default {
 </script>
 
 <style scoped>
+.fade-group-enter-active,
+.fade-group-leave-active,
+.fade-group-move {
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+.fade-group-leave-active {
+  position: absolute;
+}
+
+.fade-group-enter {
+  opacity: 0;
+  transform: translateY(-1.25rem);
+}
+
+.fade-group-leave-to {
+  opacity: 0;
+  transform: translateY(1.25rem);
+}
+
+.row-wrap {
+  display: flex;
+  flex-flow: row wrap;
+}
+
 .card-media {
   position: relative;
   transition: all 0.2s ease-in-out;

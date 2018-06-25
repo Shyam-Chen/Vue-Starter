@@ -19,8 +19,12 @@
 <script>
 // @flow
 
+type Data = {
+  type: string | null,
+};
+
 export default {
-  data() {
+  data(): Data {
     return {
       type: null,
     };
