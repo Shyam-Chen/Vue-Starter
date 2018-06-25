@@ -91,14 +91,15 @@ export default {
       };
     },
     filerList(length) {
-      return list =>
+      return list => (
         list.filter((item) => {
           if (length === 'lessThanFive') return item.duration < 300;
           if (length === 'fiveToTen') return item.duration >= 300 && item.duration <= 600;
           if (length === 'moreThanTen') return item.duration > 600;
 
           return list;
-        });
+        })
+      );
     },
   },
 };

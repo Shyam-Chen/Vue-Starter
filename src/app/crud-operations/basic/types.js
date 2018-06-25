@@ -1,9 +1,9 @@
 // @flow
 
 export interface Item {
-  id?: number;
-  primary?: string;
-  accent?: string;
+  id: number;
+  primary: string;
+  accent: string;
 }
 
 export interface Dialog {
@@ -18,9 +18,9 @@ export interface IBasic {
   selected: Item[];
   headers: Array<{ text: string, value: string }>;
   dataset: Item[];
-  addData: Item;
-  editData: Item;
-  deleteData: Item;
+  addData: Item | Object;
+  editData: Item | Object;
+  deleteData: Item | Object;
   dialogs: { edit: boolean, delete: boolean };
 }
 

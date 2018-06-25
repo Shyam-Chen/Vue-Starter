@@ -1,4 +1,4 @@
-import router from '../';
+import router from '..';
 
 describe('Hello World', () => {
   it('should handle routes', () => {

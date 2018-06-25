@@ -1,5 +1,4 @@
-export const random = () =>
-  Math.floor(Math.random() * 300) + 1;
+export const random = () => Math.floor(Math.random() * 300) + 1;
 
 export default {
   tooltip: {

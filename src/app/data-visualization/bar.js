@@ -1,6 +1,7 @@
-export const random = () =>
+export const random = () => (
   Array(3).fill(null)
-    .map(() => Math.round(300 + (Math.random() * 700)) / 10);
+    .map(() => Math.round(300 + (Math.random() * 700)) / 10)
+);
 
 export default {
   legend: {},

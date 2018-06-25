@@ -1,20 +1,22 @@
 <template>
-  <v-layout>
-    <v-list dense class="elevation-1" style="width: 15rem;">
-      <template v-for="item in items">
-        <v-subheader v-if="item.header" :key="item.header">{{ item.header }}</v-subheader>
+  <v-layout row>
+    <div>
+      <v-list dense class="elevation-1">
+        <template v-for="item in items">
+          <v-subheader v-if="item.header" :key="item.header">{{ item.header }}</v-subheader>
 
-        <v-list-tile v-else :key="item.title" avatar @click="$router.push(`/guide/routing/dynamic-matching/${item.title}`)">
-          <v-list-tile-avatar>
-            <img :src="item.avatar">
-          </v-list-tile-avatar>
-          <v-list-tile-content>
-            <v-list-tile-title v-html="item.title"></v-list-tile-title>
-            <v-list-tile-sub-title v-html="item.subtitle"></v-list-tile-sub-title>
-          </v-list-tile-content>
-        </v-list-tile>
-      </template>
-    </v-list>
+          <v-list-tile v-else :key="item.title" avatar @click="$router.push(`/guide/routing/dynamic-matching/${item.title}`)">
+            <v-list-tile-avatar>
+              <img :src="item.avatar">
+            </v-list-tile-avatar>
+            <v-list-tile-content>
+              <v-list-tile-title v-html="item.title"></v-list-tile-title>
+              <v-list-tile-sub-title v-html="item.subtitle"></v-list-tile-sub-title>
+            </v-list-tile-content>
+          </v-list-tile>
+        </template>
+      </v-list>
+    </div>
   </v-layout>
 </template>
 
