@@ -16,7 +16,7 @@
       <v-btn :class="{ primary: length === 'moreThanTen' }" @click="length = 'moreThanTen'">More than ten minutes</v-btn>
     </v-layout>
 
-    <v-layout>
+    <v-layout v-if="!isLoading">
       <transition-group v-if="sortFilterList.length !== 0" tag="div" name="fade-group" class="row-wrap">
         <template v-for="item in sortFilterList">
           <div :key="item.id" class="card ma-3">
@@ -39,6 +39,8 @@
 
       <div v-else>No results</div>
     </v-layout>
+
+    <v-progress-circular v-else indeterminate color="primary"></v-progress-circular>
 
   </v-layout>
 </template>
@@ -63,6 +65,7 @@ export default {
       sort: 'published',
       length: 'any',
       list: [],
+      isLoading: true,
     };
   },
   computed: {
@@ -77,6 +80,7 @@ export default {
     axios.get('https://us-central1-lithe-window-713.cloudfunctions.net/fronted-demo')
       .then(({ data }) => {
         this.list = data.data;
+        this.isLoading = false;
       });
   },
   methods: {
