@@ -6,6 +6,7 @@ import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import Raven from 'raven-js';
 import RavenVue from 'raven-js/plugins/vue';
+import { register } from 'register-service-worker';
 
 import './assets/styles/global.css';
 import App from './app/App';
@@ -30,6 +31,29 @@ if (process.env.NODE_ENV === 'production') {
   Raven.config(process.env.SENTRY_DSN)
     .addPlugin(RavenVue, Vue)
     .install();
+
+  const swDest = 'service-worker.js';
+
+  register(process.env.APP_BASE + swDest, {
+    ready() {
+      console.log('Service worker is active.');
+    },
+    registered() {
+      console.log('Service worker has been registered.');
+    },
+    cached() {
+      console.log('Content has been cached for offline use.');
+    },
+    updated() {
+      console.log('New content is available; please refresh.');
+    },
+    offline() {
+      console.log('No internet connection found. App is running in offline mode.');
+    },
+    error(error) {
+      console.error('Error during service worker registration:', error);
+    },
+  });
 }
 
 const vm = new Vue({

@@ -4,12 +4,13 @@ const HtmlPlugin = require('html-webpack-plugin');
 const ScriptExtHtmlPlugin = require('script-ext-html-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
 const CopyPlugin = require('copy-webpack-plugin');
-// const { GenerateSW } = require('workbox-webpack-plugin');
+const { GenerateSW } = require('workbox-webpack-plugin');
 const RobotstxtPlugin = require('robotstxt-webpack-plugin').default;
 const SitemapPlugin = require('sitemap-webpack-plugin').default;
 const envify = require('process-envify');
 
 const env = require('./env');
+const pkg = require('./package');
 
 const SOURCE_ROOT = path.join(__dirname, 'src');
 const DIST_ROOT = path.join(__dirname, 'public');
@@ -110,9 +111,17 @@ module.exports = ({ prod = false } = {}) => ({
     ]),
     new webpack.DefinePlugin(envify(env)),
     !prod && new webpack.HotModuleReplacementPlugin(),
-    // prod && new GenerateSW({
-
-    // }),
+    prod && new GenerateSW({
+      skipWaiting: true,
+      clientsClaim: true,
+      runtimeCaching: [{
+        urlPattern: new RegExp(env.SITE_URL),
+        handler: 'staleWhileRevalidate',
+      }],
+      navigateFallback: '/',
+      navigateFallbackWhitelist: [/^(?!\/__).*/],
+      cacheId: pkg.name,
+    }),
     prod && new RobotstxtPlugin(),
     prod && new SitemapPlugin(env.SITE_URL, [{ path: '/' }]),
   ].filter(Boolean),
