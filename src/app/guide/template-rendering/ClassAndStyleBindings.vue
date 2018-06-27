@@ -3,6 +3,8 @@
     <div class="title mb-2">Class and Style Bindings</div>
 
     <div :class="{ ['cyan-color']: activeCyan }">Cyan</div>
+    <div :class="pink">Pink</div>
+    <div :class="[amber]">Amber</div>
 
     <div><span :style="{ color: teal800, backgroundColor: teal100 }">Teal</span></div>
     <div><span :style="purple">Purple</span></div>
@@ -13,8 +15,13 @@
 <script>
 // @flow
 
-type Data = {
+type ClassBindings = {
   activeCyan: boolean,
+  pink: { 'pink-color': boolean },
+  amber: string,
+};
+
+type StyleBindings = {
   teal800: string,
   teal100: string,
   purple: { color: string, backgroundColor: string },
@@ -22,10 +29,19 @@ type Data = {
   orange100: { backgroundColor: string },
 };
 
+type Data = ClassBindings & StyleBindings;
+
 export default {
   data(): Data {
     return {
+      // class bindings
       activeCyan: true,
+      pink: {
+        'pink-color': true,
+      },
+      amber: 'amber-color',
+
+      // style bindings
       teal800: '#00695C',
       teal100: '#B2DFDB',
       purple: {
@@ -46,5 +62,13 @@ export default {
 <style scoped>
 .cyan-color {
   color: #00bcd4;
+}
+
+.pink-color {
+  color: #e91e63;
+}
+
+.amber-color {
+  color: #ffc107;
 }
 </style>

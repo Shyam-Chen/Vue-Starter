@@ -10,6 +10,7 @@
       <ConditionalRendering />
       <ListRendering />
       <EventHandling />
+      <FormInputBindings />
     </v-layout>
   </v-container>
 </template>
@@ -24,6 +25,7 @@ import ClassAndStyleBindings from './ClassAndStyleBindings';
 import ConditionalRendering from './ConditionalRendering';
 import ListRendering from './ListRendering';
 import EventHandling from './EventHandling';
+import FormInputBindings from './FormInputBindings';
 
 export default {
   components: {
@@ -34,6 +36,7 @@ export default {
     ConditionalRendering,
     ListRendering,
     EventHandling,
+    FormInputBindings,
   },
 };
 </script>
