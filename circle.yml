@@ -21,19 +21,20 @@ jobs:
       - run:
           name: Build cloud functions
           command: docker-compose exec default yarn build:api
+      - persist_to_workspace:
+          root: ~/
+          paths:
+            - Vue-Fullstack-Starter
 
   test:
     <<: *base
     steps:
-      - checkout
-      - setup_remote_docker
+      - attach_workspace:
+          at: ~/
       - run:
           name: Combat preparation
           command: |
-            docker-compose up -d default
             docker-compose exec default yarn firebase use development --token $FIREBASE_TOKEN
-            docker-compose exec default yarn build:app
-            docker-compose exec default yarn build:api
             docker-compose exec -d default yarn firebase serve --only functions --port 5000 --token $FIREBASE_TOKEN
             docker-compose exec -d default yarn firebase serve --only hosting --port 8000 --token $FIREBASE_TOKEN
       - run:
@@ -65,8 +66,8 @@ jobs:
   deploy:
     <<: *base
     steps:
-      - checkout
-      - setup_remote_docker
+      - attach_workspace:
+          at: ~/
       - run:
           name: Log in to Docker
           command: echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
