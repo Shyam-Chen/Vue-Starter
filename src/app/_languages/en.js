@@ -39,5 +39,8 @@ export default {
   authorization: 'Authorization',
   payment: 'Payment',
   messages: 'Messages',
+  chatRoom: 'Chat Room',
+  email: 'Email',
+  cloudMessaging: 'Cloud Messaging',
   machineLearning: 'Machine Learning',
 };

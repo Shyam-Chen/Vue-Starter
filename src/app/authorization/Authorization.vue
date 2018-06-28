@@ -24,7 +24,7 @@
 
     <v-layout column>
       <div>
-        <v-btn color="red" dark @click="signInWithGoogle">
+        <v-btn color="red" disabled @click="signInWithGoogle">
           <v-icon left>fab fa-google</v-icon>
           Sign in with Google
         </v-btn>

@@ -71,12 +71,15 @@ export const INITIAL: IApp = {
     { icon: 'language', text: 'internationalization', route: '/internationalization' },
     { icon: 'fas fa-chart-bar', text: 'dataVisualization', route: '/data-visualization' },
     { icon: 'verified_user', text: 'authorization', route: '/authorization' },
-    { icon: 'far fa-credit-card', text: 'payment', route: '/payment', disabled: true },
+    { icon: 'far fa-credit-card', text: 'payment', route: '/payment' },
     {
       icon: 'message',
       text: 'messages',
-      disabled: true,
-      children: [],
+      children: [
+        { text: 'chatRoom', route: '/messages/chat-room' },
+        { text: 'email', route: '/messages/email', disabled: true },
+        { text: 'cloudMessaging', route: '/messages/cloud-messaging', disabled: true },
+      ],
     },
     { icon: 'fas fa-cogs', text: 'machineLearning', route: '/machine-learning' },
   ],

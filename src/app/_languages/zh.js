@@ -39,5 +39,8 @@ export default {
   authorization: '授权',
   payment: '支付',
   messages: '讯息',
+  chatRoom: '聊天室',
+  email: '电子邮件',
+  cloudMessaging: '云消息',
   machineLearning: '机器学习',
 };

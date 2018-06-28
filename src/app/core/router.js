@@ -89,7 +89,7 @@ const router = new Router({
     { path: '/payment', component: () => import('~/payment/Payment') },
 
     /** @name messages */
-    // { path: '/messages', component: () => import('~/messages/Messages') },
+    { path: '/messages/chat-room', component: () => import('~/messages/chat-room/ChatRoom') },
 
     /** @name machine-learning */
     { path: '/machine-learning', component: () => import('~/machine-learning/MachineLearning') },

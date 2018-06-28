@@ -39,5 +39,8 @@ export default {
   authorization: 'オーソライズ',
   payment: '支払い',
   messages: 'メッセージ',
+  chatRoom: 'チャットルーム',
+  email: 'E メール',
+  cloudMessaging: 'クラウドメッセージング',
   machineLearning: '機械学習',
 };

@@ -1,6 +1,6 @@
 <template>
   <v-container fluid>
-    <div class="headline">Messages</div>
+    <div class="headline">Chat Room (TODO)</div>
   </v-container>
 </template>
 
