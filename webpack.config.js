@@ -150,6 +150,7 @@ module.exports = ({ prod = false } = {}) => ({
     host: env.HOST_NAME,
     hot: true,
     inline: true,
+    overlay: true,
     port: env.SITE_PORT,
   },
   devtool: prod ? 'hidden-source-map' : 'cheap-module-eval-source-map',
