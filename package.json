@@ -107,7 +107,7 @@
     "gulp-replaces": "0.1.3",
     "gulp-shell": "0.6.5",
     "gulp-util": "3.0.8",
-    "html-webpack-plugin": "3.2.0",
+    "html-webpack-plugin": "4.0.0-alpha",
     "jest": "23.1.0",
     "jest-localstorage-mock": "2.2.0",
     "jest-serializer-vue": "2.0.2",

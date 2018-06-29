@@ -90,7 +90,7 @@ module.exports = ({ prod = false } = {}) => ({
         collapseWhitespace: true,
         removeAttributeQuotes: true,
       },
-      chunksSortMode: prod ? 'dependency' : 'auto',
+      chunksSortMode: prod ? 'manual' : 'auto',
     }),
     new ScriptExtHtmlPlugin({
       defaultAttribute: 'defer',
@@ -111,6 +111,7 @@ module.exports = ({ prod = false } = {}) => ({
         ignore: ['assets/styles/**/*'],
       },
     ]),
+    new webpack.optimize.AggressiveSplittingPlugin(),
     new webpack.DefinePlugin(envify(env)),
     !prod && new webpack.HotModuleReplacementPlugin(),
     prod && new GenerateSW({
