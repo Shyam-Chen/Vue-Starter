@@ -28,8 +28,8 @@ describe('Basic', () => {
   });
 
   it('should add a item', async () => {
-    const primaryInput = '#app > div.application--wrap > main > div > div > div > div:nth-child(2) > div:nth-child(1) > div > div.input-group__input > input[type="text"]';
-    const accentInput = '#app > div.application--wrap > main > div > div > div > div:nth-child(2) > div:nth-child(2) > div > div.input-group__input > input[type="text"]';
+    const primaryInput = '#app > div.application--wrap > main > div > div > div > div:nth-child(2) > div:nth-child(1) > div > div > div.v-input__slot > div > input[type="text"]';
+    const accentInput = '#app > div.application--wrap > main > div > div > div > div:nth-child(2) > div:nth-child(2) > div > div > div.v-input__slot > div > input[type="text"]';
     const addButton = '#app > div.application--wrap > main > div > div > div > div:nth-child(2) > button > div';
 
     await page.type(primaryInput, 'foo');
@@ -41,7 +41,7 @@ describe('Basic', () => {
   });
 
   it('should search a board', async () => {
-    const searchInput = '#app > div.application--wrap > main > div > div > div > div:nth-child(3) > div > div.card__title.vfs-card-title > div.input-group.input-group--append-icon.input-group--hide-details.input-group--text-field.input-group--single-line.primary--text > div.input-group__input > input[type="text"]';
+    const searchInput = '#app > div.application--wrap > main > div > div > div > div:nth-child(3) > div > div.v-card__title.vfs-card-title > div.v-input.v-text-field.v-text-field--single-line.v-input--hide-details > div > div.v-input__slot > div.v-text-field__slot > input[type="text"]';
 
     await page.type(searchInput, 'v');
     const length = await page.$$eval(displayRow, el => el.length);
@@ -50,8 +50,8 @@ describe('Basic', () => {
   });
 
   it('should delete selected item', async () => {
-    const selectAllCheckbox = '#app > div.application--wrap > main > div > div > div > div:nth-child(3) > div > div:nth-child(2) > div > table > thead > tr:nth-child(1) > th:nth-child(1) > div > div.input-group__input > div';
-    const deleteCheckedIcon = '#app > div.application--wrap > main > div > div > div > div:nth-child(3) > div > div.card__title.vfs-card-title > button > div';
+    const selectAllCheckbox = '#app > div.application--wrap > main > div > div > div > div:nth-child(3) > div > div:nth-child(2) > div > table > thead > tr:nth-child(1) > th:nth-child(1) > div > div > div > div > div';
+    const deleteCheckedIcon = '#app > div.application--wrap > main > div > div > div > div:nth-child(3) > div > div.v-card__title.vfs-card-title > button > div > i';
 
     await page.click(selectAllCheckbox);
     await page.click(deleteCheckedIcon);
@@ -61,22 +61,22 @@ describe('Basic', () => {
   });
 
   it('should edit a item', async () => {
-    const firstEditIcon = '#app > div.application--wrap > main > div > div > div > div:nth-child(3) > div > div:nth-child(2) > div > table > tbody > tr:nth-child(1) > td.text-xs-right > button:nth-child(1) > div';
-    const primaryInput = '#app > div.dialog__content.dialog__content__active > div > div > div.card__text > div > div:nth-child(1) > div > div.input-group__input > input[type="text"]';
-    const saveButton = '#app > div.dialog__content.dialog__content__active > div > div > div.card__actions > button.btn.btn--flat.success--text > div';
-    const firstPrimary = '#app > div.application--wrap > main > div > div > div > div:nth-child(3) > div > div:nth-child(2) > div > table > tbody > tr:nth-child(1) > td:nth-child(3)';
+    const firstEditIcon = '#app > div.application--wrap > main > div > div > div > div:nth-child(3) > div > div:nth-child(2) > div > table > tbody > tr:nth-child(1) > td.text-xs-right > button:nth-child(1) > div > i';
+    const primaryInput = '#app > div.v-dialog__content.v-dialog__content--active > div > div > div.v-card__text > div > div:nth-child(1) > div > div > div.v-input__slot > div > input[type="text"]';
+    const saveButton = '#app > div.v-dialog__content.v-dialog__content--active > div > div > div.v-card__actions > button.v-btn.v-btn--flat.success--text > div';
+    const firstPrimaryText = '#app > div.application--wrap > main > div > div > div > div:nth-child(3) > div > div:nth-child(2) > div > table > tbody > tr:nth-child(1) > td:nth-child(3)';
 
     await page.click(firstEditIcon);
     await page.type(primaryInput, ' foo');
     await page.click(saveButton);
-    const text = await page.$eval(firstPrimary, el => el.textContent);
+    const text = await page.$eval(firstPrimaryText, el => el.textContent);
 
     expect(text).toBe('Vanilla foo');
   });
 
   it('should delete a item', async () => {
-    const firstDeleteIcon = '#app > div.application--wrap > main > div > div > div > div:nth-child(3) > div > div:nth-child(2) > div > table > tbody > tr:nth-child(1) > td.text-xs-right > button:nth-child(2) > div';
-    const confirmButton = '#app > div.dialog__content.dialog__content__active > div > div > div.card__actions > button.btn.btn--flat.error--text > div';
+    const firstDeleteIcon = '#app > div.application--wrap > main > div > div > div > div:nth-child(3) > div > div:nth-child(2) > div > table > tbody > tr:nth-child(1) > td.text-xs-right > button:nth-child(2) > div > i';
+    const confirmButton = '#app > div.v-dialog__content.v-dialog__content--active > div > div > div.v-card__actions > button.v-btn.v-btn--flat.error--text > div';
 
     await page.click(firstDeleteIcon);
     await page.click(confirmButton);

@@ -6,13 +6,17 @@
         <v-navigation-drawer v-if="!$route.meta.home" :clipped="$vuetify.breakpoint.mdAndUp" v-model="app$.drawer" fixed app>
           <!-- mobile -->
           <v-toolbar class="hidden-md-and-up" flat>
-            <v-toolbar-title class="ml-0 pl-3 vfs-toolbar-title">
+            <v-toolbar-title class="vfs-toolbar-title">
               <div class="vfs-router-link" @click="backToHome">
                 <img src="/assets/images/logo.svg" alt="Logo" width="40" height="40" class="vfs-toolbar-image">
-                <span>Oh My Vue</span>
+                <span class="primary--text">Oh My Vue</span>
               </div>
             </v-toolbar-title>
           </v-toolbar>
+
+          <v-text-field v-if="!$route.meta.home" solo append-icon="search" label="Search" class="hidden-md-and-up ma-3 vfs-text-field"></v-text-field>
+
+          <v-divider></v-divider>
 
           <v-list dense>
             <template v-for="item in app$.navigation">
@@ -76,7 +80,7 @@
 
         <!-- desktop -->
         <v-toolbar :clipped-left="$vuetify.breakpoint.mdAndUp" :flat="$route.meta.home" class="primary darken-1" dark app fixed>
-          <v-toolbar-title class="ml-0 pl-3 vfs-toolbar-title">
+          <v-toolbar-title class="vfs-toolbar-title">
             <v-toolbar-side-icon v-if="!$route.meta.home" @click.stop="app$.drawer = !app$.drawer"></v-toolbar-side-icon>
             <router-link class="hidden-sm-and-down white--text vfs-router-link" to="/">
               <img src="/assets/images/logo.svg" alt="Logo" width="40" height="40" class="vfs-toolbar-image">
@@ -84,7 +88,7 @@
             </router-link>
           </v-toolbar-title>
 
-          <v-text-field v-if="!$route.meta.home" flat solo-inverted prepend-icon="search" label="Search" class="hidden-sm-and-down"></v-text-field>
+          <v-text-field v-if="!$route.meta.home" flat solo-inverted append-icon="search" label="Search" class="hidden-sm-and-down mt-2"></v-text-field>
 
           <v-spacer></v-spacer>
 
@@ -178,15 +182,20 @@ export default {
 
 <style scoped>
 .vfs-toolbar-title {
-  width: 300px;
+  width: 20rem;
 }
 
 .vfs-router-link {
   text-decoration: none;
+  cursor: pointer;
 }
 
 .vfs-toolbar-image {
   vertical-align: middle;
+}
+
+.vfs-text-field {
+  height: 3.5rem;
 }
 
 .vfs-list-tile-avatar {
