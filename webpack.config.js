@@ -83,6 +83,7 @@ module.exports = ({ prod = false } = {}) => ({
     },
   },
   plugins: [
+    new webpack.DefinePlugin(envify(env)),
     new HtmlPlugin({
       template: 'index.html',
       minify: prod && {
@@ -111,9 +112,8 @@ module.exports = ({ prod = false } = {}) => ({
         ignore: ['assets/styles/**/*'],
       },
     ]),
-    new webpack.optimize.AggressiveSplittingPlugin(),
-    new webpack.DefinePlugin(envify(env)),
     !prod && new webpack.HotModuleReplacementPlugin(),
+    prod && new webpack.optimize.AggressiveSplittingPlugin(),
     prod && new GenerateSW({
       skipWaiting: true,
       clientsClaim: true,
