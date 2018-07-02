@@ -1,5 +1,5 @@
 export default {
-  description: 'Building scalable web apps from Web Fundamentals to Firebase Platform and then to Google Cloud.',
+  description: '构建可扩展的 Web 应用从 Web Fundamentals 到 Firebase Platform，再到 Google Cloud。',
   seeMore: '查看更多',
   sourceCode: '源代码',
   codeTemplate: '代码模板',

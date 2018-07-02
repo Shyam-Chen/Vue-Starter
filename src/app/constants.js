@@ -10,6 +10,7 @@ export const INITIAL: IApp = {
     {
       icon: 'loyalty',
       text: 'guide',
+      route: '/guide',
       children: [
         { text: 'templateRendering', route: '/guide/template-rendering' },
         {
@@ -43,6 +44,7 @@ export const INITIAL: IApp = {
     {
       icon: 'business',
       text: 'crudOperations',
+      route: '/crud-operations',
       children: [
         { text: 'basic', route: '/crud-operations/basic' },
         { text: 'rest', route: '/crud-operations/rest' },
@@ -52,6 +54,7 @@ export const INITIAL: IApp = {
     {
       icon: 'contacts',
       text: 'formControls',
+      route: '/form-controls',
       children: [
         { text: 'textFields', route: '/form-controls/text-fields' },
         { text: 'selects', route: '/form-controls/selects' },
@@ -63,6 +66,7 @@ export const INITIAL: IApp = {
     {
       icon: 'fas fa-table',
       text: 'dataTable',
+      route: '/data-table',
       children: [
         { text: 'paginator', route: '/data-table/paginator' },
         { text: 'iterator', route: '/data-table/iterator', disabled: true },
@@ -75,6 +79,7 @@ export const INITIAL: IApp = {
     {
       icon: 'message',
       text: 'messages',
+      route: '/messages',
       children: [
         { text: 'chatRoom', route: '/messages/chat-room' },
         { text: 'email', route: '/messages/email', disabled: true },

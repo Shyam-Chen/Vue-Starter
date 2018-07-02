@@ -1,5 +1,6 @@
 export default {
   overview: 'Overview',
+  examples: 'Examples',
   helloWorld: 'Hello World',
   guide: 'Guide',
   templateRendering: 'Template Rendering',

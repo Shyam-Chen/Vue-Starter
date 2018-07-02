@@ -23,7 +23,7 @@
       <v-layout row>
         <v-card>
           <template v-if="r$.selected.length !== 0">
-            <v-card-title class="vfs-card-title">
+            <v-card-title class="o-card-title">
               <div class="body-2 error--text">
                 {{ r$.selected.length }} selected
               </div>
@@ -36,7 +36,7 @@
           </template>
 
           <template v-else>
-            <v-card-title class="vfs-card-title">
+            <v-card-title class="o-card-title">
               <div class="title">Board</div>
             </v-card-title>
           </template>

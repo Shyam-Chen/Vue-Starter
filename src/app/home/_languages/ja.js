@@ -1,5 +1,5 @@
 export default {
-  description: 'Building scalable web apps from Web Fundamentals to Firebase Platform and then to Google Cloud.',
+  description: 'Web Fundamentals から Firebase Platform へ、次に Google Cloud への スケーラブルな Web アプリケーションの構築。',
   seeMore: '続きを見る',
   sourceCode: 'ソースコード',
   codeTemplate: 'コードテンプレート',

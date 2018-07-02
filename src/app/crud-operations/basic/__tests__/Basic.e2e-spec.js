@@ -41,7 +41,7 @@ describe('Basic', () => {
   });
 
   it('should search a board', async () => {
-    const searchInput = '#app > div.application--wrap > main > div > div > div > div:nth-child(3) > div > div.v-card__title.vfs-card-title > div.v-input.v-text-field.v-text-field--single-line.v-input--hide-details > div > div.v-input__slot > div.v-text-field__slot > input[type="text"]';
+    const searchInput = '#app > div.application--wrap > main > div > div > div > div:nth-child(3) > div > div.v-card__title.o-card-title > div.v-input.v-text-field.v-text-field--single-line.v-input--hide-details > div > div.v-input__slot > div.v-text-field__slot > input[type="text"]';
 
     await page.type(searchInput, 'v');
     const length = await page.$$eval(displayRow, el => el.length);
@@ -51,7 +51,7 @@ describe('Basic', () => {
 
   it('should delete selected item', async () => {
     const selectAllCheckbox = '#app > div.application--wrap > main > div > div > div > div:nth-child(3) > div > div:nth-child(2) > div > table > thead > tr:nth-child(1) > th:nth-child(1) > div > div > div > div > div';
-    const deleteCheckedIcon = '#app > div.application--wrap > main > div > div > div > div:nth-child(3) > div > div.v-card__title.vfs-card-title > button > div > i';
+    const deleteCheckedIcon = '#app > div.application--wrap > main > div > div > div > div:nth-child(3) > div > div.v-card__title.o-card-title > button > div > i';
 
     await page.click(selectAllCheckbox);
     await page.click(deleteCheckedIcon);

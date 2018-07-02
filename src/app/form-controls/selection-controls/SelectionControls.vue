@@ -12,12 +12,12 @@
               <div class="body-1">Technologies</div>
               <div>
                 <v-layout row wrap>
-                  <v-checkbox v-for="item in sc$.technologiesList" :key="item" :label="item" :value="item" v-model="technologies" class="vfs-checkbox"></v-checkbox>
+                  <v-checkbox v-for="item in sc$.technologiesList" :key="item" :label="item" :value="item" v-model="technologies" class="o-checkbox"></v-checkbox>
                 </v-layout>
               </div>
             </v-layout>
           </div>
-          <div class="primary--text vfs-outputs">{{ sc$.technologies }}</div>
+          <div class="primary--text o-outputs">{{ sc$.technologies }}</div>
         </v-layout>
 
         <!-- radios -->
@@ -26,13 +26,13 @@
             <v-layout column>
               <div class="body-1">Gender</div>
               <div>
-                <v-radio-group v-model="gender" class="vfs-radio-group" row>
+                <v-radio-group v-model="gender" class="o-radio-group" row>
                   <v-radio v-for="item in sc$.genderList" :key="item" :label="item" :value="item"></v-radio>
                 </v-radio-group>
               </div>
             </v-layout>
           </div>
-          <div class="primary--text vfs-outputs">{{ sc$.gender }}</div>
+          <div class="primary--text o-outputs">{{ sc$.gender }}</div>
         </v-layout>
 
         <!-- switch -->
@@ -41,11 +41,11 @@
             <v-layout column>
               <div class="body-1">Video Player</div>
               <div>
-                <v-switch v-model="autoplay" label="Autoplay" class="vfs-switch"></v-switch>
+                <v-switch v-model="autoplay" label="Autoplay" class="o-switch"></v-switch>
               </div>
             </v-layout>
           </div>
-          <div class="primary--text vfs-outputs">{{ sc$.autoplay }}</div>
+          <div class="primary--text o-outputs">{{ sc$.autoplay }}</div>
         </v-layout>
 
         <!-- slider -->
@@ -54,11 +54,11 @@
             <v-layout column>
               <div class="body-1">Media Volume</div>
               <div>
-                <v-slider v-model="volume" prepend-icon="volume_up" step="2" class="vfs-slider" thumb-label></v-slider>
+                <v-slider v-model="volume" prepend-icon="volume_up" step="2" class="o-slider" thumb-label></v-slider>
               </div>
             </v-layout>
           </div>
-          <div class="primary--text vfs-outputs">{{ sc$.volume }}</div>
+          <div class="primary--text o-outputs">{{ sc$.volume }}</div>
         </v-layout>
 
         <!-- next -->
@@ -105,20 +105,20 @@ export default {
 </script>
 
 <style scoped>
-.vfs-checkbox {
+.o-checkbox {
   width: 10rem;
 }
 
-.vfs-radio-group,
-.vfs-slider {
+.o-radio-group,
+.o-slider {
   width: 300px;
 }
 
-.vfs-switch {
+.o-switch {
   width: 120px;
 }
 
-.vfs-outputs {
+.o-outputs {
   align-self: center;
   margin: 0 0 0.5rem 0.5rem;
 }

@@ -1,5 +1,5 @@
 <template>
-  <v-card class="ma-3 vfs-card">
+  <v-card class="ma-3 o-card">
     <v-list two-line subheader>
       <v-subheader>{{ subheader }}</v-subheader>
       <!-- scoped slot -->
@@ -28,7 +28,7 @@ export default {
 </script>
 
 <style scoped>
-.vfs-card {
+.o-card {
   width: 360px;
 }
 </style>

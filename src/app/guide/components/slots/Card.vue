@@ -1,5 +1,5 @@
 <template>
-  <v-card class="ma-3 vfs-card">
+  <v-card class="ma-3 o-card">
     <v-card-title primary-title>
       <div>
         <div class="headline mb-0">
@@ -31,7 +31,7 @@ export default {};
 </script>
 
 <style scoped>
-.vfs-card {
+.o-card {
   width: 360px;
 }
 </style>

@@ -4,17 +4,16 @@
 
       <template v-if="!$route.meta.standalone">
         <v-navigation-drawer v-if="!$route.meta.home || isMobile" :clipped="$vuetify.breakpoint.mdAndUp" v-model="app$.drawer" fixed app>
-          <!-- mobile -->
           <v-toolbar class="hidden-md-and-up" flat>
-            <v-toolbar-title class="vfs-toolbar-title">
-              <div class="vfs-router-link" @click="backToHome">
-                <img src="/assets/images/logo.svg" alt="Logo" width="40" height="40" class="vfs-toolbar-image">
+            <v-toolbar-title class="o-toolbar-title">
+              <div class="o-router-link" @click="backToHome">
+                <img src="/assets/images/logo.svg" alt="Logo" width="40" height="40" class="o-toolbar-image">
                 <span class="primary--text">Oh My Vue</span>
               </div>
             </v-toolbar-title>
           </v-toolbar>
 
-          <v-text-field v-if="!$route.meta.home || isMobile" solo append-icon="search" label="Search" class="hidden-md-and-up ma-3 vfs-text-field"></v-text-field>
+          <v-text-field v-if="!$route.meta.home || isMobile" solo append-icon="search" label="Search" class="hidden-md-and-up ma-3 o-text-field"></v-text-field>
 
           <v-divider></v-divider>
 
@@ -78,12 +77,11 @@
           </v-list>
         </v-navigation-drawer>
 
-        <!-- desktop -->
         <v-toolbar :clipped-left="$vuetify.breakpoint.mdAndUp" :flat="$route.meta.home" class="primary darken-1" dark app fixed>
-          <v-toolbar-title class="vfs-toolbar-title">
+          <v-toolbar-title class="o-toolbar-title">
             <v-toolbar-side-icon v-if="!$route.meta.home || isMobile" @click.stop="app$.drawer = !app$.drawer"></v-toolbar-side-icon>
-            <router-link class="hidden-sm-and-down white--text vfs-router-link" to="/">
-              <img src="/assets/images/logo.svg" alt="Logo" width="40" height="40" class="vfs-toolbar-image">
+            <router-link class="white--text o-router-link" to="/">
+              <img src="/assets/images/logo.svg" alt="Logo" width="40" height="40" class="hidden-sm-and-down o-toolbar-image">
               <span>Oh My Vue</span>
             </router-link>
           </v-toolbar-title>
@@ -93,14 +91,19 @@
           <v-spacer></v-spacer>
 
           <v-toolbar-items v-if="$route.meta.home && !isMobile">
-            <v-btn flat>Link</v-btn>
+            <v-btn flat to="/overview">{{ $t('overview') }}</v-btn>
 
-            <v-menu open-on-hover bottom offset-y>
-              <v-btn slot="activator" flat>Dropdown<v-icon dark>arrow_drop_down</v-icon></v-btn>
+            <v-menu open-on-hover bottom left offset-y>
+              <v-btn slot="activator" flat>{{ $t('examples') }}<v-icon dark>arrow_drop_down</v-icon></v-btn>
 
               <v-list>
-                <v-list-tile v-for="(item, index) in ['Foo', 'Bar', 'Baz']" :key="index" @click="void 0">
-                  <v-list-tile-title>{{ item }}</v-list-tile-title>
+                <v-list-tile v-for="(item, index) in app$.navigation" v-if="item.text !== 'overview'" :key="index" :to="item.route">
+                  <v-list-tile-action>
+                    <v-icon>{{ item.icon }}</v-icon>
+                  </v-list-tile-action>
+                  <v-list-tile-content>
+                    <v-list-tile-title>{{ $t(item.text) }}</v-list-tile-title>
+                  </v-list-tile-content>
                 </v-list-tile>
               </v-list>
             </v-menu>
@@ -112,11 +115,11 @@
             </v-btn>
             <v-list>
               <v-list-tile @click="setTheme('light')">
-                <v-list-tile-avatar class="vfs-list-tile-avatar">☀️</v-list-tile-avatar>
+                <v-list-tile-avatar class="o-list-tile-avatar">☀️</v-list-tile-avatar>
                 <v-list-tile-title>Light Theme</v-list-tile-title>
               </v-list-tile>
               <v-list-tile @click="setTheme('dark')">
-                <v-list-tile-avatar class="vfs-list-tile-avatar">🌙</v-list-tile-avatar>
+                <v-list-tile-avatar class="o-list-tile-avatar">🌙</v-list-tile-avatar>
                 <v-list-tile-title>Dark Theme</v-list-tile-title>
               </v-list-tile>
             </v-list>
@@ -147,7 +150,7 @@
 
             <v-layout :column="isMobile" fill-height justify-space-between align-center class="ml-3 mr-3">
               <div class="subheading">
-                <a href="https://vuejs.org/" class="subheading pa-2 white--text vfs-router-link">Learn Vue</a>
+                <a href="https://vuejs.org/" class="subheading pa-2 white--text o-router-link">Learn Vue</a>
               </div>
               <div class="caption">Current Version: 2.5.16</div>
               <div class="caption text-xs-center">
@@ -195,24 +198,24 @@ export default {
 </script>
 
 <style scoped>
-.vfs-toolbar-title {
+.o-toolbar-title {
   width: 20rem;
 }
 
-.vfs-router-link {
+.o-router-link {
   text-decoration: none;
   cursor: pointer;
 }
 
-.vfs-toolbar-image {
+.o-toolbar-image {
   vertical-align: middle;
 }
 
-.vfs-text-field {
+.o-text-field {
   height: 3.5rem;
 }
 
-.vfs-list-tile-avatar {
+.o-list-tile-avatar {
   font-size: 2rem;
 }
 </style>

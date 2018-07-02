@@ -5,10 +5,10 @@
 
       <!-- Add -->
       <v-layout row>
-        <div class="vfs-text-field">
+        <div class="o-text-field">
           <v-text-field v-model="b$.addData.primary" name="primary" label="Primary"></v-text-field>
         </div>
-        <div class="vfs-text-field">
+        <div class="o-text-field">
           <v-text-field v-model="b$.addData.accent" name="accent" label="Accent"></v-text-field>
         </div>
         <v-btn color="primary" @click="addItem(b$.addData)">Add</v-btn>
@@ -18,7 +18,7 @@
       <v-layout row>
         <v-card>
           <template v-if="b$.selected.length !== 0">
-            <v-card-title class="vfs-card-title">
+            <v-card-title class="o-card-title">
               <div class="body-2 error--text">
                 {{ b$.selected.length }} selected
               </div>
@@ -31,7 +31,7 @@
           </template>
 
           <template v-else>
-            <v-card-title class="vfs-card-title">
+            <v-card-title class="o-card-title">
               <div class="title">Board</div>
               <v-spacer></v-spacer>
               <!-- Search -->
@@ -68,10 +68,10 @@
             <v-card-title>Edit</v-card-title>
             <v-card-text>
               <v-layout v-if="b$.editData" row>
-                <div class="vfs-text-field">
+                <div class="o-text-field">
                   <v-text-field v-model="b$.editData.primary" name="primary" label="Primary"></v-text-field>
                 </div>
-                <div class="vfs-text-field">
+                <div class="o-text-field">
                   <v-text-field v-model="b$.editData.accent" name="accent" label="Accent"></v-text-field>
                 </div>
               </v-layout>
@@ -141,11 +141,11 @@ export default {
 </script>
 
 <style scoped>
-.vfs-text-field {
+.o-text-field {
   margin: auto 0.33rem;
 }
 
-.vfs-card-title {
+.o-card-title {
   height: 82px;
   transition: all 0.33s;
 }

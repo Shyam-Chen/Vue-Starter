@@ -22,6 +22,7 @@ const router = new Router({
     { path: '/hello-world', component: () => import('~/hello-world/HelloWorld') },
 
     /** @name guide */
+    { path: '/guide', redirect: '/guide/template-rendering' },
     { path: '/guide/template-rendering', component: () => import('~/guide/template-rendering/TemplateRendering') },
     { path: '/guide/components/props', component: () => import('~/guide/components/props/Props') },
     { path: '/guide/components/slots', component: () => import('~/guide/components/slots/Slots') },
@@ -61,11 +62,13 @@ const router = new Router({
     { path: '/guide/state-management', component: () => import('~/guide/state-management/StateManagement') },
 
     /** @name crud-operations */
+    { path: '/crud-operations', redirect: '/crud-operations/basic' },
     { path: '/crud-operations/basic', component: () => import('~/crud-operations/basic/Basic') },
     { path: '/crud-operations/rest', component: () => import('~/crud-operations/rest/REST') },
     { path: '/crud-operations/graphql', component: () => import('~/crud-operations/graphql/GraphQL') },
 
     /** @name form-controls */
+    { path: '/form-controls', redirect: '/form-controls/text-fields' },
     { path: '/form-controls/text-fields', component: () => import('~/form-controls/text-fields/TextFields') },
     { path: '/form-controls/selects', component: () => import('~/form-controls/selects/Selects') },
     { path: '/form-controls/selection-controls', component: () => import('~/form-controls/selection-controls/SelectionControls') },
@@ -73,6 +76,7 @@ const router = new Router({
     { path: '/form-controls/markdown-editor', component: () => import('~/form-controls/markdown-editor/MarkdownEditor') },
 
     /** @name data-table */
+    { path: '/data-table', redirect: '/data-table/paginator' },
     { path: '/data-table/paginator', component: () => import('~/data-table/paginator/Paginator') },
     // { path: '/data-table/iterator', component: () => import('~/data-table/iterator/Iterator') },
 
@@ -89,6 +93,7 @@ const router = new Router({
     { path: '/payment', component: () => import('~/payment/Payment') },
 
     /** @name messages */
+    { path: '/messages', redirect: '/messages/chat-room' },
     { path: '/messages/chat-room', component: () => import('~/messages/chat-room/ChatRoom') },
 
     /** @name machine-learning */

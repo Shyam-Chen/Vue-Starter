@@ -15,7 +15,7 @@
             </v-date-picker>
           </v-menu>
 
-          <div class="primary--text vfs-outputs">{{ p$.date }}</div>
+          <div class="primary--text o-outputs">{{ p$.date }}</div>
         </v-layout>
 
         <v-layout row>
@@ -28,7 +28,7 @@
             </v-date-picker>
           </v-dialog>
 
-          <div class="primary--text vfs-outputs">{{ p$.date }}</div>
+          <div class="primary--text o-outputs">{{ p$.date }}</div>
         </v-layout>
 
         <v-layout row>
@@ -37,7 +37,7 @@
             <v-time-picker v-model="time" @change="$refs.timeMenu.save(time)"></v-time-picker>
           </v-menu>
 
-          <div class="primary--text vfs-outputs">{{ p$.time }}</div>
+          <div class="primary--text o-outputs">{{ p$.time }}</div>
         </v-layout>
 
         <v-layout row>
@@ -92,7 +92,7 @@ export default {
 </script>
 
 <style scoped>
-.vfs-outputs {
+.o-outputs {
   align-self: center;
   margin: 0 0 0.5rem 0.5rem;
 }

@@ -1,5 +1,6 @@
 export default {
   overview: '概要',
+  examples: '実例集',
   helloWorld: 'こんにちは世界',
   guide: 'ガイド',
   templateRendering: 'テンプレートレンダリング',

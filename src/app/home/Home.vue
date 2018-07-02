@@ -5,7 +5,7 @@
         <v-layout justify-center align-center wrap>
           <img src="/assets/images/logo.svg" alt="Logo" width="300" height="300">
 
-          <v-flex shrink class="text-xs-center text-md-left">
+          <v-flex shrink class="text-xs-center text-md-left o-jumbotron-content">
             <div class="display-3">Oh My Vue</div>
             <div class="subheading">{{ $t('home.description') }}</div>
             <v-divider class="my-3"></v-divider>
@@ -28,7 +28,7 @@
 
     <v-container fill-height class="mt-5 mb-3">
       <v-layout row justify-center wrap>
-        <div class="pa-3 promo">
+        <div class="pa-3 o-promo">
           <svg width="100%" height="100%" viewBox="0 0 402 328" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet">
             <defs>
               <circle id="sza-b" cx="19.5" cy="19.5" r="19.5"></circle>
@@ -101,7 +101,7 @@
           </svg>
         </div>
 
-        <div class="pa-3 promo">
+        <div class="pa-3 o-promo">
           <v-layout row justify-center align-center>
             <div>
               <div class="headline pb-2">{{ $t('home.headline1') }}</div>
@@ -114,7 +114,7 @@
 
     <v-container fill-height class="mt-3 mb-3">
       <v-layout :reverse="!isMobile" row justify-center wrap>
-        <div class="pa-3 promo">
+        <div class="pa-3 o-promo">
           <svg height="100%" viewBox="0 0 402 251" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet">
             <defs>
               <rect id="fac-a" height="218" rx="4" width="367"></rect>
@@ -159,7 +159,7 @@
           </svg>
         </div>
 
-        <div class="pa-3 promo">
+        <div class="pa-3 o-promo">
           <v-layout row justify-center align-center>
             <div>
               <div class="headline pb-2">{{ $t('home.headline2') }}</div>
@@ -172,7 +172,7 @@
 
     <v-container fill-height class="mt-3 mb-3">
       <v-layout row justify-center wrap>
-        <div class="pa-3 promo">
+        <div class="pa-3 o-promo">
           <svg height="100%" viewBox="0 0 402 328" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet">
             <defs>
               <path id="ver-a" d="M30.567 93.044c2.031.002 5.332.004 7.354.004h268.402A3.672 3.672 0 0 1 310 96.723v77.554a3.681 3.681 0 0 1-3.677 3.675H37.921c-2.03 0-5.33.044-7.354.004 0 0-40.567 3.092-40.567-42.456s40.567-42.456 40.567-42.456z"></path>
@@ -214,7 +214,7 @@
           </svg>
         </div>
 
-        <div class="pa-3 promo">
+        <div class="pa-3 o-promo">
           <v-layout row justify-center align-center>
             <div>
               <div class="headline pb-2">{{ $t('home.headline3') }}</div>
@@ -227,7 +227,7 @@
 
     <v-container fill-height class="mt-3 mb-5">
       <v-layout :reverse="!isMobile" row justify-center wrap>
-        <div class="pa-3 promo">
+        <div class="pa-3 o-promo">
           <svg height="100%" viewBox="0 0 372 271" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet">
             <defs>
               <path id="opt-a" d="M0 38h39v39H0z"></path>
@@ -368,7 +368,7 @@
           </svg>
         </div>
 
-        <div class="pa-3 promo">
+        <div class="pa-3 o-promo">
           <v-layout row justify-center align-center>
             <div>
               <div class="headline pb-2">{{ $t('home.headline4') }}</div>
@@ -409,7 +409,11 @@ export default {
 </script>
 
 <style scoped>
-.promo {
+.o-jumbotron-content {
+  max-width: 55rem;
+}
+
+.o-promo {
   width: 30rem;
 }
 </style>

@@ -11,11 +11,11 @@
             <v-layout column>
               <div class="body-1">Dessert</div>
               <div>
-                <v-select :items="s$.dessertList" v-model="dessert" label="Choose a dessert" class="vfs-select" single-line bottom></v-select>
+                <v-select :items="s$.dessertList" v-model="dessert" label="Choose a dessert" class="o-select" single-line bottom></v-select>
               </div>
             </v-layout>
           </div>
-          <div class="primary--text vfs-outputs">{{ s$.dessert }}</div>
+          <div class="primary--text o-outputs">{{ s$.dessert }}</div>
         </v-layout>
 
         <!-- multiple select -->
@@ -24,11 +24,11 @@
             <v-layout column>
               <div class="body-1">States</div>
               <div>
-                <v-select :items="s$.statesList" v-model="states" label="Select States" class="vfs-select--multiple" multiple chips single-line bottom></v-select>
+                <v-select :items="s$.statesList" v-model="states" label="Select States" class="o-select--multiple" multiple chips single-line bottom></v-select>
               </div>
             </v-layout>
           </div>
-          <div class="primary--text vfs-outputs">{{ s$.states }}</div>
+          <div class="primary--text o-outputs">{{ s$.states }}</div>
         </v-layout>
 
         <!-- next -->
@@ -73,7 +73,7 @@ export default {
 </script>
 
 <style scoped>
-.vfs-select {
+.o-select {
   width: 167px;
 
   &--multiple {
@@ -81,7 +81,7 @@ export default {
   }
 }
 
-.vfs-outputs {
+.o-outputs {
   align-self: center;
   margin: 0 0 0.5rem 0.5rem;
 }

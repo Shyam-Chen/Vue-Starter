@@ -1,5 +1,6 @@
 export default {
   overview: '概观',
+  examples: '例子',
   helloWorld: '你好世界',
   guide: '指南',
   templateRendering: '模板渲染',

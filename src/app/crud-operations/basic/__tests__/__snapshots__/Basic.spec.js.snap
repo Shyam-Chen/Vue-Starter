@@ -5,17 +5,17 @@ exports[`Basic should render initial component 1`] = `
   <v-layout column="">
     <div class="headline">CRUD Operations - Basic</div>
     <v-layout row="">
-      <div class="vfs-text-field">
+      <div class="o-text-field">
         <v-text-field name="primary" label="Primary"></v-text-field>
       </div>
-      <div class="vfs-text-field">
+      <div class="o-text-field">
         <v-text-field name="accent" label="Accent"></v-text-field>
       </div>
       <v-btn color="primary">Add</v-btn>
     </v-layout>
     <v-layout row="">
       <v-card>
-        <v-card-title class="vfs-card-title">
+        <v-card-title class="o-card-title">
           <div class="title">Board</div>
           <v-spacer></v-spacer>
           <v-text-field append-icon="search" label="Search" single-line="" hide-details=""></v-text-field>
@@ -29,10 +29,10 @@ exports[`Basic should render initial component 1`] = `
           <v-card-title>Edit</v-card-title>
           <v-card-text>
             <v-layout row="">
-              <div class="vfs-text-field">
+              <div class="o-text-field">
                 <v-text-field name="primary" label="Primary"></v-text-field>
               </div>
-              <div class="vfs-text-field">
+              <div class="o-text-field">
                 <v-text-field name="accent" label="Accent"></v-text-field>
               </div>
             </v-layout>
@@ -65,17 +65,17 @@ exports[`Basic should render initial component 2`] = `
   <v-layout column="">
     <div class="headline">CRUD Operations - Basic</div>
     <v-layout row="">
-      <div class="vfs-text-field">
+      <div class="o-text-field">
         <v-text-field name="primary" label="Primary"></v-text-field>
       </div>
-      <div class="vfs-text-field">
+      <div class="o-text-field">
         <v-text-field name="accent" label="Accent"></v-text-field>
       </div>
       <v-btn color="primary">Add</v-btn>
     </v-layout>
     <v-layout row="">
       <v-card>
-        <v-card-title class="vfs-card-title">
+        <v-card-title class="o-card-title">
           <div class="title">Board</div>
           <v-spacer></v-spacer>
           <v-text-field append-icon="search" label="Search" single-line="" hide-details=""></v-text-field>
@@ -89,10 +89,10 @@ exports[`Basic should render initial component 2`] = `
           <v-card-title>Edit</v-card-title>
           <v-card-text>
             <v-layout row="">
-              <div class="vfs-text-field">
+              <div class="o-text-field">
                 <v-text-field name="primary" label="Primary"></v-text-field>
               </div>
-              <div class="vfs-text-field">
+              <div class="o-text-field">
                 <v-text-field name="accent" label="Accent"></v-text-field>
               </div>
             </v-layout>
