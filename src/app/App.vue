@@ -3,7 +3,7 @@
     <v-app v-cloak :dark="app$.theme === 'dark'">
 
       <template v-if="!$route.meta.standalone">
-        <v-navigation-drawer v-if="!$route.meta.home" :clipped="$vuetify.breakpoint.mdAndUp" v-model="app$.drawer" fixed app>
+        <v-navigation-drawer v-if="!$route.meta.home || isMobile" :clipped="$vuetify.breakpoint.mdAndUp" v-model="app$.drawer" fixed app>
           <!-- mobile -->
           <v-toolbar class="hidden-md-and-up" flat>
             <v-toolbar-title class="vfs-toolbar-title">
@@ -14,7 +14,7 @@
             </v-toolbar-title>
           </v-toolbar>
 
-          <v-text-field v-if="!$route.meta.home" solo append-icon="search" label="Search" class="hidden-md-and-up ma-3 vfs-text-field"></v-text-field>
+          <v-text-field v-if="!$route.meta.home || isMobile" solo append-icon="search" label="Search" class="hidden-md-and-up ma-3 vfs-text-field"></v-text-field>
 
           <v-divider></v-divider>
 
@@ -81,7 +81,7 @@
         <!-- desktop -->
         <v-toolbar :clipped-left="$vuetify.breakpoint.mdAndUp" :flat="$route.meta.home" class="primary darken-1" dark app fixed>
           <v-toolbar-title class="vfs-toolbar-title">
-            <v-toolbar-side-icon v-if="!$route.meta.home" @click.stop="app$.drawer = !app$.drawer"></v-toolbar-side-icon>
+            <v-toolbar-side-icon v-if="!$route.meta.home || isMobile" @click.stop="app$.drawer = !app$.drawer"></v-toolbar-side-icon>
             <router-link class="hidden-sm-and-down white--text vfs-router-link" to="/">
               <img src="/assets/images/logo.svg" alt="Logo" width="40" height="40" class="vfs-toolbar-image">
               <span>Oh My Vue</span>
@@ -91,6 +91,20 @@
           <v-text-field v-if="!$route.meta.home" flat solo-inverted append-icon="search" label="Search" class="hidden-sm-and-down mt-2"></v-text-field>
 
           <v-spacer></v-spacer>
+
+          <v-toolbar-items v-if="$route.meta.home && !isMobile">
+            <v-btn flat>Link</v-btn>
+
+            <v-menu open-on-hover bottom offset-y>
+              <v-btn slot="activator" flat>Dropdown<v-icon dark>arrow_drop_down</v-icon></v-btn>
+
+              <v-list>
+                <v-list-tile v-for="(item, index) in ['Foo', 'Bar', 'Baz']" :key="index" @click="void 0">
+                  <v-list-tile-title>{{ item }}</v-list-tile-title>
+                </v-list-tile>
+              </v-list>
+            </v-menu>
+          </v-toolbar-items>
 
           <v-menu bottom left>
             <v-btn slot="activator" aria-label="Theme" icon>
