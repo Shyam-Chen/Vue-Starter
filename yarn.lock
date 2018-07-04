@@ -3482,7 +3482,7 @@ cors@2.8.4, cors@^2.8.4:
     object-assign "^4"
     vary "^1"
 
-cosmiconfig@^2.1.0, cosmiconfig@^2.1.1:
+cosmiconfig@^2.0.0, cosmiconfig@^2.1.0, cosmiconfig@^2.1.1:
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/cosmiconfig/-/cosmiconfig-2.2.2.tgz#6173cebd56fac042c1f4390edf7af6c07c7cb892"
   dependencies:
@@ -3741,7 +3741,7 @@ cssesc@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/cssesc/-/cssesc-1.0.1.tgz#ef7bd8d0229ed6a3a7051ff7771265fe7330e0a8"
 
-cssnano-preset-default@^4.0.0:
+cssnano-preset-default@^4.0.0-rc.2:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/cssnano-preset-default/-/cssnano-preset-default-4.0.0.tgz#c334287b4f7d49fb2d170a92f9214655788e3b6b"
   dependencies:
@@ -3794,12 +3794,12 @@ cssnano-util-same-parent@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/cssnano-util-same-parent/-/cssnano-util-same-parent-4.0.0.tgz#d2a3de1039aa98bc4ec25001fa050330c2a16dac"
 
-cssnano@4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/cssnano/-/cssnano-4.0.0.tgz#e1a4161f17d82dff5fba17a90a7bfd97add79a1b"
+cssnano@4.0.0-rc.2:
+  version "4.0.0-rc.2"
+  resolved "https://registry.yarnpkg.com/cssnano/-/cssnano-4.0.0-rc.2.tgz#bcc06fe303d4f0f14070e59c121667c1727e2feb"
   dependencies:
-    cosmiconfig "^5.0.0"
-    cssnano-preset-default "^4.0.0"
+    cosmiconfig "^2.0.0"
+    cssnano-preset-default "^4.0.0-rc.2"
     is-resolvable "^1.0.0"
     postcss "^6.0.0"
 
