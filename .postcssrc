@@ -3,12 +3,11 @@
     "postcss-import": {
       "path": ["src/assets/styles"]
     },
-    "postcss-cssnext": {
-      "warnForDuplicates": false
+    "postcss-preset-env": {
+      "stage": 0,
+      "browsers": "last 2 versions"
     },
-    "rucksack-css": {
-      "autoprefixer": true
-    },
+    "rucksack-css": {},
     "postcss-nested": {},
     "cssnano": {}
   }
