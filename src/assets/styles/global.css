@@ -1,3 +1,7 @@
+@import '_root';
+@import '_medias';
+@import '_selectors';
+
 [v-cloak] {
   display: none;
 }
@@ -5,7 +9,7 @@
 .container {
   height: calc(100% - 86px);  /* calc(100% - footer) */
 
-  @media screen and (max-width: 599px) {
+  @media (--viewport-mobile) {
     height: calc(100% - 128px);  /* calc(100% - footer) */
   }
 }

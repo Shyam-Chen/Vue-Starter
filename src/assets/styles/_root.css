@@ -1,0 +1,12 @@
+/**
+ * @example
+ * @import '_root';
+ *
+ * <SELECTOR> {
+ *   <PROPERTY>: var(--foo-bar);
+ * }
+ */
+
+:root {
+  --foo-bar: 'foo bar';
+}

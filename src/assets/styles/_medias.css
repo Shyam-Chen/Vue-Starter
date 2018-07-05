@@ -1,0 +1,12 @@
+/**
+ * @example
+ * @import '_medias';
+ *
+ * @media (--viewport-mobile) {
+ *   <SELECTOR> {
+ *     <PROPERTY>: var(--foo-bar);
+ *   }
+ * }
+ */
+
+@custom-media --viewport-mobile (width <= 599px);
