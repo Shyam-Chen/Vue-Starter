@@ -21,7 +21,7 @@ export const INITIAL: IApp = {
             { text: 'refs', route: '/guide/components/refs' },
             { text: 'customEvents', route: '/guide/components/custom-events' },
             { text: 'extends', route: '/guide/components/extends', disabled: true },
-            { text: 'dynamic', route: '/guide/components/dynamic', disabled: true },
+            { text: 'dynamic', route: '/guide/components/dynamic' },
           ],
         },
         { text: 'lifecycleHooks', route: '/guide/lifecycle-hooks' },
