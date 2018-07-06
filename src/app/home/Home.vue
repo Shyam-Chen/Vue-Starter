@@ -1,8 +1,8 @@
 <template>
   <div>
     <v-jumbotron dark gradient="to bottom, #006fc9, #66c0ff" height="auto">
-      <v-container fill-height class="pt-5 pb-5">
-        <v-layout justify-center align-center wrap>
+      <v-container fluid fill-height class="py-5">
+        <v-layout row wrap justify-center align-center>
           <img src="/assets/images/logo.svg" alt="Logo" width="300" height="300">
 
           <v-flex shrink class="text-xs-center text-md-left o-jumbotron-content">
@@ -26,8 +26,8 @@
       </v-container>
     </v-jumbotron>
 
-    <v-container fill-height class="mt-5 mb-3">
-      <v-layout row justify-center wrap>
+    <v-container fluid fill-height class="mt-5 mb-3">
+      <v-layout row wrap justify-center align-center>
         <div class="pa-3 o-promo">
           <svg width="100%" height="100%" viewBox="0 0 402 328" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet">
             <defs>
@@ -102,18 +102,14 @@
         </div>
 
         <div class="pa-3 o-promo">
-          <v-layout row justify-center align-center>
-            <div>
-              <div class="headline pb-2">{{ $t('home.headline1') }}</div>
-              <div class="body-1">{{ $t('home.body1') }}</div>
-            </div>
-          </v-layout>
+          <div class="headline pb-2">{{ $t('home.headline1') }}</div>
+          <div class="body-1">{{ $t('home.body1') }}</div>
         </div>
       </v-layout>
     </v-container>
 
-    <v-container fill-height class="mt-3 mb-3">
-      <v-layout :reverse="!isMobile" row justify-center wrap>
+    <v-container fluid fill-height class="my-3">
+      <v-layout :reverse="!isMobile" row wrap justify-center align-center>
         <div class="pa-3 o-promo">
           <svg height="100%" viewBox="0 0 402 251" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet">
             <defs>
@@ -160,18 +156,14 @@
         </div>
 
         <div class="pa-3 o-promo">
-          <v-layout row justify-center align-center>
-            <div>
-              <div class="headline pb-2">{{ $t('home.headline2') }}</div>
-              <div class="body-1">{{ $t('home.body2') }}</div>
-            </div>
-          </v-layout>
+          <div class="headline pb-2">{{ $t('home.headline2') }}</div>
+          <div class="body-1">{{ $t('home.body2') }}</div>
         </div>
       </v-layout>
     </v-container>
 
-    <v-container fill-height class="mt-3 mb-3">
-      <v-layout row justify-center wrap>
+    <v-container fluid fill-height class="my-3">
+      <v-layout row wrap justify-center align-center>
         <div class="pa-3 o-promo">
           <svg height="100%" viewBox="0 0 402 328" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet">
             <defs>
@@ -215,18 +207,14 @@
         </div>
 
         <div class="pa-3 o-promo">
-          <v-layout row justify-center align-center>
-            <div>
-              <div class="headline pb-2">{{ $t('home.headline3') }}</div>
-              <div class="body-1">{{ $t('home.body3') }}</div>
-            </div>
-          </v-layout>
+          <div class="headline pb-2">{{ $t('home.headline3') }}</div>
+          <div class="body-1">{{ $t('home.body3') }}</div>
         </div>
       </v-layout>
     </v-container>
 
-    <v-container fill-height class="mt-3 mb-5">
-      <v-layout :reverse="!isMobile" row justify-center wrap>
+    <v-container fluid fill-height class="mt-3 mb-5">
+      <v-layout :reverse="!isMobile" row wrap justify-center align-center>
         <div class="pa-3 o-promo">
           <svg height="100%" viewBox="0 0 372 271" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet">
             <defs>
@@ -369,17 +357,13 @@
         </div>
 
         <div class="pa-3 o-promo">
-          <v-layout row justify-center align-center>
-            <div>
-              <div class="headline pb-2">{{ $t('home.headline4') }}</div>
-              <div class="body-1">{{ $t('home.body4') }}</div>
-            </div>
-          </v-layout>
+          <div class="headline pb-2">{{ $t('home.headline4') }}</div>
+          <div class="body-1">{{ $t('home.body4') }}</div>
         </div>
       </v-layout>
     </v-container>
 
-    <v-container grid-list-xl class="mt-5 mb-5">
+    <v-container class="my-5">
       <v-layout row justify-center>
         <v-btn large color="primary" to="/overview">
           <v-icon left>more</v-icon>
