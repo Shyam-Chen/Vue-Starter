@@ -69,7 +69,7 @@ export const INITIAL: IApp = {
       route: '/data-table',
       children: [
         { text: 'paginator', route: '/data-table/paginator' },
-        { text: 'iterator', route: '/data-table/iterator', disabled: true },
+        { text: 'iterator', route: '/data-table/iterator' },
       ],
     },
     { icon: 'language', text: 'internationalization', route: '/internationalization' },

@@ -79,7 +79,7 @@ const router = new Router({
     /** @name data-table */
     { path: '/data-table', redirect: '/data-table/paginator' },
     { path: '/data-table/paginator', component: () => import('~/data-table/paginator/Paginator') },
-    // { path: '/data-table/iterator', component: () => import('~/data-table/iterator/Iterator') },
+    { path: '/data-table/iterator', component: () => import('~/data-table/iterator/Iterator') },
 
     /** @name internationalization */
     { path: '/internationalization', component: () => import('~/internationalization/Internationalization') },
