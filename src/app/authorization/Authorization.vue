@@ -20,6 +20,7 @@
         <v-text-field v-model="password" label="Password" type="password"></v-text-field>
       </div>
       <v-btn color="primary" @click="signIn">Sign in</v-btn>
+      <v-progress-circular v-if="isInProgress" indeterminate color="primary"></v-progress-circular>
     </v-layout>
 
     <v-layout column>
@@ -67,15 +68,20 @@ export default {
 
       isSignIn: false,
 
+      isInProgress: false,
+
       currentUser: '',
     };
   },
   methods: {
     signIn() {
+      this.isInProgress = true;
+
       firebase.auth()
         .signInWithEmailAndPassword(this.email, this.password)
         .then(() => {
           this.isSignIn = true;
+          this.isInProgress = false;
           console.log('[*] Sign in');
           // this.$router.replace('');
         });

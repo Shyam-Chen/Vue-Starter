@@ -7,7 +7,9 @@
         <v-btn :class="{ primary: view === 'C' }" @click="view = 'C'">C</v-btn>
       </div>
 
-      <component :is="currentView"></component>
+      <keep-alive>
+        <component :is="currentView"></component>
+      </keep-alive>
     </v-layout>
   </v-container>
 </template>

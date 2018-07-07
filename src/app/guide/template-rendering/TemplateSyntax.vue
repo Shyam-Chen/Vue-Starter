@@ -1,5 +1,5 @@
 <template>
-  <v-layout column class="mt-1 mb-1">
+  <v-layout column class="my-1">
     <div class="title mb-2">Template Syntax</div>
     <div>{{ text }}, {{ text.length }}</div>
     <div>{{ number + 1 }}</div>

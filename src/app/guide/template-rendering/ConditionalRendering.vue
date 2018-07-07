@@ -1,5 +1,5 @@
 <template>
-  <v-layout column class="mt-1 mb-1">
+  <v-layout column class="my-1">
     <div class="title mb-2">Conditional Rendering</div>
 
     <div v-if="true">Render only if v-if condition is true</div>
