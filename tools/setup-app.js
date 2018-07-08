@@ -29,7 +29,7 @@ Vue.config.ignoredElements = [
   'v-container', 'v-content', 'v-flex', 'v-layout',
   'v-icon',
   'v-jumbotron',
-  'v-list', 'v-list-group', 'v-list-tile', 'v-list-tile-action', 'v-list-tile-avatar',
+  'v-list', 'v-list-group', 'v-list-tile', 'v-list-tile-action', 'v-list-tile-avatar', 'v-list-tile-content', 'v-list-tile-title', 'v-list-tile-sub-title',
   'v-menu',
   'v-navigation-drawer',
   'v-pagination',
