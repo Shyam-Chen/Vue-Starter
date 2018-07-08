@@ -30,7 +30,7 @@ exports[`Filters should render initial component 1`] = `
     <v-layout column="" class="mt-1 mb-1">
       <div class="title mb-2">Time Ago</div>
       <div>a few seconds ago</div>
-      <div>13 days ago</div>
+      <div>14 days ago</div>
       <div>6 years ago</div>
     </v-layout>
   </v-layout>
