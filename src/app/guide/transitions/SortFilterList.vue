@@ -19,7 +19,7 @@
     <v-layout v-if="!isLoading">
       <transition-group v-if="sortFilterList.length !== 0" tag="div" name="fade-group" class="row-wrap">
         <template v-for="item in sortFilterList">
-          <div :key="item.id" class="card ma-3">
+          <v-card :key="item.id" class="ma-2">
             <div class="card-media">
               <img :src="item.thumbnail" class="card-image">
               <div>
@@ -33,7 +33,7 @@
               <div><v-icon>event</v-icon> {{ item.publish * 1000 | timeSince }}</div>
               <div><v-icon>video_library</v-icon> {{ item.collectCount.toLocaleString('en-US') }}</div>
             </div>
-          </div>
+          </v-card>
         </template>
       </transition-group>
 
