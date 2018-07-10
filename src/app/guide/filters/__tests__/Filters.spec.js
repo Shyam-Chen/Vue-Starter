@@ -7,6 +7,7 @@ describe('Filters', () => {
 
   beforeEach(() => {
     wrapper = shallowMount(Filters);
+    jest.spyOn(Date, 'now').mockImplementation(() => 1531192363503);
   });
 
   it('should render initial component', () => {
