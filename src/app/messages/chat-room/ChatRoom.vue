@@ -24,7 +24,7 @@
       <v-flex xs12 sm6 offset-sm3>
         <v-card>
           <v-toolbar color="teal" dark>
-            <v-toolbar-title>Messages</v-toolbar-title>
+            <v-toolbar-title>Channel</v-toolbar-title>
           </v-toolbar>
 
           <div class="pa-2">

@@ -33,6 +33,7 @@ export default {
   pickers: 'ピッカー',
   markdownEditor: 'Markdown エディタ',
   dataTable: 'データ表',
+  displayRows: '行を表示する',
   paginator: 'ページネータ',
   iterator: 'イテレータ',
   internationalization: '国際化',

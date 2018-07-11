@@ -33,6 +33,7 @@ export default {
   pickers: '拾取器',
   markdownEditor: 'Markdown 编辑器',
   dataTable: '数据表',
+  displayRows: '显示行',
   paginator: '分页器',
   iterator: '迭代器',
   internationalization: '国际化',

@@ -77,7 +77,8 @@ const router = new Router({
     { path: '/form-controls/markdown-editor', component: () => import('~/form-controls/markdown-editor/MarkdownEditor') },
 
     /** @name data-table */
-    { path: '/data-table', redirect: '/data-table/paginator' },
+    { path: '/data-table', redirect: '/data-table/display-rows' },
+    { path: '/data-table/display-rows', component: () => import('~/data-table/display-rows/DisplayRows') },
     { path: '/data-table/paginator', component: () => import('~/data-table/paginator/Paginator') },
     { path: '/data-table/iterator', component: () => import('~/data-table/iterator/Iterator') },
 

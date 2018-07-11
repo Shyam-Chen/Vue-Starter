@@ -33,6 +33,7 @@ export default {
   pickers: 'Pickers',
   markdownEditor: 'Markdown Editor',
   dataTable: 'Data Table',
+  displayRows: 'Display Rows',
   paginator: 'Paginator',
   iterator: 'Iterator',
   internationalization: 'Internationalization',
