@@ -12,12 +12,13 @@ export default {
     localStorage.setItem('theme', val);
   },
   setLanguage(context: IContent, val: string): void {
-    import(`~/core/i18n/${val}`).then((data): void => {  // eslint-disable-line
-      i18n.setLocaleMessage(val, data.default);
-      i18n.locale = val;
-      document.documentElement.lang = val;  // eslint-disable-line
-      sessionStorage.setItem('lang', val);
-    });
+    import(/* webpackMode: "lazy-once" */ `~/core/i18n/${val}`)  // eslint-disable-line
+      .then((data): void => {
+        i18n.setLocaleMessage(val, data.default);
+        i18n.locale = val;
+        document.documentElement.lang = val;  // eslint-disable-line
+        sessionStorage.setItem('lang', val);
+      });
   },
   initialLanguage({ dispatch }: IContent): void {
     INITIAL.languages.forEach(({ key }): void => {
