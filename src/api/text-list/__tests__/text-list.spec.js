@@ -1,11 +1,8 @@
-// import textList from '../';
+// import router from '../';
 
-describe('Text List', () => {
+describe('TextList', () => {
   it('should handle routes', () => {
-    // const router = textList;
-    //
-    // router.stack.forEach((handler) => {
-    //   expect(handler.route).toBeDefined();
-    // });
+    // const api = router.stack[0];
+    // const textList = api.route.stack[0];
   });
 });

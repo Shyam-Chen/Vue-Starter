@@ -1,7 +1,7 @@
 import request from 'supertest';
 
-describe('Text List', () => {
-  it('should get a hello world', async () => {
+describe('HelloWorld', () => {
+  it('should get a text', async () => {
     const { statusCode, text } = await request(global.FUNC_URL)
       .get('/api/hello-world');
 

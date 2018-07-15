@@ -1,6 +1,6 @@
 import router from '..';
 
-describe('Hello World', () => {
+describe('HelloWorld', () => {
   it('should handle routes', () => {
     const api = router.stack[0];
     const helloWorld = api.route.stack[0];
