@@ -98,15 +98,9 @@ This project is separated from the front-end and back-end. If you are looking fo
 
 ## Project Template
 
-Generate a blank project via Vue CLI.
+Generate a blank project
 
-1. Install Vue CLI
-
-```bash
-$ yarn global add vue-cli
-```
-
-2. Create a project
+1. Create a project
 
 ```bash
 # generate a blank Full-stack project
@@ -119,7 +113,18 @@ $ vue init Shyam-Chen/Vue-Frontend-Template <PROJECT_NAME>
 $ vue init Shyam-Chen/Vue-Backend-Template <PROJECT_NAME>
 ```
 
-Now that you can start your journey.
+2. Start your journey
+
+```bash
+$ cd <PROJECT_NAME>
+
+$ yarn install && yarn typed
+
+$ yarn firebase use development
+
+$ yarn start:app
+$ yarn start:api
+```
 
 Detailed template repository list below:
 
@@ -266,8 +271,6 @@ Set your deployment environment variables.
 # envs --
 ENV SITE_URL <SITE_URL>
 ENV FUNC_URL <FUNC_URL>
-
-ENV SENTRY_DSN <SENTRY_DSN>
 # -- envs
 ```
 
