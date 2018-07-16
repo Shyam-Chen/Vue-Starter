@@ -3,7 +3,7 @@
 
     <v-layout row wrap align-center>
       <div>Sort</div>
-      <v-btn :class="{ primary: sort === 'published' }" @click="sort = 'published'">published</v-btn>
+      <v-btn :class="{ primary: sort === 'published' }" @click="sort = 'published'">Published</v-btn>
       <v-btn :class="{ primary: sort === 'views' }" @click="sort = 'views'">Views</v-btn>
       <v-btn :class="{ primary: sort === 'collections' }" @click="sort = 'collections'">Collections</v-btn>
     </v-layout>

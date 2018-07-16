@@ -12,7 +12,7 @@ export default {
     localStorage.setItem('theme', val);
   },
   setLanguage(context: IContent, val: string): void {
-    import(/* webpackMode: "lazy-once" */ `~/core/i18n/${val}`)  // eslint-disable-line
+    import(`~/core/i18n/${val}`)  // eslint-disable-line
       .then((data): void => {
         i18n.setLocaleMessage(val, data.default);
         i18n.locale = val;
