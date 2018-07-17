@@ -8,11 +8,11 @@
         <div>
           <v-text-field v-model="g$.searchData.text" name="search-text" label="Search Text" disabled></v-text-field>
         </div>
-        <v-btn color="primary" @click="onSearch()">Search</v-btn>
+        <v-btn color="primary" @click="search()">Search</v-btn>
       </v-layout>
 
       <v-layout row>
-        <v-data-table :headers="headers" :items="textList" :loading="loading" hide-actions select-all>
+        <v-data-table :headers="headers" :items="textList" :loading="$apollo.loading" hide-actions select-all>
           <template slot="items" slot-scope="props">
             <td>
               <v-checkbox v-model="props.selected" primary hide-details></v-checkbox>
@@ -58,7 +58,6 @@ export default {
         }
       `,
       skip() {
-        this.loading = false;
         return this.textList;
       },
     },
@@ -72,7 +71,6 @@ export default {
         { text: 'Text', value: 'text' },
         { text: 'Actions', value: 'actions' },
       ],
-      loading: false,
     };
   },
   computed: {
@@ -88,9 +86,8 @@ export default {
   },
   methods: {
     ...mapActions('crudOperations/graphql', Object.keys(actions)),
-    onSearch() {
+    search() {
       this.$apollo.queries.textList.skip = false;
-      this.loading = true;
     },
   },
 };
