@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Internationalization should render initial component 1`] = `
+exports[`Internationalization should render an initial component 1`] = `
 <v-container fluid="">
   <v-layout column="">
     <div class="headline">Internationalization</div>

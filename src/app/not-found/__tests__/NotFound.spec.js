@@ -9,7 +9,7 @@ describe('NotFound', () => {
     wrapper = shallowMount(NotFound);
   });
 
-  it('should render initial component', () => {
+  it('should render an initial component', () => {
     expect(wrapper.html()).toMatchSnapshot();
   });
 });

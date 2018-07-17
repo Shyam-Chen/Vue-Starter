@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Overview should render initial component 1`] = `
+exports[`Overview should render an initial component 1`] = `
 <v-container fluid="">
   <v-layout column="">
     <div class="headline">Practical Examples</div>

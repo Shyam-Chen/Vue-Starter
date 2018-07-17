@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`UserList should render initial component 1`] = `
+exports[`UserList should render an initial component 1`] = `
 <v-layout row="">
   <div>
     <v-list dense="" class="elevation-1">

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Basic should render initial component 1`] = `
+exports[`Basic should render an initial component 1`] = `
 <v-container fluid="">
   <v-layout column="">
     <div class="headline">CRUD Operations - Basic</div>
@@ -60,7 +60,7 @@ exports[`Basic should render initial component 1`] = `
 </v-container>
 `;
 
-exports[`Basic should render initial component 2`] = `
+exports[`Basic should render an initial component 2`] = `
 <v-container fluid="">
   <v-layout column="">
     <div class="headline">CRUD Operations - Basic</div>

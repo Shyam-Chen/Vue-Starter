@@ -54,7 +54,7 @@ describe('Counter', () => {
     wrapper = shallowMount(Counter, { localVue, store, i18n });
   });
 
-  it('should render initial component', () => {
+  it('should render an initial component', () => {
     expect(wrapper.html()).toMatchSnapshot();
   });
 });

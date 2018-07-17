@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ClassAndStyleBindings should render initial component 1`] = `
+exports[`ClassAndStyleBindings should render an initial component 1`] = `
 <v-layout column="" class="my-1">
   <div class="title mb-2">Class and Style Bindings</div>
   <div class="cyan-color">Cyan</div>

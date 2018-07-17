@@ -20,7 +20,7 @@ describe('Home', () => {
     wrapper = shallowMount(Home, { localVue, i18n });
   });
 
-  it('should render initial component', () => {
+  it('should render an initial component', () => {
     expect(wrapper.html()).toMatchSnapshot();
   });
 });

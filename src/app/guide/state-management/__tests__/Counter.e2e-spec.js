@@ -23,14 +23,14 @@ describe('Counter', () => {
     await page.goto(`${global.SITE_URL}/guide/state-management`);
   });
 
-  it('should display count', async () => {
+  it('should display a text', async () => {
     const text = await page.$eval(headline, el => el.textContent);
     const string = 'Clicked: 0 times, value is even.';
 
     expect(text.trim()).toMatch(string);
   });
 
-  it('should click increment button', async () => {
+  it('should click the increment button', async () => {
     await page.click(increment);
     const text = await page.$eval(headline, el => el.textContent);
     const string = 'Clicked: 1 times, value is odd.';

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ListRendering should render initial component 1`] = `
+exports[`ListRendering should render an initial component 1`] = `
 <v-layout column="" class="my-1">
   <div class="title mb-2">List Rendering</div>
   <ul class="pl-3 mb-1">

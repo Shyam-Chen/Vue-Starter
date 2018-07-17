@@ -14,13 +14,13 @@ localVue.use(Vuex);
 describe('Basic', () => {
   let [wrapper, store] = [];
 
-  it('should render initial component', () => {
+  it('should render an initial component', () => {
     store = new Vuex.Store();
     wrapper = shallowMount(Basic, { store, localVue });
     expect(wrapper.html()).toMatchSnapshot();
   });
 
-  it('should render initial component', () => {
+  it('should render an initial component', () => {
     store = new Vuex.Store({
       modules: {
         crudOperations: {

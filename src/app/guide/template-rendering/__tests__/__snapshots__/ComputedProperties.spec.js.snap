@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ComputedProperties should render initial component 1`] = `
+exports[`ComputedProperties should render an initial component 1`] = `
 <v-layout column="" class="my-1">
   <div class="title mb-2">Computed Properties</div>
   <div>

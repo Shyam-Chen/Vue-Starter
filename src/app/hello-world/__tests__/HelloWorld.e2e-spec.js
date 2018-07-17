@@ -17,7 +17,7 @@ describe('HelloWorld', () => {
     await page.goto(`${global.SITE_URL}/hello-world`);
   });
 
-  it('should display count', async () => {
+  it('should display a text', async () => {
     const selector = '#app > div.application--wrap > main > div > div > div > div';
     const text = await page.$eval(selector, el => el.textContent);
     expect(text).toMatch('Hello, World!');
