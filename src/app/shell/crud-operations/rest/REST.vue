@@ -100,7 +100,7 @@
 <script>
 import { mapActions } from 'vuex';
 
-import { crudOperationsStore } from '~/crud-operations/mixins';
+import { crudOperationsStore } from '../mixins';
 
 import { INITIAL as state } from './constants';
 import actions from './actions';

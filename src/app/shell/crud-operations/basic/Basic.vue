@@ -106,7 +106,7 @@
 
 import { mapGetters, mapActions } from 'vuex';
 
-import { crudOperationsStore } from '~/crud-operations/mixins';
+import { crudOperationsStore } from '../mixins';
 
 import { IBasic } from './types';
 import { INITIAL as state } from './constants';

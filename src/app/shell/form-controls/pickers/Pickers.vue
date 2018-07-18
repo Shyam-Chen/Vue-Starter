@@ -67,7 +67,7 @@
 
 import { mapModel } from 'vuex-bound';
 
-import { formControlsStore } from '~/form-controls/mixins';
+import { formControlsStore } from '../mixins';
 
 import { INITIAL as state } from './constants';
 import actions from './actions';

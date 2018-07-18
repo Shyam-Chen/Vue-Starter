@@ -39,7 +39,7 @@
 import { mapActions } from 'vuex';
 import gql from 'graphql-tag';
 
-import { crudOperationsStore } from '~/crud-operations/mixins';
+import { crudOperationsStore } from '../mixins';
 
 import { INITIAL as state } from './constants';
 import actions from './actions';
