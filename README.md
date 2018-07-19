@@ -433,6 +433,7 @@ The structure follows the LIFT Guidelines.
 │   │   ├── mutations.js
 │   │   └── types.js
 │   ├── assets  -> datas, fonts, images, medias, styles
+│   │   └── ...
 │   ├── client.js
 │   ├── index.html
 │   └── server.js

@@ -31,6 +31,7 @@ export default {
   selects: 'Selects',
   selectionControls: 'Selection Controls',
   pickers: 'Pickers',
+  stepper: 'Stepper',
   markdownEditor: 'Markdown Editor',
   dataTable: 'Data Table',
   displayRows: 'Display Rows',

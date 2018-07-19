@@ -31,6 +31,7 @@ export default {
   selects: '选择',
   selectionControls: '选择控件',
   pickers: '拾取器',
+  stepper: '步骤线',
   markdownEditor: 'Markdown 编辑器',
   dataTable: '数据表',
   displayRows: '显示行',

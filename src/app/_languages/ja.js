@@ -31,6 +31,7 @@ export default {
   selects: '選り出す',
   selectionControls: '選択コントロール',
   pickers: 'ピッカー',
+  stepper: 'ステップライン',
   markdownEditor: 'Markdown エディタ',
   dataTable: 'データ表',
   displayRows: '行を表示する',
