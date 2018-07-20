@@ -13,6 +13,7 @@
 ## Table of Contents
 
 * [Getting Started](#getting-started)
+* [Key Features](#key-features)
 * [Project Template](#project-template)
 * [Dockerization](#dockerization)
 * [Configuration](#configuration)
@@ -95,6 +96,36 @@ $ yarn e2e:api
 ```
 
 This project is separated from the front-end and back-end. If you are looking for **Isomorphic JavaScript** you can go to [Universal Vue Starter](https://github.com/Shyam-Chen/Universal-Vue-Starter).
+
+## Key Features
+
+This seed repository provides the following features:
+
+* ---------- **Core** ----------
+* [x] [Web Fundamentals](https://developers.google.com/web/fundamentals/)
+* [x] [Firebase Platform](https://firebase.google.com/)
+* [ ] [Google Cloud](https://cloud.google.com/)
+* ---------- **Front-end** ----------
+* [x] [Vue](https://github.com/vuejs/vue)
+* [x] [Vue Router](https://github.com/vuejs/vue-router)
+* [x] [Vuex](https://github.com/vuejs/vuex)
+* [x] [Vuetify](https://github.com/vuetifyjs/vuetify)
+* [x] [Webpack](https://github.com/webpack/webpack)
+* [x] [StyleLint](https://github.com/stylelint/stylelint)
+* [x] [Puppeteer](https://github.com/GoogleChrome/puppeteer)
+* ---------- **Back-end** ----------
+* [x] [Express](https://github.com/expressjs/express)
+* [x] [Gulp](https://github.com/gulpjs/gulp)
+* [x] [SuperTest](https://github.com/visionmedia/supertest)
+* ---------- **shared** ----------
+* [x] [Apollo GraphQL](https://github.com/apollographql)
+* [x] [ReactiveX](https://github.com/ReactiveX/rxjs)
+* [x] [TensorFlow](https://github.com/tensorflow/tfjs)
+* [x] [Babel](https://github.com/babel/babel)
+* [x] [Flow](https://github.com/facebook/flow)
+* [x] [PostCSS](https://github.com/postcss/postcss)
+* [x] [ESLint](https://github.com/eslint/eslint)
+* [x] [Jest](https://github.com/facebook/jest)
 
 ## Project Template
 
