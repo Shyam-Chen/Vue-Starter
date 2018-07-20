@@ -18,7 +18,7 @@ describe('HelloWorld', () => {
   });
 
   it('should display a text', async () => {
-    const selector = '#app > div.application--wrap > main > div > div > div > div';
+    const selector = '#hello-world > div > div';
     const text = await page.$eval(selector, el => el.textContent);
     expect(text).toMatch('Hello, World!');
   });

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Counter should render an initial component 1`] = `
-<v-container fluid="">
+exports[`StateManagement should render an initial component 1`] = `
+<v-container id="state-management" fluid="">
   <v-layout column="">
     <v-layout row="">
       <div class="headline pa-2">

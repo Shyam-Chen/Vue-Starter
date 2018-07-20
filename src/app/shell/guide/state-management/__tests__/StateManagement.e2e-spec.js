@@ -1,6 +1,6 @@
 import puppeteer from 'puppeteer';
 
-describe('Counter', () => {
+describe('StateManagement', () => {
   let [page, browser] = [];
 
   let [headline] = [];
@@ -11,8 +11,8 @@ describe('Counter', () => {
     page = await browser.newPage();
     await page.setViewport(global.viewport);
 
-    headline = '#app > div.application--wrap > main > div > div > div > div:nth-child(1) > div';
-    increment = '#app > div.application--wrap > main > div > div > div > div:nth-child(3) > button:nth-child(1) > div';
+    headline = '#state-management > div > div:nth-child(1) > div';
+    increment = '#state-management > div > div:nth-child(3) > button:nth-child(1) > div';
   });
 
   afterAll(async () => {

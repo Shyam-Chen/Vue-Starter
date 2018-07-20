@@ -111,6 +111,7 @@ This seed repository provides the following features:
 * ---------- **Front-end** ----------
 * [x] [Vue](https://github.com/vuejs/vue)
 * [x] [Vue Router](https://github.com/vuejs/vue-router)
+* [x] [Vue I18n](https://github.com/kazupon/vue-i18n)
 * [x] [Vuex](https://github.com/vuejs/vuex)
 * [x] [Vuetify](https://github.com/vuetifyjs/vuetify)
 * [x] [Axios](https://github.com/axios/axios)

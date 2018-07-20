@@ -2,7 +2,7 @@ import Vuex from 'vuex';
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 import I18n from 'vue-i18n';
 
-import Counter from '../StateManagement';
+import StateManagement from '../StateManagement';
 import en from '../_languages/en';
 
 const localVue = createLocalVue();
@@ -10,7 +10,7 @@ const localVue = createLocalVue();
 localVue.use(Vuex);
 localVue.use(I18n);
 
-describe('Counter', () => {
+describe('StateManagement', () => {
   let [wrapper, store, i18n] = [];
   let [state, actions, mutations, getters] = [];
 
@@ -51,7 +51,7 @@ describe('Counter', () => {
       messages: { en },
     });
 
-    wrapper = shallowMount(Counter, { localVue, store, i18n });
+    wrapper = shallowMount(StateManagement, { localVue, store, i18n });
   });
 
   it('should render an initial component', () => {

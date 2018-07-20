@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid>
+  <v-container id="hello-world" fluid>
     <v-layout>
       <div class="title">{{ message }}</div>
     </v-layout>
