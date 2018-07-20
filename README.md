@@ -104,7 +104,7 @@ This seed repository provides the following features:
 * ---------- **Core** ----------
 * [x] [Web Fundamentals](https://developers.google.com/web/fundamentals/)
 * [x] [Firebase Platform](https://firebase.google.com/)
-* [ ] [Google Cloud](https://cloud.google.com/)
+* [x] [Google Cloud](https://cloud.google.com/)
 * [x] [Docker](https://www.docker.com/)
 * [x] [CircleCI](https://circleci.com/)
 * [x] [Codecov](https://codecov.io/)
@@ -115,6 +115,7 @@ This seed repository provides the following features:
 * [x] [Vuetify](https://github.com/vuetifyjs/vuetify)
 * [x] [Axios](https://github.com/axios/axios)
 * [x] [Webpack](https://github.com/webpack/webpack)
+* [x] [PostCSS](https://github.com/postcss/postcss)
 * [x] [StyleLint](https://github.com/stylelint/stylelint)
 * [x] [Puppeteer](https://github.com/GoogleChrome/puppeteer)
 * ---------- **Back-end** ----------
@@ -128,7 +129,6 @@ This seed repository provides the following features:
 * [x] [TensorFlow](https://github.com/tensorflow/tfjs)
 * [x] [Babel](https://github.com/babel/babel)
 * [x] [Flow](https://github.com/facebook/flow)
-* [x] [PostCSS](https://github.com/postcss/postcss)
 * [x] [ESLint](https://github.com/eslint/eslint)
 * [x] [Jest](https://github.com/facebook/jest)
 
