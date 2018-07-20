@@ -105,19 +105,24 @@ This seed repository provides the following features:
 * [x] [Web Fundamentals](https://developers.google.com/web/fundamentals/)
 * [x] [Firebase Platform](https://firebase.google.com/)
 * [ ] [Google Cloud](https://cloud.google.com/)
+* [x] [Docker](https://www.docker.com/)
+* [x] [CircleCI](https://circleci.com/)
+* [x] [Codecov](https://codecov.io/)
 * ---------- **Front-end** ----------
 * [x] [Vue](https://github.com/vuejs/vue)
 * [x] [Vue Router](https://github.com/vuejs/vue-router)
 * [x] [Vuex](https://github.com/vuejs/vuex)
 * [x] [Vuetify](https://github.com/vuetifyjs/vuetify)
+* [x] [Axios](https://github.com/axios/axios)
 * [x] [Webpack](https://github.com/webpack/webpack)
 * [x] [StyleLint](https://github.com/stylelint/stylelint)
 * [x] [Puppeteer](https://github.com/GoogleChrome/puppeteer)
 * ---------- **Back-end** ----------
 * [x] [Express](https://github.com/expressjs/express)
+* [x] [Request](https://github.com/request/request)
 * [x] [Gulp](https://github.com/gulpjs/gulp)
 * [x] [SuperTest](https://github.com/visionmedia/supertest)
-* ---------- **shared** ----------
+* ---------- **Shared** ----------
 * [x] [Apollo GraphQL](https://github.com/apollographql)
 * [x] [ReactiveX](https://github.com/ReactiveX/rxjs)
 * [x] [TensorFlow](https://github.com/tensorflow/tfjs)
