@@ -11,6 +11,7 @@ import Raven from 'raven';
 
 import routes from './api';
 import schema from './api/graphql';
+// import apolloServer from './api/graphql';
 
 admin.initializeApp();
 
@@ -32,6 +33,7 @@ vm.use(bodyParser.urlencoded({ extended: false }));
 
 vm.use('/', routes);
 vm.use('/graphql', graphqlExpress({ schema }));
+// apolloServer.applyMiddleware({ app: vm });
 
 if (process.env.NODE_ENV === 'production') {
   vm.use(Raven.errorHandler());

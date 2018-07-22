@@ -33,10 +33,7 @@ $ cd <PROJECT_NAME>
 2. Install dependencies
 
 ```bash
-$ yarn install
-
-# install flow types
-$ yarn typed
+$ yarn install && yarn typed
 ```
 
 3. Set an active project for working direct
