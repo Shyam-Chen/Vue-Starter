@@ -55,7 +55,6 @@
     // Node.js and CommonJS
 
     // Stylistic Issues
-    "function-paren-newline": "off",
     "max-len": "off",
     "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
     "object-curly-newline": ["error", { "consistent": true }]
