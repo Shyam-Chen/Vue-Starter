@@ -41,9 +41,18 @@
           <div class="primary--text outputs">{{ tf$.creditCard }}</div>
         </v-layout>
 
-        <!-- next -->
         <v-layout row>
-          more...
+          <div>
+            <v-text-field v-model="phone" mask="(##) #### - ####" label="Phone" class="credit-card"></v-text-field>
+          </div>
+          <div class="primary--text outputs">{{ tf$.phone }}</div>
+        </v-layout>
+
+        <v-layout row>
+          <div>
+            <v-text-field v-model="email" :rules="tf$.emailRules" label="Email" class="email"></v-text-field>
+          </div>
+          <div class="primary--text outputs">{{ tf$.email }}</div>
         </v-layout>
 
       </v-form>
@@ -71,6 +80,8 @@ export default {
     ...mapModel('formControls/textFields', [
       'nickname',
       'creditCard',
+      'phone',
+      'email',
     ]),
   },
   created() {
@@ -92,7 +103,8 @@ export default {
   margin: 0 0 0.5rem 0.5rem;
 }
 
-.credit-card {
+.credit-card,
+.email {
   width: 15rem;
 }
 </style>
