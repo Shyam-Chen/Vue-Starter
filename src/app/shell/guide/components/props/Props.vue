@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid>
+  <v-container class="shell-container" fluid>
     <v-layout column>
       <Title />
       <Title label="Oh My Vue" />

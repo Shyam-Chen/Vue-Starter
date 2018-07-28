@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid>
+  <v-container class="shell-container" fluid>
     <v-layout column>
       <div>
         <v-btn :class="{ primary: view === 'A' }" @click="view = 'A'">A</v-btn>

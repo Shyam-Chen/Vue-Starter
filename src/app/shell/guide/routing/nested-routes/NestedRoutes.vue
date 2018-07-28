@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container class="shell-container" fluid>
 
     <v-layout>
       Header

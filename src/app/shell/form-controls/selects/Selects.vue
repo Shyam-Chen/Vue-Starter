@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid>
+  <v-container id="selects" class="shell-container" fluid>
     <v-layout column>
       <div class="headline">Form Controls - Selects</div>
 

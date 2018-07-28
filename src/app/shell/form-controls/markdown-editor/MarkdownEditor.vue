@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid>
+  <v-container id="markdown-editor" class="shell-container" fluid>
     <v-layout row fill-height justify-space-between>
       <v-flex xs6>
         <textarea v-model="source" class="pa-3 markdown-editor"></textarea>

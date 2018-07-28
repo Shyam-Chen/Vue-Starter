@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid>
+  <v-container id="display-rows" class="shell-container" fluid>
     <v-card>
       <v-data-table :headers="headers" :items="desserts" v-model="selected" select-all hide-actions>
         <template slot="items" slot-scope="props">

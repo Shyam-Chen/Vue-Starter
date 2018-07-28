@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid>
+  <v-container class="shell-container" fluid>
     <v-layout column>
       <div class="headline mb-1">Mixins</div>
     </v-layout>

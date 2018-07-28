@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid>
+  <v-container class="shell-container" fluid>
     <v-layout>
       <div>See console</div>
     </v-layout>

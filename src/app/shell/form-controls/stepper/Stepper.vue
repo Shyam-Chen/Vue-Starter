@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid>
+  <v-container id="stepper" class="shell-container" fluid>
   </v-container>
 </template>
 

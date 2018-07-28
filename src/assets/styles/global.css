@@ -6,7 +6,7 @@
   display: none;
 }
 
-.container {
+.shell-container {
   height: calc(100% - 86px);  /* calc(100% - footer) */
 
   @media (--viewport-mobile) {

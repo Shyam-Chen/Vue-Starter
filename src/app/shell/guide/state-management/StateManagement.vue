@@ -1,5 +1,5 @@
 <template>
-  <v-container id="state-management" fluid>
+  <v-container id="state-management" class="shell-container" fluid>
     <v-layout column>
       <v-layout row>
         <div class="headline pa-2">
