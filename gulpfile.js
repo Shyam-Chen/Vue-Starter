@@ -64,5 +64,5 @@ gulp.task('default', (done) => {
     return runSequence('build', ['copy', 'rename'], done);
   }
 
-  return runSequence('build', 'rename', 'watch', 'serve', done);
+  return runSequence('build', ['copy', 'rename'], 'watch', 'serve', done);
 });

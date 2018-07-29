@@ -4730,9 +4730,9 @@ firebase-functions-test@0.1.2:
     "@types/lodash" "^4.14.104"
     lodash "^4.17.5"
 
-firebase-functions@1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/firebase-functions/-/firebase-functions-1.1.0.tgz#f6419b860fdbec6302c351ff5b0020e68936e097"
+firebase-functions@2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/firebase-functions/-/firebase-functions-2.0.2.tgz#49666f13da9b29d2ff98861ba611add6b8424d6f"
   dependencies:
     "@types/cors" "^2.8.1"
     "@types/express" "^4.11.1"
@@ -4743,9 +4743,9 @@ firebase-functions@1.1.0:
     jsonwebtoken "^8.2.1"
     lodash "^4.6.1"
 
-firebase-tools@3.19.3:
-  version "3.19.3"
-  resolved "https://registry.yarnpkg.com/firebase-tools/-/firebase-tools-3.19.3.tgz#5833e107a7ddd16a0e38776458752f0a3c4a62ea"
+firebase-tools@4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/firebase-tools/-/firebase-tools-4.0.0.tgz#32b29829a4d9bd349c294cf551c6cd17d48cdacd"
   dependencies:
     JSONStream "^1.2.1"
     archiver "^2.1.1"
