@@ -1,7 +1,6 @@
 import * as functions from 'firebase-functions';
 import * as admin from 'firebase-admin';
 import express from 'express';
-import { graphqlExpress } from 'apollo-server-express';
 import compression from 'compression';
 import cors from 'cors';
 import morgan from 'morgan';
@@ -10,8 +9,7 @@ import request from 'request';
 import Raven from 'raven';
 
 import routes from './api';
-import schema from './api/graphql';
-// import apolloServer from './api/graphql';
+import apolloServer from './api/graphql';
 
 admin.initializeApp();
 
@@ -32,8 +30,7 @@ vm.use(bodyParser.json());
 vm.use(bodyParser.urlencoded({ extended: false }));
 
 vm.use('/', routes);
-vm.use('/graphql', graphqlExpress({ schema }));
-// apolloServer.applyMiddleware({ app: vm });
+apolloServer.applyMiddleware({ app: vm });
 
 if (process.env.NODE_ENV === 'production') {
   vm.use(Raven.errorHandler());

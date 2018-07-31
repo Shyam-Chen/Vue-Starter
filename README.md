@@ -14,7 +14,6 @@
 
 * [Getting Started](#getting-started)
 * [Key Features](#key-features)
-* [Project Template](#project-template)
 * [Dockerization](#dockerization)
 * [Configuration](#configuration)
 * [Directory Structure](#directory-structure)
@@ -129,42 +128,6 @@ This seed repository provides the following features:
 * [x] [Flow](https://github.com/facebook/flow)
 * [x] [ESLint](https://github.com/eslint/eslint)
 * [x] [Jest](https://github.com/facebook/jest)
-
-## Project Template
-
-Generate a blank project
-
-1. Create a project
-
-```bash
-# generate a blank Full-stack project
-$ vue init Shyam-Chen/Vue-Fullstack-Template <PROJECT_NAME>
-
-# generate a blank Front-end project
-$ vue init Shyam-Chen/Vue-Frontend-Template <PROJECT_NAME>
-
-# generate a blank Back-end project
-$ vue init Shyam-Chen/Vue-Backend-Template <PROJECT_NAME>
-```
-
-2. Start your journey
-
-```bash
-$ cd <PROJECT_NAME>
-
-$ yarn install && yarn typed
-
-$ yarn firebase use development
-
-$ yarn start:app
-$ yarn start:api
-```
-
-Detailed template repository list below:
-
-* [Vue Fullstack Template](https://github.com/Shyam-Chen/Vue-Fullstack-Template)
-* [Vue Frontend Template](https://github.com/Shyam-Chen/Vue-Frontend-Template)
-* [Vue Backend Template](https://github.com/Shyam-Chen/Vue-Backend-Template)
 
 ## Dockerization
 
