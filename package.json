@@ -1,5 +1,5 @@
 {
-  "name": "Vue-Fullstack-Starter",
+  "name": "vue-fullstack-starter",
   "version": "1.0.0",
   "description": "A boilerplate for Vue, Material, Express, Babel, Flow, and ReactiveX.",
   "engines": {
@@ -35,9 +35,9 @@
   },
   "homepage": "https://github.com/Shyam-Chen/Vue-Fullstack-Starter#readme",
   "dependencies": {
-    "@tensorflow/tfjs": "0.12.3",
-    "apollo-cache-inmemory": "1.2.5",
-    "apollo-client": "2.3.5",
+    "@tensorflow/tfjs": "0.12.4",
+    "apollo-cache-inmemory": "1.2.6",
+    "apollo-client": "2.3.7",
     "apollo-link": "1.2.2",
     "apollo-link-http": "1.5.4",
     "apollo-server-express": "2.0.0",
@@ -60,14 +60,14 @@
     "request": "2.87.0",
     "rxjs": "6.2.2",
     "vue": "2.5.16",
-    "vue-analytics": "5.12.2",
+    "vue-analytics": "5.12.3",
     "vue-apollo": "3.0.0-beta.19",
     "vue-echarts": "3.0.9",
     "vue-i18n": "8.0.0",
     "vue-markdown": "2.2.4",
     "vue-meta": "1.5.2",
     "vue-router": "3.0.1",
-    "vuetify": "1.1.8",
+    "vuetify": "1.1.9",
     "vuex": "3.0.1",
     "vuex-bound": "1.2.0",
     "vuex-router-sync": "5.0.0"
