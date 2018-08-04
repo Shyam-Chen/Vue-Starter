@@ -31,6 +31,7 @@ export default {
   selects: '選り出す',
   selectionControls: '選択コントロール',
   pickers: 'ピッカー',
+  autocomplete: 'オートコンプリート',
   stepper: 'ステップライン',
   tabs: '切り替えタブ',
   treeView: 'ツリー表示',

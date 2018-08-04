@@ -31,6 +31,7 @@ export default {
   selects: '选择',
   selectionControls: '选择控件',
   pickers: '拾取器',
+  autocomplete: '自动完成',
   stepper: '步骤线',
   tabs: '选项卡',
   treeView: '树形视图',

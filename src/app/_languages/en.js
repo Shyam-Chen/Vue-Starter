@@ -31,6 +31,7 @@ export default {
   selects: 'Selects',
   selectionControls: 'Selection Controls',
   pickers: 'Pickers',
+  autocomplete: 'Autocomplete',
   stepper: 'Stepper',
   tabs: 'Tabs',
   treeView: 'Tree View',
