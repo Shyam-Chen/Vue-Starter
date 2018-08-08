@@ -41,7 +41,7 @@ export default {
   inlineEdit: 'インライン編集',
   paginator: 'ページネータ',
   iterator: 'イテレータ',
-  exportExcel: 'Excel のエクスポート',
+  exportReport: 'レポートのエクスポート',
   internationalization: '国際化',
   dataVisualization: 'データの視覚化',
   authorization: 'オーソライズ',

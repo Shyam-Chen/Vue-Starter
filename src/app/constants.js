@@ -76,7 +76,7 @@ export const INITIAL: IApp = {
         { text: 'inlineEdit', route: '/data-table/inline-edit', disabled: true },
         { text: 'paginator', route: '/data-table/paginator' },
         { text: 'iterator', route: '/data-table/iterator' },
-        { text: 'exportExcel', route: '/data-table/export-excel', disabled: true },
+        { text: 'exportReport', route: '/data-table/export-report', disabled: true },
       ],
     },
     { icon: 'language', text: 'internationalization', route: '/internationalization' },

@@ -41,7 +41,7 @@ export default {
   inlineEdit: 'Inline Edit',
   paginator: 'Paginator',
   iterator: 'Iterator',
-  exportExcel: 'Export Excel',
+  exportReport: 'Export Report',
   internationalization: 'Internationalization',
   dataVisualization: 'Data Visualization',
   authorization: 'Authorization',

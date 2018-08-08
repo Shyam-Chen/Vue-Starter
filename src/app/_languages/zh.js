@@ -41,7 +41,7 @@ export default {
   inlineEdit: '内联编辑',
   paginator: '分页器',
   iterator: '迭代器',
-  exportExcel: '导出 Excel',
+  exportReport: '导出报告',
   internationalization: '国际化',
   dataVisualization: '数据可视化',
   authorization: '授权',
