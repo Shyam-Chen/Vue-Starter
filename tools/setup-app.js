@@ -50,6 +50,6 @@ Vue.config.ignoredElements = [
   'v-tab', 'v-tab-item', 'v-tabs', 'v-tabs-items', 'v-tabs-slider',
   'v-text-field',
   'v-time-picker', 'v-time-picker-clock', 'v-time-picker-title',
-  'v-toolbar', 'v-toolbar-side-icon',
+  'v-toolbar', 'v-toolbar-side-icon', 'v-toolbar-title', 'v-toolbar-items',
   'v-tooltip',
 ];

@@ -190,7 +190,6 @@ export default {
   },
   created() {
     this.initialLanguage();
-    console.log(this.$vuetify.breakpoint.mdAndUp);
   },
   methods: {
     ...mapActions(Object.keys(actions)),
