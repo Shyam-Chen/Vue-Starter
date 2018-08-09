@@ -3,7 +3,65 @@
 exports[`App should render an initial component 1`] = `
 <v-fade-transition appear="">
   <v-app>
-    <router-view-stub></router-view-stub>
+    <!---->
+    <v-toolbar clipped-left="true" flat="true" dark="" app="" fixed="" class="primary darken-1">
+      <v-toolbar-title class="o-toolbar-title">
+        <!---->
+        <router-link-stub to="/" class="white--text o-router-link">
+          <img src="/assets/images/logo.svg" alt="Logo" width="40" height="40" class="hidden-sm-and-down o-toolbar-image"> <span>Oh My Vue</span></router-link-stub>
+      </v-toolbar-title>
+      <!---->
+      <v-spacer></v-spacer>
+      <v-toolbar-items>
+        <v-btn flat="" to="/overview">Overview</v-btn>
+        <v-menu open-on-hover="" bottom="" left="" offset-y="">
+          <v-btn slot="activator" flat="">Examples
+            <v-icon dark="">arrow_drop_down</v-icon>
+          </v-btn>
+          <v-list></v-list>
+        </v-menu>
+      </v-toolbar-items>
+      <v-menu bottom="" left="">
+        <v-btn slot="activator" aria-label="Theme" icon="">
+          <v-icon>format_color_fill</v-icon>
+        </v-btn>
+        <v-list>
+          <v-list-tile>
+            <v-list-tile-avatar class="o-list-tile-avatar">☀️</v-list-tile-avatar>
+            <v-list-tile-title>Light Theme</v-list-tile-title>
+          </v-list-tile>
+          <v-list-tile>
+            <v-list-tile-avatar class="o-list-tile-avatar">🌙</v-list-tile-avatar>
+            <v-list-tile-title>Dark Theme</v-list-tile-title>
+          </v-list-tile>
+        </v-list>
+      </v-menu>
+      <v-menu bottom="" left="">
+        <v-btn slot="activator" aria-label="Language" icon="">
+          <v-icon>language</v-icon>
+        </v-btn>
+        <v-list></v-list>
+      </v-menu>
+    </v-toolbar>
+    <v-content>
+      <v-fade-transition mode="out-in">
+        <router-view-stub></router-view-stub>
+      </v-fade-transition>
+      <v-footer height="auto" class="pa-3 primary darken-1 white--text">
+        <img src="/assets/images/logo.svg" alt="Logo" width="50" height="50">
+        <v-layout fill-height="" justify-space-between="" align-center="" class="ml-3 mr-3">
+          <div class="subheading">
+            <a href="https://vuejs.org/" class="subheading pa-2 white--text o-router-link">Learn Vue</a>
+          </div>
+          <div class="caption">Current Version: 2.5.17</div>
+          <div class="caption text-xs-center">
+            Powered by Oh My Vue ©2018.
+            <br> Code licensed under an MIT-style License.
+            <br> Documentation licensed under CC BY 4.0.
+          </div>
+        </v-layout>
+      </v-footer>
+    </v-content>
   </v-app>
 </v-fade-transition>
 `;

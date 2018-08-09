@@ -54,6 +54,13 @@ describe('App', () => {
       store,
       i18n,
       stubs: ['router-link', 'router-view'],
+      mocks: {
+        $vuetify: {
+          breakpoint: {
+            mdAndUp: true,
+          },
+        },
+      },
     });
   });
 

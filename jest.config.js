@@ -1,3 +1,5 @@
+const env = require('./env');
+
 switch (process.env.JEST_ENV) {
   case 'app':
     module.exports = {
@@ -18,6 +20,7 @@ switch (process.env.JEST_ENV) {
         '<rootDir>/node_modules/',
         '.*\\.e2e-spec.js$',
       ],
+      testURL: `http://${env.HOST_NAME}/`,
       transform: {
         '^.+\\.js$': 'babel-jest',
         '^.+\\.vue$': 'vue-jest',
@@ -40,6 +43,7 @@ switch (process.env.JEST_ENV) {
         '<rootDir>/node_modules/',
         '.*\\.e2e-spec.js$',
       ],
+      testURL: `http://${env.HOST_NAME}/`,
       transform: {
         '^.+\\.js$': 'babel-jest',
       },
@@ -53,6 +57,7 @@ switch (process.env.JEST_ENV) {
         '<rootDir>/node_modules/',
         '.*\\.spec.js$',
       ],
+      testURL: `http://${env.HOST_NAME}/`,
       transform: {
         '^.+\\.js$': 'babel-jest',
       },

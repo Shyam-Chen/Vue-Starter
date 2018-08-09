@@ -152,7 +152,7 @@
               <div class="subheading">
                 <a href="https://vuejs.org/" class="subheading pa-2 white--text o-router-link">Learn Vue</a>
               </div>
-              <div class="caption">Current Version: 2.5.16</div>
+              <div class="caption">Current Version: 2.5.17</div>
               <div class="caption text-xs-center">
                 Powered by Oh My Vue &copy;{{ new Date().getFullYear() }}. <br>
                 Code licensed under an MIT-style License. <br>
@@ -190,6 +190,7 @@ export default {
   },
   created() {
     this.initialLanguage();
+    console.log(this.$vuetify.breakpoint.mdAndUp);
   },
   methods: {
     ...mapActions(Object.keys(actions)),
