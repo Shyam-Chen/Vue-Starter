@@ -91,8 +91,6 @@ $ yarn e2e:app
 $ yarn e2e:api
 ```
 
-This project is separated from the front-end and back-end. If you are looking for **Isomorphic JavaScript** you can go to [Universal Vue Starter](https://github.com/Shyam-Chen/Universal-Vue-Starter).
-
 ## Key Features
 
 This seed repository provides the following features:
