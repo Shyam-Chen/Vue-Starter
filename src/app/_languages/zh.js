@@ -1,7 +1,9 @@
 export default {
   overview: '概观',
   examples: '例子',
+
   helloWorld: '你好世界',
+
   guide: '指南',
   templateRendering: '模板渲染',
   components: '组件',
@@ -22,10 +24,12 @@ export default {
   nestedRoutes: '嵌套路由',
   guards: '守卫',
   stateManagement: '状态管理',
+
   crudOperations: 'CRUD 操作',
   basic: '基本',
   rest: 'REST',
   graphql: 'GraphQL',
+
   formControls: '表单控件',
   textFields: '文本字段',
   selects: '选择',
@@ -36,19 +40,27 @@ export default {
   tabs: '选项卡',
   treeView: '树形视图',
   markdownEditor: 'Markdown 编辑器',
+  richTextEditor: '富文本编辑器',
+
   dataTable: '数据表',
   displayRows: '显示行',
   inlineEdit: '内联编辑',
   paginator: '分页器',
   iterator: '迭代器',
   exportReport: '导出报告',
+
   internationalization: '国际化',
+
   dataVisualization: '数据可视化',
+
   authorization: '授权',
+
   payment: '支付',
+
   messages: '讯息',
   chatRoom: '聊天室',
   email: '电子邮件',
   cloudMessaging: '云消息',
+
   machineLearning: '机器学习',
 };

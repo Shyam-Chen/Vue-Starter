@@ -1,7 +1,9 @@
 export default {
   overview: '概要',
   examples: '実例集',
+
   helloWorld: 'こんにちは世界',
+
   guide: 'ガイド',
   templateRendering: 'テンプレートレンダリング',
   components: 'コンポーネント',
@@ -22,10 +24,12 @@ export default {
   nestedRoutes: 'ネストされたルート',
   guards: 'ガード',
   stateManagement: '状態管理',
+
   crudOperations: 'CRUD 操作',
   basic: 'ベーシック',
   rest: 'REST',
   graphql: 'GraphQL',
+
   formControls: 'フォームコントロール',
   textFields: 'テキストフィールド',
   selects: '選り出す',
@@ -36,19 +40,27 @@ export default {
   tabs: '切り替えタブ',
   treeView: 'ツリー表示',
   markdownEditor: 'Markdown エディタ',
+  richTextEditor: 'リッチテキストエディタ',
+
   dataTable: 'データ表',
   displayRows: '行を表示する',
   inlineEdit: 'インライン編集',
   paginator: 'ページネータ',
   iterator: 'イテレータ',
   exportReport: 'レポートのエクスポート',
+
   internationalization: '国際化',
+
   dataVisualization: 'データの視覚化',
+
   authorization: 'オーソライズ',
+
   payment: '支払い',
+
   messages: 'メッセージ',
   chatRoom: 'チャットルーム',
   email: 'E メール',
   cloudMessaging: 'クラウドメッセージング',
+
   machineLearning: '機械学習',
 };

@@ -1,7 +1,9 @@
 export default {
   overview: 'Overview',
   examples: 'Examples',
+
   helloWorld: 'Hello World',
+
   guide: 'Guide',
   templateRendering: 'Template Rendering',
   components: 'Components',
@@ -22,10 +24,12 @@ export default {
   nestedRoutes: 'Nested Routes',
   guards: 'Guards',
   stateManagement: 'State Management',
+
   crudOperations: 'CRUD Operations',
   basic: 'Basic',
   rest: 'REST',
   graphql: 'GraphQL',
+
   formControls: 'Form Controls',
   textFields: 'Text Fields',
   selects: 'Selects',
@@ -36,19 +40,27 @@ export default {
   tabs: 'Tabs',
   treeView: 'Tree View',
   markdownEditor: 'Markdown Editor',
+  richTextEditor: 'Rich Text Editor',
+
   dataTable: 'Data Table',
   displayRows: 'Display Rows',
   inlineEdit: 'Inline Edit',
   paginator: 'Paginator',
   iterator: 'Iterator',
   exportReport: 'Export Report',
+
   internationalization: 'Internationalization',
+
   dataVisualization: 'Data Visualization',
+
   authorization: 'Authorization',
+
   payment: 'Payment',
+
   messages: 'Messages',
   chatRoom: 'Chat Room',
   email: 'Email',
   cloudMessaging: 'Cloud Messaging',
+
   machineLearning: 'Machine Learning',
 };
