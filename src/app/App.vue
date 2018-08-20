@@ -64,7 +64,7 @@
               </v-list-group>
 
               <!-- else not children -->
-              <v-list-tile v-else :key="item.text" :to="item.route" :disabled="item.disabled" ripple>
+              <v-list-tile v-else :key="item.text" :to="item.route" :href="item.href" :disabled="item.disabled" ripple>
                 <v-list-tile-action>
                   <v-icon>{{ item.icon }}</v-icon>
                 </v-list-tile-action>

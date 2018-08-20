@@ -4,6 +4,7 @@ export interface Navigation {
   icon?: string;
   text?: string;
   route?: string;
+  href?: string;
   disabled?: boolean;
   subheader?: string;
   children?: Navigation[];

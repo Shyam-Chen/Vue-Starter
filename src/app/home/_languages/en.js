@@ -2,7 +2,6 @@ export default {
   description: 'Building scalable web apps from Web Fundamentals to Firebase Platform and then to Google Cloud.',
   seeMore: 'See more',
   sourceCode: 'Source code',
-  codeTemplate: 'Code template',
   headline1: 'Sprint from Zero to App',
   body1: 'Hit the ground running with comprehensive, modern UI components that work across the web, mobile and desktop.',
   headline2: 'Fast and Consistent',

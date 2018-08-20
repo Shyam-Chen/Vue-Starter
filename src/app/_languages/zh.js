@@ -1,4 +1,7 @@
 export default {
+  /** @name practical-examples */
+  practicalExamples: 'Practical Examples',
+
   overview: '概观',
   examples: '例子',
 
@@ -63,4 +66,11 @@ export default {
   cloudMessaging: '云消息',
 
   machineLearning: '机器学习',
+
+  /** @name additional-resources */
+  additionalResources: 'Additional Resources',
+
+  universalApps: 'Universal Apps',
+  mobileApps: 'Mobile Apps',
+  desktopApps: 'Desktop Apps',
 };

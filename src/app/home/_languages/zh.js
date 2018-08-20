@@ -2,7 +2,6 @@ export default {
   description: '构建可扩展的 Web 应用从 Web Fundamentals 到 Firebase Platform，再到 Google Cloud。',
   seeMore: '查看更多',
   sourceCode: '源代码',
-  codeTemplate: '代码模板',
   headline1: 'Sprint 从零到应用程序',
   body1: '通过全面，现代化的 UI 组件，在网络，移动和桌面上运行，从而实现全面运行。',
   headline2: '快速和一致',

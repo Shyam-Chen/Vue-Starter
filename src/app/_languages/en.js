@@ -1,4 +1,7 @@
 export default {
+  /** @name practical-examples */
+  practicalExamples: 'Practical Examples',
+
   overview: 'Overview',
   examples: 'Examples',
 
@@ -63,4 +66,11 @@ export default {
   cloudMessaging: 'Cloud Messaging',
 
   machineLearning: 'Machine Learning',
+
+  /** @name additional-resources */
+  additionalResources: 'Additional Resources',
+
+  universalApps: 'Universal Apps',
+  mobileApps: 'Mobile Apps',
+  desktopApps: 'Desktop Apps',
 };

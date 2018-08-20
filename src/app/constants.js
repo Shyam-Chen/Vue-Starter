@@ -5,7 +5,8 @@ import { IApp } from './types';
 export const INITIAL: IApp = {
   theme: localStorage.getItem('theme') || 'light',
   navigation: [
-    { icon: 'pageview', text: 'overview', route: '/overview' },
+    /** @name practical-examples */
+    { icon: 'pageview', text: 'overview', route: '/overview', subheader: 'practicalExamples' },
     { icon: 'face', text: 'helloWorld', route: '/hello-world' },
     {
       icon: 'loyalty',
@@ -95,6 +96,11 @@ export const INITIAL: IApp = {
       ],
     },
     { icon: 'fas fa-cogs', text: 'machineLearning', route: '/machine-learning' },
+
+    /** @name additional-resources */
+    { icon: 'fas fa-server', text: 'universalApps', href: 'https://github.com/Shyam-Chen/Vue-Universal-Starter', subheader: 'additionalResources' },
+    { icon: 'phone_iphone', text: 'mobileApps', href: 'https://github.com/Shyam-Chen/Vue-Mobile-Starter' },
+    { icon: 'desktop_mac', text: 'desktopApps', href: 'https://github.com/Shyam-Chen/Vue-Desktop-Starter' },
   ],
   drawer: false || null,
   languages: [

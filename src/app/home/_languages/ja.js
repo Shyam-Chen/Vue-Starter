@@ -2,7 +2,6 @@ export default {
   description: 'Web Fundamentals から Firebase Platform へ、次に Google Cloud への スケーラブルな Web アプリケーションの構築。',
   seeMore: '続きを見る',
   sourceCode: 'ソースコード',
-  codeTemplate: 'コードテンプレート',
   headline1: 'Sprint をゼロからアプリまで',
   body1: 'Web、モバイル、およびデスクトップで機能する包括的で最新の UI コンポーネントを使用して基礎を築いてください。',
   headline2: '迅速で一貫性のある',
