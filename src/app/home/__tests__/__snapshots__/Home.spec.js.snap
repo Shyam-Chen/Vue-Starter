@@ -10,17 +10,13 @@ exports[`Home should render an initial component 1`] = `
           <div class="display-3">Oh My Vue</div>
           <div class="subheading">Building scalable web apps from Web Fundamentals to Firebase Platform and then to Google Cloud.</div>
           <v-divider class="my-3"></v-divider>
-          <v-btn large="" color="white" to="/overview" class="primary--text ml-0">
+          <v-btn large="" color="white" to="/overview" class="primary--text">
             <v-icon left="">more</v-icon>
             See more
           </v-btn>
           <v-btn color="white" href="https://github.com/Shyam-Chen/Vue-Fullstack-Starter" large="" outline="" target="_blank" rel="noopener">
             <v-icon left="">fab fa-github</v-icon>
             Source code
-          </v-btn>
-          <v-btn color="white" href="https://github.com/Shyam-Chen/Vue-Fullstack-Template" large="" outline="" target="_blank" rel="noopener">
-            <v-icon left="">far fa-file-code</v-icon>
-            Code template
           </v-btn>
         </v-flex>
       </v-layout>
