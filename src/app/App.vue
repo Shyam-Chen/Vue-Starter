@@ -20,6 +20,7 @@
           <v-list dense>
             <template v-for="item in app$.navigation">
 
+              <v-divider v-if="item.divider" :key="item.subheader"></v-divider>
               <v-subheader v-if="item.subheader" :key="item.subheader">{{ $t(item.subheader) }}</v-subheader>
 
               <!-- if children -->

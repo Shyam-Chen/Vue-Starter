@@ -7,6 +7,7 @@ export interface Navigation {
   href?: string;
   disabled?: boolean;
   subheader?: string;
+  divider?: boolean;
   children?: Navigation[];
 }
 
