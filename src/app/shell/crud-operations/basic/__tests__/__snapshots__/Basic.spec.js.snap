@@ -47,7 +47,7 @@ exports[`Basic should render an initial component 1`] = `
         <v-card>
           <v-card-title>Delete</v-card-title>
           <v-card-text>
-            Are you sure you want to delete it?
+            Are you sure that you want to delete it?
           </v-card-text>
           <v-card-actions>
             <v-btn color="success" flat="">Cancel</v-btn>
@@ -107,7 +107,7 @@ exports[`Basic should render an initial component 2`] = `
         <v-card>
           <v-card-title>Delete</v-card-title>
           <v-card-text>
-            Are you sure you want to delete it?
+            Are you sure that you want to delete it?
           </v-card-text>
           <v-card-actions>
             <v-btn color="success" flat="">Cancel</v-btn>

@@ -84,7 +84,7 @@
         <v-dialog v-model="r$.deleteData.dialog" max-width="500px">
           <v-card>
             <v-card-title>Delete</v-card-title>
-            <v-card-text>Are you sure you want to delete it?</v-card-text>
+            <v-card-text>Are you sure that you want to delete it?</v-card-text>
             <v-card-actions>
               <v-btn color="success" flat @click.stop="r$.deleteData.dialog = false">Cancel</v-btn>
               <v-btn color="error" flat @click.stop="deleteItem(r$.deleteData.id)">Confirm</v-btn>

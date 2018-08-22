@@ -88,7 +88,7 @@
           <v-card>
             <v-card-title>Delete</v-card-title>
             <v-card-text>
-              Are you sure you want to delete it?
+              Are you sure that you want to delete it?
             </v-card-text>
             <v-card-actions>
               <v-btn color="success" flat @click.stop="handleDialog({ name: 'delete', value: false })">Cancel</v-btn>

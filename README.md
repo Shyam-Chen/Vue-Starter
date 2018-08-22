@@ -166,14 +166,14 @@ $ docker-compose up -d --build <SERVICE>
   public
   functions
   coverage
-+ Dockerfile.dev
-+ Dockerfile.prod
++ dev.Dockerfile
++ prod.Dockerfile
   *.log
 ```
 
 ```bash
 $ docker login
-$ docker build -f tools/Dockerfile.<dev|prod> -t <IMAGE_NAME>:<IMAGE_TAG> .
+$ docker build -f ./tools/<dev|prod>.Dockerfile -t <IMAGE_NAME>:<IMAGE_TAG> .
 
 # checkout
 $ docker images
@@ -196,7 +196,7 @@ $ docker rmi <IMAGE_ID>
 -   image: <dev|prod>
 -   build:
 -     context: .
--     dockerfile: tools/Dockerfile.<dev|prod>
+-     dockerfile: ./tools/<dev|prod>.Dockerfile
 +   image: <DOCKER_ID_USER>/<IMAGE_NAME>:<IMAGE_TAG>
     volumes:
       - yarn:/home/node/.cache/yarn
