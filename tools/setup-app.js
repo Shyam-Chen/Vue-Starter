@@ -1,5 +1,8 @@
 import 'jest-localstorage-mock';
+import { toMatchImageSnapshot } from 'jest-image-snapshot';
 import Vue from 'vue';
+
+expect.extend({ toMatchImageSnapshot });
 
 Vue.config.productionTip = false;
 
