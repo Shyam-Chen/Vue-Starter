@@ -12738,9 +12738,9 @@ vm-browserify@0.0.4:
   dependencies:
     indexof "0.0.1"
 
-vue-analytics@5.15.0:
-  version "5.15.0"
-  resolved "https://registry.yarnpkg.com/vue-analytics/-/vue-analytics-5.15.0.tgz#5e0478d48d3ab348c9436f2733eb104587df43fc"
+vue-analytics@5.16.0:
+  version "5.16.0"
+  resolved "https://registry.yarnpkg.com/vue-analytics/-/vue-analytics-5.16.0.tgz#82e88703a0678cba076d51acacd6569bc8f7d54c"
 
 vue-apollo@3.0.0-beta.19:
   version "3.0.0-beta.19"
@@ -12852,9 +12852,9 @@ vue@2.5.17:
   version "2.5.17"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.5.17.tgz#0f8789ad718be68ca1872629832ed533589c6ada"
 
-vuetify@1.1.14:
-  version "1.1.14"
-  resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-1.1.14.tgz#a45b6cd659e31edc8ca8dd2094562f1763f1f223"
+vuetify@1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-1.2.0.tgz#def94061a49a2973ae971467d365bf4275697607"
 
 vuex-bound@1.2.0:
   version "1.2.0"

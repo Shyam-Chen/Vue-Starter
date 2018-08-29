@@ -2,13 +2,13 @@
 
 exports[`Home should render an initial component 1`] = `
 <div>
-  <v-jumbotron dark="" gradient="to bottom, #006fc9, #66c0ff" height="auto">
+  <div class="o-jumbotron">
     <v-container fluid="" fill-height="" class="py-5">
       <v-layout row="" wrap="" justify-center="" align-center="">
-        <img src="/assets/images/logo.svg" alt="Logo" width="300" height="300">
+        <img src="/assets/images/logo.svg" alt="Logo" class="o-jumbotron-image">
         <v-flex shrink="" class="text-xs-center text-md-left o-jumbotron-content">
-          <div class="display-3">Oh My Vue</div>
-          <div class="subheading">Building scalable web apps from Web Fundamentals to Firebase Platform and then to Google Cloud.</div>
+          <div class="display-3 white--text">Oh My Vue</div>
+          <div class="subheading white--text">Building scalable web apps from Web Fundamentals to Firebase Platform and then to Google Cloud.</div>
           <v-divider class="my-3"></v-divider>
           <v-btn large="" color="white" to="/overview" class="primary--text">
             <v-icon left="">more</v-icon>
@@ -21,7 +21,7 @@ exports[`Home should render an initial component 1`] = `
         </v-flex>
       </v-layout>
     </v-container>
-  </v-jumbotron>
+  </div>
   <v-container fluid="" fill-height="" class="mt-5 mb-3">
     <v-layout row="" wrap="" justify-center="" align-center="">
       <div class="pa-3 o-promo">

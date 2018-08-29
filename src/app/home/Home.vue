@@ -1,13 +1,13 @@
 <template>
   <div>
-    <v-jumbotron dark gradient="to bottom, #006fc9, #66c0ff" height="auto">
+    <div class="o-jumbotron">
       <v-container fluid fill-height class="py-5">
         <v-layout row wrap justify-center align-center>
-          <img src="/assets/images/logo.svg" alt="Logo" width="300" height="300">
+          <img src="/assets/images/logo.svg" alt="Logo" class="o-jumbotron-image">
 
           <v-flex shrink class="text-xs-center text-md-left o-jumbotron-content">
-            <div class="display-3">Oh My Vue</div>
-            <div class="subheading">{{ $t('home.description') }}</div>
+            <div class="display-3 white--text">Oh My Vue</div>
+            <div class="subheading white--text">{{ $t('home.description') }}</div>
             <v-divider class="my-3"></v-divider>
             <v-btn large color="white" to="/overview" class="primary--text">
               <v-icon left>more</v-icon>
@@ -20,7 +20,7 @@
           </v-flex>
         </v-layout>
       </v-container>
-    </v-jumbotron>
+    </div>
 
     <v-container fluid fill-height class="mt-5 mb-3">
       <v-layout row wrap justify-center align-center>
@@ -389,6 +389,15 @@ export default {
 </script>
 
 <style scoped>
+.o-jumbotron {
+  background-image: linear-gradient(to bottom, #006fc9, #66c0ff);
+}
+
+.o-jumbotron-image {
+  width: 22.5rem;
+  height: 22.5rem;
+}
+
 .o-jumbotron-content {
   max-width: 55rem;
 }
