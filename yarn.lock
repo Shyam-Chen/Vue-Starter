@@ -238,9 +238,9 @@
   version "0.3.4"
   resolved "https://registry.yarnpkg.com/@firebase/auth-types/-/auth-types-0.3.4.tgz#253b1b2d9b520a0b945d4617c8418f0f19a4159f"
 
-"@firebase/auth@0.7.3":
-  version "0.7.3"
-  resolved "https://registry.yarnpkg.com/@firebase/auth/-/auth-0.7.3.tgz#b596bdc43d79b7121758c78b0dd6d1d70cd7387d"
+"@firebase/auth@0.7.4":
+  version "0.7.4"
+  resolved "https://registry.yarnpkg.com/@firebase/auth/-/auth-0.7.4.tgz#007db9801bc2eaaafe65d3e27613a69238f67b63"
   dependencies:
     "@firebase/auth-types" "0.3.4"
 
@@ -262,9 +262,9 @@
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/@firebase/firestore-types/-/firestore-types-0.6.0.tgz#560befea439a4a9d830866fa5f5859e4bb30d770"
 
-"@firebase/firestore@0.7.1":
-  version "0.7.1"
-  resolved "https://registry.yarnpkg.com/@firebase/firestore/-/firestore-0.7.1.tgz#41a820934b45409b40aedccfc3ba61228b70b51b"
+"@firebase/firestore@0.7.2":
+  version "0.7.2"
+  resolved "https://registry.yarnpkg.com/@firebase/firestore/-/firestore-0.7.2.tgz#077bc793445faa4c68b5a3960ef95b43d135ddc7"
   dependencies:
     "@firebase/firestore-types" "0.6.0"
     "@firebase/logger" "0.1.1"
@@ -495,33 +495,33 @@
   version "0.7.0"
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-0.7.0.tgz#9a06f4f137ee84d7df0460c1fdb1135ffa6c50fd"
 
-"@tensorflow/tfjs-converter@0.5.7":
-  version "0.5.7"
-  resolved "https://registry.yarnpkg.com/@tensorflow/tfjs-converter/-/tfjs-converter-0.5.7.tgz#b4b1a49cf90b5106a4351f1941c77c52f3f22ce9"
+"@tensorflow/tfjs-converter@0.5.9":
+  version "0.5.9"
+  resolved "https://registry.yarnpkg.com/@tensorflow/tfjs-converter/-/tfjs-converter-0.5.9.tgz#76913bd916bbd940b6435e9e3ec63f963c786b95"
   dependencies:
     "@types/long" "~3.0.32"
     protobufjs "~6.8.6"
 
-"@tensorflow/tfjs-core@0.12.11":
-  version "0.12.11"
-  resolved "https://registry.yarnpkg.com/@tensorflow/tfjs-core/-/tfjs-core-0.12.11.tgz#8da98fae720e58a484315d2e72d0c858991e4aee"
+"@tensorflow/tfjs-core@0.12.15":
+  version "0.12.15"
+  resolved "https://registry.yarnpkg.com/@tensorflow/tfjs-core/-/tfjs-core-0.12.15.tgz#b6c09dfe99cffd298745a694347b29a2c5aa9871"
   dependencies:
     "@types/seedrandom" "~2.4.27"
     "@types/webgl-ext" "~0.0.29"
     "@types/webgl2" "~0.0.4"
     seedrandom "~2.4.3"
 
-"@tensorflow/tfjs-layers@0.7.4":
-  version "0.7.4"
-  resolved "https://registry.yarnpkg.com/@tensorflow/tfjs-layers/-/tfjs-layers-0.7.4.tgz#575a3bc2c895501c619b4b7102b4e17256c30835"
+"@tensorflow/tfjs-layers@0.7.5":
+  version "0.7.5"
+  resolved "https://registry.yarnpkg.com/@tensorflow/tfjs-layers/-/tfjs-layers-0.7.5.tgz#54241110e0a6e194eafbbd18babca0978788e930"
 
-"@tensorflow/tfjs@0.12.5":
-  version "0.12.5"
-  resolved "https://registry.yarnpkg.com/@tensorflow/tfjs/-/tfjs-0.12.5.tgz#60d449457c99b661b4dce9e665e97f2476bc544c"
+"@tensorflow/tfjs@0.12.6":
+  version "0.12.6"
+  resolved "https://registry.yarnpkg.com/@tensorflow/tfjs/-/tfjs-0.12.6.tgz#a77f62941e58aca097ac863b9dba22ed786322f5"
   dependencies:
-    "@tensorflow/tfjs-converter" "0.5.7"
-    "@tensorflow/tfjs-core" "0.12.11"
-    "@tensorflow/tfjs-layers" "0.7.4"
+    "@tensorflow/tfjs-converter" "0.5.9"
+    "@tensorflow/tfjs-core" "0.12.15"
+    "@tensorflow/tfjs-layers" "0.7.5"
 
 "@types/accepts@^1.3.5":
   version "1.3.5"
@@ -4961,14 +4961,14 @@ firebase@2.x.x:
   dependencies:
     faye-websocket ">=0.6.0"
 
-firebase@5.4.1:
-  version "5.4.1"
-  resolved "https://registry.yarnpkg.com/firebase/-/firebase-5.4.1.tgz#1e2c12f682771f4b6a1d78255af86dd8dc28f0e7"
+firebase@5.4.2:
+  version "5.4.2"
+  resolved "https://registry.yarnpkg.com/firebase/-/firebase-5.4.2.tgz#48d6da1be44539efcb2aa4875ef9155dd0700ae4"
   dependencies:
     "@firebase/app" "0.3.3"
-    "@firebase/auth" "0.7.3"
+    "@firebase/auth" "0.7.4"
     "@firebase/database" "0.3.4"
-    "@firebase/firestore" "0.7.1"
+    "@firebase/firestore" "0.7.2"
     "@firebase/functions" "0.3.0"
     "@firebase/messaging" "0.3.5"
     "@firebase/polyfill" "0.3.3"
@@ -5689,11 +5689,11 @@ graphql-tools@^3.0.4:
     iterall "^1.1.3"
     uuid "^3.1.0"
 
-graphql@0.13.2:
-  version "0.13.2"
-  resolved "https://registry.yarnpkg.com/graphql/-/graphql-0.13.2.tgz#4c740ae3c222823e7004096f832e7b93b2108270"
+graphql@14.0.0:
+  version "14.0.0"
+  resolved "https://registry.yarnpkg.com/graphql/-/graphql-14.0.0.tgz#4ee771c5266d08cb75df2d3ac41e8dd51ce3d599"
   dependencies:
-    iterall "^1.2.1"
+    iterall "^1.2.2"
 
 growly@^1.3.0:
   version "1.3.0"
@@ -6839,7 +6839,7 @@ isurl@^1.0.0-alpha5:
     has-to-string-tag-x "^1.2.0"
     is-object "^1.0.1"
 
-iterall@^1.1.3, iterall@^1.2.1:
+iterall@^1.1.3, iterall@^1.2.1, iterall@^1.2.2:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/iterall/-/iterall-1.2.2.tgz#92d70deb8028e0c39ff3164fdbf4d8b088130cd7"
 
@@ -11091,7 +11091,13 @@ rx-lite@^3.1.2:
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/rx-lite/-/rx-lite-3.1.2.tgz#19ce502ca572665f3b647b10939f97fd1615f102"
 
-rxjs@6.2.2, rxjs@^6.1.0:
+rxjs@6.3.0:
+  version "6.3.0"
+  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.3.0.tgz#e55b05ad4bdf351db4b45756638dfa368260a8a3"
+  dependencies:
+    tslib "^1.9.0"
+
+rxjs@^6.1.0:
   version "6.2.2"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.2.2.tgz#eb75fa3c186ff5289907d06483a77884586e1cf9"
   dependencies:
@@ -12742,10 +12748,11 @@ vue-analytics@5.16.0:
   version "5.16.0"
   resolved "https://registry.yarnpkg.com/vue-analytics/-/vue-analytics-5.16.0.tgz#82e88703a0678cba076d51acacd6569bc8f7d54c"
 
-vue-apollo@3.0.0-beta.19:
-  version "3.0.0-beta.19"
-  resolved "https://registry.yarnpkg.com/vue-apollo/-/vue-apollo-3.0.0-beta.19.tgz#26f5dbb6bd2a2a7f567320d293442d3c7ae70a08"
+vue-apollo@3.0.0-beta.20:
+  version "3.0.0-beta.20"
+  resolved "https://registry.yarnpkg.com/vue-apollo/-/vue-apollo-3.0.0-beta.20.tgz#05c9707cbfcb2da5632cdf14354d2ee080519eb0"
   dependencies:
+    chalk "^2.4.1"
     throttle-debounce "^2.0.0"
 
 vue-echarts@3.1.1:
@@ -12852,9 +12859,9 @@ vue@2.5.17:
   version "2.5.17"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.5.17.tgz#0f8789ad718be68ca1872629832ed533589c6ada"
 
-vuetify@1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-1.2.0.tgz#def94061a49a2973ae971467d365bf4275697607"
+vuetify@1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-1.2.1.tgz#00fc9568bd7ceeaa906b5c339be5f6934411ffa9"
 
 vuex-bound@1.2.0:
   version "1.2.0"

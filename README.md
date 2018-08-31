@@ -2,11 +2,11 @@
 
 :poodle: A boilerplate for Vue, Material, Express, Babel, Flow, and ReactiveX.
 
-[![Build Status](https://img.shields.io/circleci/project/Shyam-Chen/Vue-Fullstack-Starter/develop.svg)](https://circleci.com/gh/Shyam-Chen/workflows/Vue-Fullstack-Starter)
+[![Build Status](https://img.shields.io/circleci/project/github/Shyam-Chen/Vue-Fullstack-Starter/develop.svg)](https://circleci.com/gh/Shyam-Chen/workflows/Vue-Fullstack-Starter)
 [![Coverage Status](https://img.shields.io/codecov/c/github/Shyam-Chen/Vue-Fullstack-Starter/develop.svg)](https://codecov.io/gh/Shyam-Chen/Vue-Fullstack-Starter)
  //
-[![dependencies Status](https://david-dm.org/Shyam-Chen/Vue-Fullstack-Starter/status.svg)](https://david-dm.org/Shyam-Chen/Vue-Fullstack-Starter)
-[![devDependencies Status](https://david-dm.org/Shyam-Chen/Vue-Fullstack-Starter/dev-status.svg)](https://david-dm.org/Shyam-Chen/Vue-Fullstack-Starter?type=dev)
+[![dependencies Status](https://img.shields.io/david/Shyam-Chen/Vue-Fullstack-Starter.svg)](https://david-dm.org/Shyam-Chen/Vue-Fullstack-Starter)
+[![devDependencies Status](https://img.shields.io/david/dev/Shyam-Chen/Vue-Fullstack-Starter.svg)](https://david-dm.org/Shyam-Chen/Vue-Fullstack-Starter?type=dev)
 
 :rainbow: Live Demo: [Develop](https://vue-by-example-dev.firebaseapp.com/) | [Master](https://vue-by-example-prod.firebaseapp.com/)
 

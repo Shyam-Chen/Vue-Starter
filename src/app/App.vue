@@ -98,7 +98,7 @@
               <v-btn slot="activator" flat>{{ $t('examples') }}<v-icon dark>arrow_drop_down</v-icon></v-btn>
 
               <v-list>
-                <v-list-tile v-for="(item, index) in app$.navigation" v-if="item.text !== 'overview'" :key="index" :to="item.route">
+                <v-list-tile v-for="(item, index) in app$.navigation" v-if="index > 0 && index < 12" :key="index" :to="item.route">
                   <v-list-tile-action>
                     <v-icon>{{ item.icon }}</v-icon>
                   </v-list-tile-action>
