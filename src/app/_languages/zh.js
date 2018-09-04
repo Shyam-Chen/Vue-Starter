@@ -42,6 +42,7 @@ export default {
   stepper: '步骤线',
   tabs: '选项卡',
   treeView: '树形视图',
+  calendar: '日历',
   markdownEditor: 'Markdown 编辑器',
   richTextEditor: '富文本编辑器',
 

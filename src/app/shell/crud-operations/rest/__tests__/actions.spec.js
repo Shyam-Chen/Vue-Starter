@@ -39,8 +39,27 @@ describe('actions', () => {
     actions.addItem({ dispatch, state }, payload);
   });
 
-  it('should handle addItem (failure)', () => {
+  it('should handle addItem (failure)', (done) => {
+    const dispatch = (type) => {
+      expect(type).toBe('failure');
+      done();
+    };
 
+    const state = { ...INITIAL };
+
+    const payload = new Error('Error!');
+
+    actions.addItem({ dispatch, state }, payload);
+  });
+
+  it('should handle addItem (undefined)', async () => {
+    const dispatch = () => {};
+    const state = { ...INITIAL };
+    const payload = '';
+
+    const result = await actions.addItem({ dispatch, state }, payload);
+
+    expect(result).toBeUndefined();
   });
 
   it('should handle searchItem (success)', (done) => {
@@ -83,8 +102,17 @@ describe('actions', () => {
     actions.editItem({ dispatch, state }, payload);
   });
 
-  it('should handle editItem (failure)', () => {
+  it('should handle editItem (failure)', (done) => {
+    const dispatch = (type) => {
+      expect(type).toBe('failure');
+      done();
+    };
 
+    const state = { ...INITIAL };
+
+    const payload = { id: 'vn3RecDbwMQTjttnluZW', text: new Error('Error!') };
+
+    actions.editItem({ dispatch, state }, payload);
   });
 
   it('should handle deleteItem (success)', (done) => {

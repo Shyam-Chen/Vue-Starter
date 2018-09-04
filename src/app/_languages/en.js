@@ -42,6 +42,7 @@ export default {
   stepper: 'Stepper',
   tabs: 'Tabs',
   treeView: 'Tree View',
+  calendar: 'Calendar',
   markdownEditor: 'Markdown Editor',
   richTextEditor: 'Rich Text Editor',
 

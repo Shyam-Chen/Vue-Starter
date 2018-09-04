@@ -42,6 +42,7 @@ export default {
   stepper: 'ステップライン',
   tabs: '切り替えタブ',
   treeView: 'ツリー表示',
+  calendar: 'カレンダー',
   markdownEditor: 'Markdown エディタ',
   richTextEditor: 'リッチテキストエディタ',
 

@@ -65,6 +65,7 @@ export const INITIAL: IApp = {
         { text: 'stepper', route: '/form-controls/stepper', disabled: true },
         { text: 'tabs', route: '/form-controls/tabs', disabled: true },
         { text: 'treeView', route: '/form-controls/tree-view', disabled: true },
+        { text: 'calendar', route: '/form-controls/calendar', disabled: true },
         { text: 'markdownEditor', route: '/form-controls/markdown-editor' },
         { text: 'richTextEditor', route: '/form-controls/rich-text-editor', disabled: true },
       ],
