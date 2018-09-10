@@ -2,12 +2,10 @@ import layout from '../layout';
 
 describe('Mixins', () => {
   it('should handle layout', () => {
-    Object.defineProperty(window, 'innerWidth', { value: 360 });
-    expect(layout.data().isMobile).toBe(true);
-  });
+    Object.defineProperty(window, 'matchMedia', {
+      value: jest.fn(() => ({ matches: true })),
+    });
 
-  it('should handle layout', () => {
-    Object.defineProperty(window, 'innerWidth', { value: 1280 });
-    expect(layout.data().isMobile).toBe(false);
+    expect(layout.data().isMobile).toBe(true);
   });
 });

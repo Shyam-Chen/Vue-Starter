@@ -7,13 +7,13 @@ type Data = {
 export default {
   data(): Data {
     return {
-      isMobile: window.innerWidth < 600,
+      isMobile: window.matchMedia('(max-width: 600px)').matches,
     };
   },
   mounted() {
     this.$nextTick((): void => {
       window.addEventListener('resize', (): void => {
-        this.isMobile = window.innerWidth < 600;
+        Object.assign(this.$data, this.$options.data());
       });
     });
   },
