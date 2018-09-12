@@ -1,6 +1,6 @@
 // @flow
 
-import { of } from 'rxjs';  // eslint-disable-line
+import { of } from 'rxjs';
 import { delay, filter } from 'rxjs/operators';
 
 import { IContent } from './types';
