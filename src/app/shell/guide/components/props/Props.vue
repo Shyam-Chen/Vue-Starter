@@ -4,6 +4,11 @@
       <Title />
       <Title label="Oh My Vue" />
     </v-layout>
+
+    <v-layout column>
+      <UserCard v-bind="userInfoA" />
+      <UserCard v-bind="userInfoB" />
+    </v-layout>
   </v-container>
 </template>
 
@@ -11,10 +16,26 @@
 // @flow
 
 import Title from './Title';
+import UserCard from './UserCard';
 
 export default {
   components: {
     Title,
+    UserCard,
+  },
+  data() {
+    return {
+      userInfoA: {
+        firstName: 'Shyam',
+        lastName: 'Chen',
+        email: 'shyam.chen@gmail.com',
+      },
+      userInfoB: {
+        firstName: 'Jason',
+        lastName: 'Oner',
+        phone: '+61 9811 2345',
+      },
+    };
   },
 };
 </script>
