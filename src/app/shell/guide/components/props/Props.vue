@@ -6,6 +6,7 @@
     </v-layout>
 
     <v-layout column>
+      <UserCard first-name="Steven" last-name="Spielberg" email="steven.spielberg@gmail.com" phone="+49 2232 3818" />
       <UserCard v-bind="userInfoA" />
       <UserCard v-bind="userInfoB" />
     </v-layout>
