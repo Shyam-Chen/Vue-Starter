@@ -79,6 +79,12 @@ jobs:
               docker-compose exec dev yarn firebase deploy --token $FIREBASE_TOKEN
             fi
 
+            if [[ "${CIRCLE_BRANCH}" == *"release"* ]]; then
+              docker-compose up -d stage
+              docker-compose exec stage yarn firebase use staging --token $FIREBASE_TOKEN
+              docker-compose exec stage yarn firebase deploy --token $FIREBASE_TOKEN
+            fi
+
             if [[ "${CIRCLE_BRANCH}" == "master" ]]; then
               docker-compose up -d prod
               docker-compose exec prod yarn firebase use production --token $FIREBASE_TOKEN
