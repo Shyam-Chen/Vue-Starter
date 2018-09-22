@@ -23,6 +23,15 @@ services:
       - yarn:/home/node/.cache/yarn
     tty: true
 
+  stage:
+    image: stage
+      build:
+        context: .
+        dockerfile: ./tools/stage.Dockerfile
+      volumes:
+        - yarn:/home/node/.cache/yarn
+      tty: true
+
   prod:
     image: prod
     build:
