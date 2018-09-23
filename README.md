@@ -167,13 +167,14 @@ $ docker-compose up -d --build <SERVICE>
   functions
   coverage
 + dev.Dockerfile
++ stage.Dockerfile
 + prod.Dockerfile
   *.log
 ```
 
 ```bash
 $ docker login
-$ docker build -f ./tools/<dev|prod>.Dockerfile -t <IMAGE_NAME>:<IMAGE_TAG> .
+$ docker build -f ./tools/<dev|stage|prod>.Dockerfile -t <IMAGE_NAME>:<IMAGE_TAG> .
 
 # checkout
 $ docker images
@@ -193,10 +194,10 @@ $ docker rmi <IMAGE_ID>
 # docker-compose.yml
 
   <dev|prod>:
--   image: <dev|prod>
+-   image: <dev|stage|prod>
 -   build:
 -     context: .
--     dockerfile: ./tools/<dev|prod>.Dockerfile
+-     dockerfile: ./tools/<dev|stage|prod>.Dockerfile
 +   image: <DOCKER_ID_USER>/<IMAGE_NAME>:<IMAGE_TAG>
     volumes:
       - yarn:/home/node/.cache/yarn
@@ -213,8 +214,9 @@ Change to your project.
 // .firebaserc
 {
   "projects": {
-    "development": "<PROJECT_NAME>",
-    "production": "<PROJECT_NAME>"
+    "development": "<DEV_PROJECT_NAME>",
+    "staging": "<STAGE_PROJECT_NAME>",
+    "production": "<PROD_PROJECT_NAME>"
   }
 }
 ```
