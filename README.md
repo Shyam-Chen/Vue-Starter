@@ -193,7 +193,7 @@ $ docker rmi <IMAGE_ID>
 ```diff
 # docker-compose.yml
 
-  <dev|prod>:
+  <dev|stage|prod>:
 -   image: <dev|stage|prod>
 -   build:
 -     context: .
@@ -263,7 +263,7 @@ function Environments() {
 Set your deployment environment variables.
 
 ```dockerfile
-# tools/Dockerfile.<dev|prod>
+# tools/<dev|stage|prod>.Dockerfile
 
 # envs --
 ENV SITE_URL <SITE_URL>
@@ -311,7 +311,7 @@ $ gcloud app deploy app.yaml --project <RENDERTRON_NAME>
 Set your rendertron instance in deployment environment.
 
 ```dockerfile
-# tools/Dockerfile.<dev|prod>
+# tools/<dev|stage|prod>.Dockerfile
 
 # envs --
 ENV RENDERTRON_URL <RENDERTRON_URL>
