@@ -15,7 +15,7 @@ const env = require('./env');
 const pkg = require('./package');
 
 const SOURCE_ROOT = path.join(__dirname, 'src');
-const DIST_ROOT = path.join(__dirname, 'public');
+const DISTRIBUTION_ROOT = path.join(__dirname, 'public');
 
 module.exports = ({ prod = false } = {}) => ({
   mode: prod ? 'production' : 'development',
@@ -24,7 +24,7 @@ module.exports = ({ prod = false } = {}) => ({
     client: './client.js',
   },
   output: {
-    path: DIST_ROOT,
+    path: DISTRIBUTION_ROOT,
     filename: prod ? '[name].[hash].js' : '[name].js',
     chunkFilename: prod ? '[id].[chunkhash].js' : '[name].js',
     publicPath: '/',
@@ -108,7 +108,7 @@ module.exports = ({ prod = false } = {}) => ({
     new CopyPlugin([
       {
         from: 'assets/**/*',
-        to: DIST_ROOT,
+        to: DISTRIBUTION_ROOT,
         ignore: ['assets/styles/**/*'],
       },
     ]),
@@ -154,7 +154,7 @@ module.exports = ({ prod = false } = {}) => ({
     },
   },
   devServer: {
-    contentBase: DIST_ROOT,
+    contentBase: DISTRIBUTION_ROOT,
     historyApiFallback: true,
     host: env.HOST_NAME,
     hot: true,
