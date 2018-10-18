@@ -2,8 +2,8 @@
 
 :poodle: A boilerplate for Vue, Material, Express, Babel, Flow, and ReactiveX.
 
-|   | Project Information |
-|--:|:--------------------|
+|    | Project Information |
+|:--:|---------------------|
 | Develop Branch | [![Build Status][develop-build-image]][develop-build-link] [![Coverage Status][develop-coverage-image]][develop-coverage-link] |
 | Master Branch | [![Build Status][master-build-image]][master-build-link] [![Coverage Status][master-coverage-image]][master-coverage-link] |
 | Npm Package | [![dependencies Status][package-dependencies-image]][package-dependencies-link] [![devDependencies Status][package-devDependencies-image]][package-devDependencies-link] |
