@@ -2,11 +2,24 @@
 
 :poodle: A boilerplate for Vue, Material, Express, Babel, Flow, and ReactiveX.
 
-[![Build Status](https://img.shields.io/circleci/project/github/Shyam-Chen/Vue-Fullstack-Starter/develop.svg)](https://circleci.com/gh/Shyam-Chen/workflows/Vue-Fullstack-Starter)
-[![Coverage Status](https://img.shields.io/codecov/c/github/Shyam-Chen/Vue-Fullstack-Starter/develop.svg)](https://codecov.io/gh/Shyam-Chen/Vue-Fullstack-Starter)
- //
-[![dependencies Status](https://img.shields.io/david/Shyam-Chen/Vue-Fullstack-Starter.svg)](https://david-dm.org/Shyam-Chen/Vue-Fullstack-Starter)
-[![devDependencies Status](https://img.shields.io/david/dev/Shyam-Chen/Vue-Fullstack-Starter.svg)](https://david-dm.org/Shyam-Chen/Vue-Fullstack-Starter?type=dev)
+| Develop | Master | Package |
+|---------|--------|---------|
+| [![Build Status][develop-build-image]][develop-build-link] [![Coverage Status][develop-coverage-image]][develop-coverage-link] | [![Build Status][master-build-image]][master-build-link] [![Coverage Status][master-coverage-image]][master-coverage-link] | [![dependencies Status][package-dependencies-image]][package-dependencies-link] [![devDependencies Status][package-devDependencies-image]][package-devDependencies-link] |
+
+[develop-build-image]: https://img.shields.io/circleci/project/github/Shyam-Chen/Vue-Fullstack-Starter/develop.svg
+[develop-build-link]: https://circleci.com/gh/Shyam-Chen/workflows/Vue-Fullstack-Starter
+[develop-coverage-image]: https://img.shields.io/codecov/c/github/Shyam-Chen/Vue-Fullstack-Starter/develop.svg
+[develop-coverage-link]: https://codecov.io/gh/Shyam-Chen/Vue-Fullstack-Starter
+
+[master-build-image]: https://img.shields.io/circleci/project/github/Shyam-Chen/Vue-Fullstack-Starter/master.svg
+[master-build-link]: https://circleci.com/gh/Shyam-Chen/workflows/Vue-Fullstack-Starter
+[master-coverage-image]: https://img.shields.io/codecov/c/github/Shyam-Chen/Vue-Fullstack-Starter/master.svg
+[master-coverage-link]: https://codecov.io/gh/Shyam-Chen/Vue-Fullstack-Starter
+
+[package-dependencies-image]: https://img.shields.io/david/Shyam-Chen/Vue-Fullstack-Starter.svg
+[package-dependencies-link]: https://david-dm.org/Shyam-Chen/Vue-Fullstack-Starter
+[package-devDependencies-image]: https://img.shields.io/david/dev/Shyam-Chen/Vue-Fullstack-Starter.svg
+[package-devDependencies-link]: https://david-dm.org/Shyam-Chen/Vue-Fullstack-Starter?type=dev
 
 :rainbow: Live Demo: [Develop](https://vue-by-example-dev.firebaseapp.com/) | [Master](https://vue-by-example-prod.firebaseapp.com/)
 
