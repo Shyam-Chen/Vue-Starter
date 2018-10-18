@@ -2,9 +2,11 @@
 
 :poodle: A boilerplate for Vue, Material, Express, Babel, Flow, and ReactiveX.
 
-| Develop | Master | Package |
-|---------|--------|---------|
-| [![Build Status][develop-build-image]][develop-build-link] [![Coverage Status][develop-coverage-image]][develop-coverage-link] | [![Build Status][master-build-image]][master-build-link] [![Coverage Status][master-coverage-image]][master-coverage-link] | [![dependencies Status][package-dependencies-image]][package-dependencies-link] [![devDependencies Status][package-devDependencies-image]][package-devDependencies-link] |
+|   | Status |
+|--:|:--------|
+| Develop | [![Build Status][develop-build-image]][develop-build-link] [![Coverage Status][develop-coverage-image]][develop-coverage-link] |
+| Master | [![Build Status][master-build-image]][master-build-link] [![Coverage Status][master-coverage-image]][master-coverage-link] |
+| Package | [![dependencies Status][package-dependencies-image]][package-dependencies-link] [![devDependencies Status][package-devDependencies-image]][package-devDependencies-link] |
 
 [develop-build-image]: https://img.shields.io/circleci/project/github/Shyam-Chen/Vue-Fullstack-Starter/develop.svg
 [develop-build-link]: https://circleci.com/gh/Shyam-Chen/workflows/Vue-Fullstack-Starter
