@@ -13,7 +13,7 @@ function Environments() {
 
   this.APP_BASE = process.env.APP_BASE || '/';
 
-  this.FIREBASE_CONFIG = process.env.FIREBASE_CONFIG || {
+  this.FIREBASE_CONFIG = {
     apiKey: process.env.FIREBASE_API_KEY || 'AIzaSyCvhvJ1buNiNRxUzQub8Eg1PO65EtTIurA',
     authDomain: process.env.FIREBASE_AUTH_DOMAIN || 'vue-by-example-dev.firebaseapp.com',
     databaseURL: process.env.FIREBASE_DATABASE_URL || 'https://vue-by-example-dev.firebaseio.com',
