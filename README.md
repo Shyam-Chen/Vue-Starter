@@ -343,17 +343,16 @@ The most basic configuration.
 
 ```js
 {
-  "window.zoomLevel": 1,
-  "workbench.colorTheme": "Material Theme",
-  "workbench.iconTheme": "material-icon-theme",
+  // ...
   "eslint.validate": [
-    "javascript", {
-      "language": "vue"
-    },
-    "html"
+    "javascript",
+    "vue"
   ],
   "javascript.validate.enable": false,
-  "vetur.validation.script": false
+  "css.validate": false,
+  "vetur.validation.script": false,
+  "vetur.validation.style": false,
+  // ...
 }
 ```
 
