@@ -1,5 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`FilerList should render an initial component 1`] = `
+<v-layout column="" class="mt-1 mb-1">
+  <div class="title mb-2">Filer List</div>
+  <div>
+    <v-btn>All</v-btn>
+    <v-btn>Odd</v-btn>
+    <v-btn>Even</v-btn>
+  </div> <span tag="ul" name="fade-group" class="filer-list"><li class="filer-item">1</li><li class="filer-item">2</li><li class="filer-item">3</li><li class="filer-item">4</li><li class="filer-item">5</li><li class="filer-item">6</li><li class="filer-item">7</li><li class="filer-item">8</li><li class="filer-item">9</li><li class="filer-item">10</li><li class="filer-item">11</li><li class="filer-item">12</li><li class="filer-item">13</li><li class="filer-item">14</li><li class="filer-item">15</li><li class="filer-item">16</li><li class="filer-item">17</li><li class="filer-item">18</li><li class="filer-item">19</li><li class="filer-item">20</li><li class="filer-item">21</li></span>
+</v-layout>
+`;
+
 exports[`FilerList should render component with even option 1`] = `
 <v-layout column="" class="mt-1 mb-1">
   <div class="title mb-2">Filer List</div>
@@ -7,7 +18,8 @@ exports[`FilerList should render component with even option 1`] = `
     <v-btn>All</v-btn>
     <v-btn>Odd</v-btn>
     <v-btn>Even</v-btn>
-  </div> <span tag="ul" name="fade-group" class="filer-list"><li class="filer-item">2</li><li class="filer-item">4</li><li class="filer-item">6</li><li class="filer-item">8</li><li class="filer-item">10</li><li class="filer-item">12</li><li class="filer-item">14</li><li class="filer-item">16</li><li class="filer-item">18</li><li class="filer-item">20</li></span></v-layout>
+  </div> <span tag="ul" name="fade-group" class="filer-list"><li class="filer-item">2</li><li class="filer-item">4</li><li class="filer-item">6</li><li class="filer-item">8</li><li class="filer-item">10</li><li class="filer-item">12</li><li class="filer-item">14</li><li class="filer-item">16</li><li class="filer-item">18</li><li class="filer-item">20</li></span>
+</v-layout>
 `;
 
 exports[`FilerList should render component with odd option 1`] = `
@@ -17,15 +29,6 @@ exports[`FilerList should render component with odd option 1`] = `
     <v-btn>All</v-btn>
     <v-btn>Odd</v-btn>
     <v-btn>Even</v-btn>
-  </div> <span tag="ul" name="fade-group" class="filer-list"><li class="filer-item">1</li><li class="filer-item">3</li><li class="filer-item">5</li><li class="filer-item">7</li><li class="filer-item">9</li><li class="filer-item">11</li><li class="filer-item">13</li><li class="filer-item">15</li><li class="filer-item">17</li><li class="filer-item">19</li><li class="filer-item">21</li></span></v-layout>
-`;
-
-exports[`FilerList should render an initial component 1`] = `
-<v-layout column="" class="mt-1 mb-1">
-  <div class="title mb-2">Filer List</div>
-  <div>
-    <v-btn>All</v-btn>
-    <v-btn>Odd</v-btn>
-    <v-btn>Even</v-btn>
-  </div> <span tag="ul" name="fade-group" class="filer-list"><li class="filer-item">1</li><li class="filer-item">2</li><li class="filer-item">3</li><li class="filer-item">4</li><li class="filer-item">5</li><li class="filer-item">6</li><li class="filer-item">7</li><li class="filer-item">8</li><li class="filer-item">9</li><li class="filer-item">10</li><li class="filer-item">11</li><li class="filer-item">12</li><li class="filer-item">13</li><li class="filer-item">14</li><li class="filer-item">15</li><li class="filer-item">16</li><li class="filer-item">17</li><li class="filer-item">18</li><li class="filer-item">19</li><li class="filer-item">20</li><li class="filer-item">21</li></span></v-layout>
+  </div> <span tag="ul" name="fade-group" class="filer-list"><li class="filer-item">1</li><li class="filer-item">3</li><li class="filer-item">5</li><li class="filer-item">7</li><li class="filer-item">9</li><li class="filer-item">11</li><li class="filer-item">13</li><li class="filer-item">15</li><li class="filer-item">17</li><li class="filer-item">19</li><li class="filer-item">21</li></span>
+</v-layout>
 `;

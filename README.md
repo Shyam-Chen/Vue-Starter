@@ -346,10 +346,15 @@ The most basic configuration.
   // ...
   "eslint.validate": [
     "javascript",
-    "vue"
+    "javascriptreact",
+    {
+      "language": "vue",
+      "autoFix": true
+    }
   ],
   "javascript.validate.enable": false,
   "css.validate": false,
+  "vetur.validation.template": false,
   "vetur.validation.script": false,
   "vetur.validation.style": false,
   // ...
