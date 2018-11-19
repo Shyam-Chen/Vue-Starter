@@ -48,10 +48,10 @@
               <td>{{ props.item.primary }}</td>
               <td>{{ props.item.accent }}</td>
               <td class="text-xs-right">
-                <v-btn icon class="mx-0" @click.stop="handleDialog({ name: 'edit', value: true }); dialogData({ item: props.item, key: 'editData' })">
+                <v-btn icon class="mx-0" @click.stop="setState({ editData: props.item, dialogs: { edit: true } })">
                   <v-icon color="info">edit</v-icon>
                 </v-btn>
-                <v-btn icon class="mx-0" @click.stop="handleDialog({ name: 'delete', value: true }); dialogData({ item: props.item, key: 'deleteData' })">
+                <v-btn icon class="mx-0" @click.stop="setState({ deleteData: props.item, dialogs: { delete: true } })">
                   <v-icon color="error">delete</v-icon>
                 </v-btn>
               </td>
@@ -77,8 +77,8 @@
               </v-layout>
             </v-card-text>
             <v-card-actions>
-              <v-btn color="error" flat @click.stop="handleDialog({ name: 'edit', value: false })">Cancel</v-btn>
-              <v-btn color="success" flat @click.stop="editItem(b$.editData); handleDialog({ name: 'edit', value: false })">Save</v-btn>
+              <v-btn color="error" flat @click.stop="setState({ dialogs: { edit: false } })">Cancel</v-btn>
+              <v-btn color="success" flat @click.stop="editItem(b$.editData); setState({ dialogs: { edit: false } })">Save</v-btn>
             </v-card-actions>
           </v-card>
         </v-dialog>
@@ -91,8 +91,8 @@
               Are you sure that you want to delete it?
             </v-card-text>
             <v-card-actions>
-              <v-btn color="success" flat @click.stop="handleDialog({ name: 'delete', value: false })">Cancel</v-btn>
-              <v-btn color="error" flat @click.stop="deleteItem(b$.deleteData); handleDialog({ name: 'delete', value: false })">Confirm</v-btn>
+              <v-btn color="success" flat @click.stop="setState({ dialogs: { delete: false } })">Cancel</v-btn>
+              <v-btn color="error" flat @click.stop="deleteItem(b$.deleteData); setState({ dialogs: { delete: false } })">Confirm</v-btn>
             </v-card-actions>
           </v-card>
         </v-dialog>
