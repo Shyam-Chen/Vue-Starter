@@ -5,13 +5,7 @@
 
       <!-- Add -->
       <v-layout row>
-        <div class="o-text-field">
-          <v-text-field v-model="b$.addData.primary" name="primary" label="Primary"></v-text-field>
-        </div>
-        <div class="o-text-field">
-          <v-text-field v-model="b$.addData.accent" name="accent" label="Accent"></v-text-field>
-        </div>
-        <v-btn color="primary" @click="addItem(b$.addData)">Add</v-btn>
+        <v-btn class="ml-0" color="primary" @click="setState({ dialogs: { add: true } })">Add</v-btn>
       </v-layout>
 
       <!-- Display -->
@@ -23,6 +17,7 @@
                 {{ b$.selected.length }} selected
               </div>
               <v-spacer></v-spacer>
+
               <!-- Delete checked -->
               <v-btn icon class="mx-0" @click.stop="deleteChecked(b$.selected)">
                 <v-icon color="error">delete</v-icon>
@@ -34,6 +29,7 @@
             <v-card-title class="o-card-title">
               <div class="title">Board</div>
               <v-spacer></v-spacer>
+
               <!-- Search -->
               <v-text-field v-model="b$.searchData" append-icon="search" label="Search" single-line hide-details></v-text-field>
             </v-card-title>
@@ -60,8 +56,29 @@
         </v-card>
       </v-layout>
 
-      <!-- dialogs -->
+      <!-- Dialogs -->
       <aside>
+        <!-- Add -->
+        <v-dialog v-model="b$.dialogs.add" max-width="500px">
+          <v-card>
+            <v-card-title>Add</v-card-title>
+            <v-card-text>
+              <v-layout v-if="b$.addData" row>
+                <div class="o-text-field">
+                  <v-text-field v-model="b$.addData.primary" name="primary" label="Primary"></v-text-field>
+                </div>
+                <div class="o-text-field">
+                  <v-text-field v-model="b$.addData.accent" name="accent" label="Accent"></v-text-field>
+                </div>
+              </v-layout>
+            </v-card-text>
+            <v-card-actions>
+              <v-btn color="error" flat @click.stop="setState({ dialogs: { add: false } })">Cancel</v-btn>
+              <v-btn color="success" flat @click.stop="addItem(b$.addData); setState({ dialogs: { add: false } })">Add</v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-dialog>
+
         <!-- Edit -->
         <v-dialog v-model="b$.dialogs.edit" max-width="500px">
           <v-card>

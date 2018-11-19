@@ -5,13 +5,7 @@ exports[`Basic should render an initial component 1`] = `
   <v-layout column="">
     <div class="headline">CRUD Operations - Basic</div>
     <v-layout row="">
-      <div class="o-text-field">
-        <v-text-field name="primary" label="Primary"></v-text-field>
-      </div>
-      <div class="o-text-field">
-        <v-text-field name="accent" label="Accent"></v-text-field>
-      </div>
-      <v-btn color="primary">Add</v-btn>
+      <v-btn color="primary" class="ml-0">Add</v-btn>
     </v-layout>
     <v-layout row="">
       <v-card>
@@ -24,6 +18,25 @@ exports[`Basic should render an initial component 1`] = `
       </v-card>
     </v-layout>
     <aside>
+      <v-dialog max-width="500px">
+        <v-card>
+          <v-card-title>Add</v-card-title>
+          <v-card-text>
+            <v-layout row="">
+              <div class="o-text-field">
+                <v-text-field name="primary" label="Primary"></v-text-field>
+              </div>
+              <div class="o-text-field">
+                <v-text-field name="accent" label="Accent"></v-text-field>
+              </div>
+            </v-layout>
+          </v-card-text>
+          <v-card-actions>
+            <v-btn color="error" flat="">Cancel</v-btn>
+            <v-btn color="success" flat="">Add</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
       <v-dialog max-width="500px">
         <v-card>
           <v-card-title>Edit</v-card-title>
@@ -65,13 +78,7 @@ exports[`Basic should render an initial component 2`] = `
   <v-layout column="">
     <div class="headline">CRUD Operations - Basic</div>
     <v-layout row="">
-      <div class="o-text-field">
-        <v-text-field name="primary" label="Primary"></v-text-field>
-      </div>
-      <div class="o-text-field">
-        <v-text-field name="accent" label="Accent"></v-text-field>
-      </div>
-      <v-btn color="primary">Add</v-btn>
+      <v-btn color="primary" class="ml-0">Add</v-btn>
     </v-layout>
     <v-layout row="">
       <v-card>
@@ -84,6 +91,25 @@ exports[`Basic should render an initial component 2`] = `
       </v-card>
     </v-layout>
     <aside>
+      <v-dialog max-width="500px">
+        <v-card>
+          <v-card-title>Add</v-card-title>
+          <v-card-text>
+            <v-layout row="">
+              <div class="o-text-field">
+                <v-text-field name="primary" label="Primary"></v-text-field>
+              </div>
+              <div class="o-text-field">
+                <v-text-field name="accent" label="Accent"></v-text-field>
+              </div>
+            </v-layout>
+          </v-card-text>
+          <v-card-actions>
+            <v-btn color="error" flat="">Cancel</v-btn>
+            <v-btn color="success" flat="">Add</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
       <v-dialog max-width="500px">
         <v-card>
           <v-card-title>Edit</v-card-title>

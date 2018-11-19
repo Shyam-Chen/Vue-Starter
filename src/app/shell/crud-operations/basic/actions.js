@@ -7,6 +7,8 @@ export default {
   addItem({ state }: ActionContext<IBasic>, { primary, accent }: Item): void {
     const id = state.dataset.reduce((maxId, item) => Math.max(item.id, maxId), -1) + 1;
     state.dataset = [...state.dataset, { id, primary, accent }];
+
+    state.addData = {};
   },
   editItem({ state }: ActionContext<IBasic>, { id, primary, accent }: Item): void {
     state.dataset = [
@@ -25,6 +27,7 @@ export default {
 
     state.selected = [];
   },
+
   setState(context: ActionContext<IBasic>, data: IBasic): void {
     context.state = Object.assign(context.state, data);
   },

@@ -12,7 +12,6 @@ export const INITIAL: IBasic = {
     { text: 'Accent', value: 'accent' },
     { text: 'Actions', value: 'actions' },
   ],
-
   dataset: [
     { id: 1, primary: 'Vanilla', accent: 'MobX' },
     { id: 2, primary: 'Angular', accent: 'NGXS' },
@@ -21,11 +20,11 @@ export const INITIAL: IBasic = {
   ],
 
   addData: {},
-
   editData: {},
   deleteData: {},
 
   dialogs: {
+    add: false,
     edit: false,
     delete: false,
   },

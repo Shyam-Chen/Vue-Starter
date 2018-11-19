@@ -28,12 +28,14 @@ describe('Basic', () => {
   });
 
   it('should add a item', async () => {
-    const primaryInput = '#basic > div > div:nth-child(2) > div:nth-child(1) > div > div > div.v-input__slot > div > input[type="text"]';
-    const accentInput = '#basic > div > div:nth-child(2) > div:nth-child(2) > div > div > div.v-input__slot > div > input[type="text"]';
-    const addButton = '#basic > div > div:nth-child(2) > button > div';
+    const openAddButton = '#basic > div > div:nth-child(2) > button > div';
+    const primaryTextField = '#app > div.v-dialog__content.v-dialog__content--active > div > div > div.v-card__text > div > div:nth-child(1) > div > div > div.v-input__slot > div > input[type="text"]';
+    const accentTextField = '#app > div.v-dialog__content.v-dialog__content--active > div > div > div.v-card__text > div > div:nth-child(2) > div > div > div.v-input__slot > div > input[type="text"]';
+    const addButton = '#app > div.v-dialog__content.v-dialog__content--active > div > div > div.v-card__actions > button.v-btn.v-btn--flat.theme--light.success--text > div';
 
-    await page.type(primaryInput, 'foo');
-    await page.type(accentInput, 'bar');
+    await page.click(openAddButton);
+    await page.type(primaryTextField, 'foo');
+    await page.type(accentTextField, 'bar');
     await page.click(addButton);
     const length = await page.$$eval(displayRows, el => el.length);
 
