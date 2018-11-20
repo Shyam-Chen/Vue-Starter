@@ -1,37 +1,38 @@
 // @flow
 
+import { ActionContext } from 'vuex';
 import { of } from 'rxjs';
 import { delay, filter } from 'rxjs/operators';
 
-import { IContent } from './types';
+import { ICounter } from './types';
 
 export default {
   // sync action
-  increment({ state, commit }: IContent): void {
+  increment({ state, commit }: ActionContext<ICounter>): void {
     commit('increment', state.step);
   },
   // sync action
-  decrement({ state, commit }: IContent): void {
+  decrement({ state, commit }: ActionContext<ICounter>): void {
     commit('decrement', state.step);
   },
   // thunk action
-  incrementAsync({ dispatch }: IContent): void {
+  incrementAsync({ dispatch }: ActionContext<ICounter>): void {
     setTimeout(() => dispatch('increment'), 1000);
   },
   // observable action
-  decrementAsync({ dispatch }: IContent): void {
+  decrementAsync({ dispatch }: ActionContext<ICounter>): void {
     of(null)
       .pipe(delay(1000))
       .subscribe(() => dispatch('decrement'));
   },
   // thunk action
-  incrementIfOdd({ state, dispatch }: IContent): void {
+  incrementIfOdd({ state, dispatch }: ActionContext<ICounter>): void {
     if (Math.abs(state.value % 2) === 1) {
       dispatch('increment');
     }
   },
   // observable action
-  decrementIfEven({ state, dispatch }: IContent): void {
+  decrementIfEven({ state, dispatch }: ActionContext<ICounter>): void {
     of(state.value)
       .pipe(filter(value => value % 2 === 0))
       .subscribe(() => dispatch('decrement'));

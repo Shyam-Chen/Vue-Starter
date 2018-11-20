@@ -1,6 +1,7 @@
 // @flow
 
 import { ActionContext } from 'vuex';
+
 import { IBasic, Item } from './types';
 
 export default {
