@@ -17,6 +17,7 @@ export interface IBasic {
   dialogs: {
     add: boolean,
     edit: boolean,
+    view: boolean,
     delete: boolean,
   };
 }

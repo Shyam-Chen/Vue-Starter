@@ -60,7 +60,14 @@ exports[`Basic should render an initial component 1`] = `
         <v-card>
           <v-card-title>View</v-card-title>
           <v-card-text>
-            <!---->
+            <v-layout row="">
+              <div class="o-text-field">
+                <v-text-field name="primary" label="Primary" readonly=""></v-text-field>
+              </div>
+              <div class="o-text-field">
+                <v-text-field name="accent" label="Accent" readonly=""></v-text-field>
+              </div>
+            </v-layout>
           </v-card-text>
           <v-card-actions>
             <v-btn color="success" flat="">Quit</v-btn>
@@ -144,7 +151,14 @@ exports[`Basic should render an initial component 2`] = `
         <v-card>
           <v-card-title>View</v-card-title>
           <v-card-text>
-            <!---->
+            <v-layout row="">
+              <div class="o-text-field">
+                <v-text-field name="primary" label="Primary" readonly=""></v-text-field>
+              </div>
+              <div class="o-text-field">
+                <v-text-field name="accent" label="Accent" readonly=""></v-text-field>
+              </div>
+            </v-layout>
           </v-card-text>
           <v-card-actions>
             <v-btn color="success" flat="">Quit</v-btn>
