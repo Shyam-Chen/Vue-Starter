@@ -47,6 +47,9 @@
                 <v-btn icon class="mx-0" @click.stop="setState({ editData: props.item, dialogs: { edit: true } })">
                   <v-icon color="info">edit</v-icon>
                 </v-btn>
+                <v-btn icon class="mx-0" @click.stop="setState({ viewData: props.item, dialogs: { view: true } })">
+                  <v-icon color="success">pageview</v-icon>
+                </v-btn>
                 <v-btn icon class="mx-0" @click.stop="setState({ deleteData: props.item, dialogs: { delete: true } })">
                   <v-icon color="error">delete</v-icon>
                 </v-btn>
@@ -96,6 +99,26 @@
             <v-card-actions>
               <v-btn color="error" flat @click.stop="setState({ dialogs: { edit: false } })">Cancel</v-btn>
               <v-btn color="success" flat @click.stop="editItem(b$.editData); setState({ dialogs: { edit: false } })">Save</v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-dialog>
+
+        <!-- View -->
+        <v-dialog v-model="b$.dialogs.view" max-width="500px">
+          <v-card>
+            <v-card-title>View</v-card-title>
+            <v-card-text>
+              <v-layout v-if="b$.viewData" row>
+                <div class="o-text-field">
+                  <v-text-field v-model="b$.viewData.primary" name="primary" label="Primary" readonly></v-text-field>
+                </div>
+                <div class="o-text-field">
+                  <v-text-field v-model="b$.viewData.accent" name="accent" label="Accent" readonly></v-text-field>
+                </div>
+              </v-layout>
+            </v-card-text>
+            <v-card-actions>
+              <v-btn color="success" flat @click.stop="setState({ dialogs: { view: false } })">Quit</v-btn>
             </v-card-actions>
           </v-card>
         </v-dialog>
