@@ -77,8 +77,8 @@ describe('Basic', () => {
   });
 
   it('should delete a item', async () => {
-    const firstDeleteIconButton = '#basic > div > div:nth-child(3) > div > div:nth-child(2) > div > table > tbody > tr:nth-child(1) > td.text-xs-right > button:nth-child(2) > div > i';
-    const confirmButton = '#app > div.v-dialog__content.v-dialog__content--active > div > div > div.v-card__actions > button.v-btn.v-btn--flat.error--text > div';
+    const firstDeleteIconButton = '#basic > div > div:nth-child(3) > div > div:nth-child(2) > div > table > tbody > tr:nth-child(1) > td.text-xs-right > button:nth-child(3) > div > i';
+    const confirmButton = '#app > div.v-dialog__content.v-dialog__content--active > div > div > div.v-card__actions > button.v-btn.v-btn--flat.theme--light.error--text > div';
 
     await page.click(firstDeleteIconButton);
     await page.click(confirmButton);

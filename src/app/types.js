@@ -17,8 +17,3 @@ export interface IApp {
   drawer: boolean | null;
   languages: Array<{ key: string, country: string, label: string }>;
 }
-
-export interface IContent {
-  dispatch(action: string, payload: any): void;
-  state: IApp;
-}
