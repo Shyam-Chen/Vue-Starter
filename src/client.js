@@ -12,7 +12,7 @@ import './assets/styles/global.css';
 import App from './app/App';
 import router from './app/core/router';
 import store from './app/core/store';
-import provide from './app/core/provide';
+import apolloProvider from './app/core/apollo-provider';
 import i18n from './app/core/i18n';
 
 sync(store, router);
@@ -59,7 +59,7 @@ if (process.env.NODE_ENV === 'production') {
 const vm = new Vue({
   router,
   store,
-  provide,
+  apolloProvider,
   i18n,
   render: handle => handle(App),
 });

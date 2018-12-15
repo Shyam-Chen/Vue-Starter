@@ -36,6 +36,7 @@
   "homepage": "https://github.com/Shyam-Chen/Vue-Fullstack-Starter#readme",
   "dependencies": {
     "@tensorflow/tfjs": "0.14.0",
+    "apollo-boost": "0.1.22",
     "apollo-cache-inmemory": "1.3.11",
     "apollo-client": "2.4.7",
     "apollo-link": "1.2.4",

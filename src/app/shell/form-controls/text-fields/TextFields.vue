@@ -29,7 +29,7 @@
 
         <v-layout row>
           <div>
-            <v-text-field v-model="nickname" name="nickname" label="Nickname" class="field" textarea></v-text-field>
+            <v-textarea v-model="nickname" name="nickname" label="Nickname" class="field"></v-textarea>
           </div>
           <div class="primary--text outputs">{{ tf$.nickname }}</div>
         </v-layout>
