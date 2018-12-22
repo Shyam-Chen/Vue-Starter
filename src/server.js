@@ -29,7 +29,14 @@ vm.use(morgan('tiny'));
 vm.use(bodyParser.json());
 vm.use(bodyParser.urlencoded({ extended: false }));
 
+/**
+ * @name REST
+ */
 vm.use('/', routes);
+
+/**
+ * @name GraphQL
+ */
 apolloServer.applyMiddleware({ app: vm });
 
 if (process.env.NODE_ENV === 'production') {
