@@ -39,6 +39,7 @@ const router = new Router({
     { path: '/form-controls/selection-controls', component: () => import('~/shell/form-controls/selection-controls/SelectionControls') },
     { path: '/form-controls/pickers', component: () => import('~/shell/form-controls/pickers/Pickers') },
     { path: '/form-controls/autocomplete', component: () => import('~/shell/form-controls/autocomplete/Autocomplete') },
+    { path: '/form-controls/stepper', component: () => import('~/shell/form-controls/stepper/Stepper') },
     { path: '/form-controls/markdown-editor', component: () => import('~/shell/form-controls/markdown-editor/MarkdownEditor') },
 
     /** @name data-table */

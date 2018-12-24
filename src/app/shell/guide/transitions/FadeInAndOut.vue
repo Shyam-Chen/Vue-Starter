@@ -1,5 +1,5 @@
 <template>
-  <v-layout column class="mt-1 mb-1">
+  <v-layout column class="my-1">
     <div class="title mb-2">Fade In and Out</div>
 
     <v-layout align-center>
@@ -10,7 +10,7 @@
       </transition>
     </v-layout>
 
-    <v-layout align-center class="mt-1 mb-1">
+    <v-layout align-center class="my-1">
       <v-btn @click="fade.animation = !fade.animation">Fade Animation</v-btn>
 
       <transition name="fade-animation">

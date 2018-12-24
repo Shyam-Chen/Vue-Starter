@@ -62,7 +62,7 @@ export const INITIAL: IApp = {
         { text: 'selectionControls', route: '/form-controls/selection-controls' },
         { text: 'pickers', route: '/form-controls/pickers' },
         { text: 'autocomplete', route: '/form-controls/autocomplete' },
-        { text: 'stepper', route: '/form-controls/stepper', disabled: true },
+        { text: 'stepper', route: '/form-controls/stepper' },
         { text: 'tabs', route: '/form-controls/tabs', disabled: true },
         { text: 'treeView', route: '/form-controls/tree-view', disabled: true },
         { text: 'calendar', route: '/form-controls/calendar', disabled: true },

@@ -1,10 +1,12 @@
 <template>
   <v-container class="shell-container" fluid>
-    <div class="headline">Transitions</div>
+    <v-layout column>
+      <div class="headline mb-1">Transitions</div>
 
-    <FadeInAndOut />
-    <FilerList />
-    <SortFilterList />
+      <FadeInAndOut />
+      <FilerList />
+      <SortFilterList />
+    </v-layout>
   </v-container>
 </template>
 
@@ -25,4 +27,7 @@ export default {
 </script>
 
 <style scoped>
+.layout:not(:first-child) {
+  padding: 1rem;
+}
 </style>

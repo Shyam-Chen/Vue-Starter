@@ -1,5 +1,6 @@
 <template>
-  <v-layout column class="mt-1 mb-1">
+  <v-layout column class="my-1">
+    <div class="title mb-2">Sort Filter List</div>
 
     <v-layout row wrap align-center>
       <div>Sort</div>
@@ -41,14 +42,13 @@
     </v-layout>
 
     <v-progress-circular v-else indeterminate color="primary"></v-progress-circular>
-
   </v-layout>
 </template>
 
 <script>
 import axios from 'axios';
 
-import { compose } from '~/shared/utils';
+import compose from '~/shared/utils/compose';
 
 import truncate from '../filters/truncate';
 import convertSeconds from '../filters/convert-seconds';

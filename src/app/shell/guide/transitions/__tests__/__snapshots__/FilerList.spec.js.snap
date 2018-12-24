@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`FilerList should render an initial component 1`] = `
-<v-layout column="" class="mt-1 mb-1">
+<v-layout column="" class="my-1">
   <div class="title mb-2">Filer List</div>
   <div>
     <v-btn>All</v-btn>
@@ -12,7 +12,7 @@ exports[`FilerList should render an initial component 1`] = `
 `;
 
 exports[`FilerList should render component with even option 1`] = `
-<v-layout column="" class="mt-1 mb-1">
+<v-layout column="" class="my-1">
   <div class="title mb-2">Filer List</div>
   <div>
     <v-btn>All</v-btn>
@@ -23,7 +23,7 @@ exports[`FilerList should render component with even option 1`] = `
 `;
 
 exports[`FilerList should render component with odd option 1`] = `
-<v-layout column="" class="mt-1 mb-1">
+<v-layout column="" class="my-1">
   <div class="title mb-2">Filer List</div>
   <div>
     <v-btn>All</v-btn>

@@ -1,5 +1,5 @@
 <template>
-  <v-layout column class="mt-1 mb-1">
+  <v-layout column class="my-1">
     <div class="title mb-2">Filer List</div>
 
     <div>
@@ -26,7 +26,7 @@ export default {
   data(): Data {
     return {
       type: 'all',
-      list: Array(21).fill(1).map((x, y) => x + y),
+      list: Array(21).fill(1).map((x, y) => x + y),  // 1 ~ 21
     };
   },
   computed: {
@@ -34,6 +34,7 @@ export default {
       return this.list.filter((value) => {
         if (this.type === 'odd') return value % 2 === 1;
         if (this.type === 'even') return value % 2 === 0;
+
         return this.list;
       });
     },
