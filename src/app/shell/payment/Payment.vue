@@ -17,7 +17,7 @@
               </v-flex>
 
               <v-flex xs4>
-                <v-card-media :src="item.image" height="100%" contain></v-card-media>
+                <v-img :src="item.image" height="100%" contain></v-img>
               </v-flex>
             </v-layout>
 

@@ -15,7 +15,7 @@ Vue.config.ignoredElements = [
   'v-bottom-nav', 'v-bottom-sheet',
   'v-breadcrumbs', 'v-breadcrumbs-item',
   'v-btn', 'v-btn-toggle',
-  'v-card', 'v-card-actions', 'v-card-media', 'v-card-text', 'v-card-title',
+  'v-card', 'v-card-actions', 'v-card-text', 'v-card-title',
   'v-carousel', 'v-carousel-item',
   'v-checkbox',
   'v-chip',
