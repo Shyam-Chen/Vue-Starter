@@ -44,13 +44,13 @@
               <td>{{ props.item.primary }}</td>
               <td>{{ props.item.accent }}</td>
               <td class="text-xs-right">
-                <v-btn icon class="mx-0" @click.stop="setState({ editData: props.item, dialogs: { edit: true } })">
+                <v-btn icon class="mx-0" @click.stop="setState({ dialogs: { edit: true } }); setStorage({ key: 'editData', value: props.item })">
                   <v-icon color="info">edit</v-icon>
                 </v-btn>
-                <v-btn icon class="mx-0" @click.stop="setState({ viewData: props.item, dialogs: { view: true } })">
+                <v-btn icon class="mx-0" @click.stop="setState({ dialogs: { view: true } }); setStorage({ key: 'viewData', value: props.item })">
                   <v-icon color="success">pageview</v-icon>
                 </v-btn>
-                <v-btn icon class="mx-0" @click.stop="setState({ deleteData: props.item, dialogs: { delete: true } })">
+                <v-btn icon class="mx-0" @click.stop="setState({ dialogs: { delete: true } }); setStorage({ key: 'deleteData', value: props.item })">
                   <v-icon color="error">delete</v-icon>
                 </v-btn>
               </td>
