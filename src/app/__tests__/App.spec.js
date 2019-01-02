@@ -2,6 +2,7 @@ import { createLocalVue, shallowMount } from '@vue/test-utils';
 import Router from 'vue-router';
 import Vuex from 'vuex';
 import I18n from 'vue-i18n';
+import mockdate from 'mockdate';
 
 import Home from '~/home/Home';
 import NotFound from '~/not-found/NotFound';
@@ -60,6 +61,7 @@ describe('App', () => {
             mdAndUp: true,
           },
         },
+        Date: mockdate.set('2020-01-10'),
       },
     });
   });
