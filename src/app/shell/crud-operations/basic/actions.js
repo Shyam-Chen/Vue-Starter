@@ -35,9 +35,7 @@ export default {
   },
 
   setState(context: ActionContext<IBasic>, data: IBasic): void {
-    context.state = Object.assign(context.state, data);
-  },
-  setStorage({ state }: ActionContext<IBasic>, { key, value }: any): void {
-    state[key] = { ...state[key], ...value };
+    const normalData = JSON.parse(JSON.stringify(data));
+    context.state = Object.assign(context.state, normalData);
   },
 };
