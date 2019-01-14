@@ -1,6 +1,6 @@
 <template>
   <v-container id="authorization" class="shell-container" fluid>
-    <div class="headline">Authorization</div>
+    <div class="headline">Authorization (TODO)</div>
 
     <v-layout row>
       <div class="ml-2">
@@ -23,7 +23,17 @@
       <v-progress-circular v-if="isInProgress" indeterminate color="primary"></v-progress-circular>
     </v-layout>
 
+    <v-layout>
+      Forgot Password...
+    </v-layout>
+
+    <v-layout>
+      Change password...
+    </v-layout>
+
     <v-layout column>
+      Single Sign-On...
+
       <div>
         <v-btn color="red" disabled @click="signInWithGoogle">
           <v-icon left>fab fa-google</v-icon>

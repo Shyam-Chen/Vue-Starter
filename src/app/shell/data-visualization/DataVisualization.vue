@@ -3,55 +3,29 @@
     <v-layout column>
       <div class="headline">Data Visualization</div>
 
-      <v-layout column class="pa-3">
-        <div class="subheading pa-2">Bar Chart</div>
-        <ECharts :options="bar" :theme="app$.theme" auto-resize />
-      </v-layout>
+      <div>Line</div>
 
-      <v-layout column class="pa-3">
-        <div class="subheading pa-2">Pie Chart</div>
-        <ECharts :options="pie" :theme="app$.theme" auto-resize />
-      </v-layout>
+      <BarChart />
+      <PieChart />
+
+      <div>Scatter</div>
+      <div>Map</div>
+      <div>...</div>
     </v-layout>
   </v-container>
 </template>
 
 <script>
-/* eslint-disable */
-import 'echarts/lib/chart/bar';
-import 'echarts/lib/chart/pie';
-
-import 'echarts/lib/component/dataset';
-import 'echarts/lib/component/legend';
-import 'echarts/lib/component/tooltip';
-/* eslint-enable */
-
-import ECharts from 'vue-echarts/components/ECharts';
-
-import bar from './bar';
-import pie from './pie';
+import BarChart from './BarChart';
+import PieChart from './PieChart';
 
 export default {
   components: {
-    ECharts,
-  },
-  data() {
-    return {
-      bar,
-      pie,
-    };
-  },
-  computed: {
-    app$() {
-      return this.$store.state;
-    },
+    BarChart,
+    PieChart,
   },
 };
 </script>
 
 <style scoped>
-.echarts {
-  width: 100%;
-  max-width: 600px;
-}
 </style>

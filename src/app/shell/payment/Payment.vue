@@ -1,6 +1,6 @@
 <template>
   <v-container class="shell-container" fluid>
-    <div class="headline">Payment (TODO)</div>
+    <div class="headline">Payment (TODO) [Stripe]</div>
 
     <v-container fluid grid-list-md class="women">
       <v-layout row wrap>
