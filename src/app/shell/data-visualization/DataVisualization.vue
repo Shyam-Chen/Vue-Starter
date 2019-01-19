@@ -3,8 +3,7 @@
     <v-layout column>
       <div class="headline">Data Visualization</div>
 
-      <div>Line</div>
-
+      <LineChart />
       <BarChart />
       <PieChart />
 
@@ -16,11 +15,13 @@
 </template>
 
 <script>
+import LineChart from './LineChart';
 import BarChart from './BarChart';
 import PieChart from './PieChart';
 
 export default {
   components: {
+    LineChart,
     BarChart,
     PieChart,
   },

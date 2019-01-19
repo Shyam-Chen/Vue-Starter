@@ -1,6 +1,6 @@
 <template>
   <v-layout column class="pa-3">
-    <div class="subheading pa-2">Bar Chart</div>
+    <div class="subheading pa-2">Line Chart</div>
     <ECharts :options="options" :theme="app$.theme" auto-resize />
   </v-layout>
 </template>
@@ -9,9 +9,8 @@
 import ECharts from 'vue-echarts/components/ECharts';
 
 /* eslint-disable */
-import 'echarts/lib/chart/bar';
+import 'echarts/lib/chart/line';
 
-import 'echarts/lib/component/dataset';
 import 'echarts/lib/component/legend';
 import 'echarts/lib/component/tooltip';
 /* eslint-enable */
@@ -21,35 +20,21 @@ export default {
     ECharts,
   },
   data() {
-    const random = () => (
-      Array(3).fill(null)
-        .map(() => Math.round(300 + (Math.random() * 700)) / 10)
-    );
-
     return {
       options: {
+        legend: {},
+        tooltip: {},
         xAxis: {
           type: 'category',
+          data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
         },
         yAxis: {
           type: 'value',
         },
-        series: [
-          { type: 'bar' },
-          { type: 'bar' },
-          { type: 'bar' },
-        ],
-        dataset: {
-          source: [
-            ['Frameworks', 'Male', 'Female', 'Neutral'],
-            ['Vanilla', ...random()],
-            ['Angular', ...random()],
-            ['React', ...random()],
-            ['Vue', ...random()],
-          ],
-        },
-        legend: {},
-        tooltip: {},
+        series: [{
+          data: [820, 932, 901, 934, 1290, 1330, 1320],
+          type: 'line',
+        }],
       },
     };
   },
