@@ -2,9 +2,9 @@ import * as functions from 'firebase-functions';
 import * as admin from 'firebase-admin';
 import express from 'express';
 import compression from 'compression';
+import helmet from 'helmet';
 import cors from 'cors';
 import morgan from 'morgan';
-import bodyParser from 'body-parser';
 import request from 'request';
 import Raven from 'raven';
 
@@ -24,10 +24,11 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 vm.use(compression());
+vm.use(helmet());
 vm.use(cors({ origin: true }));
 vm.use(morgan('tiny'));
-vm.use(bodyParser.json());
-vm.use(bodyParser.urlencoded({ extended: false }));
+vm.use(express.json());
+vm.use(express.urlencoded({ extended: false }));
 
 /**
  * @name REST
