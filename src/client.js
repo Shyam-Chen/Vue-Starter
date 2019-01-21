@@ -32,9 +32,7 @@ if (process.env.NODE_ENV === 'production') {
     .addPlugin(RavenVue, Vue)
     .install();
 
-  const swDest = 'service-worker.js';
-
-  register(process.env.APP_BASE + swDest, {
+  register('/service-worker.js', {
     ready() {
       console.log('Service worker is active.');
     },
