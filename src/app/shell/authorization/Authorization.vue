@@ -24,16 +24,16 @@
     </v-layout>
 
     <v-layout>
-      Forgot Password...
+      Forgot Password
     </v-layout>
 
     <v-layout>
-      Change password...
+      Change password
     </v-layout>
 
-    <v-layout column>
-      Single Sign-On...
+    <v-divider class="my-3"></v-divider>
 
+    <v-layout column>
       <div>
         <v-btn color="red" disabled @click="signInWithGoogle">
           <v-icon left>fab fa-google</v-icon>

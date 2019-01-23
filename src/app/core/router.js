@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
+import RouterPrefetch from 'vue-router-prefetch';
 import Meta from 'vue-meta';
 import Analytics from 'vue-analytics';
 
@@ -9,6 +10,7 @@ import NotFound from '~/not-found/NotFound';
 import guide from '~/shell/guide/routes';
 
 Vue.use(Router);
+Vue.use(RouterPrefetch);
 Vue.use(Meta);
 
 const router = new Router({
