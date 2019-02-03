@@ -1,7 +1,7 @@
 <template>
   <v-layout column class="pa-3">
     <div class="subheading pa-2">Bar Chart</div>
-    <ECharts :options="options" :theme="app$.theme" auto-resize />
+    <ECharts :options="options" :theme="app$.theme" autoresize />
   </v-layout>
 </template>
 
