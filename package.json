@@ -63,6 +63,7 @@
     "vue": "2.6.5",
     "vue-analytics": "5.16.2",
     "vue-apollo": "3.0.0-beta.27",
+    "vue-draggable": "2.0.0-beta.1",
     "vue-echarts": "4.0.1",
     "vue-i18n": "8.8.0",
     "vue-markdown": "2.2.4",
@@ -70,7 +71,7 @@
     "vue-quill-editor": "3.0.6",
     "vue-router": "3.0.2",
     "vue-router-prefetch": "1.4.0",
-    "vuetify": "1.4.4",
+    "vuetify": "1.5.0",
     "vuex": "3.1.0",
     "vuex-bound": "1.2.0",
     "vuex-router-sync": "5.0.0"

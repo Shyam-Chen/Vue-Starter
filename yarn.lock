@@ -14976,6 +14976,11 @@ vue-apollo@3.0.0-beta.27:
     chalk "^2.4.1"
     throttle-debounce "^2.0.0"
 
+vue-draggable@2.0.0-beta.1:
+  version "2.0.0-beta.1"
+  resolved "https://registry.yarnpkg.com/vue-draggable/-/vue-draggable-2.0.0-beta.1.tgz#8fef18df9ca87f1926aa9a42c740243798040353"
+  integrity sha512-ZNk38UzxmmX7rrzee/vJXpDTHTTGKa3oDwj5FAR4lS90E8xZqJRtcncviK9ryiCTx9eFxdip2F0feBbNW03mOQ==
+
 vue-echarts@4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/vue-echarts/-/vue-echarts-4.0.1.tgz#3d3a14f53119701bba09545a68b17cf0689cad29"
@@ -15106,10 +15111,10 @@ vue@2.6.5:
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.5.tgz#7a7e8723b875b91800e576aac41cb3ed325dddf0"
   integrity sha512-htb449YZnpJ5ts+JjXQHVuvH3R3dcaGBe6/ePAwtsRj4cA1FG/OI0rHDCSMs+L9ZHDzpX7ru//Usb/2R3XfQaQ==
 
-vuetify@1.4.4:
-  version "1.4.4"
-  resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-1.4.4.tgz#0a08d98e685a875e3d7fd035235932d9abf3fd5b"
-  integrity sha512-i0fNciTrzP+U6NinB2kmNMC5vWXtrTy5QcVFLOxv4dhhqTiMTyHj7rV1B2lwBTZYoDhimmSAYRfqHeKdCMx+Gg==
+vuetify@1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-1.5.0.tgz#b7334f525b5dd416b01d5e9ddbadad22beeb9d7f"
+  integrity sha512-I2bITwvtkfbUf2hfrKo3Uta4egpv5KzEcKR1czgdyjZdA1nlo96XV2EDu0XetLl6p+AjhOqwlZWbLSezy9ZZmQ==
 
 vuex-bound@1.2.0:
   version "1.2.0"
