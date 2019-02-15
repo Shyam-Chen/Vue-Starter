@@ -75,7 +75,7 @@
 <script>
 import { mapModel } from 'vuex-bound';
 
-import { formControlsStore } from '../mixins';
+import { controlsStore } from '../mixins';
 
 import { INITIAL as state } from './constants';
 import actions from './actions';
@@ -83,7 +83,7 @@ import mutations from './mutations';
 import getters from './getters';
 
 export default {
-  mixins: [formControlsStore],
+  mixins: [controlsStore],
   computed: {
     sc$() {
       return this.$store.state.controls.selectionControls;

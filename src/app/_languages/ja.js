@@ -33,7 +33,7 @@ export default {
   rest: 'REST',
   graphql: 'GraphQL',
 
-  controls: 'フォームコントロール',
+  controls: 'コントロール',
   textFields: 'テキストフィールド',
   selects: '選り出す',
   selectionControls: '選択コントロール',
