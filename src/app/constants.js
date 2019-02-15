@@ -64,7 +64,7 @@ export const INITIAL: IApp = {
         { text: 'autocomplete', route: '/controls/autocomplete' },
         { text: 'stepper', route: '/controls/stepper' },
         { text: 'tabs', route: '/controls/tabs', disabled: true },
-        { text: 'treeView', route: '/controls/tree-view', disabled: true },
+        { text: 'treeView', route: '/controls/tree-view' },
         { text: 'calendar', route: '/controls/calendar' },
         { text: 'markdownEditor', route: '/controls/markdown-editor' },
         { text: 'richTextEditor', route: '/controls/rich-text-editor', disabled: true },

@@ -42,6 +42,7 @@ const router = new Router({
     { path: '/controls/pickers', component: () => import('~/shell/controls/pickers/Pickers') },
     { path: '/controls/autocomplete', component: () => import('~/shell/controls/autocomplete/Autocomplete') },
     { path: '/controls/stepper', component: () => import('~/shell/controls/stepper/Stepper') },
+    { path: '/controls/tree-view', component: () => import('~/shell/controls/tree-view/TreeView') },
     { path: '/controls/calendar', component: () => import('~/shell/controls/calendar/Calendar') },
     { path: '/controls/markdown-editor', component: () => import('~/shell/controls/markdown-editor/MarkdownEditor') },
 
