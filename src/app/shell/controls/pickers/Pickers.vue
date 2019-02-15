@@ -1,7 +1,7 @@
 <template>
   <v-container id="pickers" class="shell-container" fluid>
     <v-layout column>
-      <div class="headline">Form Controls - Pickers</div>
+      <div class="headline">Controls - Pickers</div>
 
       <v-form>
 
@@ -78,13 +78,13 @@ export default {
   mixins: [formControlsStore],
   computed: {
     p$() {
-      return this.$store.state.formControls.pickers;
+      return this.$store.state.controls.pickers;
     },
-    ...mapModel('formControls/pickers', Object.keys(state)),
+    ...mapModel('controls/pickers', Object.keys(state)),
   },
   created() {
     this.$store.registerModule(
-      ['formControls', 'pickers'],
+      ['controls', 'pickers'],
       { namespaced: true, state, actions, mutations, getters },
     );
   },

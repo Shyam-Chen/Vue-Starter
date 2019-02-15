@@ -33,7 +33,7 @@ export default {
   rest: 'REST',
   graphql: 'GraphQL',
 
-  formControls: 'Form Controls',
+  controls: 'Controls',
   textFields: 'Text Fields',
   selects: 'Selects',
   selectionControls: 'Selection Controls',

@@ -30,6 +30,8 @@
         </template>
       </v-data-table>
 
+      <v-pagination v-model="page" :length="6"></v-pagination>
+
     </v-layout>
   </v-container>
 </template>
@@ -65,6 +67,8 @@ export default {
       { value: false, name: 'Donut', calories: 452, fat: 25.0, carbs: 51, protein: 4.9, iron: '22%' },
       { value: false, name: 'KitKat', calories: 518, fat: 26.0, carbs: 65, protein: 7, iron: '6%' },
     ],
+
+    page: 1,
   }),
   methods: {
     toggleAll() {

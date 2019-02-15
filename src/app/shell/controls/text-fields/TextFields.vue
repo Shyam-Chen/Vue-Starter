@@ -1,7 +1,7 @@
 <template>
   <v-container id="text-fields" class="shell-container" fluid>
     <v-layout column>
-      <div class="headline">Form Controls - Text Fields</div>
+      <div class="headline">Controls - Text Fields</div>
 
       <v-form>
 
@@ -75,9 +75,9 @@ export default {
   mixins: [formControlsStore],
   computed: {
     tf$() {
-      return this.$store.state.formControls.textFields;
+      return this.$store.state.controls.textFields;
     },
-    ...mapModel('formControls/textFields', [
+    ...mapModel('controls/textFields', [
       'nickname',
       'creditCard',
       'phone',
@@ -86,7 +86,7 @@ export default {
   },
   created() {
     this.$store.registerModule(
-      ['formControls', 'textFields'],
+      ['controls', 'textFields'],
       { namespaced: true, state, actions, mutations, getters },
     );
   },

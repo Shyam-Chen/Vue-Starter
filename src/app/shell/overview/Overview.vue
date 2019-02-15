@@ -7,7 +7,7 @@
         <div>00. Hello World - A bare-bones Hello World example.</div>
         <div>01. Guide - Build modern web applications using the Vue stack.</div>
         <div>02. CRUD Operations - The four major functions implemented in applications.</div>
-        <div>03. Form Controls - Get or collect information from users for applications.</div>
+        <div>03. Controls - Get or collect information from users for applications.</div>
         <div>04. Data Table - Process and display of data from applications.</div>
         <div>05. Internationalization - Adapt applications and text to enable their usability in a particular cultural or linguistic market.</div>
         <div>06. Data Visualization - Produce dynamic, interactive data visualizations in applications.</div>

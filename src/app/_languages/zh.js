@@ -33,7 +33,7 @@ export default {
   rest: 'REST',
   graphql: 'GraphQL',
 
-  formControls: '表单控件',
+  controls: '表单控件',
   textFields: '文本字段',
   selects: '选择',
   selectionControls: '选择控件',

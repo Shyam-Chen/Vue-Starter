@@ -1,7 +1,7 @@
 <template>
   <v-container id="autocomplete" class="shell-container" fluid>
     <v-layout column>
-      <div class="headline">Form Controls - Calendar</div>
+      <div class="headline">Controls - Calendar</div>
 
       <v-btn>Add Event</v-btn>
 

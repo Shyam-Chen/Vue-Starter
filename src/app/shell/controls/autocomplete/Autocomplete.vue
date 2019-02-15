@@ -1,7 +1,7 @@
 <template>
   <v-container id="autocomplete" class="shell-container" fluid>
     <v-layout column>
-      <div class="headline">Form Controls - Autocomplete</div>
+      <div class="headline">Controls - Autocomplete</div>
 
       <v-form>
         <v-layout row>

@@ -34,16 +34,16 @@ const router = new Router({
     { path: '/crud-operations/rest', component: () => import('~/shell/crud-operations/rest/REST') },
     { path: '/crud-operations/graphql', component: () => import('~/shell/crud-operations/graphql/GraphQL') },
 
-    /** @name form-controls */
-    { path: '/form-controls', redirect: '/form-controls/text-fields' },
-    { path: '/form-controls/text-fields', component: () => import('~/shell/form-controls/text-fields/TextFields') },
-    { path: '/form-controls/selects', component: () => import('~/shell/form-controls/selects/Selects') },
-    { path: '/form-controls/selection-controls', component: () => import('~/shell/form-controls/selection-controls/SelectionControls') },
-    { path: '/form-controls/pickers', component: () => import('~/shell/form-controls/pickers/Pickers') },
-    { path: '/form-controls/autocomplete', component: () => import('~/shell/form-controls/autocomplete/Autocomplete') },
-    { path: '/form-controls/stepper', component: () => import('~/shell/form-controls/stepper/Stepper') },
-    { path: '/form-controls/calendar', component: () => import('~/shell/form-controls/calendar/Calendar') },
-    { path: '/form-controls/markdown-editor', component: () => import('~/shell/form-controls/markdown-editor/MarkdownEditor') },
+    /** @name controls */
+    { path: '/controls', redirect: '/controls/text-fields' },
+    { path: '/controls/text-fields', component: () => import('~/shell/controls/text-fields/TextFields') },
+    { path: '/controls/selects', component: () => import('~/shell/controls/selects/Selects') },
+    { path: '/controls/selection-controls', component: () => import('~/shell/controls/selection-controls/SelectionControls') },
+    { path: '/controls/pickers', component: () => import('~/shell/controls/pickers/Pickers') },
+    { path: '/controls/autocomplete', component: () => import('~/shell/controls/autocomplete/Autocomplete') },
+    { path: '/controls/stepper', component: () => import('~/shell/controls/stepper/Stepper') },
+    { path: '/controls/calendar', component: () => import('~/shell/controls/calendar/Calendar') },
+    { path: '/controls/markdown-editor', component: () => import('~/shell/controls/markdown-editor/MarkdownEditor') },
 
     /** @name data-table */
     { path: '/data-table', redirect: '/data-table/display-rows' },

@@ -1,7 +1,7 @@
 <template>
   <v-container id="selects" class="shell-container" fluid>
     <v-layout column>
-      <div class="headline">Form Controls - Selects</div>
+      <div class="headline">Controls - Selects</div>
 
       <v-form>
 
@@ -56,16 +56,16 @@ export default {
   mixins: [formControlsStore],
   computed: {
     s$() {
-      return this.$store.state.formControls.selects;
+      return this.$store.state.controls.selects;
     },
-    ...mapModel('formControls/selects', [
+    ...mapModel('controls/selects', [
       'dessert',
       'states',
     ]),
   },
   created() {
     this.$store.registerModule(
-      ['formControls', 'selects'],
+      ['controls', 'selects'],
       { namespaced: true, state, actions, mutations, getters },
     );
   },
