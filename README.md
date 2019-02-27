@@ -371,35 +371,35 @@ The structure follows the LIFT Guidelines.
 │   ├── api
 │   │   ├── __tests__
 │   │   │   └── ...
-│   │   ├── _<THING>  -> api of private things
+│   │   ├── _<THING>  -> api of private or protected things
 │   │   │   └── ...
 │   │   ├── core  -> core feature module
 │   │   │   └── ...
 │   │   ├── <FEATURE>  -> feature modules
 │   │   │   ├── __tests__
 │   │   │   │   └── ...
-│   │   │   ├── _<THING>  -> feature of private things
+│   │   │   ├── _<THING>  -> feature of private or protected things
 │   │   │   │   └── ...
 │   │   │   └── ...
 │   │   ├── <GROUP>  -> module group
 │   │   │   └── <FEATURE>  -> feature modules
 │   │   │       ├── __tests__
 │   │   │       │   └── ...
-│   │   │       ├── _<THING>  -> feature of private things
+│   │   │       ├── _<THING>  -> feature of private or protected things
 │   │   │       │   └── ...
 │   │   │       └── ...
 │   │   ├── graphql
 │   │   │   ├── <FEATURE>  -> feature modules
 │   │   │   │   ├── __tests__
 │   │   │   │   │   └── ...
-│   │   │   │   ├── _<THING>  -> feature of private things
+│   │   │   │   ├── _<THING>  -> feature of private or protected things
 │   │   │   │   │   └── ...
 │   │   │   │   └── ...
 │   │   │   └── <GROUP>  -> module group
 │   │   │       └── <FEATURE>  -> feature modules
 │   │   │           ├── __tests__
 │   │   │           │   └── ...
-│   │   │           ├── _<THING>  -> feature of private things
+│   │   │           ├── _<THING>  -> feature of private or protected things
 │   │   │           │   └── ...
 │   │   │           └── ...
 │   │   ├── shared  -> shared feature module
@@ -408,7 +408,7 @@ The structure follows the LIFT Guidelines.
 │   ├── app
 │   │   ├── __tests__
 │   │   │   └── ...
-│   │   ├── _<THING>  -> app of private things
+│   │   ├── _<THING>  -> app of private or protected things
 │   │   │   └── ...
 │   │   ├── core  -> core feature module
 │   │   │   └── ...
@@ -419,11 +419,11 @@ The structure follows the LIFT Guidelines.
 │   │   │   │   ├── <FEATURE>.spec.js
 │   │   │   │   ├── getters.spec.js
 │   │   │   │   └── mutations.spec.js
-│   │   │   ├── _<THING>  -> feature of private things
+│   │   │   ├── _<THING>  -> feature of private or protected things
 │   │   │   │   └── ...
 │   │   │   ├── actions.js
 │   │   │   ├── constants.js
-│   │   │   ├── <FEATURE>.vue
+│   │   │   ├── <FEATURE>.vue  -> page component
 │   │   │   ├── getters.js
 │   │   │   ├── mutations.js
 │   │   │   └── types.js
@@ -435,11 +435,11 @@ The structure follows the LIFT Guidelines.
 │   │   │       │   ├── <FEATURE>.spec.js
 │   │   │       │   ├── getters.spec.js
 │   │   │       │   └── mutations.spec.js
-│   │   │       ├── _<THING>  -> feature of private things
+│   │   │       ├── _<THING>  -> feature of private or protected things
 │   │   │       │   └── ...
 │   │   │       ├── actions.js
 │   │   │       ├── constants.js
-│   │   │       ├── <FEATURE>.vue
+│   │   │       ├── <FEATURE>.vue  -> page component
 │   │   │       ├── getters.js
 │   │   │       ├── mutations.js
 │   │   │       └── types.js
