@@ -6,6 +6,17 @@
       <v-btn class="ml-0" @click="increment">Click Me</v-btn>
       <div>The button above has been clicked {{ count }} times.</div>
     </div>
+
+    <div>
+      <div @click="outer">
+        <v-btn @click="inner">Click Me</v-btn>
+      </div>
+
+      <div>Use `event.stopPropagation()`</div>
+      <div @click="outer">
+        <v-btn @click.stop="inner">Click Me</v-btn>
+      </div>
+    </div>
   </v-layout>
 </template>
 
@@ -25,6 +36,13 @@ export default {
   methods: {
     increment(): void {
       this.count += 1;
+    },
+
+    outer(): void {
+      console.log('Outer');
+    },
+    inner(): void {
+      console.log('Inner');
     },
   },
 };
