@@ -115,12 +115,25 @@ module.exports = ({ prod = false } = {}) => ({
     !prod && new webpack.HotModuleReplacementPlugin(),
     prod && new webpack.optimize.AggressiveSplittingPlugin(),
     prod && new GenerateSW({
+      exclude: [/\.(?:png|jpg|jpeg|svg)$/],
       skipWaiting: true,
       clientsClaim: true,
-      runtimeCaching: [{
-        urlPattern: new RegExp(env.SITE_URL),
-        handler: 'staleWhileRevalidate',
-      }],
+      cleanupOutdatedCaches: true,
+      runtimeCaching: [
+        {
+          urlPattern: /\.(?:png|jpg|jpeg|svg)$/,
+          handler: 'cacheFirst',
+        },
+        {
+          urlPattern: new RegExp(env.SITE_URL),
+          handler: 'staleWhileRevalidate',
+          options: {
+            cacheableResponse: {
+              statuses: [0, 200],
+            },
+          },
+        },
+      ],
       navigateFallback: '/',
       navigateFallbackWhitelist: [/^(?!\/__).*/],
       cacheId: pkg.name,
