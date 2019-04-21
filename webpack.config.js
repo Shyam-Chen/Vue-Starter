@@ -118,7 +118,6 @@ module.exports = ({ prod = false } = {}) => ({
       exclude: [/\.(?:png|jpg|jpeg|svg)$/],
       skipWaiting: true,
       clientsClaim: true,
-      cleanupOutdatedCaches: true,
       runtimeCaching: [
         {
           urlPattern: /\.(?:png|jpg|jpeg|svg)$/,
