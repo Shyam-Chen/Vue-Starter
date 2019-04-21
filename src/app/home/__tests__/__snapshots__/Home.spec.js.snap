@@ -13,7 +13,7 @@ exports[`Home should render an initial component 1`] = `
             <v-icon left="">more</v-icon>
             See more
           </v-btn>
-          <v-btn color="white" href="https://github.com/Shyam-Chen/Vue-Fullstack-Starter" large="" outline="" target="_blank" rel="noopener">
+          <v-btn color="white" href="https://github.com/Shyam-Chen/VueFastify-Fullstack-Starter" large="" outline="" target="_blank" rel="noopener">
             <v-icon left="">fab fa-github</v-icon>
             Source code
           </v-btn>

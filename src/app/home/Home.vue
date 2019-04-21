@@ -13,7 +13,7 @@
               <v-icon left>more</v-icon>
               {{ $t('home.seeMore') }}
             </v-btn>
-            <v-btn color="white" href="https://github.com/Shyam-Chen/Vue-Fullstack-Starter" large outline target="_blank" rel="noopener">
+            <v-btn color="white" href="https://github.com/Shyam-Chen/VueFastify-Fullstack-Starter" large outline target="_blank" rel="noopener">
               <v-icon left>fab fa-github</v-icon>
               {{ $t('home.sourceCode') }}
             </v-btn>

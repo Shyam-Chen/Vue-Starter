@@ -14,20 +14,20 @@
 [demo-master-image]: https://img.shields.io/badge/link-master-blue.svg
 [demo-master-link]: https://vue-by-example-prod.firebaseapp.com/
 
-[develop-build-image]: https://img.shields.io/circleci/project/github/Shyam-Chen/Vue-Fullstack-Starter/develop.svg
-[develop-build-link]: https://circleci.com/gh/Shyam-Chen/workflows/Vue-Fullstack-Starter
-[develop-coverage-image]: https://img.shields.io/codecov/c/github/Shyam-Chen/Vue-Fullstack-Starter/develop.svg
-[develop-coverage-link]: https://codecov.io/gh/Shyam-Chen/Vue-Fullstack-Starter
+[develop-build-image]: https://img.shields.io/circleci/project/github/Shyam-Chen/VueFastify-Fullstack-Starter/develop.svg
+[develop-build-link]: https://circleci.com/gh/Shyam-Chen/workflows/VueFastify-Fullstack-Starter
+[develop-coverage-image]: https://img.shields.io/codecov/c/github/Shyam-Chen/VueFastify-Fullstack-Starter/develop.svg
+[develop-coverage-link]: https://codecov.io/gh/Shyam-Chen/VueFastify-Fullstack-Starter
 
-[master-build-image]: https://img.shields.io/circleci/project/github/Shyam-Chen/Vue-Fullstack-Starter/master.svg
-[master-build-link]: https://circleci.com/gh/Shyam-Chen/workflows/Vue-Fullstack-Starter
-[master-coverage-image]: https://img.shields.io/codecov/c/github/Shyam-Chen/Vue-Fullstack-Starter/master.svg
-[master-coverage-link]: https://codecov.io/gh/Shyam-Chen/Vue-Fullstack-Starter
+[master-build-image]: https://img.shields.io/circleci/project/github/Shyam-Chen/VueFastify-Fullstack-Starter/master.svg
+[master-build-link]: https://circleci.com/gh/Shyam-Chen/workflows/VueFastify-Fullstack-Starter
+[master-coverage-image]: https://img.shields.io/codecov/c/github/Shyam-Chen/VueFastify-Fullstack-Starter/master.svg
+[master-coverage-link]: https://codecov.io/gh/Shyam-Chen/VueFastify-Fullstack-Starter
 
-[package-dependencies-image]: https://img.shields.io/david/Shyam-Chen/Vue-Fullstack-Starter.svg
-[package-dependencies-link]: https://david-dm.org/Shyam-Chen/Vue-Fullstack-Starter
-[package-devDependencies-image]: https://img.shields.io/david/dev/Shyam-Chen/Vue-Fullstack-Starter.svg
-[package-devDependencies-link]: https://david-dm.org/Shyam-Chen/Vue-Fullstack-Starter?type=dev
+[package-dependencies-image]: https://img.shields.io/david/Shyam-Chen/VueFastify-Fullstack-Starter.svg
+[package-dependencies-link]: https://david-dm.org/Shyam-Chen/VueFastify-Fullstack-Starter
+[package-devDependencies-image]: https://img.shields.io/david/dev/Shyam-Chen/VueFastify-Fullstack-Starter.svg
+[package-devDependencies-link]: https://david-dm.org/Shyam-Chen/VueFastify-Fullstack-Starter?type=dev
 
 ## Table of Contents
 
@@ -44,7 +44,7 @@ Follow steps to execute this boilerplate.
 1. Clone this boilerplate
 
 ```bash
-$ git clone --depth 1 https://github.com/Shyam-Chen/Vue-Fullstack-Starter <PROJECT_NAME>
+$ git clone --depth 1 https://github.com/Shyam-Chen/VueFastify-Fullstack-Starter <PROJECT_NAME>
 $ cd <PROJECT_NAME>
 ```
 

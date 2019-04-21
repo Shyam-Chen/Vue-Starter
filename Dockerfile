@@ -1,6 +1,6 @@
 FROM node:8
 
-ENV HOME /Vue-Fullstack-Starter
+ENV HOME /VueFastify-Fullstack-Starter
 
 WORKDIR ${HOME}
 ADD . $HOME

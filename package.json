@@ -1,5 +1,5 @@
 {
-  "name": "vue-fullstack-starter",
+  "name": "vuefastify-fullstack-starter",
   "version": "1.0.0",
   "description": "A boilerplate for Vue, Material, Express, Babel, Flow, and ReactiveX.",
   "engines": {
@@ -22,7 +22,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Shyam-Chen/Vue-Fullstack-Starter.git"
+    "url": "git+https://github.com/Shyam-Chen/VueFastify-Fullstack-Starter.git"
   },
   "keywords": [
     "Vue",
@@ -31,9 +31,9 @@
   "author": "Yen-cheng Chen, 陳彥澄",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Shyam-Chen/Vue-Fullstack-Starter/issues"
+    "url": "https://github.com/Shyam-Chen/VueFastify-Fullstack-Starter/issues"
   },
-  "homepage": "https://github.com/Shyam-Chen/Vue-Fullstack-Starter#readme",
+  "homepage": "https://github.com/Shyam-Chen/VueFastify-Fullstack-Starter#readme",
   "dependencies": {
     "@tensorflow/tfjs": "0.14.2",
     "apollo-boost": "0.3.1",
