@@ -40,7 +40,7 @@ exports[`App should render an initial component 1`] = `
         </v-btn>
         <v-list></v-list>
       </v-menu>
-      <v-btn icon="" href="https://github.com/Shyam-Chen/VueFastify-Fullstack-Starter">
+      <v-btn icon="" href="https://github.com/Shyam-Chen/Vue-Play">
         <v-icon>fab fa-github</v-icon>
       </v-btn>
     </v-toolbar>

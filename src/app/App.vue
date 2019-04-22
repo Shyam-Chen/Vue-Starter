@@ -140,7 +140,7 @@
             </v-list>
           </v-menu>
 
-          <v-btn icon href="https://github.com/Shyam-Chen/VueFastify-Fullstack-Starter">
+          <v-btn icon href="https://github.com/Shyam-Chen/Vue-Play">
             <v-icon>fab fa-github</v-icon>
           </v-btn>
         </v-toolbar>

@@ -1,7 +1,7 @@
 version: 2
 
 base: &base
-  working_directory: ~/VueFastify-Fullstack-Starter
+  working_directory: ~/Vue-Play
   docker:
     - image: circleci/node:8
 
@@ -33,34 +33,21 @@ jobs:
             docker-compose up -d default
             docker-compose exec default yarn firebase use development --token $FIREBASE_TOKEN
             docker-compose exec default yarn build:app
-            docker-compose exec default yarn build:api
-            docker-compose exec -d default yarn firebase serve --only functions --port 5000 --token $FIREBASE_TOKEN
             docker-compose exec -d default yarn firebase serve --only hosting --port 8000 --token $FIREBASE_TOKEN
       - run:
           name: Check the code
           command: |
             docker-compose exec default yarn lint:app
-            docker-compose exec default yarn lint:api
       - run:
           name: Test the application
           command: |
             docker-compose exec default yarn test:app
             docker-compose exec default yarn codecov --token=$CODECOV_TOKEN
       - run:
-          name: Test cloud functions
-          command: |
-            docker-compose exec default yarn test:api
-            docker-compose exec default yarn codecov --token=$CODECOV_TOKEN
-      - run:
           name: End-to-end UI tests
           command: |
             docker-compose exec default sh -c "sleep 10"
             docker-compose exec default yarn e2e:app
-      - run:
-          name: End-to-end HTTP tests
-          command: |
-            # docker-compose exec default sh -c "sleep 10"
-            # docker-compose exec default yarn e2e:api
 
   deploy:
     <<: *base

@@ -7,22 +7,18 @@
   },
   "scripts": {
     "start:app": "rimraf public && cross-env BABEL_ENV=app webpack-dev-server --progress",
-    "start:api": "rimraf functions && cross-env BABEL_ENV=api gulp",
     "build:app": "rimraf public && cross-env BABEL_ENV=app webpack --env.prod",
     "build:api": "rimraf functions && cross-env BABEL_ENV=api gulp --prod",
     "lint:app": "eslint src/client.js 'src/app/**/*.{js,vue}' && stylelint 'src/**/*.{css,vue}'",
-    "lint:api": "eslint src/server.js 'src/api/**/*.js'",
     "test:app": "cross-env BABEL_ENV=test JEST_ENV=app jest \"src/app/.*\\.js$\" --coverage --forceExit",
-    "test:api": "cross-env BABEL_ENV=test JEST_ENV=api jest \"src/api/.*\\.js$\" --coverage --forceExit",
     "e2e:app": "cross-env BABEL_ENV=test JEST_ENV=e2e jest \"src/app/.*\\.js$\" --forceExit",
-    "e2e:api": "cross-env BABEL_ENV=test JEST_ENV=e2e jest \"src/api/.*\\.js$\" --forceExit",
     "typed": "flow-typed install",
     "codecov": "codecov",
     "firebase": "firebase"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Shyam-Chen/VueFastify-Fullstack-Starter.git"
+    "url": "git+https://github.com/Shyam-Chen/Vue-Play.git"
   },
   "keywords": [
     "Vue",
@@ -31,9 +27,9 @@
   "author": "Yen-cheng Chen, 陳彥澄",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Shyam-Chen/VueFastify-Fullstack-Starter/issues"
+    "url": "https://github.com/Shyam-Chen/Vue-Play/issues"
   },
-  "homepage": "https://github.com/Shyam-Chen/VueFastify-Fullstack-Starter#readme",
+  "homepage": "https://github.com/Shyam-Chen/Vue-Play#readme",
   "dependencies": {
     "@tensorflow/tfjs": "0.14.2",
     "apollo-boost": "0.3.1",
@@ -41,10 +37,9 @@
     "apollo-client": "2.5.1",
     "apollo-link": "1.2.11",
     "apollo-link-http": "1.5.14",
-    "apollo-server-express": "2.4.8",
+
     "axios": "0.18.0",
-    "compression": "1.7.3",
-    "cors": "2.8.5",
+
     "echarts": "4.2.1",
     "express": "4.16.4",
     "firebase": "5.10.0",
@@ -52,10 +47,10 @@
     "firebase-functions": "2.3.0",
     "graphql": "14.2.1",
     "graphql-tag": "2.10.1",
-    "helmet": "3.16.0",
-    "merge-graphql-schemas": "1.5.8",
-    "morgan": "1.9.1",
-    "raven": "2.6.4",
+
+
+
+
     "raven-js": "3.27.0",
     "register-service-worker": "1.6.2",
     "request": "2.88.0",
