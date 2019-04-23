@@ -16,29 +16,6 @@
         "transform-runtime"
       ]
     },
-    "api": {
-      "presets": [
-        [
-          "env", {
-            "targets": {
-              "node": "6"
-            }
-          }
-        ],
-        "stage-0",
-        "flow"
-      ],
-      "plugins": [
-        [
-          "babel-plugin-root-import", [
-            {
-              "rootPathPrefix": "~",
-              "rootPathSuffix": "src/api"
-            }
-          ]
-        ]
-      ]
-    },
     "test": {
       "presets": [
         [

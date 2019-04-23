@@ -14,12 +14,12 @@
 
     <v-layout v-if="!isSignIn" row>
       <div class="ml-2">
-        <v-text-field v-model="email" label="Email"></v-text-field>
+        <v-text-field v-model="email" label="Email" disabled></v-text-field>
       </div>
       <div class="ml-2">
-        <v-text-field v-model="password" label="Password" type="password"></v-text-field>
+        <v-text-field v-model="password" label="Password" type="password" disabled></v-text-field>
       </div>
-      <v-btn color="primary" @click="signIn">Sign in</v-btn>
+      <v-btn color="primary" @click="signIn" disabled>Sign in</v-btn>
       <v-progress-circular v-if="isInProgress" indeterminate color="primary"></v-progress-circular>
     </v-layout>
 
@@ -68,8 +68,6 @@
 </template>
 
 <script>
-import * as firebase from 'firebase/app';
-
 export default {
   data() {
     return {
@@ -83,33 +81,7 @@ export default {
       currentUser: '',
     };
   },
-  methods: {
-    signIn() {
-      this.isInProgress = true;
-
-      firebase.auth()
-        .signInWithEmailAndPassword(this.email, this.password)
-        .then(() => {
-          this.isSignIn = true;
-          this.isInProgress = false;
-          console.log('[*] Sign in');
-          // this.$router.replace('');
-        });
-    },
-    signInWithGoogle() {
-      const provider = new firebase.auth.GoogleAuthProvider();
-      firebase.auth().signInWithPopup(provider);
-    },
-    signOut() {
-      firebase.auth()
-        .signOut()
-        .then(() => {
-          this.isSignIn = false;
-          console.log('[*] Sign out');
-          // this.$router.replace('');
-        });
-    },
-  },
+  methods: {},
 };
 </script>
 

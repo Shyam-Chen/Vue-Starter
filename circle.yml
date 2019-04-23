@@ -17,10 +17,7 @@ jobs:
           command: docker-compose up -d default
       - run:
           name: Build the application
-          command: docker-compose exec default yarn build:app
-      - run:
-          name: Build cloud functions
-          command: docker-compose exec default yarn build:api
+          command: docker-compose exec default yarn build
 
   test:
     <<: *base
@@ -32,22 +29,22 @@ jobs:
           command: |
             docker-compose up -d default
             docker-compose exec default yarn firebase use development --token $FIREBASE_TOKEN
-            docker-compose exec default yarn build:app
+            docker-compose exec default yarn build
             docker-compose exec -d default yarn firebase serve --only hosting --port 8000 --token $FIREBASE_TOKEN
       - run:
           name: Check the code
           command: |
-            docker-compose exec default yarn lint:app
+            docker-compose exec default yarn lint
       - run:
           name: Test the application
           command: |
-            docker-compose exec default yarn test:app
+            docker-compose exec default yarn unit
             docker-compose exec default yarn codecov --token=$CODECOV_TOKEN
       - run:
           name: End-to-end UI tests
           command: |
             docker-compose exec default sh -c "sleep 10"
-            docker-compose exec default yarn e2e:app
+            docker-compose exec default yarn e2e
 
   deploy:
     <<: *base

@@ -29,27 +29,6 @@ switch (process.env.JEST_ENV) {
     };
     break;
 
-  case 'api':
-    module.exports = {
-      coveragePathIgnorePatterns: [
-        '/node_modules/',
-        '/tools/',
-      ],
-      moduleNameMapper: {
-        '~(.*)': '<rootDir>/src/api$1',
-      },
-      setupTestFrameworkScriptFile: '<rootDir>/tools/setup-api.js',
-      testPathIgnorePatterns: [
-        '<rootDir>/node_modules/',
-        '.*\\.e2e-spec.js$',
-      ],
-      testURL: `http://${env.HOST_NAME}/`,
-      transform: {
-        '^.+\\.js$': 'babel-jest',
-      },
-    };
-    break;
-
   case 'e2e':
     module.exports = {
       setupTestFrameworkScriptFile: '<rootDir>/tools/setup-e2e.js',

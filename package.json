@@ -1,17 +1,16 @@
 {
-  "name": "vuefastify-fullstack-starter",
+  "name": "vue-play",
   "version": "1.0.0",
   "description": "A boilerplate for Vue, Material, Express, Babel, Flow, and ReactiveX.",
   "engines": {
     "node": "8"
   },
   "scripts": {
-    "start:app": "rimraf public && cross-env BABEL_ENV=app webpack-dev-server --progress",
-    "build:app": "rimraf public && cross-env BABEL_ENV=app webpack --env.prod",
-    "build:api": "rimraf functions && cross-env BABEL_ENV=api gulp --prod",
-    "lint:app": "eslint src/client.js 'src/app/**/*.{js,vue}' && stylelint 'src/**/*.{css,vue}'",
-    "test:app": "cross-env BABEL_ENV=test JEST_ENV=app jest \"src/app/.*\\.js$\" --coverage --forceExit",
-    "e2e:app": "cross-env BABEL_ENV=test JEST_ENV=e2e jest \"src/app/.*\\.js$\" --forceExit",
+    "start": "cross-env BABEL_ENV=app webpack-dev-server --progress",
+    "build": "rimraf public functions && cross-env BABEL_ENV=app webpack --env.prod && gulp --prod",
+    "lint": "eslint src/client.js 'src/app/**/*.{js,vue}' && stylelint 'src/**/*.{css,vue}'",
+    "unit": "cross-env BABEL_ENV=test JEST_ENV=app jest \"src/app/.*\\.js$\" --coverage --forceExit",
+    "e2e": "cross-env BABEL_ENV=test JEST_ENV=e2e jest \"src/app/.*\\.js$\" --forceExit",
     "typed": "flow-typed install",
     "codecov": "codecov",
     "firebase": "firebase"
@@ -21,10 +20,9 @@
     "url": "git+https://github.com/Shyam-Chen/Vue-Play.git"
   },
   "keywords": [
-    "Vue",
-    "Fullstack"
+    "Vue"
   ],
-  "author": "Yen-cheng Chen, 陳彥澄",
+  "author": "Shyam Chen",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Shyam-Chen/Vue-Play/issues"
@@ -33,24 +31,13 @@
   "dependencies": {
     "@tensorflow/tfjs": "0.14.2",
     "apollo-boost": "0.3.1",
-    "apollo-cache-inmemory": "1.5.1",
-    "apollo-client": "2.5.1",
-    "apollo-link": "1.2.11",
-    "apollo-link-http": "1.5.14",
-
     "axios": "0.18.0",
-
     "echarts": "4.2.1",
     "express": "4.16.4",
     "firebase": "5.10.0",
-    "firebase-admin": "7.3.0",
     "firebase-functions": "2.3.0",
     "graphql": "14.2.1",
     "graphql-tag": "2.10.1",
-
-
-
-
     "raven-js": "3.27.0",
     "register-service-worker": "1.6.2",
     "request": "2.88.0",
@@ -90,7 +77,6 @@
     "cssnano": "4.1.7",
     "eslint": "4.19.1",
     "eslint-config-airbnb-base": "13.1.0",
-    "eslint-import-resolver-babel-plugin-root-import": "1.1.1",
     "eslint-import-resolver-webpack": "0.10.1",
     "eslint-plugin-flowtype": "3.2.0",
     "eslint-plugin-flowtype-errors": "3.6.0",

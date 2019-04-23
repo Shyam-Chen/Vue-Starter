@@ -25,7 +25,30 @@ gulp.task('build', () => {
     ])
     .pipe(plumber())
     .pipe(replaces(envify(env)))
-    .pipe(babel())
+    .pipe(babel({
+      babelrc: false,
+      presets: [
+        [
+          env, {
+            targets: {
+              node: '8',
+            },
+          },
+        ],
+        'stage-0',
+        'flow',
+      ],
+      plugins: [
+        [
+          'babel-plugin-root-import', [
+            {
+              rootPathPrefix: '~',
+              rootPathSuffix: 'src/api',
+            },
+          ],
+        ],
+      ],
+    }))
     .pipe(gulp.dest(DIST_ROOT));
 });
 

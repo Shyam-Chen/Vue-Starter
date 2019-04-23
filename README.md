@@ -63,51 +63,31 @@ $ yarn firebase use development
 4. Start a local server
 
 ```bash
-# front-end
-$ yarn start:app
-
-# back-end
-$ yarn start:api
+$ yarn start
 ```
 
 5. Compile and bundle code
 
 ```bash
-# front-end
-$ yarn build:app
-
-# back-end
-$ yarn build:api
+$ yarn build
 ```
 
-6. Check the code quality
+6. Check code quality
 
 ```bash
-# front-end
-$ yarn lint:app
-
-# back-end
-$ yarn lint:api
+$ yarn lint
 ```
 
-7. Run the unit tests
+7. Runs unit tests
 
 ```bash
-# front-end
-$ yarn test:app
-
-# back-end
-$ yarn test:api
+$ yarn unit
 ```
 
-8. Run the end-to-end tests
+8. Runs end-to-end tests
 
 ```bash
-# front-end
-$ yarn e2e:app
-
-# back-end
-$ yarn e2e:api
+$ yarn e2e
 ```
 
 ## Key Features
@@ -116,7 +96,7 @@ This seed repository provides the following features:
 
 * ---------- **Core** ----------
 * [x] [Web Fundamentals](https://developers.google.com/web/fundamentals/)
-* [x] [Firebase Platform](https://firebase.google.com/)
+* [x] [Firebase](https://firebase.google.com/)
 * [x] [Google Cloud](https://cloud.google.com/)
 * [x] [Docker](https://www.docker.com/)
 * [x] [CircleCI](https://circleci.com/)
@@ -260,15 +240,6 @@ function Environments() {
   this.FUNC_URL = process.env.FUNC_URL || `http://${this.HOST_NAME}:${this.FUNC_PORT}/${this.PROJECT_NAME}/us-central1`;
 
   this.APP_BASE = process.env.APP_BASE || '/';
-
-  this.FIREBASE_CONFIG = {
-    apiKey: process.env.FIREBASE_API_KEY || '<API_KEY>',
-    authDomain: process.env.FIREBASE_AUTH_DOMAIN || '<FIREBASE_AUTH_DOMAIN>',
-    databaseURL: process.env.FIREBASE_DATABASE_URL || '<FIREBASE_DATABASE_URL>',
-    projectId: process.env.FIREBASE_PROJECT_ID || '<FIREBASE_PROJECT_ID>',
-    storageBucket: process.env.FIREBASE_STORAGE_BUCKET || '<FIREBASE_STORAGE_BUCKET>',
-    messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID || '<FIREBASE_MESSAGING_SENDER_ID>',
-  };
 
   this.GOOGLE_ANALYTICS = process.env.GOOGLE_ANALYTICS || '<GOOGLE_ANALYTICS>';
 

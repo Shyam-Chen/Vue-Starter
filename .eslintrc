@@ -26,10 +26,6 @@
     "import/resolver": {
       "webpack": {
         "config": "webpack.config.js"
-      },
-      "babel-plugin-root-import": {
-        "rootPathPrefix": "~",
-        "rootPathSuffix": "src/api"
       }
     }
   },
