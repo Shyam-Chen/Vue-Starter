@@ -1,13 +1,4 @@
 {
-  "database": {
-    "rules": "./tools/database.json"
-  },
-  "firestore": {
-    "rules": "./tools/firestore"
-  },
-  "storage": {
-    "rules": "./tools/storage"
-  },
   "hosting": {
     "public": "public",
     "rewrites": [

@@ -97,11 +97,6 @@ export const INITIAL: IApp = {
       ],
     },
     { icon: 'fas fa-cogs', text: 'machineLearning', route: '/machine-learning' },
-
-    /** @name additional-resources */
-    { icon: 'fas fa-server', text: 'universalApps', href: 'https://github.com/Shyam-Chen/Vue-Universal-Starter', subheader: 'additionalResources', divider: true },
-    { icon: 'phone_iphone', text: 'mobileApps', href: 'https://github.com/Shyam-Chen/Vue-Mobile-Starter' },
-    { icon: 'desktop_mac', text: 'desktopApps', href: 'https://github.com/Shyam-Chen/Vue-Desktop-Starter' },
   ],
   drawer: false || null,
   languages: [
