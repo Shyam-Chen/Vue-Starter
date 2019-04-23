@@ -54,37 +54,31 @@ $ cd <PROJECT_NAME>
 $ yarn install && yarn typed
 ```
 
-3. Set an active project for working direct
-
-```bash
-$ yarn firebase use development
-```
-
-4. Start a local server
+3. Start a local server
 
 ```bash
 $ yarn start
 ```
 
-5. Compile and bundle code
+4. Compile and bundle code
 
 ```bash
 $ yarn build
 ```
 
-6. Check code quality
+5. Check code quality
 
 ```bash
 $ yarn lint
 ```
 
-7. Runs unit tests
+6. Runs unit tests
 
 ```bash
 $ yarn unit
 ```
 
-8. Runs end-to-end tests
+7. Runs end-to-end tests
 
 ```bash
 $ yarn e2e
@@ -213,6 +207,12 @@ Change to your project.
 }
 ```
 
+Set an active project for working direct
+
+```bash
+$ yarn firebase use development
+```
+
 ### Default environments
 
 Set your local environment variables. (use `this.<ENV_NAME> = process.env.<ENV_NAME> || <LOCAL_ENV>;`)
@@ -249,8 +249,8 @@ Set your deployment environment variables.
 # tools/<dev|stage|prod>.Dockerfile
 
 # envs --
-ENV SITE_URL <SITE_URL>
-ENV FUNC_URL <FUNC_URL>
+ENV PROJECT_NAME <PROJECT_NAME>
+# ...
 # -- envs
 ```
 
@@ -259,10 +259,18 @@ ENV FUNC_URL <FUNC_URL>
 Add environment variables to the CircleCI build.
 
 ```yml
-CODECOV_TOKEN
-DOCKER_PASSWORD
 DOCKER_USERNAME
+DOCKER_PASSWORD
+
+CODECOV_TOKEN
+
 FIREBASE_TOKEN
+```
+
+Generate an authentication token for `FIREBASE_TOKEN`.
+
+```bash
+$ yarn firebase login:ci
 ```
 
 ### SEO friendly
