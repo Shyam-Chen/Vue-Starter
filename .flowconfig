@@ -15,4 +15,3 @@ include_warnings=true
 module.file_ext=.js
 module.file_ext=.vue
 module.name_mapper='^~/\(.*\)$' -> '<PROJECT_ROOT>/src/app/\1'
-module.name_mapper='^~/\(.*\)$' -> '<PROJECT_ROOT>/src/api/\1'

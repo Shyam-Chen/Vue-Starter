@@ -19,7 +19,7 @@
       <div class="ml-2">
         <v-text-field v-model="password" label="Password" type="password" disabled></v-text-field>
       </div>
-      <v-btn color="primary" @click="signIn" disabled>Sign in</v-btn>
+      <v-btn color="primary" disabled @click="signIn">Sign in</v-btn>
       <v-progress-circular v-if="isInProgress" indeterminate color="primary"></v-progress-circular>
     </v-layout>
 

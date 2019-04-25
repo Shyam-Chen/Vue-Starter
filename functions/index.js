@@ -1,10 +1,10 @@
-import * as functions from 'firebase-functions';
-import express from 'express';
-import request from 'request';
+const functions = require('firebase-functions');
+const express = require('express');
+const request = require('request');
 
-const sh = express();
+const app = express();
 
-sh.get('*', (req, res) => {
+app.get('*', (req, res) => {
   const botUserAgents = [
     'baiduspider',
     'bingbot',
@@ -41,4 +41,4 @@ sh.get('*', (req, res) => {
   }
 });
 
-export const app = functions.https.onRequest(sh);
+exports.app = functions.https.onRequest(app);
