@@ -1,7 +1,5 @@
 {
   "name": "vue-play-functions",
-  "version": "1.0.0",
-  "description": "A boilerplate for Vue, Material, Babel, Flow, and ReactiveX.",
   "engines": {
     "node": "8"
   },

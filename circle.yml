@@ -3,7 +3,7 @@ version: 2
 base: &base
   working_directory: ~/Vue-Play
   docker:
-    - image: circleci/node:8
+    - image: circleci/node:10
 
 jobs:
 
