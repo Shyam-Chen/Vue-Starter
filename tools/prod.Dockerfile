@@ -16,3 +16,4 @@ ENV SENTRY_DSN https://cea15151a5984c6e80937903b07ae124@sentry.io/1192108
 # -- envs
 
 RUN yarn build
+RUN cd functions && yarn install

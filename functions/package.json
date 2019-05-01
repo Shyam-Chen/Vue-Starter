@@ -1,7 +1,7 @@
 {
   "name": "vue-play-functions",
   "engines": {
-    "node": "8"
+    "node": "10"
   },
   "dependencies": {
     "express": "4.16.4",
