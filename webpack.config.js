@@ -76,8 +76,7 @@ module.exports = ({ prod = false } = {}) => ({
     extensions: ['.mjs', '.js', '.vue'],
     alias: {
       vue$: 'vue/dist/vue.esm.js',
-      '~': path.join(SOURCE_ROOT, 'app'),
-      '~assets': path.join(SOURCE_ROOT, 'assets'),
+      '~': SOURCE_ROOT,
     },
   },
   plugins: [
