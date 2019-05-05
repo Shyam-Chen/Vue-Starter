@@ -22,8 +22,8 @@ jobs:
   test:
     <<: *base
     steps:
-      - checkout
-      - setup_remote_docker
+      - attach_workspace:
+          at: ~/Vue-Play
       - run:
           name: Combat preparation
           command: |
@@ -49,8 +49,8 @@ jobs:
   deploy:
     <<: *base
     steps:
-      - checkout
-      - setup_remote_docker
+      - attach_workspace:
+          at: ~/Vue-Play
       - run:
           name: Log in to Docker
           command: echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin

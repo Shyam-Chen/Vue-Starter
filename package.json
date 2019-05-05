@@ -19,15 +19,8 @@
     "type": "git",
     "url": "git+https://github.com/Shyam-Chen/Vue-Play.git"
   },
-  "keywords": [
-    "Vue"
-  ],
   "author": "Shyam Chen",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Shyam-Chen/Vue-Play/issues"
-  },
-  "homepage": "https://github.com/Shyam-Chen/Vue-Play#readme",
   "dependencies": {
     "@tensorflow/tfjs": "0.14.2",
     "apollo-boost": "0.3.1",
