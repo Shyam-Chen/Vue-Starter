@@ -8,9 +8,9 @@
   "scripts": {
     "start": "cross-env BABEL_ENV=app webpack-dev-server --progress",
     "build": "rimraf public && cross-env BABEL_ENV=app webpack --env.prod",
-    "lint": "eslint src/client.js 'src/app/**/*.{js,vue}' && stylelint 'src/**/*.{css,vue}'",
-    "unit": "cross-env BABEL_ENV=test JEST_ENV=app jest \"src/app/.*\\.js$\" --coverage --forceExit",
-    "e2e": "cross-env BABEL_ENV=test JEST_ENV=e2e jest \"src/app/.*\\.js$\" --forceExit",
+    "lint": "eslint 'src/**/*.{js,vue}' && stylelint 'src/**/*.{css,vue}'",
+    "unit": "cross-env BABEL_ENV=test JEST_ENV=app jest \"src/.*\\.js$\" --coverage --forceExit",
+    "e2e": "cross-env BABEL_ENV=test JEST_ENV=e2e jest \"src/.*\\.js$\" --forceExit",
     "typed": "flow-typed install",
     "codecov": "codecov",
     "firebase": "firebase"
@@ -27,6 +27,7 @@
     "axios": "0.18.0",
     "echarts": "4.2.1",
     "graphql": "14.2.1",
+    "graphql-request": "^1.8.2",
     "graphql-tag": "2.10.1",
     "raven-js": "3.27.0",
     "register-service-worker": "1.6.2",

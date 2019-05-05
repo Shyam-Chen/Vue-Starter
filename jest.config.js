@@ -9,8 +9,7 @@ switch (process.env.JEST_ENV) {
       ],
       moduleFileExtensions: ['js', 'vue'],
       moduleNameMapper: {
-        '~assets(.*)': '<rootDir>/src/assets$1',
-        '~(.*)': '<rootDir>/src/app$1',
+        '~(.*)': '<rootDir>/src$1',
       },
       setupTestFrameworkScriptFile: '<rootDir>/tools/setup-app.js',
       snapshotSerializers: [
