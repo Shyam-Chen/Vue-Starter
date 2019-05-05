@@ -11,7 +11,7 @@ jobs:
     <<: *base
     steps:
       - checkout
-      # - setup_remote_docker
+      - setup_remote_docker
       - run:
           name: Combat preparation
           command: docker-compose up -d default
