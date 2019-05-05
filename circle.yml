@@ -1,7 +1,7 @@
 version: 2
 
 base: &base
-  working_directory: ~/Vue-Play
+  working_directory: ~/project/Vue-Play
   docker:
     - image: circleci/node:10
 
@@ -11,19 +11,22 @@ jobs:
     <<: *base
     steps:
       - checkout
-      - setup_remote_docker
+      # - setup_remote_docker
       - run:
           name: Combat preparation
           command: docker-compose up -d default
       - run:
           name: Build the application
           command: docker-compose exec default yarn build
+      - persist_to_workspace:
+          root: ~/project
+          paths: Vue-Play
 
   test:
     <<: *base
     steps:
       - attach_workspace:
-          at: ~/
+          at: ~/project
       - run:
           name: Combat preparation
           command: |
@@ -50,7 +53,7 @@ jobs:
     <<: *base
     steps:
       - attach_workspace:
-          at: ~/
+          at: ~/project
       - run:
           name: Log in to Docker
           command: echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
