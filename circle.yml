@@ -23,13 +23,13 @@ jobs:
     <<: *base
     steps:
       - attach_workspace:
-          at: ~/Vue-Play
+          at: ~/
       - run:
           name: Combat preparation
           command: |
-            docker-compose up -d default
+            # docker-compose up -d default
             docker-compose exec default yarn firebase use development --token $FIREBASE_TOKEN
-            docker-compose exec default yarn build
+            # docker-compose exec default yarn build
             docker-compose exec -d default yarn firebase serve --only hosting --port 8000 --token $FIREBASE_TOKEN
       - run:
           name: Check the code
@@ -50,7 +50,7 @@ jobs:
     <<: *base
     steps:
       - attach_workspace:
-          at: ~/Vue-Play
+          at: ~/
       - run:
           name: Log in to Docker
           command: echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
