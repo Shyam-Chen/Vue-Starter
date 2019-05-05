@@ -1,14 +1,14 @@
-version: 2
+version: 2.1
 
-base: &base
-  working_directory: ~/project/Vue-Play
-  docker:
-    - image: circleci/node:10
+executors:
+  vue-play:
+    docker:
+      - image: circleci/node:10
 
 jobs:
 
   build:
-    <<: *base
+    executor: vue-play
     steps:
       - checkout
       - setup_remote_docker
@@ -18,15 +18,22 @@ jobs:
       - run:
           name: Build the application
           command: docker-compose exec default yarn build
+      - run:
+          name: Archive Docker image
+          command: docker save -o image.tar vue-play
       - persist_to_workspace:
-          root: ~/project
-          paths: Vue-Play
+          root: .
+          paths: ./image.tar
 
   test:
-    <<: *base
+    executor: vue-play
     steps:
       - attach_workspace:
-          at: ~/project
+          at: /tmp/workspace
+      - setup_remote_docker
+      - run:
+          name: Load archived Docker image
+          command: docker load -i /tmp/workspace/image.tar
       - run:
           name: Combat preparation
           command: |
@@ -50,10 +57,14 @@ jobs:
             docker-compose exec default yarn e2e
 
   deploy:
-    <<: *base
+    executor: vue-play
     steps:
       - attach_workspace:
-          at: ~/project
+          at: /tmp/workspace
+      - setup_remote_docker
+      - run:
+          name: Load archived Docker image
+          command: docker load -i /tmp/workspace/image.tar
       - run:
           name: Log in to Docker
           command: echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
@@ -89,3 +100,10 @@ workflows:
       - deploy:
           requires:
             - test
+  weekly-regression:
+    triggers:
+      - schedule:
+          cron: "0 13 * * 1"
+          filters:
+            branches:
+              only: develop
