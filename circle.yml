@@ -107,3 +107,11 @@ workflows:
           filters:
             branches:
               only: develop
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
+      - deploy:
+          requires:
+            - test
