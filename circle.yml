@@ -4,6 +4,7 @@ executors:
   vue-play:
     docker:
       - image: circleci/node:10
+    working_directory: ~/Vue-Play
 
 jobs:
 
@@ -11,29 +12,36 @@ jobs:
     executor: vue-play
     steps:
       - checkout
-      - setup_remote_docker
+      - setup_remote_docker:
+          docker_layer_caching: true
       - run:
           name: Combat preparation
           command: docker-compose up -d default
       - run:
           name: Build the application
           command: docker-compose exec default yarn build
-      - run:
-          name: Archive Docker image
-          command: docker save -o image.tar default
-      - persist_to_workspace:
-          root: .
-          paths: ./image.tar
+      # - run:
+      #     name: Archive Docker image
+      #     command: docker save -o image.tar default
+      # - persist_to_workspace:
+      #     root: .
+      #     paths: ./image.tar
 
   test:
     executor: vue-play
     steps:
-      - attach_workspace:
-          at: ./Vue-Play
+      # - attach_workspace:
+      #     at: .
       - setup_remote_docker
-      - run:
-          name: Load archived Docker image
-          command: docker load -i image.tar
+      # - run:
+      #     name: Load archived Docker image
+      #     command: docker load -i image.tar
+      # - run:
+      #     name: _
+      #     command: sh -c "pwd"
+      # - run:
+      #     name: _
+      #     command: sh -c "ls -a"
       - run:
           name: Combat preparation
           command: |
@@ -57,12 +65,12 @@ jobs:
   deploy:
     executor: vue-play
     steps:
-      - attach_workspace:
-          at: ./Vue-Play
+      # - attach_workspace:
+      #     at: .
       - setup_remote_docker
-      - run:
-          name: Load archived Docker image
-          command: docker load -i image.tar
+      # - run:
+      #     name: Load archived Docker image
+      #     command: docker load -i image.tar
       - run:
           name: Log in to Docker
           command: echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
