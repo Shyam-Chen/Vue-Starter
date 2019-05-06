@@ -20,7 +20,7 @@ jobs:
           command: docker-compose exec default yarn build
       - run:
           name: Archive Docker image
-          command: docker save -o image.tar vue-play
+          command: docker save -o image.tar default
       - persist_to_workspace:
           root: .
           paths: ./image.tar
