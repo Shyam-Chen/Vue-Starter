@@ -14,11 +14,11 @@ export default {
     localStorage.setItem('theme', val);
   },
   setLanguage(context: ActionContext<IApp>, val: string): void {
-    import(`~/core/i18n/${val}`)  // eslint-disable-line
+    import(`~/core/i18n/${val}`)
       .then((data): void => {
         i18n.setLocaleMessage(val, data.default);
         i18n.locale = val;
-        document.documentElement.lang = val;  // eslint-disable-line
+        document.documentElement.lang = val;
         sessionStorage.setItem('lang', val);
       });
   },
