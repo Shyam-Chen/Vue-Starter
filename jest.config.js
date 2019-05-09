@@ -11,7 +11,7 @@ switch (process.env.JEST_ENV) {
       moduleNameMapper: {
         '~(.*)': '<rootDir>/src$1',
       },
-      setupTestFrameworkScriptFile: '<rootDir>/tools/setup-app.js',
+      setupFilesAfterEnv: ['<rootDir>/tools/setup-app.js'],
       snapshotSerializers: [
         '<rootDir>/node_modules/jest-serializer-vue',
       ],
@@ -31,7 +31,7 @@ switch (process.env.JEST_ENV) {
 
   case 'e2e':
     module.exports = {
-      setupTestFrameworkScriptFile: '<rootDir>/tools/setup-e2e.js',
+      setupFilesAfterEnv: ['<rootDir>/tools/setup-e2e.js'],
       testPathIgnorePatterns: [
         '<rootDir>/node_modules/',
         '<rootDir>/.flow-typed',

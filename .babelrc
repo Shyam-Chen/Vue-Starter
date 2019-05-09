@@ -3,35 +3,38 @@
     "app": {
       "presets": [
         [
-          "env", {
-            "targets": {
-              "browsers": ["last 2 versions"]
-            }
+          "@babel/preset-env", {
+            "useBuiltIns": "entry",
+            "corejs": "3",
+            "shippedProposals": true
           }
         ],
-        "stage-0",
-        "flow"
+        "@babel/preset-flow"
       ],
       "plugins": [
-        "transform-runtime"
+        "@babel/plugin-transform-runtime",
+        "@babel/plugin-syntax-dynamic-import"
       ]
     },
     "test": {
       "presets": [
         [
-          "env",
+          "@babel/preset-env",
           {
+            "useBuiltIns": "entry",
+            "corejs": "3",
+            "shippedProposals": true,
             "targets": {
               "node": "current"
             }
           }
         ],
-        "stage-0",
-        "flow"
+        "@babel/preset-flow"
       ],
       "plugins": [
-        "dynamic-import-node",
-        "transform-runtime"
+        "@babel/plugin-transform-runtime",
+        "@babel/plugin-syntax-dynamic-import",
+        "dynamic-import-node"
       ]
     }
   }
