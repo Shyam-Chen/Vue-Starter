@@ -17,6 +17,7 @@ switch (process.env.JEST_ENV) {
       ],
       testPathIgnorePatterns: [
         '<rootDir>/node_modules/',
+        '<rootDir>/.flow-typed',
         '.*\\.e2e-spec.js$',
       ],
       testURL: `http://${env.HOST_NAME}/`,
@@ -33,6 +34,7 @@ switch (process.env.JEST_ENV) {
       setupTestFrameworkScriptFile: '<rootDir>/tools/setup-e2e.js',
       testPathIgnorePatterns: [
         '<rootDir>/node_modules/',
+        '<rootDir>/.flow-typed',
         '.*\\.spec.js$',
       ],
       testURL: `http://${env.HOST_NAME}/`,
