@@ -339,95 +339,60 @@ The structure follows the LIFT Guidelines.
 
 ```coffee
 .
+├── functions
+│   ├── index.js
+│   ├── package.json
+│   └── yarn.lock
 ├── src
-│   ├── api
+│   ├── __tests__
+│   │   └── ...
+│   ├── _<THING>  -> app of private or protected things
+│   │   └── ...
+│   ├── assets  -> datas, fonts, images, medias, styles
+│   │   └── ...
+│   ├── core  -> core feature module
+│   │   └── ...
+│   ├── <FEATURE>  -> feature modules
 │   │   ├── __tests__
+│   │   │   ├── <FEATURE>.e2e-spec.js
+│   │   │   ├── <FEATURE>.spec.js
+│   │   │   ├── actions.spec.js
+│   │   │   ├── getters.spec.js
+│   │   │   └── mutations.spec.js
+│   │   ├── _<THING>  -> feature of private or protected things
 │   │   │   └── ...
-│   │   ├── _<THING>  -> api of private or protected things
-│   │   │   └── ...
-│   │   ├── core  -> core feature module
-│   │   │   └── ...
-│   │   ├── <FEATURE>  -> feature modules
-│   │   │   ├── __tests__
-│   │   │   │   └── ...
-│   │   │   ├── _<THING>  -> feature of private or protected things
-│   │   │   │   └── ...
-│   │   │   └── ...
-│   │   ├── <GROUP>  -> module group
-│   │   │   └── <FEATURE>  -> feature modules
-│   │   │       ├── __tests__
-│   │   │       │   └── ...
-│   │   │       ├── _<THING>  -> feature of private or protected things
-│   │   │       │   └── ...
-│   │   │       └── ...
-│   │   ├── graphql
-│   │   │   ├── <FEATURE>  -> feature modules
-│   │   │   │   ├── __tests__
-│   │   │   │   │   └── ...
-│   │   │   │   ├── _<THING>  -> feature of private or protected things
-│   │   │   │   │   └── ...
-│   │   │   │   └── ...
-│   │   │   └── <GROUP>  -> module group
-│   │   │       └── <FEATURE>  -> feature modules
-│   │   │           ├── __tests__
-│   │   │           │   └── ...
-│   │   │           ├── _<THING>  -> feature of private or protected things
-│   │   │           │   └── ...
-│   │   │           └── ...
-│   │   ├── shared  -> shared feature module
-│   │   │   └── ...
-│   │   └── index.js
-│   ├── app
-│   │   ├── __tests__
-│   │   │   └── ...
-│   │   ├── _<THING>  -> app of private or protected things
-│   │   │   └── ...
-│   │   ├── core  -> core feature module
-│   │   │   └── ...
-│   │   ├── <FEATURE>  -> feature modules
-│   │   │   ├── __tests__
-│   │   │   │   ├── actions.spec.js
-│   │   │   │   ├── <FEATURE>.e2e-spec.js
-│   │   │   │   ├── <FEATURE>.spec.js
-│   │   │   │   ├── getters.spec.js
-│   │   │   │   └── mutations.spec.js
-│   │   │   ├── _<THING>  -> feature of private or protected things
-│   │   │   │   └── ...
-│   │   │   ├── actions.js
-│   │   │   ├── constants.js
-│   │   │   ├── <FEATURE>.vue  -> page component
-│   │   │   ├── getters.js
-│   │   │   ├── mutations.js
-│   │   │   └── types.js
-│   │   ├── <GROUP>  -> module group
-│   │   │   └── <FEATURE>  -> feature modules
-│   │   │       ├── __tests__
-│   │   │       │   ├── actions.spec.js
-│   │   │       │   ├── <FEATURE>.e2e-spec.js
-│   │   │       │   ├── <FEATURE>.spec.js
-│   │   │       │   ├── getters.spec.js
-│   │   │       │   └── mutations.spec.js
-│   │   │       ├── _<THING>  -> feature of private or protected things
-│   │   │       │   └── ...
-│   │   │       ├── actions.js
-│   │   │       ├── constants.js
-│   │   │       ├── <FEATURE>.vue  -> page component
-│   │   │       ├── getters.js
-│   │   │       ├── mutations.js
-│   │   │       └── types.js
-│   │   ├── shared  -> shared feature module
-│   │   │   └── ...
+│   │   ├── <FEATURE>.vue  -> page component
 │   │   ├── actions.js
-│   │   ├── App.vue
 │   │   ├── constants.js
 │   │   ├── getters.js
 │   │   ├── mutations.js
 │   │   └── types.js
-│   ├── assets  -> datas, fonts, images, medias, styles
+│   ├── <GROUP>  -> module group
+│   │   └── <FEATURE>  -> feature modules
+│   │       ├── __tests__
+│   │       │   ├── <FEATURE>.e2e-spec.js
+│   │       │   ├── <FEATURE>.spec.js
+│   │       │   ├── actions.spec.js
+│   │       │   ├── getters.spec.js
+│   │       │   └── mutations.spec.js
+│   │       ├── _<THING>  -> feature of private or protected things
+│   │       │   └── ...
+│   │       ├── <FEATURE>.vue  -> page component
+│   │       ├── actions.js
+│   │       ├── constants.js
+│   │       ├── getters.js
+│   │       ├── mutations.js
+│   │       └── types.js
+│   ├── shared  -> shared feature module
 │   │   └── ...
-│   ├── client.js
+│   ├── App.vue
+│   ├── actions.js
+│   ├── constants.js
+│   ├── getters.js
 │   ├── index.html
-│   └── server.js
+│   ├── main.js
+│   ├── mutations.js
+│   └── types.js
 ├── tools
 │   └── ...
 ├── .babelrc
@@ -445,7 +410,6 @@ The structure follows the LIFT Guidelines.
 ├── docker-compose.yml
 ├── env.js
 ├── firebase.json
-├── gulpfile.js
 ├── jest.config.js
 ├── package.json
 ├── webpack.config.js
