@@ -8,7 +8,6 @@ function Environments() {
 
   this.GOOGLE_ANALYTICS = process.env.GOOGLE_ANALYTICS || 'UA-84381641-2';
   this.SENTRY_DSN = process.env.SENTRY_DSN || null;
-  this.RENDERTRON_URL = process.env.RENDERTRON_URL || null;
 }
 
 module.exports = new Environments();

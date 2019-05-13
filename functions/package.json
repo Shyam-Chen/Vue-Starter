@@ -1,8 +1,9 @@
 {
   "name": "vue-play-functions",
   "engines": {
-    "node": "10"
+    "node": "8"
   },
+  "license": "MIT",
   "dependencies": {
     "express": "4.16.4",
     "firebase-functions": "2.3.0",

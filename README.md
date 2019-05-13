@@ -222,22 +222,13 @@ Set your local environment variables. (use `this.<ENV_NAME> = process.env.<ENV_N
 function Environments() {
   this.NODE_ENV = process.env.NODE_ENV || 'development';
 
-  this.PROJECT_NAME = process.env.PROJECT_NAME || '<PROJECT_NAME>';
-
   this.HOST_NAME = process.env.HOST_NAME || '0.0.0.0';
-
   this.SITE_PORT = process.env.SITE_PORT || 8000;
   this.SITE_URL = process.env.SITE_URL || `http://${this.HOST_NAME}:${this.SITE_PORT}`;
-
-  this.FUNC_PORT = process.env.FUNC_PORT || 5000;
-  this.FUNC_URL = process.env.FUNC_URL || `http://${this.HOST_NAME}:${this.FUNC_PORT}/${this.PROJECT_NAME}/us-central1`;
-
   this.APP_BASE = process.env.APP_BASE || '/';
 
   this.GOOGLE_ANALYTICS = process.env.GOOGLE_ANALYTICS || '<GOOGLE_ANALYTICS>';
-
   this.SENTRY_DSN = process.env.SENTRY_DSN || null;
-  this.RENDERTRON_URL = process.env.RENDERTRON_URL || null;
 }
 ```
 
@@ -277,6 +268,14 @@ $ yarn firebase login:ci
 
 Enable billing on your Firebase Platform and Google Cloud the project by switching to the Blaze plan.
 
+Deploy functions.
+
+```bash
+$ nvm use 8
+$ cd functions && yarn install
+$ yarn firebase deploy --only functions
+```
+
 Serve dynamic content for bots.
 
 ```diff
@@ -301,12 +300,12 @@ $ gcloud app deploy app.yaml --project <RENDERTRON_NAME>
 
 Set your rendertron instance in deployment environment.
 
-```dockerfile
-# tools/<dev|stage|prod>.Dockerfile
+```bash
+$ yarn firebase functions:config:set RENDERTRON_URL="<RENDERTRON_URL>" SITE_URL="<SITE_URL>"
 
-# envs --
-ENV RENDERTRON_URL <RENDERTRON_URL>
-# -- envs
+# Example:
+# RENDERTRON_URL=https://<APP_NAME>.appspot.com
+# SITE_URL=https://<APP_NAME>.firebaseapp.com
 ```
 
 ### VS Code settings
