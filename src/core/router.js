@@ -60,6 +60,8 @@ const router = new Router({
 
     /** @name authorization */
     { path: '/authorization', component: () => import('~/shell/authorization/Authorization') },
+    // { path: '/authorization/login', component: () => import('~/shell/authorization/Login'), meta: { standalone: true } },
+    // { path: '/authorization/register', component: () => import('~/shell/authorization/Register'), meta: { standalone: true } },
 
     /** @name payment */
     { path: '/payment', component: () => import('~/shell/payment/Payment') },
