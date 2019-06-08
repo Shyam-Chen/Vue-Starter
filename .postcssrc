@@ -7,7 +7,6 @@
       "stage": 0,
       "browsers": "last 2 versions"
     },
-    "rucksack-css": {},
     "postcss-nested": {},
     "cssnano": {}
   }

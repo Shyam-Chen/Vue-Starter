@@ -1,6 +1,6 @@
 # Vue Play
 
-:poodle: A boilerplate for Vue, Material, Babel, Flow, and ReactiveX.
+:poodle: A boilerplate for Vue, Material, Babel, Flow, and PostCSS.
 
 |    | Project Information |
 |:--:|---------------------|
@@ -88,30 +88,29 @@ $ yarn e2e
 
 This seed repository provides the following features:
 
-* ----------
+* ---------- **Essentials** ----------
+* [x] [Vue](https://github.com/vuejs/vue)
+* [x] [Vue Router](https://github.com/vuejs/vue-router)
+* [x] [Vuex](https://github.com/vuejs/vuex)
+* [x] [Vuetify](https://github.com/vuetifyjs/vuetify)
+* [x] [Vue I18n](https://github.com/kazupon/vue-i18n)
+* [x] [Axios](https://github.com/axios/axios)
+* [x] [GraphQL Request](https://github.com/prisma/graphql-request)
+* ---------- **Tools** ----------
+* [x] [Webpack](https://github.com/webpack/webpack)
+* [x] [Babel](https://github.com/babel/babel)
+* [x] [Flow](https://github.com/facebook/flow)
+* [x] [PostCSS](https://github.com/postcss/postcss)
+* [x] [ESLint](https://github.com/eslint/eslint)
+* [x] [StyleLint](https://github.com/stylelint/stylelint)
+* [x] [Jest](https://github.com/facebook/jest)
+* [x] [Puppeteer](https://github.com/GoogleChrome/puppeteer)
+* ---------- **Environments** ----------
+* [x] [Node.js](https://nodejs.org/)
 * [x] [Firebase](https://firebase.google.com/)
 * [x] [Docker](https://www.docker.com/)
 * [x] [CircleCI](https://circleci.com/)
 * [x] [Codecov](https://codecov.io/)
-* ----------
-* [x] [Vue](https://github.com/vuejs/vue)
-* [x] [Vue Router](https://github.com/vuejs/vue-router)
-* [x] [Vue I18n](https://github.com/kazupon/vue-i18n)
-* [x] [Vuex](https://github.com/vuejs/vuex)
-* [x] [Vuetify](https://github.com/vuetifyjs/vuetify)
-* [x] [Axios](https://github.com/axios/axios)
-* [x] [Webpack](https://github.com/webpack/webpack)
-* [x] [PostCSS](https://github.com/postcss/postcss)
-* [x] [StyleLint](https://github.com/stylelint/stylelint)
-* [x] [Puppeteer](https://github.com/GoogleChrome/puppeteer)
-* ----------
-* [x] [Apollo GraphQL](https://github.com/apollographql)
-* [x] [ReactiveX](https://github.com/ReactiveX/rxjs)
-* [x] [TensorFlow](https://github.com/tensorflow/tfjs)
-* [x] [Babel](https://github.com/babel/babel)
-* [x] [Flow](https://github.com/facebook/flow)
-* [x] [ESLint](https://github.com/eslint/eslint)
-* [x] [Jest](https://github.com/facebook/jest)
 
 ## Dockerization
 
