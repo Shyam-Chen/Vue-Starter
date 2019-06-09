@@ -81,7 +81,14 @@ export default {
       currentUser: '',
     };
   },
-  methods: {},
+  methods: {
+    signIn() {
+
+    },
+    signInWithGoogle() {
+
+    },
+  },
 };
 </script>
 
