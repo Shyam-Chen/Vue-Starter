@@ -140,8 +140,8 @@
             </v-list>
           </v-menu>
 
-          <v-btn icon href="https://github.com/Shyam-Chen/Vue-Play">
-            <v-icon>fab fa-github</v-icon>
+          <v-btn icon to="/authorization/login">
+            <v-icon>fas fa-user</v-icon>
           </v-btn>
         </v-toolbar>
 

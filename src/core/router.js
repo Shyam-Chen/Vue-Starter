@@ -19,6 +19,8 @@ const router = new Router({
   routes: [
     { path: '/', component: Home, meta: { home: true } },
 
+    // { path: '/dashboard', component: () => import('~/shell/overview/Overview') },
+
     /** @name overview */
     { path: '/overview', component: () => import('~/shell/overview/Overview') },
 
@@ -60,7 +62,7 @@ const router = new Router({
 
     /** @name authorization */
     { path: '/authorization', component: () => import('~/shell/authorization/Authorization') },
-    // { path: '/authorization/login', component: () => import('~/shell/authorization/Login'), meta: { standalone: true } },
+    { path: '/authorization/login', component: () => import('~/shell/authorization/Login'), meta: { standalone: true } },
     // { path: '/authorization/register', component: () => import('~/shell/authorization/Register'), meta: { standalone: true } },
 
     /** @name payment */
