@@ -3,18 +3,13 @@ const env = require('./env');
 switch (process.env.JEST_ENV) {
   case 'app':
     module.exports = {
-      coveragePathIgnorePatterns: [
-        '/node_modules/',
-        '/tools/',
-      ],
+      coveragePathIgnorePatterns: ['/node_modules/', '/tools/'],
       moduleFileExtensions: ['js', 'vue'],
       moduleNameMapper: {
         '~(.*)': '<rootDir>/src$1',
       },
       setupFilesAfterEnv: ['<rootDir>/tools/setup-app.js'],
-      snapshotSerializers: [
-        '<rootDir>/node_modules/jest-serializer-vue',
-      ],
+      snapshotSerializers: ['<rootDir>/node_modules/jest-serializer-vue'],
       testPathIgnorePatterns: [
         '<rootDir>/node_modules/',
         '<rootDir>/.flow-typed',
@@ -24,7 +19,8 @@ switch (process.env.JEST_ENV) {
       transform: {
         '^.+\\.js$': 'babel-jest',
         '^.+\\.vue$': 'vue-jest',
-        '^[./a-zA-Z0-9$_-]+\\.(bmp|gif|jpg|jpeg|png|psd|svg|webp)$': '<rootDir>/tools/assets-transform.js',
+        '^[./a-zA-Z0-9$_-]+\\.(bmp|gif|jpg|jpeg|png|psd|svg|webp)$':
+          '<rootDir>/tools/assets-transform.js',
       },
     };
     break;
