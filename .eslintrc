@@ -34,7 +34,7 @@
   },
   "rules": {
     // Plugins
-    "prettier/prettier": "error",
+    "prettier/prettier": "off",
 
     "import/extensions": ["error", "always", { "js": "never", "vue": "never" }],
     "import/prefer-default-export": "off",
