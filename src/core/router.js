@@ -19,7 +19,7 @@ const router = new Router({
   routes: [
     { path: '/', component: Home, meta: { home: true } },
 
-    // { path: '/dashboard', component: () => import('~/shell/overview/Overview') },
+    // { path: '/dashboard', component: () => import('~/dashboard/Dashboard') },
 
     /** @name overview */
     { path: '/overview', component: () => import('~/shell/overview/Overview') },
@@ -98,8 +98,16 @@ const router = new Router({
   },
 });
 
-router.beforeEach((to, from, next) => {
+router.beforeResolve((to, from, next) => {
+  if (to.name) {
+    // progress.start();
+  }
+
   next();
+});
+
+router.afterEach(() => {
+  // progress.done();
 });
 
 Vue.use(Analytics, {
