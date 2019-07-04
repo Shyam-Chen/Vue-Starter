@@ -9,11 +9,9 @@ export interface Item {
 
 export interface IDailyDrinks {
   dataset: Item[];
-  data: {
-    add: Item | Object,
-    edit: Item | Object,
-    delete: Item | Object,
-  };
+  addData: Item | Object;
+  editData: Item | Object;
+  deleteData: Item | Object;
   dialogs: {
     add: boolean,
     edit: boolean,

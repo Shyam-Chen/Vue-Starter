@@ -12,11 +12,9 @@ export const init: IDailyDrinks = {
     { id: 4, name: '飲川 - 紅玉茶拿鐵加珍珠', price: 70, notes: '特有的茶珍珠Q彈有口感，有點像小芋園，茶味、奶味並重，入口舒適' },
     { id: 5, name: '春水堂 - 紅茶拿鐵加珍珠', price: 60, notes: '奶茶濃郁且上方有緻密的奶泡，讓口感更為豐富，微微茶香，入口舒適，珍珠偏小，彈性尚可' },
   ],
-  data: {
-    add: {},
-    edit: {},
-    delete: {},
-  },
+  addData: {},
+  editData: {},
+  deleteData: {},
   dialogs: {
     add: false,
     edit: false,
@@ -28,7 +26,7 @@ export const actions = {
   addItem({ state }: ActionContext<IDailyDrinks>, data: Item): void {
     const id = state.dataset.reduce((maxId, item) => Math.max(item.id, maxId), -1) + 1;
     state.dataset = [...state.dataset, { id, ...data }];
-    state.data.add = {};
+    state.addData = {};
   },
   editItem({ state }: ActionContext<IDailyDrinks>, data: Item): void {
     state.dataset = [

@@ -22,8 +22,8 @@
           <td class="omv-table__body-cell">{{ item.price }}</td>
           <td class="omv-table__body-cell">{{ item.notes }}</td>
           <td class="omv-table__body-cell">
-            <button class="blue--text mr-2" @click="setState({ dialogs: { edit: true }, data: { edit: item } })">Edit</button>
-            <button class="red--text" @click="setState({ dialogs: { delete: true }, data: { delete: item } })">Delete</button>
+            <button class="blue--text mr-2" @click="setState({ dialogs: { edit: true }, editData: item })">Edit</button>
+            <button class="red--text" @click="setState({ dialogs: { delete: true }, deleteData: item })">Delete</button>
           </td>
         </tr>
       </tbody>
@@ -37,22 +37,22 @@
           <form class="f-col f-center-i">
             <div>
               <label for="name">Name</label>
-              <input id="name" v-model="dd$.data.add.name" class="omv-input" type="text">
+              <input id="name" v-model="dd$.addData.name" class="omv-input" type="text">
             </div>
 
             <div>
               <label for="price">Price</label>
-              <input id="price" v-model="dd$.data.add.price" class="omv-input" type="text">
+              <input id="price" v-model="dd$.addData.price" class="omv-input" type="text">
             </div>
 
             <div class="f-">
               <label for="notes">Notes</label>
-              <textarea id="notes" v-model="dd$.data.add.notes" class="omv-input" rows="3"></textarea>
+              <textarea id="notes" v-model="dd$.addData.notes" class="omv-input" rows="3"></textarea>
             </div>
 
             <div class="f-row">
               <button type="submit" class="omv-button mr-3" @click="setState({ dialogs: { add: false } })">Cancel</button>
-              <button type="submit" class="omv-button indigo white--text" @click="setState({ dialogs: { add: false } }); addItem(dd$.data.add)">Add</button>
+              <button type="submit" class="omv-button indigo white--text" @click="setState({ dialogs: { add: false } }); addItem(dd$.addData)">Add</button>
             </div>
           </form>
         </div>
@@ -67,22 +67,22 @@
           <form class="f-col f-center-i">
             <div>
               <label for="name">Name</label>
-              <input id="name" v-model="dd$.data.edit.name" class="omv-input" type="text">
+              <input id="name" v-model="dd$.editData.name" class="omv-input" type="text">
             </div>
 
             <div>
               <label for="price">Price</label>
-              <input id="price" v-model="dd$.data.edit.price" class="omv-input" type="text">
+              <input id="price" v-model="dd$.editData.price" class="omv-input" type="text">
             </div>
 
             <div class="f-">
               <label for="notes">Notes</label>
-              <textarea id="notes" v-model="dd$.data.edit.notes" class="omv-input" rows="3"></textarea>
+              <textarea id="notes" v-model="dd$.editData.notes" class="omv-input" rows="3"></textarea>
             </div>
 
             <div class="f-row">
               <button type="submit" class="omv-button mr-3" @click="setState({ dialogs: { edit: false } })">Cancel</button>
-              <button type="submit" class="omv-button indigo white--text" @click="setState({ dialogs: { edit: false } }); editItem(dd$.data.edit)">Edit</button>
+              <button type="submit" class="omv-button indigo white--text" @click="setState({ dialogs: { edit: false } }); editItem(dd$.editData)">Edit</button>
             </div>
           </form>
         </div>
@@ -99,7 +99,7 @@
 
             <div class="f-row">
               <button type="submit" class="omv-button mr-3" @click="setState({ dialogs: { delete: false } })">Cancel</button>
-              <button type="submit" class="omv-button red white--text" @click="setState({ dialogs: { delete: false } }); deleteItem(dd$.data.delete)">Delete</button>
+              <button type="submit" class="omv-button red white--text" @click="setState({ dialogs: { delete: false } }); deleteItem(dd$.deleteData)">Delete</button>
             </div>
           </form>
         </div>
