@@ -19,6 +19,8 @@ const router = new Router({
   routes: [
     { path: '/', component: Home, meta: { home: true } },
 
+    { path: '/daily-drinks', component: () => import('~/daily-drinks/DailyDrinks') },
+
     // { path: '/dashboard', component: () => import('~/dashboard/Dashboard') },
 
     /** @name overview */
