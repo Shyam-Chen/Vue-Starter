@@ -19,6 +19,7 @@ module.exports = api => {
         plugins: [
           '@babel/plugin-transform-runtime',
           '@babel/plugin-syntax-dynamic-import',
+          'lodash',
         ],
       },
       test: {
@@ -40,6 +41,7 @@ module.exports = api => {
           '@babel/plugin-transform-runtime',
           '@babel/plugin-syntax-dynamic-import',
           'dynamic-import-node',
+          'lodash',
         ],
       },
     },
