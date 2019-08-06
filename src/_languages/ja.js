@@ -16,6 +16,7 @@ export default {
   customEvents: 'カスタムイベント',
   extends: '拡張する',
   dynamic: '動的',
+  recursion: '再帰',
   lifecycleHooks: 'ライフサイクルフック',
   transitions: 'トランジション',
   mixins: 'ミックスイン',

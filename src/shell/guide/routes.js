@@ -6,6 +6,7 @@ export default [
   { path: '/guide/components/refs', component: () => import('~/shell/guide/components/refs/Refs') },
   { path: '/guide/components/custom-events', component: () => import('~/shell/guide/components/custom-events/CustomEvents') },
   { path: '/guide/components/dynamic', component: () => import('~/shell/guide/components/dynamic/Dynamic') },
+  { path: '/guide/components/recursion', component: () => import('~/shell/guide/components/recursion/Recursion') },
   { path: '/guide/lifecycle-hooks', component: () => import('~/shell/guide/lifecycle-hooks/LifecycleHooks') },
   { path: '/guide/transitions', component: () => import('~/shell/guide/transitions/Transitions') },
   { path: '/guide/mixins', component: () => import('~/shell/guide/mixins/Mixins') },

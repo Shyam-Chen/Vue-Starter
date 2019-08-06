@@ -16,6 +16,7 @@ export default {
   customEvents: '自定义事件',
   extends: '扩展',
   dynamic: '动态',
+  recursion: '递归',
   lifecycleHooks: '生命周期钩子',
   transitions: '过渡',
   mixins: '混入',

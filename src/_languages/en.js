@@ -16,6 +16,7 @@ export default {
   customEvents: 'Custom Events',
   extends: 'Extends',
   dynamic: 'Dynamic',
+  recursion: 'Recursion',
   lifecycleHooks: 'Lifecycle Hooks',
   transitions: 'Transitions',
   mixins: 'Mixins',

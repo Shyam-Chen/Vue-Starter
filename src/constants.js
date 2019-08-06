@@ -23,6 +23,7 @@ export const INITIAL: IApp = {
             { text: 'customEvents', route: '/guide/components/custom-events' },
             { text: 'extends', route: '/guide/components/extends', disabled: true },
             { text: 'dynamic', route: '/guide/components/dynamic' },
+            { text: 'recursion', route: '/guide/components/recursion' },
           ],
         },
         { text: 'lifecycleHooks', route: '/guide/lifecycle-hooks' },
