@@ -96,6 +96,7 @@ This seed repository provides the following features:
 * [x] [Vue I18n](https://github.com/kazupon/vue-i18n)
 * [x] [Axios](https://github.com/axios/axios)
 * [x] [GraphQL Request](https://github.com/prisma/graphql-request)
+* [x] [ML5](https://github.com/ml5js/ml5-library)
 * ---------- **Tools** ----------
 * [x] [Webpack](https://github.com/webpack/webpack)
 * [x] [Babel](https://github.com/babel/babel)
