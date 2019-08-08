@@ -5,7 +5,7 @@ module.exports = {
     },
     'postcss-preset-env': {
       stage: 0,
-      browsers: 'last 2 versions',
+      browserslist: 'last 2 versions',
     },
     'postcss-nested': {},
     cssnano: {},
