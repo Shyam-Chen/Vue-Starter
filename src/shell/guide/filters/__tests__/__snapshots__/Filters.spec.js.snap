@@ -1,24 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Filters should render an initial component 1`] = `
-<v-container fluid="" class="shell-container">
-  <v-layout column="">
+<v-container-stub tag="div" fluid="true" class="shell-container">
+  <v-layout-stub tag="div" column="">
     <div class="headline mb-1">Filters</div>
-    <v-layout column="" class="mt-1 mb-1">
+    <v-layout-stub tag="div" column="" class="mt-1 mb-1">
       <div class="title mb-2">Reverse String/Array</div>
       <div>euV tcaeR ralugnA allinaV</div>
       <div>Vue</div>
       <div>React</div>
       <div>Angular</div>
       <div>Vanilla</div>
-    </v-layout>
-    <v-layout column="" class="mt-1 mb-1">
+    </v-layout-stub>
+    <v-layout-stub tag="div" column="" class="mt-1 mb-1">
       <div class="title mb-2">Truncate String</div>
       <div>Approachable</div>
       <div>Already know HT...</div>
       <div>Already know HTML, CSS and JavaScript? Read the gu...</div>
-    </v-layout>
-    <v-layout column="" class="mt-1 mb-1">
+    </v-layout-stub>
+    <v-layout-stub tag="div" column="" class="mt-1 mb-1">
       <div class="title mb-2">Convert Time</div>
       <div>12:17:10</div>
       <div>01:10:30</div>
@@ -26,13 +26,13 @@ exports[`Filters should render an initial component 1`] = `
       <div>06:30</div>
       <div>00:12</div>
       <div>00:03</div>
-    </v-layout>
-    <v-layout column="" class="mt-1 mb-1">
+    </v-layout-stub>
+    <v-layout-stub tag="div" column="" class="mt-1 mb-1">
       <div class="title mb-2">Time Ago</div>
       <div>a few seconds ago</div>
       <div>2 years ago</div>
       <div>7 years ago</div>
-    </v-layout>
-  </v-layout>
-</v-container>
+    </v-layout-stub>
+  </v-layout-stub>
+</v-container-stub>
 `;

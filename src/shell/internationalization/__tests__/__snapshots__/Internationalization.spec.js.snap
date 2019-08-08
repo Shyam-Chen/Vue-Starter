@@ -1,41 +1,41 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Internationalization should render an initial component 1`] = `
-<v-container fluid="" class="shell-container">
-  <v-layout column="">
+<v-container-stub tag="div" fluid="true" class="shell-container">
+  <v-layout-stub tag="div" column="">
     <div class="headline">Internationalization</div>
-    <v-layout row="">
-      <v-btn>English</v-btn>
-      <v-btn>中文</v-btn>
-      <v-btn>日本語</v-btn>
-    </v-layout>
-    <v-layout row="">
+    <v-layout-stub tag="div" row="">
+      <v-btn-stub tag="button" activeclass="" type="button">English</v-btn-stub>
+      <v-btn-stub tag="button" activeclass="" type="button">中文</v-btn-stub>
+      <v-btn-stub tag="button" activeclass="" type="button">日本語</v-btn-stub>
+    </v-layout-stub>
+    <v-layout-stub tag="div" row="">
       <p class="pl-2 pt-4">
         HTML formatting:
         <b class="primary--text">Bubble</b></p>
-    </v-layout>
-    <v-layout row="">
+    </v-layout-stub>
+    <v-layout-stub tag="div" row="">
       <p class="pl-2">
         Named formatting:
         <b class="primary--text">Hello, Vue!</b></p>
-    </v-layout>
-    <v-layout row="">
+    </v-layout-stub>
+    <v-layout-stub tag="div" row="">
       <p class="pl-2">
         List formatting:
         <b class="primary--text">Think in Vue</b></p>
-    </v-layout>
-    <v-layout row="">
+    </v-layout-stub>
+    <v-layout-stub tag="div" row="">
       <p class="pl-2">
         Pluralization:
         <b class="primary--text">https://google.com</b></p>
-    </v-layout>
-    <v-layout row="">
+    </v-layout-stub>
+    <v-layout-stub tag="div" row="">
       <p class="pl-2">
         Pluralizing i18n:
         <b class="primary--text">No framework</b>,
         <b class="primary--text">One framework</b>,
         <b class="primary--text">3 frameworks</b></p>
-    </v-layout>
-  </v-layout>
-</v-container>
+    </v-layout-stub>
+  </v-layout-stub>
+</v-container-stub>
 `;

@@ -1,183 +1,251 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Basic should render an initial component 1`] = `
-<v-container id="basic" fluid="" class="shell-container">
-  <v-layout column="">
+<v-container-stub id="basic" tag="div" fluid="true" class="shell-container">
+  <v-layout-stub tag="div" column="">
     <div class="headline">CRUD Operations - Basic</div>
-    <v-layout row="">
-      <v-btn color="primary" class="ml-0">Add</v-btn>
-    </v-layout>
-    <v-layout row="">
-      <v-card>
-        <v-card-title class="o-card-title">
+    <v-layout-stub tag="div" row="">
+      <v-btn-stub color="primary" tag="button" activeclass="" type="button" class="ml-0">Add</v-btn-stub>
+    </v-layout-stub>
+    <v-layout-stub tag="div" row="">
+      <v-card-stub loaderheight="4" tag="div">
+        <v-card-title-stub class="o-card-title">
           <div class="title">Board</div>
-          <v-spacer></v-spacer>
-          <v-text-field append-icon="search" label="Search" single-line="" hide-details=""></v-text-field>
-        </v-card-title>
-        <v-data-table headers="[object Object],[object Object],[object Object],[object Object]" items="[object Object],[object Object],[object Object],[object Object]" search="" hide-actions="" select-all=""></v-data-table>
-      </v-card>
-    </v-layout>
+          <v-spacer-stub></v-spacer-stub>
+          <v-text-field-stub errorcount="1" errormessages="" messages="" rules="" successmessages="" value="" appendicon="search" backgroundcolor="" hidedetails="true" label="Search" loaderheight="2" clearicon="$vuetify.icons.clear" singleline="true" type="text"></v-text-field-stub>
+        </v-card-title-stub>
+        <v-data-table-stub items="[object Object],[object Object],[object Object],[object Object]" options="[object Object]" sortby="" sortdesc="" customsort="function sortItems(items, sortBy, sortDesc, locale, customSorters) {
+  if (sortBy === null || !sortBy.length) return items;
+  return items.sort(function (a, b) {
+    var _a, _b;
+
+    for (var i = 0; i < sortBy.length; i++) {
+      var sortKey = sortBy[i];
+      var sortA = getObjectValueByPath(a, sortKey);
+      var sortB = getObjectValueByPath(b, sortKey);
+
+      if (sortDesc[i]) {
+        _a = __read([sortB, sortA], 2), sortA = _a[0], sortB = _a[1];
+      }
+
+      if (customSorters &amp;&amp; customSorters[sortKey]) return customSorters[sortKey](sortA, sortB); // Check if both cannot be evaluated
+
+      if (sortA === null &amp;&amp; sortB === null) {
+        return 0;
+      }
+
+      _b = __read([sortA, sortB].map(function (s) {
+        return (s || '').toString().toLocaleLowerCase();
+      }), 2), sortA = _b[0], sortB = _b[1];
+
+      if (sortA !== sortB) {
+        if (!isNaN(sortA) &amp;&amp; !isNaN(sortB)) return Number(sortA) - Number(sortB);
+        return sortA.localeCompare(sortB, locale);
+      }
+    }
+
+    return 0;
+  });
+}" page="1" itemsperpage="10" groupby="" groupdesc="" locale="en-US" search="" customfilter="function defaultFilter(value, search, item) {
+  return value != null &amp;&amp; search != null &amp;&amp; typeof value !== 'boolean' &amp;&amp; value.toString().toLocaleLowerCase().indexOf(search.toLocaleLowerCase()) !== -1;
+}" serveritemslength="-1" itemkey="id" value="" expanded="" noresultstext="$vuetify.dataIterator.noResultsText" nodatatext="$vuetify.noDataText" loadingtext="$vuetify.dataIterator.loadingText" headers="[object Object],[object Object],[object Object],[object Object]" mobilebreakpoint="600" expandicon="$vuetify.icons.expand" hide-actions="" select-all=""></v-data-table-stub>
+      </v-card-stub>
+    </v-layout-stub>
     <aside>
-      <v-dialog max-width="500px">
-        <v-card>
-          <v-card-title>Add</v-card-title>
-          <v-card-text>
-            <v-layout row="">
+      <v-dialog-stub opendelay="0" closedelay="0" contentclass="" maxwidth="500px" origin="center center" retainfocus="true" transition="dialog-transition" width="auto">
+        <v-card-stub loaderheight="4" tag="div">
+          <v-card-title-stub>Add</v-card-title-stub>
+          <v-card-text-stub>
+            <v-layout-stub tag="div" row="">
               <div class="o-text-field">
-                <v-text-field name="primary" label="Primary"></v-text-field>
+                <v-text-field-stub errorcount="1" errormessages="" messages="" rules="" successmessages="" backgroundcolor="" label="Primary" loaderheight="2" clearicon="$vuetify.icons.clear" type="text" name="primary"></v-text-field-stub>
               </div>
               <div class="o-text-field">
-                <v-text-field name="accent" label="Accent"></v-text-field>
+                <v-text-field-stub errorcount="1" errormessages="" messages="" rules="" successmessages="" backgroundcolor="" label="Accent" loaderheight="2" clearicon="$vuetify.icons.clear" type="text" name="accent"></v-text-field-stub>
               </div>
-            </v-layout>
-          </v-card-text>
-          <v-card-actions>
-            <v-btn color="error" flat="">Cancel</v-btn>
-            <v-btn color="success" flat="">Add</v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-dialog>
-      <v-dialog max-width="500px">
-        <v-card>
-          <v-card-title>Edit</v-card-title>
-          <v-card-text>
-            <v-layout row="">
+            </v-layout-stub>
+          </v-card-text-stub>
+          <v-card-actions-stub>
+            <v-btn-stub color="error" tag="button" activeclass="" type="button" flat="">Cancel</v-btn-stub>
+            <v-btn-stub color="success" tag="button" activeclass="" type="button" flat="">Add</v-btn-stub>
+          </v-card-actions-stub>
+        </v-card-stub>
+      </v-dialog-stub>
+      <v-dialog-stub opendelay="0" closedelay="0" contentclass="" maxwidth="500px" origin="center center" retainfocus="true" transition="dialog-transition" width="auto">
+        <v-card-stub loaderheight="4" tag="div">
+          <v-card-title-stub>Edit</v-card-title-stub>
+          <v-card-text-stub>
+            <v-layout-stub tag="div" row="">
               <div class="o-text-field">
-                <v-text-field name="primary" label="Primary"></v-text-field>
-              </div>
-              <div class="o-text-field">
-                <v-text-field name="accent" label="Accent"></v-text-field>
-              </div>
-            </v-layout>
-          </v-card-text>
-          <v-card-actions>
-            <v-btn color="error" flat="">Cancel</v-btn>
-            <v-btn color="success" flat="">Save</v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-dialog>
-      <v-dialog max-width="500px">
-        <v-card>
-          <v-card-title>View</v-card-title>
-          <v-card-text>
-            <v-layout row="">
-              <div class="o-text-field">
-                <v-text-field name="primary" label="Primary" readonly=""></v-text-field>
+                <v-text-field-stub errorcount="1" errormessages="" messages="" rules="" successmessages="" backgroundcolor="" label="Primary" loaderheight="2" clearicon="$vuetify.icons.clear" type="text" name="primary"></v-text-field-stub>
               </div>
               <div class="o-text-field">
-                <v-text-field name="accent" label="Accent" readonly=""></v-text-field>
+                <v-text-field-stub errorcount="1" errormessages="" messages="" rules="" successmessages="" backgroundcolor="" label="Accent" loaderheight="2" clearicon="$vuetify.icons.clear" type="text" name="accent"></v-text-field-stub>
               </div>
-            </v-layout>
-          </v-card-text>
-          <v-card-actions>
-            <v-btn color="success" flat="">Quit</v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-dialog>
-      <v-dialog max-width="500px">
-        <v-card>
-          <v-card-title>Delete</v-card-title>
-          <v-card-text>
+            </v-layout-stub>
+          </v-card-text-stub>
+          <v-card-actions-stub>
+            <v-btn-stub color="error" tag="button" activeclass="" type="button" flat="">Cancel</v-btn-stub>
+            <v-btn-stub color="success" tag="button" activeclass="" type="button" flat="">Save</v-btn-stub>
+          </v-card-actions-stub>
+        </v-card-stub>
+      </v-dialog-stub>
+      <v-dialog-stub opendelay="0" closedelay="0" contentclass="" maxwidth="500px" origin="center center" retainfocus="true" transition="dialog-transition" width="auto">
+        <v-card-stub loaderheight="4" tag="div">
+          <v-card-title-stub>View</v-card-title-stub>
+          <v-card-text-stub>
+            <v-layout-stub tag="div" row="">
+              <div class="o-text-field">
+                <v-text-field-stub errorcount="1" errormessages="" messages="" readonly="true" rules="" successmessages="" backgroundcolor="" label="Primary" loaderheight="2" clearicon="$vuetify.icons.clear" type="text" name="primary"></v-text-field-stub>
+              </div>
+              <div class="o-text-field">
+                <v-text-field-stub errorcount="1" errormessages="" messages="" readonly="true" rules="" successmessages="" backgroundcolor="" label="Accent" loaderheight="2" clearicon="$vuetify.icons.clear" type="text" name="accent"></v-text-field-stub>
+              </div>
+            </v-layout-stub>
+          </v-card-text-stub>
+          <v-card-actions-stub>
+            <v-btn-stub color="success" tag="button" activeclass="" type="button" flat="">Quit</v-btn-stub>
+          </v-card-actions-stub>
+        </v-card-stub>
+      </v-dialog-stub>
+      <v-dialog-stub opendelay="0" closedelay="0" contentclass="" maxwidth="500px" origin="center center" retainfocus="true" transition="dialog-transition" width="auto">
+        <v-card-stub loaderheight="4" tag="div">
+          <v-card-title-stub>Delete</v-card-title-stub>
+          <v-card-text-stub>
             Are you sure that you want to delete it?
-          </v-card-text>
-          <v-card-actions>
-            <v-btn color="success" flat="">Cancel</v-btn>
-            <v-btn color="error" flat="">Confirm</v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-dialog>
+          </v-card-text-stub>
+          <v-card-actions-stub>
+            <v-btn-stub color="success" tag="button" activeclass="" type="button" flat="">Cancel</v-btn-stub>
+            <v-btn-stub color="error" tag="button" activeclass="" type="button" flat="">Confirm</v-btn-stub>
+          </v-card-actions-stub>
+        </v-card-stub>
+      </v-dialog-stub>
     </aside>
-  </v-layout>
-</v-container>
+  </v-layout-stub>
+</v-container-stub>
 `;
 
 exports[`Basic should render an initial component 2`] = `
-<v-container id="basic" fluid="" class="shell-container">
-  <v-layout column="">
+<v-container-stub id="basic" tag="div" fluid="true" class="shell-container">
+  <v-layout-stub tag="div" column="">
     <div class="headline">CRUD Operations - Basic</div>
-    <v-layout row="">
-      <v-btn color="primary" class="ml-0">Add</v-btn>
-    </v-layout>
-    <v-layout row="">
-      <v-card>
-        <v-card-title class="o-card-title">
+    <v-layout-stub tag="div" row="">
+      <v-btn-stub color="primary" tag="button" activeclass="" type="button" class="ml-0">Add</v-btn-stub>
+    </v-layout-stub>
+    <v-layout-stub tag="div" row="">
+      <v-card-stub loaderheight="4" tag="div">
+        <v-card-title-stub class="o-card-title">
           <div class="title">Board</div>
-          <v-spacer></v-spacer>
-          <v-text-field append-icon="search" label="Search" single-line="" hide-details=""></v-text-field>
-        </v-card-title>
-        <v-data-table headers="[object Object],[object Object],[object Object],[object Object]" items="[object Object],[object Object],[object Object],[object Object]" search="" hide-actions="" select-all=""></v-data-table>
-      </v-card>
-    </v-layout>
+          <v-spacer-stub></v-spacer-stub>
+          <v-text-field-stub errorcount="1" errormessages="" messages="" rules="" successmessages="" value="" appendicon="search" backgroundcolor="" hidedetails="true" label="Search" loaderheight="2" clearicon="$vuetify.icons.clear" singleline="true" type="text"></v-text-field-stub>
+        </v-card-title-stub>
+        <v-data-table-stub items="[object Object],[object Object],[object Object],[object Object]" options="[object Object]" sortby="" sortdesc="" customsort="function sortItems(items, sortBy, sortDesc, locale, customSorters) {
+  if (sortBy === null || !sortBy.length) return items;
+  return items.sort(function (a, b) {
+    var _a, _b;
+
+    for (var i = 0; i < sortBy.length; i++) {
+      var sortKey = sortBy[i];
+      var sortA = getObjectValueByPath(a, sortKey);
+      var sortB = getObjectValueByPath(b, sortKey);
+
+      if (sortDesc[i]) {
+        _a = __read([sortB, sortA], 2), sortA = _a[0], sortB = _a[1];
+      }
+
+      if (customSorters &amp;&amp; customSorters[sortKey]) return customSorters[sortKey](sortA, sortB); // Check if both cannot be evaluated
+
+      if (sortA === null &amp;&amp; sortB === null) {
+        return 0;
+      }
+
+      _b = __read([sortA, sortB].map(function (s) {
+        return (s || '').toString().toLocaleLowerCase();
+      }), 2), sortA = _b[0], sortB = _b[1];
+
+      if (sortA !== sortB) {
+        if (!isNaN(sortA) &amp;&amp; !isNaN(sortB)) return Number(sortA) - Number(sortB);
+        return sortA.localeCompare(sortB, locale);
+      }
+    }
+
+    return 0;
+  });
+}" page="1" itemsperpage="10" groupby="" groupdesc="" locale="en-US" search="" customfilter="function defaultFilter(value, search, item) {
+  return value != null &amp;&amp; search != null &amp;&amp; typeof value !== 'boolean' &amp;&amp; value.toString().toLocaleLowerCase().indexOf(search.toLocaleLowerCase()) !== -1;
+}" serveritemslength="-1" itemkey="id" value="" expanded="" noresultstext="$vuetify.dataIterator.noResultsText" nodatatext="$vuetify.noDataText" loadingtext="$vuetify.dataIterator.loadingText" headers="[object Object],[object Object],[object Object],[object Object]" mobilebreakpoint="600" expandicon="$vuetify.icons.expand" hide-actions="" select-all=""></v-data-table-stub>
+      </v-card-stub>
+    </v-layout-stub>
     <aside>
-      <v-dialog max-width="500px">
-        <v-card>
-          <v-card-title>Add</v-card-title>
-          <v-card-text>
-            <v-layout row="">
+      <v-dialog-stub opendelay="0" closedelay="0" contentclass="" maxwidth="500px" origin="center center" retainfocus="true" transition="dialog-transition" width="auto">
+        <v-card-stub loaderheight="4" tag="div">
+          <v-card-title-stub>Add</v-card-title-stub>
+          <v-card-text-stub>
+            <v-layout-stub tag="div" row="">
               <div class="o-text-field">
-                <v-text-field name="primary" label="Primary"></v-text-field>
+                <v-text-field-stub errorcount="1" errormessages="" messages="" rules="" successmessages="" backgroundcolor="" label="Primary" loaderheight="2" clearicon="$vuetify.icons.clear" type="text" name="primary"></v-text-field-stub>
               </div>
               <div class="o-text-field">
-                <v-text-field name="accent" label="Accent"></v-text-field>
+                <v-text-field-stub errorcount="1" errormessages="" messages="" rules="" successmessages="" backgroundcolor="" label="Accent" loaderheight="2" clearicon="$vuetify.icons.clear" type="text" name="accent"></v-text-field-stub>
               </div>
-            </v-layout>
-          </v-card-text>
-          <v-card-actions>
-            <v-btn color="error" flat="">Cancel</v-btn>
-            <v-btn color="success" flat="">Add</v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-dialog>
-      <v-dialog max-width="500px">
-        <v-card>
-          <v-card-title>Edit</v-card-title>
-          <v-card-text>
-            <v-layout row="">
+            </v-layout-stub>
+          </v-card-text-stub>
+          <v-card-actions-stub>
+            <v-btn-stub color="error" tag="button" activeclass="" type="button" flat="">Cancel</v-btn-stub>
+            <v-btn-stub color="success" tag="button" activeclass="" type="button" flat="">Add</v-btn-stub>
+          </v-card-actions-stub>
+        </v-card-stub>
+      </v-dialog-stub>
+      <v-dialog-stub opendelay="0" closedelay="0" contentclass="" maxwidth="500px" origin="center center" retainfocus="true" transition="dialog-transition" width="auto">
+        <v-card-stub loaderheight="4" tag="div">
+          <v-card-title-stub>Edit</v-card-title-stub>
+          <v-card-text-stub>
+            <v-layout-stub tag="div" row="">
               <div class="o-text-field">
-                <v-text-field name="primary" label="Primary"></v-text-field>
-              </div>
-              <div class="o-text-field">
-                <v-text-field name="accent" label="Accent"></v-text-field>
-              </div>
-            </v-layout>
-          </v-card-text>
-          <v-card-actions>
-            <v-btn color="error" flat="">Cancel</v-btn>
-            <v-btn color="success" flat="">Save</v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-dialog>
-      <v-dialog max-width="500px">
-        <v-card>
-          <v-card-title>View</v-card-title>
-          <v-card-text>
-            <v-layout row="">
-              <div class="o-text-field">
-                <v-text-field name="primary" label="Primary" readonly=""></v-text-field>
+                <v-text-field-stub errorcount="1" errormessages="" messages="" rules="" successmessages="" backgroundcolor="" label="Primary" loaderheight="2" clearicon="$vuetify.icons.clear" type="text" name="primary"></v-text-field-stub>
               </div>
               <div class="o-text-field">
-                <v-text-field name="accent" label="Accent" readonly=""></v-text-field>
+                <v-text-field-stub errorcount="1" errormessages="" messages="" rules="" successmessages="" backgroundcolor="" label="Accent" loaderheight="2" clearicon="$vuetify.icons.clear" type="text" name="accent"></v-text-field-stub>
               </div>
-            </v-layout>
-          </v-card-text>
-          <v-card-actions>
-            <v-btn color="success" flat="">Quit</v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-dialog>
-      <v-dialog max-width="500px">
-        <v-card>
-          <v-card-title>Delete</v-card-title>
-          <v-card-text>
+            </v-layout-stub>
+          </v-card-text-stub>
+          <v-card-actions-stub>
+            <v-btn-stub color="error" tag="button" activeclass="" type="button" flat="">Cancel</v-btn-stub>
+            <v-btn-stub color="success" tag="button" activeclass="" type="button" flat="">Save</v-btn-stub>
+          </v-card-actions-stub>
+        </v-card-stub>
+      </v-dialog-stub>
+      <v-dialog-stub opendelay="0" closedelay="0" contentclass="" maxwidth="500px" origin="center center" retainfocus="true" transition="dialog-transition" width="auto">
+        <v-card-stub loaderheight="4" tag="div">
+          <v-card-title-stub>View</v-card-title-stub>
+          <v-card-text-stub>
+            <v-layout-stub tag="div" row="">
+              <div class="o-text-field">
+                <v-text-field-stub errorcount="1" errormessages="" messages="" readonly="true" rules="" successmessages="" backgroundcolor="" label="Primary" loaderheight="2" clearicon="$vuetify.icons.clear" type="text" name="primary"></v-text-field-stub>
+              </div>
+              <div class="o-text-field">
+                <v-text-field-stub errorcount="1" errormessages="" messages="" readonly="true" rules="" successmessages="" backgroundcolor="" label="Accent" loaderheight="2" clearicon="$vuetify.icons.clear" type="text" name="accent"></v-text-field-stub>
+              </div>
+            </v-layout-stub>
+          </v-card-text-stub>
+          <v-card-actions-stub>
+            <v-btn-stub color="success" tag="button" activeclass="" type="button" flat="">Quit</v-btn-stub>
+          </v-card-actions-stub>
+        </v-card-stub>
+      </v-dialog-stub>
+      <v-dialog-stub opendelay="0" closedelay="0" contentclass="" maxwidth="500px" origin="center center" retainfocus="true" transition="dialog-transition" width="auto">
+        <v-card-stub loaderheight="4" tag="div">
+          <v-card-title-stub>Delete</v-card-title-stub>
+          <v-card-text-stub>
             Are you sure that you want to delete it?
-          </v-card-text>
-          <v-card-actions>
-            <v-btn color="success" flat="">Cancel</v-btn>
-            <v-btn color="error" flat="">Confirm</v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-dialog>
+          </v-card-text-stub>
+          <v-card-actions-stub>
+            <v-btn-stub color="success" tag="button" activeclass="" type="button" flat="">Cancel</v-btn-stub>
+            <v-btn-stub color="error" tag="button" activeclass="" type="button" flat="">Confirm</v-btn-stub>
+          </v-card-actions-stub>
+        </v-card-stub>
+      </v-dialog-stub>
     </aside>
-  </v-layout>
-</v-container>
+  </v-layout-stub>
+</v-container-stub>
 `;

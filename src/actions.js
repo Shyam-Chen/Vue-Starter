@@ -3,6 +3,7 @@
 import { ActionContext } from 'vuex';
 
 import router from '~/core/router';
+import vuetify from '~/core/vuetify';
 import i18n from '~/core/i18n';
 
 import { IApp } from './types';
@@ -12,6 +13,7 @@ export default {
   setTheme({ state }: ActionContext<IApp>, val: string): void {
     state.theme = val;
     localStorage.setItem('theme', val);
+    vuetify.framework.theme.dark = val === 'dark';
   },
   setLanguage(context: ActionContext<IApp>, val: string): void {
     import(`~/core/i18n/${val}`).then(

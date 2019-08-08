@@ -7,6 +7,7 @@ switch (process.env.JEST_ENV) {
       moduleFileExtensions: ['js', 'vue'],
       moduleNameMapper: {
         '~(.*)': '<rootDir>/src$1',
+        '^vuetify/lib$': 'vuetify',
       },
       setupFilesAfterEnv: ['<rootDir>/tools/setup-app.js'],
       snapshotSerializers: ['<rootDir>/node_modules/jest-serializer-vue'],

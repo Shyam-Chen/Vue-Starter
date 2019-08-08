@@ -13,7 +13,7 @@
               <v-icon left>more</v-icon>
               {{ $t('home.seeMore') }}
             </v-btn>
-            <v-btn color="white" href="https://github.com/Shyam-Chen/Vue-Play" large outline target="_blank" rel="noopener">
+            <v-btn color="white" href="https://github.com/Shyam-Chen/Vue-Play" large outlined target="_blank" rel="noopener" class="ml-3">
               <v-icon left>fab fa-github</v-icon>
               {{ $t('home.sourceCode') }}
             </v-btn>

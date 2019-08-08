@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ListRendering should render an initial component 1`] = `
-<v-layout column="" class="my-1">
+<v-layout-stub tag="div" column="" class="my-1">
   <div class="title mb-2">List Rendering</div>
   <ul class="pl-3 mb-1">
     <li>
@@ -25,5 +25,5 @@ exports[`ListRendering should render an initial component 1`] = `
       Baz
     </li>
   </ul>
-</v-layout>
+</v-layout-stub>
 `;

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ClassAndStyleBindings should render an initial component 1`] = `
-<v-layout column="" class="my-1">
+<v-layout-stub tag="div" column="" class="my-1">
   <div class="title mb-2">Class and Style Bindings</div>
   <div class="cyan-color">Cyan</div>
   <div class="pink-color">Pink</div>
@@ -9,5 +9,5 @@ exports[`ClassAndStyleBindings should render an initial component 1`] = `
   <div><span style="color: rgb(0, 105, 92); background-color: rgb(178, 223, 219);">Teal</span></div>
   <div><span style="color: rgb(106, 27, 154); background-color: rgb(225, 190, 231);">Purple</span></div>
   <div><span style="color: rgb(239, 108, 0); background-color: rgb(255, 224, 178);">Orange</span></div>
-</v-layout>
+</v-layout-stub>
 `;

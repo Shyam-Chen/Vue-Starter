@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const HtmlPlugin = require('html-webpack-plugin');
 const ScriptExtHtmlPlugin = require('script-ext-html-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
+const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const { GenerateSW } = require('workbox-webpack-plugin');
 const PurgecssPlugin = require('purgecss-webpack-plugin');
@@ -44,6 +45,21 @@ module.exports = ({ prod = false } = {}) => ({
           'style-loader',
           { loader: 'css-loader', options: { importLoaders: 1 } },
           { loader: 'postcss-loader', options: { sourceMap: true } },
+        ],
+      },
+      {
+        test: /\.s(c|a)ss$/,
+        use: [
+          'vue-style-loader',
+          'css-loader',
+          {
+            loader: 'sass-loader',
+            options: {
+              implementation: require('sass'),
+              fiber: require('fibers'),
+              indentedSyntax: true,
+            },
+          },
         ],
       },
       {
@@ -102,6 +118,7 @@ module.exports = ({ prod = false } = {}) => ({
       },
     }),
     new VueLoaderPlugin(),
+    new VuetifyLoaderPlugin(),
     new CopyPlugin([
       {
         from: 'assets/**/*',
