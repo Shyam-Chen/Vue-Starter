@@ -1,15 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`FadeInAndOut should render an initial component 1`] = `
-<v-layout column="" class="my-1">
+<v-layout-stub tag="div" column="" class="my-1">
   <div class="title mb-2">Fade In and Out</div>
-  <v-layout align-center="">
-    <v-btn>Fade Transition</v-btn>
+  <v-layout-stub tag="div" align-center="">
+    <v-btn-stub tag="button" activeclass="" type="button">Fade Transition</v-btn-stub>
     <div name="fade-transition">Block</div>
-  </v-layout>
-  <v-layout align-center="" class="my-1">
-    <v-btn>Fade Animation</v-btn>
+  </v-layout-stub>
+  <v-layout-stub tag="div" align-center="" class="my-1">
+    <v-btn-stub tag="button" activeclass="" type="button">Fade Animation</v-btn-stub>
     <div name="fade-animation">Block</div>
-  </v-layout>
-</v-layout>
+  </v-layout-stub>
+</v-layout-stub>
 `;

@@ -17,12 +17,12 @@
       <List :subheader="subheader" :items="items">
         <!-- scoped slot -->
         <template slot="items" slot-scope="props">
-          <v-list-tile avatar>
-            <v-list-tile-content>
-              <v-list-tile-title>{{ props.item.text }}</v-list-tile-title>
-              <v-list-tile-sub-title>{{ props.item.helperText }}</v-list-tile-sub-title>
-            </v-list-tile-content>
-          </v-list-tile>
+          <v-list-item avatar>
+            <v-list-item-content>
+              <v-list-item-title>{{ props.item.text }}</v-list-item-title>
+              <v-list-item-subtitle>{{ props.item.helperText }}</v-list-item-subtitle>
+            </v-list-item-content>
+          </v-list-item>
         </template>
       </List>
 

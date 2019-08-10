@@ -1,13 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Unauthorized should render an initial component 1`] = `
-<v-container fluid="" fill-height="">
-  <v-layout justify-center="" align-center="">
+<v-container-stub tag="div" fluid="true" fill-height="">
+  <v-layout-stub tag="div" justify-center="" align-center="">
     <div class="text-xs-center">
       <div class="display-2 primary--text pa-3">Whoops, 401!</div>
       <div class="pa-2">You don't have permission to go to this page.</div>
-      <v-btn to="/" color="primary" outline="">Get me out of here!</v-btn>
+      <v-btn-stub color="primary" tag="button" activeclass="" to="/" type="button" outline="">Get me out of here!</v-btn-stub>
     </div>
-  </v-layout>
-</v-container>
+  </v-layout-stub>
+</v-container-stub>
 `;

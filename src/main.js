@@ -1,7 +1,5 @@
-import 'vuetify/dist/vuetify.css';
 import Vue from 'vue';
 import { sync } from 'vuex-router-sync';
-import Material from 'vuetify';
 import Raven from 'raven-js';
 import RavenVue from 'raven-js/plugins/vue';
 import { register } from 'register-service-worker';
@@ -10,18 +8,11 @@ import './assets/styles/global.css';
 import App from './App';
 import router from './core/router';
 import store from './core/store';
+import vuetify from './core/vuetify';
 import apolloProvider from './core/apollo-provider';
 import i18n from './core/i18n';
 
 sync(store, router);
-
-Vue.use(Material, {
-  theme: {
-    primary: '#1E88E5',  // blue, darken-1
-    secondary: '#42A5F5',  // blue, lighten-1
-    accent: '#E91E63',  // pink
-  },
-});
 
 if (process.env.NODE_ENV === 'production') {
   Raven.config(process.env.SENTRY_DSN)
@@ -58,6 +49,7 @@ if (process.env.NODE_ENV === 'production') {
 const vm = new Vue({
   router,
   store,
+  vuetify,
   apolloProvider,
   i18n,
   render: handle => handle(App),

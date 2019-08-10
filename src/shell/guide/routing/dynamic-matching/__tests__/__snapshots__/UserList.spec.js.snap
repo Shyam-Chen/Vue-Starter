@@ -1,46 +1,46 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`UserList should render an initial component 1`] = `
-<v-layout row="">
+<v-layout-stub tag="div" row="">
   <div>
-    <v-list dense="" class="elevation-1">
-      <v-subheader>User List</v-subheader>
-      <v-list-tile avatar="">
-        <v-list-tile-avatar><img src="https://vuetifyjs.com/static/doc-images/lists/1.jpg"></v-list-tile-avatar>
-        <v-list-tile-content>
-          <v-list-tile-title>Jason Oner</v-list-tile-title>
-          <v-list-tile-sub-title></v-list-tile-sub-title>
-        </v-list-tile-content>
-      </v-list-tile>
-      <v-list-tile avatar="">
-        <v-list-tile-avatar><img src="https://vuetifyjs.com/static/doc-images/lists/2.jpg"></v-list-tile-avatar>
-        <v-list-tile-content>
-          <v-list-tile-title>Travis Howard</v-list-tile-title>
-          <v-list-tile-sub-title></v-list-tile-sub-title>
-        </v-list-tile-content>
-      </v-list-tile>
-      <v-list-tile avatar="">
-        <v-list-tile-avatar><img src="https://vuetifyjs.com/static/doc-images/lists/3.jpg"></v-list-tile-avatar>
-        <v-list-tile-content>
-          <v-list-tile-title>Ali Connors</v-list-tile-title>
-          <v-list-tile-sub-title></v-list-tile-sub-title>
-        </v-list-tile-content>
-      </v-list-tile>
-      <v-list-tile avatar="">
-        <v-list-tile-avatar><img src="https://vuetifyjs.com/static/doc-images/lists/4.jpg"></v-list-tile-avatar>
-        <v-list-tile-content>
-          <v-list-tile-title>Cindy Baker</v-list-tile-title>
-          <v-list-tile-sub-title></v-list-tile-sub-title>
-        </v-list-tile-content>
-      </v-list-tile>
-      <v-list-tile avatar="">
-        <v-list-tile-avatar><img src="https://vuetifyjs.com/static/doc-images/lists/5.jpg"></v-list-tile-avatar>
-        <v-list-tile-content>
-          <v-list-tile-title>Britta Holt</v-list-tile-title>
-          <v-list-tile-sub-title></v-list-tile-sub-title>
-        </v-list-tile-content>
-      </v-list-tile>
-    </v-list>
+    <v-list-stub tag="div" tile="true" dense="true" class="elevation-1">
+      <v-subheader-stub>User List</v-subheader-stub>
+      <v-list-item-stub activeclass="" tag="div" avatar="">
+        <v-list-item-avatar-stub size="40"><img src="https://vuetifyjs.com/static/doc-images/lists/1.jpg"></v-list-item-avatar-stub>
+        <v-list-item-content-stub>
+          <v-list-item-title-stub></v-list-item-title-stub>
+          <v-list-item-subtitle-stub></v-list-item-subtitle-stub>
+        </v-list-item-content-stub>
+      </v-list-item-stub>
+      <v-list-item-stub activeclass="" tag="div" avatar="">
+        <v-list-item-avatar-stub size="40"><img src="https://vuetifyjs.com/static/doc-images/lists/2.jpg"></v-list-item-avatar-stub>
+        <v-list-item-content-stub>
+          <v-list-item-title-stub></v-list-item-title-stub>
+          <v-list-item-subtitle-stub></v-list-item-subtitle-stub>
+        </v-list-item-content-stub>
+      </v-list-item-stub>
+      <v-list-item-stub activeclass="" tag="div" avatar="">
+        <v-list-item-avatar-stub size="40"><img src="https://vuetifyjs.com/static/doc-images/lists/3.jpg"></v-list-item-avatar-stub>
+        <v-list-item-content-stub>
+          <v-list-item-title-stub></v-list-item-title-stub>
+          <v-list-item-subtitle-stub></v-list-item-subtitle-stub>
+        </v-list-item-content-stub>
+      </v-list-item-stub>
+      <v-list-item-stub activeclass="" tag="div" avatar="">
+        <v-list-item-avatar-stub size="40"><img src="https://vuetifyjs.com/static/doc-images/lists/4.jpg"></v-list-item-avatar-stub>
+        <v-list-item-content-stub>
+          <v-list-item-title-stub></v-list-item-title-stub>
+          <v-list-item-subtitle-stub></v-list-item-subtitle-stub>
+        </v-list-item-content-stub>
+      </v-list-item-stub>
+      <v-list-item-stub activeclass="" tag="div" avatar="">
+        <v-list-item-avatar-stub size="40"><img src="https://vuetifyjs.com/static/doc-images/lists/5.jpg"></v-list-item-avatar-stub>
+        <v-list-item-content-stub>
+          <v-list-item-title-stub></v-list-item-title-stub>
+          <v-list-item-subtitle-stub></v-list-item-subtitle-stub>
+        </v-list-item-content-stub>
+      </v-list-item-stub>
+    </v-list-stub>
   </div>
-</v-layout>
+</v-layout-stub>
 `;

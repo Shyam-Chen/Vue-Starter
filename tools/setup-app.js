@@ -1,73 +1,12 @@
 import 'jest-localstorage-mock';
 import { toMatchImageSnapshot } from 'jest-image-snapshot';
 import Vue from 'vue';
+import Vuetify from 'vuetify';
 
 expect.extend({ toMatchImageSnapshot });
 
 Vue.config.productionTip = false;
 
-Vue.config.ignoredElements = [
-  'v-alert',
-  'v-app',
-  'v-autocomplete',
-  'v-avatar',
-  'v-badge',
-  'v-bottom-nav', 'v-bottom-sheet',
-  'v-breadcrumbs', 'v-breadcrumbs-item',
-  'v-btn', 'v-btn-toggle',
-  'v-card', 'v-card-actions', 'v-card-text', 'v-card-title',
-  'v-carousel', 'v-carousel-item',
-  'v-checkbox',
-  'v-chip',
-  'v-combobox',
-  'v-container',
-  'v-content',
-  'v-data-iterator', 'v-data-table',
-  'v-date-picker',
-  'v-dialog',
-  'v-divider',
-  'v-edit-dialog',
-  'v-expansion-panel', 'v-expansion-panel-content',
-  'v-fade-transition',
-  'v-flex',
-  'v-footer',
-  'v-form',
-  'v-hover',
-  'v-icon',
-  'v-img',
-  'v-input',
-  'v-layout',
-  'v-list', 'v-list-group', 'v-list-tile', 'v-list-tile-action', 'v-list-tile-action-text', 'v-list-tile-avatar', 'v-list-tile-content', 'v-list-tile-sub-title', 'v-list-tile-title',
-  'v-menu',
-  'v-navigation-drawer',
-  'v-overflow-btn',
-  'v-pagination',
-  'v-parallax',
-  'v-progress-circular',
-  'v-progress-linear',
-  'v-radio', 'v-radio-group',
-  'v-range-slider',
-  'v-rating',
-  'v-responsive',
-  'v-scale-transition',
-  'v-scroll-x-reverse-transition', 'v-scroll-x-transition', 'v-scroll-y-reverse-transition', 'v-scroll-y-transition',
-  'v-select',
-  'v-slide-x-reverse-transition', 'v-slide-x-transition', 'v-slide-y-reverse-transition', 'v-slide-y-transition',
-  'v-slider',
-  'v-snackbar',
-  'v-spacer',
-  'v-speed-dial',
-  'v-stepper', 'v-stepper-content', 'v-stepper-header', 'v-stepper-step',
-  'v-subheader',
-  'v-switch',
-  'v-system-bar',
-  'v-tab', 'v-tab-item',
-  'v-tabs', 'v-tabs-items', 'v-tabs-slider',
-  'v-text-field',
-  'v-textarea',
-  'v-time-picker',
-  'v-toolbar', 'v-toolbar-items', 'v-toolbar-side-icon', 'v-toolbar-title',
-  'v-tooltip',
-];
+Vue.use(Vuetify);
 
 window.matchMedia = () => ({ matches: false, addListener() {}, removeListener() {} });

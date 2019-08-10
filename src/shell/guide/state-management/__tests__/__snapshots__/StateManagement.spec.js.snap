@@ -1,33 +1,56 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`StateManagement should render an initial component 1`] = `
-<v-container id="state-management" fluid="" class="shell-container">
-  <v-layout column="">
-    <v-layout row="">
+<v-container-stub id="state-management" tag="div" fluid="true" class="shell-container">
+  <v-layout-stub tag="div" column="">
+    <v-layout-stub tag="div" row="">
       <div class="headline pa-2">
         Clicked: <strong>0</strong> times, value is <strong>even</strong>.
       </div>
-    </v-layout>
-    <v-layout row="">
-      <v-subheader class="pt-3">Step:</v-subheader>
+    </v-layout-stub>
+    <v-layout-stub tag="div" row="">
+      <v-subheader-stub class="pt-3">Step:</v-subheader-stub>
       <div>
-        <v-select items="1,2,3,4,5,6,7,8,9,10" single-line="" class="step"></v-select>
+        <v-select-stub errorcount="1" errormessages="" messages="" rules="" successmessages="" value="1" appendicon="$vuetify.icons.dropdown" backgroundcolor="" loaderheight="2" clearicon="$vuetify.icons.clear" singleline="true" type="text" valuecomparator="function deepEqual(a, b) {
+  if (a === b) return true;
+
+  if (a instanceof Date &amp;&amp; b instanceof Date) {
+    // If the values are Date, they were convert to timestamp with getTime and compare it
+    if (a.getTime() !== b.getTime()) return false;
+  }
+
+  if (a !== Object(a) || b !== Object(b)) {
+    // If the values aren't objects, they were already checked for equality
+    return false;
+  }
+
+  var props = Object.keys(a);
+
+  if (props.length !== Object.keys(b).length) {
+    // Different number of props, don't bother to check
+    return false;
+  }
+
+  return props.every(function (p) {
+    return deepEqual(a[p], b[p]);
+  });
+}" nodatatext="$vuetify.noDataText" items="1,2,3,4,5,6,7,8,9,10" itemcolor="primary" itemdisabled="disabled" itemtext="text" itemvalue="value" menuprops="[object Object]" class="step"></v-select-stub>
       </div>
-    </v-layout>
-    <v-layout row="">
-      <v-btn color="primary">Increment</v-btn>
-      <v-btn color="primary">Decrement</v-btn>
-    </v-layout>
-    <v-layout row="">
-      <v-btn color="primary">Increment (Async)</v-btn>
-      <v-btn color="primary">Decrement (Async)</v-btn>
-      <v-btn color="primary">Increment (If Odd)</v-btn>
-      <v-btn color="primary">Decrement (If Even)</v-btn>
-    </v-layout>
-    <v-layout row="">
-      <v-btn color="primary" disabled="">Start Count</v-btn>
-      <v-btn color="primary" disabled="">Cancel Count</v-btn>
-    </v-layout>
-  </v-layout>
-</v-container>
+    </v-layout-stub>
+    <v-layout-stub tag="div" row="">
+      <v-btn-stub color="primary" tag="button" activeclass="" type="button">Increment</v-btn-stub>
+      <v-btn-stub color="primary" tag="button" activeclass="" type="button">Decrement</v-btn-stub>
+    </v-layout-stub>
+    <v-layout-stub tag="div" row="">
+      <v-btn-stub color="primary" tag="button" activeclass="" type="button">Increment (Async)</v-btn-stub>
+      <v-btn-stub color="primary" tag="button" activeclass="" type="button">Decrement (Async)</v-btn-stub>
+      <v-btn-stub color="primary" tag="button" activeclass="" type="button">Increment (If Odd)</v-btn-stub>
+      <v-btn-stub color="primary" tag="button" activeclass="" type="button">Decrement (If Even)</v-btn-stub>
+    </v-layout-stub>
+    <v-layout-stub tag="div" row="">
+      <v-btn-stub color="primary" tag="button" activeclass="" disabled="true" type="button">Start Count</v-btn-stub>
+      <v-btn-stub color="primary" tag="button" activeclass="" disabled="true" type="button">Cancel Count</v-btn-stub>
+    </v-layout-stub>
+  </v-layout-stub>
+</v-container-stub>
 `;

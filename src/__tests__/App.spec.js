@@ -1,4 +1,4 @@
-import { createLocalVue, shallowMount } from '@vue/test-utils';
+import { createLocalVue, shallowMount, RouterLinkStub } from '@vue/test-utils';
 import Router from 'vue-router';
 import Vuex from 'vuex';
 import I18n from 'vue-i18n';
@@ -54,7 +54,9 @@ describe('App', () => {
       router,
       store,
       i18n,
-      stubs: ['router-link', 'router-view'],
+      stubs: {
+        RouterLink: RouterLinkStub,
+      },
       mocks: {
         $vuetify: {
           breakpoint: {
