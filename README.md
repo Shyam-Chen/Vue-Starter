@@ -10,9 +10,9 @@
 | Npm Package | [![dependencies Status][package-dependencies-image]][package-dependencies-link] [![devDependencies Status][package-devDependencies-image]][package-devDependencies-link] |
 
 [demo-develop-image]: https://img.shields.io/badge/link-develop-blue.svg
-[demo-develop-link]: https://vue-by-example-dev.firebaseapp.com/
+[demo-develop-link]: https://vue-by-example-dev.web.app/
 [demo-master-image]: https://img.shields.io/badge/link-master-blue.svg
-[demo-master-link]: https://vue-by-example-prod.firebaseapp.com/
+[demo-master-link]: https://vue-by-example-prod.web.app/
 
 [develop-build-image]: https://img.shields.io/circleci/project/github/Shyam-Chen/Vue-Play/develop.svg
 [develop-build-link]: https://circleci.com/gh/Shyam-Chen/workflows/Vue-Play
@@ -305,7 +305,7 @@ $ yarn firebase functions:config:set RENDERTRON_URL="<RENDERTRON_URL>" SITE_URL=
 
 # Example:
 # RENDERTRON_URL=https://<APP_NAME>.appspot.com
-# SITE_URL=https://<APP_NAME>.firebaseapp.com
+# SITE_URL=https://<APP_NAME>.web.app
 ```
 
 ### VS Code settings
