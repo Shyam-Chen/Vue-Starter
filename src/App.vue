@@ -3,7 +3,7 @@
     <v-app v-cloak>
 
       <template v-if="!$route.meta.standalone">
-        <v-navigation-drawer v-if="!$route.meta.home || isMobile" :clipped="$vuetify.breakpoint && $vuetify.breakpoint.mdAndUp" v-model="app$.drawer" app>
+        <v-navigation-drawer v-if="!$route.meta.home || isMobile" :clipped="$vuetify.breakpoint.mdAndUp" v-model="app$.drawer" app>
           <v-toolbar class="hidden-md-and-up" flat>
             <v-toolbar-title class="o-toolbar-title">
               <div class="o-router-link" @click="backToHome">
@@ -78,7 +78,7 @@
           </v-list>
         </v-navigation-drawer>
 
-        <v-app-bar :clipped-left="$vuetify.breakpoint && $vuetify.breakpoint.mdAndUp" :flat="$route.meta.home" class="primary darken-1" dark app>
+        <v-app-bar :clipped-left="$vuetify.breakpoint.mdAndUp" :flat="$route.meta.home" class="primary darken-1" dark app>
           <v-toolbar-title class="o-toolbar-title">
             <v-app-bar-nav-icon v-if="!$route.meta.home || isMobile" @click.stop="app$.drawer = !app$.drawer"></v-app-bar-nav-icon>
             <router-link class="white--text o-router-link" to="/">

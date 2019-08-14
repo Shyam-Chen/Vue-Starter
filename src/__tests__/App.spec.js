@@ -4,15 +4,20 @@ import Vuex from 'vuex';
 import I18n from 'vue-i18n';
 import mockdate from 'mockdate';
 
+import store from '~/core/store';
+import router from '~/core/router';
+import i18n from '~/core/i18n';
+import vuetify from '~/core/vuetify';
+
 import Home from '~/home/Home';
+import HelloWorld from '~/shell/hello-world/HelloWorld';
+import StateManagement from '~/shell/guide/state-management/StateManagement';
 import NotFound from '~/not-found/NotFound';
 
 import App from '../App';
 import { INITIAL as state } from '../constants';
 import actions from '../actions';
-import mutations from '../mutations';
 import getters from '../getters';
-import en from '../_languages/en';
 
 const localVue = createLocalVue();
 
@@ -20,49 +25,34 @@ localVue.use(Router);
 localVue.use(Vuex);
 localVue.use(I18n);
 
+jest.mock('~/shell/overview/Overview', () => ({
+  name: 'Overview',
+  render: h => h('div'),
+}));
+jest.mock('~/shell/hello-world/HelloWorld', () => ({
+  name: 'HelloWorld',
+  render: h => h('div'),
+}));
+
+jest.mock('~/shell/guide/state-management/StateManagement', () => ({
+  name: 'StateManagement',
+  render: h => h('div'),
+}));
+
 describe('App', () => {
-  let [router, store, i18n, wrapper] = [];
+  let [wrapper] = [];
 
   beforeEach(() => {
-    router = new Router({
-      mode: 'history',
-      base: process.env.APP_BASE,
-      routes: [
-        { path: '/', component: Home, meta: { home: true } },
-        { path: '*', component: NotFound, meta: { standalone: true } },
-      ],
-    });
-
-    store = new Vuex.Store({
-      modules: {
-        counter: {
-          state,
-          actions,
-          mutations,
-          getters,
-        },
-      },
-    });
-
-    i18n = new I18n({
-      locale: 'en',
-      messages: { en },
-    });
-
     wrapper = shallowMount(App, {
       localVue,
       router,
       store,
       i18n,
+      vuetify,
       stubs: {
         RouterLink: RouterLinkStub,
       },
       mocks: {
-        $vuetify: {
-          breakpoint: {
-            mdAndUp: true,
-          },
-        },
         Date: mockdate.set('2020-01-10'),
       },
     });
@@ -70,5 +60,13 @@ describe('App', () => {
 
   it('should render an initial component', () => {
     expect(wrapper.html()).toMatchSnapshot();
+
+    router.push('/guide/state-management');
+    expect(wrapper.find(StateManagement).exists());
+  });
+
+  it('', () => {
+    router.push('/hello-world');
+    expect(wrapper.find(HelloWorld).exists());
   });
 });

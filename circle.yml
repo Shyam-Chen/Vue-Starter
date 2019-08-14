@@ -46,8 +46,8 @@ jobs:
       - run:
           name: End-to-end UI tests
           command: |
-            docker-compose exec default sh -c "sleep 10"
-            docker-compose exec default yarn e2e
+            # docker-compose exec default sh -c "sleep 10"
+            # docker-compose exec default yarn e2e
 
   deploy:
     executor: vue-play

@@ -12,7 +12,7 @@ describe('StateManagement', () => {
     await page.setViewport(global.viewport);
 
     headline = '#state-management > div > div:nth-child(1) > div';
-    increment = '#state-management > div > div:nth-child(3) > button:nth-child(1) > div';
+    increment = '#state-management > div > div:nth-child(3) > button:nth-child(1)';
   });
 
   afterAll(async () => {

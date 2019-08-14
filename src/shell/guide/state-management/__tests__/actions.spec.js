@@ -73,7 +73,7 @@ describe('actions', () => {
 
     actions.decrementIfEven({
       dispatch(type, payload) {
-        expect(type).toBeUndefined();
+        expect(type).toBe('decrement');
         expect(payload).toBeUndefined();
       },
       state: { ...INITIAL },

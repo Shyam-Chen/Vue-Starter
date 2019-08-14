@@ -36,7 +36,6 @@
     "ml5": "0.3.1",
     "raven-js": "3.27.2",
     "register-service-worker": "1.6.2",
-    "rxjs": "6.4.0",
     "vue": "2.6.10",
     "vue-analytics": "5.17.0",
     "vue-apollo": "3.0.0-rc.2",

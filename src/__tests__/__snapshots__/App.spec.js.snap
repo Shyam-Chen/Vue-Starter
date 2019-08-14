@@ -4,7 +4,7 @@ exports[`App should render an initial component 1`] = `
 <v-fade-transition-stub origin="top center 0" appear="">
   <v-app-stub id="app">
     <!---->
-    <v-app-bar-stub dark="true" tag="header" tile="true" extensionheight="48" flat="true" src="" value="true" app="true" class="primary darken-1">
+    <v-app-bar-stub dark="true" tag="header" tile="true" extensionheight="48" flat="true" src="" value="true" app="true" clippedleft="true" class="primary darken-1">
       <v-toolbar-title-stub class="o-toolbar-title">
         <!----> <a class="white--text o-router-link"><img src="/assets/images/logo.svg" alt="Logo" width="40" height="40" class="hidden-sm-and-down o-toolbar-image"> <span>Oh My Vue</span></a></v-toolbar-title-stub>
       <!---->
@@ -12,7 +12,97 @@ exports[`App should render an initial component 1`] = `
       <v-toolbar-items-stub>
         <v-btn-stub tag="button" activeclass="" to="/overview" text="true" type="button">Overview</v-btn-stub>
         <v-menu-stub opendelay="0" closedelay="0" contentclass="" openonhover="true" maxwidth="auto" nudgebottom="0" nudgeleft="0" nudgeright="0" nudgetop="0" nudgewidth="0" openonclick="true" closeonclick="true" closeoncontentclick="true" maxheight="auto" offsety="true" origin="top left" transition="v-menu-transition">
-          <v-list-stub tag="div" tile="true"></v-list-stub>
+          <v-list-stub tag="div" tile="true">
+            <!---->
+            <v-list-item-stub activeclass="" to="/hello-world" tag="div">
+              <v-list-item-action-stub>
+                <v-icon-stub>face</v-icon-stub>
+              </v-list-item-action-stub>
+              <v-list-item-content-stub>
+                <v-list-item-title-stub>Hello World</v-list-item-title-stub>
+              </v-list-item-content-stub>
+            </v-list-item-stub>
+            <v-list-item-stub activeclass="" to="/guide" tag="div">
+              <v-list-item-action-stub>
+                <v-icon-stub>loyalty</v-icon-stub>
+              </v-list-item-action-stub>
+              <v-list-item-content-stub>
+                <v-list-item-title-stub>Guide</v-list-item-title-stub>
+              </v-list-item-content-stub>
+            </v-list-item-stub>
+            <v-list-item-stub activeclass="" to="/crud-operations" tag="div">
+              <v-list-item-action-stub>
+                <v-icon-stub>business</v-icon-stub>
+              </v-list-item-action-stub>
+              <v-list-item-content-stub>
+                <v-list-item-title-stub>CRUD Operations</v-list-item-title-stub>
+              </v-list-item-content-stub>
+            </v-list-item-stub>
+            <v-list-item-stub activeclass="" to="/controls" tag="div">
+              <v-list-item-action-stub>
+                <v-icon-stub>contacts</v-icon-stub>
+              </v-list-item-action-stub>
+              <v-list-item-content-stub>
+                <v-list-item-title-stub>Controls</v-list-item-title-stub>
+              </v-list-item-content-stub>
+            </v-list-item-stub>
+            <v-list-item-stub activeclass="" to="/data-table" tag="div">
+              <v-list-item-action-stub>
+                <v-icon-stub>fas fa-table</v-icon-stub>
+              </v-list-item-action-stub>
+              <v-list-item-content-stub>
+                <v-list-item-title-stub>Data Table</v-list-item-title-stub>
+              </v-list-item-content-stub>
+            </v-list-item-stub>
+            <v-list-item-stub activeclass="" to="/internationalization" tag="div">
+              <v-list-item-action-stub>
+                <v-icon-stub>language</v-icon-stub>
+              </v-list-item-action-stub>
+              <v-list-item-content-stub>
+                <v-list-item-title-stub>Internationalization</v-list-item-title-stub>
+              </v-list-item-content-stub>
+            </v-list-item-stub>
+            <v-list-item-stub activeclass="" to="/data-visualization" tag="div">
+              <v-list-item-action-stub>
+                <v-icon-stub>fas fa-chart-bar</v-icon-stub>
+              </v-list-item-action-stub>
+              <v-list-item-content-stub>
+                <v-list-item-title-stub>Data Visualization</v-list-item-title-stub>
+              </v-list-item-content-stub>
+            </v-list-item-stub>
+            <v-list-item-stub activeclass="" to="/authorization" tag="div">
+              <v-list-item-action-stub>
+                <v-icon-stub>verified_user</v-icon-stub>
+              </v-list-item-action-stub>
+              <v-list-item-content-stub>
+                <v-list-item-title-stub>Authorization</v-list-item-title-stub>
+              </v-list-item-content-stub>
+            </v-list-item-stub>
+            <v-list-item-stub activeclass="" to="/payment" tag="div">
+              <v-list-item-action-stub>
+                <v-icon-stub>far fa-credit-card</v-icon-stub>
+              </v-list-item-action-stub>
+              <v-list-item-content-stub>
+                <v-list-item-title-stub>Payment</v-list-item-title-stub>
+              </v-list-item-content-stub>
+            </v-list-item-stub>
+            <v-list-item-stub activeclass="" to="/messages" tag="div">
+              <v-list-item-action-stub>
+                <v-icon-stub>message</v-icon-stub>
+              </v-list-item-action-stub>
+              <v-list-item-content-stub>
+                <v-list-item-title-stub>Messages</v-list-item-title-stub>
+              </v-list-item-content-stub>
+            </v-list-item-stub>
+            <v-list-item-stub activeclass="" to="/machine-learning" tag="div">
+              <v-list-item-action-stub>
+                <v-icon-stub>fas fa-cogs</v-icon-stub>
+              </v-list-item-action-stub>
+              <v-list-item-content-stub>
+                <v-list-item-title-stub>Machine Learning</v-list-item-title-stub>
+              </v-list-item-content-stub>
+            </v-list-item-stub>
+          </v-list-stub>
         </v-menu-stub>
       </v-toolbar-items-stub>
       <v-menu-stub opendelay="0" closedelay="0" contentclass="" bottom="true" left="true" maxwidth="auto" nudgebottom="0" nudgeleft="0" nudgeright="0" nudgetop="0" nudgewidth="0" openonclick="true" closeonclick="true" closeoncontentclick="true" maxheight="auto" origin="top left" transition="v-menu-transition">
@@ -28,7 +118,20 @@ exports[`App should render an initial component 1`] = `
         </v-list-stub>
       </v-menu-stub>
       <v-menu-stub opendelay="0" closedelay="0" contentclass="" bottom="true" left="true" maxwidth="auto" nudgebottom="0" nudgeleft="0" nudgeright="0" nudgetop="0" nudgewidth="0" openonclick="true" closeonclick="true" closeoncontentclick="true" maxheight="auto" origin="top left" transition="v-menu-transition">
-        <v-list-stub tag="div" tile="true"></v-list-stub>
+        <v-list-stub tag="div" tile="true">
+          <v-list-item-stub activeclass="" tag="div">
+            <v-list-item-avatar-stub size="40"><img src="https://countryflags.io/us/flat/24.png" alt="Country Flag"></v-list-item-avatar-stub>
+            <v-list-item-title-stub>English</v-list-item-title-stub>
+          </v-list-item-stub>
+          <v-list-item-stub activeclass="" tag="div">
+            <v-list-item-avatar-stub size="40"><img src="https://countryflags.io/cn/flat/24.png" alt="Country Flag"></v-list-item-avatar-stub>
+            <v-list-item-title-stub>中文</v-list-item-title-stub>
+          </v-list-item-stub>
+          <v-list-item-stub activeclass="" tag="div">
+            <v-list-item-avatar-stub size="40"><img src="https://countryflags.io/jp/flat/24.png" alt="Country Flag"></v-list-item-avatar-stub>
+            <v-list-item-title-stub>日本語</v-list-item-title-stub>
+          </v-list-item-stub>
+        </v-list-stub>
       </v-menu-stub>
       <v-btn-stub tag="button" activeclass="" to="/authorization/login" icon="true" type="button">
         <v-icon-stub>fas fa-user</v-icon-stub>
