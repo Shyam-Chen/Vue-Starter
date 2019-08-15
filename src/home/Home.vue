@@ -376,13 +376,8 @@
 import { layout } from '~/shared/mixins';
 
 export default {
-  metaInfo() {
-    return {
-      title: 'Oh My Vue',
-      meta: [
-        { vmid: 'description', name: 'description', content: this.$i18n.t('home.description') },
-      ],
-    };
+  metaInfo: {
+    title: 'Oh My Vue',
   },
   mixins: [layout],
 };

@@ -5,7 +5,7 @@ import Meta from 'vue-meta';
 import Analytics from 'vue-analytics';
 
 import Home from '~/home/Home';
-import NotFound from '~/not-found/NotFound';
+import NotFound from '~/error/not-found/NotFound';
 
 import guide from '~/shell/guide/routes';
 

@@ -100,14 +100,16 @@
               </template>
 
               <v-list>
-                <v-list-item v-for="(item, index) in app$.navigation" v-if="index > 0 && index < 12" :key="index" :to="item.route">
-                  <v-list-item-action>
-                    <v-icon>{{ item.icon }}</v-icon>
-                  </v-list-item-action>
-                  <v-list-item-content>
-                    <v-list-item-title>{{ $t(item.text) }}</v-list-item-title>
-                  </v-list-item-content>
-                </v-list-item>
+                <template v-for="(item, index) in app$.navigation">
+                  <v-list-item v-if="index > 0 && index < 12" :key="index" :to="item.route">
+                    <v-list-item-action>
+                      <v-icon>{{ item.icon }}</v-icon>
+                    </v-list-item-action>
+                    <v-list-item-content>
+                      <v-list-item-title>{{ $t(item.text) }}</v-list-item-title>
+                    </v-list-item-content>
+                  </v-list-item>
+                </template>
               </v-list>
             </v-menu>
           </v-toolbar-items>

@@ -17,11 +17,6 @@ localVue.use(Router);
 localVue.use(Vuex);
 localVue.use(I18n);
 
-jest.mock('~/shell/guide/state-management/StateManagement', () => ({
-  name: 'StateManagement',
-  render: h => h('div'),
-}));
-
 describe('App', () => {
   let [wrapper] = [];
 
@@ -43,9 +38,6 @@ describe('App', () => {
 
   it('should render an initial component', () => {
     expect(wrapper.html()).toMatchSnapshot();
-
-    router.push('/guide/state-management');
-    // expect(wrapper.find(StateManagement).exists());
   });
 
   it('', () => {
@@ -55,7 +47,6 @@ describe('App', () => {
     }));
 
     router.push('/overview');
-    // expect(wrapper.find(Overview).exists());
   });
 
   it('', () => {
@@ -65,7 +56,15 @@ describe('App', () => {
     }));
 
     router.push('/hello-world');
-    // expect(wrapper.find(HelloWorld).exists());
+  });
+
+  it('', async () => {
+    jest.mock('~/shell/guide/state-management/StateManagement', () => ({
+      name: 'StateManagement',
+      render: h => h('div'),
+    }));
+
+    router.push('/guide/state-management');
   });
 
   it('', () => {
