@@ -10,3 +10,5 @@ Vue.config.productionTip = false;
 Vue.use(Vuetify);
 
 window.matchMedia = () => ({ matches: false, addListener() {}, removeListener() {} });
+
+Object.defineProperty(window, 'scrollTo', { value: () => {}, writable: true });

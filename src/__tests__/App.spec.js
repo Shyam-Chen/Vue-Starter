@@ -40,39 +40,63 @@ describe('App', () => {
     expect(wrapper.html()).toMatchSnapshot();
   });
 
-  it('', () => {
-    jest.mock('~/shell/overview/Overview', () => ({
-      name: 'Overview',
-      render: h => h('div'),
-    }));
-
+  it('Overview', () => {
+    jest.mock('~/shell/overview/Overview', () => ({ name: 'Overview', render: h => h('div') }));
     router.push('/overview');
   });
 
-  it('', () => {
-    jest.mock('~/shell/hello-world/HelloWorld', () => ({
-      name: 'HelloWorld',
-      render: h => h('div'),
-    }));
-
+  it('HelloWorld', () => {
+    jest.mock('~/shell/hello-world/HelloWorld', () => ({ name: 'HelloWorld', render: h => h('div') }));
     router.push('/hello-world');
   });
 
-  it('', async () => {
-    jest.mock('~/shell/guide/state-management/StateManagement', () => ({
-      name: 'StateManagement',
-      render: h => h('div'),
-    }));
-
-    router.push('/guide/state-management');
+  it('DisplayRows', () => {
+    jest.mock('~/shell/data-table/display-rows/DisplayRows', () => ({ name: 'DisplayRows', render: h => h('div') }));
+    router.push('/data-table/display-rows');
   });
 
-  it('', () => {
-    jest.mock('~/shell/crud-operations/basic/Basic', () => ({
-      name: 'HelloWorld',
-      render: h => h('div'),
-    }));
+  it('Paginator', () => {
+    jest.mock('~/shell/data-table/paginator/Paginator', () => ({ name: 'Paginator', render: h => h('div') }));
+    router.push('/data-table/paginator');
+  });
 
-    router.push('/crud-operations/basic');
+  it('Iterator', () => {
+    jest.mock('~/shell/data-table/iterator/Iterator', () => ({ name: 'Iterator', render: h => h('div') }));
+    router.push('/data-table/iterator');
+  });
+
+  it('Internationalization', () => {
+    jest.mock('~/shell/internationalization/Internationalization', () => ({ name: 'Internationalization', render: h => h('div') }));
+    router.push('/internationalization');
+  });
+
+  it('DataVisualization', () => {
+    jest.mock('~/shell/data-visualization/DataVisualization', () => ({ name: 'DataVisualization', render: h => h('div') }));
+    router.push('/data-visualization');
+  });
+
+  it('Authorization', () => {
+    jest.mock('~/shell/authorization/Authorization', () => ({ name: 'Authorization', render: h => h('div') }));
+    router.push('/authorization');
+  });
+
+  it('Login', () => {
+    jest.mock('~/shell/authorization/Login', () => ({ name: 'Login', render: h => h('div') }));
+    router.push('/authorization/login');
+  });
+
+  it('Payment', () => {
+    jest.mock('~/shell/payment/Payment', () => ({ name: 'Payment', render: h => h('div') }));
+    router.push('/payment');
+  });
+
+  it('ChatRoom', () => {
+    jest.mock('~/shell/messages/chat-room/ChatRoom', () => ({ name: 'ChatRoom', render: h => h('div') }));
+    router.push('/messages/chat-room');
+  });
+
+  it('MachineLearning', () => {
+    jest.mock('~/shell/machine-learning/MachineLearning', () => ({ name: 'MachineLearning', render: h => h('div') }));
+    router.push('/machine-learning');
   });
 });

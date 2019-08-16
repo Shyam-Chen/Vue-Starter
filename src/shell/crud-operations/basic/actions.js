@@ -1,7 +1,8 @@
 // @flow
 
 import { ActionContext } from 'vuex';
-import _ from 'lodash';
+
+import assignDeep from '~/shared/utils/assign-deep';
 
 import { IBasic, Item } from './types';
 
@@ -37,6 +38,6 @@ export default {
 
   setState(context: ActionContext<IBasic>, data: IBasic): void {
     const normalData = JSON.parse(JSON.stringify(data));
-    context.state = _.merge(context.state, normalData);
+    context.state = assignDeep(context.state, normalData);
   },
 };
