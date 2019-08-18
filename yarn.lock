@@ -13111,6 +13111,13 @@ vue-eslint-parser@^5.0.0:
     esquery "^1.0.1"
     lodash "^4.17.11"
 
+vue-function-api@2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/vue-function-api/-/vue-function-api-2.2.0.tgz#06aeb76fcbcf27d8591a1f87cee8d3d771d7feed"
+  integrity sha512-Qyg5IIi+1Zj5U3aHQ55K8nB98BwytxDv0HGWPssQFo9M32QDXHIwzgSE+BhUlzyclb1XkPiLubXApja1WQSwSQ==
+  dependencies:
+    tslib "^1.9.3"
+
 vue-hot-reload-api@^2.3.0:
   version "2.3.3"
   resolved "https://registry.yarnpkg.com/vue-hot-reload-api/-/vue-hot-reload-api-2.3.3.tgz#2756f46cb3258054c5f4723de8ae7e87302a1ccf"

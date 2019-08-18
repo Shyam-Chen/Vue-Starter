@@ -4,13 +4,13 @@ import Raven from 'raven-js';
 import RavenVue from 'raven-js/plugins/vue';
 import { register } from 'register-service-worker';
 
-import './assets/styles/global.css';
-import App from './App';
-import router from './core/router';
-import store from './core/store';
-import vuetify from './core/vuetify';
-import apolloProvider from './core/apollo-provider';
-import i18n from './core/i18n';
+import '~/assets/styles/global.css';
+import App from '~/App';
+import router from '~/core/router';
+import store from '~/core/store';
+import vuetify from '~/core/vuetify';
+import apolloProvider from '~/core/apollo-provider';
+import i18n from '~/core/i18n';
 
 sync(store, router);
 
