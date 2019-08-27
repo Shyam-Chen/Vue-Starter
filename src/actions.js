@@ -22,6 +22,7 @@ export default {
         i18n.locale = val;
         document.documentElement.lang = val;
         sessionStorage.setItem('lang', val);
+        router.push(`/${val}`);
       },
     );
   },

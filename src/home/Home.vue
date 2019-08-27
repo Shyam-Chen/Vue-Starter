@@ -9,7 +9,7 @@
             <div class="display-3 white--text">Oh My Vue</div>
             <div class="subheading white--text">{{ $t('home.description') }}</div>
             <v-divider class="my-3"></v-divider>
-            <v-btn large color="white" to="/overview" class="primary--text">
+            <v-btn large color="white" :to="`${$route.params.lang}/overview`" class="primary--text">
               <v-icon left>more</v-icon>
               {{ $t('home.seeMore') }}
             </v-btn>
@@ -361,7 +361,7 @@
 
     <v-container class="my-5">
       <v-layout row justify-center>
-        <v-btn large color="primary" to="/overview">
+        <v-btn large color="primary" :to="`${$route.params.lang}/overview`">
           <v-icon left>more</v-icon>
           {{ $t('home.seeMore') }}
         </v-btn>
