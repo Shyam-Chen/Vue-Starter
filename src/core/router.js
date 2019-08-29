@@ -55,10 +55,7 @@ const router = new Router({
     { path: '*', component: NotFound, meta: { standalone: true } },
   ],
   async scrollBehavior(to, from, savedPosition) {
-    if (savedPosition) {
-      return savedPosition
-    }
-
+    if (savedPosition) return savedPosition;
     return { x: 0, y: 0 };
 
     // if (document.readyState !== 'complete') {
