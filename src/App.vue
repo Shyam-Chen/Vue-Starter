@@ -191,7 +191,7 @@
 
 import { mapActions } from 'vuex';
 
-import { layout } from '~/shared/mixins';
+import layout from '~/shared/composes/layout';
 
 import { IApp } from './types';
 import actions from './actions';

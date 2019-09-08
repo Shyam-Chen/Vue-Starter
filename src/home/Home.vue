@@ -373,7 +373,7 @@
 <script>
 // @flow
 
-import { layout } from '~/shared/mixins';
+import layout from '~/shared/composes/layout';
 
 export default {
   metaInfo: {
