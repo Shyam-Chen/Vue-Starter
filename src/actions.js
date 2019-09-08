@@ -22,7 +22,9 @@ export default {
         i18n.locale = val;
         document.documentElement.lang = val;
         sessionStorage.setItem('lang', val);
-        router.push(`/${val}`);
+
+        const path = router.currentRoute.path.substring(`/${val}`.length);
+        router.push(`/${val}${path}`);
       },
     );
   },
