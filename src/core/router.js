@@ -24,43 +24,32 @@ const router = new Router({
         { path: '', component: () => import('~/home/Home'), meta: { home: true } },
         { path: 'overview', component: () => import('~/shell/overview/Overview') },
         { path: 'hello-world', component: () => import('~/shell/hello-world/HelloWorld') },
+        ...guide,
+        ...crudOperations,
+        ...controls,
+        { path: 'data-table', redirect: 'data-table/display-rows' },
+        { path: 'data-table/display-rows', component: () => import('~/shell/data-table/display-rows/DisplayRows') },
+        { path: 'data-table/paginator', component: () => import('~/shell/data-table/paginator/Paginator') },
+        { path: 'data-table/iterator', component: () => import('~/shell/data-table/iterator/Iterator') },
+
+        { path: 'internationalization', component: () => import('~/shell/internationalization/Internationalization') },
+
+        { path: 'data-visualization', component: () => import('~/shell/data-visualization/DataVisualization') },
+
+        { path: 'authorization', component: () => import('~/shell/authorization/Authorization') },
+        { path: 'authorization/login', component: () => import('~/shell/authorization/Login'), meta: { standalone: true } },
+        // { path: 'authorization/register', component: () => import('~/shell/authorization/Register'), meta: { standalone: true } },
+
+        { path: 'payment', component: () => import('~/shell/payment/Payment') },
+
+        { path: 'messages', redirect: 'messages/chat-room' },
+        { path: 'messages/chat-room', component: () => import('~/shell/messages/chat-room/ChatRoom') },
+
+        { path: 'machine-learning', component: () => import('~/shell/machine-learning/MachineLearning') },
         { path: '*', component: () => import('~/error/not-found/NotFound'), meta: { standalone: true } },
       ],
     },
-    // { path: '/', component: Home, meta: { home: true } },
-
-    // { path: '/dashboard', component: () => import('~/dashboard/Dashboard') },
-
-    // { path: '/overview', component: () => import('~/shell/overview/Overview') },
-    // { path: '/hello-world', component: () => import('~/shell/hello-world/HelloWorld') },
-
-    // ...guide,
-
-    // ...crudOperations,
-
-    // ...controls,
-
-    // { path: '/data-table', redirect: '/data-table/display-rows' },
-    // { path: '/data-table/display-rows', component: () => import('~/shell/data-table/display-rows/DisplayRows') },
-    // { path: '/data-table/paginator', component: () => import('~/shell/data-table/paginator/Paginator') },
-    // { path: '/data-table/iterator', component: () => import('~/shell/data-table/iterator/Iterator') },
-
-    // { path: '/internationalization', component: () => import('~/shell/internationalization/Internationalization') },
-
-    // { path: '/data-visualization', component: () => import('~/shell/data-visualization/DataVisualization') },
-
-    // { path: '/authorization', component: () => import('~/shell/authorization/Authorization') },
-    // { path: '/authorization/login', component: () => import('~/shell/authorization/Login'), meta: { standalone: true } },
-    // { path: '/authorization/register', component: () => import('~/shell/authorization/Register'), meta: { standalone: true } },
-
-    // { path: '/payment', component: () => import('~/shell/payment/Payment') },
-
-    // { path: '/messages', redirect: '/messages/chat-room' },
-    // { path: '/messages/chat-room', component: () => import('~/shell/messages/chat-room/ChatRoom') },
-
-    // { path: '/machine-learning', component: () => import('~/shell/machine-learning/MachineLearning') },
-
-    { path: '*', component: () => import('~/error/not-found/NotFound'), meta: { standalone: true } },
+    { path: '*', redirect: `/${sessionStorage.getItem('lang') || 'en'}`},
   ],
   async scrollBehavior(to, from, savedPosition) {
     if (savedPosition) return savedPosition;

@@ -32,7 +32,3 @@ const vm = new Vue({
 vm.$mount('#app');
 
 registerServiceWorker();
-
-if (module.hot) {
-  module.hot.accept();
-}

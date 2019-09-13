@@ -16,34 +16,38 @@ export default {
     vuetify.framework.theme.dark = val === 'dark';
   },
   setLanguage(context: ActionContext<IApp>, val: string): void {
-    import(`~/core/i18n/${val}`).then(
-      (data): void => {
-        i18n.setLocaleMessage(val, data.default);
-        i18n.locale = val;
-        document.documentElement.lang = val;
-        sessionStorage.setItem('lang', val);
+    import(`~/core/i18n/${val}`).then((data): void => {
+      i18n.setLocaleMessage(val, data.default);
+      i18n.locale = val;
+      document.documentElement.lang = val;
+      sessionStorage.setItem('lang', val);
 
-        const path = router.currentRoute.path.substring(`/${val}`.length);
-        router.push(`/${val}${path}`);
-      },
-    );
+      const path = router.currentRoute.path.substring(`/${val}`.length);
+      router.push(`/${val}${path}`);
+    });
   },
   initialLanguage({ dispatch }: ActionContext<IApp>): void {
-    INITIAL.languages.forEach(
-      ({ key }): void => {
-        if (key === 'en') return;
-
-        const lang = sessionStorage.getItem('lang');
-        if (lang) dispatch('setLanguage', lang);
-
-        if (navigator.language.includes(key)) {
-          dispatch('setLanguage', key);
-        }
-      },
+    const foundLang = INITIAL.languages.find(
+      ({ key }) => key === router.currentRoute.params.lang,
     );
+
+    INITIAL.languages.forEach(({ key }): void => {
+      if (key === 'en') return;
+
+      const lang = sessionStorage.getItem('lang');
+      if (lang) dispatch('setLanguage', lang);
+
+      if (navigator.language.includes(key)) {
+        dispatch('setLanguage', key);
+      } else {
+        if (foundLang !== -1 && router.currentRoute.params.lang) {
+          dispatch('setLanguage', router.currentRoute.params.lang);
+        }
+      }
+    });
   },
   backToHome({ state }: ActionContext<IApp>): void {
-    router.push('/');
+    router.push(`/${router.currentRoute.params.lang}`);
     state.drawer = false;
   },
 };
