@@ -41,7 +41,7 @@
                       </v-list-item-content>
                     </template>
 
-                    <v-list-item v-for="subchild in child.children" :key="subchild.text" :to="subchild.route" :disabled="subchild.disabled" ripple>
+                    <v-list-item v-for="subchild in child.children" :key="subchild.text" :to="`/${$route.params.lang}` + subchild.route" :disabled="subchild.disabled" ripple>
                       <v-list-item-action>
                         <v-icon>{{ subchild.icon }}</v-icon>
                       </v-list-item-action>
@@ -52,7 +52,7 @@
                   </v-list-group>
 
                   <!-- else not sub-children -->
-                  <v-list-item v-else :key="child.text" :to="child.route" :disabled="child.disabled" ripple>
+                  <v-list-item v-else :key="child.text" :to="`/${$route.params.lang}` + child.route" :disabled="child.disabled" ripple>
                     <v-list-item-action>
                       <v-icon>{{ child.icon }}</v-icon>
                     </v-list-item-action>
@@ -65,7 +65,7 @@
               </v-list-group>
 
               <!-- else not children -->
-              <v-list-item v-else :key="item.text" :to="item.route" :href="item.href" :disabled="item.disabled" ripple>
+              <v-list-item v-else :key="item.text" :to="`/${$route.params.lang}` + item.route" :href="item.href" :disabled="item.disabled" ripple>
                 <v-list-item-action>
                   <v-icon>{{ item.icon }}</v-icon>
                 </v-list-item-action>
@@ -81,7 +81,7 @@
         <v-app-bar :clipped-left="$vuetify.breakpoint.mdAndUp" :flat="$route.meta.home" class="primary darken-1" dark app>
           <v-toolbar-title class="o-toolbar-title">
             <v-app-bar-nav-icon v-if="!$route.meta.home || isMobile" @click.stop="app$.drawer = !app$.drawer"></v-app-bar-nav-icon>
-            <router-link class="white--text o-router-link" to="/">
+            <router-link class="white--text o-router-link" :to="$route.params.lang">
               <img src="/assets/images/logo.svg" alt="Logo" width="40" height="40" class="hidden-sm-and-down o-toolbar-image">
               <span>Oh My Vue</span>
             </router-link>
@@ -92,7 +92,7 @@
           <v-spacer></v-spacer>
 
           <v-toolbar-items v-if="$route.meta.home && !isMobile">
-            <v-btn to="/overview" text>{{ $t('overview') }}</v-btn>
+            <v-btn :to="`${$route.params.lang}/overview`" text>{{ $t('overview') }}</v-btn>
 
             <v-menu open-on-hover offset-y>
               <template v-slot:activator="{ on }">
@@ -101,7 +101,7 @@
 
               <v-list>
                 <template v-for="(item, index) in app$.navigation">
-                  <v-list-item v-if="index > 0 && index < 12" :key="index" :to="item.route">
+                  <v-list-item v-if="index > 0 && index < 12" :key="index" :to="$route.params.lang + item.route">
                     <v-list-item-action>
                       <v-icon>{{ item.icon }}</v-icon>
                     </v-list-item-action>

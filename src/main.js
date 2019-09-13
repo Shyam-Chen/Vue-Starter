@@ -26,13 +26,9 @@ const vm = new Vue({
   vuetify,
   apolloProvider,
   i18n,
-  render: handle => handle(App),
+  render: handle => handle('router-view'),
 });
 
 vm.$mount('#app');
 
 registerServiceWorker();
-
-if (module.hot) {
-  module.hot.accept();
-}
