@@ -24,7 +24,7 @@
               <v-subheader v-if="item.subheader" :key="item.subheader">{{ $t(item.subheader) }}</v-subheader>
 
               <!-- if children -->
-              <v-list-group v-if="item.children" :key="item.text" :prepend-icon="item.icon" :disabled="item.disabled">
+              <v-list-group v-if="item.children" :key="item.text" :prepend-icon="item.icon" :append-icon="icons.mdiChevronDown" :disabled="item.disabled">
                 <template v-slot:activator>
                   <v-list-item-content>
                     <v-list-item-title>{{ $t(item.text) }}</v-list-item-title>
@@ -34,7 +34,7 @@
                 <template v-for="child in item.children">
 
                   <!-- if sub-children -->
-                  <v-list-group v-if="child.children" :key="child.text" :prepend-icon="child.icon" :disabled="child.disabled" sub-group>
+                  <v-list-group v-if="child.children" :key="child.text" :prepend-icon="icons.mdiMenuDown" :disabled="child.disabled" sub-group>
                     <template v-slot:activator>
                       <v-list-item-content>
                         <v-list-item-title>{{ $t(child.text) }}</v-list-item-title>
@@ -80,7 +80,9 @@
 
         <v-app-bar :clipped-left="$vuetify.breakpoint.mdAndUp" :flat="$route.meta.home" class="primary darken-1" dark app>
           <v-toolbar-title class="o-toolbar-title">
-            <v-app-bar-nav-icon v-if="!$route.meta.home || isMobile" @click.stop="app$.drawer = !app$.drawer"></v-app-bar-nav-icon>
+            <v-app-bar-nav-icon v-if="!$route.meta.home || isMobile" @click.stop="app$.drawer = !app$.drawer">
+              <v-icon>{{ icons.mdiMenu }}</v-icon>
+            </v-app-bar-nav-icon>
             <router-link class="white--text o-router-link" :to="$route.params.lang">
               <img src="/assets/images/logo.svg" alt="Logo" width="40" height="40" class="hidden-sm-and-down o-toolbar-image">
               <span>Oh My Vue</span>
@@ -151,7 +153,7 @@
           </v-menu>
 
           <v-btn icon to="/authorization/login">
-            <v-icon>fas fa-user</v-icon>
+            <v-icon>{{ icons.mdiAccount }}</v-icon>
           </v-btn>
         </v-app-bar>
 
@@ -190,6 +192,7 @@
 // @flow
 
 import { mapActions } from 'vuex';
+import { mdiMenu, mdiAccount, mdiChevronDown, mdiMenuDown } from '@mdi/js';
 
 import layout from '~/shared/composes/layout';
 
@@ -206,6 +209,14 @@ export default {
   created() {
     this.initialLanguage();
   },
+  data: () => ({
+    icons: {
+      mdiMenu,
+      mdiAccount,
+      mdiChevronDown,
+      mdiMenuDown,
+    },
+  }),
   methods: {
     ...mapActions(Object.keys(actions)),
   },
