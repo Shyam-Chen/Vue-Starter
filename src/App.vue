@@ -83,7 +83,7 @@
             <v-app-bar-nav-icon v-if="!$route.meta.home || isMobile" @click.stop="app$.drawer = !app$.drawer">
               <v-icon>{{ icons.mdiMenu }}</v-icon>
             </v-app-bar-nav-icon>
-            <router-link class="white--text o-router-link" :to="$route.params.lang">
+            <router-link class="white--text o-router-link" :to="`/${$route.params.lang}`">
               <img src="/assets/images/logo.svg" alt="Logo" width="40" height="40" class="hidden-sm-and-down o-toolbar-image">
               <span>Oh My Vue</span>
             </router-link>
@@ -94,7 +94,7 @@
           <v-spacer></v-spacer>
 
           <v-toolbar-items v-if="$route.meta.home && !isMobile">
-            <v-btn :to="`${$route.params.lang}/overview`" text>{{ $t('overview') }}</v-btn>
+            <v-btn :to="`/${$route.params.lang}/overview`" text>{{ $t('overview') }}</v-btn>
 
             <v-menu open-on-hover offset-y>
               <template v-slot:activator="{ on }">
@@ -103,7 +103,7 @@
 
               <v-list>
                 <template v-for="(item, index) in app$.navigation">
-                  <v-list-item v-if="index > 0 && index < 12" :key="index" :to="$route.params.lang + item.route">
+                  <v-list-item v-if="index > 0 && index < 12" :key="index" :to="`/${$route.params.lang}` + item.route">
                     <v-list-item-action>
                       <v-icon>{{ item.icon }}</v-icon>
                     </v-list-item-action>
