@@ -9,7 +9,7 @@ export default new Vuetify({
     iconfont: 'mdi',
   },
   theme: {
-    dark: false,
+    dark: localStorage.getItem('theme') === 'dark' || false,
     themes: {
       light: {
         primary: '#1E88E5', // blue, darken-1

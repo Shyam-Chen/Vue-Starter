@@ -12,7 +12,6 @@ export interface Navigation {
 }
 
 export interface IApp {
-  theme: string;
   navigation: Navigation[];
   drawer: boolean | null;
   languages: Array<{ key: string, country: string, label: string }>;

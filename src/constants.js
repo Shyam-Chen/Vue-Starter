@@ -3,7 +3,6 @@
 import { IApp } from './types';
 
 export const INITIAL: IApp = {
-  theme: localStorage.getItem('theme') || 'light',
   navigation: [
     /** @name practical-examples */
     { icon: 'pageview', text: 'overview', route: '/overview', subheader: 'practicalExamples' },
