@@ -116,37 +116,19 @@
             </v-menu>
           </v-toolbar-items>
 
-          <v-menu bottom left>
-            <template v-slot:activator="{ on }">
-              <v-btn aria-label="Theme" icon v-on="on">
-                <v-icon>format_color_fill</v-icon>
-              </v-btn>
-            </template>
-
-            <v-list>
-              <v-list-item @click="setTheme('light')">
-                <v-list-item-avatar class="o-list-item-avatar">☀️</v-list-item-avatar>
-                <v-list-item-title>Light Theme</v-list-item-title>
-              </v-list-item>
-              <v-list-item @click="setTheme('dark')">
-                <v-list-item-avatar class="o-list-item-avatar">🌙</v-list-item-avatar>
-                <v-list-item-title>Dark Theme</v-list-item-title>
-              </v-list-item>
-            </v-list>
-          </v-menu>
+          <v-btn aria-label="Theme" icon @click="setTheme(!$vuetify.theme.dark ? 'dark' : 'light')">
+            <v-icon>{{ $vuetify.theme.dark ? icons.mdiLightbulb : icons.mdiLightbulbOutline }}</v-icon>
+          </v-btn>
 
           <v-menu bottom left>
             <template v-slot:activator="{ on }">
               <v-btn aria-label="Language" icon v-on="on">
-                <v-icon>language</v-icon>
+                <v-icon>{{ icons.mdiTranslate }}</v-icon>
               </v-btn>
             </template>
 
             <v-list>
               <v-list-item v-for="lang in app$.languages" :key="lang.key" @click="setLanguage(lang.key)">
-                <v-list-item-avatar>
-                  <img :src="`https://countryflags.io/${lang.country}/flat/24.png`" alt="Country Flag">
-                </v-list-item-avatar>
                 <v-list-item-title>{{ lang.label }}</v-list-item-title>
               </v-list-item>
             </v-list>
@@ -192,7 +174,15 @@
 // @flow
 
 import { mapActions } from 'vuex';
-import { mdiMenu, mdiAccount, mdiChevronDown, mdiMenuDown } from '@mdi/js';
+import {
+  mdiAccount,
+  mdiChevronDown,
+  mdiLightbulb,
+  mdiLightbulbOutline,
+  mdiMenu,
+  mdiMenuDown,
+  mdiTranslate,
+} from '@mdi/js';
 
 import layout from '~/shared/composes/layout';
 
@@ -211,10 +201,13 @@ export default {
   },
   data: () => ({
     icons: {
-      mdiMenu,
       mdiAccount,
       mdiChevronDown,
+      mdiLightbulb,
+      mdiLightbulbOutline,
+      mdiMenu,
       mdiMenuDown,
+      mdiTranslate,
     },
   }),
   methods: {

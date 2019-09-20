@@ -10,8 +10,7 @@ import { IApp } from './types';
 import { INITIAL } from './constants';
 
 export default {
-  setTheme({ state }: ActionContext<IApp>, val: string): void {
-    state.theme = val;
+  setTheme(context: ActionContext<IApp>, val: string): void {
     localStorage.setItem('theme', val);
     vuetify.framework.theme.dark = val === 'dark';
   },
@@ -22,8 +21,9 @@ export default {
       document.documentElement.lang = val;
       sessionStorage.setItem('lang', val);
 
-      const path = router.currentRoute.path.substring(`/${val}`.length);
-      router.push(`/${val}${path}`);
+      const route = context.state.route;
+      const pathname = route.path.slice(`/${route.params.lang}/`.length);
+      router.push(`/${val}/${pathname}`);
     });
   },
   initialLanguage({ dispatch }: ActionContext<IApp>): void {

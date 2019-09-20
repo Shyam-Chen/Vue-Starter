@@ -14,5 +14,5 @@ export interface Navigation {
 export interface IApp {
   navigation: Navigation[];
   drawer: boolean | null;
-  languages: Array<{ key: string, country: string, label: string }>;
+  languages: Array<{ key: string, label: string }>;
 }

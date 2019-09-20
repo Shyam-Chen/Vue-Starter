@@ -16,7 +16,7 @@ const router = new Router({
   routes: [
     { path: '/', redirect: `/${sessionStorage.getItem('lang') || 'en'}`},
     {
-      path: '/:lang([a-z]{2,3}|[a-z]{2,3}-[a-zA-Z]{4}|[a-z]{2,3}-[A-Z]{2,3})',
+      path: '/:lang',
       component: () => import('~/App'),
       children: [
         { path: '', component: () => import('~/home/Home'), meta: { home: true } },
