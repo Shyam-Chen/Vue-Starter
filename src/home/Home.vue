@@ -6,15 +6,23 @@
           <img src="/assets/images/logo.svg" alt="Logo" class="o-jumbotron-image">
 
           <v-flex shrink class="text-xs-center text-md-left o-jumbotron-content">
-            <div class="display-3 white--text">Oh My Vue</div>
-            <div class="subheading white--text">{{ $t('home.description') }}</div>
+            <div class="display-3 white--text">
+              Oh My Vue
+            </div>
+            <div class="subheading white--text">
+              {{ $t('home.description') }}
+            </div>
             <v-divider class="my-3"></v-divider>
             <v-btn large color="white" :to="`/${$route.params.lang}/overview`" class="primary--text">
-              <v-icon left>more</v-icon>
+              <v-icon left>
+                more
+              </v-icon>
               {{ $t('home.seeMore') }}
             </v-btn>
             <v-btn color="white" href="https://github.com/Shyam-Chen/Vue-Play" large outlined target="_blank" rel="noopener" class="ml-3">
-              <v-icon left>fab fa-github</v-icon>
+              <v-icon left>
+                {{ icons.mdiGithubCircle }}
+              </v-icon>
               {{ $t('home.sourceCode') }}
             </v-btn>
           </v-flex>
@@ -98,8 +106,12 @@
         </div>
 
         <div class="pa-3 o-promo">
-          <div class="headline pb-2">{{ $t('home.headline1') }}</div>
-          <div class="body-1">{{ $t('home.body1') }}</div>
+          <div class="headline pb-2">
+            {{ $t('home.headline1') }}
+          </div>
+          <div class="body-1">
+            {{ $t('home.body1') }}
+          </div>
         </div>
       </v-layout>
     </v-container>
@@ -152,8 +164,12 @@
         </div>
 
         <div class="pa-3 o-promo">
-          <div class="headline pb-2">{{ $t('home.headline2') }}</div>
-          <div class="body-1">{{ $t('home.body2') }}</div>
+          <div class="headline pb-2">
+            {{ $t('home.headline2') }}
+          </div>
+          <div class="body-1">
+            {{ $t('home.body2') }}
+          </div>
         </div>
       </v-layout>
     </v-container>
@@ -203,8 +219,12 @@
         </div>
 
         <div class="pa-3 o-promo">
-          <div class="headline pb-2">{{ $t('home.headline3') }}</div>
-          <div class="body-1">{{ $t('home.body3') }}</div>
+          <div class="headline pb-2">
+            {{ $t('home.headline3') }}
+          </div>
+          <div class="body-1">
+            {{ $t('home.body3') }}
+          </div>
         </div>
       </v-layout>
     </v-container>
@@ -353,8 +373,12 @@
         </div>
 
         <div class="pa-3 o-promo">
-          <div class="headline pb-2">{{ $t('home.headline4') }}</div>
-          <div class="body-1">{{ $t('home.body4') }}</div>
+          <div class="headline pb-2">
+            {{ $t('home.headline4') }}
+          </div>
+          <div class="body-1">
+            {{ $t('home.body4') }}
+          </div>
         </div>
       </v-layout>
     </v-container>
@@ -362,7 +386,9 @@
     <v-container class="my-5">
       <v-layout row justify-center>
         <v-btn large color="primary" :to="`${$route.params.lang}/overview`">
-          <v-icon left>more</v-icon>
+          <v-icon left>
+            more
+          </v-icon>
           {{ $t('home.seeMore') }}
         </v-btn>
       </v-layout>
@@ -373,6 +399,8 @@
 <script>
 // @flow
 
+import { mdiGithubCircle } from '@mdi/js';
+
 import layout from '~/shared/composes/layout';
 
 export default {
@@ -380,6 +408,13 @@ export default {
     title: 'Oh My Vue',
   },
   mixins: [layout],
+  data() {
+    return {
+      icons: {
+        mdiGithubCircle,
+      },
+    };
+  },
 };
 </script>
 

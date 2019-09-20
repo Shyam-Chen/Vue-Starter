@@ -1,9 +1,8 @@
 <template>
   <v-fade-transition appear>
     <v-app v-cloak>
-
       <template v-if="!$route.meta.standalone">
-        <v-navigation-drawer v-if="!$route.meta.home || isMobile" :clipped="$vuetify.breakpoint.mdAndUp" v-model="app$.drawer" app>
+        <v-navigation-drawer v-if="!$route.meta.home || isMobile" v-model="app$.drawer" :clipped="$vuetify.breakpoint.mdAndUp" app>
           <v-toolbar class="hidden-md-and-up" flat>
             <v-toolbar-title class="o-toolbar-title">
               <div class="o-router-link" @click="backToHome">
@@ -19,9 +18,10 @@
 
           <v-list nav dense>
             <template v-for="item in app$.navigation">
-
               <v-divider v-if="item.divider" :key="item.subheader + 'Divider'"></v-divider>
-              <v-subheader v-if="item.subheader" :key="item.subheader">{{ $t(item.subheader) }}</v-subheader>
+              <v-subheader v-if="item.subheader" :key="item.subheader">
+                {{ $t(item.subheader) }}
+              </v-subheader>
 
               <!-- if children -->
               <v-list-group v-if="item.children" :key="item.text" :prepend-icon="item.icon" :append-icon="icons.mdiChevronDown" :disabled="item.disabled">
@@ -32,7 +32,6 @@
                 </template>
 
                 <template v-for="child in item.children">
-
                   <!-- if sub-children -->
                   <v-list-group v-if="child.children" :key="child.text" :prepend-icon="icons.mdiMenuDown" :disabled="child.disabled" sub-group>
                     <template v-slot:activator>
@@ -60,7 +59,6 @@
                       <v-list-item-title>{{ $t(child.text) }}</v-list-item-title>
                     </v-list-item-content>
                   </v-list-item>
-
                 </template>
               </v-list-group>
 
@@ -73,7 +71,6 @@
                   <v-list-item-title>{{ $t(item.text) }}</v-list-item-title>
                 </v-list-item-content>
               </v-list-item>
-
             </template>
           </v-list>
         </v-navigation-drawer>
@@ -94,11 +91,17 @@
           <v-spacer></v-spacer>
 
           <v-toolbar-items v-if="$route.meta.home && !isMobile">
-            <v-btn :to="`/${$route.params.lang}/overview`" text>{{ $t('overview') }}</v-btn>
+            <v-btn :to="`/${$route.params.lang}/overview`" text>
+              {{ $t('overview') }}
+            </v-btn>
 
             <v-menu open-on-hover offset-y>
               <template v-slot:activator="{ on }">
-                <v-btn text v-on="on">{{ $t('examples') }}<v-icon dark>arrow_drop_down</v-icon></v-btn>
+                <v-btn text v-on="on">
+                  {{ $t('examples') }}<v-icon dark>
+                    arrow_drop_down
+                  </v-icon>
+                </v-btn>
               </template>
 
               <v-list>
@@ -151,7 +154,9 @@
               <div class="subheading">
                 <a href="https://vuejs.org/" class="subheading pa-2 white--text o-router-link">Learn Vue</a>
               </div>
-              <div class="caption">Current Version: 2.6.10</div>
+              <div class="caption">
+                Current Version: 2.6.10
+              </div>
               <div class="caption text-xs-center">
                 Powered by Oh My Vue &copy;{{ new Date().getFullYear() }}. <br>
                 Code licensed under an MIT-style License. <br>
@@ -165,7 +170,6 @@
       <template v-else>
         <router-view></router-view>
       </template>
-
     </v-app>
   </v-fade-transition>
 </template>
@@ -191,6 +195,19 @@ import actions from './actions';
 
 export default {
   mixins: [layout],
+  data() {
+    return {
+      icons: {
+        mdiAccount,
+        mdiChevronDown,
+        mdiLightbulb,
+        mdiLightbulbOutline,
+        mdiMenu,
+        mdiMenuDown,
+        mdiTranslate,
+      },
+    };
+  },
   computed: {
     app$(): IApp {
       return this.$store.state;
@@ -199,17 +216,6 @@ export default {
   created() {
     this.initialLanguage();
   },
-  data: () => ({
-    icons: {
-      mdiAccount,
-      mdiChevronDown,
-      mdiLightbulb,
-      mdiLightbulbOutline,
-      mdiMenu,
-      mdiMenuDown,
-      mdiTranslate,
-    },
-  }),
   methods: {
     ...mapActions(Object.keys(actions)),
   },

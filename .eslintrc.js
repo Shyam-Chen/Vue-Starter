@@ -1,8 +1,10 @@
-{
+require('@babel/register');
+
+exports.module = {
   "plugins": [
     "vue",
     "flowtype",
-    "prettier"
+    // "prettier"
   ],
   "env": {
     "browser": true,
@@ -16,9 +18,9 @@
     "airbnb-base",
     "plugin:vue/recommended",
     "plugin:flowtype/recommended",
-    "prettier",
-    "prettier/vue",
-    "prettier/flowtype"
+    // "prettier",
+    // "prettier/vue",
+    // "prettier/flowtype"
   ],
   "parser": "vue-eslint-parser",
   "parserOptions": {
@@ -34,7 +36,7 @@
   },
   "rules": {
     // Plugins
-    "prettier/prettier": "off",
+    // "prettier/prettier": "error",
 
     "import/extensions": ["error", "always", { "js": "never", "vue": "never" }],
     "import/prefer-default-export": "off",
