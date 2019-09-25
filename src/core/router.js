@@ -14,7 +14,7 @@ const router = new Router({
   mode: 'history',
   base: process.env.APP_BASE,
   routes: [
-    { path: '/', redirect: `/${sessionStorage.getItem('lang') || 'en'}`},
+    { path: '/', redirect: `/${sessionStorage.getItem('lang') || navigator.language}`},
     {
       path: '/:lang',
       component: () => import('~/App'),
@@ -47,7 +47,7 @@ const router = new Router({
         { path: '*', component: () => import('~/error/not-found/NotFound'), meta: { standalone: true } },
       ],
     },
-    { path: '*', redirect: `/${sessionStorage.getItem('lang') || 'en'}`},
+    { path: '*', redirect: `/${sessionStorage.getItem('lang') || navigator.language}`},
   ],
   async scrollBehavior(to, from, savedPosition) {
     if (savedPosition) return savedPosition;
