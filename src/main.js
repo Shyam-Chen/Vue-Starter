@@ -4,7 +4,6 @@ import Raven from 'raven-js';
 import RavenVue from 'raven-js/plugins/vue';
 
 import '~/assets/styles/global.css';
-import App from '~/App';
 import router from '~/core/router';
 import store from '~/core/store';
 import vuetify from '~/core/vuetify';
@@ -26,7 +25,7 @@ const vm = new Vue({
   vuetify,
   apolloProvider,
   i18n,
-  render: handle => handle('router-view'),
+  render: (handle) => handle('router-view'),
 });
 
 vm.$mount('#app');

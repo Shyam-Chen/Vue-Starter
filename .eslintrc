@@ -1,9 +1,7 @@
-require('@babel/register');
-
-exports.module = {
+{
   "plugins": [
     "vue",
-    "flowtype",
+    "flowtype"
     // "prettier"
   ],
   "env": {
@@ -17,7 +15,7 @@ exports.module = {
   "extends": [
     "airbnb-base",
     "plugin:vue/recommended",
-    "plugin:flowtype/recommended",
+    "plugin:flowtype/recommended"
     // "prettier",
     // "prettier/vue",
     // "prettier/flowtype"
