@@ -7,6 +7,8 @@ import guide from '~/shell/guide/routes';
 import crudOperations from '~/shell/crud-operations/routes';
 import controls from '~/shell/controls/routes';
 
+import { lang } from './i18n';
+
 Vue.use(Router);
 Vue.use(Meta);
 
@@ -14,7 +16,7 @@ const router = new Router({
   mode: 'history',
   base: process.env.APP_BASE,
   routes: [
-    { path: '/', redirect: `/${sessionStorage.getItem('lang') || navigator.language}`},
+    { path: '/', redirect: `/${sessionStorage.getItem('lang') || lang()}`},
     {
       path: '/:lang',
       component: () => import('~/App'),
@@ -47,7 +49,7 @@ const router = new Router({
         { path: '*', component: () => import('~/error/not-found/NotFound'), meta: { standalone: true } },
       ],
     },
-    { path: '*', redirect: `/${sessionStorage.getItem('lang') || navigator.language}`},
+    { path: '*', redirect: `/${sessionStorage.getItem('lang') || lang()}`},
   ],
   async scrollBehavior(to, from, savedPosition) {
     if (savedPosition) return savedPosition;
