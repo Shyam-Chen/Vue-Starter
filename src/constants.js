@@ -4,7 +4,6 @@ import { IApp } from './types';
 
 export const INITIAL: IApp = {
   navigation: [
-    /** @name practical-examples */
     { icon: 'pageview', text: 'overview', route: '/overview', subheader: 'practicalExamples' },
     { icon: 'face', text: 'helloWorld', route: '/hello-world' },
     {
