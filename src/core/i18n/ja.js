@@ -1,10 +1,9 @@
-import home from '~/home/_languages/ja';
+import home from '~/landings/home/_languages/ja';
 import guideStateManagement from '~/shell/guide/state-management/_languages/ja';
 import internationalization from '~/shell/internationalization/_languages/ja';
 
 export default {
-  /** @name practical-examples */
-  practicalExamples: 'Practical Examples',
+  practicalExamples: '実用例',
 
   overview: '概要',
   examples: '実例集',
@@ -72,13 +71,6 @@ export default {
   cloudMessaging: 'クラウドメッセージング',
 
   machineLearning: '機械学習',
-
-  /** @name additional-resources */
-  additionalResources: 'Additional Resources',
-
-  universalApps: 'Universal Apps',
-  mobileApps: 'Mobile Apps',
-  desktopApps: 'Desktop Apps',
 
   /**
    * modules

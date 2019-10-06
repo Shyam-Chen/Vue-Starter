@@ -1,10 +1,9 @@
-import home from '~/home/_languages/zh';
+import home from '~/landings/home/_languages/zh';
 import guideStateManagement from '~/shell/guide/state-management/_languages/zh';
 import internationalization from '~/shell/internationalization/_languages/zh';
 
 export default {
-  /** @name practical-examples */
-  practicalExamples: 'Practical Examples',
+  practicalExamples: '实际例子',
 
   overview: '概观',
   examples: '例子',
@@ -72,13 +71,6 @@ export default {
   cloudMessaging: '云消息',
 
   machineLearning: '机器学习',
-
-  /** @name additional-resources */
-  additionalResources: 'Additional Resources',
-
-  universalApps: 'Universal Apps',
-  mobileApps: 'Mobile Apps',
-  desktopApps: 'Desktop Apps',
 
   /**
    * modules

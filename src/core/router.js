@@ -21,7 +21,7 @@ const router = new Router({
       path: '/:lang',
       component: () => import('~/App'),
       children: [
-        { path: '', component: () => import('~/home/Home'), meta: { home: true } },
+        { path: '', component: () => import('~/landings/home/Home'), meta: { home: true } },
         { path: 'overview', component: () => import('~/shell/overview/Overview') },
         { path: 'hello-world', component: () => import('~/shell/hello-world/HelloWorld') },
         ...guide,
@@ -46,7 +46,7 @@ const router = new Router({
         { path: 'messages/chat-room', component: () => import('~/shell/messages/chat-room/ChatRoom') },
 
         { path: 'machine-learning', component: () => import('~/shell/machine-learning/MachineLearning') },
-        { path: '*', component: () => import('~/error/not-found/NotFound'), meta: { standalone: true } },
+        { path: '*', component: () => import('~/errors/not-found/NotFound'), meta: { standalone: true } },
       ],
     },
     { path: '*', redirect: `/${sessionStorage.getItem('lang') || lang()}`},

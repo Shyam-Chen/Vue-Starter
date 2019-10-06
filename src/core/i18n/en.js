@@ -1,9 +1,8 @@
-import home from '~/home/_languages/en';
+import home from '~/landings/home/_languages/en';
 import guideStateManagement from '~/shell/guide/state-management/_languages/en';
 import internationalization from '~/shell/internationalization/_languages/en';
 
 export default {
-  /** @name practical-examples */
   practicalExamples: 'Practical Examples',
 
   overview: 'Overview',
@@ -72,13 +71,6 @@ export default {
   cloudMessaging: 'Cloud Messaging',
 
   machineLearning: 'Machine Learning',
-
-  /** @name additional-resources */
-  additionalResources: 'Additional Resources',
-
-  universalApps: 'Universal Apps',
-  mobileApps: 'Mobile Apps',
-  desktopApps: 'Desktop Apps',
 
   /**
    * modules
