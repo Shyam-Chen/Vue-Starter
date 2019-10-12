@@ -17,7 +17,17 @@ describe('Home', () => {
       messages: { en: { home: en } },
     });
 
-    wrapper = shallowMount(Home, { localVue, i18n });
+    wrapper = shallowMount(Home, {
+      localVue,
+      i18n,
+      mocks: {
+        $route: {
+          params: {
+            lang: 'en',
+          },
+        },
+      },
+    });
   });
 
   it('should render an initial component', () => {

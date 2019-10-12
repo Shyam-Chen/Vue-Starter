@@ -12,8 +12,8 @@ jobs:
     executor: vue-play
     steps:
       - checkout
-      - setup_remote_docker:
-          docker_layer_caching: true
+      # - setup_remote_docker:
+      #     docker_layer_caching: true
       - run:
           name: Combat preparation
           command: docker-compose up -d default
@@ -25,12 +25,12 @@ jobs:
     executor: vue-play
     steps:
       - checkout
-      - setup_remote_docker:
-          docker_layer_caching: true
+      # - setup_remote_docker:
+      #     docker_layer_caching: true
       - run:
           name: Combat preparation
           command: |
-            # docker-compose up -d default
+            docker-compose up -d default
             # docker-compose exec default yarn firebase use development --token $FIREBASE_TOKEN
             # docker-compose exec default yarn build
             # docker-compose exec -d default yarn firebase serve --only hosting --port 8000 --token $FIREBASE_TOKEN
@@ -41,8 +41,8 @@ jobs:
       - run:
           name: Test the application
           command: |
-            # docker-compose exec default yarn unit
-            # docker-compose exec default yarn codecov --token=$CODECOV_TOKEN
+            docker-compose exec default yarn unit
+            docker-compose exec default yarn codecov --token=$CODECOV_TOKEN
       - run:
           name: End-to-end UI tests
           command: |
@@ -53,8 +53,8 @@ jobs:
     executor: vue-play
     steps:
       - checkout
-      - setup_remote_docker:
-          docker_layer_caching: true
+      # - setup_remote_docker:
+      #     docker_layer_caching: true
       - run:
           name: Log in to Docker
           command: echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
