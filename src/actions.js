@@ -25,9 +25,9 @@ export default {
       const pathname = route.path.slice(`/${route.params.lang}/`.length);
 
       if (pathname) {
-        router.push(`/${val}/${pathname}`);
+        router.push(`/${val}/${pathname}`).catch(() => {});
       } else {
-        router.push(`/${val}`);
+        router.push(`/${val}`).catch(() => {});
       }
     });
   },
@@ -43,7 +43,7 @@ export default {
     }
   },
   backToHome({ state }: ActionContext<IApp>): void {
-    router.push(`/${router.currentRoute.params.lang}`);
+    router.push(`/${router.currentRoute.params.lang}`).catch(() => {});
     state.drawer = false;
   },
 };

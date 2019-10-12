@@ -7,8 +7,6 @@ const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const { GenerateSW } = require('workbox-webpack-plugin');
 const PurgecssPlugin = require('purgecss-webpack-plugin');
-const RobotstxtPlugin = require('robotstxt-webpack-plugin').default;
-const SitemapPlugin = require('sitemap-webpack-plugin').default;
 const envify = require('process-envify');
 const glob = require('glob-all');
 
@@ -127,6 +125,7 @@ module.exports = ({ prod = false } = {}) => ({
       },
     ]),
     !prod && new webpack.HotModuleReplacementPlugin(),
+    !prod && new GenerateSW({ clientsClaim: true, skipWaiting: true }),
     prod && new webpack.optimize.AggressiveSplittingPlugin(),
     prod &&
       new GenerateSW({
@@ -157,8 +156,6 @@ module.exports = ({ prod = false } = {}) => ({
         paths: glob.sync([path.join(SOURCE_ROOT, './app/**/*.vue')]),
         whitelist: ['html', 'body'],
       }),
-    prod && new RobotstxtPlugin(),
-    prod && new SitemapPlugin(env.SITE_URL, [{ path: '/' }]),
   ].filter(Boolean),
   optimization: {
     splitChunks: {
