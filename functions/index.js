@@ -2,26 +2,28 @@ const functions = require('firebase-functions');
 const express = require('express');
 const request = require('request');
 
+const pwaShell = require('./pwa-shell');
+
 const app = express();
 
 app.get('*', (req, res) => {
   const botUserAgents = [
-    'baiduspider',
+    'Baiduspider',
     'bingbot',
-    'embedly',
+    'Embedly',
     'facebookexternalhit',
-    'linkedinbot',
+    'LinkedInBot',
     'outbrain',
     'pinterest',
     'quora link preview',
     'rogerbot',
     'showyoubot',
-    'slackbot',
+    'Slackbot',
     'TelegramBot',
-    'twitterbot',
+    'Twitterbot',
     'vkShare',
     'W3C_Validator',
-    'whatsapp',
+    'WhatsApp',
   ];
 
   const rendertronUrl = process.env.RENDERTRON_URL;
@@ -35,9 +37,7 @@ app.get('*', (req, res) => {
       res.send(String(body));
     });
   } else {
-    request(process.env.SITE_URL, (error, response, body) => {
-      res.send(String(body));
-    });
+    res.send(pwaShell());
   }
 });
 
