@@ -12,8 +12,7 @@ jobs:
     executor: vue-play
     steps:
       - checkout
-      # - setup_remote_docker:
-      #     docker_layer_caching: true
+      - setup_remote_docker
       - run:
           name: Combat preparation
           command: docker-compose up -d default
@@ -25,8 +24,7 @@ jobs:
     executor: vue-play
     steps:
       - checkout
-      # - setup_remote_docker:
-      #     docker_layer_caching: true
+      - setup_remote_docker
       - run:
           name: Combat preparation
           command: |
@@ -53,8 +51,7 @@ jobs:
     executor: vue-play
     steps:
       - checkout
-      # - setup_remote_docker:
-      #     docker_layer_caching: true
+      - setup_remote_docker
       - run:
           name: Log in to Docker
           command: echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
