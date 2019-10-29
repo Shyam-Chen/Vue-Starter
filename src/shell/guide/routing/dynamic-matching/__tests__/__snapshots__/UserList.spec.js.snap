@@ -7,7 +7,7 @@ exports[`UserList should render an initial component 1`] = `
       <v-subheader-stub>Today</v-subheader-stub>
       <v-list-item-stub activeclass="" tag="div">
         <v-list-item-avatar-stub size="40">
-          <v-img-stub position="center center" src="https://cdn.vuetifyjs.com/images/lists/1.jpg" transition="fade-transition"></v-img-stub>
+          <v-img-stub options="[object Object]" position="center center" src="https://cdn.vuetifyjs.com/images/lists/1.jpg" transition="fade-transition"></v-img-stub>
         </v-list-item-avatar-stub>
         <v-list-item-content-stub>
           <v-list-item-title-stub></v-list-item-title-stub>
@@ -17,7 +17,7 @@ exports[`UserList should render an initial component 1`] = `
       <v-divider-stub inset="true"></v-divider-stub>
       <v-list-item-stub activeclass="" tag="div">
         <v-list-item-avatar-stub size="40">
-          <v-img-stub position="center center" src="https://cdn.vuetifyjs.com/images/lists/2.jpg" transition="fade-transition"></v-img-stub>
+          <v-img-stub options="[object Object]" position="center center" src="https://cdn.vuetifyjs.com/images/lists/2.jpg" transition="fade-transition"></v-img-stub>
         </v-list-item-avatar-stub>
         <v-list-item-content-stub>
           <v-list-item-title-stub></v-list-item-title-stub>
@@ -27,7 +27,7 @@ exports[`UserList should render an initial component 1`] = `
       <v-divider-stub inset="true"></v-divider-stub>
       <v-list-item-stub activeclass="" tag="div">
         <v-list-item-avatar-stub size="40">
-          <v-img-stub position="center center" src="https://cdn.vuetifyjs.com/images/lists/3.jpg" transition="fade-transition"></v-img-stub>
+          <v-img-stub options="[object Object]" position="center center" src="https://cdn.vuetifyjs.com/images/lists/3.jpg" transition="fade-transition"></v-img-stub>
         </v-list-item-avatar-stub>
         <v-list-item-content-stub>
           <v-list-item-title-stub></v-list-item-title-stub>
@@ -37,7 +37,7 @@ exports[`UserList should render an initial component 1`] = `
       <v-divider-stub inset="true"></v-divider-stub>
       <v-list-item-stub activeclass="" tag="div">
         <v-list-item-avatar-stub size="40">
-          <v-img-stub position="center center" src="https://cdn.vuetifyjs.com/images/lists/4.jpg" transition="fade-transition"></v-img-stub>
+          <v-img-stub options="[object Object]" position="center center" src="https://cdn.vuetifyjs.com/images/lists/4.jpg" transition="fade-transition"></v-img-stub>
         </v-list-item-avatar-stub>
         <v-list-item-content-stub>
           <v-list-item-title-stub></v-list-item-title-stub>
@@ -47,7 +47,7 @@ exports[`UserList should render an initial component 1`] = `
       <v-divider-stub inset="true"></v-divider-stub>
       <v-list-item-stub activeclass="" tag="div">
         <v-list-item-avatar-stub size="40">
-          <v-img-stub position="center center" src="https://cdn.vuetifyjs.com/images/lists/5.jpg" transition="fade-transition"></v-img-stub>
+          <v-img-stub options="[object Object]" position="center center" src="https://cdn.vuetifyjs.com/images/lists/5.jpg" transition="fade-transition"></v-img-stub>
         </v-list-item-avatar-stub>
         <v-list-item-content-stub>
           <v-list-item-title-stub></v-list-item-title-stub>

@@ -11,7 +11,7 @@ exports[`StateManagement should render an initial component 1`] = `
     <v-layout-stub tag="div" row="">
       <v-subheader-stub class="pt-3">Step:</v-subheader-stub>
       <div>
-        <v-select-stub errorcount="1" errormessages="" messages="" rules="" successmessages="" value="1" appendicon="$vuetify.icons.dropdown" backgroundcolor="" loaderheight="2" clearicon="$vuetify.icons.clear" singleline="true" type="text" valuecomparator="function deepEqual(a, b) {
+        <v-select-stub errorcount="1" errormessages="" messages="" rules="" successmessages="" value="1" appendicon="$dropdown" backgroundcolor="" loaderheight="2" clearicon="$clear" singleline="true" type="text" valuecomparator="function deepEqual(a, b) {
   if (a === b) return true;
 
   if (a instanceof Date &amp;&amp; b instanceof Date) {
