@@ -22,6 +22,9 @@ const router = new Router({
       component: () => import('~/App'),
       children: [
         { path: '', component: () => import('~/landings/home/Home'), meta: { home: true } },
+
+        { path: 'cherri-chat', component: () => import('~/shell/cherri-chat/CherriChat') },
+
         { path: 'overview', component: () => import('~/shell/overview/Overview') },
         { path: 'hello-world', component: () => import('~/shell/hello-world/HelloWorld') },
         ...guide,
