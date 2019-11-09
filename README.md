@@ -14,12 +14,12 @@
 [demo-master-image]: https://img.shields.io/badge/link-master-blue.svg
 [demo-master-link]: https://vue-by-example-prod.web.app/
 
-[develop-build-image]: https://img.shields.io/circleci/project/github/Shyam-Chen/Vue-Play/develop.svg
+[develop-build-image]: https://img.shields.io/circleci/build/github/Shyam-Chen/Vue-Starter/develop
 [develop-build-link]: https://circleci.com/gh/Shyam-Chen/workflows/Vue-Play
 [develop-coverage-image]: https://img.shields.io/codecov/c/github/Shyam-Chen/Vue-Play/develop.svg
 [develop-coverage-link]: https://codecov.io/gh/Shyam-Chen/Vue-Play
 
-[master-build-image]: https://img.shields.io/circleci/project/github/Shyam-Chen/Vue-Play/master.svg
+[master-build-image]: https://img.shields.io/circleci/build/github/Shyam-Chen/Vue-Starter/master
 [master-build-link]: https://circleci.com/gh/Shyam-Chen/workflows/Vue-Play
 [master-coverage-image]: https://img.shields.io/codecov/c/github/Shyam-Chen/Vue-Play/master.svg
 [master-coverage-link]: https://codecov.io/gh/Shyam-Chen/Vue-Play
