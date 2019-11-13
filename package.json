@@ -1,5 +1,5 @@
 {
-  "name": "vue-play",
+  "name": "vue-starter",
   "version": "1.0.0",
   "description": "A boilerplate for Vue, Material, Babel, Flow, and ReactiveX.",
   "engines": {
@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Shyam-Chen/Vue-Play.git"
+    "url": "git+https://github.com/Shyam-Chen/Vue-Starter.git"
   },
   "author": "Shyam Chen",
   "license": "MIT",

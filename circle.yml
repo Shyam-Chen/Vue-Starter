@@ -1,15 +1,15 @@
 version: 2.1
 
 executors:
-  vue-play:
+  vue-starter:
     docker:
       - image: circleci/node:10
-    working_directory: ~/Vue-Play
+    working_directory: ~/Vue-Starter
 
 jobs:
 
   build:
-    executor: vue-play
+    executor: vue-starter
     steps:
       - checkout
       - setup_remote_docker
@@ -21,7 +21,7 @@ jobs:
           command: docker-compose exec default yarn build
 
   test:
-    executor: vue-play
+    executor: vue-starter
     steps:
       - checkout
       - setup_remote_docker
@@ -48,7 +48,7 @@ jobs:
             # docker-compose exec default yarn e2e
 
   deploy:
-    executor: vue-play
+    executor: vue-starter
     steps:
       - checkout
       - setup_remote_docker

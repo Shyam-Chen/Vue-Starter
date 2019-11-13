@@ -1,6 +1,6 @@
 FROM node:10
 
-ENV HOME /Vue-Play
+ENV HOME /Vue-Starter
 
 WORKDIR ${HOME}
 ADD . $HOME

@@ -19,7 +19,7 @@
               </v-icon>
               {{ $t('home.seeMore') }}
             </v-btn>
-            <v-btn color="white" href="https://github.com/Shyam-Chen/Vue-Play" large outlined target="_blank" rel="noopener" class="ml-3">
+            <v-btn color="white" href="https://github.com/Shyam-Chen/Vue-Starter" large outlined target="_blank" rel="noopener" class="ml-3">
               <v-icon left>
                 {{ icons.mdiGithubCircle }}
               </v-icon>

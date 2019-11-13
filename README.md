@@ -1,4 +1,4 @@
-# Vue Play
+# Vue Starter
 
 :poodle: A boilerplate for Vue, Material, Babel, Flow, and PostCSS.
 
@@ -15,19 +15,19 @@
 [demo-master-link]: https://vue-by-example-prod.web.app/
 
 [develop-build-image]: https://img.shields.io/circleci/build/github/Shyam-Chen/Vue-Starter/develop
-[develop-build-link]: https://circleci.com/gh/Shyam-Chen/workflows/Vue-Play
-[develop-coverage-image]: https://img.shields.io/codecov/c/github/Shyam-Chen/Vue-Play/develop.svg
-[develop-coverage-link]: https://codecov.io/gh/Shyam-Chen/Vue-Play
+[develop-build-link]: https://circleci.com/gh/Shyam-Chen/workflows/Vue-Starter
+[develop-coverage-image]: https://img.shields.io/codecov/c/github/Shyam-Chen/Vue-Starter/develop.svg
+[develop-coverage-link]: https://codecov.io/gh/Shyam-Chen/Vue-Starter
 
 [master-build-image]: https://img.shields.io/circleci/build/github/Shyam-Chen/Vue-Starter/master
-[master-build-link]: https://circleci.com/gh/Shyam-Chen/workflows/Vue-Play
-[master-coverage-image]: https://img.shields.io/codecov/c/github/Shyam-Chen/Vue-Play/master.svg
-[master-coverage-link]: https://codecov.io/gh/Shyam-Chen/Vue-Play
+[master-build-link]: https://circleci.com/gh/Shyam-Chen/workflows/Vue-Starter
+[master-coverage-image]: https://img.shields.io/codecov/c/github/Shyam-Chen/Vue-Starter/master.svg
+[master-coverage-link]: https://codecov.io/gh/Shyam-Chen/Vue-Starter
 
-[package-dependencies-image]: https://img.shields.io/david/Shyam-Chen/Vue-Play.svg
-[package-dependencies-link]: https://david-dm.org/Shyam-Chen/Vue-Play
-[package-devDependencies-image]: https://img.shields.io/david/dev/Shyam-Chen/Vue-Play.svg
-[package-devDependencies-link]: https://david-dm.org/Shyam-Chen/Vue-Play?type=dev
+[package-dependencies-image]: https://img.shields.io/david/Shyam-Chen/Vue-Starter.svg
+[package-dependencies-link]: https://david-dm.org/Shyam-Chen/Vue-Starter
+[package-devDependencies-image]: https://img.shields.io/david/dev/Shyam-Chen/Vue-Starter.svg
+[package-devDependencies-link]: https://david-dm.org/Shyam-Chen/Vue-Starter?type=dev
 
 ## Table of Contents
 
@@ -44,7 +44,7 @@ Follow steps to execute this boilerplate.
 1. Clone this boilerplate
 
 ```bash
-$ git clone --depth 1 https://github.com/Shyam-Chen/Vue-Play <PROJECT_NAME>
+$ git clone --depth 1 https://github.com/Shyam-Chen/Vue-Starter <PROJECT_NAME>
 $ cd <PROJECT_NAME>
 ```
 
