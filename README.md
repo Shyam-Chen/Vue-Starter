@@ -1,6 +1,6 @@
 # Vue Starter
 
-:poodle: A boilerplate for Vue, Material, Babel, Flow, and PostCSS.
+:poodle: A boilerplate for HTML5, Vue, Material, Babel, Flow, and PostCSS.
 
 |    | Project Information |
 |:--:|---------------------|
