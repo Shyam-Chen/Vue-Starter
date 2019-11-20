@@ -10,7 +10,7 @@ RUN yarn install
 ENV NODE_ENV production
 
 # envs --
-ENV SITE_URL https://vue-by-example-stage.firebaseapp.com
+ENV SITE_URL https://vue-by-example-stage.web.app
 
 ENV SENTRY_DSN https://cea15151a5984c6e80937903b07ae124@sentry.io/1192108
 # -- envs

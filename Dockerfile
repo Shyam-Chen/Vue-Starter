@@ -1,4 +1,4 @@
-FROM node:10-alpine
+FROM node:10
 
 ENV HOME /Vue-Starter
 
@@ -18,7 +18,8 @@ ENTRYPOINT ["Xvfb", "-ac", ":99", "-screen", "0", "1280x800x16"]
 
 # puppeteer --
 RUN \
-  apt-get update && apt-get install -y wget --no-install-recommends && \
+  apt-get update && \
+  apt-get install -y wget --no-install-recommends && \
   wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - && \
   sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list' && \
   apt-get update && \
