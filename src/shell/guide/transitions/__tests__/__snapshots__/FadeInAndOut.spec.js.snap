@@ -5,11 +5,15 @@ exports[`FadeInAndOut should render an initial component 1`] = `
   <div class="title mb-2">Fade In and Out</div>
   <v-layout-stub tag="div" align-center="">
     <v-btn-stub tag="button" activeclass="" type="button">Fade Transition</v-btn-stub>
-    <div name="fade-transition">Block</div>
+    <transition-stub name="fade-transition">
+      <div>Block</div>
+    </transition-stub>
   </v-layout-stub>
   <v-layout-stub tag="div" align-center="" class="my-1">
     <v-btn-stub tag="button" activeclass="" type="button">Fade Animation</v-btn-stub>
-    <div name="fade-animation">Block</div>
+    <transition-stub name="fade-animation">
+      <div>Block</div>
+    </transition-stub>
   </v-layout-stub>
 </v-layout-stub>
 `;

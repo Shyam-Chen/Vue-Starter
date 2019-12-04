@@ -34,11 +34,6 @@ describe('App', () => {
         RouterLink: RouterLinkStub,
       },
       mocks: {
-        $route: {
-          params: {
-            lang: 'en',
-          },
-        },
         Date: mockdate.set('2020-01-10'),
       },
     });
@@ -47,7 +42,9 @@ describe('App', () => {
   it('should render an initial component', () => {
     expect(wrapper.html()).toMatchSnapshot();
   });
+});
 
+describe('Routes', () => {
   it('Overview', () => {
     jest.mock('~/shell/overview/Overview', () => ({ name: 'Overview', render: h => h('div') }));
     router.push('/en/overview');
@@ -106,5 +103,10 @@ describe('App', () => {
   it('MachineLearning', () => {
     jest.mock('~/shell/machine-learning/MachineLearning', () => ({ name: 'MachineLearning', render: h => h('div') }));
     router.push('/en/machine-learning');
+  });
+
+  it('NotFound', () => {
+    jest.mock('~/errors/not-found/NotFound', () => ({ name: 'NotFound', render: h => h('div') }));
+    router.push('/foo/bar');
   });
 });

@@ -8,20 +8,20 @@ switch (process.env.JEST_ENV) {
       moduleNameMapper: {
         '~(.*)': '<rootDir>/src$1',
         '^vuetify/lib$': 'vuetify',
+        '^.+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$': 'jest-transform-stub',
       },
       setupFilesAfterEnv: ['<rootDir>/tools/setup-app.js'],
-      snapshotSerializers: ['<rootDir>/node_modules/jest-serializer-vue'],
+      snapshotSerializers: ['jest-serializer-vue'],
       testPathIgnorePatterns: [
-        '<rootDir>/node_modules/',
-        '<rootDir>/.flow-typed',
+        '/node_modules/',
+        '/.flow-typed',
         '.*\\.e2e-spec.js$',
       ],
       testURL: `http://${env.HOST_NAME}/`,
       transform: {
         '^.+\\.js$': 'babel-jest',
         '^.+\\.vue$': 'vue-jest',
-        '^[./a-zA-Z0-9$_-]+\\.(bmp|gif|jpg|jpeg|png|psd|svg|webp)$':
-          '<rootDir>/tools/assets-transform.js',
+        '^.+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$': 'jest-transform-stub',
       },
     };
     break;
@@ -30,8 +30,8 @@ switch (process.env.JEST_ENV) {
     module.exports = {
       setupFilesAfterEnv: ['<rootDir>/tools/setup-e2e.js'],
       testPathIgnorePatterns: [
-        '<rootDir>/node_modules/',
-        '<rootDir>/.flow-typed',
+        '/node_modules/',
+        '/.flow-typed',
         '.*\\.spec.js$',
       ],
       testURL: `http://${env.HOST_NAME}/`,
