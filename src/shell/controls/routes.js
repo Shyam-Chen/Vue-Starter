@@ -10,8 +10,7 @@ export default [
   },
   {
     path: 'controls/selection-controls',
-    component: () =>
-      import('~/shell/controls/selection-controls/SelectionControls'),
+    component: () => import('~/shell/controls/selection-controls/SelectionControls'),
   },
   {
     path: 'controls/pickers',

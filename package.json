@@ -1,18 +1,17 @@
 {
   "name": "vue-starter",
   "version": "1.0.0",
-  "description": "A boilerplate for Vue, Material, Babel, Flow, and ReactiveX.",
+  "description": "A boilerplate for HTML5, Vue, Material, Babel, Flow, and PostCSS.",
   "engines": {
     "node": "10"
   },
   "scripts": {
     "start": "cross-env BABEL_ENV=app webpack-dev-server --progress",
     "build": "rimraf public && cross-env BABEL_ENV=app webpack --env.prod",
-    "lint": "eslint 'src/**/*.{js,vue}' && stylelint 'src/**/*.{css,vue}'",
+    "lint": "eslint 'src/**/*.{js,vue}' && stylelint 'src/**/*.{css,vue}' && flow",
     "unit": "cross-env BABEL_ENV=test JEST_ENV=app jest \"src/.*\\.js$\" --coverage --forceExit --detectOpenHandles",
     "e2e": "cross-env BABEL_ENV=test JEST_ENV=e2e jest \"src/.*\\.js$\" --forceExit --detectOpenHandles",
-    "flow": "flow",
-    "typed": "flow-typed install",
+    "typed": "flow-typed install --ignoreDeps dev",
     "codecov": "codecov",
     "firebase": "firebase"
   },
@@ -88,7 +87,6 @@
     "jest": "24.8.0",
     "jest-serializer-vue": "2.0.2",
     "jest-transform-stub": "2.0.0",
-    "jsdom": "15.2.1",
     "mockdate": "2.0.2",
     "postcss-import": "12.0.1",
     "postcss-loader": "3.0.0",

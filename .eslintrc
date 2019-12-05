@@ -39,8 +39,9 @@
     "import/extensions": ["error", "always", { "js": "never", "vue": "never" }],
     "import/prefer-default-export": "off",
 
-    "vue/max-attributes-per-line": "off",
     "vue/html-self-closing": "off",
+    "vue/max-attributes-per-line": "off",
+    "vue/singleline-html-element-content-newline": "off",
 
     // Possible Errors
 
@@ -55,8 +56,9 @@
     // Stylistic Issues
     "max-len": "off",
     "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
-    "object-curly-newline": ["error", { "consistent": true }]
+    "object-curly-newline": ["error", { "consistent": true }],
 
     // JS.Next
+    "arrow-parens": ["error", "as-needed", { "requireForBlockBody": true }]
   }
 }

@@ -39,8 +39,16 @@ describe('App', () => {
     });
   });
 
-  it('should render an initial component', () => {
+  it('should render an initial component', (done) => {
     expect(wrapper.html()).toMatchSnapshot();
+
+    const resizeEvent = document.createEvent('Event');
+    resizeEvent.initEvent('resize', true, true);
+
+    wrapper.vm.$nextTick(() => {
+      window.dispatchEvent(resizeEvent);
+      done();
+    });
   });
 });
 

@@ -6,6 +6,6 @@ describe('Utils', () => {
     const source = { foo: { b: [7], c: true } };
     const specification = { foo: { a: 1, b: [7], c: true } };
 
-    expect(assignDeep(target, source)).toEqual(specification)
+    expect(assignDeep(target, source)).toEqual(specification);
   });
 });

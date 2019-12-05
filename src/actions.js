@@ -15,9 +15,11 @@ export default {
     vuetify.framework.theme.dark = val === 'dark';
   },
   setLanguage({ state }: ActionContext<IApp>, val: string): void {
+    // $FlowFixMe
     import(`~/core/i18n/${val}`).then((data): void => {
       i18n.setLocaleMessage(val, data.default);
       i18n.locale = val;
+      // $FlowFixMe
       document.documentElement.lang = val;
       sessionStorage.setItem('lang', val);
 

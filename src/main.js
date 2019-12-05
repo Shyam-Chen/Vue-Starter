@@ -28,7 +28,7 @@ const vm = new Vue({
   vuetify,
   apolloProvider,
   i18n,
-  render: (handle) => handle('router-view'),
+  render: handle => handle('router-view'),
 });
 
 vm.$mount('#app');

@@ -35,7 +35,7 @@ jobs:
       - run:
           name: Check the code
           command: |
-            # docker-compose exec default yarn lint
+            docker-compose exec default yarn lint
       - run:
           name: Test the application
           command: |
