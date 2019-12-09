@@ -7,6 +7,8 @@ const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const { GenerateSW } = require('workbox-webpack-plugin');
 const PurgecssPlugin = require('purgecss-webpack-plugin');
+const sass = require('sass');
+const fibers = require('fibers');
 const envify = require('process-envify');
 const glob = require('glob-all');
 
@@ -53,8 +55,8 @@ module.exports = ({ prod = false } = {}) => ({
           {
             loader: 'sass-loader',
             options: {
-              implementation: require('sass'),
-              fiber: require('fibers'),
+              implementation: sass,
+              fiber: fibers,
               indentedSyntax: true,
             },
           },
@@ -127,35 +129,33 @@ module.exports = ({ prod = false } = {}) => ({
     !prod && new webpack.HotModuleReplacementPlugin(),
     !prod && new GenerateSW({ clientsClaim: true, skipWaiting: true }),
     prod && new webpack.optimize.AggressiveSplittingPlugin(),
-    prod &&
-      new GenerateSW({
-        exclude: [/\.(?:png|jpg|jpeg|svg)$/],
-        skipWaiting: true,
-        clientsClaim: true,
-        runtimeCaching: [
-          {
-            urlPattern: /\.(?:png|jpg|jpeg|svg)$/,
-            handler: 'cacheFirst',
-          },
-          {
-            urlPattern: new RegExp(env.SITE_URL),
-            handler: 'staleWhileRevalidate',
-            options: {
-              cacheableResponse: {
-                statuses: [0, 200],
-              },
+    prod && new GenerateSW({
+      exclude: [/\.(?:png|jpg|jpeg|svg)$/],
+      skipWaiting: true,
+      clientsClaim: true,
+      runtimeCaching: [
+        {
+          urlPattern: /\.(?:png|jpg|jpeg|svg)$/,
+          handler: 'cacheFirst',
+        },
+        {
+          urlPattern: new RegExp(env.SITE_URL),
+          handler: 'staleWhileRevalidate',
+          options: {
+            cacheableResponse: {
+              statuses: [0, 200],
             },
           },
-        ],
-        navigateFallback: '/',
-        navigateFallbackWhitelist: [/^(?!\/__).*/],
-        cacheId: pkg.name,
-      }),
-    prod &&
-      new PurgecssPlugin({
-        paths: glob.sync([path.join(SOURCE_ROOT, './app/**/*.vue')]),
-        whitelist: ['html', 'body'],
-      }),
+        },
+      ],
+      navigateFallback: '/',
+      navigateFallbackWhitelist: [/^(?!\/__).*/],
+      cacheId: pkg.name,
+    }),
+    prod && new PurgecssPlugin({
+      paths: glob.sync([path.join(SOURCE_ROOT, './app/**/*.vue')]),
+      whitelist: ['html', 'body'],
+    }),
   ].filter(Boolean),
   optimization: {
     splitChunks: {
