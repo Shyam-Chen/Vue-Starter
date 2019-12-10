@@ -96,6 +96,8 @@ This seed repository provides the following features:
 * [x] [Vue I18n](https://github.com/kazupon/vue-i18n)
 * [x] [Axios](https://github.com/axios/axios)
 * [x] [GraphQL Request](https://github.com/prisma/graphql-request)
+* [x] [Vue Socket.IO](https://github.com/MetinSeylan/Vue-Socket.io)
+* [x] [Vue Apollo](https://github.com/vuejs/vue-apollo)
 * [x] [ML5](https://github.com/ml5js/ml5-library)
 * ---------- **Tools** ----------
 * [x] [Webpack](https://github.com/webpack/webpack)
@@ -106,6 +108,7 @@ This seed repository provides the following features:
 * [x] [StyleLint](https://github.com/stylelint/stylelint)
 * [x] [Jest](https://github.com/facebook/jest)
 * [x] [Puppeteer](https://github.com/GoogleChrome/puppeteer)
+* [x] [Workbox](https://github.com/GoogleChrome/workbox)
 * ---------- **Environments** ----------
 * [x] [Node.js](https://nodejs.org/)
 * [x] [Firebase](https://firebase.google.com/)
