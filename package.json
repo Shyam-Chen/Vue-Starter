@@ -6,13 +6,13 @@
     "node": "10"
   },
   "scripts": {
-    "start": "cross-env BABEL_ENV=app webpack-dev-server --progress",
+    "serve": "cross-env BABEL_ENV=app webpack-dev-server --progress",
     "build": "rimraf public && cross-env BABEL_ENV=app webpack --env.prod",
     "lint": "eslint 'src/**/*.{js,vue}' && stylelint 'src/**/*.{css,vue}' && flow",
     "unit": "cross-env BABEL_ENV=test JEST_ENV=app jest \"src/.*\\.js$\" --coverage --forceExit --detectOpenHandles",
     "e2e": "cross-env BABEL_ENV=test JEST_ENV=e2e jest \"src/.*\\.js$\" --forceExit --detectOpenHandles",
     "typed": "flow-typed install --ignoreDeps dev",
-    "codecov": "codecov",
+    "_codecov": "codecov",
     "firebase": "firebase"
   },
   "repository": {

@@ -57,7 +57,7 @@ $ yarn install && yarn typed
 3. Start a local server
 
 ```bash
-$ yarn start
+$ yarn serve
 ```
 
 4. Compile and bundle code
@@ -114,6 +114,7 @@ This seed repository provides the following features:
 * [x] [Docker](https://www.docker.com/)
 * [x] [CircleCI](https://circleci.com/)
 * [x] [Codecov](https://codecov.io/)
+* [x] [Sentry](https://sentry.io/welcome/)
 
 ## Dockerization
 

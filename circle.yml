@@ -29,6 +29,7 @@ jobs:
           name: Combat preparation
           command: |
             docker-compose up -d default
+            docker-compose exec default yarn serve
             # docker-compose exec default yarn firebase use development --token $FIREBASE_TOKEN
             # docker-compose exec default yarn build
             # docker-compose exec -d default yarn firebase serve --only hosting --port 8000 --token $FIREBASE_TOKEN
@@ -40,12 +41,12 @@ jobs:
           name: Test the application
           command: |
             docker-compose exec default yarn unit
-            docker-compose exec default yarn codecov --token=$CODECOV_TOKEN
+            docker-compose exec default yarn _codecov --token=$CODECOV_TOKEN
       - run:
           name: End-to-end UI tests
           command: |
-            # docker-compose exec default sh -c "sleep 10"
-            # docker-compose exec default yarn e2e
+            docker-compose exec default sh -c "sleep 10"
+            docker-compose exec default yarn e2e
 
   deploy:
     executor: vue-starter
