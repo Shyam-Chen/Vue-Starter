@@ -1,7 +1,6 @@
-import { SITE_URL, FUNC_URL } from '../env';
+import { SITE_URL } from '../env';
 
 global.SITE_URL = SITE_URL;
-global.FUNC_URL = FUNC_URL;
 
 const [width, height] = [1280, 800];
 

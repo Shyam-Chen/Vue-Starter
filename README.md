@@ -98,7 +98,6 @@ This seed repository provides the following features:
 * [x] [GraphQL Request](https://github.com/prisma/graphql-request)
 * [x] [Vue Socket.IO](https://github.com/MetinSeylan/Vue-Socket.io)
 * [x] [Vue Apollo](https://github.com/vuejs/vue-apollo)
-* [x] [ML5](https://github.com/ml5js/ml5-library)
 * ---------- **Tools** ----------
 * [x] [Webpack](https://github.com/webpack/webpack)
 * [x] [Babel](https://github.com/babel/babel)
@@ -321,10 +320,7 @@ The most basic configuration.
   "eslint.validate": [
     "javascript",
     "javascriptreact",
-    {
-      "language": "vue",
-      "autoFix": true
-    }
+    "vue"
   ],
   "javascript.validate.enable": false,
   "css.validate": false,
