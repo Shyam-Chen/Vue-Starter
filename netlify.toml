@@ -1,7 +1,7 @@
 [build]
   base    = "/"
   publish = "public"
-  command = "yarn build"
+  command = "yarn build && cp googlebbbc593c4f8369de.html /public"
 
 [[redirects]]
   from = "/*"
