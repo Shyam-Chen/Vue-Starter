@@ -29,10 +29,7 @@ jobs:
           name: Combat preparation
           command: |
             docker-compose up -d default
-            docker-compose exec default yarn serve
-            # docker-compose exec default yarn firebase use development --token $FIREBASE_TOKEN
-            # docker-compose exec default yarn build
-            # docker-compose exec -d default yarn firebase serve --only hosting --port 8000 --token $FIREBASE_TOKEN
+            docker-compose exec -d default yarn serve
       - run:
           name: Check the code
           command: |

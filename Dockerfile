@@ -33,4 +33,4 @@ RUN \
 
 RUN yarn install && yarn typed
 
-EXPOSE 8000 5000
+EXPOSE 8000
