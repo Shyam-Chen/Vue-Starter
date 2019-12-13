@@ -1,0 +1,9 @@
+0.0.0.0:3000 {
+  root /public
+
+  rewrite {
+    to {path} {path}/ /index.html
+  }
+
+  gzip
+}

@@ -16,10 +16,6 @@ exports[`Basic should render an initial component 1`] = `
         </v-card-title-stub>
         <v-data-table-stub items="[object Object],[object Object],[object Object],[object Object]" options="[object Object]" sortby="" sortdesc="" customsort="function sortItems(items, sortBy, sortDesc, locale, customSorters) {
           if (sortBy === null || !sortBy.length) return items;
-          var numericCollator = new Intl.Collator(locale, {
-            numeric: true,
-            usage: 'sort'
-          });
           var stringCollator = new Intl.Collator(locale, {
             sensitivity: 'accent',
             usage: 'sort'
@@ -52,7 +48,7 @@ exports[`Basic should render an initial component 1`] = `
               }), 2), sortA = _b[0], sortB = _b[1];
 
               if (sortA !== sortB) {
-                if (!isNaN(sortA) &amp;&amp; !isNaN(sortB)) return numericCollator.compare(sortA, sortB);
+                if (!isNaN(sortA) &amp;&amp; !isNaN(sortB)) return Number(sortA) - Number(sortB);
                 return stringCollator.compare(sortA, sortB);
               }
             }
@@ -154,10 +150,6 @@ exports[`Basic should render an initial component 2`] = `
         </v-card-title-stub>
         <v-data-table-stub items="[object Object],[object Object],[object Object],[object Object]" options="[object Object]" sortby="" sortdesc="" customsort="function sortItems(items, sortBy, sortDesc, locale, customSorters) {
           if (sortBy === null || !sortBy.length) return items;
-          var numericCollator = new Intl.Collator(locale, {
-            numeric: true,
-            usage: 'sort'
-          });
           var stringCollator = new Intl.Collator(locale, {
             sensitivity: 'accent',
             usage: 'sort'
@@ -190,7 +182,7 @@ exports[`Basic should render an initial component 2`] = `
               }), 2), sortA = _b[0], sortB = _b[1];
 
               if (sortA !== sortB) {
-                if (!isNaN(sortA) &amp;&amp; !isNaN(sortB)) return numericCollator.compare(sortA, sortB);
+                if (!isNaN(sortA) &amp;&amp; !isNaN(sortB)) return Number(sortA) - Number(sortB);
                 return stringCollator.compare(sortA, sortB);
               }
             }

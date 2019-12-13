@@ -13,7 +13,8 @@
     "e2e": "cross-env BABEL_ENV=test JEST_ENV=e2e jest \"src/.*\\.js$\" --forceExit --detectOpenHandles",
     "typed": "flow-typed install --ignoreDeps dev",
     "_codecov": "codecov",
-    "firebase": "firebase"
+    "firebase": "firebase",
+    "netlify": "netlify"
   },
   "repository": {
     "type": "git",
@@ -89,6 +90,7 @@
     "jest-serializer-vue": "2.0.2",
     "jest-transform-stub": "2.0.0",
     "mockdate": "2.0.2",
+    "netlify-cli": "2.25.0",
     "postcss-import": "12.0.1",
     "postcss-loader": "3.0.0",
     "postcss-nested": "4.1.0",
