@@ -18,6 +18,9 @@ export default {
     title: 'Hello World | Oh My Vue',
     meta: [
       { property: 'og:title', content: 'Hello World | Oh My Vue' },
+      { property: 'og:description', content: 'A bare-bones Hello World example.' },
+      { name: 'twitter:title', content: 'Hello World | Oh My Vue' },
+      { name: 'twitter:description', content: 'A bare-bones Hello World example.' },
     ],
   },
   data(): Data {
