@@ -12,29 +12,29 @@ exports[`StateManagement should render an initial component 1`] = `
       <v-subheader-stub class="pt-3">Step:</v-subheader-stub>
       <div>
         <v-select-stub errorcount="1" errormessages="" messages="" rules="" successmessages="" value="1" appendicon="$dropdown" backgroundcolor="" loaderheight="2" clearicon="$clear" singleline="true" type="text" valuecomparator="function deepEqual(a, b) {
-  if (a === b) return true;
+          if (a === b) return true;
 
-  if (a instanceof Date &amp;&amp; b instanceof Date) {
-    // If the values are Date, they were convert to timestamp with getTime and compare it
-    if (a.getTime() !== b.getTime()) return false;
-  }
+          if (a instanceof Date &amp;&amp; b instanceof Date) {
+            // If the values are Date, they were convert to timestamp with getTime and compare it
+            if (a.getTime() !== b.getTime()) return false;
+          }
 
-  if (a !== Object(a) || b !== Object(b)) {
-    // If the values aren't objects, they were already checked for equality
-    return false;
-  }
+          if (a !== Object(a) || b !== Object(b)) {
+            // If the values aren't objects, they were already checked for equality
+            return false;
+          }
 
-  var props = Object.keys(a);
+          var props = Object.keys(a);
 
-  if (props.length !== Object.keys(b).length) {
-    // Different number of props, don't bother to check
-    return false;
-  }
+          if (props.length !== Object.keys(b).length) {
+            // Different number of props, don't bother to check
+            return false;
+          }
 
-  return props.every(function (p) {
-    return deepEqual(a[p], b[p]);
-  });
-}" nodatatext="$vuetify.noDataText" items="1,2,3,4,5,6,7,8,9,10" itemcolor="primary" itemdisabled="disabled" itemtext="text" itemvalue="value" menuprops="[object Object]" class="step"></v-select-stub>
+          return props.every(function (p) {
+            return deepEqual(a[p], b[p]);
+          });
+        }" nodatatext="$vuetify.noDataText" items="1,2,3,4,5,6,7,8,9,10" itemcolor="primary" itemdisabled="disabled" itemtext="text" itemvalue="value" menuprops="[object Object]" class="step"></v-select-stub>
       </div>
     </v-layout-stub>
     <v-layout-stub tag="div" row="">

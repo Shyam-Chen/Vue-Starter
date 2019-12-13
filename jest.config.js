@@ -7,7 +7,6 @@ switch (process.env.JEST_ENV) {
       moduleFileExtensions: ['js', 'vue'],
       moduleNameMapper: {
         '~(.*)': '<rootDir>/src$1',
-        '^vuetify/lib$': 'vuetify',
         '^.+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$': 'jest-transform-stub',
       },
       setupFilesAfterEnv: ['<rootDir>/tools/setup-app.js'],
@@ -23,6 +22,9 @@ switch (process.env.JEST_ENV) {
         '^.+\\.vue$': 'vue-jest',
         '^.+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$': 'jest-transform-stub',
       },
+      transformIgnorePatterns: [
+        'node_modules/(?!@babel|vuetify)',
+      ],
     };
     break;
 
