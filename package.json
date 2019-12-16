@@ -14,7 +14,7 @@
     "typed": "flow-typed install --ignoreDeps dev",
     "_codecov": "codecov",
     "firebase": "firebase",
-    "netlify": "netlify"
+    "_netlify": "netlify"
   },
   "repository": {
     "type": "git",
