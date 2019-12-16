@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`About should render an initial component 1`] = `<div>About Page</div>`;
