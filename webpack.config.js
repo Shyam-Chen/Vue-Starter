@@ -6,11 +6,9 @@ const { VueLoaderPlugin } = require('vue-loader');
 const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const { GenerateSW } = require('workbox-webpack-plugin');
-const PurgecssPlugin = require('purgecss-webpack-plugin');
 const sass = require('sass');
 const fibers = require('fibers');
 const envify = require('process-envify');
-const glob = require('glob-all');
 
 const env = require('./env');
 const pkg = require('./package');
@@ -152,10 +150,6 @@ module.exports = ({ prod = false } = {}) => ({
       navigateFallback: '/',
       navigateFallbackWhitelist: [/^(?!\/__).*/],
       cacheId: pkg.name,
-    }),
-    prod && new PurgecssPlugin({
-      paths: glob.sync([path.join(SOURCE_ROOT, './app/**/*.vue')]),
-      whitelist: ['html', 'body'],
     }),
   ].filter(Boolean),
   optimization: {
