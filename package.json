@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "A boilerplate for HTML5, Vue, Material, Babel, Flow, and PostCSS.",
   "engines": {
-    "node": "10"
+    "node": "12"
   },
   "scripts": {
     "serve": "cross-env BABEL_ENV=app webpack-dev-server --progress",
