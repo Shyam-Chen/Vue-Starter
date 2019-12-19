@@ -70,9 +70,8 @@ jobs:
 
             if [[ "${CIRCLE_BRANCH}" == "master" ]]; then
               docker-compose up -d prod
-              # docker-compose exec prod yarn firebase use production --token $FIREBASE_TOKEN
-              # docker-compose exec prod yarn firebase deploy --only hosting --token $FIREBASE_TOKEN
-              docker-compose exec prod yarn _netlify deploy --prod --dir public --auth $NETLIFY_TOKEN --site $NETLIFY_SITE
+              docker-compose exec prod yarn firebase use production --token $FIREBASE_TOKEN
+              docker-compose exec prod yarn firebase deploy --only hosting --token $FIREBASE_TOKEN
             fi
 
 workflows:

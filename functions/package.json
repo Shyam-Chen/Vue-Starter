@@ -6,7 +6,8 @@
   "license": "MIT",
   "dependencies": {
     "express": "4.17.1",
+    "firebase-admin": "8.8.0",
     "firebase-functions": "3.3.0",
-    "request": "2.88.0"
+    "prerender-node": "3.2.5"
   }
 }
