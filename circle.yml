@@ -38,7 +38,7 @@ jobs:
           name: Test the application
           command: |
             docker-compose exec default yarn unit
-            docker-compose exec default yarn _codecov --token=$CODECOV_TOKEN
+            docker-compose exec default yarn _codecov --token $CODECOV_TOKEN
       - run:
           name: End-to-end UI tests
           command: |
@@ -72,7 +72,7 @@ jobs:
               docker-compose up -d prod
               # docker-compose exec prod yarn firebase use production --token $FIREBASE_TOKEN
               # docker-compose exec prod yarn firebase deploy --only hosting --token $FIREBASE_TOKEN
-              docker-compose exec prod yarn _netlify deploy --prod --auth $NETLIFY_TOKEN --site $NETLIFY_SITE
+              docker-compose exec prod yarn _netlify deploy --prod --dir public --auth $NETLIFY_TOKEN --site $NETLIFY_SITE
             fi
 
 workflows:
