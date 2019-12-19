@@ -40,7 +40,7 @@ module.exports = ({ prod = false } = {}) => ({
       {
         test: /\.css$/,
         use: [
-          'style-loader',
+          'vue-style-loader',
           { loader: 'css-loader', options: { importLoaders: 1 } },
           { loader: 'postcss-loader', options: { sourceMap: true } },
         ],
