@@ -13,12 +13,12 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker
-      - run:
-          name: Combat preparation
-          command: docker-compose up -d default
-      - run:
-          name: Build the application
-          command: docker-compose exec default yarn build
+      # - run:
+      #     name: Combat preparation
+      #     command: docker-compose up -d default
+      # - run:
+      #     name: Build the application
+      #     command: docker-compose exec default yarn build
 
   test:
     executor: vue-starter
@@ -50,29 +50,29 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker
-      - run:
-          name: Log in to Docker
-          command: echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-      - run:
-          name: Deploy the project
-          command: |
-            if [[ "${CIRCLE_BRANCH}" == "develop" ]]; then
-              docker-compose up -d dev
-              docker-compose exec dev yarn firebase use development --token $FIREBASE_TOKEN
-              docker-compose exec dev yarn firebase deploy --only hosting --token $FIREBASE_TOKEN
-            fi
+      # - run:
+      #     name: Log in to Docker
+      #     command: echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+      # - run:
+      #     name: Deploy the project
+      #     command: |
+      #       if [[ "${CIRCLE_BRANCH}" == "develop" ]]; then
+      #         docker-compose up -d dev
+      #         docker-compose exec dev yarn firebase use development --token $FIREBASE_TOKEN
+      #         docker-compose exec dev yarn firebase deploy --only hosting --token $FIREBASE_TOKEN
+      #       fi
 
-            if [[ "${CIRCLE_BRANCH}" == *"release"* ]]; then
-              docker-compose up -d stage
-              docker-compose exec stage yarn firebase use staging --token $FIREBASE_TOKEN
-              docker-compose exec stage yarn firebase deploy --only hosting --token $FIREBASE_TOKEN
-            fi
+      #       if [[ "${CIRCLE_BRANCH}" == *"release"* ]]; then
+      #         docker-compose up -d stage
+      #         docker-compose exec stage yarn firebase use staging --token $FIREBASE_TOKEN
+      #         docker-compose exec stage yarn firebase deploy --only hosting --token $FIREBASE_TOKEN
+      #       fi
 
-            if [[ "${CIRCLE_BRANCH}" == "master" ]]; then
-              docker-compose up -d prod
-              docker-compose exec prod yarn firebase use production --token $FIREBASE_TOKEN
-              docker-compose exec prod yarn firebase deploy --only hosting --token $FIREBASE_TOKEN
-            fi
+      #       if [[ "${CIRCLE_BRANCH}" == "master" ]]; then
+      #         docker-compose up -d prod
+      #         docker-compose exec prod yarn firebase use production --token $FIREBASE_TOKEN
+      #         docker-compose exec prod yarn firebase deploy --only hosting --token $FIREBASE_TOKEN
+      #       fi
 
 workflows:
   version: 2
