@@ -27,8 +27,11 @@
   },
   "settings": {
     "import/resolver": {
-      "webpack": {
-        "config": "webpack.config.js"
+      "alias": {
+        "map": [
+          ["~", "./src"]
+        ],
+        "extensions": [".mjs", ".js", ".vue"]
       }
     }
   },

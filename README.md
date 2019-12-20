@@ -337,10 +337,6 @@ The structure follows the LIFT Guidelines.
 
 ```coffee
 .
-├── functions
-│   ├── index.js
-│   ├── package.json
-│   └── yarn.lock
 ├── src
 │   ├── __tests__
 │   │   └── ...
@@ -389,14 +385,12 @@ The structure follows the LIFT Guidelines.
 │   ├── getters.js
 │   ├── index.html
 │   ├── main.js
-│   ├── mutations.js
 │   └── types.js
 ├── tools
 │   └── ...
 ├── .babelrc
 ├── .editorconfig
 ├── .eslintrc
-├── .firebaserc
 ├── .flowconfig
 ├── .gitignore
 ├── .postcssrc
@@ -407,7 +401,6 @@ The structure follows the LIFT Guidelines.
 ├── circle.yml
 ├── docker-compose.yml
 ├── env.js
-├── firebase.json
 ├── jest.config.js
 ├── package.json
 ├── webpack.config.js
