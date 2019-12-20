@@ -110,7 +110,6 @@ This seed repository provides the following features:
 * [x] [Workbox](https://github.com/GoogleChrome/workbox)
 * ---------- **Environments** ----------
 * [x] [Node.js](https://nodejs.org/)
-* [x] [Firebase](https://firebase.google.com/)
 * [x] [Docker](https://www.docker.com/)
 * [x] [CircleCI](https://circleci.com/)
 * [x] [Codecov](https://codecov.io/)

@@ -12,9 +12,7 @@
     "unit": "cross-env BABEL_ENV=test JEST_ENV=app jest \"src/.*\\.js$\" --coverage --forceExit --detectOpenHandles",
     "e2e": "cross-env BABEL_ENV=test JEST_ENV=e2e jest \"src/.*\\.js$\" --forceExit --detectOpenHandles",
     "typed": "flow-typed install --ignoreDeps dev",
-    "_codecov": "codecov",
-    "firebase": "firebase",
-    "_netlify": "netlify"
+    "_codecov": "codecov"
   },
   "repository": {
     "type": "git",
@@ -81,7 +79,6 @@
     "eslint-plugin-vue": "6.0.1",
     "fibers": "4.0.1",
     "file-loader": "2.0.0",
-    "firebase-tools": "7.11.0",
     "flow-bin": "0.109.0",
     "flow-typed": "2.6.1",
     "html-webpack-plugin": "4.0.0-alpha",
@@ -89,8 +86,6 @@
     "jest-serializer-vue": "2.0.2",
     "jest-transform-stub": "2.0.0",
     "mockdate": "2.0.2",
-    "netlify-cli": "2.25.0",
-    "npm-normalize-package-bin": "1.0.1",
     "postcss-import": "12.0.1",
     "postcss-loader": "3.0.0",
     "postcss-nested": "4.1.0",
