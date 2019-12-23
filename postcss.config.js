@@ -8,7 +8,7 @@ module.exports = {
       browserslist: 'last 2 versions',
     },
     'postcss-nested': {},
-    'postcss-remove-unused-css': {},
+    // 'postcss-remove-unused-css': {},
     cssnano: {},
   },
 };
