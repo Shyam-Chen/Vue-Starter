@@ -55,8 +55,10 @@ module.exports = ({ prod = false } = {}) => ({
             loader: 'sass-loader',
             options: {
               implementation: sass,
-              fiber: fibers,
-              indentedSyntax: true,
+              sassOptions: {
+                fiber: fibers,
+                indentedSyntax: true,
+              },
             },
           },
         ],

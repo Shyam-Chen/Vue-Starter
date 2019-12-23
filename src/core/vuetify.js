@@ -1,9 +1,30 @@
 import Vue from 'vue';
 import Vuetify from 'vuetify/lib';
 import colors from 'vuetify/lib/util/colors';
+import webfontloader from 'webfontloader';
 import LRU from 'lru-cache';
 
 Vue.use(Vuetify);
+
+webfontloader.load({
+  google: {
+    families: [
+      'Roboto:100,300,400,500,700,900',
+      // 'Roboto+Mono:500',
+      // 'Material+Icons',
+    ],
+  },
+  // custom: {
+  //   families: [
+  //     'Material Design Icons', // @mdi/js
+  //     'Font Awesome 5',
+  //   ],
+  //   urls: [
+  //     'https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css',
+  //     'https://use.fontawesome.com/releases/v5.0.8/css/all.css',
+  //   ],
+  // },
+});
 
 export default new Vuetify({
   icons: {
