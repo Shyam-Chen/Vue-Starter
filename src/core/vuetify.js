@@ -16,7 +16,7 @@ webfontloader.load({
   },
   // custom: {
   //   families: [
-  //     'Material Design Icons', // @mdi/js
+  //     'Material Design Icons',
   //     'Font Awesome 5',
   //   ],
   //   urls: [

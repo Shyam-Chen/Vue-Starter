@@ -9,7 +9,7 @@
     "serve": "cross-env BABEL_ENV=app webpack-dev-server --progress",
     "build": "rimraf public && cross-env BABEL_ENV=app webpack --env.prod",
     "lint": "eslint 'src/**/*.{js,vue}' && stylelint 'src/**/*.{css,vue}' && flow check",
-    "unit": "cross-env BABEL_ENV=test JEST_ENV=app jest \"src/.*\\.js$\" --coverage --forceExit --detectOpenHandles",
+    "unit": "cross-env BABEL_ENV=test JEST_ENV=unit jest \"src/.*\\.js$\" --coverage --forceExit --detectOpenHandles",
     "e2e": "cross-env BABEL_ENV=test JEST_ENV=e2e jest \"src/.*\\.js$\" --forceExit --detectOpenHandles",
     "typed": "flow-typed install --ignoreDeps dev",
     "_codecov": "codecov"

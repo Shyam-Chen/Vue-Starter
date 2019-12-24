@@ -1,15 +1,14 @@
 const env = require('./env');
 
 switch (process.env.JEST_ENV) {
-  case 'app':
+  case 'unit':
     module.exports = {
-      coveragePathIgnorePatterns: ['/node_modules/', '/tools/'],
       moduleFileExtensions: ['js', 'vue'],
       moduleNameMapper: {
         '~(.*)': '<rootDir>/src$1',
         '^.+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$': 'jest-transform-stub',
       },
-      setupFilesAfterEnv: ['<rootDir>/tools/setup-app.js'],
+      setupFilesAfterEnv: ['<rootDir>/src/unit.js'],
       snapshotSerializers: ['jest-serializer-vue'],
       testPathIgnorePatterns: [
         '/node_modules/',
@@ -30,7 +29,7 @@ switch (process.env.JEST_ENV) {
 
   case 'e2e':
     module.exports = {
-      setupFilesAfterEnv: ['<rootDir>/tools/setup-e2e.js'],
+      setupFilesAfterEnv: ['<rootDir>/src/e2e.js'],
       testPathIgnorePatterns: [
         '/node_modules/',
         '/.flow-typed',
