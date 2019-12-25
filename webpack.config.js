@@ -156,16 +156,12 @@ module.exports = ({ prod = false } = {}) => ({
   ].filter(Boolean),
   optimization: {
     splitChunks: {
+      chunks: 'all',
+      maxInitialRequests: Infinity,
+      minSize: 0,
       cacheGroups: {
-        common: {
-          name: 'common',
-          chunks: 'initial',
-          minChunks: 2,
-        },
         vendor: {
           test: /[\\/]node_modules[\\/]/,
-          name: 'vendor',
-          chunks: 'all',
         },
       },
     },
