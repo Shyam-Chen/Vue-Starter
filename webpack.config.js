@@ -155,6 +155,7 @@ module.exports = ({ prod = false } = {}) => ({
     }),
   ].filter(Boolean),
   optimization: {
+    runtimeChunk: 'single',
     splitChunks: {
       chunks: 'all',
       maxInitialRequests: Infinity,
@@ -164,9 +165,6 @@ module.exports = ({ prod = false } = {}) => ({
           test: /[\\/]node_modules[\\/]/,
         },
       },
-    },
-    runtimeChunk: {
-      name: 'manifest',
     },
   },
   devServer: {

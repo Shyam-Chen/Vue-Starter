@@ -8,13 +8,11 @@
 <script>
 import ECharts from 'vue-echarts';
 
-/* eslint-disable */
 import 'echarts/lib/chart/bar';
 
 import 'echarts/lib/component/dataset';
 import 'echarts/lib/component/legend';
 import 'echarts/lib/component/tooltip';
-/* eslint-enable */
 
 export default {
   components: {

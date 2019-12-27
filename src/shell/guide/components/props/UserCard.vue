@@ -17,14 +17,12 @@
 // @flow
 
 export default {
-  /* eslint-disable */
-  props: [
-    'firstName',
-    'lastName',
-    'email',
-    'phone',
-  ],
-  /* eslint-enable */
+  props: {
+    firstName: { type: String, default: '' },
+    lastName: { type: String, default: '' },
+    email: { type: String, default: '' },
+    phone: { type: String, default: '' },
+  },
 };
 </script>
 
