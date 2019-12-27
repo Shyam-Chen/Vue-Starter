@@ -10,9 +10,9 @@
 | Npm Package | [![dependencies Status][package-dependencies-image]][package-dependencies-link] [![devDependencies Status][package-devDependencies-image]][package-devDependencies-link] |
 
 [demo-develop-image]: https://img.shields.io/badge/link-develop-blue.svg
-[demo-develop-link]: https://vue-by-example-dev.web.app/
+[demo-develop-link]: https://oh-my-vue-dev.netlify.com
 [demo-master-image]: https://img.shields.io/badge/link-master-blue.svg
-[demo-master-link]: https://vue-by-example-prod.web.app/
+[demo-master-link]: https://oh-my-vue-prod.netlify.com
 
 [develop-build-image]: https://img.shields.io/circleci/build/github/Shyam-Chen/Vue-Starter/develop
 [develop-build-link]: https://circleci.com/gh/Shyam-Chen/workflows/Vue-Starter

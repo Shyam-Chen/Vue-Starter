@@ -6,6 +6,8 @@ const { VueLoaderPlugin } = require('vue-loader');
 const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const { GenerateSW } = require('workbox-webpack-plugin');
+const postcssPresetEnv = require('postcss-preset-env');
+const cssnano = require('cssnano');
 const sass = require('sass');
 const fibers = require('fibers');
 const envify = require('process-envify');
@@ -50,7 +52,19 @@ module.exports = ({ prod = false } = {}) => ({
         use: [
           'vue-style-loader',
           'css-loader',
-          'postcss-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              ident: 'postcss',
+              plugins: [
+                postcssPresetEnv({
+                  stage: 0,
+                  browserslist: 'defaults',
+                }),
+                cssnano(),
+              ],
+            },
+          },
           {
             loader: 'sass-loader',
             options: {

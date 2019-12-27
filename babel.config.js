@@ -11,7 +11,7 @@ module.exports = (api) => {
               useBuiltIns: 'entry',
               corejs: '3',
               shippedProposals: true,
-              targets: '> 0.25%, not dead',
+              targets: 'defaults',
             },
           ],
           '@babel/preset-flow',

@@ -5,10 +5,10 @@ module.exports = {
     },
     'postcss-preset-env': {
       stage: 0,
-      browserslist: 'last 2 versions',
+      browserslist: 'defaults',
     },
     'postcss-nested': {},
-    // 'postcss-remove-unused-css': {},
+    'postcss-remove-unused-css': {},
     cssnano: {},
   },
 };
