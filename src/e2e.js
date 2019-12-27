@@ -1,6 +1,6 @@
-import env from '../env';
+import { SITE_URL } from '../env';
 
-process.env = env;
+global.SITE_URL = SITE_URL;
 
 const [width, height] = [1280, 800];
 
