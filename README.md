@@ -111,9 +111,10 @@ This seed repository provides the following features:
 * ---------- **Environments** ----------
 * [x] [Node.js](https://nodejs.org/)
 * [x] [Docker](https://www.docker.com/)
+* [x] [Netlify](https://www.netlify.com/)
 * [x] [CircleCI](https://circleci.com/)
 * [x] [Codecov](https://codecov.io/)
-* [x] [Sentry](https://sentry.io/welcome/)
+* [x] [Sentry](https://sentry.io/)
 
 ## Dockerization
 
@@ -122,13 +123,13 @@ Dockerize an application.
 1. Build and run the container in the background
 
 ```bash
-$ docker-compose up -d <SERVICE>
+$ docker-compose up -d default
 ```
 
 2. Run a command in a running container
 
 ```bash
-$ docker-compose exec <SERVICE> <COMMAND>
+$ docker-compose exec default <COMMAND>
 ```
 
 3. Remove the old container before creating the new one
@@ -140,80 +141,12 @@ $ docker-compose rm -fs
 4. Restart up the container in the background
 
 ```bash
-$ docker-compose up -d --build <SERVICE>
-```
-
-5. Push images to Docker Cloud
-
-```diff
-# .gitignore
-
-  .DS_Store
-  node_modules
-  npm
-  public
-  functions
-  coverage
-+ dev.Dockerfile
-+ stage.Dockerfile
-+ prod.Dockerfile
-  *.log
-```
-
-```bash
-$ docker login
-$ docker build -f ./tools/<dev|stage|prod>.Dockerfile -t <IMAGE_NAME>:<IMAGE_TAG> .
-
-# checkout
-$ docker images
-
-$ docker tag <IMAGE_NAME>:<IMAGE_TAG> <DOCKER_ID_USER>/<IMAGE_NAME>:<IMAGE_TAG>
-$ docker push <DOCKER_ID_USER>/<IMAGE_NAME>:<IMAGE_TAG>
-
-# remove
-$ docker rmi <REPOSITORY>:<TAG>
-# or
-$ docker rmi <IMAGE_ID>
-```
-
-6. Pull images from Docker Cloud
-
-```diff
-# docker-compose.yml
-
-  <dev|stage|prod>:
--   image: <dev|stage|prod>
--   build:
--     context: .
--     dockerfile: ./tools/<dev|stage|prod>.Dockerfile
-+   image: <DOCKER_ID_USER>/<IMAGE_NAME>:<IMAGE_TAG>
-    volumes:
-      - yarn:/home/node/.cache/yarn
-    tty: true
+$ docker-compose up -d --build default
 ```
 
 ## Configuration
 
-### Project environments
-
-Change to your project.
-
-```js
-// .firebaserc
-{
-  "projects": {
-    "development": "<DEV_PROJECT_NAME>",
-    "staging": "<STAGE_PROJECT_NAME>",
-    "production": "<PROD_PROJECT_NAME>"
-  }
-}
-```
-
-Set an active project for working direct
-
-```bash
-$ yarn firebase use development
-```
+Control the environment.
 
 ### Default environments
 
@@ -229,86 +162,40 @@ function Environments() {
   this.SITE_URL = process.env.SITE_URL || `http://${this.HOST_NAME}:${this.SITE_PORT}`;
   this.APP_BASE = process.env.APP_BASE || '/';
 
-  this.GOOGLE_ANALYTICS = process.env.GOOGLE_ANALYTICS || '<GOOGLE_ANALYTICS>';
+  this.API_URL = process.env.API_URL || `http://${this.HOST_NAME}:3000`;
+
+  this.GOOGLE_ANALYTICS = process.env.GOOGLE_ANALYTICS || 'UA-XXXXXXXX-X';
   this.SENTRY_DSN = process.env.SENTRY_DSN || null;
 }
 ```
 
-### Deployment environment
+### Deployment environments
 
-Set your deployment environment variables.
+Add environment variables to the Netlify build.
 
-```dockerfile
-# tools/<dev|stage|prod>.Dockerfile
+```.env
+NODE_ENV=production
+NODE_VERSION=12
+NPM_CONFIG_PRODUCTION=false
 
-# envs --
-ENV PROJECT_NAME <PROJECT_NAME>
-# ...
-# -- envs
+GOOGLE_ANALYTICS=xxx
+SENTRY_DSN=xxx
+...
 ```
 
-### CI environment
+### Continuous integration environments
 
 Add environment variables to the CircleCI build.
 
-```yml
-DOCKER_USERNAME
-DOCKER_PASSWORD
-
-CODECOV_TOKEN
-
-FIREBASE_TOKEN
-```
-
-Generate an authentication token for `FIREBASE_TOKEN`.
-
-```bash
-$ yarn firebase login:ci
+```.env
+CODECOV_TOKEN=xxx
 ```
 
 ### SEO friendly
 
-Enable billing on your Firebase Platform and Google Cloud the project by switching to the Blaze plan.
+Netlify comes with built-in prerendering. Enabling it is as simple as checking a box:
 
-Deploy functions.
-
-```bash
-$ nvm use 8
-$ cd functions && yarn install
-$ yarn firebase deploy --only functions
-```
-
-Serve dynamic content for bots.
-
-```diff
-// firebase.json
-    "rewrites": [
-      {
-        "source": "**",
--       "destination": "/index.html"
-+       "function": "app"
-      }
-    ],
-```
-
-Deploy rendertron instance to Google App Engine.
-
-```bash
-$ git clone https://github.com/GoogleChrome/rendertron
-$ cd rendertron
-$ gcloud auth login
-$ gcloud app deploy app.yaml --project <RENDERTRON_NAME>
-```
-
-Set your rendertron instance in deployment environment.
-
-```bash
-$ yarn firebase functions:config:set RENDERTRON_URL="<RENDERTRON_URL>" SITE_URL="<SITE_URL>"
-
-# Example:
-# RENDERTRON_URL=https://<APP_NAME>.appspot.com
-# SITE_URL=https://<APP_NAME>.web.app
-```
+![Set up prerendering](https://d33wubrfki0l68.cloudfront.net/2fd9826f3d685da11e934f5032fa306ae094113b/6bf3c/images/site-deploys-prerendering.png)
 
 ### VS Code settings
 
@@ -351,15 +238,13 @@ The structure follows the LIFT Guidelines.
 │   │   │   ├── <FEATURE>.e2e-spec.js
 │   │   │   ├── <FEATURE>.spec.js
 │   │   │   ├── actions.spec.js
-│   │   │   ├── getters.spec.js
-│   │   │   └── mutations.spec.js
+│   │   │   └── getters.spec.js
 │   │   ├── _<THING>  -> feature of private or protected things
 │   │   │   └── ...
 │   │   ├── <FEATURE>.vue  -> page component
 │   │   ├── actions.js
 │   │   ├── constants.js
 │   │   ├── getters.js
-│   │   ├── mutations.js
 │   │   └── types.js
 │   ├── <GROUP>  -> module group
 │   │   └── <FEATURE>  -> feature modules
@@ -367,42 +252,42 @@ The structure follows the LIFT Guidelines.
 │   │       │   ├── <FEATURE>.e2e-spec.js
 │   │       │   ├── <FEATURE>.spec.js
 │   │       │   ├── actions.spec.js
-│   │       │   ├── getters.spec.js
-│   │       │   └── mutations.spec.js
+│   │       │   └── getters.spec.js
 │   │       ├── _<THING>  -> feature of private or protected things
 │   │       │   └── ...
 │   │       ├── <FEATURE>.vue  -> page component
 │   │       ├── actions.js
 │   │       ├── constants.js
 │   │       ├── getters.js
-│   │       ├── mutations.js
 │   │       └── types.js
 │   ├── shared  -> shared feature module
 │   │   └── ...
-│   ├── App.vue
 │   ├── actions.js
+│   ├── App.vue
 │   ├── constants.js
+│   ├── e2e.js  -> e2e setup test
 │   ├── getters.js
 │   ├── index.html
-│   ├── main.js
-│   └── types.js
-├── tools
-│   └── ...
-├── .babelrc
+│   ├── main.js  -> entrypoint
+│   ├── types.js
+│   └── unit.js  -> unit setup test
 ├── .editorconfig
 ├── .eslintrc
 ├── .flowconfig
 ├── .gitignore
-├── .postcssrc
+├── .prettierrc
 ├── .stylelintrc
-├── Dockerfile
-├── LICENSE
-├── README.md
+├── babel.config.js
 ├── circle.yml
 ├── docker-compose.yml
+├── Dockerfile
 ├── env.js
 ├── jest.config.js
+├── LICENSE
+├── netlify.toml
 ├── package.json
+├── postcss.config.js
+├── README.md
 ├── webpack.config.js
 └── yarn.lock
 ```

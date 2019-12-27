@@ -23,6 +23,8 @@
   "dependencies": {
     "@babel/runtime": "7.4.4",
     "@mdi/js": "4.4.95",
+    "@sentry/browser": "5.10.2",
+    "@sentry/integrations": "5.10.2",
     "@tensorflow/tfjs": "1.2.7",
     "@vue/composition-api": "0.3.2",
     "apollo-boost": "0.4.3",
@@ -34,7 +36,6 @@
     "graphql-tag": "2.10.1",
     "lodash": "4.17.15",
     "lru-cache": "5.1.1",
-    "raven-js": "3.27.2",
     "register-service-worker": "1.6.2",
     "vue": "2.6.10",
     "vue-analytics": "5.17.0",
