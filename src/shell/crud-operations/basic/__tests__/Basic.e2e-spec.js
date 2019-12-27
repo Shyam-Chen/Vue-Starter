@@ -19,7 +19,7 @@ describe('Basic', () => {
   });
 
   beforeEach(async () => {
-    await page.goto(`${global.SITE_URL}/en/crud-operations/basic`);
+    await page.goto(`${process.env.SITE_URL}/en/crud-operations/basic`);
   });
 
   it('should display headline', async () => {

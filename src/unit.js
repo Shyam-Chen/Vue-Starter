@@ -1,9 +1,12 @@
 import Vue from 'vue';
 import Vuetify from 'vuetify';
 
-Vue.config.productionTip = false;
+import env from '../env';
 
+Vue.config.productionTip = false;
 Vue.use(Vuetify);
+
+process.env = env;
 
 Object.defineProperties(window, {
   matchMedia: {
