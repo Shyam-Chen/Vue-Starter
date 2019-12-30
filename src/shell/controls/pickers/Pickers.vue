@@ -4,7 +4,6 @@
       <div class="headline">Controls - Pickers</div>
 
       <v-form>
-
         <v-layout row>
           <v-menu ref="dateMenu" v-model="dateMenu" :close-on-content-click="false" :nudge-right="40" :return-value.sync="p$.date" transition="scale-transition" min-width="290px" lazy offset-y full-width>
             <v-text-field slot="activator" v-model="date" label="Picker in menu" prepend-icon="event" readonly></v-text-field>
@@ -32,7 +31,7 @@
         </v-layout>
 
         <v-layout row>
-          <v-menu ref="timeMenu" :close-on-content-click="false" v-model="timeMenu" :nudge-right="40" :return-value.sync="time" lazy transition="scale-transition" offset-y full-width max-width="290px" min-width="290px">
+          <v-menu ref="timeMenu" v-model="timeMenu" :close-on-content-click="false" :nudge-right="40" :return-value.sync="time" lazy transition="scale-transition" offset-y full-width max-width="290px" min-width="290px">
             <v-text-field slot="activator" v-model="time" label="Picker in menu" prepend-icon="access_time" readonly></v-text-field>
             <v-time-picker v-model="time" @change="$refs.timeMenu.save(time)"></v-time-picker>
           </v-menu>
@@ -55,9 +54,7 @@
         <v-layout row>
           more...
         </v-layout>
-
       </v-form>
-
     </v-layout>
   </v-container>
 </template>

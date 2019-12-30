@@ -1,7 +1,7 @@
 <template>
   <v-container id="display-rows" class="shell-container" fluid>
     <v-card>
-      <v-data-table :headers="headers" :items="desserts" v-model="selected" select-all hide-actions>
+      <v-data-table v-model="selected" :headers="headers" :items="desserts" select-all hide-actions>
         <template slot="items" slot-scope="props">
           <td>
             <v-checkbox v-model="props.selected" primary hide-details></v-checkbox>

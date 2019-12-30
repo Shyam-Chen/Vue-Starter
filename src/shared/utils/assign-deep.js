@@ -1,23 +1,21 @@
-/* eslint-disable no-restricted-syntax */
 const isObject = item => item && typeof item === 'object' && !Array.isArray(item);
 
-const mergeDeep = (target, ...sources) => {
+const assignDeep = (target, ...sources) => {
   if (!sources.length) return target;
   const source = sources.shift();
 
   if (isObject(target) && isObject(source)) {
-    // eslint-disable-next-line no-unused-vars
-    for (const key in source) {
+    Object.keys(source).forEach((key) => {
       if (isObject(source[key])) {
         if (!target[key]) Object.assign(target, { [key]: {} });
-        mergeDeep(target[key], source[key]);
+        assignDeep(target[key], source[key]);
       } else {
         Object.assign(target, { [key]: source[key] });
       }
-    }
+    });
   }
 
-  return mergeDeep(target, ...sources);
+  return assignDeep(target, ...sources);
 };
 
-export default mergeDeep;
+export default assignDeep;

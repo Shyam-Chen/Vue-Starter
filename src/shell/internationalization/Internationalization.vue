@@ -45,7 +45,6 @@
           <b class="primary--text">{{ $tc('framework', 3, { num: 3 }) }}</b>
         </p>
       </v-layout>
-
     </v-layout>
   </v-container>
 </template>

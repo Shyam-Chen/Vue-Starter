@@ -4,7 +4,6 @@
       <div class="headline">Controls - Selection Controls</div>
 
       <v-form>
-
         <!-- checkboxes -->
         <v-layout row>
           <div>
@@ -12,7 +11,7 @@
               <div class="body-1">Technologies</div>
               <div>
                 <v-layout row wrap>
-                  <v-checkbox v-for="item in sc$.technologiesList" :key="item" :label="item" :value="item" v-model="technologies" class="o-checkbox"></v-checkbox>
+                  <v-checkbox v-for="item in sc$.technologiesList" :key="item" v-model="technologies" :label="item" :value="item" class="o-checkbox"></v-checkbox>
                 </v-layout>
               </div>
             </v-layout>
@@ -65,9 +64,7 @@
         <v-layout row>
           more...
         </v-layout>
-
       </v-form>
-
     </v-layout>
   </v-container>
 </template>

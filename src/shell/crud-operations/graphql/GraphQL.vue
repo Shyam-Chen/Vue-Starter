@@ -30,7 +30,6 @@
           </template>
         </v-data-table>
       </v-layout>
-
     </v-layout>
   </v-container>
 </template>

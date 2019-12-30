@@ -1,7 +1,6 @@
 <template>
   <v-container class="shell-container" fluid>
     <v-layout column>
-
       <Card />  <!-- default slot content -->
 
       <Card>
@@ -25,7 +24,6 @@
           </v-list-item>
         </template>
       </List>
-
     </v-layout>
   </v-container>
 </template>

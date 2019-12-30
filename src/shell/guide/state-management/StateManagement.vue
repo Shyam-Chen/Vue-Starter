@@ -10,7 +10,7 @@
       <v-layout row>
         <v-subheader class="pt-3">Step:</v-subheader>
         <div>
-          <v-select :items="c$.stepList" v-model="c$.step" class="step" single-line></v-select>
+          <v-select v-model="c$.step" :items="c$.stepList" class="step" single-line></v-select>
         </div>
       </v-layout>
 

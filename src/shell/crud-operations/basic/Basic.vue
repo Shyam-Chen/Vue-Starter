@@ -35,7 +35,7 @@
             </v-card-title>
           </template>
 
-          <v-data-table :headers="b$.headers" :items="b$.dataset" :search="b$.searchData" v-model="b$.selected" hide-actions select-all>
+          <v-data-table v-model="b$.selected" :headers="b$.headers" :items="b$.dataset" :search="b$.searchData" hide-actions select-all>
             <template slot="items" slot-scope="props">
               <td>
                 <v-checkbox v-model="props.selected" primary hide-details></v-checkbox>

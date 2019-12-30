@@ -3,7 +3,7 @@
     <span>{{ node.label }}</span>
 
     <ul v-if="node.children && node.children.length">
-      <TreeNode v-for="child in node.children" :node="child" :key="child.label" />
+      <TreeNode v-for="child in node.children" :key="child.label" :node="child" />
     </ul>
   </li>
 </template>

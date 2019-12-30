@@ -9,6 +9,7 @@
 </template>
 
 <script>
+/* eslint-disable no-console */
 import Counter from './Counter';
 
 export default {

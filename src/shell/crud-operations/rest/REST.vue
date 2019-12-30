@@ -41,7 +41,7 @@
             </v-card-title>
           </template>
 
-          <v-data-table :headers="headers" :items="r$.dataset" :loading="r$.loading" v-model="r$.selected" hide-actions select-all>
+          <v-data-table v-model="r$.selected" :headers="headers" :items="r$.dataset" :loading="r$.loading" hide-actions select-all>
             <template slot="items" slot-scope="props">
               <td>
                 <v-checkbox v-model="props.selected" primary hide-details></v-checkbox>
@@ -92,7 +92,6 @@
           </v-card>
         </v-dialog>
       </aside>
-
     </v-layout>
   </v-container>
 </template>

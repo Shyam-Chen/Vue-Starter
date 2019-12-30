@@ -6,6 +6,7 @@ const { VueLoaderPlugin } = require('vue-loader');
 const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const { GenerateSW } = require('workbox-webpack-plugin');
+const RobotstxtPlugin = require('robotstxt-webpack-plugin');
 const postcssPresetEnv = require('postcss-preset-env');
 const cssnano = require('cssnano');
 const sass = require('sass');
@@ -167,6 +168,7 @@ module.exports = ({ prod = false } = {}) => ({
       navigateFallbackWhitelist: [/^(?!\/__).*/],
       cacheId: pkg.name,
     }),
+    prod && new RobotstxtPlugin(),
   ].filter(Boolean),
   optimization: {
     runtimeChunk: 'single',

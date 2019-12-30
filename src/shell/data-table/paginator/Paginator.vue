@@ -31,7 +31,6 @@
       </v-data-table>
 
       <v-pagination v-model="page" :length="6"></v-pagination>
-
     </v-layout>
   </v-container>
 </template>

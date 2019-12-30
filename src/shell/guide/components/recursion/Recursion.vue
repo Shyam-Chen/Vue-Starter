@@ -7,7 +7,7 @@
         <div class="title mb-2">Trees</div>
 
         <template v-for="tree in trees">
-          <Tree :tree="tree" :key="tree.label" />
+          <Tree :key="tree.label" :tree="tree" />
         </template>
       </v-layout>
 

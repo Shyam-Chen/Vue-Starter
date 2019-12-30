@@ -4,7 +4,6 @@
       <div class="headline">Controls - Text Fields</div>
 
       <v-form>
-
         <!-- input -->
         <v-layout row>
           <div>
@@ -54,9 +53,7 @@
           </div>
           <div class="primary--text outputs">{{ tf$.email }}</div>
         </v-layout>
-
       </v-form>
-
     </v-layout>
   </v-container>
 </template>

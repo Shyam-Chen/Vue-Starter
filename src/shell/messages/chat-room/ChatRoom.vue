@@ -52,7 +52,6 @@
               </div>
             </div>
           </div>
-
         </v-card>
       </v-flex>
     </v-layout>

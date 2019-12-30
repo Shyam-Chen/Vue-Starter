@@ -4,14 +4,13 @@
       <div class="headline">Controls - Selects</div>
 
       <v-form>
-
         <!-- select -->
         <v-layout row>
           <div>
             <v-layout column>
               <div class="body-1">Dessert</div>
               <div>
-                <v-select :items="s$.dessertList" v-model="dessert" label="Choose a dessert" class="o-select" single-line bottom></v-select>
+                <v-select v-model="dessert" :items="s$.dessertList" label="Choose a dessert" class="o-select" single-line bottom></v-select>
               </div>
             </v-layout>
           </div>
@@ -24,7 +23,7 @@
             <v-layout column>
               <div class="body-1">States</div>
               <div>
-                <v-select :items="s$.statesList" v-model="states" label="Select States" class="o-select--multiple" multiple chips single-line bottom></v-select>
+                <v-select v-model="states" :items="s$.statesList" label="Select States" class="o-select--multiple" multiple chips single-line bottom></v-select>
               </div>
             </v-layout>
           </div>
@@ -35,9 +34,7 @@
         <v-layout row>
           more...
         </v-layout>
-
       </v-form>
-
     </v-layout>
   </v-container>
 </template>

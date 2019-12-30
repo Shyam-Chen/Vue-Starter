@@ -17,7 +17,7 @@
 
       <div>
         <template v-for="item in list">
-          <List :key="item.id" :id="item.id" :text="item.text"></List>
+          <List :id="item.id" :key="item.id" :text="item.text"></List>
         </template>
       </div>
     </v-layout>
@@ -25,6 +25,7 @@
 </template>
 
 <script>
+/* eslint-disable no-console */
 // @flow
 
 import List from './List';

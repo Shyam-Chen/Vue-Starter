@@ -21,6 +21,7 @@
 </template>
 
 <script>
+/* eslint-disable no-console */
 // @flow
 
 type Data = {
@@ -39,10 +40,10 @@ export default {
     },
 
     outer(): void {
-      console.log('Outer');
+      console.log('[*] Outer');
     },
     inner(): void {
-      console.log('Inner');
+      console.log('[*] Inner');
     },
   },
 };

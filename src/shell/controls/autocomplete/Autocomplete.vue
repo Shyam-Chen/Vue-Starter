@@ -6,7 +6,7 @@
       <v-form>
         <v-layout row>
           <div>
-            <v-combobox v-autocomplete v-model="countryOrArea" :items="countryOrAreaList" label="Country or Area"></v-combobox>
+            <v-combobox v-model="countryOrArea" v-autocomplete :items="countryOrAreaList" label="Country or Area"></v-combobox>
           </div>
           <div class="primary--text omv-outputs">{{ countryOrArea }}</div>
         </v-layout>
