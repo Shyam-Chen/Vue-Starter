@@ -101,15 +101,18 @@ This seed repository provides the following features:
 * ---------- **Tools** ----------
 * [x] [Webpack](https://github.com/webpack/webpack)
 * [x] [Babel](https://github.com/babel/babel)
-* [x] [Flow](https://github.com/facebook/flow)
 * [x] [PostCSS](https://github.com/postcss/postcss)
 * [x] [ESLint](https://github.com/eslint/eslint)
 * [x] [StyleLint](https://github.com/stylelint/stylelint)
+* [x] [Flow](https://github.com/facebook/flow)
 * [x] [Jest](https://github.com/facebook/jest)
 * [x] [Puppeteer](https://github.com/GoogleChrome/puppeteer)
 * [x] [Workbox](https://github.com/GoogleChrome/workbox)
 * ---------- **Environments** ----------
 * [x] [Node.js](https://nodejs.org/)
+* [x] [Yarn](https://yarnpkg.com/)
+* [x] [Git](https://git-scm.com/)
+* [x] [GitHub](https://github.com/)
 * [x] [Docker](https://www.docker.com/)
 * [x] [Netlify](https://www.netlify.com/)
 * [x] [CircleCI](https://circleci.com/)
@@ -169,7 +172,15 @@ function Environments() {
 }
 ```
 
-### Deployment environments
+### Continuous integration environments
+
+Add environment variables to the CircleCI build.
+
+```.env
+CODECOV_TOKEN=xxx
+```
+
+### Continuous deployment environments
 
 Add environment variables to the Netlify build.
 
@@ -181,14 +192,6 @@ NPM_CONFIG_PRODUCTION=false
 GOOGLE_ANALYTICS=xxx
 SENTRY_DSN=xxx
 ...
-```
-
-### Continuous integration environments
-
-Add environment variables to the CircleCI build.
-
-```.env
-CODECOV_TOKEN=xxx
 ```
 
 ### SEO friendly
