@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Meta from 'vue-meta';
-import Analytics from 'vue-analytics';
+import Gtag from 'vue-gtag';
 
 import guide from '~/shell/guide/routes';
 import crudOperations from '~/shell/crud-operations/routes';
@@ -87,12 +87,9 @@ router.afterEach(() => {
   // progress.done();
 });
 
-Vue.use(Analytics, {
-  id: process.env.GOOGLE_ANALYTICS,
-  router,
-  autoTracking: {
-    page: process.env.NODE_ENV === 'production',
-  },
-});
+Vue.use(Gtag, {
+  config: { id: process.env.GOOGLE_ANALYTICS },
+  pageTrackerScreenviewEnabled: process.env.NODE_ENV === 'production',
+}, router);
 
 export default router;

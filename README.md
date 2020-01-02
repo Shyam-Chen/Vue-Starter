@@ -93,7 +93,9 @@ This seed repository provides the following features:
 * [x] [Vue Router](https://github.com/vuejs/vue-router)
 * [x] [Vuex](https://github.com/vuejs/vuex)
 * [x] [Vuetify](https://github.com/vuetifyjs/vuetify)
+* [x] [Vue Meta](https://github.com/nuxt/vue-meta)
 * [x] [Vue I18n](https://github.com/kazupon/vue-i18n)
+* [x] [Vue ECharts](https://github.com/ecomfe/vue-echarts)
 * [x] [Axios](https://github.com/axios/axios)
 * [x] [GraphQL Request](https://github.com/prisma/graphql-request)
 * [x] [Vue Socket.IO](https://github.com/MetinSeylan/Vue-Socket.io)
@@ -102,8 +104,10 @@ This seed repository provides the following features:
 * [x] [Webpack](https://github.com/webpack/webpack)
 * [x] [Babel](https://github.com/babel/babel)
 * [x] [PostCSS](https://github.com/postcss/postcss)
+* [x] [Storybook](https://github.com/storybookjs/storybook)
 * [x] [ESLint](https://github.com/eslint/eslint)
 * [x] [StyleLint](https://github.com/stylelint/stylelint)
+* [x] [Prettier](https://github.com/prettier/prettier)
 * [x] [Flow](https://github.com/facebook/flow)
 * [x] [Jest](https://github.com/facebook/jest)
 * [x] [Puppeteer](https://github.com/GoogleChrome/puppeteer)
@@ -118,6 +122,8 @@ This seed repository provides the following features:
 * [x] [CircleCI](https://circleci.com/)
 * [x] [Codecov](https://codecov.io/)
 * [x] [Sentry](https://sentry.io/)
+* [x] [Global Site Tag](https://developers.google.com/gtagjs)
+* [x] [QianKun](https://github.com/umijs/qiankun)
 
 ## Dockerization
 
