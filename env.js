@@ -1,6 +1,7 @@
 function Environments() {
   this.NODE_ENV = process.env.NODE_ENV || 'development';
 
+  this.APP_NAME = process.env.APP_NAME || 'Oh My Vue';
   this.HOST_NAME = process.env.HOST_NAME || '0.0.0.0';
   this.SITE_PORT = process.env.SITE_PORT || 8000;
   this.SITE_URL = process.env.SITE_URL || `http://${this.HOST_NAME}:${this.SITE_PORT}`;

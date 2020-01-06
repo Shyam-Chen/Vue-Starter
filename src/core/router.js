@@ -89,6 +89,7 @@ router.afterEach(() => {
 
 Vue.use(Gtag, {
   config: { id: process.env.GOOGLE_ANALYTICS },
+  appName: process.env.APP_NAME,
   pageTrackerScreenviewEnabled: process.env.NODE_ENV === 'production',
 }, router);
 
