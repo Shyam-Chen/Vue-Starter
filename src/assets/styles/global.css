@@ -2,6 +2,10 @@
 @import '_medias';
 @import '_selectors';
 
+body {
+  background: #006fc9;
+}
+
 .shell-container {
   height: calc(100% - 84px);  /* calc(100% - footer) */
 

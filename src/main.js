@@ -23,6 +23,6 @@ const vm = new Vue({
   render: handle => handle('router-view'),
 });
 
-vm.$mount('#app');
+vm.$mount('#root');
 
 register();
