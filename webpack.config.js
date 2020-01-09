@@ -143,7 +143,6 @@ module.exports = ({ prod = false } = {}) => ({
       },
     ]),
     !prod && new webpack.HotModuleReplacementPlugin(),
-    !prod && new GenerateSW({ clientsClaim: true, skipWaiting: true }),
     prod && new webpack.optimize.AggressiveSplittingPlugin(),
     prod && new GenerateSW({
       exclude: [/\.(?:png|jpg|jpeg|svg)$/],
