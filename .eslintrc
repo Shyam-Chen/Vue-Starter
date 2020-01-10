@@ -28,9 +28,7 @@
   "settings": {
     "import/resolver": {
       "alias": {
-        "map": [
-          ["~", "./src"]
-        ],
+        "map": [["~", "./src"]],
         "extensions": [".mjs", ".js", ".vue"]
       }
     }
@@ -50,7 +48,10 @@
 
     // Best Practices
     "no-multi-spaces": ["error", { "ignoreEOLComments": true }],
-    "no-param-reassign": ["error", { "props": true, "ignorePropertyModificationsFor": ["context", "state", "acc", "event"] }],
+    "no-param-reassign": [
+      "error",
+      { "props": true, "ignorePropertyModificationsFor": ["context", "state", "acc", "event"] }
+    ],
 
     // Variables
 
