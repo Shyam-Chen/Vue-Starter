@@ -166,6 +166,9 @@ Set your local environment variables. (use `this.<ENV_NAME> = process.env.<ENV_N
 function Environments() {
   this.NODE_ENV = process.env.NODE_ENV || 'development';
 
+  this.APP_NAME = process.env.APP_NAME || 'Oh My Vue';
+  this.APP_DESCRIPTION = process.env.APP_DESCRIPTION || 'All-in-One Web Template for Vue.';
+
   this.HOST_NAME = process.env.HOST_NAME || '0.0.0.0';
   this.SITE_PORT = process.env.SITE_PORT || 8000;
   this.SITE_URL = process.env.SITE_URL || `http://${this.HOST_NAME}:${this.SITE_PORT}`;
@@ -182,7 +185,7 @@ function Environments() {
 
 Add environment variables to the CircleCI build.
 
-```.env
+```js
 CODECOV_TOKEN=xxx
 ```
 
@@ -190,11 +193,13 @@ CODECOV_TOKEN=xxx
 
 Add environment variables to the Netlify build.
 
-```.env
+```js
+// required
 NODE_ENV=production
 NODE_VERSION=12
 NPM_CONFIG_PRODUCTION=false
 
+// your environments
 GOOGLE_ANALYTICS=xxx
 SENTRY_DSN=xxx
 ...

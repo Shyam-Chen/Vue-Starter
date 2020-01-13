@@ -6,9 +6,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><%= process.env.APP_NAME %></title>
-  <meta name="description" content="Building scalable web apps from Web Fundamentals to Firebase Platform and then to Google Cloud.">
+  <meta name="description" content="<%= process.env.APP_DESCRIPTION %>">
   <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
 
+  <!-- Load from the subdomain -->
+  <link rel="dns-prefetch" href="//www.netlify.com">
+
+  <!-- Third-party code  -->
   <link rel="dns-prefetch" href="//fonts.googleapis.com">
   <link rel="dns-prefetch" href="//fonts.gstatic.com">
   <link rel="dns-prefetch" href="//www.google-analytics.com">
@@ -16,7 +20,7 @@
 
   <!-- Open graph protocol -->
   <meta property="og:title" content="<%= process.env.APP_NAME %>">
-  <meta property="og:description" content="Building scalable web apps from Web Fundamentals to Firebase Platform and then to Google Cloud.">
+  <meta property="og:description" content="<%= process.env.APP_DESCRIPTION %>">
   <meta property="og:image" content="/assets/images/icon-256x256.png">
 
   <!-- Web app manifest -->
