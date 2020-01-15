@@ -6,7 +6,7 @@ describe('HelloWorld', () => {
   beforeAll(async () => {
     browser = await puppeteer.launch(global.launch);
     page = await browser.newPage();
-    await page.setViewport(global.viewport);
+    await page.setViewport(global.desktopViewport);
   });
 
   afterAll(async () => {

@@ -1,15 +1,10 @@
 import { SITE_URL } from '../env';
 
+jest.setTimeout(10 * 1000);
+
 global.SITE_URL = SITE_URL;
 
-const [width, height] = [1280, 800];
+global.launch = { headless: false, slowMo: 80, args: ['--no-sandbox'] };
 
-global.viewport = { width, height };
-
-global.launch = {
-  headless: false,
-  slowMo: 80,
-  args: [`--window-size=${width},${height}`, '--no-sandbox'],
-};
-
-jest.setTimeout(10 * 1000);
+global.mobileViewport = { width: 414, height: 736 };
+global.desktopViewport = { width: 1366, height: 768 };

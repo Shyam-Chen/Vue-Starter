@@ -8,7 +8,7 @@ describe('Basic', () => {
   beforeAll(async () => {
     browser = await puppeteer.launch(global.launch);
     page = await browser.newPage();
-    await page.setViewport(global.viewport);
+    await page.setViewport(global.desktopViewport);
 
     headline = '#basic > div > div.headline';
     displayRows = '#basic > div > div:nth-child(3) > div > div:nth-child(2) > div > table > tbody > tr';

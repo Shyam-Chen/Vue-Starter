@@ -9,7 +9,7 @@ describe('StateManagement', () => {
   beforeAll(async () => {
     browser = await puppeteer.launch(global.launch);
     page = await browser.newPage();
-    await page.setViewport(global.viewport);
+    await page.setViewport(global.desktopViewport);
 
     headline = '#state-management > div > div:nth-child(1) > div';
     increment = '#state-management > div > div:nth-child(3) > button:nth-child(1)';
