@@ -1,7 +1,10 @@
-import { INITIAL } from '../constants';
+import axios from 'axios';
+import AxiosMockAdapter from 'axios-mock-adapter';
+
+import { API_LIST, INITIAL } from '../constants';
 import actions from '../actions';
 
-jest.mock('axios');
+const mockAxios = new AxiosMockAdapter(axios);
 
 describe('actions', () => {
   it('should handle success', () => {
@@ -26,30 +29,22 @@ describe('actions', () => {
     actions.failure({ commit }, error);
   });
 
-  it('should handle addItem (success)', (done) => {
-    const dispatch = (type) => {
-      expect(type).toBe('searchItem');
-      done();
-    };
+  it('should handle addItem (success)', async () => {
+    mockAxios.onPost(API_LIST).reply(200, { message: 'Data saved.' });
 
+    const dispatch = (type) => { expect(type).toBe('searchItem'); };
     const state = { ...INITIAL };
-
     const payload = 'qaz123';
 
-    actions.addItem({ dispatch, state }, payload);
+    await actions.addItem({ dispatch, state }, payload);
   });
 
-  it('should handle addItem (failure)', (done) => {
-    const dispatch = (type) => {
-      expect(type).toBe('failure');
-      done();
-    };
-
+  it('should handle addItem (failure)', async () => {
+    const dispatch = (type) => { expect(type).toBe('failure'); };
     const state = { ...INITIAL };
-
     const payload = new Error('Error!');
 
-    actions.addItem({ dispatch, state }, payload);
+    await actions.addItem({ dispatch, state }, payload);
   });
 
   it('should handle addItem (undefined)', async () => {
@@ -58,86 +53,64 @@ describe('actions', () => {
     const payload = '';
 
     const result = await actions.addItem({ dispatch, state }, payload);
-
     expect(result).toBeUndefined();
   });
 
-  it('should handle searchItem (success)', (done) => {
+  it('should handle searchItem (success)', async () => {
+    mockAxios.onGet(API_LIST).reply(200, { data: [{ id: 'vn3RecDbwMQTjttnluZW', text: 'qaz123' }] });
+
     const dispatch = (type, payload) => {
       expect(type).toBe('success');
-      expect(payload).toEqual([{ id: 'vn3RecDbwMQTjttnluZW', text: 'qaz123' }]);
-      done();
+      expect(payload).toEqual({ data: [{ id: 'vn3RecDbwMQTjttnluZW', text: 'qaz123' }] });
     };
 
     const state = { ...INITIAL };
-
     const payload = '';
 
-    actions.searchItem({ dispatch, state }, payload);
+    await actions.searchItem({ dispatch, state }, payload);
   });
 
-  it('should handle searchItem (failure)', (done) => {
-    const dispatch = (type) => {
-      expect(type).toBe('failure');
-      done();
-    };
-
+  it('should handle searchItem (failure)', async () => {
+    const dispatch = (type) => { expect(type).toBe('failure'); };
     const state = { ...INITIAL };
-
     const payload = '';
 
-    actions.searchItem({ dispatch, state }, payload);
+    await actions.searchItem({ dispatch, state }, payload);
   });
 
-  it('should handle editItem (success)', (done) => {
-    const dispatch = (type) => {
-      expect(type).toBe('searchItem');
-      done();
-    };
+  it('should handle editItem (success)', async () => {
+    mockAxios.onPut(`${API_LIST}/vn3RecDbwMQTjttnluZW`).reply(200, { message: 'Data updated.' });
 
+    const dispatch = (type) => { expect(type).toBe('searchItem'); };
     const state = { ...INITIAL };
+    const payload = { id: 'vn3RecDbwMQTjttnluZW', text: 'zxc123' };
 
-    const payload = { id: 'vn3RecDbwMQTjttnluZW', text: 'qaz123' };
-
-    actions.editItem({ dispatch, state }, payload);
+    await actions.editItem({ dispatch, state }, payload);
   });
 
-  it('should handle editItem (failure)', (done) => {
-    const dispatch = (type) => {
-      expect(type).toBe('failure');
-      done();
-    };
-
+  it('should handle editItem (failure)', async () => {
+    const dispatch = (type) => { expect(type).toBe('failure'); };
     const state = { ...INITIAL };
-
     const payload = { id: 'vn3RecDbwMQTjttnluZW', text: new Error('Error!') };
 
-    actions.editItem({ dispatch, state }, payload);
+    await actions.editItem({ dispatch, state }, payload);
   });
 
-  it('should handle deleteItem (success)', (done) => {
-    const dispatch = (type) => {
-      expect(type).toBe('searchItem');
-      done();
-    };
+  it('should handle deleteItem (success)', async () => {
+    mockAxios.onDelete(`${API_LIST}/vn3RecDbwMQTjttnluZW`).reply(200, { message: 'Data deleted.' });
 
+    const dispatch = (type) => { expect(type).toBe('searchItem'); };
     const state = { ...INITIAL };
-
     const payload = 'vn3RecDbwMQTjttnluZW';
 
-    actions.deleteItem({ dispatch, state }, payload);
+    await actions.deleteItem({ dispatch, state }, payload);
   });
 
-  it('should handle deleteItem (failure)', (done) => {
-    const dispatch = (type) => {
-      expect(type).toBe('failure');
-      done();
-    };
-
+  it('should handle deleteItem (failure)', async () => {
+    const dispatch = (type) => { expect(type).toBe('failure'); };
     const state = { ...INITIAL };
-
     const payload = null;
 
-    actions.deleteItem({ dispatch, state }, payload);
+    await actions.deleteItem({ dispatch, state }, payload);
   });
 });
