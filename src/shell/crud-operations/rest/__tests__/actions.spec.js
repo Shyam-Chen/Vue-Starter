@@ -32,7 +32,9 @@ describe('actions', () => {
   it('should handle addItem (success)', async () => {
     mockAxios.onPost(API_LIST).reply(200, { message: 'Data saved.' });
 
-    const dispatch = (type) => { expect(type).toBe('searchItem'); };
+    const dispatch = type => {
+      expect(type).toBe('searchItem');
+    };
     const state = { ...INITIAL };
     const payload = 'qaz123';
 
@@ -40,7 +42,9 @@ describe('actions', () => {
   });
 
   it('should handle addItem (failure)', async () => {
-    const dispatch = (type) => { expect(type).toBe('failure'); };
+    const dispatch = type => {
+      expect(type).toBe('failure');
+    };
     const state = { ...INITIAL };
     const payload = new Error('Error!');
 
@@ -57,7 +61,9 @@ describe('actions', () => {
   });
 
   it('should handle searchItem (success)', async () => {
-    mockAxios.onGet(API_LIST).reply(200, { data: [{ id: 'vn3RecDbwMQTjttnluZW', text: 'qaz123' }] });
+    mockAxios
+      .onGet(API_LIST)
+      .reply(200, { data: [{ id: 'vn3RecDbwMQTjttnluZW', text: 'qaz123' }] });
 
     const dispatch = (type, payload) => {
       expect(type).toBe('success');
@@ -71,7 +77,9 @@ describe('actions', () => {
   });
 
   it('should handle searchItem (failure)', async () => {
-    const dispatch = (type) => { expect(type).toBe('failure'); };
+    const dispatch = type => {
+      expect(type).toBe('failure');
+    };
     const state = { ...INITIAL };
     const payload = '';
 
@@ -81,7 +89,9 @@ describe('actions', () => {
   it('should handle editItem (success)', async () => {
     mockAxios.onPut(`${API_LIST}/vn3RecDbwMQTjttnluZW`).reply(200, { message: 'Data updated.' });
 
-    const dispatch = (type) => { expect(type).toBe('searchItem'); };
+    const dispatch = type => {
+      expect(type).toBe('searchItem');
+    };
     const state = { ...INITIAL };
     const payload = { id: 'vn3RecDbwMQTjttnluZW', text: 'zxc123' };
 
@@ -89,7 +99,9 @@ describe('actions', () => {
   });
 
   it('should handle editItem (failure)', async () => {
-    const dispatch = (type) => { expect(type).toBe('failure'); };
+    const dispatch = type => {
+      expect(type).toBe('failure');
+    };
     const state = { ...INITIAL };
     const payload = { id: 'vn3RecDbwMQTjttnluZW', text: new Error('Error!') };
 
@@ -99,7 +111,9 @@ describe('actions', () => {
   it('should handle deleteItem (success)', async () => {
     mockAxios.onDelete(`${API_LIST}/vn3RecDbwMQTjttnluZW`).reply(200, { message: 'Data deleted.' });
 
-    const dispatch = (type) => { expect(type).toBe('searchItem'); };
+    const dispatch = type => {
+      expect(type).toBe('searchItem');
+    };
     const state = { ...INITIAL };
     const payload = 'vn3RecDbwMQTjttnluZW';
 
@@ -107,7 +121,9 @@ describe('actions', () => {
   });
 
   it('should handle deleteItem (failure)', async () => {
-    const dispatch = (type) => { expect(type).toBe('failure'); };
+    const dispatch = type => {
+      expect(type).toBe('failure');
+    };
     const state = { ...INITIAL };
     const payload = null;
 

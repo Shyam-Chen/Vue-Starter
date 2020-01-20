@@ -3,7 +3,7 @@
     <div class="o-jumbotron">
       <v-container fluid fill-height class="py-5">
         <v-layout row wrap justify-center align-center>
-          <img src="/assets/images/logo.svg" alt="Logo" class="o-jumbotron-image">
+          <img src="/assets/images/logo.svg" alt="Logo" class="o-jumbotron-image" />
 
           <v-flex shrink class="text-xs-center text-md-left o-jumbotron-content">
             <div class="display-3 white--text">
@@ -13,13 +13,26 @@
               {{ $t('home.description') }}
             </div>
             <v-divider class="my-3"></v-divider>
-            <v-btn large color="white" :to="`/${$route.params.lang}/overview`" class="primary--text">
+            <v-btn
+              large
+              color="white"
+              :to="`/${$route.params.lang}/overview`"
+              class="primary--text"
+            >
               <v-icon left>
                 more
               </v-icon>
               {{ $t('home.seeMore') }}
             </v-btn>
-            <v-btn color="white" href="https://github.com/Shyam-Chen/Vue-Starter" large outlined target="_blank" rel="noopener" class="ml-3">
+            <v-btn
+              color="white"
+              href="https://github.com/Shyam-Chen/Vue-Starter"
+              large
+              outlined
+              target="_blank"
+              rel="noopener"
+              class="ml-3"
+            >
               <v-icon left>
                 {{ icons.mdiGithubCircle }}
               </v-icon>
@@ -33,49 +46,145 @@
     <v-container fluid fill-height class="mt-5 mb-3">
       <v-layout row wrap justify-center align-center>
         <div class="pa-3 o-promo">
-          <svg width="100%" height="100%" viewBox="0 0 402 328" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet">
+          <svg
+            width="100%"
+            height="100%"
+            viewBox="0 0 402 328"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            preserveAspectRatio="xMidYMid meet"
+          >
             <defs>
               <circle id="sza-b" cx="19.5" cy="19.5" r="19.5"></circle>
-              <filter id="sza-a" x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox">
+              <filter
+                id="sza-a"
+                x="-50%"
+                y="-50%"
+                width="200%"
+                height="200%"
+                filterUnits="objectBoundingBox"
+              >
                 <feOffset dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
-                <feGaussianBlur stdDeviation=".5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
-                <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.115913723 0" in="shadowBlurOuter1"></feColorMatrix>
+                <feGaussianBlur
+                  stdDeviation=".5"
+                  in="shadowOffsetOuter1"
+                  result="shadowBlurOuter1"
+                ></feGaussianBlur>
+                <feColorMatrix
+                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.115913723 0"
+                  in="shadowBlurOuter1"
+                ></feColorMatrix>
               </filter>
               <rect id="sza-d" width="96" height="39" rx="1.331"></rect>
-              <filter id="sza-c" x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox">
+              <filter
+                id="sza-c"
+                x="-50%"
+                y="-50%"
+                width="200%"
+                height="200%"
+                filterUnits="objectBoundingBox"
+              >
                 <feOffset dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
-                <feGaussianBlur stdDeviation=".5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
-                <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.115913723 0" in="shadowBlurOuter1"></feColorMatrix>
+                <feGaussianBlur
+                  stdDeviation=".5"
+                  in="shadowOffsetOuter1"
+                  result="shadowBlurOuter1"
+                ></feGaussianBlur>
+                <feColorMatrix
+                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.115913723 0"
+                  in="shadowBlurOuter1"
+                ></feColorMatrix>
               </filter>
               <rect id="sza-f" width="96" height="39" rx="1.331"></rect>
-              <filter id="sza-e" x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox">
+              <filter
+                id="sza-e"
+                x="-50%"
+                y="-50%"
+                width="200%"
+                height="200%"
+                filterUnits="objectBoundingBox"
+              >
                 <feOffset dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
-                <feGaussianBlur stdDeviation=".5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
-                <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.115913723 0" in="shadowBlurOuter1"></feColorMatrix>
+                <feGaussianBlur
+                  stdDeviation=".5"
+                  in="shadowOffsetOuter1"
+                  result="shadowBlurOuter1"
+                ></feGaussianBlur>
+                <feColorMatrix
+                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.115913723 0"
+                  in="shadowBlurOuter1"
+                ></feColorMatrix>
               </filter>
               <rect id="sza-h" width="43" height="17" rx="8.5"></rect>
-              <filter id="sza-g" x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox">
+              <filter
+                id="sza-g"
+                x="-50%"
+                y="-50%"
+                width="200%"
+                height="200%"
+                filterUnits="objectBoundingBox"
+              >
                 <feOffset dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
-                <feGaussianBlur stdDeviation=".5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
-                <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.12 0" in="shadowBlurOuter1"></feColorMatrix>
+                <feGaussianBlur
+                  stdDeviation=".5"
+                  in="shadowOffsetOuter1"
+                  result="shadowBlurOuter1"
+                ></feGaussianBlur>
+                <feColorMatrix
+                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.12 0"
+                  in="shadowBlurOuter1"
+                ></feColorMatrix>
               </filter>
               <path id="sza-j" d="M0 0h156v23H0z"></path>
-              <filter id="sza-i" x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox">
+              <filter
+                id="sza-i"
+                x="-50%"
+                y="-50%"
+                width="200%"
+                height="200%"
+                filterUnits="objectBoundingBox"
+              >
                 <feOffset dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
-                <feGaussianBlur stdDeviation=".5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
-                <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.12 0" in="shadowBlurOuter1"></feColorMatrix>
+                <feGaussianBlur
+                  stdDeviation=".5"
+                  in="shadowOffsetOuter1"
+                  result="shadowBlurOuter1"
+                ></feGaussianBlur>
+                <feColorMatrix
+                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.12 0"
+                  in="shadowBlurOuter1"
+                ></feColorMatrix>
               </filter>
             </defs>
             <g fill="none" fill-rule="evenodd">
-              <path d="M231.98 316c-7.168 0-12.98-5.887-12.98-13.147V32.147C219 24.885 224.812 19 231.98 19h141.038C380.188 19 386 24.885 386 32.147v270.706c0 7.26-5.812 13.147-12.982 13.147H231.98zm-.06-257.655h142.043v210.28H231.92V58.345z" stroke="#1E88E5" stroke-width="1.1" fill="#FFF"></path>
-              <path d="M318.45 39.056h-31.953c-1.379 0-2.497-1.132-2.497-2.529 0-1.396 1.118-2.527 2.497-2.527h31.953c1.379 0 2.497 1.13 2.497 2.527 0 1.397-1.118 2.53-2.497 2.53z" fill-opacity=".522" fill="#1E88E5"></path>
-              <path d="M312.875 291.471c0 5.783-4.673 10.471-10.438 10.471-5.764 0-10.437-4.688-10.437-10.47 0-5.784 4.673-10.472 10.438-10.472 5.764 0 10.437 4.688 10.437 10.471z" stroke="#1E88E5" stroke-width="1.1"></path>
+              <path
+                d="M231.98 316c-7.168 0-12.98-5.887-12.98-13.147V32.147C219 24.885 224.812 19 231.98 19h141.038C380.188 19 386 24.885 386 32.147v270.706c0 7.26-5.812 13.147-12.982 13.147H231.98zm-.06-257.655h142.043v210.28H231.92V58.345z"
+                stroke="#1E88E5"
+                stroke-width="1.1"
+                fill="#FFF"
+              ></path>
+              <path
+                d="M318.45 39.056h-31.953c-1.379 0-2.497-1.132-2.497-2.529 0-1.396 1.118-2.527 2.497-2.527h31.953c1.379 0 2.497 1.13 2.497 2.527 0 1.397-1.118 2.53-2.497 2.53z"
+                fill-opacity=".522"
+                fill="#1E88E5"
+              ></path>
+              <path
+                d="M312.875 291.471c0 5.783-4.673 10.471-10.438 10.471-5.764 0-10.437-4.688-10.437-10.47 0-5.784 4.673-10.472 10.438-10.472 5.764 0 10.437 4.688 10.437 10.471z"
+                stroke="#1E88E5"
+                stroke-width="1.1"
+              ></path>
               <path fill-opacity=".2" fill="#1E88E5" d="M232 59h142v209H232z"></path>
               <g transform="translate(144 246)">
                 <use fill="#000" filter="url(#sza-a)" xlink:href="#sza-b"></use>
                 <use fill="#42A5F5" xlink:href="#sza-b"></use>
               </g>
-              <text font-family="Roboto-Light, Roboto" font-size="29.04" font-weight="300" fill="#FFF" transform="translate(144 246)">
+              <text
+                font-family="Roboto-Light, Roboto"
+                font-size="29.04"
+                font-weight="300"
+                fill="#FFF"
+                transform="translate(144 246)"
+              >
                 <tspan x="11" y="30">+</tspan>
               </text>
               <g transform="translate(8 160)">
@@ -100,7 +209,10 @@
                 <use fill="#42A5F5" xlink:href="#sza-j"></use>
               </g>
               <path d="M18 72h15v-2H18v2zm0-4h15v-2H18v2zm0-6v2h15v-2H18z" fill="#FFF"></path>
-              <path d="M122 231h75v-4h-75v4zm0-7h75v-4h-75v4zm0-8h75v-4h-75v4zm0-7h75v-4h-75v4zm0-11v4h75v-4h-75z" fill="#42A5F5"></path>
+              <path
+                d="M122 231h75v-4h-75v4zm0-7h75v-4h-75v4zm0-8h75v-4h-75v4zm0-7h75v-4h-75v4zm0-11v4h75v-4h-75z"
+                fill="#42A5F5"
+              ></path>
             </g>
           </svg>
         </div>
@@ -119,7 +231,14 @@
     <v-container fluid fill-height class="my-3">
       <v-layout :reverse="!isMobile" row wrap justify-center align-center>
         <div class="pa-3 o-promo">
-          <svg height="100%" viewBox="0 0 402 251" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet">
+          <svg
+            height="100%"
+            viewBox="0 0 402 251"
+            width="100%"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            preserveAspectRatio="xMidYMid meet"
+          >
             <defs>
               <rect id="fac-a" height="218" rx="4" width="367"></rect>
               <mask id="fac-d" fill="#fff" height="218" width="367" x="0" y="0">
@@ -137,7 +256,10 @@
                 <stop offset="0%" stop-color="#1976D2"></stop>
                 <stop offset="100%" stop-color="#64B5F6" stop-opacity=".152"></stop>
               </linearGradient>
-              <path id="fac-c" d="M14.909 96.452c10.762 12.154 26.57 19.829 44.19 19.829 32.426 0 58.714-25.994 58.714-58.058 0-32.065-26.288-58.058-58.715-58.058C26.672.165.384 26.158.384 58.223c0 14.64 5.481 28.016 14.525 38.23z"></path>
+              <path
+                id="fac-c"
+                d="M14.909 96.452c10.762 12.154 26.57 19.829 44.19 19.829 32.426 0 58.714-25.994 58.714-58.058 0-32.065-26.288-58.058-58.715-58.058C26.672.165.384 26.158.384 58.223c0 14.64 5.481 28.016 14.525 38.23z"
+              ></path>
               <mask id="fac-h" fill="#fff" height="116.116" width="117.428" x="0" y="0">
                 <use xlink:href="#fac-c"></use>
               </mask>
@@ -146,17 +268,45 @@
               </mask>
             </defs>
             <g transform="translate(16 19)" fill="none" fill-rule="evenodd">
-              <use xlink:href="#fac-a" mask="url(#fac-d)" fill="#FFF" stroke="#1E88E5" stroke-width="2.2"></use>
+              <use
+                xlink:href="#fac-a"
+                mask="url(#fac-d)"
+                fill="#FFF"
+                stroke="#1E88E5"
+                stroke-width="2.2"
+              ></use>
               <path d="M338 18h14v-2h-14v2zm0-4h14v-2h-14v2zm0-6v2h14V8h-14z" fill="#42A5F5"></path>
               <g transform="translate(12 9)" fill="#42A5F5">
                 <ellipse cx="2.471" cy="2.5" rx="2.471" ry="2.5"></ellipse>
                 <ellipse cx="10.294" cy="2.5" rx="2.471" ry="2.5"></ellipse>
                 <ellipse cx="18.529" cy="2.5" rx="2.471" ry="2.5"></ellipse>
               </g>
-              <use xlink:href="#fac-b" mask="url(#fac-e)" fill="#BBDEFB" stroke="#1E88E5" stroke-width="2.2" stroke-opacity=".449" transform="translate(10 25)"></use>
-              <path d="M180.976 126.3a5.75 5.75 0 0 1-1.596.786c-.504.214-1.184.39-1.942.242a5.44 5.44 0 0 1-4.35-2.543c-1.601-2.563-.787-5.962 1.82-7.59.33-.206.67-.374 1.02-.505 8.65-4.888 40.212-17.79 40.212-17.79 4.729-1.958 5.137-1.178.924 1.741 0 0-31.25 21.536-35.434 25.213a3.287 3.287 0 0 1-.654.446z" fill="#FFF"></path>
-              <path d="M22.15 4.955l-3.628 9.452M32.5 9.687l-5.688 8.88M12.323 2.328l-1.92 9.88M.977.624L.624 10.683" stroke="url(#fac-f)" stroke-linecap="square" stroke-width="2.863" transform="translate(181.938 62.12)"></path>
-              <g transform="translate(123 56)" mask="url(#fac-h)" stroke="url(#fac-g)" stroke-width="13.041">
+              <use
+                xlink:href="#fac-b"
+                mask="url(#fac-e)"
+                fill="#BBDEFB"
+                stroke="#1E88E5"
+                stroke-width="2.2"
+                stroke-opacity=".449"
+                transform="translate(10 25)"
+              ></use>
+              <path
+                d="M180.976 126.3a5.75 5.75 0 0 1-1.596.786c-.504.214-1.184.39-1.942.242a5.44 5.44 0 0 1-4.35-2.543c-1.601-2.563-.787-5.962 1.82-7.59.33-.206.67-.374 1.02-.505 8.65-4.888 40.212-17.79 40.212-17.79 4.729-1.958 5.137-1.178.924 1.741 0 0-31.25 21.536-35.434 25.213a3.287 3.287 0 0 1-.654.446z"
+                fill="#FFF"
+              ></path>
+              <path
+                d="M22.15 4.955l-3.628 9.452M32.5 9.687l-5.688 8.88M12.323 2.328l-1.92 9.88M.977.624L.624 10.683"
+                stroke="url(#fac-f)"
+                stroke-linecap="square"
+                stroke-width="2.863"
+                transform="translate(181.938 62.12)"
+              ></path>
+              <g
+                transform="translate(123 56)"
+                mask="url(#fac-h)"
+                stroke="url(#fac-g)"
+                stroke-width="13.041"
+              >
                 <use xlink:href="#fac-c" mask="url(#fac-i)"></use>
               </g>
             </g>
@@ -177,9 +327,19 @@
     <v-container fluid fill-height class="my-3">
       <v-layout row wrap justify-center align-center>
         <div class="pa-3 o-promo">
-          <svg height="100%" viewBox="0 0 402 328" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet">
+          <svg
+            height="100%"
+            viewBox="0 0 402 328"
+            width="100%"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            preserveAspectRatio="xMidYMid meet"
+          >
             <defs>
-              <path id="ver-a" d="M30.567 93.044c2.031.002 5.332.004 7.354.004h268.402A3.672 3.672 0 0 1 310 96.723v77.554a3.681 3.681 0 0 1-3.677 3.675H37.921c-2.03 0-5.33.044-7.354.004 0 0-40.567 3.092-40.567-42.456s40.567-42.456 40.567-42.456z"></path>
+              <path
+                id="ver-a"
+                d="M30.567 93.044c2.031.002 5.332.004 7.354.004h268.402A3.672 3.672 0 0 1 310 96.723v77.554a3.681 3.681 0 0 1-3.677 3.675H37.921c-2.03 0-5.33.044-7.354.004 0 0-40.567 3.092-40.567-42.456s40.567-42.456 40.567-42.456z"
+              ></path>
               <mask id="ver-d" fill="#fff" height="85" width="320" x="0" y="0">
                 <use xlink:href="#ver-a"></use>
               </mask>
@@ -187,11 +347,17 @@
                 <stop offset="0%" stop-color="#1E88E5"></stop>
                 <stop offset="100%" stop-color="#E3F2FD"></stop>
               </linearGradient>
-              <path id="ver-b" d="M45.567 53.044c2.031.002 5.332.004 7.354.004h268.402A3.672 3.672 0 0 1 325 56.723v77.554a3.681 3.681 0 0 1-3.677 3.675H52.921c-2.03 0-5.33.044-7.354.004 0 0-40.567 3.092-40.567-42.456s40.567-42.456 40.567-42.456z"></path>
+              <path
+                id="ver-b"
+                d="M45.567 53.044c2.031.002 5.332.004 7.354.004h268.402A3.672 3.672 0 0 1 325 56.723v77.554a3.681 3.681 0 0 1-3.677 3.675H52.921c-2.03 0-5.33.044-7.354.004 0 0-40.567 3.092-40.567-42.456s40.567-42.456 40.567-42.456z"
+              ></path>
               <mask id="ver-f" fill="#fff" height="85" width="320" x="0" y="0">
                 <use xlink:href="#ver-b"></use>
               </mask>
-              <path id="ver-c" d="M40.567.044c2.031.002 5.332.004 7.354.004h268.402A3.672 3.672 0 0 1 320 3.723v77.554a3.681 3.681 0 0 1-3.677 3.675H47.921c-2.03 0-5.33.044-7.354.004C40.567 84.956 0 88.048 0 42.5S40.567.044 40.567.044z"></path>
+              <path
+                id="ver-c"
+                d="M40.567.044c2.031.002 5.332.004 7.354.004h268.402A3.672 3.672 0 0 1 320 3.723v77.554a3.681 3.681 0 0 1-3.677 3.675H47.921c-2.03 0-5.33.044-7.354.004C40.567 84.956 0 88.048 0 42.5S40.567.044 40.567.044z"
+              ></path>
               <mask id="ver-g" fill="#fff" height="85" width="320" x="0" y="0">
                 <use xlink:href="#ver-c"></use>
               </mask>
@@ -202,17 +368,52 @@
             </defs>
             <g fill="none" fill-rule="evenodd">
               <g transform="rotate(11 15.855 164.657)">
-                <use xlink:href="#ver-a" fill="#FFF" mask="url(#ver-d)" stroke="#1E88E5" stroke-width="2.529" transform="rotate(40 150 135.5)"></use>
-                <path d="M45 124h39.506v55H45v-55zm51.519 0h39.506v55H96.519v-55zm51.52 0h39.505v55h-39.506v-55zm52.687 0h39.506v55h-39.506v-55zm51.768 0H292v55h-39.506v-55z" fill="url(#ver-e)" transform="rotate(39 168.5 151.5)"></path>
+                <use
+                  xlink:href="#ver-a"
+                  fill="#FFF"
+                  mask="url(#ver-d)"
+                  stroke="#1E88E5"
+                  stroke-width="2.529"
+                  transform="rotate(40 150 135.5)"
+                ></use>
+                <path
+                  d="M45 124h39.506v55H45v-55zm51.519 0h39.506v55H96.519v-55zm51.52 0h39.505v55h-39.506v-55zm52.687 0h39.506v55h-39.506v-55zm51.768 0H292v55h-39.506v-55z"
+                  fill="url(#ver-e)"
+                  transform="rotate(39 168.5 151.5)"
+                ></path>
               </g>
               <g transform="rotate(11 -14.609 208.89)">
-                <use xlink:href="#ver-b" fill="#FFF" mask="url(#ver-f)" stroke="#1E88E5" stroke-width="2.529" transform="rotate(20 165 95.5)"></use>
-                <path d="M64 74h39.506v55H64V74zm51.519 0h39.506v55h-39.506V74zm51.52 0h39.505v55h-39.506V74zm52.687 0h39.506v55h-39.506V74zm51.768 0H311v55h-39.506V74z" fill="url(#ver-e)" transform="rotate(21 187.5 101.5)"></path>
+                <use
+                  xlink:href="#ver-b"
+                  fill="#FFF"
+                  mask="url(#ver-f)"
+                  stroke="#1E88E5"
+                  stroke-width="2.529"
+                  transform="rotate(20 165 95.5)"
+                ></use>
+                <path
+                  d="M64 74h39.506v55H64V74zm51.519 0h39.506v55h-39.506V74zm51.52 0h39.505v55h-39.506V74zm52.687 0h39.506v55h-39.506V74zm51.768 0H311v55h-39.506V74z"
+                  fill="url(#ver-e)"
+                  transform="rotate(21 187.5 101.5)"
+                ></path>
               </g>
               <g transform="rotate(11 -69.536 235.047)">
-                <use xlink:href="#ver-c" fill="#FFF" mask="url(#ver-g)" stroke="#1E88E5" stroke-width="2.529"></use>
-                <path d="M43 42c0 6.627-5.373 12-12 12s-12-5.373-12-12 5.373-12 12-12 12 5.373 12 12z" stroke="#1E88E5" stroke-width="1.264"></path>
-                <path d="M59 16h39.506v55H59V16zm51.519 0h39.506v55h-39.506V16zm51.52 0h39.505v55h-39.506V16zm52.687 0h39.506v55h-39.506V16zm51.768 0H306v55h-39.506V16z" fill="url(#ver-h)"></path>
+                <use
+                  xlink:href="#ver-c"
+                  fill="#FFF"
+                  mask="url(#ver-g)"
+                  stroke="#1E88E5"
+                  stroke-width="2.529"
+                ></use>
+                <path
+                  d="M43 42c0 6.627-5.373 12-12 12s-12-5.373-12-12 5.373-12 12-12 12 5.373 12 12z"
+                  stroke="#1E88E5"
+                  stroke-width="1.264"
+                ></path>
+                <path
+                  d="M59 16h39.506v55H59V16zm51.519 0h39.506v55h-39.506V16zm51.52 0h39.505v55h-39.506V16zm52.687 0h39.506v55h-39.506V16zm51.768 0H306v55h-39.506V16z"
+                  fill="url(#ver-h)"
+                ></path>
               </g>
             </g>
           </svg>
@@ -232,7 +433,14 @@
     <v-container fluid fill-height class="mt-3 mb-5">
       <v-layout :reverse="!isMobile" row wrap justify-center align-center>
         <div class="pa-3 o-promo">
-          <svg height="100%" viewBox="0 0 372 271" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet">
+          <svg
+            height="100%"
+            viewBox="0 0 372 271"
+            width="100%"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            preserveAspectRatio="xMidYMid meet"
+          >
             <defs>
               <path id="opt-a" d="M0 38h39v39H0z"></path>
               <mask id="opt-y" fill="#fff" height="39" width="39" x="0" y="0">

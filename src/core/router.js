@@ -28,25 +28,54 @@ const router = new Router({
         ...crudOperations,
         ...controls,
         { path: 'data-table', redirect: 'data-table/display-rows' },
-        { path: 'data-table/display-rows', component: () => import('~/shell/data-table/display-rows/DisplayRows') },
-        { path: 'data-table/paginator', component: () => import('~/shell/data-table/paginator/Paginator') },
-        { path: 'data-table/iterator', component: () => import('~/shell/data-table/iterator/Iterator') },
+        {
+          path: 'data-table/display-rows',
+          component: () => import('~/shell/data-table/display-rows/DisplayRows'),
+        },
+        {
+          path: 'data-table/paginator',
+          component: () => import('~/shell/data-table/paginator/Paginator'),
+        },
+        {
+          path: 'data-table/iterator',
+          component: () => import('~/shell/data-table/iterator/Iterator'),
+        },
 
-        { path: 'internationalization', component: () => import('~/shell/internationalization/Internationalization') },
+        {
+          path: 'internationalization',
+          component: () => import('~/shell/internationalization/Internationalization'),
+        },
 
-        { path: 'data-visualization', component: () => import('~/shell/data-visualization/DataVisualization') },
+        {
+          path: 'data-visualization',
+          component: () => import('~/shell/data-visualization/DataVisualization'),
+        },
 
         { path: 'authorization', component: () => import('~/shell/authorization/Authorization') },
-        { path: 'authorization/login', component: () => import('~/shell/authorization/Login'), meta: { standalone: true } },
+        {
+          path: 'authorization/login',
+          component: () => import('~/shell/authorization/Login'),
+          meta: { standalone: true },
+        },
         // { path: 'authorization/register', component: () => import('~/shell/authorization/Register'), meta: { standalone: true } },
 
         { path: 'payment', component: () => import('~/shell/payment/Payment') },
 
         { path: 'messages', redirect: 'messages/chat-room' },
-        { path: 'messages/chat-room', component: () => import('~/shell/messages/chat-room/ChatRoom') },
+        {
+          path: 'messages/chat-room',
+          component: () => import('~/shell/messages/chat-room/ChatRoom'),
+        },
 
-        { path: 'machine-learning', component: () => import('~/shell/machine-learning/MachineLearning') },
-        { path: '*', component: () => import('~/errors/not-found/NotFound'), meta: { standalone: true } },
+        {
+          path: 'machine-learning',
+          component: () => import('~/shell/machine-learning/MachineLearning'),
+        },
+        {
+          path: '*',
+          component: () => import('~/errors/not-found/NotFound'),
+          meta: { standalone: true },
+        },
       ],
     },
     { path: '*', redirect: `/${sessionStorage.getItem('lang') || lang()}` },
@@ -87,10 +116,14 @@ router.afterEach(() => {
   // progress.done();
 });
 
-Vue.use(Gtag, {
-  config: { id: process.env.GOOGLE_ANALYTICS },
-  appName: process.env.APP_NAME,
-  pageTrackerScreenviewEnabled: process.env.NODE_ENV === 'production',
-}, router);
+Vue.use(
+  Gtag,
+  {
+    config: { id: process.env.GOOGLE_ANALYTICS },
+    appName: process.env.APP_NAME,
+    pageTrackerScreenviewEnabled: process.env.NODE_ENV === 'production',
+  },
+  router,
+);
 
 export default router;

@@ -7,7 +7,13 @@
 
       <v-flex xs12 class="mb-3">
         <v-sheet height="500">
-          <v-calendar ref="calendar" v-model="start" :type="type" :end="end" color="primary"></v-calendar>
+          <v-calendar
+            ref="calendar"
+            v-model="start"
+            :type="type"
+            :end="end"
+            color="primary"
+          ></v-calendar>
         </v-sheet>
       </v-flex>
 
@@ -45,6 +51,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-</style>

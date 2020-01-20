@@ -82,15 +82,8 @@ export default {
     };
   },
   methods: {
-    signIn() {
-
-    },
-    signInWithGoogle() {
-
-    },
+    signIn() {},
+    signInWithGoogle() {},
   },
 };
 </script>
-
-<style scoped>
-</style>

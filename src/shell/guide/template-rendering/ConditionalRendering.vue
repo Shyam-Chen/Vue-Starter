@@ -12,7 +12,9 @@
     <div v-else-if="type === 'C'">Render only if `type` is equal to `C`</div>
     <div v-else>Render if `type` is not `A` or `B` or `C`</div>
 
-    <div v-show="true">Always rendered, but it should be visible only if `v-show` conditions is true</div>
+    <div v-show="true">
+      Always rendered, but it should be visible only if `v-show` conditions is true
+    </div>
   </v-layout>
 </template>
 
@@ -31,6 +33,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-</style>

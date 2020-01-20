@@ -2,40 +2,37 @@
 
 :poodle: A boilerplate for HTML5, Vue, Material, Babel, Flow, and PostCSS.
 
-|    | Project Information |
-|:--:|---------------------|
-| Live Demo | [![Develop Demo][demo-develop-image]][demo-develop-link] [![Master Demo][demo-master-image]][demo-master-link] |
-| Develop Branch | [![Build Status][develop-build-image]][develop-build-link] [![Coverage Status][develop-coverage-image]][develop-coverage-link] |
-| Master Branch | [![Build Status][master-build-image]][master-build-link] [![Coverage Status][master-coverage-image]][master-coverage-link] |
-| Npm Package | [![dependencies Status][package-dependencies-image]][package-dependencies-link] [![devDependencies Status][package-devDependencies-image]][package-devDependencies-link] |
+|                | Project Information                                                                                                                                                      |
+| :------------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+|   Live Demo    | [![Develop Demo][demo-develop-image]][demo-develop-link] [![Master Demo][demo-master-image]][demo-master-link]                                                           |
+| Develop Branch | [![Build Status][develop-build-image]][develop-build-link] [![Coverage Status][develop-coverage-image]][develop-coverage-link]                                           |
+| Master Branch  | [![Build Status][master-build-image]][master-build-link] [![Coverage Status][master-coverage-image]][master-coverage-link]                                               |
+|  Npm Package   | [![dependencies Status][package-dependencies-image]][package-dependencies-link] [![devDependencies Status][package-devdependencies-image]][package-devdependencies-link] |
 
 [demo-develop-image]: https://img.shields.io/badge/link-develop-blue.svg
 [demo-develop-link]: https://oh-my-vue-dev.netlify.com
 [demo-master-image]: https://img.shields.io/badge/link-master-blue.svg
 [demo-master-link]: https://oh-my-vue-prod.netlify.com
-
 [develop-build-image]: https://img.shields.io/circleci/build/github/Shyam-Chen/Vue-Starter/develop
 [develop-build-link]: https://circleci.com/gh/Shyam-Chen/workflows/Vue-Starter
 [develop-coverage-image]: https://img.shields.io/codecov/c/github/Shyam-Chen/Vue-Starter/develop.svg
 [develop-coverage-link]: https://codecov.io/gh/Shyam-Chen/Vue-Starter
-
 [master-build-image]: https://img.shields.io/circleci/build/github/Shyam-Chen/Vue-Starter/master
 [master-build-link]: https://circleci.com/gh/Shyam-Chen/workflows/Vue-Starter
 [master-coverage-image]: https://img.shields.io/codecov/c/github/Shyam-Chen/Vue-Starter/master.svg
 [master-coverage-link]: https://codecov.io/gh/Shyam-Chen/Vue-Starter
-
 [package-dependencies-image]: https://img.shields.io/david/Shyam-Chen/Vue-Starter.svg
 [package-dependencies-link]: https://david-dm.org/Shyam-Chen/Vue-Starter
-[package-devDependencies-image]: https://img.shields.io/david/dev/Shyam-Chen/Vue-Starter.svg
-[package-devDependencies-link]: https://david-dm.org/Shyam-Chen/Vue-Starter?type=dev
+[package-devdependencies-image]: https://img.shields.io/david/dev/Shyam-Chen/Vue-Starter.svg
+[package-devdependencies-link]: https://david-dm.org/Shyam-Chen/Vue-Starter?type=dev
 
 ## Table of Contents
 
-* [Getting Started](#getting-started)
-* [Key Features](#key-features)
-* [Dockerization](#dockerization)
-* [Configuration](#configuration)
-* [Directory Structure](#directory-structure)
+- [Getting Started](#getting-started)
+- [Key Features](#key-features)
+- [Dockerization](#dockerization)
+- [Configuration](#configuration)
+- [Directory Structure](#directory-structure)
 
 ## Getting Started
 
@@ -88,42 +85,42 @@ $ yarn e2e
 
 This seed repository provides the following features:
 
-* ---------- **Essentials** ----------
-* [x] [Vue](https://github.com/vuejs/vue)
-* [x] [Vue Router](https://github.com/vuejs/vue-router)
-* [x] [Vuex](https://github.com/vuejs/vuex)
-* [x] [Vuetify](https://github.com/vuetifyjs/vuetify)
-* [x] [Vue Meta](https://github.com/nuxt/vue-meta)
-* [x] [Vue I18n](https://github.com/kazupon/vue-i18n)
-* [x] [Vue ECharts](https://github.com/ecomfe/vue-echarts)
-* [x] [Axios](https://github.com/axios/axios)
-* [x] [GraphQL Request](https://github.com/prisma/graphql-request)
-* [x] [Vue Socket.IO](https://github.com/MetinSeylan/Vue-Socket.io)
-* [x] [Vue Apollo](https://github.com/vuejs/vue-apollo)
-* ---------- **Tools** ----------
-* [x] [Webpack](https://github.com/webpack/webpack)
-* [x] [Babel](https://github.com/babel/babel)
-* [x] [PostCSS](https://github.com/postcss/postcss)
-* [x] [Storybook](https://github.com/storybookjs/storybook)
-* [x] [ESLint](https://github.com/eslint/eslint)
-* [x] [StyleLint](https://github.com/stylelint/stylelint)
-* [x] [Prettier](https://github.com/prettier/prettier)
-* [x] [Flow](https://github.com/facebook/flow)
-* [x] [Jest](https://github.com/facebook/jest)
-* [x] [Puppeteer](https://github.com/GoogleChrome/puppeteer)
-* [x] [Workbox](https://github.com/GoogleChrome/workbox)
-* ---------- **Environments** ----------
-* [x] [Node.js](https://nodejs.org/)
-* [x] [Yarn](https://yarnpkg.com/)
-* [x] [Git](https://git-scm.com/)
-* [x] [GitHub](https://github.com/)
-* [x] [Docker](https://www.docker.com/)
-* [x] [Netlify](https://www.netlify.com/)
-* [x] [CircleCI](https://circleci.com/)
-* [x] [Codecov](https://codecov.io/)
-* [x] [Sentry](https://sentry.io/)
-* [x] [Global Site Tag](https://developers.google.com/gtagjs)
-* [x] [QianKun](https://github.com/umijs/qiankun)
+- ---------- **Essentials** ----------
+- [x] [Vue](https://github.com/vuejs/vue)
+- [x] [Vue Router](https://github.com/vuejs/vue-router)
+- [x] [Vuex](https://github.com/vuejs/vuex)
+- [x] [Vuetify](https://github.com/vuetifyjs/vuetify)
+- [x] [Vue Meta](https://github.com/nuxt/vue-meta)
+- [x] [Vue I18n](https://github.com/kazupon/vue-i18n)
+- [x] [Vue ECharts](https://github.com/ecomfe/vue-echarts)
+- [x] [Axios](https://github.com/axios/axios)
+- [x] [GraphQL Request](https://github.com/prisma/graphql-request)
+- [x] [Vue Socket.IO](https://github.com/MetinSeylan/Vue-Socket.io)
+- [x] [Vue Apollo](https://github.com/vuejs/vue-apollo)
+- ---------- **Tools** ----------
+- [x] [Webpack](https://github.com/webpack/webpack)
+- [x] [Babel](https://github.com/babel/babel)
+- [x] [PostCSS](https://github.com/postcss/postcss)
+- [x] [Storybook](https://github.com/storybookjs/storybook)
+- [x] [ESLint](https://github.com/eslint/eslint)
+- [x] [StyleLint](https://github.com/stylelint/stylelint)
+- [x] [Prettier](https://github.com/prettier/prettier)
+- [x] [Flow](https://github.com/facebook/flow)
+- [x] [Jest](https://github.com/facebook/jest)
+- [x] [Puppeteer](https://github.com/GoogleChrome/puppeteer)
+- [x] [Workbox](https://github.com/GoogleChrome/workbox)
+- ---------- **Environments** ----------
+- [x] [Node.js](https://nodejs.org/)
+- [x] [Yarn](https://yarnpkg.com/)
+- [x] [Git](https://git-scm.com/)
+- [x] [GitHub](https://github.com/)
+- [x] [Docker](https://www.docker.com/)
+- [x] [Netlify](https://www.netlify.com/)
+- [x] [CircleCI](https://circleci.com/)
+- [x] [Codecov](https://codecov.io/)
+- [x] [Sentry](https://sentry.io/)
+- [x] [Global Site Tag](https://developers.google.com/gtagjs)
+- [x] [QianKun](https://github.com/umijs/qiankun)
 
 ## Dockerization
 
@@ -185,7 +182,7 @@ function Environments() {
 
 Add environment variables to the CircleCI build.
 
-```js
+```sh
 CODECOV_TOKEN=xxx
 ```
 
@@ -193,13 +190,13 @@ CODECOV_TOKEN=xxx
 
 Add environment variables to the Netlify build.
 
-```js
-// required
+```sh
+# required
 NODE_ENV=production
 NODE_VERSION=12
 NPM_CONFIG_PRODUCTION=false
 
-// your environments
+# your environments
 GOOGLE_ANALYTICS=xxx
 SENTRY_DSN=xxx
 ...

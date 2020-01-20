@@ -10,6 +10,3 @@ export default {
   inject: ['text'],
 };
 </script>
-
-<style scoped>
-</style>

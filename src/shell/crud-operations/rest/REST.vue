@@ -6,7 +6,11 @@
       <!-- Search -->
       <v-layout row>
         <div>
-          <v-text-field v-model="r$.searchData.text" name="search-text" label="Search Text"></v-text-field>
+          <v-text-field
+            v-model="r$.searchData.text"
+            name="search-text"
+            label="Search Text"
+          ></v-text-field>
         </div>
         <v-btn color="primary" @click="searchItem(r$.searchData.text)">Search</v-btn>
       </v-layout>
@@ -24,9 +28,7 @@
         <v-card>
           <template v-if="r$.selected.length !== 0">
             <v-card-title class="o-card-title">
-              <div class="body-2 error--text">
-                {{ r$.selected.length }} selected
-              </div>
+              <div class="body-2 error--text">{{ r$.selected.length }} selected</div>
               <v-spacer></v-spacer>
               <!-- Delete checked -->
               <v-btn icon class="mx-0" @click.stop="void 0">
@@ -41,7 +43,14 @@
             </v-card-title>
           </template>
 
-          <v-data-table v-model="r$.selected" :headers="headers" :items="r$.dataset" :loading="r$.loading" hide-actions select-all>
+          <v-data-table
+            v-model="r$.selected"
+            :headers="headers"
+            :items="r$.dataset"
+            :loading="r$.loading"
+            hide-actions
+            select-all
+          >
             <template slot="items" slot-scope="props">
               <td>
                 <v-checkbox v-model="props.selected" primary hide-details></v-checkbox>
@@ -69,7 +78,11 @@
             <v-card-text>
               <v-layout row>
                 <div>
-                  <v-text-field v-model="r$.editData.text" name="edit-text" label="Edit Text"></v-text-field>
+                  <v-text-field
+                    v-model="r$.editData.text"
+                    name="edit-text"
+                    label="Edit Text"
+                  ></v-text-field>
                 </div>
               </v-layout>
             </v-card-text>
@@ -123,18 +136,16 @@ export default {
     },
   },
   created() {
-    this.$store.registerModule(
-      ['crudOperations', 'rest'],
-      { namespaced: true, state, actions, mutations, getters },
-    );
+    this.$store.registerModule(['crudOperations', 'rest'], {
+      namespaced: true,
+      state,
+      actions,
+      mutations,
+      getters,
+    });
   },
   methods: {
-    ...mapActions('crudOperations/rest', [
-      'addItem',
-      'searchItem',
-      'editItem',
-      'deleteItem',
-    ]),
+    ...mapActions('crudOperations/rest', ['addItem', 'searchItem', 'editItem', 'deleteItem']),
     onOpenEdit(item) {
       this.r$.editData.dialog = true;
       this.r$.editData.id = item.id;
@@ -147,6 +158,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-</style>

@@ -1,16 +1,24 @@
 <template>
   <v-container class="shell-container" fluid>
     <v-layout column>
-      <Card />  <!-- default slot content -->
+      <Card />
+      <!-- default slot content -->
 
       <Card>
-        <div slot="title">Vue</div>  <!-- named slot -->
-        <div slot="body">Approachable! Versatile! Performant!</div>  <!-- named slot -->
-        <span>Awesome Vue!!!</span>  <!-- slot content -->
-        <span>Awesome Vue!!!</span>  <!-- slot content -->
-        <span>Awesome Vue!!!</span>  <!-- slot content -->
-        <v-btn slot="button" flat color="orange">Share</v-btn>  <!-- named slot -->
-        <v-btn slot="button" flat color="orange">{{ name }}</v-btn>  <!-- named slot -->
+        <div slot="title">Vue</div>
+        <!-- named slot -->
+        <div slot="body">Approachable! Versatile! Performant!</div>
+        <!-- named slot -->
+        <span>Awesome Vue!!!</span>
+        <!-- slot content -->
+        <span>Awesome Vue!!!</span>
+        <!-- slot content -->
+        <span>Awesome Vue!!!</span>
+        <!-- slot content -->
+        <v-btn slot="button" flat color="orange">Share</v-btn>
+        <!-- named slot -->
+        <v-btn slot="button" flat color="orange">{{ name }}</v-btn>
+        <!-- named slot -->
       </Card>
 
       <List :subheader="subheader" :items="items">
@@ -54,6 +62,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-</style>

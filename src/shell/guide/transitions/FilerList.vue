@@ -26,12 +26,14 @@ export default {
   data(): Data {
     return {
       type: 'all',
-      list: Array(21).fill(1).map((x, y) => x + y),  // 1 ~ 21
+      list: Array(21)
+        .fill(1)
+        .map((x, y) => x + y), // 1 ~ 21
     };
   },
   computed: {
     filerList(): number[] {
-      return this.list.filter((value) => {
+      return this.list.filter(value => {
         if (this.type === 'odd') return value % 2 === 1;
         if (this.type === 'even') return value % 2 === 0;
 

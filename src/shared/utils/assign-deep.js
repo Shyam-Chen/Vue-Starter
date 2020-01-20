@@ -5,7 +5,7 @@ const assignDeep = (target, ...sources) => {
   const source = sources.shift();
 
   if (isObject(target) && isObject(source)) {
-    Object.keys(source).forEach((key) => {
+    Object.keys(source).forEach(key => {
       if (isObject(source[key])) {
         if (!target[key]) Object.assign(target, { [key]: {} });
         assignDeep(target[key], source[key]);

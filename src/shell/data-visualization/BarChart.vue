@@ -19,10 +19,10 @@ export default {
     ECharts,
   },
   data() {
-    const random = () => (
-      Array(3).fill(null)
-        .map(() => Math.round(300 + (Math.random() * 700)) / 10)
-    );
+    const random = () =>
+      Array(3)
+        .fill(null)
+        .map(() => Math.round(300 + Math.random() * 700) / 10);
 
     return {
       options: {
@@ -32,11 +32,7 @@ export default {
         yAxis: {
           type: 'value',
         },
-        series: [
-          { type: 'bar' },
-          { type: 'bar' },
-          { type: 'bar' },
-        ],
+        series: [{ type: 'bar' }, { type: 'bar' }, { type: 'bar' }],
         dataset: {
           source: [
             ['Frameworks', 'Male', 'Female', 'Neutral'],

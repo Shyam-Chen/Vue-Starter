@@ -10,7 +10,14 @@ process.env = env;
 
 Object.defineProperties(window, {
   matchMedia: {
-    value: () => ({ matches: false }),
+    value: jest.fn().mockImplementation(query => ({
+      matches: false,
+      media: query,
+      onchange: null,
+      addEventListener: jest.fn(),
+      removeEventListener: jest.fn(),
+      dispatchEvent: jest.fn(),
+    })),
     writable: true,
   },
   scrollTo: { value: jest.fn() },

@@ -61,7 +61,8 @@ export default {
   data() {
     return {
       list: ['Vanilla', 'Angular', 'React', 'Vue'],
-      message: 'Already know HTML, CSS and JavaScript? Read the guide and start building things in no time!',
+      message:
+        'Already know HTML, CSS and JavaScript? Read the guide and start building things in no time!',
     };
   },
   methods: {

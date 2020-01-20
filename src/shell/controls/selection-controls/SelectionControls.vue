@@ -11,7 +11,14 @@
               <div class="body-1">Technologies</div>
               <div>
                 <v-layout row wrap>
-                  <v-checkbox v-for="item in sc$.technologiesList" :key="item" v-model="technologies" :label="item" :value="item" class="o-checkbox"></v-checkbox>
+                  <v-checkbox
+                    v-for="item in sc$.technologiesList"
+                    :key="item"
+                    v-model="technologies"
+                    :label="item"
+                    :value="item"
+                    class="o-checkbox"
+                  ></v-checkbox>
                 </v-layout>
               </div>
             </v-layout>
@@ -26,7 +33,12 @@
               <div class="body-1">Gender</div>
               <div>
                 <v-radio-group v-model="gender" class="o-radio-group" row>
-                  <v-radio v-for="item in sc$.genderList" :key="item" :label="item" :value="item"></v-radio>
+                  <v-radio
+                    v-for="item in sc$.genderList"
+                    :key="item"
+                    :label="item"
+                    :value="item"
+                  ></v-radio>
                 </v-radio-group>
               </div>
             </v-layout>
@@ -53,7 +65,13 @@
             <v-layout column>
               <div class="body-1">Media Volume</div>
               <div>
-                <v-slider v-model="volume" prepend-icon="volume_up" step="2" class="o-slider" thumb-label></v-slider>
+                <v-slider
+                  v-model="volume"
+                  prepend-icon="volume_up"
+                  step="2"
+                  class="o-slider"
+                  thumb-label
+                ></v-slider>
               </div>
             </v-layout>
           </div>
@@ -85,18 +103,16 @@ export default {
     sc$() {
       return this.$store.state.controls.selectionControls;
     },
-    ...mapModel('controls/selectionControls', [
-      'technologies',
-      'gender',
-      'autoplay',
-      'volume',
-    ]),
+    ...mapModel('controls/selectionControls', ['technologies', 'gender', 'autoplay', 'volume']),
   },
   created() {
-    this.$store.registerModule(
-      ['controls', 'selectionControls'],
-      { namespaced: true, state, actions, mutations, getters },
-    );
+    this.$store.registerModule(['controls', 'selectionControls'], {
+      namespaced: true,
+      state,
+      actions,
+      mutations,
+      getters,
+    });
   },
 };
 </script>

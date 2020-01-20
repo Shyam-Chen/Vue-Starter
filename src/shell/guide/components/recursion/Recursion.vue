@@ -53,10 +53,7 @@ export default {
         },
         {
           label: '2',
-          children: [
-            { label: '2-1', children: [{ label: '2-1-1' }] },
-            { label: '2-2' },
-          ],
+          children: [{ label: '2-1', children: [{ label: '2-1-1' }] }, { label: '2-2' }],
         },
       ],
     };
@@ -68,6 +65,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-</style>

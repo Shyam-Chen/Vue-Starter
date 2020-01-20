@@ -9,7 +9,7 @@ const localVue = createLocalVue();
 // localVue.use(I18n);
 
 describe('About', () => {
-  let [wrapper/* , i18n */] = [];
+  let [wrapper /* , i18n */] = [];
 
   beforeEach(() => {
     // i18n = new I18n({

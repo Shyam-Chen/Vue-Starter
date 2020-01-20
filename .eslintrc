@@ -1,9 +1,5 @@
 {
-  "plugins": [
-    "vue",
-    "flowtype"
-    // "prettier"
-  ],
+  "plugins": ["vue", "flowtype", "prettier"],
   "env": {
     "browser": true,
     "node": true,
@@ -15,10 +11,10 @@
   "extends": [
     "airbnb-base",
     "plugin:vue/recommended",
-    "plugin:flowtype/recommended"
-    // "prettier",
-    // "prettier/vue",
-    // "prettier/flowtype"
+    "plugin:flowtype/recommended",
+    "prettier",
+    "prettier/vue",
+    "prettier/flowtype"
   ],
   "parser": "vue-eslint-parser",
   "parserOptions": {
@@ -35,34 +31,25 @@
   },
   "rules": {
     // Plugins
-    // "prettier/prettier": "error",
+    "prettier/prettier": "error",
 
     "import/extensions": ["error", "always", { "js": "never", "vue": "never" }],
     "import/prefer-default-export": "off",
 
-    "vue/html-self-closing": "off",
-    "vue/max-attributes-per-line": "off",
-    "vue/singleline-html-element-content-newline": "off",
-
     // Possible Errors
 
     // Best Practices
-    "no-multi-spaces": ["error", { "ignoreEOLComments": true }],
     "no-param-reassign": [
       "error",
       { "props": true, "ignorePropertyModificationsFor": ["context", "state", "acc", "event"] }
-    ],
+    ]
 
     // Variables
 
     // Node.js and CommonJS
 
     // Stylistic Issues
-    "max-len": "off",
-    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
-    "object-curly-newline": ["error", { "consistent": true }],
 
     // JS.Next
-    "arrow-parens": ["error", "as-needed", { "requireForBlockBody": true }]
   }
 }

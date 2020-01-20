@@ -27,21 +27,21 @@ export default {
   beforeRouteEnter(to, from, next) {
     console.log('[*] beforeRouteEnter');
 
-    next((vm) => {
+    next(vm => {
       vm.text.push('beforeRouteEnter');
     });
   },
   beforeRouteUpdate(to, from, next) {
     console.log('[*] beforeRouteUpdate');
 
-    next((vm) => {
+    next(vm => {
       vm.text.push('beforeRouteUpdate');
     });
   },
   beforeRouteLeave(to, from, next) {
     console.log('[*] beforeRouteLeave');
 
-    next((vm) => {
+    next(vm => {
       vm.text.push('beforeRouteLeave');
     });
   },
@@ -52,6 +52,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-</style>

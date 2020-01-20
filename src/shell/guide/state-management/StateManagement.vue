@@ -3,7 +3,8 @@
     <v-layout column>
       <v-layout row>
         <div class="headline pa-2">
-          Clicked: <strong>{{ c$.value }}</strong> times, value is <strong>{{ evenOrOdd }}</strong>.
+          Clicked: <strong>{{ c$.value }}</strong> times, value is <strong>{{ evenOrOdd }}</strong
+          >.
         </div>
       </v-layout>
 
@@ -20,10 +21,18 @@
       </v-layout>
 
       <v-layout row>
-        <v-btn color="primary" @click="incrementAsync">{{ $t('increment') }} ({{ $t('async') }})</v-btn>
-        <v-btn color="primary" @click="decrementAsync">{{ $t('decrement') }} ({{ $t('async') }})</v-btn>
-        <v-btn color="primary" @click="incrementIfOdd">{{ $t('increment') }} ({{ $t('ifOdd') }})</v-btn>
-        <v-btn color="primary" @click="decrementIfEven">{{ $t('decrement') }} ({{ $t('ifEven') }})</v-btn>
+        <v-btn color="primary" @click="incrementAsync"
+          >{{ $t('increment') }} ({{ $t('async') }})</v-btn
+        >
+        <v-btn color="primary" @click="decrementAsync"
+          >{{ $t('decrement') }} ({{ $t('async') }})</v-btn
+        >
+        <v-btn color="primary" @click="incrementIfOdd"
+          >{{ $t('increment') }} ({{ $t('ifOdd') }})</v-btn
+        >
+        <v-btn color="primary" @click="decrementIfEven"
+          >{{ $t('decrement') }} ({{ $t('ifEven') }})</v-btn
+        >
       </v-layout>
 
       <v-layout row>

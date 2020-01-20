@@ -40,8 +40,9 @@
       <v-layout row>
         <p class="pl-2">
           Pluralizing i18n:
-          <b class="primary--text">{{ $tc('framework', 0) }}</b>,
-          <b class="primary--text">{{ $tc('framework', 1) }}</b>,
+          <b class="primary--text">{{ $tc('framework', 0) }}</b
+          >, <b class="primary--text">{{ $tc('framework', 1) }}</b
+          >,
           <b class="primary--text">{{ $tc('framework', 3, { num: 3 }) }}</b>
         </p>
       </v-layout>
@@ -58,6 +59,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-</style>

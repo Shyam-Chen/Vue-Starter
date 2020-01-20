@@ -6,13 +6,24 @@
       <!-- Search -->
       <v-layout row>
         <div>
-          <v-text-field v-model="g$.searchData.text" name="search-text" label="Search Text" disabled></v-text-field>
+          <v-text-field
+            v-model="g$.searchData.text"
+            name="search-text"
+            label="Search Text"
+            disabled
+          ></v-text-field>
         </div>
         <v-btn color="primary" @click="search()">Search</v-btn>
       </v-layout>
 
       <v-layout row>
-        <v-data-table :headers="headers" :items="textList" :loading="$apollo.loading" hide-actions select-all>
+        <v-data-table
+          :headers="headers"
+          :items="textList"
+          :loading="$apollo.loading"
+          hide-actions
+          select-all
+        >
           <template slot="items" slot-scope="props">
             <td>
               <v-checkbox v-model="props.selected" primary hide-details></v-checkbox>
@@ -78,10 +89,13 @@ export default {
     },
   },
   created() {
-    this.$store.registerModule(
-      ['crudOperations', 'graphql'],
-      { namespaced: true, state, actions, mutations, getters },
-    );
+    this.$store.registerModule(['crudOperations', 'graphql'], {
+      namespaced: true,
+      state,
+      actions,
+      mutations,
+      getters,
+    });
   },
   methods: {
     ...mapActions('crudOperations/graphql', Object.keys(actions)),
@@ -91,6 +105,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-</style>

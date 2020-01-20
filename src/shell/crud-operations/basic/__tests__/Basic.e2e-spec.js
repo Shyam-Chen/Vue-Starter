@@ -11,7 +11,8 @@ describe('Basic', () => {
     await page.setViewport(global.desktopViewport);
 
     headline = '#basic > div > div.headline';
-    displayRows = '#basic > div > div:nth-child(3) > div > div:nth-child(2) > div > table > tbody > tr';
+    displayRows =
+      '#basic > div > div:nth-child(3) > div > div:nth-child(2) > div > table > tbody > tr';
   });
 
   afterAll(async () => {
@@ -29,9 +30,12 @@ describe('Basic', () => {
 
   it('should add a item', async () => {
     const openAddButton = '#basic > div > div:nth-child(2) > button';
-    const primaryTextField = '#app > div.v-dialog__content.v-dialog__content--active > div > div > div.v-card__text > div > div:nth-child(1) > div > div > div.v-input__slot > div > input[type="text"]';
-    const accentTextField = '#app > div.v-dialog__content.v-dialog__content--active > div > div > div.v-card__text > div > div:nth-child(2) > div > div > div.v-input__slot > div > input[type="text"]';
-    const addButton = '#app > div.v-dialog__content.v-dialog__content--active > div > div > div.v-card__actions > button.v-btn.v-btn--contained.theme--light.v-size--default.success';
+    const primaryTextField =
+      '#app > div.v-dialog__content.v-dialog__content--active > div > div > div.v-card__text > div > div:nth-child(1) > div > div > div.v-input__slot > div > input[type="text"]';
+    const accentTextField =
+      '#app > div.v-dialog__content.v-dialog__content--active > div > div > div.v-card__text > div > div:nth-child(2) > div > div > div.v-input__slot > div > input[type="text"]';
+    const addButton =
+      '#app > div.v-dialog__content.v-dialog__content--active > div > div > div.v-card__actions > button.v-btn.v-btn--contained.theme--light.v-size--default.success';
 
     await page.click(openAddButton);
     await page.type(primaryTextField, 'foo');
@@ -43,7 +47,8 @@ describe('Basic', () => {
   });
 
   it('should search a board', async () => {
-    const searchInput = '#basic > div > div:nth-child(3) > div > div.v-card__title.o-card-title > div.v-input.v-text-field.v-text-field--single-line.v-input--hide-details > div > div > div.v-text-field__slot > input[type="text"]';
+    const searchInput =
+      '#basic > div > div:nth-child(3) > div > div.v-card__title.o-card-title > div.v-input.v-text-field.v-text-field--single-line.v-input--hide-details > div > div > div.v-text-field__slot > input[type="text"]';
 
     await page.type(searchInput, 'v');
     const length = await page.$$eval(displayRows, el => el.length);

@@ -15,22 +15,20 @@ export default {
   },
   editItem({ state }: ActionContext<IBasic>, { id, primary, accent }: Item): void {
     state.dataset = [
-      ...state.dataset
-        .map(item => (item.id === id ? { ...item, primary, accent } : item)),
+      ...state.dataset.map(item => (item.id === id ? { ...item, primary, accent } : item)),
     ];
   },
   deleteItem({ state }: ActionContext<IBasic>, { id }: Item): void {
-    const removeById = (arr: Item[]) => (
-      [...arr.filter(item => item.id !== Number(id))]
-    );
+    const removeById = (arr: Item[]) => [...arr.filter(item => item.id !== Number(id))];
 
     state.dataset = removeById(state.dataset);
     if (state.selected.length) state.selected = removeById(state.selected);
   },
   deleteChecked({ state }: ActionContext<IBasic>, selected: Item[]): void {
     state.dataset = [
-      ...state.dataset
-        .filter(item => !selected.map(selectedItem => selectedItem.id).includes(item.id)),
+      ...state.dataset.filter(
+        item => !selected.map(selectedItem => selectedItem.id).includes(item.id),
+      ),
     ];
 
     state.selected = [];

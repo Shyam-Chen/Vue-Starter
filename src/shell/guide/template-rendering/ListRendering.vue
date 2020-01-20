@@ -27,11 +27,7 @@ type Data = {
 export default {
   data(): Data {
     return {
-      listArray: [
-        { message: 'Foo' },
-        { message: 'Bar' },
-        { message: 'Baz' },
-      ],
+      listArray: [{ message: 'Foo' }, { message: 'Bar' }, { message: 'Baz' }],
       listObject: {
         foo: 'Foo',
         bar: 'Bar',
@@ -41,6 +37,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-</style>

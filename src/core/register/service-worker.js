@@ -22,9 +22,7 @@ export default () => {
         window.location.reload();
       },
       offline() {
-        console.log(
-          'No internet connection found. App is running in offline mode.',
-        );
+        console.log('No internet connection found. App is running in offline mode.');
       },
       error(error) {
         console.error('Error during service worker registration:', error);

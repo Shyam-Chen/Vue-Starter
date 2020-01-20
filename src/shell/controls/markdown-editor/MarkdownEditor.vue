@@ -21,7 +21,8 @@ export default {
   },
   data() {
     return {
-      source: '# h1 Heading 8-)\n<h2> h2 Heading by HTML</h2>\n**This is bold text**\n*This is italic text*\n~~Strikethrough~~',
+      source:
+        '# h1 Heading 8-)\n<h2> h2 Heading by HTML</h2>\n**This is bold text**\n*This is italic text*\n~~Strikethrough~~',
     };
   },
 };

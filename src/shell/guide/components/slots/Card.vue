@@ -4,11 +4,13 @@
       <div>
         <div class="headline mb-0">
           <!-- named slot -->
-          <slot name="title">Title</slot>  <!-- default slot content -->
+          <slot name="title">Title</slot>
+          <!-- default slot content -->
         </div>
         <div class="body-1">
           <!-- named slot -->
-          <slot name="body">Contents</slot>  <!-- default slot content -->
+          <slot name="body">Contents</slot>
+          <!-- default slot content -->
           <div class="caption">
             <!-- slot content -->
             <slot></slot>

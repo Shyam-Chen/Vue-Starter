@@ -45,8 +45,8 @@ export default {
       teal800: '#00695C',
       teal100: '#B2DFDB',
       purple: {
-        color: '#6A1B9A',  // purple 800
-        backgroundColor: '#E1BEE7',  // purple 100
+        color: '#6A1B9A', // purple 800
+        backgroundColor: '#E1BEE7', // purple 100
       },
       orange800: {
         color: '#EF6C00',

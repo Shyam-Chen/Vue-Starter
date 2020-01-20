@@ -7,7 +7,6 @@ executors:
     working_directory: ~/Vue-Starter
 
 jobs:
-
   build:
     executor: vue-starter
     steps:
@@ -61,13 +60,11 @@ jobs:
       #         docker-compose exec dev yarn firebase use development --token $FIREBASE_TOKEN
       #         docker-compose exec dev yarn firebase deploy --only hosting --token $FIREBASE_TOKEN
       #       fi
-
       #       if [[ "${CIRCLE_BRANCH}" == *"release"* ]]; then
       #         docker-compose up -d stage
       #         docker-compose exec stage yarn firebase use staging --token $FIREBASE_TOKEN
       #         docker-compose exec stage yarn firebase deploy --only hosting --token $FIREBASE_TOKEN
       #       fi
-
       #       if [[ "${CIRCLE_BRANCH}" == "master" ]]; then
       #         docker-compose up -d prod
       #         docker-compose exec prod yarn firebase use production --token $FIREBASE_TOKEN
@@ -88,7 +85,7 @@ workflows:
   weekly-regression:
     triggers:
       - schedule:
-          cron: "0 13 * * 1"
+          cron: '0 13 * * 1'
           filters:
             branches:
               only: develop

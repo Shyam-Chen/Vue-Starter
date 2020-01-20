@@ -4,35 +4,56 @@
 
     <v-layout row wrap align-center>
       <div>Sort</div>
-      <v-btn :class="{ primary: sort === 'published' }" @click="sort = 'published'">Published</v-btn>
+      <v-btn :class="{ primary: sort === 'published' }" @click="sort = 'published'"
+        >Published</v-btn
+      >
       <v-btn :class="{ primary: sort === 'views' }" @click="sort = 'views'">Views</v-btn>
-      <v-btn :class="{ primary: sort === 'collections' }" @click="sort = 'collections'">Collections</v-btn>
+      <v-btn :class="{ primary: sort === 'collections' }" @click="sort = 'collections'"
+        >Collections</v-btn
+      >
     </v-layout>
 
     <v-layout row wrap align-center>
       <div>Length</div>
       <v-btn :class="{ primary: length === 'any' }" @click="length = 'any'">Any</v-btn>
-      <v-btn :class="{ primary: length === 'lessThanFive' }" @click="length = 'lessThanFive'">Less than five minutes</v-btn>
-      <v-btn :class="{ primary: length === 'fiveToTen' }" @click="length = 'fiveToTen'">Five to ten minutes</v-btn>
-      <v-btn :class="{ primary: length === 'moreThanTen' }" @click="length = 'moreThanTen'">More than ten minutes</v-btn>
+      <v-btn :class="{ primary: length === 'lessThanFive' }" @click="length = 'lessThanFive'"
+        >Less than five minutes</v-btn
+      >
+      <v-btn :class="{ primary: length === 'fiveToTen' }" @click="length = 'fiveToTen'"
+        >Five to ten minutes</v-btn
+      >
+      <v-btn :class="{ primary: length === 'moreThanTen' }" @click="length = 'moreThanTen'"
+        >More than ten minutes</v-btn
+      >
     </v-layout>
 
     <v-layout v-if="!isLoading">
-      <transition-group v-if="sortFilterList.length !== 0" tag="div" name="fade-group" class="row-wrap">
+      <transition-group
+        v-if="sortFilterList.length !== 0"
+        tag="div"
+        name="fade-group"
+        class="row-wrap"
+      >
         <template v-for="item in sortFilterList">
           <v-card :key="item.id" class="ma-2">
             <div class="card-media">
-              <img :src="item.thumbnail" class="card-image">
+              <img :src="item.thumbnail" class="card-image" />
               <div>
-                <span class="black white--text pa-1 card-time">{{ item.duration | convertSeconds }}</span>
+                <span class="black white--text pa-1 card-time">{{
+                  item.duration | convertSeconds
+                }}</span>
               </div>
             </div>
 
             <div class="card-content">
               <div class="pl-2 pr-2">{{ item.title | truncate(55) }}</div>
-              <div class="ma-2"><v-icon>headset</v-icon> {{ item.views.toLocaleString('en-US') }}</div>
-              <div><v-icon>event</v-icon> {{ item.publish * 1000 | timeSince }}</div>
-              <div><v-icon>video_library</v-icon> {{ item.collectCount.toLocaleString('en-US') }}</div>
+              <div class="ma-2">
+                <v-icon>headset</v-icon> {{ item.views.toLocaleString('en-US') }}
+              </div>
+              <div><v-icon>event</v-icon> {{ (item.publish * 1000) | timeSince }}</div>
+              <div>
+                <v-icon>video_library</v-icon> {{ item.collectCount.toLocaleString('en-US') }}
+              </div>
             </div>
           </v-card>
         </template>
@@ -70,14 +91,12 @@ export default {
   },
   computed: {
     sortFilterList() {
-      return this.compose(
-        this.sortList(this.sort),
-        this.filerList(this.length),
-      )(this.list);
+      return this.compose(this.sortList(this.sort), this.filerList(this.length))(this.list);
     },
   },
   mounted() {
-    axios.get('https://us-central1-lithe-window-713.cloudfunctions.net/fronted-demo')
+    axios
+      .get('https://us-central1-lithe-window-713.cloudfunctions.net/fronted-demo')
       .then(({ data }) => {
         this.list = data.data;
         this.isLoading = false;
@@ -86,7 +105,7 @@ export default {
   methods: {
     compose,
     sortList(sort) {
-      return (list) => {
+      return list => {
         const typedList = type => list.sort((a, b) => a[type] - b[type]).reverse();
 
         if (sort === 'published') return typedList('publish');
@@ -97,15 +116,14 @@ export default {
       };
     },
     filerList(length) {
-      return list => (
-        list.filter((item) => {
+      return list =>
+        list.filter(item => {
           if (length === 'lessThanFive') return item.duration < 300;
           if (length === 'fiveToTen') return item.duration >= 300 && item.duration <= 600;
           if (length === 'moreThanTen') return item.duration > 600;
 
           return list;
-        })
-      );
+        });
     },
   },
 };
