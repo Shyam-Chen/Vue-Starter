@@ -32,8 +32,7 @@ exports[`Internationalization should render an initial component 1`] = `
     <v-layout-stub tag="div" row="">
       <p class="pl-2">
         Pluralizing i18n:
-        <b class="primary--text">No framework</b>,
-        <b class="primary--text">One framework</b>,
+        <b class="primary--text">No framework</b>, <b class="primary--text">One framework</b>,
         <b class="primary--text">3 frameworks</b></p>
     </v-layout-stub>
   </v-layout-stub>
