@@ -1,5 +1,5 @@
 <template>
-  <v-container id="pickers" class="shell-container" fluid>
+  <v-container id="pickers" fluid>
     <v-layout column>
       <div class="headline">Controls - Pickers</div>
 

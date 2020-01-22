@@ -1,5 +1,5 @@
 <template>
-  <v-container id="data-visualization" class="shell-container" fluid>
+  <v-container id="data-visualization" fluid>
     <v-layout column>
       <div class="headline">Data Visualization</div>
 

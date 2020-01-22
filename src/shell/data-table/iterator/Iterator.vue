@@ -1,5 +1,5 @@
 <template>
-  <v-container id="iterator" class="shell-container" fluid grid-list-md>
+  <v-container id="iterator" fluid grid-list-md>
     <v-data-iterator
       :items="items"
       :rows-per-page-items="rowsPerPageItems"

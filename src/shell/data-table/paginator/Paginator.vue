@@ -1,5 +1,5 @@
 <template>
-  <v-container id="paginator" class="shell-container" fluid>
+  <v-container id="paginator" fluid>
     <v-layout column>
       <div class="headline">Data Table - Paginator</div>
 

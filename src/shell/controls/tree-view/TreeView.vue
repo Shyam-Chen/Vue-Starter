@@ -1,5 +1,5 @@
 <template>
-  <v-container id="tree-view" class="shell-container" fluid>
+  <v-container id="tree-view" fluid>
     <v-layout column>
       <div class="headline">Controls - Tree View</div>
 

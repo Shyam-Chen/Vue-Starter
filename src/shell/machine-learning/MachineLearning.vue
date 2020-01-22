@@ -1,5 +1,5 @@
 <template>
-  <v-container class="shell-container" fluid>
+  <v-container fluid>
     <div class="headline">Machine Learning</div>
 
     <div>y = a * x ^ 2 + b * x + c</div>

@@ -1,5 +1,5 @@
 <template>
-  <v-container class="shell-container" fluid>
+  <v-container fluid>
     <v-layout align-center>
       <v-btn @click="increment">Increment</v-btn>
       <div ref="count">0</div>

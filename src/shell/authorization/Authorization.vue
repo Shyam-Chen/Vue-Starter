@@ -1,5 +1,5 @@
 <template>
-  <v-container id="authorization" class="shell-container" fluid>
+  <v-container id="authorization" fluid>
     <div class="headline">Authorization (TODO)</div>
 
     <v-layout row>

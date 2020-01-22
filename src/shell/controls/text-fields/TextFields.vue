@@ -1,5 +1,5 @@
 <template>
-  <v-container id="text-fields" class="shell-container" fluid>
+  <v-container id="text-fields" fluid>
     <v-layout column>
       <div class="headline">Controls - Text Fields</div>
 

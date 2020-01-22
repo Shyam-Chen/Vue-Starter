@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Basic should render an initial component 1`] = `
-<v-container-stub id="basic" tag="div" fluid="true" class="shell-container">
+<v-container-stub id="basic" tag="div" fluid="true">
   <v-layout-stub tag="div" column="">
     <div class="headline">CRUD Operations - Basic</div>
     <v-layout-stub tag="div" row="">
@@ -135,7 +135,7 @@ exports[`Basic should render an initial component 1`] = `
 `;
 
 exports[`Basic should render an initial component 2`] = `
-<v-container-stub id="basic" tag="div" fluid="true" class="shell-container">
+<v-container-stub id="basic" tag="div" fluid="true">
   <v-layout-stub tag="div" column="">
     <div class="headline">CRUD Operations - Basic</div>
     <v-layout-stub tag="div" row="">

@@ -224,35 +224,39 @@
       </v-app-bar>
 
       <v-content>
-        <v-fade-transition mode="out-in">
-          <router-view></router-view>
-        </v-fade-transition>
+        <div class="omv-content">
+          <div class="omv-view">
+            <v-fade-transition mode="out-in">
+              <router-view></router-view>
+            </v-fade-transition>
+          </div>
 
-        <v-footer height="auto" class="pa-3 primary darken-1 white--text">
-          <img src="/assets/images/logo.svg" alt="Logo" width="50" height="50" />
+          <v-footer height="auto" class="pa-3 primary darken-1 white--text">
+            <img src="/assets/images/logo.svg" alt="Logo" width="50" height="50" />
 
-          <v-layout
-            :column="isMobile"
-            fill-height
-            justify-space-between
-            align-center
-            class="ml-3 mr-3"
-          >
-            <div class="subheading">
-              <a href="https://vuejs.org/" class="subheading pa-2 white--text o-router-link"
-                >Learn Vue</a
-              >
-            </div>
-            <div class="caption">
-              Current Version: 2.6.10
-            </div>
-            <div class="caption text-xs-center">
-              Powered by Oh My Vue &copy;{{ new Date().getFullYear() }}. <br />
-              Code licensed under an MIT-style License. <br />
-              Documentation licensed under CC BY 4.0.
-            </div>
-          </v-layout>
-        </v-footer>
+            <v-layout
+              :column="isMobile"
+              fill-height
+              justify-space-between
+              align-center
+              class="ml-3 mr-3"
+            >
+              <div class="subheading">
+                <a href="https://vuejs.org/" class="subheading pa-2 white--text o-router-link"
+                  >Learn Vue</a
+                >
+              </div>
+              <div class="caption">
+                Current Version: 2.6.10
+              </div>
+              <div class="caption text-xs-center">
+                Powered by Oh My Vue &copy;{{ new Date().getFullYear() }}. <br />
+                Code licensed under an MIT-style License. <br />
+                Documentation licensed under CC BY 4.0.
+              </div>
+            </v-layout>
+          </v-footer>
+        </div>
       </v-content>
     </template>
 
@@ -315,6 +319,16 @@ export default {
 <style scoped>
 .o-toolbar-title {
   width: 20rem;
+}
+
+.omv-content {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+}
+
+.omv-view {
+  flex: 1 0 auto;
 }
 
 .o-router-link {

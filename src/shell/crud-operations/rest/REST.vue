@@ -1,5 +1,5 @@
 <template>
-  <v-container id="rest" class="shell-container" fluid>
+  <v-container id="rest" fluid>
     <v-layout column>
       <div class="headline">CRUD Operations - REST</div>
 

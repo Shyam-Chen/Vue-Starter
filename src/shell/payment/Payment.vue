@@ -1,5 +1,5 @@
 <template>
-  <v-container class="shell-container" fluid>
+  <v-container fluid>
     <div class="headline">Payment (TODO) [Stripe]</div>
 
     <v-container fluid grid-list-md class="women">

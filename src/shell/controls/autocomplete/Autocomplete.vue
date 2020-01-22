@@ -1,5 +1,5 @@
 <template>
-  <v-container id="autocomplete" class="shell-container" fluid>
+  <v-container id="autocomplete" fluid>
     <v-layout column>
       <div class="headline">Controls - Autocomplete</div>
 

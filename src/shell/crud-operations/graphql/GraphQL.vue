@@ -1,5 +1,5 @@
 <template>
-  <v-container id="graphql" class="shell-container" fluid>
+  <v-container id="graphql" fluid>
     <v-layout column>
       <div class="headline">CRUD Operations - GraphQL</div>
 

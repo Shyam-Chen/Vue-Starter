@@ -1,5 +1,5 @@
 <template>
-  <v-container id="calendar" class="shell-container" fluid>
+  <v-container id="calendar" fluid>
     <v-layout column>
       <div class="headline">Controls - Calendar</div>
 

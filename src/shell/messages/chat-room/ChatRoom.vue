@@ -1,5 +1,5 @@
 <template>
-  <v-container class="shell-container" fluid>
+  <v-container fluid>
     <div class="headline">Chat Room (TODO)</div>
 
     <div>

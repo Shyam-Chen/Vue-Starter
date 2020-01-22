@@ -1,5 +1,5 @@
 <template>
-  <v-container class="shell-container" fluid>
+  <v-container fluid>
     <v-layout column>
       <div class="headline mb-1">Guards</div>
 

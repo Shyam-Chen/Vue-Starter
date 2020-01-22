@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`HelloWorld should render an initial component 1`] = `
-<v-container-stub id="hello-world" tag="div" fluid="true" class="shell-container">
+<v-container-stub id="hello-world" tag="div" fluid="true">
   <v-layout-stub tag="div">
     <div class="title">Hello, World!</div>
   </v-layout-stub>

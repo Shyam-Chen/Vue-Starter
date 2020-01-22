@@ -1,5 +1,5 @@
 <template>
-  <v-container id="stepper" class="shell-container" fluid>
+  <v-container id="stepper" fluid>
     <v-stepper v-model="step">
       <v-stepper-header>
         <v-stepper-step :complete="step > 1" step="1">Name of step 1</v-stepper-step>
