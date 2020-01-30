@@ -68,52 +68,52 @@ export default {};
 .circle {
   width: 5rem;
   height: 5rem;
-  border-radius: 50%;
   background: pink;
+  border-radius: 50%;
 }
 
 .chat-left {
   & .message::before {
-    content: '';
     position: absolute;
-    left: 0;
     top: 18.5px; /* 37 / 2 */
+    left: 0;
     width: 0;
     height: 0;
+    margin-top: -8px;
+    margin-left: -8px;
     border: 8px solid transparent;
     border-right-color: pink;
     border-left: 0;
-    margin-top: -8px;
-    margin-left: -8px;
+    content: '';
   }
 }
 
 .message {
+  position: relative;
+  box-sizing: border-box;
   width: auto;
   max-width: 22rem;
+  margin: 16.5px 1rem auto 1rem;
   background: pink;
   border-radius: 8px;
-  position: relative;
-  margin: 16.5px 1rem auto 1rem;
-  box-sizing: border-box;
 }
 
 .chat-right {
-  justify-content: flex-start;
   flex-flow: row-reverse;
+  justify-content: flex-start;
 
   & .message::after {
-    content: '';
     position: absolute;
-    right: 0;
     top: 18.5px; /* 37 / 2 */
+    right: 0;
     width: 0;
     height: 0;
-    border: 8px solid transparent;
-    border-left-color: pink;
-    border-right: 0;
     margin-top: -8px;
     margin-right: -8px;
+    border: 8px solid transparent;
+    border-right: 0;
+    border-left-color: pink;
+    content: '';
   }
 }
 </style>

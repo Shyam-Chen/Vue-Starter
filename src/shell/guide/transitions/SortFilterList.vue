@@ -141,13 +141,13 @@ export default {
 }
 
 .fade-group-enter {
-  opacity: 0;
   transform: translateY(-1.25rem);
+  opacity: 0;
 }
 
 .fade-group-leave-to {
-  opacity: 0;
   transform: translateY(1.25rem);
+  opacity: 0;
 }
 
 .row-wrap {

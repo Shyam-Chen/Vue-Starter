@@ -1,6 +1,13 @@
 {
-  "extends": "stylelint-config-standard",
+  "plugins": [
+    "stylelint-prettier"
+  ],
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-prettier",
+    "stylelint-config-rational-order"
+  ],
   "rules": {
-    "no-empty-source": null
+    "prettier/prettier": true
   }
 }

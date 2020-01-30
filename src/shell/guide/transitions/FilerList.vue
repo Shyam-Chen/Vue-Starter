@@ -52,11 +52,11 @@ export default {
 
 .filer-item {
   display: inline-flex;
-  justify-content: center;
   align-items: center;
-  margin: 0.5rem;
+  justify-content: center;
   width: 2.5rem;
   height: 2.5rem;
+  margin: 0.5rem;
   color: #fff;
   background: #009688;
   filter: drop-shadow(0 0 0.25rem #00796b);
@@ -73,12 +73,12 @@ export default {
 }
 
 .fade-group-enter {
-  opacity: 0;
   transform: translateY(-1.25rem);
+  opacity: 0;
 }
 
 .fade-group-leave-to {
-  opacity: 0;
   transform: translateY(1.25rem);
+  opacity: 0;
 }
 </style>
