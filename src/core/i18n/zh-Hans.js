@@ -1,4 +1,4 @@
-import home from '~/landings/home/_languages/zh';
+import home from '~/landings/home/_languages/zh-Hans';
 import guideStateManagement from '~/shell/guide/state-management/_languages/zh';
 import internationalization from '~/shell/internationalization/_languages/zh';
 

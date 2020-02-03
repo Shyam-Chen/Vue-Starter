@@ -1,3 +1,5 @@
+import home from '~/landings/home/_languages/zh-Hant';
+
 export default {
   practicalExamples: '實用範例',
 
@@ -71,5 +73,5 @@ export default {
   /**
    * modules
    */
-  // ...
+  home,
 };

@@ -1,3 +1,5 @@
+import home from '~/landings/home/_languages/ko';
+
 export default {
   practicalExamples: '실제 예',
 
@@ -67,4 +69,9 @@ export default {
   cloudMessaging: '클라우드 메시징',
 
   machineLearning: '기계 학습',
+
+  /**
+   * modules
+   */
+  home,
 };
