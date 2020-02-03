@@ -10,7 +10,7 @@ exports[`Home should render an initial component 1`] = `
             Oh My Vue
           </div>
           <div class="subheading white--text">
-            Building scalable web apps from Web Fundamentals to Firebase Platform and then to Google Cloud.
+            Starter templates for building full-featured Progressive Web Apps from Vue components.
           </div>
           <v-divider-stub class="my-3"></v-divider-stub>
           <v-btn-stub color="white" tag="button" activeclass="" to="/en/overview" large="true" type="button" class="primary--text">
@@ -210,7 +210,7 @@ exports[`Home should render an initial component 1`] = `
           Versatile
         </div>
         <div class="body-1">
-          Themable, for when you need to stay on brand or just have a favorite color. Accessible and internationalized so that all users are welcome.
+          Themeable, for when you need to stay on brand or just have a favorite color. Accessible and internationalized so that all users are welcome.
         </div>
       </div>
     </v-layout-stub>

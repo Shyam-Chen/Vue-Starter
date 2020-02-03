@@ -1,5 +1,5 @@
 export default {
-  description: '构建可扩展的 Web 应用从 Web Fundamentals 到 Firebase Platform，再到 Google Cloud。',
+  description: '入门模板，用于从 Vue 组件构建功能全面的渐进式 Web 应用程序。',
   seeMore: '查看更多',
   sourceCode: '源代码',
   headline1: 'Sprint 从零到应用程序',
@@ -7,8 +7,7 @@ export default {
   headline2: '快速和一致',
   body2: '精细调整的表现，因为每毫秒都很重要。 经过现代浏览器的全面测试。',
   headline3: '多才多艺',
-  body3:
-    '可定制的，当你需要留在品牌或只是有一个最喜欢的颜色。 可访问和国际化，以便所有用户都欢迎。',
+  body3: '可定制的，当你需要留在品牌或只是有一个最喜欢的颜色。可访问和国际化，以便所有用户都欢迎。',
   headline4: '针对 Vue 进行了优化',
   body4: '由 Vue 社区构建，与 Vue 无缝集成。',
 };

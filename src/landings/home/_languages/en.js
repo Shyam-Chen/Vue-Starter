@@ -1,6 +1,6 @@
 export default {
   description:
-    'Building scalable web apps from Web Fundamentals to Firebase Platform and then to Google Cloud.',
+    'Starter templates for building full-featured Progressive Web Apps from Vue components.',
   seeMore: 'See more',
   sourceCode: 'Source code',
   headline1: 'Sprint from Zero to App',

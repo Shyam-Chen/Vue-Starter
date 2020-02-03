@@ -1,6 +1,5 @@
 export default {
-  description:
-    '建置可擴展的 Web 應用程式從 Web Fundamentals 到 Firebase Platform，再到 Google Cloud。',
+  description: '入門模板，用於從 Vue 元件建置功能全面的漸進式 Web 應用程式。',
   seeMore: '查看更多',
   sourceCode: '原始碼',
   headline1: 'Sprint 從零到應用程式',

@@ -1,6 +1,5 @@
 export default {
-  description:
-    'Web Fundamentals 에서 Firebase Platform 및 Google Cloud 에 이르기까지 확장 가능한 웹 앱을 구축합니다',
+  description: 'Vue 구성 요소에서 모든 기능을 갖춘 프로그레시브 웹 앱을 구축하기위한 스타터 템플릿',
   seeMore: '더보기',
   sourceCode: '소스 코드',
   headline1: '제로에서 앱으로의 Sprint',

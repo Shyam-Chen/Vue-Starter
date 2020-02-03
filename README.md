@@ -160,11 +160,14 @@ Set your local environment variables. (use `this.<ENV_NAME> = process.env.<ENV_N
 
 ```js
 // env.js
+
 function Environments() {
   this.NODE_ENV = process.env.NODE_ENV || 'development';
 
   this.APP_NAME = process.env.APP_NAME || 'Oh My Vue';
-  this.APP_DESCRIPTION = process.env.APP_DESCRIPTION || 'All-in-One Web Template for Vue.';
+  this.APP_DESCRIPTION =
+    process.env.APP_DESCRIPTION ||
+    'Starter templates for building full-featured Progressive Web Apps from Vue components.';
 
   this.HOST_NAME = process.env.HOST_NAME || '0.0.0.0';
   this.SITE_PORT = process.env.SITE_PORT || 8000;

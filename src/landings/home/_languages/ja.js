@@ -1,6 +1,6 @@
 export default {
   description:
-    'Web Fundamentals から Firebase Platform へ、次に Google Cloud への スケーラブルな Web アプリケーションの構築。',
+    'Vue コンポーネントからフル機能のプログレッシブ Web アプリを構築するためのスターターテンプレート。',
   seeMore: '続きを見る',
   sourceCode: 'ソースコード',
   headline1: 'Sprint をゼロからアプリまで',
