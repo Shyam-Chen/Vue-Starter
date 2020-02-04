@@ -7,18 +7,6 @@ executors:
     working_directory: ~/Vue-Starter
 
 jobs:
-  build:
-    executor: vue-starter
-    steps:
-      - checkout
-      - setup_remote_docker
-      # - run:
-      #     name: Combat preparation
-      #     command: docker-compose up -d default
-      # - run:
-      #     name: Build the application
-      #     command: docker-compose exec default yarn build
-
   test:
     executor: vue-starter
     steps:
@@ -37,51 +25,18 @@ jobs:
           name: Test the application
           command: |
             docker-compose exec default yarn unit
-            docker-compose exec default yarn _codecov --token $CODECOV_TOKEN
+            docker-compose exec default sh -c "bash <(curl -s https://codecov.io/bash)"
       - run:
           name: End-to-end UI tests
           command: |
             docker-compose exec default sh -c "sleep 10"
             docker-compose exec default yarn e2e
 
-  deploy:
-    executor: vue-starter
-    steps:
-      - checkout
-      - setup_remote_docker
-      # - run:
-      #     name: Log in to Docker
-      #     command: echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-      # - run:
-      #     name: Deploy the project
-      #     command: |
-      #       if [[ "${CIRCLE_BRANCH}" == "develop" ]]; then
-      #         docker-compose up -d dev
-      #         docker-compose exec dev yarn firebase use development --token $FIREBASE_TOKEN
-      #         docker-compose exec dev yarn firebase deploy --only hosting --token $FIREBASE_TOKEN
-      #       fi
-      #       if [[ "${CIRCLE_BRANCH}" == *"release"* ]]; then
-      #         docker-compose up -d stage
-      #         docker-compose exec stage yarn firebase use staging --token $FIREBASE_TOKEN
-      #         docker-compose exec stage yarn firebase deploy --only hosting --token $FIREBASE_TOKEN
-      #       fi
-      #       if [[ "${CIRCLE_BRANCH}" == "master" ]]; then
-      #         docker-compose up -d prod
-      #         docker-compose exec prod yarn firebase use production --token $FIREBASE_TOKEN
-      #         docker-compose exec prod yarn firebase deploy --only hosting --token $FIREBASE_TOKEN
-      #       fi
-
 workflows:
   version: 2
-  build-test-deploy:
+  parallel-test:
     jobs:
-      - build
       - test:
-          requires:
-            - build
-      - deploy:
-          requires:
-            - test
   weekly-regression:
     triggers:
       - schedule:
@@ -90,10 +45,4 @@ workflows:
             branches:
               only: develop
     jobs:
-      - build
       - test:
-          requires:
-            - build
-      - deploy:
-          requires:
-            - test
