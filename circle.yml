@@ -36,7 +36,7 @@ workflows:
   version: 2
   parallel-test:
     jobs:
-      - test:
+      - test
   weekly-regression:
     triggers:
       - schedule:
@@ -45,4 +45,4 @@ workflows:
             branches:
               only: develop
     jobs:
-      - test:
+      - test
