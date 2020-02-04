@@ -25,7 +25,7 @@ jobs:
           name: Test the application
           command: |
             docker-compose exec default yarn unit
-            docker-compose exec default sh -c "bash <(curl -s https://codecov.io/bash)"
+            docker-compose exec default sh -c "curl -s https://codecov.io/bash"
       - run:
           name: End-to-end UI tests
           command: |
