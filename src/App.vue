@@ -282,7 +282,7 @@ import {
   mdiTranslate,
 } from '@mdi/js';
 
-import layout from '~/shared/composes/layout';
+import layout from '~/shared/services/layout';
 
 import { IApp } from './types';
 import actions from './actions';

@@ -5,12 +5,6 @@ ENV HOME /Vue-Starter
 WORKDIR ${HOME}
 ADD . $HOME
 
-RUN \
-  apt-get update && \
-  apt-get install -y curl
-
-CMD /bin/bash
-
 # chrome --
 ENV CHROME_BIN /usr/bin/chromium
 ENV DISPLAY :99

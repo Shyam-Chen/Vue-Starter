@@ -609,7 +609,7 @@
 
 import { mdiGithubCircle } from '@mdi/js';
 
-import layout from '~/shared/composes/layout';
+import layout from '~/shared/services/layout';
 
 export default {
   metaInfo: {
