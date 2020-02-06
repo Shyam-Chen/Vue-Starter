@@ -4,7 +4,6 @@ executors:
   vue-starter:
     docker:
       - image: circleci/node:12
-    working_directory: /tmp
 
 jobs:
   test:
