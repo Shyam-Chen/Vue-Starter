@@ -4,7 +4,7 @@ executors:
   vue-starter:
     docker:
       - image: circleci/node:12
-    working_directory: ~/Vue-Starter
+    working_directory: /tmp
 
 jobs:
   test:
@@ -25,7 +25,7 @@ jobs:
           name: Test the application
           command: |
             docker-compose exec default yarn unit
-            docker-compose exec default yarn _codecov
+            docker-compose exec default yarn _codecov -t $CODECOV_TOKEN
       - run:
           name: End-to-end UI tests
           command: |
@@ -34,9 +34,11 @@ jobs:
 
 workflows:
   version: 2
+
   parallel-test:
     jobs:
       - test
+
   weekly-regression:
     triggers:
       - schedule:
