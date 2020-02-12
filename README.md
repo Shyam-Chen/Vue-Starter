@@ -33,6 +33,7 @@
 - [Dockerization](#dockerization)
 - [Configuration](#configuration)
 - [Directory Structure](#directory-structure)
+- Microservices
 
 ## Getting Started
 
@@ -120,7 +121,7 @@ This seed repository provides the following features:
 - [x] [Codecov](https://codecov.io/)
 - [x] [Sentry](https://sentry.io/)
 - [x] [Global Site Tag](https://developers.google.com/gtagjs)
-- [x] [QianKun](https://github.com/umijs/qiankun)
+- [x] [Single SPA](https://github.com/single-spa/single-spa)
 
 ## Dockerization
 
@@ -305,3 +306,5 @@ The structure follows the LIFT Guidelines.
 ├── webpack.config.js
 └── yarn.lock
 ```
+
+## Microservices
