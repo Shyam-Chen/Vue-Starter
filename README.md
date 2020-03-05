@@ -33,7 +33,7 @@
 - [Dockerization](#dockerization)
 - [Configuration](#configuration)
 - [Directory Structure](#directory-structure)
-- Microservices
+- [Microservices](#microservices)
 
 ## Getting Started
 
@@ -308,3 +308,5 @@ The structure follows the LIFT Guidelines.
 ```
 
 ## Microservices
+
+[Micro Frontends](https://github.com/Shyam-Chen/Micro-Fullstack/tree/master/client)
