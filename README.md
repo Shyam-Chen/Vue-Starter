@@ -34,6 +34,7 @@
 - [Configuration](#configuration)
 - [Directory Structure](#directory-structure)
 - [Microservices](#microservices)
+- [Frequently Asked Questions](#frequently-asked-questions)
 
 ## Getting Started
 
@@ -310,3 +311,43 @@ The structure follows the LIFT Guidelines.
 ## Microservices
 
 [Micro Frontends](https://github.com/Shyam-Chen/Micro-Fullstack/tree/master/client)
+
+## Frequently Asked Questions
+
+- HTML img src tag not displaying image
+
+```vue
+<template>
+  <div>
+    <img src="/assets/images/foo.png" alt="foo" />
+  </div>
+</template>
+```
+
+- CSS background image not displaying
+
+```vue
+<template>
+  <div>
+    <div class="foo"></div>
+  </div>
+</template>
+
+<style scoped>
+.foo {
+  width: 6rem;
+  height: 6rem;
+  background: url('/assets/images/foo.png') no-repeat;
+}
+</style>
+```
+
+- Vue.js dynamic images not displaying
+
+```vue
+<template>
+  <div>
+    <img :src="require('~/assets/images/foo.png')" alt="foo" />
+  </div>
+</template>
+```
