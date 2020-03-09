@@ -310,7 +310,9 @@ The structure follows the LIFT Guidelines.
 
 ## Microservices
 
-[Micro Frontends](https://github.com/Shyam-Chen/Micro-Fullstack/tree/master/client)
+> Techniques, strategies and recipes for building a **modern web app** with **multiple teams** that can **ship features independently**.
+
+See [Client-side Micro-Fullstack](https://github.com/Shyam-Chen/Micro-Fullstack/tree/master/client) for instructions on how to create microservices from source.
 
 ## Frequently Asked Questions
 
