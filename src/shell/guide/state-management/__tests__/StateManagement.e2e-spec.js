@@ -20,7 +20,7 @@ describe('StateManagement', () => {
   });
 
   beforeEach(async () => {
-    await page.goto(`${global.SITE_URL}/en/guide/state-management`);
+    await page.goto(`${global.SITE_URL}/guide/state-management`);
   });
 
   it('should display a text', async () => {

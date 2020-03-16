@@ -14,7 +14,7 @@ describe('HelloWorld', () => {
   });
 
   beforeEach(async () => {
-    await page.goto(`${global.SITE_URL}/en/hello-world`);
+    await page.goto(`${global.SITE_URL}/hello-world`);
   });
 
   it('should display a text', async () => {
