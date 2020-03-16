@@ -22,9 +22,12 @@ describe('Home', () => {
       i18n,
       mocks: {
         $route: {
-          params: {
-            lang: 'en',
+          query: {
+            hl: 'en',
           },
+        },
+        $store: {
+          dispatch: jest.fn(),
         },
       },
     });

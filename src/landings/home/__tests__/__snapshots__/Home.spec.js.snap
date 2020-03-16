@@ -13,7 +13,7 @@ exports[`Home should render an initial component 1`] = `
             Starter templates for building full-featured Progressive Web Apps from Vue components.
           </div>
           <v-divider-stub class="my-3"></v-divider-stub>
-          <v-btn-stub color="white" tag="button" activeclass="" to="/en/overview" large="true" type="button" class="primary--text">
+          <v-btn-stub color="white" tag="button" activeclass="" to="/overview" large="true" type="button" class="primary--text">
             <v-icon-stub left="">
               more
             </v-icon-stub>
@@ -356,21 +356,15 @@ exports[`Home should render an initial component 1`] = `
           </g>
         </svg></div>
       <div class="pa-3 o-promo">
-        <div class="headline pb-2">
-          Optimized for Vue
-        </div>
-        <div class="body-1">
-          Built by the Vue community to integrate seamlessly with Vue.
-        </div>
+        <div class="headline pb-2">Optimized for Vue</div>
+        <div class="body-1">Built by the Vue community to integrate seamlessly with Vue.</div>
       </div>
     </v-layout-stub>
   </v-container-stub>
   <v-container-stub tag="div" class="my-5">
     <v-layout-stub tag="div" row="" justify-center="">
-      <v-btn-stub color="primary" tag="button" activeclass="" to="en/overview" large="true" type="button">
-        <v-icon-stub left="">
-          more
-        </v-icon-stub>
+      <v-btn-stub color="primary" tag="button" activeclass="" to="/overview" large="true" type="button">
+        <v-icon-stub left="">more</v-icon-stub>
         See more
       </v-btn-stub>
     </v-layout-stub>

@@ -6,12 +6,12 @@ describe('Routes', () => {
       name: 'Basic',
       render: h => h('div'),
     }));
-    router.push('/en/crud-operations/basic');
+    router.push('/crud-operations/basic').catch(() => {});
   });
 
   it('REST', () => {
     jest.mock('~/shell/crud-operations/rest/REST', () => ({ name: 'REST', render: h => h('div') }));
-    router.push('/en/crud-operations/rest');
+    router.push('/crud-operations/rest').catch(() => {});
   });
 
   it('GraphQL', () => {
@@ -19,6 +19,6 @@ describe('Routes', () => {
       name: 'GraphQL',
       render: h => h('div'),
     }));
-    router.push('/en/crud-operations/graphql');
+    router.push('/crud-operations/graphql').catch(() => {});
   });
 });

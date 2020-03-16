@@ -6,7 +6,7 @@ describe('Routes', () => {
       name: 'TemplateRendering',
       render: h => h('div'),
     }));
-    router.push('/en/guide/template-rendering');
+    router.push('/guide/template-rendering').catch(() => {});
   });
 
   it('Props', () => {
@@ -14,7 +14,7 @@ describe('Routes', () => {
       name: 'Props',
       render: h => h('div'),
     }));
-    router.push('/en/guide/components/props');
+    router.push('/guide/components/props').catch(() => {});
   });
 
   it('Slots', () => {
@@ -22,7 +22,7 @@ describe('Routes', () => {
       name: 'Slots',
       render: h => h('div'),
     }));
-    router.push('/en/guide/components/slots');
+    router.push('/guide/components/slots').catch(() => {});
   });
 
   it('Refs', () => {
@@ -30,7 +30,7 @@ describe('Routes', () => {
       name: 'Refs',
       render: h => h('div'),
     }));
-    router.push('/en/guide/components/refs');
+    router.push('/guide/components/refs').catch(() => {});
   });
 
   it('CustomEvents', () => {
@@ -38,7 +38,7 @@ describe('Routes', () => {
       name: 'CustomEvents',
       render: h => h('div'),
     }));
-    router.push('/en/guide/components/custom-events');
+    router.push('/guide/components/custom-events').catch(() => {});
   });
 
   it('Dynamic', () => {
@@ -46,7 +46,7 @@ describe('Routes', () => {
       name: 'Dynamic',
       render: h => h('div'),
     }));
-    router.push('/en/guide/components/dynamic');
+    router.push('/guide/components/dynamic').catch(() => {});
   });
 
   it('Recursion', () => {
@@ -54,7 +54,7 @@ describe('Routes', () => {
       name: 'Recursion',
       render: h => h('div'),
     }));
-    router.push('/en/guide/components/recursion');
+    router.push('/guide/components/recursion').catch(() => {});
   });
 
   it('LifecycleHooks', () => {
@@ -62,7 +62,7 @@ describe('Routes', () => {
       name: 'LifecycleHooks',
       render: h => h('div'),
     }));
-    router.push('/en/guide/lifecycle-hooks');
+    router.push('/guide/lifecycle-hooks').catch(() => {});
   });
 
   it('Transitions', () => {
@@ -70,12 +70,12 @@ describe('Routes', () => {
       name: 'Transitions',
       render: h => h('div'),
     }));
-    router.push('/en/guide/transitions');
+    router.push('/guide/transitions').catch(() => {});
   });
 
   it('Mixins', () => {
     jest.mock('~/shell/guide/mixins/Mixins', () => ({ name: 'Mixins', render: h => h('div') }));
-    router.push('/en/guide/mixins');
+    router.push('/guide/mixins').catch(() => {});
   });
 
   it('Directives', () => {
@@ -83,7 +83,7 @@ describe('Routes', () => {
       name: 'Directives',
       render: h => h('div'),
     }));
-    router.push('/en/guide/directives');
+    router.push('/guide/directives').catch(() => {});
   });
 
   it('DependencyInjection', () => {
@@ -91,12 +91,12 @@ describe('Routes', () => {
       name: 'DependencyInjection',
       render: h => h('div'),
     }));
-    router.push('/en/guide/dependency-injection');
+    router.push('/guide/dependency-injection').catch(() => {});
   });
 
   it('Filters', () => {
     jest.mock('~/shell/guide/filters/Filters', () => ({ name: 'Filters', render: h => h('div') }));
-    router.push('/en/guide/filters');
+    router.push('/guide/filters').catch(() => {});
   });
 
   it('DynamicMatching', () => {
@@ -104,7 +104,7 @@ describe('Routes', () => {
       name: 'DynamicMatching',
       render: h => h('div'),
     }));
-    router.push('/en/guide/routing/dynamic-matching');
+    router.push('/guide/routing/dynamic-matching').catch(() => {});
   });
 
   it('UserInfo', () => {
@@ -112,7 +112,7 @@ describe('Routes', () => {
       name: 'UserInfo',
       render: h => h('div'),
     }));
-    router.push('/en/guide/routing/dynamic-matching/foo');
+    router.push('/guide/routing/dynamic-matching/foo').catch(() => {});
   });
 
   it('NestedRoutes', () => {
@@ -124,7 +124,7 @@ describe('Routes', () => {
       name: 'Default',
       render: h => h('div'),
     }));
-    router.push('/en/guide/routing/nested-routes');
+    router.push('/guide/routing/nested-routes').catch(() => {});
   });
 
   it('First', () => {
@@ -132,7 +132,7 @@ describe('Routes', () => {
       name: 'First',
       render: h => h('div'),
     }));
-    router.push('/en/guide/routing/nested-routes/first');
+    router.push('/guide/routing/nested-routes/first').catch(() => {});
   });
 
   it('Second', () => {
@@ -140,7 +140,7 @@ describe('Routes', () => {
       name: 'Second',
       render: h => h('div'),
     }));
-    router.push('/en/guide/routing/nested-routes/second');
+    router.push('/guide/routing/nested-routes/second').catch(() => {});
   });
 
   it('Guards', () => {
@@ -148,7 +148,7 @@ describe('Routes', () => {
       name: 'Guards',
       render: h => h('div'),
     }));
-    router.push('/en/guide/routing/guards');
+    router.push('/guide/routing/guards').catch(() => {});
   });
 
   it('Guards', () => {
@@ -156,7 +156,7 @@ describe('Routes', () => {
       name: 'Guards',
       render: h => h('div'),
     }));
-    router.push('/en/guide/routing/guards/123');
+    router.push('/guide/routing/guards/123').catch(() => {});
   });
 
   it('StateManagement', () => {
@@ -164,6 +164,6 @@ describe('Routes', () => {
       name: 'StateManagement',
       render: h => h('div'),
     }));
-    router.push('/en/guide/state-management');
+    router.push('/guide/state-management').catch(() => {});
   });
 });

@@ -6,7 +6,7 @@ describe('Routes', () => {
       name: 'TextFields',
       render: h => h('div'),
     }));
-    router.push('/en/controls/text-fields');
+    router.push('/controls/text-fields').catch(() => {});
   });
 
   it('Selects', () => {
@@ -14,7 +14,7 @@ describe('Routes', () => {
       name: 'Selects',
       render: h => h('div'),
     }));
-    router.push('/en/controls/selects');
+    router.push('/controls/selects').catch(() => {});
   });
 
   it('SelectionControls', () => {
@@ -22,7 +22,7 @@ describe('Routes', () => {
       name: 'SelectionControls',
       render: h => h('div'),
     }));
-    router.push('/en/controls/selection-controls');
+    router.push('/controls/selection-controls').catch(() => {});
   });
 
   it('Pickers', () => {
@@ -30,7 +30,7 @@ describe('Routes', () => {
       name: 'Pickers',
       render: h => h('div'),
     }));
-    router.push('/en/controls/pickers');
+    router.push('/controls/pickers').catch(() => {});
   });
 
   it('Autocomplete', () => {
@@ -38,7 +38,7 @@ describe('Routes', () => {
       name: 'Autocomplete',
       render: h => h('div'),
     }));
-    router.push('/en/controls/autocomplete');
+    router.push('/controls/autocomplete').catch(() => {});
   });
 
   it('Stepper', () => {
@@ -46,7 +46,7 @@ describe('Routes', () => {
       name: 'Stepper',
       render: h => h('div'),
     }));
-    router.push('/en/controls/stepper');
+    router.push('/controls/stepper').catch(() => {});
   });
 
   it('TreeView', () => {
@@ -54,7 +54,7 @@ describe('Routes', () => {
       name: 'TreeView',
       render: h => h('div'),
     }));
-    router.push('/en/controls/tree-view');
+    router.push('/controls/tree-view').catch(() => {});
   });
 
   it('Calendar', () => {
@@ -62,7 +62,7 @@ describe('Routes', () => {
       name: 'Calendar',
       render: h => h('div'),
     }));
-    router.push('/en/controls/calendar');
+    router.push('/controls/calendar').catch(() => {});
   });
 
   it('MarkdownEditor', () => {
@@ -70,6 +70,6 @@ describe('Routes', () => {
       name: 'MarkdownEditor',
       render: h => h('div'),
     }));
-    router.push('/en/controls/markdown-editor');
+    router.push('/controls/markdown-editor').catch(() => {});
   });
 });

@@ -55,7 +55,7 @@ describe('App', () => {
 describe('Routes', () => {
   it('Overview', () => {
     jest.mock('~/shell/overview/Overview', () => ({ name: 'Overview', render: h => h('div') }));
-    router.push('/en/overview');
+    router.push('/overview').catch(() => {});
   });
 
   it('HelloWorld', () => {
@@ -63,7 +63,7 @@ describe('Routes', () => {
       name: 'HelloWorld',
       render: h => h('div'),
     }));
-    router.push('/en/hello-world');
+    router.push('/hello-world').catch(() => {});
   });
 
   it('DisplayRows', () => {
@@ -71,7 +71,7 @@ describe('Routes', () => {
       name: 'DisplayRows',
       render: h => h('div'),
     }));
-    router.push('/en/data-table/display-rows');
+    router.push('/data-table/display-rows').catch(() => {});
   });
 
   it('Paginator', () => {
@@ -79,7 +79,7 @@ describe('Routes', () => {
       name: 'Paginator',
       render: h => h('div'),
     }));
-    router.push('/en/data-table/paginator');
+    router.push('/data-table/paginator').catch(() => {});
   });
 
   it('Iterator', () => {
@@ -87,7 +87,7 @@ describe('Routes', () => {
       name: 'Iterator',
       render: h => h('div'),
     }));
-    router.push('/en/data-table/iterator');
+    router.push('/data-table/iterator').catch(() => {});
   });
 
   it('Internationalization', () => {
@@ -95,7 +95,7 @@ describe('Routes', () => {
       name: 'Internationalization',
       render: h => h('div'),
     }));
-    router.push('/en/internationalization');
+    router.push('/internationalization').catch(() => {});
   });
 
   it('DataVisualization', () => {
@@ -103,7 +103,7 @@ describe('Routes', () => {
       name: 'DataVisualization',
       render: h => h('div'),
     }));
-    router.push('/en/data-visualization');
+    router.push('/data-visualization').catch(() => {});
   });
 
   it('Authorization', () => {
@@ -111,17 +111,17 @@ describe('Routes', () => {
       name: 'Authorization',
       render: h => h('div'),
     }));
-    router.push('/en/authorization');
+    router.push('/authorization').catch(() => {});
   });
 
   it('Login', () => {
     jest.mock('~/shell/authorization/Login', () => ({ name: 'Login', render: h => h('div') }));
-    router.push('/en/authorization/login');
+    router.push('/authorization/login').catch(() => {});
   });
 
   it('Payment', () => {
     jest.mock('~/shell/payment/Payment', () => ({ name: 'Payment', render: h => h('div') }));
-    router.push('/en/payment');
+    router.push('/payment').catch(() => {});
   });
 
   it('ChatRoom', () => {
@@ -129,7 +129,7 @@ describe('Routes', () => {
       name: 'ChatRoom',
       render: h => h('div'),
     }));
-    router.push('/en/messages/chat-room');
+    router.push('/messages/chat-room').catch(() => {});
   });
 
   it('MachineLearning', () => {
@@ -137,11 +137,11 @@ describe('Routes', () => {
       name: 'MachineLearning',
       render: h => h('div'),
     }));
-    router.push('/en/machine-learning');
+    router.push('/machine-learning').catch(() => {});
   });
 
   it('NotFound', () => {
     jest.mock('~/errors/not-found/NotFound', () => ({ name: 'NotFound', render: h => h('div') }));
-    router.push('/foo/bar');
+    router.push('/foo/bar').catch(() => {});
   });
 });
