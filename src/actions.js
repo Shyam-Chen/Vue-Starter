@@ -4,7 +4,7 @@ import { ActionContext } from 'vuex';
 
 import router from '~/core/router';
 import vuetify from '~/core/vuetify';
-import i18n from '~/core/i18n';
+import i18n, { userLang } from '~/core/i18n';
 
 import { IApp } from './types';
 import { INITIAL } from './constants';
@@ -23,25 +23,16 @@ export default {
       document.documentElement.lang = val;
       sessionStorage.setItem('lang', val);
 
-      const { route } = state;
-      const pathname = route.path.slice(`/${route.params.lang}/`.length);
-
-      if (pathname) {
-        router.push(`/${val}/${pathname}`).catch(() => {});
-      } else {
-        router.push(`/${val}`).catch(() => {});
-      }
+      router.push({ path: state.route.path, query: { hl: val } }).catch(() => {});
     });
   },
-  initialLanguage({ state, dispatch }: ActionContext<IApp>): void {
-    const foundParamLang = INITIAL.languages.findIndex(
-      ({ key }) => key === state.route.params.lang,
-    );
+  initialLanguage({ dispatch }: ActionContext<IApp>, hl: string): void {
+    const foundParamLang = INITIAL.languages.findIndex(({ key }) => key === hl);
 
     if (foundParamLang !== -1) {
-      dispatch('setLanguage', state.route.params.lang);
+      dispatch('setLanguage', hl);
     } else {
-      dispatch('setLanguage', sessionStorage.getItem('lang') || 'en');
+      dispatch('setLanguage', sessionStorage.getItem('lang') || userLang());
     }
   },
   backToHome({ state }: ActionContext<IApp>): void {

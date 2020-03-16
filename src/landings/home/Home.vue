@@ -13,12 +13,7 @@
               {{ $t('home.description') }}
             </div>
             <v-divider class="my-3"></v-divider>
-            <v-btn
-              large
-              color="white"
-              :to="`/${$route.params.lang}/overview`"
-              class="primary--text"
-            >
+            <v-btn large color="white" to="/overview" class="primary--text">
               <v-icon left>
                 more
               </v-icon>
@@ -581,22 +576,16 @@
         </div>
 
         <div class="pa-3 o-promo">
-          <div class="headline pb-2">
-            {{ $t('home.headline4') }}
-          </div>
-          <div class="body-1">
-            {{ $t('home.body4') }}
-          </div>
+          <div class="headline pb-2">{{ $t('home.headline4') }}</div>
+          <div class="body-1">{{ $t('home.body4') }}</div>
         </div>
       </v-layout>
     </v-container>
 
     <v-container class="my-5">
       <v-layout row justify-center>
-        <v-btn large color="primary" :to="`${$route.params.lang}/overview`">
-          <v-icon left>
-            more
-          </v-icon>
+        <v-btn large color="primary" to="/overview">
+          <v-icon left>more</v-icon>
           {{ $t('home.seeMore') }}
         </v-btn>
       </v-layout>
@@ -622,6 +611,9 @@ export default {
         mdiGithubCircle,
       },
     };
+  },
+  created() {
+    this.$store.dispatch('initialLanguage', this.$route.query.hl);
   },
 };
 </script>

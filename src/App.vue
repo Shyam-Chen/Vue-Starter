@@ -71,7 +71,7 @@
                   <v-list-item
                     v-for="subchild in child.children"
                     :key="subchild.text"
-                    :to="`/${$route.params.lang}` + subchild.route"
+                    :to="subchild.route"
                     :disabled="subchild.disabled"
                     ripple
                   >
@@ -88,7 +88,7 @@
                 <v-list-item
                   v-else
                   :key="child.text"
-                  :to="`/${$route.params.lang}` + child.route"
+                  :to="child.route"
                   :disabled="child.disabled"
                   ripple
                 >
@@ -106,7 +106,7 @@
             <v-list-item
               v-else
               :key="item.text"
-              :to="`/${$route.params.lang}` + item.route"
+              :to="item.route"
               :href="item.href"
               :disabled="item.disabled"
               ripple
@@ -136,7 +136,7 @@
           >
             <v-icon>{{ icons.mdiMenu }}</v-icon>
           </v-app-bar-nav-icon>
-          <router-link class="white--text o-router-link" :to="`/${$route.params.lang}`">
+          <router-link class="white--text o-router-link" to="/">
             <img
               src="/assets/images/logo.svg"
               alt="Logo"
@@ -161,27 +161,19 @@
         <v-spacer></v-spacer>
 
         <v-toolbar-items v-if="$route.meta.home && !isMobile">
-          <v-btn :to="`/${$route.params.lang}/overview`" text>
-            {{ $t('overview') }}
-          </v-btn>
+          <v-btn to="/overview" text>{{ $t('overview') }}</v-btn>
 
           <v-menu open-on-hover offset-y>
             <template v-slot:activator="{ on }">
               <v-btn text v-on="on">
-                {{ $t('examples')
-                }}<v-icon dark>
-                  arrow_drop_down
-                </v-icon>
+                {{ $t('examples') }}
+                <v-icon dark>arrow_drop_down</v-icon>
               </v-btn>
             </template>
 
             <v-list>
               <template v-for="(item, index) in app$.navigation">
-                <v-list-item
-                  v-if="index > 0 && index < 12"
-                  :key="index"
-                  :to="`/${$route.params.lang}` + item.route"
-                >
+                <v-list-item v-if="index > 0 && index < 12" :key="index" :to="item.route">
                   <v-list-item-action>
                     <v-icon>{{ item.icon }}</v-icon>
                   </v-list-item-action>
@@ -306,9 +298,6 @@ export default {
     app$(): IApp {
       return this.$store.state;
     },
-  },
-  created() {
-    this.initialLanguage();
   },
   methods: {
     ...mapActions(Object.keys(actions)),

@@ -9,9 +9,7 @@
     </v-layout>
 
     <v-layout>
-      <v-btn :to="`/${$route.params.lang}/guide/routing/dynamic-matching`" class="ml-0"
-        >Back to List</v-btn
-      >
+      <v-btn to="/guide/routing/dynamic-matching" class="ml-0"> Back to List</v-btn>
     </v-layout>
   </v-container>
 </template>

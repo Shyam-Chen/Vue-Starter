@@ -10,9 +10,7 @@
           <v-list-item
             v-else
             :key="item.title"
-            @click="
-              $router.push(`/${$route.params.lang}/guide/routing/dynamic-matching/${item.title}`)
-            "
+            @click="$router.push(`/guide/routing/dynamic-matching/${item.title}`)"
           >
             <v-list-item-avatar>
               <v-img :src="item.avatar"></v-img>

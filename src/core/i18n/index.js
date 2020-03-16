@@ -5,7 +5,7 @@ import en from './en';
 
 Vue.use(I18n);
 
-export const lang = () => {
+export const userLang = () => {
   if (['zh-CN', 'zh-SG'].includes(navigator.language)) return 'zh-Hans';
   if (['zh-TW', 'zh-HK'].includes(navigator.language)) return 'zh-Hant';
   if (['pt-BR'].includes(navigator.language)) return 'pt-BR';

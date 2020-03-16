@@ -1,39 +1,39 @@
 export default [
-  { path: 'controls', redirect: 'controls/text-fields' },
+  { path: '/controls', redirect: '/controls/text-fields' },
   {
-    path: 'controls/text-fields',
+    path: '/controls/text-fields',
     component: () => import('~/shell/controls/text-fields/TextFields'),
   },
   {
-    path: 'controls/selects',
+    path: '/controls/selects',
     component: () => import('~/shell/controls/selects/Selects'),
   },
   {
-    path: 'controls/selection-controls',
+    path: '/controls/selection-controls',
     component: () => import('~/shell/controls/selection-controls/SelectionControls'),
   },
   {
-    path: 'controls/pickers',
+    path: '/controls/pickers',
     component: () => import('~/shell/controls/pickers/Pickers'),
   },
   {
-    path: 'controls/autocomplete',
+    path: '/controls/autocomplete',
     component: () => import('~/shell/controls/autocomplete/Autocomplete'),
   },
   {
-    path: 'controls/stepper',
+    path: '/controls/stepper',
     component: () => import('~/shell/controls/stepper/Stepper'),
   },
   {
-    path: 'controls/tree-view',
+    path: '/controls/tree-view',
     component: () => import('~/shell/controls/tree-view/TreeView'),
   },
   {
-    path: 'controls/calendar',
+    path: '/controls/calendar',
     component: () => import('~/shell/controls/calendar/Calendar'),
   },
   {
-    path: 'controls/markdown-editor',
+    path: '/controls/markdown-editor',
     component: () => import('~/shell/controls/markdown-editor/MarkdownEditor'),
   },
 ];

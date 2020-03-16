@@ -10,6 +10,8 @@ import apolloProvider from '~/core/apollo-provider';
 import i18n from '~/core/i18n';
 import register from '~/core/register';
 
+import App from './App';
+
 Vue.use(VueCompositionApi);
 
 sync(store, router);
@@ -20,7 +22,7 @@ const vm = new Vue({
   vuetify,
   apolloProvider,
   i18n,
-  render: handle => handle('router-view'),
+  render: h => h(App),
 });
 
 vm.$mount('#root');
