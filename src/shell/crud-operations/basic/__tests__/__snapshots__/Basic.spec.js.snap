@@ -57,13 +57,14 @@ exports[`Basic should render an initial component 1`] = `
           });
         }" page="1" itemsperpage="10" groupby="" groupdesc="" customgroup="function groupItems(items, groupBy, groupDesc) {
           var key = groupBy[0];
-          return items.reduce(function (rv, x) {
-            (rv[x[key]] = rv[x[key]] || []).push(x);
-            return rv;
+          return items.reduce(function (acc, item) {
+            var val = getObjectValueByPath(item, key);
+            (acc[val] = acc[val] || []).push(item);
+            return acc;
           }, {});
         }" locale="en-US" search="" customfilter="function defaultFilter(value, search, item) {
           return value != null &amp;&amp; search != null &amp;&amp; typeof value !== 'boolean' &amp;&amp; value.toString().toLocaleLowerCase().indexOf(search.toLocaleLowerCase()) !== -1;
-        }" serveritemslength="-1" itemkey="id" value="" expanded="" noresultstext="$vuetify.dataIterator.noResultsText" nodatatext="$vuetify.noDataText" loadingtext="$vuetify.dataIterator.loadingText" selectablekey="isSelectable" headers="[object Object],[object Object],[object Object],[object Object]" mobilebreakpoint="600" expandicon="$expand" hide-actions="" select-all=""></v-data-table-stub>
+        }" serveritemslength="-1" itemkey="id" value="" expanded="" mobilebreakpoint="600" noresultstext="$vuetify.dataIterator.noResultsText" nodatatext="$vuetify.noDataText" loadingtext="$vuetify.dataIterator.loadingText" selectablekey="isSelectable" headers="[object Object],[object Object],[object Object],[object Object]" expandicon="$expand" hide-actions="" select-all=""></v-data-table-stub>
       </v-card-stub>
     </v-layout-stub>
     <aside>
@@ -197,13 +198,14 @@ exports[`Basic should render an initial component 2`] = `
           });
         }" page="1" itemsperpage="10" groupby="" groupdesc="" customgroup="function groupItems(items, groupBy, groupDesc) {
           var key = groupBy[0];
-          return items.reduce(function (rv, x) {
-            (rv[x[key]] = rv[x[key]] || []).push(x);
-            return rv;
+          return items.reduce(function (acc, item) {
+            var val = getObjectValueByPath(item, key);
+            (acc[val] = acc[val] || []).push(item);
+            return acc;
           }, {});
         }" locale="en-US" search="" customfilter="function defaultFilter(value, search, item) {
           return value != null &amp;&amp; search != null &amp;&amp; typeof value !== 'boolean' &amp;&amp; value.toString().toLocaleLowerCase().indexOf(search.toLocaleLowerCase()) !== -1;
-        }" serveritemslength="-1" itemkey="id" value="" expanded="" noresultstext="$vuetify.dataIterator.noResultsText" nodatatext="$vuetify.noDataText" loadingtext="$vuetify.dataIterator.loadingText" selectablekey="isSelectable" headers="[object Object],[object Object],[object Object],[object Object]" mobilebreakpoint="600" expandicon="$expand" hide-actions="" select-all=""></v-data-table-stub>
+        }" serveritemslength="-1" itemkey="id" value="" expanded="" mobilebreakpoint="600" noresultstext="$vuetify.dataIterator.noResultsText" nodatatext="$vuetify.noDataText" loadingtext="$vuetify.dataIterator.loadingText" selectablekey="isSelectable" headers="[object Object],[object Object],[object Object],[object Object]" expandicon="$expand" hide-actions="" select-all=""></v-data-table-stub>
       </v-card-stub>
     </v-layout-stub>
     <aside>
