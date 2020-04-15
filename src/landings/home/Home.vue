@@ -6,17 +6,11 @@
           <img src="/assets/images/logo.svg" alt="Logo" class="o-jumbotron-image" />
 
           <v-flex shrink class="text-xs-center text-md-left o-jumbotron-content">
-            <div class="display-3 white--text">
-              Oh My Vue
-            </div>
-            <div class="subheading white--text">
-              {{ $t('home.description') }}
-            </div>
+            <div class="display-3 white--text">Oh My Vue</div>
+            <div class="subheading white--text">{{ $t('home.description') }}</div>
             <v-divider class="my-3"></v-divider>
             <v-btn large color="white" to="/overview" class="primary--text">
-              <v-icon left>
-                more
-              </v-icon>
+              <v-icon left>{{ icons.mdiMore }}</v-icon>
               {{ $t('home.seeMore') }}
             </v-btn>
             <v-btn
@@ -28,9 +22,7 @@
               rel="noopener"
               class="ml-3"
             >
-              <v-icon left>
-                {{ icons.mdiGithubCircle }}
-              </v-icon>
+              <v-icon left>{{ icons.mdiGithub }}</v-icon>
               {{ $t('home.sourceCode') }}
             </v-btn>
           </v-flex>
@@ -309,12 +301,8 @@
         </div>
 
         <div class="pa-3 o-promo">
-          <div class="headline pb-2">
-            {{ $t('home.headline2') }}
-          </div>
-          <div class="body-1">
-            {{ $t('home.body2') }}
-          </div>
+          <div class="headline pb-2">{{ $t('home.headline2') }}</div>
+          <div class="body-1">{{ $t('home.body2') }}</div>
         </div>
       </v-layout>
     </v-container>
@@ -415,12 +403,8 @@
         </div>
 
         <div class="pa-3 o-promo">
-          <div class="headline pb-2">
-            {{ $t('home.headline3') }}
-          </div>
-          <div class="body-1">
-            {{ $t('home.body3') }}
-          </div>
+          <div class="headline pb-2">{{ $t('home.headline3') }}</div>
+          <div class="body-1">{{ $t('home.body3') }}</div>
         </div>
       </v-layout>
     </v-container>
@@ -595,8 +579,7 @@
 
 <script>
 // @flow
-
-import { mdiGithubCircle } from '@mdi/js';
+import { mdiMore, mdiGithub } from '@mdi/js';
 
 import layout from '~/shared/services/layout';
 
@@ -608,7 +591,8 @@ export default {
   data() {
     return {
       icons: {
-        mdiGithubCircle,
+        mdiMore,
+        mdiGithub,
       },
     };
   },

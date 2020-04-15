@@ -239,7 +239,7 @@
                 >
               </div>
               <div class="caption">
-                Current Version: 2.6.10
+                Current Version: 2.6.11
               </div>
               <div class="caption text-xs-center">
                 Powered by Oh My Vue &copy;{{ new Date().getFullYear() }}. <br />

@@ -13,14 +13,14 @@
       </div>
 
       <v-btn flat icon @click="isVisibility = !isVisibility">
-        <v-icon>{{ isVisibility ? 'visibility' : 'visibility_off' }}</v-icon>
+        <v-icon>{{ isVisibility ? 'visibility_off' : 'visibility' }}</v-icon>
       </v-btn>
     </v-layout>
 
     <v-layout>
       <div>
         <v-text-field
-          :append-icon="isVisibility ? 'visibility' : 'visibility_off'"
+          :append-icon="isVisibility ? 'visibility_off' : 'visibility'"
           :append-icon-cb="() => (isVisibility = !isVisibility)"
           :type="isVisibility ? 'text' : 'password'"
           label="Password"
