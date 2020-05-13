@@ -31,6 +31,8 @@ RUN \
   rm -rf /var/lib/apt/lists/* && \
   rm -rf /src/*.deb
 
-RUN yarn install && yarn typed
+RUN \
+  yarn install --frozen-lockfile && \
+  yarn typed
 
 EXPOSE 8000

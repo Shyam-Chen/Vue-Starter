@@ -8,9 +8,4 @@ services:
       dockerfile: Dockerfile
     ports:
       - '8000:8000'
-    volumes:
-      - yarn:/home/node/.cache/yarn
     tty: true
-
-volumes:
-  yarn:
