@@ -4,7 +4,7 @@ exports[`Home should render an initial component 1`] = `
 <div>
   <div class="o-jumbotron">
     <v-container-stub tag="div" fluid="true" fill-height="" class="py-5">
-      <v-layout-stub tag="div" row="" wrap="" justify-center="" align-center=""><img src="/assets/images/logo.svg" alt="Logo" class="o-jumbotron-image">
+      <v-layout-stub tag="div" row="" wrap="" justify-center="" align-center=""><img src="~~/assets/images/logo.svg" alt="Logo" class="o-jumbotron-image">
         <v-flex-stub tag="div" shrink="" class="text-xs-center text-md-left o-jumbotron-content">
           <div class="display-3 white--text">Oh My Vue</div>
           <div class="subheading white--text">Starter templates for building full-featured Progressive Web Apps from Vue components.</div>

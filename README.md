@@ -321,7 +321,7 @@ See [Client-side Micro-Fullstack](https://github.com/Shyam-Chen/Micro-Fullstack/
 ```vue
 <template>
   <div>
-    <img src="/assets/images/foo.png" alt="foo" />
+    <img src="~~/assets/images/foo.png" alt="foo" />
   </div>
 </template>
 ```
@@ -339,7 +339,7 @@ See [Client-side Micro-Fullstack](https://github.com/Shyam-Chen/Micro-Fullstack/
 .foo {
   width: 6rem;
   height: 6rem;
-  background: url('/assets/images/foo.png') no-repeat;
+  background: url('~/assets/images/foo.png') no-repeat;
 }
 </style>
 ```

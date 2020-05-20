@@ -187,9 +187,9 @@
         </v-toolbar-items>
 
         <v-btn aria-label="Theme" icon @click="setTheme(!$vuetify.theme.dark ? 'dark' : 'light')">
-          <v-icon>{{
-            $vuetify.theme.dark ? icons.mdiLightbulb : icons.mdiLightbulbOutline
-          }}</v-icon>
+          <v-icon>
+            {{ $vuetify.theme.dark ? icons.mdiLightbulb : icons.mdiLightbulbOutline }}
+          </v-icon>
         </v-btn>
 
         <v-menu bottom left>
@@ -224,7 +224,7 @@
           </div>
 
           <v-footer height="auto" class="pa-3 primary darken-1 white--text">
-            <img src="/assets/images/logo.svg" alt="Logo" width="50" height="50" />
+            <img src="~~/assets/images/logo.svg" alt="Logo" width="50" height="50" />
 
             <v-layout
               :column="isMobile"
@@ -234,9 +234,9 @@
               class="ml-3 mr-3"
             >
               <div class="subheading">
-                <a href="https://vuejs.org/" class="subheading pa-2 white--text o-router-link"
-                  >Learn Vue</a
-                >
+                <a href="https://vuejs.org/" class="subheading pa-2 white--text o-router-link">
+                  Learn Vue
+                </a>
               </div>
               <div class="caption">
                 Current Version: 2.6.11

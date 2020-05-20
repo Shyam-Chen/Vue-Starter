@@ -3,7 +3,7 @@
     <div class="o-jumbotron">
       <v-container fluid fill-height class="py-5">
         <v-layout row wrap justify-center align-center>
-          <img src="/assets/images/logo.svg" alt="Logo" class="o-jumbotron-image" />
+          <img src="~~/assets/images/logo.svg" alt="Logo" class="o-jumbotron-image" />
 
           <v-flex shrink class="text-xs-center text-md-left o-jumbotron-content">
             <div class="display-3 white--text">Oh My Vue</div>
