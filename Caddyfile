@@ -1,0 +1,17 @@
+localhost:3000 {
+  encode gzip
+  root * ./public
+  try_files {path} /index.html
+  file_server browse
+
+  header /service-worker.js {
+    Cache-Control max-age=0,no-cache,no-store,must-revalidate
+  }
+
+  header {
+    Strict-Transport-Security max-age=31536000
+    X-Content-Type-Options nosniff
+    X-Frame-Options DENY
+    Referrer-Policy no-referrer-when-downgrade
+  }
+}
