@@ -11,7 +11,7 @@
           <v-toolbar-title class="o-toolbar-title">
             <div class="o-router-link" @click="backToHome">
               <img
-                src="/assets/images/logo.svg"
+                src="~~/assets/images/logo.svg"
                 alt="Logo"
                 width="40"
                 height="40"

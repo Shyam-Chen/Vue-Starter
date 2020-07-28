@@ -31,14 +31,11 @@ module.exports = ({ prod = false } = {}) => ({
   },
   module: {
     rules: [
+      { test: /\.vue$/, use: [{ loader: 'cache-loader' }, { loader: 'vue-loader' }] },
       {
-        test: /\.vue$/,
-        loader: 'vue-loader',
-      },
-      {
-        test: /\.js$/,
+        test: /\.m?jsx?$/,
         exclude: /node_modules/,
-        loader: 'babel-loader',
+        use: [{ loader: 'cache-loader' }, { loader: 'babel-loader' }],
       },
       {
         test: /\.css$/,
@@ -57,50 +54,71 @@ module.exports = ({ prod = false } = {}) => ({
             loader: 'postcss-loader',
             options: {
               ident: 'postcss',
-              plugins: [
-                postcssPresetEnv({
-                  stage: 0,
-                  browserslist: 'defaults',
-                }),
-                cssnano(),
-              ],
+              plugins: [postcssPresetEnv({ stage: 0, browserslist: 'defaults' }), cssnano()],
             },
           },
           {
             loader: 'sass-loader',
             options: {
               implementation: sass,
-              sassOptions: {
-                fiber: fibers,
-                indentedSyntax: true,
+              sassOptions: { fiber: fibers, indentedSyntax: true },
+            },
+          },
+        ],
+      },
+      {
+        test: /\.(png|jpe?g|gif|webp)(\?.*)?$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 4096,
+              fallback: {
+                loader: 'file-loader',
+                options: { name: path.posix.join('assets', 'images/[name].[hash:8].[ext]') },
               },
             },
           },
         ],
       },
       {
-        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-        loader: 'url-loader',
-        options: {
-          limit: 10240,
-          name: path.posix.join('assets', 'images/[name].[hash].[ext]'),
-        },
+        test: /\.(svg)(\?.*)?$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: { name: path.posix.join('assets', 'images/[name].[hash:8].[ext]') },
+          },
+        ],
       },
       {
         test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
-        loader: 'url-loader',
-        options: {
-          limit: 10240,
-          name: path.posix.join('assets', 'medias/[name].[hash].[ext]'),
-        },
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 4096,
+              fallback: {
+                loader: 'file-loader',
+                options: { name: path.posix.join('assets', 'medias/[name].[hash:8].[ext]') },
+              },
+            },
+          },
+        ],
       },
       {
-        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-        loader: 'url-loader',
-        options: {
-          limit: 10240,
-          name: path.posix.join('assets', 'fonts/[name].[hash].[ext]'),
-        },
+        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/i,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 4096,
+              fallback: {
+                loader: 'file-loader',
+                options: { name: path.posix.join('assets', 'fonts/[name].[hash:8].[ext]') },
+              },
+            },
+          },
+        ],
       },
     ].filter(Boolean),
   },
