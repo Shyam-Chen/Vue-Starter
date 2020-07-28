@@ -75,7 +75,7 @@
     "babel-plugin-lodash": "3.3.4",
     "babel-preset-vue": "2.0.2",
     "cache-loader": "4.1.0",
-    "codecov": "3.6.4",
+    "codecov": "3.7.1",
     "copy-webpack-plugin": "4.6.0",
     "cross-env": "5.2.0",
     "css-loader": "1.0.1",
