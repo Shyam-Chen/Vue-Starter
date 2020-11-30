@@ -100,6 +100,7 @@ export const INITIAL: IApp = {
   drawer: false || null,
   languages: [
     { key: 'en', label: 'English' },
+    { key: 'eo', label: 'Esperanto' },
     { key: 'zh-Hans', label: '中文 (简体)' },
     { key: 'zh-Hant', label: '中文 (正體)' },
     { key: 'ja', label: '日本語' },
