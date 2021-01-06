@@ -21,6 +21,22 @@
                 <v-btn color="primary" @click="signIn">Sign in</v-btn>
               </v-flex>
             </v-layout>
+
+            <v-flex xs12>
+              or
+            </v-flex>
+
+            <v-flex xs12>
+              <FacebookLogin app-id="XXX" version="v9.0" @login="fb" />
+            </v-flex>
+
+            <!-- <v-flex xs12 class="text-xs-right mt-3">
+              <v-btn color="primary" @click="signInWithFb">Continue with Facebook</v-btn>
+            </v-flex> -->
+
+            <v-flex xs12>
+              <div>{{ me }}</div>
+            </v-flex>
           </v-card-title>
         </v-card>
 
@@ -35,9 +51,16 @@
 </template>
 
 <script>
+import FacebookLogin from 'vue-facebook-login-component';
+import axios from 'axios';
+
 export default {
+  components: {
+    FacebookLogin,
+  },
   data() {
     return {
+      me: {},
       email: '',
       password: '',
 
@@ -51,6 +74,42 @@ export default {
   methods: {
     signIn() {},
     signInWithGoogle() {},
+    fb({ authResponse }) {
+      axios
+        .get('http://0.0.0.0:3000/authentication/facebook/token', {
+          params: {
+            access_token: authResponse.accessToken,
+          },
+        })
+        .then(({ data }) => {
+          this.me = data;
+        });
+    },
+    // signInWithFb() {
+    //   const vm = this;
+
+    //   // eslint-disable-next-line
+    //   FB.login(
+    //     response => {
+    //       if (response.status === 'connected') {
+    //         // Logged into your webpage and Facebook.
+
+    //         axios
+    //           .get('http://0.0.0.0:3000/authentication/facebook/token', {
+    //             params: {
+    //               access_token: response.authResponse.accessToken,
+    //             },
+    //           })
+    //           .then(res => {
+    //             vm.me = res.data;
+    //           });
+    //       } else {
+    //         // The person is not logged into your webpage or we are unable to tell.
+    //       }
+    //     },
+    //     { scope: 'email' },
+    //   );
+    // },
   },
 };
 </script>

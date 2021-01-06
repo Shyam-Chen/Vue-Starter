@@ -43,6 +43,7 @@
     "vue-apollo": "3.0.2",
     "vue-draggable": "2.0.2",
     "vue-echarts": "4.0.3",
+    "vue-facebook-login-component": "^3.0.0",
     "vue-gtag": "1.6.2",
     "vue-i18n": "8.15.6",
     "vue-markdown": "2.2.4",
