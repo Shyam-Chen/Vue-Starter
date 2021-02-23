@@ -1,4 +1,4 @@
-FROM node:12
+FROM node:14
 
 ENV HOME /Vue-Starter
 
@@ -31,8 +31,6 @@ RUN \
   rm -rf /var/lib/apt/lists/* && \
   rm -rf /src/*.deb
 
-RUN \
-  yarn install --frozen-lockfile && \
-  yarn typed
+RUN yarn install --frozen-lockfile
 
 EXPOSE 8000
