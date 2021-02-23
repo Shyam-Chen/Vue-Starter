@@ -50,7 +50,7 @@ $ cd <PROJECT_NAME>
 2. Install dependencies
 
 ```bash
-$ yarn install && yarn typed
+$ yarn install
 ```
 
 3. Start a local server
@@ -91,38 +91,11 @@ This seed repository provides the following features:
 - [x] [Vue](https://github.com/vuejs/vue)
 - [x] [Vue Router](https://github.com/vuejs/vue-router)
 - [x] [Vuex](https://github.com/vuejs/vuex)
-- [x] [Vuetify](https://github.com/vuetifyjs/vuetify)
-- [x] [Vue Meta](https://github.com/nuxt/vue-meta)
-- [x] [Vue I18n](https://github.com/kazupon/vue-i18n)
-- [x] [Vue ECharts](https://github.com/ecomfe/vue-echarts)
-- [x] [Axios](https://github.com/axios/axios)
-- [x] [GraphQL Request](https://github.com/prisma/graphql-request)
-- [x] [Vue Socket.IO](https://github.com/MetinSeylan/Vue-Socket.io)
-- [x] [Vue Apollo](https://github.com/vuejs/vue-apollo)
+- [x] [WindiCSS](https://github.com/windicss/windicss)
 - ---------- **Tools** ----------
-- [x] [Webpack](https://github.com/webpack/webpack)
-- [x] [Babel](https://github.com/babel/babel)
-- [x] [PostCSS](https://github.com/postcss/postcss)
-- [x] [Storybook](https://github.com/storybookjs/storybook)
-- [x] [ESLint](https://github.com/eslint/eslint)
-- [x] [StyleLint](https://github.com/stylelint/stylelint)
-- [x] [Prettier](https://github.com/prettier/prettier)
-- [x] [Flow](https://github.com/facebook/flow)
-- [x] [Jest](https://github.com/facebook/jest)
-- [x] [Puppeteer](https://github.com/GoogleChrome/puppeteer)
-- [x] [Workbox](https://github.com/GoogleChrome/workbox)
+- [x] [Vite](https://github.com/vitejs/vite)
 - ---------- **Environments** ----------
-- [x] [Node.js](https://nodejs.org/)
-- [x] [Yarn](https://yarnpkg.com/)
-- [x] [Git](https://git-scm.com/)
-- [x] [GitHub](https://github.com/)
-- [x] [Docker](https://www.docker.com/)
 - [x] [Netlify](https://www.netlify.com/)
-- [x] [CircleCI](https://circleci.com/)
-- [x] [Codecov](https://codecov.io/)
-- [x] [Sentry](https://sentry.io/)
-- [x] [Global Site Tag](https://developers.google.com/gtagjs)
-- [x] [Single SPA](https://github.com/single-spa/single-spa)
 
 ## Dockerization
 

@@ -1,5 +1,5 @@
 {
-  "plugins": ["vue", "flowtype", "prettier"],
+  "plugins": ["vue", "prettier"],
   "env": {
     "browser": true,
     "node": true,
@@ -11,10 +11,8 @@
   "extends": [
     "airbnb-base",
     "plugin:vue/recommended",
-    "plugin:flowtype/recommended",
     "prettier",
-    "prettier/vue",
-    "prettier/flowtype"
+    "prettier/vue"
   ],
   "parser": "vue-eslint-parser",
   "parserOptions": {

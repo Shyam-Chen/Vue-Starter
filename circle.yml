@@ -38,12 +38,12 @@ workflows:
     jobs:
       - test
 
-  weekly-regression:
-    triggers:
-      - schedule:
-          cron: '0 13 * * 1'
-          filters:
-            branches:
-              only: develop
-    jobs:
-      - test
+  # weekly-regression:
+  #   triggers:
+  #     - schedule:
+  #         cron: '0 13 * * 1'
+  #         filters:
+  #           branches:
+  #             only: develop
+  #   jobs:
+  #     - test
