@@ -14,11 +14,10 @@ function toggleMenu() {
   <header class="bg-white shadow px-3 py-2 md:px-5 md:py-4">
     <div class="flex w-full max-w-6xl my-0 mx-auto justify-between items-center">
       <div class="flex">
-        <img src="../../assets/logo.png" alt="Logo" class="w-10 h-10" />
+        <img src="~/assets/logo.png" alt="Logo" class="w-10 h-10" />
 
         <div class="text-sm ml-1 flex flex-col justify-between">
-          <div class="branded-title uppercase text-gray-500">brandedTitle</div>
-          <div class="branded-headline text-2xl text-gray-700 font-bold">lang.brandedHeadline</div>
+          <div class="branded-headline text-2xl text-gray-700 font-bold">Vue By Example</div>
         </div>
       </div>
 
@@ -58,32 +57,32 @@ function toggleMenu() {
               aria-orientation="vertical"
               aria-labelledby="options-menu"
             >
-              <a
-                href=""
-                target="_blank"
-                rel="noopener noreferrer"
-                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                >Link</a
-              >
-              <a
-                href=""
-                target="_blank"
-                rel="noopener noreferrer"
-                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                >Link</a
-              >
+              <div class="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">
+                Hello World
+              </div>
+              <div class="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">
+                CRUD Operations
+              </div>
+              <div class="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">
+                Authentication
+              </div>
+              <div class="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">
+                File Uploads
+              </div>
+              <div class="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">
+                Realtime Data
+              </div>
             </div>
           </div>
         </transition>
       </div>
 
-      <div class="hidden md:block divide-x divide-gray-300 text-gray-600">
-        <a href="" target="_blank" rel="noopener noreferrer" class="py-1 px-3 hover:text-red-500"
-          >Link</a
-        >
-        <a href="" target="_blank" rel="noopener noreferrer" class="py-1 px-3 hover:text-red-500"
-          >Link</a
-        >
+      <div class="hidden md:flex divide-x divide-gray-300 text-gray-600">
+        <div class="py-1 px-3 hover:text-green-500">Hello World</div>
+        <div class="py-1 px-3 hover:text-green-500">CRUD Operations</div>
+        <div class="py-1 px-3 hover:text-green-500">Authentication</div>
+        <div class="py-1 px-3 hover:text-green-500">File Uploads</div>
+        <div class="py-1 px-3 hover:text-green-500">Realtime Data</div>
       </div>
     </div>
   </header>

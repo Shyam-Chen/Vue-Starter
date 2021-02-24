@@ -17,4 +17,4 @@ function Environments() {
   this.SENTRY_DSN = process.env.SENTRY_DSN || null;
 }
 
-module.exports = new Environments();
+export default new Environments();

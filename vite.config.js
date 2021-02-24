@@ -2,10 +2,16 @@ import path from 'path';
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import windicss from 'vite-plugin-windicss';
+import envify from 'process-envify';
+
+import env from './env';
 
 export default defineConfig({
-  resolve: {
-    alias: [{ find: '~', replacement: path.resolve(__dirname, 'src/') }],
-  },
+  define: envify(env, { useImportMeta: true }),
   plugins: [vue(), windicss()],
+  resolve: {
+    alias: {
+      '~': path.resolve(__dirname, 'src'),
+    },
+  },
 });
