@@ -1,8 +1,7 @@
 import { createStore } from 'vuex';
+import mi from 'message-interpolation';
 
 import enUS from '~/locales/en-US';
-
-import mi from 'message-interpolation';
 
 export const injectLanguage = (state, { lang, locale }) => {
   state.lang = lang;
@@ -44,8 +43,6 @@ export const i18n = createStore({
     injectLanguage,
   },
 });
-
-
 
 export const plugin = {
   install(app, options) {

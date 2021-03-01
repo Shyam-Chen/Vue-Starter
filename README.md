@@ -154,6 +154,8 @@ function Environments() {
   this.GOOGLE_ANALYTICS = process.env.GOOGLE_ANALYTICS || 'UA-XXXXXXXX-X';
   this.SENTRY_DSN = process.env.SENTRY_DSN || null;
 }
+
+export default new Environments();
 ```
 
 ### Continuous integration environments
@@ -178,6 +180,53 @@ NPM_CONFIG_PRODUCTION=false
 GOOGLE_ANALYTICS=xxx
 SENTRY_DSN=xxx
 ...
+```
+
+### File-based environments
+
+If you want to set environment variables from a file.
+
+```coffee
+.
+├── envs
+│   ├── dev.js
+│   ├── stage.js
+│   └── prod.js
+├── public
+└── src
+```
+
+```js
+// envs/<ENV_NAME>.js
+
+function Environments() {
+  this.NODE_ENV = 'production';
+
+  this.APP_NAME = '...';
+  this.APP_DESCRIPTION = '...';
+  this.APP_BASE = '/';
+
+  this.API_URL = 'https://api.example.com';
+
+  this.GOOGLE_ANALYTICS = 'UA-XXXXXXXX-X';
+  this.SENTRY_DSN = 'https://public@sentry.example.com/1';
+}
+
+module.exports = new Environments();
+```
+
+```sh
+$ yarn add env-cmd -D
+```
+
+```js
+// package.json
+
+  "scripts": {
+    "build:dev": "env-cmd -f ./envs/dev.js vite build",
+    "build:stage": "env-cmd -f ./envs/stage.js vite build",
+    "build:prod": "env-cmd -f ./envs/prod.js vite build",
+  },
 ```
 
 ### SEO friendly
