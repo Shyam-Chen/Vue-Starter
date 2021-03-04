@@ -3,6 +3,39 @@ import mi from 'message-interpolation';
 
 import enUS from '~/locales/en-US';
 
+export const langList = {
+  'en-US': 'English',
+  'ja-JP': '日本語',
+  'zh-TW': '中文',
+};
+
+export const getUserLang = () => {
+  const langListKeys = Object.keys(langList);
+
+  if (langListKeys.includes(navigator.language)) {
+    return navigator.language;
+  }
+
+  const liteLangListKeys = langListKeys.map(lang => lang.split(/[-]/)[0]);
+  const ISO_639_1 = navigator.language.split(/[-]/)[0];
+
+  if (liteLangListKeys.includes(ISO_639_1)) {
+    if (ISO_639_1 === 'en') return 'en-US';
+    if (ISO_639_1 === 'zh') return 'en-US';
+    if (ISO_639_1 === 'fr') return 'fr-FR';
+
+    for (let i = 0; i < langListKeys.length; i += 1) {
+      const lang = langListKeys[i];
+
+      if (lang.startsWith(ISO_639_1)) {
+        return lang;
+      }
+    }
+  }
+
+  return 'en-US';
+};
+
 export const injectLanguage = (state, { lang, locale }) => {
   state.lang = lang;
   state.locale = locale;
