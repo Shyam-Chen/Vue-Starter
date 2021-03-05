@@ -4,9 +4,9 @@ import mi from 'message-interpolation';
 import enUS from '~/locales/en-US';
 
 export const langList = {
-  'en-US': 'English',
+  'en-US': 'American English',
   'ja-JP': '日本語',
-  'zh-TW': '中文',
+  'zh-TW': '正體中文',
 };
 
 export const getUserLang = () => {
@@ -20,10 +20,6 @@ export const getUserLang = () => {
   const ISO_639_1 = navigator.language.split(/[-]/)[0];
 
   if (liteLangListKeys.includes(ISO_639_1)) {
-    if (ISO_639_1 === 'en') return 'en-US';
-    if (ISO_639_1 === 'zh') return 'en-US';
-    if (ISO_639_1 === 'fr') return 'fr-FR';
-
     for (let i = 0; i < langListKeys.length; i += 1) {
       const lang = langListKeys[i];
 
@@ -44,31 +40,31 @@ export const injectLanguage = (state, { lang, locale }) => {
 export const i18n = createStore({
   state: {
     lang: 'en-US',
-    list: '',
     locale: enUS,
   },
   actions: {
     async initialLanguage({ commit }, mod) {
       const lang = localStorage.getItem('lang') || getUserLang();
       document.documentElement.lang = lang;
-      const response = await import(`~/locales/${lang}.js`);
-      commit('injectLanguage', { userLang: lang, lang: response.default });
+      // TODO: const response = await import(`~/locales/${lang}.js`);
+      const response = await import(`../locales/${lang}.js`);
+      commit('injectLanguage', { lang, locale: response.default });
 
       if (mod) {
-        const res = await import(`~/modules/${mod}/locales/${lang}.js`);
-        commit(`${mod}/injectLanguage`, { userLang: lang, lang: res.default });
+        const res = await import(`../modules/${mod}/locales/${lang}.js`);
+        commit(`${mod}/injectLanguage`, { lang, locale: response.default });
       }
     },
     async setLanguage({ commit }, lang) {
       document.documentElement.lang = lang;
       localStorage.setItem('lang', lang);
-      const response = await import(`~/lang/${lang}.js`);
-      commit('injectLanguage', { userLang: lang, lang: response.default });
+      const response = await import(`../lang/${lang}.js`);
+      commit('injectLanguage', { lang, locale: response.default });
 
       if (router.currentRoute.name !== 'singleSignOn') {
         const mod = router.currentRoute.name.split('/')[0];
-        const res = await import(`~/modules/${mod}/lang/${lang}.js`);
-        commit(`${mod}/injectLanguage`, { userLang: lang, lang: res.default });
+        const res = await import(`../modules/${mod}/lang/${lang}.js`);
+        commit(`${mod}/injectLanguage`, { lang, locale: response.default });
       }
     },
   },

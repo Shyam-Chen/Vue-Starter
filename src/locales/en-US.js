@@ -1,1 +1,3 @@
-export default {};
+export default {
+  title: `Vue by Example`,
+};

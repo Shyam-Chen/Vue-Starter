@@ -1,5 +1,12 @@
 <script setup>
-import { reactive } from 'vue';
+import { computed, reactive } from 'vue';
+import { useStore } from 'vuex';
+
+const i18n = useStore();
+
+console.log(i18n.state.locale);
+
+const l10n = computed(() => i18n.state.locale);
 
 const state = reactive({
   isMenu: true,
@@ -14,10 +21,11 @@ function toggleMenu() {
   <header class="bg-white shadow px-3 py-2 md:px-5 md:py-4">
     <div class="flex w-full max-w-6xl my-0 mx-auto justify-between items-center">
       <div class="flex">
-        <img src="~/assets/logo.png" alt="Logo" class="w-10 h-10" />
+        <!-- TODO: src="~/assets/logo.png" -->
+        <img src="../../assets/logo.png" alt="Logo" class="w-10 h-10" />
 
         <div class="text-sm ml-1 flex flex-col justify-between">
-          <div class="branded-headline text-2xl text-gray-700 font-bold">Vue By Example</div>
+          <div class="branded-headline text-2xl text-gray-700 font-bold">{{ l10n.title }}</div>
         </div>
       </div>
 

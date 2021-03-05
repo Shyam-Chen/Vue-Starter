@@ -2,7 +2,10 @@
 import { reactive } from 'vue';
 import { useStore } from 'vuex';
 
-// const store = useStore();
+// import state from './'
+
+const store = useStore();
+console.log(store.state);
 
 // store.registerModule('helloWorld', {
 //   namespaced: true,
