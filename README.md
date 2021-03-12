@@ -90,9 +90,10 @@ This seed repository provides the following features:
 - ---------- **Essentials** ----------
 - [x] [Vue](https://github.com/vuejs/vue)
 - [x] [Vue Router](https://github.com/vuejs/vue-router)
-- [x] [WindiCSS](https://github.com/windicss/windicss)
+- [x] [Vue Localer](https://github.com/Vanilla-IceCream/vue-localer)
 - ---------- **Tools** ----------
 - [x] [Vite](https://github.com/vitejs/vite)
+- [x] [WindiCSS](https://github.com/windicss/windicss)
 - ---------- **Environments** ----------
 - [x] [Netlify](https://www.netlify.com/)
 

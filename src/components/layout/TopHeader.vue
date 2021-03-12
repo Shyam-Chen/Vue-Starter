@@ -1,10 +1,9 @@
 <script setup>
 import { reactive } from 'vue';
-import { useLocaler, useLocale } from '~/vue-localer';
+import { useLocale } from 'vue-localer';
 
 import logo from '~/assets/logo.png';
 
-const localer = useLocaler();
 const locale = useLocale();
 
 const state = reactive({

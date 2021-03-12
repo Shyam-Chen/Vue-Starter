@@ -1,5 +1,5 @@
 <script setup>
-import { useLocaler, useLocale } from '~/vue-localer';
+import { useLocaler, useLocale } from 'vue-localer';
 
 import { useState } from '~/core/store.js';
 
@@ -11,7 +11,7 @@ function add() {
   state.foo += '123+';
 }
 
-function changeLang2(event) {
+function changeLang(event) {
   localer.dispatch('setLanguage', event.target.value);
 }
 </script>
@@ -27,11 +27,9 @@ function changeLang2(event) {
   </div>
 
   <div>
-    <div>vue-localer</div>
-
     <div>{{ locale.title }}</div>
 
-    <select :value="localer.state.lang" @change="changeLang2" name="lang" id="lang">
+    <select :value="localer.state.lang" @change="changeLang" name="lang" id="lang">
       <option value="en-US">American English</option>
       <option value="ja-JP">日本語</option>
       <option value="zh-TW">正體中文</option>

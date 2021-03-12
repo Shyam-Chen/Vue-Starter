@@ -1,5 +1,5 @@
 <script setup>
-import { useLocaler } from '~/vue-localer';
+import { useLocaler } from 'vue-localer';
 
 import Layout from '~/components/layout/Layout.vue';
 

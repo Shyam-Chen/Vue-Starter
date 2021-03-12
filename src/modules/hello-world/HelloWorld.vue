@@ -1,25 +1,16 @@
 <script setup>
-import { useLocaler, useLocale } from '~/vue-localer';
+import { useLocaler, useLocale } from 'vue-localer';
 
-import { injectLanguage } from '~/core/localer';
 import enUS from './locales/en-US.js';
 
 const localer = useLocaler();
 const locale = useLocale('helloWorld');
 
 if (!localer.hasModule('helloWorld')) {
-  localer.registerModule(['helloWorld'], {
-    namespaced: true,
-    state: {
-      locale: enUS,
-    },
-    mutations: {
-      injectLanguage,
-    },
-  });
+  localer.register('helloWorld', { locale: enUS });
 }
 
-localer.dispatch('initialLanguage', 'hello-world');
+localer.dispatch('initialLanguage', 'helloWorld');
 </script>
 
 <template>
