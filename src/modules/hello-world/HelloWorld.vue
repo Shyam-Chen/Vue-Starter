@@ -1,19 +1,30 @@
 <script setup>
-import { reactive } from 'vue';
-import { useStore } from 'vuex';
+import { useLocaler, useLocale } from '~/vue-localer';
 
-// import state from './'
+import { injectLanguage } from '~/core/localer';
+import enUS from './locales/en-US.js';
 
-const store = useStore();
-console.log(store.state);
+const localer = useLocaler();
+const locale = useLocale('helloWorld');
 
-// store.registerModule('helloWorld', {
-//   namespaced: true,
-// });
+if (!localer.hasModule('helloWorld')) {
+  localer.registerModule(['helloWorld'], {
+    namespaced: true,
+    state: {
+      locale: enUS,
+    },
+    mutations: {
+      injectLanguage,
+    },
+  });
+}
 
-const state = reactive({ count: 0 });
+localer.dispatch('initialLanguage', 'hello-world');
 </script>
 
 <template>
-  <div>{{ state.count }}</div>
+  <div>HelloWorld</div>
+  <pre>{{ locale }}</pre>
+  <div>{{ locale.msg }}</div>
+  <div>{{ $f(locale.say, { msg: 'Vue' }) }}</div>
 </template>

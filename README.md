@@ -90,7 +90,6 @@ This seed repository provides the following features:
 - ---------- **Essentials** ----------
 - [x] [Vue](https://github.com/vuejs/vue)
 - [x] [Vue Router](https://github.com/vuejs/vue-router)
-- [x] [Vuex](https://github.com/vuejs/vuex)
 - [x] [WindiCSS](https://github.com/windicss/windicss)
 - ---------- **Tools** ----------
 - [x] [Vite](https://github.com/vitejs/vite)

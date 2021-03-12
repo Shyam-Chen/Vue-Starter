@@ -1,11 +1,11 @@
 <script setup>
-import { useStore } from 'vuex'
+import { useLocaler } from '~/vue-localer';
 
 import Layout from '~/components/layout/Layout.vue';
 
-const i18n = useStore()
+const localer = useLocaler();
 
-i18n.dispatch('initialLanguage')
+localer.dispatch('initialLanguage');
 </script>
 
 <template>

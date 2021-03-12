@@ -1,6 +1,6 @@
-import { createStore } from 'vuex';
-import mi from 'message-interpolation';
+import { createLocaler } from '~/vue-localer';
 
+import { router } from './router';
 import enUS from '~/locales/en-US';
 
 export const langList = {
@@ -16,19 +16,6 @@ export const getUserLang = () => {
     return navigator.language;
   }
 
-  const liteLangListKeys = langListKeys.map(lang => lang.split(/[-]/)[0]);
-  const ISO_639_1 = navigator.language.split(/[-]/)[0];
-
-  if (liteLangListKeys.includes(ISO_639_1)) {
-    for (let i = 0; i < langListKeys.length; i += 1) {
-      const lang = langListKeys[i];
-
-      if (lang.startsWith(ISO_639_1)) {
-        return lang;
-      }
-    }
-  }
-
   return 'en-US';
 };
 
@@ -37,7 +24,15 @@ export const injectLanguage = (state, { lang, locale }) => {
   state.locale = locale;
 };
 
-export const i18n = createStore({
+function camelize(str) {
+  return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function(word, index) {
+    return index === 0 ? word.toLowerCase() : word.toUpperCase();
+  }).replace(/\s+/g, '').split('-').join('');
+}
+
+let _mod = '';
+
+export const l10n = createLocaler({
   state: {
     lang: 'en-US',
     locale: enUS,
@@ -46,25 +41,28 @@ export const i18n = createStore({
     async initialLanguage({ commit }, mod) {
       const lang = localStorage.getItem('lang') || getUserLang();
       document.documentElement.lang = lang;
-      // TODO: const response = await import(`~/locales/${lang}.js`);
       const response = await import(`../locales/${lang}.js`);
       commit('injectLanguage', { lang, locale: response.default });
 
       if (mod) {
+        _mod = mod
         const res = await import(`../modules/${mod}/locales/${lang}.js`);
-        commit(`${mod}/injectLanguage`, { lang, locale: response.default });
+        commit(`${camelize(mod)}/injectLanguage`, { locale: res.default });
       }
     },
     async setLanguage({ commit }, lang) {
       document.documentElement.lang = lang;
       localStorage.setItem('lang', lang);
-      const response = await import(`../lang/${lang}.js`);
+      const response = await import(`../locales/${lang}.js`);
       commit('injectLanguage', { lang, locale: response.default });
 
-      if (router.currentRoute.name !== 'singleSignOn') {
-        const mod = router.currentRoute.name.split('/')[0];
-        const res = await import(`../modules/${mod}/lang/${lang}.js`);
-        commit(`${mod}/injectLanguage`, { lang, locale: response.default });
+      console.log(router.currentRoute.value.name);
+
+      if (router.currentRoute.value.name !== 'home') {
+
+        let mod = router.currentRoute.value.name.split('/')[0];
+        const res = await import(`../modules/${_mod}/locales/${lang}.js`);
+        commit(`${mod}/injectLanguage`, { locale: res.default });
       }
     },
   },
@@ -72,9 +70,3 @@ export const i18n = createStore({
     injectLanguage,
   },
 });
-
-export const plugin = {
-  install(app, options) {
-    app.config.globalProperties.$f = mi;
-  },
-};
