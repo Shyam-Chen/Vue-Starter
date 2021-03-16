@@ -1,30 +1,6 @@
 # Vue Starter
 
-:poodle: A boilerplate for HTML5, Vue, Material, Babel, Flow, and PostCSS.
-
-|                | Project Information                                                                                                                                                      |
-| :------------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-|   Live Demo    | [![Develop Demo][demo-develop-image]][demo-develop-link] [![Master Demo][demo-master-image]][demo-master-link]                                                           |
-| Develop Branch | [![Build Status][develop-build-image]][develop-build-link] [![Coverage Status][develop-coverage-image]][develop-coverage-link]                                           |
-| Master Branch  | [![Build Status][master-build-image]][master-build-link] [![Coverage Status][master-coverage-image]][master-coverage-link]                                               |
-|  Npm Package   | [![dependencies Status][package-dependencies-image]][package-dependencies-link] [![devDependencies Status][package-devdependencies-image]][package-devdependencies-link] |
-
-[demo-develop-image]: https://img.shields.io/badge/link-develop-blue.svg
-[demo-develop-link]: https://oh-my-vue-dev.netlify.com
-[demo-master-image]: https://img.shields.io/badge/link-master-blue.svg
-[demo-master-link]: https://oh-my-vue-prod.netlify.com
-[develop-build-image]: https://img.shields.io/circleci/build/github/Shyam-Chen/Vue-Starter/develop
-[develop-build-link]: https://circleci.com/gh/Shyam-Chen/workflows/Vue-Starter
-[develop-coverage-image]: https://img.shields.io/codecov/c/github/Shyam-Chen/Vue-Starter/develop.svg
-[develop-coverage-link]: https://codecov.io/gh/Shyam-Chen/Vue-Starter
-[master-build-image]: https://img.shields.io/circleci/build/github/Shyam-Chen/Vue-Starter/master
-[master-build-link]: https://circleci.com/gh/Shyam-Chen/workflows/Vue-Starter
-[master-coverage-image]: https://img.shields.io/codecov/c/github/Shyam-Chen/Vue-Starter/master.svg
-[master-coverage-link]: https://codecov.io/gh/Shyam-Chen/Vue-Starter
-[package-dependencies-image]: https://img.shields.io/david/Shyam-Chen/Vue-Starter.svg
-[package-dependencies-link]: https://david-dm.org/Shyam-Chen/Vue-Starter
-[package-devdependencies-image]: https://img.shields.io/david/dev/Shyam-Chen/Vue-Starter.svg
-[package-devdependencies-link]: https://david-dm.org/Shyam-Chen/Vue-Starter?type=dev
+:poodle: A boilerplate for HTML5, Vue, Vue Router, i18n, Tailwind, Windi, Netlify, and Vite.
 
 ## Table of Contents
 
@@ -53,19 +29,21 @@ $ cd <PROJECT_NAME>
 $ yarn install
 ```
 
-3. Start a local server
+3. Compiles and hot-reloads for development
 
 ```bash
 $ yarn serve
 ```
 
-4. Compile and bundle code
+4. Compiles and minifies for production
 
 ```bash
 $ yarn build
 ```
 
-5. Check code quality
+5. Lints and fixes files
+
+File Scope: `src/**/*.{vue,js,css}`
 
 ```bash
 $ yarn lint
@@ -73,14 +51,35 @@ $ yarn lint
 
 6. Runs unit tests
 
+File Scope: `src/**/*.spec.js`
+
 ```bash
 $ yarn unit
 ```
 
 7. Runs end-to-end tests
 
+File Scope: `src/**/*.e2e-spec.js`
+
 ```bash
 $ yarn e2e
+```
+
+8. Measure app performance
+
+File Scope: `src/**/*.e2e-meas.js`
+
+```sh
+
+```
+
+9. Mock requests
+
+[`mock/requests`](./mock/requests) is a fork of [Koa-Starter](https://github.com/Shyam-Chen/Koa-Starter) that was made easy and quick way to run mock APIs locally.
+
+```sh
+$ yarn mock:install
+$ yarn mock:serve
 ```
 
 ## Key Features
@@ -93,9 +92,11 @@ This seed repository provides the following features:
 - [x] [Vue Localer](https://github.com/Vanilla-IceCream/vue-localer)
 - ---------- **Tools** ----------
 - [x] [Vite](https://github.com/vitejs/vite)
-- [x] [WindiCSS](https://github.com/windicss/windicss)
+- [x] [Windi CSS](https://github.com/windicss/windicss)
 - ---------- **Environments** ----------
 - [x] [Netlify](https://www.netlify.com/)
+- [ ] [Capacitor](https://capacitorjs.com/) (`git merge capacitor --squash`)
+- [ ] [Electron](https://www.electronjs.org/) (`git merge electron --squash`)
 
 ## Dockerization
 
@@ -173,7 +174,7 @@ Add environment variables to the Netlify build.
 ```sh
 # required
 NODE_ENV=production
-NODE_VERSION=12
+NODE_VERSION=14
 NPM_CONFIG_PRODUCTION=false
 
 # your environments
@@ -192,6 +193,7 @@ If you want to set environment variables from a file.
 │   ├── dev.js
 │   ├── stage.js
 │   └── prod.js
+├── mock
 ├── public
 └── src
 ```
@@ -223,9 +225,10 @@ $ yarn add env-cmd -D
 // package.json
 
   "scripts": {
-    "build:dev": "env-cmd -f ./envs/dev.js vite build",
-    "build:stage": "env-cmd -f ./envs/stage.js vite build",
-    "build:prod": "env-cmd -f ./envs/prod.js vite build",
+    // "env-cmd -f ./envs/<ENV_NAME>.js" + "yarn build"
+    "build:dev": "env-cmd -f ./envs/dev.js yarn build",
+    "build:stage": "env-cmd -f ./envs/stage.js yarn build",
+    "build:prod": "env-cmd -f ./envs/prod.js yarn build",
   },
 ```
 
