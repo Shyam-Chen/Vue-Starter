@@ -5,7 +5,13 @@
   "scripts": {
     "serve": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "lint": "",
+    "unit": "",
+    "preview": "vite preview",
+    "e2e": "",
+    "meas": "",
+    "prepare": "cd mock/requests && yarn install",
+    "mock": "cd mock/requests && yarn serve"
   },
   "dependencies": {
     "vue": "^3.0.5",

@@ -18,26 +18,26 @@ Follow steps to execute this boilerplate.
 
 1. Clone this boilerplate
 
-```bash
+```sh
 $ git clone --depth 1 https://github.com/Shyam-Chen/Vue-Starter <PROJECT_NAME>
 $ cd <PROJECT_NAME>
 ```
 
 2. Install dependencies
 
-```bash
+```sh
 $ yarn install
 ```
 
 3. Compiles and hot-reloads for development
 
-```bash
+```sh
 $ yarn serve
 ```
 
 4. Compiles and minifies for production
 
-```bash
+```sh
 $ yarn build
 ```
 
@@ -45,7 +45,7 @@ $ yarn build
 
 File Scope: `src/**/*.{vue,js,css}`
 
-```bash
+```sh
 $ yarn lint
 ```
 
@@ -53,7 +53,7 @@ $ yarn lint
 
 File Scope: `src/**/*.spec.js`
 
-```bash
+```sh
 $ yarn unit
 ```
 
@@ -61,7 +61,9 @@ $ yarn unit
 
 File Scope: `src/**/*.e2e-spec.js`
 
-```bash
+```sh
+$ yarn build
+$ yarn preview
 $ yarn e2e
 ```
 
@@ -70,7 +72,9 @@ $ yarn e2e
 File Scope: `src/**/*.e2e-meas.js`
 
 ```sh
-
+$ yarn build
+$ yarn preview
+$ yarn meas
 ```
 
 9. Mock requests
@@ -78,8 +82,8 @@ File Scope: `src/**/*.e2e-meas.js`
 [`mock/requests`](./mock/requests) is a fork of [Koa-Starter](https://github.com/Shyam-Chen/Koa-Starter) that was made easy and quick way to run mock APIs locally.
 
 ```sh
-$ yarn mock:install
-$ yarn mock:serve
+$ yarn prepare
+$ yarn mock
 ```
 
 ## Key Features
