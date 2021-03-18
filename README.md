@@ -289,8 +289,7 @@ The structure follows the LIFT Guidelines.
 │   │   ├── <FEATURE>.vue  -> page component
 │   │   ├── actions.js
 │   │   ├── constants.js
-│   │   ├── getters.js
-│   │   └── types.js
+│   │   └── getters.js
 │   ├── <GROUP>  -> module group
 │   │   └── <FEATURE>  -> feature modules
 │   │       ├── __tests__
@@ -303,37 +302,28 @@ The structure follows the LIFT Guidelines.
 │   │       ├── <FEATURE>.vue  -> page component
 │   │       ├── actions.js
 │   │       ├── constants.js
-│   │       ├── getters.js
-│   │       └── types.js
+│   │       └── getters.js
 │   ├── shared  -> shared feature module
 │   │   └── ...
-│   ├── actions.js
 │   ├── App.vue
-│   ├── constants.js
-│   ├── e2e.js  -> e2e setup test
-│   ├── getters.js
-│   ├── index.html
-│   ├── main.js  -> entrypoint
-│   ├── types.js
-│   └── unit.js  -> unit setup test
+│   ├── Home.vue
+│   └── main.js  -> entrypoint
 ├── .editorconfig
 ├── .eslintrc
-├── .flowconfig
 ├── .gitignore
 ├── .prettierrc
 ├── .stylelintrc
-├── babel.config.js
 ├── circle.yml
 ├── docker-compose.yml
 ├── Dockerfile
 ├── env.js
+├── index.html
 ├── jest.config.js
 ├── LICENSE
 ├── netlify.toml
 ├── package.json
-├── postcss.config.js
 ├── README.md
-├── webpack.config.js
+├── vite.config.js
 └── yarn.lock
 ```
 
