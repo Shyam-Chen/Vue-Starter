@@ -82,7 +82,7 @@ $ yarn meas
 [`mock/requests`](./mock/requests) is a fork of [Koa-Starter](https://github.com/Shyam-Chen/Koa-Starter) that was made easy and quick way to run mock APIs locally.
 
 ```sh
-$ yarn prepare
+$ yarn active
 $ yarn mock
 ```
 
@@ -97,6 +97,12 @@ This seed repository provides the following features:
 - ---------- **Tools** ----------
 - [x] [Vite](https://github.com/vitejs/vite)
 - [x] [Windi CSS](https://github.com/windicss/windicss)
+- [x] [ESLint](https://github.com/eslint/eslint)
+- [ ] [StyleLint](https://github.com/stylelint/stylelint)
+- [x] [Prettier](https://github.com/prettier/prettier)
+- [ ] [Jest](https://github.com/facebook/jest)
+- [ ] [Playwright](https://github.com/microsoft/playwright)
+- [ ] [Lighthouse](https://github.com/GoogleChrome/lighthouse)
 - ---------- **Environments** ----------
 - [x] [Netlify](https://www.netlify.com/)
 - [ ] [Capacitor](https://capacitorjs.com/) (`git merge capacitor --squash`)
@@ -141,26 +147,11 @@ Set your local environment variables. (use `this.<ENV_NAME> = process.env.<ENV_N
 ```js
 // env.js
 
-function Environments() {
-  this.NODE_ENV = process.env.NODE_ENV || 'development';
-
-  this.APP_NAME = process.env.APP_NAME || 'Oh My Vue';
-  this.APP_DESCRIPTION =
-    process.env.APP_DESCRIPTION ||
-    'Starter templates for building full-featured Progressive Web Apps from Vue components.';
-
-  this.HOST_NAME = process.env.HOST_NAME || '0.0.0.0';
-  this.SITE_PORT = process.env.SITE_PORT || 8000;
-  this.SITE_URL = process.env.SITE_URL || `http://${this.HOST_NAME}:${this.SITE_PORT}`;
-  this.APP_BASE = process.env.APP_BASE || '/';
-
-  this.API_URL = process.env.API_URL || `http://${this.HOST_NAME}:3000`;
-
-  this.GOOGLE_ANALYTICS = process.env.GOOGLE_ANALYTICS || 'UA-XXXXXXXX-X';
-  this.SENTRY_DSN = process.env.SENTRY_DSN || null;
+function Environment() {
+  this.API_URL = process.env.API_URL || 'http://localhost:3000';
 }
 
-export default new Environments();
+export default new Environment();
 ```
 
 ### Continuous integration environments
@@ -176,15 +167,7 @@ CODECOV_TOKEN=xxx
 Add environment variables to the Netlify build.
 
 ```sh
-# required
-NODE_ENV=production
-NODE_VERSION=14
-NPM_CONFIG_PRODUCTION=false
-
-# your environments
-GOOGLE_ANALYTICS=xxx
-SENTRY_DSN=xxx
-...
+API_URL=http://api.example.com
 ```
 
 ### File-based environments
@@ -205,17 +188,8 @@ If you want to set environment variables from a file.
 ```js
 // envs/<ENV_NAME>.js
 
-function Environments() {
-  this.NODE_ENV = 'production';
-
-  this.APP_NAME = '...';
-  this.APP_DESCRIPTION = '...';
-  this.APP_BASE = '/';
-
-  this.API_URL = 'https://api.example.com';
-
-  this.GOOGLE_ANALYTICS = 'UA-XXXXXXXX-X';
-  this.SENTRY_DSN = 'https://public@sentry.example.com/1';
+function Environment() {
+  this.API_URL = 'http://api.example.com';
 }
 
 module.exports = new Environments();

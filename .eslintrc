@@ -1,53 +1,6 @@
 {
-  "plugins": ["vue", "prettier"],
-  "env": {
-    "browser": true,
-    "node": true,
-    "commonjs": true,
-    "es6": true,
-    "jest": true
-  },
-  "globals": {},
   "extends": [
-    "airbnb-base",
-    "plugin:vue/recommended",
-    "prettier",
-    "prettier/vue"
-  ],
-  "parser": "vue-eslint-parser",
-  "parserOptions": {
-    "parser": "babel-eslint",
-    "sourceType": "module"
-  },
-  "settings": {
-    "import/resolver": {
-      "alias": {
-        "map": [["~", "./src"]],
-        "extensions": [".mjs", ".js", ".vue"]
-      }
-    }
-  },
-  "rules": {
-    // Plugins
-    "prettier/prettier": "error",
-
-    "import/extensions": ["error", "always", { "js": "never", "vue": "never" }],
-    "import/prefer-default-export": "off",
-
-    // Possible Errors
-
-    // Best Practices
-    "no-param-reassign": [
-      "error",
-      { "props": true, "ignorePropertyModificationsFor": ["context", "state", "acc", "event"] }
-    ]
-
-    // Variables
-
-    // Node.js and CommonJS
-
-    // Stylistic Issues
-
-    // JS.Next
-  }
+    "plugin:vue/vue3-recommended",
+    "plugin:prettier-vue/recommended"
+  ]
 }

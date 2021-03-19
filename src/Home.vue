@@ -2,6 +2,7 @@
 import { useLocaler, useLocale } from 'vue-localer';
 
 import { useState } from '~/core/store.js';
+import logo from '~/assets/logo.png';
 
 const state = useState();
 const localer = useLocaler();
@@ -17,9 +18,8 @@ function changeLang(event) {
 </script>
 
 <template>
-  <img alt="Vue logo" src="~/assets/logo.png" />
+  <img alt="Vue logo" :src="logo" />
   <div>{{ $f('Hello, {msg}!', { msg: 'Vue' }) }}</div>
-  <router-link :to="{ name: 'helloWorld' }" class="text-blue-500">Hello World</router-link>
 
   <div>
     <div>{{ state.foo }}</div>
@@ -28,11 +28,5 @@ function changeLang(event) {
 
   <div>
     <div>{{ locale.title }}</div>
-
-    <select :value="localer.state.lang" @change="changeLang" name="lang" id="lang">
-      <option value="en-US">American English</option>
-      <option value="ja-JP">日本語</option>
-      <option value="zh-TW">正體中文</option>
-    </select>
   </div>
 </template>

@@ -7,7 +7,7 @@ import logo from '~/assets/logo.png';
 const locale = useLocale();
 
 const state = reactive({
-  isMenu: true,
+  isMenu: false,
 });
 
 function toggleMenu() {
@@ -18,21 +18,19 @@ function toggleMenu() {
 <template>
   <header class="bg-white shadow px-3 py-2 md:px-5 md:py-4">
     <div class="flex w-full max-w-6xl my-0 mx-auto justify-between items-center">
-      <div class="flex">
-        <!-- FIXME: src="~/assets/logo.png" -->
+      <router-link class="flex" :to="{ name: 'home' }">
         <img :src="logo" alt="Logo" class="w-10 h-10" />
 
         <div class="text-sm ml-1 flex flex-col justify-between">
           <div class="branded-headline text-2xl text-gray-700 font-bold">{{ locale.title }}</div>
         </div>
-      </div>
+      </router-link>
 
       <div class="relative inline-block text-left md:hidden">
         <div>
           <button
             type="button"
             class="inline-flex justify-center w-full rounded-full px-1 py-1 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100"
-            id="menu"
             aria-haspopup="true"
             aria-expanded="true"
             @click="toggleMenu"
@@ -66,31 +64,32 @@ function toggleMenu() {
               <div class="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">
                 Hello World
               </div>
-              <div class="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">
+              <!-- <div class="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">
                 CRUD Operations
-              </div>
-              <div class="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">
+              </div> -->
+              <!-- <div class="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">
                 Authentication
-              </div>
-              <div class="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">
+              </div> -->
+              <!-- <div class="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">
                 File Uploads
-              </div>
-              <div class="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">
+              </div> -->
+              <!-- <div class="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">
                 Realtime Data
-              </div>
+              </div> -->
             </div>
           </div>
         </transition>
       </div>
 
       <div class="hidden md:flex divide-x divide-gray-300 text-gray-600">
-        <div class="py-1 px-3 hover:text-green-500">Hello World</div>
-        <div class="py-1 px-3 hover:text-green-500">CRUD Operations</div>
-        <div class="py-1 px-3 hover:text-green-500">Authentication</div>
-        <div class="py-1 px-3 hover:text-green-500">File Uploads</div>
-        <div class="py-1 px-3 hover:text-green-500">Realtime Data</div>
+        <router-link :to="{ name: 'helloWorld' }" class="py-1 px-3 hover:text-green-500"
+          >Hello World</router-link
+        >
+        <!-- <div class="py-1 px-3 hover:text-green-500">CRUD Operations</div> -->
+        <!-- <div class="py-1 px-3 hover:text-green-500">Authentication</div> -->
+        <!-- <div class="py-1 px-3 hover:text-green-500">File Uploads</div> -->
+        <!-- <div class="py-1 px-3 hover:text-green-500">Realtime Data</div> -->
       </div>
     </div>
   </header>
 </template>
-

@@ -5,22 +5,27 @@
   "scripts": {
     "serve": "vite",
     "build": "vite build",
-    "lint": "",
+    "lint": "eslint 'src/**/*.{js,vue}'",
     "unit": "",
     "preview": "vite preview",
     "e2e": "",
     "meas": "",
-    "prepare": "cd mock/requests && yarn install",
+    "active": "cd mock/requests && yarn install",
     "mock": "cd mock/requests && yarn serve"
   },
   "dependencies": {
     "vue": "^3.0.5",
-    "vue-localer": "^0.1.0",
+    "vue-localer": "^0.2.0",
     "vue-router": "^4.0.3"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^1.1.4",
     "@vue/compiler-sfc": "^3.0.5",
+    "eslint": "^7.22.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-prettier-vue": "^3.0.0-alpha.2",
+    "eslint-plugin-vue": "^7.7.0",
+    "prettier": "^2.2.1",
     "process-envify": "^1.0.2",
     "vite": "^2.0.1",
     "vite-plugin-windicss": "^0.4.4"
