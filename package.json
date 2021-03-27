@@ -28,6 +28,6 @@
     "prettier": "^2.2.1",
     "process-envify": "^1.0.2",
     "vite": "^2.0.1",
-    "vite-plugin-windicss": "^0.4.4"
+    "vite-plugin-windicss": "^0.10.2"
   }
 }

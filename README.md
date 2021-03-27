@@ -10,7 +10,6 @@
 - [Configuration](#configuration)
 - [Directory Structure](#directory-structure)
 - [Microservices](#microservices)
-- [Frequently Asked Questions](#frequently-asked-questions)
 
 ## Getting Started
 
@@ -43,7 +42,7 @@ $ yarn build
 
 5. Lints and fixes files
 
-File Scope: `src/**/*.{vue,js,css}`
+File Scope: `src/**/*.{js,vue}`
 
 ```sh
 $ yarn lint
@@ -98,7 +97,6 @@ This seed repository provides the following features:
 - [x] [Vite](https://github.com/vitejs/vite)
 - [x] [Windi CSS](https://github.com/windicss/windicss)
 - [x] [ESLint](https://github.com/eslint/eslint)
-- [ ] [StyleLint](https://github.com/stylelint/stylelint)
 - [x] [Prettier](https://github.com/prettier/prettier)
 - [ ] [Jest](https://github.com/facebook/jest)
 - [ ] [Playwright](https://github.com/microsoft/playwright)
@@ -306,43 +304,3 @@ The structure follows the LIFT Guidelines.
 > Techniques, strategies and recipes for building a **modern web app** with **multiple teams** that can **ship features independently**.
 
 See [Client-side Micro-Fullstack](https://github.com/Shyam-Chen/Micro-Fullstack/tree/master/client) for instructions on how to create microservices from source.
-
-## Frequently Asked Questions
-
-- HTML img src tag not displaying image
-
-```vue
-<template>
-  <div>
-    <img src="~~/assets/images/foo.png" alt="foo" />
-  </div>
-</template>
-```
-
-- CSS background image not displaying
-
-```vue
-<template>
-  <div>
-    <div class="foo"></div>
-  </div>
-</template>
-
-<style scoped>
-.foo {
-  width: 6rem;
-  height: 6rem;
-  background: url('~/assets/images/foo.png') no-repeat;
-}
-</style>
-```
-
-- Vue.js dynamic images not displaying
-
-```vue
-<template>
-  <div>
-    <img :src="require('~/assets/images/foo.png')" alt="foo" />
-  </div>
-</template>
-```
