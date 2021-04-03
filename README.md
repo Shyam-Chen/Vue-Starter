@@ -58,21 +58,25 @@ $ yarn unit
 
 7. Runs end-to-end tests
 
-File Scope: `src/**/*.e2e-spec.js`
+File Scope: `e2e/**/*.spec.js`
 
 ```sh
 $ yarn build
 $ yarn preview
+
+$ yarn setup
 $ yarn e2e
 ```
 
 8. Measure app performance
 
-File Scope: `src/**/*.e2e-meas.js`
+File Scope: `e2e/**/*.meas.js`
 
 ```sh
 $ yarn build
 $ yarn preview
+
+$ yarn setup
 $ yarn meas
 ```
 
@@ -174,6 +178,7 @@ If you want to set environment variables from a file.
 
 ```coffee
 .
+├── e2e
 ├── envs
 │   ├── dev.js
 │   ├── stage.js
@@ -190,7 +195,7 @@ function Environment() {
   this.API_URL = 'http://api.example.com';
 }
 
-module.exports = new Environments();
+module.exports = new Environment();
 ```
 
 ```sh
@@ -252,7 +257,6 @@ The structure follows the LIFT Guidelines.
 │   │   └── ...
 │   ├── <FEATURE>  -> feature modules
 │   │   ├── __tests__
-│   │   │   ├── <FEATURE>.e2e-spec.js
 │   │   │   ├── <FEATURE>.spec.js
 │   │   │   ├── actions.spec.js
 │   │   │   └── getters.spec.js
@@ -265,7 +269,6 @@ The structure follows the LIFT Guidelines.
 │   ├── <GROUP>  -> module group
 │   │   └── <FEATURE>  -> feature modules
 │   │       ├── __tests__
-│   │       │   ├── <FEATURE>.e2e-spec.js
 │   │       │   ├── <FEATURE>.spec.js
 │   │       │   ├── actions.spec.js
 │   │       │   └── getters.spec.js
