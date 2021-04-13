@@ -1,7 +1,8 @@
 import { createLocaler } from 'vue-localer';
 
-import { router } from './router';
 import enUS from '~/locales/en-US';
+
+import { router } from './router';
 
 export const langList = {
   'en-US': 'American English',
@@ -33,26 +34,27 @@ export const localer = createLocaler({
   methods: {
     async initialLanguage({ commit }, mod) {
       const lang = localStorage.getItem('lang') || getUserLang();
+      if (lang === 'en-US') return;
       document.documentElement.lang = lang;
-      const response = await import(`../locales/${lang}.js`);
-      commit('injectLanguage', { lang, locale: response.default });
+      const res = await import(`../locales/${lang}.js`);
+      commit('injectLanguage', { lang, locale: res.default });
 
       if (mod) {
         _mod = camelToHyphen(mod);
-        const res = await import(`../modules/${_mod}/locales/${lang}.js`);
-        commit(`${mod}/injectLanguage`, { locale: res.default });
+        const modRes = await import(`../modules/${_mod}/locales/${lang}.js`);
+        commit(`${mod}/injectLanguage`, { locale: modRes.default });
       }
     },
     async setLanguage({ commit }, lang) {
       document.documentElement.lang = lang;
       localStorage.setItem('lang', lang);
-      const response = await import(`../locales/${lang}.js`);
-      commit('injectLanguage', { lang, locale: response.default });
+      const res = await import(`../locales/${lang}.js`);
+      commit('injectLanguage', { lang, locale: res.default });
 
       if (router.currentRoute.value.name !== 'home') {
         let mod = router.currentRoute.value.name.split('/')[0];
-        const res = await import(`../modules/${_mod}/locales/${lang}.js`);
-        commit(`${mod}/injectLanguage`, { locale: res.default });
+        const modRes = await import(`../modules/${_mod}/locales/${lang}.js`);
+        commit(`${mod}/injectLanguage`, { locale: modRes.default });
       }
     },
   },

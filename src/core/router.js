@@ -18,7 +18,12 @@ export const router = createRouter({
       component: () => import('~/modules/hello-world/HelloWorld.vue'),
     },
     {
+      path: '/crud-operations',
+      component: () => import('~/modules/crud-operations/CrudOperations.vue'),
+    },
+    {
       path: '/:catchAll(.*)',
+      name: 'notFound',
       component: () => import('~/modules/error-handling/NotFound.vue'),
     },
   ],

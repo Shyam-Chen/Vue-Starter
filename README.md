@@ -4,88 +4,90 @@
 
 ## Table of Contents
 
-- [Getting Started](#getting-started)
+- [Project Setup](#project-setup)
 - [Key Features](#key-features)
 - [Dockerization](#dockerization)
 - [Configuration](#configuration)
+- [Examples](#examples)
 - [Directory Structure](#directory-structure)
 - [Microservices](#microservices)
 
-## Getting Started
+## Project Setup
 
 Follow steps to execute this boilerplate.
 
-1. Clone this boilerplate
-
-```sh
-$ git clone --depth 1 https://github.com/Shyam-Chen/Vue-Starter <PROJECT_NAME>
-$ cd <PROJECT_NAME>
-```
-
-2. Install dependencies
+### Install dependencies
 
 ```sh
 $ yarn install
 ```
 
-3. Compiles and hot-reloads for development
+### Compiles and hot-reloads for development
 
 ```sh
 $ yarn serve
 ```
 
-4. Compiles and minifies for production
+### Compiles and minifies for production
 
 ```sh
 $ yarn build
 ```
 
-5. Lints and fixes files
+### Lints and fixes files
 
-File Scope: `src/**/*.{js,vue}`
+Files: `src/**/*.{js,vue}`
 
 ```sh
 $ yarn lint
 ```
 
-6. Runs unit tests
+### Runs unit tests
 
-File Scope: `src/**/*.spec.js`
+Files: `src/**/*.spec.js`
 
 ```sh
 $ yarn unit
 ```
 
-7. Runs end-to-end tests
+### Runs end-to-end tests
 
-File Scope: `e2e/**/*.spec.js`
+Files: `e2e/**/*.spec.js`
 
 ```sh
+# Before running the `e2e` command, make sure to run the following commands.
 $ yarn build
 $ yarn preview
 
+# If it's not setup, run it.
 $ yarn setup
+
 $ yarn e2e
 ```
 
-8. Measure app performance
+### Measures site's URLs
 
-File Scope: `e2e/**/*.meas.js`
+Files: `e2e/**/*.meas.js`
 
 ```sh
+# Before running the `meas` command, make sure to run the following commands.
 $ yarn build
 $ yarn preview
 
+# If it's not setup, run it.
 $ yarn setup
+
 $ yarn meas
 ```
 
-9. Mock requests
+### Mock requests
 
 [`mock/requests`](./mock/requests) is a fork of [Koa-Starter](https://github.com/Shyam-Chen/Koa-Starter) that was made easy and quick way to run mock APIs locally.
 
 ```sh
+# If it's not active, run it.
 $ yarn active
+
 $ yarn mock
 ```
 
@@ -100,13 +102,14 @@ This seed repository provides the following features:
 - ---------- **Tools** ----------
 - [x] [Vite](https://github.com/vitejs/vite)
 - [x] [Windi CSS](https://github.com/windicss/windicss)
+- [ ] [Iconify](https://github.com/iconify/iconify)
 - [x] [ESLint](https://github.com/eslint/eslint)
 - [x] [Prettier](https://github.com/prettier/prettier)
 - [ ] [Jest](https://github.com/facebook/jest)
 - [ ] [Playwright](https://github.com/microsoft/playwright)
 - [ ] [Lighthouse](https://github.com/GoogleChrome/lighthouse)
 - ---------- **Environments** ----------
-- [x] [Netlify](https://www.netlify.com/)
+- [ ] [Netlify](https://www.netlify.com/)
 - [ ] [Capacitor](https://capacitorjs.com/) (`git merge capacitor --squash`)
 - [ ] [Electron](https://www.electronjs.org/) (`git merge electron --squash`)
 
@@ -239,6 +242,14 @@ The most basic configuration.
   // ...
 }
 ```
+
+## Examples
+
+- [Hello World](./src/hello-world)
+- CRUD Operations
+- Authentication
+- File Uploads
+- Realtime Data
 
 ## Directory Structure
 

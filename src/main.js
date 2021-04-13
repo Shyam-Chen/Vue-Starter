@@ -1,7 +1,6 @@
 import 'virtual:windi.css';
 import { createApp } from 'vue';
 
-import '~/core/style.css';
 import { router } from '~/core/router.js';
 import { localer } from '~/core/localer.js';
 import { stateSymbol, createState } from '~/core/store.js';
