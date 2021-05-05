@@ -34,7 +34,6 @@ export const localer = createLocaler({
   methods: {
     async initialLanguage({ commit }, mod) {
       const lang = localStorage.getItem('lang') || getUserLang();
-      if (lang === 'en-US') return;
       document.documentElement.lang = lang;
       const res = await import(`../locales/${lang}.js`);
       commit('injectLanguage', { lang, locale: res.default });

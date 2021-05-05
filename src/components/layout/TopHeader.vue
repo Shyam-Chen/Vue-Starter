@@ -61,34 +61,26 @@ function toggleMenu() {
               aria-orientation="vertical"
               aria-labelledby="options-menu"
             >
-              <div class="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">
-                Hello World
-              </div>
-              <!-- <div class="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">
-                CRUD Operations
-              </div> -->
-              <!-- <div class="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">
-                Authentication
-              </div> -->
-              <!-- <div class="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">
-                File Uploads
-              </div> -->
-              <!-- <div class="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">
-                Realtime Data
-              </div> -->
+              <router-link
+                :to="{ name: 'home' }"
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                >Home</router-link
+              >
+              <router-link
+                :to="{ name: 'helloWorld' }"
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                >Hello World</router-link
+              >
             </div>
           </div>
         </transition>
       </div>
 
       <div class="hidden md:flex divide-x divide-gray-300 text-gray-600">
-        <router-link :to="{ name: 'helloWorld' }" class="py-1 px-3 hover:text-green-500"
+        <router-link :to="{ name: 'home' }" class="px-3 hover:text-green-500">Home</router-link>
+        <router-link :to="{ name: 'helloWorld' }" class="px-3 hover:text-green-500"
           >Hello World</router-link
         >
-        <!-- <div class="py-1 px-3 hover:text-green-500">CRUD Operations</div> -->
-        <!-- <div class="py-1 px-3 hover:text-green-500">Authentication</div> -->
-        <!-- <div class="py-1 px-3 hover:text-green-500">File Uploads</div> -->
-        <!-- <div class="py-1 px-3 hover:text-green-500">Realtime Data</div> -->
       </div>
     </div>
   </header>

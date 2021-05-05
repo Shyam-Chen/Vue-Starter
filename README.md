@@ -99,10 +99,12 @@ This seed repository provides the following features:
 - [x] [Vue](https://github.com/vuejs/vue)
 - [x] [Vue Router](https://github.com/vuejs/vue-router)
 - [x] [Vue Localer](https://github.com/Vanilla-IceCream/vue-localer)
+- [ ] [Vue Use](https://github.com/vueuse/vueuse)
 - ---------- **Tools** ----------
 - [x] [Vite](https://github.com/vitejs/vite)
 - [x] [Windi CSS](https://github.com/windicss/windicss)
-- [ ] [Iconify](https://github.com/iconify/iconify)
+- [x] [Iconify](https://github.com/iconify/iconify)
+- [ ] [Workbox](https://github.com/GoogleChrome/workbox)
 - [x] [ESLint](https://github.com/eslint/eslint)
 - [x] [Prettier](https://github.com/prettier/prettier)
 - [ ] [Jest](https://github.com/facebook/jest)
