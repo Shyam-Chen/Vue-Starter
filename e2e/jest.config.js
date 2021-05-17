@@ -4,7 +4,10 @@ module.exports = {
   },
   setupFilesAfterEnv: ['<rootDir>/setup.js'],
   testEnvironment: 'node',
-  testMatch: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test|meas).[jt]s?(x)'],
+  testMatch: [
+    process.env.TEST_MATCH === 'spec' && '**/?(*.)+(spec).[jt]s?(x)',
+    process.env.TEST_MATCH === 'meas' && '**/?(*.)+(meas).[jt]s?(x)',
+  ].filter(Boolean),
   testURL: 'http://localhost',
   transform: {
     '^.+\\.js$': 'babel-jest',
