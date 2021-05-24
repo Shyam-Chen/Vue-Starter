@@ -1,4 +1,3 @@
-
 import { chromium } from 'playwright';
 import lighthouse from 'lighthouse';
 
@@ -7,7 +6,7 @@ jest.setTimeout(100 * 1000);
 global.SITE_URL = 'http://localhost:8080/#';
 global.API_URL = 'http://localhost:3000';
 
-global.audit = async url => {
+global.audit = async (url) => {
   const lhr = await lighthouse(url, {
     port: 9222,
   });

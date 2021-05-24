@@ -1,4 +1,3 @@
-
 import { Mockiavelli } from 'mockiavelli';
 import responses from 'responses/auth';
 
@@ -46,7 +45,7 @@ describe('Auth', () => {
 
   it('should get Sign In', async () => {
     const signInBtn = '#sign-in';
-    const text = await page.$eval(signInBtn, el => el.textContent);
+    const text = await page.$eval(signInBtn, (el) => el.textContent);
     expect(text).toMatch('Sign In');
   });
 
@@ -61,7 +60,7 @@ describe('Auth', () => {
 
     const twoFactorAuth = '#two-factor-auth';
     await page.waitForSelector(twoFactorAuth);
-    const twoFactorAuthText = await page.$eval(twoFactorAuth, el => el.textContent);
+    const twoFactorAuthText = await page.$eval(twoFactorAuth, (el) => el.textContent);
     expect(twoFactorAuthText).toMatch('Two-factor Authentication');
   });
 });

@@ -7,7 +7,7 @@
     "build": "vite build",
     "lint": "eslint 'src/**/*.{js,vue}'",
     "unit": "jest --coverage",
-    "preview": "vite preview",
+    "preview": "caddy run",
     "setup": "cd e2e && yarn install",
     "e2e": "cd e2e && yarn test",
     "meas": "cd e2e && yarn perf",

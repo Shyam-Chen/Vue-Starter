@@ -21,6 +21,6 @@ describe('Auth', () => {
   it('should get a performance audit', async () => {
     const lhr = await global.audit(`${global.SITE_URL}/`);
     const score = await global.result(lhr, 'performance');
-    expect(score).toBeGreaterThanOrEqual(60);
+    expect(score).toBeGreaterThanOrEqual(90);
   });
 });
