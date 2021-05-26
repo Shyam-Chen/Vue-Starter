@@ -303,7 +303,7 @@ The structure follows the LIFT Guidelines.
 ├── .eslintrc
 ├── .gitignore
 ├── .prettierrc
-├── .stylelintrc
+├── Caddyfile
 ├── circle.yml
 ├── docker-compose.yml
 ├── Dockerfile
@@ -322,4 +322,4 @@ The structure follows the LIFT Guidelines.
 
 > Techniques, strategies and recipes for building a **modern web app** with **multiple teams** that can **ship features independently**.
 
-See [Client-side Micro-Fullstack](https://github.com/Shyam-Chen/Micro-Fullstack/tree/master/client) for instructions on how to create microservices from source.
+See [Micro-Fullstack's Micro Frontends](https://github.com/Shyam-Chen/Micro-Fullstack/tree/main/mfe) for instructions on how to create microservices from source code.
