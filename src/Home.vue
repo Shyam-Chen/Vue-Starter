@@ -1,16 +1,14 @@
 <script setup>
 import { useLocaler, useLocale } from 'vue-localer';
 
-import { useState } from '~/core/store.js';
+import { useState, useActions, useComputeds } from '~/core/store.js';
 import logo from '~/assets/logo.png';
 
 const state = useState();
+const actions = useActions();
+const computeds = useComputeds();
 const localer = useLocaler();
 const locale = useLocale();
-
-function add() {
-  state.foo += '123+';
-}
 
 function changeLang(event) {
   localer.dispatch('setLanguage', event.target.value);
@@ -18,13 +16,12 @@ function changeLang(event) {
 </script>
 
 <template>
+  <div>{{ state.count }}</div>
+  <div>{{ computeds.evenOrOdd.value }}</div>
+  <button @click="actions.incrementCount">Increment Count</button>
+
   <img alt="Vue logo" :src="logo" />
   <div>{{ $f('Hello, {msg}!', { msg: 'Vue' }) }}</div>
-
-  <div>
-    <div>{{ state.foo }}</div>
-    <button @click="add">Add 123+</button>
-  </div>
 
   <div>
     <div>{{ locale.title }}</div>
