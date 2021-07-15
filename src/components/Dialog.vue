@@ -1,5 +1,25 @@
 <script setup>
+import { defineProps, defineEmits, watch, onUnmounted } from 'vue';
 
+const props = defineProps(['modelValue']);
+const emits = defineEmits(['update:modelValue']);
+
+const closeDialog = () => {
+  emits('update:modelValue', !props.modelValue);
+};
+
+watch(
+  () => props.modelValue,
+  (val) => {
+    document.body.style.overflow = val ? 'hidden' : 'auto';
+  },
+);
+
+onUnmounted(() => {
+  if (props.modelValue) {
+    closeDialog();
+  }
+});
 </script>
 
 <template>
@@ -9,11 +29,11 @@
     enter-class="opacity-0"
     leave-to-class="opacity-0"
   >
-    <div v-if="value" class="fixed z-10 inset-0 overflow-y-auto">
+    <div v-if="props.modelValue" class="fixed z-10 inset-0 overflow-y-auto">
       <div
         class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0"
       >
-        <div class="fixed inset-0 transition-opacity" aria-hidden="true" @click="close">
+        <div class="fixed inset-0 transition-opacity" aria-hidden="true" @click="closeDialog">
           <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
         </div>
 
@@ -27,11 +47,16 @@
           aria-modal="true"
           aria-labelledby="modal-headline"
         >
-          <div class="absolute top-1 right-1 cursor-pointer" @click="close">
-            <svg class="w-6 h-6 fill-current text-gray-400 hover:text-gray-600" viewBox="0 0 24 24">
+          <!-- <div class="absolute top-1 right-1 cursor-pointer" @click="closeDialog">
+            <svg
+              width="24"
+              height="24"
+              class="w-6 h-6 fill-current text-gray-400 hover:text-gray-600"
+              viewBox="0 0 24 24"
+            >
               <path :d="mdiClose" />
             </svg>
-          </div>
+          </div> -->
 
           <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
             <slot></slot>

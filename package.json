@@ -15,14 +15,14 @@
     "mock": "cd mock/requests && yarn serve"
   },
   "dependencies": {
-    "vue": "^3.0.5",
+    "vue": "^3.1.4",
     "vue-localer": "^0.3.1",
     "vue-router": "^4.0.3"
   },
   "devDependencies": {
     "@iconify/json": "^1.1.329",
     "@vitejs/plugin-vue": "^1.1.4",
-    "@vue/compiler-sfc": "^3.0.5",
+    "@vue/compiler-sfc": "^3.1.4",
     "eslint": "^7.22.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-prettier-vue": "^3.0.0",

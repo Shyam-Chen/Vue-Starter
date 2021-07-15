@@ -1,9 +1,13 @@
 <script setup>
+import { ref } from 'vue';
 import { useLocaler, useLocale } from 'vue-localer';
 
 import { useState, useActions, useComputeds } from '~/core/store.js';
 import logo from '~/assets/logo.png';
 
+import Dialog from '~/components/Dialog.vue';
+
+const dialog = ref(false);
 const state = useState();
 const actions = useActions();
 const computeds = useComputeds();
@@ -19,6 +23,10 @@ function changeLang(event) {
   <div>{{ state.count }}</div>
   <div>{{ computeds.evenOrOdd.value }}</div>
   <button @click="actions.incrementCount">Increment Count</button>
+
+  <div class="my-10">
+    <button class="block border text-white bg-blue-500" @click="dialog = true">Open Dialog</button>
+  </div>
 
   <img alt="Vue logo" :src="logo" />
   <div>{{ $f('Hello, {msg}!', { msg: 'Vue' }) }}</div>
@@ -39,4 +47,6 @@ function changeLang(event) {
     <!-- vscode-icons:file-type-node -->
     <icon-vscodeIcons-fileTypeNode class="w-10 h-10" />
   </div>
+
+  <Dialog v-model="dialog" />
 </template>
