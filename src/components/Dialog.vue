@@ -47,16 +47,9 @@ onUnmounted(() => {
           aria-modal="true"
           aria-labelledby="modal-headline"
         >
-          <!-- <div class="absolute top-1 right-1 cursor-pointer" @click="closeDialog">
-            <svg
-              width="24"
-              height="24"
-              class="w-6 h-6 fill-current text-gray-400 hover:text-gray-600"
-              viewBox="0 0 24 24"
-            >
-              <path :d="mdiClose" />
-            </svg>
-          </div> -->
+          <div class="absolute top-1 right-1 cursor-pointer" @click="closeDialog">
+            <icon-ionClose class="w-6 h-6 fill-current text-gray-400 hover:text-gray-600" />
+          </div>
 
           <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
             <slot></slot>

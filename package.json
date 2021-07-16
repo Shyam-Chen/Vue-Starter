@@ -32,6 +32,7 @@
     "vite": "^2.0.1",
     "vite-plugin-components": "^0.8.3",
     "vite-plugin-icons": "^0.5.0",
-    "vite-plugin-windicss": "^0.10.2"
+    "vite-plugin-windicss": "^1.2.4",
+    "windicss": "^3.1.5"
   }
 }
