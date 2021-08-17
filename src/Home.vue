@@ -11,6 +11,7 @@ const dialog = ref(false);
 const state = useState();
 const actions = useActions();
 const computeds = useComputeds();
+const { evenOrOdd } = useComputeds();
 const localer = useLocaler();
 const locale = useLocale();
 
@@ -22,6 +23,7 @@ function changeLang(event) {
 <template>
   <div>{{ state.count }}</div>
   <div>{{ computeds.evenOrOdd.value }}</div>
+  <div>{{ evenOrOdd }}</div>
   <button @click="actions.incrementCount">Increment Count</button>
 
   <div class="my-10">
