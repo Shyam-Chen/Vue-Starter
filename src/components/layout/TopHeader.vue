@@ -71,6 +71,11 @@ function toggleMenu() {
                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                 >Hello World</router-link
               >
+              <router-link
+                :to="{ name: 'counter' }"
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                >Counter</router-link
+              >
             </div>
           </div>
         </transition>
@@ -80,6 +85,9 @@ function toggleMenu() {
         <router-link :to="{ name: 'home' }" class="px-3 hover:text-green-500">Home</router-link>
         <router-link :to="{ name: 'helloWorld' }" class="px-3 hover:text-green-500"
           >Hello World</router-link
+        >
+        <router-link :to="{ name: 'counter' }" class="px-3 hover:text-green-500"
+          >Counter</router-link
         >
       </div>
     </div>

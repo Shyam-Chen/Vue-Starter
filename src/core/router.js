@@ -18,6 +18,11 @@ export const router = createRouter({
       component: () => import('~/modules/hello-world/HelloWorld.vue'),
     },
     {
+      path: '/counter',
+      name: 'counter',
+      component: () => import('~/modules/counter/Counter.vue'),
+    },
+    {
       path: '/crud-operations',
       component: () => import('~/modules/crud-operations/CrudOperations.vue'),
     },
