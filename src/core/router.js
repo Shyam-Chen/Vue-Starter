@@ -18,9 +18,14 @@ export const router = createRouter({
       component: () => import('~/modules/hello-world/HelloWorld.vue'),
     },
     {
-      path: '/counter',
-      name: 'counter',
-      component: () => import('~/modules/counter/Counter.vue'),
+      path: '/store-pattern',
+      name: 'storePattern',
+      component: () => import('~/modules/store-pattern/StorePattern.vue'),
+    },
+    {
+      path: '/form-validation',
+      name: 'formValidation',
+      component: () => import('~/modules/form-validation/FormValidation.vue'),
     },
     {
       path: '/crud-operations',

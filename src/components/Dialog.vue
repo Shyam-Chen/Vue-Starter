@@ -1,5 +1,5 @@
 <script setup>
-import { defineProps, defineEmits, watch, onUnmounted } from 'vue';
+import { watch, onUnmounted } from 'vue';
 
 const props = defineProps(['modelValue']);
 const emits = defineEmits(['update:modelValue']);

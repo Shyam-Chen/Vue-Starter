@@ -72,9 +72,14 @@ function toggleMenu() {
                 >Hello World</router-link
               >
               <router-link
-                :to="{ name: 'counter' }"
+                :to="{ name: 'storePattern' }"
                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                >Counter</router-link
+                >Store Pattern</router-link
+              >
+              <router-link
+                :to="{ name: 'formValidation' }"
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                >Form Validation</router-link
               >
             </div>
           </div>
@@ -86,8 +91,11 @@ function toggleMenu() {
         <router-link :to="{ name: 'helloWorld' }" class="px-3 hover:text-green-500"
           >Hello World</router-link
         >
-        <router-link :to="{ name: 'counter' }" class="px-3 hover:text-green-500"
-          >Counter</router-link
+        <router-link :to="{ name: 'storePattern' }" class="px-3 hover:text-green-500"
+          >Store Pattern</router-link
+        >
+        <router-link :to="{ name: 'formValidation' }" class="px-3 hover:text-green-500"
+          >Form Validation</router-link
         >
       </div>
     </div>
