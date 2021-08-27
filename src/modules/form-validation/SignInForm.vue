@@ -9,8 +9,6 @@ const actions = useActions();
 
 const validator = useValidator();
 
-const username = computed(() => state.signInForm.username);
-
 const validation = useValidation(
   [
     [computed(() => state.signInForm.username), [validator.required]],
@@ -20,8 +18,6 @@ const validation = useValidation(
 );
 
 const onSignIn = () => {
-  console.log(username);
-
   if (validation.validate()) {
     actions.signIn();
   }
