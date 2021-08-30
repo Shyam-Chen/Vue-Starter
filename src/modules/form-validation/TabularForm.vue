@@ -19,18 +19,17 @@ const validationStack = useValidationStack(
   (row, idx) => [
     [computed(() => row.firstField), [validator.required]],
     [computed(() => row.secondField), [validator.required]],
-    [computed(() => row.thirdField), [validator.required]],
   ],
   state.errors,
 );
 
 onMounted(() => {
-  state.table = [{ firstField: '', secondField: '', thirdField: '' }];
+  state.table = [{ firstField: '', secondField: '' }];
 });
 
 const add = () => {
   const arr = [...state.table];
-  arr.push({ firstField: '', secondField: '', thirdField: '' });
+  arr.push({ firstField: '', secondField: '' });
   state.table = arr;
 };
 
@@ -48,7 +47,9 @@ const submit = () => {
 </script>
 
 <template>
-  <div>
+  <form>
+    <div class="font-bold">Tabular Form</div>
+
     <button class="bg-blue-500 hover:bg-blue-700 text-white px-4 py-1 rounded" @click="add">
       Add
     </button>
@@ -62,10 +63,6 @@ const submit = () => {
         <td>
           <input v-model="row.secondField" class="border" />
           <div class="text-red-500">{{ state.errors[`table[${idx}].secondField`] }}</div>
-        </td>
-        <td>
-          <input v-model="row.thirdField" class="border" />
-          <div class="text-red-500">{{ state.errors[`table[${idx}].thirdField`] }}</div>
         </td>
         <td>
           <button
@@ -85,5 +82,5 @@ const submit = () => {
     >
       Submit
     </button>
-  </div>
+  </form>
 </template>

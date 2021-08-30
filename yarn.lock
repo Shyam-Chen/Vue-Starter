@@ -1515,10 +1515,10 @@ vue-eslint-parser@^7.6.0:
     esquery "^1.4.0"
     lodash "^4.17.15"
 
-vue-formor@^0.5.0:
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/vue-formor/-/vue-formor-0.5.0.tgz#4f804940cfb781a55de034aa0d9048cedea43436"
-  integrity sha512-+iMYONIcPvXkc94/im5BJgZJeaNPg5u1qhqFDKrmGptmAPYgY/gsm9LDt4l5rqzVsOtIABBz0xiN3YFjjkQ7DA==
+vue-formor@^0.5.1:
+  version "0.5.1"
+  resolved "http://161.202.62.99:4873/vue-formor/-/vue-formor-0.5.1.tgz#437c142e5dff23bd9a245851986277fb710480a4"
+  integrity sha512-Ic+6bTuLy0K/1icR7vDeEo7yQ9mi0mWaYdGPdsH9kcQhGh/FaCVN8uNWtYnW4ly8KBcE13izpx2wXHjkBHaITQ==
 
 vue-localer@^0.3.1:
   version "0.3.1"
