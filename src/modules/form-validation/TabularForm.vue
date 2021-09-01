@@ -47,7 +47,7 @@ const submit = () => {
 </script>
 
 <template>
-  <form>
+  <div>
     <div class="font-bold">Tabular Form</div>
 
     <button class="bg-blue-500 hover:bg-blue-700 text-white px-4 py-1 rounded" @click="add">
@@ -82,5 +82,5 @@ const submit = () => {
     >
       Submit
     </button>
-  </form>
+  </div>
 </template>
