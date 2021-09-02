@@ -6,7 +6,9 @@ const state = reactive({
   form: {
     firstField: '',
     secondField: '',
+    thirdField: '',
   },
+  thirdRules: [],
   errors: {},
 });
 
@@ -19,9 +21,18 @@ const validation = useValidation(
       computed(() => state.form.secondField),
       computed(() => (state.form.firstField === 'volvo' ? [validator.required] : [])),
     ],
+    [computed(() => state.form.thirdField), computed(() => state.thirdRules)],
   ],
   state.errors,
 );
+
+const changeSecondField = (event) => {
+  if (event.target.value.length > 1) {
+    state.thirdRules = [validator.minLength(2)];
+  } else {
+    state.thirdRules = [];
+  }
+};
 
 const submit = () => {
   if (validation.validate()) {
@@ -52,8 +63,20 @@ const submit = () => {
         v-model="state.form.secondField"
         type="text"
         class="border"
+        @input="changeSecondField"
       />
       <div class="text-red-500">{{ state.errors['form.secondField'] }}</div>
+    </div>
+
+    <div>
+      <label for="des">Third Field:</label>
+      <input
+        id="dynamicRules-thirdField"
+        v-model="state.form.thirdField"
+        type="text"
+        class="border"
+      />
+      <div class="text-red-500">{{ state.errors['form.thirdField'] }}</div>
     </div>
 
     <div>
