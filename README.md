@@ -100,7 +100,6 @@ This seed repository provides the following features:
 - [x] [Vue Router](https://github.com/vuejs/vue-router)
 - [x] [Vue Localer](https://github.com/Vanilla-IceCream/vue-localer)
 - [x] [Vue Formor](https://github.com/Vanilla-IceCream/vue-formor)
-- [ ] [Vue Use](https://github.com/vueuse/vueuse)
 - ---------- **Tools** ----------
 - [x] [Vite](https://github.com/vitejs/vite)
 - [x] [Windi CSS](https://github.com/windicss/windicss)

@@ -1,8 +1,8 @@
 import { createLocaler } from 'vue-localer';
 
-import enUS from '~/locales/en-US';
+import enUS from '~/locales/en-US.js';
 
-import { router } from './router';
+import { router } from './router.js';
 
 export const langList = {
   'en-US': 'American English',
@@ -24,8 +24,6 @@ function camelToHyphen(str) {
   return str.replace(/([A-Z])/g, (match) => '-' + match.toLowerCase());
 }
 
-let _mod = '';
-
 export const localer = createLocaler({
   data: {
     lang: 'en-US',
@@ -39,8 +37,7 @@ export const localer = createLocaler({
       commit('injectLanguage', { lang, locale: res.default });
 
       if (mod) {
-        _mod = camelToHyphen(mod);
-        const modRes = await import(`../modules/${_mod}/locales/${lang}.js`);
+        const modRes = await import(`../modules/${camelToHyphen(mod)}/locales/${lang}.js`);
         commit(`${mod}/injectLanguage`, { locale: modRes.default });
       }
     },
@@ -52,7 +49,7 @@ export const localer = createLocaler({
 
       if (router.currentRoute.value.name !== 'home') {
         let mod = router.currentRoute.value.name.split('/')[0];
-        const modRes = await import(`../modules/${_mod}/locales/${lang}.js`);
+        const modRes = await import(`../modules/${camelToHyphen(mod)}/locales/${lang}.js`);
         commit(`${mod}/injectLanguage`, { locale: modRes.default });
       }
     },

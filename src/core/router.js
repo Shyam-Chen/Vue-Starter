@@ -29,6 +29,7 @@ export const router = createRouter({
     },
     {
       path: '/crud-operations',
+      name: 'crudOperations',
       component: () => import('~/modules/crud-operations/CrudOperations.vue'),
     },
     {
