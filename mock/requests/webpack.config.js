@@ -29,6 +29,7 @@ module.exports = ({ prod } = {}) => ({
   resolve: {
     alias: {
       '~': SOURCE_ROOT,
+      responses: path.join(__dirname, '../responses'),
     },
   },
   plugins: [
