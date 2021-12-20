@@ -1,7 +1,7 @@
 <script setup>
 import { useLocaler, useLocale } from 'vue-localer';
 
-import enUS from './locales/en-US.js';
+import enUS from './_locales/en-US.js';
 
 const localer = useLocaler();
 const locale = useLocale('helloWorld');

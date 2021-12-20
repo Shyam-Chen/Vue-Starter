@@ -37,7 +37,7 @@ export const localer = createLocaler({
       commit('injectLanguage', { lang, locale: res.default });
 
       if (mod) {
-        const modRes = await import(`../modules/${camelToHyphen(mod)}/locales/${lang}.js`);
+        const modRes = await import(`../modules/${camelToHyphen(mod)}/_locales/${lang}.js`);
         commit(`${mod}/injectLanguage`, { locale: modRes.default });
       }
     },
@@ -49,7 +49,7 @@ export const localer = createLocaler({
 
       if (router.currentRoute.value.name !== 'home') {
         let mod = router.currentRoute.value.name.split('/')[0];
-        const modRes = await import(`../modules/${camelToHyphen(mod)}/locales/${lang}.js`);
+        const modRes = await import(`../modules/${camelToHyphen(mod)}/_locales/${lang}.js`);
         commit(`${mod}/injectLanguage`, { locale: modRes.default });
       }
     },
