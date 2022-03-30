@@ -1,6 +1,6 @@
 <script setup>
 import { reactive, computed, onMounted } from 'vue';
-import { useValidator, useValidation, useValidationStack } from 'vue-formor';
+import { useValidator, useValidation } from 'vue-formor';
 
 const state = reactive({
   table: [],
@@ -10,17 +10,17 @@ const state = reactive({
 const validator = useValidator();
 
 const validation = useValidation(
-  [[computed(() => state.table), [validator.required]]],
-  state.errors,
-);
-
-const validationStack = useValidationStack(
-  computed(() => state.table),
-  (row, idx) => [
-    [computed(() => row.firstField), [validator.required]],
-    [computed(() => row.secondField), [validator.required]],
+  [
+    [computed(() => state.table), [validator.required]],
+    [
+      computed(() => state.table),
+      (row, idx) => [
+        [computed(() => row.firstField), [validator.required]],
+        [computed(() => row.secondField), [validator.required]],
+      ],
+    ],
   ],
-  state.errors,
+  state,
 );
 
 onMounted(() => {
@@ -40,7 +40,7 @@ const remove = (idx) => {
 };
 
 const submit = () => {
-  if (validator.validateAll(validation, validationStack)) {
+  if (validation.validate()) {
     console.log('Submit');
   }
 };

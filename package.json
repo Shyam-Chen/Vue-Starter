@@ -15,10 +15,10 @@
     "mock": "cd mock/requests && yarn serve"
   },
   "dependencies": {
-    "vue": "3.2.4",
-    "vue-formor": "^0.6.0",
-    "vue-localer": "^0.3.1",
-    "vue-router": "^4.0.3"
+    "vue": "3.2.31",
+    "vue-formor": "1.0.1",
+    "vue-localer": "0.3.1",
+    "vue-router": "4.0.14"
   },
   "devDependencies": {
     "@iconify/json": "^1.1.329",

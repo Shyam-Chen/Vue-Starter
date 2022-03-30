@@ -17,7 +17,7 @@ const validation = useValidation(
     [computed(() => state.form.firstField), [validator.required]],
     [computed(() => state.form.secondField), [validator.required]],
   ],
-  state.errors,
+  state,
 );
 
 const submit = () => {

@@ -23,12 +23,12 @@ const validation = useValidation(
     ],
     [computed(() => state.form.thirdField), computed(() => state.thirdRules)],
   ],
-  state.errors,
+  state,
 );
 
 const changeSecondField = (event) => {
   if (event.target.value.length > 1) {
-    state.thirdRules = [validator.minLength(2)];
+    state.thirdRules = [validator.required, validator.minLength(2)];
   } else {
     state.thirdRules = [];
   }
