@@ -1,6 +1,6 @@
 # Vue Starter
 
-:poodle: A boilerplate for HTML5, Vue, Vue Router, i18n, Tailwind, Windi, Netlify, and Vite.
+:poodle: A boilerplate for HTML5, Vue, Vue Router, UnoCSS, Vite, Vitest, and Netlify.
 
 ## Table of Contents
 
@@ -98,25 +98,23 @@ This seed repository provides the following features:
 - ---------- **Essentials** ----------
 - [x] [Vue](https://github.com/vuejs/vue)
 - [x] [Vue Router](https://github.com/vuejs/vue-router)
-- [x] [Vue Localer](https://github.com/Vanilla-IceCream/vue-localer)
-- [x] [Vue Formor](https://github.com/Vanilla-IceCream/vue-formor)
+- [x] [Vue Localer](https://github.com/Vanilla-IceCream/vue-localer) - Internationalization
+- [x] [Vue Formor](https://github.com/Vanilla-IceCream/vue-formor) - Form Validation
 - ---------- **Tools** ----------
 - [x] [Vite](https://github.com/vitejs/vite)
-- [x] [Windi CSS](https://github.com/windicss/windicss)
+- [x] [UnoCSS](https://github.com/unocss/unocss)
 - [x] [Iconify](https://github.com/iconify/iconify)
 - [ ] [Workbox](https://github.com/GoogleChrome/workbox)
 - [x] [ESLint](https://github.com/eslint/eslint)
 - [x] [Prettier](https://github.com/prettier/prettier)
-- [ ] [Jest](https://github.com/facebook/jest)
-- [x] [Playwright](https://github.com/microsoft/playwright)
-- [x] [Lighthouse](https://github.com/GoogleChrome/lighthouse)
+- [ ] [Vitest](https://github.com/vitest-dev/vitest)
+- [ ] [Playwright](https://github.com/microsoft/playwright)
+- [ ] [Lighthouse](https://github.com/GoogleChrome/lighthouse)
 - ---------- **Environments** ----------
 - [x] [Node.js](https://nodejs.org/en/)
-- [x] [Yarn](https://classic.yarnpkg.com/lang/en/)
+- [ ] [Pnpm](https://pnpm.io/)
 - [x] [Caddy](https://caddyserver.com/)
 - [ ] [Netlify](https://www.netlify.com/)
-- [ ] [Capacitor](https://capacitorjs.com/) (`git merge capacitor --squash`)
-- [ ] [Electron](https://www.electronjs.org/) (`git merge electron --squash`)
 
 ## Dockerization
 

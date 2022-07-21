@@ -38,16 +38,20 @@ function changeLang(event) {
   </div>
 
   <div class="border border-gray-300">
-    <div class="text-2xl">Windi CSS + Iconify</div>
+    <div class="text-2xl">Iconify</div>
 
-    <!-- flat-color-icons:google -->
-    <icon-flatColorIcons-google class="w-10 h-10" />
-
-    <!-- flat-ui:google -->
-    <icon-flatUi-google class="w-10 h-10" />
-
-    <!-- vscode-icons:file-type-node -->
-    <icon-vscodeIcons-fileTypeNode class="w-10 h-10" />
+    <!-- A basic anchor icon from Phosphor icons -->
+    <div class="i-ph-anchor-simple-thin"></div>
+    <!-- An orange alarm from Material Design Icons -->
+    <div class="i-mdi-alarm text-orange-400"></div>
+    <!-- A large Vue logo -->
+    <div class="i-logos-vue text-3xl"></div>
+    <!-- Sun in light mode, Moon in dark mode, from Carbon -->
+    <button class="i-carbon-sun dark:i-carbon-moon"></button>
+    <!-- Twemoji of laugh, turns to tear on hovering -->
+    <div
+      class="i-twemoji-grinning-face-with-smiling-eyes hover:i-twemoji-face-with-tears-of-joy"
+    ></div>
   </div>
 
   <Dialog v-model="dialog" />

@@ -15,25 +15,24 @@
     "mock": "cd mock/requests && yarn serve"
   },
   "dependencies": {
-    "vue": "3.2.31",
+    "vue": "3.2.37",
     "vue-formor": "1.0.1",
     "vue-localer": "0.3.1",
-    "vue-router": "4.0.14"
+    "vue-router": "4.1.2"
   },
   "devDependencies": {
-    "@iconify/json": "^1.1.329",
+    "@iconify/json": "^2.1.80",
+    "@unocss/preset-icons": "^0.44.5",
     "@vitejs/plugin-vue": "^1.1.4",
-    "@vue/compiler-sfc": "3.2.4",
+    "@vue/compiler-sfc": "3.2.37",
     "eslint": "^7.22.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-prettier-vue": "^3.0.0",
     "eslint-plugin-vue": "^7.7.0",
     "prettier": "^2.2.1",
     "process-envify": "^1.0.2",
+    "unocss": "^0.44.5",
     "vite": "^2.0.1",
-    "vite-plugin-components": "^0.8.3",
-    "vite-plugin-icons": "^0.5.0",
-    "vite-plugin-windicss": "^1.2.4",
-    "windicss": "^3.1.5"
+    "vitest": "^0.18.1"
   }
 }
