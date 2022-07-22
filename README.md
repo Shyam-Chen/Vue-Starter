@@ -19,19 +19,19 @@ Follow steps to execute this boilerplate.
 ### Install dependencies
 
 ```sh
-$ yarn install
+$ pnpm install
 ```
 
 ### Compiles and hot-reloads for development
 
 ```sh
-$ yarn serve
+$ pnpm serve
 ```
 
 ### Compiles and minifies for production
 
 ```sh
-$ yarn build
+$ pnpm build
 ```
 
 ### Lints and fixes files
@@ -39,7 +39,7 @@ $ yarn build
 Files: `src/**/*.{js,vue}`
 
 ```sh
-$ yarn lint
+$ pnpm lint
 ```
 
 ### Runs unit tests
@@ -47,7 +47,7 @@ $ yarn lint
 Files: `src/**/*.spec.js`
 
 ```sh
-$ yarn unit
+$ pnpm unit
 ```
 
 ### Runs end-to-end tests
@@ -56,13 +56,13 @@ Files: `e2e/**/*.spec.js`
 
 ```sh
 # Before running the `e2e` command, make sure to run the following commands.
-$ yarn build
-$ yarn preview
+$ pnpm build
+$ pnpm preview
 
 # If it's not setup, run it.
-$ yarn setup
+$ pnpm setup
 
-$ yarn e2e
+$ pnpm e2e
 ```
 
 ### Measures site's URLs
@@ -71,24 +71,24 @@ Files: `e2e/**/*.meas.js`
 
 ```sh
 # Before running the `meas` command, make sure to run the following commands.
-$ yarn build
-$ yarn preview
+$ pnpm build
+$ pnpm preview
 
 # If it's not setup, run it.
-$ yarn setup
+$ pnpm setup
 
-$ yarn meas
+$ pnpm meas
 ```
 
 ### Mock requests
 
-[`mock/requests`](./mock/requests) is a fork of [Koa-Starter](https://github.com/Shyam-Chen/Koa-Starter) that was made easy and quick way to run mock APIs locally.
+[`mock/requests`](./mock/requests) is a fork of [Fastify-Starter](https://github.com/Shyam-Chen/Fastify-Starter) that was made easy and quick way to run mock APIs locally.
 
 ```sh
 # If it's not active, run it.
-$ yarn active
+$ pnpm active
 
-$ yarn mock
+$ pnpm mock
 ```
 
 ## Key Features
@@ -205,17 +205,17 @@ module.exports = new Environment();
 ```
 
 ```sh
-$ yarn add env-cmd -D
+$ pnpm add env-cmd -D
 ```
 
 ```js
 // package.json
 
   "scripts": {
-    // "env-cmd -f ./envs/<ENV_NAME>.js" + "yarn build"
-    "build:dev": "env-cmd -f ./envs/dev.js yarn build",
-    "build:stage": "env-cmd -f ./envs/stage.js yarn build",
-    "build:prod": "env-cmd -f ./envs/prod.js yarn build",
+    // "env-cmd -f ./envs/<ENV_NAME>.js" + "pnpm build"
+    "build:dev": "env-cmd -f ./envs/dev.js pnpm build",
+    "build:stage": "env-cmd -f ./envs/stage.js pnpm build",
+    "build:prod": "env-cmd -f ./envs/prod.js pnpm build",
   },
 ```
 
@@ -312,8 +312,7 @@ The structure follows the LIFT Guidelines.
 ├── netlify.toml
 ├── package.json
 ├── README.md
-├── vite.config.js
-└── yarn.lock
+└── vite.config.js
 ```
 
 ## Microservices

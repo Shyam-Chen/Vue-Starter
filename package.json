@@ -8,11 +8,11 @@
     "lint": "eslint 'src/**/*.{js,vue}'",
     "unit": "jest --coverage",
     "preview": "caddy run",
-    "setup": "cd e2e && yarn install",
-    "e2e": "cd e2e && yarn test",
-    "meas": "cd e2e && yarn perf",
-    "active": "cd mock/requests && yarn install",
-    "mock": "cd mock/requests && yarn serve"
+    "setup": "cd e2e && pnpm install",
+    "e2e": "cd e2e && pnpm test",
+    "meas": "cd e2e && pnpm perf",
+    "active": "cd mock/requests && pnpm install",
+    "mock": "cd mock/requests && pnpm serve"
   },
   "dependencies": {
     "vue": "3.2.37",

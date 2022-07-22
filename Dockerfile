@@ -31,6 +31,6 @@ RUN \
   rm -rf /var/lib/apt/lists/* && \
   rm -rf /src/*.deb
 
-RUN yarn install --frozen-lockfile
+RUN pnpm install
 
 EXPOSE 8000

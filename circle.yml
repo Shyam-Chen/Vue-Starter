@@ -15,21 +15,21 @@ jobs:
           name: Combat preparation
           command: |
             docker-compose up -d default
-            docker-compose exec -d default yarn serve
+            docker-compose exec -d default pnpm serve
       - run:
           name: Check the code
           command: |
-            docker-compose exec default yarn lint
+            docker-compose exec default pnpm lint
       - run:
           name: Test the application
           command: |
-            docker-compose exec default yarn unit
-            docker-compose exec default yarn _codecov -t $CODECOV_TOKEN
+            docker-compose exec default pnpm unit
+            docker-compose exec default pnpm _codecov -t $CODECOV_TOKEN
       - run:
           name: End-to-end UI tests
           command: |
             docker-compose exec default sh -c "sleep 10"
-            docker-compose exec default yarn e2e
+            docker-compose exec default pnpm e2e
 
 workflows:
   version: 2
