@@ -1,4 +1,4 @@
-// import '@unocss/reset/tailwind.css';
+import '@unocss/reset/tailwind.css';
 import 'uno.css';
 import { createApp } from 'vue';
 

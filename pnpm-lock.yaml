@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@iconify/json': ^2.1.80
   '@unocss/preset-icons': ^0.44.5
+  '@unocss/reset': ^0.45.1
   '@vitejs/plugin-vue': ^1.1.4
   '@vue/compiler-sfc': 3.2.37
   eslint: ^7.22.0
@@ -20,6 +21,7 @@ specifiers:
   vue-router: 4.1.2
 
 dependencies:
+  '@unocss/reset': 0.45.1
   vue: 3.2.37
   vue-formor: 1.0.1_vue@3.2.37
   vue-localer: 0.3.1_vue@3.2.37
@@ -321,6 +323,10 @@ packages:
   /@unocss/reset/0.44.5:
     resolution: {integrity: sha512-ZNe86u7BpzCT/5P3S49sFxLucBlfW0ir6oRqmOZe4uhN02puqFUK1L7c0dkoXTVhETxESmWaxBM5GTmbifGeZg==}
     dev: true
+
+  /@unocss/reset/0.45.1:
+    resolution: {integrity: sha512-Dmz0/x2ION2noD4/t6Tjgwwp0R7lRP5QIkc3EuumYFXjdivU0gDRhNfcdM3yZUOsZRDreMkfiZoVKlypbNxD/g==}
+    dev: false
 
   /@unocss/scope/0.44.5:
     resolution: {integrity: sha512-4x1MzeDldF257obQHnQ0F3AgkrAuoAFbWGfWgJ55rJM65MnQXEkyktmSxiArQlptwQaGzj9xwzEVMEnVVMhhsg==}
