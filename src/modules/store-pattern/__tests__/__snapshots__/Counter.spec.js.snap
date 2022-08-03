@@ -1,0 +1,8 @@
+// Vitest Snapshot v1
+
+exports[`Counter 1`] = `
+"<div>Clicked: 0 times, value is Even.</div>
+<div></div>
+<button class=\\"bg-blue-500 hover:bg-blue-700 text-white px-4 py-1 rounded\\"> Increment </button>
+<button class=\\"bg-blue-500 hover:bg-blue-700 text-white px-4 py-1 rounded\\"> Decrement </button>"
+`;

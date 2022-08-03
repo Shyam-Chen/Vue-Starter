@@ -107,12 +107,12 @@ This seed repository provides the following features:
 - [ ] [Workbox](https://github.com/GoogleChrome/workbox)
 - [x] [ESLint](https://github.com/eslint/eslint)
 - [x] [Prettier](https://github.com/prettier/prettier)
-- [ ] [Vitest](https://github.com/vitest-dev/vitest)
+- [x] [Vitest](https://github.com/vitest-dev/vitest)
 - [ ] [Playwright](https://github.com/microsoft/playwright)
 - [ ] [Lighthouse](https://github.com/GoogleChrome/lighthouse)
 - ---------- **Environments** ----------
 - [x] [Node.js](https://nodejs.org/en/)
-- [ ] [Pnpm](https://pnpm.io/)
+- [x] [Pnpm](https://pnpm.io/)
 - [x] [Caddy](https://caddyserver.com/)
 - [ ] [Netlify](https://www.netlify.com/)
 

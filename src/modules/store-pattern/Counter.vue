@@ -9,7 +9,7 @@ const reactions = useReactions();
 
 <template>
   <div>Clicked: {{ state.count }} times, value is {{ computeds.evenOrOdd.value }}.</div>
-  <dir>{{ state.prevCount }}</dir>
+  <div>{{ state.prevCount }}</div>
 
   <button
     class="bg-blue-500 hover:bg-blue-700 text-white px-4 py-1 rounded"
