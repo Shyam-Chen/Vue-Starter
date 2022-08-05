@@ -156,7 +156,7 @@ Set your local environment variables. (use `this.<ENV_NAME> = process.env.<ENV_N
 // env.js
 
 function Environment() {
-  this.API_URL = process.env.API_URL || 'http://localhost:3000';
+  this.API_URL = process.env.API_URL ?? 'http://localhost:3000';
 }
 
 export default new Environment();

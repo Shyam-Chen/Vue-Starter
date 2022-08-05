@@ -1,8 +1,8 @@
 import { reactive, inject, computed } from 'vue';
 
-const stateSymbol = Symbol('state');
+export const stateSymbol = Symbol('core');
 
-const createState = reactive({
+export const createState = reactive({
   count: 0,
 });
 
