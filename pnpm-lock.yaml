@@ -1,4 +1,4 @@
-lockfileVersion: 5.4
+lockfileVersion: 5.3
 
 specifiers:
   '@iconify/json': ^2.1.80
@@ -13,7 +13,7 @@ specifiers:
   eslint-plugin-vue: ^7.7.0
   happy-dom: ^6.0.4
   prettier: ^2.2.1
-  process-envify: ^1.0.2
+  process-envify: ^1.0.4
   unocss: ^0.44.5
   vite: ^2.0.1
   vitest: ^0.18.1
@@ -31,7 +31,7 @@ dependencies:
 
 devDependencies:
   '@iconify/json': 2.1.80
-  '@testing-library/vue': 6.6.1_2yymnzrok6eda47acnj2yjm3ae
+  '@testing-library/vue': 6.6.1_d630c6e62e57883073e01353ac259b01
   '@unocss/preset-icons': 0.44.5
   '@vitejs/plugin-vue': 1.10.2_vite@2.9.14
   '@vue/compiler-sfc': 3.2.37
@@ -41,7 +41,7 @@ devDependencies:
   eslint-plugin-vue: 7.20.0_eslint@7.32.0
   happy-dom: 6.0.4
   prettier: 2.7.1
-  process-envify: 1.0.2
+  process-envify: 1.0.4
   unocss: 0.44.5_vite@2.9.14
   vite: 2.9.14
   vitest: 0.18.1_happy-dom@6.0.4
@@ -239,7 +239,7 @@ packages:
       pretty-format: 27.5.1
     dev: true
 
-  /@testing-library/vue/6.6.1_2yymnzrok6eda47acnj2yjm3ae:
+  /@testing-library/vue/6.6.1_d630c6e62e57883073e01353ac259b01:
     resolution: {integrity: sha512-vpyBPrHzKTwEGS7ehUC8/IXgnqTBEMk6jd52Gouf51arG2jUorPhmkbsxUwJOyxz6L0gj2ZcmWnznG1OJcTCDQ==}
     engines: {node: '>=12'}
     peerDependencies:
@@ -494,12 +494,14 @@ packages:
     resolution: {integrity: sha512-/7WRafBOshOc6m3F7plwzPeCu/RCVv9uMpOwa/5PiY1Zz+WLVRWiy0MYKwmg19KBdGtFWsmZ4cD+LOdVPcs52A==}
     dependencies:
       '@vue/shared': 3.2.37
+    dev: false
 
   /@vue/runtime-core/3.2.37:
     resolution: {integrity: sha512-JPcd9kFyEdXLl/i0ClS7lwgcs0QpUAWj+SKX2ZC3ANKi1U4DOtiEr6cRqFXsPwY5u1L9fAjkinIdB8Rz3FoYNQ==}
     dependencies:
       '@vue/reactivity': 3.2.37
       '@vue/shared': 3.2.37
+    dev: false
 
   /@vue/runtime-dom/3.2.37:
     resolution: {integrity: sha512-HimKdh9BepShW6YozwRKAYjYQWg9mQn63RGEiSswMbW+ssIht1MILYlVGkAGGQbkhSh31PCdoUcfiu4apXJoPw==}
@@ -507,6 +509,7 @@ packages:
       '@vue/runtime-core': 3.2.37
       '@vue/shared': 3.2.37
       csstype: 2.6.20
+    dev: false
 
   /@vue/server-renderer/3.2.37_vue@3.2.37:
     resolution: {integrity: sha512-kLITEJvaYgZQ2h47hIzPh2K3jG8c1zCVbp/o/bzQOyvzaKiCquKS7AaioPI28GNxIsE/zSx+EwWYsNxDCX95MA==}
@@ -516,6 +519,7 @@ packages:
       '@vue/compiler-ssr': 3.2.37
       '@vue/shared': 3.2.37
       vue: 3.2.37
+    dev: false
 
   /@vue/shared/3.2.37:
     resolution: {integrity: sha512-4rSJemR2NQIo9Klm1vabqWjD8rs/ZaJSzMxkMNeJS6lHiUjjUeYFbooN19NgFjztubEKh3WlZUeOLVdbbUWHsw==}
@@ -799,6 +803,7 @@ packages:
 
   /csstype/2.6.20:
     resolution: {integrity: sha512-/WwNkdXfckNgw6S5R125rrW8ez139lBHWouiBvX8dfMFtcn6V81REDqnH7+CRpRipfYlyU1CmOnOxrmGcFOjeA==}
+    dev: false
 
   /debug/4.3.4:
     resolution: {integrity: sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==}
@@ -1880,8 +1885,8 @@ packages:
       react-is: 17.0.2
     dev: true
 
-  /process-envify/1.0.2:
-    resolution: {integrity: sha512-MyT/ocIcSCbY2FA7kcWvEr62gApiRyISjShUo1QGzs0UheEh+EgAkUvmfkKeTVjgtXYu/l6YIq8RuxbrbQKW/w==}
+  /process-envify/1.0.4:
+    resolution: {integrity: sha512-A27+gaOS7UvwzYeVpj4tEbwInDLLSrt5DhX71uUIQs1pAZGR6OjvzynREEgEHbRjlAlLZ65gvZqc3FPknxpfhA==}
     dev: true
 
   /process-nextick-args/2.0.1:
@@ -2396,6 +2401,7 @@ packages:
       '@vue/runtime-dom': 3.2.37
       '@vue/server-renderer': 3.2.37_vue@3.2.37
       '@vue/shared': 3.2.37
+    dev: false
 
   /vuex/4.0.2_vue@3.2.37:
     resolution: {integrity: sha512-M6r8uxELjZIK8kTKDGgZTYX/ahzblnzC4isU1tpmEuOIIKmV+TRdc+H4s8ds2NuZ7wpUTdGRzJRtoj+lI+pc0Q==}

@@ -33,7 +33,7 @@
     "eslint-plugin-vue": "^7.7.0",
     "happy-dom": "^6.0.4",
     "prettier": "^2.2.1",
-    "process-envify": "^1.0.2",
+    "process-envify": "^1.0.4",
     "unocss": "^0.44.5",
     "vite": "^2.0.1",
     "vitest": "^0.18.1"
