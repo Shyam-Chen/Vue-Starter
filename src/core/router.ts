@@ -13,24 +13,9 @@ export const router = createRouter({
       component: Home,
     },
     {
-      path: '/hello-world',
-      name: 'helloWorld',
-      component: () => import('~/modules/hello-world/HelloWorld.vue'),
-    },
-    {
       path: '/store-pattern',
       name: 'storePattern',
       component: () => import('~/modules/store-pattern/StorePattern.vue'),
-    },
-    {
-      path: '/form-validation',
-      name: 'formValidation',
-      component: () => import('~/modules/form-validation/FormValidation.vue'),
-    },
-    {
-      path: '/crud-operations',
-      name: 'crudOperations',
-      component: () => import('~/modules/crud-operations/CrudOperations.vue'),
     },
     {
       path: '/:catchAll(.*)',

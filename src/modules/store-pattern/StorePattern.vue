@@ -1,6 +1,6 @@
 <script setup>
 import Counter from './Counter.vue';
-import store from './store.js';
+import store from './store';
 
 store();
 </script>

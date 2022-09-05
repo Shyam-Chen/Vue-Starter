@@ -98,11 +98,9 @@ This seed repository provides the following features:
 - ---------- **Essentials** ----------
 - [x] [Vue](https://github.com/vuejs/vue)
 - [x] [Vue Router](https://github.com/vuejs/vue-router)
-- [x] [Vue Localer](https://github.com/Vanilla-IceCream/vue-localer) - Internationalization
-- [x] [Vue Formor](https://github.com/Vanilla-IceCream/vue-formor) - Form Validation
 - ---------- **Tools** ----------
 - [x] [Vite](https://github.com/vitejs/vite)
-- [ ] [TypeScript](https://github.com/microsoft/TypeScript)
+- [x] [TypeScript](https://github.com/microsoft/TypeScript)
 - [x] [UnoCSS](https://github.com/unocss/unocss)
 - [x] [Iconify](https://github.com/iconify/iconify)
 - [ ] [Workbox](https://github.com/GoogleChrome/workbox)

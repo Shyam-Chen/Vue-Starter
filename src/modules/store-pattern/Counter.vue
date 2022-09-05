@@ -1,10 +1,10 @@
-<script setup>
-import { useState, useActions, useComputeds, useReactions } from './store.js';
+<script lang="ts" setup>
+import { useState, useActions, useComputeds, useReactions } from './store';
 
 const state = useState();
 const actions = useActions();
 const computeds = useComputeds();
-const reactions = useReactions();
+useReactions();
 </script>
 
 <template>

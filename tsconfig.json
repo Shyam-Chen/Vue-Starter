@@ -18,6 +18,7 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
 
+    "jsx": "preserve",
     "lib": ["ESNext", "DOM"],
     "target": "esnext",
 

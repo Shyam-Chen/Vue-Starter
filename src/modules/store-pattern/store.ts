@@ -1,5 +1,7 @@
 import { computed, reactive, watch, provide, inject } from 'vue';
 
+import type { State } from './type';
+
 export const stateSymbol = Symbol('counter');
 
 export const createState = reactive({
@@ -7,7 +9,7 @@ export const createState = reactive({
   prevCount: null,
 });
 
-export const useState = () => inject(stateSymbol);
+export const useState = () => inject(stateSymbol) as State;
 
 export const useActions = () => {
   const state = useState();
@@ -19,7 +21,7 @@ export const useActions = () => {
     decrement() {
       state.count -= 1;
     },
-    setCount(val) {
+    setCount(val: number) {
       state.count = val;
     },
     resetCount() {

@@ -1,15 +1,25 @@
-<script setup>
-import { useLocaler } from 'vue-localer';
+<script lang="ts" setup>
+import { reactive } from 'vue';
 
-import Layout from '~/components/layout/Layout.vue';
+const state = reactive({
+  count: 0,
+});
 
-const localer = useLocaler();
+const actions = reactive({
+  inc() {
+    state.count += 1;
+  },
+});
 
-localer.dispatch('initialLanguage');
+console.log(import.meta.env);
 </script>
 
 <template>
-  <Layout>
+  <div>Test</div>
+  <div>{{ state.count }}</div>
+  <button @click="actions.inc">Inc</button>
+  <router-view></router-view>
+  <!-- <Layout>
     <router-view></router-view>
-  </Layout>
+  </Layout> -->
 </template>

@@ -1,41 +1,26 @@
-<script setup>
+<script lang="ts" setup>
 import { ref } from 'vue';
-import { useLocaler, useLocale } from 'vue-localer';
 
-import { useState, useActions, useComputeds } from '~/core/store.js';
 import logo from '~/assets/logo.png';
 
 import Dialog from '~/components/Dialog.vue';
 
 const dialog = ref(false);
-const state = useState();
-const actions = useActions();
-const computeds = useComputeds();
-const { evenOrOdd } = useComputeds();
-const localer = useLocaler();
-const locale = useLocale();
-
-function changeLang(event) {
-  localer.dispatch('setLanguage', event.target.value);
-}
 </script>
 
 <template>
-  <div>{{ state.count }}</div>
-  <div>{{ computeds.evenOrOdd.value }}</div>
-  <div>{{ evenOrOdd }}</div>
-  <button @click="actions.incrementCount">Increment Count</button>
+  <router-link
+    :to="{ name: 'storePattern' }"
+    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+  >
+    Store Pattern
+  </router-link>
 
   <div class="my-10">
     <button class="block border text-white bg-blue-500" @click="dialog = true">Open Dialog</button>
   </div>
 
   <img alt="Vue logo" :src="logo" />
-  <div>{{ $f('Hello, {msg}!', { msg: 'Vue' }) }}</div>
-
-  <div>
-    <div>{{ locale.title }}</div>
-  </div>
 
   <div class="border border-gray-300">
     <div class="text-2xl">Iconify</div>

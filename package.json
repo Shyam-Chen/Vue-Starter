@@ -24,18 +24,22 @@
   "devDependencies": {
     "@iconify/json": "^2.1.80",
     "@testing-library/vue": "^6.6.1",
+    "@typescript-eslint/eslint-plugin": "^5.36.1",
+    "@typescript-eslint/parser": "^5.36.1",
     "@unocss/preset-icons": "^0.44.5",
-    "@vitejs/plugin-vue": "^1.10.2",
+    "@vitejs/plugin-vue": "^3.0.3",
     "@vue/compiler-sfc": "3.2.37",
+    "@vue/eslint-config-typescript": "^11.0.0",
     "eslint": "^7.22.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-prettier-vue": "^3.0.0",
-    "eslint-plugin-vue": "^7.7.0",
+    "eslint-plugin-vue": "^9.4.0",
     "happy-dom": "^6.0.4",
     "prettier": "^2.2.1",
     "process-envify": "^1.0.4",
+    "typescript": "^4.8.2",
     "unocss": "^0.44.5",
-    "vite": "^2.0.1",
+    "vite": "^3.0.9",
     "vitest": "^0.18.1"
   }
 }
