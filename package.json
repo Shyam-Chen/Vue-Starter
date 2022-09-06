@@ -37,6 +37,7 @@
     "happy-dom": "^6.0.4",
     "prettier": "^2.2.1",
     "process-envify": "^1.0.4",
+    "sass": "^1.54.8",
     "typescript": "^4.8.2",
     "unocss": "^0.44.5",
     "vite": "^3.0.9",

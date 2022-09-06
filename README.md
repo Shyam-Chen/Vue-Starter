@@ -101,6 +101,7 @@ This seed repository provides the following features:
 - ---------- **Tools** ----------
 - [x] [Vite](https://github.com/vitejs/vite)
 - [x] [TypeScript](https://github.com/microsoft/TypeScript)
+- [x] [Sass](https://github.com/sass/sass)
 - [x] [UnoCSS](https://github.com/unocss/unocss)
 - [x] [Iconify](https://github.com/iconify/iconify)
 - [ ] [Workbox](https://github.com/GoogleChrome/workbox)
@@ -113,6 +114,7 @@ This seed repository provides the following features:
 - [x] [Node.js](https://nodejs.org/en/)
 - [x] [Pnpm](https://pnpm.io/)
 - [x] [Caddy](https://caddyserver.com/)
+- [x] [CircleCI](https://circleci.com/)
 - [ ] [Netlify](https://www.netlify.com/)
 
 ## Dockerization
