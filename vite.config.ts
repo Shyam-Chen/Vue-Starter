@@ -9,7 +9,7 @@ import envify from 'process-envify';
 import env from './env';
 
 export default defineConfig({
-  define: envify(env, { useImportMeta: true }),
+  define: envify(env),
   plugins: [
     vue(),
     unocss({

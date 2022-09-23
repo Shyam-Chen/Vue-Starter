@@ -4,11 +4,4 @@ declare module '*.vue' {
   export default component
 }
 
-interface ImportMetaEnv {
-  readonly API_URL: string
-  // more env variables...
-}
-
-interface ImportMeta {
-  readonly env: ImportMetaEnv
-}
+declare const API_URL: string
