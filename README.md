@@ -268,36 +268,28 @@ The structure follows the LIFT Guidelines.
 ```coffee
 .
 ├── src
-│   ├── assets -> datas, fonts, images, medias, styles
-│   │   └── ...
-│   ├── core -> core module
-│   │   └── plugins | layouts | page index
-│   ├── <FEATURE> -> feature modules
-│   │   ├── __tests__
-│   │   ├── _<THING> -> feature of private things
-│   │   │   └── _locales | _sections
-│   │   ├── Consumer.vue
-│   │   ├── Provider.vue
-│   │   ├── Registry.vue -> page component
-│   │   ├── schema.ts
-│   │   ├── store.ts
-│   │   └── types.ts
-│   ├── <GROUP> -> module group
-│   │   ├── _<THING> -> feature of private things
-│   │   │   └── _<SHARED_SECTION>
-│   │   └── <FEATURE> -> feature modules
+│   ├── assets -> data, fonts, images, medias, styles
+│   ├── components -> shared module
+│   ├── composables -> shared module
+│   ├── layouts -> core module
+│   ├── locales -> core module
+│   ├── middleware -> core module
+│   ├── modules -> feature modules
+│   │   └── <FEATURE> -> feature module
 │   │       ├── __tests__
-│   │       ├── _<THING> -> feature of private things
-│   │       │   └── _locales | _sections
+│   │       ├── _locales
+│   │       ├── _sections -> feature components (view layer)
+│   │       ├── _<FEATURE> -> shared feature module (view and data layer)
 │   │       ├── Consumer.vue
 │   │       ├── Provider.vue
 │   │       ├── Registry.vue -> page component
 │   │       ├── schema.ts
 │   │       ├── store.ts
 │   │       └── types.ts
-│   ├── shared -> shared module
-│   │   └── components | composables | locales | utilities
+│   ├── plugins -> root module
+│   ├── utilities -> shared module
 │   ├── App.vue
+│   ├── Error.vue
 │   ├── main.ts
 │   └── shims.d.ts
 ├── .editorconfig

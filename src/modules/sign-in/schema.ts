@@ -5,18 +5,15 @@ import { string } from 'yup';
 
 import { useState } from './store';
 
-export const useBasicFormsSchema = () => {
+export const useSignInFormSchema = () => {
   const { t } = useI18n({ useScope: 'global' });
   const state = useState();
 
   const schema = useSchema(
     [
+      [computed(() => state.signInForm.username), computed(() => string().required(t('required')))],
       [
-        computed(() => state.basicForms.email),
-        computed(() => string().required(t('required')).email()),
-      ],
-      [
-        computed(() => state.basicForms.password),
+        computed(() => state.signInForm.password),
         computed(() => string().required(t('required')).min(8)),
       ],
     ],

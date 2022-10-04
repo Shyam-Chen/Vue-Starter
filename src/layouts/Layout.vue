@@ -2,7 +2,8 @@
 import { computed } from 'vue';
 import { useRoute } from 'vue-router';
 
-import Layout from '~/layouts/Layout.vue';
+import Center from './Center.vue';
+import Default from './Default.vue';
 
 const route = useRoute();
 
@@ -10,11 +11,11 @@ const meta = computed(() => route.meta);
 </script>
 
 <template>
-  <template v-if="meta.error">
-    <router-view></router-view>
-  </template>
+  <Center v-if="meta.layout === 'center'">
+    <slot></slot>
+  </Center>
 
-  <Layout v-else>
-    <router-view></router-view>
-  </Layout>
+  <Default v-else>
+    <slot></slot>
+  </Default>
 </template>

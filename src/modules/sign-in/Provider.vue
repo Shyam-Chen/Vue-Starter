@@ -1,10 +1,9 @@
-<script setup>
-import Counter from './Counter.vue';
+<script lang="ts" setup>
 import store from './store';
 
 store();
 </script>
 
 <template>
-  <Counter />
+  <slot></slot>
 </template>

@@ -2,8 +2,8 @@ import '@unocss/reset/tailwind.css';
 import 'uno.css';
 import { createApp } from 'vue';
 
-import { router } from '~/core/router';
-import { i18n } from '~/core/i18n';
+import { router } from '~/plugins/router';
+import { i18n } from '~/plugins/i18n';
 
 import App from './App.vue';
 

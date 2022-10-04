@@ -1,6 +1,6 @@
 export interface State {
-  basicForms: {
-    email?: string;
+  signInForm: {
+    username?: string;
     password?: string;
   };
 
