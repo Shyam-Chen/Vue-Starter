@@ -1,6 +1,8 @@
 import path from 'path';
+import url from 'url';
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
+import i18n from '@intlify/unplugin-vue-i18n/vite';
 import { presetUno } from 'unocss';
 import unocss from 'unocss/vite';
 import presetIcons from '@unocss/preset-icons';
@@ -12,6 +14,12 @@ export default defineConfig({
   define: envify(env),
   plugins: [
     vue(),
+    i18n({
+      include: path.resolve(
+        path.dirname(url.fileURLToPath(import.meta.url)),
+        './path/to/src/locales/**',
+      ),
+    }),
     unocss({
       presets: [presetUno(), presetIcons()],
     }),

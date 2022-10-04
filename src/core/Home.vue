@@ -9,13 +9,6 @@ const dialog = ref(false);
 </script>
 
 <template>
-  <router-link
-    :to="{ name: 'storePattern' }"
-    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-  >
-    Store Pattern
-  </router-link>
-
   <div class="my-10">
     <button class="block border text-white bg-blue-500" @click="dialog = true">Open Dialog</button>
   </div>

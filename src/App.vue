@@ -1,8 +1,11 @@
 <script lang="ts" setup>
-console.log('import.meta.env.API_URL =', import.meta.env.API_URL);
+import Layout from '~/core/Layout.vue';
+
 console.log('process.env.API_URL =', process.env.API_URL);
 </script>
 
 <template>
-  <router-view></router-view>
+  <Layout>
+    <router-view></router-view>
+  </Layout>
 </template>

@@ -98,12 +98,18 @@ This seed repository provides the following features:
 - ---------- **Essentials** ----------
 - [x] [Vue](https://github.com/vuejs/vue)
 - [x] [Vue Router](https://github.com/vuejs/vue-router)
+- [x] [Vue Formor](https://github.com/Vanilla-IceCream/vue-formor)
+- [x] [Vue I18n](https://github.com/intlify/vue-i18n-next)
+- [x] [Vue Use](https://github.com/vueuse/vueuse)
+- [x] [Lodash](https://github.com/lodash/lodash)
+- [x] [Yup](https://github.com/jquense/yup)
+- [x] [Date Fns](https://github.com/date-fns/date-fns)
+- [x] [UnoCSS](https://github.com/unocss/unocss)
+- [x] [Iconify](https://github.com/iconify/iconify)
 - ---------- **Tools** ----------
 - [x] [Vite](https://github.com/vitejs/vite)
 - [x] [TypeScript](https://github.com/microsoft/TypeScript)
-- [x] [Sass](https://github.com/sass/sass)
-- [x] [UnoCSS](https://github.com/unocss/unocss)
-- [x] [Iconify](https://github.com/iconify/iconify)
+- [x] [Sassy CSS](https://github.com/sass/sass)
 - [ ] [Workbox](https://github.com/GoogleChrome/workbox)
 - [x] [ESLint](https://github.com/eslint/eslint)
 - [x] [Prettier](https://github.com/prettier/prettier)
@@ -262,42 +268,38 @@ The structure follows the LIFT Guidelines.
 ```coffee
 .
 ├── src
-│   ├── __tests__
+│   ├── assets -> datas, fonts, images, medias, styles
 │   │   └── ...
-│   ├── _<THING>  -> app of private or protected things
-│   │   └── ...
-│   ├── assets  -> datas, fonts, images, medias, styles
-│   │   └── ...
-│   ├── core  -> core feature module
-│   │   └── ...
-│   ├── <FEATURE>  -> feature modules
+│   ├── core -> core module
+│   │   └── plugins | layouts | page index
+│   ├── <FEATURE> -> feature modules
 │   │   ├── __tests__
-│   │   │   ├── <FEATURE>.spec.js
-│   │   │   ├── actions.spec.js
-│   │   │   └── getters.spec.js
-│   │   ├── _<THING>  -> feature of private or protected things
-│   │   │   └── ...
-│   │   ├── <FEATURE>.vue  -> page component
-│   │   ├── actions.js
-│   │   ├── constants.js
-│   │   └── getters.js
-│   ├── <GROUP>  -> module group
-│   │   └── <FEATURE>  -> feature modules
+│   │   ├── _<THING> -> feature of private things
+│   │   │   └── _locales | _sections
+│   │   ├── Consumer.vue
+│   │   ├── Provider.vue
+│   │   ├── Registry.vue -> page component
+│   │   ├── schema.ts
+│   │   ├── store.ts
+│   │   └── types.ts
+│   ├── <GROUP> -> module group
+│   │   ├── _<THING> -> feature of private things
+│   │   │   └── _<SHARED_SECTION>
+│   │   └── <FEATURE> -> feature modules
 │   │       ├── __tests__
-│   │       │   ├── <FEATURE>.spec.js
-│   │       │   ├── actions.spec.js
-│   │       │   └── getters.spec.js
-│   │       ├── _<THING>  -> feature of private or protected things
-│   │       │   └── ...
-│   │       ├── <FEATURE>.vue  -> page component
-│   │       ├── actions.js
-│   │       ├── constants.js
-│   │       └── getters.js
-│   ├── shared  -> shared feature module
-│   │   └── ...
+│   │       ├── _<THING> -> feature of private things
+│   │       │   └── _locales | _sections
+│   │       ├── Consumer.vue
+│   │       ├── Provider.vue
+│   │       ├── Registry.vue -> page component
+│   │       ├── schema.ts
+│   │       ├── store.ts
+│   │       └── types.ts
+│   ├── shared -> shared module
+│   │   └── components | composables | locales | utilities
 │   ├── App.vue
-│   ├── Home.vue
-│   └── main.js  -> entrypoint
+│   ├── main.ts
+│   └── shims.d.ts
 ├── .editorconfig
 ├── .eslintrc
 ├── .gitignore
@@ -306,14 +308,15 @@ The structure follows the LIFT Guidelines.
 ├── circle.yml
 ├── docker-compose.yml
 ├── Dockerfile
-├── env.js
+├── env.ts
 ├── index.html
-├── jest.config.js
 ├── LICENSE
 ├── netlify.toml
 ├── package.json
+├── pnpm-lock.yaml
 ├── README.md
-└── vite.config.js
+├── tsconfig.json
+└── vite.config.ts
 ```
 
 ## Microservices
