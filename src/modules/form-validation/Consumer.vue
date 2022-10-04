@@ -13,8 +13,6 @@ const schema = useBasicFormsSchema();
 
 const flux = reactive({
   signIn() {
-    schema.stop(); // TODO: effectScope
-
     if (schema.validate()) {
       actions.signIn();
     }

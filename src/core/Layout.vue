@@ -1,40 +1,4 @@
 <script lang="ts" setup>
-import { reactive } from 'vue';
-import { useI18n } from 'vue-i18n';
-import { setLocale } from 'yup';
-
-const { locale } = useI18n();
-
-const flux = reactive({
-  enUS() {
-    setLocale({
-      mixed: {
-        required: 'This is a required field',
-      },
-      string: {
-        email: 'This must be a valid email',
-        min: 'This must be at least 8 characters',
-      },
-    });
-  },
-  changeLocale() {
-    if (locale.value === 'ja-JP') {
-      setLocale({
-        mixed: {
-          required: 'これは必要項目です',
-        },
-        string: {
-          email: 'This must be a valid email',
-          min: 'This must be at least 8 characters',
-        },
-      });
-    } else {
-      flux.enUS();
-    }
-  },
-});
-
-flux.enUS();
 </script>
 
 <template>
@@ -64,7 +28,7 @@ flux.enUS();
       <slot></slot>
     </main>
 
-    <select v-model="$i18n.locale" @change="flux.changeLocale">
+    <select v-model="$i18n.locale">
       <option v-for="(lang, idx) in ['en-US', 'ja-JP', 'ko-KR', 'zh-TW']" :key="idx" :value="lang">
         {{ lang }}
       </option>

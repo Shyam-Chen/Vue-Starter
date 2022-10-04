@@ -1,1 +1,3 @@
-{}
+{
+  required: 'This is a required field',
+}

@@ -15,10 +15,7 @@ export default defineConfig({
   plugins: [
     vue(),
     i18n({
-      include: path.resolve(
-        path.dirname(url.fileURLToPath(import.meta.url)),
-        './path/to/src/locales/**',
-      ),
+      include: path.resolve(path.dirname(url.fileURLToPath(import.meta.url)), './src/locales/**'),
     }),
     unocss({
       presets: [presetUno(), presetIcons()],
