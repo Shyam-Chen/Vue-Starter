@@ -15,7 +15,9 @@ const meta = computed(() => route.meta);
     <slot></slot>
   </Center>
 
-  <Default v-else>
+  <Default v-else-if="meta.layout === 'default'">
     <slot></slot>
   </Default>
+
+  <div v-else>Loading...</div>
 </template>

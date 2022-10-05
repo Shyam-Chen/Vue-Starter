@@ -1,12 +1,13 @@
 import path from 'path';
 import url from 'url';
 import { defineConfig } from 'vite';
+import envify from 'process-envify';
 import vue from '@vitejs/plugin-vue';
 import i18n from '@intlify/unplugin-vue-i18n/vite';
-import { presetUno } from 'unocss';
 import unocss from 'unocss/vite';
+import { presetUno } from 'unocss';
 import presetIcons from '@unocss/preset-icons';
-import envify from 'process-envify';
+import { visualizer } from 'rollup-plugin-visualizer';
 
 import env from './env';
 
@@ -20,6 +21,7 @@ export default defineConfig({
     unocss({
       presets: [presetUno(), presetIcons()],
     }),
+    // visualizer(),
   ],
   resolve: {
     alias: {

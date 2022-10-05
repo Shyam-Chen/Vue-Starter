@@ -1,37 +1,46 @@
 <script lang="ts" setup>
-// import listOfLinks from '~/components/navigation/list-of-links';
-// import NavLink from '~/components/navigation/NavLink.vue';
+import { reactive } from 'vue';
+
+import logo from '~/assets/logo.png';
+
+import listOfLinks from './_list-of-links';
+import NavLink from './NavLink.vue';
 // import TextField from '~/components/TextField.vue';
 // import Dropdown from '~/components/Dropdown.vue';
 
 // const { role, displayName } = JSON.parse(sessionStorage.getItem('user'));
 
-// const flux = reactive({
-//   listOfLinks,
-//   selectDropdown(option) {
-//     if (option === '登出') {
-//       sessionStorage.removeItem('token');
-//       sessionStorage.removeItem('user');
-//       navigateTo('/sign-in');
-//     }
-//   },
-// });
+const flux = reactive({
+  listOfLinks,
+  // selectDropdown(option) {
+  //   if (option === '登出') {
+  //     sessionStorage.removeItem('token');
+  //     sessionStorage.removeItem('user');
+  //     navigateTo('/sign-in');
+  //   }
+  // },
+});
 </script>
 
 <template>
   <div>
-    <header class="navbar px-6 py-4 flex items-center">
-      <!-- <img src="~/assets/logo.png" class="h-12 mr-6" /> -->
+    <header class="navbar px-6 py-4 flex items-center shadow-lg">
+      <img :src="logo" class="h-12 mr-6" />
 
       <!-- <Dropdown :display="displayName" :options="['變更密碼', '登出']" @select="flux.selectDropdown" /> -->
     </header>
 
-    <!-- <aside class="sidebar">
+    <aside class="sidebar py-4 shadow-lg">
       <template v-for="link in flux.listOfLinks" :key="link.name">
-        <NavLink :name="link.name" :to="link.to" :permissions="link.permissions" :sub="link.sub" :role="role"
-          firstLevelStatus />
+        <NavLink
+          :name="link.name"
+          :to="link.to"
+          :permissions="link.permissions"
+          :sub="link.sub"
+          firstLevelStatus
+        />
       </template>
-    </aside> -->
+    </aside>
 
     <main class="page container mx-auto">
       <slot></slot>
@@ -49,28 +58,22 @@
 .navbar {
   position: fixed;
   top: 0;
-  width: 100%;
   z-index: 100;
-  background-color: #e6e7ee;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  box-shadow: 6px 6px 12px #b8b9be, -6px -6px 12px #fff;
+  width: 100%;
+  // box-shadow: 0px 1px 2px rgba(0, 255, 255, 0.5), 0px 2px 4px rgba(0, 255, 255, 0.5),
+  //   0px 4px 8px rgba(0, 255, 255, 0.5), 0px 8px 16px rgba(0, 255, 255, 0.5);
 }
 
 .sidebar {
-  font-size: 16px;
-  width: 20rem;
   position: fixed;
-  z-index: 10;
-  margin: 0;
   top: 5rem;
-  left: 0;
   bottom: 0;
-  box-sizing: border-box;
-  border-right: 1px solid #eaecef;
+  left: 0;
+  z-index: 99;
+  width: 20rem;
   overflow-y: auto;
-  padding: 1rem 0;
-  box-shadow: 10px 0px 15px -5px rgba(184, 185, 190, 0.4);
+  // border-right: 1px solid #eaecef;
+  // box-shadow: 10px 0px 15px -5px rgba(184, 185, 190, 0.4);
 }
 
 .page {

@@ -8,7 +8,6 @@
 - [Key Features](#key-features)
 - [Dockerization](#dockerization)
 - [Configuration](#configuration)
-- [Examples](#examples)
 - [Directory Structure](#directory-structure)
 - [Microservices](#microservices)
 
@@ -106,6 +105,7 @@ This seed repository provides the following features:
 - [x] [Date Fns](https://github.com/date-fns/date-fns)
 - [x] [UnoCSS](https://github.com/unocss/unocss)
 - [x] [Iconify](https://github.com/iconify/iconify)
+- [x] [Highcharts](https://github.com/highcharts/highcharts)
 - ---------- **Tools** ----------
 - [x] [Vite](https://github.com/vitejs/vite)
 - [x] [TypeScript](https://github.com/microsoft/TypeScript)
@@ -252,14 +252,6 @@ The most basic configuration.
   // ...
 }
 ```
-
-## Examples
-
-- [Hello World](./src/hello-world)
-- CRUD Operations
-- Authentication
-- File Uploads
-- Realtime Data
 
 ## Directory Structure
 

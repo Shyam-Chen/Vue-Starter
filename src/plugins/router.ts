@@ -23,6 +23,14 @@ export const router = createRouter({
     {
       path: '/dashboard',
       component: () => import('~/modules/dashboard/Registry.vue'),
+      meta: { layout: 'default' },
+      beforeEnter: [auth],
+    },
+
+    {
+      path: '/highcharts/line-charts',
+      component: () => import('~/modules/highcharts/line-charts/Registry.vue'),
+      meta: { layout: 'default' },
       beforeEnter: [auth],
     },
 
