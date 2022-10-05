@@ -1,101 +1,97 @@
-<template>
-  <button
-    v-bind="$attrs"
-    type="button"
-    class="button"
-    :class="{
-      primary: primary,
-      danger: danger,
-      info: info,
-      circle: type === 'circle'
-    }"
-    v-on="$listeners"
-  >
-    <slot />
-  </button>
-</template>
+<script lang="ts" setup>
+import type { PropType } from 'vue';
 
-<script>
-export default {
-  props: {
-    primary: {
-      type: Boolean,
-      default: false
-    },
-    danger: {
-      type: Boolean,
-      default: false
-    },
-    info: {
-      type: Boolean,
-      default: false
-    },
-    type: {
-      type: String,
-      default: ''
-    }
+const props = defineProps({
+  color: {
+    type: String as PropType<'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info'>,
+    default: '',
   },
-  emits: [],
-  setup (props, { emit }) {
-    return {
-
-    }
-  }
-}
+  outline: {
+    type: Boolean,
+    default: false,
+  },
+  rounded: {
+    type: Boolean,
+    default: false,
+  },
+  floating: {
+    type: Boolean,
+    default: false,
+  },
+  disabled: {
+    type: Boolean,
+    default: false,
+  },
+  icon: {
+    type: String,
+    default: '',
+  },
+  block: {
+    type: Boolean,
+    default: false,
+  },
+});
 </script>
 
-<style lang="scss" scoped>
-.button {
-  outline: none;
-  border-radius: 2rem;
-  border: 0.0625rem solid #d1d9e6;
-  box-shadow: 3px 3px 6px #b8b9be, -3px -3px 6px #fff;
-  text-align: center;
-  vertical-align: middle;
-  padding: 0.5rem 1.75rem;
-  color: #31344b;
-  background-color: #e4ebf0;
+<template>
+  <template v-if="floating">
+    <button
+      v-bind="$attrs"
+      type="button"
+      class="inline-block rounded-full leading-normal uppercase shadow-md hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-9 h-9"
+      :class="{
+        'bg-blue-600 text-white hover:bg-blue-700 focus:bg-blue-700 active:bg-blue-800': color === 'primary',
+        'bg-purple-600 text-white hover:bg-purple-700 focus:bg-purple-700 active:bg-purple-800': color === 'secondary',
+        'bg-green-500 text-white hover:bg-green-600 focus:bg-green-600 active:bg-green-700': color === 'success',
+        'bg-red-600 text-white hover:bg-red-700 focus:bg-red-700 active:bg-red-800': color === 'danger',
+        'bg-yellow-500 text-white hover:bg-yellow-600 focus:bg-yellow-600 active:bg-yellow-700': color === 'warning',
+        'bg-blue-400 text-white hover:bg-blue-500 focus:bg-blue-500 active:bg-blue-600': color === 'info',
+      }"
+    >
+      <div class="w-3 mx-auto" :class="icon"></div>
+    </button>
+  </template>
 
-  // &:focus {
-  //   border: 0.0625rem solid #007bff;
-  // }
+  <template v-else-if="outline">
+    <button
+      v-bind="$attrs"
+      type="button"
+      class="inline-block px-6 py-2 border-2 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
+      :class="{
+        'border-blue-600 text-blue-600': color === 'primary',
+        'border-purple-600 text-purple-600': color === 'secondary',
+        'border-green-500 text-green-500': color === 'success',
+        'border-red-600 text-red-600': color === 'danger',
+        'border-yellow-500 text-yellow-500': color === 'warning',
+        'border-blue-400 text-blue-400': color === 'info',
+        'rounded-full': rounded,
+      }"
+    >
+      <slot></slot>
+    </button>
+  </template>
 
-  &:hover {
-    background-color: #e4ebf0 - #111;
-  }
+  <template v-else>
+    <button
+      v-bind="$attrs"
+      type="button"
+      class="inline-block px-6 py-2.5 font-medium text-xs leading-tight uppercase rounded shadow-md hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out"
+      :class="{
+        'bg-blue-600 text-white hover:bg-blue-700 focus:bg-blue-700 active:bg-blue-800': color === 'primary',
+        'bg-purple-600 text-white hover:bg-purple-700 focus:bg-purple-700 active:bg-purple-800': color === 'secondary',
+        'bg-green-500 text-white hover:bg-green-600 focus:bg-green-600 active:bg-green-700': color === 'success',
+        'bg-red-600 text-white hover:bg-red-700 focus:bg-red-700 active:bg-red-800': color === 'danger',
+        'bg-yellow-500 text-white hover:bg-yellow-600 focus:bg-yellow-600 active:bg-yellow-700': color === 'warning',
+        'bg-blue-400 text-white hover:bg-blue-500 focus:bg-blue-500 active:bg-blue-600': color === 'info',
+        'rounded-full': rounded,
+        'pointer-events-none opacity-60': disabled,
+        'flex items-center': icon,
+      }"
+    >
+      <div v-if="icon" class="w-3 mr-2" :class="icon"></div>
+      <slot></slot>
+    </button>
+  </template>
+</template>
 
-  &:active:not(:disabled) {
-    background-color: #e6e7ee;
-    border-color: #e6e7ee;
-    box-shadow: inset 2px 2px 5px #b8b9be, inset -3px -3px 7px #fff;
-  }
-
-  &:disabled {
-    cursor: not-allowed;
-    background: #c4c4c4;
-    color: #c4c4c4 - #555 !important;
-    box-shadow: 2px 2px 3px #c4c4ca, -2px -2px 3px #ffffff;
-  }
-
-  &.primary {
-    color: var(--primary);
-  }
-
-  &.danger {
-   color: var(--danger);
-  }
-
-  &.info {
-    color: var(--info);
-  }
-
-  &.circle {
-    border-radius: 50%;
-    padding: 0;
-    width: 20px;
-    height: 20px;
-    display: block;
-    line-height: 20px;
-  }
-}
-</style>
+<style lang="scss" scoped></style>

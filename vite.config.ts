@@ -7,7 +7,6 @@ import i18n from '@intlify/unplugin-vue-i18n/vite';
 import unocss from 'unocss/vite';
 import { presetUno } from 'unocss';
 import presetIcons from '@unocss/preset-icons';
-import { visualizer } from 'rollup-plugin-visualizer';
 
 import env from './env';
 
@@ -21,7 +20,6 @@ export default defineConfig({
     unocss({
       presets: [presetUno(), presetIcons()],
     }),
-    // visualizer(),
   ],
   resolve: {
     alias: {

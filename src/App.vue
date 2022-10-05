@@ -18,3 +18,13 @@ const meta = computed(() => route.meta);
     <router-view></router-view>
   </Layout>
 </template>
+
+<style lang="scss">
+body {
+  background: #f1f4f9;
+}
+
+.highcharts-credits {
+  display: none !important;
+}
+</style>

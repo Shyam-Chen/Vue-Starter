@@ -2,6 +2,8 @@
 
 :poodle: A boilerplate for HTML5, Vue, Vue Router, UnoCSS, Vite, Vitest, and Netlify.
 
+[Live Demo](https://benevolent-selkie-06e99d.netlify.app)
+
 ## Table of Contents
 
 - [Project Setup](#project-setup)
@@ -121,7 +123,7 @@ This seed repository provides the following features:
 - [x] [Pnpm](https://pnpm.io/)
 - [x] [Caddy](https://caddyserver.com/)
 - [x] [CircleCI](https://circleci.com/)
-- [ ] [Netlify](https://www.netlify.com/)
+- [x] [Netlify](https://www.netlify.com/)
 
 ## Dockerization
 

@@ -28,8 +28,15 @@ export const router = createRouter({
     },
 
     {
-      path: '/highcharts/line-charts',
-      component: () => import('~/modules/highcharts/line-charts/Registry.vue'),
+      path: '/components/buttons',
+      component: () => import('~/modules/components/buttons/Registry.vue'),
+      meta: { layout: 'default' },
+      beforeEnter: [auth],
+    },
+
+    {
+      path: '/charts/line-charts',
+      component: () => import('~/modules/charts/line-charts/Registry.vue'),
       meta: { layout: 'default' },
       beforeEnter: [auth],
     },

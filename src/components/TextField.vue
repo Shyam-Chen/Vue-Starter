@@ -41,3 +41,11 @@ const textFieldValue = computed({
     <p v-if="errorMessage" class="text-red-500 text-xs italic">{{ errorMessage }}</p>
   </div>
 </template>
+
+<style lang="scss" scoped>
+.text-field {
+  & label:empty {
+    display: none;
+  }
+}
+</style>

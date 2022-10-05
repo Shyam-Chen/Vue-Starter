@@ -3,6 +3,7 @@ import { reactive } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 import TextField from '~/components/TextField.vue';
+import Button from '~/components/Button.vue';
 
 import { useState, useActions } from './store';
 import { useSignInFormSchema } from './schema';
@@ -50,13 +51,7 @@ const flux = reactive({
       </div>
 
       <div class="flex items-center justify-between">
-        <button
-          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-          type="button"
-          @click="flux.signIn"
-        >
-          Sign In
-        </button>
+        <Button color="primary" @click="flux.signIn">Sign In</Button>
 
         <router-link
           class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
