@@ -3,7 +3,7 @@ import type { PropType } from 'vue';
 import { reactive } from 'vue';
 import { useRoute } from 'vue-router';
 
-import type { Link } from './_list-of-links';
+import type { Link } from './list-of-links';
 
 const props = defineProps({
   name: {

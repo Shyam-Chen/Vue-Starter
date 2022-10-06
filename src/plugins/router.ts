@@ -1,6 +1,7 @@
 import { createWebHistory, createRouter } from 'vue-router';
 
 import auth from '~/middleware/auth';
+import componentsRoutes from '~/modules/components/routes';
 
 export const history = createWebHistory();
 
@@ -10,7 +11,7 @@ export const router = createRouter({
     {
       path: '/',
       redirect(to) {
-        if (sessionStorage.getItem('token')) return { path: '/dashboard' };
+        if (localStorage.getItem('token')) return { path: '/dashboard' };
         return { path: '/sign-in' };
       },
     },
@@ -27,9 +28,11 @@ export const router = createRouter({
       beforeEnter: [auth],
     },
 
+    ...componentsRoutes,
+
     {
-      path: '/components/buttons',
-      component: () => import('~/modules/components/buttons/Registry.vue'),
+      path: '/navigation/breadcrumbs',
+      component: () => import('~/modules/navigation/breadcrumbs/Registry.vue'),
       meta: { layout: 'default' },
       beforeEnter: [auth],
     },

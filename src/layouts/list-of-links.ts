@@ -1,8 +1,8 @@
 export interface Link {
-  name?: string;
+  name: string;
   to?: string;
   permissions?: Array<'A' | 'B' | 'C' | 'D' | 'E'>;
-  aiDisable?: boolean; // '1' 支援、'0' 不支援，從 sessionStorage 取
+  aiDisable?: boolean;
   sub?: Link[];
 }
 

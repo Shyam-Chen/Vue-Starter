@@ -22,7 +22,8 @@ export const useActions = () => {
   const actions = {
     signIn() {
       console.log('Sign In', state.signInForm);
-      sessionStorage.setItem('token', 'xxx');
+      localStorage.setItem('signed in', 'true');
+      localStorage.setItem('token', 'xxx');
       router.push('/dashboard');
     },
   };
