@@ -80,4 +80,12 @@ export default [
       { name: 'Combinations', to: '/charts/combinations' },
     ],
   },
+  {
+    name: 'Network',
+    sub: [
+      { name: 'Fetch', to: '/network/fetch' },
+      { name: 'WebSocket', to: '/network/websocket' },
+      { name: 'EventSource', to: '/network/eventsource' },
+    ],
+  },
 ] as Link[];

@@ -1,16 +1,32 @@
 {
-  "name": "mock-requests",
+  "name": "fastify-starter",
   "version": "1.0.0",
-  "private": true,
+  "description": "",
   "scripts": {
-    "serve": "vite"
+    "dev": "tsx watch src/server.ts",
+    "dev:vite": "vite",
+    "build": "vite build",
+    "preview": "node dist/server.js",
+    "test": "vitest",
+    "coverage": "vitest run --coverage"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shyam-Chen/Fastify-Starter.git"
+  },
+  "author": "Shyam Chen",
+  "license": "MIT",
   "dependencies": {
-    "fastify": "4.3.0",
-    "fastify-plugin": "4.0.0"
+    "@fastify/mongodb": "^6.0.1",
+    "@fastify/websocket": "^7.0.1",
+    "fastify": "^4.6.0",
+    "fastify-plugin": "^4.2.1",
+    "ws": "^8.8.1"
   },
   "devDependencies": {
-    "vite": "2.9.14",
-    "vite-plugin-node": "1.0.0"
+    "process-envify": "^1.0.4",
+    "tsx": "^3.9.0",
+    "vite": "^3.1.3",
+    "vitest": "^0.23.4"
   }
 }

@@ -1,3 +1,4 @@
 export default new (class Environment {
-  API_URL = process.env.API_URL ?? 'http://localhost:3000';
+  // ./mock/requests
+  MOCK_API = process.env.MOCK_API ?? 'http://localhost:3000';
 })();

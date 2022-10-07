@@ -50,8 +50,16 @@ const flux = reactive({
         </TextField>
       </div>
 
+      <div
+        v-if="state.signedIn"
+        class="animate-spin inline-block w-8 h-8 border-4 border-gray-300 border-r-blue-600 rounded-full"
+        role="status"
+      >
+        <span class="sr-only">Loading...</span>
+      </div>
+
       <div class="flex items-center justify-between">
-        <Button color="primary" @click="flux.signIn">Sign In</Button>
+        <Button color="primary" :disabled="state.signedIn" @click="flux.signIn">Sign In</Button>
 
         <router-link
           class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"

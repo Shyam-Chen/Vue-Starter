@@ -14,7 +14,7 @@ export const useSignInFormSchema = () => {
       [computed(() => state.signInForm.username), computed(() => string().required(t('required')))],
       [
         computed(() => state.signInForm.password),
-        computed(() => string().required(t('required')).min(8)),
+        computed(() => string().required(t('required')).min(8, t('string.min'))),
       ],
     ],
     state,

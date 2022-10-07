@@ -1,17 +1,15 @@
 import fastify from 'fastify';
 
-import helloWorld from './hello-world/routes';
+import router from '~/plugin/router';
+import websocket from '~/plugin/websocket';
 
 const app = async (options = {}) => {
   const app = fastify(options);
 
-  app.get('/', (req, reply) => {
-    reply.send('change me to see updates, fastify!');
-  });
-
-  app.register(helloWorld);
+  app.register(router, { prefix: '/api' });
+  app.register(websocket, { prefix: '/api' });
 
   return app;
 };
 
-export const viteNodeApp = app({ logger: true });
+export default app;

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "serve": "vite",
+    "dev": "vite",
     "build": "vite build",
     "lint": "eslint 'src/**/*.{js,vue}'",
     "unit": "vitest --dir src",
@@ -12,7 +12,7 @@
     "e2e": "cd e2e && pnpm test",
     "meas": "cd e2e && pnpm perf",
     "active": "cd mock/requests && pnpm install",
-    "mock": "cd mock/requests && pnpm serve"
+    "mock": "cd mock/requests && pnpm dev"
   },
   "dependencies": {
     "@unocss/reset": "^0.45.1",

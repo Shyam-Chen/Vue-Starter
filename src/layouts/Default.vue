@@ -74,11 +74,7 @@ watch(
         <div class="i-fa-language w-6 h-6 text-gray-700"></div>
 
         <select v-model="$i18n.locale">
-          <option
-            v-for="(lang, idx) in ['en-US', 'ja-JP', 'ko-KR', 'zh-TW']"
-            :key="idx"
-            :value="lang"
-          >
+          <option v-for="(lang, idx) in $i18n.availableLocales" :key="idx" :value="lang">
             {{ lang }}
           </option>
         </select>

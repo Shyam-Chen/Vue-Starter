@@ -4,8 +4,6 @@ declare module '*.vue' {
   export default component;
 }
 
-declare const API_URL: string;
-
 declare module 'vue-formor' {
   export const useSchema: any;
 }

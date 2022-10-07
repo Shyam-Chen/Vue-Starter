@@ -1,0 +1,31 @@
+{
+  "root": true,
+  "extends": [
+    "airbnb-base",
+    "prettier"
+  ],
+  "env": {
+    "node": true,
+    "commonjs": true,
+    "es6": true,
+    "jest": true
+  },
+  "globals": {},
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "sourceType": "module"
+  },
+  "plugins": [
+    "prettier"
+  ],
+  "rules": {
+    "prettier/prettier": "error"
+  },
+  "settings": {
+    "import/resolver": {
+      "webpack": {
+        "config": "webpack.config.js"
+      }
+    }
+  }
+}

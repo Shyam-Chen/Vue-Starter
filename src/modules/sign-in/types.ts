@@ -4,5 +4,7 @@ export interface State {
     password?: string;
   };
 
+  signedIn: boolean;
+
   errors: Record<string, string>;
 }

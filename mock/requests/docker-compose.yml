@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+
+  default:
+    image: default
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - yarn:/home/node/.cache/yarn
+    tty: true
+
+volumes:
+  yarn:

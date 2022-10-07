@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "noUnusedLocals": true,
+    "strict": true,
+    "strictNullChecks": true,
+
+    "baseUrl": ".",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "paths": {
+      "~/*": ["src/*"]
+    },
+    "resolveJsonModule": true,
+    "types": ["vite/client", "vitest"],
+
+    "allowJs": true,
+
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+
+    "jsx": "preserve",
+    "lib": ["ESNext", "DOM"],
+    "target": "esnext",
+
+    "skipLibCheck": true
+  },
+  "exclude": ["node_modules", "dist"]
+}

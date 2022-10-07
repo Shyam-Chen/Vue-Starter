@@ -1,17 +1,26 @@
+import path from 'path';
 import { defineConfig } from 'vite';
-import { VitePluginNode } from 'vite-plugin-node';
+import fastify from './vite-plugin-fastify';
+import envify from 'process-envify';
 
 import env from './env';
 
 export default defineConfig({
+  define: envify(env),
   server: {
-    host: env.LISTEN_HOST,
-    port: env.LISTEN_PORT,
+    port: 3000,
   },
   plugins: [
-    ...VitePluginNode({
-      adapter: 'fastify',
+    fastify({
       appPath: './src/app.ts',
+      serverPath: './src/server.ts',
+      adapter: 'fastify',
     }),
   ],
+  resolve: {
+    alias: {
+      '~': path.resolve(__dirname, 'src'),
+    },
+  },
+  test: {},
 });

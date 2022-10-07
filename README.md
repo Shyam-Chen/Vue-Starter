@@ -2,8 +2,6 @@
 
 :poodle: A boilerplate for HTML5, Vue, Vue Router, UnoCSS, Vite, Vitest, and Netlify.
 
-[Live Demo](https://benevolent-selkie-06e99d.netlify.app)
-
 ## Table of Contents
 
 - [Project Setup](#project-setup)
@@ -12,6 +10,17 @@
 - [Configuration](#configuration)
 - [Directory Structure](#directory-structure)
 - [Microservices](#microservices)
+
+## Getting Started
+
+```sh
+$ pnpm install
+$ pnpm active
+
+$ pnpm mock
+
+$ pnpm dev
+```
 
 ## Project Setup
 
@@ -26,7 +35,7 @@ $ pnpm install
 ### Compiles and hot-reloads for development
 
 ```sh
-$ pnpm serve
+$ pnpm dev
 ```
 
 ### Compiles and minifies for production
