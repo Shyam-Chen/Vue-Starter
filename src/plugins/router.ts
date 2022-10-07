@@ -45,6 +45,13 @@ export const router = createRouter({
     },
 
     {
+      path: '/network/eventsource',
+      component: () => import('~/modules/network/eventsource/Registry.vue'),
+      meta: { layout: 'default' },
+      beforeEnter: [auth],
+    },
+
+    {
       path: '/:pathMatch(.*)*',
       component: () => import('~/Error.vue'),
       meta: { error: true },
