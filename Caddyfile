@@ -1,8 +1,12 @@
 :8080 {
   encode gzip
   root * ./dist
-  try_files {path} /index.html
-  file_server browse
+
+  route {
+    try_files {path} /index.html
+    file_server browse
+    reverse_proxy /api/* localhost:3000
+  }
 
   header /service-worker.js {
     Cache-Control max-age=0,no-cache,no-store,must-revalidate

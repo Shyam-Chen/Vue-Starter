@@ -270,6 +270,11 @@ The structure follows the LIFT Guidelines.
 
 ```coffee
 .
+├── e2e -> e2e testing (Caddy Server serve static files and proxy mock api)
+├── mock
+│   ├── requests -> mock api
+│   └── responses -> mock data for mock api, unit testing, and e2e testing
+├── public
 ├── src
 │   ├── assets -> data, fonts, images, medias, styles
 │   ├── components -> shared module
@@ -279,7 +284,7 @@ The structure follows the LIFT Guidelines.
 │   ├── middleware -> core module
 │   ├── modules -> feature modules
 │   │   └── <FEATURE> -> feature module
-│   │       ├── __tests__
+│   │       ├── __tests__ -> unit testing
 │   │       ├── _locales
 │   │       ├── _sections -> feature components (view layer)
 │   │       ├── _<FEATURE> -> shared feature module (view and data layer)
