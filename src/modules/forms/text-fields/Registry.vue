@@ -1,0 +1,35 @@
+<script lang="ts" setup>
+import { reactive } from 'vue';
+
+import Breadcrumbs from '~/components/Breadcrumbs.vue';
+import TextField from '~/components/TextField.vue';
+
+const flux = reactive({
+  textField1: '',
+});
+</script>
+
+<template>
+  <Breadcrumbs
+    :items="[
+      { text: 'Platform', disabled: true },
+      { text: 'Forms', disabled: true },
+      { text: 'Text Fields', disabled: true },
+    ]"
+    class="mb-4"
+  />
+
+  <div class="mb-4">
+    <div class="text-3xl font-bold">Text Fields</div>
+  </div>
+
+  <div class="flex flex-col border p-4 mb-4">
+    <div class="mb-2">Basic examples</div>
+
+    <div class="flex justify-center">
+      <TextField v-model:value="flux.textField1" placeholder="Type here..."
+        >Example label</TextField
+      >
+    </div>
+  </div>
+</template>

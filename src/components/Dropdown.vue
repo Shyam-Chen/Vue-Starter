@@ -38,11 +38,11 @@ const flux = reactive({
       <div>
         <button
           type="button"
-          class="inline-flex w-full justify-center rounded-md"
+          class="inline-flex w-full justify-center items-center rounded-md"
           @mouseenter="flux.onMouseenter"
         >
           <div><slot></slot></div>
-          <div class="i-mdi-chevron-down w-5 h-5"></div>
+          <div class="i-mdi-chevron-down w-5 h-5 text-inherit"></div>
         </button>
       </div>
 

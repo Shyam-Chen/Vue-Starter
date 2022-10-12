@@ -19,7 +19,7 @@ const props = defineProps({
 const emit = defineEmits(['update:value']);
 
 const textFieldValue = computed({
-  get: () => props.value || '',
+  get: () => props.value,
   set: (val) => emit('update:value', val),
 });
 </script>
@@ -35,10 +35,10 @@ const textFieldValue = computed({
       v-bind="$attrs"
       :type="type"
       class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-      :class="{ 'border-red-500 mb-2': errorMessage }"
+      :class="{ 'border-red-500 mb-1': errorMessage }"
     />
 
-    <p v-if="errorMessage" class="text-red-500 text-xs italic">{{ errorMessage }}</p>
+    <p v-if="errorMessage" class="text-red-500 text-xs">{{ errorMessage }}</p>
   </div>
 </template>
 

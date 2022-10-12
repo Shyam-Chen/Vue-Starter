@@ -1,10 +1,25 @@
 <script lang="ts" setup>
-// import Provider from './Provider.vue';
-// import Consumer from './Consumer.vue';
+import Breadcrumbs from '~/components/Breadcrumbs.vue';
+
+import Provider from './Provider.vue';
+import Consumer from './Consumer.vue';
 </script>
 
 <template>
-  <!-- <Provider>
+  <Breadcrumbs
+    :items="[
+      { text: 'Platform', disabled: true },
+      { text: 'Forms', disabled: true },
+      { text: 'Form validation', disabled: true },
+    ]"
+    class="mb-4"
+  />
+
+  <div class="mb-4">
+    <div class="text-3xl font-bold">Form validation</div>
+  </div>
+
+  <Provider>
     <Consumer />
-  </Provider> -->
+  </Provider>
 </template>

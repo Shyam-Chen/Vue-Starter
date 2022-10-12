@@ -5,6 +5,7 @@ import { useIdle } from '@vueuse/core';
 
 import TextField from '~/components/TextField.vue';
 import Dropdown from '~/components/Dropdown.vue';
+import Select from '~/components/Select.vue';
 
 import listOfLinks from './list-of-links';
 import NavLink from './NavLink.vue';
@@ -46,7 +47,11 @@ watch(
 
       <TextField placeholder="Search here..." class="important:w-100" />
 
-      <Dropdown :options="['Change Password', 'Sign out']" @select="flux.selectDropdown">
+      <Dropdown
+        :options="['Change Password', 'Sign out']"
+        class="ml-6 text-white"
+        @select="flux.selectDropdown"
+      >
         <div class="text-white">{{ 'Rich Harris' }}</div>
       </Dropdown>
     </header>
@@ -70,14 +75,23 @@ watch(
 
       <div style="flex: 1 0 auto"></div>
 
-      <footer class="footer bg-gray-200 p-4">
-        <div class="i-fa-language w-6 h-6 text-gray-700"></div>
+      <footer class="footer bg-gray-200 p-4 flex justify-between">
+        <div></div>
 
-        <select v-model="$i18n.locale">
-          <option v-for="(lang, idx) in $i18n.availableLocales" :key="idx" :value="lang">
-            {{ lang }}
-          </option>
-        </select>
+        <div class="flex items-center">
+          <div class="i-fa-language w-6 h-6 text-gray-700"></div>
+
+          <Select
+            v-model:value="$i18n.locale"
+            :options="[
+              { label: 'English', value: 'en-US' },
+              { label: '日本語', value: 'ja-JP' },
+              { label: '한국어', value: 'ko-KR' },
+              { label: '正體中文', value: 'zh-TW' },
+            ]"
+            class="w-50 ml-2"
+          />
+        </div>
       </footer>
     </div>
   </div>

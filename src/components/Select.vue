@@ -1,9 +1,219 @@
+<script lang="ts" setup>
+import { ref, reactive, computed, watch, nextTick, onMounted, onUnmounted } from 'vue';
+import { onClickOutside } from '@vueuse/core';
+
+import getScrollableParent from '~/utilities/getScrollableParent';
+
+const props = defineProps({
+  value: {
+    type: String,
+    default: '',
+  },
+  options: {
+    type: Array,
+    default: () => [],
+  },
+  display: {
+    type: [String, Function],
+    default: () => '',
+  },
+  placeholder: {
+    type: String,
+    default: 'Please select',
+  },
+  clearable: {
+    type: Boolean,
+    default: false,
+  },
+  filterable: {
+    type: Boolean,
+    default: false,
+  },
+  disabled: {
+    type: Boolean,
+    default: false,
+  },
+  notFoundContent: {
+    type: String,
+    default: '--',
+  },
+  isInvalid: {
+    type: Boolean,
+    default: false,
+  },
+  errorMessage: {
+    type: String,
+    default: '',
+  },
+});
+
+const emit = defineEmits(['update:value', 'change']);
+
+const flux = reactive({
+  show: false,
+  direction: 'down',
+  selected: '',
+  filterValue: '',
+  options: null,
+  onSelect(value, option) {
+    flux.show = false;
+    emit('update:value', value);
+    emit('change', value, option);
+  },
+  display(item) {
+    if (props.display && typeof props.display === 'string') {
+      return item[props.display];
+    }
+
+    if (props.display && typeof props.display === 'function') {
+      return props.display(item);
+    }
+
+    return `${item.value} - ${item.label}`;
+  },
+  clear() {
+    emit('update:value', null);
+    emit('change', null, null);
+  },
+
+  scrollableParent: '',
+});
+
+const target = ref();
+const select = ref();
+const menu = ref();
+const selectMenu = ref();
+const selectMenuItem = ref([]);
+
+const _initOptions = computed(() => props.options);
+const reoptions = computed(() => flux.options || props.options);
+
+const open = (selectEl, filterEl, menuEl) => {
+  if (props.disabled) {
+    return;
+  }
+
+  flux.show = !flux.show;
+
+  nextTick(() => {
+    flux.scrollableParent = getScrollableParent(selectEl);
+
+    const rect = selectEl.getBoundingClientRect();
+
+    menuEl.style.width = `${rect.width}px`;
+    menuEl.style.left = `${rect.left}px`;
+    menuEl.style.top = `${rect.bottom}px`;
+
+    if (selectMenu.value.scrollWidth > selectMenu.value.offsetWidth) {
+      const width = `${selectMenu.value.scrollWidth}px`;
+
+      for (let index = 0; index < selectMenuItem.value.length; index++) {
+        if (selectMenuItem.value[index]) {
+          selectMenuItem.value[index].style.width = width;
+        }
+      }
+    } else {
+      for (let index = 0; index < selectMenuItem.value.length; index++) {
+        if (selectMenuItem.value[index]) {
+          selectMenuItem.value[index].style.width = '100%';
+        }
+      }
+    }
+
+    const center = window.innerHeight / 2;
+
+    if (rect.top > center) {
+      flux.direction = 'up';
+    } else {
+      flux.direction = 'down';
+    }
+
+    const active = menuEl.querySelector('.select-menu-item-active');
+    const offsetTop = active?.offsetTop;
+    if (offsetTop) {
+      selectMenu.value.scrollTop = offsetTop - active.offsetHeight * 2;
+    }
+
+    if (filterEl) {
+      filterEl.focus();
+    }
+  });
+};
+
+onClickOutside(target, (event) => {
+  flux.show = false;
+});
+
+watch(
+  () => flux.filterValue,
+  (val) => {
+    const arr = [..._initOptions.value];
+
+    const filter = arr.filter(
+      (item) =>
+        item.label.toUpperCase().includes(val.toUpperCase()) ||
+        item.value.toUpperCase().includes(val.toUpperCase()),
+    );
+
+    flux.options = filter;
+  },
+);
+
+watch(
+  () => props.value,
+  (val) => {
+    if (val) {
+      const arr = [..._initOptions.value];
+      const found = arr.find((item) => item.value === val);
+      flux.selected = found;
+    } else {
+      flux.selected = '';
+    }
+  },
+  { immediate: true },
+);
+
+const wrapper = computed(() => flux.scrollableParent);
+
+const handleScroll = () => {
+  if (flux.show) {
+    const rect = select.value.getBoundingClientRect();
+    menu.value.style.width = `${rect.width}px`;
+    menu.value.style.left = `${rect.left}px`;
+    menu.value.style.top = `${rect.bottom}px`;
+  }
+};
+
+watch(
+  () => wrapper.value,
+  (el) => {
+    el?.addEventListener('scroll', handleScroll);
+  },
+);
+
+onMounted(() => {
+  if (wrapper.value && wrapper.value instanceof HTMLElement) {
+    wrapper.value?.addEventListener('scroll', handleScroll);
+  } else {
+    window.addEventListener('scroll', handleScroll);
+  }
+});
+
+onUnmounted(() => {
+  if (wrapper.value && wrapper.value instanceof HTMLElement) {
+    wrapper.value?.removeEventListener('scroll', handleScroll);
+  } else {
+    window.removeEventListener('scroll', handleScroll);
+  }
+});
+</script>
+
 <template>
   <div>
-    <div v-click-outside="onClickOutside" class="select">
+    <div ref="target" class="select">
       <div
         ref="select"
-        class="select-input"
+        class="select-input shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 bg-white leading-tight focus:outline-none focus:shadow-outline"
         :class="{
           'select-input-placeholder': !flux.selected,
           'select-input-focus': flux.show,
@@ -26,31 +236,28 @@
           class="select-input-icon select-input-icon-clear"
           @click.stop="flux.clear"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
-            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
-          </svg>
+          <div class="i-fa-times-circle w-4 h-4"></div>
         </div>
 
-        <svg v-if="!flux.show" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill select-input-icon" viewBox="0 0 16 16">
-          <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
-        </svg>
-
-        <svg v-else xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-up-fill select-input-icon" viewBox="0 0 16 16">
-          <path d="m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z" />
-        </svg>
+        <div v-if="!flux.show" class="i-fa-caret-down w-4 h-4 select-input-icon"></div>
+        <div v-else class="i-fa-caret-up w-4 h-4 select-input-icon"></div>
       </div>
 
-      <transition name="menu">
+      <Transition name="menu">
         <div
           v-show="flux.show"
           ref="menu"
-          class="select-section"
+          class="select-section shadow-lg rounded bg-white"
           :class="{
             'select-section-up': flux.direction === 'up',
           }"
         >
           <div v-if="filterable" class="select-filter">
-            <input ref="filter" v-model="flux.filterValue" class="select-filter-input form-control">
+            <input
+              ref="filter"
+              v-model="flux.filterValue"
+              class="select-filter-input form-control"
+            />
           </div>
 
           <div ref="selectMenu" class="select-menu">
@@ -58,9 +265,9 @@
               v-for="(item, index) in reoptions"
               :ref="(el) => (selectMenuItem[index] = el)"
               :key="item.value"
-              class="select-menu-item"
+              class="select-menu-item hover:bg-gray-300"
               :class="{
-                'select-menu-item-active': value === item.value,
+                'bg-blue-600 text-white important:hover:bg-blue-800': value === item.value,
               }"
               @click="flux.onSelect(item.value, item)"
             >
@@ -72,7 +279,7 @@
             {{ notFoundContent }}
           </div>
         </div>
-      </transition>
+      </Transition>
     </div>
 
     <div v-if="errorMessage" class="text-danger mt-1">
@@ -80,215 +287,6 @@
     </div>
   </div>
 </template>
-
-<script>
-import { ref, reactive, computed, watch, nextTick, onMounted, onUnmounted } from '@nuxtjs/composition-api'
-
-import clickOutside from './directives/click-outside'
-import getScrollableParent from './utilities/getScrollableParent'
-
-export default {
-  directives: {
-    clickOutside
-  },
-  props: {
-    value: {
-      default: () => null
-    },
-    options: {
-      type: Array,
-      default: () => []
-    },
-    display: {
-      type: [String, Function],
-      default: () => ''
-    },
-    placeholder: {
-      type: String,
-      default: '請選擇'
-    },
-    clearable: {
-      type: Boolean,
-      default: false
-    },
-    filterable: {
-      type: Boolean,
-      default: false
-    },
-    disabled: {
-      type: Boolean,
-      default: false
-    },
-    notFoundContent: {
-      type: String,
-      default: '無選項'
-    },
-    isInvalid: {
-      type: Boolean,
-      default: false
-    },
-    errorMessage: {
-      type: String,
-      default: ''
-    }
-  },
-  emits: ['input', 'change'],
-  setup (props, { emit }) {
-    const flux = reactive({
-      show: false,
-      direction: 'down',
-      selected: '',
-      filterValue: '',
-      options: null,
-      onSelect (value, option) {
-        flux.show = false
-        emit('input', value)
-        emit('change', value, option)
-      },
-      display (item) {
-        if (props.display && typeof props.display === 'string') {
-          return item[props.display]
-        }
-
-        if (props.display && typeof props.display === 'function') {
-          return props.display(item)
-        }
-
-        return `${item.value} - ${item.label}`
-      },
-      clear () {
-        emit('input', null)
-        emit('change', null, null)
-      },
-
-      scrollableParent: ''
-    })
-
-    const select = ref()
-    const menu = ref()
-    const selectMenu = ref()
-    const selectMenuItem = ref([])
-
-    const _initOptions = computed(() => props.options)
-    const reoptions = computed(() => flux.options || props.options)
-
-    const open = (selectEl, filterEl, menuEl) => {
-      if (props.disabled) { return }
-
-      flux.show = !flux.show
-
-      nextTick(() => {
-        flux.scrollableParent = getScrollableParent(selectEl)
-
-        const rect = selectEl.getBoundingClientRect()
-
-        menuEl.style.width = `${rect.width}px`
-        menuEl.style.left = `${rect.left}px`
-        menuEl.style.top = `${rect.bottom}px`
-
-        if (selectMenu.value.scrollWidth > selectMenu.value.offsetWidth) {
-          const width = `${selectMenu.value.scrollWidth}px`
-
-          for (let index = 0; index < selectMenuItem.value.length; index++) {
-            if (selectMenuItem.value[index]) {
-              selectMenuItem.value[index].style.width = width
-            }
-          }
-        } else {
-          for (let index = 0; index < selectMenuItem.value.length; index++) {
-            if (selectMenuItem.value[index]) {
-              selectMenuItem.value[index].style.width = '100%'
-            }
-          }
-        }
-
-        const center = window.innerHeight / 2
-
-        if (rect.top > center) {
-          flux.direction = 'up'
-        } else {
-          flux.direction = 'down'
-        }
-
-        const active = menuEl.querySelector('.select-menu-item-active')
-        const offsetTop = active?.offsetTop
-        if (offsetTop) { selectMenu.value.scrollTop = offsetTop - active.offsetHeight * 2 }
-
-        if (filterEl) { filterEl.focus() }
-      })
-    }
-
-    const onClickOutside = () => {
-      flux.show = false
-    }
-
-    watch(
-      () => flux.filterValue,
-      (val) => {
-        const arr = [..._initOptions.value]
-
-        const filter = arr.filter(
-          item =>
-            item.label.toUpperCase().includes(val.toUpperCase()) ||
-            item.value.toUpperCase().includes(val.toUpperCase())
-        )
-
-        flux.options = filter
-      }
-    )
-
-    watch(
-      () => props.value,
-      (val) => {
-        if (val) {
-          const arr = [..._initOptions.value]
-          const found = arr.find(item => item.value === val)
-          flux.selected = found
-        } else {
-          flux.selected = ''
-        }
-      },
-      { immediate: true }
-    )
-
-    const wrapper = computed(() => flux.scrollableParent)
-
-    const handleScroll = () => {
-      if (flux.show) {
-        const rect = select.value.getBoundingClientRect()
-        menu.value.style.width = `${rect.width}px`
-        menu.value.style.left = `${rect.left}px`
-        menu.value.style.top = `${rect.bottom}px`
-      }
-    }
-
-    watch(
-      () => wrapper.value,
-      (el) => {
-        el?.addEventListener('scroll', handleScroll)
-      }
-    )
-
-    onMounted(() => {
-      if (wrapper.value && wrapper.value instanceof HTMLElement) {
-        wrapper.value?.addEventListener('scroll', handleScroll)
-      } else {
-        window.addEventListener('scroll', handleScroll)
-      }
-    })
-
-    onUnmounted(() => {
-      if (wrapper.value && wrapper.value instanceof HTMLElement) {
-        wrapper.value?.removeEventListener('scroll', handleScroll)
-      } else {
-        window.removeEventListener('scroll', handleScroll)
-      }
-    })
-
-    return { select, menu, selectMenu, selectMenuItem, open, flux, onClickOutside, reoptions }
-  }
-}
-</script>
 
 <style lang="scss" scoped>
 .menu-enter-active {
@@ -310,18 +308,18 @@ export default {
   position: relative;
 
   &-input {
-    cursor: pointer;
-    width: auto;
-    min-height: 30px;
-    padding: 0.25rem 0.75rem;
-    border-radius: 2px;
-    background: #e4ebf0;
-    box-shadow: inset 3px 3px 6px #c2c8cc, inset -3px -3px 6px #ffffff;
-    border: 0.0625rem solid #d1d9e6;
+    // cursor: pointer;
+    // width: auto;
+    // min-height: 30px;
+    // padding: 0.25rem 0.75rem;
+    // border-radius: 2px;
+    // background: #e4ebf0;
+    // box-shadow: inset 3px 3px 6px #c2c8cc, inset -3px -3px 6px #ffffff;
+    // border: 0.0625rem solid #d1d9e6;
     position: relative;
-    display: flex;
-    align-items: center;
-    line-height: 14px;
+    // display: flex;
+    // align-items: center;
+    // line-height: 14px;
 
     &:hover .select-input-icon-clear {
       visibility: visible;
@@ -335,7 +333,7 @@ export default {
     }
 
     &-focus {
-      border: 0.0625rem solid var(--primary);
+      // border: 0.0625rem solid var(--primary);
     }
 
     &-error {
@@ -350,7 +348,7 @@ export default {
     &-disabled {
       cursor: not-allowed;
       border-radius: 2px;
-      color: #c4c4c4 - #555;
+      color: #c4c4c4;
       background: #c4c4c4;
       box-shadow: inset 3px 3px 6px #a7a7a7, inset -3px -3px 6px #e1e1e1;
     }
@@ -370,20 +368,20 @@ export default {
       color: #6c757d;
 
       &:hover {
-        color: #6c757d - #222;
+        color: #6c757d;
       }
     }
   }
 
   &-section {
     position: fixed;
-    background: #e4ebf0;
+    // background: #e4ebf0;
     width: 100%;
     z-index: 10;
-    font-size: 14px;
-    border: 0.0625rem solid #d1d9e6;
-    border-radius: 0.55rem;
-    box-shadow: 6px 6px 12px #b8b9be, -6px -6px 12px #fff;
+    // font-size: 14px;
+    // border: 0.0625rem solid #d1d9e6;
+    // border-radius: 0.55rem;
+    // box-shadow: 6px 6px 12px #b8b9be, -6px -6px 12px #fff;
     transform: translateY(0) translateY(8px) translateY(0);
 
     &-up {
@@ -416,7 +414,7 @@ export default {
   }
 
   &-menu {
-    background: #e4ebf0;
+    // background: #e4ebf0;
     width: 100%;
     max-height: 10rem;
     overflow: auto;
@@ -437,17 +435,17 @@ export default {
       padding: 5px 12px;
 
       &:hover {
-        background-color: #e4ebf0 - #222;
+        // background-color: #e4ebf0;
       }
 
       &-active {
-        color: #fff;
+        // color: #fff;
         background-color: var(--primary);
         // background-color: transparent;
         // box-shadow: inset 2px 2px 5px #b8b9be, inset -3px -3px 7px #fff;
 
         &:hover {
-          color: #fff;
+          // color: #fff;
           background-color: var(--primary);
           // box-shadow: inset 2px 2px 5px #b8b9be, inset -3px -3px 7px #fff;
         }

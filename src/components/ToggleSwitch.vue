@@ -1,91 +1,66 @@
+<script lang="ts" setup>
+import { computed } from 'vue';
+import uniqueId from 'lodash/uniqueId';
+
+const props = defineProps({
+  value: {
+    type: Boolean,
+    default: false,
+  },
+});
+
+const emit = defineEmits(['update:value']);
+
+const uid = uniqueId('toggle-switch-');
+
+const toggleSwitchValue = computed({
+  get: () => props.value,
+  set: (val) => emit('update:value', val),
+});
+</script>
+
 <template>
-  <div>
-    <label class="toggle-switch">
-      <input v-model="toggleSwitchValue" v-bind="$attrs" type="checkbox" class="toggle-switch-input">
-      <span class="toggle-switch-slider" />
+  <div class="flex items-center">
+    <label :for="uid" class="flex items-center cursor-pointer">
+      <div class="relative">
+        <input
+          :id="uid"
+          v-model="toggleSwitchValue"
+          v-bind="$attrs"
+          type="checkbox"
+          class="sr-only"
+        />
+
+        <div
+          class="block w-14 h-8 rounded-full"
+          :class="{
+            'bg-gray-400': !toggleSwitchValue,
+            'bg-blue-600': toggleSwitchValue,
+            'opacity-60 cursor-not-allowed': $attrs.hasOwnProperty('disabled'),
+          }"
+        ></div>
+
+        <div
+          class="dot absolute left-1 top-1 w-6 h-6 bg-white rounded-full transition"
+          :class="{
+            'translate-x-full': toggleSwitchValue,
+            'opacity-60 cursor-not-allowed': $attrs.hasOwnProperty('disabled'),
+          }"
+        ></div>
+      </div>
+
+      <div
+        class="toggle-switch-label ml-2 text-gray-700 font-medium"
+        :class="{ 'cursor-not-allowed': $attrs.hasOwnProperty('disabled') }"
+      >
+        <slot></slot>
+      </div>
     </label>
   </div>
 </template>
 
-<script>
-import { computed } from '@nuxtjs/composition-api'
-
-export default {
-  props: {
-    value: {
-      type: Boolean,
-      default: false
-    }
-  },
-  emits: ['input'],
-  setup (props, { emit }) {
-    const toggleSwitchValue = computed({
-      get: () => props.value || '',
-      set: val => emit('input', val)
-    })
-
-    return {
-      toggleSwitchValue
-    }
-  }
-}
-</script>
-
 <style lang="scss" scoped>
-.toggle-switch {
-  $self: &;
-  $size: 20px;
-  position: relative;
-  display: inline-block;
-  width: $size * 3 - 4px / 2;
-  height: $size;
-
-  &-input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-
-    &:checked + #{$self}-slider::before {
-      background: linear-gradient(145deg, #0084ff, #006fe6);
-      transform: translateX($size * 1.5);
-    }
-
-    &:disabled + #{$self}-slider {
-      cursor: not-allowed;
-      color: #c4c4c4 - #555;
-      background: #c4c4c4;
-      box-shadow: inset 2px 2px 4px #a7a7a7, inset -2px -2px 4px #e1e1e1;
-    }
-
-    &:checked:disabled + #{$self}-slider::before {
-      background: linear-gradient(145deg, #f4fbff - #555, #cdd4d8 - #555);
-    }
-  }
-
-  &-slider {
-    cursor: pointer;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border-radius: 2rem;
-    background: #e4ebf0;
-    box-shadow: inset 2px 2px 4px #c2c8cc, inset -2px -2px 4px #ffffff;
-    transition: all .5s ease;
-
-    &::before {
-      content: '';
-      position: absolute;
-      height: $size;
-      width: $size;
-      left: 4px;
-      bottom: 0;
-      border-radius: 50%;
-      background: linear-gradient(145deg, #f4fbff, #cdd4d8);
-      box-shadow: 2px 2px 4px #c2c8cc, -2px -2px 4px #ffffff;
-      transition: .4s;
-    }
-  }
+.toggle-switch-label:empty {
+  display: none;
 }
 </style>

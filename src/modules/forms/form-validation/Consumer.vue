@@ -4,7 +4,6 @@ import { useI18n } from 'vue-i18n';
 
 import TextField from '~/components/TextField.vue';
 import Button from '~/components/Button.vue';
-import Spinner from '~/components/Spinner.vue';
 
 import { useState, useActions } from './store';
 import { useSignInFormSchema } from './schema';
@@ -16,55 +15,46 @@ const actions = useActions();
 const schema = useSignInFormSchema();
 
 const flux = reactive({
-  signIn() {
+  submit() {
     if (schema.validate()) {
-      actions.signIn();
+      actions.submit();
     }
   },
 });
 </script>
 
 <template>
-  <div class="w-full max-w-sm">
-    <form class="bg-white shadow-md rounded px-8 pt-6 pb-8">
-      <div class="mb-8">
-        <div class="font-bold text-xl mb-2">Sign in to our platform</div>
-        <p class="text-gray-700 text-base">Login here using your username and password</p>
-      </div>
+  <div class="w-full max-w-2xl">
+    <form class="bg-white shadow-md rounded px-8 py-6">
+      <div class="text-2xl font-bold mb-4">Form</div>
 
-      <div class="mb-4">
+      <div class="grid grid-cols-2 gap-4 mb-6">
         <TextField
           v-model:value="state.signInForm.username"
           :error-message="state.errors['signInForm.username']"
-          :disabled="state.signedIn"
         >
           Username
         </TextField>
-      </div>
 
-      <div class="mb-8">
         <TextField
           v-model:value="state.signInForm.password"
           type="password"
           :error-message="state.errors['signInForm.password']"
-          :disabled="state.signedIn"
         >
           Password
+        </TextField>
+
+        <TextField
+          v-model:value="state.signInForm.email"
+          type="email"
+          :error-message="state.errors['signInForm.email']"
+        >
+          Email
         </TextField>
       </div>
 
       <div class="flex items-center justify-between">
-        <Button color="primary" :disabled="state.signedIn" class="w-32" @click="flux.signIn">
-          <Spinner v-if="state.signedIn" class="w-3 h-3 border-2 align-middle" />
-          <div v-else>Sign In</div>
-        </Button>
-
-        <router-link
-          class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
-          to="/forgot-password"
-        >
-          Forgot Password?
-        </router-link>
+        <Button color="primary" @click="flux.submit">Submit</Button>
       </div>
     </form>
   </div>

@@ -38,6 +38,43 @@ export const router = createRouter({
     },
 
     {
+      path: '/forms/text-fields',
+      component: () => import('~/modules/forms/text-fields/Registry.vue'),
+      meta: { layout: 'default' },
+      beforeEnter: [auth],
+    },
+    {
+      path: '/forms/checkboxes',
+      component: () => import('~/modules/forms/checkboxes/Registry.vue'),
+      meta: { layout: 'default' },
+      beforeEnter: [auth],
+    },
+    {
+      path: '/forms/radio-buttons',
+      component: () => import('~/modules/forms/radio-buttons/Registry.vue'),
+      meta: { layout: 'default' },
+      beforeEnter: [auth],
+    },
+    {
+      path: '/forms/switches',
+      component: () => import('~/modules/forms/switches/Registry.vue'),
+      meta: { layout: 'default' },
+      beforeEnter: [auth],
+    },
+    {
+      path: '/forms/selects/single-selects',
+      component: () => import('~/modules/forms/selects/single-selects/Registry.vue'),
+      meta: { layout: 'default' },
+      beforeEnter: [auth],
+    },
+    {
+      path: '/forms/form-validation',
+      component: () => import('~/modules/forms/form-validation/Registry.vue'),
+      meta: { layout: 'default' },
+      beforeEnter: [auth],
+    },
+
+    {
       path: '/charts/line-charts',
       component: () => import('~/modules/charts/line-charts/Registry.vue'),
       meta: { layout: 'default' },
