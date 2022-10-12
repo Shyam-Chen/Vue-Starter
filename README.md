@@ -46,7 +46,7 @@ $ pnpm build
 
 ### Lints and fixes files
 
-Files: `src/**/*.{js,vue}`
+Files: `src/**/*.{ts,vue}`
 
 ```sh
 $ pnpm lint
@@ -54,7 +54,7 @@ $ pnpm lint
 
 ### Runs unit tests
 
-Files: `src/**/*.spec.js`
+Files: `src/**/*.spec.ts`
 
 ```sh
 $ pnpm unit
@@ -62,7 +62,7 @@ $ pnpm unit
 
 ### Runs end-to-end tests
 
-Files: `e2e/**/*.spec.js`
+Files: `e2e/**/*.spec.ts`
 
 ```sh
 # Before running the `e2e` command, make sure to run the following commands.
@@ -77,7 +77,7 @@ $ pnpm e2e
 
 ### Measures site's URLs
 
-Files: `e2e/**/*.meas.js`
+Files: `e2e/**/*.meas.ts`
 
 ```sh
 # Before running the `meas` command, make sure to run the following commands.
@@ -132,7 +132,7 @@ This seed repository provides the following features:
 - [x] [Pnpm](https://pnpm.io/)
 - [x] [Caddy](https://caddyserver.com/)
 - [x] [CircleCI](https://circleci.com/)
-- [x] [Netlify](https://www.netlify.com/)
+- [ ] [Render](https://render.com/)
 
 ## Dockerization
 
@@ -309,12 +309,12 @@ The structure follows the LIFT Guidelines.
 ├── docker-compose.yml
 ├── Dockerfile
 ├── env.ts
-├── index.html
+├── index.html -> entrypoint
 ├── LICENSE
-├── netlify.toml
 ├── package.json
 ├── pnpm-lock.yaml
 ├── README.md
+├── render.yaml
 ├── tsconfig.json
 └── vite.config.ts
 ```

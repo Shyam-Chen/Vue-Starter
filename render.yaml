@@ -1,0 +1,33 @@
+services:
+  - type: web
+    name: Vue Starter
+    env: static
+    buildCommand: pnpm build
+    staticPublishPath: './dist'
+    headers:
+      - path: /service-worker.js
+        name: Cache-Control
+        value: max-age=0,no-cache,no-store,must-revalidate
+      - path: /*
+        name: X-Frame-Options
+        value: DENY
+      - path: /*
+        name: X-XSS-Protection
+        value: 1; mode=block
+      - path: /*
+        name: Content-Security-Policy
+        value: "form-action https:"
+      - path: /*
+        name: Referrer-Policy
+        value: strict-origin-when-cross-origin
+      - path: /*
+        name: Strict-Transport-Security
+        value: max-age=2592000
+      - path: /*
+        name: Feature-Policy
+        value: vibrate 'none'; geolocation 'none'; midi 'none'; notifications 'none'; push 'none'; sync-xhr 'none'; microphone 'none'; camera 'none'; magnetometer 'none'; gyroscope 'none'; speaker 'none'; vibrate 'none'; fullscreen 'none'; payment 'none'
+    routes:
+      - type: redirect
+        source: /*
+        destination: /index.html
+
