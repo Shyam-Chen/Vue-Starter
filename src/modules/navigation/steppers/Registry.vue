@@ -78,48 +78,27 @@ const stepper = useStepper({
         <Stepper.Content v-if="stepper.isCurrent('s2')">
           <div class="mb-4">Content 2</div>
           <Button @click="stepper.goToPrevious">Back</Button>
-          <Button color="primary" @click="stepper.goToNext">Next</Button>
+          <Button color="primary" class="ml-2" @click="stepper.goToNext">Next</Button>
         </Stepper.Content>
 
         <Stepper.Content v-if="stepper.isCurrent('s3')">
           <div class="mb-4">Content 3</div>
           <Button @click="stepper.goToPrevious">Back</Button>
-          <Button color="primary" @click="stepper.goToNext">Next</Button>
+          <Button color="primary" class="ml-2" @click="stepper.goToNext">Next</Button>
         </Stepper.Content>
 
         <Stepper.Content v-if="stepper.isCurrent('s4')">
           <div class="mb-4">Content 4</div>
           <Button @click="stepper.goToPrevious">Back</Button>
-          <Button color="primary" @click="stepper.goToNext">Next</Button>
+          <Button color="primary" class="ml-2" @click="stepper.goToNext">Next</Button>
         </Stepper.Content>
 
         <Stepper.Content v-if="stepper.isCurrent('s5')">
           <div class="mb-4">Content 5</div>
           <Button @click="stepper.goToPrevious">Back</Button>
-          <Button color="primary">Submit</Button>
+          <Button color="primary" class="ml-2">Submit</Button>
         </Stepper.Content>
       </template>
     </Stepper>
   </div>
 </template>
-
-<style lang="scss" scoped>
-.stepper-step {
-  position: relative;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  flex: 1;
-  padding: 10px;
-
-  &:not(:last-of-type)::after {
-    content: '';
-    display: block;
-    position: absolute;
-    width: 100%;
-    border: 1px solid #ccc;
-    transform: translate(50%, 11px);
-    z-index: 1;
-  }
-}
-</style>

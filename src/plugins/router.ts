@@ -4,6 +4,8 @@ import auth from '~/middleware/auth';
 import componentsRoutes from '~/modules/components/routes';
 import navigationRoutes from '~/modules/navigation/routes';
 import formsRoutes from '~/modules/forms/routes';
+import chartsRoutes from '~/modules/charts/routes'
+import networkRoutes from '~/modules/network/routes'
 
 export const history = createWebHistory();
 
@@ -34,19 +36,9 @@ export const router = createRouter({
     ...navigationRoutes,
     ...formsRoutes,
 
-    {
-      path: '/charts/line-charts',
-      component: () => import('~/modules/charts/line-charts/Registry.vue'),
-      meta: { layout: 'default' },
-      beforeEnter: [auth],
-    },
+    ...chartsRoutes,
 
-    {
-      path: '/network/eventsource',
-      component: () => import('~/modules/network/eventsource/Registry.vue'),
-      meta: { layout: 'default' },
-      beforeEnter: [auth],
-    },
+    ...networkRoutes,
 
     {
       path: '/:pathMatch(.*)*',

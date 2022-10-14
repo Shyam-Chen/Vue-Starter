@@ -31,4 +31,12 @@ const flux = reactive({
       <RadioGroup v-model:value="flux.radioGroup1" :options="flux.radioGroup1Options" />
     </div>
   </div>
+
+  <div class="flex flex-col border p-4 mb-4">
+    <div class="mb-2">Disabled</div>
+
+    <div class="flex justify-center">
+      <RadioGroup v-model:value="flux.radioGroup1" :options="flux.radioGroup1Options" disabled />
+    </div>
+  </div>
 </template>

@@ -2,6 +2,8 @@
 import { ref, onMounted, reactive } from 'vue';
 import highcharts from 'highcharts';
 
+import Breadcrumbs from '~/components/Breadcrumbs.vue';
+
 const basicLine = ref();
 
 const flux = reactive({
@@ -98,7 +100,24 @@ onMounted(() => {
 </script>
 
 <template>
-  <div ref="basicLine"></div>
+  <Breadcrumbs
+    :items="[
+      { text: 'Platform', disabled: true },
+      { text: 'Charts', disabled: true },
+      { text: 'Line Charts', disabled: true },
+    ]"
+    class="mb-4"
+  />
 
-  <button @click="update">Update</button>
+  <div class="mb-4">
+    <div class="text-3xl font-bold">Line Charts</div>
+  </div>
+
+  <div class="flex flex-col border p-4 mb-4">
+    <div class="mb-2">Basic examples</div>
+
+    <div ref="basicLine"></div>
+
+    <button @click="update">Update</button>
+  </div>
 </template>

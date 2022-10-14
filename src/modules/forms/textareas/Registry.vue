@@ -30,4 +30,14 @@ const flux = reactive({
       <Textarea v-model:value="flux.textarea1" placeholder="Type here...">Example label</Textarea>
     </div>
   </div>
+
+  <div class="flex flex-col border p-4 mb-4">
+    <div class="mb-2">Disabled</div>
+
+    <div class="flex justify-center">
+      <Textarea v-model:value="flux.textarea1" placeholder="Type here..." disabled
+        >Example label</Textarea
+      >
+    </div>
+  </div>
 </template>

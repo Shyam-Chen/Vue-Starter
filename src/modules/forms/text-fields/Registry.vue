@@ -32,4 +32,24 @@ const flux = reactive({
       >
     </div>
   </div>
+
+  <div class="flex flex-col border p-4 mb-4">
+    <div class="mb-2">Disabled</div>
+
+    <div class="flex justify-center">
+      <TextField v-model:value="flux.textField1" placeholder="Type here..." disabled
+        >Example label</TextField
+      >
+    </div>
+  </div>
+
+  <div class="flex flex-col border p-4 mb-4">
+    <div class="mb-2">Icons</div>
+
+    <div class="flex justify-center">
+      <TextField v-model:value="flux.textField1" placeholder="Type here..."
+        >Example label</TextField
+      >
+    </div>
+  </div>
 </template>

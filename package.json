@@ -5,13 +5,11 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "lint": "eslint 'src/**/*.{js,vue}'",
-    "unit": "vitest --dir src",
+    "lint": "eslint 'src/**/*.{ts,vue}'",
+    "unit": "vitest --dir src --coverage",
     "preview": "caddy run",
-    "setup": "cd e2e && pnpm install",
     "e2e": "cd e2e && pnpm test",
     "meas": "cd e2e && pnpm perf",
-    "active": "cd mock/requests && pnpm install",
     "mock": "cd mock/requests && pnpm dev"
   },
   "dependencies": {
@@ -35,6 +33,7 @@
     "@typescript-eslint/parser": "^5.36.1",
     "@unocss/preset-icons": "^0.44.5",
     "@vitejs/plugin-vue": "^3.0.3",
+    "@vitest/coverage-c8": "^0.24.1",
     "@vue/compiler-sfc": "^3.2.40",
     "@vue/eslint-config-typescript": "^11.0.0",
     "eslint": "^7.22.0",

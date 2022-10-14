@@ -3,7 +3,7 @@ services:
     name: Vue Starter
     env: static
     buildCommand: pnpm build
-    staticPublishPath: './dist'
+    staticPublishPath: dist
     headers:
       - path: /service-worker.js
         name: Cache-Control
@@ -27,7 +27,7 @@ services:
         name: Feature-Policy
         value: vibrate 'none'; geolocation 'none'; midi 'none'; notifications 'none'; push 'none'; sync-xhr 'none'; microphone 'none'; camera 'none'; magnetometer 'none'; gyroscope 'none'; speaker 'none'; vibrate 'none'; fullscreen 'none'; payment 'none'
     routes:
-      - type: redirect
+      - type: rewrite
         source: /*
         destination: /index.html
 

@@ -30,4 +30,12 @@ const flux = reactive({
       <Checkbox v-model:value="flux.checkbox1">Checkbox 1</Checkbox>
     </div>
   </div>
+
+  <div class="flex flex-col border p-4 mb-4">
+    <div class="mb-2">Disabled</div>
+
+    <div class="flex justify-center">
+      <Checkbox v-model:value="flux.checkbox1" disabled>Checkbox 1</Checkbox>
+    </div>
+  </div>
 </template>

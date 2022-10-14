@@ -4,6 +4,7 @@
 
 ## Table of Contents
 
+- [Getting Started](#getting-started)
 - [Project Setup](#project-setup)
 - [Key Features](#key-features)
 - [Dockerization](#dockerization)
@@ -13,15 +14,16 @@
 
 ## Getting Started
 
+Get started with Vue Starter.
+
 ```sh
 # dev server
 $ pnpm install
 $ pnpm dev
 
 # mock server
-$ cd mock/requests
-$ pnpm install
-$ pnpm dev
+$ cd mock/requests && pnpm install && cd ../..
+$ pnpm mock
 ```
 
 ## Project Setup
@@ -71,8 +73,8 @@ Files: `e2e/**/*.spec.ts`
 $ pnpm build
 $ pnpm preview
 
-# If it's not setup, run it.
-$ pnpm setup
+# If it's not installed, run it.
+$ cd e2e && pnpm install && cd ..
 
 $ pnpm e2e
 ```
@@ -86,8 +88,8 @@ Files: `e2e/**/*.meas.ts`
 $ pnpm build
 $ pnpm preview
 
-# If it's not setup, run it.
-$ pnpm setup
+# If it's not installed, run it.
+$ cd e2e && pnpm install && cd ..
 
 $ pnpm meas
 ```
@@ -97,8 +99,8 @@ $ pnpm meas
 [`mock/requests`](./mock/requests) is a fork of [Fastify-Starter](https://github.com/Shyam-Chen/Fastify-Starter) that was made easy and quick way to run mock APIs locally.
 
 ```sh
-# If it's not active, run it.
-$ pnpm active
+# If it's not installed, run it.
+$ cd mock/requests && pnpm install && cd ../..
 
 $ pnpm mock
 ```
@@ -323,6 +325,6 @@ The structure follows the LIFT Guidelines.
 
 ## Microservices
 
-> Techniques, strategies and recipes for building a **modern web app** with **multiple teams** that can **ship features independently**.
+> A micro-frontend architecture lays out the approach for the structural elements of a micro-frontend framework. It also defines the relationships among them, governing how UI fragments are assembled and communicate in order to achieve the optimal developer and user experience.
 
 See [Micro-Fullstack's Micro Frontends](https://github.com/Shyam-Chen/Micro-Fullstack/tree/main/mfe) for instructions on how to create microservices from source code.

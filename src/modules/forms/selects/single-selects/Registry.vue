@@ -37,4 +37,28 @@ const flux = reactive({
       <Select v-model:value="flux.select1" :options="flux.select1Options" class="w-50" />
     </div>
   </div>
+
+  <div class="flex flex-col border p-4 mb-4">
+    <div class="mb-2">Disabled</div>
+
+    <div class="flex justify-center">
+      <Select v-model:value="flux.select1" :options="flux.select1Options" disabled class="w-50" />
+    </div>
+  </div>
+
+  <div class="flex flex-col border p-4 mb-4">
+    <div class="mb-2">Clearable</div>
+
+    <div class="flex justify-center">
+      <Select v-model:value="flux.select1" :options="flux.select1Options" clearable class="w-50" />
+    </div>
+  </div>
+
+  <div class="flex flex-col border p-4 mb-4">
+    <div class="mb-2">Filterable</div>
+
+    <div class="flex justify-center">
+      <Select v-model:value="flux.select1" :options="flux.select1Options" filterable class="w-50" />
+    </div>
+  </div>
 </template>
