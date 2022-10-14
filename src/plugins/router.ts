@@ -2,6 +2,8 @@ import { createWebHistory, createRouter } from 'vue-router';
 
 import auth from '~/middleware/auth';
 import componentsRoutes from '~/modules/components/routes';
+import navigationRoutes from '~/modules/navigation/routes';
+import formsRoutes from '~/modules/forms/routes';
 
 export const history = createWebHistory();
 
@@ -29,50 +31,8 @@ export const router = createRouter({
     },
 
     ...componentsRoutes,
-
-    {
-      path: '/navigation/breadcrumbs',
-      component: () => import('~/modules/navigation/breadcrumbs/Registry.vue'),
-      meta: { layout: 'default' },
-      beforeEnter: [auth],
-    },
-
-    {
-      path: '/forms/text-fields',
-      component: () => import('~/modules/forms/text-fields/Registry.vue'),
-      meta: { layout: 'default' },
-      beforeEnter: [auth],
-    },
-    {
-      path: '/forms/checkboxes',
-      component: () => import('~/modules/forms/checkboxes/Registry.vue'),
-      meta: { layout: 'default' },
-      beforeEnter: [auth],
-    },
-    {
-      path: '/forms/radio-buttons',
-      component: () => import('~/modules/forms/radio-buttons/Registry.vue'),
-      meta: { layout: 'default' },
-      beforeEnter: [auth],
-    },
-    {
-      path: '/forms/switches',
-      component: () => import('~/modules/forms/switches/Registry.vue'),
-      meta: { layout: 'default' },
-      beforeEnter: [auth],
-    },
-    {
-      path: '/forms/selects/single-selects',
-      component: () => import('~/modules/forms/selects/single-selects/Registry.vue'),
-      meta: { layout: 'default' },
-      beforeEnter: [auth],
-    },
-    {
-      path: '/forms/form-validation',
-      component: () => import('~/modules/forms/form-validation/Registry.vue'),
-      meta: { layout: 'default' },
-      beforeEnter: [auth],
-    },
+    ...navigationRoutes,
+    ...formsRoutes,
 
     {
       path: '/charts/line-charts',
@@ -91,7 +51,7 @@ export const router = createRouter({
     {
       path: '/:pathMatch(.*)*',
       component: () => import('~/Error.vue'),
-      meta: { error: true },
+      meta: { layout: 'empty' },
     },
   ],
 });

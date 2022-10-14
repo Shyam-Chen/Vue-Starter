@@ -11,13 +11,17 @@ const meta = computed(() => route.meta);
 </script>
 
 <template>
-  <Center v-if="meta.layout === 'center'">
-    <slot></slot>
-  </Center>
+  <template v-if="meta.layout">
+    <template v-if="meta.layout === 'empty'">
+      <slot></slot>
+    </template>
 
-  <Default v-else-if="meta.layout === 'default'">
-    <slot></slot>
-  </Default>
+    <Center v-else-if="meta.layout === 'center'">
+      <slot></slot>
+    </Center>
 
-  <div v-else>Loading...</div>
+    <Default v-else>
+      <slot></slot>
+    </Default>
+  </template>
 </template>

@@ -1,20 +1,9 @@
 <script lang="ts" setup>
-import { computed } from 'vue';
-import { useRoute } from 'vue-router';
-
 import Layout from '~/layouts/Layout.vue';
-
-const route = useRoute();
-
-const meta = computed(() => route.meta);
 </script>
 
 <template>
-  <template v-if="meta.error">
-    <router-view></router-view>
-  </template>
-
-  <Layout v-else>
+  <Layout>
     <router-view></router-view>
   </Layout>
 </template>

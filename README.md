@@ -14,11 +14,13 @@
 ## Getting Started
 
 ```sh
+# dev server
 $ pnpm install
-$ pnpm active
+$ pnpm dev
 
-$ pnpm mock
-
+# mock server
+$ cd mock/requests
+$ pnpm install
 $ pnpm dev
 ```
 

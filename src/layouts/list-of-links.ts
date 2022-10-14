@@ -22,7 +22,7 @@ export default [
     sub: [
       { name: 'Breadcrumbs', to: '/navigation/breadcrumbs' },
       { name: 'Tabs', to: '/navigation/tabs' },
-      { name: 'Stepper', to: '/navigation/stepper' },
+      { name: 'Steppers', to: '/navigation/steppers' },
     ],
   },
   {
@@ -50,6 +50,7 @@ export default [
         ],
       },
       { name: 'Autocompletes', to: '/forms/autocompletes' },
+      { name: 'File inputs', to: '/forms/file-inputs' },
       { name: 'Form validation', to: '/forms/form-validation' },
     ],
   },
