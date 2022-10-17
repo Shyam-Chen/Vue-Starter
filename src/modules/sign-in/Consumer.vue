@@ -35,6 +35,7 @@ const flux = reactive({
       <div class="mb-4">
         <TextField
           v-model:value="state.signInForm.username"
+          required
           :error-message="state.errors['signInForm.username']"
           :disabled="state.signedIn"
         >
@@ -46,6 +47,7 @@ const flux = reactive({
         <TextField
           v-model:value="state.signInForm.password"
           type="password"
+          required
           :error-message="state.errors['signInForm.password']"
           :disabled="state.signedIn"
         >

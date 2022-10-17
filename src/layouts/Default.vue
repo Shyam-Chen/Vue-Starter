@@ -6,6 +6,8 @@ import { useIdle } from '@vueuse/core';
 import TextField from '~/components/TextField.vue';
 import Dropdown from '~/components/Dropdown.vue';
 import Select from '~/components/Select.vue';
+import Dialog from '~/components/Dialog.vue';
+import Button from '~/components/Button.vue';
 
 import listOfLinks from './list-of-links';
 import NavLink from './NavLink.vue';
@@ -21,6 +23,7 @@ const flux = reactive({
       router.push('/sign-in');
     }
   },
+  idleDialog: false,
 });
 
 watch(
@@ -28,11 +31,15 @@ watch(
   (val) => {
     if (val) {
       localStorage.removeItem('token');
-      console.log('Idle Timeout');
-      console.log('Please sign in again');
-      console.log('Okay');
-      alert('Idle Timeout');
+      flux.idleDialog = true;
     }
+  },
+);
+
+watch(
+  () => flux.idleDialog,
+  (val) => {
+    if (!val) router.push('/sign-in');
   },
 );
 </script>
@@ -94,6 +101,15 @@ watch(
         </div>
       </footer>
     </div>
+
+    <Dialog v-model="flux.idleDialog">
+      <div class="text-2xl">Idle Time-out</div>
+      <div class="my-2">Please sign-in again.</div>
+
+      <div class="flex justify-end">
+        <Button color="primary" @click="flux.idleDialog = false">Okay, got it</Button>
+      </div>
+    </Dialog>
   </div>
 </template>
 

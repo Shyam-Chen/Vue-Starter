@@ -4,8 +4,8 @@ import auth from '~/middleware/auth';
 import componentsRoutes from '~/modules/components/routes';
 import navigationRoutes from '~/modules/navigation/routes';
 import formsRoutes from '~/modules/forms/routes';
-import chartsRoutes from '~/modules/charts/routes'
-import networkRoutes from '~/modules/network/routes'
+import chartsRoutes from '~/modules/charts/routes';
+import networkRoutes from '~/modules/network/routes';
 
 export const history = createWebHistory();
 

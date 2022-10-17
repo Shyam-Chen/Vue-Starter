@@ -10,6 +10,10 @@ const props = defineProps({
     type: String,
     default: 'text',
   },
+  required: {
+    type: Boolean,
+    default: false,
+  },
   errorMessage: {
     type: String,
     default: '',
@@ -28,6 +32,7 @@ const textFieldValue = computed({
   <div class="text-field w-full">
     <label class="block text-gray-700 text-sm font-bold mb-2">
       <slot></slot>
+      <span v-if="required" class="text-red-500">*</span>
     </label>
 
     <input

@@ -3,7 +3,7 @@ import { createFetch } from '@vueuse/core';
 import { i18n } from '~/plugins/i18n';
 
 export const useSysFetch = createFetch({
-  baseUrl: '/api',
+  baseUrl: process.env.API_URL + '/api',
   options: {
     async beforeFetch({ options }) {
       const token = localStorage.getItem('token');
@@ -17,6 +17,17 @@ export const useSysFetch = createFetch({
       }
 
       return { options };
+    },
+    afterFetch(ctx) {
+      if (ctx.response.status === 401) {
+        // Unauthorized
+      }
+
+      if (ctx.response.status === 440) {
+        // Login Time-out
+      }
+
+      return ctx;
     },
   },
 });

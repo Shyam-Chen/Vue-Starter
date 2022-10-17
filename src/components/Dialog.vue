@@ -52,8 +52,8 @@ onUnmounted(() => {
           aria-modal="true"
           aria-labelledby="modal-headline"
         >
-          <div class="absolute top-1 right-1 cursor-pointer" @click="closeDialog">
-            <div class="i-ion-close"></div>
+          <div class="absolute top-1.5 right-1.5 cursor-pointer" @click="closeDialog">
+            <div class="i-ion-close w-6 h-6 text-gray-500"></div>
           </div>
 
           <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
