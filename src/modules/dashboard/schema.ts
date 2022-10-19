@@ -2,7 +2,7 @@ import { computed } from 'vue';
 import { useSchema } from 'vue-formor';
 import {} from 'yup';
 
-import { useState } from './store';
+import { useState } from './provider';
 
 export const use__FEATURE_NAME__Schema = () => {
   const state = useState();

@@ -39,6 +39,12 @@ export default [
   },
   ...pickersRoutes,
   {
+    path: '/forms/file-inputs',
+    component: () => import('~/modules/forms/file-inputs/Registry.vue'),
+    meta: { layout: 'default' },
+    beforeEnter: [auth],
+  },
+  {
     path: '/forms/form-validation',
     component: () => import('~/modules/forms/form-validation/Registry.vue'),
     meta: { layout: 'default' },

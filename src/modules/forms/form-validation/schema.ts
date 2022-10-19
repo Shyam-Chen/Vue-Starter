@@ -3,7 +3,7 @@ import { useSchema } from 'vue-formor';
 import { useI18n } from 'vue-i18n';
 import { string } from 'yup';
 
-import { useState } from './store';
+import { useState } from './provider';
 
 export const useSignInFormSchema = () => {
   const { t } = useI18n({ useScope: 'global' });

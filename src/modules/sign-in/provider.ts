@@ -10,6 +10,7 @@ export const stateSymbol = Symbol('/sign-in');
 export const createState = reactive({
   signInForm: {},
   signedIn: false,
+  myFile: null,
 
   errors: {},
 });

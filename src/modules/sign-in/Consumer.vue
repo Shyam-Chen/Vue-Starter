@@ -6,7 +6,7 @@ import TextField from '~/components/TextField.vue';
 import Button from '~/components/Button.vue';
 import Spinner from '~/components/Spinner.vue';
 
-import { useState, useActions } from './store';
+import { useState, useActions } from './provider';
 import { useSignInFormSchema } from './schema';
 
 const { t } = useI18n({ useScope: 'local' });
@@ -29,17 +29,17 @@ const flux = reactive({
     <form class="bg-white shadow-md rounded px-8 pt-6 pb-8">
       <div class="mb-8">
         <div class="font-bold text-xl mb-2">Sign in to our platform</div>
-        <p class="text-gray-700 text-base">Login here using your username and password</p>
+        <p class="text-gray-700 text-base">Login here using your account and password</p>
       </div>
 
       <div class="mb-4">
         <TextField
-          v-model:value="state.signInForm.username"
+          v-model:value="state.signInForm.account"
           required
-          :error-message="state.errors['signInForm.username']"
+          :error-message="state.errors['signInForm.account']"
           :disabled="state.signedIn"
         >
-          Username
+          {{ t('account') }}
         </TextField>
       </div>
 

@@ -292,13 +292,10 @@ The structure follows the LIFT Guidelines.
 │   │   └── <FEATURE> -> feature module
 │   │       ├── __tests__ -> unit testing
 │   │       ├── _locales
-│   │       ├── _sections -> feature components (view layer)
-│   │       ├── _<FEATURE> -> shared feature module (view and data layer)
 │   │       ├── Consumer.vue
-│   │       ├── Provider.vue
 │   │       ├── Registry.vue -> page component
 │   │       ├── schema.ts
-│   │       ├── store.ts
+│   │       ├── provider.ts
 │   │       └── types.ts
 │   ├── plugins -> root module
 │   ├── utilities -> shared module

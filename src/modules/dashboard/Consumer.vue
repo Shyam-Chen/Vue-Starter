@@ -4,7 +4,7 @@ import highcharts from 'highcharts';
 
 import Breadcrumbs from '~/components/Breadcrumbs.vue';
 
-import { useState, useActions, useComputeds } from './store';
+import { useState, useActions, useComputeds } from './provider';
 
 const state = useState();
 const actions = useActions();

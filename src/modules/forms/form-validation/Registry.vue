@@ -1,8 +1,10 @@
 <script lang="ts" setup>
 import Breadcrumbs from '~/components/Breadcrumbs.vue';
 
-import Provider from './Provider.vue';
+import provider from './provider';
 import Consumer from './Consumer.vue';
+
+provider();
 </script>
 
 <template>
@@ -19,7 +21,5 @@ import Consumer from './Consumer.vue';
     <div class="text-3xl font-bold">Form validation</div>
   </div>
 
-  <Provider>
-    <Consumer />
-  </Provider>
+  <Consumer />
 </template>
