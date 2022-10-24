@@ -1,7 +1,7 @@
 import { reactive, inject } from 'vue';
 import { useRouter } from 'vue-router';
 
-import { defineContext, useSysFetch } from '~/composables';
+import { defineContext, useFetch } from '~/composables';
 
 import type { State } from './types';
 
@@ -19,7 +19,7 @@ export const useState = () => inject(stateSymbol) as State;
 
 export const useActions = () => {
   const router = useRouter();
-  const signInApi = useSysFetch('/sign-in', { immediate: false }).json();
+  const signInApi = useFetch('/sign-in', { immediate: false }).json();
   const state = useState();
 
   const actions = {

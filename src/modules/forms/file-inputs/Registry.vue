@@ -2,9 +2,9 @@
 import { reactive } from 'vue';
 
 import Breadcrumbs from '~/components/Breadcrumbs.vue';
-import { useSysFetch } from '~/composables';
+import { useFetch } from '~/composables';
 
-const fileUploadsApi = useSysFetch('/file-uploads', { immediate: false }).json();
+const fileUploadsApi = useFetch('/file-uploads', { immediate: false }).json();
 
 const flux = reactive({
   async changeFile(event) {

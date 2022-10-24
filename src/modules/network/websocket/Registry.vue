@@ -1,8 +1,10 @@
 <script lang="ts" setup>
 import Breadcrumbs from '~/components/Breadcrumbs.vue';
-import { useEventSource } from '~/composables';
+import { useWebSocket } from '~/composables';
 
-const { data } = useEventSource('/sse');
+const { data, send } = useWebSocket('/echo');
+
+send('Hello from Vue!');
 </script>
 
 <template>
@@ -10,13 +12,13 @@ const { data } = useEventSource('/sse');
     :items="[
       { text: 'Platform', disabled: true },
       { text: 'Network', disabled: true },
-      { text: 'EventSource', disabled: true },
+      { text: 'WebSocket', disabled: true },
     ]"
     class="mb-4"
   />
 
   <div class="mb-4">
-    <div class="text-3xl font-bold">EventSource</div>
+    <div class="text-3xl font-bold">WebSocket</div>
   </div>
 
   <div class="flex flex-col border p-4 mb-4">

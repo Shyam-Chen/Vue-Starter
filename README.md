@@ -127,7 +127,6 @@ This seed repository provides the following features:
 - [x] [Vite](https://github.com/vitejs/vite)
 - [x] [TypeScript](https://github.com/microsoft/TypeScript)
 - [x] [Sassy CSS](https://github.com/sass/sass)
-- [ ] [Workbox](https://github.com/GoogleChrome/workbox)
 - [x] [ESLint](https://github.com/eslint/eslint)
 - [x] [Prettier](https://github.com/prettier/prettier)
 - [x] [Vitest](https://github.com/vitest-dev/vitest)
@@ -137,6 +136,7 @@ This seed repository provides the following features:
 - [x] [Node.js](https://nodejs.org/en/)
 - [x] [Pnpm](https://pnpm.io/)
 - [x] [Caddy](https://caddyserver.com/)
+- [ ] [Docker](https://www.docker.com/)
 - [x] [CircleCI](https://circleci.com/)
 - [ ] [Render](https://render.com/)
 

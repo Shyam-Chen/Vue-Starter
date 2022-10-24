@@ -23,7 +23,11 @@ export default defineConfig({
   },
   server: {
     proxy: {
-      '/api': env.MOCK_API,
+      '/api': 'http://localhost:3000',
+      '/io': {
+        target: 'ws://localhost:3000',
+        ws: true,
+      },
     },
   },
   test: {

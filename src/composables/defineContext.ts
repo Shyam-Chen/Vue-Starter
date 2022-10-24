@@ -1,7 +1,7 @@
 import { onUnmounted, provide } from 'vue';
 import cloneDeep from 'lodash/cloneDeep';
 
-export const defineContext = (name: string | symbol, state: any, reset = true) => {
+export default (name: string | symbol, state: any, reset = true) => {
   if (reset) {
     const initialState = cloneDeep(state);
 

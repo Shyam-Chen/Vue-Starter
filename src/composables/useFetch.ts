@@ -2,7 +2,7 @@ import { createFetch } from '@vueuse/core';
 
 import { i18n } from '~/plugins/i18n';
 
-export const useSysFetch = createFetch({
+export default createFetch({
   baseUrl: process.env.API_URL + '/api',
   options: {
     async beforeFetch({ options }) {
