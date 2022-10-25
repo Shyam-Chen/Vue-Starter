@@ -1,37 +1,256 @@
+<script lang="ts" setup>
+import { reactive, watch } from 'vue';
+import { format, add, sub, getYear, getMonth, setMonth } from 'date-fns';
+import chunk from 'lodash/chunk';
+import range from 'lodash/range';
+
+const props = defineProps({
+  value: {
+    type: String,
+    default: '',
+  },
+  format: {
+    type: String,
+    default: 'yyyy/MM/dd',
+  },
+  weekdays: {
+    type: Array,
+    default: () => ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
+  },
+  months: {
+    type: Array,
+    // prettier-ignore
+    default: () => ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+  },
+  startWeekOnSunday: {
+    type: Boolean,
+    default: true,
+  },
+  minDate: {
+    type: String,
+    default: undefined,
+  },
+  maxDate: {
+    type: String,
+    default: undefined,
+  },
+});
+
+const emit = defineEmits(['update:value']);
+
+const createDays = (y, m) => {
+  const currentPeriod = () => {
+    const today = new Date();
+    return [y || today.getFullYear(), m || today.getMonth()];
+  };
+
+  const [year, month] = currentPeriod();
+  const days = [] as Array<{
+    date: Date;
+    outOfRange?: boolean;
+    today?: boolean;
+    selected?: boolean;
+    disabled?: boolean;
+  }>;
+  const date = new Date(year, month, 1);
+  const offset = 1;
+
+  const startDay = date.getDay() || 7;
+
+  if (startDay > 1 - offset) {
+    for (let i = startDay - (2 - offset); i >= 0; i--) {
+      const prevDate = new Date(date);
+      prevDate.setDate(-i);
+      days.push({ outOfRange: true, date: prevDate });
+    }
+  }
+
+  while (date.getMonth() === month) {
+    days.push({ date: new Date(date) });
+    date.setDate(date.getDate() + 1);
+  }
+
+  const daysLeft = 7 - (days.length % 7);
+
+  for (let i = 1; i <= daysLeft; i++) {
+    const nextDate = new Date(date);
+    nextDate.setDate(i);
+    days.push({ outOfRange: true, date: nextDate });
+  }
+
+  days.forEach((day) => {
+    day.today = format(day.date, props.format) === format(flux.now, props.format);
+    day.selected = format(day.date, props.format) === props.value;
+
+    if (props.minDate) {
+      day.disabled = format(new Date(props.minDate), props.format) > format(day.date, props.format);
+    }
+
+    if (props.maxDate) {
+      day.disabled = format(new Date(props.maxDate), props.format) < format(day.date, props.format);
+    }
+  });
+
+  return chunk(days, 7);
+};
+
+const flux = reactive({
+  showWeeks: true,
+  showYears: false,
+  showMonths: false,
+
+  now: new Date(),
+  currentMoment: new Date(),
+  currentPeriodDates: [],
+
+  yearRange: [],
+  year: null,
+  months: [],
+  month: null,
+
+  decrement() {
+    if (flux.showWeeks) {
+      flux.currentMoment = sub(flux.currentMoment, { months: 1 });
+    }
+
+    if (flux.showYears) {
+      const moment = flux.currentMoment.subtract(16, 'Y');
+      flux.yearRange = range(moment.year() - 5, moment.year() + 10);
+    }
+
+    if (flux.showMonths) {
+      flux.currentMoment.subtract(1, 'Y');
+      flux.year = flux.currentMoment.year();
+    }
+  },
+  increment() {
+    if (flux.showWeeks) {
+      flux.currentMoment.add(1, 'M');
+      flux.currentPeriodDates = createDays(flux.currentMoment.year(), flux.currentMoment.month());
+    }
+
+    if (flux.showYears) {
+      const moment = flux.currentMoment.add(16, 'Y');
+      flux.yearRange = range(moment.year() - 5, moment.year() + 10);
+    }
+
+    if (flux.showMonths) {
+      flux.currentMoment.add(1, 'Y');
+      flux.year = flux.currentMoment.year();
+    }
+  },
+  changeYearMonth() {
+    if (flux.showWeeks) {
+      flux.showWeeks = false;
+      flux.showYears = true;
+      const currentYear = flux.currentMoment.year();
+      flux.yearRange = range(currentYear - 5, currentYear + 10);
+    }
+  },
+  selectDateItem(val) {
+
+
+
+    const date = format(val.date, props.format);
+    console.log(date);
+
+    if (
+      props.minDate &&
+      format(new Date(props.minDate), props.format) > format(val.date, props.format)
+    )
+      return;
+    if (
+      props.maxDate &&
+      format(new Date(props.maxDate), props.format) < format(val.date, props.format)
+    )
+      return;
+
+    emit('update:value', date);
+  },
+  selectYear(val) {
+    flux.showYears = false;
+    flux.showMonths = true;
+    flux.year = val;
+    flux.currentMoment.set('year', val);
+  },
+  selectMonth(val) {
+    flux.showMonths = false;
+    flux.showWeeks = true;
+    flux.month = val;
+    flux.currentMoment.set('month', val);
+    flux.currentPeriodDates = createDays(flux.currentMoment.year(), flux.currentMoment.month());
+  },
+});
+
+watch(
+  () => props.value,
+  () => {
+    // flux.currentPeriodDates = createDays(flux.currentMoment.year(), flux.currentMoment.month());
+  },
+);
+
+watch(
+  () => flux.currentMoment,
+  () => {
+    // flux.currentPeriodDates = createDays(flux.currentMoment.year(), flux.currentMoment.month());
+  },
+);
+
+watch(
+  () => props.minDate,
+  () => {
+    // flux.currentPeriodDates = createDays(flux.currentMoment.year(), flux.currentMoment.month());
+  },
+);
+
+watch(
+  () => props.maxDate,
+  () => {
+    // flux.currentPeriodDates = createDays(flux.currentMoment.year(), flux.currentMoment.month());
+  },
+);
+
+flux.currentPeriodDates = createDays();
+</script>
+
 <template>
-  <div class="date-picker p-2">
+  <div class="date-picker p-2 shadow-lg rounded bg-white">
     <div class="date-picker-header mb-1">
-      <span
-        class="date-picker-header-controller fa fa-chevron-left"
-        @click="flux.decrement"
-      />
+      <span class="date-picker-header-controller fa fa-chevron-left" @click="flux.decrement" />
 
-      <div v-if="flux.showWeeks" class="date-picker-header-controller d-flex" @click="flux.changeYearMonth">
+      <div
+        v-if="flux.showWeeks"
+        class="date-picker-header-controller d-flex"
+        @click="flux.changeYearMonth"
+      >
         <div class="ml-2">
-          {{ flux.currentMoment.year() }} / {{ flux.currentMoment.month() + 1 }}
+          {{ getYear(flux.currentMoment) }} / {{ getMonth(flux.currentMoment) + 1 }}
         </div>
       </div>
 
-      <div v-if="flux.showYears" class="date-picker-header-controller d-flex" style="cursor: initial;">
-        <div class="ml-2">
-          {{ flux.yearRange[0] }} ~ {{ flux.yearRange[15] }}
-        </div>
+      <div
+        v-if="flux.showYears"
+        class="date-picker-header-controller d-flex"
+        style="cursor: initial"
+      >
+        <div class="ml-2">{{ flux.yearRange[0] }} ~ {{ flux.yearRange[15] }}</div>
       </div>
 
-      <div v-if="flux.showMonths" class="date-picker-header-controller d-flex" style="cursor: initial;">
+      <div
+        v-if="flux.showMonths"
+        class="date-picker-header-controller d-flex"
+        style="cursor: initial"
+      >
         <div class="ml-2">
           {{ flux.year }}
         </div>
       </div>
 
-      <span
-        class="date-picker-header-controller fa fa-chevron-right"
-        @click="flux.increment"
-      />
+      <span class="date-picker-header-controller fa fa-chevron-right" @click="flux.increment" />
     </div>
 
     <div v-show="flux.showWeeks" class="date-picker-weeks">
-      <div class="d-flex">
+      <div class="flex">
         <div
           v-for="(weekday, weekdayIndex) in weekdays"
           :key="weekdayIndex"
@@ -41,10 +260,10 @@
         </div>
       </div>
 
-      <div v-for="(week, weekIndex) in flux.currentPeriodDates" :key="weekIndex" class="d-flex">
+      <div v-for="(week, weekIndex) in flux.currentPeriodDates" :key="weekIndex" class="flex">
         <div
           v-for="item in week"
-          :key="item.dateKey"
+          :key="item"
           class="date-picker-day"
           :class="{
             selectable: item.disabled,
@@ -73,7 +292,7 @@
         :key="year"
         :value="year"
         class="date-picker-year"
-        :class="{ selected: year === flux.now.year() }"
+        :class="{ selected: year === flux.now.getFullYear() }"
         @click="flux.selectYear(year)"
       >
         {{ year }}
@@ -86,7 +305,7 @@
         :key="month"
         :value="index"
         class="date-picker-month"
-        :class="{ selected: index === flux.now.month() && flux.year === flux.now.year() }"
+        :class="{ selected: index === flux.now.getMonth() && flux.year === flux.now.getFullYear() }"
         @click="flux.selectMonth(index)"
       >
         {{ month }}
@@ -95,222 +314,11 @@
   </div>
 </template>
 
-<script>
-import { getCurrentInstance, reactive, watch, onUnmounted } from '@nuxtjs/composition-api'
-
-function chunkArray (inputArray, chunkSize) {
-  const results = []
-
-  while (inputArray.length) {
-    results.push(inputArray.splice(0, chunkSize))
-  }
-
-  return results
-}
-
-function range (start, end, step = 1) {
-  return Array((end - start) / step + 1).fill(0).map((v, i) => start + i * step)
-}
-
-export default {
-  props: {
-    value: {
-      type: String,
-      default: ''
-    },
-    format: {
-      type: String,
-      default: 'YYYY/MM/DD'
-    },
-    weekdays: {
-      type: Array,
-      default: () => ['日', '一', '二', '三', '四', '五', '六']
-    },
-    months: {
-      type: Array,
-      default: () => ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']
-    },
-    startWeekOnSunday: {
-      type: Boolean,
-      default: true
-    },
-    minDate: {
-      type: String,
-      default: undefined
-    },
-    maxDate: {
-      type: String,
-      default: undefined
-    }
-  },
-  emits: ['input'],
-  setup (props, { emit }) {
-    const { proxy: vm } = getCurrentInstance()
-
-    const createDays = (y, m) => {
-      const currentPeriod = () => {
-        const today = new Date()
-        return [y || today.getFullYear(), m || today.getMonth()]
-      }
-
-      const [year, month] = currentPeriod()
-      const days = []
-      const date = new Date(year, month, 1)
-      const offset = 1
-
-      const startDay = date.getDay() || 7
-
-      if (startDay > 1 - offset) {
-        for (let i = startDay - (2 - offset); i >= 0; i--) {
-          const prevDate = new Date(date)
-          prevDate.setDate(-i)
-          days.push({ outOfRange: true, date: prevDate })
-        }
-      }
-
-      while (date.getMonth() === month) {
-        days.push({ date: new Date(date) })
-        date.setDate(date.getDate() + 1)
-      }
-
-      const daysLeft = 7 - (days.length % 7)
-
-      for (let i = 1; i <= daysLeft; i++) {
-        const nextDate = new Date(date)
-        nextDate.setDate(i)
-        days.push({ outOfRange: true, date: nextDate })
-      }
-
-      days.forEach((day) => {
-        day.today = vm.$moment(day.date).format('YYYY/MM/DD') === flux.now.format('YYYY/MM/DD')
-        day.selected = vm.$moment(day.date).format('YYYY/MM/DD') === props.value
-
-        if (props.minDate) { day.disabled = vm.$moment(new Date(props.minDate)) > vm.$moment(day.date) }
-        if (props.maxDate) { day.disabled = vm.$moment(new Date(props.maxDate)) < vm.$moment(day.date) }
-      })
-
-      return chunkArray(days, 7)
-    }
-
-    const flux = reactive({
-      showWeeks: true,
-      showYears: false,
-      showMonths: false,
-
-      now: vm.$moment(),
-      currentMoment: vm.$moment(),
-      currentPeriodDates: [],
-
-      yearRange: [],
-      year: null,
-      months: [],
-      month: null,
-
-      decrement () {
-        if (flux.showWeeks) {
-          flux.currentMoment.subtract(1, 'M')
-          flux.currentPeriodDates = createDays(flux.currentMoment.year(), flux.currentMoment.month())
-        }
-
-        if (flux.showYears) {
-          const moment = flux.currentMoment.subtract(16, 'Y')
-          flux.yearRange = range(moment.year() - 5, moment.year() + 10)
-        }
-
-        if (flux.showMonths) {
-          flux.currentMoment.subtract(1, 'Y')
-          flux.year = flux.currentMoment.year()
-        }
-      },
-      increment () {
-        if (flux.showWeeks) {
-          flux.currentMoment.add(1, 'M')
-          flux.currentPeriodDates = createDays(flux.currentMoment.year(), flux.currentMoment.month())
-        }
-
-        if (flux.showYears) {
-          const moment = flux.currentMoment.add(16, 'Y')
-          flux.yearRange = range(moment.year() - 5, moment.year() + 10)
-        }
-
-        if (flux.showMonths) {
-          flux.currentMoment.add(1, 'Y')
-          flux.year = flux.currentMoment.year()
-        }
-      },
-      changeYearMonth () {
-        if (flux.showWeeks) {
-          flux.showWeeks = false
-          flux.showYears = true
-          const currentYear = flux.currentMoment.year()
-          flux.yearRange = range(currentYear - 5, currentYear + 10)
-        }
-      },
-      selectDateItem (val) {
-        const date = vm.$moment(val.date).format('YYYY/MM/DD')
-
-        if (props.minDate && vm.$moment(new Date(props.minDate)) > vm.$moment(val.date)) { return }
-        if (props.maxDate && vm.$moment(new Date(props.maxDate)) < vm.$moment(val.date)) { return }
-
-        emit('input', date)
-      },
-      selectYear (val) {
-        flux.showYears = false
-        flux.showMonths = true
-        flux.year = val
-        flux.currentMoment.set('year', val)
-      },
-      selectMonth (val) {
-        flux.showMonths = false
-        flux.showWeeks = true
-        flux.month = val
-        flux.currentMoment.set('month', val)
-        flux.currentPeriodDates = createDays(flux.currentMoment.year(), flux.currentMoment.month())
-      }
-    })
-
-    watch(
-      () => props.value,
-      () => {
-        flux.currentPeriodDates = createDays(flux.currentMoment.year(), flux.currentMoment.month())
-      }
-    )
-
-    watch(
-      () => flux.currentMoment,
-      () => {
-        flux.currentPeriodDates = createDays(flux.currentMoment.year(), flux.currentMoment.month())
-      }
-    )
-
-    watch(
-      () => props.minDate,
-      () => {
-        flux.currentPeriodDates = createDays(flux.currentMoment.year(), flux.currentMoment.month())
-      }
-    )
-
-    watch(
-      () => props.maxDate,
-      () => {
-        flux.currentPeriodDates = createDays(flux.currentMoment.year(), flux.currentMoment.month())
-      }
-    )
-
-    flux.currentPeriodDates = createDays()
-
-    return {
-      flux
-    }
-  }
-}
-</script>
-
 <style lang="scss" scoped>
 .date-picker {
   box-sizing: border-box;
-  background: #e4ebf0;
-  border: 0.0625rem solid #d1d9e6;
+  // background: #e4ebf0;
+  // border: 0.0625rem solid #d1d9e6;
   border-radius: 0.55rem;
   box-shadow: 6px 6px 12px #b8b9be, -6px -6px 12px #fff;
   transform: translateY(0) translateY(8px) translateY(0);

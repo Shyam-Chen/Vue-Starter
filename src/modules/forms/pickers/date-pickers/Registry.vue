@@ -2,10 +2,13 @@
 import { reactive } from 'vue';
 
 import Breadcrumbs from '~/components/Breadcrumbs.vue';
-// import DatePicker from '~/components/DatePicker.vue';
-// import DateRangePicker from '~/components/DateRangePicker.vue';
+import DatePicker from '~/components/DatePicker.vue';
+import DateRangePicker from '~/components/DateRangePicker.vue';
 
 const flux = reactive({
+  datePicker: '',
+  datePickerStartDate: '',
+  datePickerEndDate: '',
 });
 </script>
 
@@ -28,7 +31,18 @@ const flux = reactive({
     <div class="mb-2">Basic examples</div>
 
     <div class="flex justify-center">
-      <!-- <DatePicker /> -->
+      <DatePicker v-model:value="flux.datePicker" />
+    </div>
+  </div>
+
+  <div class="flex flex-col border p-4 mb-4">
+    <div class="mb-2">Range</div>
+
+    <div class="flex justify-center">
+      <DateRangePicker
+        v-model:startValue="flux.datePickerStartDate"
+        v-model:endValue="flux.datePickerEndDate"
+      />
     </div>
   </div>
 </template>

@@ -14,13 +14,21 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  prepend: {
+    type: String,
+    default: '',
+  },
+  append: {
+    type: String,
+    default: '',
+  },
   errorMessage: {
     type: String,
     default: '',
   },
 });
 
-const emit = defineEmits(['update:value']);
+const emit = defineEmits(['update:value', 'prepend', 'append']);
 
 const textFieldValue = computed({
   get: () => props.value,
@@ -35,13 +43,35 @@ const textFieldValue = computed({
       <span v-if="required" class="text-red-500">*</span>
     </label>
 
-    <input
-      v-model="textFieldValue"
-      v-bind="$attrs"
-      :type="type"
-      class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-      :class="{ 'border-red-500 mb-1': errorMessage }"
-    />
+    <div class="flex w-full items-center">
+      <div
+        v-if="prepend"
+        class="p-2 border rounded rounded-r-none border-r-0 bg-white"
+        @click.stop="emit('prepend')"
+      >
+        <div :class="prepend" class="w-5 h-5"></div>
+      </div>
+
+      <input
+        v-model="textFieldValue"
+        v-bind="$attrs"
+        :type="type"
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        :class="{
+          'border-red-500 mb-1': errorMessage,
+          'rounded-l-none border-l-0': prepend,
+          'rounded-r-none border-r-0': append,
+        }"
+      />
+
+      <div
+        v-if="append"
+        class="p-2 border rounded rounded-l-none border-l-0 bg-white"
+        @click.stop="emit('append')"
+      >
+        <div :class="append" class="w-5 h-5"></div>
+      </div>
+    </div>
 
     <p v-if="errorMessage" class="text-red-500 text-xs">{{ errorMessage }}</p>
   </div>

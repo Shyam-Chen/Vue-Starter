@@ -52,7 +52,7 @@ watch(
 
       <div style="flex: 1 0 auto"></div>
 
-      <TextField placeholder="Search here..." class="important:w-100" />
+      <TextField placeholder="Search here..." prepend="i-fa-search" class="important:w-100" />
 
       <Dropdown
         :options="['Change Password', 'Sign out']"
