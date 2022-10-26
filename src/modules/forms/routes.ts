@@ -45,6 +45,12 @@ export default [
     beforeEnter: [auth],
   },
   {
+    path: '/forms/autocompletes',
+    component: () => import('~/modules/forms/autocompletes/Registry.vue'),
+    meta: { layout: 'default' },
+    beforeEnter: [auth],
+  },
+  {
     path: '/forms/form-validation',
     component: () => import('~/modules/forms/form-validation/Registry.vue'),
     meta: { layout: 'default' },

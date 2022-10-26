@@ -1,5 +1,9 @@
 <script lang="ts" setup>
 import Breadcrumbs from '~/components/Breadcrumbs.vue';
+import Button from '~/components/Button.vue';
+import { useFetch } from '~/composables';
+
+const helloWorldApi = useFetch('/hello-world').json();
 </script>
 
 <template>
@@ -19,6 +23,9 @@ import Breadcrumbs from '~/components/Breadcrumbs.vue';
   <div class="flex flex-col border p-4 mb-4">
     <div class="mb-2">Basic examples</div>
 
-    <div class="flex justify-center"></div>
+    <div class="flex justify-center">
+      <div>{{ helloWorldApi.data.value?.hello }}</div>
+      <Button color="primary" @click="helloWorldApi.get().execute">Fetch</Button>
+    </div>
   </div>
 </template>
