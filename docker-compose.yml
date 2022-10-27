@@ -1,11 +1,13 @@
-version: '3'
+version: '3.9'
 
 services:
-  default:
-    image: default
+  app:
+    image: app
     build:
       context: .
       dockerfile: Dockerfile
     ports:
-      - '8000:8000'
+      - 5173:5173
+    volumes:
+      - ./:/vue-starter
     tty: true

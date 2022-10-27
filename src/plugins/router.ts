@@ -14,7 +14,7 @@ export const router = createRouter({
   routes: [
     {
       path: '/',
-      redirect(to) {
+      redirect() {
         if (localStorage.getItem('token')) return { path: '/dashboard' };
         return { path: '/sign-in' };
       },

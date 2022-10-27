@@ -30,7 +30,7 @@ specifiers:
   vite: ^3.0.9
   vitest: ^0.18.1
   vue: ^3.2.40
-  vue-formor: ^2.0.0
+  vue-formor: ^3.0.0
   vue-i18n: ^9.2.2
   vue-router: ^4.1.5
   yup: ^0.32.11
@@ -42,7 +42,7 @@ dependencies:
   highcharts: 10.2.1
   lodash: 4.17.21
   vue: 3.2.40
-  vue-formor: 2.0.2
+  vue-formor: 3.0.0
   vue-i18n: 9.2.2_vue@3.2.40
   vue-router: 4.1.5_vue@3.2.40
   yup: 0.32.11
@@ -2223,10 +2223,6 @@ packages:
     engines: {node: '>= 8'}
     dev: true
 
-  /message-interpolation/1.0.1:
-    resolution: {integrity: sha512-yP5DgTNu16op1b3k04AY8aMii/IsI4yjFH0oh8SZriP0D4UMu9MObhQhRmUcEAE/5SRu/69m3OKUhgJbKz3M9A==}
-    dev: false
-
   /micromatch/4.0.5:
     resolution: {integrity: sha512-DMy+ERcEW2q8Z2Po+WNXuw3c5YaUSFjAO5GsJqfEl7UjvtIuFKO6ZrKvcItdy98dwFI2N1tg3zNIdKaQT+aNdA==}
     engines: {node: '>=8.6'}
@@ -3119,10 +3115,8 @@ packages:
       - supports-color
     dev: true
 
-  /vue-formor/2.0.2:
-    resolution: {integrity: sha512-3SKYCMRGA6AUvmATqZ9JkrdIwmsClSzzbBDHTGIxDw6DoA4g0+wAvcIx3xWJ7aFiTmsWfa1GIOsfy8SHMk4vVA==}
-    dependencies:
-      message-interpolation: 1.0.1
+  /vue-formor/3.0.0:
+    resolution: {integrity: sha512-mMjbLH0w5h/T9J62bioplGb7U3emolDj+6G3ZYTWwWt904unrGKWaIzDX/TZbLowwktVRW5BNYBfp5iBh4PEoQ==}
     dev: false
 
   /vue-i18n/9.2.2_vue@3.2.40:

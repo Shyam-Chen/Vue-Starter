@@ -1,0 +1,74 @@
+version: 2.1
+
+executors:
+  flow-executor:
+    docker:
+      - image: cimg/base:stable
+    working_directory: /vue-starter
+
+jobs:
+  build:
+    executor: flow-executor
+    steps:
+      - run: docker-compose up -d app
+      - run: docker-compose exec app pnpm build
+
+  test:
+    executor: flow-executor
+    steps:
+      - run: docker-compose exec -d app pnpm preview
+      - run: docker-compose exec app pnpm lint
+      - run: docker-compose exec app pnpm unit
+      - run: docker-compose exec app pnpm e2e
+      - run: docker-compose exec app pnpm meas
+
+  deploy:
+    executor: flow-executor
+    steps:
+      - when:
+          condition:
+            equal: [ main, << pipeline.git.branch >> ]
+          steps: >
+            echo "${ACCESS_TOKEN}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
+
+            APP_NAME=vue-starter
+
+            docker build -f .circleci/Dockerfile
+            --build-arg api_url=${API_URL}
+            -t $APP_NAME .
+
+            docker tag $APP_NAME ${DOCKER_HUB}/$APP_NAME
+
+            docker push ${DOCKER_HUB}/$APP_NAME
+
+            curl --request GET --url ${DEPLOY_HOOK}
+      - when:
+          condition:
+            and:
+              - equal: [ dev, << pipeline.git.branch >> ]
+              - equal: [ stage, << pipeline.git.branch >> ]
+          steps: >
+            echo "${ACCESS_TOKEN}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
+
+            APP_NAME=vue-starter-dev
+
+            docker build -f .circleci/Dockerfile
+            --build-arg api_url=${DEV_API_URL}
+            -t $APP_NAME .
+
+            docker tag $APP_NAME ${DOCKER_HUB}/$APP_NAME
+
+            docker push ${DOCKER_HUB}/$APP_NAME
+
+            curl --request GET --url ${DEV_DEPLOY_HOOK}
+
+workflows:
+  build-test-deploy:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
+      - deploy:
+          requires:
+            - test

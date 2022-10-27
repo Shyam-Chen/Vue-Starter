@@ -1,4 +1,4 @@
-const getScrollableParent = (node) => {
+const getScrollableParent = (node: Node | ParentNode | null): HTMLElement | null => {
   const isElement = node instanceof HTMLElement;
   const overflow = isElement && window.getComputedStyle(node).overflow;
   const isScrollable = overflow !== 'visible' && overflow !== 'hidden';

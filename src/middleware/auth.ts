@@ -1,4 +1,4 @@
-export default (to, from) => {
+export default () => {
   if (!localStorage.getItem('token')) {
     return { path: '/sign-in' };
   }

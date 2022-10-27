@@ -1,6 +1,6 @@
 # Vue Starter
 
-:poodle: A boilerplate for HTML5, Vue, Vue Router, UnoCSS, Vite, Vitest, and Netlify.
+:poodle: A boilerplate for HTML5, Vue, TypeScript, Vite, Vitest, and Render.
 
 :rainbow: [Live Demo](https://vue-starter-6fa6.onrender.com)
 
@@ -98,8 +98,6 @@ $ pnpm meas
 
 ### Mock requests
 
-[`mock/requests`](./mock/requests) is a fork of [Fastify-Starter](https://github.com/Shyam-Chen/Fastify-Starter) that was made easy and quick way to run mock APIs locally.
-
 ```sh
 # If it's not installed, run it.
 $ cd mock/requests && pnpm install && cd ../..
@@ -136,9 +134,9 @@ This seed repository provides the following features:
 - [x] [Node.js](https://nodejs.org/en/)
 - [x] [Pnpm](https://pnpm.io/)
 - [x] [Caddy](https://caddyserver.com/)
-- [ ] [Docker](https://www.docker.com/)
+- [x] [Docker](https://www.docker.com/)
 - [x] [CircleCI](https://circleci.com/)
-- [ ] [Render](https://render.com/)
+- [x] [Render](https://render.com/)
 
 ## Dockerization
 
@@ -147,13 +145,13 @@ Dockerize an application.
 1. Build and run the container in the background
 
 ```bash
-$ docker-compose up -d default
+$ docker-compose up -d app
 ```
 
 2. Run a command in a running container
 
 ```bash
-$ docker-compose exec default <COMMAND>
+$ docker-compose exec app <COMMAND>
 ```
 
 3. Remove the old container before creating the new one
@@ -165,7 +163,7 @@ $ docker-compose rm -fs
 4. Restart up the container in the background
 
 ```bash
-$ docker-compose up -d --build default
+$ docker-compose up -d --build app
 ```
 
 ## Configuration
@@ -177,13 +175,10 @@ Control the environment.
 Set your local environment variables. (use `this.<ENV_NAME> = process.env.<ENV_NAME> || <LOCAL_ENV>;`)
 
 ```js
-// env.js
-
-function Environment() {
-  this.API_URL = process.env.API_URL ?? 'http://localhost:3000';
-}
-
-export default new Environment();
+// env.ts
+export default {
+  API_URL: process.env.API_URL || '',
+};
 ```
 
 ### Continuous integration environments
@@ -191,83 +186,11 @@ export default new Environment();
 Add environment variables to the CircleCI build.
 
 ```sh
-CODECOV_TOKEN=xxx
-```
+API_URL=xxx
+DEPLOY_HOOK=xxx
 
-### Continuous deployment environments
-
-Add environment variables to the Netlify build.
-
-```sh
-API_URL=http://api.example.com
-```
-
-### File-based environments
-
-If you want to set environment variables from a file.
-
-```coffee
-.
-├── e2e
-├── envs
-│   ├── dev.js
-│   ├── stage.js
-│   └── prod.js
-├── mock
-├── public
-└── src
-```
-
-```js
-// envs/<ENV_NAME>.js
-
-function Environment() {
-  this.API_URL = 'http://api.example.com';
-}
-
-module.exports = new Environment();
-```
-
-```sh
-$ pnpm add env-cmd -D
-```
-
-```js
-// package.json
-
-  "scripts": {
-    // "env-cmd -f ./envs/<ENV_NAME>.js" + "pnpm build"
-    "build:dev": "env-cmd -f ./envs/dev.js pnpm build",
-    "build:stage": "env-cmd -f ./envs/stage.js pnpm build",
-    "build:prod": "env-cmd -f ./envs/prod.js pnpm build",
-  },
-```
-
-### SEO friendly
-
-Netlify comes with built-in prerendering. Enabling it is as simple as checking a box:
-
-![Set up prerendering](https://d33wubrfki0l68.cloudfront.net/2fd9826f3d685da11e934f5032fa306ae094113b/6bf3c/images/site-deploys-prerendering.png)
-
-### VS Code settings
-
-The most basic configuration.
-
-```js
-{
-  // ...
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    "vue"
-  ],
-  "javascript.validate.enable": false,
-  "css.validate": false,
-  "vetur.validation.template": false,
-  "vetur.validation.script": false,
-  "vetur.validation.style": false,
-  // ...
-}
+DEV_API_URL=xxx
+DEV_DEPLOY_HOOK=xxx
 ```
 
 ## Directory Structure
@@ -276,6 +199,7 @@ The structure follows the LIFT Guidelines.
 
 ```coffee
 .
+├── .circleci
 ├── e2e -> e2e testing (Caddy Server serve static files and proxy mock api)
 ├── mock
 │   ├── requests -> mock api
@@ -308,7 +232,6 @@ The structure follows the LIFT Guidelines.
 ├── .gitignore
 ├── .prettierrc
 ├── Caddyfile
-├── circle.yml
 ├── docker-compose.yml
 ├── Dockerfile
 ├── env.ts
