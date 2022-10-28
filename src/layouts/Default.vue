@@ -8,6 +8,7 @@ import Dropdown from '~/components/Dropdown.vue';
 import Select from '~/components/Select.vue';
 import Dialog from '~/components/Dialog.vue';
 import Button from '~/components/Button.vue';
+import { useFetch } from '~/composables';
 
 import listOfLinks from './list-of-links';
 import NavLink from './NavLink.vue';
@@ -25,6 +26,8 @@ const flux = reactive({
   },
   idleDialog: false,
 });
+
+const { data } = useFetch('/auth/user').json<{ fullName: string }>();
 
 watch(
   () => idle.value,
@@ -59,7 +62,7 @@ watch(
         class="ml-6 text-white"
         @select="flux.selectDropdown"
       >
-        <div class="text-white">{{ 'Rich Harris' }}</div>
+        <div class="text-white">{{ data?.fullName }}</div>
       </Dropdown>
     </header>
 

@@ -7,10 +7,13 @@ import type { State } from './types';
 
 export const stateSymbol = Symbol('/sign-in');
 
-export const createState = reactive({
-  signInForm: {},
+export const createState = reactive<State>({
+  signInForm: {
+    username: 'shyam.chen',
+    password: '12345678',
+  },
+
   signedIn: false,
-  myFile: null,
 
   errors: {},
 });
@@ -19,7 +22,7 @@ export const useState = () => inject(stateSymbol) as State;
 
 export const useActions = () => {
   const router = useRouter();
-  const signInApi = useFetch('/sign-in', { immediate: false }).json();
+  const signInApi = useFetch('/auth/sign-in', { immediate: false }).json();
   const state = useState();
 
   const actions = {

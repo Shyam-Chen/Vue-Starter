@@ -4,6 +4,7 @@ import auth from '~/middleware/auth';
 import componentsRoutes from '~/modules/components/routes';
 import navigationRoutes from '~/modules/navigation/routes';
 import formsRoutes from '~/modules/forms/routes';
+import tablesRoutes from '~/modules/tables/routes';
 import chartsRoutes from '~/modules/charts/routes';
 import networkRoutes from '~/modules/network/routes';
 
@@ -35,9 +36,8 @@ export const router = createRouter({
     ...componentsRoutes,
     ...navigationRoutes,
     ...formsRoutes,
-
+    ...tablesRoutes,
     ...chartsRoutes,
-
     ...networkRoutes,
 
     {

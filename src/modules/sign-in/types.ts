@@ -1,6 +1,6 @@
 export interface State {
   signInForm: {
-    account?: string;
+    username?: string;
     password?: string;
   };
 
