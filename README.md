@@ -2,7 +2,7 @@
 
 :poodle: A boilerplate for HTML5, Vue, TypeScript, Vite, Vitest, and Render.
 
-:rainbow: [Live Demo](https://vue-starter-6fa6.onrender.com)
+:rainbow: [Live Demo](https://vue-starter-6fa6.onrender.com) - The server application is [here](https://github.com/Shyam-Chen/Fastify-Starter).
 
 ## Table of Contents
 
