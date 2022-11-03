@@ -36,6 +36,11 @@ export const useActions = () => {
         localStorage.setItem('token', token);
         await router.push('/dashboard');
         state.signedIn = false;
+      } else {
+        const { message } = signInApi.data.value;
+        const found = message.match(/(#+[a-zA-Z0-9(_)]{1,})/gm)[0];
+        state.errors['signInForm.' + found.replace('#', '')] = message.replace(found + ' ', '');
+        state.signedIn = false;
       }
     },
   };

@@ -11,3 +11,12 @@ services:
     volumes:
       - ./:/vue-starter
     tty: true
+
+  ci:
+    image: ci
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    tty: true

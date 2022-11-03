@@ -6,7 +6,7 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint 'src/**/*.{ts,vue}'",
-    "unit": "vitest --dir src --coverage",
+    "unit": "vitest --dir src --coverage --run",
     "preview": "caddy run",
     "e2e": "cd e2e && pnpm test",
     "meas": "cd e2e && pnpm perf",

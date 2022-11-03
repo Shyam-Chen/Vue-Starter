@@ -25,9 +25,20 @@ const flux = reactive({
     }
   },
   idleDialog: false,
+  authDialog: false,
 });
 
-const { data } = useFetch('/auth/user').json<{ fullName: string }>();
+const { data, statusCode } = useFetch('/auth/user').json<{ fullName: string }>();
+
+watch(
+  () => statusCode.value,
+  (val) => {
+    if (val && 400 <= val && val <= 500) {
+      localStorage.removeItem('token');
+      flux.authDialog = true;
+    }
+  },
+);
 
 watch(
   () => idle.value,
@@ -111,6 +122,15 @@ watch(
 
       <div class="flex justify-end">
         <Button color="primary" @click="flux.idleDialog = false">Okay, got it</Button>
+      </div>
+    </Dialog>
+
+    <Dialog v-model="flux.authDialog">
+      <div class="text-2xl">{{ data?.error }}</div>
+      <div class="my-2">{{ data?.message }}</div>
+
+      <div class="flex justify-end">
+        <Button color="primary" @click="flux.authDialog = false">Okay, got it</Button>
       </div>
     </Dialog>
   </div>
