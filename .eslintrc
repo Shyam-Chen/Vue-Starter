@@ -1,9 +1,8 @@
 {
   "extends": [
-    "eslint:recommended",
     "plugin:vue/vue3-recommended",
-    "plugin:prettier-vue/recommended",
-    "@vue/typescript/recommended"
+    "@vue/eslint-config-prettier",
+    "@vue/eslint-config-typescript"
   ],
   "rules": {
     "vue/attribute-hyphenation": "off",

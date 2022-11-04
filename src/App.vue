@@ -4,7 +4,7 @@ import Layout from '~/layouts/Layout.vue';
 
 <template>
   <Layout>
-    <router-view></router-view>
+    <RouterView></RouterView>
   </Layout>
 </template>
 

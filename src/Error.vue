@@ -1,7 +1,3 @@
-<script lang="ts" setup>
-
-</script>
-
 <template>
   <section class="flex items-center h-full p-16 bg-gray-50 text-gray-800">
     <div class="container flex flex-col items-center justify-center px-5 mx-auto my-8">
@@ -13,12 +9,13 @@
         <p class="mt-4 mb-8 text-gray-600">
           But dont worry, you can find plenty of other things on our homepage.
         </p>
-        <router-link
+        <RouterLink
           rel="noopener noreferrer"
           to="/"
           class="px-8 py-3 font-semibold rounded bg-blue-600 text-gray-50"
-          >Back to homepage</router-link
         >
+          Back to homepage
+        </RouterLink>
       </div>
     </div>
   </section>

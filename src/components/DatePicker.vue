@@ -189,7 +189,7 @@ onUnmounted(() => {
       </div> -->
     </div>
 
-    <transition>
+    <Transition>
       <DatePane
         v-show="flux.showDatePicker"
         ref="picker"
@@ -200,7 +200,7 @@ onUnmounted(() => {
         :disabled="disabled"
         @update:value="flux.changeDate"
       />
-    </transition>
+    </Transition>
 
     <div v-if="errorMessage" class="text-danger mt-1">
       {{ errorMessage }}

@@ -12,9 +12,19 @@ import env from './env';
 export default defineConfig({
   define: envify(env),
   plugins: [
-    vue(),
-    vueI18n({ include: path.resolve(__dirname, 'src/locales/**') }),
-    unocss({ presets: [presetUno(), presetIcons()] }),
+    vue({
+      template: {
+        compilerOptions: {
+          isCustomElement: (tag) => tag.includes('-'),
+        },
+      },
+    }),
+    vueI18n({
+      include: path.resolve(__dirname, 'src/locales/**'),
+    }),
+    unocss({
+      presets: [presetUno(), presetIcons()],
+    }),
   ],
   resolve: {
     alias: {

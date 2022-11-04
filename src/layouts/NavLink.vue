@@ -56,7 +56,7 @@ const flux = reactive({
 </script>
 
 <template>
-  <router-link
+  <RouterLink
     :to="to"
     class="px-4 py-2 hover:text-blue-500 flex cursor-pointer"
     :class="{ 'text-blue-500 font-bold': to === route.path || flux.parent(sub) }"
@@ -64,7 +64,7 @@ const flux = reactive({
   >
     {{ name }}
     <div v-if="sub.length" class="i-ic-baseline-arrow-drop-down w-6 h-6"></div>
-  </router-link>
+  </RouterLink>
 
   <Transition
     enter-active-class="duration-300 ease-out"

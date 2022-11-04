@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/no-side-effects-in-computed-properties -->
 <script lang="ts" setup>
 import { ref, reactive, computed, watch, nextTick, onMounted, onUnmounted } from 'vue';
 import { onClickOutside } from '@vueuse/core';
@@ -115,12 +116,12 @@ const reoptions = computed(() => {
     flux.selected = opts.filter((item) => item.checked);
     flux.options = opts;
     return opts;
-  } else {
-    const opts = props.options?.map((item) => ({ ...item, checked: false }));
-    flux.selected = [];
-    flux.options = opts;
-    return opts;
   }
+
+  const opts = props.options?.map((item) => ({ ...item, checked: false }));
+  flux.selected = [];
+  flux.options = opts;
+  return opts;
 });
 
 const open = (selectEl, filterEl, menuEl) => {
