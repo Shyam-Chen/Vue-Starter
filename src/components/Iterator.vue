@@ -29,7 +29,7 @@ const flux = reactive({
   add() {
     emit('update:value', [...props.value, {}]);
   },
-  remove(idx) {
+  remove(idx: number) {
     const arr = [...props.value];
     arr.splice(idx, 1);
     emit('update:value', arr);
@@ -39,7 +39,11 @@ const flux = reactive({
 
 <template>
   <div class="flex flex-col">
-    <div v-for="(item, index) in listValue" :key="index" class="flex items-baseline space-x-2 space-y-2">
+    <div
+      v-for="(item, index) in listValue"
+      :key="index"
+      class="flex items-baseline space-x-2 space-y-2"
+    >
       <slot :item="item" :index="index" />
 
       <div>

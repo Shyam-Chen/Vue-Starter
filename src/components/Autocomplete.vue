@@ -231,7 +231,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="w-100">
+  <div class="w-full">
     <div ref="target" class="select">
       <TextField
         ref="autocompleteInput"

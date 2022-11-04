@@ -36,7 +36,7 @@ const flux = reactive({
         <TextField
           v-model:value="state.signInForm.username"
           required
-          :error-message="state.errors['signInForm.username']"
+          :errorMessage="state.errors['signInForm.username']"
           :disabled="state.signedIn"
         >
           {{ t('username') }}
@@ -48,7 +48,7 @@ const flux = reactive({
           v-model:value="state.signInForm.password"
           type="password"
           required
-          :error-message="state.errors['signInForm.password']"
+          :errorMessage="state.errors['signInForm.password']"
           :disabled="state.signedIn"
         >
           Password
@@ -61,12 +61,12 @@ const flux = reactive({
           <div v-else>Sign In</div>
         </Button>
 
-        <router-link
+        <RouterLink
           class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
           to="/forgot-password"
         >
           Forgot Password?
-        </router-link>
+        </RouterLink>
       </div>
     </form>
   </div>

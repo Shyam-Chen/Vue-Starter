@@ -229,7 +229,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div>
+  <div class="w-full">
     <div ref="target" class="select">
       <div
         ref="select"

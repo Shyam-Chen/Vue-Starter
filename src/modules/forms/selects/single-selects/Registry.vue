@@ -34,7 +34,7 @@ const flux = reactive({
     <div class="mb-2">Basic examples</div>
 
     <div class="flex justify-center">
-      <Select v-model:value="flux.select1" :options="flux.select1Options" class="w-50" />
+      <Select v-model:value="flux.select1" :options="flux.select1Options" />
     </div>
   </div>
 
@@ -42,7 +42,7 @@ const flux = reactive({
     <div class="mb-2">Disabled</div>
 
     <div class="flex justify-center">
-      <Select v-model:value="flux.select1" :options="flux.select1Options" disabled class="w-50" />
+      <Select v-model:value="flux.select1" :options="flux.select1Options" disabled />
     </div>
   </div>
 
@@ -50,7 +50,7 @@ const flux = reactive({
     <div class="mb-2">Clearable</div>
 
     <div class="flex justify-center">
-      <Select v-model:value="flux.select1" :options="flux.select1Options" clearable class="w-50" />
+      <Select v-model:value="flux.select1" :options="flux.select1Options" clearable />
     </div>
   </div>
 
@@ -58,7 +58,7 @@ const flux = reactive({
     <div class="mb-2">Filterable</div>
 
     <div class="flex justify-center">
-      <Select v-model:value="flux.select1" :options="flux.select1Options" filterable class="w-50" />
+      <Select v-model:value="flux.select1" :options="flux.select1Options" filterable />
     </div>
   </div>
 </template>
