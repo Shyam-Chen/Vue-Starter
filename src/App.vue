@@ -7,13 +7,3 @@ import Layout from '~/layouts/Layout.vue';
     <RouterView></RouterView>
   </Layout>
 </template>
-
-<style lang="scss">
-body {
-  background: #f1f4f9;
-}
-
-.highcharts-credits {
-  display: none !important;
-}
-</style>

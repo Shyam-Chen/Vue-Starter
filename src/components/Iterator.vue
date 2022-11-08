@@ -38,7 +38,7 @@ const flux = reactive({
 </script>
 
 <template>
-  <div class="flex flex-col">
+  <div class="w-full flex flex-col">
     <div
       v-for="(item, index) in listValue"
       :key="index"

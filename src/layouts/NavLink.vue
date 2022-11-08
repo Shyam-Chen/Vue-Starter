@@ -6,6 +6,10 @@ import { useRoute } from 'vue-router';
 import type { Link } from './list-of-links';
 
 const props = defineProps({
+  icon: {
+    type: String as PropType<Link['icon']>,
+    default: '',
+  },
   name: {
     type: String as PropType<Link['name']>,
     default: '',
@@ -62,7 +66,8 @@ const flux = reactive({
     :class="{ 'text-blue-500 font-bold': to === route.path || flux.parent(sub) }"
     @click.stop="flux.toggle"
   >
-    {{ name }}
+    <div v-if="icon" :class="icon" class="w-6 h-6 mr-2"></div>
+    <div>{{ name }}</div>
     <div v-if="sub.length" class="i-ic-baseline-arrow-drop-down w-6 h-6"></div>
   </RouterLink>
 

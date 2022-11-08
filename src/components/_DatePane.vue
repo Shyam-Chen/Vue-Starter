@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { reactive, watch } from 'vue';
-import { format, add, sub, getYear, getMonth, setMonth } from 'date-fns';
+import { format, add, sub, getYear, setYear, getMonth, setMonth } from 'date-fns';
 import chunk from 'lodash/chunk';
 import range from 'lodash/range';
 
@@ -38,7 +38,7 @@ const props = defineProps({
 
 const emit = defineEmits(['update:value']);
 
-const createDays = (y, m) => {
+const createDays = (y?: number, m?: number) => {
   const currentPeriod = () => {
     const today = new Date();
     return [y || today.getFullYear(), m || today.getMonth()];
@@ -101,7 +101,7 @@ const flux = reactive({
 
   now: new Date(),
   currentMoment: new Date(),
-  currentPeriodDates: [],
+  currentPeriodDates: [] as any[],
 
   yearRange: [],
   year: null,
@@ -125,8 +125,7 @@ const flux = reactive({
   },
   increment() {
     if (flux.showWeeks) {
-      flux.currentMoment.add(1, 'M');
-      flux.currentPeriodDates = createDays(flux.currentMoment.year(), flux.currentMoment.month());
+      flux.currentMoment = add(flux.currentMoment, { months: 1 });
     }
 
     if (flux.showYears) {
@@ -143,16 +142,12 @@ const flux = reactive({
     if (flux.showWeeks) {
       flux.showWeeks = false;
       flux.showYears = true;
-      const currentYear = flux.currentMoment.year();
-      flux.yearRange = range(currentYear - 5, currentYear + 10);
+      const currentYear = getYear(flux.currentMoment);
+      flux.yearRange = range(currentYear - 5, currentYear + 11);
     }
   },
   selectDateItem(val) {
-
-
-
     const date = format(val.date, props.format);
-    console.log(date);
 
     if (
       props.minDate &&
@@ -171,44 +166,29 @@ const flux = reactive({
     flux.showYears = false;
     flux.showMonths = true;
     flux.year = val;
-    flux.currentMoment.set('year', val);
+
+    flux.currentMoment = setYear(flux.currentMoment, val);
   },
   selectMonth(val) {
     flux.showMonths = false;
     flux.showWeeks = true;
     flux.month = val;
-    flux.currentMoment.set('month', val);
-    flux.currentPeriodDates = createDays(flux.currentMoment.year(), flux.currentMoment.month());
+    flux.currentMoment = setMonth(flux.currentMoment, val);
+
+    flux.currentPeriodDates = createDays(getYear(flux.currentMoment), getMonth(flux.currentMoment));
   },
 });
 
 watch(
-  () => props.value,
-  () => {
-    // flux.currentPeriodDates = createDays(flux.currentMoment.year(), flux.currentMoment.month());
-  },
-);
-
-watch(
   () => flux.currentMoment,
-  () => {
-    // flux.currentPeriodDates = createDays(flux.currentMoment.year(), flux.currentMoment.month());
+  (val) => {
+    flux.currentPeriodDates = createDays(getYear(val), getMonth(val));
   },
 );
 
-watch(
-  () => props.minDate,
-  () => {
-    // flux.currentPeriodDates = createDays(flux.currentMoment.year(), flux.currentMoment.month());
-  },
-);
-
-watch(
-  () => props.maxDate,
-  () => {
-    // flux.currentPeriodDates = createDays(flux.currentMoment.year(), flux.currentMoment.month());
-  },
-);
+watch([() => props.value, () => props.minDate, () => props.maxDate], () => {
+  flux.currentPeriodDates = createDays(getYear(flux.currentMoment), getMonth(flux.currentMoment));
+});
 
 flux.currentPeriodDates = createDays();
 </script>
@@ -216,7 +196,7 @@ flux.currentPeriodDates = createDays();
 <template>
   <div class="date-picker p-2 shadow-lg rounded bg-white">
     <div class="date-picker-header mb-1">
-      <span class="date-picker-header-controller fa fa-chevron-left" @click="flux.decrement" />
+      <div class="i-fa-chevron-left w-4 h-4" @click="flux.decrement"></div>
 
       <div
         v-if="flux.showWeeks"
@@ -246,7 +226,7 @@ flux.currentPeriodDates = createDays();
         </div>
       </div>
 
-      <span class="date-picker-header-controller fa fa-chevron-right" @click="flux.increment" />
+      <div class="i-fa-chevron-right w-4 h-4" @click="flux.increment"></div>
     </div>
 
     <div v-show="flux.showWeeks" class="date-picker-weeks">
@@ -381,7 +361,7 @@ flux.currentPeriodDates = createDays();
 
     &.selected {
       & .date-picker-day-highlight {
-        background: var(--primary);
+        background: blue;
       }
 
       & .date-picker-day-text {

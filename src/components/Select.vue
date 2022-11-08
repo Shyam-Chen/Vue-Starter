@@ -337,7 +337,7 @@ onUnmounted(() => {
     &-disabled {
       cursor: not-allowed;
       border-radius: 2px;
-      color: #c4c4c4;
+      // color: #c4c4c4;
       background: #c4c4c4;
       box-shadow: inset 3px 3px 6px #a7a7a7, inset -3px -3px 6px #e1e1e1;
     }

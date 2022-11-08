@@ -171,8 +171,6 @@ const scrollShadow = computed(() => {
   const shadows = Object.entries(scroll.arrivedState)
     .filter(([key, value]) => !value)
     .map(([key, value]) => {
-      console.log(key);
-
       if (key === 'top') return top;
       if (key === 'right') return right;
       if (key === 'bottom') return bottom;

@@ -1,4 +1,7 @@
+/* @unocss-include */
+
 export interface Link {
+  icon?: string;
   name: string;
   to?: string;
   permissions?: Array<'A' | 'B' | 'C' | 'D' | 'E'>;
@@ -7,8 +10,9 @@ export interface Link {
 }
 
 export default [
-  { name: 'Dashboard', to: '/dashboard' },
+  { icon: 'i-ic-round-dashboard', name: 'Dashboard', to: '/dashboard' },
   {
+    icon: 'i-fa-cubes',
     name: 'Components',
     sub: [
       { name: 'Buttons', to: '/components/buttons' },
@@ -18,6 +22,7 @@ export default [
     ],
   },
   {
+    icon: 'i-grommet-icons-navigate',
     name: 'Navigation',
     sub: [
       { name: 'Breadcrumbs', to: '/navigation/breadcrumbs' },
@@ -26,6 +31,7 @@ export default [
     ],
   },
   {
+    icon: 'i-fluent-form-24-regular',
     name: 'Forms',
     sub: [
       { name: 'Text fields', to: '/forms/text-fields' },
@@ -55,6 +61,7 @@ export default [
     ],
   },
   {
+    icon: 'i-codicon-table',
     name: 'Tables',
     sub: [
       { name: 'Data tables', to: '/tables/data-tables' },
@@ -64,6 +71,7 @@ export default [
     ],
   },
   {
+    icon: 'i-carbon-cloud-service-management',
     name: 'State management',
     sub: [
       { name: 'Counter', to: '/state-management/counter' },
@@ -71,6 +79,7 @@ export default [
     ],
   },
   {
+    icon: 'i-bx-line-chart',
     name: 'Charts',
     sub: [
       { name: 'Line charts', to: '/charts/line-charts' },
@@ -82,6 +91,7 @@ export default [
     ],
   },
   {
+    icon: 'i-bi-hdd-network',
     name: 'Network',
     sub: [
       { name: 'Fetch', to: '/network/fetch' },

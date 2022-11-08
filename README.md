@@ -9,7 +9,6 @@
 - [Getting Started](#getting-started)
 - [Project Setup](#project-setup)
 - [Key Features](#key-features)
-- [Dockerization](#dockerization)
 - [Configuration](#configuration)
 - [Directory Structure](#directory-structure)
 - [Microservices](#microservices)
@@ -137,34 +136,9 @@ This seed repository provides the following features:
 - [x] [Docker](https://www.docker.com/)
 - [x] [CircleCI](https://circleci.com/)
 - [x] [Render](https://render.com/)
-
-## Dockerization
-
-Dockerize an application.
-
-1. Build and run the container in the background
-
-```bash
-$ docker-compose up -d app
-```
-
-2. Run a command in a running container
-
-```bash
-$ docker-compose exec app <COMMAND>
-```
-
-3. Remove the old container before creating the new one
-
-```bash
-$ docker-compose rm -fs
-```
-
-4. Restart up the container in the background
-
-```bash
-$ docker-compose up -d --build app
-```
+- ---------- **Extracts** ----------
+- [x] [Web Components](https://github.com/Shyam-Chen/Component-Starter)
+- [x] [WebAssembly](https://github.com/Shyam-Chen/Assembly-Starter)
 
 ## Configuration
 
@@ -186,11 +160,17 @@ export default {
 Add environment variables to the CircleCI build.
 
 ```sh
+# production
 API_URL=xxx
 DEPLOY_HOOK=xxx
 
+# development
 DEV_API_URL=xxx
 DEV_DEPLOY_HOOK=xxx
+
+# staging
+STAGE_API_URL=xxx
+STAGE_DEPLOY_HOOK=xxx
 ```
 
 ## Directory Structure

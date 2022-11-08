@@ -139,12 +139,12 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div ref="target" class="w-100 input-date">
+  <div ref="target" class="w-full input-date">
     <div class="input-date-input-wrapper">
       <TextField
         ref="input"
         :value="modelDate"
-        class="w-100 form-control input-date-input"
+        class="w-full form-control input-date-input"
         :class="{ danger: errorMessage }"
         :placeholder="placeholder"
         :disabled="disabled"

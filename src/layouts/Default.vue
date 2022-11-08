@@ -80,6 +80,7 @@ watch(
     <aside class="sidebar py-4 bg-white shadow-lg">
       <template v-for="link in flux.listOfLinks" :key="link.name">
         <NavLink
+          :icon="link.icon"
           :name="link.name"
           :to="link.to"
           :permissions="link.permissions"
@@ -96,7 +97,7 @@ watch(
 
       <div style="flex: 1 0 auto"></div>
 
-      <footer class="footer bg-gray-200 p-4 flex justify-between">
+      <footer class="footer bg-slate-200 p-4 flex justify-between">
         <div></div>
 
         <div class="flex items-center">
