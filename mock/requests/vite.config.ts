@@ -1,12 +1,8 @@
 import path from 'path';
 import { defineConfig } from 'vite';
-import fastify from './vite-plugin-fastify';
-import envify from 'process-envify';
-
-import env from './env';
+import fastify from 'vite-plugin-fastify';
 
 export default defineConfig({
-  define: envify(env),
   server: {
     port: 3000,
   },
@@ -14,7 +10,6 @@ export default defineConfig({
     fastify({
       appPath: './src/app.ts',
       serverPath: './src/server.ts',
-      adapter: 'fastify',
     }),
   ],
   resolve: {
@@ -22,5 +17,4 @@ export default defineConfig({
       '~': path.resolve(__dirname, 'src'),
     },
   },
-  test: {},
 });

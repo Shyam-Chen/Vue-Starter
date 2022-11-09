@@ -8,9 +8,8 @@
     "preview": "caddy run",
     "lint": "eslint 'src/**/*.{ts,vue}' && vue-tsc",
     "unit": "vitest --dir src --coverage --run",
-    "e2e": "cd e2e && pnpm test",
-    "meas": "cd e2e && pnpm perf",
-    "mock": "cd mock/requests && pnpm dev"
+    "e2e": "cd e2e && pnpm e2e",
+    "mock": "cd mock/requests && pnpm mock"
   },
   "dependencies": {
     "@unocss/reset": "^0.46.3",

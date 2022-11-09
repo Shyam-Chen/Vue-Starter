@@ -1,7 +1,7 @@
 import app from './app';
 
 const start = async () => {
-  const server = await app({ logger: true });
+  const server = await app();
 
   try {
     server.listen({ port: 3000 });

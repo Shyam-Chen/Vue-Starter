@@ -1,14 +1,12 @@
 import plugin from 'fastify-plugin';
 
-import signIn from '~/modules/sign-in';
+import auth from '~/modules/auth';
 
 export default plugin(
-  async (app, opts, done) => {
+  async (app, opts) => {
     const { prefix } = opts;
 
-    app.register(signIn, { prefix });
-
-    done();
+    app.register(auth, { prefix: prefix + '/auth' });
   },
   { name: 'router' },
 );

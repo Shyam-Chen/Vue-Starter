@@ -80,21 +80,6 @@ $ cd e2e && pnpm install && cd ..
 $ pnpm e2e
 ```
 
-### Measures site's URLs
-
-Files: `e2e/**/*.meas.ts`
-
-```sh
-# Before running the `meas` command, make sure to run the following commands.
-$ pnpm build
-$ pnpm preview
-
-# If it's not installed, run it.
-$ cd e2e && pnpm install && cd ..
-
-$ pnpm meas
-```
-
 ### Mock requests
 
 ```sh
@@ -110,10 +95,10 @@ This seed repository provides the following features:
 
 - ---------- **Essentials** ----------
 - [x] [Vue](https://github.com/vuejs/vue)
-- [x] [Vue Router](https://github.com/vuejs/vue-router)
-- [x] [Vue Formor](https://github.com/Vanilla-IceCream/vue-formor)
-- [x] [Vue I18n](https://github.com/intlify/vue-i18n-next)
-- [x] [Vue Use](https://github.com/vueuse/vueuse)
+- [x] [Router](https://github.com/vuejs/vue-router)
+- [x] [Formor](https://github.com/Vanilla-IceCream/vue-formor)
+- [x] [I18n](https://github.com/intlify/vue-i18n-next)
+- [x] [Hooks](https://github.com/vueuse/vueuse)
 - [x] [Lodash](https://github.com/lodash/lodash)
 - [x] [Yup](https://github.com/jquense/yup)
 - [x] [Date Fns](https://github.com/date-fns/date-fns)
@@ -127,8 +112,7 @@ This seed repository provides the following features:
 - [x] [ESLint](https://github.com/eslint/eslint)
 - [x] [Prettier](https://github.com/prettier/prettier)
 - [x] [Vitest](https://github.com/vitest-dev/vitest)
-- [ ] [Playwright](https://github.com/microsoft/playwright)
-- [ ] [Lighthouse](https://github.com/GoogleChrome/lighthouse)
+- [x] [Playwright](https://github.com/microsoft/playwright)
 - ---------- **Environments** ----------
 - [x] [Node.js](https://nodejs.org/en/)
 - [x] [Pnpm](https://pnpm.io/)

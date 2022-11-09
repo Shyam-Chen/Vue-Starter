@@ -8,10 +8,9 @@
     "module": "esnext",
     "moduleResolution": "node",
     "paths": {
-      "~/*": ["src/*"]
+      "responses/*": ["../mock/responses/*"]
     },
     "resolveJsonModule": true,
-    "types": ["vite/client"],
 
     "noEmit": true,
 
