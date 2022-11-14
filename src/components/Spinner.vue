@@ -1,6 +1,3 @@
-<script lang="ts" setup>
-</script>
-
 <template>
   <div
     class="animate-spin inline-block border-gray-300 border-r-blue-600 rounded-full"

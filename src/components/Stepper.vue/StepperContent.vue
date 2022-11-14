@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const props = defineProps({
+defineProps({
   step: {
     type: [Number, String],
     default: 0,

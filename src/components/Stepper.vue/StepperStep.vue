@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const props = defineProps({
+defineProps({
   step: {
     type: [Number, String],
     default: 0,
@@ -22,7 +22,10 @@ const props = defineProps({
   >
     <div class="w-12 h-6 mb-4 flex justify-center items-center bg-white z-2">
       <div v-if="Number(step) < Number(current)" class="i-fa-regular-check-circle w-6 h-6"></div>
-      <div v-if="Number(step) === Number(current)" class="i-mdi-dots-horizontal-circle-outline w-5 h-5"></div>
+      <div
+        v-if="Number(step) === Number(current)"
+        class="i-mdi-dots-horizontal-circle-outline w-5 h-5"
+      ></div>
       <div v-if="Number(step) > Number(current)" class="i-fa-regular-circle w-3 h-3"></div>
     </div>
 

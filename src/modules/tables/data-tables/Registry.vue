@@ -81,7 +81,7 @@ const flux = reactive({
   </div>
 
   <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Basic examples</div>
+    <div class="mb-2">Basic</div>
 
     <DataTable
       title="Employee Details"
@@ -89,5 +89,9 @@ const flux = reactive({
       :columns="flux.columns1"
       :dataCount="123"
     />
+  </div>
+
+  <div class="flex flex-col border p-4 mb-4">
+    <div class="mb-2">Fixed columns</div>
   </div>
 </template>

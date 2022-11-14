@@ -1,22 +1,23 @@
 <script lang="ts" setup>
-import { ref, reactive, onMounted } from 'vue';
+import { ref, onMounted } from 'vue';
 import highcharts from 'highcharts';
 
 import Breadcrumbs from '~/components/Breadcrumbs.vue';
 
-import { useState, useActions, useComputeds } from './provider';
+// import { useState, useActions, useComputeds } from './provider';
 
-const state = useState();
-const actions = useActions();
-const computeds = useComputeds();
+// const state = useState();
+// const actions = useActions();
+// const computeds = useComputeds();
 
 const overview = ref();
 const performance = ref();
 
-const flux = reactive({});
+// const flux = reactive({});
 
 onMounted(() => {
   highcharts.chart(overview.value, {
+    // @ts-ignore
     title: {
       text: 'U.S Solar Employment Growth by Job Category, 2010-2020',
     },
@@ -94,6 +95,7 @@ onMounted(() => {
   });
 
   highcharts.chart(performance.value, {
+    // @ts-ignore
     chart: {
       type: 'column',
     },

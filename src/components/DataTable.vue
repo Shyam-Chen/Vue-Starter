@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import { ref, computed, reactive, watch, onUpdated, onMounted } from 'vue';
+import { ref, computed, reactive, watch, onMounted } from 'vue';
 import { useScroll } from '@vueuse/core';
 
-import Button from './Button.vue';
+// import Button from './Button.vue';
 import Select from './Select.vue';
 
 const props = defineProps({
@@ -30,17 +30,17 @@ const props = defineProps({
 
 const emit = defineEmits(['change', 'add', 'edit', 'remove']);
 
-const dataSourceRef = computed(() => props.dataSource || []);
-const columnsRef = computed(
+const dataSourceRef = computed<any[]>(() => props.dataSource || []);
+const columnsRef = computed<any[]>(
   () =>
-    props.columns?.map((item) => ({
+    props.columns?.map((item: any) => ({
       ...item,
       sortable: typeof item.sortable === 'boolean' ? item.sortable : true,
     })) || [],
 );
 
-const createOptions = (num) => {
-  function range(start, end, step = 1) {
+const createOptions = (num: number) => {
+  function range(start: number, end: number, step = 1) {
     return Array((end - start) / step + 1)
       .fill(0)
       .map((v, i) => start + i * step);
@@ -70,16 +70,16 @@ const flux = reactive({
   add() {
     emit('add');
   },
-  edit(item) {
+  edit(item: any) {
     emit('edit', item);
   },
-  remove(item) {
+  remove(item: any) {
     emit('remove', item);
   },
 
-  sortKey: undefined,
-  sortDirection: undefined,
-  sort(column) {
+  sortKey: undefined as string | undefined,
+  sortDirection: undefined as string | undefined,
+  sort(column: any) {
     if (!column.sortable || !dataSourceRef.value.length) {
       return;
     }
@@ -169,7 +169,9 @@ const scrollShadow = computed(() => {
   const left = 'inset 10px 0px 10px -10px #333';
 
   const shadows = Object.entries(scroll.arrivedState)
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     .filter(([key, value]) => !value)
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     .map(([key, value]) => {
       if (key === 'top') return top;
       if (key === 'right') return right;

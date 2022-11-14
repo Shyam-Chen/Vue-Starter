@@ -26,6 +26,7 @@ export default [
     name: 'Navigation',
     sub: [
       { name: 'Breadcrumbs', to: '/navigation/breadcrumbs' },
+      { name: 'Drawers', to: '/navigation/drawers' },
       { name: 'Tabs', to: '/navigation/tabs' },
       { name: 'Steppers', to: '/navigation/steppers' },
     ],

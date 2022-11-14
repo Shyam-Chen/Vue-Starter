@@ -50,8 +50,8 @@ const flux = reactive({
     flux.status = !flux.status;
   },
 
-  parent(sub: Link['sub']) {
-    return sub.find((link) => {
+  parent(sub: Link['sub']): any {
+    return sub?.find((link) => {
       if (link.sub) return flux.parent(link.sub);
       return link.to === route.path;
     });
@@ -61,7 +61,7 @@ const flux = reactive({
 
 <template>
   <RouterLink
-    :to="to"
+    :to="to || ''"
     class="px-4 py-2 hover:text-blue-500 flex cursor-pointer"
     :class="{ 'text-blue-500 font-bold': to === route.path || flux.parent(sub) }"
     @click.stop="flux.toggle"

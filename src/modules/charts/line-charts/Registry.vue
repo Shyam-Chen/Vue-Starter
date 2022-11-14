@@ -91,10 +91,12 @@ const update = () => {
     53934, 58656, 25165, 71827, 22143, 12383, 171533, 265174, 155157, 61454, 154610,
   ];
 
+  // @ts-ignore
   highcharts.chart(basicLine.value, flux.basicLineChart);
 };
 
 onMounted(() => {
+  // @ts-ignore
   highcharts.chart(basicLine.value, flux.basicLineChart);
 });
 </script>

@@ -5,6 +5,5 @@ ENV HOME /vue-starter
 WORKDIR ${HOME}
 ADD . $HOME
 
-RUN npm install -g pnpm
-RUN pnpm -v
+RUN npm install -g pnpm caddy-npm
 RUN pnpm install --frozen-lockfile

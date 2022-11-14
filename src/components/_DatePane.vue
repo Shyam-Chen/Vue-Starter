@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { reactive, watch } from 'vue';
-import { format, add, sub, getYear, setYear, getMonth, setMonth } from 'date-fns';
+import { format, add, sub, getYear, getMonth } from 'date-fns';
 import chunk from 'lodash/chunk';
-import range from 'lodash/range';
+// import range from 'lodash/range';
 
 const props = defineProps({
   value: {
@@ -104,9 +104,9 @@ const flux = reactive({
   currentPeriodDates: [] as any[],
 
   yearRange: [],
-  year: null,
+  year: null as null | string,
   months: [],
-  month: null,
+  month: null as null | string,
 
   decrement() {
     if (flux.showWeeks) {
@@ -114,13 +114,13 @@ const flux = reactive({
     }
 
     if (flux.showYears) {
-      const moment = flux.currentMoment.subtract(16, 'Y');
-      flux.yearRange = range(moment.year() - 5, moment.year() + 10);
+      // const moment = flux.currentMoment.subtract(16, 'Y');
+      // flux.yearRange = range(moment.year() - 5, moment.year() + 10);
     }
 
     if (flux.showMonths) {
-      flux.currentMoment.subtract(1, 'Y');
-      flux.year = flux.currentMoment.year();
+      // flux.currentMoment.subtract(1, 'Y');
+      // flux.year = flux.currentMoment.year();
     }
   },
   increment() {
@@ -129,24 +129,24 @@ const flux = reactive({
     }
 
     if (flux.showYears) {
-      const moment = flux.currentMoment.add(16, 'Y');
-      flux.yearRange = range(moment.year() - 5, moment.year() + 10);
+      // const moment = flux.currentMoment.add(16, 'Y');
+      // flux.yearRange = range(moment.year() - 5, moment.year() + 10);
     }
 
     if (flux.showMonths) {
-      flux.currentMoment.add(1, 'Y');
-      flux.year = flux.currentMoment.year();
+      // flux.currentMoment.add(1, 'Y');
+      // flux.year = flux.currentMoment.year();
     }
   },
   changeYearMonth() {
     if (flux.showWeeks) {
       flux.showWeeks = false;
       flux.showYears = true;
-      const currentYear = getYear(flux.currentMoment);
-      flux.yearRange = range(currentYear - 5, currentYear + 11);
+      // const currentYear = getYear(flux.currentMoment);
+      // flux.yearRange = range(currentYear - 5, currentYear + 11);
     }
   },
-  selectDateItem(val) {
+  selectDateItem(val: any) {
     const date = format(val.date, props.format);
 
     if (
@@ -162,18 +162,18 @@ const flux = reactive({
 
     emit('update:value', date);
   },
-  selectYear(val) {
+  selectYear(val: string) {
     flux.showYears = false;
     flux.showMonths = true;
     flux.year = val;
 
-    flux.currentMoment = setYear(flux.currentMoment, val);
+    // flux.currentMoment = setYear(flux.currentMoment, val);
   },
-  selectMonth(val) {
+  selectMonth(val: string) {
     flux.showMonths = false;
     flux.showWeeks = true;
     flux.month = val;
-    flux.currentMoment = setMonth(flux.currentMoment, val);
+    // flux.currentMoment = setMonth(flux.currentMoment, val);
 
     flux.currentPeriodDates = createDays(getYear(flux.currentMoment), getMonth(flux.currentMoment));
   },
@@ -279,7 +279,7 @@ flux.currentPeriodDates = createDays();
       </div>
     </div>
 
-    <div v-show="flux.showMonths" class="date-picker-months">
+    <!-- <div v-show="flux.showMonths" class="date-picker-months">
       <div
         v-for="(month, index) in months"
         :key="month"
@@ -290,7 +290,7 @@ flux.currentPeriodDates = createDays();
       >
         {{ month }}
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 

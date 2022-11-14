@@ -1,11 +1,14 @@
 <script lang="ts" setup>
+import type { PropType } from 'vue';
 import { computed, reactive } from 'vue';
 
 import Button from './Button.vue';
 
+type IteratorItem = any;
+
 const props = defineProps({
   value: {
-    type: Array,
+    type: Array as PropType<IteratorItem[]>,
     default: () => [{}],
   },
   disabled: {
@@ -16,11 +19,15 @@ const props = defineProps({
 
 const emit = defineEmits(['update:value']);
 
-const listValue = computed({
+const listValue = computed<IteratorItem[]>({
   get: () => {
-    const val = props.value || [{}];
-    emit('update:value', val);
-    return val;
+    if (!props.value?.length) {
+      emit('update:value', [{}]);
+      return [{}];
+    }
+
+    emit('update:value', props.value);
+    return props.value;
   },
   set: (val) => emit('update:value', val),
 });

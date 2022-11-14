@@ -5,7 +5,8 @@ import Breadcrumbs from '~/components/Breadcrumbs.vue';
 import Tabs from '~/components/Tabs.vue';
 
 const flux = reactive({
-  tabs: 'vue',
+  tabs1: 0,
+  tabs2: 'vue',
 });
 </script>
 
@@ -26,22 +27,44 @@ const flux = reactive({
   <div class="flex flex-col border p-4 mb-4">
     <div class="mb-2">Basic examples</div>
 
-    <Tabs v-model="flux.tabs">
-      <Tabs.TabPanel title="Angular" value="angular">
+    <Tabs v-model="flux.tabs1">
+      <Tabs.Tab title="Angular">
         <div class="text-red-500">Angular Content</div>
-      </Tabs.TabPanel>
+      </Tabs.Tab>
 
-      <Tabs.TabPanel title="React" value="react">
+      <Tabs.Tab title="React">
         <div class="text-blue-500">React Content</div>
-      </Tabs.TabPanel>
+      </Tabs.Tab>
 
-      <Tabs.TabPanel title="Svelte" value="svelte">
+      <Tabs.Tab title="Svelte">
         <div class="text-orange-500">Svelte Content</div>
-      </Tabs.TabPanel>
+      </Tabs.Tab>
 
-      <Tabs.TabPanel title="Vue" value="vue">
+      <Tabs.Tab title="Vue">
         <div class="text-green-500">Vue Content</div>
-      </Tabs.TabPanel>
+      </Tabs.Tab>
+    </Tabs>
+  </div>
+
+  <div class="flex flex-col border p-4 mb-4">
+    <div class="mb-2">Values</div>
+
+    <Tabs v-model="flux.tabs2">
+      <Tabs.Tab title="Angular" value="angular">
+        <div class="text-red-500">Angular Content</div>
+      </Tabs.Tab>
+
+      <Tabs.Tab title="React" value="react">
+        <div class="text-blue-500">React Content</div>
+      </Tabs.Tab>
+
+      <Tabs.Tab title="Svelte" value="svelte">
+        <div class="text-orange-500">Svelte Content</div>
+      </Tabs.Tab>
+
+      <Tabs.Tab title="Vue" value="vue">
+        <div class="text-green-500">Vue Content</div>
+      </Tabs.Tab>
     </Tabs>
   </div>
 </template>

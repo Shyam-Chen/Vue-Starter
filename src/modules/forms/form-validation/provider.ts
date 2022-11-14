@@ -15,7 +15,7 @@ export const createState = reactive({
 export const useState = () => inject(stateSymbol) as State;
 
 export const useActions = () => {
-  const state = useState();
+  // const state = useState();
 
   const actions = {
     async submit() {
@@ -27,7 +27,7 @@ export const useActions = () => {
 };
 
 export const useComputeds = () => {
-  const state = useState();
+  // const state = useState();
 
   const computeds = {};
 

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { nextTick, ref, computed, reactive, watch, onMounted, onUnmounted } from 'vue';
 import { onClickOutside } from '@vueuse/core';
-import uniqueId from 'lodash/uniqueId';
+// import uniqueId from 'lodash/uniqueId';
 
 import getScrollableParent from '~/utilities/getScrollableParent';
 
@@ -33,7 +33,7 @@ const props = defineProps({
 
 const emit = defineEmits(['update:value', 'change']);
 
-const uid = uniqueId('date-picker-');
+// const uid = uniqueId('date-picker-');
 
 const target = ref();
 const input = ref();
@@ -85,13 +85,13 @@ const flux = reactive({
     });
   },
 
-  changeDate(val) {
+  changeDate(val: string) {
     const parm1 = val ? new Date(val) : '';
     const parm2 = props.format;
     emit('change', parm1, parm2);
     flux.showDatePicker = false;
   },
-  display(val) {
+  display(val: string) {
     const date = val ? new Date(val) : '';
     return date;
   },
@@ -102,7 +102,7 @@ const flux = reactive({
   },
 });
 
-onClickOutside(target, (event) => {
+onClickOutside(target, () => {
   flux.showDatePicker = false;
 });
 

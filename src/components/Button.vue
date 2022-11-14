@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import type { PropType } from 'vue';
 
-const props = defineProps({
+defineProps({
   color: {
     type: String as PropType<'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info'>,
     default: '',
@@ -40,12 +40,18 @@ const props = defineProps({
       type="button"
       class="inline-block rounded-full leading-normal uppercase shadow-md hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-9 h-9"
       :class="{
-        'bg-blue-600 text-white hover:bg-blue-700 focus:bg-blue-700 active:bg-blue-800': color === 'primary',
-        'bg-purple-600 text-white hover:bg-purple-700 focus:bg-purple-700 active:bg-purple-800': color === 'secondary',
-        'bg-green-500 text-white hover:bg-green-600 focus:bg-green-600 active:bg-green-700': color === 'success',
-        'bg-red-600 text-white hover:bg-red-700 focus:bg-red-700 active:bg-red-800': color === 'danger',
-        'bg-yellow-500 text-white hover:bg-yellow-600 focus:bg-yellow-600 active:bg-yellow-700': color === 'warning',
-        'bg-blue-400 text-white hover:bg-blue-500 focus:bg-blue-500 active:bg-blue-600': color === 'info',
+        'bg-blue-600 text-white hover:bg-blue-700 focus:bg-blue-700 active:bg-blue-800':
+          color === 'primary',
+        'bg-purple-600 text-white hover:bg-purple-700 focus:bg-purple-700 active:bg-purple-800':
+          color === 'secondary',
+        'bg-green-500 text-white hover:bg-green-600 focus:bg-green-600 active:bg-green-700':
+          color === 'success',
+        'bg-red-600 text-white hover:bg-red-700 focus:bg-red-700 active:bg-red-800':
+          color === 'danger',
+        'bg-yellow-500 text-white hover:bg-yellow-600 focus:bg-yellow-600 active:bg-yellow-700':
+          color === 'warning',
+        'bg-blue-400 text-white hover:bg-blue-500 focus:bg-blue-500 active:bg-blue-600':
+          color === 'info',
       }"
     >
       <div class="w-3 mx-auto" :class="icon"></div>
@@ -78,12 +84,18 @@ const props = defineProps({
       class="inline-block px-6 py-2.5 font-medium text-xs leading-tight uppercase rounded shadow-md hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out"
       :class="{
         'bg-white': !color,
-        'bg-blue-600 text-white hover:bg-blue-700 focus:bg-blue-700 active:bg-blue-800': color === 'primary',
-        'bg-purple-600 text-white hover:bg-purple-700 focus:bg-purple-700 active:bg-purple-800': color === 'secondary',
-        'bg-green-500 text-white hover:bg-green-600 focus:bg-green-600 active:bg-green-700': color === 'success',
-        'bg-red-600 text-white hover:bg-red-700 focus:bg-red-700 active:bg-red-800': color === 'danger',
-        'bg-yellow-500 text-white hover:bg-yellow-600 focus:bg-yellow-600 active:bg-yellow-700': color === 'warning',
-        'bg-blue-400 text-white hover:bg-blue-500 focus:bg-blue-500 active:bg-blue-600': color === 'info',
+        'bg-blue-600 text-white hover:bg-blue-700 focus:bg-blue-700 active:bg-blue-800':
+          color === 'primary',
+        'bg-purple-600 text-white hover:bg-purple-700 focus:bg-purple-700 active:bg-purple-800':
+          color === 'secondary',
+        'bg-green-500 text-white hover:bg-green-600 focus:bg-green-600 active:bg-green-700':
+          color === 'success',
+        'bg-red-600 text-white hover:bg-red-700 focus:bg-red-700 active:bg-red-800':
+          color === 'danger',
+        'bg-yellow-500 text-white hover:bg-yellow-600 focus:bg-yellow-600 active:bg-yellow-700':
+          color === 'warning',
+        'bg-blue-400 text-white hover:bg-blue-500 focus:bg-blue-500 active:bg-blue-600':
+          color === 'info',
         'rounded-full': rounded,
         'pointer-events-none opacity-60': disabled,
         'flex items-center': icon,

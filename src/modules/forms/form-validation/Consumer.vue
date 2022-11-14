@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
-import { useI18n } from 'vue-i18n';
+// import { useI18n } from 'vue-i18n';
 
 import TextField from '~/components/TextField.vue';
 import Button from '~/components/Button.vue';
@@ -8,7 +8,7 @@ import Button from '~/components/Button.vue';
 import { useState, useActions } from './provider';
 import { useSignInFormSchema } from './schema';
 
-const { t } = useI18n({ useScope: 'local' });
+// const { t } = useI18n({ useScope: 'local' });
 
 const state = useState();
 const actions = useActions();

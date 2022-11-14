@@ -48,7 +48,7 @@ const target = ref();
 const autocompleteInput = ref();
 const autocompletePane = ref();
 const autocompleteList = ref();
-const autocompleteItem = ref([]);
+const autocompleteItem = ref<any[]>([]);
 
 const modelValue = computed({
   get: () => props.value,
@@ -149,7 +149,7 @@ const flux = reactive({
     }
   },
   onEnter() {
-    flux.onSelect(flux.options[flux.itemHoverIndex]?.value, flux.options[flux.itemHoverIndex]);
+    flux.onSelect(flux.options?.[flux.itemHoverIndex]?.value, flux.options?.[flux.itemHoverIndex]);
   },
 
   onEsc() {
@@ -158,13 +158,13 @@ const flux = reactive({
 
   show: false,
   direction: 'down',
-  options: null,
-  onSelect(value, option) {
+  options: null as any[] | null,
+  onSelect(value: any, option: any) {
     flux.show = false;
     emit('update:value', value);
     emit('change', value, option);
   },
-  display(item) {
+  display(item: any) {
     if (props.display && typeof props.display === 'string') {
       return item[props.display];
     }
@@ -183,7 +183,7 @@ const flux = reactive({
   scrollableParent: null as HTMLElement | null,
 });
 
-onClickOutside(target, (event) => {
+onClickOutside(target, () => {
   flux.show = false;
 });
 

@@ -1,12 +1,12 @@
 <script lang="ts" setup>
-const props = defineProps({
+defineProps({
   modelValue: {
     type: Number,
     default: 0,
   },
 });
 
-const emit = defineEmits(['update:modelValue']);
+defineEmits(['update:modelValue']);
 </script>
 
 <template>

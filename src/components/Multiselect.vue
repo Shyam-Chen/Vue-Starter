@@ -55,10 +55,10 @@ const emit = defineEmits(['update:value', 'change']);
 const flux = reactive({
   show: false,
   direction: 'down',
-  selected: [],
+  selected: [] as any[],
   filterValue: '',
-  options: [],
-  onSelect(value, option, filterEl) {
+  options: [] as any[],
+  onSelect(value: any, option: any, filterEl: any) {
     flux.options = [..._initOptions.value].map((item) => {
       if (item.value === value) {
         return { ...item, checked: !option.checked };
@@ -80,7 +80,7 @@ const flux = reactive({
     );
     emit('change', value, option);
   },
-  display(item) {
+  display(item: any) {
     if (props.display && typeof props.display === 'string') {
       return item[props.display];
     }
@@ -96,20 +96,20 @@ const flux = reactive({
     emit('change', null, null);
   },
 
-  scrollableParent: '',
+  scrollableParent: null as HTMLElement | null,
 });
 
 const target = ref();
 const select = ref();
 const menu = ref();
 const selectMenu = ref();
-const selectMenuItem = ref([]);
+const selectMenuItem = ref<any[]>([]);
 
-const _initOptions = computed(() => props.options);
+const _initOptions = computed<any[]>(() => props.options);
 
-const reoptions = computed(() => {
+const reoptions = computed<any[]>(() => {
   if (props.value?.length) {
-    const opts = props.options?.map((item) => ({
+    const opts = props.options?.map((item: any) => ({
       ...item,
       checked: props.value.includes(item.value),
     }));
@@ -118,16 +118,14 @@ const reoptions = computed(() => {
     return opts;
   }
 
-  const opts = props.options?.map((item) => ({ ...item, checked: false }));
+  const opts = props.options?.map((item: any) => ({ ...item, checked: false }));
   flux.selected = [];
   flux.options = opts;
   return opts;
 });
 
-const open = (selectEl, filterEl, menuEl) => {
-  if (props.disabled) {
-    return;
-  }
+const open = (selectEl: any, filterEl: any, menuEl: any) => {
+  if (props.disabled) return;
 
   flux.show = !flux.show;
 
@@ -172,7 +170,7 @@ const open = (selectEl, filterEl, menuEl) => {
   });
 };
 
-onClickOutside(target, (event) => {
+onClickOutside(target, () => {
   flux.show = false;
 });
 

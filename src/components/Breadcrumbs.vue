@@ -7,7 +7,7 @@ interface Breadcrumb {
   href?: string;
 }
 
-const props = defineProps({
+defineProps({
   items: {
     type: Array as PropType<Breadcrumb[]>,
     default: () => [],
@@ -21,7 +21,7 @@ const props = defineProps({
       <template v-for="(item, index) in items" :key="item.text">
         <li>
           <span v-if="item.disabled" class="text-gray-500">{{ item.text }}</span>
-          <RouterLink v-else :to="item.href" class="text-blue-600 hover:text-blue-700">{{
+          <RouterLink v-else :to="item.href || ''" class="text-blue-600 hover:text-blue-700">{{
             item.text
           }}</RouterLink>
         </li>

@@ -28,7 +28,7 @@ const flux = reactive({
   authDialog: false,
 });
 
-const { data, statusCode } = useFetch('/auth/user').json<{ fullName: string }>();
+const { data, statusCode } = useFetch('/auth/user').json();
 
 watch(
   () => statusCode.value,

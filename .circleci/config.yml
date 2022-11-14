@@ -9,7 +9,14 @@ jobs:
       - setup_remote_docker
       - run: docker-compose up -d ci
       - run: docker-compose exec ci pnpm build
+      - run: docker-compose exec ci pnpm lint
       - run: docker-compose exec ci pnpm unit
+      - run:
+          name: docker-compose exec ci pnpm e2e
+          command: |
+            docker-compose exec -d ci pnpm preview
+            docker-compose exec ci sh -c "cd e2e && pnpm install && cd .."
+            docker-compose exec ci pnpm e2e
 
 workflows:
   workflow:

@@ -1,6 +1,6 @@
 import Tabs from './Tabs.vue';
-import TabPanel from './TabPanel.vue';
+import Tab from './Tab.vue';
 
-Tabs.TabPanel = TabPanel;
+Tabs.Tab = Tab;
 
 export default Tabs;

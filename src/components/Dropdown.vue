@@ -12,7 +12,7 @@ const emit = defineEmits(['select']);
 
 const flux = reactive({
   status: false,
-  timeout: null,
+  timeout: null as any,
   onMouseenter() {
     flux.status = true;
     clearTimeout(flux.timeout);
@@ -23,7 +23,7 @@ const flux = reactive({
     }, 250);
   },
 
-  select(option) {
+  select(option: any) {
     flux.status = false;
     flux.timeout = null;
 

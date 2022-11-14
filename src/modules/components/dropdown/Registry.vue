@@ -21,7 +21,9 @@ import Dropdown from '~/components/Dropdown.vue';
     <div class="mb-2">Basic examples</div>
 
     <div class="flex justify-center">
-      <Dropdown :options="['Action', 'Another action', 'Something else here']">Dropdown button</Dropdown>
+      <Dropdown :options="['Action', 'Another action', 'Something else here']"
+        >Dropdown button</Dropdown
+      >
     </div>
   </div>
 </template>

@@ -54,13 +54,13 @@ const flux = reactive({
   direction: 'down',
   selected: '',
   filterValue: '',
-  options: null,
-  onSelect(value, option) {
+  options: null as any[] | null,
+  onSelect(value: any, option: any) {
     flux.show = false;
     emit('update:value', value);
     emit('change', value, option);
   },
-  display(item) {
+  display(item: any) {
     if (props.display && typeof props.display === 'string') {
       return item[props.display];
     }
@@ -76,22 +76,20 @@ const flux = reactive({
     emit('change', null, null);
   },
 
-  scrollableParent: '',
+  scrollableParent: null as HTMLElement | null,
 });
 
 const target = ref();
 const select = ref();
 const menu = ref();
 const selectMenu = ref();
-const selectMenuItem = ref([]);
+const selectMenuItem = ref<any[]>([]);
 
-const _initOptions = computed(() => props.options);
-const reoptions = computed(() => flux.options || props.options);
+const _initOptions = computed<any[]>(() => props.options);
+const reoptions = computed<any[]>(() => flux.options || props.options);
 
-const open = (selectEl, filterEl, menuEl) => {
-  if (props.disabled) {
-    return;
-  }
+const open = (selectEl: any, filterEl: any, menuEl: any) => {
+  if (props.disabled) return;
 
   flux.show = !flux.show;
 
@@ -140,7 +138,7 @@ const open = (selectEl, filterEl, menuEl) => {
   });
 };
 
-onClickOutside(target, (event) => {
+onClickOutside(target, () => {
   flux.show = false;
 });
 

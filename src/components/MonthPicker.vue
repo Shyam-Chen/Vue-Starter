@@ -9,11 +9,20 @@
         :disabled="disabled"
         readonly
         @focus="flux.openPicker"
-      >
+      />
 
       <div class="input-date-btn px-2" @click="flux.openPicker">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
-          <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-calendar"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"
+          />
         </svg>
       </div>
     </div>
@@ -36,73 +45,82 @@
 </template>
 
 <script>
-import { getCurrentInstance, nextTick, ref, computed, reactive, watch, onMounted, onUnmounted } from '@nuxtjs/composition-api'
+import {
+  getCurrentInstance,
+  nextTick,
+  ref,
+  computed,
+  reactive,
+  watch,
+  onMounted,
+  onUnmounted,
+} from '@nuxtjs/composition-api';
 
-import MonthPane from './components/MonthPane'
-import clickOutside from './directives/click-outside'
+import MonthPane from './components/MonthPane';
+import clickOutside from './directives/click-outside';
 import getScrollableParent from '~/utilities/getScrollableParent';
 
-let uid = 0
+let uid = 0;
 
 export default {
   components: {
-    MonthPane
+    MonthPane,
   },
   directives: {
-    clickOutside
+    clickOutside,
   },
   props: {
     value: {
       type: String,
-      default: ''
+      default: '',
     },
     format: {
       type: String,
-      default: 'YYYY/MM/DD'
+      default: 'YYYY/MM/DD',
     },
     placeholder: {
       type: String,
-      default: 'YYYY/MM/DD'
+      default: 'YYYY/MM/DD',
     },
     disabled: {
       type: Boolean,
-      default: false
+      default: false,
     },
     errorMessage: {
       type: String,
-      default: ''
-    }
+      default: '',
+    },
   },
   emits: ['input', 'change'],
-  setup (props, { emit }) {
-    uid += 1
+  setup(props, { emit }) {
+    uid += 1;
 
-    const { proxy: vm } = getCurrentInstance()
+    const { proxy: vm } = getCurrentInstance();
 
-    const input = ref()
-    const picker = ref()
+    const input = ref();
+    const picker = ref();
 
     const modelDate = computed({
       get: () => {
-        emit('input', props.value)
-        return props.value
+        emit('input', props.value);
+        return props.value;
       },
-      set (val) {
-        emit('input', val ? vm.$moment(new Date(val)).format(props.format) : '')
-      }
-    })
+      set(val) {
+        emit('input', val ? vm.$moment(new Date(val)).format(props.format) : '');
+      },
+    });
 
     const flux = reactive({
       showDatePicker: false,
       scrollableParent: '',
       direction: '',
-      openPicker () {
-        flux.showDatePicker = true
+      openPicker() {
+        flux.showDatePicker = true;
 
         nextTick(() => {
-          flux.scrollableParent = getScrollableParent(picker.value.$el)
+          flux.scrollableParent = getScrollableParent(picker.value.$el);
 
-          const rect = input.value.getBoundingClientRect()
+          const rect = input.value.getBoundingClientRect();
 
           // picker.value.showYears = false
           // picker.value.showMonths = false
@@ -113,72 +131,72 @@ export default {
           //   picker.value.format
           // )
 
-          picker.value.$el.style.left = `${rect.left}px`
-          picker.value.$el.style.top = `${rect.bottom}px`
+          picker.value.$el.style.left = `${rect.left}px`;
+          picker.value.$el.style.top = `${rect.bottom}px`;
 
-          const center = window.innerHeight / 2
+          const center = window.innerHeight / 2;
 
           if (rect.top > center) {
-            flux.direction = 'up'
+            flux.direction = 'up';
           } else {
-            flux.direction = 'down'
+            flux.direction = 'down';
           }
-        })
+        });
       },
 
-      changeDate (val) {
-        const parm1 = val ? vm.$moment(new Date(val)).format(props.format) : ''
-        const parm2 = props.format
-        emit('change', parm1, parm2)
-        flux.showDatePicker = false
+      changeDate(val) {
+        const parm1 = val ? vm.$moment(new Date(val)).format(props.format) : '';
+        const parm2 = props.format;
+        emit('change', parm1, parm2);
+        flux.showDatePicker = false;
       },
-      display (val) {
-        const date = val ? vm.$moment(new Date(val)).format(props.format) : ''
-        return date
+      display(val) {
+        const date = val ? vm.$moment(new Date(val)).format(props.format) : '';
+        return date;
       },
-      clear () {
-        emit('input', '')
-        emit('change', '', props.format)
-        flux.showDatePicker = false
-      }
-    })
+      clear() {
+        emit('input', '');
+        emit('change', '', props.format);
+        flux.showDatePicker = false;
+      },
+    });
 
-    const displayText = computed(() => modelDate.value)
+    const displayText = computed(() => modelDate.value);
 
     const onClickOutside = () => {
-      flux.showDatePicker = false
-    }
+      flux.showDatePicker = false;
+    };
 
     const handleScroll = () => {
       if (flux.showDatePicker) {
-        const rect = input.value.getBoundingClientRect()
-        picker.value.$el.style.left = `${rect.left}px`
-        picker.value.$el.style.top = `${rect.bottom}px`
+        const rect = input.value.getBoundingClientRect();
+        picker.value.$el.style.left = `${rect.left}px`;
+        picker.value.$el.style.top = `${rect.bottom}px`;
       }
-    }
+    };
 
     watch(
       () => flux.scrollableParent,
       (el) => {
-        el?.addEventListener('scroll', handleScroll)
-      }
-    )
+        el?.addEventListener('scroll', handleScroll);
+      },
+    );
 
     onMounted(() => {
       if (flux.scrollableParent && flux.scrollableParent instanceof HTMLElement) {
-        flux.scrollableParent?.addEventListener('scroll', handleScroll)
+        flux.scrollableParent?.addEventListener('scroll', handleScroll);
       } else {
-        window.addEventListener('scroll', handleScroll)
+        window.addEventListener('scroll', handleScroll);
       }
-    })
+    });
 
     onUnmounted(() => {
       if (flux.scrollableParent && flux.scrollableParent instanceof HTMLElement) {
-        flux.scrollableParent?.removeEventListener('scroll', handleScroll)
+        flux.scrollableParent?.removeEventListener('scroll', handleScroll);
       } else {
-        window.removeEventListener('scroll', handleScroll)
+        window.removeEventListener('scroll', handleScroll);
       }
-    })
+    });
 
     return {
       uid,
@@ -187,10 +205,10 @@ export default {
       onClickOutside,
       input,
       picker,
-      displayText
-    }
-  }
-}
+      displayText,
+    };
+  },
+};
 </script>
 
 <style lang="scss" scoped>

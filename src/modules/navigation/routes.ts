@@ -10,6 +10,12 @@ export default [
     beforeEnter: [auth],
   },
   {
+    path: '/navigation/drawers',
+    component: () => import('~/modules/navigation/drawers/Registry.vue'),
+    meta: { layout: 'default' },
+    beforeEnter: [auth],
+  },
+  {
     path: '/navigation/tabs',
     component: () => import('~/modules/navigation/tabs/Registry.vue'),
     meta: { layout: 'default' },

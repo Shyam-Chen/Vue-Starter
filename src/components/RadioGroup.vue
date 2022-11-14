@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import type { PropType } from 'vue';
 import { computed } from 'vue';
 import uniqueId from 'lodash/uniqueId';
 
@@ -8,7 +9,7 @@ const props = defineProps({
     default: '',
   },
   options: {
-    type: Array,
+    type: Array as PropType<any[]>,
     default: () => [],
   },
 });
@@ -33,11 +34,11 @@ const radioGroupValue = computed({
         type="radio"
         :name="uid"
         :value="typeof item === 'object' ? item.value : item"
-        class="accent-blue-600 border-gray-300 rounded h-4 w-4"
+        class="accent-blue-600 border-gray-300 rounded h-4 w-4 cursor-pointer"
         @change="emit('change', radioGroupValue)"
       />
 
-      <label :for="`${uid}-${idx}`" class="radio-group-label ml-2">
+      <label :for="`${uid}-${idx}`" class="ml-2 cursor-pointer">
         {{ typeof item === 'object' ? item.label : item }}
       </label>
     </div>

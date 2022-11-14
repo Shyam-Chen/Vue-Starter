@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { h, useSlots, reactive, provide } from 'vue';
+import { useSlots, reactive, provide } from 'vue';
 
 const props = defineProps({
   modelValue: {
@@ -13,24 +13,40 @@ const emit = defineEmits(['update:modelValue']);
 provide('tabs', { value: props.modelValue });
 
 const slots = useSlots();
-const defaultSlot = slots.default();
+const defaultSlot = slots.default?.();
 
 const flux = reactive({
   tab: [] as any[],
+  activeTab(tab: any, idx: number) {
+    if (typeof props.modelValue === 'number') return idx;
+    if (typeof props.modelValue === 'string') return tab.value;
+  },
+  selectTab(tab: any, idx: number) {
+    if (typeof props.modelValue === 'number') emit('update:modelValue', idx);
+    if (typeof props.modelValue === 'string') emit('update:modelValue', tab.value);
+  },
 });
 
-for (let i = 0; i < defaultSlot.length; i++) {
-  const tab = defaultSlot[i];
-  flux.tab = [...flux.tab, tab.props];
+if (defaultSlot) {
+  for (let i = 0; i < defaultSlot.length; i++) {
+    const tab = defaultSlot[i];
+    flux.tab = [...flux.tab, tab.props];
+  }
 }
 
 const Render = () => {
   if (slots.default) {
-    for (let i = 0; i < defaultSlot.length; i++) {
-      const tab = defaultSlot[i];
+    if (typeof props.modelValue === 'number') {
+      return slots.default()[props.modelValue];
+    }
 
-      if (tab.props.value === props.modelValue) {
-        return h('div', {}, slots.default ? slots.default()[i] : null);
+    if (typeof props.modelValue === 'string' && defaultSlot) {
+      for (let i = 0; i < defaultSlot.length; i++) {
+        const tab = defaultSlot[i];
+
+        if (tab.props?.value === props.modelValue) {
+          return slots.default()[i];
+        }
       }
     }
   }
@@ -43,11 +59,14 @@ const Render = () => {
       <div
         v-for="(tab, idx) in flux.tab"
         :key="idx"
-        class="px-5 py-2 rounded-t bg-slate-200 text-slate-500 [&:not(:first-of-type)]:ml-2 cursor-pointer"
-        :class="{ 'important:bg-white important:text-blue-600': tab.value === modelValue }"
-        @click="emit('update:modelValue', tab.value)"
+        class="flex items-center px-5 py-2 rounded-t bg-slate-200 text-slate-500 [&:not(:first-of-type)]:ml-2 cursor-pointer"
+        :class="{
+          'important:bg-white important:text-blue-600': flux.activeTab(tab, idx) === modelValue,
+        }"
+        @click="flux.selectTab(tab, idx)"
       >
         {{ tab.title }}
+        <!-- <div class="i-fa-close w-3 h-3 ml-2"></div> -->
       </div>
     </div>
 

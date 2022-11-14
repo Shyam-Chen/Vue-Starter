@@ -5,9 +5,18 @@ import Breadcrumbs from '~/components/Breadcrumbs.vue';
 import Iterator from '~/components/Iterator.vue';
 import TextField from '~/components/TextField.vue';
 
+interface Iterator1 {
+  address?: string;
+}
+
+interface Iterator2 {
+  serviceName?: string;
+  cloudName?: string;
+}
+
 const flux = reactive({
-  iterator1: [{}],
-  iterator2: [{}],
+  iterator1: [] as Iterator1[],
+  iterator2: [] as Iterator2[],
 });
 </script>
 
@@ -30,7 +39,7 @@ const flux = reactive({
 
     <div class="flex justify-center">
       <Iterator v-model:value="flux.iterator1">
-        <template #default="{ item }">
+        <template #default="{ item }: { item: Iterator1 }">
           <TextField v-model:value="item.address" />
         </template>
       </Iterator>
@@ -44,7 +53,7 @@ const flux = reactive({
 
     <div class="flex justify-center">
       <Iterator v-model:value="flux.iterator2">
-        <template #default="{ item }">
+        <template #default="{ item }: { item: Iterator2 }">
           <div class="whitespace-nowrap">Deploy a</div>
           <TextField v-model:value="item.serviceName" :errorMessage="'Error Message'" />
           <div class="whitespace-nowrap">service to</div>
