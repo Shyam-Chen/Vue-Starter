@@ -67,7 +67,7 @@ const flux = reactive({
     @click.stop="flux.toggle"
   >
     <div v-if="icon" :class="icon" class="w-6 h-6 mr-2"></div>
-    <div>{{ name }}</div>
+    <div :class="{ 'pl-4': !firstLevelStatus }">{{ name }}</div>
     <div v-if="sub.length" class="i-ic-baseline-arrow-drop-down w-6 h-6"></div>
   </RouterLink>
 

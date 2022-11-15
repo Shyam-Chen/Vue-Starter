@@ -28,10 +28,18 @@ const flux = reactive({
   </div>
 
   <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Basic examples</div>
+    <div class="mb-2">Basic</div>
 
     <div class="flex justify-center">
       <DatePicker v-model:value="flux.datePicker" />
+    </div>
+  </div>
+
+  <div class="flex flex-col border p-4 mb-4">
+    <div class="mb-2">Error messages</div>
+
+    <div class="flex justify-center">
+      <DatePicker v-model:value="flux.datePicker" errorMessage="This is a required field" />
     </div>
   </div>
 
@@ -42,6 +50,18 @@ const flux = reactive({
       <DateRangePicker
         v-model:startValue="flux.datePickerStartDate"
         v-model:endValue="flux.datePickerEndDate"
+      />
+    </div>
+  </div>
+
+  <div class="flex flex-col border p-4 mb-4">
+    <div class="mb-2">Range with error messages</div>
+
+    <div class="flex justify-center">
+      <DateRangePicker
+        v-model:startValue="flux.datePickerStartDate"
+        v-model:endValue="flux.datePickerEndDate"
+        errorMessage="This is a required field"
       />
     </div>
   </div>

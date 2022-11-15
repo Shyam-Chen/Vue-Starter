@@ -28,7 +28,7 @@ const endValueModel = computed({
 </script>
 
 <template>
-  <div class="flex justify-center items-center w-full">
+  <div class="flex justify-center items-baseline w-full">
     <DatePicker v-model:value="startValueModel" v-bind="$attrs" :maxDate="endValueModel" />
     <span class="mx-2">~</span>
     <DatePicker v-model:value="endValueModel" v-bind="$attrs" :minDate="startValueModel" />

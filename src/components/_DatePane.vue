@@ -1,13 +1,18 @@
 <script lang="ts" setup>
+import type { PropType } from 'vue';
 import { reactive, watch } from 'vue';
-import { format, add, sub, getYear, getMonth } from 'date-fns';
+import { format, add, sub, getYear, setYear, getMonth, setMonth } from 'date-fns';
 import chunk from 'lodash/chunk';
-// import range from 'lodash/range';
+import range from 'lodash/range';
 
 const props = defineProps({
   value: {
     type: String,
     default: '',
+  },
+  currentMoment: {
+    type: Date,
+    default: () => new Date(),
   },
   format: {
     type: String,
@@ -18,7 +23,7 @@ const props = defineProps({
     default: () => ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
   },
   months: {
-    type: Array,
+    type: Array as PropType<string[]>,
     // prettier-ignore
     default: () => ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
   },
@@ -103,10 +108,10 @@ const flux = reactive({
   currentMoment: new Date(),
   currentPeriodDates: [] as any[],
 
-  yearRange: [],
-  year: null as null | string,
-  months: [],
-  month: null as null | string,
+  yearRange: [] as number[],
+  year: null as null | number,
+  months: [] as string[],
+  month: null as null | number,
 
   decrement() {
     if (flux.showWeeks) {
@@ -142,8 +147,8 @@ const flux = reactive({
     if (flux.showWeeks) {
       flux.showWeeks = false;
       flux.showYears = true;
-      // const currentYear = getYear(flux.currentMoment);
-      // flux.yearRange = range(currentYear - 5, currentYear + 11);
+      const currentYear = getYear(flux.currentMoment);
+      flux.yearRange = range(currentYear - 5, currentYear + 11);
     }
   },
   selectDateItem(val: any) {
@@ -162,18 +167,18 @@ const flux = reactive({
 
     emit('update:value', date);
   },
-  selectYear(val: string) {
+  selectYear(val: number) {
     flux.showYears = false;
     flux.showMonths = true;
     flux.year = val;
 
-    // flux.currentMoment = setYear(flux.currentMoment, val);
+    flux.currentMoment = setYear(flux.currentMoment, val);
   },
-  selectMonth(val: string) {
+  selectMonth(val: number) {
     flux.showMonths = false;
     flux.showWeeks = true;
     flux.month = val;
-    // flux.currentMoment = setMonth(flux.currentMoment, val);
+    flux.currentMoment = setMonth(flux.currentMoment, val);
 
     flux.currentPeriodDates = createDays(getYear(flux.currentMoment), getMonth(flux.currentMoment));
   },
@@ -194,266 +199,87 @@ flux.currentPeriodDates = createDays();
 </script>
 
 <template>
-  <div class="date-picker p-2 shadow-lg rounded bg-white">
-    <div class="date-picker-header mb-1">
-      <div class="i-fa-chevron-left w-4 h-4" @click="flux.decrement"></div>
+  <div class="p-2 shadow-lg rounded bg-white">
+    <div class="flex justify-between items-center mb-1">
+      <div class="cursor-pointer hover:bg-slate-200 p-2 rounded-full" @click="flux.decrement">
+        <div class="i-fa-chevron-left w-3 h-3"></div>
+      </div>
 
       <div
         v-if="flux.showWeeks"
-        class="date-picker-header-controller d-flex"
+        class="cursor-pointer hover:bg-slate-200 px-2 rounded"
         @click="flux.changeYearMonth"
       >
-        <div class="ml-2">
-          {{ getYear(flux.currentMoment) }} / {{ getMonth(flux.currentMoment) + 1 }}
-        </div>
+        {{ format(flux.currentMoment, 'MMM yyyy') }}
       </div>
 
-      <div
-        v-if="flux.showYears"
-        class="date-picker-header-controller d-flex"
-        style="cursor: initial"
-      >
-        <div class="ml-2">{{ flux.yearRange[0] }} ~ {{ flux.yearRange[15] }}</div>
+      <div v-if="flux.showYears">{{ flux.yearRange[0] }} ~ {{ flux.yearRange[15] }}</div>
+
+      <div v-if="flux.showMonths">
+        {{ flux.year }}
       </div>
 
-      <div
-        v-if="flux.showMonths"
-        class="date-picker-header-controller d-flex"
-        style="cursor: initial"
-      >
-        <div class="ml-2">
-          {{ flux.year }}
-        </div>
+      <div class="cursor-pointer hover:bg-slate-200 p-2 rounded-full" @click="flux.increment">
+        <div class="i-fa-chevron-right w-3 h-3"></div>
       </div>
-
-      <div class="i-fa-chevron-right w-4 h-4" @click="flux.increment"></div>
     </div>
 
-    <div v-show="flux.showWeeks" class="date-picker-weeks">
-      <div class="flex">
-        <div
-          v-for="(weekday, weekdayIndex) in weekdays"
-          :key="weekdayIndex"
-          class="date-picker-weekday"
-        >
-          {{ weekday }}
-        </div>
+    <div v-show="flux.showWeeks" class="grid grid-cols-7 gap-1 text-center">
+      <div
+        v-for="(weekday, weekdayIndex) in weekdays"
+        :key="weekdayIndex"
+        class="text-sm text-slate-600"
+      >
+        {{ weekday }}
       </div>
 
-      <div v-for="(week, weekIndex) in flux.currentPeriodDates" :key="weekIndex" class="flex">
+      <template v-for="(week, weekIndex) in flux.currentPeriodDates">
         <div
           v-for="item in week"
-          :key="item"
-          class="date-picker-day"
+          :key="weekIndex + item"
+          class="flex justify-center items-center hover:bg-slate-200 rounded-full w-6 h-6 text-sm cursor-pointer"
           :class="{
-            selectable: item.disabled,
-            selected: item.selected,
-            disabled: item.disabled,
-            today: item.today,
-            outOfRange: item.outOfRange,
-            holiday: item.holiday,
+            'text-white bg-blue-600 important:hover:bg-blue-700': item.selected,
+            'text-slate-400 important:cursor-not-allowed': item.disabled,
+            'text-white bg-blue-400 important:hover:bg-blue-500': item.today,
+            'text-slate-400': item.outOfRange,
           }"
           @click="flux.selectDateItem(item)"
         >
-          <div class="date-picker-day-layer">
-            <div class="date-picker-day-highlight" />
-          </div>
-
-          <div class="date-picker-day-text">
-            {{ item.date.getDate() }}
-          </div>
+          {{ item.date.getDate() }}
         </div>
-      </div>
+      </template>
     </div>
 
-    <div v-show="flux.showYears" class="date-picker-years">
+    <div v-show="flux.showYears" class="grid grid-cols-4 gap-1 text-center w-48">
       <div
         v-for="year in flux.yearRange"
         :key="year"
         :value="year"
-        class="date-picker-year"
-        :class="{ selected: year === flux.now.getFullYear() }"
+        class="flex justify-center items-center hover:bg-slate-200 rounded text-sm cursor-pointer"
+        :class="{
+          'text-white bg-blue-400 important:hover:bg-blue-500': year === getYear(flux.now),
+        }"
         @click="flux.selectYear(year)"
       >
         {{ year }}
       </div>
     </div>
 
-    <!-- <div v-show="flux.showMonths" class="date-picker-months">
+    <div v-show="flux.showMonths" class="grid grid-cols-3 gap-1 text-center w-48">
       <div
         v-for="(month, index) in months"
         :key="month"
         :value="index"
-        class="date-picker-month"
-        :class="{ selected: index === flux.now.getMonth() && flux.year === flux.now.getFullYear() }"
+        class="flex justify-center items-center hover:bg-slate-200 rounded text-sm cursor-pointer"
+        :class="{
+          'text-white bg-blue-400 important:hover:bg-blue-500':
+            index === getMonth(flux.now) && flux.year === getYear(flux.now),
+        }"
         @click="flux.selectMonth(index)"
       >
         {{ month }}
       </div>
-    </div> -->
+    </div>
   </div>
 </template>
-
-<style lang="scss" scoped>
-.date-picker {
-  box-sizing: border-box;
-  // background: #e4ebf0;
-  // border: 0.0625rem solid #d1d9e6;
-  border-radius: 0.55rem;
-  box-shadow: 6px 6px 12px #b8b9be, -6px -6px 12px #fff;
-  transform: translateY(0) translateY(8px) translateY(0);
-
-  &-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 3px 6px 0;
-  }
-
-  &-header-controller {
-    cursor: pointer;
-  }
-
-  &-weekday {
-    font-size: 14px;
-    color: #6c757d;
-    width: 28px;
-  }
-
-  &-weeks {
-    display: grid;
-    // grid-template-columns: repeat(7, 1fr);
-    // padding: 6px;
-    box-sizing: border-box;
-    text-align: center;
-    // min-height: 213px;
-    justify-content: center;
-    align-items: center;
-  }
-
-  &-day {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transform-origin: 50% 50%;
-    height: 30px;
-
-    &.holiday {
-      & .date-picker-day-highlight {
-        background: #f2d6d6;
-      }
-
-      & .date-picker-day-text {
-        color: #742a2a;
-      }
-    }
-
-    &.today {
-      & .date-picker-day-highlight {
-        background: #c8e2f7;
-      }
-
-      & .date-picker-day-text {
-        color: #2a4365;
-      }
-    }
-
-    &.selected {
-      & .date-picker-day-highlight {
-        background: blue;
-      }
-
-      & .date-picker-day-text {
-        color: #fff;
-      }
-    }
-
-    &.outOfRange {
-      // & .date-picker-day-highlight {
-      //   background: #fff;
-      // }
-
-      & .date-picker-day-text {
-        color: #c7c7c7;
-      }
-    }
-
-    &.disabled {
-      & .date-picker-day-highlight {
-        cursor: not-allowed;
-        // background: #fff;
-      }
-
-      & .date-picker-day-text {
-        cursor: not-allowed;
-        color: #c7c7c7;
-      }
-    }
-  }
-
-  &-day-layer {
-    cursor: pointer;
-    z-index: 10;
-  }
-
-  &-day-highlight {
-    border-radius: 50%;
-    width: 28px;
-    height: 28px;
-  }
-
-  &-day-text {
-    cursor: pointer;
-    position: absolute;
-    color: #222;
-    z-index: 20;
-  }
-
-  &-years {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 3px;
-    padding: 6px;
-    box-sizing: border-box;
-    text-align: center;
-    // min-height: 213px;
-  }
-
-  &-year {
-    box-sizing: border-box;
-    cursor: pointer;
-    align-self: center;
-    padding: 0.25rem 0.5rem;
-    border: 1px solid transparent;
-
-    // &.selected {
-    //   border: 1px solid #2a4365;
-    //   border-radius: 2rem;
-    // }
-  }
-
-  &-months {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 3px;
-    padding: 6px;
-    box-sizing: border-box;
-    text-align: center;
-    // min-height: 213px;
-  }
-
-  &-month {
-    box-sizing: border-box;
-    cursor: pointer;
-    align-self: center;
-    padding: 0.25rem 0.5rem;
-    border: 1px solid transparent;
-
-    // &.selected {
-    //   border: 1px solid #2a4365;
-    //   border-radius: 2rem;
-    // }
-  }
-}
-</style>
