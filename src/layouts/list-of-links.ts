@@ -19,6 +19,7 @@ export default [
       { name: 'Dropdown', to: '/components/dropdown' },
       { name: 'Icons', to: '/components/icons' },
       { name: 'Dialogs', to: '/components/dialogs' },
+      { name: 'Expansion Panels', to: '/components/expansion-panels' },
     ],
   },
   {

@@ -25,7 +25,7 @@ const helloWorldApi = useFetch('/hello-world').json();
 
     <div class="flex justify-center">
       <div>{{ helloWorldApi.data.value?.hello }}</div>
-      <Button color="primary" @click="helloWorldApi.get().execute">Fetch</Button>
+      <Button color="primary" @click="helloWorldApi.get()?.execute">Fetch</Button>
     </div>
   </div>
 </template>

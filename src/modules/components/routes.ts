@@ -27,4 +27,10 @@ export default [
     meta: { layout: 'default' },
     beforeEnter: [auth],
   },
+  {
+    path: '/components/expansion-panels',
+    component: () => import('~/modules/components/expansion-panels/Registry.vue'),
+    meta: { layout: 'default' },
+    beforeEnter: [auth],
+  },
 ] as RouteRecordRaw[];

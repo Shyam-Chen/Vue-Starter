@@ -1,6 +1,15 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
 
+import ExpandTransition from './ExpandTransition.vue';
+
+defineProps({
+  title: {
+    type: String,
+    default: '',
+  },
+});
+
 const flux = reactive({
   status: true,
   toggle() {
@@ -10,26 +19,17 @@ const flux = reactive({
 </script>
 
 <template>
-  <div class="w-full">
-    <div @click="flux.toggle">Title</div>
+  <div class="w-full rounded shadow bg-white">
+    <div class="p-6 cursor-pointer" @click="flux.toggle">
+      <slot name="header"></slot>
+    </div>
 
-    <Transition name="fade">
-      <div v-if="flux.status" class="p-4">Content</div>
-    </Transition>
+    <ExpandTransition>
+      <div v-show="flux.status">
+        <div class="px-6 pb-6">
+          <slot name="content"></slot>
+        </div>
+      </div>
+    </ExpandTransition>
   </div>
 </template>
-
-<style lang="scss" scoped>
-.fade-enter-active {
-  transition: opacity 0.3s ease-out;
-}
-
-.fade-leave-active {
-  transition: opacity 0.3s ease-in;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
-</style>
