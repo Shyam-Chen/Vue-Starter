@@ -27,6 +27,7 @@ const checkboxValue = computed({
       v-bind="$attrs"
       type="checkbox"
       class="accent-blue-600 border-gray-300 rounded h-4 w-4"
+      :class="[$attrs.hasOwnProperty('disabled') ? 'cursor-not-allowed' : 'cursor-pointer']"
     />
 
     <label :for="uid" class="checkbox-label ml-2">

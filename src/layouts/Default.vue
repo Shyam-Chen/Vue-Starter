@@ -28,7 +28,7 @@ const flux = reactive({
   authDialog: false,
 });
 
-const { data, statusCode } = useFetch('/auth/user').json();
+const { data, statusCode } = useFetch('/auth/user', { timeout: 3000 }).json();
 
 watch(
   () => statusCode.value,
@@ -37,6 +37,13 @@ watch(
       localStorage.removeItem('token');
       flux.authDialog = true;
     }
+  },
+);
+
+watch(
+  () => flux.authDialog,
+  (val) => {
+    if (!val) router.push('/sign-in');
   },
 );
 

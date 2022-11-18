@@ -63,6 +63,15 @@ const flux = reactive({
     { key: 'role', name: 'Role' },
     { key: 'status', name: 'Status' },
   ],
+  columns2: [
+    { key: 'name', name: 'Name', fixed: 'left', width: '12rem' },
+    { key: 'email', name: 'Email' },
+    { key: 'address', name: 'Address' },
+    { key: 'phone', name: 'Phone' },
+    { key: 'dateCreated', name: 'Date Created' },
+    { key: 'role', name: 'Role' },
+    { key: 'status', name: 'Status' },
+  ],
 });
 </script>
 
@@ -93,5 +102,25 @@ const flux = reactive({
 
   <div class="flex flex-col border p-4 mb-4">
     <div class="mb-2">Fixed columns</div>
+
+    <DataTable
+      title="Employee Details"
+      :dataSource="flux.dataTable1"
+      :columns="flux.columns2"
+      :dataCount="123"
+      fixed
+    />
+  </div>
+
+  <div class="flex flex-col border p-4 mb-4">
+    <div class="mb-2">Selectable rows</div>
+  </div>
+
+  <div class="flex flex-col border p-4 mb-4">
+    <div class="mb-2">Expandable row</div>
+  </div>
+
+  <div class="flex flex-col border p-4 mb-4">
+    <div class="mb-2">Rowspan</div>
   </div>
 </template>

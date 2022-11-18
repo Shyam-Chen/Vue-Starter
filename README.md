@@ -94,35 +94,35 @@ $ pnpm mock
 This seed repository provides the following features:
 
 - ---------- **Essentials** ----------
-- [x] [Vue](https://github.com/vuejs/vue)
-- [x] [Router](https://github.com/vuejs/vue-router)
-- [x] [Formor](https://github.com/Vanilla-IceCream/vue-formor)
-- [x] [I18n](https://github.com/intlify/vue-i18n-next)
-- [x] [Hooks](https://github.com/vueuse/vueuse)
-- [x] [Lodash](https://github.com/lodash/lodash)
-- [x] [Yup](https://github.com/jquense/yup)
-- [x] [Date Fns](https://github.com/date-fns/date-fns)
-- [x] [UnoCSS](https://github.com/unocss/unocss)
-- [x] [Iconify](https://github.com/iconify/iconify)
-- [x] [Highcharts](https://github.com/highcharts/highcharts)
+- [x] [Vue](https://github.com/vuejs/vue) - User Interface Framework
+- [x] [Router](https://github.com/vuejs/vue-router) - Routing
+- [x] [Formor](https://github.com/Vanilla-IceCream/vue-formor) - Form Validation
+- [x] [I18n](https://github.com/intlify/vue-i18n-next) - Internationalization and Localization
+- [x] [Hooks](https://github.com/vueuse/vueuse) - Composition Utilities
+- [x] [Lodash](https://github.com/lodash/lodash) - JavaScript Utilities
+- [x] [Yup](https://github.com/jquense/yup) - Schema Builder
+- [x] [Date Fns](https://github.com/date-fns/date-fns) - Date Utilities
+- [x] [UnoCSS](https://github.com/unocss/unocss) - CSS Utilities
+- [x] [Iconify](https://github.com/iconify/iconify) - Icon Utilities
+- [x] [Highcharts](https://github.com/highcharts/highcharts) - Data Visualization
 - ---------- **Tools** ----------
-- [x] [Vite](https://github.com/vitejs/vite)
-- [x] [TypeScript](https://github.com/microsoft/TypeScript)
-- [x] [Sassy CSS](https://github.com/sass/sass)
-- [x] [ESLint](https://github.com/eslint/eslint)
-- [x] [Prettier](https://github.com/prettier/prettier)
-- [x] [Vitest](https://github.com/vitest-dev/vitest)
-- [x] [Playwright](https://github.com/microsoft/playwright)
+- [x] [Vite](https://github.com/vitejs/vite) - Bundler
+- [x] [TypeScript](https://github.com/microsoft/TypeScript) - JavaScript with Syntax for Types
+- [x] [Sassy CSS](https://github.com/sass/sass) - CSS Extension
+- [x] [ESLint](https://github.com/eslint/eslint) - Linter
+- [x] [Prettier](https://github.com/prettier/prettier) - Formatter
+- [x] [Vitest](https://github.com/vitest-dev/vitest) - Test Runner
+- [x] [Playwright](https://github.com/microsoft/playwright) - Automation
 - ---------- **Environments** ----------
-- [x] [Node.js](https://nodejs.org/en/)
-- [x] [Pnpm](https://pnpm.io/)
-- [x] [Caddy](https://caddyserver.com/)
-- [x] [Docker](https://www.docker.com/)
-- [x] [CircleCI](https://circleci.com/)
-- [x] [Render](https://render.com/)
+- [x] [Node.js](https://nodejs.org/en/) - JavaScript Runtime Environment
+- [x] [Pnpm](https://pnpm.io/) - Package Manager
+- [x] [Caddy](https://caddyserver.com/) - Web Server
+- [x] [Docker](https://www.docker.com/) - Containerized Application Development
+- [x] [CircleCI](https://circleci.com/) - Continuous Integration and Delivery
+- [x] [Render](https://render.com/) - Cloud Application Hosting
 - ---------- **Extracts** ----------
-- [x] [Web Components](https://github.com/Shyam-Chen/Component-Starter)
-- [x] [WebAssembly](https://github.com/Shyam-Chen/Assembly-Starter)
+- [x] [Web Components](https://github.com/Shyam-Chen/Component-Starter) - Lit
+- [x] [WebAssembly](https://github.com/Shyam-Chen/Assembly-Starter) - AssemblyScript
 
 ## Configuration
 
@@ -145,16 +145,21 @@ Add environment variables to the CircleCI build.
 
 ```sh
 # production
-API_URL=xxx
 DEPLOY_HOOK=xxx
 
 # development
-DEV_API_URL=xxx
 DEV_DEPLOY_HOOK=xxx
 
 # staging
-STAGE_API_URL=xxx
 STAGE_DEPLOY_HOOK=xxx
+```
+
+### Continuous delivery environments
+
+Add environment variables to the Render build.
+
+```sh
+API_URL=xxx
 ```
 
 ## Directory Structure

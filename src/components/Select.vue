@@ -6,7 +6,7 @@ import getScrollableParent from '~/utilities/getScrollableParent';
 
 const props = defineProps({
   value: {
-    type: String,
+    type: [String, Number],
     default: '',
   },
   options: {
@@ -211,7 +211,7 @@ onUnmounted(() => {
     <div ref="target" class="select">
       <div
         ref="select"
-        class="select-input shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 bg-white leading-tight focus:outline-none focus:shadow-outline"
+        class="select-input cursor-pointer shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 bg-white leading-tight focus:outline-none focus:shadow-outline"
         :class="{
           'select-input-placeholder': !flux.selected,
           'select-input-focus': flux.show,

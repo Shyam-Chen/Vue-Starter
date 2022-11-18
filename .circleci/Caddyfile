@@ -1,0 +1,21 @@
+{$SITE_ADDRESS} {
+  encode gzip
+  root * ./dist
+
+  route {
+    try_files {path} /index.html
+    file_server browse
+    reverse_proxy /api/* app:3000
+  }
+
+  header /service-worker.js {
+    Cache-Control max-age=0,no-cache,no-store,must-revalidate
+  }
+
+  header {
+    Strict-Transport-Security max-age=31536000
+    X-Content-Type-Options nosniff
+    X-Frame-Options DENY
+    Referrer-Policy no-referrer-when-downgrade
+  }
+}

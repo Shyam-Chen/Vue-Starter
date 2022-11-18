@@ -2,7 +2,7 @@
 import { ref, computed, reactive, watch, onMounted } from 'vue';
 import { useScroll } from '@vueuse/core';
 
-// import Button from './Button.vue';
+import Button from './Button.vue';
 import Select from './Select.vue';
 
 const props = defineProps({
@@ -23,6 +23,11 @@ const props = defineProps({
     default: 0,
   },
   disabled: {
+    type: Boolean,
+    default: false,
+  },
+  // temporary
+  fixed: {
     type: Boolean,
     default: false,
   },
@@ -162,11 +167,11 @@ onMounted(() => {
 });
 
 const scrollShadow = computed(() => {
-  const stickyHeadHeight = 64;
+  const stickyHeadHeight = 56;
   const top = `inset 0px ${stickyHeadHeight + 10}px 10px -10px #333`;
-  const right = 'inset -10px 0px 10px -10px #333';
+  const right = `inset ${-10 - (props.fixed ? 200 : 0)}px 0px 10px -10px #333`;
   const bottom = 'inset 0px -10px 10px -10px #333';
-  const left = 'inset 10px 0px 10px -10px #333';
+  const left = `inset ${10 + (props.fixed ? 192 : 0)}px 0px 10px -10px #333`;
 
   const shadows = Object.entries(scroll.arrivedState)
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -205,20 +210,21 @@ const scrollShadow = computed(() => {
                 'max-width': column.width ? column.width : 'auto',
               }"
               class="whitespace-nowrap p-4 font-bold bg-white"
+              :class="{ 'sticky left-0 z-5': column.fixed }"
               @click="flux.sort(column)"
             >
-              <div class="flex align-items-center">
+              <div class="flex items-center">
                 <div>
                   {{ column.name }}
                 </div>
 
-                <div v-if="column.sortable">
+                <div v-if="column.sortable" class="ml-2">
                   <div
-                    class="i-fa-caret-up w-4 h-4"
+                    class="i-fa-caret-up w-3 h-3"
                     :class="{ active: flux.sortKey === column.key && flux.sortDirection === 'asc' }"
                   ></div>
                   <div
-                    class="i-fa-caret-down w-4 h-4"
+                    class="i-fa-caret-down w-3 h-3"
                     :class="{
                       active: flux.sortKey === column.key && flux.sortDirection === 'desc',
                     }"
@@ -227,7 +233,12 @@ const scrollShadow = computed(() => {
               </div>
             </td>
 
-            <!-- <div class="min-w-50 whitespace-nowrap p-4 font-bold bg-gray-300 sticky right-0 z-5">Actions</div> -->
+            <div
+              v-if="fixed"
+              class="min-w-50 whitespace-nowrap p-4 font-bold bg-white sticky right-0 z-5"
+            >
+              Actions
+            </div>
           </tr>
         </thead>
 
@@ -242,7 +253,8 @@ const scrollShadow = computed(() => {
             <td
               v-for="column in columnsRef"
               :key="column.key"
-              class="p-4 flex-1 whitespace-nowrap"
+              class="p-4 whitespace-nowrap"
+              :class="{ 'sticky left-0 z-5 bg-white': column.fixed }"
               :style="{
                 'min-width': column.width ? column.width : 'auto',
                 'max-width': column.width ? column.width : 'auto',
@@ -253,10 +265,14 @@ const scrollShadow = computed(() => {
               </slot>
             </td>
 
-            <!-- <div class="p-4 flex w-50 sticky right-0 z-1 bg-pink-200" :class="{ 'data-table-actions-hover': flux.rowHover === index }">
-          <Button color="info" @click="flux.edit(item)">Edit</Button>
-          <Button color="danger" class="ml-2" @click="flux.remove(item)">Remove</Button>
-        </div> -->
+            <div
+              v-if="fixed"
+              class="p-4 flex w-50 sticky right-0 z-1 bg-white"
+              :class="{ 'data-table-actions-hover': flux.rowHover === index }"
+            >
+              <Button color="info" @click="flux.edit(item)">Edit</Button>
+              <Button color="danger" class="ml-2" @click="flux.remove(item)">Remove</Button>
+            </div>
           </tr>
 
           <!-- <div class="tr" v-if="!dataSourceRef.length">
@@ -270,21 +286,39 @@ const scrollShadow = computed(() => {
       <div class="flex items-center">
         Rows per page:
         <div class="w-20 ml-2">
-          <Select v-model="flux.rowsPerPage" :options="flux.rowsPerPageOptions" display="label" />
+          <Select
+            v-model:value="flux.rowsPerPage"
+            :options="flux.rowsPerPageOptions"
+            display="label"
+          />
         </div>
       </div>
 
       <div class="ml-8 flex items-center">21-40 of {{ dataCount }}</div>
 
-      <div class="ml-8 flex items-center" @click="flux.previousPage">
-        <div class="i-fa-angle-left w-4 h-4"></div>
+      <div
+        class="ml-8 flex items-center cursor-pointer hover:bg-slate-200 px-2 py-1 rounded"
+        @click="flux.previousPage"
+      >
+        <div class="i-fa-angle-left w-4 h-4 mr-1"></div>
         Previous
       </div>
 
-      <div class="ml-4 flex items-center" @click="flux.nextPage">
+      <div
+        class="ml-6 flex items-center cursor-pointer hover:bg-slate-200 px-2 py-1 rounded"
+        @click="flux.nextPage"
+      >
         Next
-        <div class="i-fa-angle-right w-4 h-4"></div>
+        <div class="i-fa-angle-right w-4 h-4 ml-1"></div>
       </div>
     </div>
   </div>
 </template>
+
+<style lang="scss" scoped>
+.tbody {
+  & tr:hover {
+    box-shadow: inset 0px 0px 10px 0 #333;
+  }
+}
+</style>
