@@ -5,8 +5,8 @@ import Breadcrumbs from '~/components/Breadcrumbs.vue';
 import FileInput from '~/components/FileInput.vue';
 import { useFetch } from '~/composables';
 
-const fileUploadsApi = useFetch('/file-uploads', { immediate: false }).json();
-const importDataApi = useFetch('/import-data', { immediate: false }).json();
+const fileUploadsApi = useFetch('/file-uploads').json();
+const importDataApi = useFetch('/import-data').json();
 
 const flux = reactive({
   async fileUploads(event: Event) {

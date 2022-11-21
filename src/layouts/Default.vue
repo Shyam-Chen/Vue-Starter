@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { reactive, watch } from 'vue';
+import { reactive, watch, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { useIdle } from '@vueuse/core';
 
@@ -28,7 +28,7 @@ const flux = reactive({
   authDialog: false,
 });
 
-const { data, statusCode } = useFetch('/auth/user', { timeout: 3000 }).json();
+const { data, statusCode, execute } = useFetch('/auth/user', { timeout: 3000 }).json();
 
 watch(
   () => statusCode.value,
@@ -63,6 +63,10 @@ watch(
     if (!val) router.push('/sign-in');
   },
 );
+
+onMounted(() => {
+  execute();
+});
 </script>
 
 <template>

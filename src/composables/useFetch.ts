@@ -5,6 +5,7 @@ import { i18n } from '~/plugins/i18n';
 export default createFetch({
   baseUrl: process.env.API_URL + '/api',
   options: {
+    immediate: false,
     async beforeFetch({ options }: any) {
       const token = localStorage.getItem('token');
 

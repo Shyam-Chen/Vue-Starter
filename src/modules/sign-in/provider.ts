@@ -22,7 +22,7 @@ export const useState = () => inject(stateSymbol) as State;
 
 export const useActions = () => {
   const router = useRouter();
-  const signInApi = useFetch('/auth/sign-in', { immediate: false }).json();
+  const signInApi = useFetch('/auth/sign-in').json();
   const state = useState();
 
   const actions = {

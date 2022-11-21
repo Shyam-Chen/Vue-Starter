@@ -60,7 +60,7 @@ const scroll = useScroll(el);
 const flux = reactive({
   rowHover: -1,
 
-  rowsPerPage: 20,
+  rowsPerPage: 10,
   rowsPerPageOptions: [
     { label: '10', value: 10 },
     { label: '20', value: 20 },
@@ -82,42 +82,33 @@ const flux = reactive({
     emit('remove', item);
   },
 
-  sortKey: undefined as string | undefined,
-  sortDirection: undefined as string | undefined,
+  sortKey: 'createdAt' as string | undefined,
+  sortDirection: 'desc' as string | undefined,
   sort(column: any) {
-    if (!column.sortable || !dataSourceRef.value.length) {
-      return;
-    }
+    if (!column.sortable || !dataSourceRef.value.length) return;
 
-    if (!flux.sortDirection) {
-      flux.sortKey = column.key;
-      flux.sortDirection = 'asc';
-    } else if (flux.sortDirection === 'asc') {
+    if (flux.sortDirection === 'asc') {
       flux.sortKey = column.key;
       flux.sortDirection = 'desc';
     } else if (flux.sortDirection === 'desc') {
-      flux.sortKey = undefined;
-      flux.sortDirection = undefined;
+      flux.sortKey = column.key;
+      flux.sortDirection = 'asc';
     }
 
     emit('change', {
-      rowsPerPage: flux.rowsPerPage,
-      currentPage: flux.currentPage,
-      sortKey: flux.sortKey,
-      sortDirection: flux.sortDirection,
+      rows: flux.rowsPerPage,
+      page: flux.currentPage,
+      field: flux.sortKey,
+      order: flux.sortDirection,
     });
   },
 
   previousPage() {
-    if (flux.currentPage === 1) {
-      return;
-    }
+    if (flux.currentPage === 1) return;
     flux.currentPage -= 1;
   },
   nextPage() {
-    if (flux.currentPage === flux.totalPage) {
-      return;
-    }
+    if (flux.currentPage === flux.totalPage) return;
     flux.currentPage += 1;
   },
 });
@@ -139,10 +130,10 @@ watch(
     flux.totalPage = Math.ceil(props.dataCount / val);
     flux.currentPageOptions = createOptions(flux.totalPage);
     emit('change', {
-      rowsPerPage: val,
-      currentPage: flux.currentPage,
-      sortDirection: flux.sortDirection,
-      sortKey: flux.sortKey,
+      rows: val,
+      page: flux.currentPage,
+      field: flux.sortKey,
+      order: flux.sortDirection,
     });
   },
 );
@@ -151,10 +142,10 @@ watch(
   () => flux.currentPage,
   (val) => {
     emit('change', {
-      rowsPerPage: flux.rowsPerPage,
-      currentPage: val,
-      sortDirection: flux.sortDirection,
-      sortKey: flux.sortKey,
+      rows: flux.rowsPerPage,
+      page: val,
+      field: flux.sortKey,
+      order: flux.sortDirection,
     });
   },
 );
@@ -192,10 +183,10 @@ const scrollShadow = computed(() => {
 
 <template>
   <div class="w-full rounded shadow-lg bg-white">
-    <!-- <div class="p-4 flex justify-between">
-      <div>{{ title }}</div>
+    <div class="p-4 flex justify-between">
+      <div class="text-2xl font-bold">{{ title }}</div>
       <Button color="primary" icon="i-fa-plus" @click="flux.add">Add New</Button>
-    </div> -->
+    </div>
 
     <div ref="el" class="overflow-auto w-full max-h-100" :style="{ 'box-shadow': scrollShadow }">
       <table class="data-table w-full">
@@ -219,16 +210,22 @@ const scrollShadow = computed(() => {
                 </div>
 
                 <div v-if="column.sortable" class="ml-2">
-                  <div
-                    class="i-fa-caret-up w-3 h-3"
-                    :class="{ active: flux.sortKey === column.key && flux.sortDirection === 'asc' }"
-                  ></div>
-                  <div
-                    class="i-fa-caret-down w-3 h-3"
-                    :class="{
-                      active: flux.sortKey === column.key && flux.sortDirection === 'desc',
-                    }"
-                  ></div>
+                  <template v-if="flux.sortKey === column.key && flux.sortDirection === 'asc'">
+                    <div class="i-fa-caret-up w-3 h-3"></div>
+                    <div class="w-3 h-3"></div>
+                  </template>
+
+                  <template
+                    v-else-if="flux.sortKey === column.key && flux.sortDirection === 'desc'"
+                  >
+                    <div class="w-3 h-3"></div>
+                    <div class="i-fa-caret-down w-3 h-3"></div>
+                  </template>
+
+                  <template v-else>
+                    <div class="i-fa-caret-up w-3 h-3"></div>
+                    <div class="i-fa-caret-down w-3 h-3"></div>
+                  </template>
                 </div>
               </div>
             </td>
@@ -294,7 +291,15 @@ const scrollShadow = computed(() => {
         </div>
       </div>
 
-      <div class="ml-8 flex items-center">21-40 of {{ dataCount }}</div>
+      <div class="ml-8 flex items-center">
+        {{ flux.currentPage * flux.rowsPerPage - flux.rowsPerPage + 1 }}-{{
+          flux.currentPage * flux.rowsPerPage > dataCount
+            ? dataCount
+            : flux.currentPage * flux.rowsPerPage
+        }}
+        of
+        {{ dataCount }}
+      </div>
 
       <div
         class="ml-8 flex items-center cursor-pointer hover:bg-slate-200 px-2 py-1 rounded"

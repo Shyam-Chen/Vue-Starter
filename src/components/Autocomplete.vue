@@ -59,7 +59,6 @@ const modelValue = computed({
 
 const suggestionsApi = useFetch(
   computed(() => '/suggestions?' + new URLSearchParams({ value: modelValue.value }).toString()),
-  { immediate: false },
 ).json();
 
 const debouncedFn = useDebounceFn(async (val) => {
