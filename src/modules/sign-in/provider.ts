@@ -1,5 +1,6 @@
 import { reactive, inject } from 'vue';
 import { useRouter } from 'vue-router';
+import { formatISO, add } from 'date-fns';
 
 import { defineContext, useFetch } from '~/composables';
 
@@ -34,6 +35,7 @@ export const useActions = () => {
       if (signInApi.statusCode.value === 200) {
         const { token } = signInApi.data.value;
         localStorage.setItem('token', token);
+        localStorage.setItem('expiresIn', formatISO(add(new Date(), { hours: 16 })));
         await router.push('/dashboard');
         state.signedIn = false;
       } else {

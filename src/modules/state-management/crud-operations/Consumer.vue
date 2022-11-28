@@ -55,9 +55,9 @@ onMounted(() => {
 
           <Checkbox v-model:value="state.searchConditions.completed">Completed</Checkbox>
 
-          <div>
+          <div class="space-x-4">
+            <Button color="warning" @click="state.searchConditions = {}">Clear</Button>
             <Button color="info" @click="actions.searchTodos">Search</Button>
-            <Button color="warning" class="ml-4" @click="state.searchConditions = {}">Clear</Button>
           </div>
         </div>
       </template>
