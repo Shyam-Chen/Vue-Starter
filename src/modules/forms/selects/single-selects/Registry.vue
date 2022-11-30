@@ -11,6 +11,10 @@ const flux = reactive({
     { label: 'React', value: 'f2' },
     { label: 'Svelte', value: 'f3' },
     { label: 'Vue', value: 'f4' },
+    { label: 'Nest', value: 'b1' },
+    { label: 'Express', value: 'b2' },
+    { label: 'Fastify', value: 'b3' },
+    { label: 'Koa', value: 'b4' },
   ],
 });
 </script>
@@ -31,7 +35,7 @@ const flux = reactive({
   </div>
 
   <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Basic examples</div>
+    <div class="mb-2">Basic</div>
 
     <div class="flex justify-center">
       <Select v-model:value="flux.select1" :options="flux.select1Options" />
@@ -59,6 +63,25 @@ const flux = reactive({
 
     <div class="flex justify-center">
       <Select v-model:value="flux.select1" :options="flux.select1Options" filterable />
+    </div>
+  </div>
+
+  <div class="flex flex-col border p-4 mb-4">
+    <div class="mb-2">Errors</div>
+
+    <div class="flex justify-center">
+      <Select v-model:value="flux.select1" :options="flux.select1Options" :errorMessage="'Error'" />
+    </div>
+  </div>
+
+  <div class="flex flex-col border p-4 mb-4">
+    <div class="mb-2">Cascader</div>
+
+    <div class="grid grid-cols-4 gap-4">
+      <Select v-model:value="flux.select1" :options="flux.select1Options" />
+      <Select v-model:value="flux.select1" :options="flux.select1Options" />
+      <Select v-model:value="flux.select1" :options="flux.select1Options" />
+      <Select v-model:value="flux.select1" :options="flux.select1Options" />
     </div>
   </div>
 </template>

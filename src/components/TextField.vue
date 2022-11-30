@@ -46,7 +46,7 @@ const textFieldValue = computed({
     <div class="flex w-full items-center">
       <div
         v-if="prepend"
-        class="p-2 border border-r-0 rounded rounded-r-none bg-white"
+        class="p-2 border border-slate-400 border-r-0 rounded rounded-r-none bg-white"
         @click.stop="emit('prepend')"
       >
         <div :class="prepend" class="w-5 h-5"></div>
@@ -56,9 +56,9 @@ const textFieldValue = computed({
         v-model="textFieldValue"
         v-bind="$attrs"
         :type="type"
-        class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"
+        class="border border-slate-400 rounded w-full py-2 px-3 text-slate-700 leading-tight focus:border-blue-600 focus:outline-0"
         :class="{
-          'border-red-500 mb-1': errorMessage,
+          'important:border-red-500 mb-1': errorMessage,
           'rounded-l-none border-l-0': prepend,
           'rounded-r-none border-r-0': append,
         }"
@@ -66,9 +66,9 @@ const textFieldValue = computed({
 
       <div
         v-if="append"
-        class="p-2 border border-l-0 rounded rounded-l-none bg-white"
+        class="p-2 border border-slate-400 border-l-0 rounded rounded-l-none bg-white"
         :class="{
-          'border-red-500 mb-1': errorMessage,
+          'important:border-red-500 mb-1': errorMessage,
         }"
         @click.stop="emit('append')"
       >

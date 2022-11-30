@@ -7,9 +7,12 @@ import Checkbox from '~/components/Checkbox.vue';
 import Button from '~/components/Button.vue';
 
 import { useState, useActions } from '../provider';
+import { useCrudOperationsSchema } from '../schema';
 
 const state = useState();
 const actions = useActions();
+
+const schema = useCrudOperationsSchema();
 
 onMounted(() => {
   state.todoItem = {};
@@ -33,13 +36,19 @@ onMounted(() => {
 
   <div class="p-6 space-y-4 bg-white rounded-lg shadow-lg">
     <div class="grid grid-cols-3">
-      <TextField v-model:value="state.todoItem.title">Title</TextField>
+      <TextField
+        v-model:value="state.todoItem.title"
+        required
+        :errorMessage="state.errors['todoItem.title']"
+      >
+        Title
+      </TextField>
     </div>
 
     <Checkbox v-model:value="state.todoItem.completed">Completed</Checkbox>
 
     <div>
-      <Button color="info" @click="actions.addNewToDo">Add</Button>
+      <Button color="info" @click="schema.validate() && actions.addNewToDo">Add</Button>
     </div>
   </div>
 </template>

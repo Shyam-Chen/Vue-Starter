@@ -6,6 +6,7 @@ import { onClickOutside } from '@vueuse/core';
 import getScrollableParent from '~/utilities/getScrollableParent';
 
 import Checkbox from './Checkbox.vue';
+import TextField from './TextField.vue';
 
 const props = defineProps({
   value: {
@@ -165,7 +166,7 @@ const open = (selectEl: any, filterEl: any, menuEl: any) => {
     }
 
     if (filterEl) {
-      filterEl.focus();
+      filterEl.$el.querySelector('input').focus();
     }
   });
 };
@@ -232,13 +233,13 @@ onUnmounted(() => {
     <div ref="target" class="select">
       <div
         ref="select"
-        class="select-input flex items-center shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 bg-white leading-tight focus:outline-none focus:shadow-outline"
+        class="select-input flex items-center border border-slate-400 rounded w-full py-2 px-3 text-slate-700 bg-white leading-tight"
         :class="{
-          'select-input-placeholder': !flux.selected?.length,
-          'select-input-focus': flux.show,
-          'select-input-error': isInvalid || errorMessage,
+          'select-input-placeholder important:text-gray-400': !flux.selected?.length,
+          'select-input-focus important:border-blue-600': flux.show,
+          'select-error important:border-red-500 mb-1': isInvalid || errorMessage,
           'select-input-error-focus': (isInvalid || errorMessage) && flux.show,
-          'select-input-disabled': disabled,
+          'select-disabled opacity-50 cursor-not-allowed': disabled,
         }"
         @click="open($refs.select, $refs.filter, $refs.menu)"
       >
@@ -280,11 +281,7 @@ onUnmounted(() => {
           }"
         >
           <div v-if="filterable" class="select-filter">
-            <input
-              ref="filter"
-              v-model="flux.filterValue"
-              class="select-filter-input form-control"
-            />
+            <TextField ref="filter" v-model:value="flux.filterValue" />
           </div>
 
           <div ref="selectMenu" class="select-menu">
@@ -292,7 +289,7 @@ onUnmounted(() => {
               v-for="(item, index) in flux.options"
               :ref="(el) => (selectMenuItem[index] = el)"
               :key="item.value"
-              class="flex items-center select-menu-item"
+              class="flex items-center select-menu-item hover:bg-gray-300"
               :class="{
                 'select-menu-item-active': value === item.value,
               }"
@@ -358,27 +355,6 @@ onUnmounted(() => {
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
-    }
-
-    &-focus {
-      // border: 0.0625rem solid var(--primary);
-    }
-
-    &-error {
-      border-color: var(--danger);
-    }
-
-    &-error-focus {
-      border-color: var(--danger);
-      // box-shadow: 0 0 0 0.2rem #ccc;
-    }
-
-    &-disabled {
-      cursor: not-allowed;
-      border-radius: 2px;
-      color: #c4c4c4;
-      background: #c4c4c4;
-      box-shadow: inset 3px 3px 6px #a7a7a7, inset -3px -3px 6px #e1e1e1;
     }
 
     &-icon {

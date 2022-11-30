@@ -5,10 +5,14 @@ import { string } from 'yup';
 
 import { useState } from './provider';
 
-export const useSignInFormSchema = () => {
+export const useCrudOperationsSchema = () => {
+  const { t } = useI18n({ useScope: 'global' });
   const state = useState();
 
-  const schema = useSchema([], state);
+  const schema = useSchema(
+    [[computed(() => state.todoItem.title), computed(() => string().required(t('required')))]],
+    state,
+  );
 
   return schema;
 };

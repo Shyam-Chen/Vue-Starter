@@ -4,6 +4,8 @@ import { onClickOutside } from '@vueuse/core';
 
 import getScrollableParent from '~/utilities/getScrollableParent';
 
+import TextField from './TextField.vue';
+
 const props = defineProps({
   value: {
     type: [String, Number],
@@ -133,7 +135,7 @@ const open = (selectEl: any, filterEl: any, menuEl: any) => {
     }
 
     if (filterEl) {
-      filterEl.focus();
+      filterEl.$el.querySelector('input').focus();
     }
   });
 };
@@ -211,13 +213,13 @@ onUnmounted(() => {
     <div ref="target" class="select">
       <div
         ref="select"
-        class="select-input cursor-pointer shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 bg-white leading-tight focus:outline-none focus:shadow-outline"
+        class="select-input cursor-pointer border border-slate-400 rounded w-full py-2 px-3 text-slate-700 bg-white leading-tight"
         :class="{
-          'select-input-placeholder': !flux.selected,
-          'select-input-focus': flux.show,
-          'select-input-error': isInvalid || errorMessage,
-          'select-input-error-focus': (isInvalid || errorMessage) && flux.show,
-          'select-input-disabled': disabled,
+          'select-placeholder important:text-gray-400': !flux.selected,
+          'select-focus important:border-blue-600': flux.show,
+          'select-error important:border-red-500 mb-1': isInvalid || errorMessage,
+          'select-error-focus important:border-rose-500': (isInvalid || errorMessage) && flux.show,
+          'select-disabled opacity-50 cursor-not-allowed': disabled,
         }"
         @click="open($refs.select, $refs.filter, $refs.menu)"
       >
@@ -251,11 +253,7 @@ onUnmounted(() => {
           }"
         >
           <div v-if="filterable" class="select-filter">
-            <input
-              ref="filter"
-              v-model="flux.filterValue"
-              class="select-filter-input form-control"
-            />
+            <TextField ref="filter" v-model:value="flux.filterValue" />
           </div>
 
           <div ref="selectMenu" class="select-menu">
@@ -280,7 +278,7 @@ onUnmounted(() => {
       </Transition>
     </div>
 
-    <div v-if="errorMessage" class="text-danger mt-1">
+    <div v-if="errorMessage" class="text-red-500 text-xs">
       {{ errorMessage }}
     </div>
   </div>
@@ -307,37 +305,17 @@ onUnmounted(() => {
 
   &-input {
     position: relative;
+    padding-right: 2rem;
 
     &:hover .select-input-icon-clear {
       visibility: visible;
     }
 
     &-placeholder {
-      color: #6c757d;
+      // color: #6c757d;
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
-    }
-
-    &-focus {
-      // border: 0.0625rem solid var(--primary);
-    }
-
-    &-error {
-      border-color: var(--danger);
-    }
-
-    &-error-focus {
-      border-color: var(--danger);
-      // box-shadow: 0 0 0 0.2rem #ccc;
-    }
-
-    &-disabled {
-      cursor: not-allowed;
-      border-radius: 2px;
-      // color: #c4c4c4;
-      background: #c4c4c4;
-      box-shadow: inset 3px 3px 6px #a7a7a7, inset -3px -3px 6px #e1e1e1;
     }
 
     &-icon {
@@ -349,13 +327,15 @@ onUnmounted(() => {
     }
 
     &-icon-clear {
-      background: #e4ebf0;
+      background: #fff;
       z-index: 100;
       visibility: hidden;
       color: #6c757d;
+      width: auto;
+      height: auto;
 
       &:hover {
-        color: #6c757d;
+        color: #555;
       }
     }
   }
@@ -421,10 +401,6 @@ onUnmounted(() => {
       min-height: 32px;
       padding: 5px 12px;
 
-      &:hover {
-        // background-color: #e4ebf0;
-      }
-
       &-active {
         // color: #fff;
         background-color: var(--primary);
@@ -446,14 +422,6 @@ onUnmounted(() => {
     line-height: 22px;
     min-height: 32px;
     padding: 5px 12px;
-  }
-
-  &-error {
-    line-height: 16px;
-    color: #f46155;
-    width: 100%;
-    margin-top: 0.25rem;
-    font-size: 80%;
   }
 }
 </style>

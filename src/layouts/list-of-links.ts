@@ -70,6 +70,7 @@ export default [
       { name: 'Data iterators', to: '/tables/data-iterators' },
       { name: 'Tabular forms', to: '/tables/tabular-forms' },
       { name: 'Tabular form groups', to: '/tables/tabular-form-groups' },
+      { name: 'Calendar', to: '/tables/calendar' },
     ],
   },
   {

@@ -34,8 +34,8 @@ const textareaValue = computed({
       v-model="textareaValue"
       v-bind="$attrs"
       :rows="rows"
-      class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-      :class="{ 'border-red-500 mb-1': errorMessage }"
+      class="border border-slate-400 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+      :class="{ 'important:border-red-500 mb-1': errorMessage }"
     ></textarea>
 
     <p v-if="errorMessage" class="text-red-500 text-xs">{{ errorMessage }}</p>
