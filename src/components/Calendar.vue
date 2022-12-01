@@ -199,10 +199,10 @@ flux.currentPeriodDates = createDays();
 </script>
 
 <template>
-  <div class="p-2 shadow-lg rounded bg-white">
+  <div class="p-2 shadow-lg rounded bg-white w-full">
     <div class="flex justify-between items-center mb-1">
       <div class="cursor-pointer hover:bg-slate-200 px-2 rounded">
-        {{ format(flux.currentMoment, 'MMM yyyy') }}
+        {{ format(flux.currentMoment, 'MMMM yyyy') }}
       </div>
 
       <div class="cursor-pointer hover:bg-slate-200 p-2 rounded-full" @click="flux.decrement">
@@ -229,7 +229,7 @@ flux.currentPeriodDates = createDays();
         <div
           v-for="item in week"
           :key="weekIndex + item"
-          class="flex justify-center items-center hover:bg-slate-200 rounded-full w-6 h-6 text-sm cursor-pointer"
+          class="flex flex-col hover:bg-slate-200 cursor-pointer w-full h-20 p-1 border-t-1"
           :class="{
             'text-white bg-blue-600 important:hover:bg-blue-700': item.selected,
             'text-slate-400 important:cursor-not-allowed': item.disabled,
@@ -238,7 +238,12 @@ flux.currentPeriodDates = createDays();
           }"
           @click="flux.selectDateItem(item)"
         >
-          {{ item.date.getDate() }}
+          <div class="self-end">{{ item.date.getDate() }}</div>
+
+          <div class="self-start flex items-center">
+            <div class="i-fa-circle w-2 h-2 bg-red-500"></div>
+            <div class="ml-1">New Event</div>
+          </div>
         </div>
       </template>
     </div>

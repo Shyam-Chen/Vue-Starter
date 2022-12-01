@@ -5,8 +5,8 @@ import uniqueId from 'lodash/uniqueId';
 
 const props = defineProps({
   value: {
-    type: String,
-    default: '',
+    type: Array as PropType<any[]>,
+    default: () => [],
   },
   options: {
     type: Array as PropType<any[]>,
@@ -16,9 +16,9 @@ const props = defineProps({
 
 const emit = defineEmits(['update:value', 'change']);
 
-const uid = uniqueId('radio-group-');
+const uid = uniqueId('checkbox-group-');
 
-const radioGroupValue = computed({
+const checkboxGroupValue = computed({
   get: () => props.value,
   set: (val) => emit('update:value', val),
 });
@@ -29,13 +29,13 @@ const radioGroupValue = computed({
     <div v-for="(item, idx) in options" :key="idx" class="flex items-center">
       <input
         :id="`${uid}-${idx}`"
-        v-model="radioGroupValue"
+        v-model="checkboxGroupValue"
         v-bind="$attrs"
-        type="radio"
+        type="checkbox"
         :name="uid"
         :value="typeof item === 'object' ? item.value : item"
         class="accent-blue-600 border-gray-300 rounded h-4 w-4 cursor-pointer"
-        @change="emit('change', radioGroupValue)"
+        @change="emit('change', checkboxGroupValue)"
       />
 
       <label :for="`${uid}-${idx}`" class="ml-2 cursor-pointer">

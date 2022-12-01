@@ -15,4 +15,10 @@ export default [
     meta: { layout: 'default' },
     beforeEnter: [auth],
   },
+  {
+    path: '/tables/calendar',
+    component: () => import('~/modules/tables/calendar/Registry.vue'),
+    meta: { layout: 'default' },
+    beforeEnter: [auth],
+  },
 ] as RouteRecordRaw[];

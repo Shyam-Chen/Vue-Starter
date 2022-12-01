@@ -1,25 +1,20 @@
 <script lang="ts" setup>
+import type { PropType } from 'vue';
 import { nextTick, ref, computed, reactive, watch, onMounted, onUnmounted } from 'vue';
 import { onClickOutside } from '@vueuse/core';
+import { format, add, sub, getYear, setYear, getMonth, setMonth } from 'date-fns';
+import chunk from 'lodash/chunk';
+import range from 'lodash/range';
 import uniqueId from 'lodash/uniqueId';
 
 import getScrollableParent from '~/utilities/getScrollableParent';
 
 import TextField from './TextField.vue';
-import DatePane from './_DatePane.vue';
 
 const props = defineProps({
   value: {
     type: String,
     default: '',
-  },
-  format: {
-    type: String,
-    default: 'YYYY/MM/DD',
-  },
-  placeholder: {
-    type: String,
-    default: 'YYYY/MM/DD',
   },
   disabled: {
     type: Boolean,
@@ -29,9 +24,34 @@ const props = defineProps({
     type: String,
     default: '',
   },
+  format: {
+    type: String,
+    default: 'yyyy/MM/dd',
+  },
+  weekdays: {
+    type: Array,
+    default: () => ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
+  },
+  months: {
+    type: Array as PropType<string[]>,
+    // prettier-ignore
+    default: () => ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+  },
+  startWeekOnSunday: {
+    type: Boolean,
+    default: true,
+  },
+  minDate: {
+    type: String,
+    default: undefined,
+  },
+  maxDate: {
+    type: String,
+    default: undefined,
+  },
 });
 
-const emit = defineEmits(['update:value', 'change']);
+const emit = defineEmits(['update:value']);
 
 const uid = uniqueId('date-picker-');
 
@@ -48,6 +68,62 @@ const modelDate = computed({
   },
 });
 
+const createDays = (y?: number, m?: number) => {
+  const currentPeriod = () => {
+    const today = new Date();
+    return [y || today.getFullYear(), m || today.getMonth()];
+  };
+
+  const [year, month] = currentPeriod();
+  const days = [] as Array<{
+    date: Date;
+    outOfRange?: boolean;
+    today?: boolean;
+    selected?: boolean;
+    disabled?: boolean;
+  }>;
+  const date = new Date(year, month, 1);
+  const offset = 1;
+
+  const startDay = date.getDay() || 7;
+
+  if (startDay > 1 - offset) {
+    for (let i = startDay - (2 - offset); i >= 0; i--) {
+      const prevDate = new Date(date);
+      prevDate.setDate(-i);
+      days.push({ outOfRange: true, date: prevDate });
+    }
+  }
+
+  while (date.getMonth() === month) {
+    days.push({ date: new Date(date) });
+    date.setDate(date.getDate() + 1);
+  }
+
+  const daysLeft = 7 - (days.length % 7);
+
+  for (let i = 1; i <= daysLeft; i++) {
+    const nextDate = new Date(date);
+    nextDate.setDate(i);
+    days.push({ outOfRange: true, date: nextDate });
+  }
+
+  days.forEach((day) => {
+    day.today = format(day.date, props.format) === format(flux.now, props.format);
+    day.selected = format(day.date, props.format) === props.value;
+
+    if (props.minDate) {
+      day.disabled = format(new Date(props.minDate), props.format) > format(day.date, props.format);
+    }
+
+    if (props.maxDate) {
+      day.disabled = format(new Date(props.maxDate), props.format) < format(day.date, props.format);
+    }
+  });
+
+  return chunk(days, 7);
+};
+
 const flux = reactive({
   showDatePicker: false,
   scrollableParent: null as HTMLElement | null,
@@ -55,18 +131,23 @@ const flux = reactive({
   openPicker() {
     flux.showDatePicker = true;
 
+    flux.showWeeks = true;
+    flux.showYears = false;
+    flux.showMonths = false;
+
+    if (modelDate.value) {
+      flux.currentMoment = new Date(modelDate.value);
+    } else {
+      flux.currentMoment = new Date();
+    }
+
     nextTick(() => {
-      flux.scrollableParent = getScrollableParent(picker.value.$el);
+      flux.scrollableParent = getScrollableParent(picker.value);
 
       const rect = input.value.$el.getBoundingClientRect();
 
-      // picker.value.flux.currentMoment = props.value ? new Date(props.value) : new Date();
-      // picker.value.flux.showYears = false;
-      // picker.value.flux.showMonths = false;
-      // picker.value.flux.showWeeks = true;
-
-      picker.value.$el.style.left = `${rect.left}px`;
-      picker.value.$el.style.top = `${rect.top}px`;
+      picker.value.style.left = `${rect.left}px`;
+      picker.value.style.top = `${rect.top}px`;
 
       const center = window.innerHeight / 2;
 
@@ -78,34 +159,116 @@ const flux = reactive({
     });
   },
 
-  changeDate(val: string) {
-    const parm1 = val ? new Date(val) : '';
-    const parm2 = props.format;
-    emit('change', parm1, parm2);
-    flux.showDatePicker = false;
-  },
-  display(val: string) {
-    const date = val ? new Date(val) : '';
-    return date;
-  },
-  clear() {
-    emit('update:value', '');
-    emit('change', '', props.format);
-    flux.showDatePicker = false;
-  },
-});
+  showWeeks: true,
+  showYears: false,
+  showMonths: false,
 
-onClickOutside(target, () => {
-  flux.showDatePicker = false;
+  now: new Date(),
+  currentMoment: new Date(),
+  currentPeriodDates: [] as any[],
+
+  yearRange: [] as number[],
+  year: null as null | number,
+  months: [] as string[],
+  month: null as null | number,
+
+  decrement() {
+    if (flux.showWeeks) {
+      flux.currentMoment = sub(flux.currentMoment, { months: 1 });
+    }
+
+    if (flux.showYears) {
+      flux.currentMoment = sub(flux.currentMoment, { years: 16 });
+      const currentYear = getYear(flux.currentMoment);
+      flux.yearRange = range(currentYear - 5, currentYear + 11);
+    }
+
+    if (flux.showMonths) {
+      flux.currentMoment = sub(flux.currentMoment, { years: 1 });
+    }
+  },
+  increment() {
+    if (flux.showWeeks) {
+      flux.currentMoment = add(flux.currentMoment, { months: 1 });
+    }
+
+    if (flux.showYears) {
+      flux.currentMoment = add(flux.currentMoment, { years: 16 });
+      const currentYear = getYear(flux.currentMoment);
+      flux.yearRange = range(currentYear - 5, currentYear + 11);
+    }
+
+    if (flux.showMonths) {
+      flux.currentMoment = add(flux.currentMoment, { years: 1 });
+    }
+  },
+  changeYearMonth() {
+    if (flux.showWeeks) {
+      flux.showWeeks = false;
+      flux.showYears = true;
+      const currentYear = getYear(flux.currentMoment);
+      flux.yearRange = range(currentYear - 5, currentYear + 11);
+    }
+  },
+  selectDateItem(val: any) {
+    const date = format(val.date, props.format);
+
+    if (
+      props.minDate &&
+      format(new Date(props.minDate), props.format) > format(val.date, props.format)
+    ) {
+      return;
+    }
+
+    if (
+      props.maxDate &&
+      format(new Date(props.maxDate), props.format) < format(val.date, props.format)
+    ) {
+      return;
+    }
+
+    flux.showDatePicker = false;
+    emit('update:value', date);
+  },
+  selectYear(val: number) {
+    flux.showYears = false;
+    flux.showMonths = true;
+    flux.year = val;
+
+    flux.currentMoment = setYear(flux.currentMoment, val);
+  },
+  selectMonth(val: number) {
+    flux.showMonths = false;
+    flux.showWeeks = true;
+    flux.month = val;
+    flux.currentMoment = setMonth(flux.currentMoment, val);
+
+    flux.currentPeriodDates = createDays(getYear(flux.currentMoment), getMonth(flux.currentMoment));
+  },
 });
 
 const handleScroll = () => {
   if (flux.showDatePicker) {
     const rect = input.value.$el.getBoundingClientRect();
-    picker.value.$el.style.left = `${rect.left}px`;
-    picker.value.$el.style.top = `${rect.top}px`;
+    picker.value.style.left = `${rect.left}px`;
+    picker.value.style.top = `${rect.top}px`;
   }
 };
+
+onClickOutside(target, () => {
+  flux.showDatePicker = false;
+});
+
+watch(
+  () => flux.currentMoment,
+  (val) => {
+    flux.currentPeriodDates = createDays(getYear(val), getMonth(val));
+  },
+);
+
+watch([() => props.value, () => props.minDate, () => props.maxDate], () => {
+  flux.currentPeriodDates = createDays(getYear(flux.currentMoment), getMonth(flux.currentMoment));
+});
 
 watch(
   () => flux.scrollableParent,
@@ -113,6 +276,8 @@ watch(
     el?.addEventListener('scroll', handleScroll);
   },
 );
+
+flux.currentPeriodDates = createDays();
 
 onMounted(() => {
   if (flux.scrollableParent && flux.scrollableParent instanceof HTMLElement) {
@@ -137,7 +302,6 @@ onUnmounted(() => {
       :id="uid"
       ref="input"
       :value="modelDate"
-      :placeholder="placeholder"
       :errorMessage="errorMessage"
       :disabled="disabled"
       append="i-fa-calendar-o"
@@ -147,19 +311,94 @@ onUnmounted(() => {
     />
 
     <Transition name="fade">
-      <DatePane
-        v-show="flux.showDatePicker"
+      <div
+        v-if="flux.showDatePicker"
         ref="picker"
-        v-model:value="modelDate"
-        v-bind="$attrs"
-        class="fixed z-10"
+        class="fixed z-10 p-2 shadow-lg rounded bg-white"
         :class="{
           'DatePicker-DatePane-PlacementBottom': flux.direction === 'down',
           'DatePicker-DatePane-PlacementTop': flux.direction === 'up',
         }"
-        :disabled="disabled"
-        @update:value="flux.changeDate"
-      />
+      >
+        <div class="flex justify-between items-center mb-1">
+          <div class="cursor-pointer hover:bg-slate-200 p-2 rounded-full" @click="flux.decrement">
+            <div class="i-fa-chevron-left w-3 h-3"></div>
+          </div>
+
+          <div
+            v-if="flux.showWeeks"
+            class="cursor-pointer hover:bg-slate-200 px-2 rounded"
+            @click="flux.changeYearMonth"
+          >
+            {{ format(flux.currentMoment, 'MMM yyyy') }}
+          </div>
+
+          <div v-if="flux.showYears">{{ flux.yearRange[0] }} ~ {{ flux.yearRange[15] }}</div>
+          <div v-if="flux.showMonths">{{ format(flux.currentMoment, 'yyyy') }}</div>
+
+          <div class="cursor-pointer hover:bg-slate-200 p-2 rounded-full" @click="flux.increment">
+            <div class="i-fa-chevron-right w-3 h-3"></div>
+          </div>
+        </div>
+
+        <div v-show="flux.showWeeks" class="grid grid-cols-7 gap-1 text-center">
+          <div
+            v-for="(weekday, weekdayIndex) in weekdays"
+            :key="weekdayIndex"
+            class="text-sm text-slate-600"
+          >
+            {{ weekday }}
+          </div>
+
+          <template v-for="(week, weekIndex) in flux.currentPeriodDates">
+            <div
+              v-for="item in week"
+              :key="weekIndex + item"
+              class="flex justify-center items-center hover:bg-slate-200 rounded-full w-6 h-6 text-sm cursor-pointer"
+              :class="{
+                'text-white bg-blue-600 important:hover:bg-blue-700': item.selected,
+                'text-slate-400 important:cursor-not-allowed': item.disabled,
+                'text-white bg-blue-400 important:hover:bg-blue-500': item.today,
+                'text-slate-400': item.outOfRange,
+              }"
+              @click="flux.selectDateItem(item)"
+            >
+              {{ item.date.getDate() }}
+            </div>
+          </template>
+        </div>
+
+        <div v-show="flux.showYears" class="grid grid-cols-4 gap-1 text-center w-48">
+          <div
+            v-for="year in flux.yearRange"
+            :key="year"
+            :value="year"
+            class="flex justify-center items-center hover:bg-slate-200 rounded text-sm cursor-pointer"
+            :class="{
+              'text-white bg-blue-400 important:hover:bg-blue-500': year === getYear(flux.now),
+            }"
+            @click="flux.selectYear(year)"
+          >
+            {{ year }}
+          </div>
+        </div>
+
+        <div v-show="flux.showMonths" class="grid grid-cols-3 gap-1 text-center w-48">
+          <div
+            v-for="(month, index) in months"
+            :key="month"
+            :value="index"
+            class="flex justify-center items-center hover:bg-slate-200 rounded text-sm cursor-pointer"
+            :class="{
+              'text-white bg-blue-400 important:hover:bg-blue-500':
+                index === getMonth(flux.now) && flux.year === getYear(flux.now),
+            }"
+            @click="flux.selectMonth(index)"
+          >
+            {{ month }}
+          </div>
+        </div>
+      </div>
     </Transition>
   </div>
 </template>

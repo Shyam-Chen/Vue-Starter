@@ -1,292 +1,261 @@
+<script lang="ts" setup>
+import type { PropType } from 'vue';
+import { nextTick, ref, computed, reactive, watch, onMounted, onUnmounted } from 'vue';
+import { onClickOutside } from '@vueuse/core';
+import { format, add, sub, getYear, setYear, getMonth, setMonth } from 'date-fns';
+import uniqueId from 'lodash/uniqueId';
+
+import getScrollableParent from '~/utilities/getScrollableParent';
+
+import TextField from './TextField.vue';
+
+const props = defineProps({
+  value: {
+    type: String,
+    default: '',
+  },
+  format: {
+    type: String,
+    default: 'yyyy/MM',
+  },
+  months: {
+    type: Array as PropType<string[]>,
+    // prettier-ignore
+    default: () => ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+  },
+  errorMessage: {
+    type: String,
+    default: '',
+  },
+});
+
+const emit = defineEmits(['update:value']);
+
+const uid = uniqueId('month-picker-');
+
+const target = ref();
+const input = ref();
+const picker = ref();
+
+const modelDate = computed({
+  get: () => {
+    return props.value;
+  },
+  set(val) {
+    emit('update:value', val);
+  },
+});
+
+const flux = reactive({
+  showDatePicker: false,
+  scrollableParent: null as HTMLElement | null,
+  direction: '' as 'down' | 'up' | '',
+  openPicker() {
+    flux.showDatePicker = true;
+
+    if (modelDate.value) {
+      flux.currentMoment = new Date(modelDate.value);
+    } else {
+      flux.currentMoment = new Date();
+    }
+
+    nextTick(() => {
+      flux.scrollableParent = getScrollableParent(picker.value);
+
+      const rect = input.value.$el.getBoundingClientRect();
+
+      picker.value.style.left = `${rect.left}px`;
+      picker.value.style.top = `${rect.top}px`;
+
+      const center = window.innerHeight / 2;
+
+      if (rect.top > center) {
+        flux.direction = 'up';
+      } else {
+        flux.direction = 'down';
+      }
+    });
+  },
+
+  showWeeks: false,
+  showYears: false,
+  showMonths: true,
+
+  now: new Date(),
+  currentMoment: new Date(),
+
+  yearRange: [] as number[],
+  year: null as null | number,
+
+  decrement() {
+    if (flux.showMonths) {
+      flux.currentMoment = sub(flux.currentMoment, { years: 1 });
+    }
+
+    if (flux.showYears) {
+      // const moment = flux.currentMoment.subtract(16, 'Y');
+      // flux.yearRange = range(moment.year() - 5, moment.year() + 10);
+    }
+  },
+  increment() {
+    if (flux.showMonths) {
+      flux.currentMoment = add(flux.currentMoment, { years: 1 });
+    }
+
+    if (flux.showYears) {
+      // const moment = flux.currentMoment.add(16, 'Y');
+      // flux.yearRange = range(moment.year() - 5, moment.year() + 10);
+    }
+  },
+  selectYear(val: number) {
+    flux.showYears = false;
+    flux.showMonths = true;
+    flux.year = val;
+
+    flux.currentMoment = setYear(flux.currentMoment, val);
+  },
+  selectMonth(month: number) {
+    flux.currentMoment = setMonth(flux.currentMoment, month);
+    flux.showDatePicker = false;
+
+    const value = format(flux.currentMoment, props.format);
+    emit('update:value', value);
+  },
+});
+
+onClickOutside(target, () => {
+  flux.showDatePicker = false;
+});
+
+const handleScroll = () => {
+  if (flux.showDatePicker) {
+    const rect = input.value.$el.getBoundingClientRect();
+    picker.value.style.left = `${rect.left}px`;
+    picker.value.style.top = `${rect.top}px`;
+  }
+};
+
+watch(
+  () => flux.scrollableParent,
+  (el) => {
+    el?.addEventListener('scroll', handleScroll);
+  },
+);
+
+onMounted(() => {
+  if (flux.scrollableParent && flux.scrollableParent instanceof HTMLElement) {
+    flux.scrollableParent?.addEventListener('scroll', handleScroll);
+  } else {
+    window.addEventListener('scroll', handleScroll);
+  }
+});
+
+onUnmounted(() => {
+  if (flux.scrollableParent && flux.scrollableParent instanceof HTMLElement) {
+    flux.scrollableParent?.removeEventListener('scroll', handleScroll);
+  } else {
+    window.removeEventListener('scroll', handleScroll);
+  }
+});
+</script>
+
 <template>
-  <div v-click-outside="onClickOutside" class="w-100 input-date">
-    <div class="input-date-input-wrapper">
-      <input
-        ref="input"
-        :value="flux.display(modelDate)"
-        class="w-100 form-control input-date-input"
-        :placeholder="placeholder"
-        :disabled="disabled"
-        readonly
-        @focus="flux.openPicker"
-      />
-
-      <div class="input-date-btn px-2" @click="flux.openPicker">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
-          fill="currentColor"
-          class="bi bi-calendar"
-          viewBox="0 0 16 16"
-        >
-          <path
-            d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"
-          />
-        </svg>
-      </div>
-    </div>
-
-    <MonthPane
-      v-show="flux.showDatePicker"
-      ref="picker"
-      v-model="modelDate"
-      v-bind="$attrs"
-      class="input-date-picker"
-      :class="{ 'input-date-picker-up': flux.direction === 'up' }"
-      :disabled="disabled"
-      @input="flux.changeDate"
+  <div ref="target" class="w-full">
+    <TextField
+      :id="uid"
+      ref="input"
+      :value="modelDate"
+      :errorMessage="errorMessage"
+      append="i-fa-calendar-o"
+      readonly
+      @focus="flux.openPicker"
+      @append="flux.openPicker"
     />
 
-    <div v-if="errorMessage">
-      {{ errorMessage }}
-    </div>
+    <Transition name="fade">
+      <div
+        v-if="flux.showDatePicker"
+        ref="picker"
+        class="fixed z-10 p-2 shadow-lg rounded bg-white"
+        :class="{
+          'DatePicker-DatePane-PlacementBottom': flux.direction === 'down',
+          'DatePicker-DatePane-PlacementTop': flux.direction === 'up',
+        }"
+      >
+        <div class="flex justify-between items-center mb-1">
+          <div class="cursor-pointer hover:bg-slate-200 p-2 rounded-full" @click="flux.decrement">
+            <div class="i-fa-chevron-left w-3 h-3"></div>
+          </div>
+
+          <div v-if="flux.showYears">{{ flux.yearRange[0] }} ~ {{ flux.yearRange[15] }}</div>
+
+          <div v-if="flux.showMonths">
+            {{ format(flux.currentMoment, 'yyyy') }}
+          </div>
+
+          <div class="cursor-pointer hover:bg-slate-200 p-2 rounded-full" @click="flux.increment">
+            <div class="i-fa-chevron-right w-3 h-3"></div>
+          </div>
+        </div>
+
+        <div v-show="flux.showYears" class="grid grid-cols-4 gap-1 text-center w-48">
+          <div
+            v-for="year in flux.yearRange"
+            :key="year"
+            :value="year"
+            class="flex justify-center items-center hover:bg-slate-200 rounded text-sm cursor-pointer"
+            :class="{
+              'text-white bg-blue-400 important:hover:bg-blue-500': year === getYear(flux.now),
+            }"
+            @click="flux.selectYear(year)"
+          >
+            {{ year }}
+          </div>
+        </div>
+
+        <div v-show="flux.showMonths" class="grid grid-cols-3 gap-1 text-center w-48">
+          <div
+            v-for="(month, index) in months"
+            :key="month"
+            :value="index"
+            class="flex justify-center items-center hover:bg-slate-200 rounded text-sm cursor-pointer"
+            :class="{
+              'text-white bg-blue-400 important:hover:bg-blue-500':
+                index === getMonth(flux.now) && getYear(flux.currentMoment) === getYear(flux.now),
+              'text-white bg-blue-600 important:hover:bg-blue-700':
+                modelDate &&
+                index === getMonth(new Date(modelDate)) &&
+                getYear(flux.currentMoment) === getYear(new Date(modelDate)),
+            }"
+            @click="flux.selectMonth(index)"
+          >
+            {{ month }}
+          </div>
+        </div>
+      </div>
+    </Transition>
   </div>
 </template>
 
-<script>
-import {
-  getCurrentInstance,
-  nextTick,
-  ref,
-  computed,
-  reactive,
-  watch,
-  onMounted,
-  onUnmounted,
-} from '@nuxtjs/composition-api';
-
-import MonthPane from './components/MonthPane';
-import clickOutside from './directives/click-outside';
-import getScrollableParent from '~/utilities/getScrollableParent';
-
-let uid = 0;
-
-export default {
-  components: {
-    MonthPane,
-  },
-  directives: {
-    clickOutside,
-  },
-  props: {
-    value: {
-      type: String,
-      default: '',
-    },
-    format: {
-      type: String,
-      default: 'YYYY/MM/DD',
-    },
-    placeholder: {
-      type: String,
-      default: 'YYYY/MM/DD',
-    },
-    disabled: {
-      type: Boolean,
-      default: false,
-    },
-    errorMessage: {
-      type: String,
-      default: '',
-    },
-  },
-  emits: ['input', 'change'],
-  setup(props, { emit }) {
-    uid += 1;
-
-    const { proxy: vm } = getCurrentInstance();
-
-    const input = ref();
-    const picker = ref();
-
-    const modelDate = computed({
-      get: () => {
-        emit('input', props.value);
-        return props.value;
-      },
-      set(val) {
-        emit('input', val ? vm.$moment(new Date(val)).format(props.format) : '');
-      },
-    });
-
-    const flux = reactive({
-      showDatePicker: false,
-      scrollableParent: '',
-      direction: '',
-      openPicker() {
-        flux.showDatePicker = true;
-
-        nextTick(() => {
-          flux.scrollableParent = getScrollableParent(picker.value.$el);
-
-          const rect = input.value.getBoundingClientRect();
-
-          // picker.value.showYears = false
-          // picker.value.showMonths = false
-          // picker.value.showWeeks = true
-
-          // picker.value.currentPeriod = picker.value.getPeriodFromValue(
-          //   picker.value.value,
-          //   picker.value.format
-          // )
-
-          picker.value.$el.style.left = `${rect.left}px`;
-          picker.value.$el.style.top = `${rect.bottom}px`;
-
-          const center = window.innerHeight / 2;
-
-          if (rect.top > center) {
-            flux.direction = 'up';
-          } else {
-            flux.direction = 'down';
-          }
-        });
-      },
-
-      changeDate(val) {
-        const parm1 = val ? vm.$moment(new Date(val)).format(props.format) : '';
-        const parm2 = props.format;
-        emit('change', parm1, parm2);
-        flux.showDatePicker = false;
-      },
-      display(val) {
-        const date = val ? vm.$moment(new Date(val)).format(props.format) : '';
-        return date;
-      },
-      clear() {
-        emit('input', '');
-        emit('change', '', props.format);
-        flux.showDatePicker = false;
-      },
-    });
-
-    const displayText = computed(() => modelDate.value);
-
-    const onClickOutside = () => {
-      flux.showDatePicker = false;
-    };
-
-    const handleScroll = () => {
-      if (flux.showDatePicker) {
-        const rect = input.value.getBoundingClientRect();
-        picker.value.$el.style.left = `${rect.left}px`;
-        picker.value.$el.style.top = `${rect.bottom}px`;
-      }
-    };
-
-    watch(
-      () => flux.scrollableParent,
-      (el) => {
-        el?.addEventListener('scroll', handleScroll);
-      },
-    );
-
-    onMounted(() => {
-      if (flux.scrollableParent && flux.scrollableParent instanceof HTMLElement) {
-        flux.scrollableParent?.addEventListener('scroll', handleScroll);
-      } else {
-        window.addEventListener('scroll', handleScroll);
-      }
-    });
-
-    onUnmounted(() => {
-      if (flux.scrollableParent && flux.scrollableParent instanceof HTMLElement) {
-        flux.scrollableParent?.removeEventListener('scroll', handleScroll);
-      } else {
-        window.removeEventListener('scroll', handleScroll);
-      }
-    });
-
-    return {
-      uid,
-      modelDate,
-      flux,
-      onClickOutside,
-      input,
-      picker,
-      displayText,
-    };
-  },
-};
-</script>
-
 <style lang="scss" scoped>
-.input-date {
-  $self: &;
-  $height: 40px;
+.fade-enter-active {
+  transition: opacity 0.3s ease-out;
+}
 
-  &-input-wrapper {
-    display: flex;
-    position: relative;
+.fade-leave-active {
+  transition: opacity 0.3s ease-in;
+}
 
-    &:hover #{$self}-icon-clear {
-      visibility: visible;
-    }
-  }
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
 
-  &-input {
-    text-align: inherit;
-    height: 30px;
-    border-radius: 2px;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    background: #e4ebf0;
-    box-shadow: inset 3px 3px 6px #c2c8cc, inset -3px -3px 6px #ffffff;
-    border: 0.0625rem solid #d1d9e6;
-    padding: 0 0.75rem;
-    outline: none;
+.DatePicker-DatePane-PlacementBottom {
+  transform: translateY(38px) translateY(0.5rem);
+}
 
-    &:focus {
-      border: 0.0625rem solid #007bff;
-    }
-
-    &:disabled {
-      cursor: not-allowed;
-      border-radius: 2px;
-      color: #c4c4c4 - #555;
-      background: #c4c4c4;
-      box-shadow: inset 3px 3px 6px #a7a7a7, inset -3px -3px 6px #e1e1e1;
-    }
-  }
-
-  &-icon {
-    position: absolute;
-    right: 0.75rem;
-    top: 50%;
-    transform: translate(0, -50%);
-    font-size: 1rem;
-    height: 30px;
-  }
-
-  &-icon-clear {
-    margin-right: 40px;
-    background: #fff;
-    z-index: 100;
-    visibility: hidden;
-  }
-
-  &-btn {
-    border-radius: 2px;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-    padding: 0;
-    width: 30px;
-    height: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 0.0625rem solid #d1d9e6;
-    border-left: 0;
-  }
-
-  &-picker {
-    position: fixed;
-    z-index: 10;
-  }
-
-  &-picker-up {
-    transform: translateY(-$height) translateY(-100%);
-  }
+.DatePicker-DatePane-PlacementTop {
+  transform: translateY(-100%) translateY(-0.5rem);
 }
 </style>

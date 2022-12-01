@@ -3,6 +3,7 @@ import { reactive, watch } from 'vue';
 
 import Breadcrumbs from '~/components/Breadcrumbs.vue';
 import Checkbox from '~/components/Checkbox.vue';
+import CheckboxGroup from '~/components/CheckboxGroup.vue';
 
 const flux = reactive({
   checkbox1: false,
@@ -12,6 +13,9 @@ const flux = reactive({
     checked?: boolean;
   }>,
   indeterminate2: false,
+
+  checkboxGroup1: [],
+  checkboxGroup1Options: ['Angular', 'React', 'Svelte', 'Vue'],
 });
 
 watch(
@@ -79,6 +83,18 @@ watch(
       <Checkbox v-for="(item, index) in flux.checkboxes2" :key="index" v-model:value="item.checked">
         Checkbox 2-{{ index + 1 }}
       </Checkbox>
+    </div>
+  </div>
+
+  <div class="flex flex-col border p-4 mb-4">
+    <div class="mb-2">Group</div>
+
+    <div class="flex justify-center">
+      <CheckboxGroup v-model:value="flux.checkboxGroup1" :options="flux.checkboxGroup1Options" />
+    </div>
+
+    <div class="flex justify-center">
+      <pre>{{ flux.checkboxGroup1 }}</pre>
     </div>
   </div>
 </template>
