@@ -4,8 +4,7 @@ import envify from 'process-envify';
 import vue from '@vitejs/plugin-vue';
 import vueI18n from '@intlify/unplugin-vue-i18n/vite';
 import unocss from 'unocss/vite';
-import { presetUno } from 'unocss';
-import presetIcons from '@unocss/preset-icons';
+import { presetUno, presetIcons, transformerDirectives, transformerVariantGroup } from 'unocss';
 
 import env from './env';
 
@@ -24,6 +23,7 @@ export default defineConfig({
     }),
     unocss({
       presets: [presetUno(), presetIcons()],
+      transformers: [transformerDirectives(), transformerVariantGroup()],
     }),
   ],
   resolve: {

@@ -30,7 +30,6 @@
     "@types/lodash": "^4.14.187",
     "@typescript-eslint/eslint-plugin": "^5.42.0",
     "@typescript-eslint/parser": "^5.42.0",
-    "@unocss/preset-icons": "^0.46.3",
     "@vitejs/plugin-vue": "^3.2.0",
     "@vitest/coverage-c8": "^0.24.5",
     "@vue/compiler-sfc": "^3.2.41",
