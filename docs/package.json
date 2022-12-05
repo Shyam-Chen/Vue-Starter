@@ -1,0 +1,13 @@
+{
+  "name": "docs",
+  "private": true,
+  "scripts": {
+    "dev": "vitepress dev --port 3715",
+    "build": "vitepress build",
+    "preview": "vitepress preview --port 3715"
+  },
+  "devDependencies": {
+    "vitepress": "1.0.0-alpha.29",
+    "vue": "^3.2.45"
+  }
+}

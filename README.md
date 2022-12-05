@@ -112,7 +112,9 @@ This seed repository provides the following features:
 - [x] [ESLint](https://github.com/eslint/eslint) - Linter
 - [x] [Prettier](https://github.com/prettier/prettier) - Formatter
 - [x] [Vitest](https://github.com/vitest-dev/vitest) - Test Runner
-- [x] [Playwright](https://github.com/microsoft/playwright) - Automation
+- [x] [Playwright](https://github.com/microsoft/playwright) - Test Automation
+- [x] [Lighthouse](https://github.com/GoogleChrome/lighthouse) - Measure Performance
+- [x] [VitePress](https://github.com/vuejs/vitepress) - Documentation
 - ---------- **Environments** ----------
 - [x] [Node.js](https://nodejs.org/en/) - JavaScript Runtime Environment
 - [x] [Pnpm](https://pnpm.io/) - Package Manager
