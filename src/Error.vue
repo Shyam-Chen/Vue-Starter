@@ -1,3 +1,7 @@
+<script lang="ts" setup>
+import { RouterLink } from 'vue-router';
+</script>
+
 <template>
   <section class="flex items-center h-full p-16 bg-gray-50 text-gray-800">
     <div class="container flex flex-col items-center justify-center px-5 mx-auto my-8">

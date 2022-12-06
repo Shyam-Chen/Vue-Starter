@@ -20,12 +20,16 @@ const props = defineProps({
   },
   weekdays: {
     type: Array,
-    default: () => ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
+    default: () => ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
   },
   months: {
     type: Array as PropType<string[]>,
     // prettier-ignore
     default: () => ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+  },
+  events: {
+    type: Array as PropType<Array<{ date: Date; title: string; class?: string }>>,
+    default: () => [],
   },
   startWeekOnSunday: {
     type: Boolean,
@@ -113,6 +117,9 @@ const flux = reactive({
   months: [] as string[],
   month: null as null | number,
 
+  today() {
+    flux.currentMoment = new Date();
+  },
   decrement() {
     if (flux.showWeeks) {
       flux.currentMoment = sub(flux.currentMoment, { months: 1 });
@@ -201,26 +208,28 @@ flux.currentPeriodDates = createDays();
 <template>
   <div class="p-2 shadow-lg rounded bg-white w-full">
     <div class="flex justify-between items-center mb-1">
-      <div class="cursor-pointer hover:bg-slate-200 px-2 rounded">
+      <div class="px-2 text-2xl font-bold">
         {{ format(flux.currentMoment, 'MMMM yyyy') }}
       </div>
 
-      <div class="cursor-pointer hover:bg-slate-200 p-2 rounded-full" @click="flux.decrement">
-        <div class="i-fa-chevron-left w-3 h-3"></div>
-      </div>
+      <div class="flex space-x-3">
+        <div class="cursor-pointer hover:bg-slate-200 p-2 rounded-full" @click="flux.decrement">
+          <div class="i-fa-chevron-left w-3 h-3"></div>
+        </div>
 
-      <div>Today</div>
+        <div class="cursor-pointer hover:bg-slate-200 px-2 rounded" @click="flux.today">Today</div>
 
-      <div class="cursor-pointer hover:bg-slate-200 p-2 rounded-full" @click="flux.increment">
-        <div class="i-fa-chevron-right w-3 h-3"></div>
+        <div class="cursor-pointer hover:bg-slate-200 p-2 rounded-full" @click="flux.increment">
+          <div class="i-fa-chevron-right w-3 h-3"></div>
+        </div>
       </div>
     </div>
 
-    <div class="grid grid-cols-7 gap-1 text-center">
+    <div class="grid grid-cols-7">
       <div
         v-for="(weekday, weekdayIndex) in weekdays"
         :key="weekdayIndex"
-        class="text-sm text-slate-600"
+        class="text-slate-600 text-center py-1"
       >
         {{ weekday }}
       </div>
@@ -229,20 +238,36 @@ flux.currentPeriodDates = createDays();
         <div
           v-for="item in week"
           :key="weekIndex + item"
-          class="flex flex-col hover:bg-slate-200 cursor-pointer w-full h-20 p-1 border-t-1"
+          class="flex flex-col hover:bg-slate-200 w-full p-1 gap-1 border-t-1"
           :class="{
             'text-white bg-blue-600 important:hover:bg-blue-700': item.selected,
             'text-slate-400 important:cursor-not-allowed': item.disabled,
-            'text-white bg-blue-400 important:hover:bg-blue-500': item.today,
             'text-slate-400': item.outOfRange,
           }"
           @click="flux.selectDateItem(item)"
         >
-          <div class="self-end">{{ item.date.getDate() }}</div>
+          <div
+            class="self-end rounded-full"
+            :class="{
+              'px-2': String(item.date.getDate()).length === 1,
+              'px-1': String(item.date.getDate()).length === 2,
+              'text-white bg-blue-400 important:hover:bg-blue-500': item.today,
+            }"
+          >
+            {{ item.date.getDate() }}
+          </div>
 
-          <div class="self-start flex items-center">
-            <div class="i-fa-circle w-2 h-2 bg-red-500"></div>
-            <div class="ml-1">New Event</div>
+          <div class="flex flex-col gap-1 h-15 overflow-auto">
+            <template v-for="(event, eventIndex) in events">
+              <div
+                v-if="format(event.date, 'yyyy/MM/dd') === format(item.date, 'yyyy/MM/dd')"
+                :key="eventIndex"
+                class="self-start flex items-center leading-tight text-sm p-1 rounded"
+                :class="event.class ? event.class : 'bg-blue-600 text-white'"
+              >
+                {{ event.title }}
+              </div>
+            </template>
           </div>
         </div>
       </template>
