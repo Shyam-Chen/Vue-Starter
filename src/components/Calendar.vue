@@ -262,7 +262,7 @@ flux.currentPeriodDates = createDays();
               <div
                 v-if="format(event.date, 'yyyy/MM/dd') === format(item.date, 'yyyy/MM/dd')"
                 :key="eventIndex"
-                class="self-start flex items-center leading-tight text-sm p-1 rounded"
+                class="self-start flex items-center leading-tight text-sm p-1 rounded min-w-full"
                 :class="event.class ? event.class : 'bg-blue-600 text-white'"
               >
                 {{ event.title }}

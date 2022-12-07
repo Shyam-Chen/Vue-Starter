@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import Breadcrumbs from '~/components/Breadcrumbs.vue';
 import Dropdown from '~/components/Dropdown.vue';
+import Button from '~/components/Button.vue';
 </script>
 
 <template>
@@ -18,12 +19,60 @@ import Dropdown from '~/components/Dropdown.vue';
   </div>
 
   <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Basic examples</div>
+    <div class="mb-2">Basic</div>
 
     <div class="flex justify-center">
-      <Dropdown :options="['Action', 'Another action', 'Something else here']"
-        >Dropdown button</Dropdown
-      >
+      <Dropdown :options="['Action', 'Another action', 'Something else here']">
+        <Button>Button</Button>
+      </Dropdown>
+    </div>
+  </div>
+
+  <div class="flex flex-col border p-4 mb-4">
+    <div class="mb-2">Basic</div>
+
+    <div class="flex justify-between">
+      <Dropdown :options="['Action', 'Another action', 'Something else here']">
+        <Button>Button</Button>
+      </Dropdown>
+
+      <Dropdown :options="['Action', 'Another action', 'Something else here']">
+        <Button>Button</Button>
+      </Dropdown>
+    </div>
+  </div>
+
+  <div class="flex flex-col border p-4 mb-4">
+    <div class="mb-2">Basic</div>
+
+    <div class="flex justify-center">
+      <Dropdown :options="['Action', 'Another action', 'Something else here']">
+        <Button>Button</Button>
+      </Dropdown>
+    </div>
+  </div>
+
+  <div class="flex flex-col border p-4 mb-4">
+    <div class="mb-2">Basic</div>
+
+    <div class="flex justify-between">
+      <Dropdown :options="['Action', 'Another action', 'Something else here']">
+        <Button>Button</Button>
+      </Dropdown>
+
+      <Dropdown :options="['Action', 'Another action', 'Something else here']">
+        <Button>Button</Button>
+      </Dropdown>
+    </div>
+  </div>
+
+  <div class="flex flex-col border p-4 mb-4">
+    <div class="mb-2">Basic</div>
+
+    <div class="flex justify-center">
+      <Dropdown :options="['Action', 'Another action', 'Something else here']">
+        <Button>Button</Button>
+      </Dropdown>
     </div>
   </div>
 </template>

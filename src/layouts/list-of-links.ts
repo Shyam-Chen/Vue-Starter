@@ -30,6 +30,7 @@ export default [
       { name: 'Drawers', to: '/navigation/drawers' },
       { name: 'Tabs', to: '/navigation/tabs' },
       { name: 'Steppers', to: '/navigation/steppers' },
+      { name: 'Tours', to: '/navigation/tours' },
     ],
   },
   {

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref, reactive, nextTick } from 'vue';
+import { reactive } from 'vue';
 
 defineProps({
   options: {
@@ -10,34 +10,12 @@ defineProps({
 
 const emit = defineEmits(['select']);
 
-const target = ref();
-const dropdown = ref();
-
 const flux = reactive({
   status: false,
   timeout: null as any,
   onMouseenter() {
     flux.status = true;
     clearTimeout(flux.timeout);
-
-    nextTick(() => {
-      const rect = target.value.getBoundingClientRect();
-
-      const center = window.innerHeight / 2;
-      const middle = window.innerWidth / 2;
-
-      if (rect.top > center) {
-        dropdown.value.style.transform = `translateY(-0.5rem) translateY(-${rect.height}px) translateY(-100%)`;
-      } else {
-        dropdown.value.classList.add('mt-2');
-      }
-
-      if (rect.right > middle) {
-        dropdown.value.classList.add('right-0');
-      } else {
-        dropdown.value.classList.add('left-0');
-      }
-    });
   },
   onMouseleave() {
     flux.timeout = setTimeout(() => {
@@ -57,7 +35,6 @@ const flux = reactive({
 <template>
   <div class="relative inline-block text-left" @mouseleave="flux.onMouseleave">
     <div
-      ref="target"
       class="inline-flex w-full justify-center items-center rounded-md"
       @mouseenter="flux.onMouseenter"
     >
@@ -74,11 +51,7 @@ const flux = reactive({
     >
       <div
         v-show="flux.status"
-        ref="dropdown"
-        class="absolute z-10 min-w-max bg-white origin-top-right rounded-lg shadow-lg"
-        :class="{
-          // 'right-0 top-0': true,
-        }"
+        class="absolute right-0 z-10 mt-2 min-w-max bg-white origin-top-right rounded-lg shadow-lg"
         tabindex="-1"
         @mouseenter="flux.onMouseenter"
       >

@@ -85,6 +85,7 @@ onMounted(() => {
         @select="flux.selectDropdown"
       >
         <div class="text-white">{{ data?.fullName }}</div>
+        <div class="i-mdi-chevron-down w-5 h-5 text-inherit"></div>
       </Dropdown>
     </header>
 

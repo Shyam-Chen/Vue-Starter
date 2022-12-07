@@ -42,6 +42,11 @@ const flux = reactive({
       class: 'bg-purple-500 text-white',
     },
     {
+      date: new Date('2022-12-21'),
+      title: 'My event 1',
+      class: 'bg-purple-500 text-white',
+    },
+    {
       date: new Date('2022-12-20'),
       title: 'My event 2',
       class: 'bg-fuchsia-500 text-white',
