@@ -15,10 +15,4 @@ export default [
     meta: { layout: 'default' },
     beforeEnter: [auth],
   },
-  {
-    path: '/components/dialogs',
-    component: () => import('~/modules/components/dialogs/Registry.vue'),
-    meta: { layout: 'default' },
-    beforeEnter: [auth],
-  },
 ] as RouteRecordRaw[];
