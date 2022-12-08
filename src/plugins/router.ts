@@ -1,10 +1,12 @@
 import { createWebHistory, createRouter } from 'vue-router';
 
 import auth from '~/middleware/auth';
-import componentsRoutes from '~/modules/components/routes';
+import generalRoutes from '~/modules/general/routes';
+import layoutRoutes from '~/modules/layout/routes';
 import navigationRoutes from '~/modules/navigation/routes';
-import formsRoutes from '~/modules/forms/routes';
-import tablesRoutes from '~/modules/tables/routes';
+import dataEntryRoutes from '~/modules/data-entry/routes';
+import dataDisplayRoutes from '~/modules/data-display/routes';
+import feedbackRoutes from '~/modules/feedback/routes';
 import stateManagementRoutes from '~/modules/state-management/routes';
 import chartsRoutes from '~/modules/charts/routes';
 import networkRoutes from '~/modules/network/routes';
@@ -34,10 +36,12 @@ export const router = createRouter({
       beforeEnter: [auth],
     },
 
-    ...componentsRoutes,
+    ...generalRoutes,
+    ...layoutRoutes,
     ...navigationRoutes,
-    ...formsRoutes,
-    ...tablesRoutes,
+    ...dataEntryRoutes,
+    ...dataDisplayRoutes,
+    ...feedbackRoutes,
     ...stateManagementRoutes,
     ...chartsRoutes,
     ...networkRoutes,

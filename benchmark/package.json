@@ -1,0 +1,14 @@
+{
+  "name": "benchmark",
+  "private": true,
+  "scripts": {
+    "bench": "vitest --run"
+  },
+  "dependencies": {
+    "lighthouse": "^9.6.8",
+    "playwright": "^1.28.1"
+  },
+  "devDependencies": {
+    "vitest": "^0.25.5"
+  }
+}

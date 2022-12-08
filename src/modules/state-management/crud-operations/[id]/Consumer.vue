@@ -8,14 +8,21 @@ import Checkbox from '~/components/Checkbox.vue';
 import Button from '~/components/Button.vue';
 
 import { useState, useActions } from '../provider';
+import { useCrudOperationsSchema } from '../schema';
 
 const route = useRoute();
 
 const state = useState();
 const actions = useActions();
 
+const schema = useCrudOperationsSchema();
+
 onMounted(() => {
-  actions.todoById(route.params.id as string);
+  if (route.params.id === 'new') {
+    state.todoItem = {};
+  } else {
+    actions.todoById(route.params.id as string);
+  }
 });
 </script>
 
@@ -36,14 +43,26 @@ onMounted(() => {
 
   <div class="p-6 space-y-4 bg-white rounded-lg shadow-lg">
     <div class="grid grid-cols-3">
-      <TextField v-model:value="state.todoItem.title">Title</TextField>
+      <TextField
+        v-model:value="state.todoItem.title"
+        required
+        :errorMessage="state.errors['todoItem.title']"
+      >
+        Title
+      </TextField>
     </div>
 
     <Checkbox v-model:value="state.todoItem.completed">Completed</Checkbox>
 
     <div class="space-x-4">
-      <Button color="info" @click="actions.saveToDo">Save</Button>
-      <Button color="danger" @click="actions.removeToDo">Delete</Button>
+      <template v-if="route.params.id === 'new'">
+        <Button color="info" @click="schema.validate() && actions.addNewToDo()">Add</Button>
+      </template>
+
+      <template v-else>
+        <Button color="info" @click="schema.validate() && actions.saveToDo()">Save</Button>
+        <Button color="danger" @click="actions.removeToDo">Delete</Button>
+      </template>
     </div>
   </div>
 </template>

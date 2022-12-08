@@ -6,7 +6,6 @@ Source: `src/modules/state-management/crud-operations`
 
 ```coffee
 /state-management/crud-operations
-/state-management/crud-operations/new
 /state-management/crud-operations/:id
 ```
 
@@ -22,7 +21,6 @@ POST /api/todos {}
 
 ```coffee
 POST /api/todos/new {}
-
 GET /api/todos/:id
 PUT /api/todos/:id {}
 DELETE /api/todos/:id

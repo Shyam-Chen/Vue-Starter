@@ -9,7 +9,6 @@ modules/auth/login/Registry.vue    -> /auth/login
 modules/auth/signup/Registry.vue   -> /auth/signup
 
 modules/products/Registry.vue      -> /products
-modules/products/new/Registry.vue  -> /products/new
 modules/products/[id]/Registry.vue -> /products/:id
 ```
 
@@ -35,10 +34,6 @@ routes: [
   {
     path: '/products',
     component: () => import('~/modules/products/Registry.vue'),
-  },
-  {
-    path: '/products/new',
-    component: () => import('~/modules/products/new/Registry.vue'),
   },
   {
     path: '/products/:id',
