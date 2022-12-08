@@ -26,5 +26,5 @@
 
     "skipLibCheck": true
   },
-  "exclude": ["node_modules", "dist", "coverage", "e2e", "mock"]
+  "exclude": ["node_modules", "dist", "coverage", "e2e", "benchmark", "mock", "docs"]
 }

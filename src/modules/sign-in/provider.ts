@@ -1,5 +1,5 @@
 import { reactive, inject } from 'vue';
-import { useRouter } from 'vue-router';
+import { useRouter, useRoute } from 'vue-router';
 import { formatISO, add } from 'date-fns';
 
 import { defineContext, useFetch } from '~/composables';
@@ -23,6 +23,7 @@ export const useState = () => inject(stateSymbol) as State;
 
 export const useActions = () => {
   const router = useRouter();
+  const route = useRoute();
   const signInApi = useFetch('/auth/sign-in').json();
   const state = useState();
 
@@ -36,7 +37,7 @@ export const useActions = () => {
         const { token } = signInApi.data.value;
         localStorage.setItem('token', token);
         localStorage.setItem('expiresIn', formatISO(add(new Date(), { hours: 16 })));
-        await router.push('/dashboard');
+        await router.push(route.redirectedFrom?.path || '/dashboard');
         state.signedIn = false;
       } else {
         const { message } = signInApi.data.value;
