@@ -84,7 +84,11 @@ export default [
   {
     icon: 'i-mdi-feedback-outline',
     name: 'Feedback',
-    sub: [{ name: 'Dialogs', to: '/feedback/dialogs' }],
+    sub: [
+      { name: 'Dialogs', to: '/feedback/dialogs' },
+      { name: 'Progress', to: '/feedback/progress' },
+      { name: 'Skeletons', to: '/feedback/skeletons' },
+    ],
   },
   {
     icon: 'i-carbon-cloud-service-management',

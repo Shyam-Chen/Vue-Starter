@@ -27,5 +27,5 @@ test('Sign-in', async () => {
   await fireEvent.click(wrapper.getByText('Sign In'));
 
   expect(push).toHaveBeenCalledTimes(1);
-  expect(push).toHaveBeenCalledWith('/dashboard');
+  expect(push).toHaveBeenCalledWith('/');
 });

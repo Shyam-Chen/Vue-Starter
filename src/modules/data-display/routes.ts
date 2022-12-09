@@ -22,6 +22,18 @@ export default [
     beforeEnter: [auth],
   },
   {
+    path: '/data-display/tabular-forms',
+    component: () => import('~/modules/data-display/tabular-forms/Registry.vue'),
+    meta: { layout: 'default' },
+    beforeEnter: [auth],
+  },
+  {
+    path: '/data-display/tabular-form-groups',
+    component: () => import('~/modules/data-display/tabular-form-groups/Registry.vue'),
+    meta: { layout: 'default' },
+    beforeEnter: [auth],
+  },
+  {
     path: '/data-display/calendar',
     component: () => import('~/modules/data-display/calendar/Registry.vue'),
     meta: { layout: 'default' },

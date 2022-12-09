@@ -9,4 +9,16 @@ export default [
     meta: { layout: 'default' },
     beforeEnter: [auth],
   },
+  {
+    path: '/feedback/progress',
+    component: () => import('~/modules/feedback/progress/Registry.vue'),
+    meta: { layout: 'default' },
+    beforeEnter: [auth],
+  },
+  {
+    path: '/feedback/skeletons',
+    component: () => import('~/modules/feedback/skeletons/Registry.vue'),
+    meta: { layout: 'default' },
+    beforeEnter: [auth],
+  },
 ] as RouteRecordRaw[];

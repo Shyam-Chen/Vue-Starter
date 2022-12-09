@@ -1,3 +1,16 @@
+<script lang="ts" setup>
+defineProps({
+  size: {
+    type: String,
+    default: '',
+  },
+  color: {
+    type: String,
+    default: '',
+  },
+});
+</script>
+
 <template>
   <div
     class="animate-spin inline-block border-gray-300 border-r-blue-600 rounded-full"
