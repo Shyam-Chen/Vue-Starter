@@ -1,13 +1,13 @@
 <script lang="ts" setup>
 import { watch, onUnmounted } from 'vue';
 
-const props = defineProps({
-  modelValue: {
-    type: Boolean,
-  },
-});
+const props = defineProps<{
+  modelValue: boolean;
+}>();
 
-const emits = defineEmits(['update:modelValue']);
+const emits = defineEmits<{
+  (evt: 'update:modelValue', val: boolean): void;
+}>();
 
 const closeDialog = () => {
   emits('update:modelValue', !props.modelValue);

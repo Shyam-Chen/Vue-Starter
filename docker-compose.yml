@@ -1,17 +1,6 @@
 version: '3.9'
 
 services:
-  app:
-    image: app
-    build:
-      context: .
-      dockerfile: Dockerfile
-    ports:
-      - 5173:5173
-    volumes:
-      - ./:/vue-starter
-    tty: true
-
   ci:
     image: ci
     build:
@@ -20,3 +9,11 @@ services:
     ports:
       - 3000:3000
     tty: true
+
+  app:
+    image: app
+    build:
+      context: .
+      dockerfile: .circleci/Dockerfile
+    ports:
+      - 3000:3000

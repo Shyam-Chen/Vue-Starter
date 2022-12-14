@@ -10,8 +10,8 @@ import Dialog from '~/components/Dialog.vue';
 import Button from '~/components/Button.vue';
 import { useFetch } from '~/composables';
 
-import listOfLinks from './list-of-links';
-import NavLink from './NavLink.vue';
+import listOfLinks from './_includes/list-of-links';
+import NavLink from './_includes/NavLink.vue';
 
 const router = useRouter();
 const { idle } = useIdle(30 * 60 * 1000);

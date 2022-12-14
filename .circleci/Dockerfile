@@ -15,5 +15,5 @@ RUN pnpm build
 
 FROM caddy:2-alpine
 
-COPY --from=builder /Caddyfile /etc/Caddyfile
+COPY --from=builder /.circleci/Caddyfile /etc/Caddyfile
 COPY --from=builder /dist /usr/share/caddy/html
