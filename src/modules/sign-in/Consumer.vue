@@ -9,7 +9,7 @@ import Spinner from '~/components/Spinner.vue';
 import { useState, useActions } from './provider';
 import { useSignInFormSchema } from './schema';
 
-const { t } = useI18n({ useScope: 'local' });
+const { t } = useI18n();
 
 const state = useState();
 const actions = useActions();
@@ -28,8 +28,8 @@ const flux = reactive({
   <div class="w-full max-w-sm">
     <form class="bg-white shadow-md rounded px-8 pt-6 pb-8">
       <div class="mb-8">
-        <div class="font-bold text-xl mb-2">Sign in to our platform</div>
-        <p class="text-gray-700 text-base">Login here using your username and password</p>
+        <div class="font-bold text-xl mb-2">{{ t('title') }}</div>
+        <p class="text-gray-700 text-base">{{ t('subtitle') }}</p>
       </div>
 
       <div class="mb-4">
@@ -51,21 +51,21 @@ const flux = reactive({
           :errorMessage="state.errors['signInForm.password']"
           :disabled="state.signedIn"
         >
-          Password
+          {{ t('password') }}
         </TextField>
       </div>
 
       <div class="flex items-center justify-between">
         <Button color="primary" :disabled="state.signedIn" class="w-32" @click="flux.signIn">
           <Spinner v-if="state.signedIn" class="w-3 h-3 border-2 align-middle" />
-          <div v-else>Sign In</div>
+          <div v-else>{{ t('signIn') }}</div>
         </Button>
 
         <RouterLink
           class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
           to="/forgot-password"
         >
-          Forgot Password?
+          {{ t('forgotPassword') }}
         </RouterLink>
       </div>
     </form>
