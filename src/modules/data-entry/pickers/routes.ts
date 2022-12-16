@@ -15,4 +15,16 @@ export default [
     meta: { layout: 'default' },
     beforeEnter: [auth],
   },
+  {
+    path: '/data-entry/pickers/year-pickers',
+    component: () => import('~/modules/data-entry/pickers/year-pickers/Registry.vue'),
+    meta: { layout: 'default' },
+    beforeEnter: [auth],
+  },
+  {
+    path: '/data-entry/pickers/time-pickers',
+    component: () => import('~/modules/data-entry/pickers/time-pickers/Registry.vue'),
+    meta: { layout: 'default' },
+    beforeEnter: [auth],
+  },
 ] as RouteRecordRaw[];

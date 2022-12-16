@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import type { PropType } from 'vue';
 import { nextTick, ref, computed, reactive, watch, onMounted, onUnmounted } from 'vue';
 import { onClickOutside } from '@vueuse/core';
-import { format, add, sub, getYear, setYear, getMonth, setMonth } from 'date-fns';
+import { add, sub, getYear } from 'date-fns';
+import range from 'lodash/range';
 import uniqueId from 'lodash/uniqueId';
 
 import getScrollableParent from '~/utilities/getScrollableParent';
@@ -11,17 +11,12 @@ import TextField from './TextField.vue';
 
 const props = defineProps({
   value: {
-    type: String,
+    type: [Number, String],
     default: '',
   },
-  format: {
-    type: String,
-    default: 'yyyy/MM',
-  },
-  months: {
-    type: Array as PropType<string[]>,
-    // prettier-ignore
-    default: () => ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+  disabled: {
+    type: Boolean,
+    default: false,
   },
   errorMessage: {
     type: String,
@@ -31,7 +26,7 @@ const props = defineProps({
 
 const emit = defineEmits(['update:value']);
 
-const uid = uniqueId('month-picker-');
+const uid = uniqueId('year-picker-');
 
 const target = ref();
 const input = ref();
@@ -53,11 +48,16 @@ const flux = reactive({
   openPicker() {
     flux.showDatePicker = true;
 
+    flux.showYears = true;
+
     if (modelDate.value) {
-      flux.currentMoment = new Date(modelDate.value);
+      flux.currentMoment = new Date(Number(modelDate.value), 0);
     } else {
       flux.currentMoment = new Date();
     }
+
+    const currentYear = getYear(flux.currentMoment);
+    flux.yearRange = range(currentYear - 5, currentYear + 11);
 
     nextTick(() => {
       flux.scrollableParent = getScrollableParent(picker.value);
@@ -77,54 +77,29 @@ const flux = reactive({
     });
   },
 
-  showWeeks: false,
-  showYears: false,
-  showMonths: true,
+  showYears: true,
 
   now: new Date(),
   currentMoment: new Date(),
+  currentPeriodDates: [] as any[],
 
   yearRange: [] as number[],
   year: null as null | number,
 
   decrement() {
-    if (flux.showMonths) {
-      flux.currentMoment = sub(flux.currentMoment, { years: 1 });
-    }
-
-    if (flux.showYears) {
-      // const moment = flux.currentMoment.subtract(16, 'Y');
-      // flux.yearRange = range(moment.year() - 5, moment.year() + 10);
-    }
+    flux.currentMoment = sub(flux.currentMoment, { years: 16 });
+    const currentYear = getYear(flux.currentMoment);
+    flux.yearRange = range(currentYear - 5, currentYear + 11);
   },
   increment() {
-    if (flux.showMonths) {
-      flux.currentMoment = add(flux.currentMoment, { years: 1 });
-    }
-
-    if (flux.showYears) {
-      // const moment = flux.currentMoment.add(16, 'Y');
-      // flux.yearRange = range(moment.year() - 5, moment.year() + 10);
-    }
+    flux.currentMoment = add(flux.currentMoment, { years: 16 });
+    const currentYear = getYear(flux.currentMoment);
+    flux.yearRange = range(currentYear - 5, currentYear + 11);
   },
   selectYear(val: number) {
-    flux.showYears = false;
-    flux.showMonths = true;
-    flux.year = val;
-
-    flux.currentMoment = setYear(flux.currentMoment, val);
-  },
-  selectMonth(month: number) {
-    flux.currentMoment = setMonth(flux.currentMoment, month);
     flux.showDatePicker = false;
-
-    const value = format(flux.currentMoment, props.format);
-    emit('update:value', value);
+    emit('update:value', val);
   },
-});
-
-onClickOutside(target, () => {
-  flux.showDatePicker = false;
 });
 
 const handleScroll = () => {
@@ -134,6 +109,10 @@ const handleScroll = () => {
     picker.value.style.top = `${rect.top}px`;
   }
 };
+
+onClickOutside(target, () => {
+  flux.showDatePicker = false;
+});
 
 watch(
   () => flux.scrollableParent,
@@ -166,6 +145,7 @@ onUnmounted(() => {
       ref="input"
       :value="modelDate"
       :errorMessage="errorMessage"
+      :disabled="disabled"
       append="i-fa-calendar-o"
       readonly
       @focus="flux.openPicker"
@@ -189,10 +169,6 @@ onUnmounted(() => {
 
           <div v-if="flux.showYears">{{ flux.yearRange[0] }} ~ {{ flux.yearRange[15] }}</div>
 
-          <div v-if="flux.showMonths">
-            {{ format(flux.currentMoment, 'yyyy') }}
-          </div>
-
           <div class="cursor-pointer hover:bg-slate-200 p-2 rounded-full" @click="flux.increment">
             <div class="i-fa-chevron-right w-3 h-3"></div>
           </div>
@@ -206,30 +182,14 @@ onUnmounted(() => {
             class="flex justify-center items-center hover:bg-slate-200 rounded text-sm cursor-pointer"
             :class="{
               'text-white bg-blue-400 important:hover:bg-blue-500': year === getYear(flux.now),
+              'text-white bg-blue-600 important:hover:bg-blue-700':
+                modelDate &&
+                year === getYear(new Date(Number(modelDate), 0)) &&
+                getYear(flux.currentMoment) === getYear(new Date(Number(modelDate), 0)),
             }"
             @click="flux.selectYear(year)"
           >
             {{ year }}
-          </div>
-        </div>
-
-        <div v-show="flux.showMonths" class="grid grid-cols-3 gap-1 text-center w-48">
-          <div
-            v-for="(month, index) in months"
-            :key="month"
-            :value="index"
-            class="flex justify-center items-center hover:bg-slate-200 rounded text-sm cursor-pointer"
-            :class="{
-              'text-white bg-blue-400 important:hover:bg-blue-500':
-                index === getMonth(flux.now) && getYear(flux.currentMoment) === getYear(flux.now),
-              'text-white bg-blue-600 important:hover:bg-blue-700':
-                modelDate &&
-                index === getMonth(new Date(modelDate)) &&
-                getYear(flux.currentMoment) === getYear(new Date(modelDate)),
-            }"
-            @click="flux.selectMonth(index)"
-          >
-            {{ month }}
           </div>
         </div>
       </div>

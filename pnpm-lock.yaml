@@ -32,6 +32,7 @@ specifiers:
   vue: ^3.2.41
   vue-formor: ^3.0.0
   vue-i18n: ^9.2.2
+  vue-localer: ^1.0.0
   vue-router: ^4.1.6
   vue-tsc: ^1.0.9
   yup: ^0.32.11
@@ -45,6 +46,7 @@ dependencies:
   vue: 3.2.41
   vue-formor: 3.0.0
   vue-i18n: 9.2.2_vue@3.2.41
+  vue-localer: 1.0.0
   vue-router: 4.1.6_vue@3.2.41
   yup: 0.32.11
 
@@ -2502,6 +2504,10 @@ packages:
     engines: {node: '>= 8'}
     dev: true
 
+  /message-interpolation/1.1.0:
+    resolution: {integrity: sha512-HYcqHHN5dcS4VIodvWmwAbXVNMjbkNYldjGF42jdQAe3O9Hkev1Qp3POmS+DX+g8qOlq0hE/82UOakN8eDdhKw==}
+    dev: false
+
   /micromatch/4.0.5:
     resolution: {integrity: sha512-DMy+ERcEW2q8Z2Po+WNXuw3c5YaUSFjAO5GsJqfEl7UjvtIuFKO6ZrKvcItdy98dwFI2N1tg3zNIdKaQT+aNdA==}
     engines: {node: '>=8.6'}
@@ -3386,6 +3392,12 @@ packages:
       '@intlify/vue-devtools': 9.2.2
       '@vue/devtools-api': 6.4.5
       vue: 3.2.41
+
+  /vue-localer/1.0.0:
+    resolution: {integrity: sha512-zJWclfB5nOTszhPjhDIxeb2JuZU5fc+QbRptcpRhlSkXasHjlpY0uTtpLAB2wgQU+69G1s+0xUGDjOgs+Huuvg==}
+    dependencies:
+      message-interpolation: 1.1.0
+    dev: false
 
   /vue-router/4.1.6_vue@3.2.41:
     resolution: {integrity: sha512-DYWYwsG6xNPmLq/FmZn8Ip+qrhFEzA14EI12MsMgVxvHFDYvlr4NXpVF5hrRH1wVcDP8fGi5F4rxuJSl8/r+EQ==}

@@ -97,7 +97,7 @@ This seed repository provides the following features:
 - [x] [Vue](https://github.com/vuejs/vue) - User Interface Framework
 - [x] [Router](https://github.com/vuejs/vue-router) - Routing
 - [x] [Formor](https://github.com/Vanilla-IceCream/vue-formor) - Form Validation
-- [x] [I18n](https://github.com/intlify/vue-i18n-next) - Internationalization and Localization
+- [x] [Localer](https://github.com/Vanilla-IceCream/vue-localer) - Internationalization and Localization
 - [x] [Hooks](https://github.com/vueuse/vueuse) - Composition Utilities
 - [x] [Lodash](https://github.com/lodash/lodash) - JavaScript Utilities
 - [x] [Yup](https://github.com/jquense/yup) - Schema Builder
