@@ -17,7 +17,7 @@ import Breadcrumbs from '~/components/Breadcrumbs.vue';
   </div>
 
   <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Basic examples</div>
+    <div class="mb-2">Basic</div>
 
     <div class="flex justify-center items-center space-x-4">
       <div class="i-fa-bell w-3 h-3 text-blue-500"></div>

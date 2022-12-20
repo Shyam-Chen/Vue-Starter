@@ -10,6 +10,12 @@ export default [
     beforeEnter: [auth],
   },
   {
+    path: '/layout/grid',
+    component: () => import('~/modules/layout/grid/Registry.vue'),
+    meta: { layout: 'default' },
+    beforeEnter: [auth],
+  },
+  {
     path: '/layout/spaces',
     component: () => import('~/modules/layout/spaces/Registry.vue'),
     meta: { layout: 'default' },

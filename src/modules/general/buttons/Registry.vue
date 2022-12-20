@@ -18,7 +18,7 @@ import Button from '~/components/Button.vue';
   </div>
 
   <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Basic examples</div>
+    <div class="mb-2">Basic</div>
 
     <div class="flex space-x-2 justify-center">
       <Button>Button</Button>

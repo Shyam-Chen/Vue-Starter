@@ -36,7 +36,7 @@ export const useActions = () => {
       if (signInApi.statusCode.value === 200) {
         const { token } = signInApi.data.value;
         localStorage.setItem('token', token);
-        localStorage.setItem('expiresIn', formatISO(add(new Date(), { hours: 16 })));
+        localStorage.setItem('expiresIn', formatISO(add(new Date(), { hours: 12 })));
         await router.push(route.redirectedFrom?.path || '/dashboard');
         state.signedIn = false;
       } else {

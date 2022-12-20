@@ -15,4 +15,16 @@ export default [
     meta: { layout: 'default' },
     beforeEnter: [auth],
   },
+  {
+    path: '/general/paper',
+    component: () => import('~/modules/general/paper/Registry.vue'),
+    meta: { layout: 'default' },
+    beforeEnter: [auth],
+  },
+  {
+    path: '/general/typography',
+    component: () => import('~/modules/general/typography/Registry.vue'),
+    meta: { layout: 'default' },
+    beforeEnter: [auth],
+  },
 ] as RouteRecordRaw[];

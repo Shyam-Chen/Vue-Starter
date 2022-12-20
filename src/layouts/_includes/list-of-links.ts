@@ -17,6 +17,8 @@ export default [
     sub: [
       { name: 'Buttons', to: '/general/buttons' },
       { name: 'Icons', to: '/general/icons' },
+      { name: 'Paper', to: '/general/paper' },
+      { name: 'Typography', to: '/general/typography' },
     ],
   },
   {
@@ -24,6 +26,7 @@ export default [
     name: 'Layout',
     sub: [
       { name: 'Dividers', to: '/layout/dividers' },
+      { name: 'Grid', to: '/layout/grid' },
       { name: 'Spaces', to: '/layout/spaces' },
     ],
   },

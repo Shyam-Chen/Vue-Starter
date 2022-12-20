@@ -27,7 +27,7 @@ const flux = reactive({
 
   <div class="flex flex-col border p-4 mb-4">
     <div class="mb-2">
-      Rows
+      Horizontal
       <code class="text-sm text-gray-700 bg-gray-300 p-1 rounded">divide-x-2</code>
     </div>
 
@@ -40,7 +40,7 @@ const flux = reactive({
 
   <div class="flex flex-col border p-4 mb-4">
     <div class="mb-2">
-      Columns
+      Vertical
       <code class="text-sm text-gray-700 bg-gray-300 p-1 rounded">divide-y-2</code>
     </div>
 
