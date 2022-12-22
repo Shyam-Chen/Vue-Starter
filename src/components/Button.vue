@@ -83,7 +83,7 @@ defineProps({
       type="button"
       class="inline-block px-6 py-2.5 font-medium text-xs leading-tight uppercase rounded shadow-md hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out"
       :class="{
-        'bg-white': !color,
+        'bg-white border hover:bg-slate-100 focus:bg-slate-200 active:bg-slate-300': !color,
         'bg-blue-600 text-white hover:bg-blue-700 focus:bg-blue-700 active:bg-blue-800':
           color === 'primary',
         'bg-purple-600 text-white hover:bg-purple-700 focus:bg-purple-700 active:bg-purple-800':

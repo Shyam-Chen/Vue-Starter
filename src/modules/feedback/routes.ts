@@ -4,6 +4,12 @@ import auth from '~/middleware/auth';
 
 export default [
   {
+    path: '/feedback/alert',
+    component: () => import('~/modules/feedback/alert/Registry.vue'),
+    meta: { layout: 'default' },
+    beforeEnter: [auth],
+  },
+  {
     path: '/feedback/dialogs',
     component: () => import('~/modules/feedback/dialogs/Registry.vue'),
     meta: { layout: 'default' },

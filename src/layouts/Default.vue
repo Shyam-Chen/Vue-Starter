@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { reactive, watch, onMounted } from 'vue';
-import { useRouter } from 'vue-router';
+import { useRouter, useRoute } from 'vue-router';
 import { useIdle } from '@vueuse/core';
 
 import TextField from '~/components/TextField.vue';
@@ -8,12 +8,14 @@ import Dropdown from '~/components/Dropdown.vue';
 import Select from '~/components/Select.vue';
 import Dialog from '~/components/Dialog.vue';
 import Button from '~/components/Button.vue';
+import Drawer from '~/components/Drawer.vue';
 import { useFetch } from '~/composables';
 
 import listOfLinks from './_includes/list-of-links';
 import NavLink from './_includes/NavLink.vue';
 
 const router = useRouter();
+const route = useRoute();
 const { idle } = useIdle(30 * 60 * 1000);
 
 const flux = reactive({
@@ -26,6 +28,8 @@ const flux = reactive({
   },
   idleDialog: false,
   authDialog: false,
+
+  navDrawer: false,
 });
 
 const { data, statusCode, execute } = useFetch('/auth/user', { timeout: 3000 }).json();
@@ -64,6 +68,13 @@ watch(
   },
 );
 
+watch(
+  () => route.path,
+  () => {
+    if (flux.navDrawer) flux.navDrawer = false;
+  },
+);
+
 onMounted(() => {
   execute();
 });
@@ -72,6 +83,11 @@ onMounted(() => {
 <template>
   <div class="h-full">
     <header class="topbar px-6 py-4 flex items-center bg-blue-600 shadow-lg">
+      <div
+        class="i-ic-round-menu w-8 h-8 mr-4 text-white cursor-pointer transition hover:scale-125 xl:hidden"
+        @click="flux.navDrawer = true"
+      ></div>
+
       <div class="i-simple-icons-deno w-12 h-12 mr-4 text-white"></div>
       <div class="text-3xl font-bold text-white mr-4">Deno Land</div>
 
@@ -89,7 +105,7 @@ onMounted(() => {
       </Dropdown>
     </header>
 
-    <aside class="sidebar py-4 bg-white shadow-lg">
+    <aside class="sidebar py-4 bg-white shadow-lg hidden xl:block">
       <template v-for="link in flux.listOfLinks" :key="link.name">
         <NavLink
           :icon="link.icon"
@@ -110,6 +126,11 @@ onMounted(() => {
       <div style="flex: 1 0 auto"></div>
 
       <footer class="footer bg-slate-200 p-4 flex justify-between">
+        <div>
+          <div class="font-bold">Backstage Management System</div>
+          <div>Design for desktop displays from 1024x768 through 1920x1080</div>
+        </div>
+
         <div></div>
 
         <div class="flex items-center">
@@ -146,6 +167,19 @@ onMounted(() => {
         <Button color="primary" @click="flux.authDialog = false">Okay, got it</Button>
       </div>
     </Dialog>
+
+    <Drawer v-model="flux.navDrawer">
+      <template v-for="link in flux.listOfLinks" :key="link.name">
+        <NavLink
+          :icon="link.icon"
+          :name="link.name"
+          :to="link.to"
+          :permissions="link.permissions"
+          :sub="link.sub"
+          firstLevelStatus
+        />
+      </template>
+    </Drawer>
   </div>
 </template>
 
@@ -171,10 +205,18 @@ $sidebar-width: 16rem;
 }
 
 .page {
-  padding: ($topbar-height + 2rem) 2rem 2rem ($sidebar-width + 2rem);
+  padding: ($topbar-height + 2rem) 2rem 2rem;
+
+  @media (min-width: 1280px) {
+    padding: ($topbar-height + 2rem) 2rem 2rem ($sidebar-width + 2rem);
+  }
 }
 
 .footer {
-  padding: 2rem 2rem 2rem ($sidebar-width + 2rem);
+  padding: 2rem;
+
+  @media (min-width: 1280px) {
+    padding: 2rem 2rem 2rem ($sidebar-width + 2rem);
+  }
 }
 </style>

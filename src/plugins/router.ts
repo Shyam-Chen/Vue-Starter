@@ -52,4 +52,11 @@ export const router = createRouter({
       meta: { layout: 'empty' },
     },
   ],
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition;
+    }
+
+    return { top: 0 };
+  },
 });

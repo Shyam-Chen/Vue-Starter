@@ -3,6 +3,8 @@ import type { PropType } from 'vue';
 import { reactive } from 'vue';
 import { useRoute } from 'vue-router';
 
+import ExpandTransition from '~/components/ExpandTransition.vue';
+
 import type { Link } from './list-of-links';
 
 const props = defineProps({
@@ -68,17 +70,11 @@ const flux = reactive({
   >
     <div v-if="icon" :class="icon" class="w-6 h-6 mr-2"></div>
     <div :class="{ 'pl-4': !firstLevelStatus }">{{ name }}</div>
-    <div v-if="sub.length" class="i-ic-baseline-arrow-drop-down w-6 h-6"></div>
+    <div v-if="sub.length && !flux.status" class="i-ic-baseline-arrow-drop-down w-6 h-6"></div>
+    <div v-if="sub.length && flux.status" class="i-ic-baseline-arrow-drop-up w-6 h-6"></div>
   </RouterLink>
 
-  <Transition
-    enter-active-class="duration-300 ease-out"
-    enter-from-class="transform opacity-0"
-    enter-to-class="opacity-100"
-    leave-active-class="duration-200 ease-in"
-    leave-from-class="opacity-100"
-    leave-to-class="transform opacity-0"
-  >
+  <ExpandTransition>
     <div v-show="sub.length && flux.status" class="pl-4">
       <NavLink
         v-for="(item, index) in sub"
@@ -90,5 +86,5 @@ const flux = reactive({
         :role="role"
       />
     </div>
-  </Transition>
+  </ExpandTransition>
 </template>

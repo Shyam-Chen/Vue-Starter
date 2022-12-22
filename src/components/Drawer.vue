@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { watch, onUnmounted } from 'vue';
 import type { PropType } from 'vue';
 
 const props = defineProps({
@@ -17,11 +18,23 @@ const emits = defineEmits(['update:modelValue']);
 const close = () => {
   emits('update:modelValue', !props.modelValue);
 };
+
+watch(
+  () => props.modelValue,
+  (val) => {
+    document.body.style.overflow = val ? 'hidden' : 'auto';
+  },
+);
+
+onUnmounted(() => {
+  close();
+  document.body.style.overflow = 'auto';
+});
 </script>
 
 <template>
   <div
-    class="fixed z-102 p-4 overflow-y-auto bg-white transition-all"
+    class="fixed z-102 py-4 overflow-y-auto bg-white transition-all"
     :class="{
       'w-80 h-screen': placement === 'right' || placement === 'left',
       'top-0 -left-80': placement === 'left' && !modelValue,

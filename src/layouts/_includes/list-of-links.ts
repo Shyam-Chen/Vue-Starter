@@ -35,10 +35,11 @@ export default [
     name: 'Navigation',
     sub: [
       { name: 'Breadcrumbs', to: '/navigation/breadcrumbs' },
-      { name: 'Dropdown', to: '/navigation/dropdown' },
       { name: 'Drawers', to: '/navigation/drawers' },
-      { name: 'Tabs', to: '/navigation/tabs' },
+      { name: 'Dropdown', to: '/navigation/dropdown' },
+      // { name: 'Pagination', to: '/navigation/pagination' },
       { name: 'Steppers', to: '/navigation/steppers' },
+      { name: 'Tabs', to: '/navigation/tabs' },
       { name: 'Tours', to: '/navigation/tours' },
     ],
   },
@@ -88,6 +89,7 @@ export default [
     icon: 'i-mdi-feedback-outline',
     name: 'Feedback',
     sub: [
+      { name: 'Alert', to: '/feedback/alert' },
       { name: 'Dialogs', to: '/feedback/dialogs' },
       { name: 'Progress', to: '/feedback/progress' },
       { name: 'Skeletons', to: '/feedback/skeletons' },
