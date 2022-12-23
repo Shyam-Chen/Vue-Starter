@@ -1,12 +1,9 @@
 <script lang="ts" setup>
 import { computed, reactive } from 'vue';
 import { useSchema } from 'vue-formor';
-import { useI18n } from 'vue-i18n';
 import { string } from 'yup';
 
 import Breadcrumbs from '~/components/Breadcrumbs.vue';
-
-const { t } = useI18n({ useScope: 'global' });
 
 const state = reactive({
   listGroup: [
@@ -37,12 +34,12 @@ const schema = useSchema(
     [
       computed(() => state.listGroup),
       (row: any) => [
-        [computed(() => row.parent), computed(() => string().required(t('required')))],
+        [computed(() => row.parent), computed(() => string().required())],
         [
           computed(() => row.children),
           (subRow: any) => [
-            [computed(() => subRow.firstField), computed(() => string().required(t('required')))],
-            [computed(() => subRow.secondField), computed(() => string().required(t('required')))],
+            [computed(() => subRow.firstField), computed(() => string().required())],
+            [computed(() => subRow.secondField), computed(() => string().required())],
           ],
         ],
       ],

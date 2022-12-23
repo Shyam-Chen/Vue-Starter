@@ -19,14 +19,12 @@
     "lodash": "^4.17.21",
     "vue": "^3.2.41",
     "vue-formor": "^3.0.0",
-    "vue-i18n": "^9.2.2",
-    "vue-localer": "^1.0.0",
+    "vue-localer": "^1.2.1",
     "vue-router": "^4.1.6",
     "yup": "^0.32.11"
   },
   "devDependencies": {
     "@iconify/json": "^2.1.132",
-    "@intlify/unplugin-vue-i18n": "^0.7.1",
     "@testing-library/vue": "^6.6.1",
     "@types/lodash": "^4.14.187",
     "@typescript-eslint/eslint-plugin": "^5.42.0",

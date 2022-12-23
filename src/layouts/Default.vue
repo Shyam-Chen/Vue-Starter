@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { reactive, watch, onMounted } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
+import { useLocaler, useLocale } from 'vue-localer';
 import { useIdle } from '@vueuse/core';
 
 import TextField from '~/components/TextField.vue';
@@ -16,6 +17,8 @@ import NavLink from './_includes/NavLink.vue';
 
 const router = useRouter();
 const route = useRoute();
+const localer = useLocaler();
+const locale = useLocale();
 const { idle } = useIdle(30 * 60 * 1000);
 
 const flux = reactive({
@@ -28,6 +31,9 @@ const flux = reactive({
   },
   idleDialog: false,
   authDialog: false,
+  changeLang(val: string) {
+    localStorage.setItem('language', val);
+  },
 
   navDrawer: false,
 });
@@ -89,7 +95,7 @@ onMounted(() => {
       ></div>
 
       <div class="i-simple-icons-deno w-12 h-12 mr-4 text-white"></div>
-      <div class="text-3xl font-bold text-white mr-4">Deno Land</div>
+      <div class="text-3xl font-bold text-white mr-4">{{ locale.title }}</div>
 
       <div style="flex: 1 0 auto"></div>
 
@@ -137,7 +143,7 @@ onMounted(() => {
           <div class="i-fa-language w-6 h-6 text-gray-700"></div>
 
           <Select
-            v-model:value="$i18n.locale"
+            v-model:value="localer.lang.value"
             :options="[
               { label: 'English', value: 'en-US' },
               { label: '日本語', value: 'ja-JP' },
@@ -145,6 +151,7 @@ onMounted(() => {
               { label: '正體中文', value: 'zh-TW' },
             ]"
             class="w-50 ml-2"
+            @change="flux.changeLang"
           />
         </div>
       </footer>

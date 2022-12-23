@@ -2,7 +2,6 @@ import path from 'path';
 import { defineConfig } from 'vite';
 import envify from 'process-envify';
 import vue from '@vitejs/plugin-vue';
-import vueI18n from '@intlify/unplugin-vue-i18n/vite';
 import unocss from 'unocss/vite';
 import { presetUno, presetIcons, transformerDirectives, transformerVariantGroup } from 'unocss';
 
@@ -17,9 +16,6 @@ export default defineConfig({
           isCustomElement: (tag) => tag.includes('-'),
         },
       },
-    }),
-    vueI18n({
-      include: path.resolve(__dirname, 'src/locales/**'),
     }),
     unocss({
       presets: [presetUno(), presetIcons()],

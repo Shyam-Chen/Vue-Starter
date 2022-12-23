@@ -3,7 +3,7 @@ import { render, fireEvent } from '@testing-library/vue';
 import responses from '../../../../mock/responses/auth';
 
 import { router } from '~/plugins/router';
-import { i18n } from '~/plugins/i18n';
+import localer from '~/plugins/localer';
 
 import Registry from '../Registry.vue';
 
@@ -20,7 +20,7 @@ test('Sign-in', async () => {
     };
   });
 
-  const wrapper = render(Registry, { global: { plugins: [router, i18n] } });
+  const wrapper = render(Registry, { global: { plugins: [router, localer] } });
   const push = vi.spyOn(router, 'push');
   await router.isReady();
 

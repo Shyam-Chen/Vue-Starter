@@ -1,14 +1,11 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
-// import { useI18n } from 'vue-i18n';
 
 import TextField from '~/components/TextField.vue';
 import Button from '~/components/Button.vue';
 
 import { useState, useActions } from './provider';
 import { useSignInFormSchema } from './schema';
-
-// const { t } = useI18n({ useScope: 'local' });
 
 const state = useState();
 const actions = useActions();
@@ -59,8 +56,3 @@ const flux = reactive({
     </form>
   </div>
 </template>
-
-<i18n locale="en-US" src="./_locales/en-US.json5"></i18n>
-<i18n locale="ja-JP" src="./_locales/ja-JP.json5"></i18n>
-<i18n locale="ko-KR" src="./_locales/ko-KR.json5"></i18n>
-<i18n locale="zh-TW" src="./_locales/zh-TW.json5"></i18n>
