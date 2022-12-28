@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import type { PropType } from 'vue';
+import { RouterLink } from 'vue-router';
 
 interface Breadcrumb {
   text: string;

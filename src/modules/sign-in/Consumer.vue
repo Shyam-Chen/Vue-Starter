@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
+import { RouterLink } from 'vue-router';
 
 import TextField from '~/components/TextField.vue';
 import Button from '~/components/Button.vue';

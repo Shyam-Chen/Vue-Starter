@@ -6,7 +6,7 @@ import { useNavigatorLanguage } from '@vueuse/core';
 
 import Layout from '~/layouts/Layout.vue';
 
-const { lang } = useLocaler();
+const { lang, langs } = useLocaler();
 const { language } = useNavigatorLanguage();
 
 watch(
@@ -17,12 +17,14 @@ watch(
 
       if (_language) {
         lang.value = _language;
-      } else if (val.startsWith('ja')) {
-        lang.value = 'ja-JP';
-      } else if (val.startsWith('ko')) {
-        lang.value = 'ko-KR';
-      } else {
-        lang.value = val;
+        return;
+      }
+
+      const found = langs.value.find((item) => item.startsWith(val) || val.startsWith(item));
+
+      if (found) {
+        lang.value = found;
+        return;
       }
     }
   },

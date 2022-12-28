@@ -238,11 +238,11 @@ onUnmounted(() => {
         v-model:value="modelValue"
         :invalid="!!errorMessage"
         @focus="flux.onFocus"
-        @input="flux.onInput"
-        @keyup.down="flux.onDown"
-        @keyup.up="flux.onUp"
-        @keyup.enter="flux.onEnter"
-        @keyup.esc="flux.onEsc"
+        @input.stop="flux.onInput"
+        @keyup.down.stop="flux.onDown"
+        @keyup.up.stop="flux.onUp"
+        @keyup.enter.stop="flux.onEnter"
+        @keyup.esc.stop="flux.onEsc"
       />
 
       <Transition name="menu">

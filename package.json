@@ -19,7 +19,7 @@
     "lodash": "^4.17.21",
     "vue": "^3.2.41",
     "vue-formor": "^3.0.0",
-    "vue-localer": "^1.2.1",
+    "vue-localer": "^1.3.0",
     "vue-router": "^4.1.6",
     "yup": "^0.32.11"
   },
