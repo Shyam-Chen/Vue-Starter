@@ -16,6 +16,7 @@ export default defineConfig({
           isCustomElement: (tag) => tag.includes('-'),
         },
       },
+      reactivityTransform: true,
     }),
     unocss({
       presets: [presetUno(), presetIcons()],

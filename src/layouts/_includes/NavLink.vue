@@ -69,7 +69,7 @@ const flux = reactive({
     @click.stop="flux.toggle"
   >
     <div v-if="icon" :class="icon" class="w-6 h-6 mr-2"></div>
-    <div :class="{ 'pl-4': !firstLevelStatus }">{{ name }}</div>
+    <div class="flex-1" :class="{ 'pl-4': !firstLevelStatus }">{{ name }}</div>
     <div v-if="sub.length && !flux.status" class="i-ic-baseline-arrow-drop-down w-6 h-6"></div>
     <div v-if="sub.length && flux.status" class="i-ic-baseline-arrow-drop-up w-6 h-6"></div>
   </RouterLink>

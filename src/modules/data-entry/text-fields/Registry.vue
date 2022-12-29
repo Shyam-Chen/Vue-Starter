@@ -3,9 +3,11 @@ import { reactive } from 'vue';
 
 import Breadcrumbs from '~/components/Breadcrumbs.vue';
 import TextField from '~/components/TextField.vue';
+import ChipField from '~/components/ChipField.vue';
 
 const flux = reactive({
   textField1: '',
+  chipField: [],
 });
 </script>
 
@@ -49,6 +51,17 @@ const flux = reactive({
     <div class="flex justify-center">
       <TextField v-model:value="flux.textField1" placeholder="Type here..."
         >Example label</TextField
+      >
+    </div>
+  </div>
+
+  <div class="flex flex-col border p-4 mb-4">
+    <div class="mb-2">Chips</div>
+
+    <div class="flex justify-center">
+      <ChipField v-model:value="flux.chipField" placeholder="Type here...">Example label</ChipField>
+      <ChipField v-model:value="flux.chipField" placeholder="Type here..." disabled
+        >Example label</ChipField
       >
     </div>
   </div>

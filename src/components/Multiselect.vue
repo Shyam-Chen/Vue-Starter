@@ -6,6 +6,7 @@ import { onClickOutside } from '@vueuse/core';
 import getScrollableParent from '~/utilities/getScrollableParent';
 
 import Checkbox from './Checkbox.vue';
+import Chip from './Chip.vue';
 import TextField from './TextField.vue';
 
 const props = defineProps({
@@ -92,9 +93,21 @@ const flux = reactive({
 
     return `${item.value} - ${item.label}`;
   },
-  clear() {
-    emit('update:value', null);
-    emit('change', null, null);
+  clear(value: any) {
+    if (value) {
+      emit(
+        'update:value',
+        flux.selected.filter((item) => item.value !== value).map((item) => item.value),
+      );
+      emit(
+        'change',
+        value,
+        flux.selected.find((item) => item.value === value),
+      );
+    } else {
+      emit('update:value', null);
+      emit('change', null, null);
+    }
   },
 
   scrollableParent: null as HTMLElement | null,
@@ -233,14 +246,17 @@ onUnmounted(() => {
     <div ref="target" class="select">
       <div
         ref="select"
-        class="select-input flex items-center border border-slate-400 rounded w-full py-2 px-3 text-slate-700 bg-white leading-tight"
-        :class="{
-          'select-input-placeholder important:text-gray-400': !flux.selected?.length,
-          'select-input-focus important:border-blue-600': flux.show,
-          'select-error important:border-red-500 mb-1': isInvalid || errorMessage,
-          'select-input-error-focus': (isInvalid || errorMessage) && flux.show,
-          'select-disabled opacity-50 cursor-not-allowed': disabled,
-        }"
+        class="select-input flex items-center border border-slate-400 rounded w-full px-3 text-slate-700 bg-white leading-tight"
+        :class="[
+          {
+            'select-input-placeholder important:text-gray-400': !flux.selected?.length,
+            'select-input-focus important:border-blue-600': flux.show,
+            'select-error important:border-red-500 mb-1': isInvalid || errorMessage,
+            'select-input-error-focus': (isInvalid || errorMessage) && flux.show,
+            'select-disabled opacity-50 cursor-not-allowed': disabled,
+          },
+          flux.selected?.length ? 'py-1.5' : 'py-2',
+        ]"
         @click="open($refs.select, $refs.filter, $refs.menu)"
       >
         <template v-if="!flux.selected?.length">
@@ -248,15 +264,15 @@ onUnmounted(() => {
         </template>
 
         <div v-if="flux.selected?.length" class="flex flex-wrap gap-1">
-          <div
+          <Chip
             v-for="item in flux.selected"
             :key="item.value"
-            class="text-xs rounded inline-block whitespace-nowrap text-center bg-blue-600 text-white"
-            style="padding: 1.5px 0.5rem"
-            :class="{ disabled: disabled }"
+            :closable="clearable"
+            :disabled="disabled"
+            @close="flux.clear(item.value)"
           >
             {{ flux.display(item) }}
-          </div>
+          </Chip>
         </div>
 
         <div
@@ -333,18 +349,8 @@ onUnmounted(() => {
   position: relative;
 
   &-input {
-    // cursor: pointer;
-    // width: auto;
     min-height: 38px;
-    // padding: 0.25rem 0.75rem;
-    // border-radius: 2px;
-    // background: #e4ebf0;
-    // box-shadow: inset 3px 3px 6px #c2c8cc, inset -3px -3px 6px #ffffff;
-    // border: 0.0625rem solid #d1d9e6;
     position: relative;
-    // display: flex;
-    // align-items: center;
-    // line-height: 14px;
 
     &:hover .select-input-icon-clear {
       visibility: visible;
@@ -379,17 +385,11 @@ onUnmounted(() => {
 
   &-section {
     position: fixed;
-    // background: #e4ebf0;
     width: 100%;
     z-index: 10;
-    // font-size: 14px;
-    // border: 0.0625rem solid #d1d9e6;
-    // border-radius: 0.55rem;
-    // box-shadow: 6px 6px 12px #b8b9be, -6px -6px 12px #fff;
     transform: translateY(0) translateY(8px) translateY(0);
 
     &-up {
-      // box-shadow: 0 -2px 8px #ccc;
       transform: translateY(-$border) translateY(-$height) translateY(-100%);
     }
   }
@@ -418,7 +418,6 @@ onUnmounted(() => {
   }
 
   &-menu {
-    // background: #e4ebf0;
     width: 100%;
     max-height: 10rem;
     overflow: auto;
@@ -438,20 +437,11 @@ onUnmounted(() => {
       min-height: 32px;
       padding: 5px 12px;
 
-      &:hover {
-        // background-color: #e4ebf0;
-      }
-
       &-active {
-        // color: #fff;
         background-color: var(--primary);
-        // background-color: transparent;
-        // box-shadow: inset 2px 2px 5px #b8b9be, inset -3px -3px 7px #fff;
 
         &:hover {
-          // color: #fff;
           background-color: var(--primary);
-          // box-shadow: inset 2px 2px 5px #b8b9be, inset -3px -3px 7px #fff;
         }
       }
     }

@@ -11,7 +11,7 @@
       "~/*": ["src/*"]
     },
     "resolveJsonModule": true,
-    "types": ["vite/client", "vitest"],
+    "types": ["vue/macros-global", "vite/client", "vitest"],
 
     "noEmit": true,
 
