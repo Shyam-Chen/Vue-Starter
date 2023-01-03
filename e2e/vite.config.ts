@@ -1,9 +1,7 @@
 import type { PlaywrightTestConfig } from '@playwright/test';
 
-const config: PlaywrightTestConfig = {
+export default {
   use: {
     baseURL: 'http://localhost:8080',
   },
-};
-
-export default config;
+} as PlaywrightTestConfig;

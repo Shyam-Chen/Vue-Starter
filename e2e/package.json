@@ -2,7 +2,7 @@
   "name": "e2e",
   "private": true,
   "scripts": {
-    "e2e": "playwright test"
+    "e2e": "playwright test -c vite.config.ts"
   },
   "dependencies": {
     "@playwright/test": "^1.27.1"

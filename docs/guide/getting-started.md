@@ -1,69 +1,48 @@
-# Getting Started
+# Introduction
 
-## How to define route
+## Requirements
 
-```coffee
-modules/marketing/Registry.vue     -> /marketing
+- `git --version`
+- `node --version`
+- `pnpm --version`
+- Visual Studio Code
+  - ESLint
+  - Prettier
 
-modules/auth/login/Registry.vue    -> /auth/login
-modules/auth/signup/Registry.vue   -> /auth/signup
+## Recommended
 
-modules/products/Registry.vue      -> /products
-modules/products/[id]/Registry.vue -> /products/:id
+- `rimraf`
+- `caddy version`
+- Visual Studio Code
+  - EditorConfig
+
+## Usage
+
+```sh
+pnpm install
 ```
 
-Feature Modules
-
-```ts
-// src/plugins/router.ts
-routes: [
-  {
-    path: '/marketing',
-    component: () => import('~/modules/marketing/Registry.vue'),
-  },
-
-  {
-    path: '/auth/login',
-    component: () => import('~/modules/auth/login/Registry.vue'),
-  },
-  {
-    path: '/auth/signup',
-    component: () => import('~/modules/auth/signup/Registry.vue'),
-  },
-
-  {
-    path: '/products',
-    component: () => import('~/modules/products/Registry.vue'),
-  },
-  {
-    path: '/products/:id',
-    component: () => import('~/modules/products/[id]/Registry.vue'),
-  },
-],
-```
-
-Feature Module Group
-
-```ts
-// src/plugins/router.ts
-routes: [
-  {
-    path: '/marketing',
-    component: () => import('~/modules/marketing/Registry.vue'),
-  },
-
-  ...authRoutes,
-  ...productsRoutes,
-],
-```
-
-Nested Feature Module Group
-
-```ts
-
+```sh
+pnpm dev
 ```
 
 ## Foo
+
+:::code-group
+
+```sh [macOS]
+brew install fnm
+```
+
+```sh [Windows]
+scoop install fnm
+```
+
+```sh [Linux]
+curl -fsSL https://fnm.vercel.app/install | bash
+```
+
+:::
 
 ```js
 export default {
