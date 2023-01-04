@@ -26,10 +26,10 @@ const flux = reactive({
 
 <template>
   <div class="w-full max-w-sm">
-    <form class="bg-white shadow-md rounded px-8 pt-6 pb-8">
+    <form class="bg-white dark:bg-slate-800 shadow-md rounded px-8 pt-6 pb-8">
       <div class="mb-8">
-        <div class="font-bold text-xl mb-2">{{ locale.title }}</div>
-        <p class="text-gray-700 text-base">{{ locale.subtitle }}</p>
+        <div class="text-slate-900 dark:text-white font-bold text-xl mb-2">{{ locale.title }}</div>
+        <div>{{ locale.subtitle }}</div>
       </div>
 
       <div class="mb-4">

@@ -2,12 +2,13 @@
 import { watch } from 'vue';
 import { RouterView } from 'vue-router';
 import { useLocaler } from 'vue-localer';
-import { useNavigatorLanguage } from '@vueuse/core';
+import { useNavigatorLanguage, useDark } from '@vueuse/core';
 
 import Layout from '~/layouts/Layout.vue';
 
 const { lang, langs } = useLocaler();
 const { language } = useNavigatorLanguage();
+useDark();
 
 watch(
   language,

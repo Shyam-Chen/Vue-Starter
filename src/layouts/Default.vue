@@ -2,7 +2,7 @@
 import { reactive, watch, onMounted } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import { useLocaler, useLocale } from 'vue-localer';
-import { useIdle } from '@vueuse/core';
+import { useIdle, useDark, useToggle } from '@vueuse/core';
 
 import TextField from '~/components/TextField.vue';
 import Dropdown from '~/components/Dropdown.vue';
@@ -20,6 +20,8 @@ const route = useRoute();
 const localer = useLocaler();
 const locale = useLocale();
 const { idle } = useIdle(30 * 60 * 1000);
+const isDark = useDark()
+const toggleDark = useToggle(isDark)
 
 const flux = reactive({
   listOfLinks,
@@ -88,14 +90,14 @@ onMounted(() => {
 
 <template>
   <div class="h-full">
-    <header class="topbar px-6 py-4 flex items-center bg-blue-600 shadow-lg">
+    <header class="topbar px-6 py-4 flex items-center backdrop-blur shadow-lg">
       <div
-        class="i-ic-round-menu w-8 h-8 mr-4 text-white cursor-pointer transition hover:scale-125 xl:hidden"
+        class="i-ic-round-menu w-8 h-8 mr-4 dark:text-white cursor-pointer transition hover:scale-125 xl:hidden"
         @click="flux.navDrawer = true"
       ></div>
 
-      <div class="i-simple-icons-deno w-12 h-12 mr-4 text-white"></div>
-      <div class="text-3xl font-bold text-white mr-4">{{ locale.title }}</div>
+      <div class="i-simple-icons-deno w-12 h-12 mr-4 dark:text-white"></div>
+      <div class="text-3xl font-bold dark:text-white mr-4">{{ locale.title }}</div>
 
       <div style="flex: 1 0 auto"></div>
 
@@ -103,15 +105,17 @@ onMounted(() => {
 
       <Dropdown
         :options="['Change Password', 'Sign out']"
-        class="ml-6 text-white"
+        class="ml-6 dark:text-white"
         @select="flux.selectDropdown"
       >
-        <div class="text-white">{{ data?.fullName }}</div>
+        <div class="dark:text-white">{{ data?.fullName }}</div>
         <div class="i-mdi-chevron-down w-5 h-5 text-inherit"></div>
       </Dropdown>
     </header>
 
-    <aside class="sidebar py-4 bg-white shadow-lg hidden xl:block">
+    <aside
+      class="sidebar py-4 bg-white dark:bg-slate-900 border-r dark:border-slate-700 shadow-lg hidden xl:block"
+    >
       <template v-for="link in flux.listOfLinks" :key="link.name">
         <NavLink
           :icon="link.icon"
@@ -131,7 +135,9 @@ onMounted(() => {
 
       <div style="flex: 1 0 auto"></div>
 
-      <footer class="footer bg-slate-200 p-4 flex justify-between">
+      <footer
+        class="footer bg-slate-50 dark:bg-slate-900 border-t dark:border-slate-700 p-4 flex justify-between"
+      >
         <div>
           <div class="font-bold">Backstage Management System</div>
           <div>Design for desktop displays from 1024x768 through 1920x1080</div>
@@ -139,8 +145,15 @@ onMounted(() => {
 
         <div></div>
 
+        <div class="flex">
+          <Button @click="toggleDark()">
+            <div class="inline-block align-middle i-carbon-sun dark:i-carbon-moon w-5 h-5"></div>
+            {{ isDark ? 'Dark' : 'Light' }}
+          </Button>
+        </div>
+
         <div class="flex items-center">
-          <div class="i-fa-language w-6 h-6 text-gray-700"></div>
+          <div class="i-fa-language w-6 h-6"></div>
 
           <Select
             v-model:value="localer.lang.value"
