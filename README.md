@@ -105,6 +105,7 @@ This seed repository provides the following features:
 - [x] [UnoCSS](https://github.com/unocss/unocss) - CSS Utilities
 - [x] [Iconify](https://github.com/iconify/iconify) - Icon Utilities
 - [x] [Highcharts](https://github.com/highcharts/highcharts) - Data Visualization
+- [x] [Qrcode Image](https://github.com/Vanilla-IceCream/vue-qrcode-image) - QR Code Generation
 - ---------- **Tools** ----------
 - [x] [Vite](https://github.com/vitejs/vite) - Bundler
 - [x] [TypeScript](https://github.com/microsoft/TypeScript) - JavaScript with Syntax for Types
@@ -220,4 +221,10 @@ The structure follows the LIFT Guidelines.
 
 > A micro-frontend architecture lays out the approach for the structural elements of a micro-frontend framework. It also defines the relationships among them, governing how UI fragments are assembled and communicate in order to achieve the optimal developer and user experience.
 
-See [Micro-Fullstack's Micro Frontends](https://github.com/Shyam-Chen/Micro-Fullstack/tree/main/mfe) for instructions on how to create microservices from source code.
+See [Micro-Fullstack's Micro Frontends](https://github.com/Shyam-Chen/Micro-Fullstack/tree/main/micro-vite) for instructions on how to create microservices from source code.
+
+```coffee
+example.com
+├── feature1.example.com
+└── feature2.example.com
+```

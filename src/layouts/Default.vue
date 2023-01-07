@@ -20,8 +20,8 @@ const route = useRoute();
 const localer = useLocaler();
 const locale = useLocale();
 const { idle } = useIdle(30 * 60 * 1000);
-const isDark = useDark()
-const toggleDark = useToggle(isDark)
+const isDark = useDark();
+const toggleDark = useToggle(isDark);
 
 const flux = reactive({
   listOfLinks,

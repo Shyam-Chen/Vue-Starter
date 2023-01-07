@@ -4,6 +4,12 @@ import auth from '~/middleware/auth';
 
 export default [
   {
+    path: '/layout/aspect-ratio',
+    component: () => import('~/modules/layout/aspect-ratio/Registry.vue'),
+    meta: { layout: 'default' },
+    beforeEnter: [auth],
+  },
+  {
     path: '/layout/dividers',
     component: () => import('~/modules/layout/dividers/Registry.vue'),
     meta: { layout: 'default' },

@@ -31,6 +31,7 @@ specifiers:
   vue: ^3.2.41
   vue-formor: ^3.0.0
   vue-localer: ^1.3.0
+  vue-qrcode-image: ^1.0.0
   vue-router: ^4.1.6
   vue-tsc: ^1.0.9
   yup: ^0.32.11
@@ -44,6 +45,7 @@ dependencies:
   vue: 3.2.41
   vue-formor: 3.0.0
   vue-localer: 1.3.0
+  vue-qrcode-image: 1.0.0
   vue-router: 4.1.6_vue@3.2.41
   yup: 0.32.11
 
@@ -275,6 +277,12 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.13.0
     dev: true
+
+  /@nuintun/qrcode/3.3.0:
+    resolution: {integrity: sha512-DJ8vmYyRdq8oX2l1/sGNmJjAD1KGaVvhtNUtHPJLbXpe5GoZut5UFQLM4FoFK9eyoZA1Y7chJEmEkNfs9Bdjrw==}
+    dependencies:
+      tslib: 2.4.1
+    dev: false
 
   /@polka/url/1.0.0-next.21:
     resolution: {integrity: sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==}
@@ -2970,6 +2978,10 @@ packages:
     resolution: {integrity: sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==}
     dev: true
 
+  /tslib/2.4.1:
+    resolution: {integrity: sha512-tGyy4dAjRIEwI7BzsB0lynWgOpfqjUdq91XXAlIWD2OwKBH7oCl/GZG/HT4BOHrTlPMOASlMQ7veyTqpmRcrNA==}
+    dev: false
+
   /tsutils/3.21.0_typescript@4.8.4:
     resolution: {integrity: sha512-mHKK3iUXL+3UF6xL5k0PEhKRUBKPBCv/+RkEOpjRWxxx27KKRBmmA60A9pgOUvMi8GKhRMPEmjBRPzs2W7O1OA==}
     engines: {node: '>= 6'}
@@ -3192,6 +3204,12 @@ packages:
     resolution: {integrity: sha512-v2KbXyUQYB5HwgT4dHlBAh5Reerm8hLwPDgVbIb8ctLTeafz47vGWNIQrYbZ2sT+/sA8Osh2xW4wHcLIMs5RQw==}
     dependencies:
       message-interpolation: 1.1.0
+    dev: false
+
+  /vue-qrcode-image/1.0.0:
+    resolution: {integrity: sha512-tCio8mIDOt7gKimITG/0XL58bqeR4A4RcC7ZvnnMf/LG/NqrogDwA2U+N4iyCed+2qwE32JDodkCkAE/IlbdNg==}
+    dependencies:
+      '@nuintun/qrcode': 3.3.0
     dev: false
 
   /vue-router/4.1.6_vue@3.2.41:

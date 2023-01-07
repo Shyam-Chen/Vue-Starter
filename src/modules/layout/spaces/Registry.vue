@@ -1,14 +1,5 @@
 <script lang="ts" setup>
-import { reactive } from 'vue';
-
 import Breadcrumbs from '~/components/Breadcrumbs.vue';
-
-const flux = reactive({
-  launch() {
-    flux.dialog = true;
-  },
-  dialog: false,
-});
 </script>
 
 <template>

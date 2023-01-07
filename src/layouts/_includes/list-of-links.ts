@@ -25,6 +25,7 @@ export default [
     icon: 'i-ri-layout-3-line',
     name: 'Layout',
     sub: [
+      { name: 'Aspect Ratio', to: '/layout/aspect-ratio' },
       { name: 'Dividers', to: '/layout/dividers' },
       { name: 'Grid', to: '/layout/grid' },
       { name: 'Spaces', to: '/layout/spaces' },
