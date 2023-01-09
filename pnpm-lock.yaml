@@ -20,6 +20,7 @@ specifiers:
   eslint-plugin-vue: ^9.7.0
   happy-dom: ^7.6.6
   highcharts: ^10.3.1
+  highcharts-vue: ^1.4.0
   lodash: ^4.17.21
   prettier: ^2.7.1
   process-envify: ^2.0.0
@@ -41,6 +42,7 @@ dependencies:
   '@vueuse/core': 9.4.0_vue@3.2.41
   date-fns: 2.29.3
   highcharts: 10.3.1
+  highcharts-vue: 1.4.0_562oxt7plyjxycwmgzlfk5mt5y
   lodash: 4.17.21
   vue: 3.2.41
   vue-formor: 3.0.0
@@ -1992,6 +1994,16 @@ packages:
     resolution: {integrity: sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==}
     hasBin: true
     dev: true
+
+  /highcharts-vue/1.4.0_562oxt7plyjxycwmgzlfk5mt5y:
+    resolution: {integrity: sha512-fTPqJmU/wR/nUEtofbC/iJqcgULGcP3C0Hd4YYCKH2FiiteNs7UidjSM4eYj5Y4ldpOVhwPtNj/m6XwC3ajp6g==}
+    peerDependencies:
+      highcharts: '>=5.0.0'
+      vue: '>=1.0.0'
+    dependencies:
+      highcharts: 10.3.1
+      vue: 3.2.41
+    dev: false
 
   /highcharts/10.3.1:
     resolution: {integrity: sha512-8UgVcLmgpiYwnsII0Ht76O+GRutfbrLslZFH3c53fXgl3aZ6NRB4mW5qsIyfsUExMny/n9JqYO/BFNejOKC6AA==}

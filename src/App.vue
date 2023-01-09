@@ -38,9 +38,3 @@ watch(
     <RouterView />
   </Layout>
 </template>
-
-<style>
-.highcharts-credits {
-  display: none;
-}
-</style>

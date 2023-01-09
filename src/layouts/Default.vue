@@ -2,7 +2,8 @@
 import { reactive, watch, onMounted } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import { useLocaler, useLocale } from 'vue-localer';
-import { useIdle, useDark, useToggle } from '@vueuse/core';
+import { useIdle } from '@vueuse/core';
+// import { useIdle, useDark, useToggle } from '@vueuse/core';
 
 import TextField from '~/components/TextField.vue';
 import Dropdown from '~/components/Dropdown.vue';
@@ -20,8 +21,8 @@ const route = useRoute();
 const localer = useLocaler();
 const locale = useLocale();
 const { idle } = useIdle(30 * 60 * 1000);
-const isDark = useDark();
-const toggleDark = useToggle(isDark);
+// const isDark = useDark();
+// const toggleDark = useToggle(isDark);
 
 const flux = reactive({
   listOfLinks,
@@ -145,12 +146,12 @@ onMounted(() => {
 
         <div></div>
 
-        <div class="flex">
+        <!-- <div class="flex">
           <Button @click="toggleDark()">
             <div class="inline-block align-middle i-carbon-sun dark:i-carbon-moon w-5 h-5"></div>
             {{ isDark ? 'Dark' : 'Light' }}
           </Button>
-        </div>
+        </div> -->
 
         <div class="flex items-center">
           <div class="i-fa-language w-6 h-6"></div>

@@ -1,10 +1,13 @@
 <script lang="ts" setup>
 import { ref, onMounted } from 'vue';
+import { useDark } from '@vueuse/core';
 import highcharts from 'highcharts';
 
 import Breadcrumbs from '~/components/Breadcrumbs.vue';
 
 // import { useState, useActions, useComputeds } from './provider';
+
+const isDark = useDark();
 
 // const state = useState();
 // const actions = useActions();
@@ -16,7 +19,43 @@ const performance = ref();
 // const flux = reactive({});
 
 onMounted(() => {
+  if (isDark.value) {
+    highcharts.setOptions({
+      chart: {
+        backgroundColor: 'rgb(30 41 59)',
+      },
+      xAxis: {
+        labels: {
+          style: {
+            color: '#cbd5e1',
+          },
+        },
+      },
+      yAxis: {
+        labels: {
+          style: {
+            color: '#cbd5e1',
+          },
+        },
+      },
+      legend: {
+        itemStyle: {
+          color: '#94a3b8',
+        },
+        itemHoverStyle: {
+          color: '#e2e8f0',
+        },
+      },
+    });
+  }
+
   highcharts.chart(overview.value, {
+    accessibility: {
+      enabled: false,
+    },
+    credits: {
+      enabled: false,
+    },
     title: {
       text: '',
     },
@@ -48,6 +87,12 @@ onMounted(() => {
   });
 
   highcharts.chart(performance.value, {
+    accessibility: {
+      enabled: false,
+    },
+    credits: {
+      enabled: false,
+    },
     title: {
       text: '',
     },
@@ -96,13 +141,15 @@ onMounted(() => {
 
   <div class="grid grid-cols-8 gap-6 mb-6">
     <div
-      class="col-span-2 relative flex flex-col min-w-0 break-words bg-white rounded xl:mb-0 shadow-lg"
+      class="col-span-2 relative flex flex-col min-w-0 break-words bg-white dark:bg-slate-800 rounded xl:mb-0 shadow-lg"
     >
       <div class="flex-auto p-4">
         <div class="flex flex-wrap">
           <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
             <h5 class="text-blueGray-400 uppercase font-bold text-xs">TRAFFIC</h5>
-            <span class="font-semibold text-xl text-blueGray-700">350,897</span>
+            <span class="font-semibold text-xl text-blueGray-700 dark:text-blueGray-300"
+              >350,897</span
+            >
           </div>
           <div class="relative w-auto pl-4 flex-initial">
             <div
@@ -123,13 +170,15 @@ onMounted(() => {
     </div>
 
     <div
-      class="col-span-2 relative flex flex-col min-w-0 break-words bg-white rounded xl:mb-0 shadow-lg"
+      class="col-span-2 relative flex flex-col min-w-0 break-words bg-white dark:bg-slate-800 rounded xl:mb-0 shadow-lg"
     >
       <div class="flex-auto p-4">
         <div class="flex flex-wrap">
           <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
             <h5 class="text-blueGray-400 uppercase font-bold text-xs">NEW USERS</h5>
-            <span class="font-semibold text-xl text-blueGray-700">2,356</span>
+            <span class="font-semibold text-xl text-blueGray-700 dark:text-blueGray-300"
+              >2,356</span
+            >
           </div>
           <div class="relative w-auto pl-4 flex-initial">
             <div
@@ -150,13 +199,13 @@ onMounted(() => {
     </div>
 
     <div
-      class="col-span-2 relative flex flex-col min-w-0 break-words bg-white rounded xl:mb-0 shadow-lg"
+      class="col-span-2 relative flex flex-col min-w-0 break-words bg-white dark:bg-slate-800 rounded xl:mb-0 shadow-lg"
     >
       <div class="flex-auto p-4">
         <div class="flex flex-wrap">
           <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
             <h5 class="text-blueGray-400 uppercase font-bold text-xs">SALES</h5>
-            <span class="font-semibold text-xl text-blueGray-700">924</span>
+            <span class="font-semibold text-xl text-blueGray-700 dark:text-blueGray-300">924</span>
           </div>
           <div class="relative w-auto pl-4 flex-initial">
             <div
@@ -177,13 +226,15 @@ onMounted(() => {
     </div>
 
     <div
-      class="col-span-2 relative flex flex-col min-w-0 break-words bg-white rounded xl:mb-0 shadow-lg"
+      class="col-span-2 relative flex flex-col min-w-0 break-words bg-white dark:bg-slate-800 rounded xl:mb-0 shadow-lg"
     >
       <div class="flex-auto p-4">
         <div class="flex flex-wrap">
           <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
             <h5 class="text-blueGray-400 uppercase font-bold text-xs">PERFORMANCE</h5>
-            <span class="font-semibold text-xl text-blueGray-700">49,65%</span>
+            <span class="font-semibold text-xl text-blueGray-700 dark:text-blueGray-300"
+              >49,65%</span
+            >
           </div>
           <div class="relative w-auto pl-4 flex-initial">
             <div
@@ -204,13 +255,15 @@ onMounted(() => {
     </div>
 
     <div
-      class="col-span-5 relative flex flex-col min-w-0 break-words bg-white w-full shadow-lg rounded"
+      class="col-span-5 relative flex flex-col min-w-0 break-words bg-white dark:bg-slate-800 w-full shadow-lg rounded"
     >
       <div class="rounded-t mb-0 px-4 py-3 bg-transparent">
         <div class="flex flex-wrap items-center">
           <div class="relative w-full max-w-full flex-grow flex-1">
             <h6 class="uppercase text-blueGray-400 mb-1 text-xs font-semibold">OVERVIEW</h6>
-            <h2 class="text-blueGray-700 text-xl font-semibold">Sales value</h2>
+            <h2 class="text-blueGray-700 dark:text-blueGray-300 text-xl font-semibold">
+              Sales value
+            </h2>
           </div>
         </div>
       </div>
@@ -228,13 +281,15 @@ onMounted(() => {
     </div>
 
     <div
-      class="col-span-3 relative flex flex-col min-w-0 break-words bg-white w-full shadow-lg rounded"
+      class="col-span-3 relative flex flex-col min-w-0 break-words bg-white dark:bg-slate-800 w-full shadow-lg rounded"
     >
       <div class="rounded-t mb-0 px-4 py-3 bg-transparent">
         <div class="flex flex-wrap items-center">
           <div class="relative w-full max-w-full flex-grow flex-1">
             <h6 class="uppercase text-blueGray-400 mb-1 text-xs font-semibold">Performance</h6>
-            <h2 class="text-blueGray-700 text-xl font-semibold">Total orders</h2>
+            <h2 class="text-blueGray-700 dark:text-blueGray-300 text-xl font-semibold">
+              Total orders
+            </h2>
           </div>
         </div>
       </div>
@@ -252,12 +307,14 @@ onMounted(() => {
     </div>
 
     <div
-      class="col-span-5 relative flex flex-col min-w-0 break-words bg-white w-full shadow-lg rounded"
+      class="col-span-5 relative flex flex-col min-w-0 break-words bg-white dark:bg-slate-800 w-full shadow-lg rounded"
     >
       <div class="rounded-t mb-0 px-4 py-3 border-0">
         <div class="flex flex-wrap items-center">
           <div class="relative w-full px-4 max-w-full flex-grow flex-1">
-            <h3 class="font-semibold text-base text-blueGray-700">Page visits</h3>
+            <h3 class="font-semibold text-base text-blueGray-700 dark:text-blueGray-300">
+              Page visits
+            </h3>
           </div>
           <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
             <button
@@ -274,22 +331,22 @@ onMounted(() => {
           <thead>
             <tr>
               <th
-                class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+                class="px-6 bg-blueGray-50 dark:bg-blueGray-700 text-blueGray-500 dark:text-blueGray-200 align-middle border border-solid border-blueGray-100 dark:border-blueGray-600 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
               >
                 Page name
               </th>
               <th
-                class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+                class="px-6 bg-blueGray-50 dark:bg-blueGray-700 text-blueGray-500 dark:text-blueGray-200 align-middle border border-solid border-blueGray-100 dark:border-blueGray-600 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
               >
                 Visitors
               </th>
               <th
-                class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+                class="px-6 bg-blueGray-50 dark:bg-blueGray-700 text-blueGray-500 dark:text-blueGray-200 align-middle border border-solid border-blueGray-100 dark:border-blueGray-600 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
               >
                 Unique users
               </th>
               <th
-                class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+                class="px-6 bg-blueGray-50 dark:bg-blueGray-700 text-blueGray-500 dark:text-blueGray-200 align-middle border border-solid border-blueGray-100 dark:border-blueGray-600 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
               >
                 Bounce rate
               </th>
@@ -417,12 +474,14 @@ onMounted(() => {
     </div>
 
     <div
-      class="col-span-3 relative flex flex-col min-w-0 break-words bg-white w-full shadow-lg rounded"
+      class="col-span-3 relative flex flex-col min-w-0 break-words bg-white dark:bg-slate-800 w-full shadow-lg rounded"
     >
       <div class="rounded-t mb-0 px-4 py-3 border-0">
         <div class="flex flex-wrap items-center">
           <div class="relative w-full px-4 max-w-full flex-grow flex-1">
-            <h3 class="font-semibold text-base text-blueGray-700">Social traffic</h3>
+            <h3 class="font-semibold text-base text-blueGray-700 dark:text-blueGray-300">
+              Social traffic
+            </h3>
           </div>
           <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
             <button
@@ -439,17 +498,17 @@ onMounted(() => {
           <thead class="thead-light">
             <tr>
               <th
-                class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+                class="px-6 bg-blueGray-50 dark:bg-blueGray-700 text-blueGray-500 dark:text-blueGray-200 align-middle border border-solid border-blueGray-100 dark:border-blueGray-600 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
               >
                 Referral
               </th>
               <th
-                class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+                class="px-6 bg-blueGray-50 dark:bg-blueGray-700 text-blueGray-500 dark:text-blueGray-200 align-middle border border-solid border-blueGray-100 dark:border-blueGray-600 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
               >
                 Visitors
               </th>
               <th
-                class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left min-w-35"
+                class="px-6 bg-blueGray-50 dark:bg-blueGray-700 text-blueGray-500 dark:text-blueGray-200 align-middle border border-solid border-blueGray-100 dark:border-blueGray-600 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left min-w-35"
               ></th>
             </tr>
           </thead>
