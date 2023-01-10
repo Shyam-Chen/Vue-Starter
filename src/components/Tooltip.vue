@@ -1,43 +1,22 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
 
-defineProps({
-  options: {
-    type: Array,
-    default: () => [],
-  },
-});
-
-const emit = defineEmits(['select']);
+defineProps<{ title?: string }>();
 
 const flux = reactive({
   status: false,
-  timeout: null as any,
   onMouseenter() {
     flux.status = true;
-    clearTimeout(flux.timeout);
   },
   onMouseleave() {
-    flux.timeout = setTimeout(() => {
-      flux.status = false;
-    }, 250);
-  },
-
-  select(option: any) {
     flux.status = false;
-    flux.timeout = null;
-
-    emit('select', option);
   },
 });
 </script>
 
 <template>
-  <div class="relative inline-block text-left" @mouseleave="flux.onMouseleave">
-    <div
-      class="inline-flex w-full justify-center items-center rounded-md"
-      @mouseenter="flux.onMouseenter"
-    >
+  <div class="relative inline-flex">
+    <div class="inline-flex" @mouseenter="flux.onMouseenter" @mouseleave="flux.onMouseleave">
       <slot></slot>
     </div>
 
@@ -50,21 +29,10 @@ const flux = reactive({
       leave-to-class="transform opacity-0"
     >
       <div
-        v-show="flux.status"
-        class="absolute right-0 z-10 mt-2 min-w-max bg-white origin-top-right rounded-lg shadow-lg"
-        tabindex="-1"
-        @mouseenter="flux.onMouseenter"
+        v-if="flux.status"
+        class="absolute top-4 left-1/2 transform -translate-x-1/2 translate-y-1/2"
       >
-        <div class="py-1">
-          <template v-for="option in options" :key="option">
-            <div
-              class="text-sm py-2 px-4 w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
-              @click.stop="flux.select(option)"
-            >
-              {{ option }}
-            </div>
-          </template>
-        </div>
+        <div class="bg-slate-600 text-slate-100 px-3 py-1 rounded text-sm">{{ title }}</div>
       </div>
     </Transition>
   </div>

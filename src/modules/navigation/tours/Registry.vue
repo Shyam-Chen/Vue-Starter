@@ -119,7 +119,7 @@ const flux = reactive({
   <div
     v-if="flux.showTour"
     ref="tour"
-    class="fixed z-101 pointer-events-none rounded transition-all"
+    class="fixed z-101 pointer-events-none rounded transition-all border-2 border-blue-600"
     style="box-shadow: rgba(33, 33, 33, 0.5) 0 0 0 3333px"
   ></div>
 

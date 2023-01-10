@@ -64,12 +64,12 @@ watch(
 
 <template>
   <div
-    class="flex flex-wrap gap-1 bg-white border border-slate-400 rounded w-full px-3 text-slate-700 leading-tight"
+    class="flex flex-wrap gap-1 bg-white dark:bg-slate-800 border border-slate-400 rounded w-full px-3 leading-tight"
     :class="[
       value?.length ? 'py-1.5' : 'py-2',
       {
         'border-blue-600': true,
-        'opacity-50	cursor-not-allowed': disabled,
+        'opacity-70	cursor-not-allowed': disabled,
       },
     ]"
     @click="flux.onClick"
@@ -87,7 +87,7 @@ watch(
     <input
       ref="input"
       v-model="flux.text"
-      class="outline-none w-fit"
+      class="outline-none w-fit bg-inherit"
       :class="{ 'cursor-not-allowed': disabled }"
       :placeholder="placeholder"
       :disabled="disabled"

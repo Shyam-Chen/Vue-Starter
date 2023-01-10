@@ -3,8 +3,6 @@ import { ref, onMounted } from 'vue';
 import { useDark } from '@vueuse/core';
 import highcharts from 'highcharts';
 
-import Breadcrumbs from '~/components/Breadcrumbs.vue';
-
 // import { useState, useActions, useComputeds } from './provider';
 
 const isDark = useDark();
@@ -127,14 +125,6 @@ onMounted(() => {
 </script>
 
 <template>
-  <Breadcrumbs
-    :items="[
-      { text: 'Platform', disabled: true },
-      { text: 'Dashboard', disabled: true },
-    ]"
-    class="mb-4"
-  />
-
   <div class="mb-4">
     <div class="text-3xl font-bold">Dashboard</div>
   </div>
@@ -505,7 +495,7 @@ onMounted(() => {
               <th
                 class="px-6 bg-blueGray-50 dark:bg-blueGray-700 text-blueGray-500 dark:text-blueGray-200 align-middle border border-solid border-blueGray-100 dark:border-blueGray-600 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
               >
-                Visitors
+                Users
               </th>
               <th
                 class="px-6 bg-blueGray-50 dark:bg-blueGray-700 text-blueGray-500 dark:text-blueGray-200 align-middle border border-solid border-blueGray-100 dark:border-blueGray-600 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left min-w-35"

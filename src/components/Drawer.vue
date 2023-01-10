@@ -34,6 +34,7 @@ onUnmounted(() => {
 
 <template>
   <div
+    v-bind="$attrs"
     class="fixed z-102 py-4 overflow-y-auto bg-white transition-all"
     :class="{
       'w-80 h-screen': placement === 'right' || placement === 'left',

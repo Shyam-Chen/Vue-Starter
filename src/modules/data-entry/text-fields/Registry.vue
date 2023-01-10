@@ -58,8 +58,11 @@ const flux = reactive({
   <div class="flex flex-col border p-4 mb-4">
     <div class="mb-2">Chips</div>
 
-    <div class="flex justify-center">
+    <div class="flex justify-center mb-2">
       <ChipField v-model:value="flux.chipField" placeholder="Type here...">Example label</ChipField>
+    </div>
+
+    <div class="flex justify-center">
       <ChipField v-model:value="flux.chipField" placeholder="Type here..." disabled
         >Example label</ChipField
       >

@@ -35,10 +35,15 @@ const radioGroupValue = computed({
         :name="uid"
         :value="typeof item === 'object' ? item.value : item"
         class="accent-blue-600 border-gray-300 rounded h-4 w-4 cursor-pointer"
+        :class="[$attrs.hasOwnProperty('disabled') ? 'cursor-not-allowed' : 'cursor-pointer']"
         @change="emit('change', radioGroupValue)"
       />
 
-      <label :for="`${uid}-${idx}`" class="ml-2 cursor-pointer">
+      <label
+        :for="`${uid}-${idx}`"
+        class="ml-2 cursor-pointer"
+        :class="[$attrs.hasOwnProperty('disabled') ? 'cursor-not-allowed' : 'cursor-pointer']"
+      >
         {{ typeof item === 'object' ? item.label : item }}
       </label>
     </div>

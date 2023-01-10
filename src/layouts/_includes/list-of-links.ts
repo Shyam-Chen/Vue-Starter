@@ -7,10 +7,12 @@ export interface Link {
   permissions?: Array<'A' | 'B' | 'C' | 'D' | 'E'>;
   aiDisable?: boolean;
   sub?: Link[];
+  level?: number;
 }
 
-export default [
+const links = [
   { icon: 'i-ic-round-dashboard', name: 'Dashboard', to: '/dashboard' },
+  { name: 'Platform' },
   {
     icon: 'i-mdi-bookmark-outline',
     name: 'General',
@@ -84,6 +86,7 @@ export default [
       { name: 'Tabular forms', to: '/data-display/tabular-forms' },
       { name: 'Tabular form groups', to: '/data-display/tabular-form-groups' },
       { name: 'Calendar', to: '/data-display/calendar' },
+      { name: 'Tooltip', to: '/data-display/tooltip' },
     ],
   },
   {
@@ -122,4 +125,18 @@ export default [
       { name: 'EventSource', to: '/network/eventsource' },
     ],
   },
+  { name: 'Management' },
+  { icon: 'i-mdi-user-group', name: 'User List', to: '/user-list' },
 ] as Link[];
+
+const createLevel = (arr: Link[], level = 1): Link[] => {
+  return [...arr].map((item) => {
+    if (item.sub) {
+      return { ...item, level, sub: createLevel(item.sub, level + 1) };
+    }
+
+    return { ...item, level };
+  });
+};
+
+export default createLevel(links);

@@ -26,11 +26,9 @@ const { idle } = useIdle(30 * 60 * 1000);
 
 const flux = reactive({
   listOfLinks,
-  selectDropdown(option: string) {
-    if (option === 'Sign out') {
-      localStorage.removeItem('token');
-      router.push('/sign-in');
-    }
+  signOut() {
+    localStorage.removeItem('token');
+    router.push('/sign-in');
   },
   idleDialog: false,
   authDialog: false,
@@ -104,18 +102,50 @@ onMounted(() => {
 
       <TextField placeholder="Search here..." prepend="i-fa-search" class="important:w-100" />
 
-      <Dropdown
-        :options="['Change Password', 'Sign out']"
-        class="ml-6 dark:text-white"
-        @select="flux.selectDropdown"
-      >
-        <div class="dark:text-white">{{ data?.fullName }}</div>
-        <div class="i-mdi-chevron-down w-5 h-5 text-inherit"></div>
+      <Dropdown class="ml-6 dark:text-white">
+        <div
+          class="text-white bg-blue-600 rounded-full w-38px h-38px flex justify-center items-center cursor-pointer transition hover:scale-125"
+        >
+          SC
+        </div>
+
+        <template #options>
+          <div class="py-2 px-4 text-sm">
+            <div class="text-slate-800 font-bold">{{ data?.fullName }}</div>
+            <div class="text-slate-500">shyam.chen@backstage.com</div>
+          </div>
+
+          <div class="border"></div>
+
+          <div class="text-slate-500 px-1 py-2 text-sm">
+            <div
+              class="px-3 py-1 cursor-pointer hover:text-blue-500 dark:hover:text-blue-100 hover:bg-blue-100 dark:hover:bg-blue-600 hover:rounded-md"
+            >
+              Profile
+            </div>
+            <div
+              class="px-3 py-1 cursor-pointer hover:text-blue-500 dark:hover:text-blue-100 hover:bg-blue-100 dark:hover:bg-blue-600 hover:rounded-md"
+            >
+              Settings
+            </div>
+          </div>
+
+          <div class="border"></div>
+
+          <div class="text-slate-500 px-1 py-2 text-sm">
+            <div
+              class="px-3 py-1 cursor-pointer hover:text-blue-500 dark:hover:text-blue-100 hover:bg-blue-100 dark:hover:bg-blue-600 hover:rounded-md"
+              @click="flux.signOut"
+            >
+              Sign out
+            </div>
+          </div>
+        </template>
       </Dropdown>
     </header>
 
     <aside
-      class="sidebar py-4 bg-white dark:bg-slate-900 border-r dark:border-slate-700 shadow-lg hidden xl:block"
+      class="sidebar px-2 pt-4 pb-20 bg-white dark:bg-slate-900 border-r dark:border-slate-700 shadow-lg hidden xl:block"
     >
       <template v-for="link in flux.listOfLinks" :key="link.name">
         <NavLink
@@ -124,7 +154,7 @@ onMounted(() => {
           :to="link.to"
           :permissions="link.permissions"
           :sub="link.sub"
-          firstLevelStatus
+          :level="link.level"
         />
       </template>
     </aside>
@@ -189,7 +219,10 @@ onMounted(() => {
       </div>
     </Dialog>
 
-    <Drawer v-model="flux.navDrawer">
+    <Drawer
+      v-model="flux.navDrawer"
+      class="px-2 pt-4 pb-20 bg-white dark:bg-slate-900 dark:border-slate-700"
+    >
       <template v-for="link in flux.listOfLinks" :key="link.name">
         <NavLink
           :icon="link.icon"
@@ -197,7 +230,6 @@ onMounted(() => {
           :to="link.to"
           :permissions="link.permissions"
           :sub="link.sub"
-          firstLevelStatus
         />
       </template>
     </Drawer>

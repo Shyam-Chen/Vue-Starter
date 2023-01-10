@@ -39,4 +39,10 @@ export default [
     meta: { layout: 'default' },
     beforeEnter: [auth],
   },
+  {
+    path: '/data-display/tooltip',
+    component: () => import('~/modules/data-display/tooltip/Registry.vue'),
+    meta: { layout: 'default' },
+    beforeEnter: [auth],
+  },
 ] as RouteRecordRaw[];

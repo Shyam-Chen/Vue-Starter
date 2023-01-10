@@ -213,7 +213,7 @@ onUnmounted(() => {
     <div ref="target" class="select">
       <div
         ref="select"
-        class="select-input cursor-pointer border border-slate-400 rounded w-full py-2 px-3 text-slate-700 bg-white leading-tight"
+        class="select-input cursor-pointer border border-slate-400 rounded w-full py-2 px-3 bg-white dark:bg-slate-800 leading-tight"
         :class="{
           'select-placeholder important:text-gray-400': !flux.selected,
           'select-focus important:border-blue-600': flux.show,
@@ -247,7 +247,7 @@ onUnmounted(() => {
         <div
           v-show="flux.show"
           ref="menu"
-          class="select-section shadow-lg rounded bg-white"
+          class="select-section shadow-lg rounded bg-white dark:bg-slate-800"
           :class="{
             'select-section-up': flux.direction === 'up',
           }"
@@ -261,7 +261,7 @@ onUnmounted(() => {
               v-for="(item, index) in reoptions"
               :ref="(el) => (selectMenuItem[index] = el)"
               :key="item.value"
-              class="select-menu-item hover:bg-gray-300"
+              class="select-menu-item hover:bg-gray-300 dark:hover:bg-slate-700"
               :class="{
                 'bg-blue-600 text-white important:hover:bg-blue-800': value === item.value,
               }"
@@ -385,7 +385,6 @@ onUnmounted(() => {
     width: 100%;
     max-height: 10rem;
     overflow: auto;
-    color: rgba(0, 0, 0, 0.85);
     margin: 0.55rem 0;
     text-align: left;
     cursor: pointer;

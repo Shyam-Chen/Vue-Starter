@@ -83,14 +83,16 @@ const flux = reactive({
         @mouseenter="flux.onMouseenter"
       >
         <div class="py-1">
-          <template v-for="option in options" :key="option">
-            <div
-              class="text-sm py-2 px-4 w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
-              @click.stop="flux.select(option)"
-            >
-              {{ option }}
-            </div>
-          </template>
+          <slot name="options">
+            <template v-for="option in options" :key="option">
+              <div
+                class="text-sm py-2 px-4 w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
+                @click.stop="flux.select(option)"
+              >
+                {{ option }}
+              </div>
+            </template>
+          </slot>
         </div>
       </div>
     </Transition>
