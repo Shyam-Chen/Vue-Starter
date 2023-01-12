@@ -80,6 +80,7 @@ const links = [
     icon: 'i-codicon-table',
     name: 'Data Display',
     sub: [
+      { name: 'Badge', to: '/data-display/badge' },
       { name: 'Expansion Panels', to: '/data-display/expansion-panels' },
       { name: 'Data tables', to: '/data-display/data-tables' },
       { name: 'Data iterators', to: '/data-display/data-iterators' },

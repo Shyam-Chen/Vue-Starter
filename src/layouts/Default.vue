@@ -35,6 +35,7 @@ const flux = reactive({
   changeLang(val: string) {
     localStorage.setItem('language', val);
   },
+  searchDialog: false,
 
   navDrawer: false,
 });
@@ -100,7 +101,12 @@ onMounted(() => {
 
       <div style="flex: 1 0 auto"></div>
 
-      <TextField placeholder="Search here..." prepend="i-fa-search" class="important:w-100" />
+      <TextField
+        placeholder="Search here..."
+        prepend="i-fa-search"
+        class="important:w-100"
+        @focus="flux.searchDialog = true"
+      />
 
       <Dropdown class="ml-6 dark:text-white">
         <div
@@ -217,6 +223,12 @@ onMounted(() => {
       <div class="flex justify-end">
         <Button color="primary" @click="flux.authDialog = false">Okay, got it</Button>
       </div>
+    </Dialog>
+
+    <Dialog v-model="flux.searchDialog">
+      <TextField placeholder="Search here..." prepend="i-fa-search" />
+
+      <div class="flex justify-center items-center h-66">No recent searches</div>
     </Dialog>
 
     <Drawer

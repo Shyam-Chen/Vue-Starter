@@ -4,6 +4,12 @@ import auth from '~/middleware/auth';
 
 export default [
   {
+    path: '/data-display/badge',
+    component: () => import('~/modules/data-display/badge/Registry.vue'),
+    meta: { layout: 'default' },
+    beforeEnter: [auth],
+  },
+  {
     path: '/data-display/expansion-panels',
     component: () => import('~/modules/data-display/expansion-panels/Registry.vue'),
     meta: { layout: 'default' },

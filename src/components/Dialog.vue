@@ -39,7 +39,7 @@ onUnmounted(() => {
         class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0"
       >
         <div class="fixed inset-0 transition-opacity" aria-hidden="true">
-          <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+          <div class="absolute inset-0 backdrop-blur"></div>
         </div>
 
         <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">
@@ -52,11 +52,11 @@ onUnmounted(() => {
           aria-modal="true"
           aria-labelledby="modal-headline"
         >
-          <div class="absolute top-1.5 right-1.5 cursor-pointer" @click="closeDialog">
-            <div class="i-ion-close w-6 h-6 text-gray-500"></div>
+          <div class="absolute top-1 right-1 cursor-pointer" @click="closeDialog">
+            <div class="i-ion-close w-5 h-5"></div>
           </div>
 
-          <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+          <div class="bg-white dark:bg-slate-900 px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
             <slot></slot>
           </div>
         </div>

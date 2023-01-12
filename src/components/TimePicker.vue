@@ -14,41 +14,59 @@ const flux = reactive({
 
 <template>
   <div ref="target" class="w-full">
-    <TextField />
-  </div>
-  <div class="flex flex-col p-6 space-y-4 bg-white rounded-lg shadow-lg">
-    <div class="flex items-center gap-2">
-      <Select
-        class="text-3xl"
-        :value="'02'"
-        :options="flux.hours.map((h) => ({ label: h, value: h }))"
-        display="value"
-      />
+    <TextField append="i-fa-clock-o" />
 
-      <div class="text-3xl">:</div>
+    <Transition name="fade">
+      <div
+        class="fixed z-10 flex flex-col p-6 space-y-4 bg-white dark:bg-slate-800 rounded-lg shadow-lg"
+      >
+        <div class="flex items-center gap-2">
+          <Select
+            class="text-3xl"
+            :value="'02'"
+            :options="flux.hours.map((h) => ({ label: h, value: h }))"
+            display="value"
+          />
 
-      <Select
-        class="text-3xl"
-        :value="'30'"
-        :options="flux.minutes.map((m) => ({ label: m, value: m }))"
-        display="value"
-      />
+          <div class="text-3xl">:</div>
 
-      <Select
-        class="text-3xl ml-2"
-        :value="'PM'"
-        :options="['AM', 'PM'].map((v) => ({ label: v, value: v }))"
-        display="value"
-      />
-    </div>
+          <Select
+            class="text-3xl"
+            :value="'30'"
+            :options="flux.minutes.map((m) => ({ label: m, value: m }))"
+            display="value"
+          />
 
-    <div class="text-right">
-      <Button color="primary">OK</Button>
-    </div>
+          <Select
+            class="text-3xl ml-2"
+            :value="'PM'"
+            :options="['AM', 'PM'].map((v) => ({ label: v, value: v }))"
+            display="value"
+          />
+        </div>
+
+        <div class="text-right">
+          <Button color="primary">OK</Button>
+        </div>
+      </div>
+    </Transition>
   </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
+.fade-enter-active {
+  transition: opacity 0.3s ease-out;
+}
+
+.fade-leave-active {
+  transition: opacity 0.3s ease-in;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
 :deep(.select-input) {
   padding-right: 0.75rem;
   text-align: center;

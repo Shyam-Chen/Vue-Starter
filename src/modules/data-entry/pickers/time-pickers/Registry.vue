@@ -30,5 +30,9 @@ const flux = reactive({
     <div class="flex justify-center">
       <TimePicker v-model:value="flux.timePicker" />
     </div>
+
+    <div>
+      <pre>{{ flux.timePicker }}</pre>
+    </div>
   </div>
 </template>
