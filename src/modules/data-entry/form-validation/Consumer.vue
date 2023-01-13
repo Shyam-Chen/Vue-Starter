@@ -22,7 +22,7 @@ const flux = reactive({
 
 <template>
   <div class="w-full max-w-2xl">
-    <form class="bg-white shadow-md rounded px-8 py-6">
+    <form class="bg-white dark:bg-slate-800 shadow-md rounded px-8 py-6">
       <div class="text-2xl font-bold mb-4">Form</div>
 
       <div class="grid grid-cols-2 gap-4 mb-6">

@@ -27,7 +27,7 @@ const flux = reactive({
 <template>
   <label
     :for="uid"
-    class="flex justify-between bg-white cursor-pointer shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+    class="flex justify-between bg-white dark:bg-slate-800 cursor-pointer shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
   >
     <div v-if="flux.fileNames.length > 1" class="flex flex-wrap gap-1">
       <div

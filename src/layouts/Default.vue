@@ -110,7 +110,7 @@ onMounted(() => {
 
       <Dropdown class="ml-6 dark:text-white">
         <div
-          class="text-white bg-blue-600 rounded-full w-38px h-38px flex justify-center items-center cursor-pointer transition hover:scale-125"
+          class="text-white bg-blue-600 rounded-full w-10 h-10 flex justify-center items-center cursor-pointer transition hover:scale-125"
         >
           SC
         </div>

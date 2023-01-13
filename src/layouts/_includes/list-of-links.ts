@@ -81,6 +81,7 @@ const links = [
     name: 'Data Display',
     sub: [
       { name: 'Badge', to: '/data-display/badge' },
+      { name: 'Chip', to: '/data-display/chip' },
       { name: 'Expansion Panels', to: '/data-display/expansion-panels' },
       { name: 'Data tables', to: '/data-display/data-tables' },
       { name: 'Data iterators', to: '/data-display/data-iterators' },
@@ -128,6 +129,14 @@ const links = [
   },
   { name: 'Management' },
   { icon: 'i-mdi-user-group', name: 'User List', to: '/user-list' },
+  {
+    icon: 'i-carbon-two-factor-authentication',
+    name: 'Auth',
+    sub: [
+      { name: 'Two-factor', to: '/auth/two-factor' },
+      { name: 'Forgot Password', to: '/auth/forgot-password' },
+    ],
+  },
 ] as Link[];
 
 const createLevel = (arr: Link[], level = 1): Link[] => {

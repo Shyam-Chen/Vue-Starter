@@ -63,7 +63,7 @@ const flux = reactive({
   <div class="flex flex-col border p-4 mb-4">
     <div class="mb-2">Disabled</div>
 
-    <div class="flex justify-center">
+    <div class="flex justify-center gap-4">
       <FileInput disabled />
       <FileInput multiple disabled />
     </div>

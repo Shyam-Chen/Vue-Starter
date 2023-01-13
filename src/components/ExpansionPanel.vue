@@ -19,7 +19,7 @@ const flux = reactive({
 </script>
 
 <template>
-  <div class="w-full rounded shadow bg-white">
+  <div class="w-full rounded shadow bg-white dark:bg-slate-800">
     <div class="p-6 cursor-pointer" @click="flux.toggle">
       <slot name="header"></slot>
     </div>

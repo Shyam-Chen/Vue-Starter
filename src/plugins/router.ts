@@ -1,6 +1,7 @@
 import { createWebHistory, createRouter } from 'vue-router';
 
 import auth from '~/middleware/auth';
+import authRoutes from '~/modules/auth/routes';
 import generalRoutes from '~/modules/general/routes';
 import layoutRoutes from '~/modules/layout/routes';
 import navigationRoutes from '~/modules/navigation/routes';
@@ -36,6 +37,7 @@ export const router = createRouter({
       beforeEnter: [auth],
     },
 
+    ...authRoutes,
     ...generalRoutes,
     ...layoutRoutes,
     ...navigationRoutes,

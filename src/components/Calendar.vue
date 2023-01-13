@@ -206,7 +206,7 @@ flux.currentPeriodDates = createDays();
 </script>
 
 <template>
-  <div class="p-2 shadow-lg rounded bg-white w-full">
+  <div class="p-2 shadow-lg rounded bg-white dark:bg-slate-800 w-full">
     <div class="flex justify-between items-center mb-1">
       <div class="px-2 text-2xl font-bold">
         {{ format(flux.currentMoment, 'MMMM yyyy') }}

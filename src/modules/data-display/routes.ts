@@ -10,6 +10,12 @@ export default [
     beforeEnter: [auth],
   },
   {
+    path: '/data-display/chip',
+    component: () => import('~/modules/data-display/chip/Registry.vue'),
+    meta: { layout: 'default' },
+    beforeEnter: [auth],
+  },
+  {
     path: '/data-display/expansion-panels',
     component: () => import('~/modules/data-display/expansion-panels/Registry.vue'),
     meta: { layout: 'default' },

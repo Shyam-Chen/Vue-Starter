@@ -182,7 +182,7 @@ const scrollShadow = computed(() => {
 </script>
 
 <template>
-  <div class="w-full rounded shadow-lg bg-white">
+  <div class="w-full rounded shadow-lg bg-white dark:bg-slate-800">
     <div class="p-4 flex justify-between">
       <div class="text-2xl font-bold">{{ title }}</div>
       <Button color="primary" icon="i-fa-plus" @click="flux.add">Add New</Button>
@@ -190,9 +190,9 @@ const scrollShadow = computed(() => {
 
     <div ref="el" class="overflow-auto w-full max-h-100" :style="{ 'box-shadow': scrollShadow }">
       <table class="data-table w-full">
-        <thead class="thead">
+        <thead>
           <tr class="sticky top-0 z-10">
-            <td
+            <th
               v-for="column in columnsRef"
               :key="column.key"
               :style="{
@@ -200,7 +200,7 @@ const scrollShadow = computed(() => {
                 'min-width': column.width ? column.width : 'auto',
                 'max-width': column.width ? column.width : 'auto',
               }"
-              class="whitespace-nowrap p-4 font-bold bg-white"
+              class="whitespace-nowrap p-4 font-bold bg-blueGray-50 dark:bg-blueGray-700 text-blueGray-500 dark:text-blueGray-200"
               :class="{ 'sticky left-0 z-5': column.fixed }"
               @click="flux.sort(column)"
             >
@@ -228,7 +228,7 @@ const scrollShadow = computed(() => {
                   </template>
                 </div>
               </div>
-            </td>
+            </th>
 
             <div
               v-if="fixed"
