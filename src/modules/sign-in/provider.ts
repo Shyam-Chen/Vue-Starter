@@ -15,6 +15,7 @@ export const createState = reactive<State>({
   },
 
   signedIn: false,
+  otpEnabled: false,
 
   errors: {},
 });
@@ -34,17 +35,32 @@ export const useActions = () => {
       await signInApi.post(state.signInForm).execute();
 
       if (signInApi.statusCode.value === 200) {
-        const { token } = signInApi.data.value;
-        localStorage.setItem('token', token);
-        localStorage.setItem('expiresIn', formatISO(add(new Date(), { hours: 12 })));
-        await router.push(route.redirectedFrom?.path || '/dashboard');
-        state.signedIn = false;
+        const { token, otpEnabled, otpVerified } = signInApi.data.value;
+
+        // accessToken { expiresIn: '20m' }, refreshToken { expiresIn: '12h' }
+
+        if (token) {
+          localStorage.setItem('token', token);
+          localStorage.setItem('expiresIn', formatISO(add(new Date(), { hours: 12 })));
+          await router.push(route.redirectedFrom?.path || '/dashboard');
+        } else {
+          if (otpEnabled && otpVerified) {
+            state.otpEnabled = true;
+          } else if (otpEnabled && !otpVerified) {
+            await router.push('/auth/two-factor');
+          }
+        }
       } else {
         const { message } = signInApi.data.value;
         const found = message.match(/(#+[a-zA-Z0-9(_)]{1,})/gm)[0];
         state.errors['signInForm.' + found.replace('#', '')] = message.replace(found + ' ', '');
         state.signedIn = false;
       }
+    },
+    async twoFactor(token: string) {
+      localStorage.setItem('token', token);
+      localStorage.setItem('expiresIn', formatISO(add(new Date(), { hours: 12 })));
+      await router.push(route.redirectedFrom?.path || '/dashboard');
     },
   };
 

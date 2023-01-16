@@ -5,6 +5,7 @@ export interface State {
   };
 
   signedIn: boolean;
+  otpEnabled: boolean;
 
   errors: Record<string, string>;
 }
