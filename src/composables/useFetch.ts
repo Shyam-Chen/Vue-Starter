@@ -4,16 +4,22 @@ export default createFetch({
   baseUrl: process.env.API_URL + '/api',
   options: {
     immediate: false,
-    async beforeFetch({ options }: any) {
+    async beforeFetch({ options }) {
       const token = localStorage.getItem('token');
       const language = localStorage.getItem('language');
 
       if (token) {
-        options.headers.Authorization = `Bearer ${token}`;
+        options.headers = {
+          ...options.headers,
+          Authorization: `Bearer ${token}`,
+        };
       }
 
       if (language) {
-        options.headers['Accept-Language'] = language;
+        options.headers = {
+          ...options.headers,
+          'Accept-Language': language,
+        };
       }
 
       return { options };
