@@ -5,13 +5,13 @@ export default createFetch({
   options: {
     immediate: false,
     async beforeFetch({ options }) {
-      const token = localStorage.getItem('token');
+      const accessToken = localStorage.getItem('accessToken');
       const language = localStorage.getItem('language');
 
-      if (token) {
+      if (accessToken) {
         options.headers = {
           ...options.headers,
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${accessToken}`,
         };
       }
 

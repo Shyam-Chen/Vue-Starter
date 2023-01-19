@@ -37,8 +37,8 @@ const flux = reactive({
         .execute();
 
       if (authOtpValidate.statusCode.value === 200) {
-        const { token } = authOtpValidate.data.value;
-        actions.twoFactor(token);
+        const { accessToken, refreshToken } = authOtpValidate.data.value;
+        actions.twoFactor(accessToken, refreshToken);
       }
     }
   },
@@ -79,7 +79,13 @@ const flux = reactive({
         </TextField>
       </div>
 
-      <Button color="primary" :disabled="state.signedIn" class="w-full mb-4" @click="flux.signIn">
+      <Button
+        id="sign-in"
+        color="primary"
+        :disabled="state.signedIn"
+        class="w-full mb-4"
+        @click="flux.signIn"
+      >
         <Spinner v-if="state.signedIn" class="w-3 h-3 border-2 align-middle" />
         <div v-else>{{ locale.signIn }}</div>
       </Button>

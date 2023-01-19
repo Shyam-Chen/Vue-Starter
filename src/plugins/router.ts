@@ -11,6 +11,7 @@ import feedbackRoutes from '~/modules/feedback/routes';
 import stateManagementRoutes from '~/modules/state-management/routes';
 import chartsRoutes from '~/modules/charts/routes';
 import networkRoutes from '~/modules/network/routes';
+import userListRoutes from '~/modules/user-list/routes';
 
 export const history = createWebHistory();
 
@@ -20,7 +21,7 @@ export const router = createRouter({
     {
       path: '/',
       redirect() {
-        if (localStorage.getItem('token')) return { path: '/dashboard' };
+        if (localStorage.getItem('accessToken')) return { path: '/dashboard' };
         return { path: '/sign-in' };
       },
     },
@@ -47,6 +48,7 @@ export const router = createRouter({
     ...stateManagementRoutes,
     ...chartsRoutes,
     ...networkRoutes,
+    ...userListRoutes,
 
     {
       path: '/:pathMatch(.*)*',

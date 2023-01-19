@@ -27,7 +27,8 @@ const { idle } = useIdle(30 * 60 * 1000);
 const flux = reactive({
   listOfLinks,
   signOut() {
-    localStorage.removeItem('token');
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('refreshToken');
     router.push('/sign-in');
   },
   idleDialog: false,
@@ -38,6 +39,12 @@ const flux = reactive({
   searchDialog: false,
 
   navDrawer: false,
+
+  avatar(fullName: string) {
+    const arr = fullName?.split(' ');
+    if (arr?.length > 1) return arr[0][0] + arr[1][0];
+    return arr?.[0][0];
+  },
 });
 
 const { data, statusCode, execute } = useFetch('/auth/user', { timeout: 3000 }).json();
@@ -46,7 +53,8 @@ watch(
   () => statusCode.value,
   (val) => {
     if (val && 400 <= val && val <= 500) {
-      localStorage.removeItem('token');
+      localStorage.removeItem('accessToken');
+      localStorage.removeItem('refreshToken');
       flux.authDialog = true;
     }
   },
@@ -63,7 +71,8 @@ watch(
   () => idle.value,
   (val) => {
     if (val) {
-      localStorage.removeItem('token');
+      localStorage.removeItem('accessToken');
+      localStorage.removeItem('refreshToken');
       flux.idleDialog = true;
     }
   },
@@ -112,13 +121,13 @@ onMounted(() => {
         <div
           class="text-white bg-blue-600 rounded-full w-10 h-10 flex justify-center items-center cursor-pointer transition hover:scale-125"
         >
-          SC
+          {{ flux.avatar(data?.fullName) }}
         </div>
 
         <template #options>
           <div class="py-2 px-4 text-sm">
             <div class="text-slate-800 font-bold">{{ data?.fullName }}</div>
-            <div class="text-slate-500">shyam.chen@backstage.com</div>
+            <div class="text-slate-500">{{ data?.email }}</div>
           </div>
 
           <div class="border"></div>

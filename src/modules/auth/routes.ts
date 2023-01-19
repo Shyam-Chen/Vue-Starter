@@ -11,7 +11,7 @@ export default [
   {
     path: '/auth/two-factor',
     component: () => import('~/modules/auth/two-factor/Registry.vue'),
-    meta: { layout: 'center' },
+    meta: { layout: 'default' },
     beforeEnter: [auth],
   },
 ] as RouteRecordRaw[];

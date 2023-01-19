@@ -1,5 +1,5 @@
 export default () => {
-  if (!localStorage.getItem('token')) {
+  if (!localStorage.getItem('accessToken')) {
     return { path: '/sign-in' };
   }
 

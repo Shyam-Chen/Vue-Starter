@@ -14,7 +14,7 @@ test('Sign-in', async ({ page }) => {
     }),
   );
 
-  await page.click('#root > div > div > form > div.flex.items-center.justify-between > button');
+  await page.click('#sign-in');
 
   await expect(page).toHaveURL(/.*dashboard/);
 });

@@ -35,12 +35,11 @@ export const useActions = () => {
       await signInApi.post(state.signInForm).execute();
 
       if (signInApi.statusCode.value === 200) {
-        const { token, otpEnabled, otpVerified } = signInApi.data.value;
+        const { accessToken, refreshToken, otpEnabled, otpVerified } = signInApi.data.value;
 
-        // accessToken { expiresIn: '20m' }, refreshToken { expiresIn: '12h' }
-
-        if (token) {
-          localStorage.setItem('token', token);
+        if (accessToken) {
+          localStorage.setItem('accessToken', accessToken);
+          localStorage.setItem('refreshToken', refreshToken);
           localStorage.setItem('expiresIn', formatISO(add(new Date(), { hours: 12 })));
           await router.push(route.redirectedFrom?.path || '/dashboard');
         } else {
@@ -57,8 +56,9 @@ export const useActions = () => {
         state.signedIn = false;
       }
     },
-    async twoFactor(token: string) {
-      localStorage.setItem('token', token);
+    async twoFactor(accessToken: string, refreshToken: string) {
+      localStorage.setItem('accessToken', accessToken);
+      localStorage.setItem('refreshToken', refreshToken);
       localStorage.setItem('expiresIn', formatISO(add(new Date(), { hours: 12 })));
       await router.push(route.redirectedFrom?.path || '/dashboard');
     },

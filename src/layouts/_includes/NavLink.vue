@@ -66,7 +66,8 @@ const flux = reactive({
     class="px-4 py-2 flex cursor-pointer hover:text-blue-500 dark:hover:text-blue-100 hover:bg-blue-100 dark:hover:bg-blue-600 hover:rounded-md"
     :class="{
       'text-blue-500 font-bold': flux.parent(sub),
-      'text-blue-500 dark:text-blue-200 bg-blue-200 dark:bg-blue-700 rounded-md font-bold': to === route.path,
+      'text-blue-500 dark:text-blue-200 bg-blue-200 dark:bg-blue-700 rounded-md font-bold':
+        to === route.path,
     }"
     :style="{ 'padding-left': `${level}rem` }"
     @click.stop="flux.toggle"

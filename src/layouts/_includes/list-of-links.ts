@@ -132,10 +132,7 @@ const links = [
   {
     icon: 'i-carbon-two-factor-authentication',
     name: 'Auth',
-    sub: [
-      { name: 'Two-factor', to: '/auth/two-factor' },
-      { name: 'Forgot Password', to: '/auth/forgot-password' },
-    ],
+    sub: [{ name: 'Two-factor', to: '/auth/two-factor' }],
   },
 ] as Link[];
 

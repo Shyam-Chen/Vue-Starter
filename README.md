@@ -123,9 +123,6 @@ This seed repository provides the following features:
 - [x] [Docker](https://www.docker.com/) - Containerized Application Development
 - [x] [CircleCI](https://circleci.com/) - Continuous Integration and Delivery
 - [x] [Render](https://render.com/) - Cloud Application Hosting
-- ---------- **Extracts** ----------
-- [x] [Web Components](https://github.com/Shyam-Chen/Component-Starter) - Lit
-- [x] [WebAssembly](https://github.com/Shyam-Chen/Assembly-Starter) - AssemblyScript
 
 ## Configuration
 
