@@ -46,7 +46,7 @@ const flux = reactive({
         </div>
 
         <div class="text-right">
-          <Button color="primary">OK</Button>
+          <Button>OK</Button>
         </div>
       </div>
     </Transition>

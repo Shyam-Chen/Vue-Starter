@@ -185,7 +185,10 @@ const scrollShadow = computed(() => {
   <div class="w-full rounded shadow-lg bg-white dark:bg-slate-800">
     <div class="p-4 flex justify-between">
       <div class="text-2xl font-bold">{{ title }}</div>
-      <Button color="primary" icon="i-fa-plus" @click="flux.add">Add New</Button>
+      <Button @click="flux.add">
+        Add New
+        <div class="i-fa-plus w-3 h-3"></div>
+      </Button>
     </div>
 
     <div ref="el" class="overflow-auto w-full max-h-100" :style="{ 'box-shadow': scrollShadow }">
@@ -268,7 +271,7 @@ const scrollShadow = computed(() => {
               :class="{ 'data-table-actions-hover': flux.rowHover === index }"
             >
               <Button color="info" @click="flux.edit(item)">Edit</Button>
-              <Button color="danger" class="ml-2" @click="flux.remove(item)">Remove</Button>
+              <Button color="danger" class="ml-2" @click="flux.remove(item)">Del</Button>
             </div>
           </tr>
 

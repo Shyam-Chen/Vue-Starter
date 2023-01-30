@@ -11,7 +11,7 @@ import Select from '~/components/Select.vue';
 import Dialog from '~/components/Dialog.vue';
 import Button from '~/components/Button.vue';
 import Drawer from '~/components/Drawer.vue';
-import { useFetch } from '~/composables';
+import request from '~/utilities/request';
 
 import listOfLinks from './_includes/list-of-links';
 import NavLink from './_includes/NavLink.vue';
@@ -25,6 +25,9 @@ const { idle } = useIdle(30 * 60 * 1000);
 // const toggleDark = useToggle(isDark);
 
 const flux = reactive({
+  user: {} as any,
+  userError: {} as any,
+
   listOfLinks,
   signOut() {
     localStorage.removeItem('accessToken');
@@ -47,23 +50,14 @@ const flux = reactive({
   },
 });
 
-const { data, statusCode, execute } = useFetch('/auth/user', { timeout: 3000 }).json();
-
-watch(
-  () => statusCode.value,
-  (val) => {
-    if (val && 400 <= val && val <= 500) {
-      localStorage.removeItem('accessToken');
-      localStorage.removeItem('refreshToken');
-      flux.authDialog = true;
-    }
-  },
-);
-
 watch(
   () => flux.authDialog,
   (val) => {
-    if (!val) router.push('/sign-in');
+    if (!val) {
+      localStorage.removeItem('accessToken');
+      localStorage.removeItem('refreshToken');
+      router.push('/sign-in');
+    }
   },
 );
 
@@ -92,8 +86,17 @@ watch(
   },
 );
 
-onMounted(() => {
-  execute();
+onMounted(async () => {
+  const response = await request.raw('/auth/user', { method: 'GET' });
+
+  if (response.status == 200) {
+    flux.user = response._data;
+  }
+
+  if (400 <= response.status && response.status <= 500) {
+    flux.authDialog = true;
+    flux.userError = response._data;
+  }
 });
 </script>
 
@@ -121,13 +124,13 @@ onMounted(() => {
         <div
           class="text-white bg-blue-600 rounded-full w-10 h-10 flex justify-center items-center cursor-pointer transition hover:scale-125"
         >
-          {{ flux.avatar(data?.fullName) }}
+          {{ flux.avatar(flux.user.fullName) }}
         </div>
 
         <template #options>
           <div class="py-2 px-4 text-sm">
-            <div class="text-slate-800 font-bold">{{ data?.fullName }}</div>
-            <div class="text-slate-500">{{ data?.email }}</div>
+            <div class="text-slate-800 font-bold">{{ flux.user.fullName }}</div>
+            <div class="text-slate-500">{{ flux.user.email }}</div>
           </div>
 
           <div class="border"></div>
@@ -221,16 +224,16 @@ onMounted(() => {
       <div class="my-2">Please sign-in again.</div>
 
       <div class="flex justify-end">
-        <Button color="primary" @click="flux.idleDialog = false">Okay, got it</Button>
+        <Button @click="flux.idleDialog = false">Okay, got it</Button>
       </div>
     </Dialog>
 
     <Dialog v-model="flux.authDialog">
-      <div class="text-2xl">{{ data?.error }}</div>
-      <div class="my-2">{{ data?.message }}</div>
+      <div class="text-2xl">{{ flux.userError.error }}</div>
+      <div class="my-2">{{ flux.userError.message }}</div>
 
       <div class="flex justify-end">
-        <Button color="primary" @click="flux.authDialog = false">Okay, got it</Button>
+        <Button @click="flux.authDialog = false">Okay, got it</Button>
       </div>
     </Dialog>
 

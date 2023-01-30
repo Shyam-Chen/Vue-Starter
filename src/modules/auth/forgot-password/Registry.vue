@@ -41,7 +41,7 @@ const flux = reactive({
         <TextField required>Email</TextField>
       </div>
 
-      <Button color="primary" class="w-full mb-6" @click="flux.send">Send Instructions</Button>
+      <Button class="w-full mb-6" @click="flux.send">Send Instructions</Button>
 
       <div class="text-center">
         <RouterLink
@@ -100,9 +100,7 @@ const flux = reactive({
         <TextField required>Confirm Password</TextField>
       </div>
 
-      <Button color="primary" class="w-full mb-4" @click="flux.resetPassword"
-        >Reset Password</Button
-      >
+      <Button class="w-full mb-4" @click="flux.resetPassword">Reset Password</Button>
     </form>
 
     <form
@@ -121,7 +119,7 @@ const flux = reactive({
         to="/sign-in"
         replace
       >
-        <Button color="primary" class="w-full">Continue</Button>
+        <Button class="w-full">Continue</Button>
       </RouterLink>
     </form>
   </div>

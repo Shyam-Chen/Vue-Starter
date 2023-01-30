@@ -56,7 +56,6 @@ const flux = reactive({
       <div>
         <Button
           v-if="index === 0"
-          color="primary"
           floating
           class="ml-2"
           icon="i-fa-plus"

@@ -72,31 +72,31 @@ const stepper = useStepper({
       <template #items>
         <Stepper.Content v-if="stepper.isCurrent('s1')">
           <div class="mb-4">Content 1</div>
-          <Button color="primary" @click="stepper.goToNext">Next</Button>
+          <Button @click="stepper.goToNext">Next</Button>
         </Stepper.Content>
 
         <Stepper.Content v-if="stepper.isCurrent('s2')">
           <div class="mb-4">Content 2</div>
-          <Button @click="stepper.goToPrevious">Back</Button>
-          <Button color="primary" class="ml-2" @click="stepper.goToNext">Next</Button>
+          <Button color="secondary" @click="stepper.goToPrevious">Back</Button>
+          <Button class="ml-2" @click="stepper.goToNext">Next</Button>
         </Stepper.Content>
 
         <Stepper.Content v-if="stepper.isCurrent('s3')">
           <div class="mb-4">Content 3</div>
-          <Button @click="stepper.goToPrevious">Back</Button>
-          <Button color="primary" class="ml-2" @click="stepper.goToNext">Next</Button>
+          <Button color="secondary" @click="stepper.goToPrevious">Back</Button>
+          <Button class="ml-2" @click="stepper.goToNext">Next</Button>
         </Stepper.Content>
 
         <Stepper.Content v-if="stepper.isCurrent('s4')">
           <div class="mb-4">Content 4</div>
-          <Button @click="stepper.goToPrevious">Back</Button>
-          <Button color="primary" class="ml-2" @click="stepper.goToNext">Next</Button>
+          <Button color="secondary" @click="stepper.goToPrevious">Back</Button>
+          <Button class="ml-2" @click="stepper.goToNext">Next</Button>
         </Stepper.Content>
 
         <Stepper.Content v-if="stepper.isCurrent('s5')">
           <div class="mb-4">Content 5</div>
-          <Button @click="stepper.goToPrevious">Back</Button>
-          <Button color="primary" class="ml-2">Submit</Button>
+          <Button color="secondary" @click="stepper.goToPrevious">Back</Button>
+          <Button class="ml-2">Submit</Button>
         </Stepper.Content>
       </template>
     </Stepper>

@@ -7,9 +7,6 @@ export default async (app: FastifyInstance) => {
   });
 
   app.get('/user', async () => {
-    return {
-      username: 'shyam.chen',
-      fullName: 'Shyam Chen',
-    };
+    return responses['get_/user'];
   });
 };

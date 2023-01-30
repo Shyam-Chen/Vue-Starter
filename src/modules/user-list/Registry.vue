@@ -87,8 +87,9 @@ onMounted(async () => {
         <div class="relative w-full px-4 max-w-full flex-grow flex-1">
           <h3 class="font-semibold text-base text-blueGray-700 dark:text-blueGray-300">Users</h3>
         </div>
-        <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
-          <Button color="secondary" @click="flux.addUser">Add User</Button>
+
+        <div class="px-4">
+          <Button @click="flux.addUser">Add User</Button>
         </div>
       </div>
     </div>
@@ -129,18 +130,18 @@ onMounted(async () => {
           <tr
             v-for="user in users"
             :key="user._id"
-            class="hover:bg-slate-100 dark:hover:bg-slate-600"
+            class="hover:bg-slate-100 dark:hover:bg-slate-600 border-b"
           >
-            <td class="px-6 align-middle whitespace-nowrap p-4">
+            <td class="px-6 py-3 align-middle whitespace-nowrap">
               {{ user.username }}
             </td>
-            <td class="px-6 align-middle whitespace-nowrap p-4">
+            <td class="px-6 py-3 align-middle whitespace-nowrap">
               {{ user.fullName }}
             </td>
-            <td class="px-6 align-middle whitespace-nowrap p-4">
+            <td class="px-6 py-3 align-middle whitespace-nowrap">
               {{ user.email }}
             </td>
-            <td class="px-6 align-middle whitespace-nowrap p-4">
+            <td class="px-6 py-3 align-middle whitespace-nowrap">
               <Chip
                 :color="
                   user.status
@@ -158,7 +159,7 @@ onMounted(async () => {
                 }}</Chip
               >
             </td>
-            <td class="px-6 align-middle whitespace-nowrap p-4">
+            <td class="px-6 py-3 align-middle whitespace-nowrap">
               <Button color="info" @click="flux.viewUser(user)">View</Button>
             </td>
           </tr>
@@ -166,7 +167,7 @@ onMounted(async () => {
       </table>
     </div>
 
-    <div class="flex items-center justify-end p-4">
+    <div class="flex items-center justify-end p-4 space-x-6">
       <div class="flex items-center">
         Rows per page:
         <div class="w-20 ml-2">
@@ -178,7 +179,7 @@ onMounted(async () => {
         </div>
       </div>
 
-      <div class="ml-8 flex items-center">
+      <div class="flex items-center">
         {{ flux.currentPage * flux.rowsPerPage - flux.rowsPerPage + 1 }}-{{
           flux.currentPage * flux.rowsPerPage > dataCount
             ? dataCount
@@ -188,19 +189,15 @@ onMounted(async () => {
         {{ dataCount }}
       </div>
 
-      <div
-        class="ml-8 flex items-center cursor-pointer hover:bg-slate-200 dark:hover:bg-slate-700 px-2 py-1 rounded"
-      >
-        <div class="i-fa-angle-left w-4 h-4 mr-1"></div>
+      <Button variant="text" color="secondary">
+        <div class="i-fa-angle-left w-4 h-4"></div>
         Previous
-      </div>
+      </Button>
 
-      <div
-        class="ml-6 flex items-center cursor-pointer hover:bg-slate-200 dark:hover:bg-slate-700 px-2 py-1 rounded"
-      >
+      <Button variant="text" color="secondary">
         Next
-        <div class="i-fa-angle-right w-4 h-4 ml-1"></div>
-      </div>
+        <div class="i-fa-angle-right w-4 h-4"></div>
+      </Button>
     </div>
   </div>
 
@@ -214,9 +211,11 @@ onMounted(async () => {
         <TextField v-model:value="flux.userForm.fullName" required>Full Name</TextField>
       </form>
 
-      <div class="text-right space-x-4">
-        <Button @click="flux.userDialog = false">Cancel</Button>
-        <Button color="primary">Add</Button>
+      <div class="flex justify-end gap-4">
+        <Button variant="outlined" color="secondary" @click="flux.userDialog = false">
+          Cancel
+        </Button>
+        <Button>Add</Button>
       </div>
     </div>
   </Dialog>

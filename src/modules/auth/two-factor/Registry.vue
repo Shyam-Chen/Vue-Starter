@@ -79,7 +79,7 @@ const flux = reactive({
       </div>
 
       <div class="text-center">
-        <Button color="primary" class="w-1/3" @click="flux.flow = 2">Next</Button>
+        <Button class="w-1/3" @click="flux.flow = 2">Next</Button>
       </div>
     </template>
 
@@ -94,7 +94,7 @@ const flux = reactive({
 
       <div class="text-center space-x-4">
         <Button color="secondary" class="w-1/3" @click="flux.flow = 1">Back</Button>
-        <Button color="primary" class="w-1/3" @click="flux.flow = 3">Next</Button>
+        <Button class="w-1/3" @click="flux.flow = 3">Next</Button>
       </div>
     </template>
 
@@ -105,7 +105,7 @@ const flux = reactive({
 
       <div class="text-center space-x-4">
         <Button color="secondary" class="w-1/3" @click="flux.flow = 2">Back</Button>
-        <Button color="primary" class="w-1/3" @click="flux.flow = 4">Next</Button>
+        <Button class="w-1/3" @click="flux.flow = 4">Next</Button>
       </div>
     </template>
 

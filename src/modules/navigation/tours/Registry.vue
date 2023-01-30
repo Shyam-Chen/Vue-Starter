@@ -112,7 +112,7 @@ const flux = reactive({
     <div class="mb-2">Basic</div>
 
     <div>
-      <Button color="primary" @click="flux.begin">Begin Tour</Button>
+      <Button @click="flux.begin">Begin Tour</Button>
     </div>
   </div>
 
@@ -131,9 +131,9 @@ const flux = reactive({
       <div class="text-sm text-slate-500">{{ flux.index + 1 }}/4</div>
 
       <div class="flex space-x-2 ml-8">
-        <Button @click="flux.showTour = false">Skip</Button>
-        <Button v-if="flux.index > 0" @click="flux.previous">Previous</Button>
-        <Button color="primary" @click="flux.next">Next</Button>
+        <Button color="secondary" @click="flux.showTour = false">Skip</Button>
+        <Button v-if="flux.index > 0" color="secondary" @click="flux.previous">Previous</Button>
+        <Button @click="flux.next">Next</Button>
       </div>
     </div>
 

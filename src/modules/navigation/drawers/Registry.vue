@@ -33,7 +33,7 @@ const flux = reactive({
     <div class="mb-2">Basic</div>
 
     <div>
-      <Button color="primary" @click="flux.drawer1 = true">Open</Button>
+      <Button @click="flux.drawer1 = true">Open</Button>
     </div>
 
     <Drawer v-model="flux.drawer1" />
@@ -44,7 +44,7 @@ const flux = reactive({
 
     <div class="flex">
       <RadioGroup v-model:value="flux.placement" :options="flux.placementOptions" />
-      <Button color="primary" class="ml-4" @click="flux.drawer2 = true">Open</Button>
+      <Button class="ml-4" @click="flux.drawer2 = true">Open</Button>
     </div>
 
     <Drawer v-model="flux.drawer2" :placement="flux.placement" />

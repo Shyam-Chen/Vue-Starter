@@ -21,36 +21,18 @@ export default ofetch.create({
       };
     }
   },
-  async onResponse({ options, response }) {
-    if (response.status === 401) {
-      // Unauthorized
+  async onResponse({ response }) {
+    if (response.status === 401 && localStorage.getItem('refreshToken')) {
+      const { accessToken } = await ofetch('/auth/token', {
+        baseURL: process.env.API_URL + '/api',
+        method: 'POST',
+        body: {
+          accessToken: localStorage.getItem('accessToken'),
+          refreshToken: localStorage.getItem('refreshToken'),
+        },
+      });
 
-      if (localStorage.getItem('refreshToken')) {
-        const { accessToken } = await ofetch('/auth/token', {
-          baseURL: process.env.API_URL + '/api',
-          method: 'POST',
-          body: {
-            accessToken: localStorage.getItem('accessToken'),
-            refreshToken: localStorage.getItem('refreshToken'),
-          },
-          onRequest() {
-            const language = localStorage.getItem('language');
-
-            if (language) {
-              options.headers = {
-                ...options.headers,
-                'Accept-Language': language,
-              };
-            }
-          },
-        });
-
-        localStorage.setItem('accessToken', accessToken);
-      }
-    }
-
-    if (response.status === 440) {
-      // Login Time-out
+      localStorage.setItem('accessToken', accessToken);
     }
   },
 });
