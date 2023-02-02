@@ -37,9 +37,9 @@ const flux = reactive({
   },
   userForm: {} as any,
   async viewUser(user: any) {
-    const response = await request(`/user-list/${user._id}`, { method: 'GET' });
-    router.push(`/user-list/${response.result._id}`);
-    flux.userForm = response.result;
+    const response = await request<any>(`/user-list/${user._id}`, { method: 'GET' });
+    router.push(`/user-list/${response._data.result._id}`);
+    flux.userForm = response._data.result;
   },
 });
 
@@ -61,8 +61,8 @@ watch(
 );
 
 onMounted(async () => {
-  const response = await request('/user-list', { method: 'POST', body: {} });
-  users.value = response.result;
+  const response = await request<any>('/user-list', { method: 'POST', body: {} });
+  users.value = response._data.result;
 });
 </script>
 

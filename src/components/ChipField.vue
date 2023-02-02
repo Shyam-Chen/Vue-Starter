@@ -14,6 +14,12 @@ const emit = defineEmits<{
   (evt: 'input', val: string): void;
 }>();
 
+const text = ref();
+
+defineExpose({
+  text,
+});
+
 const chipFieldValue = computed({
   get: () => props.value || [],
   set: (val) => emit('update:value', val),
@@ -22,7 +28,6 @@ const chipFieldValue = computed({
 const input = ref();
 
 const flux = reactive({
-  text: '',
   backspace: false,
   onClick() {
     input.value?.focus();
@@ -33,27 +38,27 @@ const flux = reactive({
     chipFieldValue.value = chips;
   },
   onEnter() {
-    if (flux.text) {
-      chipFieldValue.value = [...chipFieldValue.value, flux.text];
-      flux.text = '';
+    if (text.value) {
+      chipFieldValue.value = [...chipFieldValue.value, text.value];
+      text.value = '';
       flux.backspace = true;
     }
   },
   onDelete() {
-    if (!flux.text && flux.backspace) {
+    if (!text.value && flux.backspace) {
       const chips = [...chipFieldValue.value];
       chips.pop();
       chipFieldValue.value = chips;
     }
 
-    if (!flux.text) {
+    if (!text.value) {
       flux.backspace = true;
     }
   },
 });
 
 watch(
-  () => flux.text,
+  () => text.value,
   (val, oldVal) => {
     if (!val && !oldVal) flux.backspace = true;
     if (val) flux.backspace = false;
@@ -68,7 +73,7 @@ watch(
     :class="[
       value?.length ? 'py-1.5' : 'py-2',
       {
-        'border-blue-600': true,
+        'important:border-primary-600': false, // focus
         'opacity-70	cursor-not-allowed': disabled,
       },
     ]"
@@ -86,12 +91,12 @@ watch(
 
     <input
       ref="input"
-      v-model="flux.text"
+      v-model="text"
       class="outline-none w-fit bg-inherit"
       :class="{ 'cursor-not-allowed': disabled }"
       :placeholder="placeholder"
       :disabled="disabled"
-      @input.stop="emit('input', flux.text)"
+      @input.stop="emit('input', text)"
       @keyup.enter="flux.onEnter"
       @keyup.delete="flux.onDelete"
     />

@@ -21,7 +21,7 @@ const flux = reactive({
 <template>
   <div class="flex">
     <div
-      class="flex items-center text-xs rounded-full inline-block whitespace-nowrap text-center bg-blue-600 text-white px-2 py-1"
+      class="flex items-center text-xs rounded-full inline-block whitespace-nowrap text-center bg-primary-600 text-white px-2 py-1"
       :class="{
         'important:bg-green-500 dark:important:bg-green-700': color === 'success',
         'important:bg-yellow-500 dark:important:bg-yellow-700': color === 'warning',

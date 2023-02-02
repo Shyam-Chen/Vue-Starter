@@ -87,7 +87,7 @@ watch(
 );
 
 onMounted(async () => {
-  const response = await request.raw('/auth/user', { method: 'GET' });
+  const response = await request('/auth/user', { method: 'GET' });
 
   if (response.status == 200) {
     flux.user = response._data;
@@ -122,7 +122,7 @@ onMounted(async () => {
 
       <Dropdown class="ml-6 dark:text-white">
         <div
-          class="text-white bg-blue-600 rounded-full w-10 h-10 flex justify-center items-center cursor-pointer transition hover:scale-125"
+          class="text-white bg-primary-600 rounded-full w-10 h-10 flex justify-center items-center cursor-pointer transition hover:scale-125"
         >
           {{ flux.avatar(flux.user.fullName) }}
         </div>

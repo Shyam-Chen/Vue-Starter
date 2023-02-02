@@ -3,8 +3,7 @@ import { reactive } from 'vue';
 
 import Breadcrumbs from '~/components/Breadcrumbs.vue';
 import Autocomplete from '~/components/Autocomplete.vue';
-// import Multiautocomplete from '~/components/Multiautocomplete.vue';
-import ChipField from '~/components/ChipField.vue';
+import Multiautocomplete from '~/components/Multiautocomplete.vue';
 
 const flux = reactive({
   autocomplete: 'sc',
@@ -40,8 +39,7 @@ const flux = reactive({
     <div class="mb-2">Multiple</div>
 
     <div class="flex justify-center">
-      <!-- <Multiautocomplete v-model:value="flux.multiautocomplete" /> -->
-      <ChipField v-model:value="flux.multiautocomplete" />
+      <Multiautocomplete v-model:value="flux.multiautocomplete" />
     </div>
 
     <pre>{{ flux.multiautocomplete }}</pre>
