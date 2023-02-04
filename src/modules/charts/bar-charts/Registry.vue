@@ -71,7 +71,7 @@ onMounted(() => {
 <template>
   <Breadcrumbs
     :items="[
-      { text: 'Platform', disabled: true },
+      { text: 'Library', disabled: true },
       { text: 'Charts', disabled: true },
       { text: 'Bar Charts', disabled: true },
     ]"

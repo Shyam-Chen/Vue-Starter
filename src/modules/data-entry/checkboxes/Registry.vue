@@ -43,7 +43,7 @@ watch(
 <template>
   <Breadcrumbs
     :items="[
-      { text: 'Platform', disabled: true },
+      { text: 'Library', disabled: true },
       { text: 'Data Entry', disabled: true },
       { text: 'Checkboxes', disabled: true },
     ]"

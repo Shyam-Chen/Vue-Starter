@@ -10,7 +10,7 @@ send('Hello from Vue!');
 <template>
   <Breadcrumbs
     :items="[
-      { text: 'Platform', disabled: true },
+      { text: 'Library', disabled: true },
       { text: 'Network', disabled: true },
       { text: 'WebSocket', disabled: true },
     ]"

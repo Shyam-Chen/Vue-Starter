@@ -9,7 +9,7 @@ const helloWorldApi = useFetch('/hello-world').json();
 <template>
   <Breadcrumbs
     :items="[
-      { text: 'Platform', disabled: true },
+      { text: 'Library', disabled: true },
       { text: 'Network', disabled: true },
       { text: 'Fetch', disabled: true },
     ]"

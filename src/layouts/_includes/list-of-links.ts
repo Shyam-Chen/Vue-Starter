@@ -12,7 +12,7 @@ export interface Link {
 
 const links = [
   { icon: 'i-ic-round-dashboard', name: 'Dashboard', to: '/dashboard' },
-  { name: 'Platform' },
+  { name: 'Library' },
   {
     icon: 'i-mdi-bookmark-outline',
     name: 'General',

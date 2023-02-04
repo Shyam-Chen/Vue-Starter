@@ -12,7 +12,7 @@ import Alert from '~/components/Alert.vue';
 <template>
   <Breadcrumbs
     :items="[
-      { text: 'Platform', disabled: true },
+      { text: 'Library', disabled: true },
       { text: 'Feedback', disabled: true },
       { text: 'Alert', disabled: true },
     ]"

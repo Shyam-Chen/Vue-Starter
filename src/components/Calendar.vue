@@ -50,7 +50,7 @@ const emit = defineEmits(['update:value']);
 const createDays = (y?: number, m?: number) => {
   const currentPeriod = () => {
     const today = new Date();
-    return [y || today.getFullYear(), m || today.getMonth()];
+    return [y || today.getFullYear(), typeof m === 'number' ? m : today.getMonth()];
   };
 
   const [year, month] = currentPeriod();
@@ -121,19 +121,7 @@ const flux = reactive({
     flux.currentMoment = new Date();
   },
   decrement() {
-    if (flux.showWeeks) {
-      flux.currentMoment = sub(flux.currentMoment, { months: 1 });
-    }
-
-    if (flux.showYears) {
-      // const moment = flux.currentMoment.subtract(16, 'Y');
-      // flux.yearRange = range(moment.year() - 5, moment.year() + 10);
-    }
-
-    if (flux.showMonths) {
-      // flux.currentMoment.subtract(1, 'Y');
-      // flux.year = flux.currentMoment.year();
-    }
+    flux.currentMoment = sub(flux.currentMoment, { months: 1 });
   },
   increment() {
     if (flux.showWeeks) {

@@ -120,7 +120,7 @@ onMounted(async () => {
         @focus="flux.searchDialog = true"
       />
 
-      <Dropdown class="ml-6 dark:text-white">
+      <Dropdown class="ml-6">
         <div
           class="text-white bg-primary-600 rounded-full w-10 h-10 flex justify-center items-center cursor-pointer transition hover:scale-125"
         >
@@ -129,30 +129,30 @@ onMounted(async () => {
 
         <template #options>
           <div class="py-2 px-4 text-sm">
-            <div class="text-slate-800 font-bold">{{ flux.user.fullName }}</div>
-            <div class="text-slate-500">{{ flux.user.email }}</div>
+            <div class="font-bold">{{ flux.user.fullName }}</div>
+            <div>{{ flux.user.email }}</div>
           </div>
 
-          <div class="border"></div>
+          <div class="border dark:border-slate-600"></div>
 
-          <div class="text-slate-500 px-1 py-2 text-sm">
+          <div class="px-1 py-2 text-sm">
             <div
-              class="px-3 py-1 cursor-pointer hover:text-blue-500 dark:hover:text-blue-100 hover:bg-blue-100 dark:hover:bg-blue-600 hover:rounded-md"
+              class="px-3 py-1 cursor-pointer hover:text-primary-500 dark:hover:text-primary-100 hover:bg-primary-100 dark:hover:bg-primary-600 hover:rounded-md"
             >
               Profile
             </div>
             <div
-              class="px-3 py-1 cursor-pointer hover:text-blue-500 dark:hover:text-blue-100 hover:bg-blue-100 dark:hover:bg-blue-600 hover:rounded-md"
+              class="px-3 py-1 cursor-pointer hover:text-primary-500 dark:hover:text-primary-100 hover:bg-primary-100 dark:hover:bg-primary-600 hover:rounded-md"
             >
               Settings
             </div>
           </div>
 
-          <div class="border"></div>
+          <div class="border dark:border-slate-600"></div>
 
-          <div class="text-slate-500 px-1 py-2 text-sm">
+          <div class="px-1 py-2 text-sm">
             <div
-              class="px-3 py-1 cursor-pointer hover:text-blue-500 dark:hover:text-blue-100 hover:bg-blue-100 dark:hover:bg-blue-600 hover:rounded-md"
+              class="px-3 py-1 cursor-pointer hover:text-primary-500 dark:hover:text-primary-100 hover:bg-primary-100 dark:hover:bg-primary-600 hover:rounded-md"
               @click="flux.signOut"
             >
               Sign out

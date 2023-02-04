@@ -3,7 +3,7 @@
 exports[`Buttons 1`] = `
 "<nav class=\\"rounded-md w-full mb-4\\">
   <ol class=\\"list-reset flex\\">
-    <li><span class=\\"text-gray-500\\">Platform</span></li>
+    <li><span class=\\"text-gray-500\\">Library</span></li>
     <li>
       <div class=\\"text-gray-500 mx-2 flex items-center h-full\\">/</div>
     </li>

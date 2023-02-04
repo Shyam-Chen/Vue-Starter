@@ -7,7 +7,7 @@ import Button from '~/components/Button.vue';
 <template>
   <Breadcrumbs
     :items="[
-      { text: 'Platform', disabled: true },
+      { text: 'Library', disabled: true },
       { text: 'Navigation', disabled: true },
       { text: 'Dropdown', disabled: true },
     ]"

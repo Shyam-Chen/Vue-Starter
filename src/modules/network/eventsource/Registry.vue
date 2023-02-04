@@ -8,7 +8,7 @@ const { data } = useEventSource('/sse');
 <template>
   <Breadcrumbs
     :items="[
-      { text: 'Platform', disabled: true },
+      { text: 'Library', disabled: true },
       { text: 'Network', disabled: true },
       { text: 'EventSource', disabled: true },
     ]"

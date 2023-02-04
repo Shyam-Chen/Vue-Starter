@@ -71,7 +71,7 @@ const modelDate = computed({
 const createDays = (y?: number, m?: number) => {
   const currentPeriod = () => {
     const today = new Date();
-    return [y || today.getFullYear(), m || today.getMonth()];
+    return [y || today.getFullYear(), typeof m === 'number' ? m : today.getMonth()];
   };
 
   const [year, month] = currentPeriod();

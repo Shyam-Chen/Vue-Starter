@@ -5,7 +5,7 @@ import Breadcrumbs from '~/components/Breadcrumbs.vue';
 <template>
   <Breadcrumbs
     :items="[
-      { text: 'Platform', disabled: true },
+      { text: 'Library', disabled: true },
       { text: 'General', disabled: true },
       { text: 'Typography', disabled: true },
     ]"

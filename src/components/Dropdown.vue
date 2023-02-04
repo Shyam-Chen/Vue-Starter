@@ -75,7 +75,7 @@ const flux = reactive({
       <div
         v-show="flux.status"
         ref="dropdown"
-        class="absolute z-10 min-w-max bg-white origin-top-right rounded-lg shadow-lg"
+        class="absolute z-10 min-w-max bg-white dark:bg-slate-800 origin-top-right rounded-lg shadow-lg"
         :class="{
           // 'right-0 top-0': true,
         }"
@@ -86,7 +86,7 @@ const flux = reactive({
           <slot name="options">
             <template v-for="option in options" :key="option">
               <div
-                class="text-sm py-2 px-4 w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
+                class="text-sm py-2 px-4 w-full whitespace-nowrap bg-transparent"
                 @click.stop="flux.select(option)"
               >
                 {{ option }}

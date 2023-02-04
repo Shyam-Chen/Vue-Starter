@@ -22,7 +22,7 @@ const stepper = useStepper({
 <template>
   <Breadcrumbs
     :items="[
-      { text: 'Platform', disabled: true },
+      { text: 'Library', disabled: true },
       { text: 'Navigation', disabled: true },
       { text: 'Steppers', disabled: true },
     ]"
