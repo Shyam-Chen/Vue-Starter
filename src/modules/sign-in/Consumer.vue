@@ -80,7 +80,7 @@ const flux = reactive({
       </div>
 
       <Button id="sign-in" :disabled="state.signedIn" class="w-full mb-4" @click="flux.signIn">
-        <Spinner v-if="state.signedIn" class="w-5 h-5 border-2 align-middle" />
+        <Spinner v-if="state.signedIn" class="w-5 h-5 align-middle" />
         <div v-else>{{ locale.signIn }}</div>
       </Button>
 

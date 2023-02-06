@@ -29,6 +29,10 @@ const flux = reactive({
   <div class="flex flex-col border p-4 mb-4">
     <div class="mb-2">Basic</div>
 
-    <Spinner class="w-8 h-8 border-4" />
+    <div class="flex justify-center gap-4">
+      <Spinner class="w-4 h-4" />
+      <Spinner />
+      <Spinner class="w-12 h-12" />
+    </div>
   </div>
 </template>
