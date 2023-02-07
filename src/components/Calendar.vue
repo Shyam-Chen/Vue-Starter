@@ -124,19 +124,7 @@ const flux = reactive({
     flux.currentMoment = sub(flux.currentMoment, { months: 1 });
   },
   increment() {
-    if (flux.showWeeks) {
-      flux.currentMoment = add(flux.currentMoment, { months: 1 });
-    }
-
-    if (flux.showYears) {
-      // const moment = flux.currentMoment.add(16, 'Y');
-      // flux.yearRange = range(moment.year() - 5, moment.year() + 10);
-    }
-
-    if (flux.showMonths) {
-      // flux.currentMoment.add(1, 'Y');
-      // flux.year = flux.currentMoment.year();
-    }
+    flux.currentMoment = add(flux.currentMoment, { months: 1 });
   },
   changeYearMonth() {
     if (flux.showWeeks) {
@@ -201,13 +189,24 @@ flux.currentPeriodDates = createDays();
       </div>
 
       <div class="flex space-x-3">
-        <div class="cursor-pointer hover:bg-slate-200 p-2 rounded-full" @click="flux.decrement">
+        <div
+          class="cursor-pointer hover:bg-slate-200 dark:hover:bg-slate-600 p-2 rounded-full"
+          @click="flux.decrement"
+        >
           <div class="i-fa-chevron-left w-3 h-3"></div>
         </div>
 
-        <div class="cursor-pointer hover:bg-slate-200 px-2 rounded" @click="flux.today">Today</div>
+        <div
+          class="cursor-pointer hover:bg-slate-200 dark:hover:bg-slate-600 px-2 rounded"
+          @click="flux.today"
+        >
+          Today
+        </div>
 
-        <div class="cursor-pointer hover:bg-slate-200 p-2 rounded-full" @click="flux.increment">
+        <div
+          class="cursor-pointer hover:bg-slate-200 dark:hover:bg-slate-600 p-2 rounded-full"
+          @click="flux.increment"
+        >
           <div class="i-fa-chevron-right w-3 h-3"></div>
         </div>
       </div>
@@ -226,7 +225,7 @@ flux.currentPeriodDates = createDays();
         <div
           v-for="item in week"
           :key="weekIndex + item"
-          class="flex flex-col hover:bg-slate-200 w-full p-1 gap-1 border-t-1"
+          class="flex flex-col hover:bg-slate-200 dark:hover:bg-slate-600 w-full p-1 gap-1 border-t-1 dark:border-slate-600"
           :class="{
             'text-white bg-blue-600 important:hover:bg-blue-700': item.selected,
             'text-slate-400 important:cursor-not-allowed': item.disabled,

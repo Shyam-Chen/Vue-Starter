@@ -8,6 +8,7 @@ import Chip from '~/components/Chip.vue';
 import Select from '~/components/Select.vue';
 import Dialog from '~/components/Dialog.vue';
 import TextField from '~/components/TextField.vue';
+import Tooltip from '~/components/Tooltip.vue';
 import request from '~/utilities/request';
 
 const router = useRouter();
@@ -130,7 +131,7 @@ onMounted(async () => {
           <tr
             v-for="user in users"
             :key="user._id"
-            class="hover:bg-slate-100 dark:hover:bg-slate-600 border-b"
+            class="hover:bg-slate-100 dark:hover:bg-slate-600 border-b dark:border-slate-600"
           >
             <td class="px-6 py-3 align-middle whitespace-nowrap">
               {{ user.username }}
@@ -159,8 +160,26 @@ onMounted(async () => {
                 }}</Chip
               >
             </td>
-            <td class="px-6 py-3 align-middle whitespace-nowrap">
-              <Button color="info" @click="flux.viewUser(user)">View</Button>
+            <td class="flex gap-3 px-6 py-3 align-middle whitespace-nowrap">
+              <Tooltip title="Edit">
+                <Button
+                  variant="text"
+                  color="success"
+                  icon="i-fa-edit"
+                  class="w-full"
+                  @click="flux.viewUser(user)"
+                />
+              </Tooltip>
+
+              <Tooltip title="Delete">
+                <Button
+                  variant="text"
+                  color="danger"
+                  class="w-full"
+                  icon="i-fa-trash"
+                  @click="flux.viewUser(user)"
+                />
+              </Tooltip>
             </td>
           </tr>
         </tbody>

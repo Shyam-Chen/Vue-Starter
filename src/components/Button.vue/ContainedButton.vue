@@ -39,12 +39,12 @@ defineProps<{
 }
 
 .primary {
-  @apply bg-blue-600 text-blueGray-200 border-blue-600;
+  @apply bg-primary-600 text-blueGray-200 border-primary-600;
 
-  @apply hover:text-blueGray-300 hover:bg-blue-700;
-  @apply dark:hover:text-blueGray-300 dark:hover:bg-blue-700;
+  @apply hover:text-blueGray-300 hover:bg-primary-700;
+  @apply dark:hover:text-blueGray-300 dark:hover:bg-primary-700;
 
-  @apply active:bg-blue-400 dark:active:bg-blue-800;
+  @apply active:bg-primary-400 dark:active:bg-primary-800;
 }
 
 .secondary {

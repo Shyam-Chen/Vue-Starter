@@ -86,7 +86,7 @@ const flux = reactive({
 
       <div class="text-center">
         <RouterLink
-          class="font-bold text-sm text-blue-500 hover:text-blue-600 dark:hover:text-blue-400"
+          class="font-bold text-sm text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
           to="/auth/forgot-password"
         >
           {{ locale.forgotPassword }}

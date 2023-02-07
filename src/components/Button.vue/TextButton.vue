@@ -38,10 +38,10 @@ defineProps<{
 }
 
 .primary {
-  @apply text-blue-500;
+  @apply text-primary-500;
 
-  @apply hover:text-blue-600 hover:bg-slate-300;
-  @apply dark:hover:text-blue-400 dark:hover:bg-slate-700;
+  @apply hover:text-primary-600 hover:bg-slate-300;
+  @apply dark:hover:text-primary-400 dark:hover:bg-slate-700;
 
   @apply active:bg-slate-400 dark:active:bg-slate-800;
 }

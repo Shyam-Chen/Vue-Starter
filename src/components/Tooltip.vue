@@ -1,12 +1,17 @@
 <script lang="ts" setup>
-import { reactive } from 'vue';
+import { ref, reactive, nextTick } from 'vue';
 
 defineProps<{ title?: string }>();
+
+const content = ref();
 
 const flux = reactive({
   status: false,
   onMouseenter() {
-    flux.status = true;
+    nextTick(() => {
+      // const rect = content.value.getBoundingClientRect();
+      flux.status = true;
+    });
   },
   onMouseleave() {
     flux.status = false;
@@ -16,7 +21,12 @@ const flux = reactive({
 
 <template>
   <div class="relative inline-flex">
-    <div class="inline-flex" @mouseenter="flux.onMouseenter" @mouseleave="flux.onMouseleave">
+    <div
+      ref="content"
+      class="inline-flex"
+      @mouseenter="flux.onMouseenter"
+      @mouseleave="flux.onMouseleave"
+    >
       <slot></slot>
     </div>
 
@@ -30,7 +40,7 @@ const flux = reactive({
     >
       <div
         v-if="flux.status"
-        class="absolute top-4 left-1/2 transform -translate-x-1/2 translate-y-1/2"
+        class="absolute top-1/2 left-1/2 transform -translate-x-1/2 translate-y-1/2"
       >
         <div class="bg-slate-600 text-slate-100 px-3 py-1 rounded text-sm">{{ title }}</div>
       </div>
