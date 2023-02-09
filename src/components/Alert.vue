@@ -31,30 +31,36 @@ defineProps<{
 
 <style lang="scss" scoped>
 .alert {
-  @apply flex justify-between p-4 rounded-lg;
+  @apply flex justify-between p-4 rounded-lg border border-current;
 }
 
 .primary {
-  @apply bg-blue-600 text-blueGray-200;
+  @apply text-primary-800 bg-primary-50;
+  @apply dark:text-primary-400 dark:bg-gray-800;
 }
 
 .secondary {
-  @apply bg-slate-500 text-slate-200;
+  @apply text-gray-800 bg-gray-50;
+  @apply dark:text-gray-400 dark:bg-gray-800;
 }
 
 .success {
-  @apply bg-green-600 text-blueGray-200;
+  @apply text-green-800 bg-green-50;
+  @apply dark:text-green-400 dark:bg-gray-800;
 }
 
 .danger {
-  @apply bg-red-600 dark:bg-red-700 text-blueGray-200;
+  @apply text-red-800 bg-red-50;
+  @apply dark:text-red-400 dark:bg-gray-800;
 }
 
 .warning {
-  @apply bg-yellow-500 dark:bg-yellow-600 text-blueGray-200;
+  @apply text-yellow-800 bg-yellow-50;
+  @apply dark:text-yellow-400 dark:bg-gray-800;
 }
 
 .info {
-  @apply bg-sky-600 text-blueGray-200;
+  @apply text-sky-800 bg-sky-50;
+  @apply dark:text-sky-400 dark:bg-gray-800;
 }
 </style>

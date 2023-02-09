@@ -19,10 +19,6 @@ const flux = reactive({
   resend() {
     // ...
   },
-
-  resetPassword() {
-    flux.flow = 4;
-  },
 });
 </script>
 
@@ -41,11 +37,11 @@ const flux = reactive({
         <TextField required>Email</TextField>
       </div>
 
-      <Button class="w-full mb-6" @click="flux.send">Send Instructions</Button>
+      <Button class="w-full mb-6" @click="flux.send">Send</Button>
 
       <div class="text-center">
         <RouterLink
-          class="inline-flex font-bold text-sm text-blue-500 hover:text-blue-600 dark:hover:text-blue-400 space-x-1"
+          class="inline-flex font-bold text-sm text-primary-500 hover:text-primary-600 dark:hover:text-primary-400 space-x-1"
           to="/sign-in"
         >
           <div class="i-ic-round-arrow-back w-5 h-5"></div>
@@ -65,6 +61,7 @@ const flux = reactive({
 
       <div class="mb-8 space-y-2">
         <div>Enter the 6-digit verification code from your email:</div>
+
         <TextField
           v-model:value="flux.code"
           class="text-center"
@@ -76,7 +73,7 @@ const flux = reactive({
       <div class="mb-4">
         Didn't receive the email?
         <div
-          class="inline-flex font-bold text-sm text-blue-500 hover:text-blue-600 dark:hover:text-blue-400 cursor-pointer"
+          class="inline-flex font-bold text-sm text-primary-500 hover:text-primary-600 dark:hover:text-primary-400 cursor-pointer"
         >
           Click to resend
         </div>
@@ -87,35 +84,23 @@ const flux = reactive({
       v-if="flux.flow === 3"
       class="bg-white dark:bg-slate-800 shadow-md rounded px-8 pt-6 pb-8"
     >
-      <div class="mb-8">
-        <div class="text-slate-900 dark:text-white font-bold text-xl mb-2">Create new password</div>
-        <div>Enter your new password for your account.</div>
-      </div>
-
-      <div class="mb-4">
-        <TextField required>Password</TextField>
-      </div>
-
-      <div class="mb-8">
-        <TextField required>Confirm Password</TextField>
-      </div>
-
-      <Button class="w-full mb-4" @click="flux.resetPassword">Reset Password</Button>
-    </form>
-
-    <form
-      v-if="flux.flow === 4"
-      class="bg-white dark:bg-slate-800 shadow-md rounded px-8 pt-6 pb-8 text-center"
-    >
       <div class="w-12 h-12 i-lucide-check-circle text-green-500 mx-auto my-0 mb-6"></div>
-      <div class="text-slate-900 dark:text-white font-bold text-xl mb-4">Password Reset</div>
+
+      <div class="text-slate-900 dark:text-white font-bold text-xl mb-4 text-center">
+        Password Reset
+      </div>
 
       <div class="mb-6">
-        Your password has been successfully reset. Click below to sign in magically.
+        Your password has been successfully reset. Click below to sign-in magically with your new
+        password.
+      </div>
+
+      <div class="mb-8">
+        <TextField :value="'2803bn3VO7'" readonly>Your New Password:</TextField>
       </div>
 
       <RouterLink
-        class="flex font-bold text-sm text-blue-500 hover:text-blue-600 dark:hover:text-blue-400 space-x-1"
+        class="flex font-bold text-sm text-primary-500 hover:text-primary-600 dark:hover:text-primary-400 space-x-1"
         to="/sign-in"
         replace
       >

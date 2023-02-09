@@ -21,6 +21,7 @@ defineProps<{
       icon: icon,
       'opacity-60 cursor-not-allowed': disabled,
     }"
+    :disabled="disabled"
   >
     <div v-if="icon" class="w-4 h-4" :class="icon"></div>
     <slot></slot>

@@ -7,6 +7,7 @@ const props = defineProps<{
   checked?: boolean;
   disabled?: boolean;
   indeterminate?: boolean;
+  readonly?: boolean;
 }>();
 
 const emit = defineEmits<{
@@ -17,14 +18,16 @@ const uid = uniqueId('checkbox-');
 
 const checkboxValue = computed({
   get: () => props.value || false,
-  set: (val) => emit('update:value', val),
+  set(val) {
+    if (!props.readonly) emit('update:value', val);
+  },
 });
 </script>
 
 <template>
   <label
     class="flex items-center"
-    :class="[disabled ? 'cursor-not-allowed opacity-60' : checked ? '' : 'cursor-pointer']"
+    :class="[disabled ? 'cursor-not-allowed opacity-60' : readonly ? '' : 'cursor-pointer']"
   >
     <div class="relative flex justify-center items-center">
       <input
@@ -39,7 +42,7 @@ const checkboxValue = computed({
             'bg-primary-500': value || checked || indeterminate,
             'bg-white': !(value || checked || indeterminate),
           },
-          disabled ? 'cursor-not-allowed' : checked ? '' : 'cursor-pointer',
+          disabled ? 'cursor-not-allowed' : readonly ? '' : 'cursor-pointer',
         ]"
       />
 

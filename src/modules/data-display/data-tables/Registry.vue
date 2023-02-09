@@ -2,7 +2,7 @@
 import { reactive } from 'vue';
 
 import Breadcrumbs from '~/components/Breadcrumbs.vue';
-import DataTable from '~/components/DataTable.vue';
+import Table from '~/components/Table.vue';
 
 const data = [
   {
@@ -54,9 +54,10 @@ const data = [
 
 const flux = reactive({
   dataTable1: [...data, ...data, ...data, ...data],
+  table: data,
   columns1: [
     { key: 'name', name: 'Name' },
-    { key: 'email', name: 'Email' },
+    { key: 'email', name: 'Email', sortable: false },
     { key: 'address', name: 'Address' },
     { key: 'phone', name: 'Phone' },
     { key: 'dateCreated', name: 'Date Created' },
@@ -64,13 +65,77 @@ const flux = reactive({
     { key: 'status', name: 'Status' },
   ],
   columns2: [
-    { key: 'name', name: 'Name', fixed: 'left', width: '12rem' },
+    { key: 'name', name: 'Name', sticky: 'left' },
     { key: 'email', name: 'Email' },
     { key: 'address', name: 'Address' },
     { key: 'phone', name: 'Phone' },
     { key: 'dateCreated', name: 'Date Created' },
     { key: 'role', name: 'Role' },
+    { key: 'status', name: 'Status', sticky: 'right' },
+  ],
+
+  tableChange: {},
+  onTableChange(evt: any) {
+    flux.tableChange = evt;
+  },
+
+  selected: [],
+  selectedName(selected: any[]) {
+    return selected.map((item) => item.name).join(', ');
+  },
+
+  spanableCols: [
+    { key: 'name', name: 'Name' },
+    { key: 'email', name: 'Email' },
+    { key: 'score', name: 'Score', spanable: true },
     { key: 'status', name: 'Status' },
+  ],
+  spanableRows: [
+    {
+      name: 'Martin Blank',
+      email: 'martinblank@mail.com',
+      details: [{ score: 32 }, { score: 55 }, { score: 21 }],
+      status: 'Active',
+    },
+    {
+      name: 'Fran Wilson',
+      email: 'franwilson@mail.com',
+      details: [{ score: 34 }],
+      status: 'Active',
+    },
+    {
+      name: 'Maria Anders',
+      email: 'mariaanders@mail.com',
+      details: [{ score: 51 }, { score: 32 }],
+      status: 'Active',
+    },
+  ],
+
+  colspanCols: [
+    { key: 'name', name: 'Name' },
+    { key: 'email', name: 'Email' },
+    { key: 'score', name: 'Score' },
+    { key: 'status', name: 'Status' },
+  ],
+  colspanRows: [
+    {
+      name: 'Martin Blank',
+      email: 'martinblank@mail.com',
+      score: 32,
+      status: 'Active',
+    },
+    {
+      name: 'Fran Wilson',
+      email: 'franwilson@mail.com',
+      score: 55,
+      status: 'Active',
+    },
+    {
+      name: 'Maria Anders',
+      email: 'mariaanders@mail.com',
+      score: 21,
+      status: 'Active',
+    },
   ],
 });
 </script>
@@ -86,41 +151,87 @@ const flux = reactive({
   />
 
   <div class="mb-4">
-    <div class="text-3xl font-bold">Data tables</div>
+    <div class="text-3xl font-bold">Table</div>
   </div>
 
   <div class="flex flex-col border p-4 mb-4">
     <div class="mb-2">Basic</div>
 
-    <DataTable
-      title="Employee Details"
-      :dataSource="flux.dataTable1"
-      :columns="flux.columns1"
-      :dataCount="123"
-    />
+    <div class="w-full bg-white dark:bg-slate-800 shadow-md rounded">
+      <Table :columns="flux.columns1" :rows="flux.table" />
+    </div>
   </div>
 
   <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Fixed columns</div>
+    <div class="mb-2">Sticky Header</div>
 
-    <DataTable
-      title="Employee Details"
-      :dataSource="flux.dataTable1"
-      :columns="flux.columns2"
-      :dataCount="123"
-      fixed
-    />
+    <div class="w-full bg-white dark:bg-slate-800 shadow-md rounded">
+      <Table stickyHeader :columns="flux.columns1" :rows="flux.dataTable1" />
+    </div>
   </div>
 
   <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Selectable rows</div>
+    <div class="mb-2">Paginable and Sortable</div>
+
+    <div class="w-full bg-white dark:bg-slate-800 shadow-md rounded">
+      <Table :columns="flux.columns1" :rows="flux.table" :count="77" @change="flux.onTableChange" />
+    </div>
+
+    <div class="mt-2">{{ flux.tableChange }}</div>
   </div>
 
   <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Expandable row</div>
+    <div class="mb-2">Selectable</div>
+
+    <div class="w-full bg-white dark:bg-slate-800 shadow-md rounded">
+      <Table
+        v-model:selected="flux.selected"
+        selectable
+        :columns="flux.columns1"
+        :rows="flux.table"
+      />
+    </div>
+
+    <div class="mt-2">{{ flux.selectedName(flux.selected) }}</div>
   </div>
 
   <div class="flex flex-col border p-4 mb-4">
     <div class="mb-2">Rowspan</div>
+
+    <div class="w-full bg-white dark:bg-slate-800 shadow-md rounded">
+      <Table :columns="flux.spanableCols" :rows="flux.spanableRows" />
+    </div>
+  </div>
+
+  <div class="flex flex-col border p-4 mb-4">
+    <div class="mb-2">Colspan</div>
+
+    <div class="w-full bg-white dark:bg-slate-800 shadow-md rounded">
+      <Table :columns="flux.colspanCols" :rows="flux.colspanRows">
+        <template #spanable>
+          <tr>
+            <td colspan="2" class="px-6 py-3">Sum:</td>
+            <td class="px-6 py-3">108</td>
+            <td></td>
+          </tr>
+        </template>
+      </Table>
+    </div>
+  </div>
+
+  <div class="flex flex-col border p-4 mb-4">
+    <div class="mb-2">Sticky Columns</div>
+
+    <div class="w-full bg-white dark:bg-slate-800 shadow-md rounded">
+      <Table stickyHeader :columns="flux.columns2" :rows="flux.dataTable1" />
+    </div>
+  </div>
+
+  <div class="flex flex-col border p-4 mb-4">
+    <div class="mb-2">Loading</div>
+
+    <div class="w-full bg-white dark:bg-slate-800 shadow-md rounded">
+      <Table stickyHeader loading :columns="flux.columns1" :rows="flux.dataTable1" :count="77" />
+    </div>
   </div>
 </template>

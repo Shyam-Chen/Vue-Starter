@@ -235,7 +235,7 @@ const scrollShadow = computed(() => {
 
             <div
               v-if="fixed"
-              class="min-w-50 whitespace-nowrap p-4 font-bold bg-white sticky right-0 z-5"
+              class="min-w-50 whitespace-nowrap p-4 font-bold bg-blueGray-50 dark:bg-blueGray-700 text-blueGray-500 dark:text-blueGray-200 sticky right-0 z-5"
             >
               Actions
             </div>
@@ -254,7 +254,7 @@ const scrollShadow = computed(() => {
               v-for="column in columnsRef"
               :key="column.key"
               class="p-4 whitespace-nowrap"
-              :class="{ 'sticky left-0 z-5 bg-white': column.fixed }"
+              :class="{ 'sticky left-0 z-5 bg-white dark:bg-slate-800': column.fixed }"
               :style="{
                 'min-width': column.width ? column.width : 'auto',
                 'max-width': column.width ? column.width : 'auto',
@@ -267,7 +267,7 @@ const scrollShadow = computed(() => {
 
             <div
               v-if="fixed"
-              class="p-4 flex w-50 sticky right-0 z-1 bg-white"
+              class="p-4 flex w-50 sticky right-0 z-1 bg-white dark:bg-slate-800"
               :class="{ 'data-table-actions-hover': flux.rowHover === index }"
             >
               <Button color="info" @click="flux.edit(item)">Edit</Button>

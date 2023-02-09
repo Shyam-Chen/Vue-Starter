@@ -60,22 +60,34 @@ const flux = reactive({
 </script>
 
 <template>
-  <RouterLink
-    v-if="to || sub.length"
-    :to="to || ''"
-    class="px-4 py-2 flex cursor-pointer hover:text-primary-500 dark:hover:text-primary-100 hover:bg-primary-100 dark:hover:bg-primary-600 hover:rounded-md"
+  <div
+    v-if="sub.length"
+    class="link"
     :class="{
-      'text-primary-500 font-bold': flux.parent(sub),
-      'text-primary-500 dark:text-primary-200 bg-primary-200 dark:bg-primary-700 rounded-md font-bold':
-        to === route.path,
+      'link-parent': flux.parent(sub),
+      'link-current': to === route.path,
     }"
     :style="{ 'padding-left': `${level}rem` }"
     @click.stop="flux.toggle"
   >
     <div v-if="icon" :class="icon" class="w-6 h-6 mr-2"></div>
     <div class="flex-1" :class="{ 'pl-4': level !== 1 }">{{ name }}</div>
-    <div v-if="sub.length && !flux.status" class="i-ic-baseline-arrow-drop-down w-6 h-6"></div>
-    <div v-if="sub.length && flux.status" class="i-ic-baseline-arrow-drop-up w-6 h-6"></div>
+    <div v-if="!flux.status" class="i-ic-baseline-arrow-drop-down w-6 h-6"></div>
+    <div v-if="flux.status" class="i-ic-baseline-arrow-drop-up w-6 h-6"></div>
+  </div>
+
+  <RouterLink
+    v-else-if="to"
+    :to="to"
+    class="link"
+    :class="{
+      'link-parent': flux.parent(sub),
+      'link-current': to === route.path,
+    }"
+    :style="{ 'padding-left': `${level}rem` }"
+  >
+    <div v-if="icon" :class="icon" class="w-6 h-6 mr-2"></div>
+    <div class="flex-1" :class="{ 'pl-4': level !== 1 }">{{ name }}</div>
   </RouterLink>
 
   <div v-else class="mt-4 px-4 py-2 text-sm text-slate-400 dark:text-slate-500 uppercase font-bold">
@@ -97,3 +109,20 @@ const flux = reactive({
     </div>
   </ExpandTransition>
 </template>
+
+<style lang="scss" scoped>
+.link {
+  @apply px-4 py-2 flex cursor-pointer hover:rounded-md;
+  @apply hover:text-primary-500 hover:bg-primary-100;
+  @apply dark:hover:text-primary-100 dark:hover:bg-primary-600;
+
+  &-parent {
+    @apply text-primary-500 font-bold;
+  }
+
+  &-current {
+    @apply rounded-md font-bold;
+    @apply text-primary-500 dark:text-primary-200 bg-primary-200 dark:bg-primary-700;
+  }
+}
+</style>

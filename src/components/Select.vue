@@ -49,7 +49,10 @@ const props = defineProps({
   },
 });
 
-const emit = defineEmits(['update:value', 'change']);
+const emit = defineEmits<{
+  (evt: 'update:value', val: string | number | null): void;
+  (evt: 'change', val: string | number | null, opt: any): void;
+}>();
 
 const flux = reactive({
   show: false,

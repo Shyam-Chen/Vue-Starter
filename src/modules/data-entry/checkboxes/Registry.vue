@@ -65,10 +65,10 @@ watch(
   </div>
 
   <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Checked</div>
+    <div class="mb-2">Checked and Readonly</div>
 
     <div class="flex justify-center">
-      <Checkbox checked>Checkbox (checked)</Checkbox>
+      <Checkbox checked readonly>Checkbox (checked)</Checkbox>
     </div>
   </div>
 

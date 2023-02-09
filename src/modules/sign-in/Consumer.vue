@@ -114,7 +114,7 @@ const flux = reactive({
 
       <div class="text-center">
         <div
-          class="inline-flex font-bold text-sm text-blue-500 hover:text-blue-600 dark:hover:text-blue-400 cursor-pointer"
+          class="inline-flex font-bold text-sm text-primary-500 hover:text-primary-600 dark:hover:text-primary-400 cursor-pointer"
           @click="
             state.otpEnabled = false;
             state.signedIn = false;
