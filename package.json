@@ -24,6 +24,7 @@
     "vue-localer": "^1.3.0",
     "vue-qrcode-image": "^1.0.0",
     "vue-router": "^4.1.6",
+    "vuedraggable": "^4.1.0",
     "yup": "^0.32.11"
   },
   "devDependencies": {

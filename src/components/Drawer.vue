@@ -13,10 +13,10 @@ const props = defineProps({
   },
 });
 
-const emits = defineEmits(['update:modelValue']);
+const emit = defineEmits(['update:modelValue']);
 
 const close = () => {
-  emits('update:modelValue', !props.modelValue);
+  emit('update:modelValue', !props.modelValue);
 };
 
 watch(

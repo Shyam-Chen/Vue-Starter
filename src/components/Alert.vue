@@ -25,13 +25,17 @@ defineProps<{
       <div>
         <slot></slot>
       </div>
+
+      <div class="flex justify-center items-center w-6 h-6 ml-3">
+        <div class="i-fa-times w-3 h-3 cursor-pointer transition hover:scale-125"></div>
+      </div>
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
 .alert {
-  @apply flex justify-between p-4 rounded-lg border border-current;
+  @apply flex justify-between max-w-100 p-4 rounded-lg border border-current;
 }
 
 .primary {

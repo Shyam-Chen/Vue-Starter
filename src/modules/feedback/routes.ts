@@ -16,6 +16,12 @@ export default [
     beforeEnter: [auth],
   },
   {
+    path: '/feedback/notification',
+    component: () => import('~/modules/feedback/notification/Registry.vue'),
+    meta: { layout: 'default' },
+    beforeEnter: [auth],
+  },
+  {
     path: '/feedback/progress',
     component: () => import('~/modules/feedback/progress/Registry.vue'),
     meta: { layout: 'default' },

@@ -1,21 +1,26 @@
 <script lang="ts" setup>
-import { ref, onMounted, reactive } from 'vue';
+import { reactive } from 'vue';
+import { useDark } from '@vueuse/core';
 import highcharts from 'highcharts';
+import { Chart } from 'highcharts-vue';
 
 import Breadcrumbs from '~/components/Breadcrumbs.vue';
 
-const basicBar = ref();
+const isDark = useDark();
 
 const flux = reactive({
   basicBarChart: {
+    accessibility: {
+      enabled: false,
+    },
+    credits: {
+      enabled: false,
+    },
     chart: {
       type: 'column',
     },
     title: {
-      text: 'Monthly Average Rainfall',
-    },
-    subtitle: {
-      text: 'Source: WorldClimate.com',
+      text: '',
     },
     xAxis: {
       // prettier-ignore
@@ -62,10 +67,40 @@ const flux = reactive({
   },
 });
 
-onMounted(() => {
-  // @ts-ignore
-  highcharts.chart(basicBar.value, flux.basicBarChart);
-});
+if (isDark.value) {
+  highcharts.setOptions({
+    chart: {
+      backgroundColor: 'rgb(30 41 59)',
+    },
+    xAxis: {
+      labels: {
+        style: {
+          color: '#cbd5e1',
+        },
+      },
+    },
+    yAxis: {
+      labels: {
+        style: {
+          color: '#cbd5e1',
+        },
+      },
+      title: {
+        style: {
+          color: '#cbd5e1',
+        },
+      },
+    },
+    legend: {
+      itemStyle: {
+        color: '#94a3b8',
+      },
+      itemHoverStyle: {
+        color: '#e2e8f0',
+      },
+    },
+  });
+}
 </script>
 
 <template>
@@ -85,6 +120,6 @@ onMounted(() => {
   <div class="flex flex-col border p-4 mb-4">
     <div class="mb-2">Basic</div>
 
-    <div ref="basicBar"></div>
+    <Chart :options="flux.basicBarChart" :highcharts="highcharts" />
   </div>
 </template>

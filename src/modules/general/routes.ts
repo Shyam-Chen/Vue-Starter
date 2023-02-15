@@ -22,6 +22,12 @@ export default [
     beforeEnter: [auth],
   },
   {
+    path: '/general/scrollbar',
+    component: () => import('~/modules/general/scrollbar/Registry.vue'),
+    meta: { layout: 'default' },
+    beforeEnter: [auth],
+  },
+  {
     path: '/general/typography',
     component: () => import('~/modules/general/typography/Registry.vue'),
     meta: { layout: 'default' },

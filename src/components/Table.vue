@@ -6,6 +6,13 @@ import Button from './Button.vue';
 import Select from './Select.vue';
 import Checkbox from './Checkbox.vue';
 
+interface TableControl {
+  rows?: number;
+  page?: number;
+  field?: string;
+  direction?: string;
+}
+
 const props = defineProps<{
   columns?: any[];
   rows?: any[];
@@ -18,7 +25,7 @@ const props = defineProps<{
 
 const emit = defineEmits<{
   (evt: 'update:selected', val: any[]): void;
-  (evt: 'change', val: { rows: number; page: number; field?: string; direction?: string }): void;
+  (evt: 'change', val: TableControl): void;
 }>();
 
 const countRef = toRef(props, 'count', 0);

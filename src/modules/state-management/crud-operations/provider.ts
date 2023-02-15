@@ -8,7 +8,7 @@ import type { State, TodoItem } from './types';
 export const stateSymbol = Symbol('/state-management/crud-operations');
 
 export const createState = reactive<State>({
-  searchConditions: {},
+  searchConditions: { filter: 0 },
 
   dataSource: [],
   dataCount: 0,
@@ -72,10 +72,10 @@ export const useActions = () => {
         router.replace('/state-management/crud-operations');
       }
     },
-    async changeTodos(data: any) {
+    async changeTodos(tableControl: any) {
       state.searchConditions = {
         ...state.searchConditions,
-        ...data,
+        ...tableControl,
       };
 
       await actions.todosList();

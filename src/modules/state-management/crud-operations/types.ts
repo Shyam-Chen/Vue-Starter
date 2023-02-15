@@ -4,8 +4,17 @@ export interface TodoItem {
   completed?: boolean;
 }
 
+// enum Filter {
+//   All,
+//   Active,
+//   Completed,
+// }
+
 export interface State {
-  searchConditions: Omit<TodoItem, '_id'>;
+  searchConditions: {
+    title?: string;
+    filter?: number;
+  };
 
   dataSource: TodoItem[];
   dataCount: number;

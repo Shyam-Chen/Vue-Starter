@@ -3,8 +3,8 @@ import { computed } from 'vue';
 import uniqueId from 'lodash/uniqueId';
 
 const props = defineProps<{
-  value?: string;
-  options?: string[] | Array<{ label: string; value: string }>;
+  value?: any;
+  options?: string[] | Array<{ label: string; value: any }>;
   disabled?: boolean;
 }>();
 
@@ -16,7 +16,7 @@ const emit = defineEmits<{
 const uid = uniqueId('radio-group-');
 
 const radioGroupValue = computed({
-  get: () => props.value || '',
+  get: () => props.value,
   set: (val) => emit('update:value', val),
 });
 </script>
@@ -45,7 +45,7 @@ const radioGroupValue = computed({
         <div
           class="absolute select-none w-3.5 h-3.5 text-primary-500"
           :class="{
-            'i-mdi-circle': radioGroupValue.includes(typeof item === 'object' ? item.value : item),
+            'i-mdi-circle': radioGroupValue === (typeof item === 'object' ? item.value : item),
           }"
         ></div>
       </div>

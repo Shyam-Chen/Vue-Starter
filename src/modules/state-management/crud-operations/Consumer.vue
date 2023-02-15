@@ -4,8 +4,9 @@ import { reactive, onMounted } from 'vue';
 import Breadcrumbs from '~/components/Breadcrumbs.vue';
 import ExpansionPanel from '~/components/ExpansionPanel.vue';
 import TextField from '~/components/TextField.vue';
+import RadioGroup from '~/components/RadioGroup.vue';
 import Checkbox from '~/components/Checkbox.vue';
-import DataTable from '~/components/DataTable.vue';
+import Table from '~/components/Table.vue';
 import Button from '~/components/Button.vue';
 
 import { useState, useActions } from './provider';
@@ -41,45 +42,64 @@ onMounted(() => {
     <div class="text-3xl font-bold">CRUD Operations</div>
   </div>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <ExpansionPanel class="mb-6">
-      <template #header>
-        <div class="text-2xl font-bold">Search Conditions</div>
-      </template>
+  <ExpansionPanel class="mb-6">
+    <template #header>
+      <div class="flex">
+        <div class="text-lg font-bold">Search Conditions</div>
+        <div class="i-ic-baseline-arrow-drop-down w-6 h-6"></div>
+      </div>
+    </template>
 
-      <template #content>
-        <div class="space-y-4">
-          <div class="grid grid-cols-3">
-            <TextField v-model:value="state.searchConditions.title">Title</TextField>
-          </div>
+    <template #content>
+      <div class="grid grid-cols-2 gap-5 mb-6">
+        <div><TextField v-model:value="state.searchConditions.title">Title</TextField></div>
 
-          <Checkbox v-model:value="state.searchConditions.completed">Completed</Checkbox>
+        <div class="flex flex-col">
+          <div class="text-sm mb-2 font-bold">Filter</div>
 
-          <div class="space-x-4">
-            <Button color="warning" @click="state.searchConditions = {}">Clear</Button>
-            <Button color="info" @click="actions.searchTodos">Search</Button>
+          <div class="flex items-center h-full">
+            <RadioGroup
+              v-model:value="state.searchConditions.filter"
+              :options="[
+                { label: 'All', value: 0 },
+                { label: 'Active', value: 1 },
+                { label: 'Completed', value: 2 },
+              ]"
+            />
           </div>
         </div>
-      </template>
-    </ExpansionPanel>
+      </div>
 
-    <DataTable
-      title="Todos"
+      <div class="flex justify-center gap-4">
+        <Button color="secondary" @click="state.searchConditions = { filter: 0 }">Reset</Button>
+        <Button @click="actions.searchTodos">Search</Button>
+      </div>
+    </template>
+  </ExpansionPanel>
+
+  <div class="w-full bg-white dark:bg-slate-800 shadow-md rounded">
+    <div class="flex justify-between p-4">
+      <div class="text-3xl font-bold">Todo List</div>
+
+      <Button color="primary" @click="actions.addToDo">Add</Button>
+    </div>
+
+    <Table
+      stickyHeader
       :columns="flux.columns"
-      :dataSource="state.dataSource"
-      :dataCount="state.dataCount"
-      @add="actions.addToDo"
+      :rows="state.dataSource"
+      :count="state.dataCount"
       @change="actions.changeTodos"
     >
-      <template #completed="{ item }">
-        <Checkbox v-model:value="item.completed" disabled />
+      <template #completed="{ row }">
+        <Checkbox v-model:value="row.completed" readonly />
       </template>
 
-      <template #actions="{ item }">
+      <template #actions="{ row }">
         <div class="space-x-4">
-          <Button color="success" @click="actions.viewTodo(item)">View</Button>
+          <Button variant="text" color="info" icon="i-bx-detail" @click="actions.viewTodo(row)" />
         </div>
       </template>
-    </DataTable>
+    </Table>
   </div>
 </template>

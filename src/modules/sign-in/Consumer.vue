@@ -1,10 +1,10 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
-import { RouterLink } from 'vue-router';
 
 import TextField from '~/components/TextField.vue';
 import Button from '~/components/Button.vue';
 import Spinner from '~/components/Spinner.vue';
+import Link from '~/components/Link.vue';
 import { useFetch } from '~/composables';
 
 import useLocale from './_locales';
@@ -85,12 +85,7 @@ const flux = reactive({
       </Button>
 
       <div class="text-center">
-        <RouterLink
-          class="font-bold text-sm text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
-          to="/auth/forgot-password"
-        >
-          {{ locale.forgotPassword }}
-        </RouterLink>
+        <Link to="/auth/forgot-password">{{ locale.forgotPassword }}</Link>
       </div>
     </form>
 

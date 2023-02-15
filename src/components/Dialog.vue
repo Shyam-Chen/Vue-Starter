@@ -5,12 +5,12 @@ const props = defineProps<{
   modelValue: boolean;
 }>();
 
-const emits = defineEmits<{
+const emit = defineEmits<{
   (evt: 'update:modelValue', val: boolean): void;
 }>();
 
 const closeDialog = () => {
-  emits('update:modelValue', !props.modelValue);
+  emit('update:modelValue', !props.modelValue);
 };
 
 watch(
@@ -47,16 +47,16 @@ onUnmounted(() => {
         </span>
 
         <div
-          class="relative inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"
+          class="relative inline-block align-bottom rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"
           role="dialog"
           aria-modal="true"
           aria-labelledby="modal-headline"
         >
-          <div class="absolute top-1 right-1 cursor-pointer" @click="closeDialog">
-            <div class="i-ion-close w-5 h-5"></div>
+          <div class="absolute top-1.5 right-1.5 cursor-pointer" @click="closeDialog">
+            <div class="i-fa-times w-3 h-3 transition hover:scale-125"></div>
           </div>
 
-          <div class="bg-white dark:bg-slate-900 px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+          <div class="bg-white dark:bg-slate-800 px-6 py-4">
             <slot></slot>
           </div>
         </div>

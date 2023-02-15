@@ -77,26 +77,38 @@ const stepper = useStepper({
 
         <Stepper.Content v-if="stepper.isCurrent('s2')">
           <div class="mb-4">Content 2</div>
-          <Button color="secondary" @click="stepper.goToPrevious">Back</Button>
-          <Button class="ml-2" @click="stepper.goToNext">Next</Button>
+
+          <div class="flex">
+            <Button color="secondary" @click="stepper.goToPrevious">Back</Button>
+            <Button class="ml-2" @click="stepper.goToNext">Next</Button>
+          </div>
         </Stepper.Content>
 
         <Stepper.Content v-if="stepper.isCurrent('s3')">
           <div class="mb-4">Content 3</div>
-          <Button color="secondary" @click="stepper.goToPrevious">Back</Button>
-          <Button class="ml-2" @click="stepper.goToNext">Next</Button>
+
+          <div class="flex">
+            <Button color="secondary" @click="stepper.goToPrevious">Back</Button>
+            <Button class="ml-2" @click="stepper.goToNext">Next</Button>
+          </div>
         </Stepper.Content>
 
         <Stepper.Content v-if="stepper.isCurrent('s4')">
           <div class="mb-4">Content 4</div>
-          <Button color="secondary" @click="stepper.goToPrevious">Back</Button>
-          <Button class="ml-2" @click="stepper.goToNext">Next</Button>
+
+          <div class="flex">
+            <Button color="secondary" @click="stepper.goToPrevious">Back</Button>
+            <Button class="ml-2" @click="stepper.goToNext">Next</Button>
+          </div>
         </Stepper.Content>
 
         <Stepper.Content v-if="stepper.isCurrent('s5')">
           <div class="mb-4">Content 5</div>
-          <Button color="secondary" @click="stepper.goToPrevious">Back</Button>
-          <Button class="ml-2">Submit</Button>
+
+          <div class="flex">
+            <Button color="secondary" @click="stepper.goToPrevious">Back</Button>
+            <Button class="ml-2">Submit</Button>
+          </div>
         </Stepper.Content>
       </template>
     </Stepper>

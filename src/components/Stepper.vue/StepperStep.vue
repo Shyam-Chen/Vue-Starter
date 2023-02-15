@@ -16,11 +16,11 @@ defineProps({
     class="stepper-step"
     :class="{
       'text-green-500': Number(step) < Number(current),
-      'text-blue-600': Number(step) === Number(current),
-      'text-gray-500': Number(step) > Number(current),
+      'text-primary-500': Number(step) === Number(current),
+      // 'text-gray-500': Number(step) > Number(current),
     }"
   >
-    <div class="w-12 h-6 mb-4 flex justify-center items-center bg-white z-2">
+    <div class="w-12 h-6 mb-4 flex justify-center items-center bg-white dark:bg-slate-700 z-2">
       <div v-if="Number(step) < Number(current)" class="i-fa-regular-check-circle w-6 h-6"></div>
       <div
         v-if="Number(step) === Number(current)"
@@ -50,6 +50,8 @@ defineProps({
     border: 1px solid #ccc;
     transform: translate(50%, 11px);
     z-index: 1;
+
+    @apply dark:border-slate-500;
   }
 }
 </style>

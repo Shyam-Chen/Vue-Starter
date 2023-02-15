@@ -41,7 +41,7 @@ onMounted(() => {
     <div class="text-3xl font-bold">CRUD Operations - {{ route.params.id }}</div>
   </div>
 
-  <div class="p-6 space-y-4 bg-white rounded-lg shadow-lg">
+  <div class="p-6 space-y-4 bg-white dark:slate-800 rounded-lg shadow-lg">
     <div class="grid grid-cols-3">
       <TextField
         v-model:value="state.todoItem.title"
@@ -52,17 +52,19 @@ onMounted(() => {
       </TextField>
     </div>
 
-    <Checkbox v-model:value="state.todoItem.completed">Completed</Checkbox>
+    <div class="flex">
+      <Checkbox v-model:value="state.todoItem.completed">Completed</Checkbox>
+    </div>
 
     <div class="space-x-4">
       <template v-if="route.params.id === 'new'">
         <Button color="info" @click="schema.validate() && actions.addNewToDo()">Add</Button>
       </template>
 
-      <template v-else>
+      <div v-else class="flex gap-4">
         <Button color="info" @click="schema.validate() && actions.saveToDo()">Save</Button>
         <Button color="danger" @click="actions.removeToDo">Delete</Button>
-      </template>
+      </div>
     </div>
   </div>
 </template>

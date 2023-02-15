@@ -9,22 +9,15 @@ import getScrollableParent from '~/utilities/getScrollableParent';
 
 import TextField from './TextField.vue';
 
-const props = defineProps({
-  value: {
-    type: [Number, String],
-    default: '',
-  },
-  disabled: {
-    type: Boolean,
-    default: false,
-  },
-  errorMessage: {
-    type: String,
-    default: '',
-  },
-});
+const props = defineProps<{
+  value?: number | string;
+  disabled?: boolean;
+  errorMessage?: string;
+}>();
 
-const emit = defineEmits(['update:value']);
+const emit = defineEmits<{
+  (evt: 'update:value', val?: number | string): void;
+}>();
 
 const uid = uniqueId('year-picker-');
 
