@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref, reactive, nextTick } from 'vue';
+import { ref, reactive, watch, onUnmounted, nextTick } from 'vue';
 
 import Breadcrumbs from '~/components/Breadcrumbs.vue';
 import Button from '~/components/Button.vue';
@@ -35,6 +35,7 @@ const flux = reactive({
     flux.index = 0;
 
     nextTick(() => {
+      el1.value.scrollIntoView({ block: 'center' });
       const rect = el1.value.getBoundingClientRect();
 
       tour.value.style.width = `${rect.width}px`;
@@ -50,6 +51,7 @@ const flux = reactive({
     flux.index = 1;
 
     nextTick(() => {
+      el2.value.scrollIntoView({ block: 'center' });
       const rect = el2.value.getBoundingClientRect();
 
       tour.value.style.width = `${rect.width}px`;
@@ -65,6 +67,7 @@ const flux = reactive({
     flux.index = 2;
 
     nextTick(() => {
+      el3.value.scrollIntoView({ block: 'center' });
       const rect = el3.value.getBoundingClientRect();
 
       tour.value.style.width = `${rect.width}px`;
@@ -80,6 +83,7 @@ const flux = reactive({
     flux.index = 3;
 
     nextTick(() => {
+      el4.value.scrollIntoView({ block: 'center' });
       const rect = el4.value.getBoundingClientRect();
 
       tour.value.style.width = `${rect.width}px`;
@@ -91,6 +95,17 @@ const flux = reactive({
       guide.value.style.top = `${rect.y + rect.height + 16}px`;
     });
   },
+});
+
+watch(
+  () => flux.showTour,
+  (val) => {
+    document.body.style.overflow = val ? 'hidden' : 'auto';
+  },
+);
+
+onUnmounted(() => {
+  document.body.style.overflow = 'auto';
 });
 </script>
 
@@ -119,16 +134,20 @@ const flux = reactive({
   <div
     v-if="flux.showTour"
     ref="tour"
-    class="fixed z-101 pointer-events-none rounded transition-all border-2 border-blue-600"
-    style="box-shadow: rgba(33, 33, 33, 0.5) 0 0 0 3333px"
+    class="fixed z-101 pointer-events-none rounded transition-all border-2 border-primary-600"
+    style="box-shadow: rgba(100, 116, 139, 0.5) 0 0 0 3333px"
   ></div>
 
-  <div v-if="flux.showTour" ref="guide" class="fixed z-102 bg-white rounded-lg p-4 transition-all">
-    <div class="font-bold text-slate-800 text-lg mb-2">Bottom</div>
-    <div class="text-slate-700">On the bottom of target.</div>
+  <div
+    v-if="flux.showTour"
+    ref="guide"
+    class="fixed z-102 bg-white dark:bg-slate-800 rounded-lg p-4 transition-all"
+  >
+    <div class="font-bold text-lg mb-2">Bottom</div>
+    <div>On the bottom of target.</div>
 
     <div class="flex items-center mt-6">
-      <div class="text-sm text-slate-500">{{ flux.index + 1 }}/4</div>
+      <div class="text-sm">{{ flux.index + 1 }}/4</div>
 
       <div class="flex space-x-2 ml-8">
         <Button color="secondary" @click="flux.showTour = false">Skip</Button>
@@ -138,28 +157,28 @@ const flux = reactive({
     </div>
 
     <div
-      class="absolute top-0 left-10 transform -translate-x-1/2 -translate-y-1/2 rotate-45 w-4 h-4 bg-white border-t border-l rounded-tl"
+      class="absolute top-0 left-10 transform -translate-x-1/2 -translate-y-1/2 rotate-45 w-4 h-4 bg-white dark:bg-slate-800 border-t border-l dark:border-slate-800 rounded-tl"
     ></div>
 
     <!-- top -->
     <!-- <div
-      class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rotate-45 w-4 h-4 bg-white border-t border-l rounded-tl"
-    ></div> -->
+        class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rotate-45 w-4 h-4 bg-white border-t border-l rounded-tl"
+      ></div> -->
 
     <!-- right -->
     <!-- <div
-      class="absolute right-0 top-1/2 transform translate-x-1/2 -translate-y-1/2 rotate-45 w-4 h-4 bg-white border-t border-r rounded-tr"
-    ></div> -->
+        class="absolute right-0 top-1/2 transform translate-x-1/2 -translate-y-1/2 rotate-45 w-4 h-4 bg-white border-t border-r rounded-tr"
+      ></div> -->
 
     <!-- bottom -->
     <!-- <div
-      class="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 rotate-45 w-4 h-4 bg-white border-r border-b rounded-rb"
-    ></div> -->
+        class="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 rotate-45 w-4 h-4 bg-white border-r border-b rounded-rb"
+      ></div> -->
 
     <!-- left -->
     <!-- <div
-      class="absolute left-0 top-1/2 transform -translate-x-1/2 -translate-y-1/2 rotate-45 w-4 h-4 bg-white border-l border-b rounded-lb"
-    ></div> -->
+        class="absolute left-0 top-1/2 transform -translate-x-1/2 -translate-y-1/2 rotate-45 w-4 h-4 bg-white border-l border-b rounded-lb"
+      ></div> -->
   </div>
 
   <div class="flex flex-col border p-4 mb-4">
