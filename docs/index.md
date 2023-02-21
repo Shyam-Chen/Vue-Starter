@@ -2,12 +2,12 @@
 layout: home
 
 hero:
-  name: VitePress
-  text: Vite & Vue powered static site generator.
-  tagline: Lorem ipsum...
+  name: Lorem ipsum
+  text: Donec at leo at lectus tempus volutpat
+  tagline: Nam facilisis mi nec semper pharetra
   image:
-    src: /logo.png
-    alt: VitePress
+    src: https://rollupjs.org/rollup-logo.svg
+    alt: Lorem ipsum
   actions:
     - theme: brand
       text: Get Started
@@ -18,12 +18,21 @@ hero:
 
 features:
   - icon: ⚡️
-    title: Vite, The DX that can't be beat
-    details: Lorem ipsum...
+    title: Lorem ipsum dolor
+    details: Fusce at sem ullamcorper, mollis elit at, commodo quam
   - icon: 🖖
-    title: Power of Vue meets Markdown
-    details: Lorem ipsum...
+    title: Lorem ipsum dolor sit amet
+    details: Duis finibus eros in tortor elementum, ut auctor mauris cursus
   - icon: 🛠️
-    title: Simple and minimal, always
-    details: Lorem ipsum...
+    title: Lorem ipsum dolor sit
+    details: Proin suscipit risus eget nisl tempus laoreet
+  - icon: ⚡️
+    title: Lorem ipsum dolor
+    details: Fusce at sem ullamcorper, mollis elit at, commodo quam
+  - icon: 🖖
+    title: Lorem ipsum dolor sit amet
+    details: Duis finibus eros in tortor elementum, ut auctor mauris cursus
+  - icon: 🛠️
+    title: Lorem ipsum dolor sit
+    details: Proin suscipit risus eget nisl tempus laoreet
 ---

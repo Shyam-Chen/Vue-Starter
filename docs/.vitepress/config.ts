@@ -1,9 +1,10 @@
 import { defineConfig } from 'vitepress';
 
 export default defineConfig({
-  title: 'Vue Starter',
-  description: 'A boilerplate for HTML5, Vue, TypeScript, Vite, Playwright, and Render.',
+  title: 'Lorem ipsum',
+  description: 'Donec at leo at lectus tempus volutpat',
   themeConfig: {
+    logo: 'https://rollupjs.org/rollup-logo.svg',
     nav: [
       { text: 'Guide', link: '/guide/getting-started' },
       { text: 'Modules', link: '/modules/todos' },
@@ -12,12 +13,12 @@ export default defineConfig({
       '/guide': [
         {
           text: 'Project Setup',
-          collapsible: true,
+          collapsed: false,
           items: [{ text: 'Introduction', link: '/guide/getting-started' }],
         },
         {
           text: 'Directory Structure',
-          collapsible: true,
+          collapsed: false,
           items: [
             { text: 'Introduction', link: '/guide/directory-structure/introduction' },
             { text: 'public', link: '/guide/directory-structure/public' },
@@ -33,26 +34,26 @@ export default defineConfig({
         },
         {
           text: 'Prebuilt Components',
-          collapsible: true,
+          collapsed: false,
           items: [{ text: 'Button', link: '/guide/components/buttons' }],
         },
       ],
       '/modules': [
         {
           text: 'Dashboard',
-          collapsible: true,
+          collapsed: false,
           items: [{ text: 'Dashboard', link: '/modules/todos' }],
         },
         {
           text: 'My List',
-          collapsible: true,
+          collapsed: false,
           items: [{ text: 'Todos', link: '/modules/todos' }],
         },
       ],
     },
     footer: {
       message: 'Released under the MIT License.',
-      copyright: 'Copyright © 2019-present Evan You',
+      copyright: 'Copyright © 2019-present Lorem ipsum',
     },
   },
 });

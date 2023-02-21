@@ -5,11 +5,11 @@
     "mock": "vite"
   },
   "dependencies": {
-    "fastify": "^4.9.2",
-    "fastify-plugin": "^4.3.0"
+    "fastify": "^4.13.0",
+    "fastify-plugin": "^4.5.0"
   },
   "devDependencies": {
-    "vite": "^3.2.3",
-    "vite-plugin-fastify": "^1.0.2"
+    "vite": "^4.1.1",
+    "vite-plugin-fastify": "^1.2.0"
   }
 }

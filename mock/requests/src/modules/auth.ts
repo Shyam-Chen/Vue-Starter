@@ -1,12 +1,12 @@
 import type { FastifyInstance } from 'fastify';
-import responses from '../../../responses/auth';
+import auth from 'responses/auth';
 
 export default async (app: FastifyInstance) => {
   app.post('/sign-in', async () => {
-    return responses['post_/sign-in'];
+    return auth['post_/sign-in'];
   });
 
   app.get('/user', async () => {
-    return responses['get_/user'];
+    return auth['get_/user'];
   });
 };
