@@ -25,6 +25,14 @@ const list = ref<string[]>([]);
 const toasts = ref([]);
 
 const push = () => {
+  const notifications = [
+    { message: 'This is a test notification. (1)', timeout: null, show: false },
+    { message: 'This is a test notification. (2)', timeout: null, show: false },
+    { message: 'This is a test notification. (3)', timeout: null, show: false },
+  ];
+
+  console.log(notifications);
+
   list.value.push('This is a test notification.');
 };
 </script>

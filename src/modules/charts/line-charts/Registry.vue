@@ -1,22 +1,12 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
-import { useDark } from '@vueuse/core';
-import highcharts from 'highcharts';
-import { Chart } from 'highcharts-vue';
 
 import Breadcrumbs from '~/components/Breadcrumbs.vue';
 import Button from '~/components/Button.vue';
-
-const isDark = useDark();
+import Chart from '~/components/Chart.vue';
 
 const flux = reactive({
   basicLineChart: {
-    accessibility: {
-      enabled: false,
-    },
-    credits: {
-      enabled: false,
-    },
     title: {
       text: '',
     },
@@ -56,36 +46,6 @@ const flux = reactive({
     flux.basicLineChart.series[idx_2022].data = Array.from({ length: 7 }, () => randomInt());
   },
 });
-
-if (isDark.value) {
-  highcharts.setOptions({
-    chart: {
-      backgroundColor: 'rgb(30 41 59)',
-    },
-    xAxis: {
-      labels: {
-        style: {
-          color: '#cbd5e1',
-        },
-      },
-    },
-    yAxis: {
-      labels: {
-        style: {
-          color: '#cbd5e1',
-        },
-      },
-    },
-    legend: {
-      itemStyle: {
-        color: '#94a3b8',
-      },
-      itemHoverStyle: {
-        color: '#e2e8f0',
-      },
-    },
-  });
-}
 </script>
 
 <template>
@@ -105,7 +65,7 @@ if (isDark.value) {
   <div class="flex flex-col border p-4 mb-4">
     <div class="mb-2">Basic</div>
 
-    <Chart :options="flux.basicLineChart" :highcharts="highcharts" />
+    <Chart :options="flux.basicLineChart" />
 
     <Button class="mt-2" @click="flux.update">Update</Button>
   </div>
