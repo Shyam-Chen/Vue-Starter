@@ -51,18 +51,10 @@ const links = [
     icon: 'i-fluent-form-24-regular',
     name: 'Data Entry',
     sub: [
-      { name: 'Text fields', to: '/data-entry/text-fields' },
+      { name: 'Autocompletes', to: '/data-entry/autocompletes' },
       { name: 'Checkboxes', to: '/data-entry/checkboxes' },
-      { name: 'Radio buttons', to: '/data-entry/radio-buttons' },
-      { name: 'Switches', to: '/data-entry/switches' },
-      {
-        name: 'Selects',
-        sub: [
-          { name: 'Single selects', to: '/data-entry/selects/single-selects' },
-          { name: 'Multiple selects', to: '/data-entry/selects/multiple-selects' },
-        ],
-      },
-      { name: 'Textareas', to: '/data-entry/textareas' },
+      { name: 'File inputs', to: '/data-entry/file-inputs' },
+      { name: 'Form Validation', to: '/data-entry/form-validation' },
       {
         name: 'Pickers',
         sub: [
@@ -72,9 +64,18 @@ const links = [
           { name: 'Time pickers', to: '/data-entry/pickers/time-pickers' },
         ],
       },
-      { name: 'Autocompletes', to: '/data-entry/autocompletes' },
-      { name: 'File inputs', to: '/data-entry/file-inputs' },
-      { name: 'Form Validation', to: '/data-entry/form-validation' },
+      { name: 'Radio buttons', to: '/data-entry/radio-buttons' },
+      {
+        name: 'Selects',
+        sub: [
+          { name: 'Single selects', to: '/data-entry/selects/single-selects' },
+          { name: 'Multiple selects', to: '/data-entry/selects/multiple-selects' },
+        ],
+      },
+      { name: 'Slider', to: '/data-entry/slider' },
+      { name: 'Switches', to: '/data-entry/switches' },
+      { name: 'Text fields', to: '/data-entry/text-fields' },
+      { name: 'Textareas', to: '/data-entry/textareas' },
       { name: 'Transfer', to: '/data-entry/transfer' },
     ],
   },

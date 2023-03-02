@@ -32,6 +32,12 @@ export default [
   },
   ...selectsRoutes,
   {
+    path: '/data-entry/slider',
+    component: () => import('~/modules/data-entry/slider/Registry.vue'),
+    meta: { layout: 'default' },
+    beforeEnter: [auth],
+  },
+  {
     path: '/data-entry/textareas',
     component: () => import('~/modules/data-entry/textareas/Registry.vue'),
     meta: { layout: 'default' },

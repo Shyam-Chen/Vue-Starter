@@ -1,35 +1,90 @@
 <script lang="ts" setup>
-withDefaults(
+import { ref, computed, watch } from 'vue';
+
+const props = withDefaults(
   defineProps<{
-    value?: number | number[];
-    step?: number;
-    min?: number;
-    max?: number;
+    value?: string;
+    min?: string;
+    max?: string;
+    step?: string;
     disabled?: boolean;
   }>(),
   {
-    value: 0,
-    step: 1,
-    min: 0,
-    max: 100,
+    value: '0',
+    min: '0',
+    max: '100',
+    step: '1',
   },
 );
 
-defineEmits<{
-  (evt: 'update:value', val: number | number[]): void;
-  (evt: 'change', val: number | number[]): void;
+const emit = defineEmits<{
+  (evt: 'update:value', val: string): void;
+  (evt: 'change', val: string): void;
 }>();
+
+const sliderValue = computed({
+  get: () => props.value,
+  set: (val) => emit('update:value', val),
+});
+
+const backgroundSize = ref('0 100%');
+const left = ref('0');
+
+watch(
+  () => sliderValue.value,
+  (val) => {
+    const _val = Number(val);
+    const _min = Number(props.min);
+    const _max = Number(props.max);
+    const percentage = ((_val - _min) * 100) / (_max - _min);
+
+    backgroundSize.value = `${percentage}% 100%`;
+    left.value = `calc(${percentage}% + (${8 - percentage * 0.15}px))`;
+  },
+  { immediate: true },
+);
 </script>
 
 <template>
-  <!-- rail -->
-  <div class="w-full h-1 rounded bg-slate-500/50"></div>
+  <div class="slider">
+    <input
+      v-model="sliderValue"
+      v-bind="$attrs"
+      type="range"
+      :min="min"
+      :max="max"
+      :step="step"
+      class="slider-input"
+      :style="{ 'background-size': backgroundSize }"
+    />
 
-  <!-- track -->
-  <div class="h-1"></div>
-
-  <!-- handle -->
-  <div class="h-4 rounded-full"></div>
-
-  <input type="range" />
+    <output class="slider-output" :style="{ left: left }">{{ sliderValue }}</output>
+  </div>
 </template>
+
+<style lang="scss" scoped>
+.slider {
+  @apply w-full relative;
+}
+
+.slider-input {
+  @apply appearance-none outline-none cursor-pointer;
+  @apply w-full h-2 bg-slate-400/60 rounded;
+  @apply bg-gradient-to-r from-primary-500 to-primary-500 bg-no-repeat;
+
+  &::-webkit-slider-thumb {
+    @apply appearance-none cursor-ew-resize;
+    @apply w-4 h-4 bg-primary-500 rounded-full shadow transition;
+  }
+
+  // &:hover + .slider-output {
+  //   @apply block;
+  // }
+}
+
+.slider-output {
+  // @apply hidden;
+  @apply absolute bg-primary-500 -top-8 -translate-x-1/2;
+  @apply px-2 py-1 text-white rounded;
+}
+</style>
