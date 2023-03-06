@@ -6,66 +6,53 @@ import getScrollableParent from '~/utilities/getScrollableParent';
 
 import TextField from './TextField.vue';
 
-const props = defineProps({
-  value: {
-    type: [String, Number],
-    default: '',
+type Option = { label: string; value: string | number; [key: string]: unknown; options?: Options };
+type Options = Option[];
+
+const props = withDefaults(
+  defineProps<{
+    value?: Option['value'];
+    options?: Options;
+    display?: 'label' | 'value' | ((opt: Option) => void);
+    placeholder?: string;
+    clearable?: boolean;
+    filterable?: boolean;
+    disabled?: boolean;
+    notFoundContent?: string;
+    isInvalid?: boolean;
+    errorMessage?: string;
+  }>(),
+  {
+    value: undefined,
+    options: () => [],
+    display: 'label',
+    placeholder: 'Please select',
+    clearable: false,
+    filterable: false,
+    disabled: false,
+    notFoundContent: '--',
+    isInvalid: false,
+    errorMessage: '',
   },
-  options: {
-    type: Array,
-    default: () => [],
-  },
-  display: {
-    type: [String, Function],
-    default: () => '',
-  },
-  placeholder: {
-    type: String,
-    default: 'Please select',
-  },
-  clearable: {
-    type: Boolean,
-    default: false,
-  },
-  filterable: {
-    type: Boolean,
-    default: false,
-  },
-  disabled: {
-    type: Boolean,
-    default: false,
-  },
-  notFoundContent: {
-    type: String,
-    default: '--',
-  },
-  isInvalid: {
-    type: Boolean,
-    default: false,
-  },
-  errorMessage: {
-    type: String,
-    default: '',
-  },
-});
+);
 
 const emit = defineEmits<{
   (evt: 'update:value', val: string | number | null): void;
-  (evt: 'change', val: string | number | null, opt: any): void;
+  (evt: 'change', val: string | number | null, opt: Option | null): void;
 }>();
 
 const flux = reactive({
   show: false,
   direction: 'down',
-  selected: '',
+  selected: undefined as Option | undefined,
   filterValue: '',
-  options: null as any[] | null,
-  onSelect(value: any, option: any) {
+  options: undefined as Options | undefined,
+  onSelect(value: Option['value'], option: Option) {
     flux.show = false;
     emit('update:value', value);
     emit('change', value, option);
   },
-  display(item: any) {
+  display(item: Option) {
     if (props.display && typeof props.display === 'string') {
       return item[props.display];
     }
@@ -90,8 +77,8 @@ const menu = ref();
 const selectMenu = ref();
 const selectMenuItem = ref<any[]>([]);
 
-const _initOptions = computed<any[]>(() => props.options);
-const reoptions = computed<any[]>(() => flux.options || props.options);
+const _initOptions = computed(() => props.options);
+const reoptions = computed(() => flux.options || props.options);
 
 const open = (selectEl: any, filterEl: any, menuEl: any) => {
   if (props.disabled) return;
@@ -155,7 +142,7 @@ watch(
     const filter = arr.filter(
       (item) =>
         item.label.toUpperCase().includes(val.toUpperCase()) ||
-        item.value.toUpperCase().includes(val.toUpperCase()),
+        String(item.value).toUpperCase().includes(val.toUpperCase()),
     );
 
     flux.options = filter;
@@ -170,7 +157,7 @@ watch(
       const found = arr.find((item) => item.value === val);
       flux.selected = found;
     } else {
-      flux.selected = '';
+      flux.selected = undefined;
     }
   },
   { immediate: true },
