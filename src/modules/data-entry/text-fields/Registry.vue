@@ -26,7 +26,7 @@ const flux = reactive({
   </div>
 
   <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Basic examples</div>
+    <div class="mb-2">Basic</div>
 
     <div class="flex justify-center">
       <TextField v-model:value="flux.textField1" placeholder="Type here..."
@@ -48,10 +48,36 @@ const flux = reactive({
   <div class="flex flex-col border p-4 mb-4">
     <div class="mb-2">Icons</div>
 
-    <div class="flex justify-center">
-      <TextField v-model:value="flux.textField1" placeholder="Type here..."
-        >Example label</TextField
-      >
+    <div class="grid grid-cols-2 gap-3">
+      <TextField
+        v-model:value="flux.textField1"
+        label="Example label"
+        placeholder="Type here..."
+        prepend="i-mdi-user-circle"
+      />
+
+      <TextField
+        v-model:value="flux.textField1"
+        label="Example label"
+        placeholder="Type here..."
+        append="i-mdi-user-circle"
+      />
+
+      <TextField
+        v-model:value="flux.textField1"
+        label="Example label"
+        placeholder="Type here..."
+        prepend="i-mdi-user-circle"
+        errorMessage="Incorrect entry."
+      />
+
+      <TextField
+        v-model:value="flux.textField1"
+        label="Example label"
+        placeholder="Type here..."
+        append="i-mdi-user-circle"
+        errorMessage="Incorrect entry."
+      />
     </div>
   </div>
 

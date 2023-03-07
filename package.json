@@ -13,7 +13,8 @@
   },
   "dependencies": {
     "@unocss/reset": "^0.48.2",
-    "@vueuse/core": "^9.4.0",
+    "@vueuse/components": "^9.13.0",
+    "@vueuse/core": "^9.13.0",
     "date-fns": "^2.29.3",
     "highcharts": "^10.3.1",
     "highcharts-vue": "^1.4.0",

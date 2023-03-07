@@ -5,6 +5,7 @@ import range from 'lodash/range';
 import TextField from './TextField.vue';
 import Select from './Select.vue';
 import Button from './Button.vue';
+import FadeTransition from './FadeTransition.vue';
 
 const flux = reactive({
   hours: range(1, 13).map((n) => String(n).padStart(2, '0')),
@@ -16,7 +17,7 @@ const flux = reactive({
   <div ref="target" class="w-full">
     <TextField append="i-fa-clock-o" />
 
-    <Transition name="fade">
+    <FadeTransition>
       <div
         class="fixed z-10 flex flex-col p-6 space-y-4 bg-white dark:bg-slate-800 rounded-lg shadow-lg"
       >
@@ -49,24 +50,11 @@ const flux = reactive({
           <Button>OK</Button>
         </div>
       </div>
-    </Transition>
+    </FadeTransition>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.fade-enter-active {
-  transition: opacity 0.3s ease-out;
-}
-
-.fade-leave-active {
-  transition: opacity 0.3s ease-in;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
-
 :deep(.select-input) {
   padding-right: 0.75rem;
   text-align: center;

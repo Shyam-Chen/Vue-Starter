@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import type { PropType } from 'vue';
 import { RouterLink } from 'vue-router';
 
 interface Breadcrumb {
@@ -8,12 +7,9 @@ interface Breadcrumb {
   href?: string;
 }
 
-defineProps({
-  items: {
-    type: Array as PropType<Breadcrumb[]>,
-    default: () => [],
-  },
-});
+defineProps<{
+  items: Breadcrumb[];
+}>();
 </script>
 
 <template>

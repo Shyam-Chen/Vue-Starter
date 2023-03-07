@@ -10,6 +10,7 @@ import uniqueId from 'lodash/uniqueId';
 import getScrollableParent from '~/utilities/getScrollableParent';
 
 import TextField from './TextField.vue';
+import FadeTransition from './FadeTransition.vue';
 
 const props = defineProps({
   value: {
@@ -310,7 +311,7 @@ onUnmounted(() => {
       @append="flux.openPicker"
     />
 
-    <Transition name="fade">
+    <FadeTransition>
       <div
         v-if="flux.showDatePicker"
         ref="picker"
@@ -399,24 +400,11 @@ onUnmounted(() => {
           </div>
         </div>
       </div>
-    </Transition>
+    </FadeTransition>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.fade-enter-active {
-  transition: opacity 0.3s ease-out;
-}
-
-.fade-leave-active {
-  transition: opacity 0.3s ease-in;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
-
 .DatePicker-DatePane-PlacementBottom {
   transform: translateY(38px) translateY(0.5rem);
 }

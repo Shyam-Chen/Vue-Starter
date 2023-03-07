@@ -6,6 +6,7 @@ import { useFetch } from '~/composables';
 import getScrollableParent from '~/utilities/getScrollableParent';
 
 import TextField from './TextField.vue';
+import FadeTransition from './FadeTransition.vue';
 
 const props = defineProps({
   value: {
@@ -245,7 +246,7 @@ onUnmounted(() => {
         @keyup.esc.stop="flux.onEsc"
       />
 
-      <Transition name="menu">
+      <FadeTransition>
         <div
           v-show="flux.show"
           ref="autocompletePane"
@@ -272,7 +273,7 @@ onUnmounted(() => {
             </div>
           </div>
         </div>
-      </Transition>
+      </FadeTransition>
     </div>
 
     <div v-if="errorMessage" class="text-danger mt-1">
@@ -282,19 +283,6 @@ onUnmounted(() => {
 </template>
 
 <style lang="scss" scoped>
-.menu-enter-active {
-  transition: opacity 0.3s ease-out;
-}
-
-.menu-leave-active {
-  transition: opacity 0.3s ease-in;
-}
-
-.menu-enter-from,
-.menu-leave-to {
-  opacity: 0;
-}
-
 .select {
   $border: 1px;
   $height: 40px;
