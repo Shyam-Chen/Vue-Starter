@@ -60,8 +60,9 @@ const links = [
         sub: [
           { name: 'Date pickers', to: '/data-entry/pickers/date-pickers' },
           { name: 'Month pickers', to: '/data-entry/pickers/month-pickers' },
-          { name: 'Year pickers', to: '/data-entry/pickers/year-pickers' },
           { name: 'Time pickers', to: '/data-entry/pickers/time-pickers' },
+          { name: 'Year pickers', to: '/data-entry/pickers/year-pickers' },
+          { name: 'Week pickers', to: '/data-entry/pickers/week-pickers' },
         ],
       },
       { name: 'Radio buttons', to: '/data-entry/radio-buttons' },
