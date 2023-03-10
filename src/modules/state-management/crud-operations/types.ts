@@ -23,19 +23,3 @@ export interface State {
 
   errors: Record<string, string>;
 }
-
-// Fastify
-router.post('/', { onRequest: [auth] }, async (req, reply) => {
-  const result = await users.sthFn();
-  return reply.send(result);
-});
-
-// Express
-router.post('/', auth, async (req, res, next) => {
-  try {
-    const result = await users.sthFn();
-    res.json(result);
-  } catch (error) {
-    return next(error);
-  }
-});
