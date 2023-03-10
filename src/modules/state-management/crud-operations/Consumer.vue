@@ -52,22 +52,17 @@ onMounted(() => {
 
     <template #content>
       <div class="grid grid-cols-2 gap-5 mb-6">
-        <div><TextField v-model:value="state.searchConditions.title">Title</TextField></div>
+        <TextField v-model:value="state.searchConditions.title" label="Title" />
 
-        <div class="flex flex-col">
-          <div class="text-sm mb-2 font-bold">Filter</div>
-
-          <div class="flex items-center h-full">
-            <RadioGroup
-              v-model:value="state.searchConditions.filter"
-              :options="[
-                { label: 'All', value: 0 },
-                { label: 'Active', value: 1 },
-                { label: 'Completed', value: 2 },
-              ]"
-            />
-          </div>
-        </div>
+        <RadioGroup
+          v-model:value="state.searchConditions.filter"
+          label="Filter"
+          :options="[
+            { label: 'All', value: 0 },
+            { label: 'Active', value: 1 },
+            { label: 'Completed', value: 2 },
+          ]"
+        />
       </div>
 
       <div class="flex justify-center gap-4">

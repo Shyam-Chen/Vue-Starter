@@ -2,6 +2,7 @@
 import { reactive, watch, toRef } from 'vue';
 import omit from 'lodash/omit';
 
+import ProgressBar from './ProgressBar.vue';
 import Button from './Button.vue';
 import Select from './Select.vue';
 import Checkbox from './Checkbox.vue';
@@ -127,9 +128,7 @@ watch(
 <template>
   <div class="relative">
     <div v-if="loading" class="absolute top-10 z-11 w-full">
-      <div class="overflow-hidden w-full h-1 bg-primary-200">
-        <div class="progress-bar-value w-full h-1 bg-primary-500"></div>
-      </div>
+      <ProgressBar />
     </div>
 
     <div class="w-full overflow-auto" :class="{ 'max-h-100': stickyHeader }">
@@ -272,25 +271,6 @@ watch(
 .sticky-tr:hover {
   .sticky-col {
     @apply important:bg-inherit;
-  }
-}
-
-.progress-bar-value {
-  animation: indeterminate 1s infinite linear;
-  transform-origin: 0% 50%;
-}
-
-@keyframes indeterminate {
-  0% {
-    transform: translateX(0) scaleX(0);
-  }
-
-  40% {
-    transform: translateX(0) scaleX(0.4);
-  }
-
-  100% {
-    transform: translateX(100%) scaleX(0.5);
   }
 }
 </style>

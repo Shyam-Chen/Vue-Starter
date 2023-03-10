@@ -12,6 +12,7 @@ type Options = Option[];
 
 const props = withDefaults(
   defineProps<{
+    label?: string;
     value?: Option['value'];
     options?: Options;
     display?: 'label' | 'value' | ((opt: Option) => void);
@@ -24,6 +25,7 @@ const props = withDefaults(
     errorMessage?: string;
   }>(),
   {
+    label: '',
     value: undefined,
     options: () => [],
     display: 'label',
@@ -200,7 +202,11 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="w-full">
+  <div class="flex flex-col w-full">
+    <label class="text-sm font-bold mb-2 empty:hidden">
+      {{ label }}
+    </label>
+
     <div ref="target" class="select">
       <div
         ref="select"

@@ -15,11 +15,11 @@ export const createState = reactive({
 export const useState = () => inject(stateSymbol) as State;
 
 export const useActions = () => {
-  // const state = useState();
+  const state = useState();
 
   const actions = {
     async submit() {
-      console.log('submit');
+      console.log('[submitted]', state.signInForm);
     },
   };
 
