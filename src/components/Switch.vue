@@ -13,9 +13,9 @@ const emit = defineEmits<{
   (evt: 'update:value', val: boolean): void;
 }>();
 
-const uid = uniqueId('toggle-switch-');
+const uid = uniqueId('switch-');
 
-const toggleSwitchValue = computed({
+const switchValue = computed({
   get: () => props.value || false,
   set: (val) => emit('update:value', val),
 });
@@ -31,7 +31,7 @@ const toggleSwitchValue = computed({
       <div class="relative">
         <input
           :id="uid"
-          v-model="toggleSwitchValue"
+          v-model="switchValue"
           v-bind="$attrs"
           type="checkbox"
           :disabled="disabled"
@@ -41,15 +41,15 @@ const toggleSwitchValue = computed({
         <div
           class="block w-14 h-8 rounded-full"
           :class="{
-            'bg-gray-400': !toggleSwitchValue || !checked,
-            'bg-primary-500': toggleSwitchValue || checked,
+            'bg-gray-400': !switchValue || !checked,
+            'bg-primary-500': switchValue || checked,
           }"
         ></div>
 
         <div
           class="dot absolute left-1 top-1 w-6 h-6 bg-white rounded-full transition"
           :class="{
-            'translate-x-full': toggleSwitchValue || checked,
+            'translate-x-full': switchValue || checked,
           }"
         ></div>
       </div>
