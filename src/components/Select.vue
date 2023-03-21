@@ -20,6 +20,7 @@ const props = withDefaults(
     clearable?: boolean;
     filterable?: boolean;
     disabled?: boolean;
+    required?: boolean;
     notFoundContent?: string;
     isInvalid?: boolean;
     errorMessage?: string;
@@ -33,6 +34,7 @@ const props = withDefaults(
     clearable: false,
     filterable: false,
     disabled: false,
+    required: false,
     notFoundContent: '--',
     isInvalid: false,
     errorMessage: '',
@@ -202,21 +204,21 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="flex flex-col w-full">
-    <label class="text-sm font-bold mb-2 empty:hidden">
+  <div class="select" :class="[disabled ? 'opacity-60' : '']">
+    <label class="select-label">
       {{ label }}
+      <span v-if="required" class="text-red-500">*</span>
     </label>
 
-    <div ref="target" class="select">
+    <div ref="target" class="relative">
       <div
         ref="select"
-        class="select-input cursor-pointer border border-slate-400 rounded w-full py-2 px-3 bg-white dark:bg-slate-800 leading-tight"
+        class="select-input"
         :class="{
-          'select-placeholder important:text-gray-400': !flux.selected,
-          'select-focus important:border-blue-600': flux.show,
-          'select-error important:border-red-500 mb-1': isInvalid || errorMessage,
-          'select-error-focus important:border-rose-500': (isInvalid || errorMessage) && flux.show,
-          'select-disabled opacity-50 cursor-not-allowed': disabled,
+          placeholder: !flux.selected,
+          focus: flux.show,
+          danger: isInvalid || errorMessage,
+          disabled: disabled,
         }"
         @click="open($refs.select, $refs.filter, $refs.menu)"
       >
@@ -283,23 +285,14 @@ onUnmounted(() => {
 
 <style lang="scss" scoped>
 .select {
+  @apply flex flex-col w-full;
+
   $border: 1px;
   $height: 40px;
-  position: relative;
 
   &-input {
-    position: relative;
-    padding-right: 2rem;
-
     &:hover .select-input-icon-clear {
       visibility: visible;
-    }
-
-    &-placeholder {
-      // color: #6c757d;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
     }
 
     &-icon {
@@ -311,7 +304,8 @@ onUnmounted(() => {
     }
 
     &-icon-clear {
-      background: #fff;
+      @apply bg-white dark:bg-slate-800;
+
       z-index: 100;
       visibility: hidden;
       color: #6c757d;
@@ -326,17 +320,11 @@ onUnmounted(() => {
 
   &-section {
     position: fixed;
-    // background: #e4ebf0;
     width: 100%;
     z-index: 10;
-    // font-size: 14px;
-    // border: 0.0625rem solid #d1d9e6;
-    // border-radius: 0.55rem;
-    // box-shadow: 6px 6px 12px #b8b9be, -6px -6px 12px #fff;
     transform: translateY(0) translateY(8px) translateY(0);
 
     &-up {
-      // box-shadow: 0 -2px 8px #ccc;
       transform: translateY(-$border) translateY(-$height) translateY(-100%);
     }
   }
@@ -365,7 +353,6 @@ onUnmounted(() => {
   }
 
   &-menu {
-    // background: #e4ebf0;
     width: 100%;
     max-height: 10rem;
     overflow: auto;
@@ -383,19 +370,6 @@ onUnmounted(() => {
       line-height: 22px;
       min-height: 32px;
       padding: 5px 12px;
-
-      &-active {
-        // color: #fff;
-        background-color: var(--primary);
-        // background-color: transparent;
-        // box-shadow: inset 2px 2px 5px #b8b9be, inset -3px -3px 7px #fff;
-
-        &:hover {
-          // color: #fff;
-          background-color: var(--primary);
-          // box-shadow: inset 2px 2px 5px #b8b9be, inset -3px -3px 7px #fff;
-        }
-      }
     }
   }
 
@@ -405,6 +379,33 @@ onUnmounted(() => {
     line-height: 22px;
     min-height: 32px;
     padding: 5px 12px;
+  }
+}
+
+.select-label {
+  @apply text-sm font-bold mb-2 empty:hidden;
+}
+
+.select-input {
+  @apply relative;
+  @apply cursor-pointer border border-slate-400 rounded w-full py-2 px-3;
+  @apply bg-white dark:bg-slate-800 leading-tight;
+
+  &.placeholder {
+    @apply text-gray-400 truncate;
+  }
+
+  &.focus {
+    @apply outline-0 ring-1 ring-primary-400 border-primary-400;
+  }
+
+  &.danger {
+    @apply border-red-500 mb-1;
+    @apply ring-red-500 border-red-500;
+  }
+
+  &.disabled {
+    @apply cursor-not-allowed;
   }
 }
 </style>

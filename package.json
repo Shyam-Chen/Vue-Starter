@@ -26,7 +26,8 @@
     "vue-qrcode-image": "^1.0.0",
     "vue-router": "^4.1.6",
     "vuedraggable": "^4.1.0",
-    "yup": "^0.32.11"
+    "yup": "^0.32.11",
+    "zod": "^3.21.4"
   },
   "devDependencies": {
     "@iconify/json": "^2.2.3",

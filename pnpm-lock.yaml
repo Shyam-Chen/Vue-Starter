@@ -39,6 +39,7 @@ specifiers:
   vue-tsc: ^1.0.22
   vuedraggable: ^4.1.0
   yup: ^0.32.11
+  zod: ^3.21.4
 
 dependencies:
   '@unocss/reset': 0.48.2
@@ -56,6 +57,7 @@ dependencies:
   vue-router: 4.1.6_vue@3.2.45
   vuedraggable: 4.1.0_vue@3.2.45
   yup: 0.32.11
+  zod: 3.21.4
 
 devDependencies:
   '@iconify/json': 2.2.3
@@ -3543,4 +3545,8 @@ packages:
       nanoclone: 0.2.1
       property-expr: 2.0.5
       toposort: 2.0.2
+    dev: false
+
+  /zod/3.21.4:
+    resolution: {integrity: sha512-m46AKbrzKVzOzs/DZgVnG5H55N1sv1M8qZU3A8RIKbs3mrACDNeIOeilDymVb2HdmP8uwshOCF4uJ8uM9rCqJw==}
     dev: false
