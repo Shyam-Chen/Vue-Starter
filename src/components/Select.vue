@@ -205,7 +205,7 @@ onUnmounted(() => {
 
 <template>
   <div class="select" :class="[disabled ? 'opacity-60' : '']">
-    <label class="select-label">
+    <label v-if="label" class="select-label">
       {{ label }}
       <span v-if="required" class="text-red-500">*</span>
     </label>
@@ -262,7 +262,7 @@ onUnmounted(() => {
               :key="item.value"
               class="select-menu-item hover:bg-gray-300 dark:hover:bg-slate-700"
               :class="{
-                'bg-blue-600 text-white important:hover:bg-blue-800': value === item.value,
+                'bg-primary-500 text-white important:hover:bg-primary-700': value === item.value,
               }"
               @click="flux.onSelect(item.value, item)"
             >
@@ -388,7 +388,7 @@ onUnmounted(() => {
 
 .select-input {
   @apply relative;
-  @apply cursor-pointer border border-slate-400 rounded w-full py-2 px-3;
+  @apply cursor-pointer border border-slate-400 rounded w-full py-2 pl-3 pr-9;
   @apply bg-white dark:bg-slate-800 leading-tight;
 
   &.placeholder {

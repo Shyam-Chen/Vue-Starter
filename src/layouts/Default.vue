@@ -212,7 +212,7 @@ onMounted(async () => {
               { label: '한국어', value: 'ko-KR' },
               { label: '正體中文', value: 'zh-TW' },
             ]"
-            class="w-50 ml-2"
+            class="min-w-50 ml-2"
             @change="flux.changeLang"
           />
         </div>

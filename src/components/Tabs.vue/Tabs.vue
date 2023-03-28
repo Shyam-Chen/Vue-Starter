@@ -54,24 +54,35 @@ const Render = () => {
 </script>
 
 <template>
-  <div class="w-full">
-    <div class="flex items-center bg-gray-100 text-gray-800">
+  <div class="w-full p-4">
+    <div class="flex items-center">
       <div
         v-for="(tab, idx) in flux.tab"
         :key="idx"
-        class="flex items-center px-5 py-2 rounded-t bg-slate-200 text-slate-500 [&:not(:first-of-type)]:ml-2 cursor-pointer"
+        class="tab"
         :class="{
-          'important:bg-white important:text-blue-600': flux.activeTab(tab, idx) === modelValue,
+          active: flux.activeTab(tab, idx) === modelValue,
         }"
         @click="flux.selectTab(tab, idx)"
       >
-        {{ tab.title }}
-        <!-- <div class="i-fa-close w-3 h-3 ml-2"></div> -->
+        {{ tab?.title }}
+        <div class="i-fa-close w-3 h-3 ml-3"></div>
       </div>
     </div>
 
-    <div class="p-4 bg-white rounded-b">
+    <div class="p-4">
       <Render />
     </div>
   </div>
 </template>
+
+<style lang="scss" scoped>
+.tab {
+  @apply flex items-center cursor-pointer my-2 px-7 pt-4 pb-3.5 border-b-2 border-transparent;
+  @apply text-xs font-medium uppercase leading-tight text-neutral-500;
+
+  &.active {
+    @apply text-primary-500 border-primary-500;
+  }
+}
+</style>
