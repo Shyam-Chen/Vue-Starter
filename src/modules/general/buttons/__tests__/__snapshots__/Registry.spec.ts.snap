@@ -20,123 +20,123 @@ exports[`Buttons 1`] = `
 </div>
 <div class=\\"flex flex-col border p-4 mb-4 gap-4\\">
   <div class=\\"mb-2\\"> Basic - The \`Button\` comes with three variants: contained (default), outlined, and text. </div>
-  <div class=\\"flex space-x-2 justify-center\\"><button type=\\"button\\" class=\\"button primary\\" data-v-a0d7c982=\\"\\">
+  <div class=\\"flex space-x-2 justify-center\\"><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button primary\\">
       <!--v-if-->Contained
     </button>
     <!--v-if-->
     <!--v-if-->
-    <!--v-if--><button class=\\"important:border-current button primary important:border-current\\" type=\\"button\\" data-v-7f177110=\\"\\">
+    <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button primary important:border-current\\" type=\\"button\\">
       <!--v-if-->Outlined
     </button>
     <!--v-if-->
     <!--v-if-->
-    <!--v-if--><button type=\\"button\\" class=\\"button primary\\" data-v-7f177110=\\"\\">
+    <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button primary\\">
       <!--v-if-->Text
     </button>
   </div>
 </div>
 <div class=\\"flex flex-col border p-4 mb-4\\">
   <div class=\\"mb-2\\">Contained</div>
-  <div class=\\"flex space-x-2 justify-center py-4\\"><button type=\\"button\\" class=\\"button primary\\" data-v-a0d7c982=\\"\\">
+  <div class=\\"flex space-x-2 justify-center py-4\\"><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button primary\\">
       <!--v-if-->Primary
     </button>
     <!--v-if-->
-    <!--v-if--><button type=\\"button\\" class=\\"button secondary\\" data-v-a0d7c982=\\"\\">
+    <!--v-if--><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button secondary\\">
       <!--v-if-->Secondary
     </button>
     <!--v-if-->
-    <!--v-if--><button type=\\"button\\" class=\\"button success\\" data-v-a0d7c982=\\"\\">
+    <!--v-if--><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button success\\">
       <!--v-if-->Success
     </button>
     <!--v-if-->
-    <!--v-if--><button type=\\"button\\" class=\\"button danger\\" data-v-a0d7c982=\\"\\">
+    <!--v-if--><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button danger\\">
       <!--v-if-->
       <div class=\\"i-fa-trash w-4 h-4\\"></div> Delete
     </button>
     <!--v-if-->
-    <!--v-if--><button type=\\"button\\" class=\\"button warning\\" data-v-a0d7c982=\\"\\">
+    <!--v-if--><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button warning\\">
       <!--v-if-->Warning
     </button>
     <!--v-if-->
-    <!--v-if--><button type=\\"button\\" class=\\"button info icon\\" data-v-a0d7c982=\\"\\">
-      <div class=\\"w-4 h-4 i-fa-question\\" data-v-a0d7c982=\\"\\"></div>
+    <!--v-if--><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button info icon\\">
+      <div data-v-a0d7c982=\\"\\" class=\\"w-4 h-4 i-fa-question\\"></div>
     </button>
     <!--v-if-->
     <!--v-if-->
   </div>
-  <div class=\\"flex space-x-2 justify-center bg-white dark:bg-slate-800 rounded-md shadow-md py-4\\"><button type=\\"button\\" class=\\"button primary\\" data-v-a0d7c982=\\"\\">
+  <div class=\\"flex space-x-2 justify-center bg-white dark:bg-slate-800 rounded-md shadow-md py-4\\"><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button primary\\">
       <!--v-if-->Primary
     </button>
     <!--v-if-->
-    <!--v-if--><button type=\\"button\\" class=\\"button secondary\\" data-v-a0d7c982=\\"\\">
+    <!--v-if--><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button secondary\\">
       <!--v-if-->Secondary
     </button>
     <!--v-if-->
-    <!--v-if--><button type=\\"button\\" class=\\"button success icon\\" data-v-a0d7c982=\\"\\">
-      <div class=\\"w-4 h-4 i-fa-plus\\" data-v-a0d7c982=\\"\\"></div>
+    <!--v-if--><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button success icon\\">
+      <div data-v-a0d7c982=\\"\\" class=\\"w-4 h-4 i-fa-plus\\"></div>
     </button>
     <!--v-if-->
-    <!--v-if--><button type=\\"button\\" class=\\"button danger\\" data-v-a0d7c982=\\"\\">
+    <!--v-if--><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button danger\\">
       <!--v-if-->Danger
     </button>
     <!--v-if-->
-    <!--v-if--><button type=\\"button\\" class=\\"button warning\\" data-v-a0d7c982=\\"\\">
+    <!--v-if--><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button warning\\">
       <!--v-if-->Warning
     </button>
     <!--v-if-->
-    <!--v-if--><button type=\\"button\\" class=\\"button info\\" data-v-a0d7c982=\\"\\">
+    <!--v-if--><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button info\\">
       <!--v-if-->Info
     </button>
     <!--v-if-->
     <!--v-if-->
   </div>
-  <div class=\\"flex space-x-2 justify-center py-4\\"><button type=\\"button\\" class=\\"button primary opacity-60 cursor-not-allowed\\" disabled=\\"\\" data-v-a0d7c982=\\"\\">
+  <div class=\\"flex space-x-2 justify-center py-4\\"><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button primary opacity-60 cursor-not-allowed\\" disabled=\\"\\">
       <!--v-if-->Primary
     </button>
     <!--v-if-->
-    <!--v-if--><button type=\\"button\\" class=\\"button secondary opacity-60 cursor-not-allowed\\" disabled=\\"\\" data-v-a0d7c982=\\"\\">
+    <!--v-if--><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button secondary opacity-60 cursor-not-allowed\\" disabled=\\"\\">
       <!--v-if-->Secondary
     </button>
     <!--v-if-->
-    <!--v-if--><button type=\\"button\\" class=\\"button success opacity-60 cursor-not-allowed\\" disabled=\\"\\" data-v-a0d7c982=\\"\\">
+    <!--v-if--><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button success opacity-60 cursor-not-allowed\\" disabled=\\"\\">
       <!--v-if-->Success
     </button>
     <!--v-if-->
-    <!--v-if--><button type=\\"button\\" class=\\"button danger opacity-60 cursor-not-allowed\\" disabled=\\"\\" data-v-a0d7c982=\\"\\">
+    <!--v-if--><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button danger opacity-60 cursor-not-allowed\\" disabled=\\"\\">
       <!--v-if-->Danger
     </button>
     <!--v-if-->
-    <!--v-if--><button type=\\"button\\" class=\\"button warning opacity-60 cursor-not-allowed\\" disabled=\\"\\" data-v-a0d7c982=\\"\\">
+    <!--v-if--><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button warning opacity-60 cursor-not-allowed\\" disabled=\\"\\">
       <!--v-if-->Warning
     </button>
     <!--v-if-->
-    <!--v-if--><button type=\\"button\\" class=\\"button info opacity-60 cursor-not-allowed\\" disabled=\\"\\" data-v-a0d7c982=\\"\\">
+    <!--v-if--><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button info opacity-60 cursor-not-allowed\\" disabled=\\"\\">
       <!--v-if-->Info
     </button>
     <!--v-if-->
     <!--v-if-->
   </div>
-  <div class=\\"flex space-x-2 justify-center bg-white dark:bg-slate-800 rounded-md shadow-md py-4\\"><button type=\\"button\\" class=\\"button primary opacity-60 cursor-not-allowed\\" disabled=\\"\\" data-v-a0d7c982=\\"\\">
+  <div class=\\"flex space-x-2 justify-center bg-white dark:bg-slate-800 rounded-md shadow-md py-4\\"><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button primary opacity-60 cursor-not-allowed\\" disabled=\\"\\">
       <!--v-if-->Primary
     </button>
     <!--v-if-->
-    <!--v-if--><button type=\\"button\\" class=\\"button secondary opacity-60 cursor-not-allowed\\" disabled=\\"\\" data-v-a0d7c982=\\"\\">
+    <!--v-if--><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button secondary opacity-60 cursor-not-allowed\\" disabled=\\"\\">
       <!--v-if-->Secondary
     </button>
     <!--v-if-->
-    <!--v-if--><button type=\\"button\\" class=\\"button success opacity-60 cursor-not-allowed\\" disabled=\\"\\" data-v-a0d7c982=\\"\\">
+    <!--v-if--><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button success opacity-60 cursor-not-allowed\\" disabled=\\"\\">
       <!--v-if-->Success
     </button>
     <!--v-if-->
-    <!--v-if--><button type=\\"button\\" class=\\"button danger opacity-60 cursor-not-allowed\\" disabled=\\"\\" data-v-a0d7c982=\\"\\">
+    <!--v-if--><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button danger opacity-60 cursor-not-allowed\\" disabled=\\"\\">
       <!--v-if-->Danger
     </button>
     <!--v-if-->
-    <!--v-if--><button type=\\"button\\" class=\\"button warning opacity-60 cursor-not-allowed\\" disabled=\\"\\" data-v-a0d7c982=\\"\\">
+    <!--v-if--><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button warning opacity-60 cursor-not-allowed\\" disabled=\\"\\">
       <!--v-if-->Warning
     </button>
     <!--v-if-->
-    <!--v-if--><button type=\\"button\\" class=\\"button info opacity-60 cursor-not-allowed\\" disabled=\\"\\" data-v-a0d7c982=\\"\\">
+    <!--v-if--><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button info opacity-60 cursor-not-allowed\\" disabled=\\"\\">
       <!--v-if-->Info
     </button>
     <!--v-if-->
@@ -146,105 +146,105 @@ exports[`Buttons 1`] = `
 <div class=\\"flex flex-col border p-4 mb-4\\">
   <div class=\\"mb-2\\">Outlined</div>
   <div class=\\"flex space-x-2 justify-center py-4\\">
-    <!--v-if--><button class=\\"important:border-current button primary icon important:border-current\\" type=\\"button\\" data-v-7f177110=\\"\\">
-      <div class=\\"w-4 h-4 i-fa-download\\" data-v-7f177110=\\"\\"></div>
+    <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button primary icon important:border-current\\" type=\\"button\\">
+      <div data-v-7f177110=\\"\\" class=\\"w-4 h-4 i-fa-download\\"></div>
     </button>
     <!--v-if-->
-    <!--v-if--><button class=\\"important:border-current button secondary important:border-current\\" type=\\"button\\" data-v-7f177110=\\"\\">
+    <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button secondary important:border-current\\" type=\\"button\\">
       <!--v-if-->Secondary
     </button>
     <!--v-if-->
-    <!--v-if--><button class=\\"important:border-current button success important:border-current\\" type=\\"button\\" data-v-7f177110=\\"\\">
+    <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button success important:border-current\\" type=\\"button\\">
       <!--v-if-->Success
     </button>
     <!--v-if-->
-    <!--v-if--><button class=\\"important:border-current button danger important:border-current\\" type=\\"button\\" data-v-7f177110=\\"\\">
+    <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button danger important:border-current\\" type=\\"button\\">
       <!--v-if-->Danger
     </button>
     <!--v-if-->
-    <!--v-if--><button class=\\"important:border-current button warning important:border-current\\" type=\\"button\\" data-v-7f177110=\\"\\">
+    <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button warning important:border-current\\" type=\\"button\\">
       <!--v-if-->Warning
     </button>
     <!--v-if-->
-    <!--v-if--><button class=\\"important:border-current button info important:border-current\\" type=\\"button\\" data-v-7f177110=\\"\\">
+    <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button info important:border-current\\" type=\\"button\\">
       <!--v-if--> View <div class=\\"i-bx-detail w-4 h-4\\"></div>
     </button>
     <!--v-if-->
   </div>
   <div class=\\"flex space-x-2 justify-center bg-white dark:bg-slate-800 rounded-md shadow-md py-4\\">
-    <!--v-if--><button class=\\"important:border-current button primary important:border-current\\" type=\\"button\\" data-v-7f177110=\\"\\">
+    <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button primary important:border-current\\" type=\\"button\\">
       <!--v-if-->Primary
     </button>
     <!--v-if-->
-    <!--v-if--><button class=\\"important:border-current button secondary important:border-current\\" type=\\"button\\" data-v-7f177110=\\"\\">
+    <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button secondary important:border-current\\" type=\\"button\\">
       <!--v-if-->Secondary
     </button>
     <!--v-if-->
-    <!--v-if--><button class=\\"important:border-current button success important:border-current\\" type=\\"button\\" data-v-7f177110=\\"\\">
+    <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button success important:border-current\\" type=\\"button\\">
       <!--v-if-->Success
     </button>
     <!--v-if-->
-    <!--v-if--><button class=\\"important:border-current button danger important:border-current\\" type=\\"button\\" data-v-7f177110=\\"\\">
+    <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button danger important:border-current\\" type=\\"button\\">
       <!--v-if-->Danger
     </button>
     <!--v-if-->
-    <!--v-if--><button class=\\"important:border-current button warning icon important:border-current\\" type=\\"button\\" data-v-7f177110=\\"\\">
-      <div class=\\"w-4 h-4 i-fa-exclamation\\" data-v-7f177110=\\"\\"></div>
+    <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button warning icon important:border-current\\" type=\\"button\\">
+      <div data-v-7f177110=\\"\\" class=\\"w-4 h-4 i-fa-exclamation\\"></div>
     </button>
     <!--v-if-->
-    <!--v-if--><button class=\\"important:border-current button info important:border-current\\" type=\\"button\\" data-v-7f177110=\\"\\">
+    <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button info important:border-current\\" type=\\"button\\">
       <!--v-if-->Info
     </button>
     <!--v-if-->
   </div>
   <div class=\\"flex space-x-2 justify-center py-4\\">
-    <!--v-if--><button class=\\"important:border-current button primary opacity-60 cursor-not-allowed important:border-current\\" type=\\"button\\" disabled=\\"\\" data-v-7f177110=\\"\\">
+    <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button primary opacity-60 cursor-not-allowed important:border-current\\" type=\\"button\\" disabled=\\"\\">
       <!--v-if-->Primary
     </button>
     <!--v-if-->
-    <!--v-if--><button class=\\"important:border-current button secondary opacity-60 cursor-not-allowed important:border-current\\" type=\\"button\\" disabled=\\"\\" data-v-7f177110=\\"\\">
+    <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button secondary opacity-60 cursor-not-allowed important:border-current\\" type=\\"button\\" disabled=\\"\\">
       <!--v-if-->Secondary
     </button>
     <!--v-if-->
-    <!--v-if--><button class=\\"important:border-current button success opacity-60 cursor-not-allowed important:border-current\\" type=\\"button\\" disabled=\\"\\" data-v-7f177110=\\"\\">
+    <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button success opacity-60 cursor-not-allowed important:border-current\\" type=\\"button\\" disabled=\\"\\">
       <!--v-if-->Success
     </button>
     <!--v-if-->
-    <!--v-if--><button class=\\"important:border-current button danger opacity-60 cursor-not-allowed important:border-current\\" type=\\"button\\" disabled=\\"\\" data-v-7f177110=\\"\\">
+    <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button danger opacity-60 cursor-not-allowed important:border-current\\" type=\\"button\\" disabled=\\"\\">
       <!--v-if-->Danger
     </button>
     <!--v-if-->
-    <!--v-if--><button class=\\"important:border-current button warning opacity-60 cursor-not-allowed important:border-current\\" type=\\"button\\" disabled=\\"\\" data-v-7f177110=\\"\\">
+    <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button warning opacity-60 cursor-not-allowed important:border-current\\" type=\\"button\\" disabled=\\"\\">
       <!--v-if-->Warning
     </button>
     <!--v-if-->
-    <!--v-if--><button class=\\"important:border-current button info opacity-60 cursor-not-allowed important:border-current\\" type=\\"button\\" disabled=\\"\\" data-v-7f177110=\\"\\">
+    <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button info opacity-60 cursor-not-allowed important:border-current\\" type=\\"button\\" disabled=\\"\\">
       <!--v-if-->Info
     </button>
     <!--v-if-->
   </div>
   <div class=\\"flex space-x-2 justify-center bg-white dark:bg-slate-800 rounded-md shadow-md py-4\\">
-    <!--v-if--><button class=\\"important:border-current button primary opacity-60 cursor-not-allowed important:border-current\\" type=\\"button\\" disabled=\\"\\" data-v-7f177110=\\"\\">
+    <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button primary opacity-60 cursor-not-allowed important:border-current\\" type=\\"button\\" disabled=\\"\\">
       <!--v-if-->Primary
     </button>
     <!--v-if-->
-    <!--v-if--><button class=\\"important:border-current button secondary opacity-60 cursor-not-allowed important:border-current\\" type=\\"button\\" disabled=\\"\\" data-v-7f177110=\\"\\">
+    <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button secondary opacity-60 cursor-not-allowed important:border-current\\" type=\\"button\\" disabled=\\"\\">
       <!--v-if-->Secondary
     </button>
     <!--v-if-->
-    <!--v-if--><button class=\\"important:border-current button success opacity-60 cursor-not-allowed important:border-current\\" type=\\"button\\" disabled=\\"\\" data-v-7f177110=\\"\\">
+    <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button success opacity-60 cursor-not-allowed important:border-current\\" type=\\"button\\" disabled=\\"\\">
       <!--v-if-->Success
     </button>
     <!--v-if-->
-    <!--v-if--><button class=\\"important:border-current button danger opacity-60 cursor-not-allowed important:border-current\\" type=\\"button\\" disabled=\\"\\" data-v-7f177110=\\"\\">
+    <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button danger opacity-60 cursor-not-allowed important:border-current\\" type=\\"button\\" disabled=\\"\\">
       <!--v-if-->Danger
     </button>
     <!--v-if-->
-    <!--v-if--><button class=\\"important:border-current button warning opacity-60 cursor-not-allowed important:border-current\\" type=\\"button\\" disabled=\\"\\" data-v-7f177110=\\"\\">
+    <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button warning opacity-60 cursor-not-allowed important:border-current\\" type=\\"button\\" disabled=\\"\\">
       <!--v-if-->Warning
     </button>
     <!--v-if-->
-    <!--v-if--><button class=\\"important:border-current button info opacity-60 cursor-not-allowed important:border-current\\" type=\\"button\\" disabled=\\"\\" data-v-7f177110=\\"\\">
+    <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button info opacity-60 cursor-not-allowed important:border-current\\" type=\\"button\\" disabled=\\"\\">
       <!--v-if-->Info
     </button>
     <!--v-if-->
@@ -254,105 +254,105 @@ exports[`Buttons 1`] = `
   <div class=\\"mb-2\\">Text</div>
   <div class=\\"flex space-x-2 justify-center py-4\\">
     <!--v-if-->
-    <!--v-if--><button type=\\"button\\" class=\\"button primary\\" data-v-7f177110=\\"\\">
+    <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button primary\\">
       <!--v-if-->Primary
     </button>
     <!--v-if-->
-    <!--v-if--><button type=\\"button\\" class=\\"button secondary icon\\" data-v-7f177110=\\"\\">
-      <div class=\\"w-4 h-4 i-fa-share-square-o\\" data-v-7f177110=\\"\\"></div>
+    <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button secondary icon\\">
+      <div data-v-7f177110=\\"\\" class=\\"w-4 h-4 i-fa-share-square-o\\"></div>
     </button>
     <!--v-if-->
-    <!--v-if--><button type=\\"button\\" class=\\"button success\\" data-v-7f177110=\\"\\">
+    <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button success\\">
       <!--v-if-->Success
     </button>
     <!--v-if-->
-    <!--v-if--><button type=\\"button\\" class=\\"button danger\\" data-v-7f177110=\\"\\">
+    <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button danger\\">
       <!--v-if-->Danger
     </button>
     <!--v-if-->
-    <!--v-if--><button type=\\"button\\" class=\\"button warning\\" data-v-7f177110=\\"\\">
+    <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button warning\\">
       <!--v-if-->Warning
     </button>
     <!--v-if-->
-    <!--v-if--><button type=\\"button\\" class=\\"button info\\" data-v-7f177110=\\"\\">
+    <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button info\\">
       <!--v-if-->Info
     </button>
   </div>
   <div class=\\"flex space-x-2 justify-center bg-white dark:bg-slate-800 rounded-md shadow-md py-4\\">
     <!--v-if-->
-    <!--v-if--><button type=\\"button\\" class=\\"button primary\\" data-v-7f177110=\\"\\">
+    <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button primary\\">
       <!--v-if--> Send <div class=\\"i-fa-send w-4 h-4\\"></div>
     </button>
     <!--v-if-->
-    <!--v-if--><button type=\\"button\\" class=\\"button secondary\\" data-v-7f177110=\\"\\">
+    <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button secondary\\">
       <!--v-if-->Secondary
     </button>
     <!--v-if-->
-    <!--v-if--><button type=\\"button\\" class=\\"button success\\" data-v-7f177110=\\"\\">
+    <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button success\\">
       <!--v-if-->Success
     </button>
     <!--v-if-->
-    <!--v-if--><button type=\\"button\\" class=\\"button danger icon\\" data-v-7f177110=\\"\\">
-      <div class=\\"w-4 h-4 i-fa-minus\\" data-v-7f177110=\\"\\"></div>
+    <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button danger icon\\">
+      <div data-v-7f177110=\\"\\" class=\\"w-4 h-4 i-fa-minus\\"></div>
     </button>
     <!--v-if-->
-    <!--v-if--><button type=\\"button\\" class=\\"button warning\\" data-v-7f177110=\\"\\">
+    <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button warning\\">
       <!--v-if-->Warning
     </button>
     <!--v-if-->
-    <!--v-if--><button type=\\"button\\" class=\\"button info\\" data-v-7f177110=\\"\\">
+    <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button info\\">
       <!--v-if-->Info
     </button>
   </div>
   <div class=\\"flex space-x-2 justify-center py-4\\">
     <!--v-if-->
-    <!--v-if--><button type=\\"button\\" class=\\"button primary opacity-60 cursor-not-allowed\\" disabled=\\"\\" data-v-7f177110=\\"\\">
+    <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button primary opacity-60 cursor-not-allowed\\" disabled=\\"\\">
       <!--v-if-->Primary
     </button>
     <!--v-if-->
-    <!--v-if--><button type=\\"button\\" class=\\"button secondary opacity-60 cursor-not-allowed\\" disabled=\\"\\" data-v-7f177110=\\"\\">
+    <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button secondary opacity-60 cursor-not-allowed\\" disabled=\\"\\">
       <!--v-if-->Secondary
     </button>
     <!--v-if-->
-    <!--v-if--><button type=\\"button\\" class=\\"button success opacity-60 cursor-not-allowed\\" disabled=\\"\\" data-v-7f177110=\\"\\">
+    <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button success opacity-60 cursor-not-allowed\\" disabled=\\"\\">
       <!--v-if-->Success
     </button>
     <!--v-if-->
-    <!--v-if--><button type=\\"button\\" class=\\"button danger opacity-60 cursor-not-allowed\\" disabled=\\"\\" data-v-7f177110=\\"\\">
+    <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button danger opacity-60 cursor-not-allowed\\" disabled=\\"\\">
       <!--v-if-->Danger
     </button>
     <!--v-if-->
-    <!--v-if--><button type=\\"button\\" class=\\"button warning opacity-60 cursor-not-allowed\\" disabled=\\"\\" data-v-7f177110=\\"\\">
+    <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button warning opacity-60 cursor-not-allowed\\" disabled=\\"\\">
       <!--v-if-->Warning
     </button>
     <!--v-if-->
-    <!--v-if--><button type=\\"button\\" class=\\"button info opacity-60 cursor-not-allowed\\" disabled=\\"\\" data-v-7f177110=\\"\\">
+    <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button info opacity-60 cursor-not-allowed\\" disabled=\\"\\">
       <!--v-if-->Info
     </button>
   </div>
   <div class=\\"flex space-x-2 justify-center bg-white dark:bg-slate-800 rounded-md shadow-md py-4\\">
     <!--v-if-->
-    <!--v-if--><button type=\\"button\\" class=\\"button primary opacity-60 cursor-not-allowed\\" disabled=\\"\\" data-v-7f177110=\\"\\">
+    <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button primary opacity-60 cursor-not-allowed\\" disabled=\\"\\">
       <!--v-if-->Primary
     </button>
     <!--v-if-->
-    <!--v-if--><button type=\\"button\\" class=\\"button secondary opacity-60 cursor-not-allowed\\" disabled=\\"\\" data-v-7f177110=\\"\\">
+    <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button secondary opacity-60 cursor-not-allowed\\" disabled=\\"\\">
       <!--v-if-->Secondary
     </button>
     <!--v-if-->
-    <!--v-if--><button type=\\"button\\" class=\\"button success opacity-60 cursor-not-allowed\\" disabled=\\"\\" data-v-7f177110=\\"\\">
+    <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button success opacity-60 cursor-not-allowed\\" disabled=\\"\\">
       <!--v-if-->Success
     </button>
     <!--v-if-->
-    <!--v-if--><button type=\\"button\\" class=\\"button danger opacity-60 cursor-not-allowed\\" disabled=\\"\\" data-v-7f177110=\\"\\">
+    <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button danger opacity-60 cursor-not-allowed\\" disabled=\\"\\">
       <!--v-if-->Danger
     </button>
     <!--v-if-->
-    <!--v-if--><button type=\\"button\\" class=\\"button warning opacity-60 cursor-not-allowed\\" disabled=\\"\\" data-v-7f177110=\\"\\">
+    <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button warning opacity-60 cursor-not-allowed\\" disabled=\\"\\">
       <!--v-if-->Warning
     </button>
     <!--v-if-->
-    <!--v-if--><button type=\\"button\\" class=\\"button info opacity-60 cursor-not-allowed\\" disabled=\\"\\" data-v-7f177110=\\"\\">
+    <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button info opacity-60 cursor-not-allowed\\" disabled=\\"\\">
       <!--v-if-->Info
     </button>
   </div>
