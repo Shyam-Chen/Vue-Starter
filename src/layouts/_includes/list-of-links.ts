@@ -107,11 +107,6 @@ const links = [
     ],
   },
   {
-    icon: 'i-carbon-cloud-service-management',
-    name: 'State management',
-    sub: [{ name: 'CRUD operations', to: '/state-management/crud-operations' }],
-  },
-  {
     icon: 'i-bx-line-chart',
     name: 'Charts',
     sub: [
@@ -132,13 +127,14 @@ const links = [
       { name: 'EventSource', to: '/network/eventsource' },
     ],
   },
-  { name: 'Management' },
-  { icon: 'i-mdi-user-group', name: 'User List', to: '/user-list' },
+  { name: 'Playground' },
   {
-    icon: 'i-carbon-two-factor-authentication',
-    name: 'Auth',
-    sub: [{ name: 'Two-factor', to: '/auth/two-factor' }],
+    icon: 'i-carbon-cloud-service-management',
+    name: 'CRUD Operations',
+    to: '/state-management/crud-operations',
   },
+  { icon: 'i-mdi-user-group', name: 'User List', to: '/user-list' },
+  { icon: 'i-carbon-two-factor-authentication', name: 'Two-factor Auth', to: '/auth/two-factor' },
 ] as Link[];
 
 const createLevel = (arr: Link[], level = 1): Link[] => {

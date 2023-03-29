@@ -84,6 +84,7 @@ onMounted(() => {
       :columns="flux.columns"
       :rows="state.dataSource"
       :count="state.dataCount"
+      :loading="state.loading"
       @change="actions.changeTodos"
     >
       <template #completed="{ row }">

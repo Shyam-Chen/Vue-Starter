@@ -2,8 +2,7 @@
 import { reactive, watch, onMounted } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import { useLocaler, useLocale } from 'vue-localer';
-import { useIdle } from '@vueuse/core';
-// import { useIdle, useDark, useToggle } from '@vueuse/core';
+import { useIdle, useDark, useToggle } from '@vueuse/core';
 
 import TextField from '~/components/TextField.vue';
 import Dropdown from '~/components/Dropdown.vue';
@@ -21,8 +20,8 @@ const route = useRoute();
 const localer = useLocaler();
 const locale = useLocale();
 const { idle } = useIdle(30 * 60 * 1000);
-// const isDark = useDark();
-// const toggleDark = useToggle(isDark);
+const isDark = useDark();
+const toggleDark = useToggle(isDark);
 
 const flux = reactive({
   user: {} as any,
@@ -120,7 +119,18 @@ onMounted(async () => {
         @focus="flux.searchDialog = true"
       />
 
-      <Dropdown class="ml-6">
+      <Button
+        variant="text"
+        :icon="
+          isDark
+            ? 'i-material-symbols-dark-mode-outline-rounded'
+            : 'i-material-symbols-light-mode-outline'
+        "
+        class="ml-4"
+        @click="toggleDark()"
+      />
+
+      <Dropdown class="ml-4">
         <div
           class="text-white bg-primary-600 rounded-full w-10 h-10 flex justify-center items-center cursor-pointer transition hover:scale-125"
         >
@@ -193,13 +203,6 @@ onMounted(async () => {
         </div>
 
         <div></div>
-
-        <!-- <div class="flex">
-          <Button @click="toggleDark()">
-            <div class="inline-block align-middle i-carbon-sun dark:i-carbon-moon w-5 h-5"></div>
-            {{ isDark ? 'Dark' : 'Light' }}
-          </Button>
-        </div> -->
 
         <div class="flex items-center">
           <div class="i-fa-language w-6 h-6"></div>

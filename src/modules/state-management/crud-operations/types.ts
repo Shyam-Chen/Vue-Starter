@@ -16,6 +16,8 @@ export interface State {
     filter?: number;
   };
 
+  loading: boolean;
+
   dataSource: TodoItem[];
   dataCount: number;
 

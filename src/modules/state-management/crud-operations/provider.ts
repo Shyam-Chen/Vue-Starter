@@ -10,6 +10,8 @@ export const stateSymbol = Symbol('/state-management/crud-operations');
 export const createState = reactive<State>({
   searchConditions: { filter: 0 },
 
+  loading: false,
+
   dataSource: [],
   dataCount: 0,
 
@@ -34,7 +36,9 @@ export const useActions = () => {
       actions.todosList();
     },
     async todosList() {
+      state.loading = true;
       await todosApi.post(state.searchConditions).execute();
+      state.loading = false;
 
       state.dataSource = todosApi.data.value.result;
       state.dataCount = todosApi.data.value.total;
