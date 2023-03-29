@@ -6,5 +6,5 @@ WORKDIR ${HOME}
 ADD . $HOME
 
 RUN npm install -g pnpm caddy-npm
-RUN pnpm install --frozen-lockfile
+RUN pnpm install
 RUN npx playwright install --with-deps

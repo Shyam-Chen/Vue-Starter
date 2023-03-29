@@ -6,7 +6,7 @@ WORKDIR ${HOME}
 ADD . $HOME
 
 RUN npm install -g pnpm
-RUN pnpm install --frozen-lockfile
+RUN pnpm install
 
 ARG api_url
 ENV API_URL=$api_url
