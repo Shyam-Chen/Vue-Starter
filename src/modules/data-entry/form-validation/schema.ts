@@ -1,9 +1,7 @@
 import { computed, toRef } from 'vue';
-import { useSchema } from 'vue-formor';
+import { useYupSchema, useZodSchema } from 'vue-formor';
 import { string } from 'yup';
 import { z } from 'zod';
-
-import { useSchema as useSchemaZ } from '~/composables/useSchema';
 
 import { useState } from './provider';
 
@@ -16,7 +14,7 @@ const msgs = {
 export const useYupFormSchema = () => {
   const state = useState();
 
-  const schema = useSchema(
+  const schema = useYupSchema(
     [
       [computed(() => state.yupForm.username), computed(() => string().required(msgs.required))],
       [
@@ -40,7 +38,7 @@ export const useZodFormSchema = () => {
 
   const string = () => z.string({ required_error: msgs.required });
 
-  const schema = useSchemaZ(
+  const schema = useZodSchema(
     z.object({
       username: string().nonempty(msgs.required),
       password: string().min(8, msgs.min).nonempty(msgs.required),
