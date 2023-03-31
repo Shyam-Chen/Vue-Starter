@@ -46,7 +46,7 @@ schema.validate();
   </div>
 
   <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Basic</div>
+    <div class="mb-2">Basic (Tabs or Tables)</div>
 
     <pre>{{ state.errors }}</pre>
   </div>

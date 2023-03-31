@@ -1,126 +1,75 @@
 <script lang="ts" setup>
-import { ref, onMounted } from 'vue';
-import { useDark } from '@vueuse/core';
-import highcharts from 'highcharts';
+import { ref } from 'vue';
+
+import Chart from '~/components/Chart.vue';
 
 // import { useState, useActions, useComputeds } from './provider';
-
-const isDark = useDark();
 
 // const state = useState();
 // const actions = useActions();
 // const computeds = useComputeds();
 
-const overview = ref();
-const performance = ref();
-
-// const flux = reactive({});
-
-onMounted(() => {
-  if (isDark.value) {
-    highcharts.setOptions({
-      chart: {
-        backgroundColor: 'rgb(30 41 59)',
-      },
-      xAxis: {
-        labels: {
-          style: {
-            color: '#cbd5e1',
-          },
-        },
-      },
-      yAxis: {
-        labels: {
-          style: {
-            color: '#cbd5e1',
-          },
-        },
-      },
-      legend: {
-        itemStyle: {
-          color: '#94a3b8',
-        },
-        itemHoverStyle: {
-          color: '#e2e8f0',
-        },
-      },
-    });
-  }
-
-  highcharts.chart(overview.value, {
-    accessibility: {
-      enabled: false,
-    },
-    credits: {
-      enabled: false,
-    },
+const overview = ref({
+  title: {
+    text: '',
+  },
+  xAxis: {
+    categories: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+  },
+  yAxis: {
     title: {
       text: '',
     },
-    xAxis: {
-      categories: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+  },
+  tooltip: {
+    shared: true,
+  },
+  series: [
+    {
+      type: 'spline',
+      name: '2021',
+      data: [40, 68, 86, 74, 56, 60, 87],
+      color: '#6366f1',
     },
-    yAxis: {
-      title: {
-        text: '',
-      },
+    {
+      type: 'spline',
+      name: '2022',
+      data: [65, 78, 66, 44, 56, 67, 75],
+      color: '#ec4899',
     },
-    tooltip: {
-      shared: true,
-    },
-    series: [
-      {
-        type: 'spline',
-        name: '2021',
-        data: [40, 68, 86, 74, 56, 60, 87],
-        color: '#6366f1',
-      },
-      {
-        type: 'spline',
-        name: '2022',
-        data: [65, 78, 66, 44, 56, 67, 75],
-        color: '#ec4899',
-      },
-    ],
-  });
+  ],
+});
 
-  highcharts.chart(performance.value, {
-    accessibility: {
-      enabled: false,
-    },
-    credits: {
-      enabled: false,
-    },
+const performance = ref({
+  title: {
+    text: '',
+  },
+  xAxis: {
+    categories: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+    crosshair: true,
+  },
+  yAxis: {
     title: {
       text: '',
     },
-    xAxis: {
-      categories: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-      crosshair: true,
+  },
+  tooltip: {
+    shared: true,
+  },
+  series: [
+    {
+      type: 'column',
+      name: '2021',
+      data: [27, 68, 86, 74, 10, 4, 87],
+      color: '#6366f1',
     },
-    yAxis: {
-      title: {
-        text: '',
-      },
+    {
+      type: 'column',
+      name: '2022',
+      data: [30, 78, 56, 34, 100, 45, 13],
+      color: '#ec4899',
     },
-    tooltip: {
-      shared: true,
-    },
-    series: [
-      {
-        type: 'column',
-        name: '2021',
-        data: [27, 68, 86, 74, 10, 4, 87],
-        color: '#6366f1',
-      },
-      {
-        type: 'column',
-        name: '2022',
-        data: [30, 78, 56, 34, 100, 45, 13],
-        color: '#ec4899',
-      },
-    ],
-  });
+  ],
 });
 </script>
 
@@ -265,7 +214,7 @@ onMounted(() => {
             <div class="chartjs-size-monitor-shrink"><div class=""></div></div>
           </div>
 
-          <div ref="overview"></div>
+          <Chart :options="overview" />
         </div>
       </div>
     </div>
@@ -291,7 +240,7 @@ onMounted(() => {
             <div class="chartjs-size-monitor-shrink"><div class=""></div></div>
           </div>
 
-          <div ref="performance"></div>
+          <Chart :options="performance" />
         </div>
       </div>
     </div>

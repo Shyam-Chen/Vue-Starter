@@ -1,58 +1,104 @@
 <script lang="ts" setup>
+import { ref, watch } from 'vue';
 import { useDark } from '@vueuse/core';
 import highcharts from 'highcharts';
-// import patternFill from 'highcharts/modules/pattern-fill';
 import { Chart as HighChart } from 'highcharts-vue';
+import merge from 'lodash/merge';
 
-// patternFill(highcharts);
+defineProps<{
+  options?: highcharts.Options | unknown;
+}>();
 
 const isDark = useDark();
 
-highcharts.setOptions({
+const theme = ref({});
+
+const initialOptions = {
   accessibility: {
     enabled: false,
   },
   credits: {
     enabled: false,
   },
-});
+};
 
-if (isDark.value) {
-  highcharts.setOptions({
-    chart: {
-      backgroundColor: 'rgb(30 41 59)',
-    },
-    xAxis: {
-      labels: {
-        style: {
-          color: '#cbd5e1',
+watch(
+  () => isDark.value,
+  () => {
+    if (isDark.value) {
+      theme.value = {
+        ...initialOptions,
+        chart: {
+          backgroundColor: '#1e293b',
         },
-      },
-    },
-    yAxis: {
-      labels: {
-        style: {
-          color: '#cbd5e1',
+        xAxis: {
+          labels: {
+            style: {
+              color: '#cbd5e1',
+            },
+          },
         },
-      },
-      title: {
-        style: {
-          color: '#cbd5e1',
+        yAxis: {
+          labels: {
+            style: {
+              color: '#cbd5e1',
+            },
+          },
+          title: {
+            style: {
+              color: '#cbd5e1',
+            },
+          },
         },
-      },
-    },
-    legend: {
-      itemStyle: {
-        color: '#94a3b8',
-      },
-      itemHoverStyle: {
-        color: '#e2e8f0',
-      },
-    },
-  });
-}
+        legend: {
+          itemStyle: {
+            color: '#94a3b8',
+          },
+          itemHoverStyle: {
+            color: '#e2e8f0',
+          },
+        },
+      };
+    } else {
+      theme.value = {
+        ...initialOptions,
+        chart: {
+          backgroundColor: '#ffffff',
+        },
+        xAxis: {
+          labels: {
+            style: {
+              color: '#666666',
+            },
+          },
+        },
+        yAxis: {
+          labels: {
+            style: {
+              color: '#666666',
+            },
+          },
+          title: {
+            style: {
+              color: '#666666',
+            },
+          },
+        },
+        legend: {
+          itemStyle: {
+            color: '#333333',
+          },
+          itemHoverStyle: {
+            color: '#000000',
+          },
+        },
+      };
+    }
+  },
+  { immediate: true },
+);
 </script>
 
 <template>
-  <HighChart v-bind="$attrs" :highcharts="highcharts" />
+  <HighChart v-bind="$attrs" :highcharts="highcharts" :options="merge(options, theme)" />
 </template>

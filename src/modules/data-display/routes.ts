@@ -22,6 +22,12 @@ export default [
     beforeEnter: [auth],
   },
   {
+    path: '/data-display/popover',
+    component: () => import('~/modules/data-display/popover/Registry.vue'),
+    meta: { layout: 'default' },
+    beforeEnter: [auth],
+  },
+  {
     path: '/data-display/data-tables',
     component: () => import('~/modules/data-display/data-tables/Registry.vue'),
     meta: { layout: 'default' },

@@ -121,11 +121,7 @@ onMounted(async () => {
 
       <Button
         variant="text"
-        :icon="
-          isDark
-            ? 'i-material-symbols-dark-mode-outline-rounded'
-            : 'i-material-symbols-light-mode-outline'
-        "
+        :icon="isDark ? 'i-material-symbols-dark-mode-rounded' : 'i-material-symbols-light-mode'"
         class="ml-4"
         @click="toggleDark()"
       />
