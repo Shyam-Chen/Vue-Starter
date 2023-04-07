@@ -7,18 +7,20 @@ import useValidationMessages from '~/composables/useValidationMessages';
 import { useState } from './provider';
 
 export const useSignInFormSchema = () => {
-  const messages = $(useValidationMessages());
+  const messages = useValidationMessages();
   const state = useState();
 
   const schema = useSchema(
     [
       [
         computed(() => state.signInForm.username),
-        computed(() => string().required(messages.required)),
+        computed(() => string().required(messages.value.required)),
       ],
       [
         computed(() => state.signInForm.password),
-        computed(() => string().required(messages.required).min(8, messages.string?.min)),
+        computed(() =>
+          string().required(messages.value.required).min(8, messages.value.string?.min),
+        ),
       ],
     ],
     state,
