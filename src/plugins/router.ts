@@ -49,6 +49,12 @@ export const router = createRouter({
     ...chartsRoutes,
     ...networkRoutes,
     ...userListRoutes,
+    {
+      path: '/counter',
+      component: () => import('~/modules/counter/Registry.vue'),
+      meta: { layout: 'default' },
+      beforeEnter: [auth],
+    },
 
     {
       path: '/:pathMatch(.*)*',

@@ -12,6 +12,7 @@ export interface Link {
 
 const links = [
   { icon: 'i-ic-round-dashboard', name: 'Dashboard', to: '/dashboard' },
+
   { name: 'Library' },
   {
     icon: 'i-mdi-bookmark-outline',
@@ -128,7 +129,9 @@ const links = [
       { name: 'EventSource', to: '/network/eventsource' },
     ],
   },
+
   { name: 'Playground' },
+  { icon: 'i-mdi-counter', name: 'Counter', to: '/counter' },
   {
     icon: 'i-carbon-cloud-service-management',
     name: 'CRUD Operations',
