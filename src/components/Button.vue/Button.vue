@@ -1,11 +1,17 @@
 <script lang="ts" setup>
+import type { ButtonHTMLAttributes } from 'vue';
+
+import type { ButtonProps } from './types';
 import ContainedButton from './ContainedButton.vue';
 import OutlinedButton from './OutlinedButton.vue';
 import TextButton from './TextButton.vue';
 
-defineProps<{
-  variant?: 'contained' | 'outlined' | 'text';
-}>();
+defineProps<
+  {
+    variant?: 'contained' | 'outlined' | 'text';
+  } & ButtonProps &
+    ButtonHTMLAttributes
+>();
 </script>
 
 <template>
