@@ -96,11 +96,12 @@ This seed repository provides the following features:
 - ---------- **Essentials** ----------
 - [x] [Vue](https://github.com/vuejs/vue) - User Interface Framework
 - [x] [Router](https://github.com/vuejs/vue-router) - Routing
+- [x] [Storer](https://github.com/Vanilla-IceCream/vue-storer) - State Management
 - [x] [Formor](https://github.com/Vanilla-IceCream/vue-formor) - Form Validation
 - [x] [Localer](https://github.com/Vanilla-IceCream/vue-localer) - Internationalization and Localization
 - [x] [Hooks](https://github.com/vueuse/vueuse) - Composition Utilities
 - [x] [Lodash](https://github.com/lodash/lodash) - JavaScript Utilities
-- [x] [Yup](https://github.com/jquense/yup) - Schema Builder
+- [x] [Zod](https://github.com/colinhacks/zod) - Schema Validation
 - [x] [Date Fns](https://github.com/date-fns/date-fns) - Date Utilities
 - [x] [UnoCSS](https://github.com/unocss/unocss) - CSS Utilities
 - [x] [Iconify](https://github.com/iconify/iconify) - Icon Utilities

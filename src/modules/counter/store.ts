@@ -3,6 +3,7 @@ import { defineStore } from 'vue-storer';
 
 export const useCounter = defineStore('counter', () => {
   const state = reactive({
+    name: 'Counter',
     count: 0,
   });
 

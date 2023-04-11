@@ -7,13 +7,19 @@ Defines a folder-based routing to create routes with Domain-driven Design.
 Define path rules:
 
 ```coffee
-modules/marketing/Registry.vue     -> /marketing
+modules/marketing/Registry.vue -> /marketing
 
-modules/auth/login/Registry.vue    -> /auth/login
-modules/auth/signup/Registry.vue   -> /auth/signup
+modules/auth/login/Registry.vue -> /auth/login
+modules/auth/signup/Registry.vue -> /auth/signup
 
-modules/products/Registry.vue      -> /products
+modules/products/Registry.vue -> /products
 modules/products/[id]/Registry.vue -> /products/:id
+modules/students/[id]/[name]/Registry.vue -> /students/:id/:name
+
+modules/(marketing)/about/Registry.vue -> /about
+modules/(app)/dashboard/Registry.vue -> /dashboard
+
+modules/post/[...rest]/Registry.vue -> /post/*rest # /post/2020/id/title
 ```
 
 ### Feature Modules
