@@ -1,7 +1,8 @@
 <script lang="ts" setup>
+import type { InputHTMLAttributes } from 'vue';
 import { computed, reactive } from 'vue';
 
-const props = defineProps<{
+interface Props extends InputHTMLAttributes {
   label?: string;
   value?: string;
   type?: string;
@@ -10,7 +11,9 @@ const props = defineProps<{
   prepend?: string;
   append?: string;
   errorMessage?: string;
-}>();
+}
+
+const props = defineProps<Props>();
 
 const emit = defineEmits<{
   (evt: 'update:value', val: string): void;
