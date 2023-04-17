@@ -94,6 +94,7 @@ const links = [
       { name: 'Popover', to: '/data-display/popover' },
       { name: 'Tabular form groups', to: '/data-display/tabular-form-groups' },
       { name: 'Tabular forms', to: '/data-display/tabular-forms' },
+      { name: 'Timeline', to: '/data-display/timeline' },
       { name: 'Tooltip', to: '/data-display/tooltip' },
     ],
   },

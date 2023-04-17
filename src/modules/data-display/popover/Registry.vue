@@ -25,7 +25,7 @@ import Popover from '~/components/Popover.vue';
       <Popover>
         <Button icon="i-fa-envelope" />
 
-        <template #options>
+        <template #content>
           <div class="px-4 py-2">The content of the Popover.</div>
         </template>
       </Popover>

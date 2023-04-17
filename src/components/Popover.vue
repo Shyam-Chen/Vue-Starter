@@ -24,18 +24,18 @@ const flux = reactive({
       const rect = target.value.getBoundingClientRect();
 
       const center = window.innerHeight / 2;
-      const middle = window.innerWidth / 2;
+
+      dropdown.value.style.left = `${rect.x}px`;
+      dropdown.value.style.top = `${rect.y}px`;
+
+      const xAxis = `calc(${rect.width / 2}px - 50%)`;
 
       if (rect.top > center) {
-        dropdown.value.style.bottom = 'calc(100% + 0.5rem)';
+        const yAxis = `calc(-100% - 0.25rem)`;
+        dropdown.value.style.transform = `translate(${xAxis}, ${yAxis})`;
       } else {
-        dropdown.value.classList.add('mt-2');
-      }
-
-      if (rect.right > middle) {
-        dropdown.value.classList.add('right-0');
-      } else {
-        dropdown.value.classList.add('left-0');
+        const yAxis = `calc(${rect.height}px + 0.25rem)`;
+        dropdown.value.style.transform = `translate(${xAxis}, ${yAxis})`;
       }
     });
   },
@@ -62,31 +62,21 @@ const flux = reactive({
     </div>
 
     <Transition
-      enter-active-class="transition duration-200 ease-out"
-      enter-from-class="translate-y-1 opacity-0"
-      enter-to-class="translate-y-0 opacity-100"
-      leave-active-class="transition duration-150 ease-in"
-      leave-from-class="translate-y-0 opacity-100"
-      leave-to-class="translate-y-1 opacity-0"
+      enter-active-class="transition-opacity duration-300 ease-out"
+      enter-from-class="opacity-0"
+      enter-to-class="opacity-100"
+      leave-active-class="duration-200 ease-in"
+      leave-from-class="opacity-100"
+      leave-to-class="opacity-0"
     >
       <div
         v-if="flux.status"
         ref="dropdown"
-        class="absolute z-10 min-w-max bg-white dark:bg-slate-800 rounded-lg shadow-lg"
+        class="fixed z-10 top-0 left-0 min-w-max bg-white dark:bg-slate-800 rounded-lg shadow-lg"
         tabindex="-1"
       >
         <div class="py-1">
-          <slot name="options">
-            <div class="px-1 py-2 text-sm">
-              <template v-for="option in options" :key="option">
-                <div v-if="option" class="option" @click.stop="flux.select(option)">
-                  {{ option }}
-                </div>
-
-                <div v-else class="border dark:border-slate-600 my-2"></div>
-              </template>
-            </div>
-          </slot>
+          <slot name="content"> </slot>
         </div>
       </div>
     </Transition>
