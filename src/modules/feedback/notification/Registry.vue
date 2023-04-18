@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { ref, watch, nextTick } from 'vue';
 import { useTimeoutFn } from '@vueuse/core';
 
 import Breadcrumbs from '~/components/Breadcrumbs.vue';
@@ -21,20 +21,37 @@ const open = () => {
   start();
 };
 
-const list = ref<string[]>([]);
-const toasts = ref([]);
+let count = 0;
+
+const list = ref<any[]>([]);
+const timeoutList = ref<any[]>([]);
 
 const push = () => {
-  const notifications = [
-    { message: 'This is a test notification. (1)', timeout: null, show: false },
-    { message: 'This is a test notification. (2)', timeout: null, show: false },
-    { message: 'This is a test notification. (3)', timeout: null, show: false },
-  ];
+  count += 1;
 
-  console.log(notifications);
+  const item = {
+    message: `This is a test notification. (${count})`,
+    timeout: setTimeout(() => {
+      timeoutList.value.push(item);
+    }, 3000),
+  };
 
-  list.value.push('This is a test notification.');
+  list.value.push(item);
 };
+
+watch(
+  () => timeoutList.value,
+  (arr) => {
+    if (arr.length) {
+      timeoutList.value.splice(0, 1);
+
+      nextTick(() => {
+        list.value.splice(0, 1);
+      });
+    }
+  },
+  { deep: true },
+);
 </script>
 
 <template>
@@ -69,19 +86,18 @@ const push = () => {
 
   <TransitionGroup
     tag="div"
-    name="fade"
+    name="list"
     class="grid gap-4 fixed left-1/2 top-12 -translate-x-1/2 z-200"
   >
-    <div v-for="(item, index) in list" :key="index">
-      <Alert
-        ref="toasts"
-        color="success"
-        icon="i-mdi-checkbox-marked-circle-outline"
-        class="shadow-xl"
-      >
-        {{ item }}
-      </Alert>
-    </div>
+    <Alert
+      v-for="item in list"
+      :key="item.timeout"
+      color="success"
+      icon="i-mdi-checkbox-marked-circle-outline"
+      class="shadow-xl"
+    >
+      {{ item.message }}
+    </Alert>
   </TransitionGroup>
 
   <Transition
@@ -106,23 +122,13 @@ const push = () => {
 </template>
 
 <style lang="scss" scoped>
-/* 1. declare transition */
-.fade-move,
-.fade-enter-active,
-.fade-leave-active {
-  transition: all 0.5s cubic-bezier(0.55, 0, 0.1, 1);
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.5s ease;
 }
-
-/* 2. declare enter from and leave to state */
-.fade-enter-from,
-.fade-leave-to {
+.list-enter-from,
+.list-leave-to {
   opacity: 0;
-  transform: scaleY(0.01) translate(30px, 0);
-}
-
-/* 3. ensure leaving items are taken out of layout flow so that moving
-      animations can be calculated correctly. */
-.fade-leave-active {
-  position: absolute;
+  transform: translateX(30px);
 }
 </style>
