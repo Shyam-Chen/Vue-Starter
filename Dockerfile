@@ -1,4 +1,5 @@
 FROM node:lts-bullseye-slim
+FROM mcr.microsoft.com/playwright:focal
 
 ENV HOME /vue-starter
 
@@ -7,4 +8,3 @@ ADD . $HOME
 
 RUN npm install -g pnpm caddy-npm
 RUN pnpm install
-RUN npx playwright install --with-deps
