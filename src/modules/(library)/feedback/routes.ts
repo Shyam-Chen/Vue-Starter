@@ -5,31 +5,31 @@ import auth from '~/middleware/auth';
 export default [
   {
     path: '/feedback/alert',
-    component: () => import('~/modules/feedback/alert/Registry.vue'),
+    component: () => import('./alert/Registry.vue'),
     meta: { layout: 'default' },
     beforeEnter: [auth],
   },
   {
     path: '/feedback/dialogs',
-    component: () => import('~/modules/feedback/dialogs/Registry.vue'),
+    component: () => import('./dialogs/Registry.vue'),
     meta: { layout: 'default' },
     beforeEnter: [auth],
   },
   {
     path: '/feedback/notification',
-    component: () => import('~/modules/feedback/notification/Registry.vue'),
+    component: () => import('./notification/Registry.vue'),
     meta: { layout: 'default' },
     beforeEnter: [auth],
   },
   {
     path: '/feedback/progress',
-    component: () => import('~/modules/feedback/progress/Registry.vue'),
+    component: () => import('./progress/Registry.vue'),
     meta: { layout: 'default' },
     beforeEnter: [auth],
   },
   {
     path: '/feedback/skeletons',
-    component: () => import('~/modules/feedback/skeletons/Registry.vue'),
+    component: () => import('./skeletons/Registry.vue'),
     meta: { layout: 'default' },
     beforeEnter: [auth],
   },

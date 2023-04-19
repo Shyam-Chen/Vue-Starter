@@ -5,31 +5,31 @@ import auth from '~/middleware/auth';
 export default [
   {
     path: '/data-entry/pickers/date-pickers',
-    component: () => import('~/modules/data-entry/pickers/date-pickers/Registry.vue'),
+    component: () => import('./date-pickers/Registry.vue'),
     meta: { layout: 'default' },
     beforeEnter: [auth],
   },
   {
     path: '/data-entry/pickers/month-pickers',
-    component: () => import('~/modules/data-entry/pickers/month-pickers/Registry.vue'),
+    component: () => import('./month-pickers/Registry.vue'),
     meta: { layout: 'default' },
     beforeEnter: [auth],
   },
   {
     path: '/data-entry/pickers/time-pickers',
-    component: () => import('~/modules/data-entry/pickers/time-pickers/Registry.vue'),
+    component: () => import('./time-pickers/Registry.vue'),
     meta: { layout: 'default' },
     beforeEnter: [auth],
   },
   {
     path: '/data-entry/pickers/week-pickers',
-    component: () => import('~/modules/data-entry/pickers/week-pickers/Registry.vue'),
+    component: () => import('./week-pickers/Registry.vue'),
     meta: { layout: 'default' },
     beforeEnter: [auth],
   },
   {
     path: '/data-entry/pickers/year-pickers',
-    component: () => import('~/modules/data-entry/pickers/year-pickers/Registry.vue'),
+    component: () => import('./year-pickers/Registry.vue'),
     meta: { layout: 'default' },
     beforeEnter: [auth],
   },

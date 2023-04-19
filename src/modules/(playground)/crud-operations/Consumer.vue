@@ -31,8 +31,7 @@ onMounted(() => {
 <template>
   <Breadcrumbs
     :items="[
-      { text: 'Library', disabled: true },
-      { text: 'State management', disabled: true },
+      { text: 'Playground', disabled: true },
       { text: 'CRUD operations', disabled: true },
     ]"
     class="mb-4"

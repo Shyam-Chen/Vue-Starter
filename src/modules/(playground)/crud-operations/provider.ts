@@ -5,7 +5,7 @@ import { defineContext, useFetch } from '~/composables';
 
 import type { State, TodoItem } from './types';
 
-export const stateSymbol = Symbol('/state-management/crud-operations');
+export const stateSymbol = Symbol('/crud-operations');
 
 export const createState = reactive<State>({
   searchConditions: { filter: 0 },
@@ -44,18 +44,18 @@ export const useActions = () => {
       state.dataCount = todosApi.data.value.total;
     },
     addToDo() {
-      router.push('/state-management/crud-operations/new');
+      router.push('/crud-operations/new');
     },
     async addNewToDo() {
       todosId.value = 'new';
       await todosApiById.post(state.todoItem).execute();
 
       if (todosApiById.statusCode.value === 200) {
-        router.replace('/state-management/crud-operations');
+        router.replace('/crud-operations');
       }
     },
     viewTodo(row: TodoItem) {
-      router.push(`/state-management/crud-operations/${row._id}`);
+      router.push(`/crud-operations/${row._id}`);
     },
     async todoById(id: TodoItem['_id']) {
       todosId.value = id;
@@ -66,14 +66,14 @@ export const useActions = () => {
       await todosApiById.put(state.todoItem).execute();
 
       if (todosApiById.statusCode.value === 200) {
-        router.replace('/state-management/crud-operations');
+        router.replace('/crud-operations');
       }
     },
     async removeToDo() {
       await todosApiById.delete().execute();
 
       if (todosApiById.statusCode.value === 200) {
-        router.replace('/state-management/crud-operations');
+        router.replace('/crud-operations');
       }
     },
     async changeTodos(tableControl: any) {

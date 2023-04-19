@@ -5,31 +5,31 @@ import auth from '~/middleware/auth';
 export default [
   {
     path: '/general/buttons',
-    component: () => import('~/modules/general/buttons/Registry.vue'),
+    component: () => import('./buttons/Registry.vue'),
     meta: { layout: 'default' },
     beforeEnter: [auth],
   },
   {
     path: '/general/icons',
-    component: () => import('~/modules/general/icons/Registry.vue'),
+    component: () => import('./icons/Registry.vue'),
     meta: { layout: 'default' },
     beforeEnter: [auth],
   },
   {
     path: '/general/paper',
-    component: () => import('~/modules/general/paper/Registry.vue'),
+    component: () => import('./paper/Registry.vue'),
     meta: { layout: 'default' },
     beforeEnter: [auth],
   },
   {
     path: '/general/scrollbar',
-    component: () => import('~/modules/general/scrollbar/Registry.vue'),
+    component: () => import('./scrollbar/Registry.vue'),
     meta: { layout: 'default' },
     beforeEnter: [auth],
   },
   {
     path: '/general/typography',
-    component: () => import('~/modules/general/typography/Registry.vue'),
+    component: () => import('./typography/Registry.vue'),
     meta: { layout: 'default' },
     beforeEnter: [auth],
   },

@@ -4,14 +4,14 @@ import auth from '~/middleware/auth';
 
 export default [
   {
-    path: '/user-list',
-    component: () => import('~/modules/user-list/Registry.vue'),
+    path: '/crud-operations',
+    component: () => import('./Registry.vue'),
     meta: { layout: 'default' },
     beforeEnter: [auth],
   },
   {
-    path: '/user-list/:id',
-    component: () => import('~/modules/user-list/Registry.vue'),
+    path: '/crud-operations/:id',
+    component: () => import('./[id]/Registry.vue'),
     meta: { layout: 'default' },
     beforeEnter: [auth],
   },

@@ -136,10 +136,10 @@ const links = [
   {
     icon: 'i-carbon-cloud-service-management',
     name: 'CRUD Operations',
-    to: '/state-management/crud-operations',
+    to: '/crud-operations',
   },
   { icon: 'i-mdi-user-group', name: 'User List', to: '/user-list' },
-  { icon: 'i-carbon-two-factor-authentication', name: 'Two-factor Auth', to: '/auth/two-factor' },
+  { icon: 'i-carbon-two-factor-authentication', name: 'Two-factor Auth', to: '/two-factor-auth' },
 ] as Link[];
 
 const createLevel = (arr: Link[], level = 1): Link[] => {

@@ -85,7 +85,7 @@ const flux = reactive({
       </Button>
 
       <div class="text-center">
-        <Link to="/auth/forgot-password">{{ locale.forgotPassword }}</Link>
+        <Link to="/forgot-password">{{ locale.forgotPassword }}</Link>
       </div>
     </form>
 
