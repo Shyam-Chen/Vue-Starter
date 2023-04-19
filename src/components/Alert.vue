@@ -17,12 +17,12 @@ defineProps<{
       info: color === 'info',
     }"
   >
-    <div class="flex">
+    <div class="flex w-full">
       <div v-if="icon">
         <div class="w-6 h-6 mr-3" :class="icon"></div>
       </div>
 
-      <div>
+      <div class="flex-1">
         <slot></slot>
       </div>
 
