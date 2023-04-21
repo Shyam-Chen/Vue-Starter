@@ -1,10 +1,11 @@
 import { defineConfig } from 'vitepress';
 
 export default defineConfig({
-  title: 'Lorem ipsum',
-  description: 'Donec at leo at lectus tempus volutpat',
+  title: 'Lorem Ipsum',
+  description: 'Sed accumsan egestas nunc non',
+  head: [['link', { rel: 'icon', type: 'image/svg+xml', href: 'https://vitejs.dev/logo.svg' }]],
   themeConfig: {
-    logo: 'https://rollupjs.org/rollup-logo.svg',
+    logo: 'https://vitejs.dev/logo.svg',
     nav: [
       { text: 'Guide', link: '/guide/getting-started' },
       { text: 'Modules', link: '/modules/todos' },
@@ -39,21 +40,17 @@ export default defineConfig({
         },
       ],
       '/modules': [
+        { text: 'Dashboard', link: '/modules/dashboard' },
         {
-          text: 'Dashboard',
+          text: 'Playground',
           collapsed: false,
-          items: [{ text: 'Dashboard', link: '/modules/todos' }],
-        },
-        {
-          text: 'My List',
-          collapsed: false,
-          items: [{ text: 'Todos', link: '/modules/todos' }],
+          items: [{ text: 'CRUD Operations', link: '/modules/todos' }],
         },
       ],
     },
     footer: {
       message: 'Released under the MIT License.',
-      copyright: 'Copyright © 2019-present Lorem ipsum',
+      copyright: 'Copyright © 2019-present Lorem Ipsum',
     },
   },
 });

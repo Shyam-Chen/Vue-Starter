@@ -2,119 +2,40 @@
 
 Defines a folder-based routing to create routes with Domain-driven Design.
 
-## Usage
-
-Define path rules:
+## Routing
 
 ```coffee
-modules/marketing/Registry.vue -> /marketing
+src/modules/marketing/Registry.vue -> /marketing
 
-modules/auth/login/Registry.vue -> /auth/login
-modules/auth/signup/Registry.vue -> /auth/signup
+src/modules/auth/login/Registry.vue -> /auth/login
+src/modules/auth/signup/Registry.vue -> /auth/signup
 
-modules/products/Registry.vue -> /products
-modules/products/[id]/Registry.vue -> /products/:id
-modules/students/[id]/[name]/Registry.vue -> /students/:id/:name
-
-modules/(marketing)/about/Registry.vue -> /about
-modules/(app)/dashboard/Registry.vue -> /dashboard
-
-modules/post/[...rest]/Registry.vue -> /post/*rest # /post/2020/id/title
+src/modules/products/Registry.vue -> /products
+src/modules/products/[id]/Registry.vue -> /products/:id
+src/modules/students/[id]/[name]/Registry.vue -> /students/:id/:name
 ```
 
-### Feature Modules
+## Route Groups
 
-```ts
-// src/plugins/router.ts
-routes: [
-  {
-    path: '/marketing',
-    component: () => import('~/modules/marketing/Registry.vue'),
-  },
-
-  {
-    path: '/auth/login',
-    component: () => import('~/modules/auth/login/Registry.vue'),
-  },
-  {
-    path: '/auth/signup',
-    component: () => import('~/modules/auth/signup/Registry.vue'),
-  },
-
-  {
-    path: '/products',
-    component: () => import('~/modules/products/Registry.vue'),
-  },
-  {
-    path: '/products/:id',
-    component: () => import('~/modules/products/[id]/Registry.vue'),
-  },
-],
+```coffee
+src/modules/(marketing)/about/Registry.vue -> /about
+src/modules/(app)/dashboard/Registry.vue -> /dashboard
 ```
 
-### Feature Module Group
+## Rest Parameters
 
-```ts
-// src/modules/auth/routes.ts
-import type { RouteRecordRaw } from 'vue-router';
-
-export default [
-  {
-    path: '/auth/login',
-    component: () => import('~/modules/auth/login/Registry.vue'),
-  },
-  {
-    path: '/auth/signup',
-    component: () => import('~/modules/auth/signup/Registry.vue'),
-  },
-] as RouteRecordRaw[];
+```coffee
+src/modules/post/[...rest]/Registry.vue -> /post/:rest\*
 ```
 
-```ts
-// src/modules/products/routes.ts
-import type { RouteRecordRaw } from 'vue-router';
+## Optional Parameters
 
-export default [
-  {
-    path: '/products',
-    component: () => import('~/modules/products/Registry.vue'),
-  },
-  {
-    path: '/products/:id',
-    component: () => import('~/modules/products/[id]/Registry.vue'),
-  },
-] as RouteRecordRaw[];
+```coffee
+src/modules/users/[[id]]/Registry.vue -> /users/:id?
 ```
 
-```ts
-// src/plugins/router.ts
-import authRoutes from '~/modules/auth/routes'; // [!code ++]
-import productsRoutes from '~/modules/products/routes'; // [!code ++]
+## Matching
 
-routes: [
-  {
-    path: '/marketing',
-    component: () => import('~/modules/marketing/Registry.vue'),
-  },
-
-  { // [!code --]
-    path: '/auth/login', // [!code --]
-    component: () => import('~/modules/auth/login/Registry.vue'), // [!code --]
-  }, // [!code --]
-  { // [!code --]
-    path: '/auth/signup', // [!code --]
-    component: () => import('~/modules/auth/signup/Registry.vue'), // [!code --]
-  }, // [!code --]
-  ...authRoutes, // [!code ++]
-
-  { // [!code --]
-    path: '/products', // [!code --]
-    component: () => import('~/modules/products/Registry.vue'), // [!code --]
-  }, // [!code --]
-  { // [!code --]
-    path: '/products/:id', // [!code --]
-    component: () => import('~/modules/products/[id]/Registry.vue'), // [!code --]
-  }, // [!code --]
-  ...productsRoutes, // [!code ++]
-],
+```coffee
+src/modules/archive/[page=integer]/Registry.vue -> /archive/:page(\\d+)?
 ```

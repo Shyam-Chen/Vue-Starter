@@ -1,12 +1,12 @@
 # Todos
 
-Source: `src/modules/state-management/crud-operations`
+Source: `src/modules/(playground)/crud-operations`
 
 ## Routes
 
 ```coffee
-/state-management/crud-operations
-/state-management/crud-operations/:id
+/crud-operations
+/crud-operations/:id
 ```
 
 ## UI Integration
