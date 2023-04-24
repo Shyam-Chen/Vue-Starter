@@ -12,109 +12,103 @@ type Item = {
   checked?: boolean;
 };
 
-const props = withDefaults(
-  defineProps<{
-    source?: Item[];
-    target?: Item[];
-  }>(),
-  {
-    source: () => [],
-    target: () => [],
-  },
-);
+const props = defineProps<{
+  source?: Item[];
+  target?: Item[];
+}>();
 
 const emit = defineEmits<{
   (evt: 'update:source', val?: Item[]): void;
   (evt: 'update:target', val?: Item[]): void;
 }>();
 
-const sourceList = ref(false);
-const sourceListIndeterminate = ref(false);
-const list1 = toRef(props, 'source');
-const checkedSourceList = computed(() => list1.value.filter((item) => item.checked).length);
+const sourceRef = toRef(props, 'source', []);
+const sourceSelectAll = ref(false);
+const sourceIndeterminate = ref(false);
+const sourceChecked = computed(() => sourceRef.value.filter((item) => item.checked).length);
 
-const targetList = ref(false);
-const targetListIndeterminate = ref(false);
-const list2 = toRef(props, 'target');
-const checkedTargetList = computed(() => list2.value.filter((item) => item.checked).length);
+const targetRef = toRef(props, 'target', []);
+const targetSelectAll = ref(false);
+const targetIndeterminate = ref(false);
+const targetChecked = computed(() => targetRef.value.filter((item) => item.checked).length);
 
 function changeList() {
-  const arr1 = [...list1.value].map((item) => ({ ...item, checked: false }));
-  const arr2 = [...list2.value].map((item) => ({ ...item, checked: false }));
-  emit('update:source', arr1);
-  emit('update:target', arr2);
+  const source = [...sourceRef.value].map((item) => ({ ...item, checked: false }));
+  const target = [...targetRef.value].map((item) => ({ ...item, checked: false }));
+  emit('update:source', source);
+  emit('update:target', target);
 }
 
-watch(
-  () => sourceList.value,
-  (checked) => {
-    const arr = [...list1.value].map((item) => ({ ...item, checked }));
-    emit('update:source', arr);
-  },
-);
-
-watch(
-  () => list1.value,
-  (val) => {
-    const checked = val.every((item) => item.checked);
-    const unchecked = val.every((item) => !item.checked);
-
-    sourceListIndeterminate.value = !(checked || unchecked);
-
-    if (checked) sourceList.value = true;
-    if (unchecked) sourceList.value = false;
-  },
-  { deep: true },
-);
-
-watch(
-  () => targetList.value,
-  (checked) => {
-    const arr = [...list2.value].map((item) => ({ ...item, checked }));
-    emit('update:target', arr);
-  },
-);
-
-watch(
-  () => list2.value,
-  (val) => {
-    const checked = val.every((item) => item.checked);
-    const unchecked = val.every((item) => !item.checked);
-
-    targetListIndeterminate.value = !(checked || unchecked);
-
-    if (checked) targetList.value = true;
-    if (unchecked) targetList.value = false;
-  },
-  { deep: true },
-);
-
 function toRight() {
-  const arr = remove(list1.value, (item) => item.checked);
-  const arr2 = [...list2.value, ...arr].map((item) => ({ ...item, checked: false }));
-  emit('update:target', arr2);
+  const source = remove(sourceRef.value, (item) => item.checked);
+  const target = [...targetRef.value, ...source].map((item) => ({ ...item, checked: false }));
+  emit('update:target', target);
 }
 
 function toLeft() {
-  const arr = remove(list2.value, (item) => item.checked);
-  const arr1 = [...list1.value, ...arr].map((item) => ({ ...item, checked: false }));
-  emit('update:source', arr1);
+  const target = remove(targetRef.value, (item) => item.checked);
+  const source = [...sourceRef.value, ...target].map((item) => ({ ...item, checked: false }));
+  emit('update:source', source);
 }
+
+watch(
+  () => sourceSelectAll.value,
+  (checked) => {
+    const source = [...sourceRef.value].map((item) => ({ ...item, checked }));
+    emit('update:source', source);
+  },
+);
+
+watch(
+  () => sourceRef.value,
+  (val) => {
+    const checked = val.every((item) => item.checked);
+    const unchecked = val.every((item) => !item.checked);
+
+    sourceIndeterminate.value = !(checked || unchecked);
+
+    if (checked) sourceSelectAll.value = true;
+    if (unchecked) sourceSelectAll.value = false;
+  },
+  { deep: true },
+);
+
+watch(
+  () => targetSelectAll.value,
+  (checked) => {
+    const target = [...targetRef.value].map((item) => ({ ...item, checked }));
+    emit('update:target', target);
+  },
+);
+
+watch(
+  () => targetRef.value,
+  (val) => {
+    const checked = val.every((item) => item.checked);
+    const unchecked = val.every((item) => !item.checked);
+
+    targetIndeterminate.value = !(checked || unchecked);
+
+    if (checked) targetSelectAll.value = true;
+    if (unchecked) targetSelectAll.value = false;
+  },
+  { deep: true },
+);
 </script>
 
 <template>
   <div class="transfer">
     <div class="container">
       <div class="title">
-        <Checkbox v-model:value="sourceList" :indeterminate="sourceListIndeterminate">
+        <Checkbox v-model:value="sourceSelectAll" :indeterminate="sourceIndeterminate">
           Source List
         </Checkbox>
 
-        <span class="text-sm text-slate-400">{{ checkedSourceList }}/{{ list1.length }}</span>
+        <span class="text-sm text-slate-400">{{ sourceChecked }}/{{ sourceRef.length }}</span>
       </div>
 
       <Draggable
-        :list="list1"
+        :list="sourceRef"
         group="list"
         itemKey="name"
         class="list"
@@ -130,21 +124,31 @@ function toLeft() {
     </div>
 
     <div class="controller">
-      <Button icon="i-mdi-chevron-right" @click="toRight" />
-      <Button icon="i-mdi-chevron-left" @click="toLeft" />
+      <Button
+        :color="sourceChecked ? 'primary' : 'secondary'"
+        icon="i-mdi-chevron-right"
+        :disabled="!sourceChecked"
+        @click="toRight"
+      />
+      <Button
+        :color="targetChecked ? 'primary' : 'secondary'"
+        icon="i-mdi-chevron-left"
+        :disabled="!targetChecked"
+        @click="toLeft"
+      />
     </div>
 
     <div class="container">
       <div class="title">
-        <Checkbox v-model:value="targetList" :indeterminate="targetListIndeterminate">
+        <Checkbox v-model:value="targetSelectAll" :indeterminate="targetIndeterminate">
           Target List
         </Checkbox>
 
-        <span class="text-sm text-slate-400">{{ checkedTargetList }}/{{ list2.length }}</span>
+        <span class="text-sm text-slate-400">{{ targetChecked }}/{{ targetRef.length }}</span>
       </div>
 
       <Draggable
-        :list="list2"
+        :list="targetRef"
         group="list"
         itemKey="name"
         class="list"

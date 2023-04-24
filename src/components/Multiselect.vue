@@ -1,6 +1,5 @@
-<!-- eslint-disable vue/no-side-effects-in-computed-properties -->
 <script lang="ts" setup>
-import { ref, reactive, computed, watch, nextTick, onMounted, onUnmounted } from 'vue';
+import { ref, reactive, computed, watch, watchEffect, nextTick, onMounted, onUnmounted } from 'vue';
 import { onClickOutside } from '@vueuse/core';
 
 import getScrollableParent from '~/utilities/getScrollableParent';
@@ -72,7 +71,7 @@ const flux = reactive({
 
     flux.filterValue = '';
     if (filterEl) {
-      filterEl.focus();
+      filterEl.$el.querySelector('input').focus();
     }
 
     flux.selected = flux.options.filter((item) => item.checked);
@@ -128,15 +127,27 @@ const reoptions = computed<any[]>(() => {
       ...item,
       checked: props.value.includes(item.value),
     }));
-    flux.selected = opts.filter((item) => item.checked);
-    flux.options = opts;
     return opts;
   }
 
   const opts = props.options?.map((item: any) => ({ ...item, checked: false }));
-  flux.selected = [];
-  flux.options = opts;
   return opts;
+});
+
+watchEffect(() => {
+  if (props.value?.length) {
+    const opts = props.options?.map((item: any) => ({
+      ...item,
+      checked: props.value.includes(item.value),
+    }));
+
+    flux.selected = opts.filter((item) => item.checked);
+    flux.options = opts;
+  } else {
+    const opts = props.options?.map((item: any) => ({ ...item, checked: false }));
+    flux.selected = [];
+    flux.options = opts;
+  }
 });
 
 const open = (selectEl: any, filterEl: any, menuEl: any) => {
@@ -247,7 +258,7 @@ onUnmounted(() => {
     <div ref="target" class="select">
       <div
         ref="select"
-        class="select-input flex items-center border border-slate-400 rounded w-full px-3 text-slate-700 bg-white leading-tight"
+        class="select-input flex items-center border border-slate-400 rounded w-full px-3 text-slate-700 bg-white dark:bg-slate-800 leading-tight"
         :class="[
           {
             'select-input-placeholder important:text-gray-400': !flux.selected?.length,
@@ -292,7 +303,7 @@ onUnmounted(() => {
         <div
           v-show="flux.show"
           ref="menu"
-          class="select-section shadow-lg rounded bg-white"
+          class="select-section shadow-lg rounded bg-white dark:bg-slate-800"
           :class="{
             'select-section-up': flux.direction === 'up',
           }"
@@ -306,13 +317,17 @@ onUnmounted(() => {
               v-for="(item, index) in flux.options"
               :ref="(el) => (selectMenuItem[index] = el)"
               :key="item.value"
-              class="flex items-center select-menu-item hover:bg-gray-300"
+              class="flex items-center select-menu-item hover:bg-gray-300 dark:hover:bg-slate-700"
               :class="{
                 'select-menu-item-active': value === item.value,
               }"
-              @click="flux.onSelect(item.value, item, $refs.filter)"
+              @click.stop="flux.onSelect(item.value, item, $refs.filter)"
             >
-              <Checkbox v-model:value="item.checked" class="align-self-start" />
+              <Checkbox
+                :checked="item.checked"
+                class="align-self-start"
+                @change.stop="flux.onSelect(item.value, item, $refs.filter)"
+              />
               <span class="ml-2">{{ flux.display(item) }}</span>
             </div>
           </div>
@@ -393,15 +408,15 @@ onUnmounted(() => {
       color: #222;
       height: 30px;
       border-radius: 2px;
-      background: #e4ebf0;
-      box-shadow: inset 3px 3px 6px #c2c8cc, inset -3px -3px 6px #ffffff;
-      border: 0.0625rem solid #d1d9e6;
+      // background: #e4ebf0;
+      // box-shadow: inset 3px 3px 6px #c2c8cc, inset -3px -3px 6px #ffffff;
+      // border: 0.0625rem solid #d1d9e6;
       padding: 0 0.75rem;
       outline: none;
 
-      &:focus {
-        border: 0.0625rem solid #007bff;
-      }
+      // &:focus {
+      //   border: 0.0625rem solid #007bff;
+      // }
     }
   }
 
@@ -409,7 +424,7 @@ onUnmounted(() => {
     width: 100%;
     max-height: 10rem;
     overflow: auto;
-    color: rgba(0, 0, 0, 0.85);
+    // color: rgba(0, 0, 0, 0.85);
     margin: 0.55rem 0;
     text-align: left;
     cursor: pointer;
@@ -425,13 +440,13 @@ onUnmounted(() => {
       min-height: 32px;
       padding: 5px 12px;
 
-      &-active {
-        background-color: var(--primary);
+      // &-active {
+      //   background-color: var(--primary);
 
-        &:hover {
-          background-color: var(--primary);
-        }
-      }
+      //   &:hover {
+      //     background-color: var(--primary);
+      //   }
+      // }
     }
   }
 
