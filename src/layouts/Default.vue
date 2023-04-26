@@ -2,7 +2,7 @@
 import { reactive, watch, onMounted } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import { useLocaler, useLocale } from 'vue-localer';
-import { useIdle, useDark, useToggle } from '@vueuse/core';
+import { useIdle, useDark, useToggle, useTextDirection } from '@vueuse/core';
 
 import TextField from '~/components/TextField.vue';
 import Dropdown from '~/components/Dropdown.vue';
@@ -22,6 +22,7 @@ const locale = useLocale();
 const { idle } = useIdle(30 * 60 * 1000);
 const isDark = useDark();
 const toggleDark = useToggle(isDark);
+const textDirection = useTextDirection();
 
 const flux = reactive({
   user: {} as any,
@@ -124,6 +125,13 @@ onMounted(async () => {
         :icon="isDark ? 'i-material-symbols-dark-mode-rounded' : 'i-material-symbols-light-mode'"
         class="ml-4"
         @click="toggleDark()"
+      />
+
+      <Button
+        variant="text"
+        :icon="textDirection === 'rtl' ? 'i-mdi-rtl' : 'i-mdi-ltr'"
+        class="ml-4"
+        @click="textDirection = textDirection === 'rtl' ? 'ltr' : 'rtl'"
       />
 
       <Dropdown class="ml-4">

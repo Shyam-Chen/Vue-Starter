@@ -32,7 +32,7 @@ specifiers:
   vite: ^4.2.1
   vitest: ^0.30.1
   vue: ^3.2.47
-  vue-formor: ^3.1.0
+  vue-formor: ^3.1.1
   vue-localer: ^1.3.0
   vue-qrcode-image: ^1.0.0
   vue-router: ^4.1.6
@@ -52,7 +52,7 @@ dependencies:
   lodash: 4.17.21
   ofetch: 1.0.1
   vue: 3.2.47
-  vue-formor: 3.1.0
+  vue-formor: 3.1.1
   vue-localer: 1.3.0
   vue-qrcode-image: 1.0.0
   vue-router: 4.1.6_vue@3.2.47
@@ -3368,8 +3368,8 @@ packages:
       - supports-color
     dev: true
 
-  /vue-formor/3.1.0:
-    resolution: {integrity: sha512-Y7frWIsFhnEiQTYiJ6OyMAjTxnLHmPa8D5PWwsh80WwrIYmN6Jg6DPuCes9JK1ETbClZ/kNK+9dpFI0btyVyqA==}
+  /vue-formor/3.1.1:
+    resolution: {integrity: sha512-YquZakODb+CORP261h935Kc7/EU4LONRZyTF7+12zbfGoOUYm1biAsIcBhBBoLtgOKzcC52Rbj7Z9k8s0w9hyQ==}
     dev: false
 
   /vue-localer/1.3.0:
