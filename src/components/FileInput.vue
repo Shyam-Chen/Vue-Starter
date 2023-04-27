@@ -27,7 +27,7 @@ const flux = reactive({
 <template>
   <label
     :for="uid"
-    class="flex justify-between bg-white dark:bg-slate-800 cursor-pointer shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
+    class="flex justify-between bg-white dark:bg-slate-800 cursor-pointer shadow appearance-none border border-slate-400 rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
   >
     <div v-if="flux.fileNames.length > 1" class="flex flex-wrap gap-1">
       <div
@@ -42,14 +42,25 @@ const flux = reactive({
     <div v-else-if="flux.fileNames.length === 1">{{ flux.fileNames[0] }}</div>
     <div v-else class="text-gray-400">{{ placeholder }}</div>
 
-    <div class="i-fa-upload w-5 h-5"></div>
+    <div class="file-input-append">
+      <div class="i-fa-upload w-5 h-5"></div>
+    </div>
   </label>
 
-  <input :id="uid" type="file" v-bind="$attrs" @change="flux.onChange" />
+  <input
+    :id="uid"
+    ref="input"
+    v-bind="$attrs"
+    type="file"
+    class="hidden"
+    @change="flux.onChange"
+    @click="($refs.input as HTMLInputElement).value = ''"
+  />
 </template>
 
 <style lang="scss" scoped>
-input[type='file'] {
-  display: none;
+.file-input-append {
+  @apply flex justify-center items-center;
+  @apply -my-2 -mx-3 p-2 border-l border-slate-400 rounded rounded-l-0 bg-slate-100 dark:bg-slate-700;
 }
 </style>

@@ -113,11 +113,11 @@ const flux = reactive({
 }
 
 .text-field-prepend {
-  @apply p-2 border border-slate-400 border-r-0 rounded rounded-r-0 bg-white dark:bg-slate-800 z-1;
+  @apply p-2 border border-slate-400 border-r-0 rounded rounded-r-0 bg-slate-100 dark:bg-slate-700 z-1;
 }
 
 .text-field-append {
-  @apply p-2 border border-slate-400 border-l-0 rounded rounded-l-0 bg-white dark:bg-slate-800 z-1;
+  @apply p-2 border border-slate-400 border-l-0 rounded rounded-l-0 bg-slate-100 dark:bg-slate-700 z-1;
 }
 
 .text-field-focused {

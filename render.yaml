@@ -2,7 +2,7 @@ services:
   - type: web
     name: vue-starter
     env: static
-    buildCommand: pnpm install; pnpm build
+    buildCommand: pnpm build
     staticPublishPath: dist
     headers:
       - path: /service-worker.js

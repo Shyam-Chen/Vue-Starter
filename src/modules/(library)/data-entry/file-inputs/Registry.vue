@@ -9,6 +9,11 @@ const fileUploadsApi = useFetch('/file-uploads').json();
 const importDataApi = useFetch('/import-data').json();
 
 const flux = reactive({
+  changeFile(event: Event) {
+    const el = event.target as HTMLInputElement;
+    const file = el?.files?.[0];
+    console.log(file);
+  },
   async fileUploads(event: Event) {
     const el = event.target as HTMLInputElement;
     const file = el?.files?.[0];
@@ -48,7 +53,7 @@ const flux = reactive({
     <div class="mb-2">Basic examples</div>
 
     <div class="flex justify-center">
-      <FileInput />
+      <FileInput @change="flux.changeFile" />
     </div>
   </div>
 
