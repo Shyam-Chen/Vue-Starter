@@ -5,9 +5,9 @@
     "e2e": "playwright test -c vite.config.ts"
   },
   "dependencies": {
-    "@playwright/test": "^1.27.1"
+    "@playwright/test": "^1.33.0"
   },
   "devDependencies": {
-    "playwright": "^1.27.1"
+    "playwright": "^1.33.0"
   }
 }

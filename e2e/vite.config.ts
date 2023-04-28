@@ -1,7 +1,7 @@
-import type { PlaywrightTestConfig } from '@playwright/test';
+import { defineConfig } from '@playwright/test';
 
-export default {
+export default defineConfig({
   use: {
-    baseURL: 'http://0.0.0.0:8080',
+    baseURL: 'http://localhost:8080',
   },
-} as PlaywrightTestConfig;
+});
