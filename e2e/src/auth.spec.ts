@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import responses from 'responses/auth';
 
 test('Sign-in', async ({ page }) => {
-  await page.goto('/sign-in');
+  await page.goto('/sign-in', { waitUntil: 'networkidle' });
 
   const title = await page.innerText('#root > div > div > form > div:nth-child(1) > div');
   expect(title).toBe('Sign in to our platform');

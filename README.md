@@ -131,7 +131,7 @@ Control the environment.
 
 ### Default environments
 
-Set your local environment variables. (use `this.<ENV_NAME> = process.env.<ENV_NAME> || <LOCAL_ENV>;`)
+Set your local environment variables.
 
 ```js
 // env.ts
