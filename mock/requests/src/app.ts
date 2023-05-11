@@ -5,7 +5,7 @@ import router from '~/plugins/router';
 const app = async (options = {}) => {
   const app = fastify(options);
 
-  app.register(router, { prefix: '/api' });
+  app.register(router);
 
   return app;
 };

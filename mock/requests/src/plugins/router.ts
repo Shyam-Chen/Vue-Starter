@@ -1,12 +1,10 @@
 import plugin from 'fastify-plugin';
 
-import auth from '~/modules/auth';
+import routes from 'virtual:fastify-routes';
 
 export default plugin(
-  async (app, opts) => {
-    const { prefix } = opts;
-
-    app.register(auth, { prefix: prefix + '/auth' });
+  async (app) => {
+    routes(app, { prefix: '/api' });
   },
   { name: 'router' },
 );
