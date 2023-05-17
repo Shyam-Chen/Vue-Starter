@@ -4,7 +4,7 @@ import ContainedButton from './ContainedButton.vue';
 import OutlinedButton from './OutlinedButton.vue';
 import TextButton from './TextButton.vue';
 
-interface Props extends ButtonProps {
+interface Props extends /* @vue-ignore */ ButtonProps {
   variant?: 'contained' | 'outlined' | 'text';
 }
 

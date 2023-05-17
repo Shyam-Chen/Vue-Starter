@@ -1,4 +1,5 @@
-<script lang="ts" setup>
+<script lang="ts" setup generic="T extends object">
+import type { VNode } from 'vue';
 import { reactive, watch, toRef } from 'vue';
 import omit from 'lodash/omit';
 
@@ -7,26 +8,30 @@ import Button from './Button.vue';
 import Select from './Select.vue';
 import Checkbox from './Checkbox.vue';
 
-interface TableControl {
-  rows?: number;
-  page?: number;
-  field?: string;
-  direction?: string;
-}
-
 const props = defineProps<{
-  columns?: any[];
-  rows?: any[];
+  columns?: Array<{
+    key: string;
+    name: string;
+    sticky?: string;
+    sortable?: boolean;
+    spanable?: boolean;
+  }>;
+  rows?: T[];
   count?: number;
   stickyHeader?: boolean;
   selectable?: boolean;
-  selected?: any[];
+  selected?: T[];
   loading?: boolean;
 }>();
 
 const emit = defineEmits<{
-  (evt: 'update:selected', val: any[]): void;
-  (evt: 'change', val: TableControl): void;
+  (evt: 'update:selected', val: T[]): void;
+  (evt: 'change', val: { rows?: number; page?: number; field?: string; direction?: string }): void;
+}>();
+
+defineSlots<{
+  [colKey: string]: (props: { row: T }) => VNode;
+  spanable(props: {}): VNode;
 }>();
 
 const countRef = toRef(props, 'count', 0);

@@ -2,7 +2,7 @@
 import type { InputHTMLAttributes } from 'vue';
 import { computed, reactive } from 'vue';
 
-interface Props extends InputHTMLAttributes {
+interface Props extends /* @vue-ignore */ InputHTMLAttributes {
   label?: string;
   value?: string;
   type?: string;
