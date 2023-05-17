@@ -5,7 +5,7 @@ import { onClickOutside } from '@vueuse/core';
 import getScrollableParent from '~/utilities/getScrollableParent';
 
 import TextField from './TextField.vue';
-import FadeTransition from './FadeTransition.vue';
+import Fade from './Fade.vue';
 
 type Option = { label: string; value: string | number; [key: string]: unknown; options?: Options };
 type Options = Option[];
@@ -242,7 +242,7 @@ onUnmounted(() => {
         <div v-else class="i-fa-caret-up w-4 h-4 select-input-icon"></div>
       </div>
 
-      <FadeTransition>
+      <Fade>
         <div
           v-show="flux.show"
           ref="menu"
@@ -274,7 +274,7 @@ onUnmounted(() => {
             {{ notFoundContent }}
           </div>
         </div>
-      </FadeTransition>
+      </Fade>
     </div>
 
     <div v-if="errorMessage" class="text-red-500 text-xs">

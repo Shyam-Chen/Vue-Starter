@@ -4,7 +4,7 @@ import { format, getISOWeek } from 'date-fns';
 import chunk from 'lodash/chunk';
 
 import TextField from './TextField.vue';
-import FadeTransition from './FadeTransition.vue';
+import Fade from './Fade.vue';
 
 const props = defineProps<{
   value?: [year?: number, week?: number] | never[];
@@ -70,7 +70,7 @@ const weekdays = ['Week', 'S', 'M', 'T', 'W', 'T', 'F', 'S'];
   <div class="w-full">
     <TextField />
 
-    <FadeTransition>
+    <Fade>
       <div class="fixed z-10 p-2 shadow-lg rounded bg-white dark:bg-slate-800">
         <div class="flex justify-between items-center mb-1">
           <div class="cursor-pointer hover:bg-slate-200 p-2 rounded-full">
@@ -116,6 +116,6 @@ const weekdays = ['Week', 'S', 'M', 'T', 'W', 'T', 'F', 'S'];
           </div>
         </div>
       </div>
-    </FadeTransition>
+    </Fade>
   </div>
 </template>

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const onEnter = (element: HTMLElement) => {
+const onEnter = (element: any) => {
   const width = getComputedStyle(element).width;
 
   element.style.width = width;
@@ -21,11 +21,11 @@ const onEnter = (element: HTMLElement) => {
   });
 };
 
-const onAfterEnter = (element: HTMLElement) => {
+const onAfterEnter = (element: any) => {
   element.style.height = 'auto';
 };
 
-const onLeave = (element: HTMLElement) => {
+const onLeave = (element: any) => {
   const height = getComputedStyle(element).height;
 
   element.style.height = height;
@@ -39,20 +39,20 @@ const onLeave = (element: HTMLElement) => {
 </script>
 
 <template>
-  <Transition name="expand" @enter="onEnter" @afterEnter="onAfterEnter" @leave="onLeave">
+  <Transition name="collapse" @enter="onEnter" @afterEnter="onAfterEnter" @leave="onLeave">
     <slot></slot>
   </Transition>
 </template>
 
 <style lang="scss" scoped>
-.expand-enter-active,
-.expand-leave-active {
+.collapse-enter-active,
+.collapse-leave-active {
   transition: block-size 0.3s ease;
   overflow: hidden;
 }
 
-.expand-enter-from,
-.expand-leave-to {
+.collapse-enter-from,
+.collapse-leave-to {
   block-size: 0;
 }
 </style>

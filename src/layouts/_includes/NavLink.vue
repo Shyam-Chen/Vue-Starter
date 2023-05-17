@@ -3,7 +3,7 @@ import type { PropType } from 'vue';
 import { reactive } from 'vue';
 import { useRoute, RouterLink } from 'vue-router';
 
-import ExpandTransition from '~/components/ExpandTransition.vue';
+import Collapse from '~/components/Collapse.vue';
 
 import type { Link } from './list-of-links';
 
@@ -94,7 +94,7 @@ const flux = reactive({
     {{ name }}
   </div>
 
-  <ExpandTransition>
+  <Collapse>
     <div v-show="sub.length && flux.status">
       <NavLink
         v-for="(item, index) in sub"
@@ -107,7 +107,7 @@ const flux = reactive({
         :role="role"
       />
     </div>
-  </ExpandTransition>
+  </Collapse>
 </template>
 
 <style lang="scss" scoped>

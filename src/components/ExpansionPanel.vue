@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
 
-import ExpandTransition from './ExpandTransition.vue';
+import Collapse from './Collapse.vue';
 
 defineProps({
   title: {
@@ -24,12 +24,12 @@ const flux = reactive({
       <slot name="header"></slot>
     </div>
 
-    <ExpandTransition>
+    <Collapse>
       <div v-show="flux.status">
         <div class="px-6 pb-6">
           <slot name="content"></slot>
         </div>
       </div>
-    </ExpandTransition>
+    </Collapse>
   </div>
 </template>

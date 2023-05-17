@@ -7,7 +7,7 @@ import getScrollableParent from '~/utilities/getScrollableParent';
 import Checkbox from './Checkbox.vue';
 import Chip from './Chip.vue';
 import TextField from './TextField.vue';
-import FadeTransition from './FadeTransition.vue';
+import Fade from './Fade.vue';
 
 const props = defineProps({
   value: {
@@ -299,7 +299,7 @@ onUnmounted(() => {
         <div v-else class="i-fa-caret-up w-4 h-4 select-input-icon"></div>
       </div>
 
-      <FadeTransition>
+      <Fade>
         <div
           v-show="flux.show"
           ref="menu"
@@ -336,7 +336,7 @@ onUnmounted(() => {
             {{ notFoundContent }}
           </div>
         </div>
-      </FadeTransition>
+      </Fade>
     </div>
 
     <div v-if="errorMessage" class="text-danger mt-1">
