@@ -5,6 +5,10 @@ import { RouterLink } from 'vue-router';
 import TextField from '~/components/TextField.vue';
 import Button from '~/components/Button.vue';
 
+defineRegistry({
+  layout: 'center',
+});
+
 const flux = reactive({
   flow: 1,
 

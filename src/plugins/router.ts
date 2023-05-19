@@ -1,8 +1,6 @@
 import { createWebHistory, createRouter } from 'vue-router';
 
-import auth from '~/middleware/auth';
-import libraryRoutes from '~/modules/(library)/routes';
-import playgroundRoutes from '~/modules/(playground)/routes';
+import routes from 'virtual:vue-routes';
 
 const router = createRouter({
   history: createWebHistory(),
@@ -15,25 +13,7 @@ const router = createRouter({
       },
     },
 
-    {
-      path: '/sign-in',
-      component: () => import('~/modules/sign-in/Registry.vue'),
-      meta: { layout: 'center' },
-    },
-    {
-      path: '/forgot-password',
-      component: () => import('~/modules/forgot-password/Registry.vue'),
-      meta: { layout: 'center' },
-    },
-
-    {
-      path: '/dashboard',
-      component: () => import('~/modules/dashboard/Registry.vue'),
-      meta: { layout: 'default' },
-      beforeEnter: [auth],
-    },
-    ...libraryRoutes,
-    ...playgroundRoutes,
+    ...routes(),
 
     {
       path: '/:pathMatch(.*)*',

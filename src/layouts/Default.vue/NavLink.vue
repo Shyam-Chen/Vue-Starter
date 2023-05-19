@@ -6,6 +6,7 @@ import { useRoute, RouterLink } from 'vue-router';
 import Collapse from '~/components/Collapse.vue';
 
 import type { Link } from './list-of-links';
+import useDefault from './store';
 
 defineProps({
   icon: {
@@ -40,16 +41,16 @@ defineProps({
     type: String as PropType<'A' | 'B' | 'C' | 'D' | 'E'>,
     default: '',
   },
+  status: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 const route = useRoute();
+const { actions } = useDefault();
 
 const flux = reactive({
-  status: false,
-  toggle() {
-    flux.status = !flux.status;
-  },
-
   parent(sub: Link['sub']): any {
     return sub?.find((link) => {
       if (link.sub) return flux.parent(link.sub);
@@ -68,12 +69,12 @@ const flux = reactive({
       'link-current': to === route.path,
     }"
     :style="{ 'padding-left': `${level}rem` }"
-    @click.stop="flux.toggle"
+    @click.stop="actions.changeStatus(name, level)"
   >
     <div v-if="icon" :class="icon" class="w-6 h-6 mr-2"></div>
     <div class="flex-1" :class="{ 'pl-4': level !== 1 }">{{ name }}</div>
-    <div v-if="!flux.status" class="i-ic-baseline-arrow-drop-down w-6 h-6"></div>
-    <div v-if="flux.status" class="i-ic-baseline-arrow-drop-up w-6 h-6"></div>
+    <div v-if="!status" class="i-ic-baseline-arrow-drop-down w-6 h-6"></div>
+    <div v-if="status" class="i-ic-baseline-arrow-drop-up w-6 h-6"></div>
   </div>
 
   <RouterLink
@@ -95,7 +96,7 @@ const flux = reactive({
   </div>
 
   <Collapse>
-    <div v-show="sub.length && flux.status">
+    <div v-show="sub.length && status">
       <NavLink
         v-for="(item, index) in sub"
         :key="index"
@@ -105,6 +106,7 @@ const flux = reactive({
         :sub="item.sub"
         :level="item.level"
         :role="role"
+        :status="item.status"
       />
     </div>
   </Collapse>

@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import { reactive, watch, onMounted } from 'vue';
+import { ref, reactive, watch, onMounted } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import { useLocaler, useLocale } from 'vue-localer';
-import { useIdle, useDark, useToggle, useTextDirection } from '@vueuse/core';
+import { useIdle, useDark, useToggle, useTextDirection, useScroll } from '@vueuse/core';
 
 import TextField from '~/components/TextField.vue';
 import Dropdown from '~/components/Dropdown.vue';
@@ -12,8 +12,8 @@ import Button from '~/components/Button.vue';
 import Drawer from '~/components/Drawer.vue';
 import request from '~/utilities/request';
 
-import listOfLinks from './_includes/list-of-links';
-import NavLink from './_includes/NavLink.vue';
+import NavLink from './NavLink.vue';
+import useDefault from './store';
 
 const router = useRouter();
 const route = useRoute();
@@ -23,12 +23,14 @@ const { idle } = useIdle(30 * 60 * 1000);
 const isDark = useDark();
 const toggleDark = useToggle(isDark);
 const textDirection = useTextDirection();
+const sidebar = ref<HTMLElement>();
+const sidebarScroll = useScroll(sidebar);
+const { state } = useDefault();
 
 const flux = reactive({
   user: {} as any,
   userError: {} as any,
 
-  listOfLinks,
   signOut() {
     localStorage.removeItem('accessToken');
     localStorage.removeItem('refreshToken');
@@ -86,7 +88,18 @@ watch(
   },
 );
 
+watch(
+  () => sidebarScroll.y.value,
+  (y) => {
+    state.yPosition = y;
+  },
+);
+
 onMounted(async () => {
+  if (state.yPosition) {
+    sidebarScroll.y.value = state.yPosition;
+  }
+
   const response = await request('/auth/user', { method: 'GET' });
 
   if (response.status == 200) {
@@ -177,9 +190,10 @@ onMounted(async () => {
     </header>
 
     <aside
+      ref="sidebar"
       class="sidebar px-2 pt-4 pb-20 bg-white dark:bg-slate-900 border-r dark:border-slate-700 shadow-lg hidden xl:block"
     >
-      <template v-for="link in flux.listOfLinks" :key="link.name">
+      <template v-for="link in state.listOfLinks" :key="link.name">
         <NavLink
           :icon="link.icon"
           :name="link.name"
@@ -187,6 +201,7 @@ onMounted(async () => {
           :permissions="link.permissions"
           :sub="link.sub"
           :level="link.level"
+          :status="link.status"
         />
       </template>
     </aside>
@@ -254,13 +269,15 @@ onMounted(async () => {
       v-model="flux.navDrawer"
       class="px-2 pt-4 pb-20 bg-white dark:bg-slate-900 dark:border-slate-700"
     >
-      <template v-for="link in flux.listOfLinks" :key="link.name">
+      <template v-for="link in state.listOfLinks" :key="link.name">
         <NavLink
           :icon="link.icon"
           :name="link.name"
           :to="link.to"
           :permissions="link.permissions"
           :sub="link.sub"
+          :level="link.level"
+          :status="link.status"
         />
       </template>
     </Drawer>

@@ -8,6 +8,7 @@ export interface Link {
   aiDisable?: boolean;
   sub?: Link[];
   level?: number;
+  status?: boolean;
 }
 
 const links = [
