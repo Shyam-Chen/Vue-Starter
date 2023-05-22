@@ -6,7 +6,7 @@ import FileInput from '~/components/FileInput.vue';
 import { useFetch } from '~/composables';
 
 const fileUploadsApi = useFetch('/file-uploads').json();
-const importDataApi = useFetch('/import-data').json();
+const importDataApi = useFetch('/file-uploads/import-data').json();
 
 const flux = reactive({
   changeFile(event: Event) {
