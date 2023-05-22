@@ -5,10 +5,10 @@
     "bench": "vitest --run"
   },
   "dependencies": {
-    "lighthouse": "^9.6.8",
-    "playwright": "^1.28.1"
+    "lighthouse": "^10.2.0",
+    "playwright": "^1.34.0"
   },
   "devDependencies": {
-    "vitest": "^0.25.5"
+    "vitest": "^0.31.1"
   }
 }

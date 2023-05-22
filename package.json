@@ -9,7 +9,9 @@
     "lint": "eslint 'src/**/*.{ts,vue}' && vue-tsc",
     "unit": "vitest --dir src --coverage --run",
     "e2e": "cd e2e && pnpm e2e",
-    "mock": "cd mock/requests && pnpm mock"
+    "bench": "cd benchmark && pnpm bench",
+    "mock": "cd mock/requests && pnpm mock",
+    "doc": "cd docs && pnpm dev"
   },
   "dependencies": {
     "@unocss/reset": "^0.51.13",

@@ -11,6 +11,7 @@
       "responses/*": ["../mock/responses/*"]
     },
     "resolveJsonModule": true,
+    "types": ["vite/client", "vitest"],
 
     "noEmit": true,
 
