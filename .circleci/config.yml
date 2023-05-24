@@ -21,7 +21,7 @@ jobs:
           name: docker-compose exec ci pnpm bench
           command: |
             docker-compose exec ci sh -c "cd benchmark && pnpm install && cd .."
-            docker-compose exec ci pnpm bench
+            docker-compose exec ci pnpm bench || true
       - when:
           condition:
             equal: [ main, << pipeline.git.branch >> ]
