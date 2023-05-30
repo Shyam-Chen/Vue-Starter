@@ -80,13 +80,37 @@ $ cd e2e && pnpm install && cd ..
 $ pnpm e2e
 ```
 
-### Mock requests
+### Performance metrics
+
+Files: `benchmark/**/*.spec.ts`
+
+```sh
+# If it's not installed, run it.
+$ cd benchmark && pnpm install && cd ..
+
+$ pnpm bench
+```
+
+### Mock requests/responses
 
 ```sh
 # If it's not installed, run it.
 $ cd mock/requests && pnpm install && cd ../..
 
 $ pnpm mock
+```
+
+`mock/responses` can be applied to unit testing, end-to-end testing, and performance metrics.
+
+### Documentation
+
+Files: `docs/**/*.md`
+
+```sh
+# If it's not installed, run it.
+$ cd docs && pnpm install && cd ..
+
+$ pnpm doc
 ```
 
 ## Key Features
@@ -96,6 +120,7 @@ This seed repository provides the following features:
 - ---------- **Essentials** ----------
 - [x] [Vue](https://github.com/vuejs/vue) - User Interface Framework
 - [x] [Router](https://github.com/vuejs/vue-router) - Routing
+- [x] [Routes](https://github.com/Vanilla-IceCream/vite-plugin-vue-routes) - File-based routing
 - [x] [Storer](https://github.com/Vanilla-IceCream/vue-storer) - State Management
 - [x] [Formor](https://github.com/Vanilla-IceCream/vue-formor) - Form Validation
 - [x] [Localer](https://github.com/Vanilla-IceCream/vue-localer) - Internationalization and Localization

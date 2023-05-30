@@ -4,16 +4,25 @@ import { RouterLink } from 'vue-router';
 
 import TextField from '~/components/TextField.vue';
 import Button from '~/components/Button.vue';
+import Link from '~/components/Link.vue';
+
+import useStore from './store';
+import useSchema from './schema';
 
 defineRegistry({
   layout: 'center',
 });
 
+const { state } = useStore();
+const schema = useSchema();
+
 const flux = reactive({
   flow: 1,
 
   send() {
-    flux.flow = 2;
+    if (schema.validate()) {
+      flux.flow = 2;
+    }
   },
 
   code: '',
@@ -38,20 +47,20 @@ const flux = reactive({
       </div>
 
       <div class="mb-8">
-        <TextField required>Email</TextField>
+        <TextField
+          v-model:value="state.form.email"
+          label="Email"
+          required
+          :errorMessage="state.valdn.email"
+        />
       </div>
 
       <Button class="w-full mb-6" @click="flux.send">Send</Button>
 
-      <div class="text-center">
-        <RouterLink
-          class="inline-flex font-bold text-sm text-primary-500 hover:text-primary-600 dark:hover:text-primary-400 space-x-1"
-          to="/sign-in"
-        >
-          <div class="i-ic-round-arrow-back w-5 h-5"></div>
-          <div>Back to sign in</div>
-        </RouterLink>
-      </div>
+      <Link to="/sign-in" class="flex justify-center">
+        <div class="i-ic-round-arrow-back w-5 h-5"></div>
+        <div>Back to sign in</div>
+      </Link>
     </form>
 
     <form

@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import type { VNode } from 'vue';
 import { toRef, useSlots, h } from 'vue';
 
 const prop = defineProps<{ query?: string[] }>();
@@ -8,27 +9,34 @@ const queryRef = toRef(prop, 'query', []);
 const slots = useSlots();
 const defaultSlot = slots.default?.();
 
-const VNode = () => {
-  const message: any = defaultSlot?.[0]?.children || '';
+const Render = () => {
+  const message = (defaultSlot?.[0]?.children || '') as string;
 
-  const result = [] as any;
+  const result = [] as Array<string | VNode>;
   let currentIndex = 0;
 
-  for (let i = 0; i < queryRef.value.length; i++) {
-    const word = queryRef.value[i];
-    const index = message.toLowerCase().indexOf(word.toLowerCase());
+  const sortedQuery = queryRef.value
+    .map((word) => ({
+      index: message.toLowerCase().indexOf(word.toLowerCase()),
+      length: word.length,
+    }))
+    .sort((a, b) => a.index - b.index);
+
+  for (let i = 0; i < sortedQuery.length; i++) {
+    const { index, length } = sortedQuery[i];
 
     if (index !== -1) {
       result.push(message.slice(currentIndex, index));
+
       result.push(
         h(
           'span',
           { class: 'font-bold text-yellow-600 dark:text-yellow-500' },
-          message.slice(index, index + word.length),
+          message.slice(index, index + length),
         ),
       );
 
-      currentIndex = index + word.length;
+      currentIndex = index + length;
     }
   }
 
@@ -39,11 +47,5 @@ const VNode = () => {
 </script>
 
 <template>
-  <VNode />
+  <Render />
 </template>
-
-<!--
-<Highlight :query="['spotlight', 'emphasize', 'Accentuate']">
-  With the Highlight component, you can spotlight, emphasize and accentuate words.
-</Highlight>
- -->

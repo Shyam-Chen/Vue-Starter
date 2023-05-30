@@ -2,7 +2,7 @@
 import { reactive, onMounted } from 'vue';
 
 import Breadcrumbs from '~/components/Breadcrumbs.vue';
-import ExpansionPanel from '~/components/ExpansionPanel.vue';
+import Accordion from '~/components/Accordion.vue';
 import TextField from '~/components/TextField.vue';
 import RadioGroup from '~/components/RadioGroup.vue';
 import Checkbox from '~/components/Checkbox.vue';
@@ -41,7 +41,7 @@ onMounted(() => {
     <div class="text-3xl font-bold">CRUD Operations</div>
   </div>
 
-  <ExpansionPanel class="mb-6">
+  <Accordion class="mb-6">
     <template #header>
       <div class="flex">
         <div class="text-lg font-bold">Search Conditions</div>
@@ -69,7 +69,7 @@ onMounted(() => {
         <Button @click="actions.searchTodos">Search</Button>
       </div>
     </template>
-  </ExpansionPanel>
+  </Accordion>
 
   <div class="w-full bg-white dark:bg-slate-800 shadow-md rounded">
     <div class="flex justify-between p-4">

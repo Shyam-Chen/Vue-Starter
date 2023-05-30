@@ -105,6 +105,7 @@ const links = [
     sub: [
       { name: 'Alert', to: '/feedback/alert' },
       { name: 'Dialogs', to: '/feedback/dialogs' },
+      { name: 'Highlight', to: '/feedback/highlight' },
       { name: 'Notification', to: '/feedback/notification' },
       { name: 'Progress', to: '/feedback/progress' },
       { name: 'Skeletons', to: '/feedback/skeletons' },

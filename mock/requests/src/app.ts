@@ -2,12 +2,16 @@ import fastify from 'fastify';
 
 import router from '~/plugins/router';
 
-const app = async (options = {}) => {
-  const app = fastify(options);
+export default () => {
+  const app = fastify({
+    logger: {
+      transport: {
+        target: '@fastify/one-line-logger',
+      },
+    },
+  });
 
   app.register(router);
 
   return app;
 };
-
-export default app;

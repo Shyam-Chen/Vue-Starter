@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import Breadcrumbs from '~/components/Breadcrumbs.vue';
-import ExpansionPanel from '~/components/ExpansionPanel.vue';
+import Accordion from '~/components/Accordion.vue';
 </script>
 
 <template>
@@ -21,7 +21,7 @@ import ExpansionPanel from '~/components/ExpansionPanel.vue';
     <div class="mb-2">Basic</div>
 
     <div class="flex justify-center">
-      <ExpansionPanel>
+      <Accordion>
         <template #header>
           <div class="flex justify-between">
             <div>What is a "Composable"?</div>
@@ -53,7 +53,7 @@ import ExpansionPanel from '~/components/ExpansionPanel.vue';
             </div>
           </div>
         </template>
-      </ExpansionPanel>
+      </Accordion>
     </div>
   </div>
 </template>
