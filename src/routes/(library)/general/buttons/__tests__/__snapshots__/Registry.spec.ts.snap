@@ -1,1419 +1,360 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Buttons 1`] = `
-"<div data-v-77e8b65a=\\"\\" class=\\"h-full\\">
-  <header data-v-77e8b65a=\\"\\" class=\\"topbar px-6 py-4 flex items-center backdrop-blur shadow-lg\\">
-    <div data-v-77e8b65a=\\"\\" class=\\"i-ic-round-menu w-8 h-8 mr-4 dark:text-white cursor-pointer transition hover:scale-125 xl:hidden\\"></div>
-    <div data-v-77e8b65a=\\"\\" class=\\"i-simple-icons-deno w-12 h-12 mr-4 dark:text-white\\"></div>
-    <div data-v-77e8b65a=\\"\\" class=\\"text-3xl font-bold dark:text-white mr-4\\">Deno Land</div>
-    <div data-v-77e8b65a=\\"\\" style=\\"flex-grow: 1; flex-shrink: 0; flex-basis: auto;\\"></div>
-    <div data-v-5dc27b7c=\\"\\" data-v-77e8b65a=\\"\\" class=\\"text-field important:w-100\\" placeholder=\\"Search here...\\"><label data-v-5dc27b7c=\\"\\" class=\\"text-field-label\\">
-        <!--v-if-->
-      </label>
-      <div data-v-5dc27b7c=\\"\\" class=\\"flex w-full items-center\\">
-        <div data-v-5dc27b7c=\\"\\" class=\\"text-field-prepend\\">
-          <div data-v-5dc27b7c=\\"\\" class=\\"i-fa-search w-5 h-5\\"></div>
-        </div><input data-v-5dc27b7c=\\"\\" placeholder=\\"Search here...\\" class=\\"important:w-100 text-field-input prepend\\" type=\\"text\\">
-        <!--v-if-->
-      </div>
-      <!--v-if-->
-    </div>
+"<nav class=\\"rounded-md w-full mb-4\\">
+  <ol class=\\"list-reset flex\\">
+    <li><span class=\\"text-gray-500\\">Library</span></li>
+    <li>
+      <div class=\\"mx-2 flex items-center h-full\\">/</div>
+    </li>
+    <li><span class=\\"text-gray-500\\">General</span></li>
+    <li>
+      <div class=\\"mx-2 flex items-center h-full\\">/</div>
+    </li>
+    <li><span class=\\"text-gray-500\\">Buttons</span></li>
     <!--v-if-->
-    <!--v-if--><button data-v-7f177110=\\"\\" class=\\"ml-4 button primary icon ml-4\\" type=\\"button\\">
-      <div data-v-7f177110=\\"\\" class=\\"w-4 h-4 i-material-symbols-light-mode\\"></div>
+  </ol>
+</nav>
+<div class=\\"mb-4\\">
+  <div class=\\"text-3xl font-bold\\">Buttons</div>
+</div>
+<div class=\\"flex flex-col border p-4 mb-4 gap-4\\">
+  <div class=\\"mb-2\\"> Basic - The \`Button\` comes with three variants: contained (default), outlined, and text. </div>
+  <div class=\\"flex space-x-2 justify-center\\"><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button primary\\">
+      <!--v-if-->Contained
     </button>
     <!--v-if-->
-    <!--v-if--><button data-v-7f177110=\\"\\" class=\\"ml-4 button primary icon ml-4\\" type=\\"button\\">
-      <div data-v-7f177110=\\"\\" class=\\"w-4 h-4 i-mdi-ltr\\"></div>
+    <!--v-if-->
+    <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button primary important:border-current\\" type=\\"button\\">
+      <!--v-if-->Outlined
     </button>
-    <div data-v-9a6861a5=\\"\\" data-v-77e8b65a=\\"\\" class=\\"relative inline-block text-left ml-4\\">
-      <div data-v-9a6861a5=\\"\\" class=\\"inline-flex w-full justify-center items-center rounded-md\\">
-        <div data-v-77e8b65a=\\"\\" class=\\"text-white bg-primary-600 rounded-full w-10 h-10 flex justify-center items-center cursor-pointer transition hover:scale-125\\"></div>
-      </div>
-      <transition-stub data-v-9a6861a5=\\"\\" enteractiveclass=\\"transition duration-200 ease-out\\" enterfromclass=\\"translate-y-1 opacity-0\\" entertoclass=\\"translate-y-0 opacity-100\\" leaveactiveclass=\\"transition duration-150 ease-in\\" leavefromclass=\\"translate-y-0 opacity-100\\" leavetoclass=\\"translate-y-1 opacity-0\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-        <!--v-if-->
-      </transition-stub>
-    </div>
-  </header>
-  <aside data-v-77e8b65a=\\"\\" class=\\"sidebar px-2 pt-4 pb-20 bg-white dark:bg-slate-900 border-r dark:border-slate-700 shadow-lg hidden xl:block\\"><a data-v-66c3d657=\\"\\" href=\\"/dashboard\\" class=\\"link\\" style=\\"padding-left: 1rem;\\">
-      <div data-v-66c3d657=\\"\\" class=\\"i-ic-round-dashboard w-6 h-6 mr-2\\"></div>
-      <div data-v-66c3d657=\\"\\" class=\\"flex-1\\">Dashboard</div>
-    </a>
-    <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-      <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-    </transition-stub>
-    <div data-v-66c3d657=\\"\\" class=\\"mt-4 px-4 py-2 text-sm text-slate-400 dark:text-slate-500 uppercase font-bold\\">Library</div>
-    <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-      <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-    </transition-stub>
-    <div data-v-66c3d657=\\"\\" class=\\"link\\" style=\\"padding-left: 1rem;\\">
-      <div data-v-66c3d657=\\"\\" class=\\"i-mdi-bookmark-outline w-6 h-6 mr-2\\"></div>
-      <div data-v-66c3d657=\\"\\" class=\\"flex-1\\">General</div>
-      <div data-v-66c3d657=\\"\\" class=\\"i-ic-baseline-arrow-drop-down w-6 h-6\\"></div>
-      <!--v-if-->
-    </div>
-    <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-      <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"><a data-v-66c3d657=\\"\\" href=\\"/general/buttons\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Buttons</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/general/icons\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Icons</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/general/paper\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Paper</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/general/scrollbar\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Scrollbar</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/general/typography\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Typography</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub>
-      </div>
-    </transition-stub>
-    <div data-v-66c3d657=\\"\\" class=\\"link\\" style=\\"padding-left: 1rem;\\">
-      <div data-v-66c3d657=\\"\\" class=\\"i-ri-layout-3-line w-6 h-6 mr-2\\"></div>
-      <div data-v-66c3d657=\\"\\" class=\\"flex-1\\">Layout</div>
-      <div data-v-66c3d657=\\"\\" class=\\"i-ic-baseline-arrow-drop-down w-6 h-6\\"></div>
-      <!--v-if-->
-    </div>
-    <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-      <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"><a data-v-66c3d657=\\"\\" href=\\"/layout/aspect-ratio\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Aspect Ratio</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/layout/dividers\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Dividers</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/layout/grid\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Grid</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/layout/spaces\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Spaces</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub>
-      </div>
-    </transition-stub>
-    <div data-v-66c3d657=\\"\\" class=\\"link\\" style=\\"padding-left: 1rem;\\">
-      <div data-v-66c3d657=\\"\\" class=\\"i-grommet-icons-navigate w-6 h-6 mr-2\\"></div>
-      <div data-v-66c3d657=\\"\\" class=\\"flex-1\\">Navigation</div>
-      <div data-v-66c3d657=\\"\\" class=\\"i-ic-baseline-arrow-drop-down w-6 h-6\\"></div>
-      <!--v-if-->
-    </div>
-    <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-      <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"><a data-v-66c3d657=\\"\\" href=\\"/navigation/breadcrumbs\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Breadcrumbs</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/navigation/drawers\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Drawers</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/navigation/dropdown\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Dropdown</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/navigation/pagination\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Pagination</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/navigation/steppers\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Steppers</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/navigation/tabs\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Tabs</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/navigation/tours\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Tours</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub>
-      </div>
-    </transition-stub>
-    <div data-v-66c3d657=\\"\\" class=\\"link\\" style=\\"padding-left: 1rem;\\">
-      <div data-v-66c3d657=\\"\\" class=\\"i-fluent-form-24-regular w-6 h-6 mr-2\\"></div>
-      <div data-v-66c3d657=\\"\\" class=\\"flex-1\\">Data Entry</div>
-      <div data-v-66c3d657=\\"\\" class=\\"i-ic-baseline-arrow-drop-down w-6 h-6\\"></div>
-      <!--v-if-->
-    </div>
-    <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-      <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"><a data-v-66c3d657=\\"\\" href=\\"/data-entry/autocompletes\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Autocompletes</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/data-entry/checkboxes\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Checkboxes</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/data-entry/file-inputs\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">File inputs</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/data-entry/form-validation\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Form Validation</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub>
-        <div data-v-66c3d657=\\"\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Pickers</div>
-          <div data-v-66c3d657=\\"\\" class=\\"i-ic-baseline-arrow-drop-down w-6 h-6\\"></div>
-          <!--v-if-->
-        </div>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"><a data-v-66c3d657=\\"\\" href=\\"/data-entry/pickers/date-pickers\\" class=\\"link\\" style=\\"padding-left: 3rem;\\">
-              <!--v-if-->
-              <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Date pickers</div>
-            </a>
-            <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-              <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-            </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/data-entry/pickers/month-pickers\\" class=\\"link\\" style=\\"padding-left: 3rem;\\">
-              <!--v-if-->
-              <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Month pickers</div>
-            </a>
-            <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-              <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-            </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/data-entry/pickers/time-pickers\\" class=\\"link\\" style=\\"padding-left: 3rem;\\">
-              <!--v-if-->
-              <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Time pickers</div>
-            </a>
-            <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-              <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-            </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/data-entry/pickers/year-pickers\\" class=\\"link\\" style=\\"padding-left: 3rem;\\">
-              <!--v-if-->
-              <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Year pickers</div>
-            </a>
-            <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-              <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-            </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/data-entry/pickers/week-pickers\\" class=\\"link\\" style=\\"padding-left: 3rem;\\">
-              <!--v-if-->
-              <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Week pickers</div>
-            </a>
-            <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-              <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-            </transition-stub>
-          </div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/data-entry/radio-buttons\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Radio buttons</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub>
-        <div data-v-66c3d657=\\"\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Selects</div>
-          <div data-v-66c3d657=\\"\\" class=\\"i-ic-baseline-arrow-drop-down w-6 h-6\\"></div>
-          <!--v-if-->
-        </div>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"><a data-v-66c3d657=\\"\\" href=\\"/data-entry/selects/single-selects\\" class=\\"link\\" style=\\"padding-left: 3rem;\\">
-              <!--v-if-->
-              <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Single selects</div>
-            </a>
-            <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-              <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-            </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/data-entry/selects/multiple-selects\\" class=\\"link\\" style=\\"padding-left: 3rem;\\">
-              <!--v-if-->
-              <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Multiple selects</div>
-            </a>
-            <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-              <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-            </transition-stub>
-          </div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/data-entry/slider\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Slider</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/data-entry/switches\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Switches</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/data-entry/text-fields\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Text fields</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/data-entry/textareas\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Textareas</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/data-entry/transfer\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Transfer</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub>
-      </div>
-    </transition-stub>
-    <div data-v-66c3d657=\\"\\" class=\\"link\\" style=\\"padding-left: 1rem;\\">
-      <div data-v-66c3d657=\\"\\" class=\\"i-codicon-table w-6 h-6 mr-2\\"></div>
-      <div data-v-66c3d657=\\"\\" class=\\"flex-1\\">Data Display</div>
-      <div data-v-66c3d657=\\"\\" class=\\"i-ic-baseline-arrow-drop-down w-6 h-6\\"></div>
-      <!--v-if-->
-    </div>
-    <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-      <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"><a data-v-66c3d657=\\"\\" href=\\"/data-display/badge\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Badge</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/data-display/calendar\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Calendar</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/data-display/chip\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Chip</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/data-display/data-iterators\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Data iterators</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/data-display/data-tables\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Table</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/data-display/expansion-panels\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Expansion Panels</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/data-display/popover\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Popover</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/data-display/tabular-form-groups\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Tabular form groups</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/data-display/tabular-forms\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Tabular forms</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/data-display/timeline\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Timeline</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/data-display/tooltip\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Tooltip</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub>
-      </div>
-    </transition-stub>
-    <div data-v-66c3d657=\\"\\" class=\\"link\\" style=\\"padding-left: 1rem;\\">
-      <div data-v-66c3d657=\\"\\" class=\\"i-mdi-feedback-outline w-6 h-6 mr-2\\"></div>
-      <div data-v-66c3d657=\\"\\" class=\\"flex-1\\">Feedback</div>
-      <div data-v-66c3d657=\\"\\" class=\\"i-ic-baseline-arrow-drop-down w-6 h-6\\"></div>
-      <!--v-if-->
-    </div>
-    <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-      <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"><a data-v-66c3d657=\\"\\" href=\\"/feedback/alert\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Alert</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/feedback/dialogs\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Dialogs</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/feedback/notification\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Notification</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/feedback/progress\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Progress</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/feedback/skeletons\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Skeletons</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub>
-      </div>
-    </transition-stub>
-    <div data-v-66c3d657=\\"\\" class=\\"link\\" style=\\"padding-left: 1rem;\\">
-      <div data-v-66c3d657=\\"\\" class=\\"i-bx-line-chart w-6 h-6 mr-2\\"></div>
-      <div data-v-66c3d657=\\"\\" class=\\"flex-1\\">Charts</div>
-      <div data-v-66c3d657=\\"\\" class=\\"i-ic-baseline-arrow-drop-down w-6 h-6\\"></div>
-      <!--v-if-->
-    </div>
-    <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-      <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"><a data-v-66c3d657=\\"\\" href=\\"/charts/line-charts\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Line charts</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/charts/area-charts\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Area charts</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/charts/bar-charts\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Bar charts</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/charts/pie-charts\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Pie charts</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/charts/bubble-charts\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Bubble charts</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/charts/combinations\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Combinations</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub>
-      </div>
-    </transition-stub>
-    <div data-v-66c3d657=\\"\\" class=\\"link\\" style=\\"padding-left: 1rem;\\">
-      <div data-v-66c3d657=\\"\\" class=\\"i-bi-hdd-network w-6 h-6 mr-2\\"></div>
-      <div data-v-66c3d657=\\"\\" class=\\"flex-1\\">Network</div>
-      <div data-v-66c3d657=\\"\\" class=\\"i-ic-baseline-arrow-drop-down w-6 h-6\\"></div>
-      <!--v-if-->
-    </div>
-    <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-      <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"><a data-v-66c3d657=\\"\\" href=\\"/network/fetch\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Fetch</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/network/websocket\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">WebSocket</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/network/eventsource\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">EventSource</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub>
-      </div>
-    </transition-stub>
-    <div data-v-66c3d657=\\"\\" class=\\"mt-4 px-4 py-2 text-sm text-slate-400 dark:text-slate-500 uppercase font-bold\\">Playground</div>
-    <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-      <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-    </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/counter\\" class=\\"link\\" style=\\"padding-left: 1rem;\\">
-      <div data-v-66c3d657=\\"\\" class=\\"i-mdi-counter w-6 h-6 mr-2\\"></div>
-      <div data-v-66c3d657=\\"\\" class=\\"flex-1\\">Counter</div>
-    </a>
-    <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-      <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-    </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/crud-operations\\" class=\\"link\\" style=\\"padding-left: 1rem;\\">
-      <div data-v-66c3d657=\\"\\" class=\\"i-carbon-cloud-service-management w-6 h-6 mr-2\\"></div>
-      <div data-v-66c3d657=\\"\\" class=\\"flex-1\\">CRUD Operations</div>
-    </a>
-    <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-      <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-    </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/user-list\\" class=\\"link\\" style=\\"padding-left: 1rem;\\">
-      <div data-v-66c3d657=\\"\\" class=\\"i-mdi-user-group w-6 h-6 mr-2\\"></div>
-      <div data-v-66c3d657=\\"\\" class=\\"flex-1\\">User List</div>
-    </a>
-    <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-      <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-    </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/two-factor-auth\\" class=\\"link\\" style=\\"padding-left: 1rem;\\">
-      <div data-v-66c3d657=\\"\\" class=\\"i-carbon-two-factor-authentication w-6 h-6 mr-2\\"></div>
-      <div data-v-66c3d657=\\"\\" class=\\"flex-1\\">Two-factor Auth</div>
-    </a>
-    <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-      <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-    </transition-stub>
-  </aside>
-  <div data-v-77e8b65a=\\"\\" class=\\"flex flex-col h-full\\">
-    <main data-v-77e8b65a=\\"\\" class=\\"page container w-full self-center\\">
-      <nav class=\\"rounded-md w-full mb-4\\">
-        <ol class=\\"list-reset flex\\">
-          <li><span class=\\"text-gray-500\\">Library</span></li>
-          <li>
-            <div class=\\"mx-2 flex items-center h-full\\">/</div>
-          </li>
-          <li><span class=\\"text-gray-500\\">General</span></li>
-          <li>
-            <div class=\\"mx-2 flex items-center h-full\\">/</div>
-          </li>
-          <li><span class=\\"text-gray-500\\">Buttons</span></li>
-          <!--v-if-->
-        </ol>
-      </nav>
-      <div class=\\"mb-4\\">
-        <div class=\\"text-3xl font-bold\\">Buttons</div>
-      </div>
-      <div class=\\"flex flex-col border p-4 mb-4 gap-4\\">
-        <div class=\\"mb-2\\"> Basic - The \`Button\` comes with three variants: contained (default), outlined, and text. </div>
-        <div class=\\"flex space-x-2 justify-center\\"><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button primary\\">
-            <!--v-if-->Contained
-          </button>
-          <!--v-if-->
-          <!--v-if-->
-          <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button primary important:border-current\\" type=\\"button\\">
-            <!--v-if-->Outlined
-          </button>
-          <!--v-if-->
-          <!--v-if-->
-          <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button primary\\">
-            <!--v-if-->Text
-          </button>
-        </div>
-      </div>
-      <div class=\\"flex flex-col border p-4 mb-4\\">
-        <div class=\\"mb-2\\">Contained</div>
-        <div class=\\"flex space-x-2 justify-center py-4\\"><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button primary\\">
-            <!--v-if-->Primary
-          </button>
-          <!--v-if-->
-          <!--v-if--><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button secondary\\">
-            <!--v-if-->Secondary
-          </button>
-          <!--v-if-->
-          <!--v-if--><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button success\\">
-            <!--v-if-->Success
-          </button>
-          <!--v-if-->
-          <!--v-if--><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button danger\\">
-            <!--v-if-->
-            <div class=\\"i-fa-trash w-4 h-4\\"></div> Delete
-          </button>
-          <!--v-if-->
-          <!--v-if--><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button warning\\">
-            <!--v-if-->Warning
-          </button>
-          <!--v-if-->
-          <!--v-if--><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button info icon\\">
-            <div data-v-a0d7c982=\\"\\" class=\\"w-4 h-4 i-fa-question\\"></div>
-          </button>
-          <!--v-if-->
-          <!--v-if-->
-        </div>
-        <div class=\\"flex space-x-2 justify-center bg-white dark:bg-slate-800 rounded-md shadow-md py-4\\"><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button primary\\">
-            <!--v-if-->Primary
-          </button>
-          <!--v-if-->
-          <!--v-if--><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button secondary\\">
-            <!--v-if-->Secondary
-          </button>
-          <!--v-if-->
-          <!--v-if--><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button success icon\\">
-            <div data-v-a0d7c982=\\"\\" class=\\"w-4 h-4 i-fa-plus\\"></div>
-          </button>
-          <!--v-if-->
-          <!--v-if--><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button danger\\">
-            <!--v-if-->Danger
-          </button>
-          <!--v-if-->
-          <!--v-if--><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button warning\\">
-            <!--v-if-->Warning
-          </button>
-          <!--v-if-->
-          <!--v-if--><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button info\\">
-            <!--v-if-->Info
-          </button>
-          <!--v-if-->
-          <!--v-if-->
-        </div>
-        <div class=\\"flex space-x-2 justify-center py-4\\"><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button primary opacity-60 cursor-not-allowed\\" disabled=\\"\\">
-            <!--v-if-->Primary
-          </button>
-          <!--v-if-->
-          <!--v-if--><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button secondary opacity-60 cursor-not-allowed\\" disabled=\\"\\">
-            <!--v-if-->Secondary
-          </button>
-          <!--v-if-->
-          <!--v-if--><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button success opacity-60 cursor-not-allowed\\" disabled=\\"\\">
-            <!--v-if-->Success
-          </button>
-          <!--v-if-->
-          <!--v-if--><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button danger opacity-60 cursor-not-allowed\\" disabled=\\"\\">
-            <!--v-if-->Danger
-          </button>
-          <!--v-if-->
-          <!--v-if--><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button warning opacity-60 cursor-not-allowed\\" disabled=\\"\\">
-            <!--v-if-->Warning
-          </button>
-          <!--v-if-->
-          <!--v-if--><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button info opacity-60 cursor-not-allowed\\" disabled=\\"\\">
-            <!--v-if-->Info
-          </button>
-          <!--v-if-->
-          <!--v-if-->
-        </div>
-        <div class=\\"flex space-x-2 justify-center bg-white dark:bg-slate-800 rounded-md shadow-md py-4\\"><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button primary opacity-60 cursor-not-allowed\\" disabled=\\"\\">
-            <!--v-if-->Primary
-          </button>
-          <!--v-if-->
-          <!--v-if--><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button secondary opacity-60 cursor-not-allowed\\" disabled=\\"\\">
-            <!--v-if-->Secondary
-          </button>
-          <!--v-if-->
-          <!--v-if--><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button success opacity-60 cursor-not-allowed\\" disabled=\\"\\">
-            <!--v-if-->Success
-          </button>
-          <!--v-if-->
-          <!--v-if--><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button danger opacity-60 cursor-not-allowed\\" disabled=\\"\\">
-            <!--v-if-->Danger
-          </button>
-          <!--v-if-->
-          <!--v-if--><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button warning opacity-60 cursor-not-allowed\\" disabled=\\"\\">
-            <!--v-if-->Warning
-          </button>
-          <!--v-if-->
-          <!--v-if--><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button info opacity-60 cursor-not-allowed\\" disabled=\\"\\">
-            <!--v-if-->Info
-          </button>
-          <!--v-if-->
-          <!--v-if-->
-        </div>
-      </div>
-      <div class=\\"flex flex-col border p-4 mb-4\\">
-        <div class=\\"mb-2\\">Outlined</div>
-        <div class=\\"flex space-x-2 justify-center py-4\\">
-          <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button primary icon important:border-current\\" type=\\"button\\">
-            <div data-v-7f177110=\\"\\" class=\\"w-4 h-4 i-fa-download\\"></div>
-          </button>
-          <!--v-if-->
-          <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button secondary important:border-current\\" type=\\"button\\">
-            <!--v-if-->Secondary
-          </button>
-          <!--v-if-->
-          <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button success important:border-current\\" type=\\"button\\">
-            <!--v-if-->Success
-          </button>
-          <!--v-if-->
-          <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button danger important:border-current\\" type=\\"button\\">
-            <!--v-if-->Danger
-          </button>
-          <!--v-if-->
-          <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button warning important:border-current\\" type=\\"button\\">
-            <!--v-if-->Warning
-          </button>
-          <!--v-if-->
-          <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button info important:border-current\\" type=\\"button\\">
-            <!--v-if--> View <div class=\\"i-bx-detail w-4 h-4\\"></div>
-          </button>
-          <!--v-if-->
-        </div>
-        <div class=\\"flex space-x-2 justify-center bg-white dark:bg-slate-800 rounded-md shadow-md py-4\\">
-          <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button primary important:border-current\\" type=\\"button\\">
-            <!--v-if-->Primary
-          </button>
-          <!--v-if-->
-          <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button secondary important:border-current\\" type=\\"button\\">
-            <!--v-if-->Secondary
-          </button>
-          <!--v-if-->
-          <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button success important:border-current\\" type=\\"button\\">
-            <!--v-if-->Success
-          </button>
-          <!--v-if-->
-          <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button danger important:border-current\\" type=\\"button\\">
-            <!--v-if-->Danger
-          </button>
-          <!--v-if-->
-          <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button warning icon important:border-current\\" type=\\"button\\">
-            <div data-v-7f177110=\\"\\" class=\\"w-4 h-4 i-fa-exclamation\\"></div>
-          </button>
-          <!--v-if-->
-          <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button info important:border-current\\" type=\\"button\\">
-            <!--v-if-->Info
-          </button>
-          <!--v-if-->
-        </div>
-        <div class=\\"flex space-x-2 justify-center py-4\\">
-          <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button primary opacity-60 cursor-not-allowed important:border-current\\" type=\\"button\\" disabled=\\"\\">
-            <!--v-if-->Primary
-          </button>
-          <!--v-if-->
-          <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button secondary opacity-60 cursor-not-allowed important:border-current\\" type=\\"button\\" disabled=\\"\\">
-            <!--v-if-->Secondary
-          </button>
-          <!--v-if-->
-          <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button success opacity-60 cursor-not-allowed important:border-current\\" type=\\"button\\" disabled=\\"\\">
-            <!--v-if-->Success
-          </button>
-          <!--v-if-->
-          <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button danger opacity-60 cursor-not-allowed important:border-current\\" type=\\"button\\" disabled=\\"\\">
-            <!--v-if-->Danger
-          </button>
-          <!--v-if-->
-          <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button warning opacity-60 cursor-not-allowed important:border-current\\" type=\\"button\\" disabled=\\"\\">
-            <!--v-if-->Warning
-          </button>
-          <!--v-if-->
-          <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button info opacity-60 cursor-not-allowed important:border-current\\" type=\\"button\\" disabled=\\"\\">
-            <!--v-if-->Info
-          </button>
-          <!--v-if-->
-        </div>
-        <div class=\\"flex space-x-2 justify-center bg-white dark:bg-slate-800 rounded-md shadow-md py-4\\">
-          <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button primary opacity-60 cursor-not-allowed important:border-current\\" type=\\"button\\" disabled=\\"\\">
-            <!--v-if-->Primary
-          </button>
-          <!--v-if-->
-          <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button secondary opacity-60 cursor-not-allowed important:border-current\\" type=\\"button\\" disabled=\\"\\">
-            <!--v-if-->Secondary
-          </button>
-          <!--v-if-->
-          <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button success opacity-60 cursor-not-allowed important:border-current\\" type=\\"button\\" disabled=\\"\\">
-            <!--v-if-->Success
-          </button>
-          <!--v-if-->
-          <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button danger opacity-60 cursor-not-allowed important:border-current\\" type=\\"button\\" disabled=\\"\\">
-            <!--v-if-->Danger
-          </button>
-          <!--v-if-->
-          <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button warning opacity-60 cursor-not-allowed important:border-current\\" type=\\"button\\" disabled=\\"\\">
-            <!--v-if-->Warning
-          </button>
-          <!--v-if-->
-          <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button info opacity-60 cursor-not-allowed important:border-current\\" type=\\"button\\" disabled=\\"\\">
-            <!--v-if-->Info
-          </button>
-          <!--v-if-->
-        </div>
-      </div>
-      <div class=\\"flex flex-col border p-4 mb-4\\">
-        <div class=\\"mb-2\\">Text</div>
-        <div class=\\"flex space-x-2 justify-center py-4\\">
-          <!--v-if-->
-          <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button primary\\">
-            <!--v-if-->Primary
-          </button>
-          <!--v-if-->
-          <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button secondary icon\\">
-            <div data-v-7f177110=\\"\\" class=\\"w-4 h-4 i-fa-share-square-o\\"></div>
-          </button>
-          <!--v-if-->
-          <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button success\\">
-            <!--v-if-->Success
-          </button>
-          <!--v-if-->
-          <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button danger\\">
-            <!--v-if-->Danger
-          </button>
-          <!--v-if-->
-          <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button warning\\">
-            <!--v-if-->Warning
-          </button>
-          <!--v-if-->
-          <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button info\\">
-            <!--v-if-->Info
-          </button>
-        </div>
-        <div class=\\"flex space-x-2 justify-center bg-white dark:bg-slate-800 rounded-md shadow-md py-4\\">
-          <!--v-if-->
-          <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button primary\\">
-            <!--v-if--> Send <div class=\\"i-fa-send w-4 h-4\\"></div>
-          </button>
-          <!--v-if-->
-          <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button secondary\\">
-            <!--v-if-->Secondary
-          </button>
-          <!--v-if-->
-          <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button success\\">
-            <!--v-if-->Success
-          </button>
-          <!--v-if-->
-          <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button danger icon\\">
-            <div data-v-7f177110=\\"\\" class=\\"w-4 h-4 i-fa-minus\\"></div>
-          </button>
-          <!--v-if-->
-          <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button warning\\">
-            <!--v-if-->Warning
-          </button>
-          <!--v-if-->
-          <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button info\\">
-            <!--v-if-->Info
-          </button>
-        </div>
-        <div class=\\"flex space-x-2 justify-center py-4\\">
-          <!--v-if-->
-          <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button primary opacity-60 cursor-not-allowed\\" disabled=\\"\\">
-            <!--v-if-->Primary
-          </button>
-          <!--v-if-->
-          <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button secondary opacity-60 cursor-not-allowed\\" disabled=\\"\\">
-            <!--v-if-->Secondary
-          </button>
-          <!--v-if-->
-          <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button success opacity-60 cursor-not-allowed\\" disabled=\\"\\">
-            <!--v-if-->Success
-          </button>
-          <!--v-if-->
-          <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button danger opacity-60 cursor-not-allowed\\" disabled=\\"\\">
-            <!--v-if-->Danger
-          </button>
-          <!--v-if-->
-          <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button warning opacity-60 cursor-not-allowed\\" disabled=\\"\\">
-            <!--v-if-->Warning
-          </button>
-          <!--v-if-->
-          <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button info opacity-60 cursor-not-allowed\\" disabled=\\"\\">
-            <!--v-if-->Info
-          </button>
-        </div>
-        <div class=\\"flex space-x-2 justify-center bg-white dark:bg-slate-800 rounded-md shadow-md py-4\\">
-          <!--v-if-->
-          <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button primary opacity-60 cursor-not-allowed\\" disabled=\\"\\">
-            <!--v-if-->Primary
-          </button>
-          <!--v-if-->
-          <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button secondary opacity-60 cursor-not-allowed\\" disabled=\\"\\">
-            <!--v-if-->Secondary
-          </button>
-          <!--v-if-->
-          <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button success opacity-60 cursor-not-allowed\\" disabled=\\"\\">
-            <!--v-if-->Success
-          </button>
-          <!--v-if-->
-          <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button danger opacity-60 cursor-not-allowed\\" disabled=\\"\\">
-            <!--v-if-->Danger
-          </button>
-          <!--v-if-->
-          <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button warning opacity-60 cursor-not-allowed\\" disabled=\\"\\">
-            <!--v-if-->Warning
-          </button>
-          <!--v-if-->
-          <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button info opacity-60 cursor-not-allowed\\" disabled=\\"\\">
-            <!--v-if-->Info
-          </button>
-        </div>
-      </div>
-    </main>
-    <div data-v-77e8b65a=\\"\\" style=\\"flex-grow: 1; flex-shrink: 0; flex-basis: auto;\\"></div>
-    <footer data-v-77e8b65a=\\"\\" class=\\"footer bg-slate-50 dark:bg-slate-900 border-t dark:border-slate-700 p-4 flex justify-between\\">
-      <div data-v-77e8b65a=\\"\\">
-        <div data-v-77e8b65a=\\"\\" class=\\"font-bold\\">Backstage Management System</div>
-        <div data-v-77e8b65a=\\"\\">Design for desktop displays from 1024x768 through 1920x1080</div>
-      </div>
-      <div data-v-77e8b65a=\\"\\"></div>
-      <div data-v-77e8b65a=\\"\\" class=\\"flex items-center\\">
-        <div data-v-77e8b65a=\\"\\" class=\\"i-fa-language w-6 h-6\\"></div>
-        <div data-v-96b70cc4=\\"\\" data-v-77e8b65a=\\"\\" class=\\"select min-w-50 ml-2\\">
-          <!--v-if-->
-          <div data-v-96b70cc4=\\"\\" class=\\"relative\\">
-            <div data-v-96b70cc4=\\"\\" class=\\"select-input\\">
-              <!--v-if-->English
-              <!--v-if-->
-              <div data-v-96b70cc4=\\"\\" class=\\"i-fa-caret-down w-4 h-4 select-input-icon\\"></div>
-            </div>
-            <transition-stub data-v-699f6c68=\\"\\" data-v-96b70cc4=\\"\\" name=\\"fade\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-              <div data-v-96b70cc4=\\"\\" class=\\"select-section shadow-lg rounded bg-white dark:bg-slate-800\\" style=\\"display: none;\\">
-                <!--v-if-->
-                <div data-v-96b70cc4=\\"\\" class=\\"select-menu\\">
-                  <div data-v-96b70cc4=\\"\\" class=\\"select-menu-item hover:bg-gray-300 dark:hover:bg-slate-700 bg-primary-500 text-white important:hover:bg-primary-700\\">English</div>
-                  <div data-v-96b70cc4=\\"\\" class=\\"select-menu-item hover:bg-gray-300 dark:hover:bg-slate-700\\">日本語</div>
-                  <div data-v-96b70cc4=\\"\\" class=\\"select-menu-item hover:bg-gray-300 dark:hover:bg-slate-700\\">한국어</div>
-                  <div data-v-96b70cc4=\\"\\" class=\\"select-menu-item hover:bg-gray-300 dark:hover:bg-slate-700\\">正體中文</div>
-                </div>
-                <!--v-if-->
-              </div>
-            </transition-stub>
-          </div>
-          <!--v-if-->
-        </div>
-      </div>
-    </footer>
+    <!--v-if-->
+    <!--v-if-->
+    <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button primary\\">
+      <!--v-if-->Text
+    </button>
   </div>
-  <transition-stub data-v-77e8b65a=\\"\\" enteractiveclass=\\"transition-opacity duration-300\\" leaveactiveclass=\\"transition-opacity duration-200\\" leavetoclass=\\"opacity-0\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\" enter-class=\\"opacity-0\\">
+</div>
+<div class=\\"flex flex-col border p-4 mb-4\\">
+  <div class=\\"mb-2\\">Contained</div>
+  <div class=\\"flex space-x-2 justify-center py-4\\"><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button primary\\">
+      <!--v-if-->Primary
+    </button>
     <!--v-if-->
-  </transition-stub>
-  <transition-stub data-v-77e8b65a=\\"\\" enteractiveclass=\\"transition-opacity duration-300\\" leaveactiveclass=\\"transition-opacity duration-200\\" leavetoclass=\\"opacity-0\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\" enter-class=\\"opacity-0\\">
+    <!--v-if--><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button secondary\\">
+      <!--v-if-->Secondary
+    </button>
     <!--v-if-->
-  </transition-stub>
-  <transition-stub data-v-77e8b65a=\\"\\" enteractiveclass=\\"transition-opacity duration-300\\" leaveactiveclass=\\"transition-opacity duration-200\\" leavetoclass=\\"opacity-0\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\" enter-class=\\"opacity-0\\">
+    <!--v-if--><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button success\\">
+      <!--v-if-->Success
+    </button>
     <!--v-if-->
-  </transition-stub>
-  <div class=\\"px-2 pt-4 pb-20 bg-white dark:bg-slate-900 dark:border-slate-700 fixed z-102 py-4 overflow-y-auto bg-white transition-all w-80 h-screen top-0 -left-80\\"><a data-v-66c3d657=\\"\\" href=\\"/dashboard\\" class=\\"link\\" style=\\"padding-left: 1rem;\\">
-      <div data-v-66c3d657=\\"\\" class=\\"i-ic-round-dashboard w-6 h-6 mr-2\\"></div>
-      <div data-v-66c3d657=\\"\\" class=\\"flex-1\\">Dashboard</div>
-    </a>
-    <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-      <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-    </transition-stub>
-    <div data-v-66c3d657=\\"\\" class=\\"mt-4 px-4 py-2 text-sm text-slate-400 dark:text-slate-500 uppercase font-bold\\">Library</div>
-    <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-      <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-    </transition-stub>
-    <div data-v-66c3d657=\\"\\" class=\\"link\\" style=\\"padding-left: 1rem;\\">
-      <div data-v-66c3d657=\\"\\" class=\\"i-mdi-bookmark-outline w-6 h-6 mr-2\\"></div>
-      <div data-v-66c3d657=\\"\\" class=\\"flex-1\\">General</div>
-      <div data-v-66c3d657=\\"\\" class=\\"i-ic-baseline-arrow-drop-down w-6 h-6\\"></div>
+    <!--v-if--><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button danger\\">
       <!--v-if-->
-    </div>
-    <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-      <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"><a data-v-66c3d657=\\"\\" href=\\"/general/buttons\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Buttons</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/general/icons\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Icons</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/general/paper\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Paper</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/general/scrollbar\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Scrollbar</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/general/typography\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Typography</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub>
-      </div>
-    </transition-stub>
-    <div data-v-66c3d657=\\"\\" class=\\"link\\" style=\\"padding-left: 1rem;\\">
-      <div data-v-66c3d657=\\"\\" class=\\"i-ri-layout-3-line w-6 h-6 mr-2\\"></div>
-      <div data-v-66c3d657=\\"\\" class=\\"flex-1\\">Layout</div>
-      <div data-v-66c3d657=\\"\\" class=\\"i-ic-baseline-arrow-drop-down w-6 h-6\\"></div>
-      <!--v-if-->
-    </div>
-    <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-      <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"><a data-v-66c3d657=\\"\\" href=\\"/layout/aspect-ratio\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Aspect Ratio</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/layout/dividers\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Dividers</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/layout/grid\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Grid</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/layout/spaces\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Spaces</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub>
-      </div>
-    </transition-stub>
-    <div data-v-66c3d657=\\"\\" class=\\"link\\" style=\\"padding-left: 1rem;\\">
-      <div data-v-66c3d657=\\"\\" class=\\"i-grommet-icons-navigate w-6 h-6 mr-2\\"></div>
-      <div data-v-66c3d657=\\"\\" class=\\"flex-1\\">Navigation</div>
-      <div data-v-66c3d657=\\"\\" class=\\"i-ic-baseline-arrow-drop-down w-6 h-6\\"></div>
-      <!--v-if-->
-    </div>
-    <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-      <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"><a data-v-66c3d657=\\"\\" href=\\"/navigation/breadcrumbs\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Breadcrumbs</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/navigation/drawers\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Drawers</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/navigation/dropdown\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Dropdown</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/navigation/pagination\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Pagination</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/navigation/steppers\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Steppers</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/navigation/tabs\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Tabs</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/navigation/tours\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Tours</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub>
-      </div>
-    </transition-stub>
-    <div data-v-66c3d657=\\"\\" class=\\"link\\" style=\\"padding-left: 1rem;\\">
-      <div data-v-66c3d657=\\"\\" class=\\"i-fluent-form-24-regular w-6 h-6 mr-2\\"></div>
-      <div data-v-66c3d657=\\"\\" class=\\"flex-1\\">Data Entry</div>
-      <div data-v-66c3d657=\\"\\" class=\\"i-ic-baseline-arrow-drop-down w-6 h-6\\"></div>
-      <!--v-if-->
-    </div>
-    <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-      <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"><a data-v-66c3d657=\\"\\" href=\\"/data-entry/autocompletes\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Autocompletes</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/data-entry/checkboxes\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Checkboxes</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/data-entry/file-inputs\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">File inputs</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/data-entry/form-validation\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Form Validation</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub>
-        <div data-v-66c3d657=\\"\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Pickers</div>
-          <div data-v-66c3d657=\\"\\" class=\\"i-ic-baseline-arrow-drop-down w-6 h-6\\"></div>
-          <!--v-if-->
-        </div>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"><a data-v-66c3d657=\\"\\" href=\\"/data-entry/pickers/date-pickers\\" class=\\"link\\" style=\\"padding-left: 3rem;\\">
-              <!--v-if-->
-              <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Date pickers</div>
-            </a>
-            <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-              <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-            </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/data-entry/pickers/month-pickers\\" class=\\"link\\" style=\\"padding-left: 3rem;\\">
-              <!--v-if-->
-              <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Month pickers</div>
-            </a>
-            <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-              <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-            </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/data-entry/pickers/time-pickers\\" class=\\"link\\" style=\\"padding-left: 3rem;\\">
-              <!--v-if-->
-              <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Time pickers</div>
-            </a>
-            <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-              <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-            </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/data-entry/pickers/year-pickers\\" class=\\"link\\" style=\\"padding-left: 3rem;\\">
-              <!--v-if-->
-              <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Year pickers</div>
-            </a>
-            <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-              <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-            </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/data-entry/pickers/week-pickers\\" class=\\"link\\" style=\\"padding-left: 3rem;\\">
-              <!--v-if-->
-              <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Week pickers</div>
-            </a>
-            <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-              <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-            </transition-stub>
-          </div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/data-entry/radio-buttons\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Radio buttons</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub>
-        <div data-v-66c3d657=\\"\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Selects</div>
-          <div data-v-66c3d657=\\"\\" class=\\"i-ic-baseline-arrow-drop-down w-6 h-6\\"></div>
-          <!--v-if-->
-        </div>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"><a data-v-66c3d657=\\"\\" href=\\"/data-entry/selects/single-selects\\" class=\\"link\\" style=\\"padding-left: 3rem;\\">
-              <!--v-if-->
-              <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Single selects</div>
-            </a>
-            <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-              <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-            </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/data-entry/selects/multiple-selects\\" class=\\"link\\" style=\\"padding-left: 3rem;\\">
-              <!--v-if-->
-              <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Multiple selects</div>
-            </a>
-            <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-              <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-            </transition-stub>
-          </div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/data-entry/slider\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Slider</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/data-entry/switches\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Switches</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/data-entry/text-fields\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Text fields</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/data-entry/textareas\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Textareas</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/data-entry/transfer\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Transfer</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub>
-      </div>
-    </transition-stub>
-    <div data-v-66c3d657=\\"\\" class=\\"link\\" style=\\"padding-left: 1rem;\\">
-      <div data-v-66c3d657=\\"\\" class=\\"i-codicon-table w-6 h-6 mr-2\\"></div>
-      <div data-v-66c3d657=\\"\\" class=\\"flex-1\\">Data Display</div>
-      <div data-v-66c3d657=\\"\\" class=\\"i-ic-baseline-arrow-drop-down w-6 h-6\\"></div>
-      <!--v-if-->
-    </div>
-    <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-      <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"><a data-v-66c3d657=\\"\\" href=\\"/data-display/badge\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Badge</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/data-display/calendar\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Calendar</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/data-display/chip\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Chip</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/data-display/data-iterators\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Data iterators</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/data-display/data-tables\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Table</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/data-display/expansion-panels\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Expansion Panels</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/data-display/popover\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Popover</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/data-display/tabular-form-groups\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Tabular form groups</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/data-display/tabular-forms\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Tabular forms</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/data-display/timeline\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Timeline</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/data-display/tooltip\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Tooltip</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub>
-      </div>
-    </transition-stub>
-    <div data-v-66c3d657=\\"\\" class=\\"link\\" style=\\"padding-left: 1rem;\\">
-      <div data-v-66c3d657=\\"\\" class=\\"i-mdi-feedback-outline w-6 h-6 mr-2\\"></div>
-      <div data-v-66c3d657=\\"\\" class=\\"flex-1\\">Feedback</div>
-      <div data-v-66c3d657=\\"\\" class=\\"i-ic-baseline-arrow-drop-down w-6 h-6\\"></div>
-      <!--v-if-->
-    </div>
-    <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-      <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"><a data-v-66c3d657=\\"\\" href=\\"/feedback/alert\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Alert</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/feedback/dialogs\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Dialogs</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/feedback/notification\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Notification</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/feedback/progress\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Progress</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/feedback/skeletons\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Skeletons</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub>
-      </div>
-    </transition-stub>
-    <div data-v-66c3d657=\\"\\" class=\\"link\\" style=\\"padding-left: 1rem;\\">
-      <div data-v-66c3d657=\\"\\" class=\\"i-bx-line-chart w-6 h-6 mr-2\\"></div>
-      <div data-v-66c3d657=\\"\\" class=\\"flex-1\\">Charts</div>
-      <div data-v-66c3d657=\\"\\" class=\\"i-ic-baseline-arrow-drop-down w-6 h-6\\"></div>
-      <!--v-if-->
-    </div>
-    <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-      <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"><a data-v-66c3d657=\\"\\" href=\\"/charts/line-charts\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Line charts</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/charts/area-charts\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Area charts</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/charts/bar-charts\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Bar charts</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/charts/pie-charts\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Pie charts</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/charts/bubble-charts\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Bubble charts</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/charts/combinations\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Combinations</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub>
-      </div>
-    </transition-stub>
-    <div data-v-66c3d657=\\"\\" class=\\"link\\" style=\\"padding-left: 1rem;\\">
-      <div data-v-66c3d657=\\"\\" class=\\"i-bi-hdd-network w-6 h-6 mr-2\\"></div>
-      <div data-v-66c3d657=\\"\\" class=\\"flex-1\\">Network</div>
-      <div data-v-66c3d657=\\"\\" class=\\"i-ic-baseline-arrow-drop-down w-6 h-6\\"></div>
-      <!--v-if-->
-    </div>
-    <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-      <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"><a data-v-66c3d657=\\"\\" href=\\"/network/fetch\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">Fetch</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/network/websocket\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">WebSocket</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/network/eventsource\\" class=\\"link\\" style=\\"padding-left: 2rem;\\">
-          <!--v-if-->
-          <div data-v-66c3d657=\\"\\" class=\\"flex-1 pl-4\\">EventSource</div>
-        </a>
-        <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-          <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-        </transition-stub>
-      </div>
-    </transition-stub>
-    <div data-v-66c3d657=\\"\\" class=\\"mt-4 px-4 py-2 text-sm text-slate-400 dark:text-slate-500 uppercase font-bold\\">Playground</div>
-    <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-      <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-    </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/counter\\" class=\\"link\\" style=\\"padding-left: 1rem;\\">
-      <div data-v-66c3d657=\\"\\" class=\\"i-mdi-counter w-6 h-6 mr-2\\"></div>
-      <div data-v-66c3d657=\\"\\" class=\\"flex-1\\">Counter</div>
-    </a>
-    <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-      <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-    </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/crud-operations\\" class=\\"link\\" style=\\"padding-left: 1rem;\\">
-      <div data-v-66c3d657=\\"\\" class=\\"i-carbon-cloud-service-management w-6 h-6 mr-2\\"></div>
-      <div data-v-66c3d657=\\"\\" class=\\"flex-1\\">CRUD Operations</div>
-    </a>
-    <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-      <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-    </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/user-list\\" class=\\"link\\" style=\\"padding-left: 1rem;\\">
-      <div data-v-66c3d657=\\"\\" class=\\"i-mdi-user-group w-6 h-6 mr-2\\"></div>
-      <div data-v-66c3d657=\\"\\" class=\\"flex-1\\">User List</div>
-    </a>
-    <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-      <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-    </transition-stub><a data-v-66c3d657=\\"\\" href=\\"/two-factor-auth\\" class=\\"link\\" style=\\"padding-left: 1rem;\\">
-      <div data-v-66c3d657=\\"\\" class=\\"i-carbon-two-factor-authentication w-6 h-6 mr-2\\"></div>
-      <div data-v-66c3d657=\\"\\" class=\\"flex-1\\">Two-factor Auth</div>
-    </a>
-    <transition-stub data-v-2814789e=\\"\\" data-v-66c3d657=\\"\\" name=\\"collapse\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-      <div data-v-66c3d657=\\"\\" style=\\"display: none;\\"></div>
-    </transition-stub>
+      <div class=\\"i-fa-trash w-4 h-4\\"></div> Delete
+    </button>
+    <!--v-if-->
+    <!--v-if--><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button warning\\">
+      <!--v-if-->Warning
+    </button>
+    <!--v-if-->
+    <!--v-if--><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button info icon\\">
+      <div data-v-a0d7c982=\\"\\" class=\\"w-4 h-4 i-fa-question\\"></div>
+    </button>
+    <!--v-if-->
+    <!--v-if-->
   </div>
-  <!--v-if-->
+  <div class=\\"flex space-x-2 justify-center bg-white dark:bg-slate-800 rounded-md shadow-md py-4\\"><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button primary\\">
+      <!--v-if-->Primary
+    </button>
+    <!--v-if-->
+    <!--v-if--><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button secondary\\">
+      <!--v-if-->Secondary
+    </button>
+    <!--v-if-->
+    <!--v-if--><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button success icon\\">
+      <div data-v-a0d7c982=\\"\\" class=\\"w-4 h-4 i-fa-plus\\"></div>
+    </button>
+    <!--v-if-->
+    <!--v-if--><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button danger\\">
+      <!--v-if-->Danger
+    </button>
+    <!--v-if-->
+    <!--v-if--><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button warning\\">
+      <!--v-if-->Warning
+    </button>
+    <!--v-if-->
+    <!--v-if--><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button info\\">
+      <!--v-if-->Info
+    </button>
+    <!--v-if-->
+    <!--v-if-->
+  </div>
+  <div class=\\"flex space-x-2 justify-center py-4\\"><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button primary opacity-60 cursor-not-allowed\\" disabled=\\"\\">
+      <!--v-if-->Primary
+    </button>
+    <!--v-if-->
+    <!--v-if--><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button secondary opacity-60 cursor-not-allowed\\" disabled=\\"\\">
+      <!--v-if-->Secondary
+    </button>
+    <!--v-if-->
+    <!--v-if--><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button success opacity-60 cursor-not-allowed\\" disabled=\\"\\">
+      <!--v-if-->Success
+    </button>
+    <!--v-if-->
+    <!--v-if--><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button danger opacity-60 cursor-not-allowed\\" disabled=\\"\\">
+      <!--v-if-->Danger
+    </button>
+    <!--v-if-->
+    <!--v-if--><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button warning opacity-60 cursor-not-allowed\\" disabled=\\"\\">
+      <!--v-if-->Warning
+    </button>
+    <!--v-if-->
+    <!--v-if--><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button info opacity-60 cursor-not-allowed\\" disabled=\\"\\">
+      <!--v-if-->Info
+    </button>
+    <!--v-if-->
+    <!--v-if-->
+  </div>
+  <div class=\\"flex space-x-2 justify-center bg-white dark:bg-slate-800 rounded-md shadow-md py-4\\"><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button primary opacity-60 cursor-not-allowed\\" disabled=\\"\\">
+      <!--v-if-->Primary
+    </button>
+    <!--v-if-->
+    <!--v-if--><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button secondary opacity-60 cursor-not-allowed\\" disabled=\\"\\">
+      <!--v-if-->Secondary
+    </button>
+    <!--v-if-->
+    <!--v-if--><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button success opacity-60 cursor-not-allowed\\" disabled=\\"\\">
+      <!--v-if-->Success
+    </button>
+    <!--v-if-->
+    <!--v-if--><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button danger opacity-60 cursor-not-allowed\\" disabled=\\"\\">
+      <!--v-if-->Danger
+    </button>
+    <!--v-if-->
+    <!--v-if--><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button warning opacity-60 cursor-not-allowed\\" disabled=\\"\\">
+      <!--v-if-->Warning
+    </button>
+    <!--v-if-->
+    <!--v-if--><button data-v-a0d7c982=\\"\\" type=\\"button\\" class=\\"button info opacity-60 cursor-not-allowed\\" disabled=\\"\\">
+      <!--v-if-->Info
+    </button>
+    <!--v-if-->
+    <!--v-if-->
+  </div>
+</div>
+<div class=\\"flex flex-col border p-4 mb-4\\">
+  <div class=\\"mb-2\\">Outlined</div>
+  <div class=\\"flex space-x-2 justify-center py-4\\">
+    <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button primary icon important:border-current\\" type=\\"button\\">
+      <div data-v-7f177110=\\"\\" class=\\"w-4 h-4 i-fa-download\\"></div>
+    </button>
+    <!--v-if-->
+    <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button secondary important:border-current\\" type=\\"button\\">
+      <!--v-if-->Secondary
+    </button>
+    <!--v-if-->
+    <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button success important:border-current\\" type=\\"button\\">
+      <!--v-if-->Success
+    </button>
+    <!--v-if-->
+    <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button danger important:border-current\\" type=\\"button\\">
+      <!--v-if-->Danger
+    </button>
+    <!--v-if-->
+    <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button warning important:border-current\\" type=\\"button\\">
+      <!--v-if-->Warning
+    </button>
+    <!--v-if-->
+    <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button info important:border-current\\" type=\\"button\\">
+      <!--v-if--> View <div class=\\"i-bx-detail w-4 h-4\\"></div>
+    </button>
+    <!--v-if-->
+  </div>
+  <div class=\\"flex space-x-2 justify-center bg-white dark:bg-slate-800 rounded-md shadow-md py-4\\">
+    <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button primary important:border-current\\" type=\\"button\\">
+      <!--v-if-->Primary
+    </button>
+    <!--v-if-->
+    <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button secondary important:border-current\\" type=\\"button\\">
+      <!--v-if-->Secondary
+    </button>
+    <!--v-if-->
+    <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button success important:border-current\\" type=\\"button\\">
+      <!--v-if-->Success
+    </button>
+    <!--v-if-->
+    <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button danger important:border-current\\" type=\\"button\\">
+      <!--v-if-->Danger
+    </button>
+    <!--v-if-->
+    <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button warning icon important:border-current\\" type=\\"button\\">
+      <div data-v-7f177110=\\"\\" class=\\"w-4 h-4 i-fa-exclamation\\"></div>
+    </button>
+    <!--v-if-->
+    <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button info important:border-current\\" type=\\"button\\">
+      <!--v-if-->Info
+    </button>
+    <!--v-if-->
+  </div>
+  <div class=\\"flex space-x-2 justify-center py-4\\">
+    <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button primary opacity-60 cursor-not-allowed important:border-current\\" type=\\"button\\" disabled=\\"\\">
+      <!--v-if-->Primary
+    </button>
+    <!--v-if-->
+    <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button secondary opacity-60 cursor-not-allowed important:border-current\\" type=\\"button\\" disabled=\\"\\">
+      <!--v-if-->Secondary
+    </button>
+    <!--v-if-->
+    <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button success opacity-60 cursor-not-allowed important:border-current\\" type=\\"button\\" disabled=\\"\\">
+      <!--v-if-->Success
+    </button>
+    <!--v-if-->
+    <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button danger opacity-60 cursor-not-allowed important:border-current\\" type=\\"button\\" disabled=\\"\\">
+      <!--v-if-->Danger
+    </button>
+    <!--v-if-->
+    <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button warning opacity-60 cursor-not-allowed important:border-current\\" type=\\"button\\" disabled=\\"\\">
+      <!--v-if-->Warning
+    </button>
+    <!--v-if-->
+    <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button info opacity-60 cursor-not-allowed important:border-current\\" type=\\"button\\" disabled=\\"\\">
+      <!--v-if-->Info
+    </button>
+    <!--v-if-->
+  </div>
+  <div class=\\"flex space-x-2 justify-center bg-white dark:bg-slate-800 rounded-md shadow-md py-4\\">
+    <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button primary opacity-60 cursor-not-allowed important:border-current\\" type=\\"button\\" disabled=\\"\\">
+      <!--v-if-->Primary
+    </button>
+    <!--v-if-->
+    <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button secondary opacity-60 cursor-not-allowed important:border-current\\" type=\\"button\\" disabled=\\"\\">
+      <!--v-if-->Secondary
+    </button>
+    <!--v-if-->
+    <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button success opacity-60 cursor-not-allowed important:border-current\\" type=\\"button\\" disabled=\\"\\">
+      <!--v-if-->Success
+    </button>
+    <!--v-if-->
+    <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button danger opacity-60 cursor-not-allowed important:border-current\\" type=\\"button\\" disabled=\\"\\">
+      <!--v-if-->Danger
+    </button>
+    <!--v-if-->
+    <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button warning opacity-60 cursor-not-allowed important:border-current\\" type=\\"button\\" disabled=\\"\\">
+      <!--v-if-->Warning
+    </button>
+    <!--v-if-->
+    <!--v-if--><button data-v-7f177110=\\"\\" class=\\"important:border-current button info opacity-60 cursor-not-allowed important:border-current\\" type=\\"button\\" disabled=\\"\\">
+      <!--v-if-->Info
+    </button>
+    <!--v-if-->
+  </div>
+</div>
+<div class=\\"flex flex-col border p-4 mb-4\\">
+  <div class=\\"mb-2\\">Text</div>
+  <div class=\\"flex space-x-2 justify-center py-4\\">
+    <!--v-if-->
+    <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button primary\\">
+      <!--v-if-->Primary
+    </button>
+    <!--v-if-->
+    <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button secondary icon\\">
+      <div data-v-7f177110=\\"\\" class=\\"w-4 h-4 i-fa-share-square-o\\"></div>
+    </button>
+    <!--v-if-->
+    <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button success\\">
+      <!--v-if-->Success
+    </button>
+    <!--v-if-->
+    <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button danger\\">
+      <!--v-if-->Danger
+    </button>
+    <!--v-if-->
+    <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button warning\\">
+      <!--v-if-->Warning
+    </button>
+    <!--v-if-->
+    <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button info\\">
+      <!--v-if-->Info
+    </button>
+  </div>
+  <div class=\\"flex space-x-2 justify-center bg-white dark:bg-slate-800 rounded-md shadow-md py-4\\">
+    <!--v-if-->
+    <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button primary\\">
+      <!--v-if--> Send <div class=\\"i-fa-send w-4 h-4\\"></div>
+    </button>
+    <!--v-if-->
+    <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button secondary\\">
+      <!--v-if-->Secondary
+    </button>
+    <!--v-if-->
+    <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button success\\">
+      <!--v-if-->Success
+    </button>
+    <!--v-if-->
+    <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button danger icon\\">
+      <div data-v-7f177110=\\"\\" class=\\"w-4 h-4 i-fa-minus\\"></div>
+    </button>
+    <!--v-if-->
+    <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button warning\\">
+      <!--v-if-->Warning
+    </button>
+    <!--v-if-->
+    <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button info\\">
+      <!--v-if-->Info
+    </button>
+  </div>
+  <div class=\\"flex space-x-2 justify-center py-4\\">
+    <!--v-if-->
+    <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button primary opacity-60 cursor-not-allowed\\" disabled=\\"\\">
+      <!--v-if-->Primary
+    </button>
+    <!--v-if-->
+    <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button secondary opacity-60 cursor-not-allowed\\" disabled=\\"\\">
+      <!--v-if-->Secondary
+    </button>
+    <!--v-if-->
+    <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button success opacity-60 cursor-not-allowed\\" disabled=\\"\\">
+      <!--v-if-->Success
+    </button>
+    <!--v-if-->
+    <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button danger opacity-60 cursor-not-allowed\\" disabled=\\"\\">
+      <!--v-if-->Danger
+    </button>
+    <!--v-if-->
+    <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button warning opacity-60 cursor-not-allowed\\" disabled=\\"\\">
+      <!--v-if-->Warning
+    </button>
+    <!--v-if-->
+    <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button info opacity-60 cursor-not-allowed\\" disabled=\\"\\">
+      <!--v-if-->Info
+    </button>
+  </div>
+  <div class=\\"flex space-x-2 justify-center bg-white dark:bg-slate-800 rounded-md shadow-md py-4\\">
+    <!--v-if-->
+    <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button primary opacity-60 cursor-not-allowed\\" disabled=\\"\\">
+      <!--v-if-->Primary
+    </button>
+    <!--v-if-->
+    <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button secondary opacity-60 cursor-not-allowed\\" disabled=\\"\\">
+      <!--v-if-->Secondary
+    </button>
+    <!--v-if-->
+    <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button success opacity-60 cursor-not-allowed\\" disabled=\\"\\">
+      <!--v-if-->Success
+    </button>
+    <!--v-if-->
+    <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button danger opacity-60 cursor-not-allowed\\" disabled=\\"\\">
+      <!--v-if-->Danger
+    </button>
+    <!--v-if-->
+    <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button warning opacity-60 cursor-not-allowed\\" disabled=\\"\\">
+      <!--v-if-->Warning
+    </button>
+    <!--v-if-->
+    <!--v-if--><button data-v-7f177110=\\"\\" type=\\"button\\" class=\\"button info opacity-60 cursor-not-allowed\\" disabled=\\"\\">
+      <!--v-if-->Info
+    </button>
+  </div>
 </div>"
 `;

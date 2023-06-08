@@ -7,7 +7,6 @@ import listOfLinks from './list-of-links';
 export default defineStore('Default.vue', () => {
   const state = reactive({
     listOfLinks,
-    yPosition: 0,
   });
 
   const actions = readonly({

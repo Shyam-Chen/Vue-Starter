@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import { ref, reactive, watch, onMounted } from 'vue';
+import { reactive, watch, onMounted } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import { useLocaler, useLocale } from 'vue-localer';
-import { useIdle, useDark, useToggle, useTextDirection, useScroll } from '@vueuse/core';
+import { useIdle, useDark, useToggle, useTextDirection } from '@vueuse/core';
 
 import TextField from '~/components/TextField.vue';
 import Dropdown from '~/components/Dropdown.vue';
@@ -23,8 +23,7 @@ const { idle } = useIdle(30 * 60 * 1000);
 const isDark = useDark();
 const toggleDark = useToggle(isDark);
 const textDirection = useTextDirection();
-const sidebar = ref<HTMLElement>();
-const sidebarScroll = useScroll(sidebar);
+
 const { state } = useDefault();
 
 const flux = reactive({
@@ -88,18 +87,7 @@ watch(
   },
 );
 
-watch(
-  () => sidebarScroll.y.value,
-  (y) => {
-    state.yPosition = y;
-  },
-);
-
 onMounted(async () => {
-  if (state.yPosition) {
-    sidebarScroll.y.value = state.yPosition;
-  }
-
   const response = await request('/auth/user', { method: 'GET' });
 
   if (response.status == 200) {
@@ -190,7 +178,6 @@ onMounted(async () => {
     </header>
 
     <aside
-      ref="sidebar"
       class="sidebar px-2 pt-4 pb-20 bg-white dark:bg-slate-900 border-r dark:border-slate-700 shadow-lg hidden xl:block"
     >
       <template v-for="link in state.listOfLinks" :key="link.name">

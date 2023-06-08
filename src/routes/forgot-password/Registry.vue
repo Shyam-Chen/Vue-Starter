@@ -10,7 +10,7 @@ import useStore from './store';
 import useSchema from './schema';
 
 defineRegistry({
-  layout: 'center',
+  layout: 'Center',
 });
 
 const { state } = useStore();
