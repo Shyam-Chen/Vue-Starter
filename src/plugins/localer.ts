@@ -6,8 +6,6 @@ export default createLocaler({
   fallbackLocale: 'en-US',
   messages: {
     'en-US': enUS,
-    'ja-JP': () => import('~/locales/ja-JP'),
-    'ko-KR': () => import('~/locales/ko-KR'),
-    'zh-TW': () => import('~/locales/zh-TW'),
+    ...import.meta.glob(['~/locales/*.ts', '!~/locales/index.ts', '!~/locales/en-US.ts']),
   },
 });
