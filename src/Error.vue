@@ -3,7 +3,7 @@ import { RouterLink } from 'vue-router';
 </script>
 
 <template>
-  <section class="flex items-center h-full p-16">
+  <div class="flex justify-center items-center min-h-screen h-full p-16">
     <div class="container flex flex-col items-center justify-center px-5 mx-auto my-8">
       <div class="max-w-md text-center">
         <h2 class="mb-8 font-extrabold text-9xl text-gray-400">
@@ -22,5 +22,5 @@ import { RouterLink } from 'vue-router';
         </RouterLink>
       </div>
     </div>
-  </section>
+  </div>
 </template>
