@@ -14,8 +14,6 @@ const onEnter = (element: any) => {
   element.style.visibility = '';
   element.style.height = '0px';
 
-  getComputedStyle(element).height;
-
   requestAnimationFrame(() => {
     element.style.height = height;
   });
@@ -29,8 +27,6 @@ const onLeave = (element: any) => {
   const height = getComputedStyle(element).height;
 
   element.style.height = height;
-
-  getComputedStyle(element).height;
 
   requestAnimationFrame(() => {
     element.style.height = '0px';
