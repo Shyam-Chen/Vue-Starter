@@ -193,6 +193,7 @@ watch(
             v-for="(row, idx) in flux.rows"
             :key="row._id || idx"
             class="sticky-tr hover:bg-slate-100 dark:hover:bg-slate-600 border-b last:border-b-0 dark:border-slate-600"
+            :class="{ 'bg-primary-800/25 important:hover:bg-primary-600/50': row.checked }"
           >
             <td v-if="selectable" class="px-6 py-3 align-middle whitespace-nowrap">
               <Checkbox v-model:value="row.checked" />

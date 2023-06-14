@@ -20,8 +20,13 @@ const flux = reactive({
 
 <template>
   <div class="w-full rounded shadow bg-white dark:bg-slate-800">
-    <div class="p-6 cursor-pointer" @click="flux.toggle">
-      <slot name="header"></slot>
+    <div class="flex p-6 cursor-pointer" @click="flux.toggle">
+      <div class="flex-1">
+        <slot name="header"></slot>
+      </div>
+
+      <div v-if="!flux.status" class="i-ic-baseline-arrow-drop-down w-6 h-6"></div>
+      <div v-else class="i-ic-baseline-arrow-drop-up w-6 h-6"></div>
     </div>
 
     <Collapse>

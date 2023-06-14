@@ -1,24 +1,22 @@
 <script lang="ts" setup>
 defineProps<{
   src?: string;
+  icon?: string;
 }>();
 </script>
 
 <template>
-  <img
-    class="w-10 h-10 rounded-full"
-    src="/docs/images/people/profile-picture-5.jpg"
-    alt="Rounded avatar"
-  />
-  <img
-    class="w-10 h-10 rounded"
-    src="/docs/images/people/profile-picture-5.jpg"
-    alt="Default avatar"
-  />
+  <img v-if="src" v-bind="$attrs" :src="src" class="w-10 h-10 rounded-full" />
 
-  <slot></slot>
+  <div
+    v-else-if="icon"
+    v-bind="$attrs"
+    class="w-10 h-10 rounded-full flex justify-center items-center"
+  >
+    <div class="w-7 h-7" :class="icon"></div>
+  </div>
 
-  <!-- <Avatar class="bg-red-500 text-white">SC</Avatar>
-  <Avatar class="bg-red-500"><div class="i-mdi-account-circle"></div></Avatar>
-  <Avatar src="profile-picture-5.jpg" /> -->
+  <div v-else v-bind="$attrs" class="w-10 h-10 rounded-full flex justify-center items-center">
+    <slot></slot>
+  </div>
 </template>

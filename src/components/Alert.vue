@@ -35,7 +35,7 @@ defineProps<{
 
 <style lang="scss" scoped>
 .alert {
-  @apply flex justify-between max-w-100 p-4 rounded-lg border border-current;
+  @apply flex justify-between p-4 rounded-lg border border-current;
 }
 
 .primary {

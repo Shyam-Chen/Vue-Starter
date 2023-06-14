@@ -8,13 +8,13 @@ import Accordion from '~/components/Accordion.vue';
     :items="[
       { text: 'Library', disabled: true },
       { text: 'Data Display', disabled: true },
-      { text: 'Expansion Panels', disabled: true },
+      { text: 'Accordion', disabled: true },
     ]"
     class="mb-4"
   />
 
   <div class="mb-4">
-    <div class="text-3xl font-bold">Expansion Panels</div>
+    <div class="text-3xl font-bold">Accordion</div>
   </div>
 
   <div class="flex flex-col border p-4 mb-4">
@@ -25,7 +25,6 @@ import Accordion from '~/components/Accordion.vue';
         <template #header>
           <div class="flex justify-between">
             <div>What is a "Composable"?</div>
-            <div class="i-ic-baseline-arrow-drop-down w-6 h-6"></div>
           </div>
         </template>
 
