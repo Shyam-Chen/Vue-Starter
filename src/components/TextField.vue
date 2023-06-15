@@ -104,20 +104,22 @@ const flux = reactive({
   }
 
   &.prepend {
-    @apply rounded-l-0;
+    @apply ltr:rounded-l-0 rtl:rounded-r-0;
   }
 
   &.append {
-    @apply rounded-r-0;
+    @apply ltr:rounded-r-0 rtl:rounded-l-0;
   }
 }
 
 .text-field-prepend {
-  @apply p-2 border border-slate-400 border-r-0 rounded rounded-r-0 bg-slate-100 dark:bg-slate-700 z-1;
+  @apply p-2 border border-slate-400 rounded bg-slate-100 dark:bg-slate-700 z-1;
+  @apply ltr:border-r-0 ltr:rounded-r-0 rtl:border-l-0 rtl:rounded-l-0;
 }
 
 .text-field-append {
-  @apply p-2 border border-slate-400 border-l-0 rounded rounded-l-0 bg-slate-100 dark:bg-slate-700 z-1;
+  @apply p-2 border border-slate-400 rounded bg-slate-100 dark:bg-slate-700 z-1;
+  @apply ltr:border-l-0 ltr:rounded-l-0 rtl:border-r-0 rtl:rounded-r-0;
 }
 
 .text-field-focused {

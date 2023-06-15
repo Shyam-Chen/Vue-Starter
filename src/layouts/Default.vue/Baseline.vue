@@ -103,14 +103,14 @@ onMounted(async () => {
 
 <template>
   <div class="h-full">
-    <header class="topbar px-6 py-4 flex items-center backdrop-blur shadow-lg">
+    <header class="topbar px-6 py-4 flex items-center gap-4 backdrop-blur shadow-lg">
       <div
-        class="i-ic-round-menu w-8 h-8 mr-4 dark:text-white cursor-pointer transition hover:scale-125 xl:hidden"
+        class="i-ic-round-menu w-8 h-8 dark:text-white cursor-pointer transition hover:scale-125 xl:hidden"
         @click="flux.navDrawer = true"
       ></div>
 
-      <div class="i-simple-icons-deno w-12 h-12 mr-4 dark:text-white"></div>
-      <div class="text-3xl font-bold dark:text-white mr-4">{{ locale.title }}</div>
+      <div class="i-simple-icons-deno w-12 h-12 dark:text-white"></div>
+      <div class="text-3xl font-bold dark:text-white">{{ locale.title }}</div>
 
       <div style="flex: 1 0 auto"></div>
 
@@ -124,18 +124,16 @@ onMounted(async () => {
       <Button
         variant="text"
         :icon="isDark ? 'i-material-symbols-dark-mode-rounded' : 'i-material-symbols-light-mode'"
-        class="ml-4"
         @click="toggleDark()"
       />
 
       <Button
         variant="text"
         :icon="textDirection === 'rtl' ? 'i-mdi-rtl' : 'i-mdi-ltr'"
-        class="ml-4"
         @click="textDirection = textDirection === 'rtl' ? 'ltr' : 'rtl'"
       />
 
-      <Dropdown class="ml-4">
+      <Dropdown>
         <div
           class="text-white bg-primary-600 rounded-full w-10 h-10 flex justify-center items-center cursor-pointer transition hover:scale-125"
         >
@@ -178,7 +176,7 @@ onMounted(async () => {
     </header>
 
     <aside
-      class="sidebar px-2 pt-4 pb-20 bg-white dark:bg-slate-900 border-r dark:border-slate-700 shadow-lg hidden xl:block"
+      class="sidebar px-2 pt-4 pb-20 bg-white dark:bg-slate-900 dark:border-slate-700 shadow-lg hidden xl:block"
     >
       <template v-for="link in state.listOfLinks" :key="link.name">
         <NavLink
@@ -221,7 +219,7 @@ onMounted(async () => {
               { label: '한국어', value: 'ko-KR' },
               { label: '正體中文', value: 'zh-TW' },
             ]"
-            class="min-w-50 ml-2"
+            class="min-w-50 ltr:ml-2 rtl:mr-2"
             @change="flux.changeLang"
           />
         </div>
@@ -254,6 +252,7 @@ onMounted(async () => {
 
     <Drawer
       v-model="flux.navDrawer"
+      :placement="textDirection === 'rtl' ? 'right' : 'left'"
       class="px-2 pt-4 pb-20 bg-white dark:bg-slate-900 dark:border-slate-700"
     >
       <template v-for="link in state.listOfLinks" :key="link.name">
@@ -272,39 +271,23 @@ onMounted(async () => {
 </template>
 
 <style lang="scss" scoped>
-$topbar-height: 5rem;
-$sidebar-width: 16rem;
-
 .topbar {
-  position: fixed;
-  top: 0;
-  z-index: 100;
-  width: 100%;
+  @apply fixed top-0 z-100 w-full;
 }
 
 .sidebar {
-  position: fixed;
-  top: 5rem;
-  bottom: 0;
-  left: 0;
-  z-index: 99;
-  width: $sidebar-width;
-  overflow-y: auto;
+  @apply fixed top-20 bottom-0 z-99 w-64 overflow-y-auto;
+  @apply ltr:left-0	rtl:right-0;
+  @apply ltr:border-r rtl:border-l;
 }
 
 .page {
-  padding: ($topbar-height + 2rem) 2rem 2rem;
-
-  @media (min-width: 1280px) {
-    padding: ($topbar-height + 2rem) 2rem 2rem ($sidebar-width + 2rem);
-  }
+  @apply p-8 pt-28;
+  @apply ltr:xl:pl-72 rtl:xl:pr-72;
 }
 
 .footer {
-  padding: 2rem;
-
-  @media (min-width: 1280px) {
-    padding: 2rem 2rem 2rem ($sidebar-width + 2rem);
-  }
+  @apply p-8;
+  @apply ltr:xl:pl-72 rtl:xl:pr-72;
 }
 </style>

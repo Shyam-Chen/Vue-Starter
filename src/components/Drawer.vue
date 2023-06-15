@@ -1,17 +1,16 @@
 <script lang="ts" setup>
 import { watch, onUnmounted } from 'vue';
-import type { PropType } from 'vue';
 
-const props = defineProps({
-  modelValue: {
-    type: Boolean,
-    default: false,
+const props = withDefaults(
+  defineProps<{
+    modelValue?: boolean;
+    placement?: 'top' | 'right' | 'bottom' | 'left';
+  }>(),
+  {
+    modelValue: false,
+    placement: 'left',
   },
-  placement: {
-    type: String as PropType<'top' | 'right' | 'bottom' | 'left' | string>,
-    default: 'left',
-  },
-});
+);
 
 const emit = defineEmits(['update:modelValue']);
 

@@ -2,6 +2,7 @@
 import type { PropType } from 'vue';
 import { reactive } from 'vue';
 import { useRoute, RouterLink } from 'vue-router';
+import { useTextDirection } from '@vueuse/core';
 
 import Collapse from '~/components/Collapse.vue';
 
@@ -48,6 +49,8 @@ defineProps({
 });
 
 const route = useRoute();
+const textDirection = useTextDirection({ observe: true });
+
 const { actions } = useDefault();
 
 const flux = reactive({
@@ -68,11 +71,15 @@ const flux = reactive({
       'link-parent': flux.parent(sub),
       'link-current': to === route.path,
     }"
-    :style="{ 'padding-left': `${level}rem` }"
+    :style="[
+      textDirection === 'rtl'
+        ? { 'padding-right': `${level}rem` }
+        : { 'padding-left': `${level}rem` },
+    ]"
     @click.stop="actions.changeStatus(name, level)"
   >
-    <div v-if="icon" :class="icon" class="w-6 h-6 mr-2"></div>
-    <div class="flex-1" :class="{ 'pl-4': level !== 1 }">{{ name }}</div>
+    <div v-if="icon" :class="icon" class="w-6 h-6 ltr:mr-2 rtl:ml-2"></div>
+    <div class="flex-1" :class="{ 'ltr:pl-4 rtl:pr-4': level !== 1 }">{{ name }}</div>
     <div v-if="!status" class="i-ic-baseline-arrow-drop-down w-6 h-6"></div>
     <div v-if="status" class="i-ic-baseline-arrow-drop-up w-6 h-6"></div>
   </div>
@@ -85,10 +92,14 @@ const flux = reactive({
       'link-parent': flux.parent(sub),
       'link-current': to === route.path,
     }"
-    :style="{ 'padding-left': `${level}rem` }"
+    :style="[
+      textDirection === 'rtl'
+        ? { 'padding-right': `${level}rem` }
+        : { 'padding-left': `${level}rem` },
+    ]"
   >
-    <div v-if="icon" :class="icon" class="w-6 h-6 mr-2"></div>
-    <div class="flex-1" :class="{ 'pl-4': level !== 1 }">{{ name }}</div>
+    <div v-if="icon" :class="icon" class="w-6 h-6 ltr:mr-2 rtl:ml-2"></div>
+    <div class="flex-1" :class="{ 'ltr:pl-4 rtl:pr-4': level !== 1 }">{{ name }}</div>
   </RouterLink>
 
   <div v-else class="mt-4 px-4 py-2 text-sm text-slate-400 dark:text-slate-500 uppercase font-bold">
