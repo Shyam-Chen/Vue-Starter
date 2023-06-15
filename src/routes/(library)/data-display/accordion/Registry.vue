@@ -20,36 +20,42 @@ import Accordion from '~/components/Accordion.vue';
   <div class="flex flex-col border p-4 mb-4">
     <div class="mb-2">Basic</div>
 
-    <div class="flex justify-center">
+    <div class="flex flex-col space-y-2">
       <Accordion>
         <template #header>
-          <div class="flex justify-between">
-            <div>What is a "Composable"?</div>
-          </div>
+          <div>Approachable</div>
         </template>
 
         <template #content>
-          <div class="space-y-4">
-            <div>
-              In the context of Vue applications, a "composable" is a function that leverages Vue's
-              Composition API to encapsulate and reuse stateful logic.
-            </div>
+          <div>
+            Builds on top of standard HTML, CSS and JavaScript with intuitive API and world-class
+            documentation.
+          </div>
+        </template>
+      </Accordion>
 
-            <div>
-              When building frontend applications, we often need to reuse logic for common tasks.
-              For example, we may need to format dates in many places, so we extract a reusable
-              function for that. This formatter function encapsulates stateless logic: it takes some
-              input and immediately returns expected output. There are many libraries out there for
-              reusing stateless logic - for example lodash and date-fns, which you may have heard
-              of.
-            </div>
+      <Accordion>
+        <template #header>
+          <div>Performant</div>
+        </template>
 
-            <div>
-              By contrast, stateful logic involves managing state that changes over time. A simple
-              example would be tracking the current position of the mouse on a page. In real world
-              scenarios, it could also be more complex logic such as touch gestures or connection
-              status to a database.
-            </div>
+        <template #content>
+          <div>
+            Truly reactive, compiler-optimized rendering system that rarely requires manual
+            optimization.
+          </div>
+        </template>
+      </Accordion>
+
+      <Accordion>
+        <template #header>
+          <div>Versatile</div>
+        </template>
+
+        <template #content>
+          <div>
+            A rich, incrementally adoptable ecosystem that scales between a library and a
+            full-featured framework.
           </div>
         </template>
       </Accordion>
