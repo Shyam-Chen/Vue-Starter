@@ -27,7 +27,7 @@
     "vue-localer": "^1.4.0",
     "vue-qrcode-image": "^1.0.0",
     "vue-router": "^4.2.2",
-    "vue-storer": "^0.3.0",
+    "vue-storer": "^0.4.0",
     "vuedraggable": "^4.1.0",
     "yup": "^1.1.1",
     "zod": "^3.21.4"

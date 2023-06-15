@@ -1,6 +1,6 @@
 import { test, expect, vi } from 'vitest';
 import { render, fireEvent } from '@testing-library/vue';
-import responses from '../../../../mock/responses/auth';
+import responses from 'responses/auth';
 
 import router from '~/plugins/router';
 import localer from '~/plugins/localer';
@@ -8,15 +8,18 @@ import localer from '~/plugins/localer';
 import Registry from '../Registry.vue';
 
 test('Sign-in', async () => {
-  vi.mock('@vueuse/core', () => {
+  vi.mock('~/utilities/request', () => {
     return {
-      createFetch: vi.fn(() => () => ({
-        json: () => ({
-          post: () => ({ execute: () => ({}) }),
-          data: { value: responses['post_/sign-in'] },
-          statusCode: { value: 200 },
-        }),
-      })),
+      default: vi.fn((url) => {
+        if (url === '/auth/sign-in') {
+          return {
+            _data: responses['post_/sign-in'],
+            status: 200,
+          };
+        }
+
+        return {};
+      }),
     };
   });
 

@@ -1,29 +1,22 @@
-import { computed } from 'vue';
-import { useSchema } from 'vue-formor';
-import { string } from 'yup';
+import { toRef } from 'vue';
+import { useZodSchema } from 'vue-formor';
+import { z } from 'zod';
 
 import useValidationMessages from '~/composables/useValidationMessages';
 
-import { useState } from './provider';
+import useStore from './store';
 
-export const useSignInFormSchema = () => {
+export default () => {
   const messages = useValidationMessages();
-  const state = useState();
+  const { state } = useStore();
 
-  const schema = useSchema(
-    [
-      [
-        computed(() => state.signInForm.username),
-        computed(() => string().required(messages.value.required)),
-      ],
-      [
-        computed(() => state.signInForm.password),
-        computed(() =>
-          string().required(messages.value.required).min(8, messages.value.string?.min),
-        ),
-      ],
-    ],
-    state,
+  const schema = useZodSchema(
+    z.object({
+      username: z.string().nonempty(messages.value.required),
+      password: z.string().min(8, messages.value.string?.min).nonempty(messages.value.required),
+    }),
+    toRef(state, 'signInForm'),
+    toRef(state, 'errors'),
   );
 
   return schema;
