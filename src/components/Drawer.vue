@@ -12,7 +12,9 @@ const props = withDefaults(
   },
 );
 
-const emit = defineEmits(['update:modelValue']);
+const emit = defineEmits<{
+  (evt: 'update:modelValue', val: boolean): void;
+}>();
 
 const close = () => {
   emit('update:modelValue', !props.modelValue);

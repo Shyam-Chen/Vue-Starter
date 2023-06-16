@@ -10,7 +10,7 @@ const flux = reactive({
   drawer1: false,
 
   drawer2: false,
-  placement: 'right',
+  placement: 'right' as InstanceType<typeof Drawer>['placement'],
   placementOptions: ['top', 'right', 'bottom', 'left'],
 });
 </script>

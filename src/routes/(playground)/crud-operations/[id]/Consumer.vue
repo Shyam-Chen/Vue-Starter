@@ -40,7 +40,7 @@ onMounted(() => {
     <div class="text-3xl font-bold">CRUD Operations - {{ route.params.id }}</div>
   </div>
 
-  <div class="p-6 space-y-4 bg-white dark:slate-800 rounded-lg shadow-lg">
+  <div class="p-6 space-y-4 bg-white dark:bg-slate-800 rounded-lg shadow-lg">
     <div class="grid grid-cols-3">
       <TextField
         v-model:value="state.todoItem.title"
