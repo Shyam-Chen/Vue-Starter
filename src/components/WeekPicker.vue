@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { computed } from 'vue';
-import { format, getISOWeek } from 'date-fns';
+import { ref, computed } from 'vue';
+import { format, getISOWeek, getYear, getMonth, sub, add } from 'date-fns';
 import chunk from 'lodash/chunk';
 
 import TextField from './TextField.vue';
@@ -19,7 +19,8 @@ const weekValue = computed({
   set: (val) => emit('update:value', val),
 });
 
-weekValue;
+const currentMoment = ref(new Date());
+const show = ref(false);
 
 const createWeeks = (y?: number, m?: number) => {
   const currentPeriod = () => {
@@ -61,27 +62,76 @@ const createWeeks = (y?: number, m?: number) => {
   return chunk(days, 7).map((week) => [{ week: getISOWeek(week[6].date || 0) }, ...week]);
 };
 
-const weeks = createWeeks();
+const weeks = ref(createWeeks(getYear(currentMoment.value), getMonth(currentMoment.value)));
 
 const weekdays = ['Week', 'S', 'M', 'T', 'W', 'T', 'F', 'S'];
+
+type Week = Array<{ date?: Date; outOfRange?: boolean; week?: number }>;
+
+function openPicker() {
+  show.value = true;
+}
+
+function decrement() {
+  currentMoment.value = sub(currentMoment.value, { months: 1 });
+  weeks.value = createWeeks(getYear(currentMoment.value), getMonth(currentMoment.value));
+}
+
+function increment() {
+  currentMoment.value = add(currentMoment.value, { months: 1 });
+  weeks.value = createWeeks(getYear(currentMoment.value), getMonth(currentMoment.value));
+}
+
+function selectWeek(week: Week) {
+  const isoWeek = week[0].week;
+  const start = week[1].date && getYear(week[1].date);
+  const end = week[7].date && getYear(week[7].date);
+
+  let year = end;
+  if (week[0].week === 52) year = start;
+
+  weekValue.value = [year, isoWeek];
+  show.value = false;
+}
+
+function formatWeekValue(val: typeof weekValue.value) {
+  if (val?.length) {
+    const [year, week] = val;
+    return `${year}-W${week}`;
+  }
+
+  return '';
+}
 </script>
 
 <template>
   <div class="w-full">
-    <TextField />
+    <TextField
+      :value="formatWeekValue(weekValue)"
+      append="i-mdi-calendar-week"
+      readonly
+      @focus="openPicker"
+      @append="openPicker"
+    />
 
     <Fade>
-      <div class="fixed z-10 p-2 shadow-lg rounded bg-white dark:bg-slate-800">
+      <div v-if="show" class="fixed z-10 p-2 shadow-lg rounded bg-white dark:bg-slate-800">
         <div class="flex justify-between items-center mb-1">
-          <div class="cursor-pointer hover:bg-slate-200 p-2 rounded-full">
+          <div
+            class="cursor-pointer hover:bg-slate-200 dark:hover:bg-slate-600 p-2 rounded-full"
+            @click="decrement"
+          >
             <div class="i-fa-chevron-left w-3 h-3"></div>
           </div>
 
-          <div class="cursor-pointer hover:bg-slate-200 px-2 rounded">
-            {{ format(new Date(), 'MMM yyyy') }}
+          <div class="cursor-pointer hover:bg-slate-200 dark:hover:bg-slate-600 px-2 rounded">
+            {{ format(currentMoment, 'MMM yyyy') }}
           </div>
 
-          <div class="cursor-pointer hover:bg-slate-200 p-2 rounded-full">
+          <div
+            class="cursor-pointer hover:bg-slate-200 dark:hover:bg-slate-600 p-2 rounded-full"
+            @click="increment"
+          >
             <div class="i-fa-chevron-right w-3 h-3"></div>
           </div>
         </div>
@@ -101,6 +151,7 @@ const weekdays = ['Week', 'S', 'M', 'T', 'W', 'T', 'F', 'S'];
             v-for="(week, weekIndex) in weeks"
             :key="weekIndex"
             class="grid grid-cols-8 gap-1 text-center hover:bg-primary-500 hover:text-white hover:rounded cursor-pointer"
+            @click="selectWeek(week)"
           >
             <div
               v-for="(item, idx) in week"

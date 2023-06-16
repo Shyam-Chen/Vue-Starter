@@ -1,51 +1,54 @@
 <script lang="ts" setup>
-import { computed, reactive } from 'vue';
-import { useSchema } from 'vue-formor';
-import { string } from 'yup';
+import { reactive, toRef } from 'vue';
+import { useZodSchema } from 'vue-formor';
+import { z } from 'zod';
 
 import Breadcrumbs from '~/components/Breadcrumbs.vue';
 
+const msgs = { required: 'This is a required field' };
+
 const state = reactive({
-  listGroup: [
-    {
-      parent: 'O',
-      children: [
-        { firstField: 'O', secondField: '' },
-        { firstField: '', secondField: 'O' },
-        { firstField: 'O', secondField: 'O' },
-        { firstField: '', secondField: '' },
-      ],
-    },
-    {
-      parent: '',
-      children: [
-        { firstField: '', secondField: 'O' },
-        { firstField: 'O', secondField: '' },
-        { firstField: '', secondField: '' },
-        { firstField: 'O', secondField: 'O' },
-      ],
-    },
-  ],
-  errors: {} as Record<string, string>,
+  tabularForm: {
+    groups: [
+      {
+        parent: 'O',
+        children: [
+          { firstField: 'O', secondField: '' },
+          { firstField: '', secondField: 'O' },
+          { firstField: 'O', secondField: 'O' },
+          { firstField: '', secondField: '' },
+        ],
+      },
+      {
+        parent: '',
+        children: [
+          { firstField: '', secondField: 'O' },
+          { firstField: 'O', secondField: '' },
+          { firstField: '', secondField: '' },
+          { firstField: 'O', secondField: 'O' },
+        ],
+      },
+    ],
+  },
+  tabularValdn: {} as Record<string, string>,
 });
 
-const schema = useSchema(
-  [
-    [
-      computed(() => state.listGroup),
-      (row: any) => [
-        [computed(() => row.parent), computed(() => string().required())],
-        [
-          computed(() => row.children),
-          (subRow: any) => [
-            [computed(() => subRow.firstField), computed(() => string().required())],
-            [computed(() => subRow.secondField), computed(() => string().required())],
-          ],
-        ],
-      ],
-    ],
-  ],
-  state,
+const schema = useZodSchema(
+  z.object({
+    groups: z.array(
+      z.object({
+        parent: z.string({ required_error: msgs.required }).nonempty(msgs.required),
+        children: z.array(
+          z.object({
+            firstField: z.string({ required_error: msgs.required }).nonempty(msgs.required),
+            secondField: z.string({ required_error: msgs.required }).nonempty(msgs.required),
+          }),
+        ),
+      }),
+    ),
+  }),
+  toRef(state, 'tabularForm'),
+  toRef(state, 'tabularValdn'),
 );
 
 schema.validate();
@@ -68,6 +71,7 @@ schema.validate();
   <div class="flex flex-col border p-4 mb-4">
     <div class="mb-2">Basic (Tabs + Tables)</div>
 
-    <pre>{{ state.errors }}</pre>
+    <pre>{{ state.tabularForm }}</pre>
+    <pre>{{ state.tabularValdn }}</pre>
   </div>
 </template>

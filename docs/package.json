@@ -4,14 +4,14 @@
   "scripts": {
     "dev": "vitepress dev --port 3715",
     "build": "vitepress build",
-    "preview": "vitepress preview --port 3715"
-  },
-  "devDependencies": {
-    "unocss": "^0.51.4",
-    "vitepress": "1.0.0-alpha.72",
-    "vue": "^3.2.47"
+    "preview": "vitepress preview --port 3714"
   },
   "dependencies": {
-    "@unocss/reset": "^0.51.4"
+    "@unocss/reset": "^0.53.1"
+  },
+  "devDependencies": {
+    "unocss": "^0.53.1",
+    "vitepress": "1.0.0-beta.2",
+    "vue": "^3.3.4"
   }
 }

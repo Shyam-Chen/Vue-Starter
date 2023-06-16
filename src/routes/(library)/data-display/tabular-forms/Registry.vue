@@ -1,31 +1,35 @@
 <script lang="ts" setup>
-import { computed, reactive } from 'vue';
-import { useSchema } from 'vue-formor';
-import { string } from 'yup';
+import { reactive, toRef } from 'vue';
+import { useZodSchema } from 'vue-formor';
+import { z } from 'zod';
 
 import Breadcrumbs from '~/components/Breadcrumbs.vue';
 
+const msgs = { required: 'This is a required field' };
+
 const state = reactive({
-  dataTable: [
-    { firstField: 'O', secondField: '' },
-    { firstField: '', secondField: 'O' },
-    { firstField: 'O', secondField: 'O' },
-    { firstField: '', secondField: '' },
-  ],
-  errors: {} as Record<string, string>,
+  tabularForm: {
+    table: [
+      { firstField: 'O', secondField: '' },
+      { firstField: '', secondField: 'O' },
+      { firstField: 'O', secondField: 'O' },
+      { firstField: '', secondField: '' },
+    ],
+  },
+  tabularValdn: {} as Record<string, string>,
 });
 
-const schema = useSchema(
-  [
-    [
-      computed(() => state.dataTable),
-      (row: any) => [
-        [computed(() => row.firstField), computed(() => string().required())],
-        [computed(() => row.secondField), computed(() => string().required())],
-      ],
-    ],
-  ],
-  state,
+const schema = useZodSchema(
+  z.object({
+    table: z.array(
+      z.object({
+        firstField: z.string({ required_error: msgs.required }).nonempty(msgs.required),
+        secondField: z.string({ required_error: msgs.required }).nonempty(msgs.required),
+      }),
+    ),
+  }),
+  toRef(state, 'tabularForm'),
+  toRef(state, 'tabularValdn'),
 );
 
 schema.validate();
@@ -48,6 +52,7 @@ schema.validate();
   <div class="flex flex-col border p-4 mb-4">
     <div class="mb-2">Basic (Tabs or Tables)</div>
 
-    <pre>{{ state.errors }}</pre>
+    <pre>{{ state.tabularForm }}</pre>
+    <pre>{{ state.tabularValdn }}</pre>
   </div>
 </template>

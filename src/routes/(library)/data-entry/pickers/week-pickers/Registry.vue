@@ -15,13 +15,13 @@ const flux = reactive({
       { text: 'Library', disabled: true },
       { text: 'Data Entry', disabled: true },
       { text: 'Pickers', disabled: true },
-      { text: 'Week Pickers', disabled: true },
+      { text: 'WeekPicker', disabled: true },
     ]"
     class="mb-4"
   />
 
   <div class="mb-4">
-    <div class="text-3xl font-bold">Week Pickers</div>
+    <div class="text-3xl font-bold">WeekPicker</div>
   </div>
 
   <div class="flex flex-col border p-4 mb-4">
@@ -30,5 +30,7 @@ const flux = reactive({
     <div class="flex justify-center">
       <WeekPicker v-model:value="flux.weekPicker" />
     </div>
+
+    <div class="mt-2">{{ flux.weekPicker }}</div>
   </div>
 </template>

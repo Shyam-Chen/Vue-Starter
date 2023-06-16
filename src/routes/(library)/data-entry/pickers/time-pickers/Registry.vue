@@ -31,8 +31,6 @@ const flux = reactive({
       <TimePicker v-model:value="flux.timePicker" />
     </div>
 
-    <div>
-      <pre>{{ flux.timePicker }}</pre>
-    </div>
+    <div class="mt-2">{{ flux.timePicker }}</div>
   </div>
 </template>

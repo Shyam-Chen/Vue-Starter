@@ -315,20 +315,23 @@ onUnmounted(() => {
       <div
         v-if="flux.showDatePicker"
         ref="picker"
-        class="fixed z-10 p-2 shadow-lg rounded bg-white"
+        class="fixed z-10 p-2 shadow-lg rounded bg-white dark:bg-slate-800"
         :class="{
           'DatePicker-DatePane-PlacementBottom': flux.direction === 'down',
           'DatePicker-DatePane-PlacementTop': flux.direction === 'up',
         }"
       >
         <div class="flex justify-between items-center mb-1">
-          <div class="cursor-pointer hover:bg-slate-200 p-2 rounded-full" @click="flux.decrement">
+          <div
+            class="cursor-pointer hover:bg-slate-200 dark:hover:bg-slate-600 p-2 rounded-full"
+            @click="flux.decrement"
+          >
             <div class="i-fa-chevron-left w-3 h-3"></div>
           </div>
 
           <div
             v-if="flux.showWeeks"
-            class="cursor-pointer hover:bg-slate-200 px-2 rounded"
+            class="cursor-pointer hover:bg-slate-200 dark:hover:bg-slate-600 px-2 rounded"
             @click="flux.changeYearMonth"
           >
             {{ format(flux.currentMoment, 'MMM yyyy') }}
@@ -337,7 +340,10 @@ onUnmounted(() => {
           <div v-if="flux.showYears">{{ flux.yearRange[0] }} ~ {{ flux.yearRange[15] }}</div>
           <div v-if="flux.showMonths">{{ format(flux.currentMoment, 'yyyy') }}</div>
 
-          <div class="cursor-pointer hover:bg-slate-200 p-2 rounded-full" @click="flux.increment">
+          <div
+            class="cursor-pointer hover:bg-slate-200 dark:hover:bg-slate-600 p-2 rounded-full"
+            @click="flux.increment"
+          >
             <div class="i-fa-chevron-right w-3 h-3"></div>
           </div>
         </div>
@@ -355,9 +361,9 @@ onUnmounted(() => {
             <div
               v-for="item in week"
               :key="weekIndex + item"
-              class="flex justify-center items-center hover:bg-slate-200 rounded-full w-6 h-6 text-sm cursor-pointer"
+              class="flex justify-center items-center hover:bg-slate-200 dark:hover:bg-slate-600 rounded-full w-6 h-6 text-sm cursor-pointer"
               :class="{
-                'text-white bg-blue-600 important:hover:bg-blue-700': item.selected,
+                'text-white bg-primary-600 important:hover:bg-primary-700': item.selected,
                 'text-slate-400 important:cursor-not-allowed': item.disabled,
                 'text-white bg-blue-400 important:hover:bg-blue-500': item.today,
                 'text-slate-400': item.outOfRange,
@@ -374,7 +380,7 @@ onUnmounted(() => {
             v-for="year in flux.yearRange"
             :key="year"
             :value="year"
-            class="flex justify-center items-center hover:bg-slate-200 rounded text-sm cursor-pointer"
+            class="flex justify-center items-center hover:bg-slate-200 dark:hover:bg-slate-600 rounded text-sm cursor-pointer"
             :class="{
               'text-white bg-blue-400 important:hover:bg-blue-500': year === getYear(flux.now),
             }"
@@ -389,7 +395,7 @@ onUnmounted(() => {
             v-for="(month, index) in months"
             :key="month"
             :value="index"
-            class="flex justify-center items-center hover:bg-slate-200 rounded text-sm cursor-pointer"
+            class="flex justify-center items-center hover:bg-slate-200 dark:hover:bg-slate-600 rounded text-sm cursor-pointer"
             :class="{
               'text-white bg-blue-400 important:hover:bg-blue-500':
                 index === getMonth(flux.now) && flux.year === getYear(flux.now),

@@ -9,9 +9,6 @@ type Form = {
 type Valdn = Record<string, string>;
 
 export interface State {
-  yupForm: Form;
-  yupValdn: Valdn;
-
   zodForm: Form;
   zodValdn: Valdn;
 }

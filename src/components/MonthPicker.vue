@@ -177,14 +177,17 @@ onUnmounted(() => {
       <div
         v-if="flux.showDatePicker"
         ref="picker"
-        class="fixed z-10 p-2 shadow-lg rounded bg-white"
+        class="fixed z-10 p-2 shadow-lg rounded bg-white dark:bg-slate-800"
         :class="{
           'DatePicker-DatePane-PlacementBottom': flux.direction === 'down',
           'DatePicker-DatePane-PlacementTop': flux.direction === 'up',
         }"
       >
         <div class="flex justify-between items-center mb-1">
-          <div class="cursor-pointer hover:bg-slate-200 p-2 rounded-full" @click="flux.decrement">
+          <div
+            class="cursor-pointer hover:bg-slate-200 dark:hover:bg-slate-600 p-2 rounded-full"
+            @click="flux.decrement"
+          >
             <div class="i-fa-chevron-left w-3 h-3"></div>
           </div>
 
@@ -194,7 +197,10 @@ onUnmounted(() => {
             {{ format(flux.currentMoment, 'yyyy') }}
           </div>
 
-          <div class="cursor-pointer hover:bg-slate-200 p-2 rounded-full" @click="flux.increment">
+          <div
+            class="cursor-pointer hover:bg-slate-200 dark:hover:bg-slate-600 p-2 rounded-full"
+            @click="flux.increment"
+          >
             <div class="i-fa-chevron-right w-3 h-3"></div>
           </div>
         </div>
@@ -204,7 +210,7 @@ onUnmounted(() => {
             v-for="year in flux.yearRange"
             :key="year"
             :value="year"
-            class="flex justify-center items-center hover:bg-slate-200 rounded text-sm cursor-pointer"
+            class="flex justify-center items-center hover:bg-slate-200 dark:hover:bg-slate-600 rounded text-sm cursor-pointer"
             :class="{
               'text-white bg-blue-400 important:hover:bg-blue-500': year === getYear(flux.now),
             }"
@@ -219,11 +225,11 @@ onUnmounted(() => {
             v-for="(month, index) in months"
             :key="month"
             :value="index"
-            class="flex justify-center items-center hover:bg-slate-200 rounded text-sm cursor-pointer"
+            class="flex justify-center items-center hover:bg-slate-200 dark:hover:bg-slate-600 rounded text-sm cursor-pointer"
             :class="{
               'text-white bg-blue-400 important:hover:bg-blue-500':
                 index === getMonth(flux.now) && getYear(flux.currentMoment) === getYear(flux.now),
-              'text-white bg-blue-600 important:hover:bg-blue-700':
+              'text-white bg-primary-600 important:hover:bg-primary-700':
                 modelDate &&
                 index === getMonth(new Date(modelDate)) &&
                 getYear(flux.currentMoment) === getYear(new Date(modelDate)),

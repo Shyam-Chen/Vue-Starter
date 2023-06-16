@@ -42,11 +42,7 @@ onMounted(() => {
 
   <div class="p-6 space-y-4 bg-white dark:bg-slate-800 rounded-lg shadow-lg">
     <div class="grid grid-cols-3">
-      <TextField
-        v-model:value="state.todoItem.title"
-        required
-        :errorMessage="state.errors['todoItem.title']"
-      >
+      <TextField v-model:value="state.todoItem.title" required :errorMessage="state.errors.title">
         Title
       </TextField>
     </div>

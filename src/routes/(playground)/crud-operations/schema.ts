@@ -1,15 +1,22 @@
-import { computed } from 'vue';
-import { useSchema } from 'vue-formor';
-import { string } from 'yup';
+import { toRef } from 'vue';
+import { useZodSchema } from 'vue-formor';
+import { z } from 'zod';
 
 import { useState } from './provider';
+
+const msgs = {
+  required: `This is a required field`,
+};
 
 export const useCrudOperationsSchema = () => {
   const state = useState();
 
-  const schema = useSchema(
-    [[computed(() => state.todoItem.title), computed(() => string().required())]],
-    state,
+  const schema = useZodSchema(
+    z.object({
+      title: z.string({ required_error: msgs.required }).nonempty(msgs.required),
+    }),
+    toRef(state, 'todoItem'),
+    toRef(state, 'errors'),
   );
 
   return schema;

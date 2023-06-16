@@ -7,9 +7,6 @@ import type { State } from './types';
 export const stateSymbol = Symbol('/forms/form-validation');
 
 export const createState = reactive({
-  yupForm: {},
-  yupValdn: {},
-
   zodForm: {},
   zodValdn: {},
 });
@@ -21,7 +18,6 @@ export const useActions = () => {
 
   const actions = {
     async submit() {
-      console.log('yupForm =', state.yupForm);
       console.log('zodForm =', state.zodForm);
     },
   };
