@@ -3,12 +3,10 @@ import { reactive } from 'vue';
 
 import Collapse from './Collapse.vue';
 
-defineProps({
-  title: {
-    type: String,
-    default: '',
-  },
-});
+defineProps<{
+  title?: string;
+  value?: string;
+}>();
 
 const flux = reactive({
   status: true,
@@ -20,9 +18,13 @@ const flux = reactive({
 
 <template>
   <div class="w-full rounded shadow bg-white dark:bg-slate-800">
-    <div class="flex p-6 cursor-pointer" @click="flux.toggle">
+    <div
+      class="flex px-4 py-3 cursor-pointer"
+      :class="{ 'bg-slate-200 dark:bg-slate-700': flux.status }"
+      @click="flux.toggle"
+    >
       <div class="flex-1">
-        <slot name="header"></slot>
+        <slot name="header">{{ title }}</slot>
       </div>
 
       <div v-if="!flux.status" class="i-ic-baseline-arrow-drop-down w-6 h-6"></div>
@@ -31,7 +33,7 @@ const flux = reactive({
 
     <Collapse>
       <div v-show="flux.status">
-        <div class="px-6 pb-6">
+        <div class="p-4">
           <slot name="content"></slot>
         </div>
       </div>
