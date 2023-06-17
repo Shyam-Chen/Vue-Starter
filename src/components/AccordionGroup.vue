@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref, computed, provide, useSlots } from 'vue';
+import { ref, computed, provide } from 'vue';
 
 const props = defineProps<{
   modelValue?: string[];
@@ -16,14 +16,12 @@ const accordionGroupValue = computed({
 });
 
 const group = ref();
-const slots = useSlots();
 const curIdx = ref(-1);
 
 provide('AccordionGroup', {
   group,
   curIdx,
   value: props.modelValue,
-  slots,
   modelValue: accordionGroupValue,
   multiple: props.multiple,
 });

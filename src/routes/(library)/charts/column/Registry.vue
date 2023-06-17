@@ -63,13 +63,13 @@ const flux = reactive({
     :items="[
       { text: 'Library', disabled: true },
       { text: 'Charts', disabled: true },
-      { text: 'Bar Charts', disabled: true },
+      { text: 'Column Charts', disabled: true },
     ]"
     class="mb-4"
   />
 
   <div class="mb-4">
-    <div class="text-3xl font-bold">Bar Charts</div>
+    <div class="text-3xl font-bold">Column Charts</div>
   </div>
 
   <div class="flex flex-col border p-4 mb-4">

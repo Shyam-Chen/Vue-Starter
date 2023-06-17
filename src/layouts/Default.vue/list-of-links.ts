@@ -116,12 +116,11 @@ const links = [
     icon: 'i-bx-line-chart',
     name: 'Charts',
     sub: [
-      { name: 'Line charts', to: '/charts/line-charts' },
-      { name: 'Area charts', to: '/charts/area-charts' },
-      { name: 'Bar charts', to: '/charts/bar-charts' },
-      { name: 'Pie charts', to: '/charts/pie-charts' },
-      { name: 'Bubble charts', to: '/charts/bubble-charts' },
-      { name: 'Combinations', to: '/charts/combinations' },
+      { name: 'Line', to: '/charts/line' },
+      { name: 'Area', to: '/charts/area' },
+      { name: 'Column', to: '/charts/column' },
+      { name: 'Bar', to: '/charts/bar' },
+      { name: 'Pie', to: '/charts/pie' },
     ],
   },
   {
