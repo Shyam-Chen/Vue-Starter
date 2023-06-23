@@ -54,7 +54,7 @@ export default defineStore('/sign-in', () => {
       } else {
         const { message } = response._data;
         const found = message.match(/(#+[a-zA-Z0-9(_)]{1,})/gm)[0];
-        state.errors['signInForm.' + found.replace('#', '')] = message.replace(found + ' ', '');
+        state.errors[found.replace('#', '')] = message.replace(found + ' ', '');
         state.signedIn = false;
       }
     },
