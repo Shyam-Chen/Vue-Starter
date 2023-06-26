@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import type { InputHTMLAttributes } from 'vue';
 import { computed, reactive } from 'vue';
+import uniqueId from 'lodash/uniqueId';
 
 interface Props extends /* @vue-ignore */ InputHTMLAttributes {
   label?: string;
@@ -21,6 +22,8 @@ const emit = defineEmits<{
   (evt: 'append'): void;
 }>();
 
+const uid = uniqueId('text-field-');
+
 const textFieldValue = computed({
   get: () => props.value || '',
   set: (val) => emit('update:value', val),
@@ -33,7 +36,7 @@ const flux = reactive({
 
 <template>
   <div class="text-field" :class="[disabled ? 'opacity-60' : '']">
-    <label class="text-field-label">
+    <label :for="uid" class="text-field-label">
       <template v-if="label">{{ label }}</template>
       <slot v-else></slot>
       <span v-if="required" class="text-red-500">*</span>
@@ -53,6 +56,7 @@ const flux = reactive({
       </div>
 
       <input
+        :id="uid"
         v-model="textFieldValue"
         v-bind="$attrs"
         :type="type ? type : 'text'"
