@@ -1,6 +1,10 @@
 <script lang="ts" setup>
 import { ref, computed, watch } from 'vue';
 
+defineOptions({
+  inheritAttrs: false,
+});
+
 const props = withDefaults(
   defineProps<{
     value?: string;

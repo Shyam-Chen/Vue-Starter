@@ -8,6 +8,10 @@ import getScrollableParent from '~/utilities/getScrollableParent';
 import TextField from './TextField.vue';
 import Fade from './Fade.vue';
 
+defineOptions({
+  inheritAttrs: false,
+});
+
 const props = defineProps({
   value: {
     type: String,

@@ -1,6 +1,10 @@
 <script lang="ts" setup>
 import { computed } from 'vue';
 
+defineOptions({
+  inheritAttrs: false,
+});
+
 const props = defineProps<{
   label?: string;
   value?: string;

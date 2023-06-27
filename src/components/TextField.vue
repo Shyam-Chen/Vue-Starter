@@ -3,7 +3,12 @@ import type { InputHTMLAttributes } from 'vue';
 import { computed, reactive } from 'vue';
 import uniqueId from 'lodash/uniqueId';
 
+defineOptions({
+  inheritAttrs: false,
+});
+
 interface Props extends /* @vue-ignore */ InputHTMLAttributes {
+  id?: string;
   label?: string;
   value?: string;
   type?: string;
@@ -36,7 +41,7 @@ const flux = reactive({
 
 <template>
   <div class="text-field" :class="[disabled ? 'opacity-60' : '']">
-    <label :for="uid" class="text-field-label">
+    <label :for="id || uid" class="text-field-label">
       <template v-if="label">{{ label }}</template>
       <slot v-else></slot>
       <span v-if="required" class="text-red-500">*</span>
@@ -56,7 +61,7 @@ const flux = reactive({
       </div>
 
       <input
-        :id="uid"
+        :id="id || uid"
         v-model="textFieldValue"
         v-bind="$attrs"
         :type="type ? type : 'text'"

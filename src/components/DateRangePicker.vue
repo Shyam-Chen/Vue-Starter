@@ -3,6 +3,10 @@ import { computed } from 'vue';
 
 import DatePicker from './DatePicker.vue';
 
+defineOptions({
+  inheritAttrs: false,
+});
+
 const props = defineProps({
   startValue: {
     type: String,

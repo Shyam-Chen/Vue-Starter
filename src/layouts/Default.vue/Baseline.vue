@@ -114,12 +114,14 @@ onMounted(async () => {
 
       <div style="flex: 1 0 auto"></div>
 
-      <TextField
-        placeholder="Search here..."
-        prepend="i-fa-search"
-        class="important:w-100"
-        @focus="flux.searchDialog = true"
-      />
+      <div class="w-100">
+        <TextField
+          placeholder="Search here..."
+          prepend="i-fa-search"
+          autocomplete="off"
+          @focus="flux.searchDialog = true"
+        />
+      </div>
 
       <Button
         variant="text"
@@ -245,8 +247,7 @@ onMounted(async () => {
     </Dialog>
 
     <Dialog v-model="flux.searchDialog">
-      <TextField placeholder="Search here..." prepend="i-fa-search" />
-
+      <TextField placeholder="Search here..." prepend="i-fa-search" autocomplete="off" />
       <div class="flex justify-center items-center h-66">No recent searches</div>
     </Dialog>
 

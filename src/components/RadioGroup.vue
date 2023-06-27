@@ -2,6 +2,10 @@
 import { computed } from 'vue';
 import uniqueId from 'lodash/uniqueId';
 
+defineOptions({
+  inheritAttrs: false,
+});
+
 const props = defineProps<{
   label?: string;
   value?: unknown;
