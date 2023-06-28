@@ -1,11 +1,14 @@
 import { reactive, readonly } from 'vue';
+import { useRouter, useRoute } from 'vue-router';
 import { defineStore } from 'vue-storer';
 import { formatISO, add } from 'date-fns';
 
-import router from '~/plugins/router';
 import request from '~/utilities/request';
 
 export default defineStore('/sign-in', () => {
+  const router = useRouter();
+  const route = useRoute();
+
   const state = reactive({
     signInForm: {
       username: 'shyam.chen',
@@ -36,7 +39,7 @@ export default defineStore('/sign-in', () => {
           localStorage.setItem('accessToken', accessToken);
           localStorage.setItem('refreshToken', refreshToken);
           localStorage.setItem('expiresIn', formatISO(add(new Date(), { hours: 12 })));
-          await router.push(router.currentRoute.value.redirectedFrom?.path || '/dashboard');
+          await router.push(route.redirectedFrom?.path || '/dashboard');
         }
 
         // 2fa
@@ -79,7 +82,7 @@ export default defineStore('/sign-in', () => {
       localStorage.setItem('accessToken', accessToken);
       localStorage.setItem('refreshToken', refreshToken);
       localStorage.setItem('expiresIn', formatISO(add(new Date(), { hours: 12 })));
-      await router.push(router.currentRoute.value.redirectedFrom?.path || '/dashboard');
+      await router.push(route.redirectedFrom?.path || '/dashboard');
     },
   });
 
