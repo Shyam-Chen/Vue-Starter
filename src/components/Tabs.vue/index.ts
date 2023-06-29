@@ -3,4 +3,6 @@ import Tab from './Tab.vue';
 
 Tabs.Tab = Tab;
 
-export default Tabs;
+export default Tabs as typeof Tabs & {
+  Tab: typeof Tab;
+};
