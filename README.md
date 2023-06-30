@@ -49,6 +49,15 @@ $ pnpm dev
 $ pnpm build
 ```
 
+### Locally preview the production build
+
+```sh
+# Before running the `preview` command, make sure to run the following commands.
+$ pnpm build
+
+$ pnpm preview
+```
+
 ### Lints and fixes files
 
 Files: `src/**/*.{ts,vue}`
@@ -85,6 +94,10 @@ $ pnpm e2e
 Files: `benchmark/**/*.spec.ts`
 
 ```sh
+# Before running the `bench` command, make sure to run the following commands.
+$ pnpm build
+$ pnpm preview
+
 # If it's not installed, run it.
 $ cd benchmark && pnpm install && cd ..
 
