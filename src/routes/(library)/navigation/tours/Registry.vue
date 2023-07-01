@@ -181,33 +181,53 @@ onUnmounted(() => {
       ></div> -->
   </div>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div ref="el2" class="mb-2">Columns 1</div>
-
-    <div class="flex flex-col space-y-4">
-      <div v-for="num in 5" :key="num" class="px-4 py-2 border rounded shadow bg-slate-300">
-        {{ num }}
-      </div>
-    </div>
+  <div role="status" class="my-7 animate-pulse">
+    <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-700 w-48 mb-4"></div>
+    <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[460px] mb-2.5"></div>
+    <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[500px] mb-2.5"></div>
+    <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[450px] mb-2.5"></div>
+    <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[380px] mb-2.5"></div>
+    <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[460px]"></div>
+    <span class="sr-only">Loading...</span>
   </div>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div ref="el3" class="mb-2">Columns 2</div>
-
-    <div class="flex flex-col space-y-4">
-      <div v-for="num in 5" :key="num" class="px-4 py-2 border rounded shadow bg-slate-300">
-        {{ num }}
-      </div>
-    </div>
+  <div
+    ref="el2"
+    class="flex items-center justify-center w-full h-48 bg-gray-300 rounded dark:bg-gray-700"
+  >
+    <div class="i-bi-image-alt w-12 h-12 text-gray-200"></div>
   </div>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div ref="el4" class="mb-2">Columns 3</div>
+  <div role="status" class="my-6 animate-pulse">
+    <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[460px] mb-2.5"></div>
+    <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[450px] mb-2.5"></div>
+    <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[460px] mb-2.5"></div>
+    <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[500px] mb-2.5"></div>
+    <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[450px] mb-2.5"></div>
+    <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[380px] mb-2.5"></div>
+    <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[460px]"></div>
+    <span class="sr-only">Loading...</span>
+  </div>
 
-    <div class="flex flex-col space-y-4">
-      <div v-for="num in 5" :key="num" class="px-4 py-2 border rounded shadow bg-slate-300">
-        {{ num }}
-      </div>
-    </div>
+  <div role="status" class="my-6 animate-pulse">
+    <div ref="el3" class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[460px] mb-2.5"></div>
+    <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[450px] mb-2.5"></div>
+    <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[460px] mb-2.5"></div>
+    <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[500px] mb-2.5"></div>
+    <span class="sr-only">Loading...</span>
+  </div>
+
+  <div role="status" class="mb-6 mt-7 animate-pulse">
+    <div ref="el4" class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-700 w-48 mb-4"></div>
+    <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[460px] mb-2.5"></div>
+    <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[450px] mb-2.5"></div>
+    <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[460px] mb-2.5"></div>
+    <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[500px] mb-2.5"></div>
+    <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[450px] mb-2.5"></div>
+    <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[380px] mb-2.5"></div>
+    <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[460px] mb-2.5"></div>
+    <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[500px] mb-2.5"></div>
+    <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[460px]"></div>
+    <span class="sr-only">Loading...</span>
   </div>
 </template>
