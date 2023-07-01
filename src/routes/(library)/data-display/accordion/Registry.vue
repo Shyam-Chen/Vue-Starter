@@ -3,8 +3,6 @@ import { ref } from 'vue';
 
 import Breadcrumbs from '~/components/Breadcrumbs.vue';
 import Accordion from '~/components/Accordion.vue';
-import AccordionGroup from '~/components/AccordionGroup.vue';
-import AccordionSection from '~/components/AccordionSection.vue';
 
 const accordionGroup = ref<string[]>([]);
 const accordionGroupMultiple = ref<string[]>([]);
@@ -48,8 +46,8 @@ const accordionGroupMultiple = ref<string[]>([]);
   <div class="flex flex-col border p-4 mb-4">
     <div class="mb-2">Group</div>
 
-    <AccordionGroup>
-      <AccordionSection>
+    <Accordion.Group>
+      <Accordion.Section>
         <template #header>
           <div>Approachable</div>
         </template>
@@ -60,9 +58,9 @@ const accordionGroupMultiple = ref<string[]>([]);
             documentation.
           </div>
         </template>
-      </AccordionSection>
+      </Accordion.Section>
 
-      <AccordionSection>
+      <Accordion.Section>
         <template #header>
           <div>Performant</div>
         </template>
@@ -73,9 +71,9 @@ const accordionGroupMultiple = ref<string[]>([]);
             optimization.
           </div>
         </template>
-      </AccordionSection>
+      </Accordion.Section>
 
-      <AccordionSection>
+      <Accordion.Section>
         <template #header>
           <div>Versatile</div>
         </template>
@@ -86,8 +84,8 @@ const accordionGroupMultiple = ref<string[]>([]);
             full-featured framework.
           </div>
         </template>
-      </AccordionSection>
-    </AccordionGroup>
+      </Accordion.Section>
+    </Accordion.Group>
   </div>
 
   <div class="flex flex-col border p-4 mb-4">
@@ -95,8 +93,8 @@ const accordionGroupMultiple = ref<string[]>([]);
 
     <div class="mb-2">{{ accordionGroup }}</div>
 
-    <AccordionGroup v-model="accordionGroup">
-      <AccordionSection value="approachable">
+    <Accordion.Group v-model="accordionGroup">
+      <Accordion.Section value="approachable">
         <template #header>
           <div>Approachable</div>
         </template>
@@ -107,9 +105,9 @@ const accordionGroupMultiple = ref<string[]>([]);
             documentation.
           </div>
         </template>
-      </AccordionSection>
+      </Accordion.Section>
 
-      <AccordionSection value="performant">
+      <Accordion.Section value="performant">
         <template #header>
           <div>Performant</div>
         </template>
@@ -120,9 +118,9 @@ const accordionGroupMultiple = ref<string[]>([]);
             optimization.
           </div>
         </template>
-      </AccordionSection>
+      </Accordion.Section>
 
-      <AccordionSection value="versatile">
+      <Accordion.Section value="versatile">
         <template #header>
           <div>Versatile</div>
         </template>
@@ -133,8 +131,8 @@ const accordionGroupMultiple = ref<string[]>([]);
             full-featured framework.
           </div>
         </template>
-      </AccordionSection>
-    </AccordionGroup>
+      </Accordion.Section>
+    </Accordion.Group>
   </div>
 
   <div class="flex flex-col border p-4 mb-4">
@@ -142,8 +140,8 @@ const accordionGroupMultiple = ref<string[]>([]);
 
     <div class="mb-2">{{ accordionGroupMultiple }}</div>
 
-    <AccordionGroup v-model="accordionGroupMultiple" multiple>
-      <AccordionSection value="approachable">
+    <Accordion.Group v-model="accordionGroupMultiple" multiple>
+      <Accordion.Section value="approachable">
         <template #header>
           <div>Approachable</div>
         </template>
@@ -154,9 +152,9 @@ const accordionGroupMultiple = ref<string[]>([]);
             documentation.
           </div>
         </template>
-      </AccordionSection>
+      </Accordion.Section>
 
-      <AccordionSection value="performant">
+      <Accordion.Section value="performant">
         <template #header>
           <div>Performant</div>
         </template>
@@ -167,9 +165,9 @@ const accordionGroupMultiple = ref<string[]>([]);
             optimization.
           </div>
         </template>
-      </AccordionSection>
+      </Accordion.Section>
 
-      <AccordionSection value="versatile">
+      <Accordion.Section value="versatile">
         <template #header>
           <div>Versatile</div>
         </template>
@@ -180,7 +178,7 @@ const accordionGroupMultiple = ref<string[]>([]);
             full-featured framework.
           </div>
         </template>
-      </AccordionSection>
-    </AccordionGroup>
+      </Accordion.Section>
+    </Accordion.Group>
   </div>
 </template>

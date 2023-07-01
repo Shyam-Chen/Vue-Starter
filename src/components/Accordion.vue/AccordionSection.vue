@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { reactive, inject, getCurrentInstance, onMounted } from 'vue';
 
-import Collapse from './Collapse.vue';
+import Collapse from '../Collapse.vue';
 
 const props = defineProps<{
   title?: string;
@@ -16,9 +16,10 @@ const flux = reactive({
   idx: null as number | null,
   toggle() {
     if (!accordionGroup.value) {
-      accordionGroup.curIdx.value = Array.from(accordionGroup.group.value.children).indexOf(
-        instance?.vnode.el,
-      );
+      const curIdx = accordionGroup.curIdx.value;
+      const curTabIdx = Array.from(accordionGroup.group.value.children).indexOf(instance?.vnode.el);
+      if (curIdx !== curTabIdx) accordionGroup.curIdx.value = curTabIdx;
+      if (curIdx === curTabIdx) accordionGroup.curIdx.value = -1;
     }
 
     if (accordionGroup.value) {

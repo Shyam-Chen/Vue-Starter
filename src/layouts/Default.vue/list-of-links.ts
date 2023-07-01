@@ -90,6 +90,7 @@ const links = [
       { name: 'Avatar', to: '/data-display/avatar' },
       { name: 'Badge', to: '/data-display/badge' },
       { name: 'Calendar', to: '/data-display/calendar' },
+      { name: 'Card', to: '/data-display/card' },
       { name: 'Chip', to: '/data-display/chip' },
       { name: 'Data iterators', to: '/data-display/data-iterators' },
       { name: 'Table', to: '/data-display/data-tables' },
