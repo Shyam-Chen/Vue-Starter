@@ -33,6 +33,7 @@ const links = [
       { name: 'Aspect Ratio', to: '/layout/aspect-ratio' },
       { name: 'Dividers', to: '/layout/dividers' },
       { name: 'Grid', to: '/layout/grid' },
+      { name: 'HR', to: '/layout/hr' },
       { name: 'Spaces', to: '/layout/spaces' },
     ],
   },
