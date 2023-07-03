@@ -2,8 +2,11 @@
 import { ref, watch } from 'vue';
 import { useDark } from '@vueuse/core';
 import highcharts from 'highcharts';
+import patternFill from 'highcharts/modules/pattern-fill';
 import { Chart as HighChart } from 'highcharts-vue';
 import merge from 'lodash/merge';
+
+patternFill(highcharts);
 
 defineProps<{
   options?: highcharts.Options | unknown;
