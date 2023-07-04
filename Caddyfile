@@ -1,4 +1,4 @@
-:8080 {
+localhost:8080 {
   encode gzip
   root * ./dist
 

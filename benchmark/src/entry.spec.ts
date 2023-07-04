@@ -16,11 +16,11 @@ afterAll(async () => {
 });
 
 test('entry point', async () => {
-  await page.goto('http://localhost:8080');
+  await page.goto('https://localhost:8080');
   await page.waitForLoadState('networkidle');
 
-  const runnerResult = await lighthouse('http://localhost:8080');
+  const runnerResult = await lighthouse('https://localhost:8080');
 
   const performanceScore = Number(runnerResult?.lhr.categories.performance.score) * 100;
-  expect(performanceScore).toBe(90);
+  expect(performanceScore).toBe(100);
 });

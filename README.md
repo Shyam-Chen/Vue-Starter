@@ -208,6 +208,8 @@ The structure follows the LIFT Guidelines.
 ```coffee
 .
 ├── .circleci
+├── benchmark -> performance testing
+├── docs -> site documentation
 ├── e2e -> e2e testing (Caddy Server serve static files and proxy mock api)
 ├── mock
 │   ├── requests -> mock api
@@ -220,16 +222,8 @@ The structure follows the LIFT Guidelines.
 │   ├── layouts -> core module
 │   ├── locales -> core module
 │   ├── middleware -> core module
-│   ├── modules -> feature modules
-│   │   └── <FEATURE> -> feature module
-│   │       ├── __tests__ -> unit testing
-│   │       ├── _locales
-│   │       ├── Consumer.vue
-│   │       ├── Registry.vue -> page component
-│   │       ├── schema.ts
-│   │       ├── provider.ts
-│   │       └── types.ts
 │   ├── plugins -> root module
+│   ├── routes -> feature modules
 │   ├── utilities -> shared module
 │   ├── App.vue
 │   ├── Error.vue
