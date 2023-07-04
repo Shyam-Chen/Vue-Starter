@@ -1,21 +1,20 @@
 import { test, expect, vi } from 'vitest';
-import { render } from '@testing-library/vue';
+import { mount } from '@vue/test-utils';
 
 import router from '~/plugins/router';
 import localer from '~/plugins/localer';
 
 import Registry from '../Registry.vue';
 
-test('Buttons', () => {
-  vi.mock('~/utilities/request', () => {
-    return {
-      default: vi.fn(() => () => ({
-        _data: {},
-        status: 200,
-      })),
-    };
+vi.mock('~/utilities/request');
+
+test('Buttons', async () => {
+  const request = await import('~/utilities/request');
+
+  request.default = vi.fn<any>(() => {
+    return { _data: {}, status: 200 };
   });
 
-  const { html } = render(Registry, { global: { plugins: [router, localer] } });
-  expect(html()).toMatchSnapshot();
+  const wrapper = mount(Registry, { global: { plugins: [router, localer] } });
+  expect(wrapper.html()).toMatchSnapshot();
 });

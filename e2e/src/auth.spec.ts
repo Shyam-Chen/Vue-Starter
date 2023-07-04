@@ -14,7 +14,7 @@ test('Sign-in', async ({ page }) => {
     }),
   );
 
-  await page.click('#sign-in');
+  await page.getByTestId('sign-in').click();
 
   await expect(page).toHaveURL(/.*dashboard/);
 });

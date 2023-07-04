@@ -46,6 +46,7 @@ onUnmounted(() => {
           required
           :errorMessage="state.errors.username"
           :disabled="state.signedIn"
+          data-testid="username"
         >
           {{ locale.username }}
         </TextField>
@@ -58,12 +59,13 @@ onUnmounted(() => {
           required
           :errorMessage="state.errors.password"
           :disabled="state.signedIn"
+          data-testid="password"
         >
           {{ locale.password }}
         </TextField>
       </div>
 
-      <Button id="sign-in" :disabled="state.signedIn" class="w-full mb-4" @click="signIn">
+      <Button :disabled="state.signedIn" class="w-full mb-4" data-testid="sign-in" @click="signIn">
         <Spinner v-if="state.signedIn" class="w-5 h-5 align-middle" />
         <div v-else>{{ locale.signIn }}</div>
       </Button>
@@ -87,6 +89,7 @@ onUnmounted(() => {
           v-model:value="state.code"
           class="text-center"
           maxlength="6"
+          data-testid="code"
           @input.stop="actions.inputCode"
         />
       </div>
