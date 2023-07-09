@@ -28,30 +28,18 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <Transition
-    enter-active-class="transition-opacity duration-300"
-    leave-active-class="transition-opacity duration-200"
-    enter-to-class="opacity-0"
-    leave-to-class="opacity-0"
-  >
-    <div v-if="props.modelValue" class="fixed z-101 inset-0 overflow-y-auto">
-      <div
-        class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0"
-      >
-        <div class="fixed inset-0 transition-opacity" aria-hidden="true">
-          <div class="absolute inset-0 backdrop-blur"></div>
+  <Transition name="bounce">
+    <div v-if="props.modelValue" class="dialog">
+      <div class="dialog-container">
+        <div class="dialog-backdrop" aria-hidden="true">
+          <div></div>
         </div>
 
         <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">
           &#8203;
         </span>
 
-        <div
-          class="relative inline-block align-bottom rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"
-          role="dialog"
-          aria-modal="true"
-          aria-labelledby="modal-headline"
-        >
+        <div class="dialog-content" role="dialog" aria-modal="true">
           <div class="absolute top-1.5 right-1.5 cursor-pointer" @click="closeDialog">
             <div class="i-fa-times w-3 h-3 transition hover:scale-125"></div>
           </div>
@@ -64,3 +52,48 @@ onUnmounted(() => {
     </div>
   </Transition>
 </template>
+
+<style lang="scss" scoped>
+.dialog {
+  @apply fixed z-101 inset-0 overflow-y-auto;
+}
+
+.dialog-container {
+  @apply flex justify-center items-end min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0;
+}
+
+.dialog-backdrop {
+  @apply fixed inset-0;
+
+  & > div {
+    @apply absolute inset-0 backdrop-blur;
+  }
+}
+
+.dialog-content {
+  @apply relative inline-block align-bottom rounded-lg text-left overflow-hidden shadow-xl;
+  @apply sm:my-8 sm:align-middle sm:max-w-lg sm:w-full;
+}
+
+.bounce-enter-active {
+  animation: bounce-in 0.33s;
+}
+
+.bounce-leave-active {
+  animation: bounce-in 0.33s reverse;
+}
+
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+</style>
