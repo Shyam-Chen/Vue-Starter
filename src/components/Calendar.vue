@@ -1,51 +1,37 @@
 <script lang="ts" setup>
-import type { PropType } from 'vue';
 import { reactive, watch } from 'vue';
 import { format, add, sub, getYear, setYear, getMonth, setMonth } from 'date-fns';
 import chunk from 'lodash/chunk';
 import range from 'lodash/range';
 
-const props = defineProps({
-  value: {
-    type: String,
-    default: '',
-  },
-  currentMoment: {
-    type: Date,
-    default: () => new Date(),
-  },
-  format: {
-    type: String,
-    default: 'yyyy/MM/dd',
-  },
-  weekdays: {
-    type: Array,
-    default: () => ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-  },
-  months: {
-    type: Array as PropType<string[]>,
+const props = withDefaults(
+  defineProps<{
+    value?: string;
+    currentMoment?: Date;
+    format?: string;
+    weekdays?: string[];
+    months?: string[];
+    events?: Array<{ date: Date; title: string; class?: string }>;
+    startWeekOnSunday?: boolean;
+    minDate?: string;
+    maxDate?: string;
+  }>(),
+  {
+    value: '',
+    currentMoment: () => new Date(),
+    format: 'yyyy/MM/dd',
+    weekdays: () => ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
     // prettier-ignore
-    default: () => ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+    months: () => ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+    events: () => [],
+    minDate: '',
+    maxDate: '',
   },
-  events: {
-    type: Array as PropType<Array<{ date: Date; title: string; class?: string }>>,
-    default: () => [],
-  },
-  startWeekOnSunday: {
-    type: Boolean,
-    default: true,
-  },
-  minDate: {
-    type: String,
-    default: undefined,
-  },
-  maxDate: {
-    type: String,
-    default: undefined,
-  },
-});
+);
 
-const emit = defineEmits(['update:value']);
+const emit = defineEmits<{
+  (evt: 'update:value', val: string): void;
+}>();
 
 const createDays = (y?: number, m?: number) => {
   const currentPeriod = () => {

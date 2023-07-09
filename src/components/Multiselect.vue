@@ -9,50 +9,37 @@ import Chip from './Chip.vue';
 import TextField from './TextField.vue';
 import Fade from './Fade.vue';
 
-const props = defineProps({
-  value: {
-    type: Array,
-    default: () => [],
-  },
-  options: {
-    type: Array,
-    default: () => [],
-  },
-  display: {
-    type: [String, Function],
-    default: () => '',
-  },
-  placeholder: {
-    type: String,
-    default: 'Please select',
-  },
-  clearable: {
-    type: Boolean,
-    default: false,
-  },
-  filterable: {
-    type: Boolean,
-    default: false,
-  },
-  disabled: {
-    type: Boolean,
-    default: false,
-  },
-  notFoundContent: {
-    type: String,
-    default: '--',
-  },
-  isInvalid: {
-    type: Boolean,
-    default: false,
-  },
-  errorMessage: {
-    type: String,
-    default: '',
-  },
-});
+type Option = { label: string; value: string | number; [key: string]: unknown; options?: Options };
+type Options = Option[];
 
-const emit = defineEmits(['update:value', 'change']);
+const props = withDefaults(
+  defineProps<{
+    value?: Option['value'][];
+    options?: Options;
+    display?: 'label' | 'value' | ((opt: Option) => void);
+    placeholder?: string;
+    clearable?: boolean;
+    filterable?: boolean;
+    disabled?: boolean;
+    required?: boolean;
+    notFoundContent?: string;
+    isInvalid?: boolean;
+    errorMessage?: string;
+  }>(),
+  {
+    value: () => [],
+    options: () => [],
+    display: 'label',
+    placeholder: 'Please select',
+    notFoundContent: '--',
+    errorMessage: '',
+  },
+);
+
+const emit = defineEmits<{
+  (evt: 'update:value', val?: Option['value'][] | null): void;
+  (evt: 'change', val?: Option['value'][] | null, opt?: Option | null): void;
+}>();
 
 const flux = reactive({
   show: false,

@@ -12,42 +12,29 @@ defineOptions({
   inheritAttrs: false,
 });
 
-const props = defineProps({
-  value: {
-    type: String,
-    default: '',
+const props = withDefaults(
+  defineProps<{
+    value?: string;
+    options?: any[];
+    display?: 'label' | 'value' | ((opt: any) => void);
+    clearable?: boolean;
+    notFoundContent?: string;
+    isInvalid?: boolean;
+    errorMessage?: string;
+  }>(),
+  {
+    value: '',
+    options: () => [],
+    display: 'label',
+    notFoundContent: '--',
+    errorMessage: '',
   },
-  options: {
-    type: Array,
-    default: () => [],
-  },
-  display: {
-    type: [String, Function],
-    default: () => '',
-  },
-  clearable: {
-    type: Boolean,
-    default: false,
-  },
-  filterable: {
-    type: Boolean,
-    default: false,
-  },
-  notFoundContent: {
-    type: String,
-    default: '--',
-  },
-  isInvalid: {
-    type: Boolean,
-    default: false,
-  },
-  errorMessage: {
-    type: String,
-    default: '',
-  },
-});
+);
 
-const emit = defineEmits(['update:value', 'change']);
+const emit = defineEmits<{
+  (evt: 'update:value', val: string | null): void;
+  (evt: 'change', val: string | null, opt: any | null): void;
+}>();
 
 const target = ref();
 const autocompleteInput = ref();

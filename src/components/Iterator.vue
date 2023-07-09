@@ -1,23 +1,23 @@
 <script lang="ts" setup>
-import type { PropType } from 'vue';
 import { computed, reactive } from 'vue';
 
 import Button from './Button.vue';
 
 type IteratorItem = any;
 
-const props = defineProps({
-  value: {
-    type: Array as PropType<IteratorItem[]>,
-    default: () => [{}],
+const props = withDefaults(
+  defineProps<{
+    value?: IteratorItem[];
+    disabled?: boolean;
+  }>(),
+  {
+    value: () => [{}],
   },
-  disabled: {
-    type: Boolean,
-    default: false,
-  },
-});
+);
 
-const emit = defineEmits(['update:value']);
+const emit = defineEmits<{
+  (evt: 'update:value', val?: IteratorItem[]): void;
+}>();
 
 const listValue = computed<IteratorItem[]>({
   get: () => {

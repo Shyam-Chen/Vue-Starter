@@ -1,15 +1,16 @@
 <script lang="ts" setup>
-import { reactive } from 'vue';
+import { reactive, toRef } from 'vue';
 import uniqueId from 'lodash/uniqueId';
 
-defineProps({
-  placeholder: {
-    type: String,
-    default: 'Choose a file',
-  },
-});
+const props = defineProps<{
+  placeholder?: string;
+}>();
 
-const emit = defineEmits(['change']);
+const placeholderRef = toRef(props, 'placeholder', 'Choose a file');
+
+const emit = defineEmits<{
+  (evt: 'change', val: Event): void;
+}>();
 
 const uid = uniqueId('file-input-');
 
@@ -40,7 +41,7 @@ const flux = reactive({
       </div>
     </div>
     <div v-else-if="flux.fileNames.length === 1">{{ flux.fileNames[0] }}</div>
-    <div v-else class="text-gray-400">{{ placeholder }}</div>
+    <div v-else class="text-gray-400">{{ placeholderRef }}</div>
 
     <div class="file-input-append">
       <div class="i-fa-upload w-5 h-5"></div>

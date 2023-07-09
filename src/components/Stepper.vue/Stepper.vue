@@ -1,12 +1,16 @@
 <script lang="ts" setup>
-defineProps({
-  modelValue: {
-    type: Number,
-    default: 0,
+withDefaults(
+  defineProps<{
+    modelValue?: number;
+  }>(),
+  {
+    modelValue: 0,
   },
-});
+);
 
-defineEmits(['update:modelValue']);
+defineEmits<{
+  (evt: 'update:modelValue', val: number): void;
+}>();
 </script>
 
 <template>

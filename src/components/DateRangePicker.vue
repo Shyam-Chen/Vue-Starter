@@ -7,18 +7,15 @@ defineOptions({
   inheritAttrs: false,
 });
 
-const props = defineProps({
-  startValue: {
-    type: String,
-    default: '',
-  },
-  endValue: {
-    type: String,
-    default: '',
-  },
-});
+const props = defineProps<{
+  startValue?: string;
+  endValue?: string;
+}>();
 
-const emit = defineEmits(['update:startValue', 'update:endValue']);
+const emit = defineEmits<{
+  (evt: 'update:startValue', val?: string): void;
+  (evt: 'update:endValue', val?: string): void;
+}>();
 
 const startValueModel = computed({
   get: () => props.startValue,

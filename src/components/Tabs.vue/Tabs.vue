@@ -1,14 +1,13 @@
 <script lang="ts" setup>
 import { useSlots, reactive, provide } from 'vue';
 
-const props = defineProps({
-  modelValue: {
-    type: [Number, String],
-    default: null,
-  },
-});
+const props = defineProps<{
+  modelValue?: number | string;
+}>();
 
-const emit = defineEmits(['update:modelValue']);
+const emit = defineEmits<{
+  (evt: 'update:modelValue', val: number | string): void;
+}>();
 
 provide('tabs', { value: props.modelValue });
 

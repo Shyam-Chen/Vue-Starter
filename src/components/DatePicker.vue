@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import type { PropType } from 'vue';
 import { nextTick, ref, computed, reactive, watch, onMounted, onUnmounted } from 'vue';
 import { onClickOutside } from '@vueuse/core';
 import { format, add, sub, getYear, setYear, getMonth, setMonth } from 'date-fns';
@@ -12,47 +11,33 @@ import getScrollableParent from '~/utilities/getScrollableParent';
 import TextField from './TextField.vue';
 import Fade from './Fade.vue';
 
-const props = defineProps({
-  value: {
-    type: String,
-    default: '',
-  },
-  disabled: {
-    type: Boolean,
-    default: false,
-  },
-  errorMessage: {
-    type: String,
-    default: '',
-  },
-  format: {
-    type: String,
-    default: 'yyyy/MM/dd',
-  },
-  weekdays: {
-    type: Array,
-    default: () => ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
-  },
-  months: {
-    type: Array as PropType<string[]>,
+const props = withDefaults(
+  defineProps<{
+    value?: string;
+    disabled?: boolean;
+    errorMessage?: string;
+    format?: string;
+    weekdays?: string[];
+    months?: string[];
+    startWeekOnMonday?: boolean;
+    minDate?: string;
+    maxDate?: string;
+  }>(),
+  {
+    value: '',
+    errorMessage: '',
+    format: 'yyyy/MM/dd',
+    weekdays: () => ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
     // prettier-ignore
-    default: () => ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+    months: () => ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+    minDate: '',
+    maxDate: '',
   },
-  startWeekOnSunday: {
-    type: Boolean,
-    default: true,
-  },
-  minDate: {
-    type: String,
-    default: undefined,
-  },
-  maxDate: {
-    type: String,
-    default: undefined,
-  },
-});
+);
 
-const emit = defineEmits(['update:value']);
+const emit = defineEmits<{
+  (evt: 'update:value', val: string): void;
+}>();
 
 const uid = uniqueId('date-picker-');
 

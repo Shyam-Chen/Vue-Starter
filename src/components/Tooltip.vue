@@ -1,7 +1,9 @@
 <script lang="ts" setup>
 import { ref, reactive, nextTick } from 'vue';
 
-defineProps<{ title?: string }>();
+defineProps<{
+  title?: string;
+}>();
 
 const target = ref();
 const tip = ref();

@@ -2,7 +2,9 @@
 import type { VNode } from 'vue';
 import { toRef, useSlots, h } from 'vue';
 
-const prop = defineProps<{ query?: string[] }>();
+const prop = defineProps<{
+  query?: string[];
+}>();
 
 const queryRef = toRef(prop, 'query', []);
 

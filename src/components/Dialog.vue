@@ -31,7 +31,7 @@ onUnmounted(() => {
   <Transition
     enter-active-class="transition-opacity duration-300"
     leave-active-class="transition-opacity duration-200"
-    enter-class="opacity-0"
+    enter-to-class="opacity-0"
     leave-to-class="opacity-0"
   >
     <div v-if="props.modelValue" class="fixed z-101 inset-0 overflow-y-auto">

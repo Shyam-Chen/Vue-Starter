@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import type { PropType } from 'vue';
 import { reactive } from 'vue';
 import { useRoute, RouterLink } from 'vue-router';
 import { useTextDirection } from '@vueuse/core';
@@ -9,44 +8,27 @@ import Collapse from '~/components/Collapse.vue';
 import type { Link } from './list-of-links';
 import useDefault from './store';
 
-defineProps({
-  icon: {
-    type: String as PropType<Link['icon']>,
-    default: '',
+withDefaults(
+  defineProps<{
+    icon?: Link['icon'];
+    name?: Link['name'];
+    to?: Link['to'];
+    permissions?: Link['permissions'];
+    sub?: Link[];
+    level?: number;
+    role?: 'A' | 'B' | 'C' | 'D' | 'E' | undefined;
+    status?: boolean;
+  }>(),
+  {
+    icon: '',
+    name: '',
+    to: '',
+    permissions: undefined,
+    sub: () => [],
+    level: 1,
+    role: undefined,
   },
-  name: {
-    type: String as PropType<Link['name']>,
-    default: '',
-  },
-  to: {
-    type: String as PropType<Link['to']>,
-    default: '',
-  },
-  permissions: {
-    type: Array as PropType<Link['permissions']>,
-    default: () => [],
-  },
-  aiDisable: {
-    type: Boolean as PropType<Link['aiDisable']>,
-    default: false,
-  },
-  sub: {
-    type: Array as PropType<Link[]>,
-    default: () => [],
-  },
-  level: {
-    type: Number,
-    default: 1,
-  },
-  role: {
-    type: String as PropType<'A' | 'B' | 'C' | 'D' | 'E'>,
-    default: '',
-  },
-  status: {
-    type: Boolean,
-    default: false,
-  },
-});
+);
 
 const route = useRoute();
 const textDirection = useTextDirection({ observe: true });
