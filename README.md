@@ -133,7 +133,7 @@ This seed repository provides the following features:
 - ---------- **Essentials** ----------
 - [x] [Vue](https://github.com/vuejs/vue) - User Interface Framework
 - [x] [Router](https://github.com/vuejs/vue-router) - Routing
-- [x] [Routes](https://github.com/Vanilla-IceCream/vite-plugin-vue-routes) - File-based routing
+- [x] [Routes](https://github.com/Vanilla-IceCream/vite-plugin-vue-routes) - File-based Routing
 - [x] [Storer](https://github.com/Vanilla-IceCream/vue-storer) - State Management
 - [x] [Formor](https://github.com/Vanilla-IceCream/vue-formor) - Form Validation
 - [x] [Localer](https://github.com/Vanilla-IceCream/vue-localer) - Internationalization and Localization
