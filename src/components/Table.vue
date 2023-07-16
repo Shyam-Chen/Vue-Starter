@@ -30,6 +30,7 @@ const emit = defineEmits<{
 }>();
 
 defineSlots<{
+  thead(props: {}): VNode;
   [colKey: string]: (props: { row: T }) => VNode;
   spanable(props: {}): VNode;
 }>();
@@ -139,6 +140,8 @@ watch(
     <div class="w-full overflow-auto" :class="{ 'max-h-100': stickyHeader }">
       <table class="items-center w-full border-collapse">
         <thead class="thead-light">
+          <slot name="thead"></slot>
+
           <tr :class="{ 'sticky top-0 z-10': stickyHeader }">
             <th
               v-if="selectable"

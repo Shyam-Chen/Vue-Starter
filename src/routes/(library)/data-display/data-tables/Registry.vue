@@ -137,6 +137,45 @@ const flux = reactive({
       status: 'Active',
     },
   ],
+
+  colspanTheadCols: [
+    { key: 'name', name: 'Name' },
+    { key: 'email', name: 'Email' },
+    { key: 'cost', name: 'Cost' },
+    { key: 'income', name: 'Income' },
+    { key: 'lastCost', name: 'Cost' },
+    { key: 'lastIncome', name: 'Income' },
+    { key: 'status', name: 'Status' },
+  ],
+  colspanTheadRows: [
+    {
+      name: 'Martin Blank',
+      email: 'martinblank@mail.com',
+      cost: 32,
+      income: 44,
+      lastCost: 77,
+      lastIncome: 49,
+      status: 'Active',
+    },
+    {
+      name: 'Fran Wilson',
+      email: 'franwilson@mail.com',
+      cost: 55,
+      income: 29,
+      lastCost: 31,
+      lastIncome: 50,
+      status: 'Active',
+    },
+    {
+      name: 'Maria Anders',
+      email: 'mariaanders@mail.com',
+      cost: 21,
+      income: 81,
+      lastCost: 44,
+      lastIncome: 99,
+      status: 'Active',
+    },
+  ],
 });
 </script>
 
@@ -212,6 +251,34 @@ const flux = reactive({
           <tr>
             <td colspan="2" class="px-6 py-3">Sum:</td>
             <td class="px-6 py-3">108</td>
+            <td></td>
+          </tr>
+        </template>
+      </Table>
+    </div>
+  </div>
+
+  <div class="flex flex-col border p-4 mb-4">
+    <div class="mb-2">Colspan (thead)</div>
+
+    <div class="w-full bg-white dark:bg-slate-800 shadow-md rounded">
+      <Table :columns="flux.colspanTheadCols" :rows="flux.colspanTheadRows">
+        <template #thead>
+          <tr class="bg-blueGray-200 dark:bg-blueGray-700 text-blueGray-500 dark:text-blueGray-200">
+            <th colspan="2" class="px-6 py-3"></th>
+            <th colspan="2" class="px-6 py-3 text-center">2023</th>
+            <th colspan="2" class="px-6 py-3 text-center">2022</th>
+            <th></th>
+          </tr>
+        </template>
+
+        <template #spanable>
+          <tr>
+            <td colspan="2" class="px-6 py-3">Sum:</td>
+            <td class="px-6 py-3">108</td>
+            <td class="px-6 py-3">154</td>
+            <td class="px-6 py-3">152</td>
+            <td class="px-6 py-3">198</td>
             <td></td>
           </tr>
         </template>
