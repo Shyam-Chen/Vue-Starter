@@ -81,6 +81,16 @@ const createDays = (y?: number, m?: number) => {
     day.today = format(day.date, fmt) === format(flux.now, fmt);
   });
 
+  if (chunk(daysWithHoliday, 7).length !== 6) {
+    return [...chunk(daysWithHoliday, 7), Array(7).fill({ outOfRange: true })];
+  }
+
+  if (chunk(daysWithHoliday, 7)[0].every((day) => day.outOfRange)) {
+    const origin = chunk(daysWithHoliday, 7);
+    origin.splice(0, 1);
+    return [...origin, Array(7).fill({ outOfRange: true })];
+  }
+
   return chunk(daysWithHoliday, 7);
 };
 
@@ -115,6 +125,9 @@ for (let i = 0; i < ranged.length; i++) {
             v-for="(weekday, weekdayIndex) in weekdays"
             :key="weekdayIndex"
             class="text-slate-600 text-center py-1 border bg-slate-300"
+            :class="{
+              'important:text-red-500': weekdayIndex === 0 || weekdayIndex === 6,
+            }"
           >
             {{ weekday }}
           </div>
