@@ -45,8 +45,8 @@ dependencies:
     specifier: ^4.2.2
     version: 4.2.2(vue@3.3.4)
   vue-storer:
-    specifier: ^0.5.0
-    version: 0.5.0
+    specifier: ^0.6.0
+    version: 0.6.0
   vuedraggable:
     specifier: ^4.1.0
     version: 4.1.0(vue@3.3.4)
@@ -2610,10 +2610,6 @@ packages:
       p-locate: 5.0.0
     dev: true
 
-  /lodash.clonedeep@4.5.0:
-    resolution: {integrity: sha512-H5ZhCF25riFd9uB5UCkVKo61m3S/xZk1x4wA6yp/L3RFP6Z/eHH1ymQcGLo7J3GMPfm0V/7m1tryHuGVxpqEBQ==}
-    dev: false
-
   /lodash.merge@4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
     dev: true
@@ -3585,10 +3581,8 @@ packages:
       vue: 3.3.4
     dev: false
 
-  /vue-storer@0.5.0:
-    resolution: {integrity: sha512-LahGnh8PtAvE6sEMvsQe1rNKfzd2k3nXaeVoDLLu79hq33hGyD81TZCvuXHyuXUzVnPNWZWBmy63EjYnb2EBMg==}
-    dependencies:
-      lodash.clonedeep: 4.5.0
+  /vue-storer@0.6.0:
+    resolution: {integrity: sha512-Trt/7lvlv49r70z0Yzqif8yi8KBzT1x88P0jamive6x3ijgMlm5g8EsL46Y/plTPwFa6bkUYiEJEIpkLn7SjBg==}
     dev: false
 
   /vue-template-compiler@2.7.14:

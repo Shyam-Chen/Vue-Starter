@@ -1,37 +1,33 @@
-import { ref, computed, reactive, inject } from 'vue';
+import { ref, computed, reactive, readonly } from 'vue';
 import { useRouter } from 'vue-router';
+import { defineStore } from 'vue-storer';
 
-import { defineContext, useFetch } from '~/composables';
+import { useFetch } from '~/composables';
 
 import type { State, TodoItem } from './types';
 
-export const stateSymbol = Symbol('/crud-operations');
-
-export const createState = reactive<State>({
-  searchConditions: { filter: 0 },
-
-  loading: false,
-
-  dataSource: [],
-  dataCount: 0,
-
-  todoItem: {},
-
-  errors: {},
-});
-
-export const useState = () => inject(stateSymbol) as State;
-
-export const useActions = () => {
+export default defineStore('/(library)/data-entry/form-validation', () => {
   const router = useRouter();
-  const state = useState();
 
   const todosApi = useFetch('/todos').json();
 
   const todosId = ref<TodoItem['_id']>('');
   const todosApiById = useFetch(computed(() => '/todos/' + todosId.value)).json();
 
-  const actions = {
+  const state = reactive<State>({
+    searchConditions: { filter: 0 },
+
+    loading: false,
+
+    dataSource: [],
+    dataCount: 0,
+
+    todoItem: {},
+
+    errors: {},
+  });
+
+  const actions = readonly({
     searchTodos() {
       actions.todosList();
     },
@@ -84,17 +80,7 @@ export const useActions = () => {
 
       await actions.todosList();
     },
-  };
+  });
 
-  return actions;
-};
-
-export const useComputeds = () => {
-  // const state = useState();
-
-  const computeds = {};
-
-  return computeds;
-};
-
-export default () => defineContext(stateSymbol, createState);
+  return { state, actions };
+});

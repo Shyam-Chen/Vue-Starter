@@ -2,14 +2,14 @@ import { toRef } from 'vue';
 import { useZodSchema } from 'vue-formor';
 import { z } from 'zod';
 
-import { useState } from './provider';
+import useStore from './store';
 
 const msgs = {
   required: `This is a required field`,
 };
 
 export const useCrudOperationsSchema = () => {
-  const state = useState();
+  const { state } = useStore();
 
   const schema = useZodSchema(
     z.object({

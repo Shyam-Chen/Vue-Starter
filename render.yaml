@@ -2,6 +2,11 @@ services:
   - type: web
     name: vue-starter
     env: static
+    envVars:
+      - key: NODE_VERSION
+        value: 18.16.1
+      - key: API_URL
+        value: false
     buildCommand: pnpm build
     staticPublishPath: dist
     headers:

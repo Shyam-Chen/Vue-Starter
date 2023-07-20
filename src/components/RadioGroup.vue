@@ -11,6 +11,7 @@ const props = defineProps<{
   value?: unknown;
   options?: string[] | Array<{ label: string; value: unknown }>;
   disabled?: boolean;
+  errorMessage?: string;
 }>();
 
 const emit = defineEmits<{
@@ -63,6 +64,8 @@ const radioGroupValue = computed({
         </div>
       </label>
     </div>
+
+    <div v-if="errorMessage" class="text-red-500 text-xs">{{ errorMessage }}</div>
   </div>
 </template>
 

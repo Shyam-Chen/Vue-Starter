@@ -27,7 +27,7 @@
     "vue-localer": "^1.4.0",
     "vue-qrcode-image": "^1.1.0",
     "vue-router": "^4.2.2",
-    "vue-storer": "^0.5.0",
+    "vue-storer": "^0.6.0",
     "vuedraggable": "^4.1.0",
     "zod": "^3.21.4"
   },
