@@ -3,15 +3,15 @@
 exports[`Buttons 1`] = `
 "<nav class=\\"rounded-md w-full mb-4\\">
   <ol class=\\"list-reset flex\\">
-    <li><span class=\\"text-gray-500\\">Library</span></li>
+    <li><span class=\\"text-slate-500\\">Library</span></li>
     <li>
       <div class=\\"mx-2 flex items-center h-full\\">/</div>
     </li>
-    <li><span class=\\"text-gray-500\\">General</span></li>
+    <li><span class=\\"text-slate-500\\">General</span></li>
     <li>
       <div class=\\"mx-2 flex items-center h-full\\">/</div>
     </li>
-    <li><span class=\\"text-gray-500\\">Buttons</span></li>
+    <li><span class=\\"text-slate-500\\">Buttons</span></li>
     <!--v-if-->
   </ol>
 </nav>
