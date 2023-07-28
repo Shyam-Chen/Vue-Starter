@@ -1,11 +1,12 @@
 <script lang="ts" setup>
+import type { Options } from 'highcharts';
 import { reactive } from 'vue';
 
 import Breadcrumbs from '~/components/Breadcrumbs.vue';
 import Chart from '~/components/Chart.vue';
 
 const flux = reactive({
-  basicBarChart: {
+  columnChartOptions: {
     chart: {
       type: 'column',
     },
@@ -54,8 +55,8 @@ const flux = reactive({
         color: '#10b981',
       },
     ],
-  },
-  patternFillColumnChart: {
+  } as Options,
+  patternFillColumnChartOptions: {
     chart: {
       type: 'column',
     },
@@ -126,7 +127,7 @@ const flux = reactive({
         keys: ['y', 'color.pattern.color'],
       },
     ],
-  },
+  } as Options,
 });
 </script>
 
@@ -135,24 +136,24 @@ const flux = reactive({
     :items="[
       { text: 'Library', disabled: true },
       { text: 'Charts', disabled: true },
-      { text: 'Column Charts', disabled: true },
+      { text: 'Column', disabled: true },
     ]"
     class="mb-4"
   />
 
   <div class="mb-4">
-    <div class="text-3xl font-bold">Column Charts</div>
+    <div class="text-3xl font-bold">Column</div>
   </div>
 
   <div class="flex flex-col border p-4 mb-4">
     <div class="mb-2">Basic</div>
 
-    <Chart :options="flux.basicBarChart" />
+    <Chart :options="flux.columnChartOptions" />
   </div>
 
   <div class="flex flex-col border p-4 mb-4">
     <div class="mb-2">Defs Patterns</div>
 
-    <Chart :options="flux.patternFillColumnChart" />
+    <Chart :options="flux.patternFillColumnChartOptions" />
   </div>
 </template>

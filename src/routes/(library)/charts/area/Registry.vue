@@ -1,11 +1,12 @@
 <script lang="ts" setup>
+import type { Options } from 'highcharts';
 import { reactive } from 'vue';
 
 import Breadcrumbs from '~/components/Breadcrumbs.vue';
 import Chart from '~/components/Chart.vue';
 
 const flux = reactive({
-  basicBarChart: {
+  areaChartOptions: {
     chart: {
       type: 'area',
     },
@@ -221,7 +222,7 @@ const flux = reactive({
         color: '#ec4899',
       },
     ],
-  },
+  } as Options,
 });
 </script>
 
@@ -242,6 +243,6 @@ const flux = reactive({
   <div class="flex flex-col border p-4 mb-4">
     <div class="mb-2">Basic</div>
 
-    <Chart :options="flux.basicBarChart" />
+    <Chart :options="flux.areaChartOptions" />
   </div>
 </template>

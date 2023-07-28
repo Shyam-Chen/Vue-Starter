@@ -18,11 +18,11 @@ dependencies:
     specifier: ^2.30.0
     version: 2.30.0
   highcharts:
-    specifier: ^11.1.0
-    version: 11.1.0
+    specifier: ^10.3.3
+    version: 10.3.3
   highcharts-vue:
     specifier: ^1.4.3
-    version: 1.4.3(highcharts@11.1.0)(vue@3.3.4)
+    version: 1.4.3(highcharts@10.3.3)(vue@3.3.4)
   lodash:
     specifier: ^4.17.21
     version: 4.17.21
@@ -2011,18 +2011,18 @@ packages:
     hasBin: true
     dev: true
 
-  /highcharts-vue@1.4.3(highcharts@11.1.0)(vue@3.3.4):
+  /highcharts-vue@1.4.3(highcharts@10.3.3)(vue@3.3.4):
     resolution: {integrity: sha512-qIy9EFuLIgOw+reNkTvu0pvMBcSE0BAPtONAqZoEl0qaAIpGxiyXqhRNPDufWieSC0YlybpCznxE8EK19Kcg+A==}
     peerDependencies:
       highcharts: '>=5.0.0'
       vue: '>=1.0.0'
     dependencies:
-      highcharts: 11.1.0
+      highcharts: 10.3.3
       vue: 3.3.4
     dev: false
 
-  /highcharts@11.1.0:
-    resolution: {integrity: sha512-vhmqq6/frteWMx0GKYWwEFL25g4OYc7+m+9KQJb/notXbNtIb8KVy+ijOF7XAFqF165cq0pdLIePAmyFY5ph3g==}
+  /highcharts@10.3.3:
+    resolution: {integrity: sha512-r7wgUPQI9tr3jFDn3XT36qsNwEIZYcfgz4mkKEA6E4nn5p86y+u1EZjazIG4TRkl5/gmGRtkBUiZW81g029RIw==}
     dev: false
 
   /html-escaper@2.0.2:

@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import type { Options } from 'highcharts';
 import { reactive } from 'vue';
 
 import Breadcrumbs from '~/components/Breadcrumbs.vue';
@@ -35,7 +36,7 @@ const flux = reactive({
         color: '#ec4899',
       },
     ],
-  },
+  } as Options & { series: (Options['series'] & { data: number[] })[] },
   update() {
     const randomInt = (max = 99) => Math.floor(Math.random() * max) + 1;
 
@@ -53,13 +54,13 @@ const flux = reactive({
     :items="[
       { text: 'Library', disabled: true },
       { text: 'Charts', disabled: true },
-      { text: 'Line Charts', disabled: true },
+      { text: 'Line', disabled: true },
     ]"
     class="mb-4"
   />
 
   <div class="mb-4">
-    <div class="text-3xl font-bold">Line Charts</div>
+    <div class="text-3xl font-bold">Line</div>
   </div>
 
   <div class="flex flex-col border p-4 mb-4">

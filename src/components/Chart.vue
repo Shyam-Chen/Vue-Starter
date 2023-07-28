@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import type { Options } from 'highcharts';
 import { ref, watch } from 'vue';
 import { useDark } from '@vueuse/core';
 import highcharts from 'highcharts';
@@ -9,7 +10,7 @@ import merge from 'lodash/merge';
 patternFill(highcharts);
 
 defineProps<{
-  options?: highcharts.Options | unknown;
+  options?: Options;
 }>();
 
 const isDark = useDark();

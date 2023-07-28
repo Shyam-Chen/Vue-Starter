@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import type { Options } from 'highcharts';
 import { reactive } from 'vue';
 import highcharts from 'highcharts';
 
@@ -8,8 +9,8 @@ import Chart from '~/components/Chart.vue';
 const flux = reactive({
   basicBarChart: {
     chart: {
-      plotBackgroundColor: null,
-      plotBorderWidth: null,
+      plotBackgroundColor: undefined,
+      plotBorderWidth: undefined,
       plotShadow: false,
       type: 'pie',
     },
@@ -39,49 +40,19 @@ const flux = reactive({
         name: 'Brands',
         colorByPoint: true,
         data: [
-          {
-            name: 'Chrome',
-            y: 70.67,
-            sliced: true,
-            selected: true,
-          },
-          {
-            name: 'Edge',
-            y: 14.77,
-          },
-          {
-            name: 'Firefox',
-            y: 4.86,
-          },
-          {
-            name: 'Safari',
-            y: 2.63,
-          },
-          {
-            name: 'Internet Explorer',
-            y: 1.53,
-          },
-          {
-            name: 'Opera',
-            y: 1.4,
-          },
-          {
-            name: 'Sogou Explorer',
-            y: 0.84,
-          },
-          {
-            name: 'QQ',
-            y: 0.51,
-          },
-          {
-            name: 'Other',
-            y: 2.6,
-          },
+          { name: 'Chrome', y: 70.67, sliced: true, selected: true },
+          { name: 'Edge', y: 14.77 },
+          { name: 'Firefox', y: 4.86 },
+          { name: 'Safari', y: 2.63 },
+          { name: 'Internet Explorer', y: 1.53 },
+          { name: 'Opera', y: 1.4 },
+          { name: 'Sogou Explorer', y: 0.84 },
+          { name: 'QQ', y: 0.51 },
+          { name: 'Other', y: 2.6 },
         ],
       },
     ],
-  },
-
+  } as Options,
   patternFillPieChart: {
     title: {
       text: 'Pattern fill plugin demo',
@@ -93,8 +64,7 @@ const flux = reactive({
       {
         showInLegend: true,
         type: 'pie',
-        // @ts-ignore
-        borderColor: highcharts.getOptions().colors[0],
+        borderColor: highcharts?.getOptions?.()?.colors?.[0],
         data: [
           { y: 1, color: { patternIndex: 0 } },
           { y: 1, color: { patternIndex: 1 } },
@@ -118,11 +88,8 @@ const flux = reactive({
           },
         ],
         dataLabels: {
-          // @ts-ignore
-          connectorColor: highcharts.getOptions().colors[0],
-          // @ts-ignore
+          connectorColor: highcharts?.getOptions?.()?.colors?.[0],
           formatter() {
-            // @ts-ignore
             const i = this.point.index;
 
             return i > 9
@@ -132,7 +99,7 @@ const flux = reactive({
         },
       },
     ],
-  },
+  } as Options,
 });
 </script>
 
@@ -140,14 +107,14 @@ const flux = reactive({
   <Breadcrumbs
     :items="[
       { text: 'Library', disabled: true },
-      { text: 'Chart Types', disabled: true },
-      { text: 'Pie Charts', disabled: true },
+      { text: 'Charts', disabled: true },
+      { text: 'Pie', disabled: true },
     ]"
     class="mb-4"
   />
 
   <div class="mb-4">
-    <div class="text-3xl font-bold">Pie Charts</div>
+    <div class="text-3xl font-bold">Pie</div>
   </div>
 
   <div class="flex flex-col border p-4 mb-4">

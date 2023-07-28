@@ -1,9 +1,10 @@
 <script lang="ts" setup>
+import type { Options } from 'highcharts';
 import { ref } from 'vue';
 
 import Chart from '~/components/Chart.vue';
 
-const overview = ref({
+const overview = ref<Options>({
   title: {
     text: '',
   },
@@ -34,7 +35,7 @@ const overview = ref({
   ],
 });
 
-const performance = ref({
+const performance = ref<Options>({
   title: {
     text: '',
   },

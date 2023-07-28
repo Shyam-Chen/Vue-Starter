@@ -1,11 +1,12 @@
 <script lang="ts" setup>
+import type { Options } from 'highcharts';
 import { reactive } from 'vue';
 
 import Breadcrumbs from '~/components/Breadcrumbs.vue';
 import Chart from '~/components/Chart.vue';
 
 const flux = reactive({
-  basicBarChart: {
+  barChartOptions: {
     chart: {
       type: 'bar',
     },
@@ -68,7 +69,7 @@ const flux = reactive({
         data: [1276, 1007, 4561, 746, 42],
       },
     ],
-  },
+  } as Options,
 });
 </script>
 
@@ -77,18 +78,18 @@ const flux = reactive({
     :items="[
       { text: 'Library', disabled: true },
       { text: 'Charts', disabled: true },
-      { text: 'Bar Charts', disabled: true },
+      { text: 'Bar', disabled: true },
     ]"
     class="mb-4"
   />
 
   <div class="mb-4">
-    <div class="text-3xl font-bold">Bar Charts</div>
+    <div class="text-3xl font-bold">Bar</div>
   </div>
 
   <div class="flex flex-col border p-4 mb-4">
     <div class="mb-2">Basic</div>
 
-    <Chart :options="flux.basicBarChart" />
+    <Chart :options="flux.barChartOptions" />
   </div>
 </template>

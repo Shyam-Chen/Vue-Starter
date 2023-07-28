@@ -19,7 +19,7 @@
     "@vueuse/components": "^10.2.1",
     "@vueuse/core": "^10.2.1",
     "date-fns": "^2.30.0",
-    "highcharts": "^11.1.0",
+    "highcharts": "^10.3.3",
     "highcharts-vue": "^1.4.3",
     "lodash": "^4.17.21",
     "ofetch": "^1.1.1",
