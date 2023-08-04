@@ -3,6 +3,8 @@ import { reactive } from 'vue';
 
 import Breadcrumbs from '~/components/Breadcrumbs.vue';
 import Table from '~/components/Table.vue';
+import Button from '~/components/Button.vue';
+import Collapse from '~/components/Collapse.vue';
 
 const data = [
   {
@@ -110,6 +112,39 @@ const flux = reactive({
       status: 'Active',
     },
   ],
+
+  collapsibleCols: [
+    { key: 'icon', name: '', sortable: false },
+    { key: 'name', name: 'Name' },
+    { key: 'email', name: 'Email' },
+    { key: 'status', name: 'Status' },
+  ],
+  collapsibleRows: [
+    {
+      name: 'Martin Blank',
+      email: 'martinblank@mail.com',
+      details: [{ score: 32 }, { score: 55 }, { score: 21 }],
+      status: 'Active',
+    },
+    {
+      name: 'Fran Wilson',
+      email: 'franwilson@mail.com',
+      details: [{ score: 34 }],
+      status: 'Active',
+    },
+    {
+      name: 'Maria Anders',
+      email: 'mariaanders@mail.com',
+      details: [{ score: 51 }, { score: 32 }],
+      status: 'Active',
+    },
+  ].map((item) => ({ ...item, collapsible: false })),
+  clickRow(row: any) {
+    console.log(row);
+  },
+  clickCollapsible(row: any) {
+    row.collapsible = !row.collapsible;
+  },
 
   colspanCols: [
     { key: 'name', name: 'Name' },
@@ -232,6 +267,52 @@ const flux = reactive({
     </div>
 
     <div class="mt-2">{{ flux.selectedName(flux.selected) }}</div>
+  </div>
+
+  <div class="flex flex-col border p-4 mb-4">
+    <div class="mb-2">Collapsible</div>
+
+    <div class="w-full bg-white dark:bg-slate-800 shadow-md rounded">
+      <Table
+        stickyHeader
+        :columns="flux.collapsibleCols"
+        :rows="flux.collapsibleRows"
+        :count="77"
+        @clickRow="flux.clickRow"
+      >
+        <template #icon="{ row }">
+          <Button
+            v-if="!row.collapsible"
+            icon="i-fa-caret-down"
+            color="secondary"
+            variant="text"
+            @click.stop="flux.clickCollapsible(row)"
+          />
+          <Button
+            v-if="row.collapsible"
+            icon="i-fa-caret-up"
+            color="secondary"
+            variant="text"
+            @click.stop="flux.clickCollapsible(row)"
+          />
+        </template>
+
+        <template #collapsible="{ row }">
+          <tr>
+            <td :colspan="flux.collapsibleCols.length" class="py-0">
+              <Collapse>
+                <div v-if="row.collapsible">
+                  <div class="px-4 py-2">
+                    <div class="text-2xl mb-2">History</div>
+                    <Table :columns="flux.colspanCols" :rows="flux.colspanRows" />
+                  </div>
+                </div>
+              </Collapse>
+            </td>
+          </tr>
+        </template>
+      </Table>
+    </div>
   </div>
 
   <div class="flex flex-col border p-4 mb-4">
