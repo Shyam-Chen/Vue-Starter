@@ -116,8 +116,8 @@ devDependencies:
     specifier: ^4.4.7
     version: 4.4.7(@types/node@20.4.5)(sass@1.62.1)
   vite-plugin-vue-routes:
-    specifier: ^0.9.13
-    version: 0.9.13(vue@3.3.4)
+    specifier: ^1.0.4
+    version: 1.0.4
   vitest:
     specifier: ^0.30.1
     version: 0.30.1(happy-dom@9.18.3)(sass@1.62.1)
@@ -1001,26 +1001,6 @@ packages:
       '@volar/language-core': 1.10.0
     dev: true
 
-  /@vue-macros/common@1.6.0(vue@3.3.4):
-    resolution: {integrity: sha512-sgDo9qN5DI0y7FJ+E0qOxhcsrBlVNp0erW5mfLzYtGYRFfuuIS5hEanNao7QZWVmK39kvmNOPbPOV1oiWBMrng==}
-    engines: {node: '>=16.14.0'}
-    peerDependencies:
-      vue: ^2.7.0 || ^3.2.25
-    peerDependenciesMeta:
-      vue:
-        optional: true
-    dependencies:
-      '@babel/types': 7.22.5
-      '@rollup/pluginutils': 5.0.2
-      '@vue/compiler-sfc': 3.3.4
-      ast-kit: 0.9.4
-      local-pkg: 0.4.3
-      magic-string-ast: 0.2.0
-      vue: 3.3.4
-    transitivePeerDependencies:
-      - rollup
-    dev: true
-
   /@vue/compiler-core@3.3.4:
     resolution: {integrity: sha512-cquyDNvZ6jTbf/+x+AgM2Arrp6G4Dzbb0R64jiG804HRMfRiFXWI6kqUVqZ6ZR0bQhIoQjB4+2bhNtVwndW15g==}
     dependencies:
@@ -1290,17 +1270,6 @@ packages:
 
   /assertion-error@1.1.0:
     resolution: {integrity: sha512-jgsaNduz+ndvGyFt3uSuWqvy4lCnIJiovtouQN5JZHOKCS2QuhEdbcQHFhVksz2N2U9hXJo8odG7ETyWlEeuDw==}
-    dev: true
-
-  /ast-kit@0.9.4:
-    resolution: {integrity: sha512-UrZHsdj87OS6NM+IXRii+asdAUA/P0SMa4r1NrZvsUy72hDvCYwk8c9PsbKf1MvJ0BvP+rF1B8tFP54eT370Tg==}
-    engines: {node: '>=16.14.0'}
-    dependencies:
-      '@babel/parser': 7.22.7
-      '@rollup/pluginutils': 5.0.2
-      pathe: 1.1.1
-    transitivePeerDependencies:
-      - rollup
     dev: true
 
   /balanced-match@1.0.2:
@@ -2220,6 +2189,10 @@ packages:
       p-locate: 5.0.0
     dev: true
 
+  /lodash.maxby@4.6.0:
+    resolution: {integrity: sha512-QfTqQTwzmKxLy7VZlbx2M/ipWv8DCQ2F5BI/MRxLharOQ5V78yMSuB+JE+EuUM22txYfj09R2Q7hUlEYj7KdNg==}
+    dev: true
+
   /lodash.merge@4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
     dev: true
@@ -2250,13 +2223,6 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       yallist: 4.0.0
-    dev: true
-
-  /magic-string-ast@0.2.0:
-    resolution: {integrity: sha512-GHev7SFZZrIFy+ZyNJOJpK88KoGSn6FUOhGJXSdHhPt7Q6htJKTiKkdGcJFKp9Tt3P4SIL/P+ro0jZ7BSV8KMw==}
-    engines: {node: '>=16.14.0'}
-    dependencies:
-      magic-string: 0.30.1
     dev: true
 
   /magic-string@0.30.1:
@@ -2952,14 +2918,11 @@ packages:
       - terser
     dev: true
 
-  /vite-plugin-vue-routes@0.9.13(vue@3.3.4):
-    resolution: {integrity: sha512-CwTM8qEvISnx8IoqfnxFYxt2oRxhFyT8+swztobu3tMx1qGBcGNxbTBAlrRf4gJ5dU4aumvioB06TPaxTklPyQ==}
+  /vite-plugin-vue-routes@1.0.4:
+    resolution: {integrity: sha512-7lgdXR1R8wmpKoL+dUL3XkVSpyzd8IVe+LUGExKVLLUVRC96vAhZOekHuZqHxSEwvH4QNs9II/N2iICqnDXw5Q==}
     dependencies:
-      '@vue-macros/common': 1.6.0(vue@3.3.4)
       glob: 10.3.3
-    transitivePeerDependencies:
-      - rollup
-      - vue
+      lodash.maxby: 4.6.0
     dev: true
 
   /vite@4.4.7(@types/node@20.4.5)(sass@1.62.1):

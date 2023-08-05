@@ -6,12 +6,12 @@ import responses from 'responses/auth';
 import router from '~/plugins/router';
 import localer from '~/plugins/localer';
 
-import Registry from '../Registry.vue';
+import Page from '../+page.vue';
 
 let wrapper: VueWrapper;
 
 beforeEach(() => {
-  wrapper = mount(Registry, { global: { plugins: [router, localer] } });
+  wrapper = mount(Page, { global: { plugins: [router, localer] } });
 });
 
 afterEach(() => {

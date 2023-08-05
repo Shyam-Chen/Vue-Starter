@@ -13,7 +13,7 @@ const router = createRouter({
       },
     },
 
-    ...routes(),
+    ...routes,
 
     {
       path: '/:pathMatch(.*)*',

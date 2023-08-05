@@ -9,10 +9,6 @@ import Link from '~/components/Link.vue';
 import useStore from './store';
 import useSchema from './schema';
 
-defineRegistry({
-  layout: 'Center',
-});
-
 const { state } = useStore();
 const schema = useSchema();
 

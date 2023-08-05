@@ -4,7 +4,7 @@ import { mount } from '@vue/test-utils';
 import router from '~/plugins/router';
 import localer from '~/plugins/localer';
 
-import Registry from '../Registry.vue';
+import Page from '../+page.vue';
 
 vi.mock('~/utilities/request');
 
@@ -15,6 +15,6 @@ test('Buttons', async () => {
     return { _data: {}, status: 200 };
   });
 
-  const wrapper = mount(Registry, { global: { plugins: [router, localer] } });
+  const wrapper = mount(Page, { global: { plugins: [router, localer] } });
   expect(wrapper.html()).toMatchSnapshot();
 });

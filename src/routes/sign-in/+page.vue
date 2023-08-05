@@ -10,10 +10,6 @@ import useStore from './store';
 import useLocale from './locales';
 import useSchema from './schema';
 
-defineRegistry({
-  layout: 'Center',
-});
-
 const { state, actions, $reset } = useStore();
 const locale = useLocale();
 const schema = useSchema();
