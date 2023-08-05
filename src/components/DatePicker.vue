@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { nextTick, ref, computed, reactive, watch, onMounted, onUnmounted } from 'vue';
 import { onClickOutside } from '@vueuse/core';
-import { format, add, sub, getYear, setYear, getMonth, setMonth } from 'date-fns';
+import { format as _format, add, sub, getYear, setYear, getMonth, setMonth } from 'date-fns';
 import chunk from 'lodash/chunk';
 import range from 'lodash/range';
 import uniqueId from 'lodash/uniqueId';
@@ -95,15 +95,17 @@ const createDays = (y?: number, m?: number) => {
   }
 
   days.forEach((day) => {
-    day.today = format(day.date, props.format) === format(flux.now, props.format);
-    day.selected = format(day.date, props.format) === props.value;
+    day.today = _format(day.date, props.format) === _format(flux.now, props.format);
+    day.selected = _format(day.date, props.format) === props.value;
 
     if (props.minDate) {
-      day.disabled = format(new Date(props.minDate), props.format) > format(day.date, props.format);
+      day.disabled =
+        _format(new Date(props.minDate), props.format) > _format(day.date, props.format);
     }
 
     if (props.maxDate) {
-      day.disabled = format(new Date(props.maxDate), props.format) < format(day.date, props.format);
+      day.disabled =
+        _format(new Date(props.maxDate), props.format) < _format(day.date, props.format);
     }
   });
 
@@ -197,18 +199,18 @@ const flux = reactive({
     }
   },
   selectDateItem(val: any) {
-    const date = format(val.date, props.format);
+    const date = _format(val.date, props.format);
 
     if (
       props.minDate &&
-      format(new Date(props.minDate), props.format) > format(val.date, props.format)
+      _format(new Date(props.minDate), props.format) > _format(val.date, props.format)
     ) {
       return;
     }
 
     if (
       props.maxDate &&
-      format(new Date(props.maxDate), props.format) < format(val.date, props.format)
+      _format(new Date(props.maxDate), props.format) < _format(val.date, props.format)
     ) {
       return;
     }
@@ -319,11 +321,11 @@ onUnmounted(() => {
             class="cursor-pointer hover:bg-slate-200 dark:hover:bg-slate-600 px-2 rounded"
             @click="flux.changeYearMonth"
           >
-            {{ format(flux.currentMoment, 'MMM yyyy') }}
+            {{ _format(flux.currentMoment, 'MMM yyyy') }}
           </div>
 
           <div v-if="flux.showYears">{{ flux.yearRange[0] }} ~ {{ flux.yearRange[15] }}</div>
-          <div v-if="flux.showMonths">{{ format(flux.currentMoment, 'yyyy') }}</div>
+          <div v-if="flux.showMonths">{{ _format(flux.currentMoment, 'yyyy') }}</div>
 
           <div
             class="cursor-pointer hover:bg-slate-200 dark:hover:bg-slate-600 p-2 rounded-full"

@@ -21,9 +21,9 @@ const curIdx = ref(-1);
 provide('AccordionGroup', {
   group,
   curIdx,
-  value: props.modelValue,
+  value: computed(() => props.modelValue),
   modelValue: accordionGroupValue,
-  multiple: props.multiple,
+  multiple: computed(() => props.multiple),
 });
 </script>
 

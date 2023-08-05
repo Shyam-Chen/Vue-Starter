@@ -1,13 +1,13 @@
 services:
   - type: web
     name: vue-starter
-    env: static
+    runtime: static
     envVars:
       - key: NODE_VERSION
         value: 18.16.1
       - key: API_URL
         value: false
-    buildCommand: pnpm build
+    buildCommand: pnpm install; pnpm build
     staticPublishPath: dist
     headers:
       - path: /service-worker.js

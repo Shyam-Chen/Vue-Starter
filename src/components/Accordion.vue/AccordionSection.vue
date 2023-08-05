@@ -15,15 +15,15 @@ const instance = getCurrentInstance();
 const flux = reactive({
   idx: null as number | null,
   toggle() {
-    if (!accordionGroup.value) {
+    if (!accordionGroup.value.value) {
       const curIdx = accordionGroup.curIdx.value;
       const curTabIdx = Array.from(accordionGroup.group.value.children).indexOf(instance?.vnode.el);
       if (curIdx !== curTabIdx) accordionGroup.curIdx.value = curTabIdx;
       if (curIdx === curTabIdx) accordionGroup.curIdx.value = -1;
     }
 
-    if (accordionGroup.value) {
-      if (accordionGroup.multiple) {
+    if (accordionGroup.value.value) {
+      if (accordionGroup.multiple.value) {
         if (accordionGroup.modelValue.value?.includes(props.value)) {
           accordionGroup.modelValue.value = [...accordionGroup.modelValue.value].filter(
             (item) => item !== props.value,

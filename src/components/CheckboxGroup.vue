@@ -2,12 +2,12 @@
 import { computed } from 'vue';
 import uniqueId from 'lodash/uniqueId';
 
+type OptionValue = unknown;
+type CheckboxGroupValue = OptionValue[];
+
 defineOptions({
   inheritAttrs: false,
 });
-
-type OptionValue = unknown;
-type CheckboxGroupValue = OptionValue[];
 
 const props = defineProps<{
   label?: string;

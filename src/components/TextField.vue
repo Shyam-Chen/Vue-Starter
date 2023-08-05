@@ -3,10 +3,6 @@ import type { InputHTMLAttributes } from 'vue';
 import { computed, reactive } from 'vue';
 import uniqueId from 'lodash/uniqueId';
 
-defineOptions({
-  inheritAttrs: false,
-});
-
 interface Props extends /* @vue-ignore */ InputHTMLAttributes {
   id?: string;
   label?: string;
@@ -18,6 +14,10 @@ interface Props extends /* @vue-ignore */ InputHTMLAttributes {
   append?: string;
   errorMessage?: string;
 }
+
+defineOptions({
+  inheritAttrs: false,
+});
 
 const props = defineProps<Props>();
 

@@ -7,11 +7,11 @@ import patternFill from 'highcharts/modules/pattern-fill';
 import { Chart as HighChart } from 'highcharts-vue';
 import merge from 'lodash/merge';
 
-patternFill(highcharts);
-
 defineProps<{
   options?: Options;
 }>();
+
+patternFill(highcharts);
 
 const isDark = useDark();
 

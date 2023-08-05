@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { nextTick, ref, computed, reactive, watch, onMounted, onUnmounted } from 'vue';
 import { onClickOutside } from '@vueuse/core';
-import { format, add, sub, getYear, setYear, getMonth, setMonth } from 'date-fns';
+import { format as _format, add, sub, getYear, setYear, getMonth, setMonth } from 'date-fns';
 import uniqueId from 'lodash/uniqueId';
 
 import getScrollableParent from '~/utilities/getScrollableParent';
@@ -116,7 +116,7 @@ const flux = reactive({
     flux.currentMoment = setMonth(flux.currentMoment, month);
     flux.showDatePicker = false;
 
-    const value = format(flux.currentMoment, props.format);
+    const value = _format(flux.currentMoment, props.format);
     emit('update:value', value);
   },
 });
@@ -191,7 +191,7 @@ onUnmounted(() => {
           <div v-if="flux.showYears">{{ flux.yearRange[0] }} ~ {{ flux.yearRange[15] }}</div>
 
           <div v-if="flux.showMonths">
-            {{ format(flux.currentMoment, 'yyyy') }}
+            {{ _format(flux.currentMoment, 'yyyy') }}
           </div>
 
           <div

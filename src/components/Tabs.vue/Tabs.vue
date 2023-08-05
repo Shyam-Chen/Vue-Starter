@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { useSlots, reactive, provide } from 'vue';
+import { useSlots, reactive, computed, provide } from 'vue';
 
 const props = defineProps<{
   modelValue?: number | string;
@@ -9,7 +9,7 @@ const emit = defineEmits<{
   (evt: 'update:modelValue', val: number | string): void;
 }>();
 
-provide('tabs', { value: props.modelValue });
+provide('tabs', { value: computed(() => props.modelValue) });
 
 const slots = useSlots();
 const defaultSlot = slots.default?.();

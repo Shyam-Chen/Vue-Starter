@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { reactive, watch } from 'vue';
-import { format, add, sub, getYear, setYear, getMonth, setMonth } from 'date-fns';
+import { format as _format, add, sub, getYear, setYear, getMonth, setMonth } from 'date-fns';
 import chunk from 'lodash/chunk';
 import range from 'lodash/range';
 
@@ -74,15 +74,17 @@ const createDays = (y?: number, m?: number) => {
   }
 
   days.forEach((day) => {
-    day.today = format(day.date, props.format) === format(flux.now, props.format);
-    day.selected = format(day.date, props.format) === props.value;
+    day.today = _format(day.date, props.format) === _format(flux.now, props.format);
+    day.selected = _format(day.date, props.format) === props.value;
 
     if (props.minDate) {
-      day.disabled = format(new Date(props.minDate), props.format) > format(day.date, props.format);
+      day.disabled =
+        _format(new Date(props.minDate), props.format) > _format(day.date, props.format);
     }
 
     if (props.maxDate) {
-      day.disabled = format(new Date(props.maxDate), props.format) < format(day.date, props.format);
+      day.disabled =
+        _format(new Date(props.maxDate), props.format) < _format(day.date, props.format);
     }
   });
 
@@ -121,16 +123,16 @@ const flux = reactive({
     }
   },
   selectDateItem(val: any) {
-    const date = format(val.date, props.format);
+    const date = _format(val.date, props.format);
 
     if (
       props.minDate &&
-      format(new Date(props.minDate), props.format) > format(val.date, props.format)
+      _format(new Date(props.minDate), props.format) > _format(val.date, props.format)
     )
       return;
     if (
       props.maxDate &&
-      format(new Date(props.maxDate), props.format) < format(val.date, props.format)
+      _format(new Date(props.maxDate), props.format) < _format(val.date, props.format)
     )
       return;
 
@@ -171,7 +173,7 @@ flux.currentPeriodDates = createDays();
   <div class="p-2 shadow-lg rounded bg-white dark:bg-slate-800 w-full">
     <div class="flex justify-between items-center mb-1">
       <div class="px-2 text-2xl font-bold">
-        {{ format(flux.currentMoment, 'MMMM yyyy') }}
+        {{ _format(flux.currentMoment, 'MMMM yyyy') }}
       </div>
 
       <div class="flex space-x-3">
@@ -233,7 +235,7 @@ flux.currentPeriodDates = createDays();
           <div class="flex flex-col gap-1 h-15 overflow-auto">
             <template v-for="(event, eventIndex) in events">
               <div
-                v-if="format(event.date, 'yyyy/MM/dd') === format(item.date, 'yyyy/MM/dd')"
+                v-if="_format(event.date, 'yyyy/MM/dd') === _format(item.date, 'yyyy/MM/dd')"
                 :key="eventIndex"
                 class="self-start flex items-center leading-tight text-sm p-1 rounded min-w-full"
                 :class="event.class ? event.class : 'bg-blue-600 text-white'"

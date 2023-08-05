@@ -6,13 +6,13 @@ const props = defineProps<{
   placeholder?: string;
 }>();
 
-const placeholderRef = toRef(props, 'placeholder', 'Choose a file');
-
 const emit = defineEmits<{
   (evt: 'change', val: Event): void;
 }>();
 
 const uid = uniqueId('file-input-');
+
+const placeholderRef = toRef(props, 'placeholder', 'Choose a file');
 
 const flux = reactive({
   fileNames: [] as string[],
