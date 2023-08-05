@@ -1,9 +1,16 @@
 <script lang="ts" setup>
+import { ref } from 'vue';
+
 import Breadcrumbs from '~/components/Breadcrumbs.vue';
 import Button from '~/components/Button.vue';
-import { useFetch } from '~/composables';
+import request from '~/utilities/request';
 
-const helloWorldApi = useFetch('/hello-world').json();
+const text = ref();
+
+const doFetch = async () => {
+  const { _data } = await request<{ message: string }>('/hello-world', { method: 'GET' });
+  text.value = _data?.message;
+};
 </script>
 
 <template>
@@ -21,11 +28,11 @@ const helloWorldApi = useFetch('/hello-world').json();
   </div>
 
   <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Basic examples</div>
+    <div class="mb-2">Basic</div>
 
-    <div class="flex justify-center">
-      <div>{{ helloWorldApi.data.value?.hello }}</div>
-      <Button @click="helloWorldApi.get()?.execute">Fetch</Button>
+    <div class="flex flex-col items-center gap-2">
+      <div><Button @click="doFetch">Fetch</Button></div>
+      <div>{{ text }}</div>
     </div>
   </div>
 </template>

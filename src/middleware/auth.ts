@@ -1,4 +1,6 @@
-export default () => {
+import type { NavigationGuard } from 'vue-router';
+
+export default (() => {
   if (!localStorage.getItem('accessToken')) {
     return { path: '/sign-in' };
   }
@@ -10,4 +12,4 @@ export default () => {
   }
 
   return true;
-};
+}) as NavigationGuard;

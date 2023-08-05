@@ -16,7 +16,7 @@ const router = createRouter({
     ...routes,
 
     {
-      path: '/:pathMatch(.*)*',
+      path: '/:slug(.*)*',
       component: () => import('~/Error.vue'),
     },
   ],
