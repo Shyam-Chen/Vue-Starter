@@ -6,22 +6,20 @@ import Breadcrumbs from '~/components/Breadcrumbs.vue';
 import Skeleton from '~/components/Skeleton.vue';
 import Button from '~/components/Button.vue';
 
-const imageOptions = ref({ src: 'https://place.dog/300/200' });
+const imageOptions = ref({ src: 'https://place-hold.it/300x200' });
+const colors = ['14b8a6', '8b5cf6', 'ec4899'];
 const { isLoading } = useImage(imageOptions, { delay: 1000 });
 
 function change() {
-  const time = new Date().getTime();
-  imageOptions.value.src = `https://place.dog/300/200?t=${time}`;
+  imageOptions.value.src = '';
+  const color = colors[Math.floor(Math.random() * colors.length)];
+  imageOptions.value.src = `https://place-hold.it/300x200/${color}`;
 }
 </script>
 
 <template>
   <Breadcrumbs
-    :items="[
-      { text: 'Library', disabled: true },
-      { text: 'Feedback', disabled: true },
-      { text: 'Skeletons', disabled: true },
-    ]"
+    :items="[{ text: 'Library' }, { text: 'Feedback' }, { text: 'Skeletons' }]"
     class="mb-4"
   />
 

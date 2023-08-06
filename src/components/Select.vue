@@ -341,7 +341,9 @@ onUnmounted(() => {
       height: 30px;
       border-radius: 2px;
       background: #e4ebf0;
-      box-shadow: inset 3px 3px 6px #c2c8cc, inset -3px -3px 6px #ffffff;
+      box-shadow:
+        inset 3px 3px 6px #c2c8cc,
+        inset -3px -3px 6px #ffffff;
       border: 0.0625rem solid #d1d9e6;
       padding: 0 0.75rem;
       outline: none;

@@ -109,7 +109,17 @@ const createDays = (y?: number, m?: number) => {
     }
   });
 
-  return chunk(days, 7);
+  const chunked = chunk(days, 7);
+
+  if (chunked[0].every((day) => day.outOfRange)) {
+    chunked.splice(0, 1);
+  }
+
+  if (chunked[chunked.length - 1].every((day) => day.outOfRange)) {
+    chunked.splice(chunked.length - 1, 1);
+  }
+
+  return chunked;
 };
 
 const flux = reactive({
@@ -353,7 +363,7 @@ onUnmounted(() => {
                 'text-white bg-primary-600 important:hover:bg-primary-700': item.selected,
                 'text-slate-400 important:cursor-not-allowed': item.disabled,
                 'text-white bg-blue-400 important:hover:bg-blue-500': item.today,
-                'text-slate-400': item.outOfRange,
+                'text-slate-400 dark:text-slate-600': item.outOfRange,
               }"
               @click="flux.selectDateItem(item)"
             >

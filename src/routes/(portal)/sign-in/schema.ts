@@ -13,7 +13,10 @@ export default () => {
   const schema = useZodSchema(
     z.object({
       username: z.string().nonempty(messages.value.required),
-      password: z.string().min(8, messages.value.string?.min).nonempty(messages.value.required),
+      password: z
+        .string()
+        .min(8, messages.value.string?.min)
+        .nonempty(messages.value.required),
     }),
     toRef(state, 'signInForm'),
     toRef(state, 'errors'),
