@@ -2,11 +2,12 @@ services:
   - type: web
     name: vue-starter
     runtime: static
+    branch: main
     envVars:
       - key: NODE_VERSION
-        value: 18.16.1
+        value: 18.17.0
       - key: API_URL
-        value: false
+        sync: false
     buildCommand: pnpm install; pnpm build
     staticPublishPath: dist
     headers:
