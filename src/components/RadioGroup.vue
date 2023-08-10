@@ -11,6 +11,7 @@ const props = defineProps<{
   value?: unknown;
   options?: string[] | Array<{ label: string; value: unknown }>;
   disabled?: boolean;
+  required?: boolean;
   errorMessage?: string;
 }>();
 
@@ -29,7 +30,10 @@ const radioGroupValue = computed({
 
 <template>
   <div class="radio-group">
-    <div class="text-sm mb-2 font-bold empty:hidden">{{ label }}</div>
+    <div class="text-sm mb-2 font-bold empty:hidden">
+      {{ label }}
+      <span v-if="required" class="text-red-500">*</span>
+    </div>
 
     <div class="flex items-center h-38px space-x-4">
       <label

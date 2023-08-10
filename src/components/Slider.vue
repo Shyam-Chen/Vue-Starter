@@ -74,20 +74,28 @@ watch(
 .slider-input {
   @apply appearance-none outline-none cursor-pointer;
   @apply w-full h-2 bg-slate-400/60 rounded;
-  @apply bg-gradient-to-r from-primary-500 to-primary-500 bg-no-repeat;
+  @apply bg-gradient-to-r from-primary-400 to-primary-600 bg-no-repeat;
 
   &::-webkit-slider-thumb {
     @apply appearance-none cursor-ew-resize;
-    @apply w-4 h-4 bg-primary-500 rounded-full shadow transition;
+    @apply w-4 h-4 bg-primary-600 rounded-full shadow transition;
+
+    &:hover {
+      @apply ring-5 ring-primary-500/40;
+    }
+
+    &:active {
+      @apply ring-7 ring-primary-500/40;
+    }
   }
 
-  // &:hover + .slider-output {
-  //   @apply block;
-  // }
+  &:hover + .slider-output {
+    @apply block;
+  }
 }
 
 .slider-output {
-  // @apply hidden;
+  @apply hidden;
   @apply absolute bg-primary-500 -top-8 -translate-x-1/2;
   @apply px-2 py-1 text-white rounded;
 }

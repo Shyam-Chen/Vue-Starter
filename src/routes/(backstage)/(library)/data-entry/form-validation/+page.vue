@@ -42,12 +42,14 @@ const flux = reactive({
         <TextField
           v-model:value="state.zodForm.username"
           label="Username"
+          required
           :errorMessage="state.zodValdn.username"
         />
         <TextField
           v-model:value="state.zodForm.password"
           label="Password"
           type="password"
+          required
           :errorMessage="state.zodValdn.password"
         />
 
@@ -55,12 +57,14 @@ const flux = reactive({
           v-model:value="state.zodForm.email"
           label="Email"
           type="email"
+          required
           :errorMessage="state.zodValdn.email"
         />
         <TextField
           v-model:value="state.zodForm.phone"
           label="Phone"
           type="tel"
+          required
           :errorMessage="state.zodValdn.phone"
         />
 
@@ -68,19 +72,26 @@ const flux = reactive({
           v-model:value="state.zodForm.gender"
           label="Gender"
           :options="['Male', 'Female', 'Others']"
+          required
           :errorMessage="state.zodValdn.gender"
         />
         <Select
+          v-model:value="state.zodForm.plan"
           label="Plan"
           :options="[
-            { label: 'Individual', value: 1 },
-            { label: 'Team', value: 2 },
-            { label: 'Organization', value: 3 },
-            { label: 'Enterprise', value: 4 },
+            { label: 'Individual', value: '1' },
+            { label: 'Team', value: '2' },
+            { label: 'Organization', value: '3' },
+            { label: 'Enterprise', value: '4' },
           ]"
+          required
+          :errorMessage="state.zodValdn.plan"
         />
 
-        <Checkbox class="col-span-2">Employed</Checkbox>
+        <div>
+          <div class="text-sm mb-2 font-bold">Status</div>
+          <Checkbox class="col-span-2">Employed</Checkbox>
+        </div>
 
         <CheckboxGroup
           label="Sauces"

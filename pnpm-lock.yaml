@@ -33,8 +33,8 @@ dependencies:
     specifier: ^3.3.4
     version: 3.3.4
   vue-formor:
-    specifier: ^3.1.2
-    version: 3.1.2
+    specifier: ^3.2.1
+    version: 3.2.1
   vue-localer:
     specifier: ^1.4.0
     version: 1.4.0
@@ -3180,8 +3180,8 @@ packages:
       - supports-color
     dev: true
 
-  /vue-formor@3.1.2:
-    resolution: {integrity: sha512-FuIuFmAwd1hODm8Tmoo/+4lpVbKWv/6/aIITYt3IszOW857ozlCC3V5iSXeTk4bq6DIeB8i8jq6gRs4yX3xSlg==}
+  /vue-formor@3.2.1:
+    resolution: {integrity: sha512-fJazNFgXId7wUE0mTMfzRGBM9p5a+zYE4eBk2boATweb9Z9xpxi94tdTQUo8C5Lmb+AqsX2B+ScKrn/H7hMfnw==}
     dev: false
 
   /vue-localer@1.4.0:

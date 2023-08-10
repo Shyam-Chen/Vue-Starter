@@ -5,6 +5,7 @@ export interface State {
     email?: string;
     phone?: string;
     gender?: string;
+    plan?: string;
   };
   zodValdn: Record<string, string>;
 }

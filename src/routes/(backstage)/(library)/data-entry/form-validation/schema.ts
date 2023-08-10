@@ -22,6 +22,7 @@ export const useZodFormSchema = () => {
       email: string().email(msgs.email).nonempty(msgs.required),
       phone: string().nonempty(msgs.required),
       gender: string().nonempty(msgs.required),
+      plan: string().nonempty(msgs.required),
     }),
     toRef(state, 'zodForm'),
     toRef(state, 'zodValdn'),

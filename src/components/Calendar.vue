@@ -88,7 +88,17 @@ const createDays = (y?: number, m?: number) => {
     }
   });
 
-  return chunk(days, 7);
+  const chunked = chunk(days, 7);
+
+  if (chunked[0].every((day) => day.outOfRange)) {
+    chunked.splice(0, 1);
+  }
+
+  if (chunked[chunked.length - 1].every((day) => day.outOfRange)) {
+    chunked.splice(chunked.length - 1, 1);
+  }
+
+  return chunked;
 };
 
 const flux = reactive({
@@ -217,7 +227,7 @@ flux.currentPeriodDates = createDays();
           :class="{
             'text-white bg-blue-600 important:hover:bg-blue-700': item.selected,
             'text-slate-400 important:cursor-not-allowed': item.disabled,
-            'text-slate-400': item.outOfRange,
+            'text-slate-400 dark:text-slate-600': item.outOfRange,
           }"
           @click="flux.selectDateItem(item)"
         >
