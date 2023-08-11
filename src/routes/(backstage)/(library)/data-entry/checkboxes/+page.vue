@@ -42,11 +42,7 @@ watch(
 
 <template>
   <Breadcrumbs
-    :items="[
-      { text: 'Library', disabled: true },
-      { text: 'Data Entry', disabled: true },
-      { text: 'Checkboxes', disabled: true },
-    ]"
+    :items="[{ text: 'Library' }, { text: 'Data Entry' }, { text: 'Checkboxes' }]"
     class="mb-4"
   />
 

@@ -11,11 +11,7 @@ const flux = reactive({
 
 <template>
   <Breadcrumbs
-    :items="[
-      { text: 'Library', disabled: true },
-      { text: 'Data Entry', disabled: true },
-      { text: 'Textareas', disabled: true },
-    ]"
+    :items="[{ text: 'Library' }, { text: 'Data Entry' }, { text: 'Textareas' }]"
     class="mb-4"
   />
 

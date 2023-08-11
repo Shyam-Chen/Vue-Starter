@@ -12,11 +12,7 @@ const query2 = ref(['spotlight', 'emphasize', 'Accentuate']);
 
 <template>
   <Breadcrumbs
-    :items="[
-      { text: 'Library', disabled: true },
-      { text: 'Feedback', disabled: true },
-      { text: 'Highlight', disabled: true },
-    ]"
+    :items="[{ text: 'Library' }, { text: 'Feedback' }, { text: 'Highlight' }]"
     class="mb-4"
   />
 

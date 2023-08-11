@@ -28,9 +28,9 @@ onMounted(() => {
 </script>
 
 <template>
-  <Breadcrumbs :items="[{ text: 'Playground' }, { text: 'CRUD Operations' }]" class="mb-4" />
+  <Breadcrumbs :items="[{ text: 'Playground' }, { text: 'CRUD Operations' }]" />
 
-  <div class="mb-4">
+  <div class="my-4">
     <div class="text-3xl font-bold">CRUD Operations</div>
   </div>
 

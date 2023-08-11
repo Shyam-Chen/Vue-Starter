@@ -14,15 +14,9 @@ const flux = reactive({
 </script>
 
 <template>
-  <Breadcrumbs
-    :items="[
-      { text: 'Settings', disabled: true },
-      { text: 'Two-factor Authentication', disabled: true },
-    ]"
-    class="mb-4"
-  />
+  <Breadcrumbs :items="[{ text: 'Settings' }, { text: 'Two-factor Authentication' }]" />
 
-  <div class="mb-4">
+  <div class="my-4">
     <div class="text-3xl font-bold">Two-factor Authentication</div>
   </div>
 

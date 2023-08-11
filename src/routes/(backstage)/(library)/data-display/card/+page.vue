@@ -5,11 +5,7 @@ import Card from '~/components/Card.vue';
 
 <template>
   <Breadcrumbs
-    :items="[
-      { text: 'Library', disabled: true },
-      { text: 'Data Display', disabled: true },
-      { text: 'Card', disabled: true },
-    ]"
+    :items="[{ text: 'Library' }, { text: 'Data Display' }, { text: 'Card' }]"
     class="mb-4"
   />
 

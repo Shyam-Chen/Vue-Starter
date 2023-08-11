@@ -3,14 +3,7 @@ import Breadcrumbs from '~/components/Breadcrumbs.vue';
 </script>
 
 <template>
-  <Breadcrumbs
-    :items="[
-      { text: 'Library', disabled: true },
-      { text: 'Layout', disabled: true },
-      { text: 'Grid', disabled: true },
-    ]"
-    class="mb-4"
-  />
+  <Breadcrumbs :items="[{ text: 'Library' }, { text: 'Layout' }, { text: 'Grid' }]" class="mb-4" />
 
   <div class="mb-4">
     <div class="text-3xl font-bold">Grid</div>

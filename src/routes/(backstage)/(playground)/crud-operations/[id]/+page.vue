@@ -31,10 +31,9 @@ onMounted(() => {
       { text: 'CRUD operations', href: '/crud-operations' },
       { text: 'Todo' },
     ]"
-    class="mb-4"
   />
 
-  <div class="mb-4">
+  <div class="my-4">
     <div class="text-3xl font-bold">CRUD Operations - {{ route.params.id }}</div>
   </div>
 

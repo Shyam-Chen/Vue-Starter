@@ -6,16 +6,9 @@ const { data } = useEventSource('/sse');
 </script>
 
 <template>
-  <Breadcrumbs
-    :items="[
-      { text: 'Library', disabled: true },
-      { text: 'Network', disabled: true },
-      { text: 'EventSource', disabled: true },
-    ]"
-    class="mb-4"
-  />
+  <Breadcrumbs :items="[{ text: 'Library' }, { text: 'Network' }, { text: 'EventSource' }]" />
 
-  <div class="mb-4">
+  <div class="my-4">
     <div class="text-3xl font-bold">EventSource</div>
   </div>
 

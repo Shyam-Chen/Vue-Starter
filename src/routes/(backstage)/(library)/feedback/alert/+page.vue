@@ -5,11 +5,7 @@ import Alert from '~/components/Alert.vue';
 
 <template>
   <Breadcrumbs
-    :items="[
-      { text: 'Library', disabled: true },
-      { text: 'Feedback', disabled: true },
-      { text: 'Alert', disabled: true },
-    ]"
+    :items="[{ text: 'Library' }, { text: 'Feedback' }, { text: 'Alert' }]"
     class="mb-4"
   />
 

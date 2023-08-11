@@ -6,11 +6,7 @@ import Popover from '~/components/Popover.vue';
 
 <template>
   <Breadcrumbs
-    :items="[
-      { text: 'Library', disabled: true },
-      { text: 'Data Display', disabled: true },
-      { text: 'Popover', disabled: true },
-    ]"
+    :items="[{ text: 'Library' }, { text: 'Data Display' }, { text: 'Popover' }]"
     class="mb-4"
   />
 

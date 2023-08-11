@@ -5,16 +5,9 @@ import Button from '~/components/Button.vue';
 </script>
 
 <template>
-  <Breadcrumbs
-    :items="[
-      { text: 'Library', disabled: true },
-      { text: 'Navigation', disabled: true },
-      { text: 'Dropdown', disabled: true },
-    ]"
-    class="mb-4"
-  />
+  <Breadcrumbs :items="[{ text: 'Library' }, { text: 'Navigation' }, { text: 'Dropdown' }]" />
 
-  <div class="mb-4">
+  <div class="my-4">
     <div class="text-3xl font-bold">Dropdown</div>
   </div>
 

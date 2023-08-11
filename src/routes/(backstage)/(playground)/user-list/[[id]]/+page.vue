@@ -68,15 +68,9 @@ onMounted(async () => {
 </script>
 
 <template>
-  <Breadcrumbs
-    :items="[
-      { text: 'Management', disabled: true },
-      { text: 'User List', disabled: true },
-    ]"
-    class="mb-4"
-  />
+  <Breadcrumbs :items="[{ text: 'Management' }, { text: 'User List' }]" />
 
-  <div class="mb-4">
+  <div class="my-4">
     <div class="text-3xl font-bold">User List</div>
   </div>
 

@@ -14,16 +14,9 @@ const doFetch = async () => {
 </script>
 
 <template>
-  <Breadcrumbs
-    :items="[
-      { text: 'Library', disabled: true },
-      { text: 'Network', disabled: true },
-      { text: 'Fetch', disabled: true },
-    ]"
-    class="mb-4"
-  />
+  <Breadcrumbs :items="[{ text: 'Library' }, { text: 'Network' }, { text: 'Fetch' }]" />
 
-  <div class="mb-4">
+  <div class="my-4">
     <div class="text-3xl font-bold">Fetch</div>
   </div>
 

@@ -56,11 +56,7 @@ watch(
 
 <template>
   <Breadcrumbs
-    :items="[
-      { text: 'Library', disabled: true },
-      { text: 'Feedback', disabled: true },
-      { text: 'Notification', disabled: true },
-    ]"
+    :items="[{ text: 'Library' }, { text: 'Feedback' }, { text: 'Notification' }]"
     class="mb-4"
   />
 

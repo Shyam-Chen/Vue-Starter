@@ -10,11 +10,7 @@ const accordionGroupMultiple = ref<string[]>([]);
 
 <template>
   <Breadcrumbs
-    :items="[
-      { text: 'Library', disabled: true },
-      { text: 'Data Display', disabled: true },
-      { text: 'Accordion', disabled: true },
-    ]"
+    :items="[{ text: 'Library' }, { text: 'Data Display' }, { text: 'Accordion' }]"
     class="mb-4"
   />
 

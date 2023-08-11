@@ -6,11 +6,7 @@ import ProgressBar from '~/components/ProgressBar.vue';
 
 <template>
   <Breadcrumbs
-    :items="[
-      { text: 'Library', disabled: true },
-      { text: 'Feedback', disabled: true },
-      { text: 'Progress', disabled: true },
-    ]"
+    :items="[{ text: 'Library' }, { text: 'Feedback' }, { text: 'Progress' }]"
     class="mb-4"
   />
 

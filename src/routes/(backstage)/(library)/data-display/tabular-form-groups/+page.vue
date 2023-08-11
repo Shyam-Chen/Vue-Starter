@@ -56,11 +56,7 @@ schema.validate();
 
 <template>
   <Breadcrumbs
-    :items="[
-      { text: 'Library', disabled: true },
-      { text: 'Data Display', disabled: true },
-      { text: 'Tabular Form Groups', disabled: true },
-    ]"
+    :items="[{ text: 'Library' }, { text: 'Data Display' }, { text: 'Tabular Form Groups' }]"
     class="mb-4"
   />
 

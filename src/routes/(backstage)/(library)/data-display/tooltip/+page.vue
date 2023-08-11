@@ -5,11 +5,7 @@ import Tooltip from '~/components/Tooltip.vue';
 
 <template>
   <Breadcrumbs
-    :items="[
-      { text: 'Library', disabled: true },
-      { text: 'Data Display', disabled: true },
-      { text: 'Tooltip', disabled: true },
-    ]"
+    :items="[{ text: 'Library' }, { text: 'Data Display' }, { text: 'Tooltip' }]"
     class="mb-4"
   />
 

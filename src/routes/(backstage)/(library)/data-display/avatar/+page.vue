@@ -7,11 +7,7 @@ import Badge from '~/components/Badge.vue';
 
 <template>
   <Breadcrumbs
-    :items="[
-      { text: 'Library', disabled: true },
-      { text: 'Data Display', disabled: true },
-      { text: 'Avatar', disabled: true },
-    ]"
+    :items="[{ text: 'Library' }, { text: 'Data Display' }, { text: 'Avatar' }]"
     class="mb-4"
   />
 

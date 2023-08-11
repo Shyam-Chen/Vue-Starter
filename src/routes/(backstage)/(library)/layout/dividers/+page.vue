@@ -4,11 +4,7 @@ import Breadcrumbs from '~/components/Breadcrumbs.vue';
 
 <template>
   <Breadcrumbs
-    :items="[
-      { text: 'Library', disabled: true },
-      { text: 'Layout', disabled: true },
-      { text: 'Dividers', disabled: true },
-    ]"
+    :items="[{ text: 'Library' }, { text: 'Layout' }, { text: 'Dividers' }]"
     class="mb-4"
   />
 

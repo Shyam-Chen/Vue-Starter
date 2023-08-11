@@ -8,16 +8,9 @@ send('Hello from Vue!');
 </script>
 
 <template>
-  <Breadcrumbs
-    :items="[
-      { text: 'Library', disabled: true },
-      { text: 'Network', disabled: true },
-      { text: 'WebSocket', disabled: true },
-    ]"
-    class="mb-4"
-  />
+  <Breadcrumbs :items="[{ text: 'Library' }, { text: 'Network' }, { text: 'WebSocket' }]" />
 
-  <div class="mb-4">
+  <div class="my-4">
     <div class="text-3xl font-bold">WebSocket</div>
   </div>
 

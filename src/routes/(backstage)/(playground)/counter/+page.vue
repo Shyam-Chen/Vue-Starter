@@ -13,19 +13,13 @@ $subscribe((state) => {
 </script>
 
 <template>
-  <Breadcrumbs
-    :items="[
-      { text: 'Playground', disabled: true },
-      { text: 'Counter', disabled: true },
-    ]"
-    class="mb-4"
-  />
+  <Breadcrumbs :items="[{ text: 'Playground' }, { text: 'Counter' }]" />
 
   <div class="my-4">
     <div class="text-3xl font-bold">Counter</div>
   </div>
 
-  <div class="">
+  <div class="my-4">
     <TextField v-model:value="state.name" />
     <div>{{ state.name }}</div>
 

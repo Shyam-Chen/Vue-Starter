@@ -3,16 +3,9 @@ import Breadcrumbs from '~/components/Breadcrumbs.vue';
 </script>
 
 <template>
-  <Breadcrumbs
-    :items="[
-      { text: 'Library', disabled: true },
-      { text: 'Navigation', disabled: true },
-      { text: 'Breadcrumbs', disabled: true },
-    ]"
-    class="mb-4"
-  />
+  <Breadcrumbs :items="[{ text: 'Library' }, { text: 'Navigation' }, { text: 'Breadcrumbs' }]" />
 
-  <div class="mb-4">
+  <div class="my-4">
     <div class="text-3xl font-bold">Breadcrumbs</div>
   </div>
 
@@ -20,11 +13,7 @@ import Breadcrumbs from '~/components/Breadcrumbs.vue';
     <div class="mb-2">Basic examples</div>
 
     <Breadcrumbs
-      :items="[
-        { text: 'Dashboard', href: '#' },
-        { text: 'Link 1', href: '#' },
-        { text: 'Link 2', disabled: true },
-      ]"
+      :items="[{ text: 'Dashboard', href: '#' }, { text: 'Link 1', href: '#' }, { text: 'Link 2' }]"
     />
   </div>
 
@@ -32,11 +21,7 @@ import Breadcrumbs from '~/components/Breadcrumbs.vue';
     <div class="mb-2">Divider</div>
 
     <Breadcrumbs
-      :items="[
-        { text: 'Dashboard', href: '#' },
-        { text: 'Link 1', href: '#' },
-        { text: 'Link 2', disabled: true },
-      ]"
+      :items="[{ text: 'Dashboard', href: '#' }, { text: 'Link 1', href: '#' }, { text: 'Link 2' }]"
     >
       <template #divider>
         <div class="i-fa-arrow-right w-3 h-3"></div>
