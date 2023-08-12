@@ -80,7 +80,7 @@ defineExpose({
     :class="[
       value?.length ? 'py-1.5' : 'py-2',
       {
-        'important:(ring-1 ring-primary-400 border-primary-400)': flux.focused,
+        focused: flux.focused,
         'opacity-70	cursor-not-allowed': disabled,
       },
     ]"
@@ -109,3 +109,9 @@ defineExpose({
     />
   </div>
 </template>
+
+<style lang="scss" scoped>
+.focused {
+  @apply ring-1 ring-primary-400 border-primary-400;
+}
+</style>

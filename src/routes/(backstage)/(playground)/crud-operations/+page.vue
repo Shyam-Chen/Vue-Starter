@@ -7,6 +7,7 @@ import TextField from '~/components/TextField.vue';
 import RadioGroup from '~/components/RadioGroup.vue';
 import Checkbox from '~/components/Checkbox.vue';
 import Table from '~/components/Table.vue';
+import Tooltip from '~/components/Tooltip.vue';
 import Button from '~/components/Button.vue';
 
 import useStore from './store';
@@ -82,7 +83,9 @@ onMounted(() => {
 
       <template #actions="{ row }">
         <div class="space-x-4">
-          <Button variant="text" color="info" icon="i-bx-detail" @click="actions.viewTodo(row)" />
+          <Tooltip title="Detail">
+            <Button variant="text" color="info" icon="i-bx-detail" @click="actions.viewTodo(row)" />
+          </Tooltip>
         </div>
       </template>
     </Table>

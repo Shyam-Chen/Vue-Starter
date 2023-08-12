@@ -19,13 +19,18 @@ $subscribe((state) => {
     <div class="text-3xl font-bold">Counter</div>
   </div>
 
-  <div class="my-4">
-    <TextField v-model:value="state.name" />
-    <div>{{ state.name }}</div>
+  <div class="flex flex-col gap-1 my-4">
+    <TextField v-model:value="state.name" label="Name" />
+    <div>Name: {{ state.name }}</div>
 
-    <div>{{ state.count }}</div>
-    <div>{{ getters.doubleCount }}</div>
-    <Button @click="actions.increment">Increment</Button>
-    <Button @click="$reset">Reset</Button>
+    <div>
+      Count: {{ state.count }}<br />
+      Doubled: {{ getters.doubleCount }}
+    </div>
+
+    <div class="flex gap-2">
+      <Button @click="actions.increment">Increment</Button>
+      <Button @click="$reset">Reset</Button>
+    </div>
   </div>
 </template>

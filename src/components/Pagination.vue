@@ -41,40 +41,23 @@ const grid4 = computed(() => {
       <Button variant="text" icon="i-mdi-chevron-left" :disabled="isFirstPage" @click="prev" />
     </div>
 
-    <Button
-      :variant="currentPage === 1 ? 'contained' : 'text'"
-      class="important:(rounded-full py-2 px-0 min-w-38px)"
-      @click="currentPage = 1"
-    >
+    <Button :variant="currentPage === 1 ? 'contained' : 'text'" @click="currentPage = 1">
       {{ 1 }}
     </Button>
 
     <template v-if="currentPage">
       <div v-if="currentPage > 3" class="w-38px text-center">...</div>
 
-      <Button
-        v-else
-        :variant="currentPage === 2 ? 'contained' : 'text'"
-        class="important:(rounded-full py-2 px-0 min-w-38px)"
-        @click="currentPage = 2"
-      >
+      <Button v-else :variant="currentPage === 2 ? 'contained' : 'text'" @click="currentPage = 2">
         {{ 2 }}
       </Button>
     </template>
 
-    <Button
-      :variant="currentPage === grid3 ? 'contained' : 'text'"
-      class="important:(rounded-full py-2 px-0 min-w-38px)"
-      @click="currentPage = grid3"
-    >
+    <Button :variant="currentPage === grid3 ? 'contained' : 'text'" @click="currentPage = grid3">
       {{ grid3 }}
     </Button>
 
-    <Button
-      :variant="currentPage === grid4 ? 'contained' : 'text'"
-      class="important:(rounded-full py-2 px-0 min-w-38px)"
-      @click="currentPage = grid4"
-    >
+    <Button :variant="currentPage === grid4 ? 'contained' : 'text'" @click="currentPage = grid4">
       {{ grid4 }}
     </Button>
 
@@ -84,18 +67,13 @@ const grid4 = computed(() => {
       <Button
         v-else
         :variant="currentPage === pages - 1 ? 'contained' : 'text'"
-        class="important:(rounded-full py-2 px-0 min-w-38px)"
         @click="currentPage = pages - 1"
       >
         {{ pages - 1 }}
       </Button>
     </template>
 
-    <Button
-      :variant="currentPage === pages ? 'contained' : 'text'"
-      class="important:(rounded-full py-2 px-0 min-w-38px)"
-      @click="currentPage = pages"
-    >
+    <Button :variant="currentPage === pages ? 'contained' : 'text'" @click="currentPage = pages">
       {{ pages }}
     </Button>
 
@@ -113,7 +91,6 @@ const grid4 = computed(() => {
       v-for="page in pages"
       :key="page"
       :variant="currentPage === page ? 'contained' : 'text'"
-      class="important:(rounded-full py-2 px-0 min-w-38px)"
       @click="currentPage = page"
     >
       {{ page }}
@@ -124,3 +101,9 @@ const grid4 = computed(() => {
     </div>
   </div>
 </template>
+
+<style lang="scss" scoped>
+:deep(.button) {
+  @apply rounded-full py-2 px-0 min-w-38px;
+}
+</style>
