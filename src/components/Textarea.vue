@@ -61,7 +61,7 @@ const textareaValue = computed({
 
 .textarea-input {
   @apply w-full border border-slate-400 rounded px-3 py-2;
-  @apply bg-white dark:bg-slate-800 leading-tight
+  @apply bg-white dark:bg-slate-800 leading-tight;
   @apply focus:outline-none focus:ring-1 focus:ring-primary-400 focus:border-primary-400;
 
   &.danger {

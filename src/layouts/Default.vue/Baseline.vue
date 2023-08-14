@@ -91,7 +91,7 @@ watch(
 onMounted(async () => {
   const response = await request('/auth/user', { method: 'GET' });
 
-  if (response.status == 200) {
+  if (response.status === 200) {
     flux.user = response._data;
   }
 
@@ -113,7 +113,7 @@ onMounted(async () => {
       <div class="i-simple-icons-deno w-12 h-12 dark:text-white"></div>
       <div class="text-3xl font-bold dark:text-white">{{ locale.title }}</div>
 
-      <div style="flex: 1 0 auto"></div>
+      <div class="flex-1"></div>
 
       <div class="w-100">
         <TextField
@@ -199,7 +199,7 @@ onMounted(async () => {
         <slot></slot>
       </main>
 
-      <div style="flex: 1 0 auto"></div>
+      <div class="flex-1"></div>
 
       <footer
         class="footer bg-slate-50 dark:bg-slate-900 border-t dark:border-slate-700 p-4 flex justify-between"

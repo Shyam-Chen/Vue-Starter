@@ -1,8 +1,8 @@
 import { reactive, readonly } from 'vue';
 import { defineStore } from 'vue-storer';
 
-import type { Link } from './list-of-links';
-import listOfLinks from './list-of-links';
+import type { Link } from './links-list';
+import listOfLinks from './links-list';
 
 export default defineStore('Default.vue', () => {
   const state = reactive({

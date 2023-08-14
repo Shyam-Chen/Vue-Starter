@@ -5,7 +5,7 @@ import { useTextDirection } from '@vueuse/core';
 
 import Collapse from '~/components/Collapse.vue';
 
-import type { Link } from './list-of-links';
+import type { Link } from './links-list';
 import useDefault from './store';
 
 withDefaults(
