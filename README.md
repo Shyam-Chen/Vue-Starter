@@ -11,7 +11,6 @@
 - [Key Features](#key-features)
 - [Configuration](#configuration)
 - [Directory Structure](#directory-structure)
-- [Microservices](#microservices)
 
 ## Getting Started
 
@@ -245,16 +244,4 @@ The structure follows the LIFT Guidelines.
 ├── render.yaml
 ├── tsconfig.json
 └── vite.config.ts
-```
-
-## Microservices
-
-> A micro-frontend architecture lays out the approach for the structural elements of a micro-frontend framework. It also defines the relationships among them, governing how UI fragments are assembled and communicate in order to achieve the optimal developer and user experience.
-
-See [Micro-Fullstack's Micro Frontends](https://github.com/Shyam-Chen/Micro-Fullstack/tree/main/micro-vite) for instructions on how to create microservices from source code.
-
-```coffee
-example.com
-├── feature1.example.com
-└── feature2.example.com
 ```
