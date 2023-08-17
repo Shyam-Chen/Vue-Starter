@@ -100,6 +100,7 @@ const links = [
       { name: 'Tabular forms', to: '/data-display/tabular-forms' },
       { name: 'Timeline', to: '/data-display/timeline' },
       { name: 'Tooltip', to: '/data-display/tooltip' },
+      { name: 'Virtual Scroll', to: '/data-display/virtual-scroll' },
     ],
   },
   {
