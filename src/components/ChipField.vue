@@ -99,6 +99,7 @@ defineExpose({
     <input
       ref="input"
       v-model="flux.text"
+      v-bind="$attrs"
       class="outline-none w-fit bg-inherit"
       :class="{ 'cursor-not-allowed': disabled }"
       :placeholder="placeholder"

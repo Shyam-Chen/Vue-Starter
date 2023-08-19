@@ -4,12 +4,13 @@ import { onClickOutside } from '@vueuse/core';
 
 import getScrollableParent from '~/utilities/getScrollableParent';
 
+// import ChipField from '~/components/ChipField.vue';
 import Checkbox from './Checkbox.vue';
 import Chip from './Chip.vue';
 import TextField from './TextField.vue';
 import Fade from './Fade.vue';
 
-type Option = { label: string; value: string | number; [key: string]: unknown; options?: Options };
+type Option = { label: string; value: string; [key: string]: unknown; options?: Options };
 type Options = Option[];
 
 const props = withDefaults(
@@ -45,6 +46,9 @@ const flux = reactive({
   show: false,
   direction: 'down',
   selected: [] as any[],
+  displaySelected(selected: any) {
+    return selected.map((item: any) => item.label);
+  },
   filterValue: '',
   options: [] as any[],
   onSelect(value: any, option: any, filterEl: any) {
@@ -242,6 +246,8 @@ onUnmounted(() => {
 
 <template>
   <div class="w-full">
+    <!-- <ChipField :value="flux.displaySelected(flux.selected)" :placeholder="placeholder" readonly /> -->
+
     <div ref="target" class="select">
       <div
         ref="select"
@@ -326,7 +332,7 @@ onUnmounted(() => {
       </Fade>
     </div>
 
-    <div v-if="errorMessage" class="text-danger mt-1">
+    <div v-if="errorMessage" class="text-red-500 text-xs">
       {{ errorMessage }}
     </div>
   </div>
@@ -334,16 +340,18 @@ onUnmounted(() => {
 
 <style lang="scss" scoped>
 .select {
+  @apply relative;
+
   $border: 1px;
   $height: 40px;
-  position: relative;
 
   &-input {
+    @apply relative;
+
     min-height: 38px;
-    position: relative;
 
     &:hover .select-input-icon-clear {
-      visibility: visible;
+      @apply visible;
     }
 
     &-placeholder {
@@ -354,29 +362,18 @@ onUnmounted(() => {
     }
 
     &-icon {
-      position: absolute;
-      right: 0.75rem;
-      top: 50%;
-      transform: translate(0, -50%);
-      font-size: 1rem;
+      @apply absolute right-3 top-1/2 -translate-y-1/2;
     }
 
     &-icon-clear {
-      background: #e4ebf0;
-      z-index: 100;
-      visibility: hidden;
-      color: #6c757d;
-
-      &:hover {
-        color: #6c757d;
-      }
+      @apply bg-white dark:bg-slate-800 hover:text-slate-500;
+      @apply z-100 invisible;
     }
   }
 
   &-section {
-    position: fixed;
-    width: 100%;
-    z-index: 10;
+    @apply fixed w-full z-10;
+
     transform: translateY(0) translateY(8px) translateY(0);
 
     &-up {
@@ -385,72 +382,16 @@ onUnmounted(() => {
   }
 
   &-filter {
-    width: 100%;
-    padding: 0.6rem;
-
-    &-input {
-      width: 100%;
-      padding: 0.1rem 0.6rem;
-      font-size: 14px;
-      color: #222;
-      height: 30px;
-      border-radius: 2px;
-      // background: #e4ebf0;
-      // box-shadow: inset 3px 3px 6px #c2c8cc, inset -3px -3px 6px #ffffff;
-      // border: 0.0625rem solid #d1d9e6;
-      padding: 0 0.75rem;
-      outline: none;
-
-      // &:focus {
-      //   border: 0.0625rem solid #007bff;
-      // }
-    }
+    @apply px-2 pt-2;
   }
 
   &-menu {
-    width: 100%;
-    max-height: 10rem;
-    overflow: auto;
-    // color: rgba(0, 0, 0, 0.85);
-    margin: 0.55rem 0;
-    text-align: left;
-    cursor: pointer;
-
-    &:empty {
-      display: none;
-    }
+    @apply cursor-pointer max-h-40 overflow-auto p-2 empty:hidden;
 
     &-item {
-      font-weight: 400;
-      font-size: 14px;
-      line-height: 22px;
-      min-height: 32px;
-      padding: 5px 12px;
-
-      // &-active {
-      //   background-color: var(--primary);
-
-      //   &:hover {
-      //     background-color: var(--primary);
-      //   }
-      // }
+      @apply px-3 py-1 cursor-pointer rounded-md;
+      @apply hover:text-primary-500 dark:hover:text-primary-100 hover:bg-primary-100 dark:hover:bg-primary-600;
     }
-  }
-
-  &-content {
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 22px;
-    min-height: 32px;
-    padding: 5px 12px;
-  }
-
-  &-error {
-    line-height: 16px;
-    color: #f46155;
-    width: 100%;
-    margin-top: 0.25rem;
-    font-size: 80%;
   }
 }
 </style>
