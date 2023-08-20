@@ -21,20 +21,41 @@ const flux = reactive({
 <template>
   <div class="flex">
     <div
-      class="flex items-center text-xs rounded-full inline-block whitespace-nowrap text-center bg-primary-600 text-white px-2 py-1"
+      class="chip"
       :class="{
-        'important:bg-green-500 dark:important:bg-green-700': color === 'success',
-        'important:bg-yellow-500 dark:important:bg-yellow-700': color === 'warning',
-        'important:bg-red-500 dark:important:bg-red-700': color === 'danger',
+        success: color === 'success',
+        warning: color === 'warning',
+        danger: color === 'danger',
       }"
     >
       <slot></slot>
 
-      <span
-        v-if="closable && !disabled"
-        class="inline-block i-fa-times-circle w-3 h-3 ml-1 cursor-pointer transition hover:scale-125"
-        @click.stop="flux.close"
-      ></span>
+      <span v-if="closable && !disabled" class="close" @click.stop="flux.close"></span>
     </div>
   </div>
 </template>
+
+<style lang="scss" scoped>
+.chip {
+  @apply flex items-center px-2 py-1 rounded-full;
+  @apply text-xs text-center whitespace-nowrap;
+  @apply bg-primary-600 text-white;
+
+  &.success {
+    @apply bg-green-500 dark:bg-green-700;
+  }
+
+  &.warning {
+    @apply bg-yellow-500 dark:bg-yellow-700;
+  }
+
+  &.danger {
+    @apply bg-red-500 dark:bg-red-700;
+  }
+}
+
+.close {
+  @apply i-fa-times-circle;
+  @apply inline-flex w-3 h-3 ml-1 cursor-pointer transition hover:scale-125;
+}
+</style>

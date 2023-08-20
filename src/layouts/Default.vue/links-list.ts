@@ -15,6 +15,7 @@ const links = [
   { icon: 'i-ic-round-dashboard', name: 'Dashboard', to: '/dashboard' },
 
   { name: 'Library' },
+  { icon: 'i-mdi-cube-scan', name: 'Overview', to: '/overview' },
   {
     icon: 'i-mdi-bookmark-outline',
     name: 'General',
@@ -96,8 +97,6 @@ const links = [
       { name: 'Data iterators', to: '/data-display/data-iterators' },
       { name: 'Table', to: '/data-display/data-tables' },
       { name: 'Popover', to: '/data-display/popover' },
-      { name: 'Tabular form groups', to: '/data-display/tabular-form-groups' },
-      { name: 'Tabular forms', to: '/data-display/tabular-forms' },
       { name: 'Timeline', to: '/data-display/timeline' },
       { name: 'Tooltip', to: '/data-display/tooltip' },
       { name: 'Virtual Scroll', to: '/data-display/virtual-scroll' },

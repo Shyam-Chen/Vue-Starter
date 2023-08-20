@@ -9,6 +9,8 @@ import Checkbox from '~/components/Checkbox.vue';
 import CheckboxGroup from '~/components/CheckboxGroup.vue';
 import Button from '~/components/Button.vue';
 
+import TabularForms from './TabularForms.vue';
+import TabularFormGroups from './TabularFormGroups.vue';
 import useStore from './store';
 import { useZodFormSchema } from './schema';
 
@@ -109,4 +111,7 @@ const flux = reactive({
       </div>
     </form>
   </div>
+
+  <TabularForms />
+  <TabularFormGroups />
 </template>

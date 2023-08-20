@@ -4,6 +4,10 @@ import { vOnClickOutside } from '@vueuse/components';
 
 import Chip from './Chip.vue';
 
+defineOptions({
+  inheritAttrs: false,
+});
+
 const props = defineProps<{
   value?: string[];
   placeholder?: string;
@@ -20,7 +24,7 @@ const chipFieldValue = computed({
   set: (val) => emit('update:value', val),
 });
 
-const input = ref();
+const input = ref<HTMLInputElement>();
 
 const flux = reactive({
   text: '',

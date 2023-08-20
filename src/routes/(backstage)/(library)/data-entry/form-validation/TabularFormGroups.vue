@@ -3,8 +3,6 @@ import { reactive, toRef } from 'vue';
 import { useZodSchema } from 'vue-formor';
 import { z } from 'zod';
 
-import Breadcrumbs from '~/components/Breadcrumbs.vue';
-
 const msgs = { required: 'This is a required field' };
 
 const state = reactive({
@@ -55,19 +53,14 @@ schema.validate();
 </script>
 
 <template>
-  <Breadcrumbs
-    :items="[{ text: 'Library' }, { text: 'Data Display' }, { text: 'Tabular Form Groups' }]"
-    class="mb-4"
-  />
+  <div class="my-6">
+    <div class="text-3xl font-bold mb-2">Tabular Form Groups</div>
 
-  <div class="mb-4">
-    <div class="text-3xl font-bold">Tabular Form Groups</div>
-  </div>
+    <div class="flex flex-col border p-4 mb-4">
+      <div class="mb-2">Basic (Tabs + Tables)</div>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Basic (Tabs + Tables)</div>
-
-    <pre>{{ state.tabularForm }}</pre>
-    <pre>{{ state.tabularValdn }}</pre>
+      <pre>{{ state.tabularForm }}</pre>
+      <pre>{{ state.tabularValdn }}</pre>
+    </div>
   </div>
 </template>
