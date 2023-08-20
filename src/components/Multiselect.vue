@@ -15,6 +15,7 @@ type Options = Option[];
 
 const props = withDefaults(
   defineProps<{
+    label?: string;
     value?: Option['value'][];
     options?: Options;
     display?: 'label' | 'value' | ((opt: Option) => void);
@@ -28,6 +29,7 @@ const props = withDefaults(
     errorMessage?: string;
   }>(),
   {
+    label: '',
     value: () => [],
     options: () => [],
     display: 'label',
@@ -248,17 +250,21 @@ onUnmounted(() => {
   <div class="w-full">
     <!-- <ChipField :value="flux.displaySelected(flux.selected)" :placeholder="placeholder" readonly /> -->
 
+    <label v-if="label" class="select-label">
+      {{ label }}
+      <span v-if="required" class="text-red-500">*</span>
+    </label>
+
     <div ref="target" class="select">
       <div
         ref="select"
-        class="select-input flex items-center border border-slate-400 rounded w-full px-3 text-slate-700 bg-white dark:bg-slate-800 leading-tight"
+        class="select-input"
         :class="[
           {
-            'select-input-placeholder important:text-gray-400': !flux.selected?.length,
-            'select-input-focus important:border-blue-600': flux.show,
-            'select-error important:border-red-500 mb-1': isInvalid || errorMessage,
-            'select-input-error-focus': (isInvalid || errorMessage) && flux.show,
-            'select-disabled opacity-50 cursor-not-allowed': disabled,
+            placeholder: !flux.selected?.length,
+            focus: flux.show,
+            danger: isInvalid || errorMessage,
+            disabled: disabled,
           },
           flux.selected?.length ? 'py-1.5' : 'py-2',
         ]"
@@ -281,9 +287,9 @@ onUnmounted(() => {
         </div>
 
         <div
-          v-if="value && clearable && !disabled"
+          v-if="flux.selected?.length && clearable && !disabled"
           class="select-input-icon select-input-icon-clear"
-          @click.stop="flux.clear"
+          @click.stop="flux.clear(null)"
         >
           <div class="i-fa-times-circle w-4 h-4"></div>
         </div>
@@ -354,13 +360,6 @@ onUnmounted(() => {
       @apply visible;
     }
 
-    &-placeholder {
-      color: #6c757d;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-    }
-
     &-icon {
       @apply absolute right-3 top-1/2 -translate-y-1/2;
     }
@@ -389,9 +388,36 @@ onUnmounted(() => {
     @apply cursor-pointer max-h-40 overflow-auto p-2 empty:hidden;
 
     &-item {
-      @apply px-3 py-1 cursor-pointer rounded-md;
+      @apply px-3 cursor-pointer rounded-md;
       @apply hover:text-primary-500 dark:hover:text-primary-100 hover:bg-primary-100 dark:hover:bg-primary-600;
     }
+  }
+}
+
+.select-label {
+  @apply text-sm font-bold mb-2 empty:hidden;
+}
+
+.select-input {
+  @apply relative;
+  @apply cursor-pointer border border-slate-400 rounded w-full pl-3 pr-9;
+  @apply bg-white dark:bg-slate-800 leading-tight;
+
+  &.placeholder {
+    @apply text-gray-400 truncate;
+  }
+
+  &.focus {
+    @apply outline-0 ring-1 ring-primary-400 border-primary-400;
+  }
+
+  &.danger {
+    @apply border-red-500 mb-1;
+    @apply ring-red-500 border-red-500;
+  }
+
+  &.disabled {
+    @apply cursor-not-allowed;
   }
 }
 </style>

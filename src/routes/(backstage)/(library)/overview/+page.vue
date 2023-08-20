@@ -55,14 +55,21 @@ import Breadcrumbs from '~/components/Breadcrumbs.vue';
       <div class="card">File inputs</div>
       <div class="card">Form Validation</div>
 
-      <div class="card">Pickers</div>
-      <div class="card">Radio buttons</div>
-      <div class="card">Selects</div>
-      <div class="card">Slider</div>
+      <div class="card">Date pickers</div>
+      <div class="card">Month pickers</div>
+      <div class="card">Time pickers</div>
+      <div class="card">Year pickers</div>
 
+      <div class="card">Week pickers</div>
+      <div class="card">Radio buttons</div>
+      <div class="card">Single Selects</div>
+      <div class="card">Multiple Selects</div>
+
+      <div class="card">Slider</div>
       <div class="card">Switches</div>
       <div class="card">Text fields</div>
       <div class="card">Textareas</div>
+
       <div class="card">Transfer</div>
     </div>
   </div>

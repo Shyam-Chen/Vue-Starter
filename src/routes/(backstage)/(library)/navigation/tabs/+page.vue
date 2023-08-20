@@ -38,22 +38,13 @@ const flux = reactive({
     </Tabs.Tab>
   </Tabs>
 
-  <!-- <Tabs.Nav v-model="flux.tab">
-    <Tabs.Tab value="1">Item One</Tabs.Tab>
-    <Tabs.Tab value="2">Item Two</Tabs.Tab>
-    <Tabs.Tab value="3">Item Three</Tabs.Tab>
-  </Tabs.Nav>
-
-  <Tabs.Context v-model="flux.tab">
-    <Tabs.Panel value="1">Item One</Tabs.Panel>
-    <Tabs.Panel value="2">Item Two</Tabs.Panel>
-    <Tabs.Panel value="3">Item Three</Tabs.Panel>
-  </Tabs.Context> -->
-
   <div class="flex flex-col border p-4 mb-4">
     <div class="mb-2">Values</div>
 
-    <Tabs v-model="flux.tabs2">
+    <Tabs
+      v-model="flux.tabs2"
+      class="my-4 bg-white dark:bg-slate-800 border dark:border-slate-600 rounded-lg"
+    >
       <Tabs.Tab title="Angular" value="angular">
         <div class="text-red-500">Angular Content</div>
       </Tabs.Tab>

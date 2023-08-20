@@ -144,8 +144,8 @@ onUnmounted(() => {
 
       <div class="flex space-x-2 ml-8">
         <Button color="secondary" @click="flux.showTour = false">Skip</Button>
-        <Button v-if="flux.index > 0" color="secondary" @click="flux.previous">Previous</Button>
-        <Button @click="flux.next">Next</Button>
+        <Button v-if="flux.index > 0" color="info" @click="flux.previous">Previous</Button>
+        <Button v-if="flux.index + 1 < 4" @click="flux.next">Next</Button>
       </div>
     </div>
 

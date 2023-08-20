@@ -48,7 +48,11 @@ const flux = reactive({
     <div class="mb-2">Basic examples</div>
 
     <div class="flex justify-center">
-      <Multiselect v-model:value="flux.multiselect1" :options="flux.multiselect1Options" />
+      <Multiselect
+        v-model:value="flux.multiselect1"
+        label="Tech Stack"
+        :options="flux.multiselect1Options"
+      />
     </div>
   </div>
 
@@ -56,7 +60,12 @@ const flux = reactive({
     <div class="mb-2">Disabled</div>
 
     <div class="flex justify-center">
-      <Multiselect v-model:value="flux.multiselect1" :options="flux.multiselect1Options" disabled />
+      <Multiselect
+        v-model:value="flux.multiselect1"
+        label="Tech Stack"
+        :options="flux.multiselect1Options"
+        disabled
+      />
     </div>
   </div>
 
@@ -66,6 +75,7 @@ const flux = reactive({
     <div class="flex justify-center">
       <Multiselect
         v-model:value="flux.multiselect1"
+        label="Tech Stack"
         :options="flux.multiselect1Options"
         clearable
       />
@@ -78,8 +88,22 @@ const flux = reactive({
     <div class="flex justify-center">
       <Multiselect
         v-model:value="flux.multiselect1"
+        label="Tech Stack"
         :options="flux.multiselect1Options"
         filterable
+      />
+    </div>
+  </div>
+
+  <div class="flex flex-col border p-4 mb-4">
+    <div class="mb-2">Errors</div>
+
+    <div class="flex justify-center">
+      <Multiselect
+        v-model:value="flux.multiselect1"
+        label="Tech Stack"
+        :options="flux.multiselect1Options"
+        :errorMessage="'This is a required field'"
       />
     </div>
   </div>
