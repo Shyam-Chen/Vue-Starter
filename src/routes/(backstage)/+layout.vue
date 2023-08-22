@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { RouterView } from 'vue-router';
 
-import Default from '~/layouts/Default.vue';
+import Baseline from '~/layouts/Baseline.vue';
 import auth from '~/middleware/auth';
 
 defineOptions({
@@ -10,7 +10,7 @@ defineOptions({
 </script>
 
 <template>
-  <Default>
+  <Baseline>
     <RouterView />
-  </Default>
+  </Baseline>
 </template>
