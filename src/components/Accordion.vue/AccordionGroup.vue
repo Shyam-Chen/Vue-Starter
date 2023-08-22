@@ -15,7 +15,7 @@ const accordionGroupValue = computed({
   set: (val) => emit('update:modelValue', val),
 });
 
-const group = ref();
+const group = ref<HTMLDivElement>();
 const curIdx = ref(-1);
 
 provide('AccordionGroup', {

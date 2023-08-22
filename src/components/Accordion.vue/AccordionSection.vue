@@ -1,14 +1,27 @@
 <script lang="ts" setup>
+import type { Ref, ComputedRef, WritableComputedRef } from 'vue';
 import { reactive, inject, getCurrentInstance, onMounted } from 'vue';
 
 import Collapse from '../Collapse.vue';
 
-const props = defineProps<{
-  title?: string;
-  value?: string;
-}>();
+const props = withDefaults(
+  defineProps<{
+    title?: string;
+    value?: string;
+  }>(),
+  {
+    title: '',
+    value: '',
+  },
+);
 
-const accordionGroup = inject('AccordionGroup') as any;
+const accordionGroup = inject('AccordionGroup') as {
+  group: Ref<HTMLDivElement>;
+  curIdx: Ref<number>;
+  value: ComputedRef<string[] | undefined>;
+  modelValue: WritableComputedRef<string[]>;
+  multiple: ComputedRef<boolean>;
+};
 
 const instance = getCurrentInstance();
 
@@ -17,7 +30,9 @@ const flux = reactive({
   toggle() {
     if (!accordionGroup.value.value) {
       const curIdx = accordionGroup.curIdx.value;
-      const curTabIdx = Array.from(accordionGroup.group.value.children).indexOf(instance?.vnode.el);
+      const curTabIdx = Array.from(accordionGroup.group.value.children).indexOf(
+        instance?.vnode.el as Element,
+      );
       if (curIdx !== curTabIdx) accordionGroup.curIdx.value = curTabIdx;
       if (curIdx === curTabIdx) accordionGroup.curIdx.value = -1;
     }
@@ -45,7 +60,9 @@ const flux = reactive({
 });
 
 onMounted(() => {
-  const idx = Array.from(accordionGroup.group.value.children).indexOf(instance?.vnode.el);
+  const idx = Array.from(accordionGroup.group.value.children).indexOf(
+    instance?.vnode.el as Element,
+  );
   flux.idx = idx;
 });
 </script>
