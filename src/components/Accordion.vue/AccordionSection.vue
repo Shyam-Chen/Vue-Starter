@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import type { Ref, ComputedRef, WritableComputedRef } from 'vue';
-import { reactive, inject, getCurrentInstance, onMounted } from 'vue';
+import { ref, reactive, inject, onMounted } from 'vue';
 
 import Collapse from '../Collapse.vue';
 
@@ -23,7 +23,7 @@ const accordionGroup = inject('AccordionGroup') as {
   multiple: ComputedRef<boolean>;
 };
 
-const instance = getCurrentInstance();
+const self = ref<HTMLDivElement>();
 
 const flux = reactive({
   idx: null as number | null,
@@ -31,7 +31,7 @@ const flux = reactive({
     if (!accordionGroup.value.value) {
       const curIdx = accordionGroup.curIdx.value;
       const curTabIdx = Array.from(accordionGroup.group.value.children).indexOf(
-        instance?.vnode.el as Element,
+        self.value as Element,
       );
       if (curIdx !== curTabIdx) accordionGroup.curIdx.value = curTabIdx;
       if (curIdx === curTabIdx) accordionGroup.curIdx.value = -1;
@@ -60,15 +60,13 @@ const flux = reactive({
 });
 
 onMounted(() => {
-  const idx = Array.from(accordionGroup.group.value.children).indexOf(
-    instance?.vnode.el as Element,
-  );
+  const idx = Array.from(accordionGroup.group.value.children).indexOf(self.value as Element);
   flux.idx = idx;
 });
 </script>
 
 <template>
-  <div class="w-full rounded shadow bg-white dark:bg-slate-800">
+  <div ref="self" class="w-full rounded shadow bg-white dark:bg-slate-800">
     <div
       class="flex px-4 py-3 cursor-pointer"
       :class="{
