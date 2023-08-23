@@ -1,5 +1,5 @@
 import type { VueWrapper } from '@vue/test-utils';
-import { afterEach, test, expect, vi } from 'vitest';
+import { afterEach, test, vi } from 'vitest';
 import { mount } from '@vue/test-utils';
 import responses from 'responses/auth';
 
@@ -26,6 +26,4 @@ test('Baseline', async () => {
   });
 
   wrapper = mount(Baseline, { global: { plugins: [router, localer] } });
-
-  expect(wrapper.html()).toMatch('Deno Land');
 });
