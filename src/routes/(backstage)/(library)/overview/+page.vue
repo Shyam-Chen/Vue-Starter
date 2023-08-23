@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import { RouterLink } from 'vue-router';
+
 import Breadcrumbs from '~/components/Breadcrumbs.vue';
 </script>
 
@@ -9,12 +11,11 @@ import Breadcrumbs from '~/components/Breadcrumbs.vue';
     <div class="text-xl">General</div>
 
     <div class="grid grid-cols-4 gap-2">
-      <div class="card">Buttons</div>
-      <div class="card">Icons</div>
-      <div class="card">Paper</div>
-      <div class="card">Scrollbar</div>
-
-      <div class="card">Typography</div>
+      <RouterLink to="/general/buttons" class="card">Buttons</RouterLink>
+      <RouterLink to="/general/icons" class="card">Icons</RouterLink>
+      <RouterLink to="/general/paper" class="card">Paper</RouterLink>
+      <RouterLink to="/general/scrollbar" class="card">Scrollbar</RouterLink>
+      <RouterLink to="/general/typography" class="card">Typography</RouterLink>
     </div>
   </div>
 
@@ -22,12 +23,11 @@ import Breadcrumbs from '~/components/Breadcrumbs.vue';
     <div class="text-xl">Layout</div>
 
     <div class="grid grid-cols-4 gap-2">
-      <div class="card">Aspect Ratio</div>
-      <div class="card">Dividers</div>
-      <div class="card">Grid</div>
-      <div class="card">HR</div>
-
-      <div class="card">Spaces</div>
+      <RouterLink to="/layout/aspect-ratio" class="card">Aspect Ratio</RouterLink>
+      <RouterLink to="/layout/dividers" class="card">Dividers</RouterLink>
+      <RouterLink to="/layout/grid" class="card">Grid</RouterLink>
+      <RouterLink to="/layout/hr" class="card">HR</RouterLink>
+      <RouterLink to="/layout/spaces" class="card">Spaces</RouterLink>
     </div>
   </div>
 
@@ -35,14 +35,13 @@ import Breadcrumbs from '~/components/Breadcrumbs.vue';
     <div class="text-xl">Navigation</div>
 
     <div class="grid grid-cols-4 gap-2">
-      <div class="card">Breadcrumbs</div>
-      <div class="card">Drawers</div>
-      <div class="card">Dropdown</div>
-      <div class="card">Pagination</div>
-
-      <div class="card">Steppers</div>
-      <div class="card">Tabs</div>
-      <div class="card">Tours</div>
+      <RouterLink to="/navigation/breadcrumbs" class="card">Breadcrumbs</RouterLink>
+      <RouterLink to="/navigation/drawers" class="card">Drawers</RouterLink>
+      <RouterLink to="/navigation/dropdown" class="card">Dropdown</RouterLink>
+      <RouterLink to="/navigation/pagination" class="card">Pagination</RouterLink>
+      <RouterLink to="/navigation/steppers" class="card">Steppers</RouterLink>
+      <RouterLink to="/navigation/tabs" class="card">Tabs</RouterLink>
+      <RouterLink to="/navigation/tours" class="card">Tours</RouterLink>
     </div>
   </div>
 
@@ -50,27 +49,25 @@ import Breadcrumbs from '~/components/Breadcrumbs.vue';
     <div class="text-xl">Data Entry</div>
 
     <div class="grid grid-cols-4 gap-2">
-      <div class="card">Autocompletes</div>
-      <div class="card">Checkboxes</div>
-      <div class="card">File inputs</div>
-      <div class="card">Form Validation</div>
-
-      <div class="card">Date pickers</div>
-      <div class="card">Month pickers</div>
-      <div class="card">Time pickers</div>
-      <div class="card">Year pickers</div>
-
-      <div class="card">Week pickers</div>
-      <div class="card">Radio buttons</div>
-      <div class="card">Single Selects</div>
-      <div class="card">Multiple Selects</div>
-
-      <div class="card">Slider</div>
-      <div class="card">Switches</div>
-      <div class="card">Text fields</div>
-      <div class="card">Textareas</div>
-
-      <div class="card">Transfer</div>
+      <RouterLink to="/data-entry/autocompletes" class="card">Autocompletes</RouterLink>
+      <RouterLink to="/data-entry/checkboxes" class="card">Checkboxes</RouterLink>
+      <RouterLink to="/data-entry/file-inputs" class="card">File inputs</RouterLink>
+      <RouterLink to="/data-entry/form-validation" class="card">Form Validation</RouterLink>
+      <RouterLink to="/data-entry/pickers/date-pickers" class="card">Date pickers</RouterLink>
+      <RouterLink to="/data-entry/pickers/month-pickers" class="card">Month pickers</RouterLink>
+      <RouterLink to="/data-entry/pickers/time-pickers" class="card">Time pickers</RouterLink>
+      <RouterLink to="/data-entry/pickers/year-pickers" class="card">Year pickers</RouterLink>
+      <RouterLink to="/data-entry/pickers/week-pickers" class="card">Week pickers</RouterLink>
+      <RouterLink to="/data-entry/radio-buttons" class="card">Radio buttons</RouterLink>
+      <RouterLink to="/data-entry/selects/single-selects" class="card">Single Selects</RouterLink>
+      <RouterLink to="/data-entry/selects/multiple-selects" class="card"
+        >Multiple Selects</RouterLink
+      >
+      <RouterLink to="/data-entry/slider" class="card">Slider</RouterLink>
+      <RouterLink to="/data-entry/switches" class="card">Switches</RouterLink>
+      <RouterLink to="/data-entry/text-fields" class="card">Text fields</RouterLink>
+      <RouterLink to="/data-entry/textareas" class="card">Textareas</RouterLink>
+      <RouterLink to="/data-entry/transfer" class="card">Transfer</RouterLink>
     </div>
   </div>
 
@@ -78,20 +75,18 @@ import Breadcrumbs from '~/components/Breadcrumbs.vue';
     <div class="text-xl">Data Display</div>
 
     <div class="grid grid-cols-4 gap-2">
-      <div class="card">Accordion</div>
-      <div class="card">Avatar</div>
-      <div class="card">Badge</div>
-      <div class="card">Calendar</div>
-
-      <div class="card">Card</div>
-      <div class="card">Chip</div>
-      <div class="card">Data iterators</div>
-      <div class="card">Table</div>
-
-      <div class="card">Popover</div>
-      <div class="card">Timeline</div>
-      <div class="card">Tooltip</div>
-      <div class="card">Virtual Scroll</div>
+      <RouterLink to="/data-display/accordion" class="card">Accordion</RouterLink>
+      <RouterLink to="/data-display/avatar" class="card">Avatar</RouterLink>
+      <RouterLink to="/data-display/badge" class="card">Badge</RouterLink>
+      <RouterLink to="/data-display/calendar" class="card">Calendar</RouterLink>
+      <RouterLink to="/data-display/card" class="card">Card</RouterLink>
+      <RouterLink to="/data-display/chip" class="card">Chip</RouterLink>
+      <RouterLink to="/data-display/data-iterators" class="card">Data iterators</RouterLink>
+      <RouterLink to="/data-display/data-tables" class="card">Table</RouterLink>
+      <RouterLink to="/data-display/popover" class="card">Popover</RouterLink>
+      <RouterLink to="/data-display/timeline" class="card">Timeline</RouterLink>
+      <RouterLink to="/data-display/tooltip" class="card">Tooltip</RouterLink>
+      <RouterLink to="/data-display/virtual-scroll" class="card">Virtual Scroll</RouterLink>
     </div>
   </div>
 
@@ -99,13 +94,12 @@ import Breadcrumbs from '~/components/Breadcrumbs.vue';
     <div class="text-xl">Feedback</div>
 
     <div class="grid grid-cols-4 gap-2">
-      <div class="card">Alert</div>
-      <div class="card">Dialogs</div>
-      <div class="card">Highlight</div>
-      <div class="card">Notification</div>
-
-      <div class="card">Progress</div>
-      <div class="card">Skeletons</div>
+      <RouterLink to="/feedback/alert" class="card">Alert</RouterLink>
+      <RouterLink to="/feedback/dialogs" class="card">Dialogs</RouterLink>
+      <RouterLink to="/feedback/highlight" class="card">Highlight</RouterLink>
+      <RouterLink to="/feedback/notification" class="card">Notification</RouterLink>
+      <RouterLink to="/feedback/progress" class="card">Progress</RouterLink>
+      <RouterLink to="/feedback/skeletons" class="card">Skeletons</RouterLink>
     </div>
   </div>
 
@@ -113,12 +107,11 @@ import Breadcrumbs from '~/components/Breadcrumbs.vue';
     <div class="text-xl">Charts</div>
 
     <div class="grid grid-cols-4 gap-2">
-      <div class="card">Line</div>
-      <div class="card">Area</div>
-      <div class="card">Column</div>
-      <div class="card">Bar</div>
-
-      <div class="card">Pie</div>
+      <RouterLink to="/charts/line" class="card">Line</RouterLink>
+      <RouterLink to="/charts/area" class="card">Area</RouterLink>
+      <RouterLink to="/charts/column" class="card">Column</RouterLink>
+      <RouterLink to="/charts/bar" class="card">Bar</RouterLink>
+      <RouterLink to="/charts/pie" class="card">Pie</RouterLink>
     </div>
   </div>
 
@@ -126,15 +119,40 @@ import Breadcrumbs from '~/components/Breadcrumbs.vue';
     <div class="text-xl">Network</div>
 
     <div class="grid grid-cols-4 gap-2">
-      <div class="card">Fetch</div>
-      <div class="card">WebSocket</div>
-      <div class="card">EventSource</div>
+      <RouterLink to="/network/fetch" class="card">Fetch</RouterLink>
+      <RouterLink to="/network/websocket" class="card">WebSocket</RouterLink>
+      <RouterLink to="/network/eventsource" class="card">EventSource</RouterLink>
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
 .card {
-  @apply col-span-1 border border-primary-500 rounded p-2;
+  @apply relative col-span-1 border border-slate-400 dark:border-slate-600 bg-slate-50 dark:bg-slate-900 rounded p-2;
+  @apply hover:after:block hover:important:border-transparent after:hidden after:content-[''] after:absolute after:rounded after:-z-1;
+
+  &::after {
+    top: -3px;
+    left: -3px;
+    width: calc(100% + 6px);
+    height: calc(100% + 6px);
+    background: linear-gradient(60deg, #d9d5fe, #beb5fd, #a08bfa, #845ef5, #753dec, #662cd6);
+    background-size: 300% 300%;
+    animation: animatedgradient 2s ease alternate infinite;
+
+    @keyframes animatedgradient {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+  }
 }
 </style>

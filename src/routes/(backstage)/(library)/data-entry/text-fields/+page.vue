@@ -7,7 +7,7 @@ import ChipField from '~/components/ChipField.vue';
 
 const flux = reactive({
   textField1: '',
-  chipField: [],
+  chipField: ['Vue', 'Fastify', 'Tauri'],
 });
 </script>
 
