@@ -28,7 +28,7 @@ const flux = reactive({
       if (rect.top > center) {
         dropdown.value.style.bottom = 'calc(100% + 0.5rem)';
       } else {
-        dropdown.value.classList.add('mt-2');
+        dropdown.value.style.top = 'calc(100% + 0.5rem)';
       }
 
       if (rect.right > middle) {
@@ -54,7 +54,7 @@ const flux = reactive({
 </script>
 
 <template>
-  <div class="relative inline-block text-left" @mouseleave="flux.onMouseleave">
+  <div class="relative inline-flex text-left" @mouseleave="flux.onMouseleave">
     <div
       ref="target"
       class="inline-flex w-full justify-center items-center rounded-md"
