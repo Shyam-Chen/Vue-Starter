@@ -137,7 +137,7 @@ import Breadcrumbs from '~/components/Breadcrumbs.vue';
     left: -3px;
     width: calc(100% + 6px);
     height: calc(100% + 6px);
-    background: linear-gradient(60deg, #d9d5fe, #beb5fd, #a08bfa, #845ef5, #753dec, #662cd6);
+    background: linear-gradient(60deg, #6644ff, #ff99dd);
     background-size: 300% 300%;
     animation: animatedgradient 2s ease alternate infinite;
 

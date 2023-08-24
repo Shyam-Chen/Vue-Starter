@@ -32,7 +32,7 @@ defineProps<{
 .button {
   @apply flex justify-center items-center gap-2 px-6 py-2 border rounded uppercase text-sm font-medium;
   @apply shadow-md hover:shadow-lg;
-  @apply focus:outline-none focus:ring-2 focus:ring-blue-400 focus:shadow-lg;
+  @apply focus:outline-none focus:ring-2 focus:ring-primary-500/40;
 }
 
 .icon {
@@ -40,10 +40,10 @@ defineProps<{
 }
 
 .primary {
-  @apply bg-primary-600 text-blueGray-200 border-primary-600;
+  @apply bg-primary-500 text-white border-primary-500;
 
-  @apply hover:text-blueGray-300 hover:bg-primary-700;
-  @apply dark:hover:text-blueGray-300 dark:hover:bg-primary-700;
+  @apply hover:text-blueGray-300 hover:bg-primary-600;
+  @apply dark:hover:text-blueGray-300 dark:hover:bg-primary-600;
 
   @apply active:bg-primary-400 dark:active:bg-primary-800;
 }

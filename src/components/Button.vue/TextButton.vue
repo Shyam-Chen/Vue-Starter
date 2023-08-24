@@ -31,7 +31,7 @@ defineProps<{
 <style lang="scss" scoped>
 .button {
   @apply flex justify-center items-center gap-2 px-6 py-2 border border-transparent rounded uppercase text-sm font-medium;
-  @apply focus:outline-none focus:ring-2 focus:ring-blue-400;
+  @apply focus:outline-none focus:ring-2 focus:ring-primary-500/40;
 }
 
 .icon {
