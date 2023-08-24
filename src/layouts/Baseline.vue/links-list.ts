@@ -46,6 +46,7 @@ const links = [
       { name: 'Drawers', to: '/navigation/drawers' },
       { name: 'Dropdown', to: '/navigation/dropdown' },
       { name: 'Pagination', to: '/navigation/pagination' },
+      { name: 'Scrollspy', to: '/navigation/scrollspy' },
       { name: 'Steppers', to: '/navigation/steppers' },
       { name: 'Tabs', to: '/navigation/tabs' },
       { name: 'Tours', to: '/navigation/tours' },
