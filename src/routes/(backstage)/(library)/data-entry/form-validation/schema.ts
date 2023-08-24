@@ -30,3 +30,20 @@ export const useZodFormSchema = () => {
 
   return schema;
 };
+
+export const useTouchSchema = () => {
+  const { state } = useStore();
+
+  const string = () => z.string({ required_error: msgs.required });
+
+  const schema = useZodSchema(
+    z.object({
+      username: string().nonempty(msgs.required),
+      password: string().min(8, msgs.min).nonempty(msgs.required),
+    }),
+    toRef(state, 'zodForm'),
+    toRef(state, 'touchValdn'),
+  );
+
+  return schema;
+};

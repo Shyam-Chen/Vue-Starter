@@ -8,4 +8,5 @@ export interface State {
     plan?: string;
   };
   zodValdn: Record<string, string>;
+  touchValdn: Record<string, string>;
 }

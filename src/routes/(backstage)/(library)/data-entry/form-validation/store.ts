@@ -7,6 +7,7 @@ export default defineStore('/(library)/data-entry/form-validation', () => {
   const state = reactive<State>({
     zodForm: {},
     zodValdn: {},
+    touchValdn: {},
   });
 
   const actions = readonly({

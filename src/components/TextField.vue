@@ -12,6 +12,8 @@ interface Props extends /* @vue-ignore */ InputHTMLAttributes {
   required?: boolean;
   prepend?: string;
   append?: string;
+  useTouch?: boolean;
+  useError?: boolean;
   errorMessage?: string;
 }
 
@@ -36,6 +38,7 @@ const textFieldValue = computed({
 
 const flux = reactive({
   focused: false,
+  touched: false,
 });
 </script>
 
@@ -53,7 +56,9 @@ const flux = reactive({
         class="text-field-prepend"
         :class="{
           'text-field-focused': flux.focused,
-          'important:border-red-500 important:ring-red-500 mb-1': errorMessage,
+          'important:border-red-500 important:ring-red-500 mb-1': useTouch
+            ? (flux.touched || useError) && errorMessage
+            : errorMessage,
         }"
         @click.stop="emit('prepend')"
       >
@@ -68,12 +73,16 @@ const flux = reactive({
         :disabled="disabled"
         class="text-field-input"
         :class="{
-          danger: errorMessage,
+          danger: useTouch ? (flux.touched || useError) && errorMessage : errorMessage,
           prepend,
           append,
         }"
+        autocomplete="off"
         @focus="flux.focused = true"
-        @blur="flux.focused = false"
+        @blur="
+          flux.focused = false;
+          flux.touched = true;
+        "
       />
 
       <div
@@ -81,7 +90,9 @@ const flux = reactive({
         class="text-field-append"
         :class="{
           'text-field-focused': flux.focused,
-          'important:border-red-500 important:ring-red-500 mb-1': errorMessage,
+          'important:border-red-500 important:ring-red-500 mb-1': useTouch
+            ? (flux.touched || useError) && errorMessage
+            : errorMessage,
         }"
         @click.stop="emit('append')"
       >
@@ -89,7 +100,9 @@ const flux = reactive({
       </div>
     </div>
 
-    <div v-if="errorMessage" class="text-red-500 text-xs">{{ errorMessage }}</div>
+    <div v-if="useTouch ? flux.touched || useError : errorMessage" class="text-red-500 text-xs">
+      {{ errorMessage }}
+    </div>
   </div>
 </template>
 
