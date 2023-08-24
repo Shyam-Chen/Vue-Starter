@@ -5,7 +5,6 @@ export interface Link {
   name: string;
   to?: string;
   permissions?: Array<'A' | 'B' | 'C' | 'D' | 'E'>;
-  aiDisable?: boolean;
   sub?: Link[];
   level?: number;
   status?: boolean;

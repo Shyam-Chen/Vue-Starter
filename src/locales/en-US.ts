@@ -1,3 +1,1 @@
-export default {
-  title: `Deno Land`,
-};
+export default {};

@@ -1,3 +1,1 @@
-export default {
-  title: `迪諾之地`,
-};
+export default {};

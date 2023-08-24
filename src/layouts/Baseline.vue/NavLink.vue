@@ -6,7 +6,7 @@ import { useTextDirection } from '@vueuse/core';
 import Collapse from '~/components/Collapse.vue';
 
 import type { Link } from './links-list';
-import useDefault from './store';
+import useStore from './store';
 
 withDefaults(
   defineProps<{
@@ -33,7 +33,7 @@ withDefaults(
 const route = useRoute();
 const textDirection = useTextDirection({ observe: true });
 
-const { actions } = useDefault();
+const { actions } = useStore();
 
 const flux = reactive({
   parent(sub: Link['sub']): any {
