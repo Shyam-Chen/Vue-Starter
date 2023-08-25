@@ -81,6 +81,7 @@ import Breadcrumbs from '~/components/Breadcrumbs.vue';
       <RouterLink to="/data-display/badge" class="card">Badge</RouterLink>
       <RouterLink to="/data-display/calendar" class="card">Calendar</RouterLink>
       <RouterLink to="/data-display/card" class="card">Card</RouterLink>
+      <RouterLink to="/data-display/carousel" class="card">Carousel</RouterLink>
       <RouterLink to="/data-display/chip" class="card">Chip</RouterLink>
       <RouterLink to="/data-display/data-iterators" class="card">Data iterators</RouterLink>
       <RouterLink to="/data-display/data-tables" class="card">Table</RouterLink>
