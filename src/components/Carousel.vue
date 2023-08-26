@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import type { UseSwipeDirection } from '@vueuse/core';
 import { ref, useSlots } from 'vue';
-import { usePointerSwipe } from '@vueuse/core';
+import { useSwipe, usePointerSwipe } from '@vueuse/core';
 
 import Button from '~/components/Button.vue';
 
@@ -26,8 +26,17 @@ function goTo(num: number) {
   left.value = -100 * (num - 1);
 }
 
+useSwipe(target, {
+  onSwipeEnd(evt: TouchEvent, dir: UseSwipeDirection) {
+    if (dir === 'left') next();
+    if (dir === 'right') previous();
+  },
+});
+
 usePointerSwipe(target, {
   onSwipeEnd(evt: PointerEvent, dir: UseSwipeDirection) {
+    if (evt.pointerType === 'touch') return;
+
     if (dir === 'left') next();
     if (dir === 'right') previous();
   },
@@ -35,7 +44,7 @@ usePointerSwipe(target, {
 </script>
 
 <template>
-  <div ref="target" class="relative w-75 h-50 rounded-lg overflow-hidden">
+  <div ref="target" class="relative rounded-lg overflow-hidden">
     <div class="relative w-full h-full transition-all duration-500" :style="{ left: `${left}%` }">
       <slot></slot>
     </div>

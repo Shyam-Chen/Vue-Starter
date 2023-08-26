@@ -11,7 +11,7 @@ import Carousel from '~/components/Carousel.vue';
   </div>
 
   <div class="my-4">
-    <Carousel>
+    <Carousel class="w-75 h-50">
       <div
         v-for="(item, index) in ['14b8a6', '8b5cf6', 'ec4899']"
         :key="item"
@@ -19,7 +19,7 @@ import Carousel from '~/components/Carousel.vue';
       >
         <img
           :src="`https://place-hold.it/300x200/${item}`"
-          class="absolute top-1/2 -z-1 -translate-x-1/2 -translate-y-1/2 w-full h-full"
+          class="absolute top-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full pointer-events-none touch-none"
           :style="{ left: `${50 + 100 * index}%` }"
         />
       </div>
