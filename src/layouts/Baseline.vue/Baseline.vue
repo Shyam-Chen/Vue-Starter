@@ -129,7 +129,7 @@ onMounted(async () => {
 
       <div class="flex-1"></div>
 
-      <div class="w-100">
+      <div class="w-100 hidden md:block">
         <TextField
           placeholder="Search here..."
           prepend="i-fa-search"
@@ -213,15 +213,12 @@ onMounted(async () => {
 
       <div class="flex-1"></div>
 
-      <footer
-        class="footer bg-slate-50 dark:bg-slate-900 border-t dark:border-slate-700 p-4 flex justify-between"
-      >
+      <footer class="footer">
         <div>
           <div class="font-bold">Backstage Management System</div>
-          <div>Design for desktop displays from 1024x768 through 1920x1080</div>
         </div>
 
-        <div></div>
+        <div class="flex-1"></div>
 
         <div class="flex items-center">
           <div class="i-fa-language w-6 h-6"></div>
@@ -269,6 +266,15 @@ onMounted(async () => {
       :placement="textDirection === 'rtl' ? 'right' : 'left'"
       class="px-2 pt-4 pb-20 bg-white dark:bg-slate-900 dark:border-slate-700"
     >
+      <div class="w-full block md:hidden mb-4">
+        <TextField
+          placeholder="Search here..."
+          prepend="i-fa-search"
+          autocomplete="off"
+          @focus="flux.searchDialog = true"
+        />
+      </div>
+
       <template v-for="link in state.listOfLinks" :key="link.name">
         <NavLink
           :icon="link.icon"
@@ -303,7 +309,8 @@ onMounted(async () => {
 }
 
 .footer {
-  @apply p-8;
+  @apply flex flex-col md:flex-row p-8 gap-2;
+  @apply bg-slate-50 dark:bg-slate-900 border-t dark:border-slate-700;
   @apply ltr:xl:pl-72 rtl:xl:pr-72;
 }
 </style>

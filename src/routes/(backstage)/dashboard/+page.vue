@@ -73,9 +73,9 @@ const performance = ref<Options>({
     <div class="text-3xl font-bold">Dashboard</div>
   </div>
 
-  <div class="grid grid-cols-8 gap-6 mb-6">
+  <div class="grid grid-cols-4 md:grid-cols-8 gap-6 mb-6">
     <div
-      class="col-span-2 relative flex flex-col min-w-0 break-words bg-white dark:bg-slate-800 rounded xl:mb-0 shadow-lg"
+      class="col-span-4 md:col-span-2 relative flex flex-col min-w-0 break-words bg-white dark:bg-slate-800 rounded xl:mb-0 shadow-lg"
     >
       <div class="flex-auto p-4">
         <div class="flex flex-wrap">
@@ -104,7 +104,7 @@ const performance = ref<Options>({
     </div>
 
     <div
-      class="col-span-2 relative flex flex-col min-w-0 break-words bg-white dark:bg-slate-800 rounded xl:mb-0 shadow-lg"
+      class="col-span-4 md:col-span-2 relative flex flex-col min-w-0 break-words bg-white dark:bg-slate-800 rounded xl:mb-0 shadow-lg"
     >
       <div class="flex-auto p-4">
         <div class="flex flex-wrap">
@@ -133,7 +133,7 @@ const performance = ref<Options>({
     </div>
 
     <div
-      class="col-span-2 relative flex flex-col min-w-0 break-words bg-white dark:bg-slate-800 rounded xl:mb-0 shadow-lg"
+      class="col-span-4 md:col-span-2 relative flex flex-col min-w-0 break-words bg-white dark:bg-slate-800 rounded xl:mb-0 shadow-lg"
     >
       <div class="flex-auto p-4">
         <div class="flex flex-wrap">
@@ -160,7 +160,7 @@ const performance = ref<Options>({
     </div>
 
     <div
-      class="col-span-2 relative flex flex-col min-w-0 break-words bg-white dark:bg-slate-800 rounded xl:mb-0 shadow-lg"
+      class="col-span-4 md:col-span-2 relative flex flex-col min-w-0 break-words bg-white dark:bg-slate-800 rounded xl:mb-0 shadow-lg"
     >
       <div class="flex-auto p-4">
         <div class="flex flex-wrap">
@@ -189,7 +189,7 @@ const performance = ref<Options>({
     </div>
 
     <div
-      class="col-span-5 relative flex flex-col min-w-0 break-words bg-white dark:bg-slate-800 w-full shadow-lg rounded"
+      class="col-span-4 md:col-span-5 relative flex flex-col min-w-0 break-words bg-white dark:bg-slate-800 w-full shadow-lg rounded"
     >
       <div class="rounded-t mb-0 px-4 py-3 bg-transparent">
         <div class="flex flex-wrap items-center">
@@ -215,7 +215,7 @@ const performance = ref<Options>({
     </div>
 
     <div
-      class="col-span-3 relative flex flex-col min-w-0 break-words bg-white dark:bg-slate-800 w-full shadow-lg rounded"
+      class="col-span-4 md:col-span-3 relative flex flex-col min-w-0 break-words bg-white dark:bg-slate-800 w-full shadow-lg rounded"
     >
       <div class="rounded-t mb-0 px-4 py-3 bg-transparent">
         <div class="flex flex-wrap items-center">
@@ -241,7 +241,7 @@ const performance = ref<Options>({
     </div>
 
     <div
-      class="col-span-5 relative flex flex-col min-w-0 break-words bg-white dark:bg-slate-800 w-full shadow-lg rounded"
+      class="col-span-4 md:col-span-5 relative flex flex-col min-w-0 break-words bg-white dark:bg-slate-800 w-full shadow-lg rounded"
     >
       <div class="rounded-t mb-0 px-4 py-3 border-0">
         <div class="flex flex-wrap items-center">
@@ -410,7 +410,7 @@ const performance = ref<Options>({
     </div>
 
     <div
-      class="col-span-3 relative flex flex-col min-w-0 break-words bg-white dark:bg-slate-800 w-full shadow-lg rounded"
+      class="col-span-4 md:col-span-3 relative flex flex-col min-w-0 break-words bg-white dark:bg-slate-800 w-full shadow-lg rounded"
     >
       <div class="rounded-t mb-0 px-4 py-3 border-0">
         <div class="flex flex-wrap items-center">
