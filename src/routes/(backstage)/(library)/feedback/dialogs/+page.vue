@@ -19,12 +19,9 @@ const flux = reactive({
 </script>
 
 <template>
-  <Breadcrumbs
-    :items="[{ text: 'Library' }, { text: 'Feedback' }, { text: 'Dialog' }]"
-    class="mb-4"
-  />
+  <Breadcrumbs :items="[{ text: 'Library' }, { text: 'Feedback' }, { text: 'Dialog' }]" />
 
-  <div class="mb-4">
+  <div class="my-4">
     <div class="text-3xl font-bold">Dialog</div>
   </div>
 

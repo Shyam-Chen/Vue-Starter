@@ -20,10 +20,7 @@ const stepper = useStepper({
 </script>
 
 <template>
-  <Breadcrumbs
-    :items="[{ text: 'Library' }, { text: 'Navigation' }, { text: 'Steppers' }]"
-    class="mb-4"
-  />
+  <Breadcrumbs :items="[{ text: 'Library' }, { text: 'Navigation' }, { text: 'Steppers' }]" />
 
   <div class="my-4">
     <div class="text-3xl font-bold">Steppers</div>

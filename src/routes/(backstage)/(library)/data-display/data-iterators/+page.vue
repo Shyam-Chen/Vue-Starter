@@ -21,13 +21,10 @@ const flux = reactive({
 </script>
 
 <template>
-  <Breadcrumbs
-    :items="[{ text: 'Library' }, { text: 'Data Display' }, { text: 'Data iterators' }]"
-    class="mb-4"
-  />
+  <Breadcrumbs :items="[{ text: 'Library' }, { text: 'Data Display' }, { text: 'Iterator' }]" />
 
-  <div class="mb-4">
-    <div class="text-3xl font-bold">Data iterators</div>
+  <div class="my-4">
+    <div class="text-3xl font-bold">Iterator</div>
   </div>
 
   <div class="flex flex-col border p-4 mb-4">

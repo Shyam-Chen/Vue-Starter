@@ -11,17 +11,16 @@ import Carousel from '~/components/Carousel.vue';
   </div>
 
   <div class="my-4">
-    <Carousel class="w-75 h-50">
+    <Carousel class="w-full h-100">
       <div
-        v-for="(item, index) in ['14b8a6', '8b5cf6', 'ec4899']"
+        v-for="(item, index) in ['#14b8a6', '#8b5cf6', '#ec4899']"
         :key="item"
         class="absolute w-full h-full"
       >
-        <img
-          :src="`https://place-hold.it/300x200/${item}`"
+        <div
           class="absolute top-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full pointer-events-none touch-none"
-          :style="{ left: `${50 + 100 * index}%` }"
-        />
+          :style="{ backgroundColor: item, left: `${50 + 100 * index}%` }"
+        ></div>
       </div>
     </Carousel>
   </div>

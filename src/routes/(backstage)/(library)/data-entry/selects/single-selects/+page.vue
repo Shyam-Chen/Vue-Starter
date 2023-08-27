@@ -70,10 +70,9 @@ const flux = reactive({
       { text: 'Selects' },
       { text: 'Single selects' },
     ]"
-    class="mb-4"
   />
 
-  <div class="mb-4">
+  <div class="my-4">
     <div class="text-3xl font-bold">Single selects</div>
   </div>
 

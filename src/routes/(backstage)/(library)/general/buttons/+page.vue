@@ -4,12 +4,9 @@ import Button from '~/components/Button.vue';
 </script>
 
 <template>
-  <Breadcrumbs
-    :items="[{ text: 'Library' }, { text: 'General' }, { text: 'Buttons' }]"
-    class="mb-4"
-  />
+  <Breadcrumbs :items="[{ text: 'Library' }, { text: 'General' }, { text: 'Buttons' }]" />
 
-  <div class="mb-4">
+  <div class="my-4">
     <div class="text-3xl font-bold">Buttons</div>
   </div>
 

@@ -4,12 +4,9 @@ import Badge from '~/components/Badge.vue';
 </script>
 
 <template>
-  <Breadcrumbs
-    :items="[{ text: 'Library' }, { text: 'Data Display' }, { text: 'Badge' }]"
-    class="mb-4"
-  />
+  <Breadcrumbs :items="[{ text: 'Library' }, { text: 'Data Display' }, { text: 'Badge' }]" />
 
-  <div class="mb-4">
+  <div class="my-4">
     <div class="text-3xl font-bold">Badge</div>
   </div>
 

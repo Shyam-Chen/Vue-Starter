@@ -4,12 +4,9 @@ import Timeline from '~/components/Timeline.vue';
 </script>
 
 <template>
-  <Breadcrumbs
-    :items="[{ text: 'Library' }, { text: 'Data Display' }, { text: 'Timeline' }]"
-    class="mb-4"
-  />
+  <Breadcrumbs :items="[{ text: 'Library' }, { text: 'Data Display' }, { text: 'Timeline' }]" />
 
-  <div class="mb-4">
+  <div class="my-4">
     <div class="text-3xl font-bold">Timeline</div>
   </div>
 

@@ -4,12 +4,9 @@ import Alert from '~/components/Alert.vue';
 </script>
 
 <template>
-  <Breadcrumbs
-    :items="[{ text: 'Library' }, { text: 'Feedback' }, { text: 'Alert' }]"
-    class="mb-4"
-  />
+  <Breadcrumbs :items="[{ text: 'Library' }, { text: 'Feedback' }, { text: 'Alert' }]" />
 
-  <div class="mb-4">
+  <div class="my-4">
     <div class="text-3xl font-bold">Alert</div>
   </div>
 

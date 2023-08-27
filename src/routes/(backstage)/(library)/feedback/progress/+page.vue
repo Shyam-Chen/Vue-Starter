@@ -5,12 +5,9 @@ import ProgressBar from '~/components/ProgressBar.vue';
 </script>
 
 <template>
-  <Breadcrumbs
-    :items="[{ text: 'Library' }, { text: 'Feedback' }, { text: 'Progress' }]"
-    class="mb-4"
-  />
+  <Breadcrumbs :items="[{ text: 'Library' }, { text: 'Feedback' }, { text: 'Progress' }]" />
 
-  <div class="mb-4">
+  <div class="my-4">
     <div class="text-3xl font-bold">Progress</div>
   </div>
 

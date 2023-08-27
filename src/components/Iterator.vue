@@ -51,7 +51,7 @@ const flux = reactive({
       :key="index"
       class="flex items-baseline space-x-2 space-y-2"
     >
-      <slot :item="item" :index="index" />
+      <slot :item="item" :index="index"></slot>
 
       <div>
         <Button

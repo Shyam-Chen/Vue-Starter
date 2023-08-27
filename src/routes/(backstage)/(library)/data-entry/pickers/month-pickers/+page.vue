@@ -17,10 +17,9 @@ const flux = reactive({
       { text: 'Pickers' },
       { text: 'Month pickers' },
     ]"
-    class="mb-4"
   />
 
-  <div class="mb-4">
+  <div class="my-4">
     <div class="text-3xl font-bold">Month pickers</div>
   </div>
 

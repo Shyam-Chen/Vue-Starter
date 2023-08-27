@@ -12,13 +12,10 @@ const flux = reactive({
 </script>
 
 <template>
-  <Breadcrumbs
-    :items="[{ text: 'Library' }, { text: 'Data Entry' }, { text: 'Text Fields' }]"
-    class="mb-4"
-  />
+  <Breadcrumbs :items="[{ text: 'Library' }, { text: 'Data Entry' }, { text: 'TextField' }]" />
 
-  <div class="mb-4">
-    <div class="text-3xl font-bold">Text Fields</div>
+  <div class="my-4">
+    <div class="text-3xl font-bold">TextField</div>
   </div>
 
   <div class="flex flex-col border p-4 mb-4">

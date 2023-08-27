@@ -11,12 +11,9 @@ const query2 = ref(['spotlight', 'emphasize', 'Accentuate']);
 </script>
 
 <template>
-  <Breadcrumbs
-    :items="[{ text: 'Library' }, { text: 'Feedback' }, { text: 'Highlight' }]"
-    class="mb-4"
-  />
+  <Breadcrumbs :items="[{ text: 'Library' }, { text: 'Feedback' }, { text: 'Highlight' }]" />
 
-  <div class="mb-4">
+  <div class="my-4">
     <div class="text-3xl font-bold">Highlight</div>
   </div>
 

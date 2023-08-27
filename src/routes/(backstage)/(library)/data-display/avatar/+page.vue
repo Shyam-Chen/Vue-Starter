@@ -6,12 +6,9 @@ import Badge from '~/components/Badge.vue';
 </script>
 
 <template>
-  <Breadcrumbs
-    :items="[{ text: 'Library' }, { text: 'Data Display' }, { text: 'Avatar' }]"
-    class="mb-4"
-  />
+  <Breadcrumbs :items="[{ text: 'Library' }, { text: 'Data Display' }, { text: 'Avatar' }]" />
 
-  <div class="mb-4">
+  <div class="my-4">
     <div class="text-3xl font-bold">Avatar</div>
   </div>
 

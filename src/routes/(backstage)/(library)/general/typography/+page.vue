@@ -3,12 +3,9 @@ import Breadcrumbs from '~/components/Breadcrumbs.vue';
 </script>
 
 <template>
-  <Breadcrumbs
-    :items="[{ text: 'Library' }, { text: 'General' }, { text: 'Typography' }]"
-    class="mb-4"
-  />
+  <Breadcrumbs :items="[{ text: 'Library' }, { text: 'General' }, { text: 'Typography' }]" />
 
-  <div class="mb-4">
+  <div class="my-4">
     <div class="text-3xl font-bold">Typography</div>
   </div>
 

@@ -29,11 +29,11 @@ const flux = reactive({
 
 <template>
   <Breadcrumbs
-    :items="[{ text: 'Library' }, { text: 'Data Entry' }, { text: 'Form validation' }]"
+    :items="[{ text: 'Library' }, { text: 'Data Entry' }, { text: 'Form Validation' }]"
   />
 
   <div class="my-4">
-    <div class="text-3xl font-bold">Form validation</div>
+    <div class="text-3xl font-bold">Form Validation</div>
   </div>
 
   <div class="grid gap-6 w-full my-4">

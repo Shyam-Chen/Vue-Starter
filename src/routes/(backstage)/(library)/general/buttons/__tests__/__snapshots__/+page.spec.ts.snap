@@ -1,7 +1,7 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Buttons 1`] = `
-"<nav class=\\"rounded-md w-full mb-4\\">
+"<nav class=\\"rounded-md w-full\\">
   <ol class=\\"list-reset flex\\">
     <li><span class=\\"text-slate-500\\">Library</span></li>
     <li>
@@ -15,7 +15,7 @@ exports[`Buttons 1`] = `
     <!--v-if-->
   </ol>
 </nav>
-<div class=\\"mb-4\\">
+<div class=\\"my-4\\">
   <div class=\\"text-3xl font-bold\\">Buttons</div>
 </div>
 <div class=\\"flex flex-col border p-4 mb-4 gap-4\\">
