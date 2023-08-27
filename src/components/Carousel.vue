@@ -1,9 +1,15 @@
 <script lang="ts" setup>
 import type { UseSwipeDirection } from '@vueuse/core';
-import { ref, useSlots } from 'vue';
+import { ref, useSlots, toRef } from 'vue';
 import { useSwipe, usePointerSwipe } from '@vueuse/core';
 
 import Button from '~/components/Button.vue';
+
+const props = defineProps<{
+  move?: number;
+}>();
+
+const moveRef = toRef(props, 'move', 100);
 
 const slots = useSlots();
 const defaultSlot = slots.default?.();
@@ -14,16 +20,16 @@ const target = ref<HTMLDivElement>();
 
 function previous() {
   if (left.value === 0) return;
-  left.value += 100;
+  left.value += moveRef.value;
 }
 
 function next() {
-  if (left.value === -100 * (length - 1)) return;
-  left.value -= 100;
+  if (left.value === -moveRef.value * (length - 1)) return;
+  left.value -= moveRef.value;
 }
 
 function goTo(num: number) {
-  left.value = -100 * (num - 1);
+  left.value = -moveRef.value * (num - 1);
 }
 
 useSwipe(target, {
@@ -54,7 +60,7 @@ usePointerSwipe(target, {
         <div
           class="cursor-pointer"
           :class="[
-            left === -100 * (num - 1)
+            left === -moveRef * (num - 1)
               ? 'i-mdi-checkbox-blank-circle'
               : 'i-mdi-checkbox-blank-circle-outline',
           ]"
@@ -72,7 +78,7 @@ usePointerSwipe(target, {
     <Button
       icon="i-mdi-chevron-right"
       class="absolute top-1/2 right-3 z-10 -translate-y-1/2"
-      :disabled="left === -100 * (length - 1)"
+      :disabled="left === -moveRef * (length - 1)"
       @click="next"
     />
   </div>
