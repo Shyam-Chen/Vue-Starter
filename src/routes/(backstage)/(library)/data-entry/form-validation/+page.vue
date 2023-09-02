@@ -92,10 +92,11 @@ const flux = reactive({
 
         <div>
           <div class="text-sm mb-2 font-bold">Status</div>
-          <Checkbox class="col-span-2">Employed</Checkbox>
+          <Checkbox v-model:value="state.zodForm.status" class="col-span-2">Employed</Checkbox>
         </div>
 
         <CheckboxGroup
+          v-model:value="state.zodForm.sauces"
           label="Sauces"
           :options="[
             { label: 'Ketchup', value: 1 },

@@ -6,6 +6,8 @@ export interface State {
     phone?: string;
     gender?: string;
     plan?: string;
+    status?: boolean;
+    sauces?: number[];
   };
   zodValdn: Record<string, string>;
   touchValdn: Record<string, string>;
