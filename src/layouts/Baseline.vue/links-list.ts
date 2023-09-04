@@ -100,6 +100,7 @@ const links = [
       { name: 'Popover', to: '/data-display/popover' },
       { name: 'Timeline', to: '/data-display/timeline' },
       { name: 'Tooltip', to: '/data-display/tooltip' },
+      { name: 'Tree', to: '/data-display/tree' },
       { name: 'Virtual Scroll', to: '/data-display/virtual-scroll' },
     ],
   },
