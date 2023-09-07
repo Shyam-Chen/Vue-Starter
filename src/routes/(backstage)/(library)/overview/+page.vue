@@ -10,7 +10,7 @@ import Breadcrumbs from '~/components/Breadcrumbs.vue';
   <div class="flex flex-col gap-2 mt-4 mb-8">
     <div class="text-xl">General</div>
 
-    <div class="grid grid-cols-4 gap-2">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
       <RouterLink to="/general/buttons" class="card">Buttons</RouterLink>
       <RouterLink to="/general/icons" class="card">Icons</RouterLink>
       <RouterLink to="/general/paper" class="card">Paper</RouterLink>
@@ -22,7 +22,7 @@ import Breadcrumbs from '~/components/Breadcrumbs.vue';
   <div class="flex flex-col gap-2 mt-4 mb-8">
     <div class="text-xl">Layout</div>
 
-    <div class="grid grid-cols-4 gap-2">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
       <RouterLink to="/layout/aspect-ratio" class="card">Aspect Ratio</RouterLink>
       <RouterLink to="/layout/dividers" class="card">Dividers</RouterLink>
       <RouterLink to="/layout/grid" class="card">Grid</RouterLink>
@@ -34,7 +34,7 @@ import Breadcrumbs from '~/components/Breadcrumbs.vue';
   <div class="flex flex-col gap-2 mt-4 mb-8">
     <div class="text-xl">Navigation</div>
 
-    <div class="grid grid-cols-4 gap-2">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
       <RouterLink to="/navigation/breadcrumbs" class="card">Breadcrumbs</RouterLink>
       <RouterLink to="/navigation/drawers" class="card">Drawers</RouterLink>
       <RouterLink to="/navigation/dropdown" class="card">Dropdown</RouterLink>
@@ -49,7 +49,7 @@ import Breadcrumbs from '~/components/Breadcrumbs.vue';
   <div class="flex flex-col gap-2 mt-4 mb-8">
     <div class="text-xl">Data Entry</div>
 
-    <div class="grid grid-cols-4 gap-2">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
       <RouterLink to="/data-entry/autocompletes" class="card">Autocompletes</RouterLink>
       <RouterLink to="/data-entry/checkboxes" class="card">Checkboxes</RouterLink>
       <RouterLink to="/data-entry/file-inputs" class="card">File inputs</RouterLink>
@@ -75,7 +75,7 @@ import Breadcrumbs from '~/components/Breadcrumbs.vue';
   <div class="flex flex-col gap-2 mt-4 mb-8">
     <div class="text-xl">Data Display</div>
 
-    <div class="grid grid-cols-4 gap-2">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
       <RouterLink to="/data-display/accordion" class="card">Accordion</RouterLink>
       <RouterLink to="/data-display/avatar" class="card">Avatar</RouterLink>
       <RouterLink to="/data-display/badge" class="card">Badge</RouterLink>
@@ -96,7 +96,7 @@ import Breadcrumbs from '~/components/Breadcrumbs.vue';
   <div class="flex flex-col gap-2 mt-4 mb-8">
     <div class="text-xl">Feedback</div>
 
-    <div class="grid grid-cols-4 gap-2">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
       <RouterLink to="/feedback/alert" class="card">Alert</RouterLink>
       <RouterLink to="/feedback/dialogs" class="card">Dialogs</RouterLink>
       <RouterLink to="/feedback/highlight" class="card">Highlight</RouterLink>
@@ -109,7 +109,7 @@ import Breadcrumbs from '~/components/Breadcrumbs.vue';
   <div class="flex flex-col gap-2 mt-4 mb-8">
     <div class="text-xl">Charts</div>
 
-    <div class="grid grid-cols-4 gap-2">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
       <RouterLink to="/charts/line" class="card">Line</RouterLink>
       <RouterLink to="/charts/area" class="card">Area</RouterLink>
       <RouterLink to="/charts/column" class="card">Column</RouterLink>
@@ -121,7 +121,7 @@ import Breadcrumbs from '~/components/Breadcrumbs.vue';
   <div class="flex flex-col gap-2 mt-4 mb-8">
     <div class="text-xl">Network</div>
 
-    <div class="grid grid-cols-4 gap-2">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
       <RouterLink to="/network/fetch" class="card">Fetch</RouterLink>
       <RouterLink to="/network/websocket" class="card">WebSocket</RouterLink>
       <RouterLink to="/network/eventsource" class="card">EventSource</RouterLink>

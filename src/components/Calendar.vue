@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { reactive, watch } from 'vue';
+import { computed, reactive, watch } from 'vue';
 import { format as _format, add, sub, getYear, setYear, getMonth, setMonth } from 'date-fns';
 import chunk from 'lodash/chunk';
 import range from 'lodash/range';
@@ -32,6 +32,10 @@ const props = withDefaults(
 const emit = defineEmits<{
   (evt: 'update:value', val: string): void;
 }>();
+
+const eventsRef = computed(() => {
+  return props.events;
+});
 
 const createDays = (y?: number, m?: number) => {
   const currentPeriod = () => {
@@ -223,7 +227,7 @@ flux.currentPeriodDates = createDays();
         <div
           v-for="item in week"
           :key="weekIndex + item"
-          class="flex flex-col hover:bg-slate-200 dark:hover:bg-slate-600 w-full p-1 gap-1 border-t-1 dark:border-slate-600"
+          class="day-frame"
           :class="{
             'text-white bg-blue-600 important:hover:bg-blue-700': item.selected,
             'text-slate-400 important:cursor-not-allowed': item.disabled,
@@ -232,7 +236,7 @@ flux.currentPeriodDates = createDays();
           @click="flux.selectDateItem(item)"
         >
           <div
-            class="self-end rounded-full"
+            class="day-date"
             :class="{
               'px-2': String(item.date.getDate()).length === 1,
               'px-1': String(item.date.getDate()).length === 2,
@@ -242,12 +246,12 @@ flux.currentPeriodDates = createDays();
             {{ item.date.getDate() }}
           </div>
 
-          <div class="flex flex-col gap-1 h-15 overflow-auto">
-            <template v-for="(event, eventIndex) in events">
+          <div class="day-events">
+            <template v-for="(event, eventIndex) in eventsRef">
               <div
                 v-if="_format(event.date, 'yyyy/MM/dd') === _format(item.date, 'yyyy/MM/dd')"
                 :key="eventIndex"
-                class="self-start flex items-center leading-tight text-sm p-1 rounded min-w-full"
+                class="text-sm leading-tight p-1 rounded w-full truncate"
                 :class="event.class ? event.class : 'bg-blue-600 text-white'"
               >
                 {{ event.title }}
@@ -259,3 +263,17 @@ flux.currentPeriodDates = createDays();
     </div>
   </div>
 </template>
+
+<style lang="scss" scoped>
+.day-frame {
+  @apply flex flex-col hover:bg-slate-200 dark:hover:bg-slate-600 w-full p-1 gap-1 border-t-1 dark:border-slate-600;
+}
+
+.day-date {
+  @apply self-end rounded-full;
+}
+
+.day-events {
+  @apply flex flex-col gap-1 h-21.125;
+}
+</style>

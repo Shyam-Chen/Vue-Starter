@@ -55,6 +55,11 @@ const flux = reactive({
       class: 'bg-fuchsia-500 text-white',
     },
     {
+      date: new Date(year, month, 20),
+      title: 'My event 4',
+      class: 'bg-orange-500 text-white',
+    },
+    {
       date: new Date(year, month, 22),
       title: 'My event 3',
     },
