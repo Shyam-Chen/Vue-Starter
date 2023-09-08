@@ -3,6 +3,7 @@ import { computed, reactive, watch } from 'vue';
 import { format as _format, add, sub, getYear, setYear, getMonth, setMonth } from 'date-fns';
 import chunk from 'lodash/chunk';
 import range from 'lodash/range';
+import groupBy from 'lodash/groupBy';
 
 const props = withDefaults(
   defineProps<{
@@ -34,7 +35,12 @@ const emit = defineEmits<{
 }>();
 
 const eventsRef = computed(() => {
-  return props.events;
+  const _events = props.events.map((event) => ({
+    ...event,
+    dayDate: _format(event.date, props.format),
+  }));
+
+  return groupBy(_events, (item) => item.dayDate);
 });
 
 const createDays = (y?: number, m?: number) => {
@@ -247,15 +253,31 @@ flux.currentPeriodDates = createDays();
           </div>
 
           <div class="day-events">
-            <template v-for="(event, eventIndex) in eventsRef">
-              <div
-                v-if="_format(event.date, 'yyyy/MM/dd') === _format(item.date, 'yyyy/MM/dd')"
-                :key="eventIndex"
-                class="text-sm leading-tight p-1 rounded w-full truncate"
-                :class="event.class ? event.class : 'bg-blue-600 text-white'"
-              >
-                {{ event.title }}
-              </div>
+            <template v-for="(val, key) in eventsRef">
+              <template v-if="key === _format(item.date, 'yyyy/MM/dd')">
+                <template v-if="val.length > 3">
+                  <div
+                    v-for="(event, eventIndex) in [val[0], val[1], null]"
+                    :key="eventIndex"
+                    class="text-sm leading-tight p-1 rounded w-full truncate"
+                    :class="event?.class ? event.class : ''"
+                  >
+                    <template v-if="event">{{ event?.title }}</template>
+                    <template v-else>+{{ val.length - 2 }} more</template>
+                  </div>
+                </template>
+
+                <template v-else>
+                  <div
+                    v-for="(event, eventIndex) in val"
+                    :key="eventIndex"
+                    class="text-sm leading-tight p-1 rounded w-full truncate"
+                    :class="[event.class ? event.class : 'bg-blue-600 text-white']"
+                  >
+                    {{ event.title }}
+                  </div>
+                </template>
+              </template>
             </template>
           </div>
         </div>

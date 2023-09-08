@@ -55,13 +55,40 @@ const flux = reactive({
       class: 'bg-fuchsia-500 text-white',
     },
     {
-      date: new Date(year, month, 20),
+      date: new Date(year, month, 22),
+      title: 'My event 3',
+    },
+    {
+      date: new Date(year, month, 25),
       title: 'My event 4',
       class: 'bg-orange-500 text-white',
     },
     {
-      date: new Date(year, month, 22),
-      title: 'My event 3',
+      date: new Date(year, month, 25),
+      title: 'My event 5',
+      class: 'bg-pink-500 text-white',
+    },
+    {
+      date: new Date(year, month, 25),
+      title: 'My event 6',
+    },
+    {
+      date: new Date(year, month, 25),
+      title: 'My event 7',
+    },
+    {
+      date: new Date(year, month, 26),
+      title: 'My event 8',
+      class: 'bg-teal-500 text-white',
+    },
+    {
+      date: new Date(year, month, 26),
+      title: 'My event 9',
+      class: 'bg-yellow-500 text-white',
+    },
+    {
+      date: new Date(year, month, 26),
+      title: 'My event 10',
     },
   ],
 });
