@@ -4,7 +4,7 @@ import { onClickOutside } from '@vueuse/core';
 
 import getScrollableParent from '~/utilities/getScrollableParent';
 
-// import ChipField from '~/components/ChipField.vue';
+// import ChipField from './ChipField.vue';
 import Checkbox from './Checkbox.vue';
 import Chip from './Chip.vue';
 import TextField from './TextField.vue';
@@ -247,7 +247,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="w-full">
+  <div class="flex flex-col w-full">
     <!-- <ChipField :value="flux.displaySelected(flux.selected)" :placeholder="placeholder" readonly /> -->
 
     <label v-if="label" class="select-label">

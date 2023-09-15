@@ -12,13 +12,20 @@ const remaining = slots?.default?.()?.length || 0;
 </script>
 
 <template>
-  <div class="flex -space-x-2">
+  <div class="avatar-group">
     <slot></slot>
 
-    <div
-      class="flex items-center justify-center w-10 h-10 text-xs font-medium text-white bg-gray-700 border-2 border-white rounded-full hover:bg-gray-600 dark:border-gray-800"
-    >
-      +{{ totalRef - remaining }}
-    </div>
+    <div class="avatar-group-total">+{{ totalRef - remaining }}</div>
   </div>
 </template>
+
+<style lang="scss" scoped>
+.avatar-group {
+  @apply flex -space-x-2;
+}
+
+.avatar-group-total {
+  @apply flex items-center justify-center w-10 h-10 rounded-full;
+  @apply text-xs font-medium text-white bg-gray-700 hover:bg-gray-600;
+}
+</style>

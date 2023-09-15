@@ -2,8 +2,8 @@
 import { ref, reactive, computed, watch, nextTick, onMounted, onUnmounted } from 'vue';
 import { useDebounceFn, onClickOutside } from '@vueuse/core';
 
-import { useFetch } from '~/composables';
 import getScrollableParent from '~/utilities/getScrollableParent';
+import request from '~/utilities/request';
 
 import TextField from './TextField.vue';
 import Fade from './Fade.vue';
@@ -49,14 +49,10 @@ const modelValue = computed({
   },
 });
 
-const suggestionsApi = useFetch(
-  computed(() => '/suggestions?' + new URLSearchParams({ value: modelValue.value }).toString()),
-).json();
-
 const debouncedFn = useDebounceFn(async (val) => {
   if (!val.length) return;
 
-  await suggestionsApi.get().execute();
+  const response = await request<any>('/suggestions', { query: { value: val } });
 
   nextTick(() => {
     flux.scrollableParent = getScrollableParent(autocompleteInput.value.$el);
@@ -101,7 +97,7 @@ const debouncedFn = useDebounceFn(async (val) => {
     flux.itemHoverIndex = -1;
   });
 
-  flux.options = suggestionsApi.data.value || [];
+  flux.options = response._data;
 }, 333);
 
 const flux = reactive({
@@ -241,7 +237,7 @@ onUnmounted(() => {
         <div
           v-show="flux.show"
           ref="autocompletePane"
-          class="select-section shadow-lg rounded bg-white"
+          class="select-section shadow-lg rounded bg-white dark:bg-slate-800"
           :class="{
             'select-section-up': flux.direction === 'up',
           }"
@@ -275,180 +271,28 @@ onUnmounted(() => {
 
 <style lang="scss" scoped>
 .select {
+  @apply relative;
+
   $border: 1px;
   $height: 40px;
-  position: relative;
-
-  &-input {
-    cursor: pointer;
-    width: 100%;
-    min-height: 30px;
-    padding: 0.25rem 0.75rem;
-    border-radius: 2px;
-    background: #e4ebf0;
-    box-shadow:
-      inset 3px 3px 6px #c2c8cc,
-      inset -3px -3px 6px #ffffff;
-    border: 0.0625rem solid #d1d9e6;
-    position: relative;
-    display: flex;
-    align-items: center;
-    line-height: 14px;
-
-    &:hover .select-input-icon-clear {
-      visibility: visible;
-    }
-
-    &-placeholder {
-      color: #6c757d;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-    }
-
-    &-focus {
-      border: 0.0625rem solid var(--primary);
-    }
-
-    &-error {
-      border-color: var(--danger);
-    }
-
-    &-error-focus {
-      border-color: var(--danger);
-      // box-shadow: 0 0 0 0.2rem #ccc;
-    }
-
-    &-disabled {
-      cursor: not-allowed;
-      border-radius: 2px;
-      color: #c4c4c4;
-      background: #c4c4c4;
-      box-shadow:
-        inset 3px 3px 6px #a7a7a7,
-        inset -3px -3px 6px #e1e1e1;
-    }
-
-    &-icon {
-      position: absolute;
-      right: 0.75rem;
-      top: 50%;
-      transform: translate(0, -50%);
-      font-size: 1rem;
-    }
-
-    &-icon-clear {
-      background: #e4ebf0;
-      z-index: 100;
-      visibility: hidden;
-      color: #6c757d;
-
-      &:hover {
-        color: #6c757d;
-      }
-    }
-  }
 
   &-section {
-    position: fixed;
-    // background: #e4ebf0;
-    width: 100%;
-    z-index: 10;
-    // font-size: 14px;
-    // border: 0.0625rem solid #d1d9e6;
-    // border-radius: 0.55rem;
-    // box-shadow: 6px 6px 12px #b8b9be, -6px -6px 12px #fff;
+    @apply fixed w-full z-10;
+
     transform: translateY(0) translateY(8px) translateY(0);
 
     &-up {
-      // box-shadow: 0 -2px 8px #ccc;
       transform: translateY(-$border) translateY(-$height) translateY(-100%);
     }
   }
 
-  &-filter {
-    width: 100%;
-    padding: 0.6rem;
-
-    &-input {
-      width: 100%;
-      padding: 0.1rem 0.6rem;
-      font-size: 14px;
-      color: #222;
-      height: 30px;
-      border-radius: 2px;
-      background: #e4ebf0;
-      box-shadow:
-        inset 3px 3px 6px #c2c8cc,
-        inset -3px -3px 6px #ffffff;
-      border: 0.0625rem solid #d1d9e6;
-      padding: 0 0.75rem;
-      outline: none;
-
-      &:focus {
-        border: 0.0625rem solid #007bff;
-      }
-    }
-  }
-
   &-menu {
-    // background: #e4ebf0;
-    width: 100%;
-    max-height: 10rem;
-    overflow: auto;
-    color: rgba(0, 0, 0, 0.85);
-    margin: 0.55rem 0;
-    text-align: left;
-    cursor: pointer;
-
-    &:empty {
-      display: none;
-    }
+    @apply cursor-pointer max-h-40 overflow-auto p-2 empty:hidden;
 
     &-item {
-      font-weight: 400;
-      font-size: 14px;
-      line-height: 22px;
-      min-height: 32px;
-      padding: 5px 12px;
-
-      // &:hover {
-      //   background: #e4ebf0 - #222;
-      // }
-
-      &-hover {
-        background: #e4ebf0;
-      }
-
-      &-active {
-        color: #fff;
-        background-color: var(--primary);
-        // background-color: transparent;
-        // box-shadow: inset 2px 2px 5px #b8b9be, inset -3px -3px 7px #fff;
-
-        &:hover {
-          color: #fff;
-          background-color: var(--primary);
-          // box-shadow: inset 2px 2px 5px #b8b9be, inset -3px -3px 7px #fff;
-        }
-      }
+      @apply px-3 py-1 cursor-pointer rounded-md;
+      @apply hover:text-primary-500 dark:hover:text-primary-100 hover:bg-primary-100 dark:hover:bg-primary-600;
     }
-  }
-
-  &-content {
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 22px;
-    min-height: 32px;
-    padding: 5px 12px;
-  }
-
-  &-error {
-    line-height: 16px;
-    color: #f46155;
-    width: 100%;
-    margin-top: 0.25rem;
-    font-size: 80%;
   }
 }
 </style>
