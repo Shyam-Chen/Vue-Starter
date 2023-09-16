@@ -102,7 +102,7 @@ onMounted(async () => {
 
 <template>
   <div class="h-full">
-    <header class="topbar px-6 py-4 flex items-center gap-4 backdrop-blur shadow-lg">
+    <header class="topbar px-6 py-4 flex items-center gap-4 shadow-lg">
       <div
         class="i-ic-round-menu w-8 h-8 dark:text-white cursor-pointer transition hover:scale-125 xl:hidden"
         @click="flux.navDrawer = true"
@@ -264,7 +264,7 @@ onMounted(async () => {
     <Drawer
       v-model="flux.navDrawer"
       :placement="textDirection === 'rtl' ? 'right' : 'left'"
-      class="px-2 pt-4 pb-20 bg-white dark:bg-slate-900 dark:border-slate-700"
+      class="px-2 pt-4 pb-20"
     >
       <div class="w-full block md:hidden mb-4">
         <TextField
