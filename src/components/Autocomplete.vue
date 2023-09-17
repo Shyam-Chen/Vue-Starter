@@ -87,12 +87,6 @@ const debouncedFn = useDebounceFn(async (val) => {
       flux.direction = 'down';
     }
 
-    // const active = autocompleteList.querySelector('.select-menu-item-active')
-    // const offsetTop = active?.offsetTop
-    // if (offsetTop) { selectMenu.value.scrollTop = offsetTop - active.offsetHeight * 2 }
-
-    // console.log(autocompleteInput.value.$el);
-
     flux.show = true;
     flux.itemHoverIndex = -1;
   });
@@ -109,31 +103,33 @@ const flux = reactive({
       debouncedFn(modelValue.value);
     } else if (modelValue.value && flux.options?.length) {
       flux.show = true;
+
+      nextTick(() => {
+        const active = autocompleteList.value.querySelector('.autocomplete-item-active');
+        const offsetTop = active?.offsetTop;
+        if (offsetTop) autocompleteList.value.scrollTop = offsetTop - active.offsetHeight * 2;
+      });
     }
   },
 
   itemHoverIndex: -1,
   onDown() {
     if (!flux.show && !flux.options?.length) return;
-    if (flux.itemHoverIndex === flux.options?.length) return;
-
+    if (flux.itemHoverIndex === Number(flux.options?.length) - 1) return;
     flux.itemHoverIndex += 1;
-    const hover = autocompleteList.value.querySelector('.select-menu-item-hover');
+
+    const hover = autocompleteList.value.querySelector('.autocomplete-item-hover');
     const offsetTop = hover?.offsetTop;
-    if (offsetTop) {
-      autocompleteList.value.scrollTop = offsetTop - hover.offsetHeight;
-    }
+    if (offsetTop) autocompleteList.value.scrollTop = offsetTop - hover.offsetHeight;
   },
   onUp() {
     if (!flux.show && !flux.options?.length) return;
-    if (flux.itemHoverIndex === -1) return;
-
+    if (flux.itemHoverIndex <= 0) return;
     flux.itemHoverIndex -= 1;
-    const hover = autocompleteList.value.querySelector('.select-menu-item-hover');
+
+    const hover = autocompleteList.value.querySelector('.autocomplete-item-hover');
     const offsetTop = hover?.offsetTop;
-    if (offsetTop) {
-      autocompleteList.value.scrollTop = offsetTop - hover.offsetHeight * 3;
-    }
+    if (offsetTop) autocompleteList.value.scrollTop = offsetTop - hover.offsetHeight * 3;
   },
   onEnter() {
     flux.onSelect(flux.options?.[flux.itemHoverIndex]?.value, flux.options?.[flux.itemHoverIndex]);
@@ -249,8 +245,8 @@ onUnmounted(() => {
               :key="item.value"
               class="select-menu-item"
               :class="{
-                // 'bg-blue-600 text-white': value === item.value,
-                'select-menu-item-hover': index === flux.itemHoverIndex,
+                'autocomplete-item-hover': index === flux.itemHoverIndex,
+                'autocomplete-item-active': value === item.value,
               }"
               @mouseenter="flux.itemHoverIndex = index"
               @mouseleave="flux.itemHoverIndex = -1"
@@ -291,8 +287,12 @@ onUnmounted(() => {
 
     &-item {
       @apply px-3 py-1 cursor-pointer rounded-md;
-      @apply hover:text-primary-500 dark:hover:text-primary-100 hover:bg-primary-100 dark:hover:bg-primary-600;
     }
   }
+}
+
+.autocomplete-item-hover,
+.autocomplete-item-active {
+  @apply text-primary-500 bg-primary-100 dark:text-primary-100 dark:bg-primary-600;
 }
 </style>

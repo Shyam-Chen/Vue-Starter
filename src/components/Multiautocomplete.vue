@@ -6,6 +6,7 @@ import getScrollableParent from '~/utilities/getScrollableParent';
 import request from '~/utilities/request';
 
 import ChipField from './ChipField.vue';
+import Fade from './Fade.vue';
 
 const props = defineProps<{
   value: string[];
@@ -74,7 +75,7 @@ onClickOutside(target, () => {
     <div ref="target" class="relative">
       <ChipField ref="autocompleteInput" v-model:value="modelValue" @input="flux.inputChipField" />
 
-      <Transition name="menu">
+      <Fade>
         <div
           v-show="flux.show"
           ref="autocompletePane"
@@ -95,25 +96,12 @@ onClickOutside(target, () => {
             </div>
           </div>
         </div>
-      </Transition>
+      </Fade>
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.menu-enter-active {
-  transition: opacity 0.3s ease-out;
-}
-
-.menu-leave-active {
-  transition: opacity 0.3s ease-in;
-}
-
-.menu-enter-from,
-.menu-leave-to {
-  opacity: 0;
-}
-
 .pane {
   @apply fixed z-10 shadow-lg rounded;
   @apply bg-white dark:bg-slate-800;
