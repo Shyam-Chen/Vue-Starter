@@ -82,4 +82,8 @@ const flux = reactive({
       <FileInput @change="flux.importData" />
     </div>
   </div>
+
+  <div class="flex flex-col border p-4 mb-4">
+    <div class="mb-2">Drag Zone</div>
+  </div>
 </template>

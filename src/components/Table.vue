@@ -32,6 +32,7 @@ const emit = defineEmits<{
 
 defineSlots<{
   thead(props: {}): VNode;
+  tbody(props: {}): VNode;
   [colKey: string]: (props: { row: T }) => VNode;
   collapsible(props: { row: T }): VNode;
   spanable(props: {}): VNode;
@@ -197,56 +198,58 @@ watch(
           </tr>
         </thead>
 
-        <tbody>
-          <template v-for="row in flux.rows" :key="row._id">
-            <tr
-              class="sticky-tr hover:bg-slate-100 dark:hover:bg-slate-600 border-b last:border-b-0 dark:border-slate-600"
-              :class="{ 'bg-primary-800/25 important:hover:bg-primary-600/50': row.checked }"
-              @click="flux.clickRow(row)"
-            >
-              <td v-if="selectable" class="px-6 py-3 align-middle whitespace-nowrap">
-                <Checkbox v-model:value="row.checked" />
-              </td>
-
-              <td
-                v-for="col in columns"
-                :key="col.key"
-                class="px-6 py-3 align-middle whitespace-nowrap"
-                :class="{
-                  'sticky-col sticky left-0 z-5 bg-white dark:bg-slate-800 important:p-0':
-                    col.sticky === 'left',
-                  'sticky-col sticky right-0 z-5 bg-white dark:bg-slate-800 important:p-0':
-                    col.sticky === 'right',
-                }"
+        <slot name="tbody">
+          <tbody>
+            <template v-for="row in flux.rows" :key="row._id">
+              <tr
+                class="sticky-tr hover:bg-slate-100 dark:hover:bg-slate-600 border-b last:border-b-0 dark:border-slate-600"
+                :class="{ 'bg-primary-800/25 important:hover:bg-primary-600/50': row.checked }"
+                @click="flux.clickRow(row)"
               >
-                <div v-if="col.spanable" class="flex flex-col gap-2">
-                  <div v-for="(sub, subIdx) in row.details" :key="subIdx">
-                    <slot :name="col.key" :row="row">
-                      {{ sub[col.key] }}
-                    </slot>
-                  </div>
-                </div>
+                <td v-if="selectable" class="px-6 py-3 align-middle whitespace-nowrap">
+                  <Checkbox v-model:value="row.checked" />
+                </td>
 
-                <div
-                  v-else
+                <td
+                  v-for="col in columns"
+                  :key="col.key"
+                  class="px-6 py-3 align-middle whitespace-nowrap"
                   :class="{
-                    'dark:border-slate-600 px-6 py-3': col.sticky,
-                    'border-r-2': col.sticky === 'left',
-                    'border-l-2': col.sticky === 'right',
+                    'sticky-col sticky left-0 z-5 bg-white dark:bg-slate-800 important:p-0':
+                      col.sticky === 'left',
+                    'sticky-col sticky right-0 z-5 bg-white dark:bg-slate-800 important:p-0':
+                      col.sticky === 'right',
                   }"
                 >
-                  <slot :name="col.key" :row="row">
-                    {{ row[col.key] }}
-                  </slot>
-                </div>
-              </td>
-            </tr>
+                  <div v-if="col.spanable" class="flex flex-col gap-2">
+                    <div v-for="(sub, subIdx) in row.details" :key="subIdx">
+                      <slot :name="col.key" :row="row">
+                        {{ sub[col.key] }}
+                      </slot>
+                    </div>
+                  </div>
 
-            <slot name="collapsible" :row="row"></slot>
-          </template>
+                  <div
+                    v-else
+                    :class="{
+                      'dark:border-slate-600 px-6 py-3': col.sticky,
+                      'border-r-2': col.sticky === 'left',
+                      'border-l-2': col.sticky === 'right',
+                    }"
+                  >
+                    <slot :name="col.key" :row="row">
+                      {{ row[col.key] }}
+                    </slot>
+                  </div>
+                </td>
+              </tr>
 
-          <slot name="spanable"></slot>
-        </tbody>
+              <slot name="collapsible" :row="row"></slot>
+            </template>
+
+            <slot name="spanable"></slot>
+          </tbody>
+        </slot>
       </table>
     </div>
 

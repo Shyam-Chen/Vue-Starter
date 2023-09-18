@@ -6,6 +6,8 @@ import Table from '~/components/Table.vue';
 import Button from '~/components/Button.vue';
 import Collapse from '~/components/Collapse.vue';
 
+import DraggableTable from './DraggableTable.vue';
+
 const data = [
   {
     name: 'Thomas Hardy',
@@ -375,4 +377,6 @@ const flux = reactive({
       <Table stickyHeader loading :columns="flux.columns1" :rows="flux.dataTable1" :count="77" />
     </div>
   </div>
+
+  <DraggableTable />
 </template>
