@@ -1,4 +1,4 @@
-FROM node:lts-bullseye-slim as builder
+FROM node:lts-bullseye-slim AS builder
 
 ENV HOME /vue-starter
 
@@ -15,5 +15,5 @@ RUN pnpm build
 
 FROM caddy:2-alpine
 
-COPY --from=builder /.circleci/Caddyfile /etc/Caddyfile
-COPY --from=builder /dist /usr/share/caddy/html
+COPY --from=builder /vue-starter/.circleci/Caddyfile /etc/Caddyfile
+COPY --from=builder /vue-starter/dist /usr/share/caddy/html
