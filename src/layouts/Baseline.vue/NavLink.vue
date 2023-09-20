@@ -43,11 +43,15 @@ const flux = reactive({
     });
   },
 });
+
+const hasPermission = true; // props?.permissions?.includes(getters.currentRole) !== false;
 </script>
 
 <template>
+  <span v-if="!hasPermission" class="hidden"></span>
+
   <div
-    v-if="sub.length"
+    v-else-if="sub.length"
     class="link"
     :class="{
       'link-parent': flux.parent(sub),

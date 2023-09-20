@@ -6,6 +6,7 @@ import Table from '~/components/Table.vue';
 import Button from '~/components/Button.vue';
 import Collapse from '~/components/Collapse.vue';
 
+import ControllableTable from './ControllableTable.vue';
 import DraggableTable from './DraggableTable.vue';
 
 const data = [
@@ -248,6 +249,8 @@ const flux = reactive({
 
     <div class="mt-2">{{ flux.tableChange }}</div>
   </div>
+
+  <ControllableTable />
 
   <div class="flex flex-col border p-4 mb-4">
     <div class="mb-2">Selectable</div>

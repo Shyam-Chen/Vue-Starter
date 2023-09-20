@@ -1,6 +1,6 @@
 <script lang="ts" setup generic="T extends object">
 import type { VNode } from 'vue';
-import { reactive, watch, toRef } from 'vue';
+import { computed, reactive, watch, toRef } from 'vue';
 import omit from 'lodash/omit';
 
 import ProgressBar from './ProgressBar.vue';
@@ -22,12 +22,22 @@ const props = defineProps<{
   selectable?: boolean;
   selected?: T[];
   loading?: boolean;
+  control?: {
+    rows?: number;
+    page?: number;
+    field?: string;
+    direction?: string;
+  };
 }>();
 
 const emit = defineEmits<{
   (evt: 'update:selected', val: T[]): void;
   (evt: 'change', val: { rows?: number; page?: number; field?: string; direction?: string }): void;
   (evt: 'clickRow', val: T): void;
+  (
+    evt: 'update:control',
+    val: { rows?: number; page?: number; field?: string; direction?: string },
+  ): void;
 }>();
 
 defineSlots<{
@@ -39,6 +49,11 @@ defineSlots<{
 }>();
 
 const countRef = toRef(props, 'count', 0);
+
+const controlValue = computed({
+  get: () => props.control ?? { rows: 10, page: 1 },
+  set: (val) => emit('update:control', val),
+});
 
 const flux = reactive({
   rows: [] as any[],
@@ -86,12 +101,31 @@ const flux = reactive({
       field: flux.sortField,
       direction: flux.sortDirection,
     });
+
+    controlValue.value = {
+      rows: flux.rowsPerPage,
+      page: flux.currentPage,
+      field: flux.sortField,
+      direction: flux.sortDirection,
+    };
   },
 
   clickRow(row: T) {
     emit('clickRow', row);
   },
 });
+
+watch(
+  () => controlValue.value,
+  (val) => {
+    if (Object.keys(val)?.length) {
+      flux.rowsPerPage = val.rows || 10;
+      flux.currentPage = val.page || 1;
+      flux.sortField = val.field || 'createdAt';
+      flux.sortDirection = val.direction || 'desc';
+    }
+  },
+);
 
 watch(
   () => flux.rowsPerPage,
@@ -171,16 +205,13 @@ watch(
               <div
                 class="inline-flex gap-1 items-center"
                 :class="{
-                  'cursor-pointer':
-                    countRef && typeof col.sortable === 'boolean' ? col.sortable : true,
+                  'cursor-pointer': typeof col.sortable === 'boolean' ? col.sortable : true,
                 }"
                 @click="flux.onSort(col)"
               >
                 <div>{{ col.name }}</div>
 
-                <template
-                  v-if="countRef && typeof col.sortable === 'boolean' ? col.sortable : true"
-                >
+                <template v-if="typeof col.sortable === 'boolean' ? col.sortable : true">
                   <div
                     v-if="flux.sortField === col.key && flux.sortDirection === 'desc'"
                     class="i-fa-sort-desc w-3.5 h-3.5"
