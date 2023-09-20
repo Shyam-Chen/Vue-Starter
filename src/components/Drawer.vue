@@ -38,10 +38,10 @@ onUnmounted(() => {
     v-bind="$attrs"
     class="fixed z-102 py-4 overflow-y-auto bg-white dark:bg-slate-900 transition-all"
     :class="{
-      'w-80 h-screen': placement === 'right' || placement === 'left',
-      'top-0 -left-80': placement === 'left' && !modelValue,
+      'w-64 h-screen': placement === 'right' || placement === 'left',
+      'top-0 -left-64': placement === 'left' && !modelValue,
       'top-0 left-0': placement === 'left' && modelValue,
-      'top-0 -right-80': placement === 'right' && !modelValue,
+      'top-0 -right-64': placement === 'right' && !modelValue,
       'top-0 right-0': placement === 'right' && modelValue,
       'w-full h-80': placement === 'top' || placement === 'bottom',
       'left-0 -top-80': placement === 'top' && !modelValue,

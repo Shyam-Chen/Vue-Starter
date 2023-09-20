@@ -33,6 +33,14 @@ const flux = reactive({
     await importDataApi.post(formData).execute();
   },
 });
+
+function onDrop(evt: Event) {
+  console.log(evt);
+}
+
+function onDragover(evt: Event) {
+  console.log(evt);
+}
 </script>
 
 <template>
@@ -84,6 +92,15 @@ const flux = reactive({
   </div>
 
   <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Drag Zone</div>
+    <div class="mb-2">Drag Zone (TODO)</div>
+
+    <div
+      class="border-4 border-dashed border-primary-600 rounded bg-primary-200 h-64 flex flex-col justify-center items-center"
+      @drop.prevent="onDrop"
+      @dragover.prevent="onDragover"
+    >
+      <div class="i-mdi-tray-arrow-down w-24 h-24 text-primary-500"></div>
+      <div class="text-primary-700 text-2xl">Choose a file or drag it here.</div>
+    </div>
   </div>
 </template>

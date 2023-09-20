@@ -27,6 +27,7 @@ const props = withDefaults(
     notFoundContent?: string;
     isInvalid?: boolean;
     errorMessage?: string;
+    selectedLabels?: boolean;
   }>(),
   {
     label: '',
@@ -36,6 +37,7 @@ const props = withDefaults(
     placeholder: 'Please select',
     notFoundContent: '--',
     errorMessage: '',
+    maxSelectedLabels: 3,
   },
 );
 
@@ -101,6 +103,21 @@ const flux = reactive({
       emit('update:value', null);
       emit('change', null, null);
     }
+  },
+  selectAll: false,
+  onSelectAll() {
+    flux.selectAll = !flux.selectAll;
+
+    flux.options = [..._initOptions.value].map((item) => {
+      return { ...item, checked: flux.selectAll };
+    });
+
+    flux.selected = flux.options.filter((item) => item.checked);
+
+    emit(
+      'update:value',
+      flux.selected.map((item) => item.value),
+    );
   },
 
   scrollableParent: null as HTMLElement | null,
@@ -265,6 +282,7 @@ onUnmounted(() => {
             focus: flux.show,
             danger: isInvalid || errorMessage,
             disabled: disabled,
+            'flex items-center': selectedLabels,
           },
           flux.selected?.length ? 'py-1.5' : 'py-2',
         ]"
@@ -274,7 +292,11 @@ onUnmounted(() => {
           {{ placeholder }}
         </template>
 
-        <div v-if="flux.selected?.length" class="flex flex-wrap gap-1">
+        <template v-if="flux.selected?.length && selectedLabels">
+          {{ flux.selected?.length }} Selected
+        </template>
+
+        <div v-else-if="flux.selected?.length" class="flex flex-wrap gap-1">
           <Chip
             v-for="item in flux.selected"
             :key="item.value"
@@ -309,6 +331,17 @@ onUnmounted(() => {
         >
           <div v-if="filterable" class="select-filter">
             <TextField ref="filter" v-model:value="flux.filterValue" />
+          </div>
+
+          <div
+            class="cursor-pointer bg-slate-200 dark:bg-slate-600 rounded"
+            :class="{ 'mt-2': filterable }"
+            @click.stop="flux.onSelectAll"
+          >
+            <div class="flex items-center px-5">
+              <Checkbox :checked="flux.selectAll" />
+              <span class="ml-2">All</span>
+            </div>
           </div>
 
           <div ref="selectMenu" class="select-menu">

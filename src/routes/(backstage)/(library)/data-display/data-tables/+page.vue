@@ -382,4 +382,8 @@ const flux = reactive({
   </div>
 
   <DraggableTable />
+
+  <div class="flex flex-col border p-4 mb-4">
+    <div class="mb-2">Export data to Excel (TODO)</div>
+  </div>
 </template>
