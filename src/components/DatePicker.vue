@@ -299,6 +299,7 @@ onUnmounted(() => {
     <TextField
       :id="uid"
       ref="input"
+      v-bind="$attrs"
       :value="modelDate"
       :errorMessage="errorMessage"
       :disabled="disabled"

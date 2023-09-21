@@ -17,10 +17,10 @@ const flux = reactive({
 </script>
 
 <template>
-  <div class="w-full rounded shadow bg-white dark:bg-slate-800">
+  <div class="w-full rounded">
     <div
-      class="flex px-4 py-3 cursor-pointer"
-      :class="{ 'bg-slate-200 dark:bg-slate-700': flux.status }"
+      class="flex px-4 py-3 cursor-pointer shadow bg-white dark:bg-slate-800"
+      :class="{ 'accordion-active': flux.status }"
       @click="flux.toggle"
     >
       <div class="flex-1">
@@ -32,7 +32,7 @@ const flux = reactive({
     </div>
 
     <Collapse>
-      <div v-show="flux.status">
+      <div v-show="flux.status" class="shadow bg-white dark:bg-slate-800">
         <div class="p-4">
           <slot name="content"></slot>
         </div>
@@ -40,3 +40,9 @@ const flux = reactive({
     </Collapse>
   </div>
 </template>
+
+<style lang="scss" scoped>
+.accordion-active {
+  @apply bg-slate-200 dark:bg-slate-700;
+}
+</style>

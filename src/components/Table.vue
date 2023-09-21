@@ -284,7 +284,10 @@ watch(
       </table>
     </div>
 
-    <div v-if="countRef" class="flex items-center justify-end p-4 space-x-6 text-slate-500">
+    <div
+      v-if="countRef"
+      class="flex flex-col md:flex-row items-center justify-end p-4 gap-4 text-sm"
+    >
       <div class="flex items-center">
         Rows per page:
         <div class="w-20 ml-2">
@@ -306,15 +309,17 @@ watch(
         {{ countRef }}
       </div>
 
-      <Button variant="text" color="secondary" @click="flux.previousPage">
-        <div class="i-fa-angle-left w-4 h-4"></div>
-        Previous
-      </Button>
+      <div class="flex gap-4">
+        <Button variant="text" color="secondary" @click="flux.previousPage">
+          <div class="i-fa-angle-left w-4 h-4"></div>
+          Previous
+        </Button>
 
-      <Button variant="text" color="secondary" @click="flux.nextPage">
-        Next
-        <div class="i-fa-angle-right w-4 h-4"></div>
-      </Button>
+        <Button variant="text" color="secondary" @click="flux.nextPage">
+          Next
+          <div class="i-fa-angle-right w-4 h-4"></div>
+        </Button>
+      </div>
     </div>
   </div>
 </template>
