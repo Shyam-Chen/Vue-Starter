@@ -1,7 +1,10 @@
 <script lang="ts" setup>
-import { ref, computed } from 'vue';
+import { ref, computed, nextTick, watch, onMounted, onUnmounted } from 'vue';
+import { onClickOutside } from '@vueuse/core';
 import { format, getISOWeek, getYear, getMonth, sub, add } from 'date-fns';
 import chunk from 'lodash/chunk';
+
+import getScrollableParent from '~/utilities/getScrollableParent';
 
 import TextField from './TextField.vue';
 import Fade from './Fade.vue';
@@ -19,8 +22,13 @@ const weekValue = computed({
   set: (val) => emit('update:value', val),
 });
 
+const target = ref();
+const input = ref();
+const picker = ref();
+
 const currentMoment = ref(new Date());
 const show = ref(false);
+const scrollableParent = ref<HTMLElement | null>(null);
 
 const createWeeks = (y?: number, m?: number) => {
   const currentPeriod = () => {
@@ -70,6 +78,23 @@ type Week = Array<{ date?: Date; outOfRange?: boolean; week?: number }>;
 
 function openPicker() {
   show.value = true;
+
+  nextTick(() => {
+    scrollableParent.value = getScrollableParent(picker.value);
+
+    const rect = input.value.$el.getBoundingClientRect();
+
+    picker.value.style.left = `${rect.left}px`;
+    picker.value.style.top = `${rect.top}px`;
+
+    const center = window.innerHeight / 2;
+
+    if (rect.top > center) {
+      // flux.direction = 'up';
+    } else {
+      // flux.direction = 'down';
+    }
+  });
 }
 
 function decrement() {
@@ -102,11 +127,48 @@ function formatWeekValue(val: typeof weekValue.value) {
 
   return '';
 }
+
+const handleScroll = () => {
+  if (show.value) {
+    const rect = input.value.$el.getBoundingClientRect();
+    picker.value.style.left = `${rect.left}px`;
+    picker.value.style.top = `${rect.top}px`;
+  }
+};
+
+onClickOutside(target, () => {
+  show.value = false;
+});
+
+watch(
+  () => scrollableParent.value,
+  (el) => {
+    el?.addEventListener('scroll', handleScroll);
+  },
+);
+
+onMounted(() => {
+  if (scrollableParent.value && scrollableParent.value instanceof HTMLElement) {
+    scrollableParent.value?.addEventListener('scroll', handleScroll);
+  } else {
+    window.addEventListener('scroll', handleScroll);
+  }
+});
+
+onUnmounted(() => {
+  if (scrollableParent.value && scrollableParent.value instanceof HTMLElement) {
+    scrollableParent.value?.removeEventListener('scroll', handleScroll);
+  } else {
+    window.removeEventListener('scroll', handleScroll);
+  }
+});
 </script>
 
 <template>
-  <div class="w-full">
+  <div ref="target" class="w-full">
     <TextField
+      ref="input"
+      v-bind="$attrs"
       :value="formatWeekValue(weekValue)"
       append="i-mdi-calendar-week"
       readonly
@@ -115,7 +177,11 @@ function formatWeekValue(val: typeof weekValue.value) {
     />
 
     <Fade>
-      <div v-if="show" class="fixed z-10 p-2 shadow-lg rounded bg-white dark:bg-slate-800">
+      <div
+        v-if="show"
+        ref="picker"
+        class="fixed z-10 p-2 shadow-lg rounded bg-white dark:bg-slate-800"
+      >
         <div class="flex justify-between items-center mb-1">
           <div
             class="cursor-pointer hover:bg-slate-200 dark:hover:bg-slate-600 p-2 rounded-full"

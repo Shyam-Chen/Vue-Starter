@@ -137,7 +137,8 @@ onUnmounted(() => {
     <TextField
       :id="uid"
       ref="input"
-      :value="String(modelDate)"
+      v-bind="$attrs"
+      :value="modelDate ? String(modelDate) : ''"
       :errorMessage="errorMessage"
       :disabled="disabled"
       append="i-fa-calendar-o"

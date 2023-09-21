@@ -37,7 +37,6 @@ const props = withDefaults(
     placeholder: 'Please select',
     notFoundContent: '--',
     errorMessage: '',
-    maxSelectedLabels: 3,
   },
 );
 
@@ -334,6 +333,7 @@ onUnmounted(() => {
           </div>
 
           <div
+            v-if="flux.options?.length"
             class="cursor-pointer bg-slate-200 dark:bg-slate-600 rounded"
             :class="{ 'mt-2': filterable }"
             @click.stop="flux.onSelectAll"
@@ -364,7 +364,7 @@ onUnmounted(() => {
             </div>
           </div>
 
-          <div v-if="reoptions.length === 0" class="select-content">
+          <div v-if="reoptions.length === 0" class="p-4">
             {{ notFoundContent }}
           </div>
         </div>
