@@ -32,4 +32,41 @@ const flux = reactive({
 
     <div class="mt-2">{{ flux.weekPicker }}</div>
   </div>
+
+  <div class="flex flex-col border p-4 mb-4">
+    <div class="mb-2">Label</div>
+
+    <div class="flex justify-center">
+      <WeekPicker v-model:value="flux.weekPicker" label="Label" />
+    </div>
+  </div>
+
+  <div class="flex flex-col border p-4 mb-4">
+    <div class="mb-2">Disabled</div>
+
+    <div class="flex justify-center">
+      <WeekPicker v-model:value="flux.weekPicker" label="Label" disabled />
+    </div>
+  </div>
+
+  <div class="flex flex-col border p-4 mb-4">
+    <div class="mb-2">Errors</div>
+
+    <div class="flex justify-center">
+      <WeekPicker v-model:value="flux.weekPicker" :errorMessage="'This is a required field'" />
+    </div>
+  </div>
+
+  <div class="flex flex-col border p-4 mb-4">
+    <div class="mb-2">Errors with Label</div>
+
+    <div class="flex justify-center">
+      <WeekPicker
+        v-model:value="flux.weekPicker"
+        label="Label"
+        :errorMessage="'This is a required field'"
+        required
+      />
+    </div>
+  </div>
 </template>

@@ -29,6 +29,7 @@ const picker = ref();
 const currentMoment = ref(new Date());
 const show = ref(false);
 const scrollableParent = ref<HTMLElement | null>(null);
+const direction = ref<'down' | 'up'>('down');
 
 const createWeeks = (y?: number, m?: number) => {
   const currentPeriod = () => {
@@ -76,24 +77,28 @@ const weekdays = ['Week', 'S', 'M', 'T', 'W', 'T', 'F', 'S'];
 
 type Week = Array<{ date?: Date; outOfRange?: boolean; week?: number }>;
 
+function resizePanel() {
+  const rect = input.value.$el.querySelector('.text-field-input').getBoundingClientRect();
+
+  picker.value.style.left = `${rect.left}px`;
+
+  const center = window.innerHeight / 2;
+
+  if (rect.top > center) {
+    picker.value.style.top = `${rect.top}px`;
+    direction.value = 'up';
+  } else {
+    picker.value.style.top = `${rect.bottom}px`;
+    direction.value = 'down';
+  }
+}
+
 function openPicker() {
   show.value = true;
 
   nextTick(() => {
     scrollableParent.value = getScrollableParent(picker.value);
-
-    const rect = input.value.$el.getBoundingClientRect();
-
-    picker.value.style.left = `${rect.left}px`;
-    picker.value.style.top = `${rect.top}px`;
-
-    const center = window.innerHeight / 2;
-
-    if (rect.top > center) {
-      // flux.direction = 'up';
-    } else {
-      // flux.direction = 'down';
-    }
+    resizePanel();
   });
 }
 
@@ -130,9 +135,7 @@ function formatWeekValue(val: typeof weekValue.value) {
 
 const handleScroll = () => {
   if (show.value) {
-    const rect = input.value.$el.getBoundingClientRect();
-    picker.value.style.left = `${rect.left}px`;
-    picker.value.style.top = `${rect.top}px`;
+    resizePanel();
   }
 };
 
@@ -165,7 +168,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div ref="target" class="w-full">
+  <div ref="target" class="week-picker w-full">
     <TextField
       ref="input"
       v-bind="$attrs"
@@ -180,7 +183,8 @@ onUnmounted(() => {
       <div
         v-if="show"
         ref="picker"
-        class="fixed z-10 p-2 shadow-lg rounded bg-white dark:bg-slate-800"
+        class="week-picker-panel fixed z-10 p-2 shadow-lg rounded bg-white dark:bg-slate-800"
+        :class="{ 'week-picker-panel-up': direction === 'up' }"
       >
         <div class="flex justify-between items-center mb-1">
           <div
@@ -236,3 +240,13 @@ onUnmounted(() => {
     </Fade>
   </div>
 </template>
+
+<style lang="scss" scoped>
+.week-picker-panel {
+  transform: translateY(0.5rem);
+}
+
+.week-picker-panel-up {
+  transform: translateY(-0.5rem) translateY(-100%);
+}
+</style>
