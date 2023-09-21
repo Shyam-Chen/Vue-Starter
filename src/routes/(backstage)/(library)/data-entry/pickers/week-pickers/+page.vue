@@ -1,11 +1,14 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
+import { format } from 'date-fns';
 
 import Breadcrumbs from '~/components/Breadcrumbs.vue';
 import WeekPicker from '~/components/WeekPicker.vue';
 
 const flux = reactive({
-  weekPicker: [],
+  weekPicker: '',
+  startDate: undefined as Date | undefined,
+  endDate: undefined as Date | undefined,
 });
 </script>
 
@@ -67,6 +70,29 @@ const flux = reactive({
         :errorMessage="'This is a required field'"
         required
       />
+    </div>
+  </div>
+
+  <div class="flex flex-col border p-4 mb-4">
+    <div class="mb-2">onChange</div>
+
+    <div class="flex justify-center">
+      <WeekPicker
+        v-model:value="flux.weekPicker"
+        @change="
+          (week, startDate, endDate) => {
+            flux.startDate = startDate;
+            flux.endDate = endDate;
+          }
+        "
+      />
+    </div>
+
+    <div v-if="flux.startDate && flux.endDate" class="mt-2">
+      <div>Week: {{ flux.weekPicker }}</div>
+      <div>
+        Range: {{ format(flux.startDate, 'yyyy/MM/dd') }} ~ {{ format(flux.endDate, 'yyyy/MM/dd') }}
+      </div>
     </div>
   </div>
 </template>

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref, computed, nextTick, watch, onMounted, onUnmounted } from 'vue';
+import { nextTick, ref, computed, watch, onMounted, onUnmounted } from 'vue';
 import { onClickOutside } from '@vueuse/core';
 import { format, getISOWeek, getYear, getMonth, sub, add } from 'date-fns';
 import chunk from 'lodash/chunk';
@@ -10,15 +10,16 @@ import TextField from './TextField.vue';
 import Fade from './Fade.vue';
 
 const props = defineProps<{
-  value?: [year?: number, week?: number] | never[];
+  value?: string;
 }>();
 
 const emit = defineEmits<{
-  (evt: 'update:value', val: [year?: number, week?: number] | never[]): void;
+  (evt: 'update:value', val: string): void;
+  (evt: 'change', val: string, startDate?: Date, endDate?: Date): void;
 }>();
 
 const weekValue = computed({
-  get: () => props.value || [],
+  get: () => props.value || '',
   set: (val) => emit('update:value', val),
 });
 
@@ -120,17 +121,10 @@ function selectWeek(week: Week) {
   let year = end;
   if (week[0].week === 52) year = start;
 
-  weekValue.value = [year, isoWeek];
+  weekValue.value = `${year}-W${isoWeek}`;
+  emit('change', weekValue.value, week[1].date, week[7].date);
+
   show.value = false;
-}
-
-function formatWeekValue(val: typeof weekValue.value) {
-  if (val?.length) {
-    const [year, week] = val;
-    return `${year}-W${week}`;
-  }
-
-  return '';
 }
 
 const handleScroll = () => {
@@ -172,7 +166,7 @@ onUnmounted(() => {
     <TextField
       ref="input"
       v-bind="$attrs"
-      :value="formatWeekValue(weekValue)"
+      :value="weekValue"
       append="i-mdi-calendar-week"
       readonly
       @focus="openPicker"
