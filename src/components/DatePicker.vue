@@ -126,6 +126,21 @@ const flux = reactive({
   showDatePicker: false,
   scrollableParent: null as HTMLElement | null,
   direction: '' as 'down' | 'up' | '',
+  resizePanel() {
+    const rect = input.value.$el.querySelector('.text-field-input').getBoundingClientRect();
+
+    picker.value.style.left = `${rect.left}px`;
+
+    const center = window.innerHeight / 2;
+
+    if (rect.top > center) {
+      picker.value.style.top = `${rect.top}px`;
+      flux.direction = 'up';
+    } else {
+      picker.value.style.top = `${rect.bottom}px`;
+      flux.direction = 'down';
+    }
+  },
   openPicker() {
     flux.showDatePicker = true;
 
@@ -141,19 +156,7 @@ const flux = reactive({
 
     nextTick(() => {
       flux.scrollableParent = getScrollableParent(picker.value);
-
-      const rect = input.value.$el.getBoundingClientRect();
-
-      picker.value.style.left = `${rect.left}px`;
-      picker.value.style.top = `${rect.top}px`;
-
-      const center = window.innerHeight / 2;
-
-      if (rect.top > center) {
-        flux.direction = 'up';
-      } else {
-        flux.direction = 'down';
-      }
+      flux.resizePanel();
     });
   },
 
@@ -247,9 +250,7 @@ const flux = reactive({
 
 const handleScroll = () => {
   if (flux.showDatePicker) {
-    const rect = input.value.$el.getBoundingClientRect();
-    picker.value.style.left = `${rect.left}px`;
-    picker.value.style.top = `${rect.top}px`;
+    flux.resizePanel();
   }
 };
 
@@ -410,10 +411,10 @@ onUnmounted(() => {
 
 <style lang="scss" scoped>
 .DatePicker-DatePane-PlacementBottom {
-  transform: translateY(38px) translateY(0.5rem);
+  transform: translateY(0.5rem);
 }
 
 .DatePicker-DatePane-PlacementTop {
-  transform: translateY(-100%) translateY(-0.5rem);
+  transform: translateY(-0.5rem) translateY(-100%);
 }
 </style>
