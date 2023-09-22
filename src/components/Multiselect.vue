@@ -104,6 +104,7 @@ const flux = reactive({
     }
   },
   selectAll: false,
+  selectAllIndeterminate: false,
   onSelectAll() {
     flux.selectAll = !flux.selectAll;
 
@@ -152,10 +153,26 @@ watchEffect(() => {
 
     flux.selected = opts.filter((item) => item.checked);
     flux.options = opts;
+
+    const checked = opts.every((item) => item.checked);
+    const unchecked = opts.every((item) => !item.checked);
+
+    flux.selectAllIndeterminate = !(checked || unchecked);
+
+    if (checked) flux.selectAll = true;
+    if (unchecked) flux.selectAll = false;
   } else {
     const opts = props.options?.map((item: any) => ({ ...item, checked: false }));
     flux.selected = [];
     flux.options = opts;
+
+    const checked = opts.every((item) => item.checked);
+    const unchecked = opts.every((item) => !item.checked);
+
+    flux.selectAllIndeterminate = !(checked || unchecked);
+
+    if (checked) flux.selectAll = true;
+    if (unchecked) flux.selectAll = false;
   }
 });
 
@@ -339,7 +356,7 @@ onUnmounted(() => {
             @click.stop="flux.onSelectAll"
           >
             <div class="flex items-center px-5">
-              <Checkbox :checked="flux.selectAll" />
+              <Checkbox :checked="flux.selectAll" :indeterminate="flux.selectAllIndeterminate" />
               <span class="ml-2">All</span>
             </div>
           </div>
