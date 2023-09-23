@@ -1,5 +1,9 @@
 <script lang="ts" setup>
-import { ref, reactive, nextTick } from 'vue';
+import { nextTick, ref, reactive, watch, onMounted, onUnmounted } from 'vue';
+
+import getScrollableParent from '~/utilities/getScrollableParent';
+
+import Fade from './Fade.vue';
 
 defineProps<{
   options?: string[];
@@ -15,33 +19,47 @@ const dropdown = ref();
 const flux = reactive({
   status: false,
   timeout: undefined as ReturnType<typeof setTimeout> | undefined,
+  scrollableParent: null as HTMLElement | null,
+  direction: '' as 'down' | 'up' | '',
+  resizePanel() {
+    const rect = target.value.getBoundingClientRect();
+
+    const center = window.innerHeight / 2;
+    const middle = window.innerWidth / 2;
+
+    if (rect.top > center) {
+      dropdown.value.style.top = `${rect.top}px`;
+      flux.direction = 'up';
+    } else {
+      dropdown.value.style.top = `${rect.bottom}px`;
+      flux.direction = 'down';
+    }
+
+    if (rect.right > middle) {
+      const dropdownRect = dropdown.value.getBoundingClientRect();
+      dropdown.value.style.left = `${rect.left - dropdownRect.width + rect.width}px`;
+    } else {
+      dropdown.value.style.left = `${rect.left}px`;
+    }
+  },
   onMouseenter() {
     flux.status = true;
     clearTimeout(flux.timeout);
 
     nextTick(() => {
-      const rect = target.value.getBoundingClientRect();
-
-      const center = window.innerHeight / 2;
-      const middle = window.innerWidth / 2;
-
-      if (rect.top > center) {
-        dropdown.value.style.bottom = 'calc(100% + 0.5rem)';
-      } else {
-        dropdown.value.style.top = 'calc(100% + 0.5rem)';
-      }
-
-      if (rect.right > middle) {
-        dropdown.value.classList.add('right-0');
-      } else {
-        dropdown.value.classList.add('left-0');
-      }
+      flux.scrollableParent = getScrollableParent(dropdown.value);
+      flux.resizePanel();
     });
   },
   onMouseleave() {
     flux.timeout = setTimeout(() => {
       flux.status = false;
     }, 250);
+  },
+  handleScroll() {
+    if (flux.status) {
+      flux.resizePanel();
+    }
   },
 
   select(option: string) {
@@ -50,6 +68,29 @@ const flux = reactive({
 
     emit('select', option);
   },
+});
+
+watch(
+  () => flux.scrollableParent,
+  (el) => {
+    el?.addEventListener('scroll', flux.handleScroll);
+  },
+);
+
+onMounted(() => {
+  if (flux.scrollableParent && flux.scrollableParent instanceof HTMLElement) {
+    flux.scrollableParent?.addEventListener('scroll', flux.handleScroll);
+  } else {
+    window.addEventListener('scroll', flux.handleScroll);
+  }
+});
+
+onUnmounted(() => {
+  if (flux.scrollableParent && flux.scrollableParent instanceof HTMLElement) {
+    flux.scrollableParent?.removeEventListener('scroll', flux.handleScroll);
+  } else {
+    window.removeEventListener('scroll', flux.handleScroll);
+  }
 });
 </script>
 
@@ -63,18 +104,15 @@ const flux = reactive({
       <slot></slot>
     </div>
 
-    <Transition
-      enter-active-class="transition duration-200 ease-out"
-      enter-from-class="translate-y-1 opacity-0"
-      enter-to-class="translate-y-0 opacity-100"
-      leave-active-class="transition duration-150 ease-in"
-      leave-from-class="translate-y-0 opacity-100"
-      leave-to-class="translate-y-1 opacity-0"
-    >
+    <Fade>
       <div
         v-if="flux.status"
         ref="dropdown"
-        class="absolute z-10 min-w-max bg-white dark:bg-slate-800 rounded-lg shadow-lg"
+        class="fixed z-10 min-w-max bg-white dark:bg-slate-800 rounded-lg shadow-lg"
+        :class="{
+          'Dropdown-Panel-PlacementBottom': flux.direction === 'down',
+          'Dropdown-Panel-PlacementTop': flux.direction === 'up',
+        }"
         tabindex="-1"
         @mouseenter="flux.onMouseenter"
       >
@@ -92,7 +130,7 @@ const flux = reactive({
           </slot>
         </div>
       </div>
-    </Transition>
+    </Fade>
   </div>
 </template>
 
@@ -100,5 +138,13 @@ const flux = reactive({
 .option {
   @apply px-3 py-1 cursor-pointer rounded-md;
   @apply hover:text-primary-500 dark:hover:text-primary-100 hover:bg-primary-100 dark:hover:bg-primary-600;
+}
+
+.Dropdown-Panel-PlacementBottom {
+  transform: translateY(0.5rem);
+}
+
+.Dropdown-Panel-PlacementTop {
+  transform: translateY(-0.5rem) translateY(-100%);
 }
 </style>

@@ -31,7 +31,7 @@ onUnmounted(() => {
   <Transition name="bounce">
     <div v-if="props.modelValue" class="dialog">
       <div class="dialog-container">
-        <div class="dialog-backdrop" aria-hidden="true">
+        <div class="dialog-backdrop" aria-hidden="true" @click="closeDialog">
           <div></div>
         </div>
 
@@ -66,13 +66,13 @@ onUnmounted(() => {
   @apply fixed inset-0;
 
   & > div {
-    @apply absolute inset-0 backdrop-blur;
+    @apply absolute inset-0 bg-gray-500 opacity-75;
   }
 }
 
 .dialog-content {
   @apply relative inline-block align-bottom rounded-lg text-left overflow-hidden shadow-xl;
-  @apply sm:my-8 sm:align-middle sm:max-w-lg sm:w-full;
+  @apply my-8 align-middle md:max-w-lg lg:max-w-2xl xl:max-w-4xl w-full;
 }
 
 .bounce-enter-active {
