@@ -178,8 +178,8 @@ watch(
       <ProgressBar />
     </div>
 
-    <div class="w-full overflow-auto" :class="{ 'max-h-100': stickyHeader }">
-      <table class="items-center w-full border-collapse">
+    <div class="Table-Wrapper" :class="{ 'max-h-100': stickyHeader }">
+      <table class="Table-Element">
         <thead class="thead-light">
           <slot name="thead"></slot>
 
@@ -325,6 +325,14 @@ watch(
 </template>
 
 <style lang="scss" scoped>
+.Table-Wrapper {
+  @apply w-full overflow-auto;
+}
+
+.Table-Element {
+  @apply items-center w-full border-collapse;
+}
+
 .sticky-tr:hover {
   .sticky-col {
     @apply important:bg-inherit;
