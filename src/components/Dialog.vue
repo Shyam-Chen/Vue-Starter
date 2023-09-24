@@ -3,6 +3,7 @@ import { watch, onUnmounted } from 'vue';
 
 const props = defineProps<{
   modelValue: boolean;
+  title?: string;
 }>();
 
 const emit = defineEmits<{
@@ -40,11 +41,15 @@ onUnmounted(() => {
         </span>
 
         <div class="dialog-content" role="dialog" aria-modal="true">
-          <div class="absolute top-1.5 right-1.5 cursor-pointer" @click="closeDialog">
-            <div class="i-fa-times w-3 h-3 transition hover:scale-125"></div>
-          </div>
+          <div class="bg-white dark:bg-slate-800 p-6">
+            <div v-if="title" class="flex items-center w-full mb-6">
+              <div class="flex-1 text-3xl font-bold">{{ title }}</div>
 
-          <div class="bg-white dark:bg-slate-800 px-6 py-4">
+              <div class="cursor-pointer" @click="closeDialog">
+                <div class="i-fa-times transition hover:scale-125"></div>
+              </div>
+            </div>
+
             <slot></slot>
           </div>
         </div>
@@ -86,6 +91,7 @@ onUnmounted(() => {
 @keyframes bounce-in {
   0% {
     transform: scale(0);
+    opacity: 0;
   }
 
   50% {
@@ -94,6 +100,7 @@ onUnmounted(() => {
 
   100% {
     transform: scale(1);
+    opacity: 1;
   }
 }
 </style>

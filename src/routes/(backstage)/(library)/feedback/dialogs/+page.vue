@@ -26,12 +26,12 @@ const flux = reactive({
   </div>
 
   <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Basic examples</div>
+    <div class="mb-2">Basic</div>
 
     <div class="flex justify-center">
       <Button @click="flux.launch">Launch</Button>
 
-      <Dialog v-model="flux.dialog">
+      <Dialog v-model="flux.dialog" title="Lorem Ipsum">
         <div class="text-2xl font-bold mb-2">Lorem ipsum dolor sit amet.</div>
 
         <div class="mb-6 space-y-3">
