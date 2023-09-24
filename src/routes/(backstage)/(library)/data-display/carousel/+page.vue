@@ -17,13 +17,9 @@ import Carousel from '~/components/Carousel.vue';
       <div
         v-for="(item, index) in ['#14b8a6', '#8b5cf6', '#ec4899']"
         :key="item"
-        class="absolute w-full h-full"
-      >
-        <div
-          class="absolute top-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full pointer-events-none touch-none"
-          :style="{ backgroundColor: item, left: `${50 + 100 * index}%` }"
-        ></div>
-      </div>
+        class="absolute top-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full pointer-events-none touch-none"
+        :style="{ backgroundColor: item, left: `${50 + 100 * index}%` }"
+      ></div>
     </Carousel>
   </div>
 
@@ -42,14 +38,10 @@ import Carousel from '~/components/Carousel.vue';
           'bg-purple-500',
         ]"
         :key="item"
-        class="absolute w-full h-full"
-      >
-        <div
-          class="absolute top-1/2 -translate-x-1/2 -translate-y-1/2 w-100 h-full pointer-events-none touch-none rounded-lg"
-          :class="item"
-          :style="{ left: `${50 + 45 * index}%` }"
-        ></div>
-      </div>
+        class="absolute top-1/2 -translate-x-1/2 -translate-y-1/2 w-100 h-full pointer-events-none touch-none rounded-lg"
+        :class="item"
+        :style="{ left: `${50 + 45 * index}%` }"
+      ></div>
     </Carousel>
   </div>
 </template>

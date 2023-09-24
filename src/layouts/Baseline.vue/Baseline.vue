@@ -2,7 +2,7 @@
 import { reactive, watch, onMounted } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import { useLocaler } from 'vue-localer';
-import { useIdle, useDark, useToggle, useTextDirection } from '@vueuse/core';
+import { useDark, useToggle, useTextDirection } from '@vueuse/core';
 
 import TextField from '~/components/TextField.vue';
 import Dropdown from '~/components/Dropdown.vue';
@@ -10,15 +10,17 @@ import Select from '~/components/Select.vue';
 import Dialog from '~/components/Dialog.vue';
 import Button from '~/components/Button.vue';
 import Drawer from '~/components/Drawer.vue';
+import Spinner from '~/components/Spinner.vue';
 import request from '~/utilities/request';
 
 import NavLink from './NavLink.vue';
+import IdleDialog from './IdleDialog.vue';
 import useStore from './store';
 
 const router = useRouter();
 const route = useRoute();
 const localer = useLocaler();
-const { idle } = useIdle(30 * 60 * 1000);
+
 const isDark = useDark();
 const toggleDark = useToggle(isDark);
 const textDirection = useTextDirection();
@@ -28,13 +30,13 @@ const { state } = useStore();
 const flux = reactive({
   user: {} as any,
   userError: {} as any,
+  userLoading: true,
 
   signOut() {
     localStorage.removeItem('accessToken');
     localStorage.removeItem('refreshToken');
     router.push('/sign-in');
   },
-  idleDialog: false,
   authDialog: false,
   changeLang(val: string) {
     localStorage.setItem('language', val);
@@ -62,24 +64,6 @@ watch(
 );
 
 watch(
-  () => idle.value,
-  (val) => {
-    if (val) {
-      localStorage.removeItem('accessToken');
-      localStorage.removeItem('refreshToken');
-      flux.idleDialog = true;
-    }
-  },
-);
-
-watch(
-  () => flux.idleDialog,
-  (val) => {
-    if (!val) router.push('/sign-in');
-  },
-);
-
-watch(
   () => route.path,
   () => {
     if (flux.navDrawer) flux.navDrawer = false;
@@ -89,8 +73,14 @@ watch(
 onMounted(async () => {
   const response = await request('/auth/user', { method: 'GET' });
 
+  flux.userLoading = false;
+
   if (response.status === 200) {
     flux.user = response._data;
+  }
+
+  if (response.status === 403) {
+    // Forbidden
   }
 
   if (400 <= response.status && response.status <= 500) {
@@ -104,7 +94,7 @@ onMounted(async () => {
   <div class="h-full">
     <header class="topbar px-6 py-4 flex items-center gap-4 shadow-lg">
       <div
-        class="i-ic-round-menu w-8 h-8 dark:text-white cursor-pointer transition hover:scale-125 xl:hidden"
+        class="i-ic-round-menu w-8 h-8 text-white cursor-pointer transition hover:scale-125 xl:hidden"
         @click="flux.navDrawer = true"
       ></div>
 
@@ -133,7 +123,7 @@ onMounted(async () => {
         <TextField
           placeholder="Search here..."
           prepend="i-fa-search"
-          autocomplete="off"
+          tabindex="-1"
           @focus="flux.searchDialog = true"
         />
       </div>
@@ -193,25 +183,35 @@ onMounted(async () => {
     <aside
       class="sidebar px-2 pt-4 pb-20 bg-white dark:bg-slate-900 dark:border-slate-700 shadow-lg hidden xl:block"
     >
-      <template v-for="link in state.listOfLinks" :key="link.name">
-        <NavLink
-          :icon="link.icon"
-          :name="link.name"
-          :to="link.to"
-          :permissions="link.permissions"
-          :sub="link.sub"
-          :level="link.level"
-          :status="link.status"
-        />
+      <div v-if="flux.userLoading" class="flex justify-center items-center h-full">
+        <Spinner class="w-12 h-12" />
+      </div>
+
+      <template v-else>
+        <template v-for="link in state.listOfLinks" :key="link.name">
+          <NavLink
+            :icon="link.icon"
+            :name="link.name"
+            :to="link.to"
+            :permissions="link.permissions"
+            :sub="link.sub"
+            :level="link.level"
+            :status="link.status"
+          />
+        </template>
       </template>
     </aside>
 
     <div class="flex flex-col h-full">
       <main class="page container w-full self-center">
-        <slot></slot>
-      </main>
+        <div v-if="flux.userLoading" class="flex justify-center items-center h-full">
+          <Spinner class="w-12 h-12" />
+        </div>
 
-      <div class="flex-1"></div>
+        <template v-else>
+          <slot></slot>
+        </template>
+      </main>
 
       <footer class="footer">
         <div>
@@ -238,15 +238,6 @@ onMounted(async () => {
       </footer>
     </div>
 
-    <Dialog v-model="flux.idleDialog">
-      <div class="text-2xl">Idle Time-out</div>
-      <div class="my-2">Please sign-in again.</div>
-
-      <div class="flex justify-end">
-        <Button @click="flux.idleDialog = false">Okay, got it</Button>
-      </div>
-    </Dialog>
-
     <Dialog v-model="flux.authDialog">
       <div class="text-2xl">{{ flux.userError.error }}</div>
       <div class="my-2">{{ flux.userError.message }}</div>
@@ -266,28 +257,36 @@ onMounted(async () => {
       :placement="textDirection === 'rtl' ? 'right' : 'left'"
       class="px-2 pt-4 pb-20"
     >
-      <div class="w-full block md:hidden mb-4">
-        <TextField
-          placeholder="Search here..."
-          prepend="i-fa-search"
-          autocomplete="off"
-          @focus="flux.searchDialog = true"
-        />
+      <div v-if="flux.userLoading" class="flex justify-center items-center h-full">
+        <Spinner class="w-12 h-12" />
       </div>
 
-      <template v-for="link in state.listOfLinks" :key="link.name">
-        <NavLink
-          :icon="link.icon"
-          :name="link.name"
-          :to="link.to"
-          :permissions="link.permissions"
-          :sub="link.sub"
-          :level="link.level"
-          :status="link.status"
-        />
+      <template v-else>
+        <div class="w-full block md:hidden mb-4">
+          <TextField
+            placeholder="Search here..."
+            prepend="i-fa-search"
+            autocomplete="off"
+            @focus="flux.searchDialog = true"
+          />
+        </div>
+
+        <template v-for="link in state.listOfLinks" :key="link.name">
+          <NavLink
+            :icon="link.icon"
+            :name="link.name"
+            :to="link.to"
+            :permissions="link.permissions"
+            :sub="link.sub"
+            :level="link.level"
+            :status="link.status"
+          />
+        </template>
       </template>
     </Drawer>
   </div>
+
+  <IdleDialog />
 </template>
 
 <style lang="scss" scoped>
@@ -304,7 +303,7 @@ onMounted(async () => {
 }
 
 .page {
-  @apply p-8 pt-28;
+  @apply p-8 pt-28 flex-1;
   @apply ltr:xl:pl-72 rtl:xl:pr-72;
 }
 

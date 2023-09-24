@@ -5,7 +5,9 @@ export interface Link {
   name: string;
   to?: string;
   permissions?: Array<'A' | 'B' | 'C' | 'D' | 'E'>;
+  hidden?: boolean;
   sub?: Link[];
+
   level?: number;
   status?: boolean;
 }
@@ -57,6 +59,7 @@ const links = [
     sub: [
       { name: 'Autocompletes', to: '/data-entry/autocompletes' },
       { name: 'Checkboxes', to: '/data-entry/checkboxes' },
+      // { name: 'Editor', to: '/data-entry/editor' },
       { name: 'File inputs', to: '/data-entry/file-inputs' },
       { name: 'Form Validation', to: '/data-entry/form-validation' },
       {
@@ -101,6 +104,7 @@ const links = [
       { name: 'Timeline', to: '/data-display/timeline' },
       { name: 'Tooltip', to: '/data-display/tooltip' },
       { name: 'Tree', to: '/data-display/tree' },
+      // { name: 'TreeTable', to: '/data-display/tree-table' },
       { name: 'Virtual Scroll', to: '/data-display/virtual-scroll' },
     ],
   },
