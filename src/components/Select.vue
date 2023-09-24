@@ -262,7 +262,7 @@ onUnmounted(() => {
               :key="item.value"
               class="select-menu-item hover:bg-gray-300 dark:hover:bg-slate-700"
               :class="{
-                'bg-primary-500 text-white important:hover:bg-primary-700': value === item.value,
+                'select-menu-item-active': value === item.value,
               }"
               @click="flux.onSelect(item.value, item)"
             >
@@ -354,5 +354,9 @@ onUnmounted(() => {
   &.disabled {
     @apply cursor-not-allowed;
   }
+}
+
+.select-menu-item-active {
+  @apply bg-primary-500 text-white hover:bg-primary-700 hover:text-white;
 }
 </style>

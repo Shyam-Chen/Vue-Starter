@@ -76,7 +76,7 @@ const hasPermission = true; // props?.permissions?.includes(getters.currentRole)
     class="link"
     :class="{
       'link-parent': flux.parent(sub),
-      'link-current': to === route.path,
+      'link-current': route.path.startsWith(to),
     }"
     :style="[
       textDirection === 'rtl'
