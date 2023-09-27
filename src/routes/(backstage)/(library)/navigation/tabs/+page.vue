@@ -22,19 +22,19 @@ const flux = reactive({
     class="my-4 bg-white dark:bg-slate-800 border dark:border-slate-600 rounded-lg"
   >
     <Tabs.Tab title="Angular">
-      <div>Angular Content</div>
+      <div class="text-red-500 p-4">Angular Content</div>
     </Tabs.Tab>
 
     <Tabs.Tab title="React">
-      <div>React Content</div>
+      <div class="text-blue-500 p-4">React Content</div>
     </Tabs.Tab>
 
     <Tabs.Tab title="Svelte">
-      <div>Svelte Content</div>
+      <div class="text-orange-500 p-4">Svelte Content</div>
     </Tabs.Tab>
 
     <Tabs.Tab title="Vue">
-      <div>Vue Content</div>
+      <div class="text-green-500 p-4">Vue Content</div>
     </Tabs.Tab>
   </Tabs>
 
@@ -46,19 +46,19 @@ const flux = reactive({
       class="my-4 bg-white dark:bg-slate-800 border dark:border-slate-600 rounded-lg"
     >
       <Tabs.Tab title="Angular" value="angular">
-        <div class="text-red-500">Angular Content</div>
+        <div class="text-red-500 p-4">Angular Content</div>
       </Tabs.Tab>
 
       <Tabs.Tab title="React" value="react">
-        <div class="text-blue-500">React Content</div>
+        <div class="text-blue-500 p-4">React Content</div>
       </Tabs.Tab>
 
       <Tabs.Tab title="Svelte" value="svelte">
-        <div class="text-orange-500">Svelte Content</div>
+        <div class="text-orange-500 p-4">Svelte Content</div>
       </Tabs.Tab>
 
       <Tabs.Tab title="Vue" value="vue">
-        <div class="text-green-500">Vue Content</div>
+        <div class="text-green-500 p-4">Vue Content</div>
       </Tabs.Tab>
     </Tabs>
   </div>

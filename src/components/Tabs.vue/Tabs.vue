@@ -1,18 +1,19 @@
 <script lang="ts" setup>
-import { useSlots, reactive, computed, provide } from 'vue';
+import { useSlots, ref, reactive, computed, provide } from 'vue';
 
 const props = defineProps<{
   modelValue?: number | string;
+  closeable?: boolean;
 }>();
 
 const emit = defineEmits<{
   (evt: 'update:modelValue', val: number | string): void;
 }>();
 
-provide('tabs', { value: computed(() => props.modelValue) });
-
 const slots = useSlots();
 const defaultSlot = slots.default?.();
+
+const tabs = ref();
 
 const flux = reactive({
   tab: [] as any[],
@@ -33,28 +34,15 @@ if (defaultSlot) {
   }
 }
 
-const Render = () => {
-  if (slots.default) {
-    if (typeof props.modelValue === 'number') {
-      return slots.default()[props.modelValue];
-    }
-
-    if (typeof props.modelValue === 'string' && defaultSlot) {
-      for (let i = 0; i < defaultSlot.length; i++) {
-        const tab = defaultSlot[i];
-
-        if (tab.props?.value === props.modelValue) {
-          return slots.default()[i];
-        }
-      }
-    }
-  }
-};
+provide('Tabs', {
+  tabs,
+  modelValue: computed(() => props.modelValue),
+});
 </script>
 
 <template>
-  <div class="w-full p-4">
-    <div class="flex items-center">
+  <div class="w-full">
+    <div class="flex items-center border-b border-slate-500">
       <div
         v-for="(tab, idx) in flux.tab"
         :key="idx"
@@ -65,19 +53,19 @@ const Render = () => {
         @click="flux.selectTab(tab, idx)"
       >
         {{ tab?.title }}
-        <div class="i-fa-close w-3 h-3 ml-3"></div>
+        <div v-if="closeable" class="i-fa-close w-3 h-3 ml-3"></div>
       </div>
     </div>
 
-    <div class="p-4">
-      <Render />
+    <div ref="tabs">
+      <slot></slot>
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
 .tab {
-  @apply flex items-center cursor-pointer my-2 px-7 pt-4 pb-3.5 border-b-2 border-transparent;
+  @apply flex items-center cursor-pointer px-7 pt-4 pb-3.5 border-b-2 border-transparent;
   @apply text-xs font-medium uppercase leading-tight text-neutral-500;
 
   &.active {
