@@ -51,6 +51,11 @@ const flux = reactive({
         v-model:endValue="flux.datePickerEndDate"
       />
     </div>
+
+    <div class="mt-2">
+      <div>Start Date: {{ flux.datePickerStartDate }}</div>
+      <div>End Date: {{ flux.datePickerEndDate }}</div>
+    </div>
   </div>
 
   <div class="flex flex-col border p-4 mb-4">
