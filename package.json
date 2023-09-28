@@ -15,9 +15,9 @@
     "doc": "cd docs && pnpm dev"
   },
   "dependencies": {
-    "@unocss/reset": "^0.54.1",
-    "@vueuse/components": "^10.3.0",
-    "@vueuse/core": "^10.3.0",
+    "@unocss/reset": "^0.56.4",
+    "@vueuse/components": "^10.4.1",
+    "@vueuse/core": "^10.4.1",
     "date-fns": "^2.30.0",
     "highcharts": "^10.3.3",
     "highcharts-vue": "^1.4.3",
@@ -27,7 +27,7 @@
     "vue-formor": "^4.0.0",
     "vue-localer": "^1.4.0",
     "vue-qrcode-image": "^1.1.0",
-    "vue-router": "^4.2.4",
+    "vue-router": "^4.2.5",
     "vue-storer": "^0.6.0",
     "vuedraggable": "^4.1.0",
     "zod": "^3.22.2"
@@ -47,7 +47,7 @@
     "process-envify": "^2.0.0",
     "sass": "^1.64.2",
     "typescript": "^5.2.2",
-    "unocss": "^0.54.1",
+    "unocss": "^0.56.4",
     "vite": "^4.4.8",
     "vite-plugin-vue-routes": "^1.0.4",
     "vitest": "^0.34.1",
