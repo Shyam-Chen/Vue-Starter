@@ -237,7 +237,7 @@ watch(
     const filter = arr.filter(
       (item) =>
         item.label.toUpperCase().includes(val.toUpperCase()) ||
-        item.value.toUpperCase().includes(val.toUpperCase()),
+        String(item.value).toUpperCase().includes(val.toUpperCase()),
     );
 
     flux.options = filter;
@@ -356,7 +356,11 @@ onUnmounted(() => {
             @click.stop="flux.onSelectAll"
           >
             <div class="flex items-center px-5">
-              <Checkbox :checked="flux.selectAll" :indeterminate="flux.selectAllIndeterminate" />
+              <Checkbox
+                :checked="flux.selectAll"
+                :indeterminate="flux.selectAllIndeterminate"
+                @change.stop="flux.onSelectAll"
+              />
               <span class="ml-2">All</span>
             </div>
           </div>
