@@ -3,8 +3,13 @@ import { nextTick, ref, watch } from 'vue';
 
 import Alert from './Alert.vue';
 
-const list = ref<any[]>([]);
-const timeoutList = ref<any[]>([]);
+const props = defineProps<{
+  messages?: any[];
+  timeouts?: any[];
+}>();
+
+const list = ref<any[]>(props.messages || []);
+const timeoutList = ref<any[]>(props.timeouts || []);
 
 const push = ({ message }: { message: string }) => {
   const item = {
@@ -42,14 +47,7 @@ watch(
     name="list"
     class="grid gap-4 fixed left-1/2 top-12 -translate-x-1/2 z-200"
   >
-    <Alert
-      v-for="item in list"
-      :key="item.timeout"
-      color="success"
-      icon="i-mdi-checkbox-marked-circle-outline"
-      v-bind="$attrs"
-      class="shadow-xl"
-    >
+    <Alert v-for="item in list" :key="item.timeout" v-bind="$attrs" class="shadow-xl">
       {{ item.message }}
     </Alert>
   </TransitionGroup>

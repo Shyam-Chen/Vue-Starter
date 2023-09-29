@@ -3,8 +3,8 @@ import { ref } from 'vue';
 
 import Breadcrumbs from '~/components/Breadcrumbs.vue';
 import Button from '~/components/Button.vue';
-
 import Notification from '~/components/Notification.vue';
+import useNotification from '~/composables/useNotification';
 
 const notify = ref();
 
@@ -22,6 +22,15 @@ let count2 = 0;
 const push2 = () => {
   count2 += 1;
   notify2.value.push({ message: `This is a test notification. (${count2})` });
+};
+
+let count3 = 0;
+
+const notification = useNotification();
+
+const push3 = () => {
+  count3 += 1;
+  notification.actions.add({ message: `This is a test notification. (${count3})` });
 };
 </script>
 
@@ -42,11 +51,26 @@ const push2 = () => {
   </div>
 
   <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Info</div>
+    <div class="mb-2">Multiple</div>
 
     <div class="flex gap-4">
       <Button @click="push2">Push</Button>
-      <Notification ref="notify2" color="info" icon="i-mdi-information" />
+      <Notification ref="notify2" color="success" icon="i-mdi-checkbox-marked-circle-outline" />
+    </div>
+  </div>
+
+  <div class="flex flex-col border p-4 mb-4">
+    <div class="mb-2">useNotification</div>
+
+    <div class="flex gap-4">
+      <Button @click="push3">Push</Button>
+
+      <Notification
+        :messages="notification.state.messages"
+        :timeouts="notification.state.timeouts"
+        color="danger"
+        icon="i-mdi-close-circle-outline"
+      />
     </div>
   </div>
 </template>
