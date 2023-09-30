@@ -15,6 +15,9 @@
     "doc": "cd docs && pnpm dev"
   },
   "dependencies": {
+    "@tiptap/pm": "^2.1.11",
+    "@tiptap/starter-kit": "^2.1.11",
+    "@tiptap/vue-3": "^2.1.11",
     "@unocss/reset": "^0.56.4",
     "@vueuse/components": "^10.4.1",
     "@vueuse/core": "^10.4.1",
@@ -23,6 +26,7 @@
     "highcharts-vue": "^1.4.3",
     "lodash": "^4.17.21",
     "ofetch": "^1.3.3",
+    "valibot": "^0.17.1",
     "vue": "^3.3.4",
     "vue-formor": "^4.0.0",
     "vue-localer": "^1.4.0",

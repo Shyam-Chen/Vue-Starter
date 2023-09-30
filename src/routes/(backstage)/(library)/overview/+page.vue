@@ -52,6 +52,7 @@ import Breadcrumbs from '~/components/Breadcrumbs.vue';
     <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
       <RouterLink to="/data-entry/autocompletes" class="card">Autocompletes</RouterLink>
       <RouterLink to="/data-entry/checkboxes" class="card">Checkboxes</RouterLink>
+      <RouterLink to="/data-entry/editor" class="card">Editor</RouterLink>
       <RouterLink to="/data-entry/file-inputs" class="card">File inputs</RouterLink>
       <RouterLink to="/data-entry/form-validation" class="card">Form Validation</RouterLink>
       <RouterLink to="/data-entry/pickers/date-pickers" class="card">Date pickers</RouterLink>
@@ -89,6 +90,7 @@ import Breadcrumbs from '~/components/Breadcrumbs.vue';
       <RouterLink to="/data-display/timeline" class="card">Timeline</RouterLink>
       <RouterLink to="/data-display/tooltip" class="card">Tooltip</RouterLink>
       <RouterLink to="/data-display/tree" class="card">Tree</RouterLink>
+      <!-- <RouterLink to="/data-display/tree-table" class="card">TreeTable</RouterLink> -->
       <RouterLink to="/data-display/virtual-scroll" class="card">Virtual Scroll</RouterLink>
     </div>
   </div>

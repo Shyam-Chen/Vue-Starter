@@ -59,7 +59,7 @@ const links = [
     sub: [
       { name: 'Autocompletes', to: '/data-entry/autocompletes' },
       { name: 'Checkboxes', to: '/data-entry/checkboxes' },
-      // { name: 'Editor', to: '/data-entry/editor' },
+      { name: 'Editor', to: '/data-entry/editor' },
       { name: 'File inputs', to: '/data-entry/file-inputs' },
       { name: 'Form Validation', to: '/data-entry/form-validation' },
       {
