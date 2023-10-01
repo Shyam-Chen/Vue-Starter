@@ -104,7 +104,7 @@ const links = [
       { name: 'Timeline', to: '/data-display/timeline' },
       { name: 'Tooltip', to: '/data-display/tooltip' },
       { name: 'Tree', to: '/data-display/tree' },
-      // { name: 'TreeTable', to: '/data-display/tree-table' },
+      { name: 'TreeTable', to: '/data-display/tree-table' },
       { name: 'Virtual Scroll', to: '/data-display/virtual-scroll' },
     ],
   },

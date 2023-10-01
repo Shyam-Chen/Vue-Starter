@@ -90,7 +90,7 @@ import Breadcrumbs from '~/components/Breadcrumbs.vue';
       <RouterLink to="/data-display/timeline" class="card">Timeline</RouterLink>
       <RouterLink to="/data-display/tooltip" class="card">Tooltip</RouterLink>
       <RouterLink to="/data-display/tree" class="card">Tree</RouterLink>
-      <!-- <RouterLink to="/data-display/tree-table" class="card">TreeTable</RouterLink> -->
+      <RouterLink to="/data-display/tree-table" class="card">TreeTable</RouterLink>
       <RouterLink to="/data-display/virtual-scroll" class="card">Virtual Scroll</RouterLink>
     </div>
   </div>

@@ -42,6 +42,18 @@ const flux = reactive({
       return link.to === route.path;
     });
   },
+  currentLink(to: Link['to']) {
+    if (!to) return false;
+
+    const toArr = to.split('/');
+    const curArr = route.path.split('/');
+
+    if (toArr.length === curArr.length) {
+      return to === route.path;
+    }
+
+    return route.path.startsWith(to);
+  },
 });
 
 const hasPermission = true; // props?.permissions?.includes(getters.currentRole) !== false;
@@ -76,7 +88,7 @@ const hasPermission = true; // props?.permissions?.includes(getters.currentRole)
     class="link"
     :class="{
       'link-parent': flux.parent(sub),
-      'link-current': route.path.startsWith(to),
+      'link-current': flux.currentLink(to),
     }"
     :style="[
       textDirection === 'rtl'

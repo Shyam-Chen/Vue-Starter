@@ -180,7 +180,7 @@ watch(
 
     <div class="Table-Wrapper" :class="{ 'max-h-100': stickyHeader }">
       <table class="Table-Element">
-        <thead class="thead-light">
+        <thead>
           <slot name="thead"></slot>
 
           <tr :class="{ 'sticky top-0 z-10': stickyHeader }">
