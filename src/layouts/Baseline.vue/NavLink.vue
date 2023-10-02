@@ -39,7 +39,14 @@ const flux = reactive({
   parent(sub: Link['sub']): any {
     return sub?.find((link) => {
       if (link.sub) return flux.parent(link.sub);
-      return link.to === route.path;
+
+      if (link.to === route.path) {
+        return true;
+      } else if (link.to && route.path.startsWith(link.to)) {
+        return true;
+      }
+
+      return false;
     });
   },
   currentLink(to: Link['to']) {

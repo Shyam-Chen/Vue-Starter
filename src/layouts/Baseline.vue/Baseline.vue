@@ -13,6 +13,7 @@ import Drawer from '~/components/Drawer.vue';
 import Spinner from '~/components/Spinner.vue';
 import request from '~/utilities/request';
 
+import type { Link } from './links-list';
 import NavLink from './NavLink.vue';
 import IdleDialog from './IdleDialog.vue';
 import useStore from './store';
@@ -70,6 +71,28 @@ watch(
   },
 );
 
+function setStatus(link: Link, sub: Link['sub'], parentLink?: Link) {
+  if (sub?.length) {
+    sub.forEach((subLink) => {
+      if (subLink.to === route.path) {
+        if (parentLink) parentLink.status = true;
+        link.status = true;
+      } else if (subLink.to && route.path.startsWith(subLink.to)) {
+        if (parentLink) parentLink.status = true;
+        link.status = true;
+      }
+
+      if (subLink.sub?.length) {
+        setStatus(subLink, subLink.sub, link);
+      }
+    });
+  }
+}
+
+state.listOfLinks.forEach((link) => {
+  setStatus(link, link.sub);
+});
+
 onMounted(async () => {
   const response = await request('/auth/user', { method: 'GET' });
 
@@ -77,10 +100,6 @@ onMounted(async () => {
 
   if (response.status === 200) {
     flux.user = response._data;
-  }
-
-  if (response.status === 403) {
-    // Forbidden
   }
 
   if (400 <= response.status && response.status <= 500) {
