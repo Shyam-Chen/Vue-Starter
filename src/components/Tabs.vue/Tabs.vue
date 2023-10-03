@@ -8,6 +8,7 @@ const props = defineProps<{
 
 const emit = defineEmits<{
   (evt: 'update:modelValue', val: number | string): void;
+  (evt: 'change', val: string | number): void;
 }>();
 
 const slots = useSlots();
@@ -22,8 +23,15 @@ const flux = reactive({
     if (typeof props.modelValue === 'string') return tab.value;
   },
   selectTab(tab: any, idx: number) {
-    if (typeof props.modelValue === 'number') emit('update:modelValue', idx);
-    if (typeof props.modelValue === 'string') emit('update:modelValue', tab.value);
+    if (typeof props.modelValue === 'number') {
+      emit('update:modelValue', idx);
+      emit('change', idx);
+    }
+
+    if (typeof props.modelValue === 'string') {
+      emit('update:modelValue', tab.value);
+      emit('change', tab.value);
+    }
   },
 });
 
