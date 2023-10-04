@@ -237,7 +237,7 @@ const flux = reactive({
     if (flux.rangeClicked) {
       const date = _format(val.date, props.format);
 
-      if (date > startValueModel.value) endValueModel.value = date;
+      if (date >= startValueModel.value) endValueModel.value = date;
     }
 
     if (!flux.rangeClicked) {
