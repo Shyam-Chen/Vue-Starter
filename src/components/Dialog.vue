@@ -1,5 +1,6 @@
 <script lang="ts" setup>
-import { watch, onUnmounted } from 'vue';
+import { ref, watch, onUnmounted } from 'vue';
+import { useResizeObserver } from '@vueuse/core';
 
 const props = defineProps<{
   modelValue: boolean;
@@ -10,6 +11,9 @@ const emit = defineEmits<{
   (evt: 'update:modelValue', val: boolean): void;
 }>();
 
+const container = ref<HTMLDivElement>();
+const backdropHeight = ref('100%');
+
 const closeDialog = () => {
   emit('update:modelValue', !props.modelValue);
 };
@@ -18,6 +22,14 @@ watch(
   () => props.modelValue,
   (val) => {
     document.body.style.overflow = val ? 'hidden' : 'auto';
+
+    if (val) {
+      useResizeObserver(container, (entries) => {
+        const entry = entries[0];
+        const { height } = entry.contentRect;
+        backdropHeight.value = `${height}px`;
+      });
+    }
   },
 );
 
@@ -31,10 +43,13 @@ onUnmounted(() => {
 <template>
   <Transition name="bounce">
     <div v-if="props.modelValue" class="dialog">
-      <div class="dialog-container">
-        <div class="dialog-backdrop" aria-hidden="true" @click="closeDialog">
-          <div></div>
-        </div>
+      <div ref="container" class="dialog-container">
+        <div
+          class="dialog-backdrop"
+          aria-hidden="true"
+          :style="{ height: backdropHeight }"
+          @click="closeDialog"
+        ></div>
 
         <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">
           &#8203;
@@ -68,11 +83,7 @@ onUnmounted(() => {
 }
 
 .dialog-backdrop {
-  @apply fixed inset-0;
-
-  & > div {
-    @apply absolute inset-0 bg-gray-500 opacity-75;
-  }
+  @apply absolute inset-0 bg-gray-500 opacity-75;
 }
 
 .dialog-content {
