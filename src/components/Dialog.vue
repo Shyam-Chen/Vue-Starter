@@ -26,8 +26,8 @@ watch(
     if (val) {
       useResizeObserver(container, (entries) => {
         const entry = entries[0];
-        const { height } = entry.contentRect;
-        backdropHeight.value = `${height}px`;
+        const height = entry?.borderBoxSize?.[0]?.blockSize;
+        if (height) backdropHeight.value = `${height}px`;
       });
     }
   },
@@ -79,7 +79,7 @@ onUnmounted(() => {
 }
 
 .dialog-container {
-  @apply flex justify-center items-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0;
+  @apply flex justify-center items-center min-h-screen p-4;
 }
 
 .dialog-backdrop {
