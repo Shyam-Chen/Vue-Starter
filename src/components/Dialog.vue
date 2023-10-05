@@ -79,7 +79,7 @@ onUnmounted(() => {
 }
 
 .dialog-container {
-  @apply flex justify-center items-center min-h-screen p-4;
+  @apply flex justify-center items-center min-h-screen p-4 text-center sm:block sm:p-0;
 }
 
 .dialog-backdrop {
