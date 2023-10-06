@@ -114,7 +114,7 @@ devDependencies:
     version: 5.2.2
   unocss:
     specifier: ^0.56.4
-    version: 0.56.4(postcss@8.4.27)(vite@4.4.8)
+    version: 0.56.4(postcss@8.4.31)(vite@4.4.8)
   vite:
     specifier: ^4.4.8
     version: 4.4.8(@types/node@20.4.5)(sass@1.64.2)
@@ -1147,7 +1147,7 @@ packages:
       sirv: 2.0.3
     dev: true
 
-  /@unocss/postcss@0.56.4(postcss@8.4.27):
+  /@unocss/postcss@0.56.4(postcss@8.4.31):
     resolution: {integrity: sha512-lc0+BjW1gY+86tvtUFppHg++Tw8I0V7hlldloUy7W4Fg2Mu8VAi3I/KaSSRvqMr5SNlfaOPv0XuB/BNkDE65Gw==}
     engines: {node: '>=14'}
     peerDependencies:
@@ -1159,7 +1159,7 @@ packages:
       css-tree: 2.3.1
       fast-glob: 3.3.1
       magic-string: 0.30.3
-      postcss: 8.4.27
+      postcss: 8.4.31
     dev: true
 
   /@unocss/preset-attributify@0.56.4:
@@ -1402,7 +1402,7 @@ packages:
       '@vue/shared': 3.3.4
       estree-walker: 2.0.2
       magic-string: 0.30.1
-      postcss: 8.4.27
+      postcss: 8.4.31
       source-map-js: 1.0.2
 
   /@vue/compiler-ssr@3.3.4:
@@ -3289,8 +3289,8 @@ packages:
       util-deprecate: 1.0.2
     dev: true
 
-  /postcss@8.4.27:
-    resolution: {integrity: sha512-gY/ACJtJPSmUFPDCHtX78+01fHa64FaU4zaaWfuh1MhGJISufJAH4cun6k/8fwsHYeK4UQmENQK+tRLCFJE8JQ==}
+  /postcss@8.4.31:
+    resolution: {integrity: sha512-PS08Iboia9mts/2ygV3eLpY5ghnUcfLV/EXTOW1E2qYxJKGGBUtNjN76FYHnMs36RmARn41bC0AZmn+rR0OVpQ==}
     engines: {node: ^10 || ^12 || >=14}
     dependencies:
       nanoid: 3.3.6
@@ -3900,7 +3900,7 @@ packages:
       mlly: 1.4.0
     dev: true
 
-  /unocss@0.56.4(postcss@8.4.27)(vite@4.4.8):
+  /unocss@0.56.4(postcss@8.4.31)(vite@4.4.8):
     resolution: {integrity: sha512-RcaZHLSlj7BAupx6Y9jJwOSRJ+Lu1pnLwRZuppMfD4GgWWNymDRJ7HF1uNqCCYhxJa1LgU1irOEfO8pzK8NYkw==}
     engines: {node: '>=14'}
     peerDependencies:
@@ -3916,7 +3916,7 @@ packages:
       '@unocss/cli': 0.56.4
       '@unocss/core': 0.56.4
       '@unocss/extractor-arbitrary-variants': 0.56.4
-      '@unocss/postcss': 0.56.4(postcss@8.4.27)
+      '@unocss/postcss': 0.56.4(postcss@8.4.31)
       '@unocss/preset-attributify': 0.56.4
       '@unocss/preset-icons': 0.56.4
       '@unocss/preset-mini': 0.56.4
@@ -4045,7 +4045,7 @@ packages:
     dependencies:
       '@types/node': 20.4.5
       esbuild: 0.18.17
-      postcss: 8.4.27
+      postcss: 8.4.31
       rollup: 3.26.3
       sass: 1.64.2
     optionalDependencies:
