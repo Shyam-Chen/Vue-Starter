@@ -42,8 +42,8 @@ dependencies:
     specifier: ^1.3.3
     version: 1.3.3
   valibot:
-    specifier: ^0.17.1
-    version: 0.17.1
+    specifier: ^0.18.0
+    version: 0.18.0
   vue:
     specifier: ^3.3.4
     version: 3.3.4
@@ -3982,8 +3982,8 @@ packages:
       convert-source-map: 1.9.0
     dev: true
 
-  /valibot@0.17.1:
-    resolution: {integrity: sha512-yfft6fqeB059vNZEdar4tcfU3ZOn4raEec790PTQe1SVfJz5CkZOlMNabkW5MA9Z10SCjUWmxBRz1SMYTGU5yg==}
+  /valibot@0.18.0:
+    resolution: {integrity: sha512-JpJ1ITTIAA4kuLDX5ygnjuMdeHryNI4cqx3vWQFisytTzH3/RBcTYJO336RSd/gRRRrYhIWf2RuST76p4TbdBw==}
     dev: false
 
   /vite-node@0.34.1(@types/node@20.4.5)(sass@1.64.2):

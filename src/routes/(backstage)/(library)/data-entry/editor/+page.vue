@@ -4,13 +4,8 @@ import StarterKit from '@tiptap/starter-kit';
 import { Editor, EditorContent } from '@tiptap/vue-3';
 
 import Breadcrumbs from '~/components/Breadcrumbs.vue';
-import Button from '~/components/Button.vue';
 
 const editor = ref();
-
-function toggleBold() {
-  editor.value.chain().focus().toggleBold().run();
-}
 
 onMounted(() => {
   editor.value = new Editor({
@@ -36,15 +31,94 @@ onMounted(() => {
     <div class="text-3xl font-bold">Editor</div>
   </div>
 
-  <div v-if="editor">
-    <Button :class="{ 'is-active': editor.isActive('bold') }" @click="toggleBold">
-      Toggle Bold
-    </Button>
+  <div v-if="editor" class="space-y-4">
+    <div class="flex">
+      <div class="flex gap-2">
+        <div
+          class="i-mdi-format-header-1 w-6 h-6"
+          @click="editor.chain().focus().toggleHeading({ level: 1 }).run()"
+        ></div>
+        <div
+          class="i-mdi-format-header-2 w-6 h-6"
+          @click="editor.chain().focus().toggleHeading({ level: 2 }).run()"
+        ></div>
+        <div
+          class="i-mdi-format-header-3 w-6 h-6"
+          @click="editor.chain().focus().toggleHeading({ level: 3 }).run()"
+        ></div>
+        <div
+          class="i-mdi-format-header-4 w-6 h-6"
+          @click="editor.chain().focus().toggleHeading({ level: 4 }).run()"
+        ></div>
+        <div
+          class="i-mdi-format-header-5 w-6 h-6"
+          @click="editor.chain().focus().toggleHeading({ level: 5 }).run()"
+        ></div>
+        <div
+          class="i-mdi-format-header-6 w-6 h-6"
+          @click="editor.chain().focus().toggleHeading({ level: 6 }).run()"
+        ></div>
+      </div>
 
-    <div>
-      <div>Bold: {{ editor.isActive('bold') }}</div>
+      <div class="border-r mx-2"></div>
+
+      <div class="flex gap-2">
+        <div
+          class="i-mdi-format-bold w-6 h-6"
+          @click="editor.chain().focus().toggleBold().run()"
+        ></div>
+        <div
+          class="i-mdi-format-italic w-6 h-6"
+          @click="editor.chain().focus().toggleItalic().run()"
+        ></div>
+      </div>
+
+      <!-- <div class="border-r mx-2"></div> -->
+
+      <!-- <div class="px-2"></div>
+      <div class="i-dashicons-editor-ol w-6 h-6"></div>
+      <div class="i-dashicons-editor-ul w-6 h-6"></div>
+      <div class="px-2"></div>
+      <div class="i-dashicons-editor-alignleft w-6 h-6"></div>
+      <div class="i-dashicons-editor-aligncenter w-6 h-6"></div>
+      <div class="i-dashicons-editor-alignright w-6 h-6"></div>
+      <div class="px-2"></div>
+      <div class="i-dashicons-admin-links w-6 h-6"></div>
+      <div class="i-dashicons-format-image w-6 h-6"></div> -->
     </div>
 
-    <EditorContent :editor="editor" />
+    <div class="Editor">
+      <EditorContent :editor="editor" />
+    </div>
+
+    <pre class="border rounded p-4">{{ editor.getHTML() }}</pre>
   </div>
 </template>
+
+<style lang="scss" scoped>
+.Editor {
+  :deep(h1) {
+    @apply text-3xl;
+  }
+
+  :deep(h2) {
+    @apply text-2xl;
+  }
+
+  :deep(h3) {
+    @apply text-xl;
+  }
+
+  :deep(h4) {
+    @apply text-lg;
+  }
+
+  :deep(h5) {
+    @apply text-md;
+  }
+
+  :deep(h6) {
+    @apply text-sm;
+  }
+}
+</style>
