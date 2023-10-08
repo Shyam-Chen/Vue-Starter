@@ -62,6 +62,7 @@ const links = [
       { name: 'Editor', to: '/data-entry/editor' },
       { name: 'File inputs', to: '/data-entry/file-inputs' },
       { name: 'Form Validation', to: '/data-entry/form-validation' },
+      { name: 'InputMask', to: '/data-entry/input-mask' },
       {
         name: 'Pickers',
         sub: [

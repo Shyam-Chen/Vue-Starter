@@ -55,6 +55,7 @@ import Breadcrumbs from '~/components/Breadcrumbs.vue';
       <RouterLink to="/data-entry/editor" class="card">Editor</RouterLink>
       <RouterLink to="/data-entry/file-inputs" class="card">File inputs</RouterLink>
       <RouterLink to="/data-entry/form-validation" class="card">Form Validation</RouterLink>
+      <RouterLink to="/data-entry/input-mask" class="card">InputMask</RouterLink>
       <RouterLink to="/data-entry/pickers/date-pickers" class="card">Date pickers</RouterLink>
       <RouterLink to="/data-entry/pickers/month-pickers" class="card">Month pickers</RouterLink>
       <RouterLink to="/data-entry/pickers/time-pickers" class="card">Time pickers</RouterLink>
