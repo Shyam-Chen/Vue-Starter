@@ -15,7 +15,7 @@ const list = ref<Array<{ title: string }>>([]);
 const isInitial = ref(false);
 const isLoading = ref(false);
 
-function delay(ms = 2000) {
+function delay(ms = 1000) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
@@ -95,32 +95,40 @@ onMounted(async () => {
 
   <div
     v-if="isInitial"
-    class="flex flex-col my-4 bg-white dark:bg-slate-800 border dark:border-slate-600 rounded-lg h-60"
+    class="flex flex-col my-4 bg-white dark:bg-slate-800 border dark:border-slate-600 rounded-lg w-full h-60"
   >
     <div class="flex items-center px-4 py-2 font-bold" style="height: 43px">Loading...</div>
   </div>
 
-  <div
+  <UseVirtualList
     v-else
-    class="flex flex-col my-4 bg-white dark:bg-slate-800 border dark:border-slate-600 rounded-lg"
+    :list="list"
+    :options="{ itemHeight: 43 }"
+    height="15rem"
+    class="VirtualList flex flex-col my-4 bg-white dark:bg-slate-800 border dark:border-slate-600 rounded-lg whitespace-nowrap w-full h-60 overflow-auto"
+    @scroll="onScroll"
   >
-    <UseVirtualList :list="list" :options="{ itemHeight: 43 }" height="15rem" @scroll="onScroll">
-      <template #default="{ data, index }">
-        <div
-          class="flex items-center px-4 py-2 hover:text-primary-500 dark:hover:text-primary-100 hover:bg-primary-100 dark:hover:bg-primary-600"
-          style="height: 43px"
-        >
-          {{ data.title }}
-        </div>
+    <template #default="{ data, index }">
+      <div
+        class="flex px-4 py-2 hover:text-primary-500 dark:hover:text-primary-100 hover:bg-primary-100 dark:hover:bg-primary-600"
+        style="height: 43px"
+      >
+        {{ data.title }}
+      </div>
 
-        <div
-          v-if="isLoading && list.length / (index + 1) === 1"
-          class="flex items-center px-4 py-2 font-bold"
-          style="height: 43px"
-        >
-          Loading...
-        </div>
-      </template>
-    </UseVirtualList>
-  </div>
+      <div
+        v-if="isLoading && list.length / (index + 1) === 1"
+        class="flex items-center px-4 py-2 font-bold"
+        style="height: 43px"
+      >
+        Loading...
+      </div>
+    </template>
+  </UseVirtualList>
 </template>
+
+<style lang="scss" scoped>
+.VirtualList > :deep(div) {
+  @apply important:w-min min-w-full;
+}
+</style>
