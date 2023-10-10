@@ -1,15 +1,15 @@
 <script lang="ts" setup>
 import { ref, watch, provide } from 'vue';
 
+import type { Node } from './types';
 import TreeNode from './TreeNode.vue';
-
-type Node = {
-  label?: string;
-  children?: Node[];
-};
 
 const props = defineProps<{
   nodes?: Node[];
+}>();
+
+const emit = defineEmits<{
+  (evt: 'nodeSelect', val: Node): void;
 }>();
 
 const createTree = (
@@ -38,6 +38,7 @@ watch(
 
 provide('Tree', {
   nodesRef,
+  nodeSelect: (val: Node) => emit('nodeSelect', val),
 });
 </script>
 
@@ -51,18 +52,3 @@ provide('Tree', {
     />
   </div>
 </template>
-
-<style lang="scss" scoped>
-.node {
-  @apply flex;
-  @apply p-1 rounded-md;
-  @apply hover:text-primary-500 dark:hover:text-primary-100 hover:bg-primary-100 dark:hover:bg-primary-600;
-}
-
-.node-line {
-  &::after {
-    @apply content-[''] absolute left-0 top-0 flex h-full;
-    @apply border-l border-slate-300 dark:border-slate-600;
-  }
-}
-</style>

@@ -1,6 +1,12 @@
 <script lang="ts" setup>
 import Breadcrumbs from '~/components/Breadcrumbs.vue';
 import Tree from '~/components/Tree.vue';
+
+type NodeSelect = InstanceType<typeof Tree>['onNodeSelect'];
+
+const nodeSelect: NodeSelect = (node) => {
+  console.log(node);
+};
 </script>
 
 <template>
@@ -45,7 +51,9 @@ import Tree from '~/components/Tree.vue';
             { label: '2-2' },
           ],
         },
+        { label: '3' },
       ]"
+      @nodeSelect="nodeSelect"
     />
   </div>
 
