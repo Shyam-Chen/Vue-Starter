@@ -1,5 +1,4 @@
 import { reactive, readonly } from 'vue';
-
 import { defineStore } from 'vue-storer';
 
 type NotificationMessage = {
@@ -7,14 +6,23 @@ type NotificationMessage = {
   timeout: ReturnType<typeof setTimeout>;
 };
 
-export default defineStore('useNotification', () => {
-  const state = reactive({
-    messages: [] as NotificationMessage[],
-    timeouts: [] as NotificationMessage[],
+type State = {
+  messages: NotificationMessage[];
+  timeouts: NotificationMessage[];
+};
+
+type Actions = {
+  add(params: Pick<NotificationMessage, 'message'>): void;
+};
+
+export default defineStore<State, object, Actions>('useNotification', () => {
+  const state = reactive<State>({
+    messages: [],
+    timeouts: [],
   });
 
-  const actions = readonly({
-    add({ message }: { message: string }) {
+  const actions = readonly<Actions>({
+    add({ message }) {
       const item = {
         message,
         timeout: setTimeout(() => {
