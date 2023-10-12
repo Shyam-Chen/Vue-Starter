@@ -64,9 +64,7 @@ const flux = reactive({
     });
 
     flux.filterValue = '';
-    if (filterEl) {
-      filterEl.$el.querySelector('input').focus();
-    }
+    if (filterEl) filterEl.$el.querySelector('input').focus();
 
     flux.selected = flux.options.filter((item) => item.checked);
 
@@ -105,12 +103,14 @@ const flux = reactive({
   },
   selectAll: false,
   selectAllIndeterminate: false,
-  onSelectAll() {
+  onSelectAll(filterEl: any) {
     flux.selectAll = !flux.selectAll;
 
     flux.options = [..._initOptions.value].map((item) => {
       return { ...item, checked: flux.selectAll };
     });
+
+    if (filterEl) filterEl.$el.querySelector('input').focus();
 
     flux.selected = flux.options.filter((item) => item.checked);
 
@@ -212,13 +212,12 @@ const open = (selectEl: any, filterEl: any, menuEl: any) => {
 
     const active = menuEl.querySelector('.select-menu-item-active');
     const offsetTop = active?.offsetTop;
+
     if (offsetTop) {
       selectMenu.value.scrollTop = offsetTop - active.offsetHeight * 2;
     }
 
-    if (filterEl) {
-      filterEl.$el.querySelector('input').focus();
-    }
+    if (filterEl) filterEl.$el.querySelector('input').focus();
   });
 };
 
@@ -353,13 +352,13 @@ onUnmounted(() => {
             v-if="flux.options?.length"
             class="cursor-pointer bg-slate-200 dark:bg-slate-600 rounded"
             :class="{ 'mt-2': filterable }"
-            @click.stop="flux.onSelectAll"
+            @click.stop="flux.onSelectAll($refs.filter)"
           >
             <div class="flex items-center px-5">
               <Checkbox
                 :checked="flux.selectAll"
                 :indeterminate="flux.selectAllIndeterminate"
-                @change.stop="flux.onSelectAll"
+                @change.stop="flux.onSelectAll($refs.filter)"
               />
               <span class="ml-2">All</span>
             </div>
