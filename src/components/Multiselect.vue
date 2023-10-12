@@ -10,7 +10,7 @@ import Chip from './Chip.vue';
 import TextField from './TextField.vue';
 import Fade from './Fade.vue';
 
-type Option = { label: string; value: string; [key: string]: unknown; options?: Options };
+type Option = { label: string; value: string | number; [key: string]: unknown; options?: Options };
 type Options = Option[];
 
 const props = withDefaults(

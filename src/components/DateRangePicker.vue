@@ -264,6 +264,16 @@ const flux = reactive({
   },
 });
 
+const rangeValue = computed(() => {
+  if (startValueModel.value && !endValueModel.value) return startValueModel.value;
+
+  if (startValueModel.value && endValueModel.value) {
+    return `${startValueModel.value} ~ ${endValueModel.value}`;
+  }
+
+  return '';
+});
+
 const handleScroll = () => {
   if (flux.showDatePicker) {
     flux.resizePanel();
@@ -317,7 +327,7 @@ onUnmounted(() => {
       :id="uid"
       ref="input"
       v-bind="$attrs"
-      :value="`${startValueModel} ~ ${endValueModel}`"
+      :value="rangeValue"
       :errorMessage="errorMessage"
       :disabled="disabled"
       append="i-fa-calendar-o"
