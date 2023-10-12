@@ -10,6 +10,7 @@ import Link from '@tiptap/extension-link';
 import { Editor, EditorContent } from '@tiptap/vue-3';
 
 import Breadcrumbs from '~/components/Breadcrumbs.vue';
+import CodeBlock from '~/components/CodeBlock.vue';
 
 const editor = ref();
 
@@ -73,6 +74,27 @@ function setLink() {
   // update link
   editor.value.chain().focus().extendMarkRange('link').setLink({ href: url }).run();
 }
+
+const code = ref(`
+<pre><code class="language-ts">_.chunk(['a', 'b', 'c', 'd'], 2);
+// => [['a', 'b'], ['c', 'd']]
+
+_.chunk(['a', 'b', 'c', 'd'], 3);
+// => [['a', 'b', 'c'], ['d']]</code></pre>
+`);
+
+const code2 = ref(`
+<pre><code class="language-vue">&lt;script lang="ts" setup&gt;
+import { ref } from 'vue';
+
+const msg = ref('Hello World!');
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;h1&gt;{{ msg }}&lt;/h1&gt;
+  &lt;input v-model="msg"&gt;
+&lt;/template&gt;</code></pre>
+`);
 </script>
 
 <template>
@@ -112,7 +134,7 @@ function setLink() {
 
         <input
           type="color"
-          :value="editor.getAttributes('textStyle').color"
+          :value="editor.getAttributes('textStyle').color || '#000000'"
           @input="
             editor
               .chain()
@@ -211,6 +233,9 @@ function setLink() {
 
     <div class="border rounded p-4">{{ editor.getHTML() }}</div>
   </div>
+
+  <CodeBlock :code="code" />
+  <CodeBlock :code="code2" />
 </template>
 
 <style lang="scss" scoped>
