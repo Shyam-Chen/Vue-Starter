@@ -38,7 +38,16 @@ const flux = reactive({
 if (defaultSlot) {
   for (let i = 0; i < defaultSlot.length; i++) {
     const tab = defaultSlot[i];
-    flux.tab = [...flux.tab, tab.props];
+
+    if (tab.children?.length) {
+      const tabChildren = tab.children as any[];
+      for (let j = 0; j < tabChildren.length; j++) {
+        const child = tabChildren[j];
+        flux.tab = [...flux.tab, child.props];
+      }
+    } else {
+      flux.tab = [...flux.tab, tab.props];
+    }
   }
 }
 
@@ -50,11 +59,11 @@ provide('Tabs', {
 
 <template>
   <div class="w-full">
-    <div class="flex items-center border-b border-slate-500">
+    <div class="Tabs-TabWrapper">
       <div
         v-for="(tab, idx) in flux.tab"
         :key="idx"
-        class="tab"
+        class="Tabs-Tab"
         :class="{
           active: flux.activeTab(tab, idx) === modelValue,
         }"
@@ -72,9 +81,18 @@ provide('Tabs', {
 </template>
 
 <style lang="scss" scoped>
-.tab {
+.Tabs-TabWrapper {
+  @apply flex flex-row items-center border-b border-slate-500;
+  @apply overflow-x-auto;
+
+  &::-webkit-scrollbar {
+    @apply w-0 h-0 bg-transparent;
+  }
+}
+
+.Tabs-Tab {
   @apply flex items-center cursor-pointer px-7 pt-4 pb-3.5 border-b-2 border-transparent;
-  @apply text-xs font-medium uppercase leading-tight text-neutral-500;
+  @apply text-xs font-medium uppercase leading-tight text-neutral-500 whitespace-nowrap;
 
   &.active {
     @apply text-primary-500 border-primary-500;
