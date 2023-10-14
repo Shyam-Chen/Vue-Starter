@@ -4,6 +4,7 @@ import { UseVirtualList } from '@vueuse/components';
 
 import Breadcrumbs from '~/components/Breadcrumbs.vue';
 
+import VirtualList from './VirtualList.vue';
 import leetcode from './leetcode';
 
 const currentPage = ref(1);
@@ -85,6 +86,11 @@ onMounted(async () => {
 
   <div class="my-4">
     <div class="text-3xl font-bold">Virtual Scroll</div>
+  </div>
+
+  <div class="w-full h-100 border border-slate-500 rounded-md p-4 space-y-4">
+    <div class="text-2xl font-bold">Virtual List</div>
+    <VirtualList />
   </div>
 
   <div class="my-4">
