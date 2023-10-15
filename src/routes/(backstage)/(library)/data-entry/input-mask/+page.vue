@@ -6,7 +6,10 @@ import InputMask from '~/components/InputMask.vue';
 
 const flux = reactive({
   numberMasked: '',
-  numberUnmasked: '',
+  numberUnmasked: undefined,
+
+  percentMasked: '',
+  percentUnmasked: '',
 
   phoneMasked: '',
   phoneUnmasked: '',
@@ -28,7 +31,7 @@ const flux = reactive({
 
     <InputMask
       v-model:masked="flux.numberMasked"
-      v-model:unmasked="flux.numberUnmasked"
+      v-model:unmasked.number="flux.numberUnmasked"
       :mask="{
         mask: Number,
         min: -1_000_000_000_000,
@@ -40,7 +43,40 @@ const flux = reactive({
 
     <div>
       <div>Masked: {{ flux.numberMasked }}</div>
-      <div>Unmasked: {{ flux.numberUnmasked }}</div>
+
+      <div>
+        Unmasked: {{ flux.numberUnmasked }}
+        <code class="text-sm text-gray-700 bg-gray-300 p-0.5 rounded">
+          {{ typeof flux.numberUnmasked }}
+        </code>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex flex-col border my-4 p-4 gap-2">
+    <div class="text-xl font-bold">Percent</div>
+
+    <InputMask
+      v-model:masked="flux.percentMasked"
+      v-model:unmasked="flux.percentUnmasked"
+      :mask="{
+        mask: 'num%',
+        lazy: false,
+        blocks: {
+          num: {
+            mask: Number,
+            scale: 0,
+            min: 0,
+            max: 100,
+          },
+        },
+      }"
+      label="Percent Label"
+    />
+
+    <div>
+      <div>Masked: {{ flux.percentMasked }}</div>
+      <div>Unmasked: {{ flux.percentUnmasked }}</div>
     </div>
   </div>
 

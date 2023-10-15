@@ -51,6 +51,7 @@ function onComplete(evt: CustomEvent) {
 
     <div class="flex items-center w-full">
       <input
+        :id="id || uid"
         v-imask="mask"
         v-bind="$attrs"
         :value="masked"
