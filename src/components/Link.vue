@@ -2,16 +2,18 @@
 import { RouterLink } from 'vue-router';
 
 defineProps<{
-  to: string;
+  to?: string;
+  href?: string;
 }>();
 </script>
 
 <template>
-  <RouterLink v-bind="$attrs" :to="to" class="link"><slot></slot></RouterLink>
+  <RouterLink v-if="to" v-bind="$attrs" :to="to" class="Link"><slot></slot></RouterLink>
+  <a v-if="href" v-bind="$attrs" :href="href" class="Link"><slot></slot></a>
 </template>
 
 <style lang="scss" scoped>
-.link {
+.Link {
   @apply font-bold text-sm text-primary-500;
   @apply hover:underline hover:text-primary-600 dark:hover:text-primary-400;
 }

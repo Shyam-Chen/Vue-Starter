@@ -231,7 +231,7 @@ watch(
 
         <slot name="tbody">
           <tbody>
-            <template v-for="row in flux.rows" :key="row._id">
+            <template v-for="row in flux.rows" :key="row._id || row.id">
               <tr
                 class="sticky-tr hover:bg-slate-100 dark:hover:bg-slate-600 border-b last:border-b-0 dark:border-slate-600"
                 :class="{ 'bg-primary-800/25 important:hover:bg-primary-600/50': row.checked }"
