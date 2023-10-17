@@ -130,6 +130,7 @@ const links = [
       { name: 'Column', to: '/charts/column' },
       { name: 'Bar', to: '/charts/bar' },
       { name: 'Pie', to: '/charts/pie' },
+      { name: 'World Map', to: '/charts/world-map' },
     ],
   },
   {

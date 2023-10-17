@@ -118,6 +118,7 @@ import Breadcrumbs from '~/components/Breadcrumbs.vue';
       <RouterLink to="/charts/column" class="card">Column</RouterLink>
       <RouterLink to="/charts/bar" class="card">Bar</RouterLink>
       <RouterLink to="/charts/pie" class="card">Pie</RouterLink>
+      <RouterLink to="/charts/world-map" class="card">World Map</RouterLink>
     </div>
   </div>
 
