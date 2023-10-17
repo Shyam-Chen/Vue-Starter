@@ -23,6 +23,8 @@ onMounted(async () => {
 
   loading.value = false;
 
+  geojson.features = geojson.features.filter((item: any) => item.properties.name !== 'Antarctica');
+
   registerMap('topo', geojson);
 
   worldMapOption.value = {
@@ -79,7 +81,7 @@ onMounted(async () => {
           { name: 'China', value: 333 },
           { name: 'Japan', value: 821 },
           { name: 'South Korea', value: 500 },
-          { name: 'Taiwan', value: 400 },
+          // { name: 'Taiwan', value: 400 },
           { name: 'Germany', value: 720 },
           { name: 'Russia', value: 222 },
         ],
