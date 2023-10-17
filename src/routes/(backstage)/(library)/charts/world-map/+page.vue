@@ -14,6 +14,12 @@ use([MapChart, SVGRenderer, VisualMapComponent, TooltipComponent, ToolboxCompone
 const loading = ref(true);
 const worldMapOption = ref<EChartsOption>();
 
+const max = 1_000;
+
+function getRandomInt() {
+  return Math.floor(Math.random() * max) + 1;
+}
+
 onMounted(async () => {
   loading.value = true;
 
@@ -31,7 +37,7 @@ onMounted(async () => {
     visualMap: {
       left: 'right',
       min: 0,
-      max: 1000,
+      max,
       inRange: {
         color: [
           '#313695',
@@ -75,15 +81,18 @@ onMounted(async () => {
           },
         },
         data: [
-          { name: 'USA', value: 900 },
-          { name: 'England', value: 111 },
-          { name: 'Canada', value: 123 },
-          { name: 'China', value: 333 },
-          { name: 'Japan', value: 821 },
-          { name: 'South Korea', value: 500 },
-          // { name: 'Taiwan', value: 400 },
-          { name: 'Germany', value: 720 },
-          { name: 'Russia', value: 222 },
+          { name: 'Australia', value: getRandomInt() },
+          { name: 'Canada', value: getRandomInt() },
+          { name: 'China', value: getRandomInt() },
+          { name: 'England', value: getRandomInt() },
+          { name: 'France', value: getRandomInt() },
+          { name: 'Germany', value: getRandomInt() },
+          { name: 'India', value: getRandomInt() },
+          { name: 'Japan', value: getRandomInt() },
+          { name: 'Russia', value: getRandomInt() },
+          { name: 'South Korea', value: getRandomInt() },
+          { name: 'Taiwan', value: getRandomInt() },
+          { name: 'USA', value: getRandomInt() },
         ],
       },
     ],
