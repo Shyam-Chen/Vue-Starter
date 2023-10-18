@@ -101,25 +101,22 @@ const createDays = (y?: number, m?: number) => {
   days.forEach((day) => {
     day.today = _format(day.date, props.format) === _format(flux.now, props.format);
 
+    const currentDate = _format(day.date, props.format);
+    const minDate = props.minDate && _format(new Date(props.minDate), props.format);
+    const maxDate = props.maxDate && _format(new Date(props.maxDate), props.format);
+
+    if (props.minDate && props.maxDate) {
+      day.disabled = minDate > currentDate || maxDate < currentDate;
+    } else if (props.minDate) {
+      day.disabled = minDate > currentDate;
+    } else if (props.maxDate) {
+      day.disabled = maxDate < currentDate;
+    }
+
     if (startValueModel.value && !endValueModel.value) {
-      day.selected = startValueModel.value === _format(day.date, props.format);
-      day.disabled = startValueModel.value > _format(day.date, props.format);
-    }
-
-    if (startValueModel.value && endValueModel.value) {
-      day.selected =
-        startValueModel.value <= _format(day.date, props.format) &&
-        _format(day.date, props.format) <= endValueModel.value;
-    }
-
-    if (props.minDate) {
-      day.disabled =
-        _format(new Date(props.minDate), props.format) > _format(day.date, props.format);
-    }
-
-    if (props.maxDate) {
-      day.disabled =
-        _format(new Date(props.maxDate), props.format) < _format(day.date, props.format);
+      day.selected = startValueModel.value === currentDate;
+    } else if (startValueModel.value && endValueModel.value) {
+      day.selected = startValueModel.value <= currentDate && currentDate <= endValueModel.value;
     }
   });
 
@@ -140,7 +137,6 @@ const flux = reactive({
   showDatePicker: false,
   scrollableParent: null as HTMLElement | null,
   direction: '' as 'down' | 'up' | '',
-  rangeClicked: false,
   resizePanel() {
     const rect = input.value.$el.querySelector('.text-field-input').getBoundingClientRect();
 
@@ -158,7 +154,6 @@ const flux = reactive({
   },
   openPicker() {
     flux.showDatePicker = true;
-    flux.rangeClicked = false;
 
     flux.showWeeks = true;
     flux.showYears = false;
@@ -188,6 +183,8 @@ const flux = reactive({
   year: null as null | number,
   months: [] as string[],
   month: null as null | number,
+
+  selectedRange: [] as any[],
 
   decrement() {
     if (flux.showWeeks) {
@@ -228,24 +225,23 @@ const flux = reactive({
     }
   },
   selectDateItem(val: any) {
-    if (startValueModel.value && endValueModel.value) {
-      startValueModel.value = '';
-      endValueModel.value = '';
-      flux.rangeClicked = false;
+    const date = _format(val.date, props.format);
+
+    if (props.minDate && _format(new Date(props.minDate), props.format) > date) return;
+    if (props.maxDate && _format(new Date(props.maxDate), props.format) < date) return;
+
+    if (flux.selectedRange.length === 0) {
+      flux.selectedRange = [date];
+    } else if (flux.selectedRange.length === 1) {
+      flux.selectedRange = [...flux.selectedRange, date];
+    } else if (flux.selectedRange.length === 2) {
+      flux.selectedRange = [date];
     }
 
-    if (flux.rangeClicked) {
-      const date = _format(val.date, props.format);
+    const [startDate, endDate] = flux.selectedRange.sort();
 
-      if (date >= startValueModel.value) endValueModel.value = date;
-    }
-
-    if (!flux.rangeClicked) {
-      const date = _format(val.date, props.format);
-
-      startValueModel.value = date;
-      flux.rangeClicked = true;
-    }
+    startValueModel.value = startDate || '';
+    endValueModel.value = endDate || '';
   },
   selectYear(val: number) {
     flux.showYears = false;
@@ -283,6 +279,18 @@ const handleScroll = () => {
 onClickOutside(target, () => {
   flux.showDatePicker = false;
 });
+
+watch(
+  () => flux.showDatePicker,
+  (val) => {
+    if (!val && flux.selectedRange.length === 1) {
+      const date = flux.selectedRange[0];
+      flux.selectedRange = [date, date];
+      startValueModel.value = date;
+      endValueModel.value = date;
+    }
+  },
+);
 
 watch(
   () => flux.currentMoment,

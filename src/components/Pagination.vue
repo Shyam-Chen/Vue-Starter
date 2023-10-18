@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { computed, toRef } from 'vue';
+import { computed, watch } from 'vue';
 import { useOffsetPagination } from '@vueuse/core';
 
 import Button from './Button.vue';
@@ -10,9 +10,17 @@ const props = defineProps<{
   count?: number;
 }>();
 
-const valueRef = toRef(props, 'value', 1);
-const rowsRef = toRef(props, 'rows', 10);
-const countRef = toRef(props, 'count', 0);
+const emit = defineEmits<{
+  (evt: 'update:value', val?: number): void;
+}>();
+
+const valueRef = computed({
+  get: () => props.value || 1,
+  set: (val) => emit('update:value', val),
+});
+
+const rowsRef = computed(() => props.rows || 10);
+const countRef = computed(() => props.count || 0);
 
 const { currentPage, isFirstPage, isLastPage, prev, next } = useOffsetPagination({
   page: valueRef.value,
@@ -33,6 +41,17 @@ const grid4 = computed(() => {
   if (currentPage.value > 3) return currentPage.value + 1;
   return 4;
 });
+
+function onPage(page: number) {
+  currentPage.value = page;
+}
+
+watch(
+  () => currentPage.value,
+  (val) => {
+    valueRef.value = val;
+  },
+);
 </script>
 
 <template>
@@ -41,23 +60,23 @@ const grid4 = computed(() => {
       <Button variant="text" icon="i-mdi-chevron-left" :disabled="isFirstPage" @click="prev" />
     </div>
 
-    <Button :variant="currentPage === 1 ? 'contained' : 'text'" @click="currentPage = 1">
+    <Button :variant="currentPage === 1 ? 'contained' : 'text'" @click="onPage(1)">
       {{ 1 }}
     </Button>
 
     <template v-if="currentPage">
       <div v-if="currentPage > 3" class="w-38px text-center">...</div>
 
-      <Button v-else :variant="currentPage === 2 ? 'contained' : 'text'" @click="currentPage = 2">
+      <Button v-else :variant="currentPage === 2 ? 'contained' : 'text'" @click="onPage(2)">
         {{ 2 }}
       </Button>
     </template>
 
-    <Button :variant="currentPage === grid3 ? 'contained' : 'text'" @click="currentPage = grid3">
+    <Button :variant="currentPage === grid3 ? 'contained' : 'text'" @click="onPage(grid3)">
       {{ grid3 }}
     </Button>
 
-    <Button :variant="currentPage === grid4 ? 'contained' : 'text'" @click="currentPage = grid4">
+    <Button :variant="currentPage === grid4 ? 'contained' : 'text'" @click="onPage(grid4)">
       {{ grid4 }}
     </Button>
 
@@ -67,13 +86,13 @@ const grid4 = computed(() => {
       <Button
         v-else
         :variant="currentPage === pages - 1 ? 'contained' : 'text'"
-        @click="currentPage = pages - 1"
+        @click="onPage(pages - 1)"
       >
         {{ pages - 1 }}
       </Button>
     </template>
 
-    <Button :variant="currentPage === pages ? 'contained' : 'text'" @click="currentPage = pages">
+    <Button :variant="currentPage === pages ? 'contained' : 'text'" @click="onPage(pages)">
       {{ pages }}
     </Button>
 
@@ -91,7 +110,7 @@ const grid4 = computed(() => {
       v-for="page in pages"
       :key="page"
       :variant="currentPage === page ? 'contained' : 'text'"
-      @click="currentPage = page"
+      @click="onPage(page)"
     >
       {{ page }}
     </Button>
