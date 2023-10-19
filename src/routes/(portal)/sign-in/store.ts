@@ -39,7 +39,8 @@ export default defineStore('/sign-in', () => {
           localStorage.setItem('accessToken', accessToken);
           localStorage.setItem('refreshToken', refreshToken);
           localStorage.setItem('expiresIn', formatISO(add(new Date(), { hours: 12 })));
-          await router.push(route.redirectedFrom?.path || '/dashboard');
+          const path = route.redirectedFrom?.path || '/dashboard';
+          await router.push(path === '/' ? '/dashboard' : path);
         }
 
         // 2fa
