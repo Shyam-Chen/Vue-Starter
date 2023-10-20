@@ -37,6 +37,7 @@ const props = withDefaults(
     filterable: false,
     disabled: false,
     required: false,
+    loading: false,
     notFoundContent: 'No results found',
     isInvalid: false,
     errorMessage: '',

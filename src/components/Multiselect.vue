@@ -37,7 +37,7 @@ const props = withDefaults(
     options: () => [],
     display: 'label',
     placeholder: 'Please select',
-    notFoundContent: '--',
+    notFoundContent: 'No results found',
     errorMessage: '',
   },
 );

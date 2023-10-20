@@ -26,7 +26,7 @@ const props = withDefaults(
     value: '',
     options: () => [],
     display: 'label',
-    notFoundContent: '--',
+    notFoundContent: 'No results found',
     errorMessage: '',
   },
 );
@@ -181,14 +181,6 @@ const handleScroll = () => {
   }
 };
 
-// watch(
-//   () => modelValue.value,
-//   (val) => {
-//     debouncedFn(val);
-//   },
-//   { immediate: true },
-// );
-
 watch(
   () => wrapper.value,
   (el) => {
@@ -254,6 +246,10 @@ onUnmounted(() => {
             >
               {{ flux.display(item) }}
             </div>
+          </div>
+
+          <div v-if="modelValue && flux.options?.length === 0" class="p-2">
+            {{ notFoundContent }}
           </div>
         </div>
       </Fade>
