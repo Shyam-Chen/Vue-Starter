@@ -13,8 +13,9 @@ const flux = reactive({
   close() {
     flux.dialog = false;
   },
-
   more: false,
+
+  sizeDialog: false,
 });
 </script>
 
@@ -67,4 +68,24 @@ const flux = reactive({
       </Dialog>
     </div>
   </div>
+
+  <div class="flex flex-col border p-4 mb-4">
+    <div class="mb-2">Size</div>
+
+    <div class="flex justify-center">
+      <Button @click="flux.sizeDialog = true">Launch</Button>
+    </div>
+
+    <Dialog v-model="flux.sizeDialog" title="Lorem Ipsum" class="CustomSizeDialog">
+      <div>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
+    </Dialog>
+  </div>
 </template>
+
+<style lang="scss" scoped>
+.CustomSizeDialog {
+  :deep(.dialog-content) {
+    @apply w-100;
+  }
+}
+</style>

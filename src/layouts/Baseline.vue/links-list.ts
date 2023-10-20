@@ -114,6 +114,7 @@ const links = [
     name: 'Feedback',
     sub: [
       { name: 'Alert', to: '/feedback/alert' },
+      { name: 'ConfirmLeaveDialog', to: '/feedback/confirm-leave-dialog' },
       { name: 'Dialogs', to: '/feedback/dialogs' },
       { name: 'Highlight', to: '/feedback/highlight' },
       { name: 'Notification', to: '/feedback/notification' },

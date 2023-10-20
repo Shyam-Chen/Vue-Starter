@@ -101,6 +101,7 @@ import Breadcrumbs from '~/components/Breadcrumbs.vue';
 
     <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
       <RouterLink to="/feedback/alert" class="card">Alert</RouterLink>
+      <RouterLink to="/feedback/confirm-leave-dialog" class="card">ConfirmLeaveDialog</RouterLink>
       <RouterLink to="/feedback/dialogs" class="card">Dialogs</RouterLink>
       <RouterLink to="/feedback/highlight" class="card">Highlight</RouterLink>
       <RouterLink to="/feedback/notification" class="card">Notification</RouterLink>
