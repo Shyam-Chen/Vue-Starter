@@ -3,7 +3,7 @@ import { ref, watch, onUnmounted } from 'vue';
 import { useResizeObserver } from '@vueuse/core';
 
 const props = defineProps<{
-  modelValue: boolean;
+  modelValue?: boolean;
   title?: string;
 }>();
 

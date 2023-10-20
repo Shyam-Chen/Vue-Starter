@@ -108,6 +108,19 @@ const flux = reactive({
   </div>
 
   <div class="flex flex-col border p-4 mb-4">
+    <div class="mb-2">Loading</div>
+
+    <div class="flex justify-center">
+      <Multiselect
+        v-model:value="flux.multiselect1"
+        label="Tech Stack"
+        :options="flux.multiselect1Options"
+        loading
+      />
+    </div>
+  </div>
+
+  <div class="flex flex-col border p-4 mb-4">
     <div class="mb-2">Selected Labels</div>
 
     <div class="flex justify-center">

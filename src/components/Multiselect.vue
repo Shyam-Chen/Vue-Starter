@@ -8,6 +8,7 @@ import getScrollableParent from '~/utilities/getScrollableParent';
 import Checkbox from './Checkbox.vue';
 import Chip from './Chip.vue';
 import TextField from './TextField.vue';
+import ProgressBar from './ProgressBar.vue';
 import Fade from './Fade.vue';
 
 type Option = { label: string; value: string | number; [key: string]: unknown; options?: Options };
@@ -24,6 +25,7 @@ const props = withDefaults(
     filterable?: boolean;
     disabled?: boolean;
     required?: boolean;
+    loading?: boolean;
     notFoundContent?: string;
     isInvalid?: boolean;
     errorMessage?: string;
@@ -333,6 +335,8 @@ onUnmounted(() => {
 
         <div v-if="!flux.show" class="i-fa-caret-down w-4 h-4 select-input-icon"></div>
         <div v-else class="i-fa-caret-up w-4 h-4 select-input-icon"></div>
+
+        <ProgressBar v-if="loading" class="absolute left-0 bottom-0 rounded" />
       </div>
 
       <Fade>

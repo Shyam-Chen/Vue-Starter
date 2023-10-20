@@ -117,7 +117,15 @@ const flux = reactive({
   </div>
 
   <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Option Groups</div>
+    <div class="mb-2">Loading</div>
+
+    <div class="flex justify-center">
+      <Select v-model:value="flux.select1" :options="flux.select1Options" loading />
+    </div>
+  </div>
+
+  <div class="flex flex-col border p-4 mb-4">
+    <div class="mb-2">Option Groups (TODO)</div>
 
     <div class="flex justify-center">
       <!--  -->

@@ -3,20 +3,31 @@ import { nextTick, ref, watch } from 'vue';
 
 import Alert from './Alert.vue';
 
+type NotificationMessage = {
+  message: string;
+  timeout: ReturnType<typeof setTimeout> | number;
+  color?: InstanceType<typeof Alert>['color'];
+  icon?: InstanceType<typeof Alert>['icon'];
+};
+
 const props = defineProps<{
-  messages?: any[];
-  timeouts?: any[];
+  messages?: NotificationMessage[];
+  timeouts?: NotificationMessage[];
+  color?: InstanceType<typeof Alert>['color'];
+  icon?: InstanceType<typeof Alert>['icon'];
 }>();
 
-const list = ref<any[]>(props.messages || []);
-const timeoutList = ref<any[]>(props.timeouts || []);
+const list = ref(props.messages || []);
+const timeoutList = ref(props.timeouts || []);
 
-const push = ({ message }: { message: string }) => {
+const push = ({ message, color, icon }: Omit<NotificationMessage, 'timeout'>) => {
   const item = {
     message,
     timeout: setTimeout(() => {
       timeoutList.value.push(item);
     }, 3000),
+    color,
+    icon,
   };
 
   list.value.push(item);
@@ -47,7 +58,14 @@ watch(
     name="list"
     class="grid gap-4 fixed left-1/2 top-12 -translate-x-1/2 z-200"
   >
-    <Alert v-for="item in list" :key="item.timeout" v-bind="$attrs" class="shadow-xl">
+    <Alert
+      v-for="item in list"
+      :key="item.timeout as number"
+      v-bind="$attrs"
+      :color="color || item.color"
+      :icon="icon || item.icon"
+      class="shadow-xl"
+    >
       {{ item.message }}
     </Alert>
   </TransitionGroup>
