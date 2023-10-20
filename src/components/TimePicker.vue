@@ -103,16 +103,15 @@ const flux = reactive({
 </template>
 
 <style lang="scss" scoped>
-:deep(.select-input) {
-  padding-right: 0.75rem;
-  text-align: center;
+:deep(.Select-Input) {
+  @apply w-16 text-center p-1;
 }
 
-:deep(.select-input-icon) {
-  display: none;
+:deep(.Select-Arrow) {
+  @apply hidden;
 }
 
-:deep(.select-menu) {
-  text-align: center;
+:deep(.Select-List) {
+  @apply text-center text-sm;
 }
 </style>

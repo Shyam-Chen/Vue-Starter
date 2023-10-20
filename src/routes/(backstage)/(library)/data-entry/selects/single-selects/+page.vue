@@ -4,6 +4,8 @@ import { reactive } from 'vue';
 import Breadcrumbs from '~/components/Breadcrumbs.vue';
 import Select from '~/components/Select.vue';
 
+import WithTable from './WithTable.vue';
+
 const flux = reactive({
   select1: '',
   select1Options: [
@@ -122,6 +124,11 @@ const flux = reactive({
     <div class="flex justify-center">
       <Select v-model:value="flux.select1" :options="flux.select1Options" loading />
     </div>
+  </div>
+
+  <div class="flex flex-col border p-4 mb-4">
+    <div class="mb-2">WithTable</div>
+    <WithTable />
   </div>
 
   <div class="flex flex-col border p-4 mb-4">

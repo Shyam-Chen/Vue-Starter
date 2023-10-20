@@ -1,12 +1,12 @@
 <script lang="ts" setup>
-import { ref, reactive, computed, watch, nextTick, onMounted, onUnmounted } from 'vue';
+import { nextTick, ref, computed, reactive, watch, onMounted, onUnmounted } from 'vue';
 import { onClickOutside } from '@vueuse/core';
 
 import getScrollableParent from '~/utilities/getScrollableParent';
 
-import TextField from './TextField.vue';
-import ProgressBar from './ProgressBar.vue';
 import Fade from './Fade.vue';
+import ProgressBar from './ProgressBar.vue';
+import TextField from './TextField.vue';
 
 type Option = { label: string; value: string | number; [key: string]: unknown; options?: Options };
 type Options = Option[];
@@ -37,7 +37,7 @@ const props = withDefaults(
     filterable: false,
     disabled: false,
     required: false,
-    notFoundContent: '--',
+    notFoundContent: 'No results found',
     isInvalid: false,
     errorMessage: '',
   },
@@ -50,7 +50,7 @@ const emit = defineEmits<{
 
 const flux = reactive({
   show: false,
-  direction: 'down',
+  direction: 'down' as 'down' | 'up',
   selected: undefined as Option | undefined,
   filterValue: '',
   options: undefined as Options | undefined,
@@ -79,61 +79,67 @@ const flux = reactive({
 });
 
 const target = ref();
-const select = ref();
-const menu = ref();
-const selectMenu = ref();
-const selectMenuItem = ref<any[]>([]);
+const selectInput = ref();
+const selectPanel = ref();
+const selectFilter = ref();
+const selectList = ref();
+const selectItem = ref<any[]>([]);
 
-const _initOptions = computed(() => props.options);
+const initOptions = computed(() => props.options);
 const reoptions = computed(() => flux.options || props.options);
 
-const open = (selectEl: any, filterEl: any, menuEl: any) => {
+function resizePanel() {
+  const rect = selectInput.value.getBoundingClientRect();
+
+  selectPanel.value.style.width = `${rect.width}px`;
+  selectPanel.value.style.left = `${rect.left}px`;
+
+  const center = window.innerHeight / 2;
+
+  if (rect.top > center) {
+    selectPanel.value.style.top = `${rect.top}px`;
+    flux.direction = 'up';
+  } else {
+    selectPanel.value.style.top = `${rect.bottom}px`;
+    flux.direction = 'down';
+  }
+}
+
+const open = () => {
   if (props.disabled) return;
 
   flux.show = !flux.show;
 
   nextTick(() => {
-    flux.scrollableParent = getScrollableParent(selectEl);
+    flux.scrollableParent = getScrollableParent(selectInput.value);
 
-    const rect = selectEl.getBoundingClientRect();
+    resizePanel();
 
-    menuEl.style.width = `${rect.width}px`;
-    menuEl.style.left = `${rect.left}px`;
-    menuEl.style.top = `${rect.bottom}px`;
+    /**
+     * Because of the use of `whitespace-nowrap` on `Select-Item`,
+     * if there's a scrollbar, set that width for all options; otherwise, keep it at 100%.
+     */
+    if (selectList.value.scrollWidth > selectList.value.offsetWidth) {
+      const width = `${selectList.value.scrollWidth}px`;
 
-    if (selectMenu.value.scrollWidth > selectMenu.value.offsetWidth) {
-      const width = `${selectMenu.value.scrollWidth}px`;
-
-      for (let index = 0; index < selectMenuItem.value.length; index++) {
-        if (selectMenuItem.value[index]) {
-          selectMenuItem.value[index].style.width = width;
+      for (let index = 0; index < selectItem.value.length; index++) {
+        if (selectItem.value[index]) {
+          selectItem.value[index].style.width = width;
         }
       }
     } else {
-      for (let index = 0; index < selectMenuItem.value.length; index++) {
-        if (selectMenuItem.value[index]) {
-          selectMenuItem.value[index].style.width = '100%';
+      for (let index = 0; index < selectItem.value.length; index++) {
+        if (selectItem.value[index]) {
+          selectItem.value[index].style.width = '100%';
         }
       }
     }
 
-    const center = window.innerHeight / 2;
-
-    if (rect.top > center) {
-      flux.direction = 'up';
-    } else {
-      flux.direction = 'down';
-    }
-
-    const active = menuEl.querySelector('.select-menu-item-active');
+    const active = selectPanel.value.querySelector('.Select-Item-Active');
     const offsetTop = active?.offsetTop;
-    if (offsetTop) {
-      selectMenu.value.scrollTop = offsetTop - active.offsetHeight * 2;
-    }
+    if (offsetTop) selectList.value.scrollTop = offsetTop - active.offsetHeight * 2;
 
-    if (filterEl) {
-      filterEl.$el.querySelector('input').focus();
-    }
+    if (selectFilter.value) selectFilter.value.$el.querySelector('input').focus();
   });
 };
 
@@ -144,7 +150,7 @@ onClickOutside(target, () => {
 watch(
   () => flux.filterValue,
   (val) => {
-    const arr = [..._initOptions.value];
+    const arr = [...initOptions.value];
 
     const filter = arr.filter(
       (item) =>
@@ -160,7 +166,7 @@ watch(
   () => props.value,
   (val) => {
     if (val) {
-      const arr = [..._initOptions.value];
+      const arr = [...initOptions.value];
       const found = arr.find((item) => item.value === val);
       flux.selected = found;
     } else {
@@ -173,12 +179,7 @@ watch(
 const wrapper = computed(() => flux.scrollableParent);
 
 const handleScroll = () => {
-  if (flux.show) {
-    const rect = select.value.getBoundingClientRect();
-    menu.value.style.width = `${rect.width}px`;
-    menu.value.style.left = `${rect.left}px`;
-    menu.value.style.top = `${rect.bottom}px`;
-  }
+  if (flux.show) resizePanel();
 };
 
 watch(
@@ -206,42 +207,41 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="select" :class="[disabled ? 'opacity-60' : '']">
-    <label v-if="label" class="select-label">
-      {{ label }}
+  <div class="Select-Wrapper" :class="{ disabled }">
+    <div class="Select-Label">
+      <template v-if="label">{{ label }}</template>
+      <slot v-else></slot>
       <span v-if="required" class="text-red-500">*</span>
-    </label>
+    </div>
 
-    <div ref="target" class="relative">
+    <div ref="target">
       <div
-        ref="select"
-        class="select-input"
+        ref="selectInput"
+        class="Select-Input group"
         :class="{
           placeholder: !flux.selected,
           focus: flux.show,
           danger: isInvalid || errorMessage,
           disabled: disabled,
         }"
-        @click="open($refs.select, $refs.filter, $refs.menu)"
+        @click="open"
       >
-        <template v-if="!flux.selected">
+        <div v-if="!flux.selected" class="flex-1">
           {{ placeholder }}
-        </template>
+        </div>
 
-        <template v-if="flux.selected">
+        <div v-if="flux.selected" class="flex-1">
           {{ flux.display(flux.selected) }}
-        </template>
+        </div>
 
         <div
           v-if="value && clearable && !disabled"
-          class="select-input-icon select-input-icon-clear"
+          class="i-fa-times-circle w-4 h-4 ml-2 invisible hover:text-slate-600 group-hover:visible"
           @click.stop="flux.clear"
-        >
-          <div class="i-fa-times-circle w-4 h-4"></div>
-        </div>
+        ></div>
 
-        <div v-if="!flux.show" class="i-fa-caret-down w-4 h-4 select-input-icon"></div>
-        <div v-else class="i-fa-caret-up w-4 h-4 select-input-icon"></div>
+        <div v-if="!flux.show" class="Select-Arrow i-fa-caret-down"></div>
+        <div v-else class="Select-Arrow i-fa-caret-up"></div>
 
         <ProgressBar v-if="loading" class="absolute left-0 bottom-0 rounded" />
       </div>
@@ -249,25 +249,24 @@ onUnmounted(() => {
       <Fade>
         <div
           v-show="flux.show"
-          ref="menu"
-          class="select-section shadow-lg rounded bg-white dark:bg-slate-800"
+          ref="selectPanel"
+          class="Select-Panel"
           :class="{
-            'select-section-up': flux.direction === 'up',
+            'Select-Panel-PlacementBottom': flux.direction === 'down',
+            'Select-Panel-PlacementTop': flux.direction === 'up',
           }"
         >
-          <div v-if="filterable" class="select-filter">
-            <TextField ref="filter" v-model:value="flux.filterValue" />
+          <div v-if="filterable" class="Select-FilterWrapper">
+            <TextField ref="selectFilter" v-model:value="flux.filterValue" />
           </div>
 
-          <div ref="selectMenu" class="select-menu">
+          <div ref="selectList" class="Select-List">
             <div
               v-for="(item, index) in reoptions"
-              :ref="(el) => (selectMenuItem[index] = el)"
+              :ref="(el) => (selectItem[index] = el)"
               :key="item.value"
-              class="select-menu-item hover:bg-gray-300 dark:hover:bg-slate-700"
-              :class="{
-                'select-menu-item-active': value === item.value,
-              }"
+              class="Select-Item"
+              :class="{ 'Select-Item-Active': value === item.value }"
               @click="flux.onSelect(item.value, item)"
             >
               {{ flux.display(item) }}
@@ -288,59 +287,21 @@ onUnmounted(() => {
 </template>
 
 <style lang="scss" scoped>
-.select {
+.Select-Wrapper {
   @apply flex flex-col w-full;
 
-  $border: 1px;
-  $height: 40px;
-
-  &-input {
-    &:hover .select-input-icon-clear {
-      @apply visible;
-    }
-
-    &-icon {
-      @apply absolute right-3 top-1/2 -translate-y-1/2;
-    }
-
-    &-icon-clear {
-      @apply bg-white dark:bg-slate-800 hover:text-slate-500;
-      @apply z-100 invisible;
-    }
-  }
-
-  &-section {
-    @apply fixed w-full z-10;
-
-    transform: translateY(0) translateY(8px) translateY(0);
-
-    &-up {
-      transform: translateY(-$border) translateY(-$height) translateY(-100%);
-    }
-  }
-
-  &-filter {
-    @apply px-2 pt-2;
-  }
-
-  &-menu {
-    @apply cursor-pointer max-h-40 overflow-auto p-2 empty:hidden;
-
-    &-item {
-      @apply px-3 py-1 cursor-pointer rounded-md;
-      @apply hover:text-primary-500 dark:hover:text-primary-100 hover:bg-primary-100 dark:hover:bg-primary-600;
-    }
+  &.disabled {
+    @apply opacity-60;
   }
 }
 
-.select-label {
+.Select-Label {
   @apply text-sm font-bold mb-2 empty:hidden;
 }
 
-.select-input {
-  @apply relative;
-  @apply cursor-pointer border border-slate-400 rounded w-full py-2 pl-3 pr-9;
-  @apply bg-white dark:bg-slate-800 leading-tight;
+.Select-Input {
+  @apply relative flex items-center w-full px-3 py-2 cursor-pointer;
+  @apply border border-slate-400 bg-white dark:bg-slate-800 rounded leading-tight;
 
   &.placeholder {
     @apply text-gray-400 truncate;
@@ -351,8 +312,7 @@ onUnmounted(() => {
   }
 
   &.danger {
-    @apply border-red-500 mb-1;
-    @apply ring-red-500 border-red-500;
+    @apply border-red-500 mb-1 ring-red-500 border-red-500;
   }
 
   &.disabled {
@@ -360,7 +320,36 @@ onUnmounted(() => {
   }
 }
 
-.select-menu-item-active {
+.Select-Arrow {
+  @apply w-4 h-4 ml-2;
+}
+
+.Select-Panel {
+  @apply fixed w-full z-10 bg-white dark:bg-slate-800 shadow-lg rounded;
+}
+
+.Select-Panel-PlacementBottom {
+  transform: translateY(0.5rem);
+}
+
+.Select-Panel-PlacementTop {
+  transform: translateY(-0.5rem) translateY(-100%);
+}
+
+.Select-FilterWrapper {
+  @apply px-2 pt-2;
+}
+
+.Select-List {
+  @apply cursor-pointer max-h-40 overflow-auto p-2 empty:hidden;
+}
+
+.Select-Item {
+  @apply px-3 py-1 cursor-pointer rounded-md whitespace-nowrap;
+  @apply hover:text-primary-500 dark:hover:text-primary-100 hover:bg-primary-100 dark:hover:bg-primary-600;
+}
+
+.Select-Item-Active {
   @apply bg-primary-500 text-white hover:bg-primary-700 hover:text-white;
 }
 </style>
