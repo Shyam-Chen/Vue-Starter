@@ -140,6 +140,8 @@ function rgbToHex(rgb: string) {
           @click="editor.chain().focus().toggleHeading({ level: 6 }).run()"
         ></div>
 
+        <div class="i-mdi-format-paragraph w-6 h-6" @click="editor.commands.setParagraph()"></div>
+
         <input
           type="color"
           :value="rgbToHex(editor.getAttributes('textStyle').color)"
