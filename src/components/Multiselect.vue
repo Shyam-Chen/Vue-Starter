@@ -4,14 +4,20 @@ import { onClickOutside } from '@vueuse/core';
 
 import getScrollableParent from '~/utilities/getScrollableParent';
 
-// import ChipField from './ChipField.vue';
 import Checkbox from './Checkbox.vue';
 import Chip from './Chip.vue';
 import TextField from './TextField.vue';
 import ProgressBar from './ProgressBar.vue';
 import Fade from './Fade.vue';
 
-type Option = { label: string; value: string | number; [key: string]: unknown; options?: Options };
+type Option = {
+  checked?: boolean;
+  label: string;
+  value: string | number;
+  [key: string]: unknown;
+  options?: Options;
+};
+
 type Options = Option[];
 
 const props = withDefaults(
@@ -44,20 +50,20 @@ const props = withDefaults(
 
 const emit = defineEmits<{
   (evt: 'update:value', val?: Option['value'][] | null): void;
-  (evt: 'change', val?: Option['value'][] | null, opt?: Option | null): void;
+  (evt: 'change', val?: Option['value'] | null, opt?: Option | null): void;
 }>();
 
 const flux = reactive({
   show: false,
-  direction: 'down',
-  selected: [] as any[],
-  displaySelected(selected: any) {
-    return selected.map((item: any) => item.label);
+  direction: 'down' as 'down' | 'up',
+  selected: [] as Option[],
+  displaySelected(selected: Option[]) {
+    return selected.map((item) => item.label);
   },
   filterValue: '',
-  options: [] as any[],
-  onSelect(value: any, option: any, filterEl: any) {
-    flux.options = [..._initOptions.value].map((item) => {
+  options: [] as Option[],
+  onSelect(value: Option['value'], option: Option) {
+    flux.options = [...initOptions.value].map((item) => {
       if (item.value === value) {
         return { ...item, checked: !option.checked };
       }
@@ -66,7 +72,7 @@ const flux = reactive({
     });
 
     flux.filterValue = '';
-    if (filterEl) filterEl.$el.querySelector('input').focus();
+    if (selectFilter.value) selectFilter.value.$el.querySelector('input').focus();
 
     flux.selected = flux.options.filter((item) => item.checked);
 
@@ -76,7 +82,7 @@ const flux = reactive({
     );
     emit('change', value, option);
   },
-  display(item: any) {
+  display(item: Option) {
     if (props.display && typeof props.display === 'string') {
       return item[props.display];
     }
@@ -87,7 +93,7 @@ const flux = reactive({
 
     return `${item.value} - ${item.label}`;
   },
-  clear(value: any) {
+  clear(value: Option['value'] | null) {
     if (value) {
       emit(
         'update:value',
@@ -105,14 +111,14 @@ const flux = reactive({
   },
   selectAll: false,
   selectAllIndeterminate: false,
-  onSelectAll(filterEl: any) {
+  onSelectAll() {
     flux.selectAll = !flux.selectAll;
 
-    flux.options = [..._initOptions.value].map((item) => {
+    flux.options = [...initOptions.value].map((item) => {
       return { ...item, checked: flux.selectAll };
     });
 
-    if (filterEl) filterEl.$el.querySelector('input').focus();
+    if (selectFilter.value) selectFilter.value.$el.querySelector('input').focus();
 
     flux.selected = flux.options.filter((item) => item.checked);
 
@@ -126,29 +132,17 @@ const flux = reactive({
 });
 
 const target = ref();
-const select = ref();
-const menu = ref();
-const selectMenu = ref();
-const selectMenuItem = ref<any[]>([]);
+const selectInput = ref();
+const selectPanel = ref();
+const selectFilter = ref();
+const selectList = ref();
+const selectItem = ref<any[]>([]);
 
-const _initOptions = computed<any[]>(() => props.options);
-
-const reoptions = computed<any[]>(() => {
-  if (props.value?.length) {
-    const opts = props.options?.map((item: any) => ({
-      ...item,
-      checked: props.value.includes(item.value),
-    }));
-    return opts;
-  }
-
-  const opts = props.options?.map((item: any) => ({ ...item, checked: false }));
-  return opts;
-});
+const initOptions = computed(() => props.options);
 
 watchEffect(() => {
   if (props.value?.length) {
-    const opts = props.options?.map((item: any) => ({
+    const opts = props.options?.map((item) => ({
       ...item,
       checked: props.value.includes(item.value),
     }));
@@ -164,7 +158,7 @@ watchEffect(() => {
     if (checked) flux.selectAll = true;
     if (unchecked) flux.selectAll = false;
   } else {
-    const opts = props.options?.map((item: any) => ({ ...item, checked: false }));
+    const opts = props.options?.map((item) => ({ ...item, checked: false }));
     flux.selected = [];
     flux.options = opts;
 
@@ -178,48 +172,58 @@ watchEffect(() => {
   }
 });
 
-const open = (selectEl: any, filterEl: any, menuEl: any) => {
+function resizePanel() {
+  const rect = selectInput.value.getBoundingClientRect();
+
+  selectPanel.value.style.width = `${rect.width}px`;
+  selectPanel.value.style.left = `${rect.left}px`;
+
+  const center = window.innerHeight / 2;
+
+  if (rect.top > center) {
+    selectPanel.value.style.top = `${rect.top}px`;
+    flux.direction = 'up';
+  } else {
+    selectPanel.value.style.top = `${rect.bottom}px`;
+    flux.direction = 'down';
+  }
+}
+
+const open = () => {
   if (props.disabled) return;
 
   flux.show = !flux.show;
 
   nextTick(() => {
-    flux.scrollableParent = getScrollableParent(selectEl);
+    flux.scrollableParent = getScrollableParent(selectInput.value);
 
-    const rect = selectEl.getBoundingClientRect();
+    resizePanel();
 
-    menuEl.style.width = `${rect.width}px`;
-    menuEl.style.left = `${rect.left}px`;
-    menuEl.style.top = `${rect.bottom}px`;
+    /**
+     * Because of the use of `whitespace-nowrap` on `Select-Item`,
+     * if there's a scrollbar, set that width for all options; otherwise, keep it at 100%.
+     */
+    if (selectList.value.scrollWidth > selectList.value.offsetWidth) {
+      const width = `${selectList.value.scrollWidth}px`;
 
-    if (selectMenu.value.scrollWidth > selectMenu.value.offsetWidth) {
-      const width = `${selectMenu.value.scrollWidth}px`;
-
-      for (let index = 0; index < selectMenuItem.value.length; index++) {
-        selectMenuItem.value[index].style.width = width;
+      for (let index = 0; index < selectItem.value.length; index++) {
+        if (selectItem.value[index]) {
+          selectItem.value[index].style.width = width;
+        }
       }
     } else {
-      for (let index = 0; index < selectMenuItem.value.length; index++) {
-        selectMenuItem.value[index].style.width = '100%';
+      for (let index = 0; index < selectItem.value.length; index++) {
+        if (selectItem.value[index]) {
+          selectItem.value[index].style.width = '100%';
+        }
       }
     }
 
-    const center = window.innerHeight / 2;
-
-    if (rect.top > center) {
-      flux.direction = 'up';
-    } else {
-      flux.direction = 'down';
-    }
-
-    const active = menuEl.querySelector('.select-menu-item-active');
+    const active = selectPanel.value.querySelector('.Multiselect-Item-Active');
     const offsetTop = active?.offsetTop;
+    if (offsetTop) selectList.value.scrollTop = offsetTop - active.offsetHeight * 2;
 
-    if (offsetTop) {
-      selectMenu.value.scrollTop = offsetTop - active.offsetHeight * 2;
-    }
-
-    if (filterEl) filterEl.$el.querySelector('input').focus();
+    if (selectFilter.value) selectFilter.value.$el.querySelector('input').focus();
   });
 };
 
@@ -230,9 +234,9 @@ onClickOutside(target, () => {
 watch(
   () => flux.filterValue,
   (val) => {
-    const arr = [..._initOptions.value]?.map((item) => ({
+    const arr = [...initOptions.value]?.map((item) => ({
       ...item,
-      checked: props.value.includes(item.value),
+      checked: props.value?.includes(item.value),
     }));
 
     const filter = arr.filter(
@@ -248,12 +252,7 @@ watch(
 const wrapper = computed(() => flux.scrollableParent);
 
 const handleScroll = () => {
-  if (flux.show) {
-    const rect = select.value.getBoundingClientRect();
-    menu.value.style.width = `${rect.width}px`;
-    menu.value.style.left = `${rect.left}px`;
-    menu.value.style.top = `${rect.bottom}px`;
-  }
+  if (flux.show) resizePanel();
 };
 
 watch(
@@ -281,18 +280,17 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="flex flex-col w-full">
-    <!-- <ChipField :value="flux.displaySelected(flux.selected)" :placeholder="placeholder" readonly /> -->
-
-    <label v-if="label" class="select-label">
-      {{ label }}
+  <div class="Multiselect-Wrapper" :class="{ disabled }">
+    <div class="Multiselect-Label">
+      <template v-if="label">{{ label }}</template>
+      <slot v-else></slot>
       <span v-if="required" class="text-red-500">*</span>
-    </label>
+    </div>
 
-    <div ref="target" class="select">
+    <div ref="target">
       <div
-        ref="select"
-        class="select-input"
+        ref="selectInput"
+        class="Multiselect-Input group"
         :class="[
           {
             placeholder: !flux.selected?.length,
@@ -303,17 +301,17 @@ onUnmounted(() => {
           },
           flux.selected?.length ? 'py-1.5' : 'py-2',
         ]"
-        @click="open($refs.select, $refs.filter, $refs.menu)"
+        @click="open"
       >
-        <template v-if="!flux.selected?.length">
+        <div v-if="!flux.selected?.length" class="flex-1">
           {{ placeholder }}
-        </template>
+        </div>
 
-        <template v-if="flux.selected?.length && selectedLabels">
+        <div v-if="flux.selected?.length && selectedLabels" class="flex-1">
           {{ flux.selected?.length }} Selected
-        </template>
+        </div>
 
-        <div v-else-if="flux.selected?.length" class="flex flex-wrap gap-1">
+        <div v-else-if="flux.selected?.length" class="flex-1 flex flex-wrap gap-1">
           <Chip
             v-for="item in flux.selected"
             :key="item.value"
@@ -327,14 +325,12 @@ onUnmounted(() => {
 
         <div
           v-if="flux.selected?.length && clearable && !disabled"
-          class="select-input-icon select-input-icon-clear"
+          class="i-fa-times-circle w-4 h-4 ml-2 invisible hover:text-slate-600 group-hover:visible"
           @click.stop="flux.clear(null)"
-        >
-          <div class="i-fa-times-circle w-4 h-4"></div>
-        </div>
+        ></div>
 
-        <div v-if="!flux.show" class="i-fa-caret-down w-4 h-4 select-input-icon"></div>
-        <div v-else class="i-fa-caret-up w-4 h-4 select-input-icon"></div>
+        <div v-if="!flux.show" class="Multiselect-Arrow i-fa-caret-down"></div>
+        <div v-else class="Multiselect-Arrow i-fa-caret-up"></div>
 
         <ProgressBar v-if="loading" class="absolute left-0 bottom-0 rounded" />
       </div>
@@ -342,53 +338,52 @@ onUnmounted(() => {
       <Fade>
         <div
           v-show="flux.show"
-          ref="menu"
-          class="select-section shadow-lg rounded bg-white dark:bg-slate-800"
+          ref="selectPanel"
+          class="Multiselect-Panel"
           :class="{
-            'select-section-up': flux.direction === 'up',
+            'Multiselect-Panel-PlacementBottom': flux.direction === 'down',
+            'Multiselect-Panel-PlacementTop': flux.direction === 'up',
           }"
         >
-          <div v-if="filterable" class="select-filter">
-            <TextField ref="filter" v-model:value="flux.filterValue" />
+          <div v-if="filterable" class="Multiselect-FilterWrapper">
+            <TextField ref="selectFilter" v-model:value="flux.filterValue" />
           </div>
 
           <div
             v-if="flux.options?.length"
             class="cursor-pointer bg-slate-200 dark:bg-slate-600 rounded"
             :class="{ 'mt-2': filterable }"
-            @click.stop="flux.onSelectAll($refs.filter)"
+            @click.stop="flux.onSelectAll"
           >
             <div class="flex items-center px-5">
               <Checkbox
                 :checked="flux.selectAll"
                 :indeterminate="flux.selectAllIndeterminate"
-                @change.stop="flux.onSelectAll($refs.filter)"
+                @change.stop="flux.onSelectAll"
               />
               <span class="ml-2">All</span>
             </div>
           </div>
 
-          <div ref="selectMenu" class="select-menu">
+          <div ref="selectList" class="Multiselect-List">
             <div
               v-for="(item, index) in flux.options"
-              :ref="(el) => (selectMenuItem[index] = el)"
+              :ref="(el) => (selectItem[index] = el)"
               :key="item.value"
-              class="flex items-center select-menu-item hover:bg-gray-300 dark:hover:bg-slate-700"
-              :class="{
-                'select-menu-item-active': value === item.value,
-              }"
-              @click.stop="flux.onSelect(item.value, item, $refs.filter)"
+              class="Multiselect-Item"
+              :class="{ 'Multiselect-Item-Active': item.checked }"
+              @click.stop="flux.onSelect(item.value, item)"
             >
               <Checkbox
                 :checked="item.checked"
                 class="align-self-start"
-                @change.stop="flux.onSelect(item.value, item, $refs.filter)"
+                @change.stop="flux.onSelect(item.value, item)"
               />
               <span class="ml-2">{{ flux.display(item) }}</span>
             </div>
           </div>
 
-          <div v-if="reoptions.length === 0" class="p-4">
+          <div v-if="flux.options.length === 0" class="p-4">
             {{ notFoundContent }}
           </div>
         </div>
@@ -402,63 +397,21 @@ onUnmounted(() => {
 </template>
 
 <style lang="scss" scoped>
-.select {
-  @apply relative;
+.Multiselect-Wrapper {
+  @apply flex flex-col w-full;
 
-  $border: 1px;
-  $height: 40px;
-
-  &-input {
-    @apply relative;
-
-    min-height: 38px;
-
-    &:hover .select-input-icon-clear {
-      @apply visible;
-    }
-
-    &-icon {
-      @apply absolute right-3 top-1/2 -translate-y-1/2;
-    }
-
-    &-icon-clear {
-      @apply bg-white dark:bg-slate-800 hover:text-slate-500;
-      @apply z-100 invisible;
-    }
-  }
-
-  &-section {
-    @apply fixed w-full z-10;
-
-    transform: translateY(0) translateY(8px) translateY(0);
-
-    &-up {
-      transform: translateY(-$border) translateY(-$height) translateY(-100%);
-    }
-  }
-
-  &-filter {
-    @apply px-2 pt-2;
-  }
-
-  &-menu {
-    @apply cursor-pointer max-h-40 overflow-auto p-2 empty:hidden;
-
-    &-item {
-      @apply px-3 cursor-pointer rounded-md;
-      @apply hover:text-primary-500 dark:hover:text-primary-100 hover:bg-primary-100 dark:hover:bg-primary-600;
-    }
+  &.disabled {
+    @apply opacity-60;
   }
 }
 
-.select-label {
+.Multiselect-Label {
   @apply text-sm font-bold mb-2 empty:hidden;
 }
 
-.select-input {
-  @apply relative;
-  @apply cursor-pointer border border-slate-400 rounded w-full pl-3 pr-9;
-  @apply bg-white dark:bg-slate-800 leading-tight;
+.Multiselect-Input {
+  @apply relative flex items-center w-full px-3 py-2 cursor-pointer;
+  @apply border border-slate-400 bg-white dark:bg-slate-800 rounded leading-tight;
 
   &.placeholder {
     @apply text-gray-400 truncate;
@@ -469,12 +422,40 @@ onUnmounted(() => {
   }
 
   &.danger {
-    @apply border-red-500 mb-1;
-    @apply ring-red-500 border-red-500;
+    @apply border-red-500 mb-1 ring-red-500 border-red-500;
   }
 
   &.disabled {
     @apply cursor-not-allowed;
   }
+}
+
+.Multiselect-Arrow {
+  @apply w-4 h-4 ml-2;
+}
+
+.Multiselect-Panel {
+  @apply fixed w-full z-10 bg-white dark:bg-slate-800 shadow-lg rounded;
+}
+
+.Multiselect-Panel-PlacementBottom {
+  transform: translateY(0.5rem);
+}
+
+.Multiselect-Panel-PlacementTop {
+  transform: translateY(-0.5rem) translateY(-100%);
+}
+
+.Multiselect-FilterWrapper {
+  @apply px-2 pt-2;
+}
+
+.Multiselect-List {
+  @apply cursor-pointer max-h-40 overflow-auto p-2 empty:hidden;
+}
+
+.Multiselect-Item {
+  @apply flex items-center px-3 cursor-pointer rounded-md whitespace-nowrap;
+  @apply hover:text-primary-500 dark:hover:text-primary-100 hover:bg-primary-100 dark:hover:bg-primary-600;
 }
 </style>
