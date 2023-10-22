@@ -11,6 +11,7 @@ const props = withDefaults(
     min?: string;
     max?: string;
     step?: string;
+    steppable?: boolean;
     disabled?: boolean;
   }>(),
   {
@@ -27,7 +28,7 @@ const emit = defineEmits<{
 }>();
 
 const sliderValue = computed({
-  get: () => props.value,
+  get: () => props.value || '0',
   set: (val) => emit('update:value', val),
 });
 
@@ -62,11 +63,37 @@ watch(
       :style="{ 'background-size': backgroundSize }"
     />
 
-    <output class="slider-output" :style="{ left: left }">{{ sliderValue }}</output>
+    <output class="slider-output" :style="{ left }">{{ sliderValue }}</output>
+
+    <div v-if="steppable" class="Slider-Steps">
+      <div class="Slider-Step">
+        <div class="Slider-StepNum">{{ min }}</div>
+      </div>
+
+      <div v-for="num in Number(max) / Number(step)" :key="num" class="Slider-Step">
+        <div class="Slider-StepNum">{{ num * Number(step) }}</div>
+      </div>
+    </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
+.Slider-Steps {
+  @apply absoulte left-0 bottom-0 w-full flex justify-between pb-8;
+}
+
+.Slider-Step {
+  @apply relative;
+
+  &::before {
+    @apply content-[''] absolute left-0 top-0 w-1px h-2 bg-slate-400;
+  }
+}
+
+.Slider-StepNum {
+  @apply absolute left-0.5px top-1 -translate-x-1/2;
+}
+
 .slider {
   @apply w-full relative;
 }
@@ -96,7 +123,7 @@ watch(
 
 .slider-output {
   @apply hidden;
-  @apply absolute bg-primary-500 -top-8 -translate-x-1/2;
+  @apply absolute bg-primary-500 -top-8 z-10 -translate-x-1/2;
   @apply px-2 py-1 text-white rounded;
 }
 </style>

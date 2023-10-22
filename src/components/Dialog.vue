@@ -75,7 +75,7 @@ onUnmounted(() => {
 
 <style lang="scss" scoped>
 .dialog {
-  @apply fixed z-101 inset-0 overflow-y-auto;
+  @apply fixed z-110 inset-0 overflow-y-auto;
 }
 
 .dialog-container {
