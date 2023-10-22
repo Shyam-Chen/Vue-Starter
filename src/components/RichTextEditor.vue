@@ -131,16 +131,11 @@ function rgbToHex(rgb: string) {
           class="i-mdi-format-header-4 w-6 h-6"
           @click="editor.chain().focus().toggleHeading({ level: 4 }).run()"
         ></div>
-        <div
-          class="i-mdi-format-header-5 w-6 h-6"
-          @click="editor.chain().focus().toggleHeading({ level: 5 }).run()"
-        ></div>
-        <div
-          class="i-mdi-format-header-6 w-6 h-6"
-          @click="editor.chain().focus().toggleHeading({ level: 6 }).run()"
-        ></div>
 
-        <div class="i-mdi-format-paragraph w-6 h-6" @click="editor.commands.setParagraph()"></div>
+        <div
+          class="i-mdi-format-paragraph w-6 h-6"
+          @click="editor.chain().focus().setParagraph().run()"
+        ></div>
 
         <input
           type="color"
@@ -250,27 +245,19 @@ function rgbToHex(rgb: string) {
   }
 
   :deep(h1) {
-    @apply text-3xl sm:text-4xl font-extrabold;
+    @apply text-4xl font-extrabold;
   }
 
   :deep(h2) {
-    @apply text-2xl sm:text-3xl font-bold;
+    @apply text-3xl font-bold;
   }
 
   :deep(h3) {
-    @apply text-xl sm:text-2xl font-bold;
+    @apply text-2xl font-semibold;
   }
 
   :deep(h4) {
-    @apply text-lg sm:text-xl;
-  }
-
-  :deep(h5) {
-    @apply text-md sm:text-lg;
-  }
-
-  :deep(h6) {
-    @apply text-sm;
+    @apply text-xl font-medium;
   }
 
   :deep(ul) {
