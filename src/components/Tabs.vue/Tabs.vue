@@ -85,6 +85,8 @@ provide('Tabs', {
   @apply flex flex-row items-center border-b border-slate-500;
   @apply overflow-x-auto;
 
+  scrollbar-width: none;
+
   &::-webkit-scrollbar {
     @apply w-0 h-0 bg-transparent;
   }

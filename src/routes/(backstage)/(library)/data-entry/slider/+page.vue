@@ -6,8 +6,9 @@ import Slider from '~/components/Slider.vue';
 import InputMask from '~/components/InputMask.vue';
 
 const flux = reactive({
-  slider: '0',
-  sliderVal: 0,
+  slider: '70',
+  sliderVal: 70,
+  stepSlider: '30',
 });
 </script>
 
@@ -27,6 +28,14 @@ const flux = reactive({
 
     <div>
       <pre>Output: {{ flux.slider }}</pre>
+    </div>
+  </div>
+
+  <div class="flex flex-col border p-4 my-4 gap-2">
+    <div class="font-bold">Disabled</div>
+
+    <div class="flex justify-center">
+      <Slider v-model:value="flux.slider" disabled />
     </div>
   </div>
 
@@ -51,11 +60,15 @@ const flux = reactive({
     <div class="font-bold">Step</div>
 
     <div class="flex justify-center">
-      <Slider v-model:value="flux.slider" steppable step="10" />
+      <Slider v-model:value="flux.stepSlider" steppable step="10" />
     </div>
 
     <div>
-      <pre>Output: {{ flux.slider }}</pre>
+      <pre>Output: {{ flux.stepSlider }}</pre>
     </div>
+  </div>
+
+  <div class="flex flex-col border p-4 my-4 gap-2">
+    <div class="font-bold">Range (TODO)</div>
   </div>
 </template>
