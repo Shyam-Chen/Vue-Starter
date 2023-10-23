@@ -122,7 +122,7 @@ function onDragLeave() {
         @change="onChange"
         @click="($refs.dropzone as HTMLInputElement).value = ''"
       />
-      <div class="i-mdi-tray-arrow-down w-24 h-24 text-primary-500"></div>
+      <div class="i-mdi-tray-arrow-up w-24 h-24 text-primary-500"></div>
       <div class="text-primary-700 text-2xl">Choose a file or drag it here.</div>
     </label>
 
