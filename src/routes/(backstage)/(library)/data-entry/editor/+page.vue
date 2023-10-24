@@ -1,12 +1,37 @@
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 
 import Breadcrumbs from '~/components/Breadcrumbs.vue';
 import RichTextEditor from '~/components/RichTextEditor.vue';
 import Button from '~/components/Button.vue';
 import CodeBlock from '~/components/CodeBlock.vue';
 
-const content = ref('<h1>h1. Heading</h1>');
+const richTextEditor = ref();
+const content = ref('');
+
+onMounted(() => {
+  content.value = `<h1>h1. Heading</h1>`;
+});
+
+function setContent() {
+  const newContent = `
+    <h1>h1. Heading</h1>
+    <h2>h2. Heading</h2>
+    <h3>h3. Heading</h3>
+    <h4>h4. Heading</h4>
+    <h5>h5. Heading</h5>
+    <h6>h6. Heading</h6>
+
+    <p><span style="color: #FE68C9">Text Color</span></p>
+
+    <p>This isn’t bold.</p>
+    <p><strong>This is bold.</strong></p>
+    <p><em>This is italic.</em></p>
+  `;
+
+  richTextEditor.value.editor.commands.setContent(newContent);
+  content.value = richTextEditor.value.editor.getHTML();
+}
 
 const code = ref(`
 <pre><code class="language-ts">_.chunk(['a', 'b', 'c', 'd'], 2);
@@ -28,23 +53,6 @@ const msg = ref('Hello World!');
   &lt;input v-model="msg"&gt;
 &lt;/template&gt;</code></pre>
 `);
-
-function setContent() {
-  content.value = `
-    <h1>h1. Heading</h1>
-    <h2>h2. Heading</h2>
-    <h3>h3. Heading</h3>
-    <h4>h4. Heading</h4>
-    <h5>h5. Heading</h5>
-    <h6>h6. Heading</h6>
-
-    <p><span style="color: #FE68C9">Text Color</span></p>
-
-    <p>This isn’t bold.</p>
-    <p><strong>This is bold.</strong></p>
-    <p><em>This is italic.</em></p>
-  `;
-}
 </script>
 
 <template>
@@ -56,7 +64,7 @@ function setContent() {
 
   <div class="flex flex-col border p-4 mb-4 gap-2">
     <div>Basic</div>
-    <RichTextEditor v-model="content" />
+    <RichTextEditor ref="richTextEditor" v-model="content" />
     <div class="border rounded p-4">{{ content }}</div>
     <Button @click="setContent">Set Content</Button>
   </div>

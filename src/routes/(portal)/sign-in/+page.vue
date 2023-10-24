@@ -39,26 +39,24 @@ onUnmounted(() => {
       <div class="mb-4">
         <TextField
           v-model:value="state.signInForm.username"
+          :label="locale.username"
           required
           :errorMessage="state.errors.username"
           :disabled="state.signedIn"
           data-testid="username"
-        >
-          {{ locale.username }}
-        </TextField>
+        />
       </div>
 
       <div class="mb-8">
         <TextField
           v-model:value="state.signInForm.password"
+          :label="locale.password"
           type="password"
           required
           :errorMessage="state.errors.password"
           :disabled="state.signedIn"
           data-testid="password"
-        >
-          {{ locale.password }}
-        </TextField>
+        />
       </div>
 
       <Button :disabled="state.signedIn" class="w-full mb-4" data-testid="sign-in" @click="signIn">

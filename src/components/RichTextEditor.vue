@@ -32,7 +32,7 @@ const contentValue = computed({
   set: (val) => emit('update:modelValue', val),
 });
 
-const editor = ref();
+const editor = ref<Editor>();
 
 onMounted(() => {
   editor.value = new Editor({
@@ -56,6 +56,9 @@ onMounted(() => {
           'border border-slate-400 rounded-b px-3 py-2 min-h-65 focus:outline-none focus:ring-1 focus:ring-primary-400 focus:border-primary-400 focus:rounded',
       },
     },
+    onUpdate({ editor }) {
+      contentValue.value = editor.getHTML();
+    },
   });
 });
 
@@ -63,42 +66,39 @@ function addImage() {
   const url = window.prompt('URL');
 
   if (url) {
-    editor.value.chain().focus().setImage({ src: url }).run();
+    editor.value?.chain().focus().setImage({ src: url }).run();
   }
 }
 
 function setLink() {
-  const previousUrl = editor.value.getAttributes('link').href;
+  const previousUrl = editor.value?.getAttributes('link').href;
   const url = window.prompt('URL', previousUrl);
 
   if (url === null) return;
 
   if (url === '') {
-    editor.value.chain().focus().extendMarkRange('link').unsetLink().run();
+    editor.value?.chain().focus().extendMarkRange('link').unsetLink().run();
     return;
   }
 
-  editor.value.chain().focus().extendMarkRange('link').setLink({ href: url }).run();
+  editor.value?.chain().focus().extendMarkRange('link').setLink({ href: url }).run();
 }
-
-watch(
-  () => editor.value?.getHTML(),
-  (val) => {
-    contentValue.value = val;
-  },
-);
 
 const completed = ref(false);
 
 watch(
-  () => contentValue.value,
+  () => props.modelValue,
   (val) => {
-    if (val !== '<p></p>' && !completed.value) {
+    if (!completed.value) {
       completed.value = true;
       editor.value?.commands?.setContent(val);
     }
   },
 );
+
+defineExpose({
+  editor,
+});
 
 function rgbToHex(rgb: string) {
   if (!rgb) return '#000000';
