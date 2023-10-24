@@ -38,14 +38,26 @@ const fileList = ref<string[]>([]);
 const dragover = ref(false);
 
 function onDrop(evt: DragEvent) {
-  const files = Array.from(evt.dataTransfer?.files || []);
-  fileList.value = files.map((file) => file.name);
+  dragover.value = false;
+
+  const file = evt.dataTransfer?.files?.[0];
+
+  if (file) {
+    const formData = new FormData();
+    formData.append('file', file);
+    // request('/path/to/upload-file', { method: 'POST', body: formData });
+  }
 }
 
 function onChange(evt: Event) {
   const el = evt.target as HTMLInputElement;
-  const files = Array.from(el.files || []);
-  fileList.value = files.map((file) => file.name);
+  const file = el?.files?.[0];
+
+  if (file) {
+    const formData = new FormData();
+    formData.append('file', file);
+    // request('/path/to/upload-file', { method: 'POST', body: formData });
+  }
 }
 
 function onDragOver() {

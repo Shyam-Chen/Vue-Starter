@@ -14,10 +14,12 @@ const props = withDefaults(
   defineProps<{
     modelValue?: string;
     extension?: Extensions;
+    disabled?: boolean;
   }>(),
   {
     modelValue: '',
     extension: () => [],
+    disabled: false,
   },
 );
 
@@ -34,6 +36,7 @@ const editor = ref();
 
 onMounted(() => {
   editor.value = new Editor({
+    editable: !props.disabled,
     extensions: [
       ...props.extension,
       StarterKit,
@@ -50,7 +53,7 @@ onMounted(() => {
     editorProps: {
       attributes: {
         class:
-          'border border-slate-400 rounded px-3 py-2 min-h-65 focus:outline-none focus:ring-1 focus:ring-primary-400 focus:border-primary-400',
+          'border border-slate-400 rounded-b px-3 py-2 min-h-65 focus:outline-none focus:ring-1 focus:ring-primary-400 focus:border-primary-400 focus:rounded',
       },
     },
   });
@@ -85,10 +88,15 @@ watch(
   },
 );
 
+const completed = ref(false);
+
 watch(
   () => contentValue.value,
   (val) => {
-    editor.value?.commands?.setContent(val);
+    if (val !== '<p></p>' && !completed.value) {
+      completed.value = true;
+      editor.value?.commands?.setContent(val);
+    }
   },
 );
 
@@ -112,8 +120,8 @@ function rgbToHex(rgb: string) {
 </script>
 
 <template>
-  <div v-if="editor" class="space-y-4">
-    <div class="flex">
+  <div v-if="editor" :class="[disabled ? 'opacity-60 cursor-not-allowed' : '']">
+    <div class="flex px-2 py-1 border border-b-0 border-slate-400 rounded-t">
       <div class="flex gap-1">
         <div
           class="i-mdi-format-header-1 w-6 h-6"

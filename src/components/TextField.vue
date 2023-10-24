@@ -46,8 +46,8 @@ const flux = reactive({
   <div class="text-field" :class="[disabled ? 'opacity-60' : '']">
     <label :for="id || uid" class="text-field-label">
       <template v-if="label">{{ label }}</template>
-      <slot v-else></slot>
       <span v-if="required" class="text-red-500">*</span>
+      <slot></slot>
     </label>
 
     <div class="flex w-full items-center">
@@ -112,7 +112,7 @@ const flux = reactive({
 }
 
 .text-field-label {
-  @apply text-sm font-bold mb-2 empty:hidden;
+  @apply text-sm font-bold mb-2 empty:hidden flex items-center;
 }
 
 .text-field-input {
