@@ -41,17 +41,27 @@ _.chunk(['a', 'b', 'c', 'd'], 3);
 // => [['a', 'b', 'c'], ['d']]</code></pre>
 `);
 
+const vueScriptStart = `<pre><code class="language-html">&lt;script lang="ts" setup&gt;</code></pre>`;
+const vueScriptEnd = `<pre><code class="language-html">&lt;/script&gt;</code></pre><pre></pre>`;
+
 const code2 = ref(`
-<pre><code class="language-vue">&lt;script lang="ts" setup&gt;
-import { ref } from 'vue';
+${vueScriptStart}
+<pre><code class="language-ts">import { ref } from 'vue';
 
-const msg = ref('Hello World!');
-&lt;/script&gt;
-
-&lt;template&gt;
+const msg = ref('Hello World!');</code></pre>
+${vueScriptEnd}
+<pre><code class="language-html">&lt;template&gt;
   &lt;h1&gt;{{ msg }}&lt;/h1&gt;
-  &lt;input v-model="msg"&gt;
-&lt;/template&gt;</code></pre>
+  &lt;input v-model="msg" class="text-field"&gt;
+&lt;/template&gt;
+
+&lt;style lang="scss" scoped&gt;
+.text-field {
+  border: solid 1px #94A3B8;
+  border-radius: 0.25rem;
+  padding: 0.5rem 0.75rem;
+}
+&lt;/style&gt;</code></pre>
 `);
 </script>
 
