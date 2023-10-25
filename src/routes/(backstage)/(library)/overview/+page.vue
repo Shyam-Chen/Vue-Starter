@@ -40,7 +40,7 @@ import Breadcrumbs from '~/components/Breadcrumbs.vue';
       <RouterLink to="/navigation/dropdown" class="card">Dropdown</RouterLink>
       <RouterLink to="/navigation/pagination" class="card">Pagination</RouterLink>
       <RouterLink to="/navigation/scrollspy" class="card">Scrollspy</RouterLink>
-      <RouterLink to="/navigation/steppers" class="card">Steppers</RouterLink>
+      <RouterLink to="/navigation/stepper" class="card">Stepper</RouterLink>
       <RouterLink to="/navigation/tabs" class="card">Tabs</RouterLink>
       <RouterLink to="/navigation/tours" class="card">Tours</RouterLink>
     </div>

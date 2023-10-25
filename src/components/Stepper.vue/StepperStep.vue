@@ -1,32 +1,36 @@
 <script lang="ts" setup>
-withDefaults(
-  defineProps<{
-    step?: number | string;
-    current?: number | string;
-  }>(),
-  {
-    step: 0,
-    current: 0,
-  },
-);
+import type { ComputedRef } from 'vue';
+import { inject } from 'vue';
+
+defineProps<{
+  step: number;
+}>();
+
+const stepper = inject('Stepper') as { modelValue: ComputedRef<number> };
 </script>
 
 <template>
   <li
-    class="stepper-step"
+    class="StepperStep"
     :class="{
-      'text-green-500': Number(step) < Number(current),
-      'text-primary-500': Number(step) === Number(current),
-      // 'text-gray-500': Number(step) > Number(current),
+      'text-green-500 dark:text-green-400': Number(step) < stepper.modelValue.value,
+      'text-primary-500 dark:text-primary-400': Number(step) === stepper.modelValue.value,
+      'text-slate-500 dark:text-slate-400': Number(step) > stepper.modelValue.value,
     }"
   >
-    <div class="w-12 h-6 mb-4 flex justify-center items-center bg-white dark:bg-slate-700 z-2">
-      <div v-if="Number(step) < Number(current)" class="i-fa-regular-check-circle w-6 h-6"></div>
+    <div class="StepperStep-Icon">
       <div
-        v-if="Number(step) === Number(current)"
-        class="i-mdi-dots-horizontal-circle-outline w-5 h-5"
+        v-if="Number(step) < stepper.modelValue.value"
+        class="i-mdi-checkbox-marked-circle-outline w-6 h-6"
       ></div>
-      <div v-if="Number(step) > Number(current)" class="i-fa-regular-circle w-3 h-3"></div>
+      <div
+        v-if="Number(step) === stepper.modelValue.value"
+        class="i-mdi-dots-horizontal-circle-outline w-6 h-6"
+      ></div>
+      <div
+        v-if="Number(step) > stepper.modelValue.value"
+        class="i-mdi-checkbox-blank-circle-outline w-6 h-6"
+      ></div>
     </div>
 
     <span><slot></slot></span>
@@ -34,24 +38,17 @@ withDefaults(
 </template>
 
 <style lang="scss" scoped>
-.stepper-step {
-  position: relative;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  flex: 1;
-  padding: 10px;
+.StepperStep {
+  @apply relative flex flex-col items-center flex-1 p-3;
 
   &:not(:last-of-type)::after {
-    content: '';
-    display: block;
-    position: absolute;
-    width: 100%;
-    border: 1px solid #ccc;
-    transform: translate(50%, 11px);
-    z-index: 1;
+    @apply content-[''] absolute z-1 w-full border border-slate-300 dark:border-slate-500;
 
-    @apply dark:border-slate-500;
+    transform: translate(50%, 11px);
   }
+}
+
+.StepperStep-Icon {
+  @apply w-12 h-6 mb-4 flex justify-center items-center bg-white dark:bg-slate-700 z-2;
 }
 </style>
