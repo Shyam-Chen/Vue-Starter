@@ -140,7 +140,7 @@ devDependencies:
     specifier: ^8.52.0
     version: 8.52.0
   eslint-plugin-vue:
-    specifier: ^9.18.0
+    specifier: ^9.17.0
     version: 9.18.0(eslint@8.52.0)
   happy-dom:
     specifier: ^12.9.1
