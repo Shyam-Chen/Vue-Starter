@@ -150,15 +150,15 @@ This seed repository provides the following features:
 - [x] [Routes](https://github.com/Vanilla-IceCream/vite-plugin-vue-routes) - File-based Routing
 - [x] [Storer](https://github.com/Vanilla-IceCream/vue-storer) - State Management
 - [x] [Formor](https://github.com/Vanilla-IceCream/vue-formor) - Form Validation
+- [x] [Valibot](https://github.com/fabian-hiller/valibot) - Schema Validation
 - [x] [Localer](https://github.com/Vanilla-IceCream/vue-localer) - Internationalization and Localization
-- [x] [Hooks](https://github.com/vueuse/vueuse) - Composition Utilities
+- [x] [Use](https://github.com/vueuse/vueuse) - Composition Utilities
+- [x] [Qrcode Image](https://github.com/Vanilla-IceCream/vue-qrcode-image) - QR Code Generation
 - [x] [Lodash](https://github.com/lodash/lodash) - JavaScript Utilities
-- [x] [Zod](https://github.com/colinhacks/zod) - Schema Validation
 - [x] [Date Fns](https://github.com/date-fns/date-fns) - Date Utilities
 - [x] [UnoCSS](https://github.com/unocss/unocss) - CSS Utilities
 - [x] [Iconify](https://github.com/iconify/iconify) - Icon Utilities
-- [x] [Highcharts](https://github.com/highcharts/highcharts) - Data Visualization
-- [x] [Qrcode Image](https://github.com/Vanilla-IceCream/vue-qrcode-image) - QR Code Generation
+- [x] [D3](https://github.com/d3/d3) - Data Visualization Utilities
 - ---------- **Tools** ----------
 - [x] [Vite](https://github.com/vitejs/vite) - Bundler
 - [x] [TypeScript](https://github.com/microsoft/TypeScript) - JavaScript with Syntax for Types

@@ -5,6 +5,8 @@ import { reactive } from 'vue';
 import Breadcrumbs from '~/components/Breadcrumbs.vue';
 import Chart from '~/components/Chart.vue';
 
+import BarChart from './BarChart.vue';
+
 const flux = reactive({
   barChartOptions: {
     chart: {
@@ -79,4 +81,6 @@ const flux = reactive({
 
     <Chart :options="flux.barChartOptions" />
   </div>
+
+  <BarChart />
 </template>
