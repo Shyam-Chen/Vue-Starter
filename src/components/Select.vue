@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { nextTick, ref, computed, reactive, watch, onMounted, onUnmounted } from 'vue';
+import { useLocale } from 'vue-localer';
 import { onClickOutside } from '@vueuse/core';
 
 import getScrollableParent from '~/utilities/getScrollableParent';
@@ -48,6 +49,8 @@ const emit = defineEmits<{
   (evt: 'update:value', val: string | number | null): void;
   (evt: 'change', val: string | number | null, opt: Option | null): void;
 }>();
+
+const locale = useLocale();
 
 const flux = reactive({
   show: false,
@@ -228,7 +231,7 @@ onUnmounted(() => {
         @click="open"
       >
         <div v-if="!flux.selected" class="flex-1">
-          {{ placeholder }}
+          {{ locale.pleaseSelect || placeholder }}
         </div>
 
         <div v-if="flux.selected" class="flex-1">
