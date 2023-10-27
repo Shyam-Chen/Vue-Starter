@@ -39,6 +39,7 @@ const textareaValue = computed({
       :disabled="disabled"
       :readonly="readonly"
       :rows="rows ? rows : '5'"
+      wrap="hard"
       class="textarea-input"
       :class="{
         'cursor-not-allowed': disabled,

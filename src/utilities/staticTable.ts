@@ -2,22 +2,22 @@ import chunk from 'lodash/chunk';
 import sortBy from 'lodash/sortBy';
 
 export default <T extends Record<string, any>>(
-  arr: T[],
-  ctrl = { rows: 10, page: 1, field: 'createdAt', direction: 'desc' },
+  rows: T[],
+  control = { rows: 10, page: 1, field: 'createdAt', direction: 'desc' },
 ) => {
-  if (!arr?.length) return [];
+  if (!rows?.length) return [];
 
-  let _arr = [...arr];
+  let arr = [...rows];
 
-  if (ctrl.field && ctrl.direction === 'asc') {
-    _arr = sortBy(_arr, (item) => item[ctrl.field]);
+  if (control.field && control.direction === 'asc') {
+    arr = sortBy(arr, (item) => item[control.field]);
   }
 
-  if (ctrl.field && ctrl.direction === 'desc') {
-    _arr = sortBy(_arr, (item) => item[ctrl.field]).reverse();
+  if (control.field && control.direction === 'desc') {
+    arr = sortBy(arr, (item) => item[control.field]).reverse();
   }
 
-  const chunked = chunk(_arr, ctrl.rows);
+  const chunked = chunk(arr, control.rows);
 
-  return chunked[ctrl.page - 1];
+  return chunked[control.page - 1];
 };

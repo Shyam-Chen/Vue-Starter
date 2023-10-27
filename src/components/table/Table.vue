@@ -3,31 +3,27 @@ import type { VNode } from 'vue';
 import { computed, reactive, watch, toRef } from 'vue';
 import omit from 'lodash/omit';
 
-import ProgressBar from './ProgressBar.vue';
-import Button from './Button.vue';
-import Select from './Select.vue';
-import Checkbox from './Checkbox.vue';
+import type staticTable from '~/utilities/staticTable';
+import ProgressBar from '../ProgressBar.vue';
+import Button from '../Button.vue';
+import Select from '../Select.vue';
+import Checkbox from '../Checkbox.vue';
+
+import type { ColumnItem, Control } from './types';
+import Column from './Column.vue';
+import Row from './Row.vue';
+import Cell from './Cell.vue';
 
 const props = defineProps<{
-  columns?: Array<{
-    key: string;
-    name: string;
-    sticky?: string;
-    sortable?: boolean;
-    spanable?: boolean;
-  }>;
+  columns?: ColumnItem[];
   rows?: T[];
   count?: number;
+  static?: typeof staticTable;
   stickyHeader?: boolean;
   selectable?: boolean;
   selected?: T[];
   loading?: boolean;
-  control?: {
-    rows?: number;
-    page?: number;
-    field?: string;
-    direction?: string;
-  };
+  control?: Control;
 }>();
 
 const emit = defineEmits<{
@@ -185,18 +181,13 @@ watch(
           <slot name="thead"></slot>
 
           <tr :class="{ 'sticky top-0 z-10': stickyHeader }">
-            <th
-              v-if="selectable"
-              class="px-6 bg-blueGray-200 dark:bg-blueGray-700 text-blueGray-500 dark:text-blueGray-200 align-middle border border-solid border-blueGray-100 dark:border-blueGray-600 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
-              :class="{ 'important:border-0': stickyHeader }"
-            >
+            <Column v-if="selectable" :class="{ 'important:border-0': stickyHeader }">
               <Checkbox v-model:value="flux.selecteAll" :indeterminate="flux.indeterminate" />
-            </th>
+            </Column>
 
-            <th
+            <Column
               v-for="col in columns"
               :key="col.key"
-              class="px-6 bg-blueGray-200 dark:bg-blueGray-700 text-blueGray-500 dark:text-blueGray-200 align-middle border border-solid border-blueGray-100 dark:border-blueGray-600 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
               :class="{
                 'important:border-0': stickyHeader,
                 'sticky left-0 z-5': col.sticky === 'left',
@@ -226,26 +217,25 @@ watch(
                   <div v-else class="i-fa-sort w-3.5 h-3.5"></div>
                 </template>
               </div>
-            </th>
+            </Column>
           </tr>
         </thead>
 
         <slot name="tbody">
           <tbody>
             <template v-for="row in flux.rows" :key="row._id || row.id">
-              <tr
-                class="sticky-tr hover:bg-slate-100 dark:hover:bg-slate-600 border-b last:border-b-0 dark:border-slate-600"
+              <Row
+                class="sticky-tr"
                 :class="{ 'bg-primary-800/25 important:hover:bg-primary-600/50': row.checked }"
                 @click="flux.clickRow(row)"
               >
-                <td v-if="selectable" class="px-6 py-3 align-middle whitespace-nowrap">
+                <Cell v-if="selectable">
                   <Checkbox v-model:value="row.checked" />
-                </td>
+                </Cell>
 
-                <td
+                <Cell
                   v-for="col in columns"
                   :key="col.key"
-                  class="px-6 py-3 align-middle whitespace-nowrap"
                   :class="{
                     'sticky-col sticky left-0 z-5 bg-white dark:bg-slate-800 important:p-0':
                       col.sticky === 'left',
@@ -273,8 +263,8 @@ watch(
                       {{ row[col.key] }}
                     </slot>
                   </div>
-                </td>
-              </tr>
+                </Cell>
+              </Row>
 
               <slot name="collapsible" :row="row"></slot>
             </template>
