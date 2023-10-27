@@ -1,6 +1,6 @@
 import { computed, toRef } from 'vue';
-import { useZodSchema } from 'vue-formor';
-import { z } from 'zod';
+import { useValibotSchema } from 'vue-formor';
+import { object, string, minLength } from 'valibot';
 
 import useValidationMessages from '~/composables/useValidationMessages';
 
@@ -10,18 +10,18 @@ export default () => {
   const messages = useValidationMessages();
   const { state } = useStore();
 
-  const schema = useZodSchema(
+  const schema = useValibotSchema(
     computed(() =>
-      z.object({
-        username: z.string().nonempty(messages.value.required),
-        password: z
-          .string()
-          .min(8, messages.value.string?.min)
-          .nonempty(messages.value.required),
+      object({
+        username: string([minLength(1, messages.value.required)]),
+        password: string([
+          minLength(1, messages.value.required),
+          minLength(8, messages.value.string?.min),
+        ]),
       }),
     ),
     toRef(state, 'signInForm'),
-    toRef(state, 'errors'),
+    toRef(state, 'signInValdn'),
   );
 
   return schema;

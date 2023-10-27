@@ -5,4 +5,9 @@ export default {
   password: `비밀번호`,
   signIn: `로그인`,
   forgotPassword: `비밀번호를 잊으 셨나요?`,
+
+  mfaTitle: `다단계 인증`,
+  mfaSubtitle: `인증코드를 입력하세요`,
+  mfaHint: `앱에서 생성된 6자리 인증 코드를 입력하세요.`,
+  backToSignIn: `로그인으로 돌아가기`,
 };

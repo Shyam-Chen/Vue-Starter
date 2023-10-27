@@ -1,5 +1,4 @@
 import type { VueWrapper } from '@vue/test-utils';
-import { beforeEach, afterEach, test, expect, vi } from 'vitest';
 import { mount } from '@vue/test-utils';
 import responses from 'responses/auth';
 
@@ -20,7 +19,7 @@ afterEach(() => {
 
 vi.mock('~/utilities/request');
 
-test('Sign-in', async () => {
+test('succeeded', async () => {
   const request = await import('~/utilities/request');
 
   request.default = vi.fn<any>((url) => {
@@ -40,7 +39,7 @@ test('Sign-in', async () => {
   expect(push).toHaveBeenCalledWith('/dashboard');
 });
 
-test('Sign-in - failed', async () => {
+test('failed', async () => {
   const request = await import('~/utilities/request');
 
   request.default = vi.fn<any>((url) => {
@@ -56,7 +55,7 @@ test('Sign-in - failed', async () => {
   expect(wrapper.html()).toMatch('Wrong password. Try again or click Forgot password to reset it.');
 });
 
-test('Sign-in - 2fa', async () => {
+test('2fa', async () => {
   const request = await import('~/utilities/request');
 
   request.default = vi.fn<any>((url) => {
@@ -76,10 +75,30 @@ test('Sign-in - 2fa', async () => {
   wrapper.get('[data-testid="password"]').setValue('qwerty123');
   await wrapper.get('[data-testid="sign-in"]').trigger('click');
 
-  expect(wrapper.html()).toMatch('Two-factor Authentication');
+  expect(wrapper.html()).toMatch('Multi-factor Authentication');
 
   await wrapper.get('[data-testid="code"]').setValue('123456');
 
   expect(push).toHaveBeenCalledTimes(1);
   expect(push).toHaveBeenCalledWith('/dashboard');
+});
+
+test('2fa_unverified', async () => {
+  const request = await import('~/utilities/request');
+
+  request.default = vi.fn<any>((url) => {
+    if (url === '/auth/sign-in') {
+      return { _data: responses['post_/sign-in_2fa_unverified'], status: 200 };
+    }
+  });
+
+  const push = vi.spyOn(router, 'push');
+  await router.isReady();
+
+  wrapper.get('[data-testid="username"]').setValue('deno.land');
+  wrapper.get('[data-testid="password"]').setValue('qwerty123');
+  await wrapper.get('[data-testid="sign-in"]').trigger('click');
+
+  expect(push).toHaveBeenCalledTimes(1);
+  expect(push).toHaveBeenCalledWith('/two-factor-auth');
 });

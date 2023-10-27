@@ -1,9 +1,11 @@
 import { reactive, readonly } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import { defineStore } from 'vue-storer';
-import { formatISO, add } from 'date-fns';
+import { formatISO, addHours } from 'date-fns';
 
 import request from '~/utilities/request';
+
+import type { SignInForm, SignInRes, OtpValidateRes } from './types';
 
 export default defineStore('/sign-in', () => {
   const router = useRouter();
@@ -13,79 +15,83 @@ export default defineStore('/sign-in', () => {
     signInForm: {
       username: 'shyam.chen',
       password: '12345678',
-    },
-    code: '',
-
-    signedIn: false,
+    } as SignInForm,
+    signInValdn: {} as Record<keyof SignInForm, string>,
+    signInLoading: false,
     otpEnabled: false,
-
-    errors: {} as Record<string, string>,
+    mfaAuthCode: '',
   });
+
+  const getters = readonly({});
 
   const actions = readonly({
     async signIn() {
-      state.signedIn = true;
+      state.signInLoading = true;
 
-      const response = await request<any>('/auth/sign-in', {
+      const response = await request<SignInRes>('/auth/sign-in', {
         method: 'POST',
         body: state.signInForm,
       });
 
-      if (response.status === 200) {
-        const { accessToken, refreshToken, otpEnabled, otpVerified } = response._data;
+      const result = response._data;
 
-        // general
-        if (accessToken && !otpEnabled && !otpVerified) {
-          localStorage.setItem('accessToken', accessToken);
-          localStorage.setItem('refreshToken', refreshToken);
-          localStorage.setItem('expiresIn', formatISO(add(new Date(), { hours: 12 })));
+      if (response.status === 200) {
+        if (result?.accessToken && !result?.otpEnabled && !result?.otpVerified) {
+          localStorage.setItem('accessToken', result.accessToken);
+          localStorage.setItem('refreshToken', result.refreshToken);
+          localStorage.setItem('expiresIn', formatISO(addHours(new Date(), 12)));
           const path = route.redirectedFrom?.path || '/dashboard';
           await router.push(path === '/' ? '/dashboard' : path);
         }
 
-        // 2fa
-        if (!accessToken && otpEnabled && otpVerified) {
+        if (!result?.accessToken && result?.otpEnabled && result?.otpVerified) {
           state.otpEnabled = true;
         }
 
-        // 2fa_unverified
-        if (accessToken && otpEnabled && !otpVerified) {
-          localStorage.setItem('accessToken', accessToken);
-          localStorage.setItem('refreshToken', refreshToken);
-          localStorage.setItem('expiresIn', formatISO(add(new Date(), { hours: 12 })));
+        if (result?.accessToken && result?.otpEnabled && !result?.otpVerified) {
+          localStorage.setItem('accessToken', result.accessToken);
+          localStorage.setItem('refreshToken', result.refreshToken);
+          localStorage.setItem('expiresIn', formatISO(addHours(new Date(), 12)));
           await router.push('/two-factor-auth');
         }
-      } else {
-        const { message } = response._data;
-        const found = message.match(/(#+[a-zA-Z0-9(_)]{1,})/gm)[0];
-        state.errors[found.replace('#', '')] = message.replace(found + ' ', '');
-        state.signedIn = false;
+      }
+
+      if (response.status === 400) {
+        const found = result?.message?.match(/(#+[a-zA-Z0-9(_)]{1,})/gm)?.[0];
+
+        if (found) {
+          const errKey = found.replace('#', '') as keyof SignInForm;
+          state.signInValdn[errKey] = result?.message.replace(found + ' ', '');
+        }
+
+        state.signInLoading = false;
       }
     },
     async inputCode() {
-      if (state.code.length === 6) {
-        const response = await request<any>('/auth/otp/validate', {
+      if (state.mfaAuthCode.length === 6) {
+        const response = await request<OtpValidateRes>('/auth/otp/validate', {
           method: 'POST',
           body: {
-            code: state.code,
+            code: state.mfaAuthCode,
             username: state.signInForm.username,
             password: state.signInForm.password,
           },
         });
 
+        const result = response._data;
+
         if (response.status === 200) {
-          const { accessToken, refreshToken } = response._data;
-          await actions.twoFactor(accessToken, refreshToken);
+          if (result?.accessToken && result?.refreshToken) {
+            localStorage.setItem('accessToken', result.accessToken);
+            localStorage.setItem('refreshToken', result.refreshToken);
+            localStorage.setItem('expiresIn', formatISO(addHours(new Date(), 12)));
+            const path = route.redirectedFrom?.path || '/dashboard';
+            await router.push(path === '/' ? '/dashboard' : path);
+          }
         }
       }
     },
-    async twoFactor(accessToken: string, refreshToken: string) {
-      localStorage.setItem('accessToken', accessToken);
-      localStorage.setItem('refreshToken', refreshToken);
-      localStorage.setItem('expiresIn', formatISO(add(new Date(), { hours: 12 })));
-      await router.push(route.redirectedFrom?.path || '/dashboard');
-    },
   });
 
-  return { state, actions };
+  return { state, getters, actions };
 });
