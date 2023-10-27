@@ -93,8 +93,8 @@ dependencies:
     specifier: ^6.6.1
     version: 6.6.1(echarts@5.4.3)(vue@3.3.7)
   vue-formor:
-    specifier: ^4.0.1
-    version: 4.0.1
+    specifier: ^4.0.2
+    version: 4.0.2
   vue-imask:
     specifier: ^7.1.3
     version: 7.1.3(vue@3.3.7)
@@ -4815,8 +4815,8 @@ packages:
       - supports-color
     dev: true
 
-  /vue-formor@4.0.1:
-    resolution: {integrity: sha512-NIWWfzbcUPcZWGXPUlHNZNO/92+FfWHQEtGC0Td3rTGp+EcylHU9psesRdtrrwnOMLJ0QY0j0lqiOOipr3t8tQ==}
+  /vue-formor@4.0.2:
+    resolution: {integrity: sha512-fvlDjkVf1pvX9zET0cYp37r97PaDIdvl3xguCO+WffBfQVp+mVXYtLdnS1RD3zi04IseMHktLnBEUTplI6EYRg==}
     dev: false
 
   /vue-imask@7.1.3(vue@3.3.7):
