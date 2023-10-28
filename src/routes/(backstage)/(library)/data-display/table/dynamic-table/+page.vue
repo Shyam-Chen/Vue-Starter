@@ -1,5 +1,7 @@
 <script lang="ts" setup>
 import Breadcrumbs from '~/components/Breadcrumbs.vue';
+
+import Basic from './Basic.vue';
 </script>
 
 <template>
@@ -14,6 +16,6 @@ import Breadcrumbs from '~/components/Breadcrumbs.vue';
 
   <div class="text-4xl font-extrabold">Dynamic Table</div>
 
-  <!-- <Basic /> -->
+  <Basic />
   <!-- <Selectable /> -->
 </template>

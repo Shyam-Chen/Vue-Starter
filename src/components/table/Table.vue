@@ -1,7 +1,6 @@
 <script lang="ts" setup generic="T extends object">
 import type { VNode } from 'vue';
 import { computed, reactive, watch, toRef } from 'vue';
-import omit from 'lodash/omit';
 
 import type staticTable from '~/utilities/staticTable';
 import ProgressBar from '../ProgressBar.vue';
@@ -15,18 +14,25 @@ import Row from './Row.vue';
 import Cell from './Cell.vue';
 
 const props = defineProps<{
+  value?: T[];
+
   columns?: ColumnItem[];
   rows?: T[];
-  count?: number;
+
   static?: typeof staticTable;
-  stickyHeader?: boolean;
+
+  count?: number;
+  control?: Control;
+
   selectable?: boolean;
   selected?: T[];
+
+  stickyHeader?: boolean;
   loading?: boolean;
-  control?: Control;
 }>();
 
 const emit = defineEmits<{
+  (evt: 'update:value', val: T[]): void;
   (evt: 'update:selected', val: T[]): void;
   (evt: 'change', val: { rows?: number; page?: number; field?: string; direction?: string }): void;
   (evt: 'clickRow', val: T): void;
@@ -45,6 +51,11 @@ defineSlots<{
   spanable(props: {}): VNode;
 }>();
 
+const tableValue = computed({
+  get: () => props.value || [],
+  set: (val) => emit('update:value', val),
+});
+
 const countRef = toRef(props, 'count', 0);
 
 const controlValue = computed({
@@ -52,13 +63,7 @@ const controlValue = computed({
   set: (val) => emit('update:control', val),
 });
 
-const selectedValue = computed({
-  get: () => props.selected,
-  set: (val) => emit('update:selected', val || []),
-});
-
 const flux = reactive({
-  data: [] as any[],
   rows: [] as any[],
 
   indeterminate: false,
@@ -148,30 +153,20 @@ watch(
   (val) => {
     if (props.static) {
       const arr = props.rows?.map((item) => ({ ...item, checked: val })) || [];
-      flux.data = structuredClone(arr);
       flux.rows = props.static(arr, controlValue.value);
-      emit('selecteAll', val, arr);
-    }
-  },
-);
 
-watch(
-  () => flux.data,
-  (val) => {
-    if (val?.length) {
-      selectedValue.value = val
-        .filter((item) => item.checked)
-        .map((item) => omit(item, ['checked']));
+      arr.forEach((row: any) => {
+        const found: any = tableValue.value.find((item: any) => item.id === row.id);
+        if (found) found.checked = val;
+      });
     }
   },
-  { deep: true },
 );
 
 watch(
   () => props.rows,
   (val) => {
     if (props.static && props.rows?.length) {
-      flux.data = [...props.rows];
       flux.rows = props.static(props.rows, controlValue.value);
     } else {
       flux.rows = val || [];

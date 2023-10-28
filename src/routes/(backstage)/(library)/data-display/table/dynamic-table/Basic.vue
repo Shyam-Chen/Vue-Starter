@@ -1,45 +1,33 @@
 <script lang="ts" setup>
-import { ref, onMounted } from 'vue';
+import { ref, reactive, onMounted } from 'vue';
 
 import TextField from '~/components/TextField.vue';
 import Select from '~/components/Select.vue';
 import Button from '~/components/Button.vue';
 import Table from '~/components/table';
-import staticTable from '~/utilities/staticTable';
 
 import leetcode from './leetcode';
 
-const title = ref('');
-const difficulty = ref('');
+const rows = ref<any[]>([]);
 
-const response = ref<typeof leetcode>([]);
-const rows = ref<typeof leetcode>([]);
-const control = ref({ rows: 10, page: 1, field: 'id', direction: 'asc' });
+const body = reactive({
+  title: '',
+  difficulty: '',
+});
 
-onMounted(() => {
-  response.value = structuredClone(leetcode);
-  rows.value = structuredClone(leetcode);
+onMounted(async () => {
+  const response = await leetcode();
+  rows.value = response.result;
 });
 
 function reset() {
-  title.value = '';
-  difficulty.value = '';
-  search();
+  body.title = '';
+  body.difficulty = '';
 }
 
-function search() {
-  let data = [...response.value];
-
-  if (title.value) {
-    data = data.filter((item) => item.title.toUpperCase().includes(title.value.toUpperCase()));
-  }
-
-  if (difficulty.value) {
-    data = data.filter((item) => item.difficulty.includes(difficulty.value));
-  }
-
-  rows.value = data;
-  control.value = { rows: 10, page: 1, field: 'id', direction: 'asc' };
+async function search() {
+  const response = await leetcode();
+  rows.value = response.result;
 }
 </script>
 
@@ -49,10 +37,10 @@ function search() {
 
     <div class="p-8 bg-white dark:bg-slate-800 rounded-lg space-y-8">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <TextField v-model:value="title" />
+        <TextField v-model:value="body.title" />
 
         <Select
-          v-model:value="difficulty"
+          v-model:value="body.difficulty"
           :options="[
             { label: 'Easy', value: 'Easy' },
             { label: 'Medium', value: 'Medium' },
@@ -67,8 +55,6 @@ function search() {
       </div>
 
       <Table
-        v-model:control="control"
-        :static="staticTable"
         :columns="[
           { key: 'title', name: 'Title' },
           { key: 'difficulty', name: 'Difficulty' },

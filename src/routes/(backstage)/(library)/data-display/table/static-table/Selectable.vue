@@ -16,8 +16,6 @@ const response = ref<typeof leetcode>([]);
 const rows = ref<typeof leetcode>([]);
 const control = ref({ rows: 10, page: 1, field: 'id', direction: 'asc' });
 
-const selected = ref<typeof leetcode>([]);
-
 onMounted(() => {
   response.value = structuredClone(leetcode);
   rows.value = structuredClone(leetcode);
@@ -37,27 +35,11 @@ function search() {
   }
 
   if (difficulty.value) {
-    data = data.filter((item) =>
-      item.difficulty.toUpperCase().includes(difficulty.value.toUpperCase()),
-    );
+    data = data.filter((item) => item.difficulty.includes(difficulty.value));
   }
 
   rows.value = data;
   control.value = { rows: 10, page: 1, field: 'id', direction: 'asc' };
-}
-
-function selecteAll(val: boolean, arr: typeof leetcode) {
-  arr.forEach((row: any) => {
-    const found: any = response.value.find((item) => item.id === row.id);
-
-    if (found) {
-      found.checked = val;
-    }
-  });
-}
-
-function getSelected() {
-  selected.value = rows.value.filter((item: any) => item.checked);
 }
 </script>
 
@@ -85,6 +67,7 @@ function getSelected() {
       </div>
 
       <Table
+        v-model:value="response"
         v-model:control="control"
         selectable
         :static="staticTable"
@@ -94,11 +77,9 @@ function getSelected() {
         ]"
         :rows="rows"
         :count="rows?.length"
-        @selecteAll="selecteAll"
       />
 
-      <Button @click="getSelected">Get Selected</Button>
-      <div>{{ selected?.map((item) => item.id) }}</div>
+      <div>{{ response.filter((item: any) => item.checked)?.map((item) => item.id) }}</div>
     </div>
   </div>
 </template>
