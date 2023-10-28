@@ -1,60 +1,66 @@
 <script lang="ts" setup>
-import { reactive } from 'vue';
-
 defineProps<{
+  color?: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info';
   closable?: boolean;
   disabled?: boolean;
-  color?: 'success' | 'warning' | 'danger';
 }>();
 
 const emit = defineEmits<{
   (evt: 'close'): void;
 }>();
-
-const flux = reactive({
-  close() {
-    emit('close');
-  },
-});
 </script>
 
 <template>
-  <div class="flex">
+  <div class="flex" :class="[disabled ? 'cursor-not-allowed opacity-60' : '']">
     <div
-      class="chip"
+      class="Chip"
       :class="{
+        primary: color === 'primary' || !color,
+        secondary: color === 'secondary',
         success: color === 'success',
         warning: color === 'warning',
         danger: color === 'danger',
+        info: color === 'info',
       }"
     >
       <slot></slot>
 
-      <span v-if="closable && !disabled" class="close" @click.stop="flux.close"></span>
+      <span v-if="closable && !disabled" class="Chip-Close" @click.stop="emit('close')"></span>
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.chip {
+.Chip {
   @apply flex items-center px-2 py-1 rounded-full;
   @apply text-xs text-center whitespace-nowrap;
-  @apply bg-primary-600 text-white;
+
+  &.primary {
+    @apply bg-primary-500 text-white;
+  }
+
+  &.secondary {
+    @apply bg-gray-500 text-white;
+  }
 
   &.success {
-    @apply bg-green-500 dark:bg-green-700;
+    @apply bg-green-500 text-white;
   }
 
   &.warning {
-    @apply bg-yellow-500 dark:bg-yellow-700;
+    @apply bg-yellow-500 text-white;
   }
 
   &.danger {
-    @apply bg-red-500 dark:bg-red-700;
+    @apply bg-red-500 text-white;
+  }
+
+  &.info {
+    @apply bg-sky-500 text-white;
   }
 }
 
-.close {
+.Chip-Close {
   @apply i-fa-times-circle;
   @apply inline-flex w-3 h-3 ml-1 cursor-pointer transition hover:scale-125;
 }

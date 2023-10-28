@@ -10,13 +10,18 @@ import Chip from '~/components/Chip.vue';
     <div class="text-3xl font-bold">Chip</div>
   </div>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Basic</div>
+  <div class="flex flex-col border p-4 mb-4 gap-4">
+    <div class="font-bold">Basic</div>
 
-    <div class="flex justify-center items-center gap-15">
+    <div class="flex flex-wrap justify-center items-center gap-4">
       <Chip>
         <div class="w-4 h-4 i-fa-envelope"></div>
         <div class="ml-1">Mail (primary)</div>
+      </Chip>
+
+      <Chip color="secondary">
+        <div class="w-4 h-4 i-fa-envelope"></div>
+        <div class="ml-1">Mail (secondary)</div>
       </Chip>
 
       <Chip color="success">
@@ -33,15 +38,74 @@ import Chip from '~/components/Chip.vue';
         <div class="w-4 h-4 i-fa-envelope"></div>
         <div class="ml-1">Mail (danger)</div>
       </Chip>
+
+      <Chip color="info">
+        <div class="w-4 h-4 i-fa-envelope"></div>
+        <div class="ml-1">Mail (info)</div>
+      </Chip>
     </div>
 
-    <div class="flex justify-center items-center gap-15 mt-6">
-      <Chip>
-        <div>Link something</div>
+    <div class="flex flex-wrap justify-center items-center gap-4">
+      <Chip closable>
+        <div class="w-4 h-4 i-fa-envelope"></div>
+        <div class="ml-1">Mail (primary)</div>
       </Chip>
 
-      <Chip closable>
-        <div>Link something</div>
+      <Chip color="secondary" closable>
+        <div class="w-4 h-4 i-fa-envelope"></div>
+        <div class="ml-1">Mail (secondary)</div>
+      </Chip>
+
+      <Chip color="success" closable>
+        <div class="w-4 h-4 i-fa-envelope"></div>
+        <div class="ml-1">Mail (success)</div>
+      </Chip>
+
+      <Chip color="warning" closable>
+        <div class="w-4 h-4 i-fa-envelope"></div>
+        <div class="ml-1">Mail (warning)</div>
+      </Chip>
+
+      <Chip color="danger" closable>
+        <div class="w-4 h-4 i-fa-envelope"></div>
+        <div class="ml-1">Mail (danger)</div>
+      </Chip>
+
+      <Chip color="info" closable>
+        <div class="w-4 h-4 i-fa-envelope"></div>
+        <div class="ml-1">Mail (info)</div>
+      </Chip>
+    </div>
+
+    <div class="flex flex-wrap justify-center items-center gap-4">
+      <Chip disabled>
+        <div class="w-4 h-4 i-fa-envelope"></div>
+        <div class="ml-1">Mail (primary)</div>
+      </Chip>
+
+      <Chip color="secondary" disabled>
+        <div class="w-4 h-4 i-fa-envelope"></div>
+        <div class="ml-1">Mail (secondary)</div>
+      </Chip>
+
+      <Chip color="success" disabled>
+        <div class="w-4 h-4 i-fa-envelope"></div>
+        <div class="ml-1">Mail (success)</div>
+      </Chip>
+
+      <Chip color="warning" disabled>
+        <div class="w-4 h-4 i-fa-envelope"></div>
+        <div class="ml-1">Mail (warning)</div>
+      </Chip>
+
+      <Chip color="danger" disabled>
+        <div class="w-4 h-4 i-fa-envelope"></div>
+        <div class="ml-1">Mail (danger)</div>
+      </Chip>
+
+      <Chip color="info" disabled>
+        <div class="w-4 h-4 i-fa-envelope"></div>
+        <div class="ml-1">Mail (info)</div>
       </Chip>
     </div>
   </div>
