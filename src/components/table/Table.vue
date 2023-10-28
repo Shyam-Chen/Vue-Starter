@@ -34,6 +34,7 @@ const emit = defineEmits<{
     evt: 'update:control',
     val: { rows?: number; page?: number; field?: string; direction?: string },
   ): void;
+  (evt: 'selecteAll', val: boolean, arr: T[]): void;
 }>();
 
 defineSlots<{
@@ -47,11 +48,17 @@ defineSlots<{
 const countRef = toRef(props, 'count', 0);
 
 const controlValue = computed({
-  get: () => props.control ?? { rows: 10, page: 1 },
+  get: () => props.control ?? { rows: 10, page: 1, field: 'createdAt', direction: 'desc' },
   set: (val) => emit('update:control', val),
 });
 
+const selectedValue = computed({
+  get: () => props.selected,
+  set: (val) => emit('update:selected', val || []),
+});
+
 const flux = reactive({
+  data: [] as any[],
   rows: [] as any[],
 
   indeterminate: false,
@@ -119,6 +126,10 @@ watch(
       flux.currentPage = val.page || 1;
       flux.sortField = val.field || 'createdAt';
       flux.sortDirection = val.direction || 'desc';
+
+      if (props.static && props.rows?.length) {
+        flux.rows = props.static(props.rows, controlValue.value);
+      }
     }
   },
   { immediate: true },
@@ -135,14 +146,36 @@ watch(
 watch(
   () => flux.selecteAll,
   (val) => {
-    flux.rows = props.rows?.map((item) => ({ ...item, checked: val })) || [];
+    if (props.static) {
+      const arr = props.rows?.map((item) => ({ ...item, checked: val })) || [];
+      flux.data = structuredClone(arr);
+      flux.rows = props.static(arr, controlValue.value);
+      emit('selecteAll', val, arr);
+    }
   },
+);
+
+watch(
+  () => flux.data,
+  (val) => {
+    if (val?.length) {
+      selectedValue.value = val
+        .filter((item) => item.checked)
+        .map((item) => omit(item, ['checked']));
+    }
+  },
+  { deep: true },
 );
 
 watch(
   () => props.rows,
   (val) => {
-    flux.rows = val || [];
+    if (props.static && props.rows?.length) {
+      flux.data = [...props.rows];
+      flux.rows = props.static(props.rows, controlValue.value);
+    } else {
+      flux.rows = val || [];
+    }
   },
   { deep: true, immediate: true },
 );
@@ -158,11 +191,6 @@ watch(
 
       if (checked) flux.selecteAll = true;
       if (unchecked) flux.selecteAll = false;
-
-      emit(
-        'update:selected',
-        val.filter((item) => item.checked).map((item) => omit(item, ['checked'])),
-      );
     }
   },
   { deep: true },

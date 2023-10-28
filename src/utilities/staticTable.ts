@@ -3,7 +3,7 @@ import sortBy from 'lodash/sortBy';
 
 export default <T extends Record<string, any>>(
   rows: T[],
-  control = { rows: 10, page: 1, field: 'createdAt', direction: 'desc' },
+  control = { rows: 10, page: 1, field: 'createdAt', direction: 'desc' } as any,
 ) => {
   if (!rows?.length) return [];
 

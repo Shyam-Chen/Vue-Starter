@@ -314,7 +314,7 @@ const flux = reactive({
   </div>
 
   <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Rowspan</div>
+    <div class="mb-2">Rowspan (key: `details`)</div>
 
     <div class="w-full bg-white dark:bg-slate-800 shadow-md rounded">
       <Table :columns="flux.spanableCols" :rows="flux.spanableRows" />
