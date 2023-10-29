@@ -15,8 +15,8 @@ import Selectable from './Selectable.vue';
     ]"
   />
 
-  <div class="text-4xl font-extrabold">Static Table</div>
+  <div class="text-4xl font-extrabold my-4">Static Table</div>
 
-  <Basic />
-  <Selectable />
+  <Basic class="my-8" />
+  <Selectable class="my-8" />
 </template>

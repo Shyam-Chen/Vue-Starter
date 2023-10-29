@@ -218,7 +218,7 @@ watch(
               }"
             >
               <div
-                class="inline-flex gap-1 items-center"
+                class="inline-flex gap-1 items-center min-h-38px"
                 :class="{
                   'cursor-pointer': typeof col.sortable === 'boolean' ? col.sortable : true,
                 }"
@@ -245,7 +245,7 @@ watch(
         </thead>
 
         <slot name="tbody">
-          <tbody>
+          <tbody v-if="flux.rows?.length">
             <template v-for="row in flux.rows" :key="row._id || row.id">
               <Row
                 class="sticky-tr"
@@ -267,7 +267,11 @@ watch(
                   }"
                 >
                   <div v-if="col.spanable" class="flex flex-col gap-2">
-                    <div v-for="(sub, subIdx) in row.details" :key="subIdx">
+                    <div
+                      v-for="(sub, subIdx) in row.details"
+                      :key="subIdx"
+                      class="min-h-38px flex items-center"
+                    >
                       <slot :name="col.key" :row="row">
                         {{ sub[col.key] }}
                       </slot>
@@ -276,6 +280,7 @@ watch(
 
                   <div
                     v-else
+                    class="min-h-38px flex items-center"
                     :class="{
                       'dark:border-slate-600 px-6 py-3': col.sticky,
                       'border-r-2': col.sticky === 'left',
@@ -293,6 +298,17 @@ watch(
             </template>
 
             <slot name="spanable"></slot>
+          </tbody>
+
+          <tbody v-else>
+            <Row>
+              <Cell :colspan="selectable ? Number(columns?.length) + 1 : columns?.length">
+                <div class="w-full min-h-100 flex flex-col justify-center items-center gap-2">
+                  <div class="i-mdi-package-variant w-24 h-24"></div>
+                  <div class="text-3xl font-bold">No Data</div>
+                </div>
+              </Cell>
+            </Row>
           </tbody>
         </slot>
       </table>

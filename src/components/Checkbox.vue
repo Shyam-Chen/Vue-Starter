@@ -23,7 +23,7 @@ const emit = defineEmits<{
 
 const checkboxValue = computed({
   get: () => props.value || false,
-  set: (val) => emit('update:value', val),
+  set: (val) => !props.readonly && emit('update:value', val),
 });
 </script>
 
@@ -62,7 +62,7 @@ const checkboxValue = computed({
 
 <style lang="scss" scoped>
 .Checkbox-Wrapper {
-  @apply flex flex-col;
+  @apply inline-flex flex-col;
 }
 
 .Checkbox-Label {

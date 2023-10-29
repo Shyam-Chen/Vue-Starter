@@ -45,7 +45,7 @@ function search() {
 
 <template>
   <div>
-    <div class="text-3xl font-bold">Basic</div>
+    <div class="text-3xl font-bold my-4">Basic</div>
 
     <div class="p-8 bg-white dark:bg-slate-800 rounded-lg space-y-8">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">

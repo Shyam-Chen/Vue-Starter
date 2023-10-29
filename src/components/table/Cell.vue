@@ -6,6 +6,6 @@
 
 <style lang="scss" scoped>
 .Cell {
-  @apply px-6 py-3 align-middle whitespace-nowrap;
+  @apply px-4 py-0 align-middle whitespace-nowrap;
 }
 </style>
