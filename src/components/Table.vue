@@ -235,7 +235,7 @@ watch(
             <template v-for="row in flux.rows" :key="row._id || row.id">
               <tr
                 class="sticky-tr hover:bg-slate-100 dark:hover:bg-slate-600 border-b last:border-b-0 dark:border-slate-600"
-                :class="{ 'bg-primary-800/25 important:hover:bg-primary-600/50': row.checked }"
+                :class="{ 'bg-primary-500/25 important:hover:bg-primary-500/50': row.checked }"
                 @click="flux.clickRow(row)"
               >
                 <td v-if="selectable" class="px-6 py-3 align-middle whitespace-nowrap">

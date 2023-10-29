@@ -65,6 +65,14 @@ watch(
     </div>
   </div>
 
+  <div class="flex flex-col border p-4 mb-4">
+    <div class="mb-2">Invalid</div>
+
+    <div class="flex justify-center">
+      <Checkbox invalid="Error message">Checkbox (invalid)</Checkbox>
+    </div>
+  </div>
+
   <div class="flex flex-col border p-4 mb-4 space-y-4">
     <div class="mb-2">Disabled</div>
 
