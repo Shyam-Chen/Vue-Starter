@@ -1,23 +1,32 @@
 <script lang="ts" setup>
-import { nextTick, ref, computed, reactive, watch, onMounted, onUnmounted } from 'vue';
-import { useLocale } from 'vue-localer';
+import { ref, reactive, computed, watch, watchEffect, nextTick, onMounted, onUnmounted } from 'vue';
 import { onClickOutside } from '@vueuse/core';
+import { useLocale } from 'vue-localer';
 
 import getScrollableParent from '~/utilities/getScrollableParent';
 
-import Fade from './Fade.vue';
 import ProgressBar from './ProgressBar.vue';
+import Fade from './Fade.vue';
 import TextField from './TextField.vue';
 
-type Option = { label: string; value: string | number; [key: string]: unknown; options?: Options };
+type Option = {
+  label: string;
+  value: string | number;
+};
+
+// type OptionGroup = {
+//   label: string;
+//   values: Option[];
+// };
+
 type Options = Option[];
 
 const props = withDefaults(
   defineProps<{
     label?: string;
-    value?: Option['value'];
+    value?: Option['value'] | null;
     options?: Options;
-    display?: 'label' | 'value' | ((opt: Option) => void);
+    display?: 'label' | 'value' | ((opt: Option) => string);
     placeholder?: string;
     clearable?: boolean;
     filterable?: boolean;
@@ -33,22 +42,26 @@ const props = withDefaults(
     value: undefined,
     options: () => [],
     display: 'label',
-    placeholder: 'Please select',
+    placeholder: '',
     clearable: false,
     filterable: false,
     disabled: false,
     required: false,
-    loading: false,
-    notFoundContent: 'No results found',
+    notFoundContent: '',
     isInvalid: false,
     errorMessage: '',
   },
 );
 
 const emit = defineEmits<{
-  (evt: 'update:value', val: string | number | null): void;
+  (evt: 'update:value', val?: string | number | null): void;
   (evt: 'change', val: string | number | null, opt: Option | null): void;
 }>();
+
+const selectValue = computed({
+  get: () => props.value,
+  set: (val) => emit('update:value', val),
+});
 
 const locale = useLocale();
 
@@ -57,10 +70,10 @@ const flux = reactive({
   direction: 'down' as 'down' | 'up',
   selected: undefined as Option | undefined,
   filterValue: '',
-  options: undefined as Options | undefined,
+  options: [] as Options,
   onSelect(value: Option['value'], option: Option) {
     flux.show = false;
-    emit('update:value', value);
+    selectValue.value = value;
     emit('change', value, option);
   },
   display(item: Option) {
@@ -75,7 +88,7 @@ const flux = reactive({
     return `${item.value} - ${item.label}`;
   },
   clear() {
-    emit('update:value', null);
+    selectValue.value = null;
     emit('change', null, null);
   },
 
@@ -89,8 +102,17 @@ const selectFilter = ref();
 const selectList = ref();
 const selectItem = ref<any[]>([]);
 
-const initOptions = computed(() => props.options);
-const reoptions = computed(() => flux.options || props.options);
+const initialOptions = computed(() => props.options);
+
+watch(
+  () => props.options,
+  (val) => {
+    if (val?.length) {
+      flux.options = val;
+    }
+  },
+  { deep: true, immediate: true },
+);
 
 function resizePanel() {
   const rect = selectInput.value.getBoundingClientRect();
@@ -140,7 +162,7 @@ const open = () => {
     }
 
     const active = selectPanel.value.querySelector('.Select-Item-Active');
-    const offsetTop = active?.offsetTop;
+    const offsetTop = props.filterable ? active?.offsetTop - 46 : active?.offsetTop;
     if (offsetTop) selectList.value.scrollTop = offsetTop - active.offsetHeight * 2;
 
     if (selectFilter.value) selectFilter.value.$el.querySelector('input').focus();
@@ -154,7 +176,7 @@ onClickOutside(target, () => {
 watch(
   () => flux.filterValue,
   (val) => {
-    const arr = [...initOptions.value];
+    const arr = [...initialOptions.value];
 
     const filter = arr.filter(
       (item) =>
@@ -166,19 +188,15 @@ watch(
   },
 );
 
-watch(
-  () => props.value,
-  (val) => {
-    if (val) {
-      const arr = [...initOptions.value];
-      const found = arr.find((item) => item.value === val);
-      flux.selected = found;
-    } else {
-      flux.selected = undefined;
-    }
-  },
-  { immediate: true },
-);
+watchEffect(() => {
+  if (selectValue.value && initialOptions.value?.length) {
+    const arr = [...initialOptions.value];
+    const found = arr.find((item) => item.value === selectValue.value);
+    flux.selected = found;
+  } else {
+    flux.selected = undefined;
+  }
+});
 
 const wrapper = computed(() => flux.scrollableParent);
 
@@ -231,7 +249,7 @@ onUnmounted(() => {
         @click="open"
       >
         <div v-if="!flux.selected" class="flex-1">
-          {{ locale.pleaseSelect || placeholder }}
+          {{ placeholder || locale.pleaseSelect || 'Please select' }}
         </div>
 
         <div v-if="flux.selected" class="flex-1">
@@ -266,7 +284,7 @@ onUnmounted(() => {
 
           <div ref="selectList" class="Select-List">
             <div
-              v-for="(item, index) in reoptions"
+              v-for="(item, index) in flux.options"
               :ref="(el) => (selectItem[index] = el)"
               :key="item.value"
               class="Select-Item"
@@ -277,8 +295,8 @@ onUnmounted(() => {
             </div>
           </div>
 
-          <div v-if="reoptions.length === 0" class="p-2">
-            {{ notFoundContent }}
+          <div v-if="flux.options.length === 0" class="p-2">
+            {{ notFoundContent || locale.notFoundContent || 'No results found' }}
           </div>
         </div>
       </Fade>
@@ -308,7 +326,7 @@ onUnmounted(() => {
   @apply border border-slate-400 bg-white dark:bg-slate-800 rounded leading-tight;
 
   &.placeholder {
-    @apply text-gray-400 truncate;
+    @apply text-slate-400 dark:text-slate-500 truncate;
   }
 
   &.focus {
