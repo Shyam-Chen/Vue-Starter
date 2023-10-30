@@ -35,7 +35,7 @@
     "date-fns": "^2.30.0",
     "echarts": "^5.4.3",
     "exceljs": "^4.4.0",
-    "highcharts": "^11.1.0",
+    "highcharts": "^11.2.0",
     "highcharts-vue": "^1.4.3",
     "highlight.js": "^11.9.0",
     "lodash": "^4.17.21",
@@ -54,7 +54,7 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
-    "@iconify/json": "^2.2.133",
+    "@iconify/json": "^2.2.135",
     "@types/d3": "^7.4.2",
     "@types/lodash": "^4.14.200",
     "@vitejs/plugin-vue": "^4.4.0",
@@ -64,15 +64,15 @@
     "@vue/test-utils": "^2.4.1",
     "eslint": "^8.52.0",
     "eslint-plugin-vue": "~9.17.0",
-    "happy-dom": "^12.9.1",
+    "happy-dom": "^12.10.3",
     "prettier": "^3.0.3",
     "process-envify": "^2.0.0",
-    "sass": "^1.69.4",
+    "sass": "^1.69.5",
     "typescript": "^5.2.2",
     "unocss": "^0.57.1",
     "vite": "^4.5.0",
-    "vite-plugin-vue-routes": "^1.0.4",
+    "vite-plugin-vue-routes": "^1.0.5",
     "vitest": "^0.34.6",
-    "vue-tsc": "^1.8.21"
+    "vue-tsc": "^1.8.22"
   }
 }
