@@ -6,10 +6,10 @@ import vueRoutes from 'vite-plugin-vue-routes';
 import unocss from 'unocss/vite';
 import { presetUno, presetIcons, transformerDirectives } from 'unocss';
 
-import env from './env';
-
 export default defineConfig({
-  define: envify(env),
+  define: envify({
+    API_URL: process.env.API_URL || '',
+  }),
   plugins: [
     vue({
       template: {

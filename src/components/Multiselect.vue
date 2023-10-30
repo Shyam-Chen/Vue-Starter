@@ -220,7 +220,7 @@ const open = () => {
     }
 
     const active = selectPanel.value.querySelector('.Multiselect-Item-Active');
-    const offsetTop = active?.offsetTop;
+    const offsetTop = props.filterable ? active?.offsetTop - 54 : active?.offsetTop;
     if (offsetTop) selectList.value.scrollTop = offsetTop - active.offsetHeight * 2;
 
     if (selectFilter.value) selectFilter.value.$el.querySelector('input').focus();
@@ -352,7 +352,6 @@ onUnmounted(() => {
           <div
             v-if="flux.options?.length"
             class="cursor-pointer bg-slate-200 dark:bg-slate-600 rounded"
-            :class="{ 'mt-2': filterable }"
             @click.stop="flux.onSelectAll"
           >
             <div class="flex items-center px-5">
@@ -447,7 +446,7 @@ onUnmounted(() => {
 }
 
 .Multiselect-FilterWrapper {
-  @apply px-2 pt-2;
+  @apply p-2;
 }
 
 .Multiselect-List {
