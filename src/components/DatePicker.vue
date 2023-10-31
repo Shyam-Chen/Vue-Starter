@@ -46,12 +46,8 @@ const input = ref();
 const picker = ref();
 
 const modelDate = computed({
-  get: () => {
-    return props.value;
-  },
-  set(val) {
-    emit('update:value', val);
-  },
+  get: () => props.value,
+  set: (val) => emit('update:value', val),
 });
 
 const createDays = (y?: number, m?: number) => {
@@ -142,6 +138,8 @@ const flux = reactive({
     }
   },
   openPicker() {
+    if (props.disabled) return;
+
     flux.showDatePicker = true;
 
     flux.showWeeks = true;
