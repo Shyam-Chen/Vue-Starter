@@ -66,7 +66,7 @@ const checkboxValue = computed({
 }
 
 .Checkbox-Label {
-  @apply flex items-center h-38px cursor-pointer;
+  @apply flex items-center min-h-38px cursor-pointer;
 
   &.disabled {
     @apply cursor-not-allowed opacity-60;
