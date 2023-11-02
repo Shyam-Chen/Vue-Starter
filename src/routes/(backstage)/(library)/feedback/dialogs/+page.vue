@@ -76,16 +76,8 @@ const flux = reactive({
       <Button @click="flux.sizeDialog = true">Launch</Button>
     </div>
 
-    <Dialog v-model="flux.sizeDialog" title="Lorem Ipsum" class="CustomSizeDialog">
+    <Dialog v-model="flux.sizeDialog" title="Lorem Ipsum" class="!w-100">
       <div>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
     </Dialog>
   </div>
 </template>
-
-<style lang="scss" scoped>
-.CustomSizeDialog {
-  :deep(.dialog-content) {
-    @apply w-100;
-  }
-}
-</style>

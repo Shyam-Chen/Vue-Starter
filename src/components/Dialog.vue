@@ -2,6 +2,10 @@
 import { ref, watch, onUnmounted } from 'vue';
 import { useResizeObserver } from '@vueuse/core';
 
+defineOptions({
+  inheritAttrs: false,
+});
+
 const props = defineProps<{
   modelValue?: boolean;
   title?: string;
@@ -55,7 +59,7 @@ onUnmounted(() => {
           &#8203;
         </span>
 
-        <div class="dialog-content" role="dialog" aria-modal="true">
+        <div v-bind="$attrs" class="dialog-content" role="dialog" aria-modal="true">
           <div class="bg-white dark:bg-slate-800 p-6">
             <div v-if="title" class="flex items-center w-full mb-6">
               <div class="flex-1 text-3xl font-bold">{{ title }}</div>
