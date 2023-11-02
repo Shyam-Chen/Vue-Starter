@@ -52,7 +52,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <Dialog v-model="status" title="Leave site?" class="ConfirmLeaveDialog">
+  <Dialog v-model="status" title="Leave site?" class="!w-100">
     <div>Changes you made may not be saved.</div>
 
     <div class="flex justify-center gap-2 mt-8">
@@ -68,11 +68,3 @@ onUnmounted(() => {
     </div>
   </Dialog>
 </template>
-
-<style lang="scss" scoped>
-.ConfirmLeaveDialog {
-  :deep(.dialog-content) {
-    @apply w-100;
-  }
-}
-</style>
