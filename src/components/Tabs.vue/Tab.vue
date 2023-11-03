@@ -1,27 +1,32 @@
 <script lang="ts" setup>
-import { ref, reactive, inject, onMounted } from 'vue';
+import type { Ref, ComputedRef } from 'vue';
+import { ref, inject, onMounted } from 'vue';
 
 defineProps<{
   title?: string;
   value?: string;
 }>();
 
-const tabs = inject('Tabs') as any;
+const tabs = inject('Tabs') as {
+  modelValue: ComputedRef<string | number | undefined>;
+  slotWrapper: Ref<HTMLDivElement | undefined>;
+};
 
 const self = ref<HTMLDivElement>();
-
-const flux = reactive({
-  idx: null as number | null,
-});
+const currentIndex = ref(-1);
 
 onMounted(() => {
-  const idx = Array.from(tabs.tabs.value.children).indexOf(self.value as Element);
-  flux.idx = idx;
+  if (tabs.slotWrapper.value?.children?.length) {
+    currentIndex.value = Array.from(tabs.slotWrapper.value.children).indexOf(self.value as Element);
+  }
 });
 </script>
 
 <template>
-  <div v-show="tabs.modelValue.value === flux.idx || tabs.modelValue.value === value" ref="self">
+  <div
+    v-show="tabs.modelValue.value === currentIndex || tabs.modelValue.value === value"
+    ref="self"
+  >
     <slot></slot>
   </div>
 </template>

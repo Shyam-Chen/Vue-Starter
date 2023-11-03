@@ -1,5 +1,6 @@
 <script lang="ts" setup>
-import { useSlots, ref, reactive, computed, provide } from 'vue';
+import type { VNode } from 'vue';
+import { ref, computed, watch, provide, useSlots } from 'vue';
 
 const props = defineProps<{
   modelValue?: number | string;
@@ -7,53 +8,62 @@ const props = defineProps<{
 }>();
 
 const emit = defineEmits<{
-  (evt: 'update:modelValue', val: number | string): void;
+  (evt: 'update:modelValue', val?: number | string): void;
   (evt: 'change', val: string | number): void;
 }>();
 
 const slots = useSlots();
-const defaultSlot = slots.default?.();
+const tabs = ref<VNode['props'][]>([]);
 
-const tabs = ref();
+watch(
+  () => slots.default?.(),
+  () => {
+    const defaultSlot = slots.default?.();
 
-const flux = reactive({
-  tab: [] as any[],
-  activeTab(tab: any, idx: number) {
-    if (typeof props.modelValue === 'number') return idx;
-    if (typeof props.modelValue === 'string') return tab.value;
-  },
-  selectTab(tab: any, idx: number) {
-    if (typeof props.modelValue === 'number') {
-      emit('update:modelValue', idx);
-      emit('change', idx);
-    }
+    if (defaultSlot) {
+      tabs.value = [];
 
-    if (typeof props.modelValue === 'string') {
-      emit('update:modelValue', tab.value);
-      emit('change', tab.value);
-    }
-  },
-});
+      for (let i = 0; i < defaultSlot.length; i++) {
+        const tab = defaultSlot[i];
 
-if (defaultSlot) {
-  for (let i = 0; i < defaultSlot.length; i++) {
-    const tab = defaultSlot[i];
+        if (tab.children?.length) {
+          const tabChildren = tab.children as VNode[];
 
-    if (tab.children?.length) {
-      const tabChildren = tab.children as any[];
-      for (let j = 0; j < tabChildren.length; j++) {
-        const child = tabChildren[j];
-        flux.tab = [...flux.tab, child.props];
+          for (let j = 0; j < tabChildren.length; j++) {
+            const child = tabChildren[j];
+            tabs.value = [...tabs.value, child.props];
+          }
+        } else {
+          tabs.value = [...tabs.value, tab.props];
+        }
       }
-    } else {
-      flux.tab = [...flux.tab, tab.props];
     }
+  },
+  { deep: true, immediate: true },
+);
+
+function isActive(tab: VNode['props'], idx: number) {
+  if (typeof props.modelValue === 'number') return idx === props.modelValue;
+  if (typeof props.modelValue === 'string') return tab?.value === props.modelValue;
+}
+
+function onClickTab(tab: VNode['props'], idx: number) {
+  if (typeof props.modelValue === 'number') {
+    emit('update:modelValue', idx);
+    emit('change', idx);
+  }
+
+  if (typeof props.modelValue === 'string') {
+    emit('update:modelValue', tab?.value);
+    emit('change', tab?.value);
   }
 }
 
+const slotWrapper = ref<HTMLDivElement>();
+
 provide('Tabs', {
-  tabs,
   modelValue: computed(() => props.modelValue),
+  slotWrapper,
 });
 </script>
 
@@ -61,20 +71,18 @@ provide('Tabs', {
   <div class="w-full">
     <div class="Tabs-TabWrapper">
       <div
-        v-for="(tab, idx) in flux.tab"
+        v-for="(tab, idx) in tabs"
         :key="idx"
         class="Tabs-Tab"
-        :class="{
-          active: flux.activeTab(tab, idx) === modelValue,
-        }"
-        @click="flux.selectTab(tab, idx)"
+        :class="{ active: isActive(tab, idx) }"
+        @click="onClickTab(tab, idx)"
       >
         {{ tab?.title }}
         <div v-if="closeable" class="i-fa-close w-3 h-3 ml-3"></div>
       </div>
     </div>
 
-    <div ref="tabs">
+    <div ref="slotWrapper">
       <slot></slot>
     </div>
   </div>
@@ -82,10 +90,8 @@ provide('Tabs', {
 
 <style lang="scss" scoped>
 .Tabs-TabWrapper {
-  @apply flex flex-row items-center border-b border-slate-500;
+  @apply flex flex-row items-center border-b border-#ADAFB3;
   @apply overflow-x-auto;
-
-  scrollbar-width: none;
 
   &::-webkit-scrollbar {
     @apply w-0 h-0 bg-transparent;
