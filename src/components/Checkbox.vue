@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import type { InputHTMLAttributes } from 'vue';
 import { computed } from 'vue';
+import uniqueId from 'lodash/uniqueId';
 
 export interface Props extends /* @vue-ignore */ InputHTMLAttributes {
   value?: boolean;
@@ -25,6 +26,8 @@ const checkboxValue = computed({
   get: () => props.value || false,
   set: (val) => !props.readonly && emit('update:value', val),
 });
+
+const uid = uniqueId('Checkbox-');
 </script>
 
 <template>
@@ -32,6 +35,7 @@ const checkboxValue = computed({
     <label class="Checkbox-Label" :class="{ disabled, readonly }">
       <div class="Checkbox-Container">
         <input
+          :id="uid"
           v-model="checkboxValue"
           v-bind="$attrs"
           type="checkbox"
