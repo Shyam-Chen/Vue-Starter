@@ -1,6 +1,4 @@
 {
-  "name": "vue-starter",
-  "version": "1.0.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -8,11 +6,7 @@
     "build": "vite build",
     "preview": "caddy run",
     "lint": "eslint 'src/**/*.{ts,vue}' && vue-tsc",
-    "unit": "vitest --dir src --coverage --run",
-    "e2e": "cd e2e && pnpm e2e",
-    "bench": "cd benchmark && pnpm bench",
-    "mock": "cd mock/requests && pnpm mock",
-    "doc": "cd docs && pnpm dev"
+    "unit": "vitest --dir src --coverage --run"
   },
   "dependencies": {
     "@tiptap/extension-code-block-lowlight": "^2.1.12",

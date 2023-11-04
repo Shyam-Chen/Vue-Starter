@@ -1,6 +1,6 @@
 {
-  "name": "mock",
   "private": true,
+  "type": "module",
   "scripts": {
     "mock": "vite"
   },
