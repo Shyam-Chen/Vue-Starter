@@ -12,11 +12,3 @@ services:
       - 80:80
       - 443:443
     tty: true
-
-  app:
-    image: app
-    build:
-      context: .
-      dockerfile: .circleci/Dockerfile
-    ports:
-      - 3000:3000

@@ -13,6 +13,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Build the Docker image
-        run: docker-compose up -d ci
+        run: docker-compose up --build --detach ci
       - name: pnpm build
         run: docker-compose exec ci pnpm build
