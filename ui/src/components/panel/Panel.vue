@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
 
-import Collapse from '../Collapse.vue';
+import Collapse from '../collapse/Collapse.vue';
 
 defineProps<{
   title?: string;

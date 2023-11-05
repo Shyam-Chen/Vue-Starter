@@ -6,7 +6,7 @@ import { useLocale } from 'vue-localer';
 import getScrollableParent from '~/utilities/getScrollableParent';
 
 import ProgressBar from './ProgressBar.vue';
-import Fade from './Fade.vue';
+import Fade from './fade/Fade.vue';
 import TextField from './text-field/TextField.vue';
 
 type Option = {

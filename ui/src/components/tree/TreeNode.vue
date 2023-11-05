@@ -2,7 +2,7 @@
 import type { WritableComputedRef } from 'vue';
 import { inject } from 'vue';
 
-import Collapse from '../Collapse.vue';
+import Collapse from '../collapse/Collapse.vue';
 
 import type { Node } from './types';
 

@@ -2,7 +2,7 @@
 import type { Ref, ComputedRef, WritableComputedRef } from 'vue';
 import { ref, reactive, inject, onMounted } from 'vue';
 
-import Collapse from '../Collapse.vue';
+import Collapse from '../collapse/Collapse.vue';
 
 const props = withDefaults(
   defineProps<{

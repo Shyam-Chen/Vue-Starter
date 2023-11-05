@@ -1,7 +1,7 @@
 import { reactive, readonly } from 'vue';
 import { defineStore } from 'vue-storer';
 
-import type Alert from '~/components/Alert.vue';
+import type Alert from '../../components/alert/Alert.vue';
 
 type NotificationMessage = {
   message: string;

@@ -8,8 +8,8 @@ import uniqueId from 'lodash/uniqueId';
 
 import getScrollableParent from '~/utilities/getScrollableParent';
 
-import TextField from './TextField.vue';
-import Fade from './Fade.vue';
+import TextField from '../text-field/TextField.vue';
+import Fade from '../fade/Fade.vue';
 
 const props = withDefaults(
   defineProps<{

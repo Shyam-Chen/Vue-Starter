@@ -2,7 +2,7 @@
 import { ref, computed, reactive, watch, toRef } from 'vue';
 import { vOnClickOutside } from '@vueuse/components';
 
-import Chip from './Chip.vue';
+import Chip from '../chip/Chip.vue';
 
 defineOptions({
   inheritAttrs: false,
