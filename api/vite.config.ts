@@ -12,7 +12,6 @@ export default defineConfig({
   resolve: {
     alias: {
       '~': resolve(__dirname, 'src'),
-      responses: resolve(__dirname, '../responses'),
     },
   },
 });
