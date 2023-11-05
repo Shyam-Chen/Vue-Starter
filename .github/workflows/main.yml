@@ -17,4 +17,4 @@ jobs:
       - name: pnpm build
         run: docker compose exec --no-TTY ci pnpm build
       - name: Trigger deployment
-        run: curl -k $DEPLOY_HOOK
+        run: curl -k ${{ env.DEPLOY_HOOK }}
