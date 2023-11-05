@@ -5,8 +5,8 @@ import { useDebounceFn, onClickOutside } from '@vueuse/core';
 import getScrollableParent from '~/utilities/getScrollableParent';
 import request from '~/utilities/request';
 
-import TextField from './TextField.vue';
-import Fade from './Fade.vue';
+import TextField from '../text-field/TextField.vue';
+import Fade from '../Fade.vue';
 
 defineOptions({
   inheritAttrs: false,

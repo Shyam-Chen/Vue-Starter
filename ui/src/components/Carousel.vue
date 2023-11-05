@@ -3,7 +3,7 @@ import type { UseSwipeDirection } from '@vueuse/core';
 import { ref, useSlots, toRef } from 'vue';
 import { useSwipe, usePointerSwipe } from '@vueuse/core';
 
-import Button from './Button.vue';
+import Button from './button/Button.vue';
 
 const props = defineProps<{
   move?: number;

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
+import { XAvatar } from '@x/ui';
+
 import Breadcrumbs from '~/components/Breadcrumbs.vue';
-import Avatar from '~/components/Avatar.vue';
-import AvatarGroup from '~/components/AvatarGroup.vue';
 import Badge from '~/components/Badge.vue';
 </script>
 
@@ -16,9 +16,9 @@ import Badge from '~/components/Badge.vue';
     <div class="mb-2">Basic</div>
 
     <div class="flex justify-center gap-2">
-      <Avatar src="https://mui.com/static/images/avatar/1.jpg" alt="Remy Sharp" />
-      <Avatar icon="i-mdi-account" class="bg-indigo-700 text-white" />
-      <Avatar class="bg-red-700 text-white">SC</Avatar>
+      <XAvatar src="https://mui.com/static/images/avatar/1.jpg" alt="Remy Sharp" />
+      <XAvatar icon="i-mdi-account" class="bg-indigo-700 text-white" />
+      <XAvatar class="bg-red-700 text-white">SC</XAvatar>
     </div>
   </div>
 
@@ -26,12 +26,12 @@ import Badge from '~/components/Badge.vue';
     <div class="mb-2">Grouped</div>
 
     <div class="flex justify-center">
-      <AvatarGroup :total="24">
-        <Avatar src="https://mui.com/static/images/avatar/1.jpg" alt="Remy Sharp" />
-        <Avatar src="https://mui.com/static/images/avatar/2.jpg" alt="Travis Howard" />
-        <Avatar src="https://mui.com/static/images/avatar/3.jpg" alt="Cindy Baker" />
-        <Avatar src="https://mui.com/static/images/avatar/4.jpg" alt="Agnes Walker" />
-      </AvatarGroup>
+      <XAvatar.Group :total="24">
+        <XAvatar src="https://mui.com/static/images/avatar/1.jpg" alt="Remy Sharp" />
+        <XAvatar src="https://mui.com/static/images/avatar/2.jpg" alt="Travis Howard" />
+        <XAvatar src="https://mui.com/static/images/avatar/3.jpg" alt="Cindy Baker" />
+        <XAvatar src="https://mui.com/static/images/avatar/4.jpg" alt="Agnes Walker" />
+      </XAvatar.Group>
     </div>
   </div>
 
@@ -40,7 +40,7 @@ import Badge from '~/components/Badge.vue';
 
     <div class="flex justify-center">
       <Badge class="important:bg-green-500 top-auto right-1 -bottom-1 border">
-        <Avatar src="https://mui.com/static/images/avatar/1.jpg" alt="Remy Sharp" />
+        <XAvatar src="https://mui.com/static/images/avatar/1.jpg" alt="Remy Sharp" />
       </Badge>
     </div>
   </div>
