@@ -2,7 +2,7 @@
 import type { VNode } from 'vue';
 import { computed, reactive, watch, toRef } from 'vue';
 
-import type staticTable from '~/utilities/staticTable';
+import type staticTable from '../../utilities/static-table/staticTable';
 import ProgressBar from '../ProgressBar.vue';
 import Button from '../button/Button.vue';
 import Select from '../Select.vue';
@@ -369,3 +369,4 @@ watch(
   }
 }
 </style>
+~/utilities/static-table/staticTable

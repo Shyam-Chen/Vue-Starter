@@ -66,9 +66,6 @@ $ pnpm build
 ### Locally preview the production build
 
 ```sh
-# Before running the `preview` command, make sure to run the following commands.
-$ pnpm build
-
 $ pnpm preview
 ```
 
@@ -80,64 +77,20 @@ Files: `src/**/*.{ts,vue}`
 $ pnpm lint
 ```
 
+### Check types
+
+Files: `src/**/*.{ts,vue}`
+
+```sh
+$ pnpm check
+```
+
 ### Runs unit tests
 
 Files: `src/**/*.spec.ts`
 
 ```sh
-$ pnpm unit
-```
-
-### Runs end-to-end tests
-
-Files: `e2e/**/*.spec.ts`
-
-```sh
-# Before running the `e2e` command, make sure to run the following commands.
-$ pnpm build
-$ pnpm preview
-
-# If it's not installed, run it.
-$ cd e2e && pnpm install && cd ..
-
-$ pnpm e2e
-```
-
-### Performance metrics
-
-Files: `benchmark/**/*.spec.ts`
-
-```sh
-# Before running the `bench` command, make sure to run the following commands.
-$ pnpm build
-$ pnpm preview
-
-# If it's not installed, run it.
-$ cd benchmark && pnpm install && cd ..
-
-$ pnpm bench
-```
-
-### Mock requests/responses
-
-```sh
-# If it's not installed, run it.
-$ cd mock/requests && pnpm install && cd ../..
-
-$ pnpm mock
-```
-
-`mock/responses` can be applied to unit testing, end-to-end testing, and performance metrics.
-
-### Documentation
-
-Files: `docs/**/*.md`
-
-```sh
-# If it's not installed, run it.
-$ cd docs && pnpm install && cd ..
-
-$ pnpm doc
+$ pnpm test
 ```
 
 ## Key Features
@@ -158,6 +111,7 @@ This seed repository provides the following features:
 - [x] [Date Fns](https://github.com/date-fns/date-fns) - Date Utilities
 - [x] [UnoCSS](https://github.com/unocss/unocss) - CSS Utilities
 - [x] [Iconify](https://github.com/iconify/iconify) - Icon Utilities
+- [x] [Tiptap Editor](https://github.com/ueberdosis/tiptap) - Rich Text Editor Utilities
 - [x] [D3](https://github.com/d3/d3) - Data Visualization Utilities
 - ---------- **Tools** ----------
 - [x] [Vite](https://github.com/vitejs/vite) - Bundler
@@ -166,15 +120,12 @@ This seed repository provides the following features:
 - [x] [ESLint](https://github.com/eslint/eslint) - Linter
 - [x] [Prettier](https://github.com/prettier/prettier) - Formatter
 - [x] [Vitest](https://github.com/vitest-dev/vitest) - Test Runner
-- [x] [Playwright](https://github.com/microsoft/playwright) - Test Automation
-- [x] [Lighthouse](https://github.com/GoogleChrome/lighthouse) - Measure Performance
-- [x] [VitePress](https://github.com/vuejs/vitepress) - Documentation
 - ---------- **Environments** ----------
 - [x] [Node.js](https://nodejs.org/en/) - JavaScript Runtime Environment
 - [x] [Pnpm](https://pnpm.io/) - Package Manager
 - [x] [Caddy](https://caddyserver.com/) - Web Server
 - [x] [Docker](https://www.docker.com/) - Containerized Application Development
-- [x] [CircleCI](https://circleci.com/) - Continuous Integration and Delivery
+- [x] [GitHub Actions](https://github.com/features/actions) - Continuous Integration and Delivery
 - [x] [Render](https://render.com/) - Cloud Application Hosting
 
 ## Configuration
@@ -185,26 +136,19 @@ Control the environment.
 
 Set your local environment variables.
 
-```js
-// env.ts
-export default {
-  API_URL: process.env.API_URL || '',
-};
+```ts
+// vite.config.ts
+  define: envify({
+    API_URL: process.env.API_URL || '',
+  }),
 ```
 
 ### Continuous integration environments
 
-Add environment variables to the CircleCI build.
+Add environment secrets to the GitHub Actions workflow.
 
 ```sh
-# production
 DEPLOY_HOOK=xxx
-
-# development
-DEV_DEPLOY_HOOK=xxx
-
-# staging
-STAGE_DEPLOY_HOOK=xxx
 ```
 
 ### Continuous delivery environments
@@ -221,28 +165,24 @@ The structure follows the LIFT Guidelines.
 
 ```coffee
 .
-├── .circleci
-├── benchmark -> performance testing
-├── docs -> site documentation
-├── e2e -> e2e testing (Caddy Server serve static files and proxy mock api)
-├── mock
-│   ├── requests -> mock api
-│   └── responses -> mock data for mock api, unit testing, and e2e testing
+├── .github/workflows/ci.yml
+├── api
 ├── public
 ├── src
-│   ├── assets -> data, fonts, images, medias, styles
-│   ├── components -> shared module
-│   ├── composables -> shared module
-│   ├── layouts -> core module
-│   ├── locales -> core module
-│   ├── middleware -> core module
-│   ├── plugins -> root module
-│   ├── routes -> feature modules
-│   ├── utilities -> shared module
+│   ├── assets
+│   ├── components
+│   ├── composables
+│   ├── layouts
+│   ├── locales
+│   ├── middleware
+│   ├── plugins
+│   ├── routes
+│   ├── utilities
 │   ├── App.vue
 │   ├── Error.vue
 │   ├── main.ts
 │   └── shims.d.ts
+├── ui
 ├── .editorconfig
 ├── .eslintrc
 ├── .gitignore
@@ -250,11 +190,10 @@ The structure follows the LIFT Guidelines.
 ├── Caddyfile
 ├── docker-compose.yml
 ├── Dockerfile
-├── env.ts
-├── index.html -> entrypoint
-├── LICENSE
+├── index.html
 ├── package.json
 ├── pnpm-lock.yaml
+├── pnpm-workspace.yaml
 ├── README.md
 ├── render.yaml
 ├── tsconfig.json

@@ -2,13 +2,13 @@
 import { ref, reactive, computed, watch, watchEffect, nextTick, onMounted, onUnmounted } from 'vue';
 import { onClickOutside } from '@vueuse/core';
 
-import getScrollableParent from '~/utilities/getScrollableParent';
+import scrollableParent from '../../utilities/scrollable-parent/scrollableParent';
 
-import Checkbox from './Checkbox.vue';
-import Chip from './Chip.vue';
-import TextField from './TextField.vue';
-import ProgressBar from './ProgressBar.vue';
-import Fade from './Fade.vue';
+import Checkbox from '../checkbox/Checkbox.vue';
+import Chip from '../chip/Chip.vue';
+import TextField from '../text-field/TextField.vue';
+import ProgressBar from '../ProgressBar.vue';
+import Fade from '../fade/Fade.vue';
 
 type Option = {
   checked?: boolean;
@@ -195,7 +195,7 @@ const open = () => {
   flux.show = !flux.show;
 
   nextTick(() => {
-    flux.scrollableParent = getScrollableParent(selectInput.value);
+    flux.scrollableParent = scrollableParent(selectInput.value);
 
     resizePanel();
 

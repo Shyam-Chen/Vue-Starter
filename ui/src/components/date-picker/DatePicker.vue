@@ -6,7 +6,7 @@ import chunk from 'lodash/chunk';
 import range from 'lodash/range';
 import uniqueId from 'lodash/uniqueId';
 
-import getScrollableParent from '~/utilities/getScrollableParent';
+import scrollableParent from '../../utilities/scrollable-parent/scrollableParent';
 
 import TextField from '../text-field/TextField.vue';
 import Fade from '../fade/Fade.vue';
@@ -153,7 +153,7 @@ const flux = reactive({
     }
 
     nextTick(() => {
-      flux.scrollableParent = getScrollableParent(picker.value);
+      flux.scrollableParent = scrollableParent(picker.value);
       flux.resizePanel();
     });
   },

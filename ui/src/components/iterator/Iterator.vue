@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { computed, reactive } from 'vue';
 
-import Button from './Button.vue';
+import Button from '../button/Button.vue';
 
 type IteratorItem = any;
 

@@ -4,9 +4,10 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "caddy run",
-    "lint": "eslint 'src/**/*.{ts,vue}' && vue-tsc",
-    "unit": "vitest --dir src --coverage --run"
+    "preview": "vite preview",
+    "lint": "eslint 'src/**/*.{ts,vue}'",
+    "check": "vue-tsc",
+    "test": "vitest --dir src --coverage --run"
   },
   "dependencies": {
     "@tiptap/extension-code-block-lowlight": "^2.1.12",

@@ -3,8 +3,8 @@ import type { RouteLocationNormalized } from 'vue-router';
 import { ref, computed, onMounted, onUnmounted } from 'vue';
 import { useRouter, onBeforeRouteLeave } from 'vue-router';
 
-import Dialog from './Dialog.vue';
-import Button from './Button.vue';
+import Dialog from '../dialog/Dialog.vue';
+import Button from '../button/Button.vue';
 
 const props = defineProps<{
   trigger?: boolean;

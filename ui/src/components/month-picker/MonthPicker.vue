@@ -4,10 +4,10 @@ import { onClickOutside } from '@vueuse/core';
 import { format as _format, add, sub, getYear, setYear, getMonth, setMonth } from 'date-fns';
 import uniqueId from 'lodash/uniqueId';
 
-import getScrollableParent from '~/utilities/getScrollableParent';
+import scrollableParent from '../../utilities/scrollable-parent/scrollableParent';
 
-import TextField from './TextField.vue';
-import Fade from './Fade.vue';
+import TextField from '../text-field/TextField.vue';
+import Fade from '../fade/Fade.vue';
 
 const props = withDefaults(
   defineProps<{
@@ -73,7 +73,7 @@ const flux = reactive({
     }
 
     nextTick(() => {
-      flux.scrollableParent = getScrollableParent(picker.value);
+      flux.scrollableParent = scrollableParent(picker.value);
       flux.resizePanel();
     });
   },

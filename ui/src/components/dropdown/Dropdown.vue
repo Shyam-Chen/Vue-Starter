@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import { nextTick, ref, reactive, watch, onMounted, onUnmounted } from 'vue';
 
-import getScrollableParent from '~/utilities/getScrollableParent';
+import scrollableParent from '../../utilities/scrollable-parent/scrollableParent';
 
-import Fade from './Fade.vue';
+import Fade from '../fade/Fade.vue';
 
 defineProps<{
   options?: string[];
@@ -47,7 +47,7 @@ const flux = reactive({
     clearTimeout(flux.timeout);
 
     nextTick(() => {
-      flux.scrollableParent = getScrollableParent(dropdown.value);
+      flux.scrollableParent = scrollableParent(dropdown.value);
       flux.resizePanel();
     });
   },

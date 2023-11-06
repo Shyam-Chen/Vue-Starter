@@ -2,8 +2,8 @@
 import { ref, reactive, computed, watch, nextTick, onMounted, onUnmounted } from 'vue';
 import { useDebounceFn, onClickOutside } from '@vueuse/core';
 
-import getScrollableParent from '~/utilities/getScrollableParent';
-import request from '~/utilities/request';
+import scrollableParent from '../../utilities/scrollable-parent/scrollableParent';
+import request from '../../utilities/request/request';
 
 import TextField from '../text-field/TextField.vue';
 import Fade from '../fade/Fade.vue';
@@ -55,7 +55,7 @@ const debouncedFn = useDebounceFn(async (val) => {
   const response = await request<any>('/suggestions', { query: { value: val } });
 
   nextTick(() => {
-    flux.scrollableParent = getScrollableParent(autocompleteInput.value.$el);
+    flux.scrollableParent = scrollableParent(autocompleteInput.value.$el);
 
     const rect = autocompleteInput.value.$el.getBoundingClientRect();
 
