@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import Breadcrumbs from '~/components/Breadcrumbs.vue';
-import CodeBlock from '~/components/CodeBlock.vue';
+import { XBreadcrumb, XCodeBlock } from '@x/ui';
 
 const a = `<div class="i-fa-bell w-3 h-3 text-blue-500"></div>`
   .replaceAll('<', '&lt;')
@@ -15,7 +14,7 @@ ${b}</code></pre>`;
 </script>
 
 <template>
-  <Breadcrumbs :items="[{ text: 'Library' }, { text: 'General' }, { text: 'Icons' }]" />
+  <XBreadcrumb :items="[{ text: 'Library' }, { text: 'General' }, { text: 'Icons' }]" />
 
   <div class="my-4">
     <div class="text-3xl font-bold">Icons</div>
@@ -30,5 +29,5 @@ ${b}</code></pre>`;
     </div>
   </div>
 
-  <CodeBlock :code="code" />
+  <XCodeBlock :code="code" />
 </template>

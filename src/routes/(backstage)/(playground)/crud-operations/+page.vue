@@ -1,8 +1,7 @@
 <script lang="ts" setup>
 import { reactive, onMounted } from 'vue';
+import { XBreadcrumb, XPanel } from '@x/ui';
 
-import Breadcrumbs from '~/components/Breadcrumbs.vue';
-import Accordion from '~/components/Accordion.vue';
 import TextField from '~/components/TextField.vue';
 import RadioGroup from '~/components/RadioGroup.vue';
 import Checkbox from '~/components/Checkbox.vue';
@@ -29,13 +28,13 @@ onMounted(() => {
 </script>
 
 <template>
-  <Breadcrumbs :items="[{ text: 'Playground' }, { text: 'CRUD Operations' }]" />
+  <XBreadcrumb :items="[{ text: 'Playground' }, { text: 'CRUD Operations' }]" />
 
   <div class="my-4">
     <div class="text-3xl font-bold">CRUD Operations</div>
   </div>
 
-  <Accordion class="mb-6">
+  <XPanel class="mb-6">
     <template #header>
       <div class="text-lg font-bold">Search Conditions</div>
     </template>
@@ -60,7 +59,7 @@ onMounted(() => {
         <Button @click="actions.searchTodos">Search</Button>
       </div>
     </template>
-  </Accordion>
+  </XPanel>
 
   <div class="w-full bg-white dark:bg-slate-800 shadow-md rounded">
     <div class="flex justify-between p-4">

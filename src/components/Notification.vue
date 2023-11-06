@@ -1,20 +1,19 @@
 <script lang="ts" setup>
 import { nextTick, ref, watch } from 'vue';
-
-import Alert from './Alert.vue';
+import { XAlert } from '@x/ui';
 
 type NotificationMessage = {
   message: string;
   timeout: ReturnType<typeof setTimeout> | number;
-  color?: InstanceType<typeof Alert>['color'];
-  icon?: InstanceType<typeof Alert>['icon'];
+  color?: InstanceType<typeof XAlert>['color'];
+  icon?: InstanceType<typeof XAlert>['icon'];
 };
 
 const props = defineProps<{
   messages?: NotificationMessage[];
   timeouts?: NotificationMessage[];
-  color?: InstanceType<typeof Alert>['color'];
-  icon?: InstanceType<typeof Alert>['icon'];
+  color?: InstanceType<typeof XAlert>['color'];
+  icon?: InstanceType<typeof XAlert>['icon'];
 }>();
 
 const list = ref(props.messages || []);
@@ -58,7 +57,7 @@ watch(
     name="list"
     class="grid gap-4 fixed left-1/2 top-12 -translate-x-1/2 z-200"
   >
-    <Alert
+    <XAlert
       v-for="item in list"
       :key="item.timeout as number"
       v-bind="$attrs"
@@ -67,7 +66,7 @@ watch(
       class="shadow-xl"
     >
       {{ item.message }}
-    </Alert>
+    </XAlert>
   </TransitionGroup>
 </template>
 

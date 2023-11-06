@@ -1,10 +1,6 @@
 <script lang="ts" setup>
 import { ref, onMounted } from 'vue';
-
-import Breadcrumbs from '~/components/Breadcrumbs.vue';
-import RichTextEditor from '~/components/RichTextEditor.vue';
-import Button from '~/components/Button.vue';
-import CodeBlock from '~/components/CodeBlock.vue';
+import { XBreadcrumb, XRichTextEditor, XButton, XCodeBlock } from '@x/ui';
 
 const richTextEditor = ref();
 const content = ref('');
@@ -66,7 +62,7 @@ ${vueScriptEnd}
 </script>
 
 <template>
-  <Breadcrumbs :items="[{ text: 'Library' }, { text: 'Data Entry' }, { text: 'RichTextEditor' }]" />
+  <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Data Entry' }, { text: 'RichTextEditor' }]" />
 
   <div class="my-4">
     <div class="text-3xl font-bold">RichTextEditor</div>
@@ -74,14 +70,14 @@ ${vueScriptEnd}
 
   <div class="flex flex-col border p-4 mb-4 gap-2">
     <div>Basic</div>
-    <RichTextEditor ref="richTextEditor" v-model="content" />
+    <XRichTextEditor ref="richTextEditor" v-model="content" />
     <div class="border rounded p-4">{{ content }}</div>
-    <Button @click="setContent">Set Content</Button>
+    <XButton @click="setContent">Set Content</XButton>
   </div>
 
   <div class="flex flex-col border p-4 mb-4 gap-2">
     <div>CodeBlock</div>
-    <CodeBlock :code="code" />
-    <CodeBlock :code="code2" />
+    <XCodeBlock :code="code" />
+    <XCodeBlock :code="code2" />
   </div>
 </template>

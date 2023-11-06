@@ -1,15 +1,13 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
-
-import Breadcrumbs from '~/components/Breadcrumbs.vue';
-import Accordion from '~/components/Accordion.vue';
+import { XBreadcrumb, XPanel, XAccordion } from '@x/ui';
 
 const accordionGroup = ref<string[]>([]);
 const accordionGroupMultiple = ref<string[]>([]);
 </script>
 
 <template>
-  <Breadcrumbs :items="[{ text: 'Library' }, { text: 'Data Display' }, { text: 'Accordion' }]" />
+  <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Data Display' }, { text: 'Accordion' }]" />
 
   <div class="my-4">
     <div class="text-3xl font-bold">Accordion</div>
@@ -19,7 +17,7 @@ const accordionGroupMultiple = ref<string[]>([]);
     <div class="mb-2">Basic</div>
 
     <div class="flex flex-col space-y-2">
-      <Accordion>
+      <XPanel>
         <template #header>
           <div>What is Vue?</div>
         </template>
@@ -32,15 +30,15 @@ const accordionGroupMultiple = ref<string[]>([]);
             user interfaces, be they simple or complex.
           </div>
         </template>
-      </Accordion>
+      </XPanel>
     </div>
   </div>
 
   <div class="flex flex-col border p-4 mb-4">
     <div class="mb-2">Group</div>
 
-    <Accordion.Group>
-      <Accordion.Section>
+    <XAccordion>
+      <XAccordion.Item>
         <template #header>
           <div>Approachable</div>
         </template>
@@ -51,9 +49,9 @@ const accordionGroupMultiple = ref<string[]>([]);
             documentation.
           </div>
         </template>
-      </Accordion.Section>
+      </XAccordion.Item>
 
-      <Accordion.Section>
+      <XAccordion.Item>
         <template #header>
           <div>Performant</div>
         </template>
@@ -64,9 +62,9 @@ const accordionGroupMultiple = ref<string[]>([]);
             optimization.
           </div>
         </template>
-      </Accordion.Section>
+      </XAccordion.Item>
 
-      <Accordion.Section>
+      <XAccordion.Item>
         <template #header>
           <div>Versatile</div>
         </template>
@@ -77,8 +75,8 @@ const accordionGroupMultiple = ref<string[]>([]);
             full-featured framework.
           </div>
         </template>
-      </Accordion.Section>
-    </Accordion.Group>
+      </XAccordion.Item>
+    </XAccordion>
   </div>
 
   <div class="flex flex-col border p-4 mb-4">
@@ -86,8 +84,8 @@ const accordionGroupMultiple = ref<string[]>([]);
 
     <div class="mb-2">{{ accordionGroup }}</div>
 
-    <Accordion.Group v-model="accordionGroup">
-      <Accordion.Section value="approachable">
+    <XAccordion v-model="accordionGroup">
+      <XAccordion.Item value="approachable">
         <template #header>
           <div>Approachable</div>
         </template>
@@ -98,9 +96,9 @@ const accordionGroupMultiple = ref<string[]>([]);
             documentation.
           </div>
         </template>
-      </Accordion.Section>
+      </XAccordion.Item>
 
-      <Accordion.Section value="performant">
+      <XAccordion.Item value="performant">
         <template #header>
           <div>Performant</div>
         </template>
@@ -111,9 +109,9 @@ const accordionGroupMultiple = ref<string[]>([]);
             optimization.
           </div>
         </template>
-      </Accordion.Section>
+      </XAccordion.Item>
 
-      <Accordion.Section value="versatile">
+      <XAccordion.Item value="versatile">
         <template #header>
           <div>Versatile</div>
         </template>
@@ -124,8 +122,8 @@ const accordionGroupMultiple = ref<string[]>([]);
             full-featured framework.
           </div>
         </template>
-      </Accordion.Section>
-    </Accordion.Group>
+      </XAccordion.Item>
+    </XAccordion>
   </div>
 
   <div class="flex flex-col border p-4 mb-4">
@@ -133,8 +131,8 @@ const accordionGroupMultiple = ref<string[]>([]);
 
     <div class="mb-2">{{ accordionGroupMultiple }}</div>
 
-    <Accordion.Group v-model="accordionGroupMultiple" multiple>
-      <Accordion.Section value="approachable">
+    <XAccordion v-model="accordionGroupMultiple" multiple>
+      <XAccordion.Item value="approachable">
         <template #header>
           <div>Approachable</div>
         </template>
@@ -145,9 +143,9 @@ const accordionGroupMultiple = ref<string[]>([]);
             documentation.
           </div>
         </template>
-      </Accordion.Section>
+      </XAccordion.Item>
 
-      <Accordion.Section value="performant">
+      <XAccordion.Item value="performant">
         <template #header>
           <div>Performant</div>
         </template>
@@ -158,9 +156,9 @@ const accordionGroupMultiple = ref<string[]>([]);
             optimization.
           </div>
         </template>
-      </Accordion.Section>
+      </XAccordion.Item>
 
-      <Accordion.Section value="versatile">
+      <XAccordion.Item value="versatile">
         <template #header>
           <div>Versatile</div>
         </template>
@@ -171,7 +169,7 @@ const accordionGroupMultiple = ref<string[]>([]);
             full-featured framework.
           </div>
         </template>
-      </Accordion.Section>
-    </Accordion.Group>
+      </XAccordion.Item>
+    </XAccordion>
   </div>
 </template>

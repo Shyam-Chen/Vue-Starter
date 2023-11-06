@@ -1,10 +1,9 @@
 <script lang="ts" setup>
-import Breadcrumbs from '~/components/Breadcrumbs.vue';
-import Badge from '~/components/Badge.vue';
+import { XBreadcrumb, XBadge } from '@x/ui';
 </script>
 
 <template>
-  <Breadcrumbs :items="[{ text: 'Library' }, { text: 'Data Display' }, { text: 'Badge' }]" />
+  <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Data Display' }, { text: 'Badge' }]" />
 
   <div class="my-4">
     <div class="text-3xl font-bold">Badge</div>
@@ -14,27 +13,27 @@ import Badge from '~/components/Badge.vue';
     <div class="mb-2">Basic</div>
 
     <div class="flex justify-center items-center gap-15">
-      <Badge>
+      <XBadge>
         <div class="w-6 h-6 i-fa-envelope"></div>
-      </Badge>
+      </XBadge>
 
-      <Badge count="7">
+      <XBadge count="7">
         <div class="w-6 h-6 i-fa-envelope"></div>
-      </Badge>
+      </XBadge>
 
-      <Badge count="77">
+      <XBadge count="77">
         <div class="w-6 h-6 i-fa-envelope"></div>
-      </Badge>
+      </XBadge>
 
-      <Badge count="99+">
+      <XBadge count="99+">
         <div class="w-6 h-6 i-fa-envelope"></div>
-      </Badge>
+      </XBadge>
     </div>
 
     <div class="flex justify-center items-center gap-15 mt-6">
-      <Badge>
+      <XBadge>
         <div>Link something</div>
-      </Badge>
+      </XBadge>
     </div>
   </div>
 </template>

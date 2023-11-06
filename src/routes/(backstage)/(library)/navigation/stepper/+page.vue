@@ -1,9 +1,6 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
-
-import Breadcrumbs from '~/components/Breadcrumbs.vue';
-import Stepper from '~/components/Stepper.vue';
-import Button from '~/components/Button.vue';
+import { XBreadcrumb, XStepper, XButton } from '@x/ui';
 
 const flux = reactive({
   stepper1: 3,
@@ -21,23 +18,23 @@ function goToNext() {
 </script>
 
 <template>
-  <Breadcrumbs :items="[{ text: 'Library' }, { text: 'Navigation' }, { text: 'Stepper' }]" />
+  <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Navigation' }, { text: 'Stepper' }]" />
 
   <div class="my-4">
     <div class="text-3xl font-bold">Stepper</div>
   </div>
 
-  <Stepper v-model="flux.stepper1" class="my-4">
+  <XStepper v-model="flux.stepper1" class="my-4">
     <template #head>
-      <Stepper.Step :step="1">1. Enter details</Stepper.Step>
-      <Stepper.Step :step="2">2. Additional details</Stepper.Step>
-      <Stepper.Step :step="3">3. Review &amp; pay</Stepper.Step>
-      <Stepper.Step :step="4">4. Print your label</Stepper.Step>
-      <Stepper.Step :step="5">5. Next steps</Stepper.Step>
+      <XStepper.Step :step="1">1. Enter details</XStepper.Step>
+      <XStepper.Step :step="2">2. Additional details</XStepper.Step>
+      <XStepper.Step :step="3">3. Review &amp; pay</XStepper.Step>
+      <XStepper.Step :step="4">4. Print your label</XStepper.Step>
+      <XStepper.Step :step="5">5. Next steps</XStepper.Step>
     </template>
 
     <template #body>
-      <Stepper.Content v-for="num in 5" :key="num">
+      <XStepper.Content v-for="num in 5" :key="num">
         <div class="flex flex-col gap-4 mb-8">
           <div class="text-3xl font-bold">Content {{ num }}</div>
 
@@ -55,11 +52,11 @@ function goToNext() {
 
         <div class="grid grid-cols-3">
           <div class="col-start-2 flex justify-center gap-2">
-            <Button color="secondary" class="flex-1" @click="goToPrevious">Previous</Button>
-            <Button class="flex-1" @click="goToNext">Next</Button>
+            <XButton color="secondary" class="flex-1" @click="goToPrevious">Previous</XButton>
+            <XButton class="flex-1" @click="goToNext">Next</XButton>
           </div>
         </div>
-      </Stepper.Content>
+      </XStepper.Content>
     </template>
-  </Stepper>
+  </XStepper>
 </template>

@@ -1,8 +1,6 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
-
-import Breadcrumbs from '~/components/Breadcrumbs.vue';
-import Transfer from '~/components/Transfer.vue';
+import { XBreadcrumb, XTransfer } from '@x/ui';
 
 const flux = reactive({
   source: [
@@ -21,7 +19,7 @@ const flux = reactive({
 </script>
 
 <template>
-  <Breadcrumbs :items="[{ text: 'Library' }, { text: 'Data Entry' }, { text: 'Transfer' }]" />
+  <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Data Entry' }, { text: 'Transfer' }]" />
 
   <div class="my-4">
     <div class="text-3xl font-bold">Transfer</div>
@@ -31,7 +29,7 @@ const flux = reactive({
     <div class="mb-2">Basic</div>
 
     <div class="flex flex-col justify-center">
-      <Transfer v-model:source="flux.source" v-model:target="flux.target" />
+      <XTransfer v-model:source="flux.source" v-model:target="flux.target" />
     </div>
 
     <div class="flex">

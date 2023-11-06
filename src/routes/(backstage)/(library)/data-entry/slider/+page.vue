@@ -1,9 +1,6 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
-
-import Breadcrumbs from '~/components/Breadcrumbs.vue';
-import Slider from '~/components/Slider.vue';
-import InputMask from '~/components/InputMask.vue';
+import { XBreadcrumb, XSlider, XInputMask } from '@x/ui';
 
 const flux = reactive({
   slider: '70',
@@ -13,7 +10,7 @@ const flux = reactive({
 </script>
 
 <template>
-  <Breadcrumbs :items="[{ text: 'Library' }, { text: 'Data Entry' }, { text: 'Slider' }]" />
+  <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Data Entry' }, { text: 'Slider' }]" />
 
   <div class="my-4">
     <div class="text-3xl font-bold">Slider</div>
@@ -23,7 +20,7 @@ const flux = reactive({
     <div class="font-bold">Basic</div>
 
     <div class="flex justify-center">
-      <Slider v-model:value="flux.slider" />
+      <XSlider v-model:value="flux.slider" />
     </div>
 
     <div>
@@ -35,7 +32,7 @@ const flux = reactive({
     <div class="font-bold">Disabled</div>
 
     <div class="flex justify-center">
-      <Slider v-model:value="flux.slider" disabled />
+      <XSlider v-model:value="flux.slider" disabled />
     </div>
   </div>
 
@@ -43,12 +40,12 @@ const flux = reactive({
     <div class="font-bold">Input</div>
 
     <div class="flex flex-col justify-center gap-2">
-      <InputMask
+      <XInputMask
         v-model:masked="flux.slider"
         v-model:unmasked.number="flux.sliderVal"
         :mask="{ mask: Number, min: 0, max: 100 }"
       />
-      <Slider v-model:value="flux.slider" />
+      <XSlider v-model:value="flux.slider" />
     </div>
 
     <div>
@@ -60,7 +57,7 @@ const flux = reactive({
     <div class="font-bold">Step</div>
 
     <div class="flex justify-center">
-      <Slider v-model:value="flux.stepSlider" steppable step="10" />
+      <XSlider v-model:value="flux.stepSlider" steppable step="10" />
     </div>
 
     <div>

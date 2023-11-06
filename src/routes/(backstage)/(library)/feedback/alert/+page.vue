@@ -1,10 +1,9 @@
 <script lang="ts" setup>
-import Breadcrumbs from '~/components/Breadcrumbs.vue';
-import Alert from '~/components/Alert.vue';
+import { XBreadcrumb, XAlert } from '@x/ui';
 </script>
 
 <template>
-  <Breadcrumbs :items="[{ text: 'Library' }, { text: 'Feedback' }, { text: 'Alert' }]" />
+  <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Feedback' }, { text: 'Alert' }]" />
 
   <div class="my-4">
     <div class="text-3xl font-bold">Alert</div>
@@ -13,34 +12,34 @@ import Alert from '~/components/Alert.vue';
   <div class="flex flex-col border p-4 mb-4 gap-4">
     <div class="mb-2">Basic</div>
 
-    <Alert color="primary" icon="i-mdi-information">
+    <XAlert color="primary" icon="i-mdi-information">
       I'm an alert with a <span class="font-bold">color</span> of primary
-    </Alert>
+    </XAlert>
 
-    <Alert color="secondary" icon="i-mdi-information">
+    <XAlert color="secondary" icon="i-mdi-information">
       I'm an alert with a <span class="font-bold">color</span> of secondary
-    </Alert>
+    </XAlert>
 
-    <Alert color="success" icon="i-mdi-information">
+    <XAlert color="success" icon="i-mdi-information">
       I'm an alert with a <span class="font-bold">color</span> of success
-    </Alert>
+    </XAlert>
 
-    <Alert color="danger" icon="i-mdi-information">
+    <XAlert color="danger" icon="i-mdi-information">
       I'm an alert with a <span class="font-bold">color</span> of danger
-    </Alert>
+    </XAlert>
 
-    <Alert color="warning" icon="i-mdi-information">
+    <XAlert color="warning" icon="i-mdi-information">
       I'm an alert with a <span class="font-bold">color</span> of warning
-    </Alert>
+    </XAlert>
 
-    <Alert color="info" icon="i-mdi-information">
+    <XAlert color="info" icon="i-mdi-information">
       I'm an alert with a <span class="font-bold">color</span> of info
-    </Alert>
+    </XAlert>
 
-    <Alert color="info" icon="i-mdi-information">
+    <XAlert color="info" icon="i-mdi-information">
       Vestibulum ullamcorper mauris at ligula. Nam pretium turpis et arcu. Ut varius tincidunt
       libero. Curabitur ligula sapien, tincidunt non, euismod vitae, posuere imperdiet, leo. Morbi
       nec metus.
-    </Alert>
+    </XAlert>
   </div>
 </template>

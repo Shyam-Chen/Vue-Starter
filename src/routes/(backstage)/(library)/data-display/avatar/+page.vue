@@ -1,12 +1,9 @@
 <script lang="ts" setup>
-import { XAvatar } from '@x/ui';
-
-import Breadcrumbs from '~/components/Breadcrumbs.vue';
-import Badge from '~/components/Badge.vue';
+import { XBreadcrumb, XAvatar, XBadge } from '@x/ui';
 </script>
 
 <template>
-  <Breadcrumbs :items="[{ text: 'Library' }, { text: 'Data Display' }, { text: 'Avatar' }]" />
+  <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Data Display' }, { text: 'Avatar' }]" />
 
   <div class="my-4">
     <div class="text-3xl font-bold">Avatar</div>
@@ -39,9 +36,9 @@ import Badge from '~/components/Badge.vue';
     <div class="mb-2">With badge</div>
 
     <div class="flex justify-center">
-      <Badge class="important:bg-green-500 top-auto right-1 -bottom-1 border">
+      <XBadge class="important:bg-green-500 top-auto right-1 -bottom-1 border">
         <XAvatar src="https://mui.com/static/images/avatar/1.jpg" alt="Remy Sharp" />
-      </Badge>
+      </XBadge>
     </div>
   </div>
 </template>
