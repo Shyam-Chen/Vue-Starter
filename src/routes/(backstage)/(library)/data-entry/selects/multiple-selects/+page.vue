@@ -1,8 +1,6 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
-
-import { XBreadcrumb } from '@x/ui';
-import Multiselect from '~/components/Multiselect.vue';
+import { XBreadcrumb, XMultiselect } from '@x/ui';
 
 const flux = reactive({
   multiselect1: ['f4', 'b2'],
@@ -47,7 +45,7 @@ const flux = reactive({
     <div class="mb-2">Basic examples</div>
 
     <div class="flex justify-center">
-      <Multiselect
+      <XMultiselect
         v-model:value="flux.multiselect1"
         label="Tech Stack"
         :options="flux.multiselect1Options"
@@ -59,7 +57,7 @@ const flux = reactive({
     <div class="mb-2">Disabled</div>
 
     <div class="flex justify-center">
-      <Multiselect
+      <XMultiselect
         v-model:value="flux.multiselect1"
         label="Tech Stack"
         :options="flux.multiselect1Options"
@@ -72,7 +70,7 @@ const flux = reactive({
     <div class="mb-2">Clearable</div>
 
     <div class="flex justify-center">
-      <Multiselect
+      <XMultiselect
         v-model:value="flux.multiselect1"
         label="Tech Stack"
         :options="flux.multiselect1Options"
@@ -85,7 +83,7 @@ const flux = reactive({
     <div class="mb-2">Filterable</div>
 
     <div class="flex justify-center">
-      <Multiselect
+      <XMultiselect
         v-model:value="flux.multiselect1"
         label="Tech Stack"
         :options="flux.multiselect1Options"
@@ -98,7 +96,7 @@ const flux = reactive({
     <div class="mb-2">Errors</div>
 
     <div class="flex justify-center">
-      <Multiselect
+      <XMultiselect
         v-model:value="flux.multiselect1"
         label="Tech Stack"
         :options="flux.multiselect1Options"
@@ -111,7 +109,7 @@ const flux = reactive({
     <div class="mb-2">Loading</div>
 
     <div class="flex justify-center">
-      <Multiselect
+      <XMultiselect
         v-model:value="flux.multiselect1"
         label="Tech Stack"
         :options="flux.multiselect1Options"
@@ -124,7 +122,7 @@ const flux = reactive({
     <div class="mb-2">Selected Labels</div>
 
     <div class="flex justify-center">
-      <Multiselect
+      <XMultiselect
         v-model:value="flux.multiselect1"
         label="Tech Stack"
         :options="flux.multiselect1Options"

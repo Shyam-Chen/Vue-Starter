@@ -2,16 +2,9 @@
 import { reactive, watch, onMounted } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import { useLocaler } from 'vue-localer';
+import { XTextField, XSelect, XDialog, XButton, XSpinner, XDropdown, XDrawer } from '@x/ui';
+import { request } from '@x/ui';
 import { useDark, useToggle, useTextDirection } from '@vueuse/core';
-
-import TextField from '~/components/TextField.vue';
-import Dropdown from '~/components/Dropdown.vue';
-import Select from '~/components/Select.vue';
-import Dialog from '~/components/Dialog.vue';
-import Button from '~/components/Button.vue';
-import Drawer from '~/components/Drawer.vue';
-import Spinner from '~/components/Spinner.vue';
-import request from '~/utilities/request';
 
 import type { Link } from './links-list';
 import NavLink from './NavLink.vue';
@@ -139,7 +132,7 @@ onMounted(async () => {
       <div class="flex-1"></div>
 
       <div class="w-100 hidden md:block">
-        <TextField
+        <XTextField
           placeholder="Search here..."
           prepend="i-fa-search"
           tabindex="-1"
@@ -147,17 +140,17 @@ onMounted(async () => {
         />
       </div>
 
-      <Button
+      <XButton
         :icon="isDark ? 'i-material-symbols-dark-mode-rounded' : 'i-material-symbols-light-mode'"
         @click="toggleDark()"
       />
 
-      <Button
+      <XButton
         :icon="textDirection === 'rtl' ? 'i-mdi-rtl' : 'i-mdi-ltr'"
         @click="textDirection = textDirection === 'rtl' ? 'ltr' : 'rtl'"
       />
 
-      <Dropdown>
+      <XDropdown>
         <div
           class="text-white bg-primary-600 rounded-full w-10 h-10 flex justify-center items-center cursor-pointer transition hover:scale-125"
         >
@@ -196,14 +189,14 @@ onMounted(async () => {
             </div>
           </div>
         </template>
-      </Dropdown>
+      </XDropdown>
     </header>
 
     <aside
       class="sidebar px-2 pt-4 pb-20 bg-white dark:bg-slate-900 dark:border-slate-700 shadow-lg hidden xl:block"
     >
       <div v-if="flux.userLoading" class="flex justify-center items-center h-full">
-        <Spinner class="w-12 h-12" />
+        <XSpinner class="w-12 h-12" />
       </div>
 
       <template v-else>
@@ -224,7 +217,7 @@ onMounted(async () => {
     <div class="flex flex-col h-full">
       <main class="page container w-full self-center">
         <div v-if="flux.userLoading" class="flex justify-center items-center h-full">
-          <Spinner class="w-12 h-12" />
+          <XSpinner class="w-12 h-12" />
         </div>
 
         <template v-else>
@@ -242,7 +235,7 @@ onMounted(async () => {
         <div class="flex items-center">
           <div class="i-fa-language w-6 h-6"></div>
 
-          <Select
+          <XSelect
             v-model:value="localer.lang.value"
             :options="[
               { label: 'English', value: 'en-US' },
@@ -257,32 +250,32 @@ onMounted(async () => {
       </footer>
     </div>
 
-    <Dialog v-model="flux.authDialog">
+    <XDialog v-model="flux.authDialog">
       <div class="text-2xl">{{ flux.userError.error }}</div>
       <div class="my-2">{{ flux.userError.message }}</div>
 
       <div class="flex justify-end">
-        <Button @click="flux.authDialog = false">Okay, got it</Button>
+        <XButton @click="flux.authDialog = false">Okay, got it</XButton>
       </div>
-    </Dialog>
+    </XDialog>
 
-    <Dialog v-model="flux.searchDialog">
-      <TextField placeholder="Search here..." prepend="i-fa-search" autocomplete="off" />
+    <XDialog v-model="flux.searchDialog">
+      <XTextField placeholder="Search here..." prepend="i-fa-search" autocomplete="off" />
       <div class="flex justify-center items-center h-66">No recent searches</div>
-    </Dialog>
+    </XDialog>
 
-    <Drawer
+    <XDrawer
       v-model="flux.navDrawer"
       :placement="textDirection === 'rtl' ? 'right' : 'left'"
       class="px-2 pt-4 pb-20"
     >
       <div v-if="flux.userLoading" class="flex justify-center items-center h-full">
-        <Spinner class="w-12 h-12" />
+        <XSpinner class="w-12 h-12" />
       </div>
 
       <template v-else>
         <div class="w-full block md:hidden mb-4">
-          <TextField
+          <XTextField
             placeholder="Search here..."
             prepend="i-fa-search"
             autocomplete="off"
@@ -302,7 +295,7 @@ onMounted(async () => {
           />
         </template>
       </template>
-    </Drawer>
+    </XDrawer>
   </div>
 
   <IdleDialog />

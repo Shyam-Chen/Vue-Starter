@@ -1,9 +1,6 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
-
-import { XBreadcrumb } from '@x/ui';
-import Button from '~/components/Button.vue';
-import Dialog from '~/components/Dialog.vue';
+import { XBreadcrumb, XButton, XDialog } from '@x/ui';
 
 const flux = reactive({
   dialog: false,
@@ -30,9 +27,9 @@ const flux = reactive({
     <div class="mb-2">Basic</div>
 
     <div class="flex justify-center">
-      <Button @click="flux.launch">Launch</Button>
+      <XButton @click="flux.launch">Launch</XButton>
 
-      <Dialog v-model="flux.dialog" title="Lorem Ipsum">
+      <XDialog v-model="flux.dialog" title="Lorem Ipsum">
         <div class="text-2xl font-bold mb-2">Lorem ipsum dolor sit amet.</div>
 
         <div class="mb-6 space-y-3">
@@ -46,7 +43,7 @@ const flux = reactive({
             publishing software like Aldus PageMaker including versions of Lorem Ipsum.
           </div>
 
-          <Button color="info" @click="flux.more = !flux.more">More</Button>
+          <XButton color="info" @click="flux.more = !flux.more">More</XButton>
 
           <template v-if="flux.more">
             <div v-for="num in 3" :key="num">
@@ -62,10 +59,10 @@ const flux = reactive({
         </div>
 
         <div class="flex gap-4 justify-end">
-          <Button color="secondary" @click="flux.close">Vivamus</Button>
-          <Button @click="flux.close">Laoreet</Button>
+          <XButton color="secondary" @click="flux.close">Vivamus</XButton>
+          <XButton @click="flux.close">Laoreet</XButton>
         </div>
-      </Dialog>
+      </XDialog>
     </div>
   </div>
 
@@ -73,11 +70,11 @@ const flux = reactive({
     <div class="mb-2">Size</div>
 
     <div class="flex justify-center">
-      <Button @click="flux.sizeDialog = true">Launch</Button>
+      <XButton @click="flux.sizeDialog = true">Launch</XButton>
     </div>
 
-    <Dialog v-model="flux.sizeDialog" title="Lorem Ipsum" class="!w-100">
+    <XDialog v-model="flux.sizeDialog" title="Lorem Ipsum" class="!w-100">
       <div>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
-    </Dialog>
+    </XDialog>
   </div>
 </template>

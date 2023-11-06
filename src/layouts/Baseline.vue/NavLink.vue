@@ -1,9 +1,8 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
 import { useRoute, RouterLink } from 'vue-router';
+import { XCollapse } from '@x/ui';
 import { useTextDirection } from '@vueuse/core';
-
-import Collapse from '~/components/Collapse.vue';
 
 import type { Link } from './links-list';
 import useStore from './store';
@@ -111,7 +110,7 @@ const hasPermission = true; // props?.permissions?.includes(getters.currentRole)
     {{ name }}
   </div>
 
-  <Collapse>
+  <XCollapse>
     <div v-show="sub.length && status">
       <NavLink
         v-for="(item, index) in sub"
@@ -125,7 +124,7 @@ const hasPermission = true; // props?.permissions?.includes(getters.currentRole)
         :status="item.status"
       />
     </div>
-  </Collapse>
+  </XCollapse>
 </template>
 
 <style lang="scss" scoped>

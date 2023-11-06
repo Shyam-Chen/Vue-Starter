@@ -1,7 +1,5 @@
 <script lang="ts" setup>
-import { XBreadcrumb } from '@x/ui';
-import Button from '~/components/Button.vue';
-import Popover from '~/components/Popover.vue';
+import { XBreadcrumb, XPopover, XButton } from '@x/ui';
 </script>
 
 <template>
@@ -15,13 +13,13 @@ import Popover from '~/components/Popover.vue';
     <div class="mb-2">Basic</div>
 
     <div class="flex justify-center items-center gap-15">
-      <Popover>
-        <Button icon="i-fa-envelope" />
+      <XPopover>
+        <XButton icon="i-fa-envelope" />
 
         <template #content>
           <div class="px-4 py-2">The content of the Popover.</div>
         </template>
-      </Popover>
+      </XPopover>
     </div>
   </div>
 </template>

@@ -3,7 +3,7 @@ export type ColumnItem = {
   name: string;
   sortable?: boolean;
   spanable?: boolean;
-  sticky?: 'left' | 'right';
+  sticky?: string | 'left' | 'right';
 };
 
 export type Control = {

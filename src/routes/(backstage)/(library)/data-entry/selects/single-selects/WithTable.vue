@@ -1,8 +1,6 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
-
-import Select from '~/components/Select.vue';
-import Table from '~/components/Table.vue';
+import { XSelect, XTable } from '@x/ui';
 
 const flux = reactive({
   rows: [
@@ -28,7 +26,7 @@ const flux = reactive({
 </script>
 
 <template>
-  <Table
+  <XTable
     :columns="[
       { key: 'A', name: 'Layout' },
       { key: 'B', name: 'Flexbox & Grid' },
@@ -49,7 +47,7 @@ const flux = reactive({
     :rows="flux.rows"
   >
     <template #C="{ row }">
-      <Select
+      <XSelect
         v-model:value="row.C"
         :options="
           ['Padding', 'Margin', 'Space Between'].map((item) => ({ label: item, value: item }))
@@ -58,7 +56,7 @@ const flux = reactive({
     </template>
 
     <template #H="{ row }">
-      <Select
+      <XSelect
         v-model:value="row.H"
         :options="
           [
@@ -71,5 +69,5 @@ const flux = reactive({
         "
       />
     </template>
-  </Table>
+  </XTable>
 </template>

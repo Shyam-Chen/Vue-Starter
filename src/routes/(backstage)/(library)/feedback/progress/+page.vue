@@ -1,7 +1,5 @@
 <script lang="ts" setup>
-import { XBreadcrumb } from '@x/ui';
-import Spinner from '~/components/Spinner.vue';
-import ProgressBar from '~/components/ProgressBar.vue';
+import { XBreadcrumb, XSpinner, XProgressBar } from '@x/ui';
 </script>
 
 <template>
@@ -15,9 +13,9 @@ import ProgressBar from '~/components/ProgressBar.vue';
     <div class="mb-2">Basic</div>
 
     <div class="flex justify-center gap-4">
-      <Spinner class="w-4 h-4" />
-      <Spinner />
-      <Spinner class="w-12 h-12" />
+      <XSpinner class="w-4 h-4" />
+      <XSpinner />
+      <XSpinner class="w-12 h-12" />
     </div>
   </div>
 
@@ -25,7 +23,7 @@ import ProgressBar from '~/components/ProgressBar.vue';
     <div class="mb-2">Basic</div>
 
     <div class="flex justify-center gap-4">
-      <ProgressBar />
+      <XProgressBar />
     </div>
   </div>
 </template>

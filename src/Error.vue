@@ -1,8 +1,7 @@
 <script lang="ts" setup>
 import { reactive, onBeforeMount } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
-
-import Button from '~/components/Button.vue';
+import { XButton } from '@x/ui';
 
 const router = useRouter();
 const route = useRoute();
@@ -41,7 +40,7 @@ onBeforeMount(() => {
         <div class="Error-Description">{{ message.description }}</div>
 
         <div class="flex justify-center">
-          <Button @click="backToHomepage">Back to Homepage</Button>
+          <XButton @click="backToHomepage">Back to Homepage</XButton>
         </div>
       </div>
     </div>

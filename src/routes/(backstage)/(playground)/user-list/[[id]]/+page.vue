@@ -1,14 +1,8 @@
 <script lang="ts" setup>
 import { ref, reactive, watch, onMounted } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
-import { XBreadcrumb, XTooltip } from '@x/ui';
-
-import Button from '~/components/Button.vue';
-import Chip from '~/components/Chip.vue';
-import Select from '~/components/Select.vue';
-import Dialog from '~/components/Dialog.vue';
-import TextField from '~/components/TextField.vue';
-import request from '~/utilities/request';
+import { XBreadcrumb, XTooltip, XButton, XChip, XSelect, XDialog, XTextField } from '@x/ui';
+import { request } from '@x/ui';
 
 const router = useRouter();
 const route = useRoute();
@@ -83,7 +77,7 @@ onMounted(async () => {
         </div>
 
         <div class="px-4">
-          <Button @click="flux.addUser">Add User</Button>
+          <XButton @click="flux.addUser">Add User</XButton>
         </div>
       </div>
     </div>
@@ -136,7 +130,7 @@ onMounted(async () => {
               {{ user.email }}
             </td>
             <td class="px-6 py-3 align-middle whitespace-nowrap">
-              <Chip
+              <XChip
                 :color="
                   user.status
                     ? !user.otpEnabled || !user.otpVerified
@@ -150,12 +144,12 @@ onMounted(async () => {
                       ? 'Pending'
                       : 'Active'
                     : 'Suspended'
-                }}</Chip
+                }}</XChip
               >
             </td>
             <td class="flex gap-3 px-6 py-3 align-middle whitespace-nowrap">
               <XTooltip title="Edit">
-                <Button
+                <XButton
                   variant="text"
                   color="success"
                   icon="i-fa-edit"
@@ -165,7 +159,7 @@ onMounted(async () => {
               </XTooltip>
 
               <XTooltip title="Delete">
-                <Button
+                <XButton
                   variant="text"
                   color="danger"
                   class="w-full"
@@ -183,7 +177,7 @@ onMounted(async () => {
       <div class="flex items-center">
         Rows per page:
         <div class="w-20 ml-2">
-          <Select
+          <XSelect
             v-model:value="flux.rowsPerPage"
             :options="flux.rowsPerPageOptions"
             display="label"
@@ -201,34 +195,34 @@ onMounted(async () => {
         {{ dataCount }}
       </div>
 
-      <Button variant="text" color="secondary">
+      <XButton variant="text" color="secondary">
         <div class="i-fa-angle-left w-4 h-4"></div>
         Previous
-      </Button>
+      </XButton>
 
-      <Button variant="text" color="secondary">
+      <XButton variant="text" color="secondary">
         Next
         <div class="i-fa-angle-right w-4 h-4"></div>
-      </Button>
+      </XButton>
     </div>
   </div>
 
-  <Dialog v-model="flux.userDialog">
+  <XDialog v-model="flux.userDialog">
     <div class="grid">
       <div class="text-xl font-bold mb-4">Add User</div>
 
       <form class="space-y-5 mb-8">
-        <TextField v-model:value="flux.userForm.username" required>Username</TextField>
-        <TextField v-model:value="flux.userForm.email" required>Email</TextField>
-        <TextField v-model:value="flux.userForm.fullName" required>Full Name</TextField>
+        <XTextField v-model:value="flux.userForm.username" required>Username</XTextField>
+        <XTextField v-model:value="flux.userForm.email" required>Email</XTextField>
+        <XTextField v-model:value="flux.userForm.fullName" required>Full Name</XTextField>
       </form>
 
       <div class="flex justify-end gap-4">
-        <Button variant="outlined" color="secondary" @click="flux.userDialog = false">
+        <XButton variant="outlined" color="secondary" @click="flux.userDialog = false">
           Cancel
-        </Button>
-        <Button>Add</Button>
+        </XButton>
+        <XButton>Add</XButton>
       </div>
     </div>
-  </Dialog>
+  </XDialog>
 </template>

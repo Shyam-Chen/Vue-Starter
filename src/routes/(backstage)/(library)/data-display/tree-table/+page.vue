@@ -1,8 +1,6 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
-
-import { XBreadcrumb } from '@x/ui';
-import Button from '~/components/Button.vue/Button.vue';
+import { XBreadcrumb, XButton } from '@x/ui';
 
 type TreeTableNode = {
   key?: string;
@@ -116,7 +114,7 @@ function treeNode(item: TreeTableNode) {
               class="flex items-center"
               :style="{ 'padding-left': Number(node.level) > 1 ? `${node.level}rem` : '0' }"
             >
-              <Button
+              <XButton
                 v-if="node.children?.length"
                 icon="i-fa-caret-down"
                 color="secondary"

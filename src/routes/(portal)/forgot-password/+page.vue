@@ -1,10 +1,7 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
 import { RouterLink } from 'vue-router';
-
-import TextField from '~/components/TextField.vue';
-import Button from '~/components/Button.vue';
-import Link from '~/components/Link.vue';
+import { XTextField, XButton, XLink } from '@x/ui';
 
 import useStore from './store';
 import useSchema from './schema';
@@ -43,7 +40,7 @@ const flux = reactive({
       </div>
 
       <div class="mb-8">
-        <TextField
+        <XTextField
           v-model:value="state.form.email"
           label="Email"
           required
@@ -51,12 +48,12 @@ const flux = reactive({
         />
       </div>
 
-      <Button class="w-full mb-6" @click="flux.send">Send</Button>
+      <XButton class="w-full mb-6" @click="flux.send">Send</XButton>
 
-      <Link to="/sign-in" class="flex justify-center">
+      <XLink to="/sign-in" class="flex justify-center">
         <div class="i-ic-round-arrow-back w-5 h-5"></div>
         <div>Back to sign in</div>
-      </Link>
+      </XLink>
     </form>
 
     <form
@@ -71,7 +68,7 @@ const flux = reactive({
       <div class="mb-8 space-y-2">
         <div>Enter the 6-digit verification code from your email:</div>
 
-        <TextField
+        <XTextField
           v-model:value="flux.code"
           class="text-center"
           maxlength="6"
@@ -105,7 +102,7 @@ const flux = reactive({
       </div>
 
       <div class="mb-8">
-        <TextField :value="'2803bn3VO7'" readonly>Your New Password:</TextField>
+        <XTextField :value="'2803bn3VO7'" readonly>Your New Password:</XTextField>
       </div>
 
       <RouterLink
@@ -113,7 +110,7 @@ const flux = reactive({
         to="/sign-in"
         replace
       >
-        <Button class="w-full">Continue</Button>
+        <XButton class="w-full">Continue</XButton>
       </RouterLink>
     </form>
   </div>

@@ -1,8 +1,6 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
-
-import { XBreadcrumb } from '@x/ui';
-import InputMask from '~/components/InputMask.vue';
+import { XBreadcrumb, XInputMask } from '@x/ui';
 
 const flux = reactive({
   numberMasked: '',
@@ -29,7 +27,7 @@ const flux = reactive({
   <div class="flex flex-col border my-4 p-4 gap-2">
     <div class="text-xl font-bold">Number</div>
 
-    <InputMask
+    <XInputMask
       v-model:masked="flux.numberMasked"
       v-model:unmasked.number="flux.numberUnmasked"
       :mask="{
@@ -56,7 +54,7 @@ const flux = reactive({
   <div class="flex flex-col border my-4 p-4 gap-2">
     <div class="text-xl font-bold">Percent</div>
 
-    <InputMask
+    <XInputMask
       v-model:masked="flux.percentMasked"
       v-model:unmasked="flux.percentUnmasked"
       :mask="{
@@ -83,7 +81,7 @@ const flux = reactive({
   <div class="flex flex-col border my-4 p-4 gap-2">
     <div class="text-xl font-bold">Phone</div>
 
-    <InputMask
+    <XInputMask
       v-model:masked="flux.phoneMasked"
       v-model:unmasked="flux.phoneUnmasked"
       :mask="{ mask: '+{1} (000) 000-0000' }"
@@ -99,7 +97,7 @@ const flux = reactive({
   <div class="flex flex-col border my-4 p-4 gap-2">
     <div class="text-xl font-bold">Currency</div>
 
-    <InputMask
+    <XInputMask
       v-model:masked="flux.usdMasked"
       v-model:unmasked="flux.usdUnmasked"
       :mask="{

@@ -1,10 +1,6 @@
 <script lang="ts" setup>
 import { ref, reactive, onMounted } from 'vue';
-import { XSelect } from '@x/ui';
-
-import TextField from '~/components/TextField.vue';
-import Button from '~/components/Button.vue';
-import Table from '~/components/table';
+import { XTextField, XSelect, XButton, XTable } from '@x/ui';
 
 import leetcode from './leetcode';
 
@@ -37,7 +33,7 @@ async function search() {
 
     <div class="p-8 bg-white dark:bg-slate-800 rounded-lg space-y-8">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <TextField v-model:value="body.title" />
+        <XTextField v-model:value="body.title" />
 
         <XSelect
           v-model:value="body.difficulty"
@@ -49,12 +45,12 @@ async function search() {
         />
 
         <div class="flex gap-4">
-          <Button color="secondary" class="flex-1" @click="reset">Reset</Button>
-          <Button class="flex-1" @click="search">Search</Button>
+          <XButton color="secondary" class="flex-1" @click="reset">Reset</XButton>
+          <XButton class="flex-1" @click="search">Search</XButton>
         </div>
       </div>
 
-      <Table
+      <XTable
         :columns="[
           { key: 'title', name: 'Title' },
           { key: 'difficulty', name: 'Difficulty' },

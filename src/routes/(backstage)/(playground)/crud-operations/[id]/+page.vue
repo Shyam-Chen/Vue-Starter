@@ -1,11 +1,7 @@
 <script lang="ts" setup>
 import { onMounted } from 'vue';
 import { useRoute } from 'vue-router';
-
-import { XBreadcrumb } from '@x/ui';
-import TextField from '~/components/TextField.vue';
-import Checkbox from '~/components/Checkbox.vue';
-import Button from '~/components/Button.vue';
+import { XBreadcrumb, XTextField, XCheckbox, XButton } from '@x/ui';
 
 import useStore from '../store';
 import { useCrudOperationsSchema } from '../schema';
@@ -39,23 +35,23 @@ onMounted(() => {
 
   <div class="p-6 space-y-4 bg-white dark:bg-slate-800 rounded-lg shadow-lg">
     <div class="grid grid-cols-3">
-      <TextField v-model:value="state.todoItem.title" required :errorMessage="state.errors.title">
+      <XTextField v-model:value="state.todoItem.title" required :errorMessage="state.errors.title">
         Title
-      </TextField>
+      </XTextField>
     </div>
 
     <div class="flex">
-      <Checkbox v-model:value="state.todoItem.completed">Completed</Checkbox>
+      <XCheckbox v-model:value="state.todoItem.completed">Completed</XCheckbox>
     </div>
 
     <div class="space-x-4">
       <template v-if="route.params.id === 'new'">
-        <Button color="info" @click="schema.validate() && actions.addNewToDo()">Add</Button>
+        <XButton color="info" @click="schema.validate() && actions.addNewToDo()">Add</XButton>
       </template>
 
       <div v-else class="flex gap-4">
-        <Button color="info" @click="schema.validate() && actions.saveToDo()">Save</Button>
-        <Button color="danger" @click="actions.removeToDo">Delete</Button>
+        <XButton color="info" @click="schema.validate() && actions.saveToDo()">Save</XButton>
+        <XButton color="danger" @click="actions.removeToDo">Delete</XButton>
       </div>
     </div>
   </div>

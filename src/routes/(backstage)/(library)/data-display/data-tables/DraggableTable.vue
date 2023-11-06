@@ -1,8 +1,7 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
+import { XTable } from '@x/ui';
 import Draggable from 'vuedraggable';
-
-import Table from '~/components/Table.vue';
 
 const flux = reactive({
   draggableTableCols: [
@@ -70,7 +69,7 @@ const flux = reactive({
     <div class="mb-2">Draggable</div>
 
     <div class="w-full bg-white dark:bg-slate-800 shadow-md rounded">
-      <Table :columns="flux.draggableTableCols" :count="77">
+      <XTable :columns="flux.draggableTableCols" :count="77">
         <template #tbody>
           <Draggable v-model="flux.draggableTableRows" tag="tbody" handle=".handle" itemKey="name">
             <template #item="{ element }">
@@ -92,7 +91,7 @@ const flux = reactive({
             </template>
           </Draggable>
         </template>
-      </Table>
+      </XTable>
     </div>
   </div>
 </template>

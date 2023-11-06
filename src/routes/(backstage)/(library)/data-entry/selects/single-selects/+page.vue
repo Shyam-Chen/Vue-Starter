@@ -1,8 +1,6 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
-
-import { XBreadcrumb } from '@x/ui';
-import Select from '~/components/Select.vue';
+import { XBreadcrumb, XSelect } from '@x/ui';
 
 import WithTable from './WithTable.vue';
 
@@ -82,7 +80,7 @@ const flux = reactive({
     <div class="mb-2">Basic</div>
 
     <div class="flex justify-center">
-      <Select v-model:value="flux.select1" :options="flux.select1Options" />
+      <XSelect v-model:value="flux.select1" :options="flux.select1Options" />
     </div>
   </div>
 
@@ -90,7 +88,7 @@ const flux = reactive({
     <div class="mb-2">Disabled</div>
 
     <div class="flex justify-center">
-      <Select v-model:value="flux.select1" :options="flux.select1Options" disabled />
+      <XSelect v-model:value="flux.select1" :options="flux.select1Options" disabled />
     </div>
   </div>
 
@@ -98,7 +96,7 @@ const flux = reactive({
     <div class="mb-2">Clearable</div>
 
     <div class="flex justify-center">
-      <Select v-model:value="flux.select1" :options="flux.select1Options" clearable />
+      <XSelect v-model:value="flux.select1" :options="flux.select1Options" clearable />
     </div>
   </div>
 
@@ -106,7 +104,7 @@ const flux = reactive({
     <div class="mb-2">Filterable</div>
 
     <div class="flex justify-center">
-      <Select v-model:value="flux.select1" :options="flux.select1Options" filterable />
+      <XSelect v-model:value="flux.select1" :options="flux.select1Options" filterable />
     </div>
   </div>
 
@@ -114,7 +112,11 @@ const flux = reactive({
     <div class="mb-2">Errors</div>
 
     <div class="flex justify-center">
-      <Select v-model:value="flux.select1" :options="flux.select1Options" :errorMessage="'Error'" />
+      <XSelect
+        v-model:value="flux.select1"
+        :options="flux.select1Options"
+        :errorMessage="'Error'"
+      />
     </div>
   </div>
 
@@ -122,7 +124,7 @@ const flux = reactive({
     <div class="mb-2">Loading</div>
 
     <div class="flex justify-center">
-      <Select v-model:value="flux.select1" :options="flux.select1Options" loading />
+      <XSelect v-model:value="flux.select1" :options="flux.select1Options" loading />
     </div>
   </div>
 
@@ -145,7 +147,7 @@ const flux = reactive({
     <div class="grid grid-cols-3 gap-4">
       <div>
         <div class="text-sm font-bold mb-2">Platform</div>
-        <Select
+        <XSelect
           v-model:value="flux.cascader1"
           :options="flux.cascader1Options"
           clearable
@@ -155,7 +157,7 @@ const flux = reactive({
 
       <div>
         <div class="text-sm font-bold mb-2">Framework</div>
-        <Select
+        <XSelect
           v-model:value="flux.cascader2"
           :options="flux.cascader2Options"
           clearable
@@ -166,7 +168,7 @@ const flux = reactive({
 
       <div>
         <div class="text-sm font-bold mb-2">Database</div>
-        <Select
+        <XSelect
           v-model:value="flux.cascader3"
           :options="flux.cascader3Options"
           clearable

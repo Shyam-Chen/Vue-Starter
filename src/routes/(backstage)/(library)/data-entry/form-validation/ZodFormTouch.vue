@@ -1,8 +1,6 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
-
-import TextField from '~/components/TextField.vue';
-import Button from '~/components/Button.vue';
+import { XTextField, XButton } from '@x/ui';
 
 import useStore from './store';
 import { useTouchSchema } from './schema';
@@ -30,7 +28,7 @@ touchSchema.validate();
       <div class="text-2xl font-bold mb-4">Zod Form (Touch)</div>
 
       <div class="grid grid-cols-2 gap-4 mb-6">
-        <TextField
+        <XTextField
           v-model:value="state.zodForm.username"
           label="Username"
           required
@@ -38,7 +36,7 @@ touchSchema.validate();
           :useError="flux.useError"
           :errorMessage="state.touchValdn.username"
         />
-        <TextField
+        <XTextField
           v-model:value="state.zodForm.password"
           label="Password"
           type="password"
@@ -50,7 +48,7 @@ touchSchema.validate();
       </div>
 
       <div class="flex items-center justify-between">
-        <Button color="primary" @click="flux.submitZodFormWithTouch">Submit</Button>
+        <XButton color="primary" @click="flux.submitZodFormWithTouch">Submit</XButton>
       </div>
     </form>
   </div>

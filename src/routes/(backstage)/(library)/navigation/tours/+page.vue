@@ -1,8 +1,6 @@
 <script lang="ts" setup>
 import { ref, reactive, watch, onUnmounted, nextTick } from 'vue';
-
-import { XBreadcrumb } from '@x/ui';
-import Button from '~/components/Button.vue';
+import { XBreadcrumb, XButton } from '@x/ui';
 
 const tour = ref();
 const guide = ref();
@@ -120,7 +118,7 @@ onUnmounted(() => {
     <div class="mb-2">Basic</div>
 
     <div>
-      <Button @click="flux.begin">Begin Tour</Button>
+      <XButton @click="flux.begin">Begin Tour</XButton>
     </div>
   </div>
 
@@ -143,9 +141,9 @@ onUnmounted(() => {
       <div class="text-sm">{{ flux.index + 1 }}/4</div>
 
       <div class="flex space-x-2 ml-8">
-        <Button color="secondary" @click="flux.showTour = false">Skip</Button>
-        <Button v-if="flux.index > 0" color="info" @click="flux.previous">Previous</Button>
-        <Button v-if="flux.index + 1 < 4" @click="flux.next">Next</Button>
+        <XButton color="secondary" @click="flux.showTour = false">Skip</XButton>
+        <XButton v-if="flux.index > 0" color="info" @click="flux.previous">Previous</XButton>
+        <XButton v-if="flux.index + 1 < 4" @click="flux.next">Next</XButton>
       </div>
     </div>
 

@@ -1,9 +1,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
-
-import { XBreadcrumb } from '@x/ui';
-import Button from '~/components/Button.vue';
-import request from '~/utilities/request';
+import { XBreadcrumb, XButton } from '@x/ui';
+import { request } from '@x/ui';
 
 const text = ref();
 
@@ -24,7 +22,7 @@ const doFetch = async () => {
     <div class="mb-2">Basic</div>
 
     <div class="flex flex-col items-center gap-2">
-      <div><Button @click="doFetch">Fetch</Button></div>
+      <div><XButton @click="doFetch">Fetch</XButton></div>
       <div>{{ text }}</div>
     </div>
   </div>

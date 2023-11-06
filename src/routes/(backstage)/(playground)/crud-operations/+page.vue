@@ -1,12 +1,15 @@
 <script lang="ts" setup>
 import { reactive, onMounted } from 'vue';
-import { XBreadcrumb, XPanel, XTooltip } from '@x/ui';
-
-import TextField from '~/components/TextField.vue';
-import RadioGroup from '~/components/RadioGroup.vue';
-import Checkbox from '~/components/Checkbox.vue';
-import Table from '~/components/Table.vue';
-import Button from '~/components/Button.vue';
+import {
+  XBreadcrumb,
+  XPanel,
+  XTextField,
+  XRadioGroup,
+  XCheckbox,
+  XTooltip,
+  XTable,
+  XButton,
+} from '@x/ui';
 
 import useStore from './store';
 
@@ -40,9 +43,9 @@ onMounted(() => {
 
     <template #content>
       <div class="grid grid-cols-2 gap-5 mb-6">
-        <TextField v-model:value="state.searchConditions.title" label="Title" />
+        <XTextField v-model:value="state.searchConditions.title" label="Title" />
 
-        <RadioGroup
+        <XRadioGroup
           v-model:value="state.searchConditions.filter"
           label="Filter"
           :options="[
@@ -54,8 +57,8 @@ onMounted(() => {
       </div>
 
       <div class="flex justify-center gap-4">
-        <Button color="secondary" @click="state.searchConditions = { filter: 0 }">Reset</Button>
-        <Button @click="actions.searchTodos">Search</Button>
+        <XButton color="secondary" @click="state.searchConditions = { filter: 0 }">Reset</XButton>
+        <XButton @click="actions.searchTodos">Search</XButton>
       </div>
     </template>
   </XPanel>
@@ -64,10 +67,10 @@ onMounted(() => {
     <div class="flex justify-between p-4">
       <div class="text-3xl font-bold">Todo List</div>
 
-      <Button color="primary" @click="actions.addToDo">Add</Button>
+      <XButton color="primary" @click="actions.addToDo">Add</XButton>
     </div>
 
-    <Table
+    <XTable
       stickyHeader
       :columns="flux.columns"
       :rows="state.dataSource"
@@ -76,16 +79,21 @@ onMounted(() => {
       @change="actions.changeTodos"
     >
       <template #completed="{ row }">
-        <Checkbox v-model:value="row.completed" readonly />
+        <XCheckbox v-model:value="row.completed" readonly />
       </template>
 
       <template #actions="{ row }">
         <div class="space-x-4">
           <XTooltip title="Detail">
-            <Button variant="text" color="info" icon="i-bx-detail" @click="actions.viewTodo(row)" />
+            <XButton
+              variant="text"
+              color="info"
+              icon="i-bx-detail"
+              @click="actions.viewTodo(row)"
+            />
           </XTooltip>
         </div>
       </template>
-    </Table>
+    </XTable>
   </div>
 </template>

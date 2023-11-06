@@ -1,9 +1,8 @@
 <script lang="ts" setup>
 import type { Options } from 'highcharts';
 import { reactive } from 'vue';
-import { XBreadcrumb } from '@x/ui';
+import { XBreadcrumb, XButton } from '@x/ui';
 
-import Button from '~/components/Button.vue';
 import Chart from '~/components/Chart.vue';
 
 const flux = reactive({
@@ -61,6 +60,6 @@ const flux = reactive({
 
     <Chart :options="flux.basicLineChart" />
 
-    <Button class="mt-2" @click="flux.update">Update</Button>
+    <XButton class="mt-2" @click="flux.update">Update</XButton>
   </div>
 </template>

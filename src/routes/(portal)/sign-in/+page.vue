@@ -1,10 +1,6 @@
 <script lang="ts" setup>
 import { onUnmounted } from 'vue';
-
-import TextField from '~/components/TextField.vue';
-import Button from '~/components/Button.vue';
-import Spinner from '~/components/Spinner.vue';
-import Link from '~/components/Link.vue';
+import { XTextField, XButton, XSpinner, XLink } from '@x/ui';
 
 import useStore from './store';
 import useSchema from './schema';
@@ -31,7 +27,7 @@ onUnmounted(() => {
       </div>
 
       <div class="mb-4">
-        <TextField
+        <XTextField
           v-model:value="state.signInForm.username"
           :label="locale.username"
           required
@@ -42,7 +38,7 @@ onUnmounted(() => {
       </div>
 
       <div class="mb-8">
-        <TextField
+        <XTextField
           v-model:value="state.signInForm.password"
           :label="locale.password"
           type="password"
@@ -53,18 +49,18 @@ onUnmounted(() => {
         />
       </div>
 
-      <Button
+      <XButton
         :disabled="state.signInLoading"
         class="w-full mb-4"
         data-testid="sign-in"
         @click="schema.validate() && actions.signIn()"
       >
-        <Spinner v-if="state.signInLoading" class="w-5 h-5 align-middle" />
+        <XSpinner v-if="state.signInLoading" class="w-5 h-5 align-middle" />
         <div v-else>{{ locale.signIn }}</div>
-      </Button>
+      </XButton>
 
       <div class="text-center">
-        <Link to="/forgot-password">{{ locale.forgotPassword }}</Link>
+        <XLink to="/forgot-password">{{ locale.forgotPassword }}</XLink>
       </div>
     </form>
 
@@ -79,7 +75,7 @@ onUnmounted(() => {
       <div class="mb-6 space-y-2">
         <div>{{ locale.mfaHint }}</div>
 
-        <TextField
+        <XTextField
           v-model:value="state.mfaAuthCode"
           maxlength="6"
           class="text-center"
@@ -89,7 +85,7 @@ onUnmounted(() => {
       </div>
 
       <div class="text-center">
-        <Link
+        <XLink
           to="/sign-in"
           class="flex justify-center"
           @click="
@@ -99,7 +95,7 @@ onUnmounted(() => {
         >
           <div class="i-ic-round-arrow-back w-5 h-5"></div>
           <div>{{ locale.backToSignIn }}</div>
-        </Link>
+        </XLink>
       </div>
     </form>
   </div>

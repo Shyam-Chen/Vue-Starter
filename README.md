@@ -27,18 +27,7 @@ $ pnpm install
 $ pnpm dev
 
 # mock server
-$ cd mock/requests && pnpm install && cd ../..
-$ pnpm mock
-```
-
-Or use a blank template.
-
-```sh
-$ npx degit Shyam-Chen/Starter-Templates/vue my-vue-project
-$ cd my-vue-project
-
-$ pnpm install
-$ pnpm dev
+$ cd api && pnpm mock
 ```
 
 ## Project Setup

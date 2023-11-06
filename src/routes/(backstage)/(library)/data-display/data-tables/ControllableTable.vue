@@ -1,8 +1,6 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
-
-import Table from '~/components/Table.vue';
-import Button from '~/components/Button.vue';
+import { XTable, XButton } from '@x/ui';
 
 const flux = reactive({
   cols: [
@@ -70,12 +68,12 @@ const flux = reactive({
     <div class="text-lg">Controllable</div>
 
     <div class="my-4">
-      <Table v-model:control="flux.control" :columns="flux.cols" :rows="flux.rows" :count="177" />
+      <XTable v-model:control="flux.control" :columns="flux.cols" :rows="flux.rows" :count="177" />
     </div>
 
     <div class="flex flex-col gap-2">
       <div>{{ flux.control }}</div>
-      <div><Button @click="flux.control = { rows: 10, page: 1 }">Reset</Button></div>
+      <div><XButton @click="flux.control = { rows: 10, page: 1 }">Reset</XButton></div>
     </div>
   </div>
 </template>

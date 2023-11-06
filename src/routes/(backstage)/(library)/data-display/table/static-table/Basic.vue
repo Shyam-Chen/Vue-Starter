@@ -1,11 +1,7 @@
 <script lang="ts" setup>
 import { ref, onMounted } from 'vue';
-
-import TextField from '~/components/TextField.vue';
-import Select from '~/components/Select.vue';
-import Button from '~/components/Button.vue';
-import Table from '~/components/table';
-import staticTable from '~/utilities/staticTable';
+import { XTextField, XSelect, XButton, XTable } from '@x/ui';
+import { staticTable } from '@x/ui';
 
 import leetcode from './leetcode';
 
@@ -49,9 +45,9 @@ function search() {
 
     <div class="p-8 bg-white dark:bg-slate-800 rounded-lg space-y-8">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <TextField v-model:value="title" />
+        <XTextField v-model:value="title" />
 
-        <Select
+        <XSelect
           v-model:value="difficulty"
           :options="[
             { label: 'Easy', value: 'Easy' },
@@ -61,12 +57,12 @@ function search() {
         />
 
         <div class="flex gap-4">
-          <Button color="secondary" class="flex-1" @click="reset">Reset</Button>
-          <Button class="flex-1" @click="search">Search</Button>
+          <XButton color="secondary" class="flex-1" @click="reset">Reset</XButton>
+          <XButton class="flex-1" @click="search">Search</XButton>
         </div>
       </div>
 
-      <Table
+      <XTable
         v-model:control="control"
         :static="staticTable"
         :columns="[

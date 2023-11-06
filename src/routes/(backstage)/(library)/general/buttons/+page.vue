@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { XBreadcrumb } from '@x/ui';
-import Button from '~/components/Button.vue';
+import { XBreadcrumb, XButton } from '@x/ui';
 </script>
 
 <template>
@@ -12,13 +11,13 @@ import Button from '~/components/Button.vue';
 
   <div class="flex flex-col border p-4 mb-4 gap-4">
     <div class="mb-2">
-      Basic - The `Button` comes with three variants: contained (default), outlined, and text.
+      Basic - The `XButton` comes with three variants: contained (default), outlined, and text.
     </div>
 
     <div class="flex space-x-2 justify-center">
-      <Button variant="contained">Contained</Button>
-      <Button variant="outlined">Outlined</Button>
-      <Button variant="text">Text</Button>
+      <XButton variant="contained">Contained</XButton>
+      <XButton variant="outlined">Outlined</XButton>
+      <XButton variant="text">Text</XButton>
     </div>
   </div>
 
@@ -26,42 +25,42 @@ import Button from '~/components/Button.vue';
     <div class="mb-2">Contained</div>
 
     <div class="flex space-x-2 justify-center py-4">
-      <Button color="primary">Primary</Button>
-      <Button color="secondary">Secondary</Button>
-      <Button color="success">Success</Button>
-      <Button color="danger">
+      <XButton color="primary">Primary</XButton>
+      <XButton color="secondary">Secondary</XButton>
+      <XButton color="success">Success</XButton>
+      <XButton color="danger">
         <div class="i-fa-trash w-4 h-4"></div>
         Delete
-      </Button>
-      <Button color="warning">Warning</Button>
-      <Button color="info" icon="i-fa-question" />
+      </XButton>
+      <XButton color="warning">Warning</XButton>
+      <XButton color="info" icon="i-fa-question" />
     </div>
 
     <div class="flex space-x-2 justify-center bg-white dark:bg-slate-800 rounded-md shadow-md py-4">
-      <Button color="primary">Primary</Button>
-      <Button color="secondary">Secondary</Button>
-      <Button color="success" icon="i-fa-plus" />
-      <Button color="danger">Danger</Button>
-      <Button color="warning">Warning</Button>
-      <Button color="info">Info</Button>
+      <XButton color="primary">Primary</XButton>
+      <XButton color="secondary">Secondary</XButton>
+      <XButton color="success" icon="i-fa-plus" />
+      <XButton color="danger">Danger</XButton>
+      <XButton color="warning">Warning</XButton>
+      <XButton color="info">Info</XButton>
     </div>
 
     <div class="flex space-x-2 justify-center py-4">
-      <Button color="primary" disabled>Primary</Button>
-      <Button color="secondary" disabled>Secondary</Button>
-      <Button color="success" disabled>Success</Button>
-      <Button color="danger" disabled>Danger</Button>
-      <Button color="warning" disabled>Warning</Button>
-      <Button color="info" disabled>Info</Button>
+      <XButton color="primary" disabled>Primary</XButton>
+      <XButton color="secondary" disabled>Secondary</XButton>
+      <XButton color="success" disabled>Success</XButton>
+      <XButton color="danger" disabled>Danger</XButton>
+      <XButton color="warning" disabled>Warning</XButton>
+      <XButton color="info" disabled>Info</XButton>
     </div>
 
     <div class="flex space-x-2 justify-center bg-white dark:bg-slate-800 rounded-md shadow-md py-4">
-      <Button color="primary" disabled>Primary</Button>
-      <Button color="secondary" disabled>Secondary</Button>
-      <Button color="success" disabled>Success</Button>
-      <Button color="danger" disabled>Danger</Button>
-      <Button color="warning" disabled>Warning</Button>
-      <Button color="info" disabled>Info</Button>
+      <XButton color="primary" disabled>Primary</XButton>
+      <XButton color="secondary" disabled>Secondary</XButton>
+      <XButton color="success" disabled>Success</XButton>
+      <XButton color="danger" disabled>Danger</XButton>
+      <XButton color="warning" disabled>Warning</XButton>
+      <XButton color="info" disabled>Info</XButton>
     </div>
   </div>
 
@@ -69,42 +68,42 @@ import Button from '~/components/Button.vue';
     <div class="mb-2">Outlined</div>
 
     <div class="flex space-x-2 justify-center py-4">
-      <Button variant="outlined" color="primary" icon="i-fa-download" />
-      <Button variant="outlined" color="secondary">Secondary</Button>
-      <Button variant="outlined" color="success">Success</Button>
-      <Button variant="outlined" color="danger">Danger</Button>
-      <Button variant="outlined" color="warning">Warning</Button>
-      <Button variant="outlined" color="info">
+      <XButton variant="outlined" color="primary" icon="i-fa-download" />
+      <XButton variant="outlined" color="secondary">Secondary</XButton>
+      <XButton variant="outlined" color="success">Success</XButton>
+      <XButton variant="outlined" color="danger">Danger</XButton>
+      <XButton variant="outlined" color="warning">Warning</XButton>
+      <XButton variant="outlined" color="info">
         View
         <div class="i-bx-detail w-4 h-4"></div>
-      </Button>
+      </XButton>
     </div>
 
     <div class="flex space-x-2 justify-center bg-white dark:bg-slate-800 rounded-md shadow-md py-4">
-      <Button variant="outlined" color="primary">Primary</Button>
-      <Button variant="outlined" color="secondary">Secondary</Button>
-      <Button variant="outlined" color="success">Success</Button>
-      <Button variant="outlined" color="danger">Danger</Button>
-      <Button variant="outlined" color="warning" icon="i-fa-exclamation" />
-      <Button variant="outlined" color="info">Info</Button>
+      <XButton variant="outlined" color="primary">Primary</XButton>
+      <XButton variant="outlined" color="secondary">Secondary</XButton>
+      <XButton variant="outlined" color="success">Success</XButton>
+      <XButton variant="outlined" color="danger">Danger</XButton>
+      <XButton variant="outlined" color="warning" icon="i-fa-exclamation" />
+      <XButton variant="outlined" color="info">Info</XButton>
     </div>
 
     <div class="flex space-x-2 justify-center py-4">
-      <Button variant="outlined" color="primary" disabled>Primary</Button>
-      <Button variant="outlined" color="secondary" disabled>Secondary</Button>
-      <Button variant="outlined" color="success" disabled>Success</Button>
-      <Button variant="outlined" color="danger" disabled>Danger</Button>
-      <Button variant="outlined" color="warning" disabled>Warning</Button>
-      <Button variant="outlined" color="info" disabled>Info</Button>
+      <XButton variant="outlined" color="primary" disabled>Primary</XButton>
+      <XButton variant="outlined" color="secondary" disabled>Secondary</XButton>
+      <XButton variant="outlined" color="success" disabled>Success</XButton>
+      <XButton variant="outlined" color="danger" disabled>Danger</XButton>
+      <XButton variant="outlined" color="warning" disabled>Warning</XButton>
+      <XButton variant="outlined" color="info" disabled>Info</XButton>
     </div>
 
     <div class="flex space-x-2 justify-center bg-white dark:bg-slate-800 rounded-md shadow-md py-4">
-      <Button variant="outlined" color="primary" disabled>Primary</Button>
-      <Button variant="outlined" color="secondary" disabled>Secondary</Button>
-      <Button variant="outlined" color="success" disabled>Success</Button>
-      <Button variant="outlined" color="danger" disabled>Danger</Button>
-      <Button variant="outlined" color="warning" disabled>Warning</Button>
-      <Button variant="outlined" color="info" disabled>Info</Button>
+      <XButton variant="outlined" color="primary" disabled>Primary</XButton>
+      <XButton variant="outlined" color="secondary" disabled>Secondary</XButton>
+      <XButton variant="outlined" color="success" disabled>Success</XButton>
+      <XButton variant="outlined" color="danger" disabled>Danger</XButton>
+      <XButton variant="outlined" color="warning" disabled>Warning</XButton>
+      <XButton variant="outlined" color="info" disabled>Info</XButton>
     </div>
   </div>
 
@@ -112,42 +111,42 @@ import Button from '~/components/Button.vue';
     <div class="mb-2">Text</div>
 
     <div class="flex space-x-2 justify-center py-4">
-      <Button variant="text" color="primary">Primary</Button>
-      <Button variant="text" color="secondary" icon="i-fa-share-square-o" />
-      <Button variant="text" color="success">Success</Button>
-      <Button variant="text" color="danger">Danger</Button>
-      <Button variant="text" color="warning">Warning</Button>
-      <Button variant="text" color="info">Info</Button>
+      <XButton variant="text" color="primary">Primary</XButton>
+      <XButton variant="text" color="secondary" icon="i-fa-share-square-o" />
+      <XButton variant="text" color="success">Success</XButton>
+      <XButton variant="text" color="danger">Danger</XButton>
+      <XButton variant="text" color="warning">Warning</XButton>
+      <XButton variant="text" color="info">Info</XButton>
     </div>
 
     <div class="flex space-x-2 justify-center bg-white dark:bg-slate-800 rounded-md shadow-md py-4">
-      <Button variant="text" color="primary">
+      <XButton variant="text" color="primary">
         Send
         <div class="i-fa-send w-4 h-4"></div>
-      </Button>
-      <Button variant="text" color="secondary">Secondary</Button>
-      <Button variant="text" color="success">Success</Button>
-      <Button variant="text" color="danger" icon="i-fa-minus" />
-      <Button variant="text" color="warning">Warning</Button>
-      <Button variant="text" color="info">Info</Button>
+      </XButton>
+      <XButton variant="text" color="secondary">Secondary</XButton>
+      <XButton variant="text" color="success">Success</XButton>
+      <XButton variant="text" color="danger" icon="i-fa-minus" />
+      <XButton variant="text" color="warning">Warning</XButton>
+      <XButton variant="text" color="info">Info</XButton>
     </div>
 
     <div class="flex space-x-2 justify-center py-4">
-      <Button variant="text" color="primary" disabled>Primary</Button>
-      <Button variant="text" color="secondary" disabled>Secondary</Button>
-      <Button variant="text" color="success" disabled>Success</Button>
-      <Button variant="text" color="danger" disabled>Danger</Button>
-      <Button variant="text" color="warning" disabled>Warning</Button>
-      <Button variant="text" color="info" disabled>Info</Button>
+      <XButton variant="text" color="primary" disabled>Primary</XButton>
+      <XButton variant="text" color="secondary" disabled>Secondary</XButton>
+      <XButton variant="text" color="success" disabled>Success</XButton>
+      <XButton variant="text" color="danger" disabled>Danger</XButton>
+      <XButton variant="text" color="warning" disabled>Warning</XButton>
+      <XButton variant="text" color="info" disabled>Info</XButton>
     </div>
 
     <div class="flex space-x-2 justify-center bg-white dark:bg-slate-800 rounded-md shadow-md py-4">
-      <Button variant="text" color="primary" disabled>Primary</Button>
-      <Button variant="text" color="secondary" disabled>Secondary</Button>
-      <Button variant="text" color="success" disabled>Success</Button>
-      <Button variant="text" color="danger" disabled>Danger</Button>
-      <Button variant="text" color="warning" disabled>Warning</Button>
-      <Button variant="text" color="info" disabled>Info</Button>
+      <XButton variant="text" color="primary" disabled>Primary</XButton>
+      <XButton variant="text" color="secondary" disabled>Secondary</XButton>
+      <XButton variant="text" color="success" disabled>Success</XButton>
+      <XButton variant="text" color="danger" disabled>Danger</XButton>
+      <XButton variant="text" color="warning" disabled>Warning</XButton>
+      <XButton variant="text" color="info" disabled>Info</XButton>
     </div>
   </div>
 </template>

@@ -1,10 +1,8 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
-import { XBreadcrumb, XSkeleton } from '@x/ui';
+import { XBreadcrumb, XSkeleton, XButton } from '@x/ui';
 import { useImage } from '@vueuse/core';
 import { UseImage } from '@vueuse/components';
-
-import Button from '~/components/Button.vue';
 
 const imageOptions = ref({ src: 'https://place-hold.it/300x200' });
 const colors = ['14b8a6', '8b5cf6', 'ec4899'];
@@ -52,7 +50,7 @@ function change2() {
     />
 
     <div>
-      <Button @click="change">Change</Button>
+      <XButton @click="change">Change</XButton>
     </div>
   </div>
 
@@ -69,7 +67,7 @@ function change2() {
     </UseImage>
 
     <div>
-      <Button @click="change2">Change</Button>
+      <XButton @click="change2">Change</XButton>
     </div>
   </div>
 </template>

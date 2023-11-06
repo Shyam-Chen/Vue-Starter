@@ -1,10 +1,6 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
-import { XBreadcrumb } from '@x/ui';
-
-import Table from '~/components/Table.vue';
-import Button from '~/components/Button.vue';
-import Collapse from '~/components/Collapse.vue';
+import { XBreadcrumb, XTable, XCollapse, XButton } from '@x/ui';
 
 import ControllableTable from './ControllableTable.vue';
 import DraggableTable from './DraggableTable.vue';
@@ -228,7 +224,7 @@ const flux = reactive({
     <div class="mb-2">Basic</div>
 
     <div class="w-full bg-white dark:bg-slate-800 shadow-md rounded">
-      <Table :columns="flux.columns1" :rows="flux.table" />
+      <XTable :columns="flux.columns1" :rows="flux.table" />
     </div>
   </div>
 
@@ -236,7 +232,7 @@ const flux = reactive({
     <div class="mb-2">Sticky Header</div>
 
     <div class="w-full bg-white dark:bg-slate-800 shadow-md rounded">
-      <Table stickyHeader :columns="flux.columns1" :rows="flux.dataTable1" />
+      <XTable stickyHeader :columns="flux.columns1" :rows="flux.dataTable1" />
     </div>
   </div>
 
@@ -244,7 +240,12 @@ const flux = reactive({
     <div class="mb-2">Paginable and Sortable</div>
 
     <div class="w-full bg-white dark:bg-slate-800 shadow-md rounded">
-      <Table :columns="flux.columns1" :rows="flux.table" :count="77" @change="flux.onTableChange" />
+      <XTable
+        :columns="flux.columns1"
+        :rows="flux.table"
+        :count="77"
+        @change="flux.onTableChange"
+      />
     </div>
 
     <div class="mt-2">{{ flux.tableChange }}</div>
@@ -256,7 +257,7 @@ const flux = reactive({
     <div class="mb-2">Selectable</div>
 
     <div class="w-full bg-white dark:bg-slate-800 shadow-md rounded">
-      <Table
+      <XTable
         v-model:selected="flux.selected"
         selectable
         :columns="flux.columns1"
@@ -271,7 +272,7 @@ const flux = reactive({
     <div class="mb-2">Collapsible</div>
 
     <div class="w-full bg-white dark:bg-slate-800 shadow-md rounded">
-      <Table
+      <XTable
         stickyHeader
         :columns="flux.collapsibleCols"
         :rows="flux.collapsibleRows"
@@ -279,14 +280,14 @@ const flux = reactive({
         @clickRow="flux.clickRow"
       >
         <template #icon="{ row }">
-          <Button
+          <XButton
             v-if="!row.collapsible"
             icon="i-fa-caret-down"
             color="secondary"
             variant="text"
             @click.stop="flux.clickCollapsible(row)"
           />
-          <Button
+          <XButton
             v-if="row.collapsible"
             icon="i-fa-caret-up"
             color="secondary"
@@ -298,18 +299,18 @@ const flux = reactive({
         <template #collapsible="{ row }">
           <tr>
             <td :colspan="flux.collapsibleCols.length" class="py-0">
-              <Collapse>
+              <XCollapse>
                 <div v-if="row.collapsible">
                   <div class="px-4 py-2">
                     <div class="text-2xl mb-2">History</div>
-                    <Table :columns="flux.colspanCols" :rows="flux.colspanRows" />
+                    <XTable :columns="flux.colspanCols" :rows="flux.colspanRows" />
                   </div>
                 </div>
-              </Collapse>
+              </XCollapse>
             </td>
           </tr>
         </template>
-      </Table>
+      </XTable>
     </div>
   </div>
 
@@ -317,7 +318,7 @@ const flux = reactive({
     <div class="mb-2">Rowspan (key: `details`)</div>
 
     <div class="w-full bg-white dark:bg-slate-800 shadow-md rounded">
-      <Table :columns="flux.spanableCols" :rows="flux.spanableRows" />
+      <XTable :columns="flux.spanableCols" :rows="flux.spanableRows" />
     </div>
   </div>
 
@@ -325,7 +326,7 @@ const flux = reactive({
     <div class="mb-2">Colspan</div>
 
     <div class="w-full bg-white dark:bg-slate-800 shadow-md rounded">
-      <Table :columns="flux.colspanCols" :rows="flux.colspanRows">
+      <XTable :columns="flux.colspanCols" :rows="flux.colspanRows">
         <template #spanable>
           <tr>
             <td colspan="2" class="px-6 py-3">Sum:</td>
@@ -333,7 +334,7 @@ const flux = reactive({
             <td></td>
           </tr>
         </template>
-      </Table>
+      </XTable>
     </div>
   </div>
 
@@ -341,7 +342,7 @@ const flux = reactive({
     <div class="mb-2">Colspan (thead)</div>
 
     <div class="w-full bg-white dark:bg-slate-800 shadow-md rounded">
-      <Table :columns="flux.colspanTheadCols" :rows="flux.colspanTheadRows">
+      <XTable :columns="flux.colspanTheadCols" :rows="flux.colspanTheadRows">
         <template #thead>
           <tr class="bg-blueGray-200 dark:bg-blueGray-700 text-blueGray-500 dark:text-blueGray-200">
             <th colspan="2" class="px-6 py-3"></th>
@@ -361,7 +362,7 @@ const flux = reactive({
             <td></td>
           </tr>
         </template>
-      </Table>
+      </XTable>
     </div>
   </div>
 
@@ -369,7 +370,7 @@ const flux = reactive({
     <div class="mb-2">Sticky Columns</div>
 
     <div class="w-full bg-white dark:bg-slate-800 shadow-md rounded">
-      <Table stickyHeader :columns="flux.columns2" :rows="flux.dataTable1" />
+      <XTable stickyHeader :columns="flux.columns2" :rows="flux.dataTable1" />
     </div>
   </div>
 
@@ -377,7 +378,7 @@ const flux = reactive({
     <div class="mb-2">Loading</div>
 
     <div class="w-full bg-white dark:bg-slate-800 shadow-md rounded">
-      <Table stickyHeader loading :columns="flux.columns1" :rows="flux.dataTable1" :count="77" />
+      <XTable stickyHeader loading :columns="flux.columns1" :rows="flux.dataTable1" :count="77" />
     </div>
   </div>
 

@@ -1,7 +1,5 @@
 <script lang="ts" setup>
-import { XBreadcrumb } from '@x/ui';
-import Dropdown from '~/components/Dropdown.vue';
-import Button from '~/components/Button.vue';
+import { XBreadcrumb, XDropdown, XButton } from '@x/ui';
 </script>
 
 <template>
@@ -15,9 +13,9 @@ import Button from '~/components/Button.vue';
     <div class="mb-2">Basic</div>
 
     <div class="flex justify-center">
-      <Dropdown :options="['Action', 'Another action', '', 'Something else here']">
-        <Button>Button</Button>
-      </Dropdown>
+      <XDropdown :options="['Action', 'Another action', '', 'Something else here']">
+        <XButton>Button</XButton>
+      </XDropdown>
     </div>
   </div>
 
@@ -27,21 +25,21 @@ import Button from '~/components/Button.vue';
     <div class="mb-2">Basic</div>
 
     <div class="flex justify-between">
-      <Dropdown :options="['Action', 'Another action', '', 'Something else here']">
-        <Button>Button</Button>
-      </Dropdown>
+      <XDropdown :options="['Action', 'Another action', '', 'Something else here']">
+        <XButton>Button</XButton>
+      </XDropdown>
 
-      <Dropdown :options="['Action', 'Another action', '', 'Something else here']">
-        <Button>Button</Button>
-      </Dropdown>
+      <XDropdown :options="['Action', 'Another action', '', 'Something else here']">
+        <XButton>Button</XButton>
+      </XDropdown>
 
-      <Dropdown :options="['Action', 'Another action', '', 'Something else here']">
-        <Button>Button</Button>
-      </Dropdown>
+      <XDropdown :options="['Action', 'Another action', '', 'Something else here']">
+        <XButton>Button</XButton>
+      </XDropdown>
 
-      <Dropdown :options="['Action', 'Another action', '', 'Something else here']">
-        <Button>Button</Button>
-      </Dropdown>
+      <XDropdown :options="['Action', 'Another action', '', 'Something else here']">
+        <XButton>Button</XButton>
+      </XDropdown>
     </div>
   </div>
 
@@ -49,9 +47,9 @@ import Button from '~/components/Button.vue';
     <div class="mb-2">Basic</div>
 
     <div class="flex justify-center">
-      <Dropdown :options="['Action', 'Another action', '', 'Something else here']">
+      <XDropdown :options="['Action', 'Another action', '', 'Something else here']">
         <div class="w-20 h-20 bg-primary-500 rounded-lg"></div>
-      </Dropdown>
+      </XDropdown>
     </div>
   </div>
 
@@ -60,11 +58,11 @@ import Button from '~/components/Button.vue';
 
     <div class="flex justify-center gap-6">
       <template v-for="num in 8" :key="num">
-        <Dropdown :options="['Action', 'Another action', '', 'Something else here']">
+        <XDropdown :options="['Action', 'Another action', '', 'Something else here']">
           <div class="w-20 h-20 bg-primary-500 rounded-lg flex justify-center items-center">
             {{ num }}
           </div>
-        </Dropdown>
+        </XDropdown>
       </template>
     </div>
   </div>
@@ -73,13 +71,13 @@ import Button from '~/components/Button.vue';
     <div class="mb-2">Basic</div>
 
     <div class="flex justify-center gap-8">
-      <Dropdown :options="['Action', 'Another action', '', 'Something else here']">
+      <XDropdown :options="['Action', 'Another action', '', 'Something else here']">
         <div class="w-50 h-50 bg-primary-500 rounded-lg"></div>
-      </Dropdown>
+      </XDropdown>
 
-      <Dropdown :options="['Action', 'Another action', '', 'Something else here']">
+      <XDropdown :options="['Action', 'Another action', '', 'Something else here']">
         <div class="w-50 h-50 bg-primary-500 rounded-lg"></div>
-      </Dropdown>
+      </XDropdown>
     </div>
   </div>
 

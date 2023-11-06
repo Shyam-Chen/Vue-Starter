@@ -1,7 +1,5 @@
 <script lang="ts" setup>
-import { XBreadcrumb } from '@x/ui';
-import TextField from '~/components/TextField.vue';
-import Button from '~/components/Button.vue';
+import { XBreadcrumb, XTextField, XButton } from '@x/ui';
 
 import { useCounter } from './store';
 
@@ -20,7 +18,7 @@ $subscribe((state) => {
   </div>
 
   <div class="flex flex-col gap-1 my-4">
-    <TextField v-model:value="state.name" label="Name" />
+    <XTextField v-model:value="state.name" label="Name" />
     <div>Name: {{ state.name }}</div>
 
     <div>
@@ -29,8 +27,8 @@ $subscribe((state) => {
     </div>
 
     <div class="flex gap-2">
-      <Button @click="actions.increment">Increment</Button>
-      <Button @click="$reset">Reset</Button>
+      <XButton @click="actions.increment">Increment</XButton>
+      <XButton @click="$reset">Reset</XButton>
     </div>
   </div>
 </template>

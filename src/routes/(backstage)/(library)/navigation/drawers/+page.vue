@@ -1,16 +1,12 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
-
-import { XBreadcrumb } from '@x/ui';
-import Drawer from '~/components/Drawer.vue';
-import Button from '~/components/Button.vue';
-import RadioGroup from '~/components/RadioGroup.vue';
+import { XBreadcrumb, XButton, XDrawer, XRadioGroup } from '@x/ui';
 
 const flux = reactive({
   drawer1: false,
 
   drawer2: false,
-  placement: 'right' as InstanceType<typeof Drawer>['placement'],
+  placement: 'right' as InstanceType<typeof XDrawer>['placement'],
   placementOptions: ['top', 'right', 'bottom', 'left'],
 });
 </script>
@@ -26,21 +22,21 @@ const flux = reactive({
     <div class="mb-2">Basic</div>
 
     <div>
-      <Button @click="flux.drawer1 = true">Open</Button>
+      <XButton @click="flux.drawer1 = true">Open</XButton>
     </div>
 
-    <Drawer v-model="flux.drawer1" />
+    <XDrawer v-model="flux.drawer1" />
   </div>
 
   <div class="flex flex-col border p-4 mb-4">
     <div class="mb-2">Placement</div>
 
     <div class="flex">
-      <RadioGroup v-model:value="flux.placement" :options="flux.placementOptions" />
-      <Button class="ml-4" @click="flux.drawer2 = true">Open</Button>
+      <XRadioGroup v-model:value="flux.placement" :options="flux.placementOptions" />
+      <XButton class="ml-4" @click="flux.drawer2 = true">Open</XButton>
     </div>
 
-    <Drawer v-model="flux.drawer2" :placement="flux.placement" />
+    <XDrawer v-model="flux.drawer2" :placement="flux.placement" />
   </div>
 
   <div class="flex flex-col border p-4 mb-4">

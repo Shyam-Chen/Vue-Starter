@@ -1,9 +1,6 @@
 <script lang="ts" setup>
 import { reactive, watch } from 'vue';
-
-import { XBreadcrumb } from '@x/ui';
-import Checkbox from '~/components/Checkbox.vue';
-import CheckboxGroup from '~/components/CheckboxGroup.vue';
+import { XBreadcrumb, XCheckbox, XCheckboxGroup } from '@x/ui';
 
 const flux = reactive({
   checkbox1: false,
@@ -51,7 +48,7 @@ watch(
     <div class="mb-2">Basic examples</div>
 
     <div class="flex justify-center">
-      <Checkbox v-model:value="flux.checkbox1">Checkbox 1</Checkbox>
+      <XCheckbox v-model:value="flux.checkbox1">Checkbox 1</XCheckbox>
     </div>
 
     <div class="flex justify-center">{{ flux.checkbox1 }}</div>
@@ -61,7 +58,7 @@ watch(
     <div class="mb-2">Checked and Readonly</div>
 
     <div class="flex justify-center">
-      <Checkbox checked readonly>Checkbox (checked)</Checkbox>
+      <XCheckbox checked readonly>Checkbox (checked)</XCheckbox>
     </div>
   </div>
 
@@ -69,7 +66,7 @@ watch(
     <div class="mb-2">Invalid</div>
 
     <div class="flex justify-center">
-      <Checkbox invalid="Error message">Checkbox (invalid)</Checkbox>
+      <XCheckbox invalid="Error message">Checkbox (invalid)</XCheckbox>
     </div>
   </div>
 
@@ -77,11 +74,11 @@ watch(
     <div class="mb-2">Disabled</div>
 
     <div class="flex justify-center">
-      <Checkbox v-model:value="flux.checkbox1" disabled>Checkbox 1</Checkbox>
+      <XCheckbox v-model:value="flux.checkbox1" disabled>Checkbox 1</XCheckbox>
     </div>
 
     <div class="flex justify-center">
-      <Checkbox checked disabled>Checkbox (checked + disabled)</Checkbox>
+      <XCheckbox checked disabled>Checkbox (checked + disabled)</XCheckbox>
     </div>
   </div>
 
@@ -89,15 +86,19 @@ watch(
     <div class="mb-2">Indeterminate</div>
 
     <div class="flex justify-center">
-      <Checkbox v-model:value="flux.checkbox2" :indeterminate="flux.indeterminate2">
+      <XCheckbox v-model:value="flux.checkbox2" :indeterminate="flux.indeterminate2">
         Checkbox 2
-      </Checkbox>
+      </XCheckbox>
     </div>
 
     <div class="flex justify-center mt-2 space-x-6">
-      <Checkbox v-for="(item, index) in flux.checkboxes2" :key="index" v-model:value="item.checked">
+      <XCheckbox
+        v-for="(item, index) in flux.checkboxes2"
+        :key="index"
+        v-model:value="item.checked"
+      >
         Checkbox 2-{{ index + 1 }}
-      </Checkbox>
+      </XCheckbox>
     </div>
   </div>
 
@@ -105,7 +106,7 @@ watch(
     <div class="mb-2">Group</div>
 
     <div class="flex">
-      <CheckboxGroup v-model:value="flux.checkboxGroup1" :options="flux.checkboxGroup1Options" />
+      <XCheckboxGroup v-model:value="flux.checkboxGroup1" :options="flux.checkboxGroup1Options" />
     </div>
 
     <pre>{{ flux.checkboxGroup1 }}</pre>

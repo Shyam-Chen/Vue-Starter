@@ -1,8 +1,6 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
-
-import { XBreadcrumb } from '@x/ui';
-import RadioGroup from '~/components/RadioGroup.vue';
+import { XBreadcrumb, XRadioGroup } from '@x/ui';
 
 const flux = reactive({
   radioGroup1: '',
@@ -21,7 +19,7 @@ const flux = reactive({
     <div class="mb-2">Basic examples</div>
 
     <div class="flex justify-center">
-      <RadioGroup v-model:value="flux.radioGroup1" :options="flux.radioGroup1Options" />
+      <XRadioGroup v-model:value="flux.radioGroup1" :options="flux.radioGroup1Options" />
     </div>
   </div>
 
@@ -29,7 +27,7 @@ const flux = reactive({
     <div class="mb-2">Disabled</div>
 
     <div class="flex justify-center">
-      <RadioGroup v-model:value="flux.radioGroup1" :options="flux.radioGroup1Options" disabled />
+      <XRadioGroup v-model:value="flux.radioGroup1" :options="flux.radioGroup1Options" disabled />
     </div>
   </div>
 </template>

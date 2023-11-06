@@ -1,13 +1,14 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
-
-import { XBreadcrumb } from '@x/ui';
-import TextField from '~/components/TextField.vue';
-import RadioGroup from '~/components/RadioGroup.vue';
-import Select from '~/components/Select.vue';
-import Checkbox from '~/components/Checkbox.vue';
-import CheckboxGroup from '~/components/CheckboxGroup.vue';
-import Button from '~/components/Button.vue';
+import {
+  XBreadcrumb,
+  XTextField,
+  XRadioGroup,
+  XSelect,
+  XCheckbox,
+  XCheckboxGroup,
+  XButton,
+} from '@x/ui';
 
 import ZodFormTouch from './ZodFormTouch.vue';
 import TabularForms from './TabularForms.vue';
@@ -41,13 +42,13 @@ const flux = reactive({
       <div class="text-2xl font-bold mb-4">Zod Form</div>
 
       <div class="grid grid-cols-2 gap-4 mb-6">
-        <TextField
+        <XTextField
           v-model:value="state.zodForm.username"
           label="Username"
           required
           :errorMessage="state.zodValdn.username"
         />
-        <TextField
+        <XTextField
           v-model:value="state.zodForm.password"
           label="Password"
           type="password"
@@ -55,14 +56,14 @@ const flux = reactive({
           :errorMessage="state.zodValdn.password"
         />
 
-        <TextField
+        <XTextField
           v-model:value="state.zodForm.email"
           label="Email"
           type="email"
           required
           :errorMessage="state.zodValdn.email"
         />
-        <TextField
+        <XTextField
           v-model:value="state.zodForm.phone"
           label="Phone"
           type="tel"
@@ -70,14 +71,14 @@ const flux = reactive({
           :errorMessage="state.zodValdn.phone"
         />
 
-        <RadioGroup
+        <XRadioGroup
           v-model:value="state.zodForm.gender"
           label="Gender"
           :options="['Male', 'Female', 'Others']"
           required
           :errorMessage="state.zodValdn.gender"
         />
-        <Select
+        <XSelect
           v-model:value="state.zodForm.plan"
           label="Plan"
           :options="[
@@ -92,10 +93,10 @@ const flux = reactive({
 
         <div>
           <div class="text-sm mb-2 font-bold">Status</div>
-          <Checkbox v-model:value="state.zodForm.status" class="col-span-2">Employed</Checkbox>
+          <XCheckbox v-model:value="state.zodForm.status" class="col-span-2">Employed</XCheckbox>
         </div>
 
-        <CheckboxGroup
+        <XCheckboxGroup
           v-model:value="state.zodForm.sauces"
           label="Sauces"
           :options="[
@@ -108,7 +109,7 @@ const flux = reactive({
       </div>
 
       <div class="flex items-center justify-between">
-        <Button color="primary" @click="flux.submitZodForm">Submit</Button>
+        <XButton color="primary" @click="flux.submitZodForm">Submit</XButton>
       </div>
     </form>
   </div>
