@@ -1,8 +1,7 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
 
-import Breadcrumbs from '~/components/Breadcrumbs.vue';
-import TimePicker from '~/components/TimePicker.vue';
+import { XBreadcrumb, XTimePicker } from '@x/ui';
 
 const flux = reactive({
   timePicker: '',
@@ -10,7 +9,7 @@ const flux = reactive({
 </script>
 
 <template>
-  <Breadcrumbs
+  <XBreadcrumb
     :items="[
       { text: 'Library' },
       { text: 'Data Entry' },
@@ -27,7 +26,7 @@ const flux = reactive({
     <div class="mb-2">Basic</div>
 
     <div class="flex justify-center">
-      <TimePicker v-model:value="flux.timePicker" />
+      <XTimePicker v-model:value="flux.timePicker" />
     </div>
 
     <div class="mt-2">{{ flux.timePicker }}</div>

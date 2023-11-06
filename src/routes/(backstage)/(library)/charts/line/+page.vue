@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import type { Options } from 'highcharts';
 import { reactive } from 'vue';
+import { XBreadcrumb } from '@x/ui';
 
-import Breadcrumbs from '~/components/Breadcrumbs.vue';
 import Button from '~/components/Button.vue';
 import Chart from '~/components/Chart.vue';
 
@@ -50,7 +50,7 @@ const flux = reactive({
 </script>
 
 <template>
-  <Breadcrumbs :items="[{ text: 'Library' }, { text: 'Charts' }, { text: 'Line' }]" />
+  <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Charts' }, { text: 'Line' }]" />
 
   <div class="my-4">
     <div class="text-3xl font-bold">Line</div>

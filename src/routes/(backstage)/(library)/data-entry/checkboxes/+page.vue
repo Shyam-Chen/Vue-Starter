@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { reactive, watch } from 'vue';
 
-import Breadcrumbs from '~/components/Breadcrumbs.vue';
+import { XBreadcrumb } from '@x/ui';
 import Checkbox from '~/components/Checkbox.vue';
 import CheckboxGroup from '~/components/CheckboxGroup.vue';
 
@@ -41,7 +41,7 @@ watch(
 </script>
 
 <template>
-  <Breadcrumbs :items="[{ text: 'Library' }, { text: 'Data Entry' }, { text: 'Checkboxes' }]" />
+  <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Data Entry' }, { text: 'Checkboxes' }]" />
 
   <div class="my-4">
     <div class="text-3xl font-bold">Checkboxes</div>

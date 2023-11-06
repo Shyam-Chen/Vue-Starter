@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
 
-import Breadcrumbs from '~/components/Breadcrumbs.vue';
+import { XBreadcrumb } from '@x/ui';
 import Drawer from '~/components/Drawer.vue';
 import Button from '~/components/Button.vue';
 import RadioGroup from '~/components/RadioGroup.vue';
@@ -16,7 +16,7 @@ const flux = reactive({
 </script>
 
 <template>
-  <Breadcrumbs :items="[{ text: 'Library' }, { text: 'Navigation' }, { text: 'Drawers' }]" />
+  <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Navigation' }, { text: 'Drawers' }]" />
 
   <div class="my-4">
     <div class="text-3xl font-bold">Drawers</div>

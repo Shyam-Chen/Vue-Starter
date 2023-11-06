@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
 
-import Breadcrumbs from '~/components/Breadcrumbs.vue';
+import { XBreadcrumb } from '@x/ui';
 import Select from '~/components/Select.vue';
 
 import WithTable from './WithTable.vue';
@@ -65,7 +65,7 @@ const flux = reactive({
 </script>
 
 <template>
-  <Breadcrumbs
+  <XBreadcrumb
     :items="[
       { text: 'Library' },
       { text: 'Data Entry' },

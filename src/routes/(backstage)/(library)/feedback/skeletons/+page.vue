@@ -1,10 +1,9 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
+import { XBreadcrumb, XSkeleton } from '@x/ui';
 import { useImage } from '@vueuse/core';
 import { UseImage } from '@vueuse/components';
 
-import Breadcrumbs from '~/components/Breadcrumbs.vue';
-import Skeleton from '~/components/Skeleton.vue';
 import Button from '~/components/Button.vue';
 
 const imageOptions = ref({ src: 'https://place-hold.it/300x200' });
@@ -27,7 +26,7 @@ function change2() {
 </script>
 
 <template>
-  <Breadcrumbs :items="[{ text: 'Library' }, { text: 'Feedback' }, { text: 'Skeletons' }]" />
+  <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Feedback' }, { text: 'Skeletons' }]" />
 
   <div class="my-4">
     <div class="text-3xl font-bold">Skeletons</div>
@@ -36,7 +35,7 @@ function change2() {
   <div class="flex flex-col border p-4 mb-4">
     <div class="mb-2">Basic</div>
 
-    <Skeleton />
+    <XSkeleton />
   </div>
 
   <div class="flex flex-col border p-4 mb-4 gap-4">

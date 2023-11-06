@@ -1,10 +1,9 @@
 <script lang="ts" setup>
-import Breadcrumbs from '~/components/Breadcrumbs.vue';
-import Timeline from '~/components/Timeline.vue';
+import { XBreadcrumb, XTimeline } from '@x/ui';
 </script>
 
 <template>
-  <Breadcrumbs :items="[{ text: 'Library' }, { text: 'Data Display' }, { text: 'Timeline' }]" />
+  <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Data Display' }, { text: 'Timeline' }]" />
 
   <div class="my-4">
     <div class="text-3xl font-bold">Timeline</div>
@@ -13,6 +12,6 @@ import Timeline from '~/components/Timeline.vue';
   <div class="flex flex-col border p-4 mb-4">
     <div class="mb-2">Basic</div>
 
-    <Timeline />
+    <XTimeline />
   </div>
 </template>

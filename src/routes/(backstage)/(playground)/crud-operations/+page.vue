@@ -1,12 +1,11 @@
 <script lang="ts" setup>
 import { reactive, onMounted } from 'vue';
-import { XBreadcrumb, XPanel } from '@x/ui';
+import { XBreadcrumb, XPanel, XTooltip } from '@x/ui';
 
 import TextField from '~/components/TextField.vue';
 import RadioGroup from '~/components/RadioGroup.vue';
 import Checkbox from '~/components/Checkbox.vue';
 import Table from '~/components/Table.vue';
-import Tooltip from '~/components/Tooltip.vue';
 import Button from '~/components/Button.vue';
 
 import useStore from './store';
@@ -82,9 +81,9 @@ onMounted(() => {
 
       <template #actions="{ row }">
         <div class="space-x-4">
-          <Tooltip title="Detail">
+          <XTooltip title="Detail">
             <Button variant="text" color="info" icon="i-bx-detail" @click="actions.viewTodo(row)" />
-          </Tooltip>
+          </XTooltip>
         </div>
       </template>
     </Table>

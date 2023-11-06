@@ -1,8 +1,6 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
-
-import Breadcrumbs from '~/components/Breadcrumbs.vue';
-import Tabs from '~/components/Tabs.vue';
+import { XBreadcrumb, XTabs } from '@x/ui';
 
 const flux = reactive({
   tabs1: 0,
@@ -12,68 +10,68 @@ const flux = reactive({
 </script>
 
 <template>
-  <Breadcrumbs :items="[{ text: 'Library' }, { text: 'Navigation' }, { text: 'Tabs' }]" />
+  <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Navigation' }, { text: 'Tabs' }]" />
 
   <div class="my-4">
     <div class="text-3xl font-bold">Tabs</div>
   </div>
 
-  <Tabs
+  <XTabs
     v-model="flux.tabs1"
     class="my-4 bg-white dark:bg-slate-800 border dark:border-slate-600 rounded-lg"
   >
-    <Tabs.Tab title="Angular">
+    <XTabs.Tab title="Angular">
       <div class="text-red-500 p-4">Angular Content</div>
-    </Tabs.Tab>
+    </XTabs.Tab>
 
-    <Tabs.Tab title="React">
+    <XTabs.Tab title="React">
       <div class="text-blue-500 p-4">React Content</div>
-    </Tabs.Tab>
+    </XTabs.Tab>
 
-    <Tabs.Tab title="Svelte">
+    <XTabs.Tab title="Svelte">
       <div class="text-orange-500 p-4">Svelte Content</div>
-    </Tabs.Tab>
+    </XTabs.Tab>
 
-    <Tabs.Tab title="Vue">
+    <XTabs.Tab title="Vue">
       <div class="text-green-500 p-4">Vue Content</div>
-    </Tabs.Tab>
-  </Tabs>
+    </XTabs.Tab>
+  </XTabs>
 
   <div class="flex flex-col border p-4 mb-4">
     <div class="mb-2">Values</div>
 
-    <Tabs
+    <XTabs
       v-model="flux.tabs2"
       class="my-4 bg-white dark:bg-slate-800 border dark:border-slate-600 rounded-lg"
     >
-      <Tabs.Tab title="Angular" value="angular">
+      <XTabs.Tab title="Angular" value="angular">
         <div class="text-red-500 p-4">Angular Content</div>
-      </Tabs.Tab>
+      </XTabs.Tab>
 
-      <Tabs.Tab title="React" value="react">
+      <XTabs.Tab title="React" value="react">
         <div class="text-blue-500 p-4">React Content</div>
-      </Tabs.Tab>
+      </XTabs.Tab>
 
-      <Tabs.Tab title="Svelte" value="svelte">
+      <XTabs.Tab title="Svelte" value="svelte">
         <div class="text-orange-500 p-4">Svelte Content</div>
-      </Tabs.Tab>
+      </XTabs.Tab>
 
-      <Tabs.Tab title="Vue" value="vue">
+      <XTabs.Tab title="Vue" value="vue">
         <div class="text-green-500 p-4">Vue Content</div>
-      </Tabs.Tab>
-    </Tabs>
+      </XTabs.Tab>
+    </XTabs>
   </div>
 
   <div class="flex flex-col border p-4 mb-4">
     <div class="mb-2">Overflow</div>
 
-    <Tabs
+    <XTabs
       v-model="flux.tabs3"
       class="my-4 bg-white dark:bg-slate-800 border dark:border-slate-600 rounded-lg"
     >
-      <Tabs.Tab v-for="num in 20" :key="num" :title="`Tab ${num}`">
+      <XTabs.Tab v-for="num in 20" :key="num" :title="`Tab ${num}`">
         <div class="text-red-500 p-4">Content {{ num }}</div>
-      </Tabs.Tab>
-    </Tabs>
+      </XTabs.Tab>
+    </XTabs>
   </div>
 </template>

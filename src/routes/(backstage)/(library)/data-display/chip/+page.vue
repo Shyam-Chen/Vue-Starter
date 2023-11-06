@@ -1,10 +1,9 @@
 <script lang="ts" setup>
-import Breadcrumbs from '~/components/Breadcrumbs.vue';
-import Chip from '~/components/Chip.vue';
+import { XBreadcrumb, XChip } from '@x/ui';
 </script>
 
 <template>
-  <Breadcrumbs :items="[{ text: 'Library' }, { text: 'Data Display' }, { text: 'Chip' }]" />
+  <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Data Display' }, { text: 'Chip' }]" />
 
   <div class="my-4">
     <div class="text-3xl font-bold">Chip</div>
@@ -14,99 +13,99 @@ import Chip from '~/components/Chip.vue';
     <div class="font-bold">Basic</div>
 
     <div class="flex flex-wrap justify-center items-center gap-4">
-      <Chip>
+      <XChip>
         <div class="w-4 h-4 i-fa-envelope"></div>
         <div class="ml-1">Mail (primary)</div>
-      </Chip>
+      </XChip>
 
-      <Chip color="secondary">
+      <XChip color="secondary">
         <div class="w-4 h-4 i-fa-envelope"></div>
         <div class="ml-1">Mail (secondary)</div>
-      </Chip>
+      </XChip>
 
-      <Chip color="success">
+      <XChip color="success">
         <div class="w-4 h-4 i-fa-envelope"></div>
         <div class="ml-1">Mail (success)</div>
-      </Chip>
+      </XChip>
 
-      <Chip color="warning">
+      <XChip color="warning">
         <div class="w-4 h-4 i-fa-envelope"></div>
         <div class="ml-1">Mail (warning)</div>
-      </Chip>
+      </XChip>
 
-      <Chip color="danger">
+      <XChip color="danger">
         <div class="w-4 h-4 i-fa-envelope"></div>
         <div class="ml-1">Mail (danger)</div>
-      </Chip>
+      </XChip>
 
-      <Chip color="info">
+      <XChip color="info">
         <div class="w-4 h-4 i-fa-envelope"></div>
         <div class="ml-1">Mail (info)</div>
-      </Chip>
+      </XChip>
     </div>
 
     <div class="flex flex-wrap justify-center items-center gap-4">
-      <Chip closable>
+      <XChip closable>
         <div class="w-4 h-4 i-fa-envelope"></div>
         <div class="ml-1">Mail (primary)</div>
-      </Chip>
+      </XChip>
 
-      <Chip color="secondary" closable>
+      <XChip color="secondary" closable>
         <div class="w-4 h-4 i-fa-envelope"></div>
         <div class="ml-1">Mail (secondary)</div>
-      </Chip>
+      </XChip>
 
-      <Chip color="success" closable>
+      <XChip color="success" closable>
         <div class="w-4 h-4 i-fa-envelope"></div>
         <div class="ml-1">Mail (success)</div>
-      </Chip>
+      </XChip>
 
-      <Chip color="warning" closable>
+      <XChip color="warning" closable>
         <div class="w-4 h-4 i-fa-envelope"></div>
         <div class="ml-1">Mail (warning)</div>
-      </Chip>
+      </XChip>
 
-      <Chip color="danger" closable>
+      <XChip color="danger" closable>
         <div class="w-4 h-4 i-fa-envelope"></div>
         <div class="ml-1">Mail (danger)</div>
-      </Chip>
+      </XChip>
 
-      <Chip color="info" closable>
+      <XChip color="info" closable>
         <div class="w-4 h-4 i-fa-envelope"></div>
         <div class="ml-1">Mail (info)</div>
-      </Chip>
+      </XChip>
     </div>
 
     <div class="flex flex-wrap justify-center items-center gap-4">
-      <Chip disabled>
+      <XChip disabled>
         <div class="w-4 h-4 i-fa-envelope"></div>
         <div class="ml-1">Mail (primary)</div>
-      </Chip>
+      </XChip>
 
-      <Chip color="secondary" disabled>
+      <XChip color="secondary" disabled>
         <div class="w-4 h-4 i-fa-envelope"></div>
         <div class="ml-1">Mail (secondary)</div>
-      </Chip>
+      </XChip>
 
-      <Chip color="success" disabled>
+      <XChip color="success" disabled>
         <div class="w-4 h-4 i-fa-envelope"></div>
         <div class="ml-1">Mail (success)</div>
-      </Chip>
+      </XChip>
 
-      <Chip color="warning" disabled>
+      <XChip color="warning" disabled>
         <div class="w-4 h-4 i-fa-envelope"></div>
         <div class="ml-1">Mail (warning)</div>
-      </Chip>
+      </XChip>
 
-      <Chip color="danger" disabled>
+      <XChip color="danger" disabled>
         <div class="w-4 h-4 i-fa-envelope"></div>
         <div class="ml-1">Mail (danger)</div>
-      </Chip>
+      </XChip>
 
-      <Chip color="info" disabled>
+      <XChip color="info" disabled>
         <div class="w-4 h-4 i-fa-envelope"></div>
         <div class="ml-1">Mail (info)</div>
-      </Chip>
+      </XChip>
     </div>
   </div>
 </template>

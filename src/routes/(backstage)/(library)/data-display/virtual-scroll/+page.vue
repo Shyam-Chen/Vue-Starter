@@ -2,7 +2,7 @@
 import { ref, onMounted } from 'vue';
 import { UseVirtualList } from '@vueuse/components';
 
-import Breadcrumbs from '~/components/Breadcrumbs.vue';
+import { XBreadcrumb } from '@x/ui';
 
 import VirtualList from './VirtualList.vue';
 import leetcode from './leetcode';
@@ -80,7 +80,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <Breadcrumbs
+  <XBreadcrumb
     :items="[{ text: 'Library' }, { text: 'Data Display' }, { text: 'Virtual Scroll' }]"
   />
 

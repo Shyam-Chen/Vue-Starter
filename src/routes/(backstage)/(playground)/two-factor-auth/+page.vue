@@ -2,7 +2,7 @@
 import { reactive } from 'vue';
 import QrcodeImage from 'vue-qrcode-image';
 
-import Breadcrumbs from '~/components/Breadcrumbs.vue';
+import { XBreadcrumb } from '@x/ui';
 import TextField from '~/components/TextField.vue';
 import Button from '~/components/Button.vue';
 
@@ -14,7 +14,7 @@ const flux = reactive({
 </script>
 
 <template>
-  <Breadcrumbs :items="[{ text: 'Settings' }, { text: 'Two-factor Authentication' }]" />
+  <XBreadcrumb :items="[{ text: 'Settings' }, { text: 'Two-factor Authentication' }]" />
 
   <div class="my-4">
     <div class="text-3xl font-bold">Two-factor Authentication</div>

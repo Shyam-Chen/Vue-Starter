@@ -1,14 +1,13 @@
 <script lang="ts" setup>
 import { ref, reactive, watch, onMounted } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
+import { XBreadcrumb, XTooltip } from '@x/ui';
 
-import Breadcrumbs from '~/components/Breadcrumbs.vue';
 import Button from '~/components/Button.vue';
 import Chip from '~/components/Chip.vue';
 import Select from '~/components/Select.vue';
 import Dialog from '~/components/Dialog.vue';
 import TextField from '~/components/TextField.vue';
-import Tooltip from '~/components/Tooltip.vue';
 import request from '~/utilities/request';
 
 const router = useRouter();
@@ -68,7 +67,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <Breadcrumbs :items="[{ text: 'Management' }, { text: 'User List' }]" />
+  <XBreadcrumb :items="[{ text: 'Management' }, { text: 'User List' }]" />
 
   <div class="my-4">
     <div class="text-3xl font-bold">User List</div>
@@ -155,7 +154,7 @@ onMounted(async () => {
               >
             </td>
             <td class="flex gap-3 px-6 py-3 align-middle whitespace-nowrap">
-              <Tooltip title="Edit">
+              <XTooltip title="Edit">
                 <Button
                   variant="text"
                   color="success"
@@ -163,9 +162,9 @@ onMounted(async () => {
                   class="w-full"
                   @click="flux.viewUser(user)"
                 />
-              </Tooltip>
+              </XTooltip>
 
-              <Tooltip title="Delete">
+              <XTooltip title="Delete">
                 <Button
                   variant="text"
                   color="danger"
@@ -173,7 +172,7 @@ onMounted(async () => {
                   icon="i-fa-trash"
                   @click="flux.viewUser(user)"
                 />
-              </Tooltip>
+              </XTooltip>
             </td>
           </tr>
         </tbody>

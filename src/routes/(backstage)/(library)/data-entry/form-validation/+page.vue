@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
 
-import Breadcrumbs from '~/components/Breadcrumbs.vue';
+import { XBreadcrumb } from '@x/ui';
 import TextField from '~/components/TextField.vue';
 import RadioGroup from '~/components/RadioGroup.vue';
 import Select from '~/components/Select.vue';
@@ -28,7 +28,7 @@ const flux = reactive({
 </script>
 
 <template>
-  <Breadcrumbs
+  <XBreadcrumb
     :items="[{ text: 'Library' }, { text: 'Data Entry' }, { text: 'Form Validation' }]"
   />
 

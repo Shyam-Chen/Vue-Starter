@@ -1,9 +1,6 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
-
-import Breadcrumbs from '~/components/Breadcrumbs.vue';
-import TextField from '~/components/TextField.vue';
-import ChipField from '~/components/ChipField.vue';
+import { XBreadcrumb, XTextField, XChipField } from '@x/ui';
 
 const flux = reactive({
   textField1: '',
@@ -12,7 +9,7 @@ const flux = reactive({
 </script>
 
 <template>
-  <Breadcrumbs :items="[{ text: 'Library' }, { text: 'Data Entry' }, { text: 'TextField' }]" />
+  <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Data Entry' }, { text: 'TextField' }]" />
 
   <div class="my-4">
     <div class="text-3xl font-bold">TextField</div>
@@ -22,9 +19,11 @@ const flux = reactive({
     <div class="mb-2">Basic</div>
 
     <div class="flex justify-center">
-      <TextField v-model:value="flux.textField1" placeholder="Type here..."
-        >Example label</TextField
-      >
+      <XTextField
+        v-model:value="flux.textField1"
+        label="Example label"
+        placeholder="Type here..."
+      />
     </div>
   </div>
 
@@ -32,9 +31,12 @@ const flux = reactive({
     <div class="mb-2">Disabled</div>
 
     <div class="flex justify-center">
-      <TextField v-model:value="flux.textField1" placeholder="Type here..." disabled
-        >Example label</TextField
-      >
+      <XTextField
+        v-model:value="flux.textField1"
+        label="Example label"
+        placeholder="Type here..."
+        disabled
+      />
     </div>
   </div>
 
@@ -42,21 +44,21 @@ const flux = reactive({
     <div class="mb-2">Icons</div>
 
     <div class="grid grid-cols-2 gap-3">
-      <TextField
+      <XTextField
         v-model:value="flux.textField1"
         label="Example label"
         placeholder="Type here..."
         prepend="i-mdi-user-circle"
       />
 
-      <TextField
+      <XTextField
         v-model:value="flux.textField1"
         label="Example label"
         placeholder="Type here..."
         append="i-mdi-user-circle"
       />
 
-      <TextField
+      <XTextField
         v-model:value="flux.textField1"
         label="Example label"
         placeholder="Type here..."
@@ -64,7 +66,7 @@ const flux = reactive({
         errorMessage="Incorrect entry."
       />
 
-      <TextField
+      <XTextField
         v-model:value="flux.textField1"
         label="Example label"
         placeholder="Type here..."
@@ -78,13 +80,15 @@ const flux = reactive({
     <div class="mb-2">Chips</div>
 
     <div class="flex justify-center mb-2">
-      <ChipField v-model:value="flux.chipField" placeholder="Type here...">Example label</ChipField>
+      <XChipField v-model:value="flux.chipField" placeholder="Type here...">
+        Example label
+      </XChipField>
     </div>
 
     <div class="flex justify-center">
-      <ChipField v-model:value="flux.chipField" placeholder="Type here..." disabled
-        >Example label</ChipField
-      >
+      <XChipField v-model:value="flux.chipField" placeholder="Type here..." disabled>
+        Example label
+      </XChipField>
     </div>
   </div>
 </template>

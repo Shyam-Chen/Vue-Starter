@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { ref, reactive, onMounted } from 'vue';
+import { XSelect } from '@x/ui';
 
 import TextField from '~/components/TextField.vue';
-import Select from '~/components/Select.vue';
 import Button from '~/components/Button.vue';
 import Table from '~/components/table';
 
@@ -39,7 +39,7 @@ async function search() {
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
         <TextField v-model:value="body.title" />
 
-        <Select
+        <XSelect
           v-model:value="body.difficulty"
           :options="[
             { label: 'Easy', value: 'Easy' },

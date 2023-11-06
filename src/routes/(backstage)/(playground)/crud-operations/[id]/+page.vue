@@ -2,7 +2,7 @@
 import { onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 
-import Breadcrumbs from '~/components/Breadcrumbs.vue';
+import { XBreadcrumb } from '@x/ui';
 import TextField from '~/components/TextField.vue';
 import Checkbox from '~/components/Checkbox.vue';
 import Button from '~/components/Button.vue';
@@ -25,7 +25,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <Breadcrumbs
+  <XBreadcrumb
     :items="[
       { text: 'Playground' },
       { text: 'CRUD operations', href: '/crud-operations' },

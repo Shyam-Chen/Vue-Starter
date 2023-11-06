@@ -1,8 +1,6 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
-
-import Breadcrumbs from '~/components/Breadcrumbs.vue';
-import MonthPicker from '~/components/MonthPicker.vue';
+import { XBreadcrumb, XMonthPicker } from '@x/ui';
 
 const flux = reactive({
   monthPicker: '',
@@ -10,7 +8,7 @@ const flux = reactive({
 </script>
 
 <template>
-  <Breadcrumbs
+  <XBreadcrumb
     :items="[
       { text: 'Library' },
       { text: 'Data Entry' },
@@ -27,7 +25,7 @@ const flux = reactive({
     <div class="mb-2">Basic</div>
 
     <div class="flex justify-center">
-      <MonthPicker v-model:value="flux.monthPicker" />
+      <XMonthPicker v-model:value="flux.monthPicker" />
     </div>
   </div>
 
@@ -35,7 +33,7 @@ const flux = reactive({
     <div class="mb-2">Disabled</div>
 
     <div class="flex justify-center">
-      <MonthPicker v-model:value="flux.monthPicker" disabled />
+      <XMonthPicker v-model:value="flux.monthPicker" disabled />
     </div>
   </div>
 
@@ -43,7 +41,7 @@ const flux = reactive({
     <div class="mb-2">Status</div>
 
     <div class="flex justify-center">
-      <MonthPicker v-model:value="flux.monthPicker" :errorMessage="'Error'" />
+      <XMonthPicker v-model:value="flux.monthPicker" :errorMessage="'Error'" />
     </div>
   </div>
 
@@ -51,7 +49,7 @@ const flux = reactive({
     <div class="mb-2">Status</div>
 
     <div class="flex justify-center">
-      <MonthPicker v-model:value="flux.monthPicker" :errorMessage="'Error'" />
+      <XMonthPicker v-model:value="flux.monthPicker" :errorMessage="'Error'" />
     </div>
   </div>
 
@@ -59,7 +57,7 @@ const flux = reactive({
     <div class="mb-2">Status</div>
 
     <div class="flex justify-center">
-      <MonthPicker v-model:value="flux.monthPicker" :errorMessage="'Error'" />
+      <XMonthPicker v-model:value="flux.monthPicker" :errorMessage="'Error'" />
     </div>
   </div>
 </template>

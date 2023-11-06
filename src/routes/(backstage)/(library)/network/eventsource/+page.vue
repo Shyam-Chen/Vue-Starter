@@ -1,12 +1,12 @@
 <script lang="ts" setup>
-import Breadcrumbs from '~/components/Breadcrumbs.vue';
+import { XBreadcrumb } from '@x/ui';
 import { useEventSource } from '~/composables';
 
 const { data } = useEventSource('/sse');
 </script>
 
 <template>
-  <Breadcrumbs :items="[{ text: 'Library' }, { text: 'Network' }, { text: 'EventSource' }]" />
+  <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Network' }, { text: 'EventSource' }]" />
 
   <div class="my-4">
     <div class="text-3xl font-bold">EventSource</div>

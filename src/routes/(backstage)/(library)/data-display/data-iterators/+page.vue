@@ -1,9 +1,6 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
-
-import Breadcrumbs from '~/components/Breadcrumbs.vue';
-import Iterator from '~/components/Iterator.vue';
-import TextField from '~/components/TextField.vue';
+import { XBreadcrumb, XIterator, XTextField } from '@x/ui';
 
 interface Iterator1 {
   address?: string;
@@ -21,7 +18,7 @@ const flux = reactive({
 </script>
 
 <template>
-  <Breadcrumbs :items="[{ text: 'Library' }, { text: 'Data Display' }, { text: 'Iterator' }]" />
+  <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Data Display' }, { text: 'Iterator' }]" />
 
   <div class="my-4">
     <div class="text-3xl font-bold">Iterator</div>
@@ -31,11 +28,11 @@ const flux = reactive({
     <div class="mb-2">Basic examples</div>
 
     <div class="flex justify-center">
-      <Iterator v-model:value="flux.iterator1">
+      <XIterator v-model:value="flux.iterator1">
         <template #default="{ item }: { item: Iterator1 }">
-          <TextField v-model:value="item.address" />
+          <XTextField v-model:value="item.address" />
         </template>
-      </Iterator>
+      </XIterator>
     </div>
 
     <pre>{{ flux.iterator1 }}</pre>
@@ -45,14 +42,14 @@ const flux = reactive({
     <div class="mb-2">Basic examples</div>
 
     <div class="flex justify-center">
-      <Iterator v-model:value="flux.iterator2">
+      <XIterator v-model:value="flux.iterator2">
         <template #default="{ item }: { item: Iterator2 }">
           <div class="whitespace-nowrap">Deploy a</div>
-          <TextField v-model:value="item.serviceName" :errorMessage="'Error Message'" />
+          <XTextField v-model:value="item.serviceName" :errorMessage="'Error Message'" />
           <div class="whitespace-nowrap">service to</div>
-          <TextField v-model:value="item.cloudName" />
+          <XTextField v-model:value="item.cloudName" />
         </template>
-      </Iterator>
+      </XIterator>
     </div>
 
     <pre>{{ flux.iterator2 }}</pre>

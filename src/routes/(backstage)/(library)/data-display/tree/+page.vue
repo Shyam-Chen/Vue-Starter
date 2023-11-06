@@ -1,8 +1,7 @@
 <script lang="ts" setup>
-import Breadcrumbs from '~/components/Breadcrumbs.vue';
-import Tree from '~/components/Tree.vue';
+import { XBreadcrumb, XTree } from '@x/ui';
 
-type NodeSelect = InstanceType<typeof Tree>['onNodeSelect'];
+type NodeSelect = InstanceType<typeof XTree>['onNodeSelect'];
 
 const nodeSelect: NodeSelect = (node) => {
   console.log(node);
@@ -10,7 +9,7 @@ const nodeSelect: NodeSelect = (node) => {
 </script>
 
 <template>
-  <Breadcrumbs :items="[{ text: 'Library' }, { text: 'Data Display' }, { text: 'Tree' }]" />
+  <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Data Display' }, { text: 'Tree' }]" />
 
   <div class="my-4">
     <div class="text-3xl font-bold">Tree</div>
@@ -19,7 +18,7 @@ const nodeSelect: NodeSelect = (node) => {
   <div class="flex flex-col border p-4 mb-4">
     <div class="mb-2">Basic</div>
 
-    <Tree
+    <XTree
       :nodes="[
         {
           label: '1',

@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import Breadcrumbs from '~/components/Breadcrumbs.vue';
+import { XBreadcrumb } from '@x/ui';
 </script>
 
 <template>
-  <Breadcrumbs :items="[{ text: 'Library' }, { text: 'Navigation' }, { text: 'Breadcrumbs' }]" />
+  <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Navigation' }, { text: 'Breadcrumbs' }]" />
 
   <div class="my-4">
     <div class="text-3xl font-bold">Breadcrumbs</div>
@@ -12,7 +12,7 @@ import Breadcrumbs from '~/components/Breadcrumbs.vue';
   <div class="flex flex-col border p-4 mb-4">
     <div class="mb-2">Basic examples</div>
 
-    <Breadcrumbs
+    <XBreadcrumb
       :items="[{ text: 'Dashboard', href: '#' }, { text: 'Link 1', href: '#' }, { text: 'Link 2' }]"
     />
   </div>
@@ -20,12 +20,12 @@ import Breadcrumbs from '~/components/Breadcrumbs.vue';
   <div class="flex flex-col border p-4 mb-4">
     <div class="mb-2">Divider</div>
 
-    <Breadcrumbs
+    <XBreadcrumb
       :items="[{ text: 'Dashboard', href: '#' }, { text: 'Link 1', href: '#' }, { text: 'Link 2' }]"
     >
       <template #divider>
         <div class="i-fa-arrow-right w-3 h-3"></div>
       </template>
-    </Breadcrumbs>
+    </XBreadcrumb>
   </div>
 </template>

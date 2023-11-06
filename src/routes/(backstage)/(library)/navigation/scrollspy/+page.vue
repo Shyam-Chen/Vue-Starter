@@ -2,7 +2,7 @@
 import { ref } from 'vue';
 import { vIntersectionObserver } from '@vueuse/components';
 
-import Breadcrumbs from '~/components/Breadcrumbs.vue';
+import { XBreadcrumb } from '@x/ui';
 
 const sections = ref(Array(6).fill(false));
 
@@ -14,7 +14,7 @@ const onIntersectionObserver = (num: number): IntersectionObserverCallback => {
 </script>
 
 <template>
-  <Breadcrumbs :items="[{ text: 'Library' }, { text: 'Navigation' }, { text: 'Scrollspy' }]" />
+  <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Navigation' }, { text: 'Scrollspy' }]" />
 
   <div class="my-4">
     <div class="text-3xl font-bold">Scrollspy</div>

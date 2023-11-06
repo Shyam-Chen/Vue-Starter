@@ -1,11 +1,11 @@
 <script lang="ts" setup>
-import Breadcrumbs from '~/components/Breadcrumbs.vue';
+import { XBreadcrumb } from '@x/ui';
 import Dropdown from '~/components/Dropdown.vue';
 import Button from '~/components/Button.vue';
 </script>
 
 <template>
-  <Breadcrumbs :items="[{ text: 'Library' }, { text: 'Navigation' }, { text: 'Dropdown' }]" />
+  <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Navigation' }, { text: 'Dropdown' }]" />
 
   <div class="my-4">
     <div class="text-3xl font-bold">Dropdown</div>

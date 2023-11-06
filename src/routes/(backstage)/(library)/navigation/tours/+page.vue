@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { ref, reactive, watch, onUnmounted, nextTick } from 'vue';
 
-import Breadcrumbs from '~/components/Breadcrumbs.vue';
+import { XBreadcrumb } from '@x/ui';
 import Button from '~/components/Button.vue';
 
 const tour = ref();
@@ -110,7 +110,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <Breadcrumbs :items="[{ text: 'Library' }, { text: 'Navigation' }, { text: 'Tours' }]" />
+  <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Navigation' }, { text: 'Tours' }]" />
 
   <div class="my-4">
     <div ref="el1" class="text-3xl font-bold">Tours</div>

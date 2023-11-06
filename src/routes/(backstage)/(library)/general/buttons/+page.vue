@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-import Breadcrumbs from '~/components/Breadcrumbs.vue';
+import { XBreadcrumb } from '@x/ui';
 import Button from '~/components/Button.vue';
 </script>
 
 <template>
-  <Breadcrumbs :items="[{ text: 'Library' }, { text: 'General' }, { text: 'Buttons' }]" />
+  <XBreadcrumb :items="[{ text: 'Library' }, { text: 'General' }, { text: 'Buttons' }]" />
 
   <div class="my-4">
     <div class="text-3xl font-bold">Buttons</div>

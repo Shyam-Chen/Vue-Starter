@@ -1,11 +1,11 @@
 <script lang="ts" setup>
 import { RouterLink } from 'vue-router';
 
-import Breadcrumbs from '~/components/Breadcrumbs.vue';
+import { XBreadcrumb } from '@x/ui';
 </script>
 
 <template>
-  <Breadcrumbs :items="[{ text: 'Library' }, { text: 'Overview' }]" />
+  <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Overview' }]" />
 
   <div class="flex flex-col gap-2 mt-4 mb-8">
     <div class="text-xl">General</div>

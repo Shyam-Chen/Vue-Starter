@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import Breadcrumbs from '~/components/Breadcrumbs.vue';
+import { XBreadcrumb } from '@x/ui';
 </script>
 
 <template>
-  <Breadcrumbs :items="[{ text: 'Library' }, { text: 'General' }, { text: 'Paper' }]" />
+  <XBreadcrumb :items="[{ text: 'Library' }, { text: 'General' }, { text: 'Paper' }]" />
 
   <div class="my-4">
     <div class="text-3xl font-bold">Paper</div>

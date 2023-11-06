@@ -1,10 +1,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
-
-import Breadcrumbs from '~/components/Breadcrumbs.vue';
-import Button from '~/components/Button.vue';
-import Notification from '~/components/Notification.vue';
-import useNotification from '~/composables/useNotification';
+import { XBreadcrumb, XButton, XNotification } from '@x/ui';
+import { useNotification } from '@x/ui';
 
 const notify = ref();
 
@@ -35,7 +32,7 @@ const push3 = () => {
 </script>
 
 <template>
-  <Breadcrumbs :items="[{ text: 'Library' }, { text: 'Feedback' }, { text: 'Notification' }]" />
+  <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Feedback' }, { text: 'Notification' }]" />
 
   <div class="my-4">
     <div class="text-3xl font-bold">Notification</div>
@@ -45,8 +42,8 @@ const push3 = () => {
     <div class="mb-2">Basic</div>
 
     <div class="flex gap-4">
-      <Button @click="push">Push</Button>
-      <Notification ref="notify" />
+      <XButton @click="push">Push</XButton>
+      <XNotification ref="notify" />
     </div>
   </div>
 
@@ -54,8 +51,8 @@ const push3 = () => {
     <div class="mb-2">Multiple</div>
 
     <div class="flex gap-4">
-      <Button @click="push2">Push</Button>
-      <Notification ref="notify2" color="success" icon="i-mdi-checkbox-marked-circle-outline" />
+      <XButton @click="push2">Push</XButton>
+      <XNotification ref="notify2" color="success" icon="i-mdi-checkbox-marked-circle-outline" />
     </div>
   </div>
 
@@ -63,9 +60,9 @@ const push3 = () => {
     <div class="mb-2">useNotification</div>
 
     <div class="flex gap-4">
-      <Button @click="push3">Push</Button>
+      <XButton @click="push3">Push</XButton>
 
-      <Notification
+      <XNotification
         :messages="notification.state.messages"
         :timeouts="notification.state.timeouts"
         color="danger"

@@ -1,11 +1,11 @@
 <script lang="ts" setup>
-import Breadcrumbs from '~/components/Breadcrumbs.vue';
+import { XBreadcrumb } from '@x/ui';
 import Button from '~/components/Button.vue';
 import Popover from '~/components/Popover.vue';
 </script>
 
 <template>
-  <Breadcrumbs :items="[{ text: 'Library' }, { text: 'Data Display' }, { text: 'Popover' }]" />
+  <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Data Display' }, { text: 'Popover' }]" />
 
   <div class="my-4">
     <div class="text-3xl font-bold">Popover</div>

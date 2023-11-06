@@ -1,13 +1,12 @@
 <script lang="ts" setup>
 import type { EChartsOption } from 'echarts';
 import { ref, onMounted } from 'vue';
+import { XBreadcrumb } from '@x/ui';
 import { use, registerMap } from 'echarts/core';
 import { MapChart } from 'echarts/charts';
 import { SVGRenderer } from 'echarts/renderers';
 import { VisualMapComponent, TooltipComponent, ToolboxComponent } from 'echarts/components';
 import Chart from 'vue-echarts';
-
-import Breadcrumbs from '~/components/Breadcrumbs.vue';
 
 use([MapChart, SVGRenderer, VisualMapComponent, TooltipComponent, ToolboxComponent]);
 
@@ -101,7 +100,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <Breadcrumbs :items="[{ text: 'Library' }, { text: 'Charts' }, { text: 'World Map' }]" />
+  <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Charts' }, { text: 'World Map' }]" />
 
   <div class="my-4">
     <div class="text-3xl font-bold">World Map</div>

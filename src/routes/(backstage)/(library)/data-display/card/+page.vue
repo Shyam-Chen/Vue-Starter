@@ -1,14 +1,13 @@
 <script lang="ts" setup>
-import Breadcrumbs from '~/components/Breadcrumbs.vue';
-import Card from '~/components/Card.vue';
+import { XBreadcrumb, XCard } from '@x/ui';
 </script>
 
 <template>
-  <Breadcrumbs :items="[{ text: 'Library' }, { text: 'Data Display' }, { text: 'Card' }]" />
+  <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Data Display' }, { text: 'Card' }]" />
 
   <div class="my-4">
     <div class="text-3xl font-bold">Card</div>
   </div>
 
-  <Card />
+  <XCard />
 </template>

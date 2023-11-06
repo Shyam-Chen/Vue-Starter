@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import Breadcrumbs from '~/components/Breadcrumbs.vue';
+import { XBreadcrumb } from '@x/ui';
 import TextField from '~/components/TextField.vue';
 import Button from '~/components/Button.vue';
 
@@ -13,7 +13,7 @@ $subscribe((state) => {
 </script>
 
 <template>
-  <Breadcrumbs :items="[{ text: 'Playground' }, { text: 'Counter' }]" />
+  <XBreadcrumb :items="[{ text: 'Playground' }, { text: 'Counter' }]" />
 
   <div class="my-4">
     <div class="text-3xl font-bold">Counter</div>

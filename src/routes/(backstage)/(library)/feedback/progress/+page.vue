@@ -1,11 +1,11 @@
 <script lang="ts" setup>
-import Breadcrumbs from '~/components/Breadcrumbs.vue';
+import { XBreadcrumb } from '@x/ui';
 import Spinner from '~/components/Spinner.vue';
 import ProgressBar from '~/components/ProgressBar.vue';
 </script>
 
 <template>
-  <Breadcrumbs :items="[{ text: 'Library' }, { text: 'Feedback' }, { text: 'Progress' }]" />
+  <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Feedback' }, { text: 'Progress' }]" />
 
   <div class="my-4">
     <div class="text-3xl font-bold">Progress</div>

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
 
-import Breadcrumbs from '~/components/Breadcrumbs.vue';
+import { XBreadcrumb } from '@x/ui';
 import Button from '~/components/Button.vue';
 import request from '~/utilities/request';
 
@@ -14,7 +14,7 @@ const doFetch = async () => {
 </script>
 
 <template>
-  <Breadcrumbs :items="[{ text: 'Library' }, { text: 'Network' }, { text: 'Fetch' }]" />
+  <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Network' }, { text: 'Fetch' }]" />
 
   <div class="my-4">
     <div class="text-3xl font-bold">Fetch</div>

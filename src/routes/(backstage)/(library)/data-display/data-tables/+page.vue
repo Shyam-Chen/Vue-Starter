@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
+import { XBreadcrumb } from '@x/ui';
 
-import Breadcrumbs from '~/components/Breadcrumbs.vue';
 import Table from '~/components/Table.vue';
 import Button from '~/components/Button.vue';
 import Collapse from '~/components/Collapse.vue';
@@ -218,7 +218,7 @@ const flux = reactive({
 </script>
 
 <template>
-  <Breadcrumbs :items="[{ text: 'Library' }, { text: 'Data Display' }, { text: 'Table' }]" />
+  <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Data Display' }, { text: 'Table' }]" />
 
   <div class="my-4">
     <div class="text-3xl font-bold">Table</div>

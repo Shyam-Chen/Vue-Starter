@@ -1,10 +1,9 @@
 <script lang="ts" setup>
-import Breadcrumbs from '~/components/Breadcrumbs.vue';
-import Tooltip from '~/components/Tooltip.vue';
+import { XBreadcrumb, XTooltip } from '@x/ui';
 </script>
 
 <template>
-  <Breadcrumbs :items="[{ text: 'Library' }, { text: 'Data Display' }, { text: 'Tooltip' }]" />
+  <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Data Display' }, { text: 'Tooltip' }]" />
 
   <div class="my-4">
     <div class="text-3xl font-bold">Tooltip</div>
@@ -14,9 +13,9 @@ import Tooltip from '~/components/Tooltip.vue';
     <div class="mb-2">Basic</div>
 
     <div class="flex justify-center">
-      <Tooltip title="Hi! I'm tooltip">
+      <XTooltip title="Hi! I'm tooltip">
         <span>Tooltip will show on mouse enter.</span>
-      </Tooltip>
+      </XTooltip>
     </div>
   </div>
 
@@ -24,13 +23,13 @@ import Tooltip from '~/components/Tooltip.vue';
     <div class="mb-2">Basic</div>
 
     <div class="flex justify-between">
-      <Tooltip title="Hi! I'm tooltip">
+      <XTooltip title="Hi! I'm tooltip">
         <span>Tooltip will show on mouse enter.</span>
-      </Tooltip>
+      </XTooltip>
 
-      <Tooltip title="Hi! I'm tooltip">
+      <XTooltip title="Hi! I'm tooltip">
         <span>Tooltip will show on mouse enter.</span>
-      </Tooltip>
+      </XTooltip>
     </div>
   </div>
 
@@ -38,9 +37,9 @@ import Tooltip from '~/components/Tooltip.vue';
     <div class="mb-2">Basic</div>
 
     <div class="flex justify-center">
-      <Tooltip title="Hi! I'm tooltip">
+      <XTooltip title="Hi! I'm tooltip">
         <span>Tooltip will show on mouse enter.</span>
-      </Tooltip>
+      </XTooltip>
     </div>
   </div>
 
@@ -48,13 +47,13 @@ import Tooltip from '~/components/Tooltip.vue';
     <div class="mb-2">Basic</div>
 
     <div class="flex justify-between">
-      <Tooltip title="Hi! I'm tooltip">
+      <XTooltip title="Hi! I'm tooltip">
         <span>Tooltip will show on mouse enter.</span>
-      </Tooltip>
+      </XTooltip>
 
-      <Tooltip title="Hi! I'm tooltip">
+      <XTooltip title="Hi! I'm tooltip">
         <span>Tooltip will show on mouse enter.</span>
-      </Tooltip>
+      </XTooltip>
     </div>
   </div>
 
@@ -62,9 +61,9 @@ import Tooltip from '~/components/Tooltip.vue';
     <div class="mb-2">Basic</div>
 
     <div class="flex justify-center">
-      <Tooltip title="Hi! I'm tooltip">
+      <XTooltip title="Hi! I'm tooltip">
         <span>Tooltip will show on mouse enter.</span>
-      </Tooltip>
+      </XTooltip>
     </div>
   </div>
 </template>

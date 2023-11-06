@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
 
-import Breadcrumbs from '~/components/Breadcrumbs.vue';
+import { XBreadcrumb } from '@x/ui';
 import Button from '~/components/Button.vue/Button.vue';
 
 type TreeTableNode = {
@@ -77,7 +77,7 @@ function treeNode(item: TreeTableNode) {
 </script>
 
 <template>
-  <Breadcrumbs :items="[{ text: 'Library' }, { text: 'Data Display' }, { text: 'TreeTable' }]" />
+  <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Data Display' }, { text: 'TreeTable' }]" />
 
   <div class="my-4">
     <div class="text-3xl font-bold">TreeTable</div>

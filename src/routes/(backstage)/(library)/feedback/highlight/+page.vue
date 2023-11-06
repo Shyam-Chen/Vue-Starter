@@ -1,17 +1,13 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
-
-import Breadcrumbs from '~/components/Breadcrumbs.vue';
-import TextField from '~/components/TextField.vue';
-import ChipField from '~/components/ChipField.vue';
-import Highlight from '~/components/Highlight.vue';
+import { XBreadcrumb, XTextField, XHighlight, XChipField } from '@x/ui';
 
 const query1 = ref('spotlight, emphasize and accentuate');
 const query2 = ref(['spotlight', 'emphasize', 'Accentuate']);
 </script>
 
 <template>
-  <Breadcrumbs :items="[{ text: 'Library' }, { text: 'Feedback' }, { text: 'Highlight' }]" />
+  <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Feedback' }, { text: 'Highlight' }]" />
 
   <div class="my-4">
     <div class="text-3xl font-bold">Highlight</div>
@@ -20,20 +16,20 @@ const query2 = ref(['spotlight', 'emphasize', 'Accentuate']);
   <div class="flex flex-col border p-4 mb-4">
     <div class="mb-2">String</div>
 
-    <TextField v-model:value="query1" />
+    <XTextField v-model:value="query1" />
 
-    <Highlight :query="[query1]">
+    <XHighlight :query="[query1]">
       With the Highlight component, you can spotlight, emphasize and accentuate words.
-    </Highlight>
+    </XHighlight>
   </div>
 
   <div class="flex flex-col border p-4 mb-4">
     <div class="mb-2">Array</div>
 
-    <ChipField v-model:value="query2" />
+    <XChipField v-model:value="query2" />
 
-    <Highlight :query="query2">
+    <XHighlight :query="query2">
       With the Highlight component, you can spotlight, emphasize and accentuate words.
-    </Highlight>
+    </XHighlight>
   </div>
 </template>

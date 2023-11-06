@@ -1,9 +1,6 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
-
-import Breadcrumbs from '~/components/Breadcrumbs.vue';
-import DatePicker from '~/components/DatePicker.vue';
-import DateRangePicker from '~/components/DateRangePicker.vue';
+import { XBreadcrumb, XDatePicker, XDateRangePicker } from '@x/ui';
 
 const flux = reactive({
   datePicker: '',
@@ -13,7 +10,7 @@ const flux = reactive({
 </script>
 
 <template>
-  <Breadcrumbs
+  <XBreadcrumb
     :items="[
       { text: 'Library' },
       { text: 'Data Entry' },
@@ -30,7 +27,7 @@ const flux = reactive({
     <div class="mb-2">Basic</div>
 
     <div class="flex justify-center">
-      <DatePicker v-model:value="flux.datePicker" />
+      <XDatePicker v-model:value="flux.datePicker" />
     </div>
   </div>
 
@@ -38,7 +35,7 @@ const flux = reactive({
     <div class="mb-2">Error messages</div>
 
     <div class="flex justify-center">
-      <DatePicker v-model:value="flux.datePicker" errorMessage="This is a required field" />
+      <XDatePicker v-model:value="flux.datePicker" errorMessage="This is a required field" />
     </div>
   </div>
 
@@ -46,7 +43,7 @@ const flux = reactive({
     <div class="mb-2">Range</div>
 
     <div class="flex justify-center">
-      <DateRangePicker
+      <XDateRangePicker
         v-model:startValue="flux.datePickerStartDate"
         v-model:endValue="flux.datePickerEndDate"
       />
@@ -62,7 +59,7 @@ const flux = reactive({
     <div class="mb-2">Range with error messages</div>
 
     <div class="flex justify-center">
-      <DateRangePicker
+      <XDateRangePicker
         v-model:startValue="flux.datePickerStartDate"
         v-model:endValue="flux.datePickerEndDate"
         errorMessage="This is a required field"
