@@ -7,7 +7,7 @@ import scrollableParent from '../../utilities/scrollable-parent/scrollableParent
 import Checkbox from '../checkbox/Checkbox.vue';
 import Chip from '../chip/Chip.vue';
 import TextField from '../text-field/TextField.vue';
-import ProgressBar from '../ProgressBar.vue';
+import ProgressBar from '../progress-bar/ProgressBar.vue';
 import Fade from '../fade/Fade.vue';
 
 type Option = {

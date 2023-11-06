@@ -5,10 +5,10 @@ import { add, sub, getYear } from 'date-fns';
 import range from 'lodash/range';
 import uniqueId from 'lodash/uniqueId';
 
-import getScrollableParent from '~/utilities/getScrollableParent';
+import scrollableParent from '../../utilities/scrollable-parent/scrollableParent';
 
-import TextField from './TextField.vue';
-import Fade from './Fade.vue';
+import TextField from '../text-field/TextField.vue';
+import Fade from '../fade/Fade.vue';
 
 const props = defineProps<{
   value?: number | string;
@@ -69,7 +69,7 @@ const flux = reactive({
     flux.yearRange = range(currentYear - 5, currentYear + 11);
 
     nextTick(() => {
-      flux.scrollableParent = getScrollableParent(picker.value);
+      flux.scrollableParent = scrollableParent(picker.value);
       flux.resizePanel();
     });
   },

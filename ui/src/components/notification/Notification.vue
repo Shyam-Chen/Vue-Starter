@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { nextTick, ref, watch } from 'vue';
 
-import Alert from './Alert.vue';
+import Alert from '../alert/Alert.vue';
 
 type NotificationMessage = {
   message: string;

@@ -2,7 +2,7 @@
 import { computed, watch } from 'vue';
 import { useOffsetPagination } from '@vueuse/core';
 
-import Button from './Button.vue';
+import Button from '../button/Button.vue';
 
 const props = defineProps<{
   value?: number;

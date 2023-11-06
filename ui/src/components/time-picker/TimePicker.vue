@@ -2,10 +2,12 @@
 import { computed, reactive } from 'vue';
 import range from 'lodash/range';
 
-import TextField from './TextField.vue';
-import Select from './Select.vue';
-import Button from './Button.vue';
-import Fade from './Fade.vue';
+// import scrollableParent from '../../utilities/scrollable-parent/scrollableParent';
+
+import TextField from '../text-field/TextField.vue';
+import Select from '../select/Select.vue';
+import Button from '../button/Button.vue';
+import Fade from '../fade/Fade.vue';
 
 const props = defineProps<{
   value?: string;

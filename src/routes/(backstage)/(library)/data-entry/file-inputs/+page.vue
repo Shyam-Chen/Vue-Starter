@@ -1,8 +1,7 @@
 <script lang="ts" setup>
 import { ref, reactive } from 'vue';
+import { XBreadcrumb, XFileInput, XDropzone } from '@x/ui';
 
-import Breadcrumbs from '~/components/Breadcrumbs.vue';
-import FileInput from '~/components/FileInput.vue';
 import { useFetch } from '~/composables';
 
 const fileUploadsApi = useFetch('/file-uploads').json();
@@ -70,7 +69,7 @@ function onDragLeave() {
 </script>
 
 <template>
-  <Breadcrumbs :items="[{ text: 'Library' }, { text: 'Data Entry' }, { text: 'File inputs' }]" />
+  <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Data Entry' }, { text: 'File inputs' }]" />
 
   <div class="my-4">
     <div class="text-3xl font-bold">File inputs</div>
@@ -80,7 +79,7 @@ function onDragLeave() {
     <div class="mb-2">Basic examples</div>
 
     <div class="flex justify-center">
-      <FileInput @change="flux.changeFile" />
+      <XFileInput @change="flux.changeFile" />
     </div>
   </div>
 
@@ -88,7 +87,7 @@ function onDragLeave() {
     <div class="mb-2">Multiple</div>
 
     <div class="flex justify-center">
-      <FileInput multiple />
+      <XFileInput multiple />
     </div>
   </div>
 
@@ -96,8 +95,8 @@ function onDragLeave() {
     <div class="mb-2">Disabled</div>
 
     <div class="flex justify-center gap-4">
-      <FileInput disabled />
-      <FileInput multiple disabled />
+      <XFileInput disabled />
+      <XFileInput multiple disabled />
     </div>
   </div>
 
@@ -105,7 +104,7 @@ function onDragLeave() {
     <div class="mb-2">Upload file to Cloudinary</div>
 
     <div class="flex justify-center">
-      <FileInput @change="flux.fileUploads" />
+      <XFileInput @change="flux.fileUploads" />
     </div>
   </div>
 
@@ -113,12 +112,14 @@ function onDragLeave() {
     <div class="mb-2">Import data from Excel</div>
 
     <div class="flex justify-center">
-      <FileInput @change="flux.importData" />
+      <XFileInput @change="flux.importData" />
     </div>
   </div>
 
   <div class="flex flex-col border p-4 mb-4">
     <div class="mb-2">Drag Zone</div>
+
+    <XDropzone />
 
     <label
       class="Dropzone-Element"

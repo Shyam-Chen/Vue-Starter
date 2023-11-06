@@ -14,10 +14,10 @@ import {
 } from 'date-fns';
 import chunk from 'lodash/chunk';
 
-import getScrollableParent from '~/utilities/getScrollableParent';
+import scrollableParent from '../../utilities/scrollable-parent/scrollableParent';
 
-import TextField from './TextField.vue';
-import Fade from './Fade.vue';
+import TextField from '../text-field/TextField.vue';
+import Fade from '../fade/Fade.vue';
 
 const props = defineProps<{
   value?: string;
@@ -39,7 +39,7 @@ const picker = ref();
 
 const currentMoment = ref(new Date());
 const show = ref(false);
-const scrollableParent = ref<HTMLElement | null>(null);
+const scrollableParentEl = ref<HTMLElement | null>(null);
 const direction = ref<'down' | 'up'>('down');
 
 const createWeeks = (y?: number, m?: number) => {
@@ -108,7 +108,7 @@ function openPicker() {
   show.value = true;
 
   nextTick(() => {
-    scrollableParent.value = getScrollableParent(picker.value);
+    scrollableParentEl.value = scrollableParent(picker.value);
     resizePanel();
   });
 }
@@ -159,23 +159,23 @@ onClickOutside(target, () => {
 });
 
 watch(
-  () => scrollableParent.value,
+  () => scrollableParentEl.value,
   (el) => {
     el?.addEventListener('scroll', handleScroll);
   },
 );
 
 onMounted(() => {
-  if (scrollableParent.value && scrollableParent.value instanceof HTMLElement) {
-    scrollableParent.value?.addEventListener('scroll', handleScroll);
+  if (scrollableParentEl.value && scrollableParentEl.value instanceof HTMLElement) {
+    scrollableParentEl.value?.addEventListener('scroll', handleScroll);
   } else {
     window.addEventListener('scroll', handleScroll);
   }
 });
 
 onUnmounted(() => {
-  if (scrollableParent.value && scrollableParent.value instanceof HTMLElement) {
-    scrollableParent.value?.removeEventListener('scroll', handleScroll);
+  if (scrollableParentEl.value && scrollableParentEl.value instanceof HTMLElement) {
+    scrollableParentEl.value?.removeEventListener('scroll', handleScroll);
   } else {
     window.removeEventListener('scroll', handleScroll);
   }

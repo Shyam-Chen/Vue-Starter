@@ -1,9 +1,7 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
+import { XBreadcrumb, XWeekPicker } from '@x/ui';
 import { format } from 'date-fns';
-
-import Breadcrumbs from '~/components/Breadcrumbs.vue';
-import WeekPicker from '~/components/WeekPicker.vue';
 
 const flux = reactive({
   weekPicker: '',
@@ -13,7 +11,7 @@ const flux = reactive({
 </script>
 
 <template>
-  <Breadcrumbs
+  <XBreadcrumb
     :items="[
       { text: 'Library' },
       { text: 'Data Entry' },
@@ -30,7 +28,7 @@ const flux = reactive({
     <div class="mb-2">Basic</div>
 
     <div class="flex justify-center">
-      <WeekPicker v-model:value="flux.weekPicker" />
+      <XWeekPicker v-model:value="flux.weekPicker" />
     </div>
 
     <div class="mt-2">{{ flux.weekPicker }}</div>
@@ -40,7 +38,7 @@ const flux = reactive({
     <div class="mb-2">Label</div>
 
     <div class="flex justify-center">
-      <WeekPicker v-model:value="flux.weekPicker" label="Label" />
+      <XWeekPicker v-model:value="flux.weekPicker" label="Label" />
     </div>
   </div>
 
@@ -48,7 +46,7 @@ const flux = reactive({
     <div class="mb-2">Disabled</div>
 
     <div class="flex justify-center">
-      <WeekPicker v-model:value="flux.weekPicker" label="Label" disabled />
+      <XWeekPicker v-model:value="flux.weekPicker" label="Label" disabled />
     </div>
   </div>
 
@@ -56,7 +54,7 @@ const flux = reactive({
     <div class="mb-2">Errors</div>
 
     <div class="flex justify-center">
-      <WeekPicker v-model:value="flux.weekPicker" :errorMessage="'This is a required field'" />
+      <XWeekPicker v-model:value="flux.weekPicker" :errorMessage="'This is a required field'" />
     </div>
   </div>
 
@@ -64,7 +62,7 @@ const flux = reactive({
     <div class="mb-2">Errors with Label</div>
 
     <div class="flex justify-center">
-      <WeekPicker
+      <XWeekPicker
         v-model:value="flux.weekPicker"
         label="Label"
         :errorMessage="'This is a required field'"
@@ -77,7 +75,7 @@ const flux = reactive({
     <div class="mb-2">onChange</div>
 
     <div class="flex justify-center">
-      <WeekPicker
+      <XWeekPicker
         v-model:value="flux.weekPicker"
         @change="
           (week, startDate, endDate) => {

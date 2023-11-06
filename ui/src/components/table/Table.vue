@@ -3,9 +3,9 @@ import type { VNode } from 'vue';
 import { computed, reactive, watch, toRef } from 'vue';
 
 import type staticTable from '../../utilities/static-table/staticTable';
-import ProgressBar from '../ProgressBar.vue';
+import ProgressBar from '../progress-bar/ProgressBar.vue';
 import Button from '../button/Button.vue';
-import Select from '../Select.vue';
+import Select from '../select/Select.vue';
 import Checkbox from '../checkbox/Checkbox.vue';
 
 import type { ColumnItem, Control } from './types';
