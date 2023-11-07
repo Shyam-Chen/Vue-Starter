@@ -15,9 +15,21 @@ import { XBreadcrumb, XButton } from '@x/ui';
     </div>
 
     <div class="flex space-x-2 justify-center">
+      <XButton variant="contained" size="small">Contained</XButton>
+      <XButton variant="outlined" size="small">Outlined</XButton>
+      <XButton variant="text" size="small">Text</XButton>
+    </div>
+
+    <div class="flex space-x-2 justify-center">
       <XButton variant="contained">Contained</XButton>
       <XButton variant="outlined">Outlined</XButton>
       <XButton variant="text">Text</XButton>
+    </div>
+
+    <div class="flex space-x-2 justify-center">
+      <XButton variant="contained" size="large">Contained</XButton>
+      <XButton variant="outlined" size="large">Outlined</XButton>
+      <XButton variant="text" size="large">Text</XButton>
     </div>
   </div>
 

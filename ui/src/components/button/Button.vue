@@ -1,10 +1,15 @@
 <script lang="ts" setup>
-defineProps<{
+import type { ButtonHTMLAttributes } from 'vue';
+
+interface Props extends /* @vue-ignore */ ButtonHTMLAttributes {
   variant?: 'contained' | 'outlined' | 'text';
   color?: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info';
+  size?: 'small' | 'large';
   icon?: string;
   disabled?: boolean;
-}>();
+}
+
+defineProps<Props>();
 </script>
 
 <template>
@@ -22,8 +27,10 @@ defineProps<{
       danger: color === 'danger',
       warning: color === 'warning',
       info: color === 'info',
-      icon: icon,
-      'opacity-60 cursor-not-allowed': disabled,
+      small: size === 'small',
+      large: size === 'large',
+      icon,
+      disabled,
     }"
     :disabled="disabled"
   >
@@ -35,73 +42,91 @@ defineProps<{
 <style lang="scss" scoped>
 .Button {
   @apply flex justify-center items-center gap-2 px-6 py-2 border rounded uppercase text-sm font-medium;
-  @apply shadow-md hover:shadow-lg;
   @apply focus:outline-none focus:ring-2 focus:ring-primary-500/40;
 
+  &.contained {
+    @apply text-white hover:text-gray-100 active:text-gray-200 shadow-md hover:shadow-lg;
+
+    &.primary {
+      @apply bg-primary-500 hover:bg-primary-600 active:bg-primary-700 border-primary-500;
+    }
+
+    &.secondary {
+      @apply bg-secondary-500 hover:bg-secondary-600 active:bg-secondary-700 border-secondary-500;
+    }
+
+    &.success {
+      @apply bg-green-500 hover:bg-green-600 active:bg-green-700 border-green-500;
+    }
+
+    &.danger {
+      @apply bg-red-500 hover:bg-red-600 active:bg-red-700 border-red-500;
+    }
+
+    &.warning {
+      @apply bg-yellow-500 hover:bg-yellow-600 active:bg-yellow-700 border-yellow-500;
+    }
+
+    &.info {
+      @apply bg-sky-500 hover:bg-sky-600 active:bg-sky-700 border-sky-500;
+    }
+  }
+
   &.outlined {
-    @apply border-current;
+    @apply border-current bg-transparent;
   }
 
   &.text {
-    @apply border-transparent;
+    @apply border-transparent bg-transparent;
   }
 
-  &.primary {
-    @apply bg-primary-500 text-white border-primary-500;
+  &.outlined,
+  &.text {
+    &.primary {
+      @apply text-primary-500 hover:text-primary-600 active:text-primary-700;
+      @apply hover:bg-primary-400/25 active:bg-primary-500/25;
+    }
 
-    @apply hover:text-blueGray-300 hover:bg-primary-600;
-    @apply dark:hover:text-blueGray-300 dark:hover:bg-primary-600;
+    &.secondary {
+      @apply text-secondary-500 hover:text-secondary-600 active:text-secondary-700;
+      @apply hover:bg-secondary-400/25 active:bg-secondary-500/25;
+    }
 
-    @apply active:bg-primary-400 dark:active:bg-primary-800;
+    &.success {
+      @apply text-green-500 hover:text-green-600 active:text-green-700;
+      @apply hover:bg-green-400/25 active:bg-green-500/25;
+    }
+
+    &.danger {
+      @apply text-red-500 hover:text-red-600 active:text-red-700;
+      @apply hover:bg-red-400/25 active:bg-red-500/25;
+    }
+
+    &.warning {
+      @apply text-yellow-500 hover:text-yellow-600 active:text-yellow-700;
+      @apply hover:bg-yellow-400/25 active:bg-yellow-500/25;
+    }
+
+    &.info {
+      @apply text-sky-500 hover:text-sky-600 active:text-sky-700;
+      @apply hover:bg-sky-400/25 active:bg-sky-500/25;
+    }
   }
-}
 
-.icon {
-  @apply p-0 rounded-full w-38px h-38px;
-}
+  &.small {
+    @apply px-4 text-xs;
+  }
 
-.secondary {
-  @apply bg-slate-500 text-slate-200 border-slate-500;
+  &.large {
+    @apply px-7 text-base;
+  }
 
-  @apply hover:text-slate-600 hover:bg-slate-300;
-  @apply dark:hover:text-slate-400 dark:hover:bg-slate-700;
+  &.icon {
+    @apply p-0 rounded-full w-38px h-38px;
+  }
 
-  @apply active:bg-slate-400 dark:active:bg-slate-800;
-}
-
-.success {
-  @apply bg-green-600 text-blueGray-200 border-green-600;
-
-  @apply hover:text-blueGray-300 hover:bg-green-700;
-  @apply dark:hover:text-blueGray-300 dark:hover:bg-green-700;
-
-  @apply active:bg-green-400 dark:active:bg-green-800;
-}
-
-.danger {
-  @apply bg-red-600 dark:bg-red-700 text-blueGray-200 border-red-600 dark:border-red-700;
-
-  @apply hover:text-blueGray-300 hover:bg-red-700;
-  @apply dark:hover:text-blueGray-300 dark:hover:bg-red-800;
-
-  @apply active:bg-red-400 dark:active:bg-red-900;
-}
-
-.warning {
-  @apply bg-yellow-500 dark:bg-yellow-600 text-blueGray-200 border-yellow-500 dark:border-yellow-600;
-
-  @apply hover:text-blueGray-300 hover:bg-yellow-700;
-  @apply dark:hover:text-blueGray-300 dark:hover:bg-yellow-700;
-
-  @apply active:bg-yellow-400 dark:active:bg-yellow-800;
-}
-
-.info {
-  @apply bg-sky-600 text-blueGray-200 border-sky-600;
-
-  @apply hover:text-blueGray-300 hover:bg-sky-700;
-  @apply dark:hover:text-blueGray-300 dark:hover:bg-sky-700;
-
-  @apply active:bg-sky-400 dark:active:bg-sky-800;
+  &.disabled {
+    @apply opacity-60 cursor-not-allowed;
+  }
 }
 </style>
