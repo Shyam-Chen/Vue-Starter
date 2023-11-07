@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { XBreadcrumb } from '@x/ui';
-import { useEventSource } from '~/composables';
+import { useEventSource } from '@x/ui';
 
 const { data } = useEventSource('/sse');
 </script>

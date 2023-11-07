@@ -101,6 +101,7 @@ const links = [
       { name: 'Chip', to: '/data-display/chip' },
       { name: 'Data iterators', to: '/data-display/data-iterators' },
       { name: 'Table', to: '/data-display/data-tables' },
+      { name: 'Tag', to: '/data-display/tag' },
       { name: 'Popover', to: '/data-display/popover' },
       { name: 'Timeline', to: '/data-display/timeline' },
       { name: 'Tooltip', to: '/data-display/tooltip' },

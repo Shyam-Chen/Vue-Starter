@@ -33,7 +33,32 @@ function change2() {
   <div class="flex flex-col border p-4 mb-4">
     <div class="mb-2">Basic</div>
 
-    <XSkeleton />
+    <div
+      class="border border-slate-300 dark:border-slate-500 rounded-md shadow-md p-4 w-full max-w-sm mx-auto"
+    >
+      <div class="flex space-x-4">
+        <XSkeleton class="w-10 h-10 rounded-full" />
+
+        <div class="flex-1 space-y-6 py-1">
+          <XSkeleton class="h-2" />
+
+          <div class="space-y-3">
+            <div class="grid grid-cols-3 gap-4">
+              <XSkeleton class="h-2 col-span-2" />
+              <XSkeleton class="h-2 col-span-1" />
+            </div>
+
+            <XSkeleton class="h-2" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <XSkeleton class="aspect-video flex items-center justify-center h-48 rounded-md shadow-md">
+        <div class="i-bi-image-alt w-12 h-12 text-gray-200"></div>
+      </XSkeleton>
+    </div>
   </div>
 
   <div class="flex flex-col border p-4 mb-4 gap-4">
@@ -41,12 +66,12 @@ function change2() {
 
     <div
       v-if="isLoading"
-      class="w-100 h-266.66px animate-pulse bg-slate-300/90 shadow-md rounded-md"
+      class="w-100 h-266.66px animate-pulse bg-slate-300/90 rounded-md shadow-md"
     ></div>
     <img
       v-else
       :src="imageOptions.src"
-      class="w-100 h-266.66px bg-slate-300/90 shadow-md rounded-md"
+      class="w-100 h-266.66px bg-slate-300/90 rounded-md shadow-md"
     />
 
     <div>
@@ -59,10 +84,10 @@ function change2() {
 
     <UseImage
       :src="imageOptions2.src"
-      class="w-100 h-266.66px bg-slate-300/90 shadow-md rounded-md"
+      class="w-100 h-266.66px bg-slate-300/90 rounded-md shadow-md"
     >
       <template #loading>
-        <div class="w-100 h-266.66px animate-pulse bg-slate-300/90 shadow-md rounded-md"></div>
+        <div class="w-100 h-266.66px animate-pulse bg-slate-300/90 rounded-md shadow-md"></div>
       </template>
     </UseImage>
 

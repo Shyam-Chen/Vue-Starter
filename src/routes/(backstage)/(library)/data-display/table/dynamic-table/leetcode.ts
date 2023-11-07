@@ -1,4 +1,4 @@
-import staticTable from '~/utilities/staticTable';
+import { staticTable } from '@x/ui';
 
 export default async (body: any = {}) => {
   const data = [

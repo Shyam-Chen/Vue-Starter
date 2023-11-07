@@ -1,9 +1,17 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
 
+import useNotification from '../../composables/notification/useNotification';
+
 defineProps<{
   invalid?: string | boolean;
 }>();
+
+const emit = defineEmits<{
+  (evt: 'upload', val: FormData): void;
+}>();
+
+const notification = useNotification();
 
 const dragover = ref(false);
 
@@ -17,11 +25,11 @@ function fileLimit(file: File) {
   }
 
   if (message) {
-    // notification.actions.add({
-    //   message,
-    //   color: 'danger',
-    //   icon: 'i-mdi-close-circle-outline',
-    // });
+    notification.actions.add({
+      message,
+      color: 'danger',
+      icon: 'i-mdi-close-circle-outline',
+    });
   }
 
   return message;
@@ -37,7 +45,7 @@ function onDrop(evt: DragEvent) {
 
     const formData = new FormData();
     formData.append('file', file);
-    // upload(formData);
+    emit('upload', formData);
   }
 }
 
@@ -50,7 +58,7 @@ function onChange(evt: Event) {
 
     const formData = new FormData();
     formData.append('file', file);
-    // upload(formData);
+    emit('upload', formData);
   }
 }
 

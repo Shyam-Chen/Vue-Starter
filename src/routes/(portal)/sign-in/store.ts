@@ -1,9 +1,8 @@
 import { reactive, readonly } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import { defineStore } from 'vue-storer';
+import { request } from '@x/ui';
 import { formatISO, addHours } from 'date-fns';
-
-import request from '~/utilities/request';
 
 import type { SignInForm, SignInRes, OtpValidateRes } from './types';
 

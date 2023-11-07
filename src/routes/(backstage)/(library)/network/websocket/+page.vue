@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { XBreadcrumb } from '@x/ui';
-import { useWebSocket } from '~/composables';
+import { useWebSocket } from '@x/ui';
 
 const { data, send } = useWebSocket('/echo');
 

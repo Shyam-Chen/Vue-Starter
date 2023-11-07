@@ -52,7 +52,7 @@ defineProps<Props>();
     }
 
     &.secondary {
-      @apply bg-secondary-500 hover:bg-secondary-600 active:bg-secondary-700 border-secondary-500;
+      @apply bg-gray-500 hover:bg-gray-600 active:bg-gray-700 border-gray-500;
     }
 
     &.success {
@@ -88,8 +88,8 @@ defineProps<Props>();
     }
 
     &.secondary {
-      @apply text-secondary-500 hover:text-secondary-600 active:text-secondary-700;
-      @apply hover:bg-secondary-400/25 active:bg-secondary-500/25;
+      @apply text-gray-500 hover:text-gray-600 active:text-gray-700;
+      @apply hover:bg-gray-400/25 active:bg-gray-500/25;
     }
 
     &.success {

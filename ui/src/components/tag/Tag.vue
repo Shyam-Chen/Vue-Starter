@@ -11,7 +11,7 @@ defineProps<{
       class="border rounded text-10px px-10px py-2px mr-5px"
       :class="{
         'text-primary-500 border-primary-500': color === 'primary' || !color,
-        'text-secondary-500 border-secondary-500': color === 'secondary',
+        'text-gray-500 border-gray-500': color === 'secondary',
         'text-green-500 border-green-500': color === 'success',
         'text-red-500 border-red-500': color === 'danger',
         'text-yellow-500 border-yellow-500': color === 'warning',
