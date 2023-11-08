@@ -122,7 +122,7 @@ watch(
 </template>
 
 <style lang="scss" scoped>
-:deep(.button) {
+:deep(.Button) {
   @apply rounded-full py-2 px-0 min-w-38px;
 }
 </style>

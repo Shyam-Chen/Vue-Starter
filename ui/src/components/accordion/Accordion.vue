@@ -18,7 +18,7 @@ const accordionGroupValue = computed({
 const group = ref<HTMLDivElement>();
 const curIdx = ref(-1);
 
-provide('AccordionGroup', {
+provide('Accordion', {
   group,
   curIdx,
   value: computed(() => props.modelValue),
