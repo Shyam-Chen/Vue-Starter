@@ -27,9 +27,13 @@ export default defineStore('/(library)/data-entry/form-validation', () => {
     },
     async todosList() {
       state.loading = true;
-      const response = await request('/todos', { method: 'POST', body: state.searchConditions });
-      state.loading = false;
 
+      const response = await request<any>('/todos', {
+        method: 'POST',
+        body: state.searchConditions,
+      });
+
+      state.loading = false;
       state.dataSource = response._data.result;
       state.dataCount = response._data.total;
     },
@@ -50,7 +54,7 @@ export default defineStore('/(library)/data-entry/form-validation', () => {
       router.push(`/crud-operations/${row._id}`);
     },
     async todoById(id: TodoItem['_id']) {
-      const response = await request(`/todos/${id}`);
+      const response = await request<any>(`/todos/${id}`);
       state.todoItem = response._data.result;
     },
     async saveToDo() {
