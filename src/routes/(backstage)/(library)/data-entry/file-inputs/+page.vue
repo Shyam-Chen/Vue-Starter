@@ -1,11 +1,7 @@
 <script lang="ts" setup>
 import { ref, reactive } from 'vue';
 import { XBreadcrumb, XFileInput, XDropzone } from '@x/ui';
-
-import { useFetch } from '~/composables';
-
-const fileUploadsApi = useFetch('/file-uploads').json();
-const importDataApi = useFetch('/file-uploads/import-data').json();
+import { request } from '@x/ui';
 
 const flux = reactive({
   changeFile(event: Event) {
@@ -20,7 +16,10 @@ const flux = reactive({
     const formData = new FormData();
     if (file) formData.append('userfile', file);
 
-    await fileUploadsApi.post(formData).execute();
+    await request('/file-uploads', {
+      method: 'POST',
+      body: formData,
+    });
   },
   async importData(event: Event) {
     const el = event.target as HTMLInputElement;
@@ -29,7 +28,10 @@ const flux = reactive({
     const formData = new FormData();
     if (file) formData.append('userfile', file);
 
-    await importDataApi.post(formData).execute();
+    await request('/file-uploads/import-data', {
+      method: 'POST',
+      body: formData,
+    });
   },
 });
 

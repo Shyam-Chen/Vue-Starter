@@ -1,18 +1,12 @@
-import { ref, computed, reactive, readonly } from 'vue';
+import { reactive, readonly } from 'vue';
 import { useRouter } from 'vue-router';
 import { defineStore } from 'vue-storer';
-
-import { useFetch } from '~/composables';
+import { request } from '@x/ui';
 
 import type { State, TodoItem } from './types';
 
 export default defineStore('/(library)/data-entry/form-validation', () => {
   const router = useRouter();
-
-  const todosApi = useFetch('/todos').json();
-
-  const todosId = ref<TodoItem['_id']>('');
-  const todosApiById = useFetch(computed(() => '/todos/' + todosId.value)).json();
 
   const state = reactive<State>({
     searchConditions: { filter: 0 },
@@ -33,20 +27,22 @@ export default defineStore('/(library)/data-entry/form-validation', () => {
     },
     async todosList() {
       state.loading = true;
-      await todosApi.post(state.searchConditions).execute();
+      const response = await request('/todos', { method: 'POST', body: state.searchConditions });
       state.loading = false;
 
-      state.dataSource = todosApi.data.value.result;
-      state.dataCount = todosApi.data.value.total;
+      state.dataSource = response._data.result;
+      state.dataCount = response._data.total;
     },
     addToDo() {
       router.push('/crud-operations/new');
     },
     async addNewToDo() {
-      todosId.value = 'new';
-      await todosApiById.post(state.todoItem).execute();
+      const response = await request('/todos/new', {
+        method: 'POST',
+        body: state.todoItem,
+      });
 
-      if (todosApiById.statusCode.value === 200) {
+      if (response.status === 200) {
         router.replace('/crud-operations');
       }
     },
@@ -54,21 +50,25 @@ export default defineStore('/(library)/data-entry/form-validation', () => {
       router.push(`/crud-operations/${row._id}`);
     },
     async todoById(id: TodoItem['_id']) {
-      todosId.value = id;
-      await todosApiById.get().execute();
-      state.todoItem = todosApiById.data.value.result;
+      const response = await request(`/todos/${id}`);
+      state.todoItem = response._data.result;
     },
     async saveToDo() {
-      await todosApiById.put(state.todoItem).execute();
+      const response = await request(`/todos/${state.todoItem._id}`, {
+        method: 'PUT',
+        body: state.todoItem,
+      });
 
-      if (todosApiById.statusCode.value === 200) {
+      if (response.status === 200) {
         router.replace('/crud-operations');
       }
     },
     async removeToDo() {
-      await todosApiById.delete().execute();
+      const response = await request(`/todos/${state.todoItem._id}`, {
+        method: 'DELETE',
+      });
 
-      if (todosApiById.statusCode.value === 200) {
+      if (response.status === 200) {
         router.replace('/crud-operations');
       }
     },
