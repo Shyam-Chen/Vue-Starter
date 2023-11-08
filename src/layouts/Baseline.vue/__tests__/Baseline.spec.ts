@@ -1,7 +1,8 @@
 import type { VueWrapper } from '@vue/test-utils';
 import { afterEach, test, vi } from 'vitest';
 import { mount } from '@vue/test-utils';
-import responses from 'responses/auth';
+import * as xui from '@x/ui';
+import user from 'api/auth/user/response';
 
 import router from '~/plugins/router';
 import localer from '~/plugins/localer';
@@ -14,14 +15,10 @@ afterEach(() => {
   wrapper.unmount();
 });
 
-vi.mock('~/utilities/request');
-
 test('Baseline', async () => {
-  const request = await import('~/utilities/request');
-
-  request.default = vi.fn<any>((url) => {
+  vi.spyOn(xui, 'request').mockImplementation((url): any => {
     if (url === '/auth/user') {
-      return { _data: responses['get_/user'], status: 200 };
+      return { _data: user['admin'], status: 200 };
     }
   });
 

@@ -2,8 +2,23 @@
 import type { Extensions } from '@tiptap/vue-3';
 import { ref, computed, watch, onMounted } from 'vue';
 import { Editor, EditorContent } from '@tiptap/vue-3';
-import StarterKit from '@tiptap/starter-kit';
-import { Color } from '@tiptap/extension-color';
+import Blockquote from '@tiptap/extension-blockquote';
+import Bold from '@tiptap/extension-bold';
+import BulletList from '@tiptap/extension-bullet-list';
+import Color from '@tiptap/extension-color';
+import Document from '@tiptap/extension-document';
+import Dropcursor from '@tiptap/extension-dropcursor';
+import Gapcursor from '@tiptap/extension-gapcursor';
+import HardBreak from '@tiptap/extension-hard-break';
+import Heading from '@tiptap/extension-heading';
+import History from '@tiptap/extension-history';
+import HorizontalRule from '@tiptap/extension-horizontal-rule';
+import Italic from '@tiptap/extension-italic';
+import ListItem from '@tiptap/extension-list-item';
+import OrderedList from '@tiptap/extension-ordered-list';
+import Paragraph from '@tiptap/extension-paragraph';
+import Strike from '@tiptap/extension-strike';
+import Text from '@tiptap/extension-text';
 import TextStyle from '@tiptap/extension-text-style';
 import Underline from '@tiptap/extension-underline';
 import TextAlign from '@tiptap/extension-text-align';
@@ -49,8 +64,23 @@ onMounted(() => {
     editable: !props.disabled && !props.viewonly,
     extensions: [
       ...props.extension,
-      StarterKit,
+      Blockquote,
+      Bold,
+      BulletList,
       Color,
+      Document,
+      Dropcursor,
+      Gapcursor,
+      HardBreak,
+      Heading,
+      History,
+      HorizontalRule,
+      Italic,
+      ListItem,
+      OrderedList,
+      Paragraph,
+      Strike,
+      Text,
       TextStyle,
       Underline,
       TextAlign.configure({

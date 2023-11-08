@@ -57,7 +57,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '~': path.resolve(__dirname, 'src'),
-      responses: path.resolve(__dirname, 'mock/responses'),
+      api: path.resolve(__dirname, 'api/src/routes'),
     },
   },
   server: {
@@ -71,5 +71,8 @@ export default defineConfig({
   test: {
     globals: true,
     environment: 'happy-dom',
+    coverage: {
+      exclude: ['ui', 'api'],
+    },
   },
 });

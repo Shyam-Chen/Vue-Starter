@@ -1,6 +1,8 @@
 import type { VueWrapper } from '@vue/test-utils';
 import { mount } from '@vue/test-utils';
-import responses from 'responses/auth';
+import * as xui from '@x/ui';
+import signIn from 'api/auth/sign-in/response';
+import opt from 'api/auth/otp/validate/response';
 
 import router from '~/plugins/router';
 import localer from '~/plugins/localer';
@@ -17,14 +19,10 @@ afterEach(() => {
   wrapper.unmount();
 });
 
-vi.mock('~/utilities/request');
-
-test('succeeded', async () => {
-  const request = await import('~/utilities/request');
-
-  request.default = vi.fn<any>((url) => {
+test('successful', async () => {
+  vi.spyOn(xui, 'request').mockImplementation((url): any => {
     if (url === '/auth/sign-in') {
-      return { _data: responses['post_/sign-in'], status: 200 };
+      return { _data: signIn['successful'], status: 200 };
     }
   });
 
@@ -40,11 +38,9 @@ test('succeeded', async () => {
 });
 
 test('failed', async () => {
-  const request = await import('~/utilities/request');
-
-  request.default = vi.fn<any>((url) => {
+  vi.spyOn(xui, 'request').mockImplementation((url): any => {
     if (url === '/auth/sign-in') {
-      return { _data: responses['post_/sign-in_error'], status: 400 };
+      return { _data: signIn['failed'], status: 400 };
     }
   });
 
@@ -56,15 +52,13 @@ test('failed', async () => {
 });
 
 test('2fa', async () => {
-  const request = await import('~/utilities/request');
-
-  request.default = vi.fn<any>((url) => {
+  vi.spyOn(xui, 'request').mockImplementation((url): any => {
     if (url === '/auth/sign-in') {
-      return { _data: responses['post_/sign-in_2fa'], status: 200 };
+      return { _data: signIn['successful_hasMFA'], status: 200 };
     }
 
     if (url === '/auth/otp/validate') {
-      return { _data: responses['post_/auth/otp/validate'], status: 200 };
+      return { _data: opt['successful'], status: 200 };
     }
   });
 
@@ -84,11 +78,9 @@ test('2fa', async () => {
 });
 
 test('2fa_unverified', async () => {
-  const request = await import('~/utilities/request');
-
-  request.default = vi.fn<any>((url) => {
+  vi.spyOn(xui, 'request').mockImplementation((url): any => {
     if (url === '/auth/sign-in') {
-      return { _data: responses['post_/sign-in_2fa_unverified'], status: 200 };
+      return { _data: signIn['successful_hasMFA_unverified'], status: 200 };
     }
   });
 

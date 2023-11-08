@@ -9,7 +9,7 @@
     "moduleResolution": "node",
     "paths": {
       "~/*": ["src/*"],
-      "responses/*": ["mock/responses/*"]
+      "api/*": ["api/src/routes/*"]
     },
     "resolveJsonModule": true,
     "types": ["vite/client", "vitest/globals"],
