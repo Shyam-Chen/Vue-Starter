@@ -71,9 +71,7 @@ onMounted(() => {
       .select(barChart.value)
       .append('div')
       .style('display', 'none')
-      .style('position', 'absolute')
-      .style('background-color', '#ccc')
-      .style('padding', '0.5rem 1rem');
+      .attr('class', 'tooltip');
 
     // create bars
     svg
@@ -108,73 +106,55 @@ onMounted(() => {
         d3.select(this).style('opacity', 1);
       });
 
-    // set title
-    svg
-      .append('text')
-      .attr('class', 'chart-title')
-      .attr('x', -margin.left * 0.7)
-      .attr('y', -margin.top / 1.5)
-      .attr('text-anchor', 'start')
-      .text('Individual asylum applications registred by region | 2019-2020');
-
-    // set Y axis label
-    svg
-      .append('text')
-      .attr('class', 'chart-label')
-      .attr('x', width / 2)
-      .attr('y', height + margin.bottom / 2)
-      .attr('text-anchor', 'middle')
-      .text('Displaced population');
-
-    // set source
-    svg
-      .append('text')
-      .attr('class', 'chart-source')
-      .attr('x', -margin.left * 0.7)
-      .attr('y', height + margin.bottom * 0.7)
-      .attr('text-anchor', 'start')
-      .text('Source: UNHCR Refugee Data Finder');
-
-    // set copyright
-    svg
-      .append('text')
-      .attr('class', 'copyright')
-      .attr('x', -margin.left * 0.7)
-      .attr('y', height + margin.bottom * 0.9)
-      .attr('text-anchor', 'start')
-      .text('©UNHCR, The UN Refugee Agency');
-
-    //set legend
+    // set legend
     svg
       .append('rect')
-      .attr('x', -margin.left * 0.7)
-      .attr('y', -(margin.top / 2))
-      .attr('width', 13)
-      .attr('height', 13)
+      .attr('x', width / 2 - 40)
+      .attr('y', height + margin.bottom * 0.3)
+      .attr('width', 12)
+      .attr('height', 12)
       .style('fill', '#0072BC');
     svg
       .append('text')
       .attr('class', 'legend')
-      .attr('x', -margin.left * 0.7 + 20)
-      .attr('y', -(margin.top / 2.5))
+      .attr('x', width / 2 - 25)
+      .attr('y', height + margin.bottom * 0.4)
       .text('2019');
     svg
       .append('rect')
-      .attr('x', -margin.left * 0.7 + 60)
-      .attr('y', -(margin.top / 2))
-      .attr('width', 13)
-      .attr('height', 13)
+      .attr('x', width / 2 + 40)
+      .attr('y', height + margin.bottom * 0.3)
+      .attr('width', 12)
+      .attr('height', 12)
       .style('fill', '#8EBEFF');
     svg
       .append('text')
       .attr('class', 'legend')
-      .attr('x', -margin.left * 0.7 + 80)
-      .attr('y', -(margin.top / 2.5))
+      .attr('x', width / 2 + 55)
+      .attr('y', height + margin.bottom * 0.4)
       .text('2020');
   });
 });
 </script>
 
 <template>
-  <div ref="barChart"></div>
+  <div ref="barChart" class="BarChart"></div>
 </template>
+
+<style lang="scss" scoped>
+.BarChart {
+  :deep(.legend) {
+    @apply fill-slate-500;
+  }
+
+  :deep(.tooltip) {
+    @apply absolute text-sm text-slate-700 bg-white px-3 py-1 rounded shadow-lg;
+  }
+}
+
+.dark .BarChart {
+  :deep(.legend) {
+    @apply fill-slate-400;
+  }
+}
+</style>

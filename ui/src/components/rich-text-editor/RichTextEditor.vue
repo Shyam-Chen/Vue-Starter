@@ -342,11 +342,11 @@ function rgbToHex(rgb: string) {
   }
 
   :deep(ul) {
-    @apply list-disc ml-4;
+    @apply list-disc ml-6;
   }
 
   :deep(ol) {
-    @apply list-decimal ml-4;
+    @apply list-decimal ml-6;
   }
 
   :deep(blockquote) {
