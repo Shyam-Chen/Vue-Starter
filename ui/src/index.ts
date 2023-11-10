@@ -38,7 +38,6 @@ export { default as XProgressBar } from './components/progress-bar/ProgressBar.v
 export { default as XRadioGroup } from './components/radio-group/RadioGroup.vue';
 export { default as XRichTextEditor } from './components/rich-text-editor/RichTextEditor.vue';
 export { default as XSelect } from './components/select/Select.vue';
-export { default as XSelectButton } from './components/select-button/SelectButton.vue';
 export { default as XSkeleton } from './components/skeleton/Skeleton.vue';
 export { default as XSlider } from './components/slider/Slider.vue';
 export { default as XSpinner } from './components/spinner/Spinner.vue';
@@ -50,7 +49,7 @@ export { default as XTag } from './components/tag/Tag.vue';
 export { default as XTextField } from './components/text-field/TextField.vue';
 export { default as XTextarea } from './components/textarea/Textarea.vue';
 export { default as XTimePicker } from './components/time-picker/TimePicker.vue';
-export { default as XTimeline } from './components/timeline/Timeline.vue';
+export { default as XTimeline } from './components/timeline';
 export { default as XTooltip } from './components/tooltip/Tooltip.vue';
 export { default as XTransfer } from './components/transfer/Transfer.vue';
 export { default as XTree } from './components/tree';
