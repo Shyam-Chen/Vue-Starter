@@ -8,6 +8,7 @@ interface Props extends /* @vue-ignore */ InputHTMLAttributes {
   label?: string;
   value?: string;
   type?: string;
+  clearable?: boolean;
   disabled?: boolean;
   required?: boolean;
   prepend?: string;
@@ -25,6 +26,7 @@ const props = defineProps<Props>();
 
 const emit = defineEmits<{
   (evt: 'update:value', val: string): void;
+  (evt: 'clear'): void;
   (evt: 'prepend'): void;
   (evt: 'append'): void;
 }>();
@@ -39,6 +41,10 @@ const textFieldValue = computed({
 const flux = reactive({
   focused: false,
   touched: false,
+  clear() {
+    textFieldValue.value = '';
+    emit('clear');
+  },
 });
 </script>
 
@@ -50,7 +56,7 @@ const flux = reactive({
       <slot></slot>
     </label>
 
-    <div class="flex w-full items-center">
+    <div class="flex w-full items-center group">
       <div
         v-if="prepend"
         class="text-field-prepend"
@@ -76,6 +82,7 @@ const flux = reactive({
           danger: useTouch ? (flux.touched || useError) && errorMessage : errorMessage,
           prepend,
           append,
+          disabled,
         }"
         autocomplete="off"
         @focus="flux.focused = true"
@@ -84,6 +91,13 @@ const flux = reactive({
           flux.touched = true;
         "
       />
+
+      <div
+        v-if="clearable && textFieldValue"
+        class="TextField-Clear"
+        :class="{ prepend, append }"
+        @click.stop="flux.clear"
+      ></div>
 
       <div
         v-if="append"
@@ -107,6 +121,15 @@ const flux = reactive({
 </template>
 
 <style lang="scss" scoped>
+.TextField-Clear {
+  @apply absolute z-10 right-3;
+  @apply i-fa-times-circle w-4 h-4 ml-2 cursor-pointer invisible hover:text-slate-600 group-hover:visible;
+
+  &.append {
+    @apply right-12;
+  }
+}
+
 .text-field {
   @apply flex flex-col w-full relative;
 }
@@ -131,6 +154,10 @@ const flux = reactive({
 
   &.append {
     @apply ltr:rounded-r-0 rtl:rounded-l-0;
+  }
+
+  &.disabled {
+    @apply cursor-not-allowed;
   }
 }
 
