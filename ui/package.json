@@ -2,6 +2,7 @@
   "name": "@x/ui",
   "private": true,
   "type": "module",
+  "sideEffects": false,
   "types": "./src/index.ts",
   "exports": {
     ".": {
