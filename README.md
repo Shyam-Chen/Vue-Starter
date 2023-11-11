@@ -22,12 +22,13 @@ Prerequisites:
 Get started with Vue Starter.
 
 ```sh
-# dev server
 $ pnpm install
+
+# dev server
 $ pnpm dev
 
 # mock server
-$ cd api && pnpm mock
+$ pnpm mock
 ```
 
 ## Project Setup
@@ -46,6 +47,12 @@ $ pnpm install
 $ pnpm dev
 ```
 
+### Mock APIs during development
+
+```sh
+$ pnpm mock
+```
+
 ### Compiles and minifies for production
 
 ```sh
@@ -60,15 +67,11 @@ $ pnpm preview
 
 ### Lints and fixes files
 
-Files: `src/**/*.{ts,vue}`
-
 ```sh
 $ pnpm lint
 ```
 
 ### Check types
-
-Files: `src/**/*.{ts,vue}`
 
 ```sh
 $ pnpm check
@@ -76,10 +79,14 @@ $ pnpm check
 
 ### Runs unit tests
 
-Files: `src/**/*.spec.ts`
-
 ```sh
 $ pnpm test
+```
+
+### Runs end-to-end tests
+
+```sh
+$ pnpm e2e
 ```
 
 ## Key Features
@@ -109,6 +116,7 @@ This seed repository provides the following features:
 - [x] [ESLint](https://github.com/eslint/eslint) - Linter
 - [x] [Prettier](https://github.com/prettier/prettier) - Formatter
 - [x] [Vitest](https://github.com/vitest-dev/vitest) - Test Runner
+- [x] [Playwright](https://github.com/microsoft/playwright) - Test Automation
 - ---------- **Environments** ----------
 - [x] [Node.js](https://nodejs.org/en/) - JavaScript Runtime Environment
 - [x] [Pnpm](https://pnpm.io/) - Package Manager
@@ -156,6 +164,7 @@ The structure follows the LIFT Guidelines.
 .
 ├── .github/workflows/ci.yml
 ├── api
+├── e2e
 ├── public
 ├── src
 │   ├── assets

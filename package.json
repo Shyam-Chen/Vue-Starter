@@ -3,11 +3,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "mock": "cd api && pnpm mock",
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint 'src/**/*.{ts,vue}'",
     "check": "vue-tsc",
-    "test": "vitest --dir src --coverage --run"
+    "test": "vitest --dir src --coverage --run",
+    "e2e": "cd e2e && pnpm e2e"
   },
   "dependencies": {
     "@unocss/reset": "^0.57.1",
