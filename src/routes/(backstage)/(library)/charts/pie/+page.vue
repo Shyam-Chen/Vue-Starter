@@ -6,6 +6,8 @@ import { XBreadcrumb } from '@x/ui';
 
 import Chart from '~/components/Chart.vue';
 
+import PieChart from './PieChart.vue';
+
 const flux = reactive({
   basicBarChart: {
     chart: {
@@ -40,7 +42,7 @@ const flux = reactive({
         name: 'Brands',
         colorByPoint: true,
         data: [
-          { name: 'Chrome', y: 70.67, sliced: true, selected: true, color: '#ef4444' },
+          { name: 'Chrome', y: 70.67, color: '#ef4444' },
           { name: 'Edge', y: 14.77, color: '#f97316' },
           { name: 'Firefox', y: 4.86, color: '#eab308' },
           { name: 'Safari', y: 2.63, color: '#22c55e' },
@@ -119,4 +121,6 @@ const flux = reactive({
 
     <Chart :options="flux.patternFillPieChart" />
   </div>
+
+  <PieChart />
 </template>
