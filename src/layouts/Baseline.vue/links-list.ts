@@ -100,7 +100,14 @@ const links = [
       { name: 'Carousel', to: '/data-display/carousel' },
       { name: 'Chip', to: '/data-display/chip' },
       { name: 'Data iterators', to: '/data-display/data-iterators' },
-      { name: 'Table', to: '/data-display/data-tables' },
+      // { name: 'Table', to: '/data-display/data-tables' },
+      {
+        name: 'Table',
+        sub: [
+          { name: 'Dynamic Table', to: '/data-display/table/dynamic-table' },
+          { name: 'Static Table', to: '/data-display/table/static-table' },
+        ],
+      },
       { name: 'Tag', to: '/data-display/tag' },
       { name: 'Popover', to: '/data-display/popover' },
       { name: 'Timeline', to: '/data-display/timeline' },

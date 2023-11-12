@@ -178,7 +178,7 @@ watch(
 watch(
   () => flux.rows,
   (val) => {
-    if (val) {
+    if (val.length) {
       const checked = val.every((item) => item.checked);
       const unchecked = val.every((item) => !item.checked);
 
