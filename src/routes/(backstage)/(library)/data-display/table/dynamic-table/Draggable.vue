@@ -73,21 +73,21 @@ const flux = reactive({
         <template #tbody>
           <Draggable v-model="flux.draggableTableRows" tag="tbody" handle=".handle" itemKey="name">
             <template #item="{ element }">
-              <tr
-                class="hover:bg-slate-100 dark:hover:bg-slate-600 border-b last:border-b-0 dark:border-slate-600"
-              >
-                <td class="px-6 py-3 align-middle whitespace-nowrap">
-                  <div class="i-ic-baseline-drag-indicator handle w-6 h-6 cursor-move"></div>
-                </td>
+              <XTable.Row>
+                <XTable.Cell>
+                  <div
+                    class="min-h-38px i-ic-baseline-drag-indicator handle w-6 h-6 cursor-move"
+                  ></div>
+                </XTable.Cell>
 
-                <td class="px-6 py-3 align-middle whitespace-nowrap">{{ element.name }}</td>
-                <td class="px-6 py-3 align-middle whitespace-nowrap">{{ element.email }}</td>
-                <td class="px-6 py-3 align-middle whitespace-nowrap">{{ element.address }}</td>
-                <td class="px-6 py-3 align-middle whitespace-nowrap">{{ element.phone }}</td>
-                <td class="px-6 py-3 align-middle whitespace-nowrap">{{ element.dateCreated }}</td>
-                <td class="px-6 py-3 align-middle whitespace-nowrap">{{ element.role }}</td>
-                <td class="px-6 py-3 align-middle whitespace-nowrap">{{ element.status }}</td>
-              </tr>
+                <XTable.Cell>{{ element.name }} </XTable.Cell>
+                <XTable.Cell>{{ element.email }}</XTable.Cell>
+                <XTable.Cell>{{ element.address }}</XTable.Cell>
+                <XTable.Cell>{{ element.phone }}</XTable.Cell>
+                <XTable.Cell>{{ element.dateCreated }}</XTable.Cell>
+                <XTable.Cell>{{ element.role }}</XTable.Cell>
+                <XTable.Cell>{{ element.status }}</XTable.Cell>
+              </XTable.Row>
             </template>
           </Draggable>
         </template>

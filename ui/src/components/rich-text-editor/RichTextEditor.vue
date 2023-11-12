@@ -6,6 +6,7 @@ import Blockquote from '@tiptap/extension-blockquote';
 import Bold from '@tiptap/extension-bold';
 import BulletList from '@tiptap/extension-bullet-list';
 import Color from '@tiptap/extension-color';
+import Highlight from '@tiptap/extension-highlight';
 import Document from '@tiptap/extension-document';
 import Dropcursor from '@tiptap/extension-dropcursor';
 import Gapcursor from '@tiptap/extension-gapcursor';
@@ -24,6 +25,8 @@ import Underline from '@tiptap/extension-underline';
 import TextAlign from '@tiptap/extension-text-align';
 import Image from '@tiptap/extension-image';
 import Link from '@tiptap/extension-link';
+
+import Popover from '../popover/Popover.vue';
 
 const props = withDefaults(
   defineProps<{
@@ -68,6 +71,7 @@ onMounted(() => {
       Bold,
       BulletList,
       Color,
+      Highlight.configure({ multicolor: true }),
       Document,
       Dropcursor,
       Gapcursor,
@@ -118,14 +122,14 @@ function setParagraph() {
   editor.value?.chain().focus().setParagraph().run();
 }
 
-function setColor(evt: Event) {
+function setColor(color: string) {
   if (props.disabled || props.viewonly) return;
+  editor.value?.chain().focus().setColor(color).run();
+}
 
-  const el = evt.target as HTMLInputElement;
-
-  if (el?.value) {
-    editor.value?.chain().focus().setColor(el.value).run();
-  }
+function toggleHighlight(color: string) {
+  if (props.disabled || props.viewonly) return;
+  editor.value?.chain().focus().toggleHighlight({ color }).run();
 }
 
 function toggleBold() {
@@ -231,43 +235,75 @@ watch(
 defineExpose({
   editor,
 });
-
-function rgbToHex(rgb: string) {
-  if (!rgb) return '#000000';
-
-  const values = rgb.match(/\d+/g);
-
-  if (values) {
-    const r = parseInt(values[0]);
-    const g = parseInt(values[1]);
-    const b = parseInt(values[2]);
-
-    const hex = '#' + ((1 << 24) | (r << 16) | (g << 8) | b).toString(16).slice(1);
-
-    return hex;
-  }
-
-  return '#000000';
-}
 </script>
 
 <template>
   <div v-if="editor" :class="[disabled ? 'opacity-60 cursor-not-allowed' : '']">
     <div v-if="!viewonly" class="flex px-2 py-1 border border-b-0 border-slate-400 rounded-t">
       <div class="flex gap-1">
+        <div class="i-mdi-format-paragraph w-6 h-6" @click="setParagraph"></div>
         <div class="i-mdi-format-header-1 w-6 h-6" @click="toggleHeading(1)"></div>
         <div class="i-mdi-format-header-2 w-6 h-6" @click="toggleHeading(2)"></div>
         <div class="i-mdi-format-header-3 w-6 h-6" @click="toggleHeading(3)"></div>
         <div class="i-mdi-format-header-4 w-6 h-6" @click="toggleHeading(4)"></div>
 
-        <div class="i-mdi-format-paragraph w-6 h-6" @click="setParagraph"></div>
+        <Popover>
+          <div class="i-mdi-format-color-text w-6 h-6"></div>
 
-        <input
-          type="color"
-          :value="rgbToHex(editor.getAttributes('textStyle').color)"
-          class="w-6 h-6"
-          @input="setColor"
-        />
+          <template #content>
+            <div class="p-4 grid grid-cols-10 gap-2">
+              <div class="Color bg-black" @click="setColor('black')"></div>
+              <div class="Color bg-white" @click="setColor('white')"></div>
+              <div class="Color bg-gray-500" @click="setColor('#6b7280')"></div>
+              <div class="Color bg-red-500" @click="setColor('#ef4444')"></div>
+              <div class="Color bg-orange-500" @click="setColor('#f97316')"></div>
+              <div class="Color bg-amber-500" @click="setColor('#f59e0b')"></div>
+              <div class="Color bg-yellow-500" @click="setColor('#eab308')"></div>
+              <div class="Color bg-lime-500" @click="setColor('#84cc16')"></div>
+              <div class="Color bg-green-500" @click="setColor('#22c55e')"></div>
+              <div class="Color bg-emerald-500" @click="setColor('#10b981')"></div>
+              <div class="Color bg-teal-500" @click="setColor('#14b8a6')"></div>
+              <div class="Color bg-cyan-500" @click="setColor('#06b6d4')"></div>
+              <div class="Color bg-sky-500" @click="setColor('#0ea5e9')"></div>
+              <div class="Color bg-blue-500" @click="setColor('#3b82f6')"></div>
+              <div class="Color bg-indigo-500" @click="setColor('#6366f1')"></div>
+              <div class="Color bg-violet-500" @click="setColor('#8b5cf6')"></div>
+              <div class="Color bg-purple-500" @click="setColor('#a855f7')"></div>
+              <div class="Color bg-fuchsia-500" @click="setColor('#d946ef')"></div>
+              <div class="Color bg-pink-500" @click="setColor('#ec4899')"></div>
+              <div class="Color bg-rose-500" @click="setColor('#f43f5e')"></div>
+            </div>
+          </template>
+        </Popover>
+
+        <Popover>
+          <div class="i-mdi-format-color-fill w-6 h-6"></div>
+
+          <template #content>
+            <div class="p-4 grid grid-cols-10 gap-2">
+              <div class="Color bg-black" @click="toggleHighlight('black')"></div>
+              <div class="Color bg-white" @click="toggleHighlight('white')"></div>
+              <div class="Color bg-gray-500" @click="toggleHighlight('#6b7280')"></div>
+              <div class="Color bg-red-500" @click="toggleHighlight('#ef4444')"></div>
+              <div class="Color bg-orange-500" @click="toggleHighlight('#f97316')"></div>
+              <div class="Color bg-amber-500" @click="toggleHighlight('#f59e0b')"></div>
+              <div class="Color bg-yellow-500" @click="toggleHighlight('#eab308')"></div>
+              <div class="Color bg-lime-500" @click="toggleHighlight('#84cc16')"></div>
+              <div class="Color bg-green-500" @click="toggleHighlight('#22c55e')"></div>
+              <div class="Color bg-emerald-500" @click="toggleHighlight('#10b981')"></div>
+              <div class="Color bg-teal-500" @click="toggleHighlight('#14b8a6')"></div>
+              <div class="Color bg-cyan-500" @click="toggleHighlight('#06b6d4')"></div>
+              <div class="Color bg-sky-500" @click="toggleHighlight('#0ea5e9')"></div>
+              <div class="Color bg-blue-500" @click="toggleHighlight('#3b82f6')"></div>
+              <div class="Color bg-indigo-500" @click="toggleHighlight('#6366f1')"></div>
+              <div class="Color bg-violet-500" @click="toggleHighlight('#8b5cf6')"></div>
+              <div class="Color bg-purple-500" @click="toggleHighlight('#a855f7')"></div>
+              <div class="Color bg-fuchsia-500" @click="toggleHighlight('#d946ef')"></div>
+              <div class="Color bg-pink-500" @click="toggleHighlight('#ec4899')"></div>
+              <div class="Color bg-rose-500" @click="toggleHighlight('#f43f5e')"></div>
+            </div>
+          </template>
+        </Popover>
       </div>
 
       <div class="border-r mx-2"></div>
@@ -365,5 +401,9 @@ function rgbToHex(rgb: string) {
   :deep(hr) {
     @apply my-2;
   }
+}
+
+.Color {
+  @apply w-5 h-5 rounded-full border border-gray-300 dark:border-gray-700 cursor-pointer;
 }
 </style>

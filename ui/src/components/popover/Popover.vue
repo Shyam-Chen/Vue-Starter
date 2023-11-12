@@ -1,14 +1,20 @@
 <script lang="ts" setup>
-import { ref, reactive, nextTick } from 'vue';
+import { ref, computed, reactive, nextTick } from 'vue';
 import { vOnClickOutside } from '@vueuse/components';
 
-defineProps<{
+const props = defineProps<{
+  modelValue?: boolean;
   options?: string[];
 }>();
 
 const emit = defineEmits<{
-  (evt: 'select', val: string): void;
+  (evt: 'update:modelValue', val: boolean): void;
 }>();
+
+const status = computed({
+  get: () => props.modelValue || false,
+  set: (val) => emit('update:modelValue', val),
+});
 
 const target = ref();
 const dropdown = ref();
@@ -17,8 +23,9 @@ const flux = reactive({
   status: false,
   onMouseenter() {
     flux.status = !flux.status;
+    status.value = !status.value;
 
-    if (!flux.status) return;
+    if (!flux.status && !status.value) return;
 
     nextTick(() => {
       const rect = target.value.getBoundingClientRect();
@@ -41,18 +48,13 @@ const flux = reactive({
   },
   onMouseleave() {
     flux.status = false;
-  },
-
-  select(option: string) {
-    flux.status = false;
-
-    emit('select', option);
+    status.value = false;
   },
 });
 </script>
 
 <template>
-  <div v-on-click-outside="flux.onMouseleave" class="relative inline-block text-left">
+  <div v-on-click-outside="flux.onMouseleave" class="relative inline-flex">
     <div
       ref="target"
       class="inline-flex w-full justify-center items-center rounded-md"
@@ -70,7 +72,7 @@ const flux = reactive({
       leave-to-class="opacity-0"
     >
       <div
-        v-if="flux.status"
+        v-if="flux.status || status"
         ref="dropdown"
         class="fixed z-10 top-0 left-0 min-w-max bg-white dark:bg-slate-800 rounded-lg shadow-lg"
         tabindex="-1"

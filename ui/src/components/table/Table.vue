@@ -59,7 +59,16 @@ const tableValue = computed({
 const countRef = toRef(props, 'count', 0);
 
 const controlValue = computed({
-  get: () => props.control ?? { rows: 10, page: 1, field: 'createdAt', direction: 'desc' },
+  get: () => {
+    if (
+      !props.control ||
+      (typeof props.control === 'object' && Object.keys(props.control).length === 0)
+    ) {
+      return { rows: 10, page: 1, field: 'createdAt', direction: 'desc' };
+    }
+
+    return props.control;
+  },
   set: (val) => emit('update:control', val),
 });
 

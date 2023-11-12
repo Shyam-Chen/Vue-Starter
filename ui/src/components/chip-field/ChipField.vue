@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { ref, computed, reactive, watch, toRef } from 'vue';
 import { vOnClickOutside } from '@vueuse/components';
+import uniqueId from 'lodash/uniqueId';
 
 import Chip from '../chip/Chip.vue';
 
@@ -24,6 +25,7 @@ const chipFieldValue = computed({
   set: (val) => emit('update:value', val),
 });
 
+const uid = uniqueId('chip-field-');
 const input = ref<HTMLInputElement>();
 
 const flux = reactive({
@@ -101,6 +103,7 @@ defineExpose({
     </Chip>
 
     <input
+      :id="uid"
       ref="input"
       v-model="flux.text"
       v-bind="$attrs"

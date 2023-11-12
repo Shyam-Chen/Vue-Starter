@@ -50,6 +50,9 @@ importers:
       vue:
         specifier: ^3.3.7
         version: 3.3.7(typescript@5.2.2)
+      vue-component-type-helpers:
+        specifier: ^1.8.22
+        version: 1.8.22
       vue-echarts:
         specifier: ^6.6.1
         version: 6.6.1(echarts@5.4.3)(vue@3.3.7)
@@ -125,7 +128,7 @@ importers:
         version: 0.57.2(postcss@8.4.31)(vite@4.5.0)
       vite:
         specifier: ^4.5.0
-        version: 4.5.0(@types/node@20.9.0)(sass@1.69.5)
+        version: 4.5.0(@types/node@20.8.10)(sass@1.69.5)
       vite-plugin-vue-routes:
         specifier: ^1.0.5
         version: 1.0.5
@@ -150,7 +153,7 @@ importers:
     devDependencies:
       vite:
         specifier: ^4.5.0
-        version: 4.5.0(@types/node@20.9.0)(sass@1.69.5)
+        version: 4.5.0(@types/node@20.8.10)(sass@1.69.5)
       vite-plugin-fastify:
         specifier: ^1.2.4
         version: 1.2.4
@@ -197,6 +200,9 @@ importers:
         specifier: ^2.1.12
         version: 2.1.12(@tiptap/core@2.1.12)
       '@tiptap/extension-heading':
+        specifier: ^2.1.12
+        version: 2.1.12(@tiptap/core@2.1.12)
+      '@tiptap/extension-highlight':
         specifier: ^2.1.12
         version: 2.1.12(@tiptap/core@2.1.12)
       '@tiptap/extension-history':
@@ -331,7 +337,7 @@ importers:
         version: 0.55.7(postcss@8.4.31)(vite@4.5.0)
       vite:
         specifier: ^4.5.0
-        version: 4.5.0(@types/node@20.9.0)(sass@1.69.5)
+        version: 4.5.0(@types/node@20.8.10)(sass@1.69.5)
       vite-plugin-dts:
         specifier: ^3.6.3
         version: 3.6.3(typescript@5.2.2)(vite@4.5.0)
@@ -1108,6 +1114,14 @@ packages:
 
   /@tiptap/extension-heading@2.1.12(@tiptap/core@2.1.12):
     resolution: {integrity: sha512-MoANP3POAP68Ko9YXarfDKLM/kXtscgp6m+xRagPAghRNujVY88nK1qBMZ3JdvTVN6b/ATJhp8UdrZX96TLV2w==}
+    peerDependencies:
+      '@tiptap/core': ^2.0.0
+    dependencies:
+      '@tiptap/core': 2.1.12(@tiptap/pm@2.1.12)
+    dev: false
+
+  /@tiptap/extension-highlight@2.1.12(@tiptap/core@2.1.12):
+    resolution: {integrity: sha512-buen31cYPyiiHA2i0o2i/UcjRTg/42mNDCizGr1OJwvv3AELG3qOFc4Y58WJWIvWNv+1Dr4ZxHA3GNVn0ANWyg==}
     peerDependencies:
       '@tiptap/core': ^2.0.0
     dependencies:
@@ -2213,7 +2227,7 @@ packages:
       std-env: 3.4.3
       test-exclude: 6.0.0
       v8-to-istanbul: 9.1.3
-      vitest: 0.34.6(happy-dom@12.10.3)(sass@1.69.5)
+      vitest: 0.34.6(happy-dom@10.11.2)(sass@1.69.5)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -6113,6 +6127,10 @@ packages:
       - supports-color
       - terser
     dev: true
+
+  /vue-component-type-helpers@1.8.22:
+    resolution: {integrity: sha512-LK3wJHs3vJxHG292C8cnsRusgyC5SEZDCzDCD01mdE/AoREFMl2tzLRuzwyuEsOIz13tqgBcnvysN3Lxsa14Fw==}
+    dev: false
 
   /vue-component-type-helpers@1.8.4:
     resolution: {integrity: sha512-6bnLkn8O0JJyiFSIF0EfCogzeqNXpnjJ0vW/SZzNHfe6sPx30lTtTXlE5TFs2qhJlAtDFybStVNpL73cPe3OMQ==}

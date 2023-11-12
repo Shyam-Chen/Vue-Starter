@@ -2,6 +2,7 @@
 import { reactive } from 'vue';
 import { XBreadcrumb, XTable, XCollapse, XButton } from '@x/ui';
 
+import Basic from './Basic.vue';
 import Controllable from './Controllable.vue';
 import Draggable from './Draggable.vue';
 
@@ -224,6 +225,8 @@ const flux = reactive({
   />
 
   <div class="text-4xl font-extrabold my-4">Dynamic Table</div>
+
+  <Basic class="my-8" />
 
   <div class="flex flex-col border p-4 mb-4">
     <div class="mb-2">Basic</div>
