@@ -327,7 +327,7 @@ watch(
       v-if="countRef"
       class="flex flex-col md:flex-row items-center justify-end p-4 gap-4 text-sm"
     >
-      <div class="flex items-center">
+      <div class="Table-RowsPerPage">
         Rows per page:
         <div class="w-20 ml-2">
           <Select
@@ -369,7 +369,11 @@ watch(
 }
 
 .Table-Element {
-  @apply items-center w-full border-collapse;
+  @apply w-full border-collapse;
+}
+
+.Table-RowsPerPage {
+  @apply flex items-center;
 }
 
 .sticky-tr:hover {
@@ -378,4 +382,3 @@ watch(
   }
 }
 </style>
-~/utilities/static-table/staticTable
