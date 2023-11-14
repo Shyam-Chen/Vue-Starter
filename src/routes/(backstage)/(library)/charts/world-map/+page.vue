@@ -8,6 +8,8 @@ import { SVGRenderer } from 'echarts/renderers';
 import { VisualMapComponent, TooltipComponent, ToolboxComponent } from 'echarts/components';
 import Chart from 'vue-echarts';
 
+import WorldMap from './WorldMap.vue';
+
 use([MapChart, SVGRenderer, VisualMapComponent, TooltipComponent, ToolboxComponent]);
 
 const loading = ref(true);
@@ -108,4 +110,6 @@ onMounted(async () => {
 
   <div v-if="loading">Loading...</div>
   <Chart v-else :option="worldMapOption" autoresize class="w-full h-125" />
+
+  <WorldMap />
 </template>
