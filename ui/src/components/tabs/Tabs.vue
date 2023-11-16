@@ -13,7 +13,7 @@ const emit = defineEmits<{
 }>();
 
 const slots = useSlots();
-const tabs = ref<VNode['props'][]>([]);
+const tabs = ref<VNode[]>([]);
 
 watch(
   () => slots.default?.(),
@@ -31,10 +31,10 @@ watch(
 
           for (let j = 0; j < tabChildren.length; j++) {
             const child = tabChildren[j];
-            tabs.value = [...tabs.value, child.props];
+            tabs.value = [...tabs.value, child];
           }
         } else {
-          tabs.value = [...tabs.value, tab.props];
+          tabs.value = [...tabs.value, tab];
         }
       }
     }
@@ -48,6 +48,8 @@ function isActive(tab: VNode['props'], idx: number) {
 }
 
 function onClickTab(tab: VNode['props'], idx: number) {
+  if (tab?.disabled) return;
+
   if (typeof props.modelValue === 'number') {
     emit('update:modelValue', idx);
     emit('change', idx);
@@ -74,10 +76,18 @@ provide('Tabs', {
         v-for="(tab, idx) in tabs"
         :key="idx"
         class="Tabs-Tab"
-        :class="{ active: isActive(tab, idx) }"
-        @click="onClickTab(tab, idx)"
+        :class="{
+          active: isActive(tab?.props, idx),
+          disabled: tab?.props?.disabled,
+        }"
+        @click="onClickTab(tab?.props, idx)"
       >
-        {{ tab?.title }}
+        <template v-if="(tab?.children as any)?.title">
+          <component :is="(tab?.children as any)?.title"></component>
+        </template>
+
+        <template v-else>{{ tab?.props?.title }}</template>
+
         <div v-if="closeable" class="i-fa-close w-3 h-3 ml-3"></div>
       </div>
     </div>
@@ -104,6 +114,10 @@ provide('Tabs', {
 
   &.active {
     @apply text-primary-500 border-primary-500;
+  }
+
+  &.disabled {
+    @apply opacity-60 cursor-not-allowed;
   }
 }
 </style>

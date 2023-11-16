@@ -5,6 +5,7 @@ import { ref, inject, onMounted } from 'vue';
 defineProps<{
   title?: string;
   value?: string;
+  disabled?: boolean;
 }>();
 
 const tabs = inject('Tabs') as {
