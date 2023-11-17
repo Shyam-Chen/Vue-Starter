@@ -117,12 +117,14 @@ import { XBreadcrumb } from '@x/ui';
     <div class="text-xl">Charts</div>
 
     <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
-      <RouterLink to="/charts/line" class="card">Line</RouterLink>
-      <RouterLink to="/charts/area" class="card">Area</RouterLink>
-      <RouterLink to="/charts/column" class="card">Column</RouterLink>
-      <RouterLink to="/charts/bar" class="card">Bar</RouterLink>
-      <RouterLink to="/charts/pie" class="card">Pie</RouterLink>
-      <RouterLink to="/charts/world-map" class="card">World Map</RouterLink>
+      <RouterLink to="/charts/area-chart" class="card">AreaChart</RouterLink>
+      <RouterLink to="/charts/bar-chart" class="card">BarChart</RouterLink>
+      <RouterLink to="/charts/column-chart" class="card">ColumnChart</RouterLink>
+      <RouterLink to="/charts/donut-chart" class="card">DonutChart</RouterLink>
+      <RouterLink to="/charts/line-chart" class="card">LineChart</RouterLink>
+      <RouterLink to="/charts/line-column-chart" class="card">LineColumnChart</RouterLink>
+      <RouterLink to="/charts/map-chart" class="card">MapChart</RouterLink>
+      <RouterLink to="/charts/pie-chart" class="card">PieChart</RouterLink>
     </div>
   </div>
 

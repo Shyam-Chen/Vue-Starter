@@ -102,14 +102,18 @@ onMounted(async () => {
 </script>
 
 <template>
-  <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Charts' }, { text: 'World Map' }]" />
+  <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Charts' }, { text: 'MapChart' }]" />
 
   <div class="my-4">
-    <div class="text-3xl font-bold">World Map</div>
+    <div class="text-4xl font-extrabold">MapChart</div>
+  </div>
+
+  <div class="my-8">
+    <div class="text-3xl font-bold mb-4">Basic</div>
+
+    <WorldMap />
   </div>
 
   <div v-if="loading">Loading...</div>
   <Chart v-else :option="worldMapOption" autoresize class="w-full h-125" />
-
-  <WorldMap />
 </template>
