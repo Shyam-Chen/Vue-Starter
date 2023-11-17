@@ -1,7 +1,6 @@
 FROM node:18.18.2-bullseye-slim
-FROM mcr.microsoft.com/playwright:v1.40.0-jammy
 
-ENV HOME /vue-starter
+ENV HOME=/vue-starter
 
 WORKDIR ${HOME}
 ADD . $HOME
@@ -10,6 +9,8 @@ RUN node -v
 
 RUN npm install -g pnpm
 RUN pnpm install
+
+RUN npx playwright install --with-deps
 
 RUN apt-get update && \
     apt-get install -y curl && \
