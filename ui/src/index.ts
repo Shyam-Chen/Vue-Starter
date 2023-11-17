@@ -16,6 +16,7 @@ export { default as XCodeBlock } from './components/code-block/CodeBlock.vue';
 export { default as XCollapse } from './components/collapse/Collapse.vue';
 export { default as XDatePicker } from './components/date-picker/DatePicker.vue';
 export { default as XDateRangePicker } from './components/date-range-picker/DateRangePicker.vue';
+export { default as XDeleteConfirmation } from './components/delete-confirmation/DeleteConfirmation.vue';
 export { default as XDialog } from './components/dialog/Dialog.vue';
 export { default as XDrawer } from './components/drawer/Drawer.vue';
 export { default as XDropdown } from './components/dropdown/Dropdown.vue';

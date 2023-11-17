@@ -100,7 +100,6 @@ const links = [
       { name: 'Carousel', to: '/data-display/carousel' },
       { name: 'Chip', to: '/data-display/chip' },
       { name: 'Data iterators', to: '/data-display/data-iterators' },
-      // { name: 'Table', to: '/data-display/data-tables' },
       {
         name: 'Table',
         sub: [
@@ -123,6 +122,7 @@ const links = [
     sub: [
       { name: 'Alert', to: '/feedback/alert' },
       { name: 'ConfirmLeaveDialog', to: '/feedback/confirm-leave-dialog' },
+      { name: 'DeleteConfirmation', to: '/feedback/delete-confirmation' },
       { name: 'Dialogs', to: '/feedback/dialogs' },
       { name: 'Highlight', to: '/feedback/highlight' },
       { name: 'Notification', to: '/feedback/notification' },
