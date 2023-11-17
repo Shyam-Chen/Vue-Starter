@@ -1,10 +1,12 @@
-FROM node:lts-bullseye-slim
-FROM mcr.microsoft.com/playwright:focal
+FROM node:18.18.2-bullseye-slim
+FROM mcr.microsoft.com/playwright:v1.40.0-jammy
 
 ENV HOME /vue-starter
 
 WORKDIR ${HOME}
 ADD . $HOME
+
+RUN node -v
 
 RUN npm install -g pnpm
 RUN pnpm install
