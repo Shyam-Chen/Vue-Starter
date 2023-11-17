@@ -16,8 +16,8 @@
 
 Prerequisites:
 
-- Node.js version 18+
-- PNPM version 8+
+- Node.js v20
+- PNPM v8
 
 Get started with Vue Starter.
 

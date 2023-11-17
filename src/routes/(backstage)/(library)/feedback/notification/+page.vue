@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import type { ComponentProps } from 'vue-component-type-helpers';
 import { ref } from 'vue';
 import { XBreadcrumb, XButton, XNotification } from '@x/ui';
 import { useNotification } from '@x/ui';
@@ -25,9 +26,27 @@ let count3 = 0;
 
 const notification = useNotification();
 
+type Color = ComponentProps<typeof XNotification>['color'];
+
+const colorSelector = (() => {
+  const colors: Color[] = ['primary', 'secondary', 'success', 'danger', 'warning', 'info'];
+
+  let currentIndex = 0;
+
+  return () => {
+    const currentColor = colors[currentIndex];
+    currentIndex = (currentIndex + 1) % colors.length;
+    return currentColor;
+  };
+})();
+
 const push3 = () => {
   count3 += 1;
-  notification.actions.add({ message: `This is a test notification. (${count3})` });
+
+  notification.actions.add({
+    message: `This is a test notification. (${count3})`,
+    color: colorSelector(),
+  });
 };
 </script>
 
@@ -61,13 +80,6 @@ const push3 = () => {
 
     <div class="flex gap-4">
       <XButton @click="push3">Push</XButton>
-
-      <XNotification
-        :messages="notification.state.messages"
-        :timeouts="notification.state.timeouts"
-        color="danger"
-        icon="i-mdi-close-circle-outline"
-      />
     </div>
   </div>
 </template>
