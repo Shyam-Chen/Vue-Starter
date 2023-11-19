@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { ref, onMounted } from 'vue';
 import * as d3 from 'd3';
+import { XButton } from '@x/ui';
 
 const worldMap = ref();
 const loading = ref(true);
@@ -34,6 +35,12 @@ const dataset = [
   { name: 'USA', value: getRandomInt() },
 ];
 
+const r = ref<() => void>();
+
+function restore() {
+  r.value?.();
+}
+
 onMounted(async () => {
   loading.value = true;
 
@@ -53,6 +60,8 @@ onMounted(async () => {
   const zoom: any = d3.zoom().on('zoom', zoomed);
 
   function zoomed(event: any) {
+    console.log(event.transform);
+
     svg.selectAll('g').attr('transform', event.transform);
   }
 
@@ -64,7 +73,7 @@ onMounted(async () => {
     .attr('height', '100%')
     .attr('viewBox', '0 0 688 344')
     .attr('preserveAspectRatio', 'xMinYMin')
-    .style('position', 'relative')
+    .attr('class', 'relative')
     .call(zoom); // Enable zoom on the main SVG
 
   const gfg = d3
@@ -80,12 +89,30 @@ onMounted(async () => {
     .style('display', 'none')
     .attr('class', 'tooltip');
 
+  function _restore() {
+    svg.transition().duration(500).call(zoom.transform, d3.zoomIdentity);
+  }
+
+  function zoomInOnClick(event: any, d: any) {
+    const bounds = d3.geoPath().projection(gfg).bounds(d);
+
+    const newZoomTransform = d3.zoomIdentity
+      .translate(width / 2, height / 1.75)
+      .scale(2)
+      .translate(-(bounds[0][0] + bounds[1][0]) / 2, -(bounds[0][1] + bounds[1][1]) / 2);
+
+    svg.transition().duration(500).call(zoom.transform, newZoomTransform);
+  }
+
+  r.value = _restore;
+
   svg
     .append('g')
     .selectAll('path')
     .data(geojson.features)
     .enter()
     .append('path')
+    .on('click', zoomInOnClick)
     .attr('fill', function (d: any) {
       const current = dataset.find((item) => item.name === d.properties.name);
 
@@ -105,7 +132,7 @@ onMounted(async () => {
     .attr('d', d3.geoPath().projection(gfg) as any)
     .style('stroke', '#fafafa')
     .on('mouseover', function () {
-      tooltip.style('opacity', 0.8).style('display', 'block');
+      tooltip.style('display', 'block');
       d3.select(this).style('opacity', 0.5);
     })
     .on('mousemove', function (event, d: any) {
@@ -113,16 +140,21 @@ onMounted(async () => {
 
       tooltip
         .html(`${d.properties.name}<br>Population: ${current?.value || 'N/A'}`)
-        .style('top', event.pageY - 10 + 'px')
-        .style('left', event.pageX + 10 + 'px');
+        .style('top', event.layerY - 10 + 'px')
+        .style('left', event.layerX + 10 + 'px');
     })
     .on('mouseleave', function () {
-      tooltip.style('opacity', 0);
+      tooltip.style('display', 'none');
       d3.select(this).style('opacity', 1);
     });
 
   // Create an SVG for the legend
-  const legend = svg.append('g').attr('transform', 'translate(10,' + (height - 30) + ')');
+  const legendContainer = d3
+    .select(worldMap.value)
+    .append('svg')
+    .attr('class', 'w-20 h-60 absolute left-0 bottom-0');
+
+  const legend = legendContainer.append('g');
 
   // Define the legend scale
   const legendScale = d3
@@ -133,14 +165,17 @@ onMounted(async () => {
   // Create legend rectangles
   legend
     .selectAll('rect')
-    .data(legendScale.domain())
+    .data(legendScale.domain().reverse())
     .enter()
     .append('rect')
-    .attr('x', function (d, i) {
-      return i * 25; // Adjust the spacing as needed
+    .attr('x', function () {
+      return 32;
     })
-    .attr('width', 25)
-    .attr('height', 15)
+    .attr('y', function (d, i) {
+      return i * 16 + 32;
+    })
+    .attr('width', 16)
+    .attr('height', 16)
     .attr('fill', function (d) {
       return legendScale(d) || '#a1a1aa';
     });
@@ -148,19 +183,27 @@ onMounted(async () => {
   // Create legend labels
   legend
     .selectAll('text')
-    .data(legendScale.domain())
+    .data(['High', 'Low'])
     .enter()
     .append('text')
-    .attr('x', function (d, i) {
-      return i * 25 + 10; // Adjust the spacing and positioning as needed
+    .attr('x', function () {
+      return 40;
     })
-    .attr('y', 30) // Adjust the vertical position as needed
-    .text(function (d) {
+    .attr('y', function (d, i) {
+      if (i === 0) return 24 - 4;
+      if (i === 1) return 220 + 4;
+      return 0;
+    })
+    .text(function (d: any) {
       return d;
     })
     .style('text-anchor', 'middle')
     .style('alignment-baseline', 'middle')
-    .style('fill', '#fff'); // Adjust the text color as needed
+    .style('fill', function (d) {
+      if (d === 'High') return color[color.length - 1];
+      if (d === 'Low') return color[0];
+      return '';
+    });
 });
 
 function getRandomInt() {
@@ -169,11 +212,14 @@ function getRandomInt() {
 </script>
 
 <template>
+  <XButton @click="restore">Restore</XButton>
   <div ref="worldMap" class="WorldMap"></div>
 </template>
 
 <style lang="scss" scoped>
 .WorldMap {
+  @apply relative border rounded-md;
+
   :deep(.legend) {
     @apply fill-slate-500;
   }
