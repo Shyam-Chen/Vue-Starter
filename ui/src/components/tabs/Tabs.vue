@@ -10,6 +10,7 @@ const props = defineProps<{
 const emit = defineEmits<{
   (evt: 'update:modelValue', val?: number | string): void;
   (evt: 'change', val: string | number): void;
+  (evt: 'close', val: string | number): void;
 }>();
 
 const slots = useSlots();
@@ -66,6 +67,16 @@ function onClickTab(tab: VNode['props'], idx: number) {
   }
 }
 
+function onClose(tab: VNode['props'], idx: number) {
+  if (typeof props.modelValue === 'number') {
+    emit('close', idx);
+  }
+
+  if (typeof props.modelValue === 'string') {
+    emit('close', idx);
+  }
+}
+
 const slotWrapper = ref<HTMLDivElement>();
 
 provide('Tabs', {
@@ -94,7 +105,11 @@ provide('Tabs', {
 
         <template v-else>{{ tab?.props?.title }}</template>
 
-        <div v-if="closeable" class="i-fa-close w-3 h-3 ml-3"></div>
+        <div
+          v-if="closeable"
+          class="i-fa-close w-3 h-3 ml-3 transition hover:scale-125"
+          @click.stop="onClose(tab?.props, idx)"
+        ></div>
       </div>
     </div>
 
@@ -106,7 +121,7 @@ provide('Tabs', {
 
 <style lang="scss" scoped>
 .Tabs-TabWrapper {
-  @apply flex flex-row items-center border-b border-#ADAFB3;
+  @apply flex flex-row items-center border-b border-gray-500;
   @apply overflow-x-auto;
 
   &::-webkit-scrollbar {

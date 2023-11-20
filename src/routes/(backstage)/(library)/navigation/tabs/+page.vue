@@ -5,10 +5,6 @@ import { XBreadcrumb, XTabs } from '@x/ui';
 const flux = reactive({
   tabControlled: 0,
   tabControlledCustomValue: 'vue',
-
-  tabs1: 0,
-  tabs2: 'vue',
-  tabs3: 0,
 });
 </script>
 
@@ -24,19 +20,19 @@ const flux = reactive({
 
     <XTabs>
       <XTabs.Tab title="Angular">
-        <div class="text-red-500 p-4">Angular Content</div>
+        <div class="text-rose-500 p-4">Angular Content</div>
       </XTabs.Tab>
 
       <XTabs.Tab title="React">
-        <div class="text-blue-500 p-4">React Content</div>
+        <div class="text-sky-500 p-4">React Content</div>
       </XTabs.Tab>
 
       <XTabs.Tab title="Svelte">
-        <div class="text-orange-500 p-4">Svelte Content</div>
+        <div class="text-amber-500 p-4">Svelte Content</div>
       </XTabs.Tab>
 
       <XTabs.Tab title="Vue">
-        <div class="text-green-500 p-4">Vue Content</div>
+        <div class="text-emerald-500 p-4">Vue Content</div>
       </XTabs.Tab>
     </XTabs>
   </div>
@@ -45,8 +41,16 @@ const flux = reactive({
     <div class="text-3xl font-bold mb-4">Dynamic</div>
 
     <XTabs>
-      <XTabs.Tab v-for="num in 3" :key="num" :title="`Tab ${num}`">
-        <div class="text-red-500 p-4">Content {{ num }}</div>
+      <XTabs.Tab
+        v-for="tab in [
+          { title: 'Tab 1', content: 'Tab 1 Content' },
+          { title: 'Tab 2', content: 'Tab 2 Content' },
+          { title: 'Tab 3', content: 'Tab 3 Content' },
+        ]"
+        :key="tab.title"
+        :title="tab.title"
+      >
+        <div class="text-emerald-500 p-4">{{ tab.content }}</div>
       </XTabs.Tab>
     </XTabs>
   </div>
@@ -54,7 +58,14 @@ const flux = reactive({
   <div class="my-8">
     <div class="text-3xl font-bold mb-4">Controlled</div>
 
-    <div>{{ flux.tabControlled }}</div>
+    <div class="flex">
+      Active Index:
+      <div>
+        <code class="text-sm text-gray-700 bg-gray-300 ml-2 px-2 rounded">
+          {{ flux.tabControlled }}
+        </code>
+      </div>
+    </div>
 
     <XTabs v-model="flux.tabControlled">
       <XTabs.Tab title="Angular" value="angular">
@@ -76,7 +87,14 @@ const flux = reactive({
 
     <div class="text-2xl font-semibold">Custom Value</div>
 
-    <div>{{ flux.tabControlledCustomValue }}</div>
+    <div class="flex">
+      Active Value:
+      <div>
+        <code class="text-sm text-gray-700 bg-gray-300 ml-2 px-2 rounded">
+          {{ flux.tabControlledCustomValue }}
+        </code>
+      </div>
+    </div>
 
     <XTabs v-model="flux.tabControlledCustomValue">
       <XTabs.Tab title="Angular" value="angular">

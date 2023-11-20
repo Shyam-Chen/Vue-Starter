@@ -50,6 +50,12 @@ watch(
   },
   { deep: true },
 );
+
+function close(item: NotificationMessage, index: number) {
+  clearTimeout(item.timeout);
+  item.timeout = -1;
+  list.value.splice(index, 1);
+}
 </script>
 
 <template>
@@ -59,12 +65,21 @@ watch(
     class="grid gap-4 fixed left-1/2 top-12 -translate-x-1/2 z-200"
   >
     <Alert
-      v-for="item in list"
+      v-for="(item, index) in list"
       :key="item.timeout as number"
       v-bind="$attrs"
       :color="color || item.color"
       :icon="icon || item.icon"
       class="shadow-xl"
+      :class="{
+        'dark:shadow-primary-500/50': color === 'primary' || item.color === 'primary',
+        'dark:shadow-zinc-500/50': color === 'secondary' || item.color === 'secondary',
+        'dark:shadow-emerald-500/50': color === 'success' || item.color === 'success',
+        'dark:shadow-rose-500/50': color === 'danger' || item.color === 'danger',
+        'dark:shadow-amber-500/50': color === 'warning' || item.color === 'warning',
+        'dark:shadow-sky-500/50': color === 'info' || item.color === 'info',
+      }"
+      @close="close(item, index)"
     >
       {{ item.message }}
     </Alert>
