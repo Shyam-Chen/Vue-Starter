@@ -9,7 +9,8 @@ defineProps<{
 
 <template>
   <RouterLink v-if="to" v-bind="$attrs" :to="to" class="Link"><slot></slot></RouterLink>
-  <a v-if="href" v-bind="$attrs" :href="href" class="Link"><slot></slot></a>
+  <a v-else-if="href" v-bind="$attrs" :href="href" class="Link"><slot></slot></a>
+  <span v-else class="Link"><slot></slot></span>
 </template>
 
 <style lang="scss" scoped>

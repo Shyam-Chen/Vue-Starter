@@ -15,6 +15,8 @@ const emit = defineEmits<{
 const slots = useSlots();
 const tabs = ref<VNode[]>([]);
 
+const curIdx = ref(0);
+
 watch(
   () => slots.default?.(),
   () => {
@@ -45,10 +47,13 @@ watch(
 function isActive(tab: VNode['props'], idx: number) {
   if (typeof props.modelValue === 'number') return idx === props.modelValue;
   if (typeof props.modelValue === 'string') return tab?.value === props.modelValue;
+  return curIdx.value === idx;
 }
 
 function onClickTab(tab: VNode['props'], idx: number) {
   if (tab?.disabled) return;
+
+  curIdx.value = idx;
 
   if (typeof props.modelValue === 'number') {
     emit('update:modelValue', idx);
@@ -64,6 +69,7 @@ function onClickTab(tab: VNode['props'], idx: number) {
 const slotWrapper = ref<HTMLDivElement>();
 
 provide('Tabs', {
+  curIdx,
   modelValue: computed(() => props.modelValue),
   slotWrapper,
 });

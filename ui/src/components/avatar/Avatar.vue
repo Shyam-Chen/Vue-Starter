@@ -6,27 +6,27 @@ defineProps<{
 </script>
 
 <template>
-  <img v-if="src" v-bind="$attrs" :src="src" class="avatar-image" />
+  <img v-if="src" v-bind="$attrs" :src="src" class="Avatar-Image" />
 
-  <div v-else-if="icon" v-bind="$attrs" class="avatar-icon">
+  <div v-else-if="icon" v-bind="$attrs" class="Avatar-Icon">
     <div class="w-7 h-7" :class="icon"></div>
   </div>
 
-  <div v-else v-bind="$attrs" class="avatar-text">
+  <div v-else v-bind="$attrs" class="Avatar-Text">
     <slot></slot>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.avatar-image {
+.Avatar-Image {
   @apply w-10 h-10 rounded-full;
 }
 
-.avatar-icon {
+.Avatar-Icon {
   @apply w-10 h-10 rounded-full flex justify-center items-center;
 }
 
-.avatar-text {
+.Avatar-Text {
   @apply w-10 h-10 rounded-full flex justify-center items-center;
 }
 </style>

@@ -9,6 +9,7 @@ defineProps<{
 }>();
 
 const tabs = inject('Tabs') as {
+  curIdx: Ref<number>;
   modelValue: ComputedRef<string | number | undefined>;
   slotWrapper: Ref<HTMLDivElement | undefined>;
 };
@@ -19,13 +20,19 @@ const currentIndex = ref(-1);
 onMounted(() => {
   if (tabs.slotWrapper.value?.children?.length) {
     currentIndex.value = Array.from(tabs.slotWrapper.value.children).indexOf(self.value as Element);
+
+    console.log(tabs.curIdx.value);
   }
 });
 </script>
 
 <template>
   <div
-    v-show="tabs.modelValue.value === currentIndex || tabs.modelValue.value === value"
+    v-show="
+      tabs.curIdx.value === currentIndex ||
+      tabs.modelValue.value === currentIndex ||
+      (value && tabs.modelValue.value === value)
+    "
     ref="self"
   >
     <slot></slot>
