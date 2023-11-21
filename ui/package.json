@@ -13,8 +13,9 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "lint": "eslint 'src/**/*.{ts,vue}' && vue-tsc",
-    "unit": "vitest --dir src --run --coverage"
+    "lint": "eslint 'src/**/*.{ts,vue}'",
+    "check": "vue-tsc",
+    "test": "vitest --dir src --run --coverage"
   },
   "dependencies": {
     "@tiptap/extension-blockquote": "^2.1.12",
