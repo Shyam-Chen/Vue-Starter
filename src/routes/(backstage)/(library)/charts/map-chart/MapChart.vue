@@ -60,8 +60,6 @@ onMounted(async () => {
   const zoom: any = d3.zoom().on('zoom', zoomed);
 
   function zoomed(event: any) {
-    console.log(event.transform);
-
     svg.selectAll('g').attr('transform', event.transform);
   }
 
