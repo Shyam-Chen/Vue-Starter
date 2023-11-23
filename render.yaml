@@ -5,7 +5,7 @@ services:
     branch: main
     envVars:
       - key: NODE_VERSION
-        value: 20.9.0
+        value: 20.10.0
       - key: API_URL
         sync: false
     buildCommand: pnpm install; pnpm build

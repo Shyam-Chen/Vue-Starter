@@ -28,5 +28,5 @@
 
     "skipLibCheck": true
   },
-  "exclude": ["node_modules", "dist", "coverage", "e2e", "benchmark", "mock", "docs", "ui", "api"]
+  "exclude": ["node_modules", "dist", "coverage", "ui", "api", "e2e"]
 }
