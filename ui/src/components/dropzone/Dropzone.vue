@@ -3,12 +3,18 @@ import { ref } from 'vue';
 
 import useNotification from '../../composables/notification/useNotification';
 
-defineProps<{
+defineOptions({
+  inheritAttrs: false,
+});
+
+const props = defineProps<{
   invalid?: string | boolean;
+  title?: string;
+  limit?: (file: File) => string;
 }>();
 
 const emit = defineEmits<{
-  (evt: 'upload', val: FormData): void;
+  (evt: 'upload', file: File, formData: FormData): void;
 }>();
 
 const notification = useNotification();
@@ -41,11 +47,11 @@ function onDrop(evt: DragEvent) {
   const file = evt.dataTransfer?.files?.[0];
 
   if (file) {
-    if (fileLimit(file)) return;
+    if (typeof props.limit === 'function' ? props.limit(file) : fileLimit(file)) return;
 
     const formData = new FormData();
     formData.append('file', file);
-    emit('upload', formData);
+    emit('upload', file, formData);
   }
 }
 
@@ -54,11 +60,11 @@ function onChange(evt: Event) {
   const file = el?.files?.[0];
 
   if (file) {
-    if (fileLimit(file)) return;
+    if (typeof props.limit === 'function' ? props.limit(file) : fileLimit(file)) return;
 
     const formData = new FormData();
     formData.append('file', file);
-    emit('upload', formData);
+    emit('upload', file, formData);
   }
 }
 
@@ -74,6 +80,7 @@ function onDragLeave() {
 <template>
   <div>
     <label
+      v-bind="$attrs"
       class="Dropzone"
       :class="{ 'important:bg-slate-200': dragover }"
       @dragover.prevent="onDragOver"
@@ -88,7 +95,7 @@ function onDragLeave() {
         @click="($refs.dropzone as HTMLInputElement).value = ''"
       />
       <div class="i-mdi-tray-arrow-up w-24 h-24"></div>
-      <div class="text-xl">Click or drag to upload image</div>
+      <div class="text-xl">{{ title || 'Click or drag to upload image' }}</div>
     </label>
 
     <div v-if="invalid" class="text-red-500 text-sm mt-1">

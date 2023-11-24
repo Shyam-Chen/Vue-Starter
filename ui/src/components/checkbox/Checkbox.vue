@@ -58,7 +58,7 @@ const uid = uniqueId('Checkbox-');
       </div>
     </label>
 
-    <div v-if="invalid" class="text-red-500 text-xs mt-1">
+    <div v-if="typeof invalid === 'string' && invalid" class="text-red-500 text-xs mt-1">
       {{ invalid }}
     </div>
   </div>
