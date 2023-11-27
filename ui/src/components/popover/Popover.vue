@@ -5,6 +5,7 @@ import { vOnClickOutside } from '@vueuse/components';
 const props = defineProps<{
   modelValue?: boolean;
   options?: string[];
+  disabled?: boolean;
 }>();
 
 const emit = defineEmits<{
@@ -22,6 +23,8 @@ const dropdown = ref();
 const flux = reactive({
   status: false,
   onMouseenter() {
+    if (props.disabled) return;
+
     flux.status = !flux.status;
     status.value = !status.value;
 

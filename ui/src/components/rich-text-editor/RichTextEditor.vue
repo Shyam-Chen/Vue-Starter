@@ -247,7 +247,7 @@ defineExpose({
         <div class="i-mdi-format-header-3 w-6 h-6" @click="toggleHeading(3)"></div>
         <div class="i-mdi-format-header-4 w-6 h-6" @click="toggleHeading(4)"></div>
 
-        <Popover>
+        <Popover :disabled="disabled">
           <div class="i-mdi-format-color-text w-6 h-6"></div>
 
           <template #content>
@@ -276,7 +276,7 @@ defineExpose({
           </template>
         </Popover>
 
-        <Popover>
+        <Popover :disabled="disabled">
           <div class="i-mdi-format-color-fill w-6 h-6"></div>
 
           <template #content>
