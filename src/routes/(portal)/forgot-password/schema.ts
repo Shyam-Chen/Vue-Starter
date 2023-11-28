@@ -1,21 +1,21 @@
-import { toRef } from 'vue';
-import { useZodSchema } from 'vue-formor';
-import { useValdnMsg } from '@x/ui';
-import { z } from 'zod';
+import { computed, toRef } from 'vue';
+import { useValibotSchema } from 'vue-formor';
+import { useValdnLocale } from '@x/ui';
+import { object, string, minLength, email } from 'valibot';
 
 import useStore from './store';
 
 export default () => {
-  const valdnMsg = useValdnMsg();
+  const valdnLocale = useValdnLocale();
 
   const { state } = useStore();
 
-  const string = () => z.string({ required_error: valdnMsg.value.required });
-
-  const schema = useZodSchema(
-    z.object({
-      email: string().email(valdnMsg.value.email).nonempty(valdnMsg.value.required),
-    }),
+  const schema = useValibotSchema(
+    computed(() =>
+      object({
+        email: string([minLength(1, valdnLocale.value.required), email(valdnLocale.value.email)]),
+      }),
+    ),
     toRef(state, 'form'),
     toRef(state, 'valdn'),
   );

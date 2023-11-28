@@ -59,7 +59,7 @@ export { default as XYearPicker } from './components/year-picker/YearPicker.vue'
 
 export { default as useEventSource } from './composables/eventsource/useEventSource';
 export { default as useNotification } from './composables/notification/useNotification';
-export { default as useValdnMsg } from './composables/valdn-msg/useValdnMsg';
+export { default as useValdnLocale } from './composables/valdn-locale/useValdnLocale';
 export { default as useWebSocket } from './composables/websocket/useWebSocket';
 
 export { default as queueGuard } from './utilities/queue-guard/queueGuard';

@@ -57,6 +57,25 @@ const initial = ref<TreeTableNode[]>([
 
 const treeTableNodes = ref([...initial.value]);
 
+function getChildrenCountByKey(data: TreeTableNode[], targetKey: TreeTableNode['key']) {
+  const targetObject = data.find((item) => item.key === targetKey);
+
+  if (!targetObject) {
+    return 0;
+  }
+
+  let count = targetObject.children?.length || 0;
+
+  targetObject.children?.forEach((child) => {
+    if (child.status) {
+      child.status = false;
+      count += getChildrenCountByKey(data, child.key);
+    }
+  });
+
+  return count;
+}
+
 function treeNode(item: TreeTableNode) {
   item.status = !item.status;
 
@@ -68,7 +87,8 @@ function treeNode(item: TreeTableNode) {
   } else {
     const arr = [...treeTableNodes.value];
     const index = treeTableNodes.value.findIndex((node) => item.key === node.key);
-    arr.splice(index + 1, item?.children?.length);
+    const count = getChildrenCountByKey(arr, item.key);
+    arr.splice(index + 1, count);
     treeTableNodes.value = arr;
   }
 }
@@ -116,7 +136,7 @@ function treeNode(item: TreeTableNode) {
             >
               <XButton
                 v-if="node.children?.length"
-                icon="i-fa-caret-down"
+                :icon="node.status ? 'i-fa-caret-up' : 'i-fa-caret-down'"
                 color="secondary"
                 variant="text"
                 @click="treeNode(node)"
