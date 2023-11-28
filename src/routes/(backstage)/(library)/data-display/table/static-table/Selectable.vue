@@ -14,7 +14,7 @@ const control = ref({ rows: 10, page: 1, field: 'id', direction: 'asc' });
 
 onMounted(() => {
   response.value = structuredClone(leetcode);
-  rows.value = structuredClone(leetcode);
+  rows.value = [...response.value];
 });
 
 function reset() {

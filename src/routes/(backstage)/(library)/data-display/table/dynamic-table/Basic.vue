@@ -1,14 +1,15 @@
 <script lang="ts" setup>
 import type { ComponentProps } from 'vue-component-type-helpers';
-import { ref, reactive, onMounted } from 'vue';
+import { reactive, onMounted } from 'vue';
 import { XTextField, XSelect, XButton, XTable } from '@x/ui';
 
 import leetcode from './leetcode';
 
-const rows = ref<any[]>([]);
+type TableProps = ComponentProps<typeof XTable>;
 
 const state = reactive({
-  control: {} as ComponentProps<typeof XTable>['control'],
+  rows: [] as any[],
+  control: { rows: 10, page: 1, field: 'id', direction: 'asc' } as TableProps['control'],
   count: 0,
 });
 
@@ -17,10 +18,8 @@ const body = reactive({
   difficulty: '',
 });
 
-onMounted(async () => {
-  const response = await leetcode();
-  rows.value = response.result;
-  state.count = response.count;
+onMounted(() => {
+  search();
 });
 
 function reset() {
@@ -30,8 +29,16 @@ function reset() {
 }
 
 async function search() {
+  state.control = { rows: 10, page: 1, field: 'id', direction: 'asc' };
   const response = await leetcode({ ...body, ...state.control });
-  rows.value = response.result;
+  state.rows = response.result;
+  state.count = response.count;
+}
+
+async function change(params: TableProps['control']) {
+  state.control = params;
+  const response = await leetcode({ ...body, ...params });
+  state.rows = response.result;
 }
 </script>
 
@@ -59,16 +66,14 @@ async function search() {
       </div>
 
       <XTable
+        v-model:control="state.control"
         :columns="[
           { key: 'title', name: 'Title' },
           { key: 'difficulty', name: 'Difficulty' },
         ]"
-        :rows="rows"
+        :rows="state.rows"
         :count="state.count"
-        @change="
-          state.control = $event;
-          search();
-        "
+        @change="change"
       />
     </div>
   </div>

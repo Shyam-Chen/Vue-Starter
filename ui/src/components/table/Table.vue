@@ -168,6 +168,8 @@ watch(
         const found: any = tableValue.value.find((item: any) => item.id === row.id);
         if (found) found.checked = val;
       });
+    } else {
+      flux.rows = props.rows?.map((item) => ({ ...item, checked: val })) || [];
     }
   },
 );

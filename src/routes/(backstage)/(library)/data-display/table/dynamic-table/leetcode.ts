@@ -202,6 +202,6 @@ export default async (body: any = {}) => {
       field: body.field || 'createdAt',
       direction: body.direction || 'desc',
     }),
-    count: data.length,
+    count: res.length,
   };
 };
