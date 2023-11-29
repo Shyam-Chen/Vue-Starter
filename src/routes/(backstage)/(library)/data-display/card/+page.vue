@@ -9,7 +9,7 @@ import { XBreadcrumb, XCard } from '@x/ui';
     <div class="text-3xl font-bold">Card</div>
   </div>
 
-  <XCard>
+  <XCard class="max-w-sm">
     <a href="#">
       <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
         Noteworthy technology acquisitions 2021

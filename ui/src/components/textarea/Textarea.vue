@@ -40,6 +40,8 @@ const valueModel = computed({
     </label>
 
     <div v-if="readonly">
+      <textarea :id="uid" readonly class="hidden"></textarea>
+
       <div v-for="(item, index) in valueModel?.split('\n')" :key="index">
         {{ item }}
       </div>

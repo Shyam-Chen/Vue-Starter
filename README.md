@@ -177,7 +177,6 @@ The structure follows the LIFT Guidelines.
 │   ├── routes
 │   ├── utilities
 │   ├── App.vue
-│   ├── Error.vue
 │   ├── main.ts
 │   └── shims.d.ts
 ├── ui

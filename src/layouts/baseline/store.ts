@@ -4,7 +4,7 @@ import { defineStore } from 'vue-storer';
 import type { Link } from './links-list';
 import listOfLinks from './links-list';
 
-export default defineStore('/layouts/Baseline.vue', () => {
+export default defineStore('/layouts/baseline', () => {
   const state = reactive({
     listOfLinks,
   });
