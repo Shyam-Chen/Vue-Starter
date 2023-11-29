@@ -20,8 +20,6 @@ const currentIndex = ref(-1);
 onMounted(() => {
   if (tabs.slotWrapper.value?.children?.length) {
     currentIndex.value = Array.from(tabs.slotWrapper.value.children).indexOf(self.value as Element);
-
-    console.log(tabs.curIdx.value);
   }
 });
 </script>

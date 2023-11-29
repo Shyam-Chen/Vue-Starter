@@ -124,8 +124,8 @@ importers:
         specifier: ^5.0.3
         version: 5.0.3(@types/node@20.10.0)(sass@1.69.5)
       vite-plugin-vue-routes:
-        specifier: ^1.0.5
-        version: 1.0.5
+        specifier: ^1.1.0
+        version: 1.1.0
       vitest:
         specifier: ^0.34.6
         version: 0.34.6(happy-dom@12.10.3)(sass@1.69.5)
@@ -5938,6 +5938,13 @@ packages:
 
   /vite-plugin-vue-routes@1.0.5:
     resolution: {integrity: sha512-1uZwso2pVenspiHGTogxoiuhjipbhr4C4LezrlVArGQKDOzcUlwglJAcxq3kZOetWy7jjzUU9vJLOymOlmsJGQ==}
+    dependencies:
+      glob: 10.3.10
+      lodash.maxby: 4.6.0
+    dev: true
+
+  /vite-plugin-vue-routes@1.1.0:
+    resolution: {integrity: sha512-ABCWOoWqdHNo4tkfd2pjqgA0QBJSolybILVm+eB2vIaPxldQikB8wC7iKfirirx3WwzgO9K8ZjUXy4AVVZLhlQ==}
     dependencies:
       glob: 10.3.10
       lodash.maxby: 4.6.0

@@ -14,17 +14,9 @@ const router = createRouter({
     },
 
     ...routes,
-
-    {
-      path: '/:slug(.*)*',
-      component: () => import('~/Error.vue'),
-    },
   ],
   scrollBehavior(to, from, savedPosition) {
-    if (savedPosition) {
-      return savedPosition;
-    }
-
+    if (savedPosition) return savedPosition;
     return { top: 0 };
   },
 });

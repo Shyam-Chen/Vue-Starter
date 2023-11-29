@@ -1,72 +1,92 @@
 <script lang="ts" setup>
+import type { TextareaHTMLAttributes } from 'vue';
 import { computed } from 'vue';
+import uniqueId from 'lodash/uniqueId';
 
-defineOptions({
-  inheritAttrs: false,
-});
-
-const props = defineProps<{
+interface Props extends /* @vue-ignore */ TextareaHTMLAttributes {
   label?: string;
   value?: string;
   required?: boolean;
   disabled?: boolean;
   readonly?: boolean;
   rows?: string;
-  errorMessage?: string;
-}>();
+  invalid?: boolean | string;
+}
+
+defineOptions({
+  inheritAttrs: false,
+});
+
+const props = defineProps<Props>();
 
 const emit = defineEmits<{
   (evt: 'update:value', val: string): void;
 }>();
 
-const textareaValue = computed({
+const uid = uniqueId('Textarea-');
+
+const valueModel = computed({
   get: () => props.value || '',
   set: (val) => emit('update:value', val),
 });
 </script>
 
 <template>
-  <div class="textarea" :class="[disabled ? 'opacity-60' : '']">
-    <label class="textarea-label">
+  <div class="Textarea" :class="[disabled ? 'opacity-60' : '']">
+    <label :for="uid" class="Textarea-Label">
       <template v-if="label">{{ label }}</template>
       <slot v-else></slot>
       <span v-if="required" class="text-red-500">*</span>
     </label>
 
+    <div v-if="readonly">
+      <div v-for="(item, index) in valueModel?.split('\n')" :key="index">
+        {{ item }}
+      </div>
+    </div>
+
     <textarea
-      v-model="textareaValue"
+      v-else
+      :id="uid"
+      v-model="valueModel"
       v-bind="$attrs"
       :disabled="disabled"
-      :readonly="readonly"
       :rows="rows ? rows : '5'"
       wrap="hard"
-      class="textarea-input"
-      :class="{
-        'cursor-not-allowed': disabled,
-        danger: errorMessage,
-      }"
+      class="Textarea-Input"
+      :class="{ disabled, invalid }"
     ></textarea>
 
-    <div v-if="errorMessage" class="text-red-500 text-xs">{{ errorMessage }}</div>
+    <div v-if="invalid && typeof invalid === 'string'" class="text-red-500 text-xs mt-1">
+      {{ invalid }}
+    </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.textarea {
+.Textarea {
   @apply flex flex-col w-full;
 }
 
-.textarea-label {
+.Textarea-Label {
   @apply text-sm font-bold mb-2 empty:hidden;
 }
 
-.textarea-input {
-  @apply w-full border border-slate-400 rounded px-3 py-2;
+.Textarea-Input {
+  @apply w-full border border-slate-400 dark:border-slate-500 rounded px-3 py-2;
   @apply bg-white dark:bg-slate-800 leading-tight;
   @apply focus:outline-none focus:ring-1 focus:ring-primary-400 focus:border-primary-400;
 
-  &.danger {
-    @apply border-red-500 mb-1;
+  &::placeholder {
+    @apply text-zinc-500/50 dark:text-zinc-500;
+  }
+
+  &.disabled {
+    @apply cursor-not-allowed;
+  }
+
+  &.invalid {
+    @apply border-red-500 dark:border-red-500;
     @apply focus:ring-red-500 focus:border-red-500;
   }
 }
