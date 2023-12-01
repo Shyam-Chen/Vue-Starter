@@ -129,7 +129,7 @@ const hasPermission = true; // props?.permissions?.includes(getters.currentRole)
 
 <style lang="scss" scoped>
 .link {
-  @apply px-4 py-2 mb-1 flex cursor-pointer hover:rounded-md;
+  @apply px-4 py-2 mb-1 flex cursor-pointer rounded-md;
   @apply hover:text-primary-500 hover:bg-primary-100;
   @apply dark:hover:text-primary-100 dark:hover:bg-primary-600;
 
@@ -138,7 +138,7 @@ const hasPermission = true; // props?.permissions?.includes(getters.currentRole)
   }
 
   &-current {
-    @apply rounded-md font-bold;
+    @apply font-bold;
     @apply text-primary-500 dark:text-primary-200 bg-primary-200 dark:bg-primary-700;
   }
 }
