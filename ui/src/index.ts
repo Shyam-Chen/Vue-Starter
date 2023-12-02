@@ -34,6 +34,7 @@ export { default as XMultiselect } from './components/multiselect/Multiselect.vu
 export { default as XNotification } from './components/notification/Notification.vue';
 export { default as XPagination } from './components/pagination/Pagination.vue';
 export { default as XPanel } from './components/panel/Panel.vue';
+export { default as XPassword } from './components/password/Password.vue';
 export { default as XPopover } from './components/popover/Popover.vue';
 export { default as XProgressBar } from './components/progress-bar/ProgressBar.vue';
 export { default as XRadioGroup } from './components/radio-group/RadioGroup.vue';

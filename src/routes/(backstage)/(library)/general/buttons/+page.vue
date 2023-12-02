@@ -3,33 +3,41 @@ import { XBreadcrumb, XButton } from '@x/ui';
 </script>
 
 <template>
-  <XBreadcrumb :items="[{ text: 'Library' }, { text: 'General' }, { text: 'Buttons' }]" />
+  <XBreadcrumb :items="[{ text: 'Library' }, { text: 'General' }, { text: 'Button' }]" />
 
   <div class="my-4">
-    <div class="text-3xl font-bold">Buttons</div>
+    <div class="text-4xl font-extrabold">Button</div>
   </div>
 
-  <div class="flex flex-col border p-4 mb-4 gap-4">
-    <div class="mb-2">
-      Basic - The `XButton` comes with three variants: contained (default), outlined, and text.
-    </div>
+  <div class="my-8">
+    <div class="text-3xl font-bold my-4">Basic</div>
 
-    <div class="flex space-x-2 justify-center">
+    <div class="flex gap-2 my-4">
       <XButton variant="contained" size="small">Contained</XButton>
       <XButton variant="outlined" size="small">Outlined</XButton>
       <XButton variant="text" size="small">Text</XButton>
     </div>
 
-    <div class="flex space-x-2 justify-center">
+    <div class="flex gap-2 my-4">
       <XButton variant="contained">Contained</XButton>
       <XButton variant="outlined">Outlined</XButton>
       <XButton variant="text">Text</XButton>
     </div>
 
-    <div class="flex space-x-2 justify-center">
+    <div class="flex gap-2 my-4">
       <XButton variant="contained" size="large">Contained</XButton>
       <XButton variant="outlined" size="large">Outlined</XButton>
       <XButton variant="text" size="large">Text</XButton>
+    </div>
+  </div>
+
+  <div class="my-8">
+    <div class="text-3xl font-bold my-4 pt-6">Button Group</div>
+
+    <div class="ButtonGroup inline-flex">
+      <XButton variant="outlined">Years</XButton>
+      <XButton variant="outlined">Month</XButton>
+      <XButton variant="outlined">Date</XButton>
     </div>
   </div>
 
@@ -162,3 +170,12 @@ import { XBreadcrumb, XButton } from '@x/ui';
     </div>
   </div>
 </template>
+
+<style lang="scss" scoped>
+.ButtonGroup {
+  :deep(.Button) {
+    @apply !first:rounded-l !rounded-0 !last:rounded-r;
+    @apply !first:border-l !border-l-0;
+  }
+}
+</style>

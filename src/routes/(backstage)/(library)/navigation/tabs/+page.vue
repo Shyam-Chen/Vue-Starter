@@ -38,7 +38,7 @@ const flux = reactive({
   </div>
 
   <div class="my-8">
-    <div class="text-3xl font-bold mb-4">Dynamic</div>
+    <div class="text-3xl font-bold mb-4 pt-6">Dynamic</div>
 
     <XTabs>
       <XTabs.Tab
@@ -56,9 +56,9 @@ const flux = reactive({
   </div>
 
   <div class="my-8">
-    <div class="text-3xl font-bold mb-4">Controlled</div>
+    <div class="text-3xl font-bold mb-4 pt-6">Controlled</div>
 
-    <div class="flex">
+    <div class="flex mb-2">
       Active Index:
       <div>
         <code class="text-sm text-gray-700 bg-gray-300 ml-2 px-2 rounded">
@@ -85,9 +85,9 @@ const flux = reactive({
       </XTabs.Tab>
     </XTabs>
 
-    <div class="text-2xl font-semibold">Custom Value</div>
+    <div class="text-2xl font-semibold my-4">Custom Value</div>
 
-    <div class="flex">
+    <div class="flex mb-2">
       Active Value:
       <div>
         <code class="text-sm text-gray-700 bg-gray-300 ml-2 px-2 rounded">
@@ -116,7 +116,7 @@ const flux = reactive({
   </div>
 
   <div class="my-8">
-    <div class="text-3xl font-bold mb-4">Scrollable</div>
+    <div class="text-3xl font-bold mb-4 pt-6">Scrollable</div>
 
     <XTabs>
       <XTabs.Tab v-for="num in 20" :key="num" :title="`Tab ${num}`">
@@ -126,7 +126,7 @@ const flux = reactive({
   </div>
 
   <div class="my-8">
-    <div class="text-3xl font-bold mb-4">Disabled</div>
+    <div class="text-3xl font-bold mb-4 pt-6">Disabled</div>
 
     <XTabs>
       <XTabs.Tab title="Angular">
@@ -148,7 +148,7 @@ const flux = reactive({
   </div>
 
   <div class="my-8">
-    <div class="text-3xl font-bold mb-4">Closeable</div>
+    <div class="text-3xl font-bold mb-4 pt-6">Closeable</div>
 
     <XTabs closeable>
       <XTabs.Tab title="Angular">
@@ -170,7 +170,7 @@ const flux = reactive({
   </div>
 
   <div class="my-8">
-    <div class="text-3xl font-bold mb-4">Template</div>
+    <div class="text-3xl font-bold mb-4 pt-6">Template</div>
 
     <XTabs>
       <XTabs.Tab>

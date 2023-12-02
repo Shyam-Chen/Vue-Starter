@@ -56,6 +56,7 @@ import { XBreadcrumb } from '@x/ui';
       <RouterLink to="/data-entry/file-inputs" class="card">File inputs</RouterLink>
       <RouterLink to="/data-entry/form-validation" class="card">Form Validation</RouterLink>
       <RouterLink to="/data-entry/input-mask" class="card">InputMask</RouterLink>
+      <RouterLink to="/data-entry/password" class="card">Password</RouterLink>
       <RouterLink to="/data-entry/pickers/date-pickers" class="card">Date pickers</RouterLink>
       <RouterLink to="/data-entry/pickers/month-pickers" class="card">Month pickers</RouterLink>
       <RouterLink to="/data-entry/pickers/time-pickers" class="card">Time pickers</RouterLink>
