@@ -1,5 +1,6 @@
 <script lang="ts" setup>
-import type { ButtonHTMLAttributes } from 'vue';
+import type { ButtonHTMLAttributes, Ref, WritableComputedRef } from 'vue';
+import { ref, computed, inject, onMounted } from 'vue';
 
 interface Props extends /* @vue-ignore */ ButtonHTMLAttributes {
   variant?: 'contained' | 'outlined' | 'text';
@@ -10,16 +11,50 @@ interface Props extends /* @vue-ignore */ ButtonHTMLAttributes {
 }
 
 defineProps<Props>();
+
+const emit = defineEmits<{
+  (evt: 'click', val: Event): void;
+}>();
+
+const buttonGroup = inject('ButtonGroup', {
+  model: undefined,
+  group: undefined,
+}) as {
+  model?: WritableComputedRef<number | number[]>;
+  group?: Ref<HTMLDivElement>;
+};
+
+const idx = ref(-1);
+const self = ref<HTMLButtonElement>();
+
+onMounted(() => {
+  if (buttonGroup.group?.value && self.value) {
+    idx.value = Array.from(buttonGroup.group.value.children).indexOf(self.value);
+  }
+});
+
+const hasGroup = computed(() => typeof buttonGroup.model?.value === 'number');
+
+function onClick(evt: Event) {
+  emit('click', evt);
+
+  if (hasGroup.value) {
+    if (typeof buttonGroup.model?.value === 'number') {
+      buttonGroup.model.value = idx.value;
+    }
+  }
+}
 </script>
 
 <template>
   <button
+    ref="self"
     v-bind="$attrs"
     type="button"
     class="Button"
     :class="{
-      contained: variant === 'contained' || !variant,
-      outlined: variant === 'outlined',
+      contained: hasGroup ? idx === buttonGroup.model?.value : variant === 'contained' || !variant,
+      outlined: hasGroup ? idx !== buttonGroup.model?.value : variant === 'outlined',
       text: variant === 'text',
       primary: color === 'primary' || !color,
       secondary: color === 'secondary',
@@ -33,6 +68,7 @@ defineProps<Props>();
       disabled,
     }"
     :disabled="disabled"
+    @click="onClick"
   >
     <div v-if="icon" class="w-4 h-4" :class="icon"></div>
     <slot></slot>

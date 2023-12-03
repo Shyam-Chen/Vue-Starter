@@ -1,5 +1,8 @@
 <script lang="ts" setup>
+import { ref } from 'vue';
 import { XBreadcrumb, XButton } from '@x/ui';
+
+const buttonGroup = ref(0);
 </script>
 
 <template>
@@ -34,10 +37,20 @@ import { XBreadcrumb, XButton } from '@x/ui';
   <div class="my-8">
     <div class="text-3xl font-bold my-4 pt-6">Button Group</div>
 
-    <div class="ButtonGroup inline-flex">
+    <XButton.Group>
       <XButton variant="outlined">Years</XButton>
       <XButton variant="outlined">Month</XButton>
       <XButton variant="outlined">Date</XButton>
+    </XButton.Group>
+
+    <div class="my-4">
+      <div class="text-2xl font-semibold my-4">Controlled</div>
+
+      <XButton.Group v-model="buttonGroup">
+        <XButton>Years</XButton>
+        <XButton>Month</XButton>
+        <XButton>Date</XButton>
+      </XButton.Group>
     </div>
   </div>
 
@@ -170,12 +183,3 @@ import { XBreadcrumb, XButton } from '@x/ui';
     </div>
   </div>
 </template>
-
-<style lang="scss" scoped>
-.ButtonGroup {
-  :deep(.Button) {
-    @apply !first:rounded-l !rounded-0 !last:rounded-r;
-    @apply !first:border-l !border-l-0;
-  }
-}
-</style>
