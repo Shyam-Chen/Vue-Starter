@@ -35,8 +35,8 @@ const valueModel = computed({
   <div class="Textarea" :class="[disabled ? 'opacity-60' : '']">
     <label :for="uid" class="Textarea-Label">
       <template v-if="label">{{ label }}</template>
-      <slot v-else></slot>
       <span v-if="required" class="text-red-500">*</span>
+      <slot></slot>
     </label>
 
     <div v-if="readonly">

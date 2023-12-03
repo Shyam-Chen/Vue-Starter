@@ -250,7 +250,7 @@ onMounted(async () => {
       </footer>
     </div>
 
-    <XDialog v-model="flux.authDialog">
+    <XDialog v-model="flux.authDialog" class="!w-100">
       <div class="text-2xl">{{ flux.userError.error }}</div>
       <div class="my-2">{{ flux.userError.message }}</div>
 
@@ -309,7 +309,7 @@ onMounted(async () => {
 }
 
 .sidebar {
-  @apply fixed top-20 bottom-0 z-99 w-64 overflow-y-auto;
+  @apply fixed top-18 bottom-0 z-100 w-64 overflow-y-auto;
   @apply ltr:left-0	rtl:right-0;
   @apply ltr:border-r rtl:border-l;
 }

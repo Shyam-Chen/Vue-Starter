@@ -31,7 +31,7 @@ watch(
 </script>
 
 <template>
-  <XDialog v-model="flux.idleDialog">
+  <XDialog v-model="flux.idleDialog" class="!w-100">
     <div class="text-2xl">Idle Time-out</div>
     <div class="my-2">Please sign-in again.</div>
 

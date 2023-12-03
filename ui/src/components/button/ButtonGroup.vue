@@ -2,19 +2,15 @@
 import { ref, computed, provide } from 'vue';
 
 const props = defineProps<{
-  modelValue?: number | number[];
-  multiple?: boolean;
+  modelValue?: number;
 }>();
 
 const emit = defineEmits<{
-  (evt: 'update:modelValue', val: number | number[]): void;
+  (evt: 'update:modelValue', val: number): void;
 }>();
 
 const model = computed({
-  get: () => {
-    if (props.multiple) return props.modelValue || [-1];
-    return typeof props.modelValue === 'number' ? props.modelValue : -1;
-  },
+  get: () => (typeof props.modelValue === 'number' ? props.modelValue : -1),
   set: (val) => emit('update:modelValue', val),
 });
 
@@ -27,13 +23,15 @@ provide('ButtonGroup', {
 </script>
 
 <template>
-  <div ref="group" class="ButtonGroup inline-flex">
+  <div ref="group" class="ButtonGroup">
     <slot></slot>
   </div>
 </template>
 
 <style lang="scss" scoped>
 .ButtonGroup {
+  @apply inline-flex;
+
   :deep(.Button) {
     @apply !first:rounded-l !rounded-0 !last:rounded-r;
     @apply !first:border-l !border-l-0;

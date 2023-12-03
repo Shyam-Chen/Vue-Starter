@@ -133,7 +133,7 @@ const submit = () => {
             { label: 'Plain Text', value: 2 },
           ]"
           required
-          :errorMessage="state.valdn.urlPasteBehavior"
+          :invalid="state.valdn.urlPasteBehavior"
         />
 
         <div class="md:col-span-2">

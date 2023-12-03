@@ -20,7 +20,7 @@ const buttonGroup = inject('ButtonGroup', {
   model: undefined,
   group: undefined,
 }) as {
-  model?: WritableComputedRef<number | number[]>;
+  model?: WritableComputedRef<number>;
   group?: Ref<HTMLDivElement>;
 };
 

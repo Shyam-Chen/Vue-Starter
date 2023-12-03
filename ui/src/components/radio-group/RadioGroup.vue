@@ -12,7 +12,7 @@ const props = defineProps<{
   options?: string[] | Array<{ label: string; value: unknown }>;
   disabled?: boolean;
   required?: boolean;
-  errorMessage?: string;
+  invalid?: boolean | string;
 }>();
 
 const emit = defineEmits<{
@@ -31,8 +31,9 @@ const radioGroupValue = computed({
 <template>
   <div class="radio-group">
     <div class="text-sm mb-2 font-bold empty:hidden">
-      {{ label }}
+      <template v-if="label">{{ label }}</template>
       <span v-if="required" class="text-red-500">*</span>
+      <slot></slot>
     </div>
 
     <div class="flex items-center h-38px space-x-4">
@@ -52,6 +53,7 @@ const radioGroupValue = computed({
             :value="typeof item === 'object' ? item.value : item"
             :disabled="disabled"
             class="radio"
+            :class="{ invalid }"
             @change="emit('change', radioGroupValue)"
           />
 
@@ -69,7 +71,9 @@ const radioGroupValue = computed({
       </label>
     </div>
 
-    <div v-if="errorMessage" class="text-red-500 text-xs">{{ errorMessage }}</div>
+    <div v-if="invalid && typeof invalid === 'string'" class="text-red-500 text-xs mt-1">
+      {{ invalid }}
+    </div>
   </div>
 </template>
 
@@ -81,5 +85,10 @@ const radioGroupValue = computed({
 .radio {
   @apply appearance-none w-5 h-5 rounded-full bg-white border border-slate-400 dark:border-slate-600;
   @apply focus:outline-none focus:ring-2 focus:ring-primary-400 focus:shadow-lg;
+
+  &.invalid {
+    @apply border-red-500 dark:border-red-500;
+    @apply focus:ring-red-500 focus:border-red-500;
+  }
 }
 </style>
