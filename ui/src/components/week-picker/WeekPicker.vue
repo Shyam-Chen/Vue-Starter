@@ -192,7 +192,9 @@ onUnmounted(() => {
       readonly
       @focus="openPicker"
       @append="openPicker"
-    />
+    >
+      <slot></slot>
+    </TextField>
 
     <Fade>
       <div

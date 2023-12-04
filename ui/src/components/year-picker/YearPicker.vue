@@ -26,13 +26,9 @@ const target = ref();
 const input = ref();
 const picker = ref();
 
-const modelDate = computed({
-  get: () => {
-    return props.value;
-  },
-  set(val) {
-    emit('update:value', val);
-  },
+const valueModel = computed({
+  get: () => props.value,
+  set: (val) => emit('update:value', val),
 });
 
 const flux = reactive({
@@ -59,8 +55,8 @@ const flux = reactive({
 
     flux.showYears = true;
 
-    if (modelDate.value) {
-      flux.currentMoment = new Date(Number(modelDate.value), 0);
+    if (valueModel.value) {
+      flux.currentMoment = new Date(Number(valueModel.value), 0);
     } else {
       flux.currentMoment = new Date();
     }
@@ -139,14 +135,16 @@ onUnmounted(() => {
       :id="uid"
       ref="input"
       v-bind="$attrs"
-      :value="modelDate ? String(modelDate) : ''"
+      :value="valueModel ? String(valueModel) : ''"
       :errorMessage="errorMessage"
       :disabled="disabled"
       append="i-fa-calendar-o"
       readonly
       @focus="flux.openPicker"
       @append="flux.openPicker"
-    />
+    >
+      <slot></slot>
+    </TextField>
 
     <Fade>
       <div
@@ -185,9 +183,9 @@ onUnmounted(() => {
             :class="{
               'text-white bg-blue-400 important:hover:bg-blue-500': year === getYear(flux.now),
               'text-white bg-primary-600 important:hover:bg-primary-700':
-                modelDate &&
-                year === getYear(new Date(Number(modelDate), 0)) &&
-                getYear(flux.currentMoment) === getYear(new Date(Number(modelDate), 0)),
+                valueModel &&
+                year === getYear(new Date(Number(valueModel), 0)) &&
+                getYear(flux.currentMoment) === getYear(new Date(Number(valueModel), 0)),
             }"
             @click="flux.selectYear(year)"
           >

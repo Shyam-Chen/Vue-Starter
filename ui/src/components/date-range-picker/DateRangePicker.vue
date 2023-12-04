@@ -342,7 +342,9 @@ onUnmounted(() => {
       readonly
       @focus="flux.openPicker"
       @append="flux.openPicker"
-    />
+    >
+      <slot></slot>
+    </TextField>
 
     <Fade>
       <div
