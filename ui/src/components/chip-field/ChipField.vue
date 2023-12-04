@@ -82,12 +82,12 @@ defineExpose({
 <template>
   <div
     v-on-click-outside="flux.onBlur"
-    class="flex flex-wrap gap-1 bg-white dark:bg-slate-800 border border-slate-400 rounded w-full px-3 leading-tight"
+    class="ChipField"
     :class="[
       value?.length ? 'py-1.5' : 'py-2',
       {
         focused: flux.focused,
-        'opacity-70	cursor-not-allowed': disabled,
+        disabled,
       },
     ]"
     @click="flux.onFocus"
@@ -119,7 +119,15 @@ defineExpose({
 </template>
 
 <style lang="scss" scoped>
-.focused {
-  @apply ring-1 ring-primary-400 border-primary-400;
+.ChipField {
+  @apply flex flex-wrap gap-1 bg-white dark:bg-slate-800 border border-slate-400 rounded w-full px-3 leading-tight;
+
+  &.focused {
+    @apply ring-1 ring-primary-400 border-primary-400;
+  }
+
+  &.disabled {
+    @apply cursor-not-allowed opacity-60;
+  }
 }
 </style>
