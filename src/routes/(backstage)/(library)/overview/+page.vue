@@ -27,6 +27,7 @@ import { XBreadcrumb } from '@x/ui';
       <RouterLink to="/layout/dividers" class="card">Dividers</RouterLink>
       <RouterLink to="/layout/grid" class="card">Grid</RouterLink>
       <RouterLink to="/layout/hr" class="card">HR</RouterLink>
+      <RouterLink to="/layout/panel" class="card">Panel</RouterLink>
       <RouterLink to="/layout/spaces" class="card">Spaces</RouterLink>
     </div>
   </div>

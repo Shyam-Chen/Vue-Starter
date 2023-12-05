@@ -36,6 +36,7 @@ const links = [
       { name: 'Dividers', to: '/layout/dividers' },
       { name: 'Grid', to: '/layout/grid' },
       { name: 'HR', to: '/layout/hr' },
+      { name: 'Panel', to: '/layout/panel' },
       { name: 'Spaces', to: '/layout/spaces' },
     ],
   },

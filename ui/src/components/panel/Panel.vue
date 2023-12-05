@@ -18,7 +18,7 @@ const emit = defineEmits<{
   (evt: 'update:modelValue', val: boolean): void;
 }>();
 
-const panelModel = computed({
+const model = computed({
   get: () => props.modelValue || false,
   set: (val) => emit('update:modelValue', val),
 });
@@ -27,26 +27,24 @@ const flux = reactive({
   status: true,
   toggle() {
     if (typeof props.modelValue === 'boolean') {
-      panelModel.value = !panelModel.value;
+      model.value = !model.value;
     } else {
       flux.status = !flux.status;
     }
   },
 });
 
-const _status = computed(() =>
-  typeof props.modelValue === 'boolean' ? panelModel.value : flux.status,
-);
+const _status = computed(() => (typeof props.modelValue === 'boolean' ? model.value : flux.status));
 </script>
 
 <template>
-  <div class="w-full rounded">
+  <div class="w-full">
     <div
-      class="flex px-4 py-3 cursor-pointer shadow bg-white dark:bg-slate-800"
+      class="flex items-center px-4 py-3 text-zinc-600 dark:text-zinc-400 cursor-pointer shadow bg-white dark:bg-slate-800 transition rounded-md"
       :class="{ 'accordion-active': _status }"
       @click="flux.toggle"
     >
-      <div class="flex-1">
+      <div class="text-xl font-bold flex-1">
         <slot name="header">{{ title }}</slot>
       </div>
 
@@ -55,7 +53,7 @@ const _status = computed(() =>
     </div>
 
     <Collapse>
-      <div v-show="_status" class="shadow bg-white dark:bg-slate-800">
+      <div v-show="_status" class="rounded-b-md shadow bg-white dark:bg-slate-800">
         <div class="p-4">
           <slot name="content"></slot>
         </div>
@@ -66,6 +64,6 @@ const _status = computed(() =>
 
 <style lang="scss" scoped>
 .accordion-active {
-  @apply bg-slate-200 dark:bg-slate-700;
+  @apply bg-gray-200 dark:bg-gray-700 rounded-t-md rounded-b-0;
 }
 </style>

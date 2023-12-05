@@ -12,7 +12,7 @@ function goToPrevious() {
 }
 
 function goToNext() {
-  if (flux.stepper1 === 5) return;
+  if (flux.stepper1 === 6) return;
   flux.stepper1 += 1;
 }
 </script>
@@ -54,6 +54,21 @@ function goToNext() {
           <div class="col-start-2 flex justify-center gap-2">
             <XButton color="secondary" class="flex-1" @click="goToPrevious">Previous</XButton>
             <XButton class="flex-1" @click="goToNext">Next</XButton>
+          </div>
+        </div>
+      </XStepper.Content>
+
+      <XStepper.Content>
+        <div
+          class="flex flex-col justify-center items-center text-green-500 dark:text-green-400 py-8"
+        >
+          <div class="i-mdi-checkbox-marked-circle-outline w-20 h-20"></div>
+          <div class="text-2xl font-semibold">Order Established</div>
+        </div>
+
+        <div class="grid grid-cols-5">
+          <div class="col-start-3 flex justify-center gap-2">
+            <XButton class="flex-1" @click="flux.stepper1 = 1">OK</XButton>
           </div>
         </div>
       </XStepper.Content>

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
-import { XBreadcrumb, XPanel, XAccordion } from '@x/ui';
+import { XBreadcrumb, XAccordion } from '@x/ui';
 
 const accordionGroup = ref<string[]>([]);
 const accordionGroupMultiple = ref<string[]>([]);
@@ -10,28 +10,7 @@ const accordionGroupMultiple = ref<string[]>([]);
   <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Data Display' }, { text: 'Accordion' }]" />
 
   <div class="my-4">
-    <div class="text-3xl font-bold">Accordion</div>
-  </div>
-
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Basic</div>
-
-    <div class="flex flex-col space-y-2">
-      <XPanel>
-        <template #header>
-          <div>What is Vue?</div>
-        </template>
-
-        <template #content>
-          <div>
-            Vue (pronounced /vjuː/, like view) is a JavaScript framework for building user
-            interfaces. It builds on top of standard HTML, CSS, and JavaScript and provides a
-            declarative and component-based programming model that helps you efficiently develop
-            user interfaces, be they simple or complex.
-          </div>
-        </template>
-      </XPanel>
-    </div>
+    <div class="text-4xl font-extrabold">Accordion</div>
   </div>
 
   <div class="flex flex-col border p-4 mb-4">
