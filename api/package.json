@@ -10,7 +10,7 @@
     "fastify-plugin": "^4.5.1"
   },
   "devDependencies": {
-    "vite": "^5.0.3",
+    "vite": "^5.0.5",
     "vite-plugin-fastify": "^1.2.5",
     "vite-plugin-fastify-routes": "^1.0.2"
   }
