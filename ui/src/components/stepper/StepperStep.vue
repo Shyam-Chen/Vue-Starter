@@ -1,16 +1,20 @@
 <script lang="ts" setup>
 import type { ComputedRef } from 'vue';
 import { inject } from 'vue';
+import { useMediaQuery } from '@vueuse/core';
 
 defineProps<{
   step: number;
 }>();
 
 const stepper = inject('Stepper') as { modelValue: ComputedRef<number> };
+
+const md = useMediaQuery('(min-width: 768px)');
 </script>
 
 <template>
   <li
+    v-show="md ? true : Number(step) === stepper.modelValue.value"
     class="StepperStep"
     :class="{
       'text-green-500 dark:text-green-400': Number(step) < stepper.modelValue.value,
@@ -42,13 +46,14 @@ const stepper = inject('Stepper') as { modelValue: ComputedRef<number> };
   @apply relative flex flex-col items-center flex-1 p-3;
 
   &:not(:last-of-type)::after {
-    @apply content-[''] absolute z-1 w-full border border-slate-300 dark:border-slate-500;
+    @apply content-[''] hidden md:block absolute z-1 w-full border border-slate-300 dark:border-slate-500;
 
     transform: translate(50%, 11px);
   }
 }
 
 .StepperStep-Icon {
-  @apply w-12 h-6 mb-4 flex justify-center items-center bg-white dark:bg-slate-700 z-2;
+  @apply hidden md:flex;
+  @apply w-12 h-6 mb-4 justify-center items-center bg-white dark:bg-slate-700 z-2;
 }
 </style>
