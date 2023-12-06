@@ -134,7 +134,7 @@ onMounted(async () => {
       <div class="w-100 hidden md:block">
         <XTextField
           placeholder="Search here..."
-          prepend="i-fa-search"
+          prepend="i-material-symbols-search-rounded"
           tabindex="-1"
           @focus="flux.searchDialog = true"
         />

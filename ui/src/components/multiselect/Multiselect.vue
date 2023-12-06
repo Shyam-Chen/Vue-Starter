@@ -33,8 +33,7 @@ const props = withDefaults(
     required?: boolean;
     loading?: boolean;
     notFoundContent?: string;
-    isInvalid?: boolean;
-    errorMessage?: string;
+    invalid?: boolean | string;
     selectedLabels?: boolean;
   }>(),
   {
@@ -44,7 +43,7 @@ const props = withDefaults(
     display: 'label',
     placeholder: 'Please select',
     notFoundContent: 'No results found',
-    errorMessage: '',
+    invalid: undefined,
   },
 );
 
@@ -295,7 +294,7 @@ onUnmounted(() => {
           {
             placeholder: !flux.selected?.length,
             focus: flux.show,
-            danger: isInvalid || errorMessage,
+            invalid,
             disabled: disabled,
             'flex items-center': selectedLabels,
           },
@@ -389,8 +388,8 @@ onUnmounted(() => {
       </Fade>
     </div>
 
-    <div v-if="errorMessage" class="text-red-500 text-xs">
-      {{ errorMessage }}
+    <div v-if="invalid && typeof invalid === 'string'" class="text-red-500 text-xs mt-1">
+      {{ invalid }}
     </div>
   </div>
 </template>
@@ -420,8 +419,9 @@ onUnmounted(() => {
     @apply outline-0 ring-1 ring-primary-400 border-primary-400;
   }
 
-  &.danger {
-    @apply border-red-500 mb-1 ring-red-500 border-red-500;
+  &.invalid {
+    @apply border-red-500 dark:border-red-500;
+    @apply focus:ring-red-500 focus:border-red-500;
   }
 
   &.disabled {

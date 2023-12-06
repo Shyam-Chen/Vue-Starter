@@ -16,7 +16,6 @@ const props = withDefaults(
     startValue?: string;
     endValue?: string;
     disabled?: boolean;
-    errorMessage?: string;
     format?: string;
     weekdays?: string[];
     months?: string[];
@@ -27,7 +26,6 @@ const props = withDefaults(
   {
     startValue: '',
     endValue: '',
-    errorMessage: '',
     format: 'yyyy/MM/dd',
     weekdays: () => ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
     // prettier-ignore
@@ -336,7 +334,6 @@ onUnmounted(() => {
       ref="input"
       v-bind="$attrs"
       :value="rangeValue"
-      :errorMessage="errorMessage"
       :disabled="disabled"
       append="i-fa-calendar-o"
       readonly

@@ -15,7 +15,6 @@ const props = withDefaults(
   defineProps<{
     value?: string;
     disabled?: boolean;
-    errorMessage?: string;
     format?: string;
     weekdays?: string[];
     months?: string[];
@@ -25,7 +24,6 @@ const props = withDefaults(
   }>(),
   {
     value: '',
-    errorMessage: '',
     format: 'yyyy/MM/dd',
     weekdays: () => ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
     // prettier-ignore
@@ -300,7 +298,6 @@ onUnmounted(() => {
       ref="input"
       v-bind="$attrs"
       :value="modelDate"
-      :errorMessage="errorMessage"
       :disabled="disabled"
       append="i-fa-calendar-o"
       readonly

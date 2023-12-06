@@ -45,7 +45,7 @@ const flux = reactive({
       <XIterator v-model:value="flux.iterator2">
         <template #default="{ item }: { item: Iterator2 }">
           <div class="whitespace-nowrap">Deploy a</div>
-          <XTextField v-model:value="item.serviceName" :errorMessage="'Error Message'" />
+          <XTextField v-model:value="item.serviceName" :invalid="'Error Message'" />
           <div class="whitespace-nowrap">service to</div>
           <XTextField v-model:value="item.cloudName" />
         </template>

@@ -35,7 +35,7 @@ onMounted(() => {
 
   <div class="p-6 space-y-4 bg-white dark:bg-slate-800 rounded-lg shadow-lg">
     <div class="grid grid-cols-3">
-      <XTextField v-model:value="state.todoItem.title" required :errorMessage="state.errors.title">
+      <XTextField v-model:value="state.todoItem.title" required :invalid="state.errors.title">
         Title
       </XTextField>
     </div>

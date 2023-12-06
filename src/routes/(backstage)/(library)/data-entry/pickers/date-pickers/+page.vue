@@ -35,7 +35,7 @@ const flux = reactive({
     <div class="mb-2">Error messages</div>
 
     <div class="flex justify-center">
-      <XDatePicker v-model:value="flux.datePicker" errorMessage="This is a required field" />
+      <XDatePicker v-model:value="flux.datePicker" invalid="This is a required field" />
     </div>
   </div>
 
@@ -62,7 +62,7 @@ const flux = reactive({
       <XDateRangePicker
         v-model:startValue="flux.datePickerStartDate"
         v-model:endValue="flux.datePickerEndDate"
-        errorMessage="This is a required field"
+        invalid="This is a required field"
       />
     </div>
   </div>

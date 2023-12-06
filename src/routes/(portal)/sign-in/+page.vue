@@ -31,7 +31,7 @@ onUnmounted(() => {
           v-model:value="state.signInForm.username"
           :label="locale.username"
           required
-          :errorMessage="state.signInValdn.username"
+          :invalid="state.signInValdn.username"
           :disabled="state.signInLoading"
           data-testid="username"
         />
@@ -43,7 +43,7 @@ onUnmounted(() => {
           :label="locale.password"
           type="password"
           required
-          :errorMessage="state.signInValdn.password"
+          :invalid="state.signInValdn.password"
           :disabled="state.signInLoading"
           data-testid="password"
         />

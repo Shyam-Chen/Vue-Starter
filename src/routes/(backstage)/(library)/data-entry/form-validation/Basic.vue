@@ -87,14 +87,14 @@ const submit = () => {
           v-model:value="state.form.username"
           label="Username"
           required
-          :errorMessage="state.valdn.username"
+          :invalid="state.valdn.username"
         />
 
         <XTextField
           v-model:value="state.form.email"
           label="Email"
           required
-          :errorMessage="state.valdn.email"
+          :invalid="state.valdn.email"
         />
 
         <XTextField
@@ -102,7 +102,7 @@ const submit = () => {
           label="Password"
           type="password"
           required
-          :errorMessage="state.valdn.password"
+          :invalid="state.valdn.password"
         />
 
         <XTextField
@@ -110,7 +110,7 @@ const submit = () => {
           label="Confirm Password"
           type="password"
           required
-          :errorMessage="state.valdn.confirmPassword"
+          :invalid="state.valdn.confirmPassword"
         />
 
         <XSelect
@@ -122,7 +122,7 @@ const submit = () => {
             { label: 'he/him', value: 3 },
           ]"
           required
-          :errorMessage="state.valdn.pronouns"
+          :invalid="state.valdn.pronouns"
         />
 
         <XRadioGroup

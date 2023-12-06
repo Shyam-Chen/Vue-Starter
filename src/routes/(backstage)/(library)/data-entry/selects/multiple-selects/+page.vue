@@ -100,7 +100,7 @@ const flux = reactive({
         v-model:value="flux.multiselect1"
         label="Tech Stack"
         :options="flux.multiselect1Options"
-        :errorMessage="'This is a required field'"
+        :invalid="'This is a required field'"
       />
     </div>
   </div>
@@ -126,7 +126,7 @@ const flux = reactive({
         v-model:value="flux.multiselect1"
         label="Tech Stack"
         :options="flux.multiselect1Options"
-        :errorMessage="'This is a required field'"
+        :invalid="'This is a required field'"
         selectedLabels
       />
     </div>

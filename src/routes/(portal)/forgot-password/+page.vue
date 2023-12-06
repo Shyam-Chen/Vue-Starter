@@ -44,7 +44,7 @@ const flux = reactive({
           v-model:value="state.form.email"
           label="Email"
           required
-          :errorMessage="state.valdn.email"
+          :invalid="state.valdn.email"
         />
       </div>
 

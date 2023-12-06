@@ -42,36 +42,36 @@ const emit = defineEmits<{
 
 <style lang="scss" scoped>
 .Alert {
-  @apply flex justify-between p-4 rounded-lg border border-current;
+  @apply flex justify-between p-4 rounded-lg border border-current backdrop-blur-2xl;
 
   &.primary {
-    @apply text-primary-800 bg-primary-50;
-    @apply dark:text-primary-400 dark:bg-gray-800;
+    @apply text-primary-800 bg-primary-50/80;
+    @apply dark:text-primary-400 dark:bg-primary-800/20;
   }
 
   &.secondary {
-    @apply text-gray-800 bg-gray-50;
-    @apply dark:text-gray-400 dark:bg-gray-800;
+    @apply text-secondary-800 bg-secondary-50/80;
+    @apply dark:text-secondary-400 dark:bg-secondary-800/20;
   }
 
   &.success {
-    @apply text-green-800 bg-green-50;
-    @apply dark:text-green-400 dark:bg-gray-800;
+    @apply text-success-800 bg-success-50/80;
+    @apply dark:text-success-400 dark:bg-success-800/20;
   }
 
   &.danger {
-    @apply text-red-800 bg-red-50;
-    @apply dark:text-red-400 dark:bg-gray-800;
+    @apply text-danger-800 bg-danger-50/80;
+    @apply dark:text-danger-400 dark:bg-danger-800/20;
   }
 
   &.warning {
-    @apply text-yellow-800 bg-yellow-50;
-    @apply dark:text-yellow-400 dark:bg-gray-800;
+    @apply text-warning-800 bg-warning-50/80;
+    @apply dark:text-warning-400 dark:bg-warning-800/20;
   }
 
   &.info {
-    @apply text-sky-800 bg-sky-50;
-    @apply dark:text-sky-400 dark:bg-gray-800;
+    @apply text-info-800 bg-info-50/80;
+    @apply dark:text-info-400 dark:bg-info-800/20;
   }
 }
 </style>

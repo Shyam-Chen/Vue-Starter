@@ -40,23 +40,23 @@ const emit = defineEmits<{
   }
 
   &.secondary {
-    @apply bg-gray-500 text-white;
+    @apply bg-secondary-500 text-white;
   }
 
   &.success {
-    @apply bg-green-500 text-white;
-  }
-
-  &.warning {
-    @apply bg-yellow-500 text-white;
+    @apply bg-success-500 text-white;
   }
 
   &.danger {
-    @apply bg-red-500 text-white;
+    @apply bg-danger-500 text-white;
+  }
+
+  &.warning {
+    @apply bg-warning-500 text-white;
   }
 
   &.info {
-    @apply bg-sky-500 text-white;
+    @apply bg-info-500 text-white;
   }
 }
 

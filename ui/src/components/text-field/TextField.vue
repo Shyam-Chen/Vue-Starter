@@ -13,9 +13,7 @@ interface Props extends /* @vue-ignore */ InputHTMLAttributes {
   required?: boolean;
   prepend?: string;
   append?: string;
-  useTouch?: boolean;
-  useError?: boolean;
-  errorMessage?: string;
+  invalid?: boolean | string;
 }
 
 defineOptions({
@@ -49,25 +47,15 @@ const flux = reactive({
 </script>
 
 <template>
-  <div class="text-field" :class="[disabled ? 'opacity-60' : '']">
-    <label :for="id || uid" class="text-field-label">
+  <div class="TextField" :class="[disabled ? 'opacity-60' : '']">
+    <label :for="id || uid" class="TextField-Label">
       <template v-if="label">{{ label }}</template>
       <span v-if="required" class="text-red-500">*</span>
       <slot></slot>
     </label>
 
-    <div class="flex w-full items-center group">
-      <div
-        v-if="prepend"
-        class="text-field-prepend"
-        :class="{
-          'text-field-focused': flux.focused,
-          'important:border-red-500 important:ring-red-500 mb-1': useTouch
-            ? (flux.touched || useError) && errorMessage
-            : errorMessage,
-        }"
-        @click.stop="emit('prepend')"
-      >
+    <div class="relative">
+      <div v-if="prepend" class="TextField-Prepend" @click.stop="emit('prepend')">
         <div :class="prepend" class="w-5 h-5"></div>
       </div>
 
@@ -77,13 +65,8 @@ const flux = reactive({
         v-bind="$attrs"
         :type="type ? type : 'text'"
         :disabled="disabled"
-        class="text-field-input"
-        :class="{
-          danger: useTouch ? (flux.touched || useError) && errorMessage : errorMessage,
-          prepend,
-          append,
-          disabled,
-        }"
+        class="TextField-Input"
+        :class="{ invalid, disabled, prepend, append, clearable }"
         autocomplete="off"
         @focus="flux.focused = true"
         @blur="
@@ -92,86 +75,79 @@ const flux = reactive({
         "
       />
 
+      <div v-if="append" class="TextField-Append" @click.stop="emit('append')">
+        <div :class="append" class="w-5 h-5"></div>
+      </div>
+
       <div
         v-if="clearable && textFieldValue"
-        class="TextField-Clear"
+        class="i-material-symbols-close-small-rounded TextField-Clear"
         :class="{ prepend, append }"
         @click.stop="flux.clear"
       ></div>
-
-      <div
-        v-if="append"
-        class="text-field-append"
-        :class="{
-          'text-field-focused': flux.focused,
-          'important:border-red-500 important:ring-red-500 mb-1': useTouch
-            ? (flux.touched || useError) && errorMessage
-            : errorMessage,
-        }"
-        @click.stop="emit('append')"
-      >
-        <div :class="append" class="w-5 h-5"></div>
-      </div>
     </div>
 
-    <div v-if="useTouch ? flux.touched || useError : errorMessage" class="text-red-500 text-xs">
-      {{ errorMessage }}
+    <div v-if="invalid && typeof invalid === 'string'" class="text-red-500 text-xs mt-1">
+      {{ invalid }}
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.TextField-Clear {
-  @apply absolute z-10 right-3;
-  @apply i-fa-times-circle w-4 h-4 ml-2 cursor-pointer invisible hover:text-slate-600 group-hover:visible;
-
-  &.append {
-    @apply right-12;
-  }
+.TextField {
+  @apply flex flex-col w-full;
 }
 
-.text-field {
-  @apply flex flex-col w-full relative;
+.TextField-Label {
+  @apply empty:hidden flex items-center;
+  @apply text-sm font-bold mb-2;
 }
 
-.text-field-label {
-  @apply text-sm font-bold mb-2 empty:hidden flex items-center;
+.TextField-Prepend {
+  @apply absolute start-2 top-1/2 z-1 w-5 h-5 -translate-y-1/2;
 }
 
-.text-field-input {
-  @apply w-full border border-slate-400 rounded px-3 py-2 z-2;
-  @apply bg-white dark:bg-slate-800 leading-tight;
+.TextField-Input {
+  @apply w-full border rounded px-3 py-2 leading-tight;
+  @apply bg-white dark:bg-slate-800 border-slate-500 dark:border-slate-400;
+  @apply placeholder:text-slate-400 dark:placeholder:text-slate-500;
   @apply focus:outline-none focus:ring-1 focus:ring-primary-400 focus:border-primary-400;
 
-  &.danger {
-    @apply border-red-500 mb-1;
+  &.invalid {
+    @apply border-red-500 dark:border-red-500;
     @apply focus:ring-red-500 focus:border-red-500;
-  }
-
-  &.prepend {
-    @apply ltr:rounded-l-0 rtl:rounded-r-0;
-  }
-
-  &.append {
-    @apply ltr:rounded-r-0 rtl:rounded-l-0;
   }
 
   &.disabled {
     @apply cursor-not-allowed;
   }
+
+  &.prepend {
+    @apply ps-8;
+  }
+
+  &.append {
+    @apply pe-8;
+  }
+
+  &.clearable {
+    @apply pe-8;
+
+    &.append {
+      @apply pe-13;
+    }
+  }
 }
 
-.text-field-prepend {
-  @apply p-2 border border-slate-400 rounded bg-slate-100 dark:bg-slate-700 z-1;
-  @apply ltr:border-r-0 ltr:rounded-r-0 rtl:border-l-0 rtl:rounded-l-0;
+.TextField-Append {
+  @apply absolute end-2 top-1/2 z-1 w-5 h-5 -translate-y-1/2;
 }
 
-.text-field-append {
-  @apply p-2 border border-slate-400 rounded bg-slate-100 dark:bg-slate-700 z-1;
-  @apply ltr:border-l-0 ltr:rounded-l-0 rtl:border-r-0 rtl:rounded-r-0;
-}
+.TextField-Clear {
+  @apply absolute end-2 top-1/2 z-99 w-5 h-5 -translate-y-1/2 cursor-pointer hover:scale-125;
 
-.text-field-focused {
-  @apply ring-1 ring-primary-400 border-primary-400;
+  &.append {
+    @apply end-8;
+  }
 }
 </style>

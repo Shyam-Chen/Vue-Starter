@@ -41,7 +41,7 @@ const flux = reactive({
     <div class="mb-2">Status</div>
 
     <div class="flex justify-center">
-      <XMonthPicker v-model:value="flux.monthPicker" :errorMessage="'Error'" />
+      <XMonthPicker v-model:value="flux.monthPicker" :invalid="'Error'" />
     </div>
   </div>
 
@@ -49,7 +49,7 @@ const flux = reactive({
     <div class="mb-2">Status</div>
 
     <div class="flex justify-center">
-      <XMonthPicker v-model:value="flux.monthPicker" :errorMessage="'Error'" />
+      <XMonthPicker v-model:value="flux.monthPicker" :invalid="'Error'" />
     </div>
   </div>
 
@@ -57,7 +57,7 @@ const flux = reactive({
     <div class="mb-2">Status</div>
 
     <div class="flex justify-center">
-      <XMonthPicker v-model:value="flux.monthPicker" :errorMessage="'Error'" />
+      <XMonthPicker v-model:value="flux.monthPicker" :invalid="'Error'" />
     </div>
   </div>
 </template>

@@ -13,7 +13,6 @@ import Fade from '../fade/Fade.vue';
 const props = defineProps<{
   value?: number | string;
   disabled?: boolean;
-  errorMessage?: string;
 }>();
 
 const emit = defineEmits<{
@@ -136,7 +135,6 @@ onUnmounted(() => {
       ref="input"
       v-bind="$attrs"
       :value="valueModel ? String(valueModel) : ''"
-      :errorMessage="errorMessage"
       :disabled="disabled"
       append="i-fa-calendar-o"
       readonly

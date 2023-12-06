@@ -19,15 +19,12 @@ const props = withDefaults(
     display?: 'label' | 'value' | ((opt: any) => void);
     clearable?: boolean;
     notFoundContent?: string;
-    isInvalid?: boolean;
-    errorMessage?: string;
   }>(),
   {
     value: '',
     options: () => [],
     display: 'label',
     notFoundContent: 'No results found',
-    errorMessage: '',
   },
 );
 
@@ -212,7 +209,6 @@ onUnmounted(() => {
         ref="autocompleteInput"
         v-bind="$attrs"
         v-model:value="modelValue"
-        :invalid="!!errorMessage"
         @focus="flux.onFocus"
         @input.stop="flux.onInput"
         @keyup.down.stop="flux.onDown"
@@ -253,10 +249,6 @@ onUnmounted(() => {
           </div>
         </div>
       </Fade>
-    </div>
-
-    <div v-if="errorMessage" class="text-danger mt-1">
-      {{ errorMessage }}
     </div>
   </div>
 </template>

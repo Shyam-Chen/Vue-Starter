@@ -95,7 +95,7 @@ const uid = uniqueId('Checkbox-');
   }
 
   &.invalid {
-    @apply border-red-500;
+    @apply border-red-500 dark:border-red-500;
     @apply focus:ring-red-500 focus:border-red-500;
   }
 }

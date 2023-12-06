@@ -11,7 +11,7 @@ const props = defineProps<{
   label?: string;
   required?: boolean;
   disabled?: boolean;
-  errorMessage?: string;
+  invalid?: boolean | string;
 }>();
 
 const emit = defineEmits<{
@@ -58,7 +58,7 @@ function onComplete(evt: CustomEvent) {
         :value="masked"
         :disabled="disabled"
         class="InputMask-Input"
-        :class="{ danger: errorMessage }"
+        :class="{ invalid }"
         type="text"
         autocomplete="off"
         @accept="onAccept"
@@ -66,8 +66,8 @@ function onComplete(evt: CustomEvent) {
       />
     </div>
 
-    <div v-if="errorMessage" class="text-red-500 text-xs">
-      {{ errorMessage }}
+    <div v-if="invalid && typeof invalid === 'string'" class="text-red-500 text-xs mt-1">
+      {{ invalid }}
     </div>
   </div>
 </template>
@@ -86,8 +86,8 @@ function onComplete(evt: CustomEvent) {
   @apply bg-white dark:bg-slate-800 leading-tight;
   @apply focus:outline-none focus:ring-1 focus:ring-primary-400 focus:border-primary-400;
 
-  &.danger {
-    @apply border-red-500 mb-1;
+  &.invalid {
+    @apply border-red-500;
     @apply focus:ring-red-500 focus:border-red-500;
   }
 }

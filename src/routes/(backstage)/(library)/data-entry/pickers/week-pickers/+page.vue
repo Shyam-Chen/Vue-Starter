@@ -54,7 +54,7 @@ const flux = reactive({
     <div class="mb-2">Errors</div>
 
     <div class="flex justify-center">
-      <XWeekPicker v-model:value="flux.weekPicker" :errorMessage="'This is a required field'" />
+      <XWeekPicker v-model:value="flux.weekPicker" :invalid="'This is a required field'" />
     </div>
   </div>
 
@@ -65,7 +65,7 @@ const flux = reactive({
       <XWeekPicker
         v-model:value="flux.weekPicker"
         label="Label"
-        :errorMessage="'This is a required field'"
+        :invalid="'This is a required field'"
         required
       />
     </div>

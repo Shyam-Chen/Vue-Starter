@@ -88,23 +88,23 @@ function onClick(evt: Event) {
     }
 
     &.secondary {
-      @apply bg-gray-500 hover:bg-gray-600 active:bg-gray-700 border-gray-500;
+      @apply bg-secondary-500 hover:bg-secondary-600 active:bg-secondary-700 border-secondary-500;
     }
 
     &.success {
-      @apply bg-green-500 hover:bg-green-600 active:bg-green-700 border-green-500;
+      @apply bg-success-500 hover:bg-success-600 active:bg-success-700 border-success-500;
     }
 
     &.danger {
-      @apply bg-red-500 hover:bg-red-600 active:bg-red-700 border-red-500;
+      @apply bg-danger-500 hover:bg-danger-600 active:bg-danger-700 border-danger-500;
     }
 
     &.warning {
-      @apply bg-yellow-500 hover:bg-yellow-600 active:bg-yellow-700 border-yellow-500;
+      @apply bg-warning-500 hover:bg-warning-600 active:bg-warning-700 border-warning-500;
     }
 
     &.info {
-      @apply bg-sky-500 hover:bg-sky-600 active:bg-sky-700 border-sky-500;
+      @apply bg-info-500 hover:bg-info-600 active:bg-info-700 border-info-500;
     }
   }
 
@@ -124,28 +124,28 @@ function onClick(evt: Event) {
     }
 
     &.secondary {
-      @apply text-gray-500 hover:text-gray-600 active:text-gray-700;
-      @apply hover:bg-gray-400/25 active:bg-gray-500/25;
+      @apply text-secondary-500 hover:text-secondary-600 active:text-secondary-700;
+      @apply hover:bg-secondary-400/25 active:bg-secondary-500/25;
     }
 
     &.success {
-      @apply text-green-500 hover:text-green-600 active:text-green-700;
-      @apply hover:bg-green-400/25 active:bg-green-500/25;
+      @apply text-success-500 hover:text-success-600 active:text-success-700;
+      @apply hover:bg-success-400/25 active:bg-success-500/25;
     }
 
     &.danger {
-      @apply text-red-500 hover:text-red-600 active:text-red-700;
-      @apply hover:bg-red-400/25 active:bg-red-500/25;
+      @apply text-danger-500 hover:text-danger-600 active:text-danger-700;
+      @apply hover:bg-danger-400/25 active:bg-danger-500/25;
     }
 
     &.warning {
-      @apply text-yellow-500 hover:text-yellow-600 active:text-yellow-700;
-      @apply hover:bg-yellow-400/25 active:bg-yellow-500/25;
+      @apply text-warning-500 hover:text-warning-600 active:text-warning-700;
+      @apply hover:bg-warning-400/25 active:bg-warning-500/25;
     }
 
     &.info {
-      @apply text-sky-500 hover:text-sky-600 active:text-sky-700;
-      @apply hover:bg-sky-400/25 active:bg-sky-500/25;
+      @apply text-info-500 hover:text-info-600 active:text-info-700;
+      @apply hover:bg-info-400/25 active:bg-info-500/25;
     }
   }
 

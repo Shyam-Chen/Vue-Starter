@@ -14,14 +14,12 @@ const props = withDefaults(
     value?: string;
     format?: string;
     months?: string[];
-    errorMessage?: string;
   }>(),
   {
     value: '',
     format: 'yyyy/MM',
     // prettier-ignore
     months: () => ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-    errorMessage: '',
   },
 );
 
@@ -165,12 +163,13 @@ onUnmounted(() => {
       ref="input"
       v-bind="$attrs"
       :value="modelDate"
-      :errorMessage="errorMessage"
       append="i-fa-calendar-o"
       readonly
       @focus="flux.openPicker"
       @append="flux.openPicker"
-    />
+    >
+      <slot></slot>
+    </TextField>
 
     <Fade>
       <div

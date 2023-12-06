@@ -112,11 +112,7 @@ const flux = reactive({
     <div class="mb-2">Errors</div>
 
     <div class="flex justify-center">
-      <XSelect
-        v-model:value="flux.select1"
-        :options="flux.select1Options"
-        :errorMessage="'Error'"
-      />
+      <XSelect v-model:value="flux.select1" :options="flux.select1Options" :invalid="'Error'" />
     </div>
   </div>
 

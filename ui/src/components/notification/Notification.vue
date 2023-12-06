@@ -73,11 +73,11 @@ function close(item: NotificationMessage, index: number) {
       class="shadow-xl"
       :class="{
         'dark:shadow-primary-500/50': color === 'primary' || item.color === 'primary',
-        'dark:shadow-zinc-500/50': color === 'secondary' || item.color === 'secondary',
-        'dark:shadow-emerald-500/50': color === 'success' || item.color === 'success',
-        'dark:shadow-rose-500/50': color === 'danger' || item.color === 'danger',
-        'dark:shadow-amber-500/50': color === 'warning' || item.color === 'warning',
-        'dark:shadow-sky-500/50': color === 'info' || item.color === 'info',
+        'dark:shadow-secondary-500/50': color === 'secondary' || item.color === 'secondary',
+        'dark:shadow-success-500/50': color === 'success' || item.color === 'success',
+        'dark:shadow-danger-500/50': color === 'danger' || item.color === 'danger',
+        'dark:shadow-warning-500/50': color === 'warning' || item.color === 'warning',
+        'dark:shadow-info-500/50': color === 'info' || item.color === 'info',
       }"
       @close="close(item, index)"
     >
