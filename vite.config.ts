@@ -73,7 +73,7 @@ export default defineConfig({
     globals: true,
     environment: 'happy-dom',
     coverage: {
-      exclude: ['ui', 'api'],
+      exclude: ['ui', 'api', 'e2e'],
     },
   },
 });
