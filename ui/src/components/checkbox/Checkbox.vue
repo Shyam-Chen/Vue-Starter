@@ -48,7 +48,11 @@ const uid = uniqueId('Checkbox-');
         <div
           class="Checkbox-Icon"
           :class="[
-            indeterminate ? 'i-mdi-minus-thick' : value || checked ? 'i-mdi-check-bold' : '',
+            indeterminate
+              ? 'i-material-symbols-check-indeterminate-small-rounded'
+              : value || checked
+                ? 'i-material-symbols-check-small-rounded'
+                : '',
           ]"
         ></div>
       </div>
@@ -86,7 +90,7 @@ const uid = uniqueId('Checkbox-');
 }
 
 .Checkbox-Input {
-  @apply appearance-none w-5 h-5 rounded border border-slate-400 dark:border-slate-600;
+  @apply appearance-none w-5 h-5 rounded border border-slate-400 dark:border-slate-600 overflow-hidden;
   @apply focus:outline-none focus:ring-2 focus:ring-primary-400 focus:shadow-lg;
   @apply bg-white;
 
@@ -101,7 +105,7 @@ const uid = uniqueId('Checkbox-');
 }
 
 .Checkbox-Icon {
-  @apply absolute select-none w-4 h-4 text-white;
+  @apply absolute select-none w-6 h-6 text-white;
 }
 
 .Checkbox-Text {

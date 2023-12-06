@@ -260,8 +260,13 @@ onUnmounted(() => {
           @click.stop="flux.clear"
         ></div>
 
-        <div v-if="!flux.show" class="Select-Arrow i-fa-caret-down"></div>
-        <div v-else class="Select-Arrow i-fa-caret-up"></div>
+        <div class="Select-ArrowWrapper">
+          <div
+            v-if="!flux.show"
+            class="Select-Arrow i-material-symbols-arrow-drop-down-rounded"
+          ></div>
+          <div v-else class="Select-Arrow i-material-symbols-arrow-drop-up-rounded"></div>
+        </div>
 
         <ProgressBar v-if="loading" class="absolute left-0 bottom-0 rounded" />
       </div>
@@ -341,8 +346,12 @@ onUnmounted(() => {
   }
 }
 
+.Select-ArrowWrapper {
+  @apply w-5 h-5 overflow-hidden flex justify-center items-center;
+}
+
 .Select-Arrow {
-  @apply w-4 h-4 ml-2;
+  @apply min-w-6 min-h-6 ml-2;
 }
 
 .Select-Panel {

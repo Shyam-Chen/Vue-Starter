@@ -328,8 +328,13 @@ onUnmounted(() => {
           @click.stop="flux.clear(null)"
         ></div>
 
-        <div v-if="!flux.show" class="Multiselect-Arrow i-fa-caret-down"></div>
-        <div v-else class="Multiselect-Arrow i-fa-caret-up"></div>
+        <div class="Multiselect-ArrowWrapper">
+          <div
+            v-if="!flux.show"
+            class="Multiselect-Arrow i-material-symbols-arrow-drop-down-rounded"
+          ></div>
+          <div v-else class="Multiselect-Arrow i-material-symbols-arrow-drop-up-rounded"></div>
+        </div>
 
         <ProgressBar v-if="loading" class="absolute left-0 bottom-0 rounded" />
       </div>
@@ -429,8 +434,12 @@ onUnmounted(() => {
   }
 }
 
+.Multiselect-ArrowWrapper {
+  @apply w-5 h-5 overflow-hidden flex justify-center items-center;
+}
+
 .Multiselect-Arrow {
-  @apply w-4 h-4 ml-2;
+  @apply min-w-6 min-h-6 ml-2;
 }
 
 .Multiselect-Panel {

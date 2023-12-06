@@ -48,8 +48,8 @@ const _status = computed(() => (typeof props.modelValue === 'boolean' ? model.va
         <slot name="header">{{ title }}</slot>
       </div>
 
-      <div v-if="!_status" class="i-ic-baseline-arrow-drop-down w-6 h-6"></div>
-      <div v-else class="i-ic-baseline-arrow-drop-up w-6 h-6"></div>
+      <div v-if="!_status" class="i-material-symbols-add-rounded w-6 h-6"></div>
+      <div v-else class="i-material-symbols-check-indeterminate-small-rounded w-6 h-6"></div>
     </div>
 
     <Collapse>
