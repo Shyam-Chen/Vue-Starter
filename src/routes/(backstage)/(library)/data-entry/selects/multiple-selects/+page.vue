@@ -39,12 +39,10 @@ const flux = reactive({
     ]"
   />
 
-  <div class="my-4">
-    <div class="text-4xl font-extrabold">Multiselect</div>
-  </div>
+  <div class="text-4xl font-extrabold my-4">Multiselect</div>
 
   <div class="my-8">
-    <div class="text-3xl font-bold mb-4">Basic</div>
+    <div class="text-3xl font-bold my-4">Basic</div>
 
     <XMultiselect
       v-model:value="flux.basic"
@@ -54,7 +52,7 @@ const flux = reactive({
   </div>
 
   <div class="my-8">
-    <div class="text-3xl font-bold mb-4 pt-6">Disabled</div>
+    <div class="text-3xl font-bold my-4 pt-6">Disabled</div>
 
     <XMultiselect
       v-model:value="flux.multiselect1"
@@ -65,7 +63,7 @@ const flux = reactive({
   </div>
 
   <div class="my-8">
-    <div class="text-3xl font-bold mb-4 pt-6">Clearable</div>
+    <div class="text-3xl font-bold my-4 pt-6">Clearable</div>
 
     <XMultiselect
       v-model:value="flux.multiselect1"
@@ -76,7 +74,7 @@ const flux = reactive({
   </div>
 
   <div class="my-8">
-    <div class="text-3xl font-bold mb-4 pt-6">Filterable</div>
+    <div class="text-3xl font-bold my-4 pt-6">Filterable</div>
 
     <XMultiselect
       v-model:value="flux.multiselect1"
@@ -87,7 +85,7 @@ const flux = reactive({
   </div>
 
   <div class="my-8">
-    <div class="text-3xl font-bold mb-4 pt-6">Invalid</div>
+    <div class="text-3xl font-bold my-4 pt-6">Invalid</div>
 
     <XMultiselect
       v-model:value="flux.multiselect1"
@@ -109,7 +107,7 @@ const flux = reactive({
   </div>
 
   <div class="my-8">
-    <div class="text-3xl font-bold mb-4 pt-6">Loading</div>
+    <div class="text-3xl font-bold my-4 pt-6">Loading</div>
 
     <XMultiselect
       v-model:value="flux.multiselect1"
@@ -120,7 +118,7 @@ const flux = reactive({
   </div>
 
   <div class="my-8">
-    <div class="text-3xl font-bold mb-4 pt-6">Selected Labels</div>
+    <div class="text-3xl font-bold my-4 pt-6">Selected Labels</div>
 
     <XMultiselect
       v-model:value="flux.multiselect1"

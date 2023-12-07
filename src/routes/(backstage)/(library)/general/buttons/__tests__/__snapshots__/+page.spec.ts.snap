@@ -52,7 +52,7 @@ exports[`/general/buttons 1`] = `
       <!--v-if-->Date
     </button></div>
   <div class="my-4">
-    <div class="text-2xl font-semibold my-4">Controlled</div>
+    <div class="text-2xl font-semibold my-4 pt-5">Controlled</div>
     <div data-v-496d006f="" class="ButtonGroup"><button data-v-54761eda="" type="button" class="Button outlined primary">
         <!--v-if-->Years
       </button><button data-v-54761eda="" type="button" class="Button outlined primary">
