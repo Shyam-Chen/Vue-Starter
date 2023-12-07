@@ -188,6 +188,8 @@ function resizePanel() {
   }
 }
 
+const selectedStatus = ref(false);
+
 const open = () => {
   if (props.disabled) return;
 
@@ -282,8 +284,24 @@ onUnmounted(() => {
   <div class="Multiselect-Wrapper" :class="{ disabled }">
     <div class="Multiselect-Label">
       <template v-if="label">{{ label }}</template>
-      <slot v-else></slot>
       <span v-if="required" class="text-red-500">*</span>
+      <slot></slot>
+      <span class="flex-1"></span>
+      <span
+        v-if="selectedLabels"
+        class="Multiselect-LabelHelper"
+        @click="selectedStatus = !selectedStatus"
+      >
+        <template v-if="!selectedStatus">
+          <span>Show</span>
+          <div class="i-material-symbols-add-rounded w-4 h-4"></div>
+        </template>
+
+        <template v-else>
+          <span>Hide</span>
+          <div class="i-material-symbols-check-indeterminate-small-rounded w-4 h-4"></div>
+        </template>
+      </span>
     </div>
 
     <div ref="target">
@@ -306,7 +324,7 @@ onUnmounted(() => {
           {{ placeholder }}
         </div>
 
-        <div v-if="flux.selected?.length && selectedLabels" class="flex-1">
+        <div v-if="flux.selected?.length && selectedLabels && !selectedStatus" class="flex-1">
           {{ flux.selected?.length }} Selected
         </div>
 
@@ -314,7 +332,7 @@ onUnmounted(() => {
           <Chip
             v-for="item in flux.selected"
             :key="item.value"
-            :closable="clearable"
+            :closable="clearable || selectedStatus"
             :disabled="disabled"
             @close="flux.clear(item.value)"
           >
@@ -409,7 +427,11 @@ onUnmounted(() => {
 }
 
 .Multiselect-Label {
-  @apply text-sm font-bold mb-2 empty:hidden;
+  @apply text-sm font-bold mb-2 empty:hidden flex items-center;
+}
+
+.Multiselect-LabelHelper {
+  @apply flex text-xs font-normal text-info-500 cursor-pointer;
 }
 
 .Multiselect-Input {
