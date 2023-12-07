@@ -2,6 +2,7 @@
 import type { RouteLocationNormalized } from 'vue-router';
 import { ref, computed, onMounted, onUnmounted } from 'vue';
 import { useRouter, onBeforeRouteLeave } from 'vue-router';
+import { useLocale } from 'vue-localer';
 
 import Dialog from '../dialog/Dialog.vue';
 import Button from '../button/Button.vue';
@@ -11,6 +12,7 @@ const props = defineProps<{
 }>();
 
 const router = useRouter();
+const locale = useLocale();
 
 const triggerRef = computed(() => props.trigger);
 
@@ -52,18 +54,16 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <Dialog v-model="status" title="Leave site?" class="!w-100">
-    <div>Changes you made may not be saved.</div>
+  <Dialog v-model="status" :title="locale.leaveConfirmationTitle || 'Leave site?'" class="!w-100">
+    <div>{{ locale.leaveConfirmationMessage || 'Changes you made may not be saved.' }}</div>
 
     <div class="flex justify-center gap-2 mt-8">
       <Button color="secondary" @click="status = false">
-        <div class="i-mdi-undo w-5 h-5"></div>
-        Cancel
+        {{ locale.cancel || 'Cancel' }}
       </Button>
 
-      <Button color="success" @click="confirm">
-        <div class="i-mdi-hand-okay w-5 h-5"></div>
-        Leave
+      <Button color="primary" @click="confirm">
+        {{ locale.leave || 'Leave' }}
       </Button>
     </div>
   </Dialog>
