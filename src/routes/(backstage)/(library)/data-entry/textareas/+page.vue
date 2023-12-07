@@ -43,15 +43,17 @@ const flux = reactive({
       invalid
     />
 
-    <div class="text-2xl font-semibold my-4 pt-5">Error Message</div>
+    <div class="my-4">
+      <div class="text-2xl font-semibold my-4 pt-5">Error Message</div>
 
-    <XTextarea
-      v-model:value="flux.textarea2"
-      label="Example label"
-      placeholder="Type here..."
-      required
-      invalid="Incorrect entry"
-    />
+      <XTextarea
+        v-model:value="flux.textarea2"
+        label="Example label"
+        placeholder="Type here..."
+        required
+        invalid="Incorrect entry"
+      />
+    </div>
   </div>
 
   <div class="my-8">

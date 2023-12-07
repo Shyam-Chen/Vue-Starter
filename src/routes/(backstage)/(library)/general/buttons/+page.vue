@@ -44,7 +44,7 @@ const buttonGroup = ref(0);
     </XButton.Group>
 
     <div class="my-4">
-      <div class="text-2xl font-semibold my-4">Controlled</div>
+      <div class="text-2xl font-semibold my-4 pt-5">Controlled</div>
 
       <XButton.Group v-model="buttonGroup">
         <XButton>Years</XButton>

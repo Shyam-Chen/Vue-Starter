@@ -3,6 +3,8 @@ import { reactive } from 'vue';
 import { XBreadcrumb, XMultiselect } from '@x/ui';
 
 const flux = reactive({
+  basic: [],
+
   multiselect1: ['f4', 'b2'],
   multiselect1Options: [
     { label: 'Angular', value: 'f1' },
@@ -33,102 +35,98 @@ const flux = reactive({
       { text: 'Library' },
       { text: 'Data Entry' },
       { text: 'Selects' },
-      { text: 'Multiple selects' },
+      { text: 'Multiselect' },
     ]"
   />
 
   <div class="my-4">
-    <div class="text-3xl font-bold">Multiple selects</div>
+    <div class="text-4xl font-extrabold">Multiselect</div>
   </div>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Basic examples</div>
+  <div class="my-8">
+    <div class="text-3xl font-bold mb-4">Basic</div>
 
-    <div class="flex justify-center">
+    <XMultiselect
+      v-model:value="flux.basic"
+      label="Tech Stack"
+      :options="flux.multiselect1Options"
+    />
+  </div>
+
+  <div class="my-8">
+    <div class="text-3xl font-bold mb-4 pt-6">Disabled</div>
+
+    <XMultiselect
+      v-model:value="flux.multiselect1"
+      label="Tech Stack"
+      :options="flux.multiselect1Options"
+      disabled
+    />
+  </div>
+
+  <div class="my-8">
+    <div class="text-3xl font-bold mb-4 pt-6">Clearable</div>
+
+    <XMultiselect
+      v-model:value="flux.multiselect1"
+      label="Tech Stack"
+      :options="flux.multiselect1Options"
+      clearable
+    />
+  </div>
+
+  <div class="my-8">
+    <div class="text-3xl font-bold mb-4 pt-6">Filterable</div>
+
+    <XMultiselect
+      v-model:value="flux.multiselect1"
+      label="Tech Stack"
+      :options="flux.multiselect1Options"
+      filterable
+    />
+  </div>
+
+  <div class="my-8">
+    <div class="text-3xl font-bold mb-4 pt-6">Invalid</div>
+
+    <XMultiselect
+      v-model:value="flux.multiselect1"
+      label="Tech Stack"
+      :options="flux.multiselect1Options"
+      invalid
+    />
+
+    <div class="my-4">
+      <div class="text-2xl font-semibold my-4 pt-5">Error Message</div>
+
       <XMultiselect
         v-model:value="flux.multiselect1"
         label="Tech Stack"
         :options="flux.multiselect1Options"
+        invalid="Incorrect entry"
       />
     </div>
   </div>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Disabled</div>
+  <div class="my-8">
+    <div class="text-3xl font-bold mb-4 pt-6">Loading</div>
 
-    <div class="flex justify-center">
-      <XMultiselect
-        v-model:value="flux.multiselect1"
-        label="Tech Stack"
-        :options="flux.multiselect1Options"
-        disabled
-      />
-    </div>
+    <XMultiselect
+      v-model:value="flux.multiselect1"
+      label="Tech Stack"
+      :options="flux.multiselect1Options"
+      loading
+    />
   </div>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Clearable</div>
+  <div class="my-8">
+    <div class="text-3xl font-bold mb-4 pt-6">Selected Labels</div>
 
-    <div class="flex justify-center">
-      <XMultiselect
-        v-model:value="flux.multiselect1"
-        label="Tech Stack"
-        :options="flux.multiselect1Options"
-        clearable
-      />
-    </div>
-  </div>
-
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Filterable</div>
-
-    <div class="flex justify-center">
-      <XMultiselect
-        v-model:value="flux.multiselect1"
-        label="Tech Stack"
-        :options="flux.multiselect1Options"
-        filterable
-      />
-    </div>
-  </div>
-
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Errors</div>
-
-    <div class="flex justify-center">
-      <XMultiselect
-        v-model:value="flux.multiselect1"
-        label="Tech Stack"
-        :options="flux.multiselect1Options"
-        :invalid="'This is a required field'"
-      />
-    </div>
-  </div>
-
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Loading</div>
-
-    <div class="flex justify-center">
-      <XMultiselect
-        v-model:value="flux.multiselect1"
-        label="Tech Stack"
-        :options="flux.multiselect1Options"
-        loading
-      />
-    </div>
-  </div>
-
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Selected Labels</div>
-
-    <div class="flex justify-center">
-      <XMultiselect
-        v-model:value="flux.multiselect1"
-        label="Tech Stack"
-        :options="flux.multiselect1Options"
-        :invalid="'This is a required field'"
-        selectedLabels
-      />
-    </div>
+    <XMultiselect
+      v-model:value="flux.multiselect1"
+      label="Tech Stack"
+      :options="flux.multiselect1Options"
+      selectedLabels
+    />
   </div>
 </template>

@@ -316,7 +316,7 @@ onUnmounted(() => {
             disabled: disabled,
             'flex items-center': selectedLabels,
           },
-          flux.selected?.length ? 'py-1.5' : 'py-2',
+          flux.selected?.length ? (selectedLabels && !selectedStatus ? 'py-2' : 'py-1.5') : 'py-2',
         ]"
         @click="open"
       >
@@ -435,7 +435,7 @@ onUnmounted(() => {
 }
 
 .Multiselect-Input {
-  @apply relative flex items-center w-full px-3 py-2 cursor-pointer;
+  @apply relative flex items-center w-full px-3 cursor-pointer;
   @apply border border-slate-400 bg-white dark:bg-slate-800 rounded leading-tight;
 
   &.placeholder {
