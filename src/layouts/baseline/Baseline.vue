@@ -131,13 +131,15 @@ onMounted(async () => {
 
       <div class="flex-1"></div>
 
-      <div class="w-100 hidden md:block">
-        <XTextField
-          placeholder="Search here..."
-          prepend="i-material-symbols-search-rounded"
-          tabindex="-1"
-          @focus="flux.searchDialog = true"
-        />
+      <div class="hidden md:block">
+        <XButton
+          variant="text"
+          class="!border-slate-500 !dark:border-slate-400 !bg-white !dark:bg-slate-800"
+          @click="flux.searchDialog = true"
+        >
+          <div class="i-material-symbols-search-rounded w-5 h-5"></div>
+          <div>Search</div>
+        </XButton>
       </div>
 
       <XButton

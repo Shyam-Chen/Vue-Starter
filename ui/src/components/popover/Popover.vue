@@ -1,6 +1,8 @@
 <script lang="ts" setup>
-import { nextTick, ref, computed, reactive } from 'vue';
+import { nextTick, ref, computed, reactive, watch, onMounted, onUnmounted } from 'vue';
 import { vOnClickOutside } from '@vueuse/components';
+
+import scrollableParent from '../../utilities/scrollable-parent/scrollableParent';
 
 import Fade from '../fade/Fade.vue';
 
@@ -32,30 +34,71 @@ const flux = reactive({
     if (!flux.status && !model.value) return;
 
     nextTick(() => {
-      const rect = target.value.getBoundingClientRect();
-
-      const center = window.innerHeight / 2;
-
-      if (panel.value) {
-        panel.value.style.left = `${rect.x}px`;
-        panel.value.style.top = `${rect.y}px`;
-
-        const xAxis = `calc(${rect.width / 2}px - 50%)`;
-
-        if (rect.top > center) {
-          const yAxis = `calc(-100% - 0.25rem)`;
-          panel.value.style.transform = `translate(${xAxis}, ${yAxis})`;
-        } else {
-          const yAxis = `calc(${rect.height}px + 0.25rem)`;
-          panel.value.style.transform = `translate(${xAxis}, ${yAxis})`;
-        }
-      }
+      flux.scrollableParent = scrollableParent(panel.value);
+      flux.resizePanel();
     });
   },
   close() {
     flux.status = false;
     model.value = false;
   },
+
+  direction: '' as 'down' | 'up' | '',
+  resizePanel() {
+    const rect = target.value.getBoundingClientRect();
+
+    const center = window.innerHeight / 2;
+    const middle = window.innerWidth / 2;
+
+    if (rect.top > center) {
+      panel.value.style.top = `${rect.top}px`;
+      flux.direction = 'up';
+    } else {
+      panel.value.style.top = `${rect.bottom}px`;
+      flux.direction = 'down';
+    }
+
+    const quarter = window.innerWidth / 4;
+
+    if (quarter <= rect.right && rect.right <= quarter * 3) {
+      const panelRect = panel.value.getBoundingClientRect();
+      panel.value.style.left = `${rect.left - panelRect.width / 2 + rect.width / 2}px`;
+    } else if (rect.right > middle) {
+      const panelRect = panel.value.getBoundingClientRect();
+      panel.value.style.left = `${rect.left - panelRect.width + rect.width}px`;
+    } else {
+      panel.value.style.left = `${rect.left}px`;
+    }
+  },
+  scrollableParent: null as HTMLElement | null,
+  handleScroll() {
+    if (flux.status) {
+      flux.resizePanel();
+    }
+  },
+});
+
+watch(
+  () => flux.scrollableParent,
+  (el) => {
+    el?.addEventListener('scroll', flux.handleScroll);
+  },
+);
+
+onMounted(() => {
+  if (flux.scrollableParent && flux.scrollableParent instanceof HTMLElement) {
+    flux.scrollableParent?.addEventListener('scroll', flux.handleScroll);
+  } else {
+    window.addEventListener('scroll', flux.handleScroll);
+  }
+});
+
+onUnmounted(() => {
+  if (flux.scrollableParent && flux.scrollableParent instanceof HTMLElement) {
+    flux.scrollableParent?.removeEventListener('scroll', flux.handleScroll);
+  } else {
+    window.removeEventListener('scroll', flux.handleScroll);
+  }
 });
 </script>
 
@@ -73,8 +116,12 @@ const flux = reactive({
       <div
         v-if="flux.status || model"
         ref="panel"
-        class="fixed z-100 top-0 left-0 min-w-max bg-white dark:bg-slate-800 rounded-lg shadow-lg"
         tabindex="-1"
+        class="fixed z-100 top-0 left-0 min-w-max bg-white dark:bg-slate-800 rounded-lg shadow-lg"
+        :class="{
+          'Dropdown-Panel-PlacementBottom': flux.direction === 'down',
+          'Dropdown-Panel-PlacementTop': flux.direction === 'up',
+        }"
       >
         <div class="py-1">
           <slot name="content"> </slot>
@@ -83,3 +130,13 @@ const flux = reactive({
     </Fade>
   </div>
 </template>
+
+<style lang="scss" scoped>
+.Dropdown-Panel-PlacementBottom {
+  transform: translateY(0.5rem);
+}
+
+.Dropdown-Panel-PlacementTop {
+  transform: translateY(-0.5rem) translateY(-100%);
+}
+</style>

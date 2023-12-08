@@ -180,11 +180,11 @@ watch(
 }
 
 .list {
-  @apply flex flex-col gap-1 bg-slate-900;
+  @apply flex flex-col gap-1 bg-white dark:bg-slate-900;
 }
 
 .item {
-  @apply bg-slate-800 px-3 py-1;
+  @apply bg-gray-100 dark:bg-slate-800 px-3 py-1;
 }
 
 .controller {

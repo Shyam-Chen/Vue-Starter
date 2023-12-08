@@ -67,14 +67,60 @@ const controlled = ref(false);
   <div class="my-8">
     <div class="text-3xl font-bold my-4 pt-6">Placement</div>
 
-    <div class="flex justify-end">
-      <XPopover>
-        <XButton icon="i-mdi-atom" />
+    <div class="flex justify-between h-50">
+      <div>
+        <XPopover>
+          <XButton icon="i-mdi-atom" />
 
-        <template #content>
-          <div class="px-4 py-2">The content of the Popover.</div>
-        </template>
-      </XPopover>
+          <template #content>
+            <div class="px-4 py-2">The content of the Popover.</div>
+          </template>
+        </XPopover>
+      </div>
+
+      <div>
+        <XPopover>
+          <XButton icon="i-mdi-atom" />
+
+          <template #content>
+            <div class="px-4 py-2">The content of the Popover.</div>
+          </template>
+        </XPopover>
+      </div>
+    </div>
+
+    <div class="flex justify-center h-50">
+      <div>
+        <XPopover>
+          <XButton icon="i-mdi-atom" />
+
+          <template #content>
+            <div class="px-4 py-2">The content of the Popover.</div>
+          </template>
+        </XPopover>
+      </div>
+    </div>
+
+    <div class="flex justify-between h-50">
+      <div>
+        <XPopover>
+          <XButton icon="i-mdi-atom" />
+
+          <template #content>
+            <div class="px-4 py-2">The content of the Popover.</div>
+          </template>
+        </XPopover>
+      </div>
+
+      <div>
+        <XPopover>
+          <XButton icon="i-mdi-atom" />
+
+          <template #content>
+            <div class="px-4 py-2">The content of the Popover.</div>
+          </template>
+        </XPopover>
+      </div>
     </div>
   </div>
 </template>

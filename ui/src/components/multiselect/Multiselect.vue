@@ -449,7 +449,7 @@ onUnmounted(() => {
   @apply border border-slate-400 bg-white dark:bg-slate-800 rounded leading-tight;
 
   &.placeholder {
-    @apply text-gray-400 truncate;
+    @apply text-slate-400 dark:text-slate-500 truncate;
   }
 
   &.focus {
