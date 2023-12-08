@@ -6,6 +6,7 @@ import listOfLinks from './links-list';
 
 export default defineStore('/layouts/baseline', () => {
   const state = reactive({
+    userLoading: true,
     listOfLinks,
   });
 

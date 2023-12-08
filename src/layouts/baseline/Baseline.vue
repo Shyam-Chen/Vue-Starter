@@ -7,9 +7,9 @@ import { request } from '@x/ui';
 import { useDark, useToggle, useTextDirection } from '@vueuse/core';
 
 import type { Link } from './links-list';
-import NavLink from './NavLink.vue';
-import IdleDialog from './IdleDialog.vue';
 import useStore from './store';
+import Navbar from './Navbar.vue';
+import IdleDialog from './IdleDialog.vue';
 
 const router = useRouter();
 const route = useRoute();
@@ -24,7 +24,6 @@ const { state } = useStore();
 const flux = reactive({
   user: {} as any,
   userError: {} as any,
-  userLoading: true,
 
   signOut() {
     localStorage.removeItem('accessToken');
@@ -89,7 +88,7 @@ state.listOfLinks.forEach((link) => {
 onMounted(async () => {
   const response = await request('/auth/user', { method: 'GET' });
 
-  flux.userLoading = false;
+  state.userLoading = false;
 
   if (response.status === 200) {
     flux.user = response._data;
@@ -197,28 +196,12 @@ onMounted(async () => {
     <aside
       class="sidebar px-2 pt-4 pb-20 bg-white dark:bg-slate-900 dark:border-slate-700 shadow-lg hidden xl:block"
     >
-      <div v-if="flux.userLoading" class="flex justify-center items-center h-full">
-        <XSpinner class="w-12 h-12" />
-      </div>
-
-      <template v-else>
-        <template v-for="link in state.listOfLinks" :key="link.name">
-          <NavLink
-            :icon="link.icon"
-            :name="link.name"
-            :to="link.to"
-            :permissions="link.permissions"
-            :sub="link.sub"
-            :level="link.level"
-            :status="link.status"
-          />
-        </template>
-      </template>
+      <Navbar />
     </aside>
 
     <div class="flex flex-col h-full">
       <main class="page container w-full self-center">
-        <div v-if="flux.userLoading" class="flex justify-center items-center h-full">
+        <div v-if="state.userLoading" class="flex justify-center items-center h-full">
           <XSpinner class="w-12 h-12" />
         </div>
 
@@ -251,54 +234,29 @@ onMounted(async () => {
         </div>
       </footer>
     </div>
-
-    <XDialog v-model="flux.authDialog" class="!w-100">
-      <div class="text-2xl">{{ flux.userError.error }}</div>
-      <div class="my-2">{{ flux.userError.message }}</div>
-
-      <div class="flex justify-end">
-        <XButton @click="flux.authDialog = false">Okay, got it</XButton>
-      </div>
-    </XDialog>
-
-    <XDialog v-model="flux.searchDialog">
-      <XTextField placeholder="Search here..." prepend="i-fa-search" autocomplete="off" />
-      <div class="flex justify-center items-center h-66">No recent searches</div>
-    </XDialog>
-
-    <XDrawer
-      v-model="flux.navDrawer"
-      :placement="textDirection === 'rtl' ? 'right' : 'left'"
-      class="px-2 pt-4 pb-20"
-    >
-      <div v-if="flux.userLoading" class="flex justify-center items-center h-full">
-        <XSpinner class="w-12 h-12" />
-      </div>
-
-      <template v-else>
-        <div class="w-full block md:hidden mb-4">
-          <XTextField
-            placeholder="Search here..."
-            prepend="i-fa-search"
-            autocomplete="off"
-            @focus="flux.searchDialog = true"
-          />
-        </div>
-
-        <template v-for="link in state.listOfLinks" :key="link.name">
-          <NavLink
-            :icon="link.icon"
-            :name="link.name"
-            :to="link.to"
-            :permissions="link.permissions"
-            :sub="link.sub"
-            :level="link.level"
-            :status="link.status"
-          />
-        </template>
-      </template>
-    </XDrawer>
   </div>
+
+  <XDrawer
+    v-model="flux.navDrawer"
+    :placement="textDirection === 'rtl' ? 'right' : 'left'"
+    class="px-2 pt-4 pb-20"
+  >
+    <Navbar />
+  </XDrawer>
+
+  <XDialog v-model="flux.authDialog" class="!w-100">
+    <div class="text-2xl">{{ flux.userError.error }}</div>
+    <div class="my-2">{{ flux.userError.message }}</div>
+
+    <div class="flex justify-end">
+      <XButton @click="flux.authDialog = false">Okay, got it</XButton>
+    </div>
+  </XDialog>
+
+  <XDialog v-model="flux.searchDialog">
+    <XTextField placeholder="Search here..." prepend="i-fa-search" autocomplete="off" />
+    <div class="flex justify-center items-center h-66">No recent searches</div>
+  </XDialog>
 
   <IdleDialog />
 </template>
