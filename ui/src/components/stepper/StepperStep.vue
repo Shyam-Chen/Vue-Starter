@@ -17,7 +17,7 @@ const md = useMediaQuery('(min-width: 768px)');
     v-show="md ? true : Number(step) === stepper.modelValue.value"
     class="StepperStep"
     :class="{
-      'text-green-500 dark:text-green-400': Number(step) < stepper.modelValue.value,
+      'text-success-500 dark:text-success-400': Number(step) < stepper.modelValue.value,
       'text-primary-500 dark:text-primary-400': Number(step) === stepper.modelValue.value,
       'text-slate-500 dark:text-slate-400': Number(step) > stepper.modelValue.value,
     }"

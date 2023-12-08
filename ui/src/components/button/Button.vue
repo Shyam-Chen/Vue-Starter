@@ -158,7 +158,7 @@ function onClick(evt: Event) {
   }
 
   &.icon {
-    @apply p-0 rounded-full w-38px h-38px;
+    @apply p-0 rounded-full w-38px h-38px overflow-hidden;
   }
 
   &.disabled {

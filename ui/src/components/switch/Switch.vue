@@ -43,7 +43,7 @@ const switchValue = computed({
         />
 
         <div
-          class="block w-14 h-8 rounded-full"
+          class="block w-12 h-6 rounded-full"
           :class="{
             'bg-gray-400': !switchValue || !checked,
             'bg-primary-500': switchValue || checked,
@@ -51,7 +51,7 @@ const switchValue = computed({
         ></div>
 
         <div
-          class="dot absolute left-1 top-1 w-6 h-6 bg-white rounded-full transition"
+          class="dot absolute left-1 top-0.5 w-5 h-5 bg-white rounded-full transition"
           :class="{
             'translate-x-full': switchValue || checked,
           }"

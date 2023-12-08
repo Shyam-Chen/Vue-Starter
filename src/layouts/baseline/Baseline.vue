@@ -152,7 +152,7 @@ onMounted(async () => {
 
       <XDropdown>
         <div
-          class="text-white bg-primary-600 rounded-full w-10 h-10 flex justify-center items-center cursor-pointer transition hover:scale-125"
+          class="text-white bg-primary-600 rounded-full w-38px h-38px flex justify-center items-center cursor-pointer transition hover:scale-125"
         >
           {{ flux.avatar(flux.user.fullName) }}
         </div>

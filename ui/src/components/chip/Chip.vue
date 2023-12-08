@@ -33,7 +33,7 @@ const emit = defineEmits<{
 <style lang="scss" scoped>
 .Chip {
   @apply flex items-center px-2 py-1 rounded-full;
-  @apply text-xs text-center whitespace-nowrap;
+  @apply text-sm text-center whitespace-nowrap;
 
   &.primary {
     @apply bg-primary-500 text-white;

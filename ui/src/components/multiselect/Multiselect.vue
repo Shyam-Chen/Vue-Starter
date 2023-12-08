@@ -316,7 +316,7 @@ onUnmounted(() => {
             disabled: disabled,
             'flex items-center': selectedLabels,
           },
-          flux.selected?.length ? (selectedLabels && !selectedStatus ? 'py-2' : 'py-1.5') : 'py-2',
+          flux.selected?.length ? (selectedLabels && !selectedStatus ? 'py-2' : 'py-1') : 'py-2',
         ]"
         @click="open"
       >
