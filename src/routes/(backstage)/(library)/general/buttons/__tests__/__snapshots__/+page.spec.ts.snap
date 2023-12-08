@@ -20,212 +20,208 @@ exports[`/general/buttons 1`] = `
 </div>
 <div class="my-8">
   <div class="text-3xl font-bold my-4">Basic</div>
-  <div class="flex gap-2 my-4"><button data-v-54761eda="" type="button" class="Button contained primary small">
+  <div class="flex gap-4 my-4"><button data-v-54761eda="" type="button" class="Button contained primary small">
+      <!--v-if-->
       <!--v-if-->Contained
+      <!--v-if-->
     </button><button data-v-54761eda="" type="button" class="Button outlined primary small">
+      <!--v-if-->
       <!--v-if-->Outlined
+      <!--v-if-->
     </button><button data-v-54761eda="" type="button" class="Button text primary small">
+      <!--v-if-->
       <!--v-if-->Text
+      <!--v-if-->
     </button></div>
-  <div class="flex gap-2 my-4"><button data-v-54761eda="" type="button" class="Button contained primary">
+  <div class="flex gap-4 my-4"><button data-v-54761eda="" type="button" class="Button contained primary">
+      <!--v-if-->
       <!--v-if-->Contained
+      <!--v-if-->
     </button><button data-v-54761eda="" type="button" class="Button outlined primary">
+      <!--v-if-->
       <!--v-if-->Outlined
+      <!--v-if-->
     </button><button data-v-54761eda="" type="button" class="Button text primary">
+      <!--v-if-->
       <!--v-if-->Text
+      <!--v-if-->
     </button></div>
-  <div class="flex gap-2 my-4"><button data-v-54761eda="" type="button" class="Button contained primary large">
+  <div class="flex gap-4 my-4"><button data-v-54761eda="" type="button" class="Button contained primary large">
+      <!--v-if-->
       <!--v-if-->Contained
+      <!--v-if-->
     </button><button data-v-54761eda="" type="button" class="Button outlined primary large">
+      <!--v-if-->
       <!--v-if-->Outlined
+      <!--v-if-->
     </button><button data-v-54761eda="" type="button" class="Button text primary large">
+      <!--v-if-->
       <!--v-if-->Text
+      <!--v-if-->
     </button></div>
+</div>
+<div class="my-8">
+  <div class="text-3xl font-bold my-4 pt-6">Icons</div>
+  <div class="flex gap-4 my-4"><button data-v-54761eda="" type="button" class="Button contained primary icon">
+      <div data-v-54761eda="" class="i-material-symbols-add-rounded w-5 h-5"></div>
+      <!--v-if-->
+      <!--v-if-->
+      <!--v-if-->
+    </button><button data-v-54761eda="" type="button" class="Button contained primary prepend">
+      <!--v-if-->
+      <div data-v-54761eda="" class="i-material-symbols-search-rounded w-5 h-5"></div>Search
+      <!--v-if-->
+    </button><button data-v-54761eda="" type="button" class="Button contained primary append">
+      <!--v-if-->
+      <!--v-if-->Next<div data-v-54761eda="" class="i-material-symbols-arrow-right-alt-rounded w-5 h-5"></div>
+    </button></div>
+</div>
+<div class="my-8">
+  <div class="text-3xl font-bold my-4 pt-6">Disabled</div>
+  <div class="flex gap-4 my-4"><button data-v-54761eda="" type="button" class="Button contained primary disabled" disabled="">
+      <!--v-if-->
+      <!--v-if-->Contained
+      <!--v-if-->
+    </button><button data-v-54761eda="" type="button" class="Button outlined primary disabled" disabled="">
+      <!--v-if-->
+      <!--v-if-->Outlined
+      <!--v-if-->
+    </button><button data-v-54761eda="" type="button" class="Button text primary disabled" disabled="">
+      <!--v-if-->
+      <!--v-if-->Text
+      <!--v-if-->
+    </button></div>
+</div>
+<div class="my-8">
+  <div class="text-3xl font-bold my-4 pt-6">Loading</div><button data-v-54761eda="" type="button" class="Button contained primary prepend">
+    <!--v-if-->
+    <div data-v-54761eda="" class="i-material-symbols-search-rounded w-6 h-6"></div>Search
+    <!--v-if-->
+  </button>
+</div>
+<div class="my-8">
+  <div class="text-3xl font-bold my-4 pt-6">Colors</div>
+  <div class="flex gap-4 my-4"><button data-v-54761eda="" type="button" class="Button contained primary">
+      <!--v-if-->
+      <!--v-if-->Primary
+      <!--v-if-->
+    </button><button data-v-54761eda="" type="button" class="Button contained secondary">
+      <!--v-if-->
+      <!--v-if-->Secondary
+      <!--v-if-->
+    </button><button data-v-54761eda="" type="button" class="Button contained success">
+      <!--v-if-->
+      <!--v-if-->Success
+      <!--v-if-->
+    </button><button data-v-54761eda="" type="button" class="Button contained danger">
+      <!--v-if-->
+      <!--v-if-->Danger
+      <!--v-if-->
+    </button><button data-v-54761eda="" type="button" class="Button contained warning">
+      <!--v-if-->
+      <!--v-if-->Warning
+      <!--v-if-->
+    </button><button data-v-54761eda="" type="button" class="Button contained info">
+      <!--v-if-->
+      <!--v-if-->Info
+      <!--v-if-->
+    </button></div>
+  <div class="flex gap-4 my-4"><button data-v-54761eda="" type="button" class="Button outlined primary">
+      <!--v-if-->
+      <!--v-if-->Primary
+      <!--v-if-->
+    </button><button data-v-54761eda="" type="button" class="Button outlined secondary">
+      <!--v-if-->
+      <!--v-if-->Secondary
+      <!--v-if-->
+    </button><button data-v-54761eda="" type="button" class="Button outlined success">
+      <!--v-if-->
+      <!--v-if-->Success
+      <!--v-if-->
+    </button><button data-v-54761eda="" type="button" class="Button outlined danger">
+      <!--v-if-->
+      <!--v-if-->Danger
+      <!--v-if-->
+    </button><button data-v-54761eda="" type="button" class="Button outlined warning">
+      <!--v-if-->
+      <!--v-if-->Warning
+      <!--v-if-->
+    </button><button data-v-54761eda="" type="button" class="Button outlined info">
+      <!--v-if-->
+      <!--v-if-->Info
+      <!--v-if-->
+    </button></div>
+  <div class="flex gap-4 my-4"><button data-v-54761eda="" type="button" class="Button text primary">
+      <!--v-if-->
+      <!--v-if-->Primary
+      <!--v-if-->
+    </button><button data-v-54761eda="" type="button" class="Button text secondary">
+      <!--v-if-->
+      <!--v-if-->Secondary
+      <!--v-if-->
+    </button><button data-v-54761eda="" type="button" class="Button text success">
+      <!--v-if-->
+      <!--v-if-->Success
+      <!--v-if-->
+    </button><button data-v-54761eda="" type="button" class="Button text danger">
+      <!--v-if-->
+      <!--v-if-->Danger
+      <!--v-if-->
+    </button><button data-v-54761eda="" type="button" class="Button text warning">
+      <!--v-if-->
+      <!--v-if-->Warning
+      <!--v-if-->
+    </button><button data-v-54761eda="" type="button" class="Button text info">
+      <!--v-if-->
+      <!--v-if-->Info
+      <!--v-if-->
+    </button></div>
+</div>
+<div class="my-8">
+  <div class="text-3xl font-bold my-4 pt-6">Template</div><button data-v-54761eda="" type="button" class="Button outlined primary"> Template <div data-v-cb727b1e="" class="flex">
+      <div data-v-cb727b1e="" class="Chip primary">5
+        <!--v-if-->
+      </div>
+    </div></button>
 </div>
 <div class="my-8">
   <div class="text-3xl font-bold my-4 pt-6">Button Group</div>
   <div data-v-496d006f="" class="ButtonGroup"><button data-v-54761eda="" type="button" class="Button contained primary">
-      <!--v-if-->Years
+      <!--v-if-->
+      <!--v-if-->Year
+      <!--v-if-->
     </button><button data-v-54761eda="" type="button" class="Button contained primary">
+      <!--v-if-->
       <!--v-if-->Month
+      <!--v-if-->
     </button><button data-v-54761eda="" type="button" class="Button contained primary">
-      <!--v-if-->Date
+      <!--v-if-->
+      <!--v-if-->Week
+      <!--v-if-->
+    </button><button data-v-54761eda="" type="button" class="Button contained primary">
+      <!--v-if-->
+      <!--v-if-->Day
+      <!--v-if-->
     </button></div>
   <div class="my-4">
-    <div class="text-2xl font-semibold my-4 pt-5">Controlled</div>
+    <div class="text-2xl font-semibold my-4 pt-2">Controlled</div>
     <div data-v-496d006f="" class="ButtonGroup"><button data-v-54761eda="" type="button" class="Button outlined primary">
-        <!--v-if-->Years
+        <!--v-if-->
+        <!--v-if-->Year
+        <!--v-if-->
       </button><button data-v-54761eda="" type="button" class="Button outlined primary">
+        <!--v-if-->
         <!--v-if-->Month
+        <!--v-if-->
       </button><button data-v-54761eda="" type="button" class="Button outlined primary">
-        <!--v-if-->Date
+        <!--v-if-->
+        <!--v-if-->Week
+        <!--v-if-->
+      </button><button data-v-54761eda="" type="button" class="Button outlined primary">
+        <!--v-if-->
+        <!--v-if-->Day
+        <!--v-if-->
       </button></div>
   </div>
-</div>
-<div class="flex flex-col border p-4 mb-4">
-  <div class="mb-2">Contained</div>
-  <div class="flex space-x-2 justify-center py-4"><button data-v-54761eda="" type="button" class="Button contained primary">
-      <!--v-if-->Primary
-    </button><button data-v-54761eda="" type="button" class="Button contained secondary">
-      <!--v-if-->Secondary
-    </button><button data-v-54761eda="" type="button" class="Button contained success">
-      <!--v-if-->Success
-    </button><button data-v-54761eda="" type="button" class="Button contained danger">
-      <!--v-if-->
-      <div class="i-fa-trash w-4 h-4"></div> Delete
-    </button><button data-v-54761eda="" type="button" class="Button contained warning">
-      <!--v-if-->Warning
-    </button><button data-v-54761eda="" type="button" class="Button contained info icon">
-      <div data-v-54761eda="" class="w-4 h-4 i-fa-question"></div>
-    </button></div>
-  <div class="flex space-x-2 justify-center bg-white dark:bg-slate-800 rounded-md shadow-md py-4"><button data-v-54761eda="" type="button" class="Button contained primary">
-      <!--v-if-->Primary
-    </button><button data-v-54761eda="" type="button" class="Button contained secondary">
-      <!--v-if-->Secondary
-    </button><button data-v-54761eda="" type="button" class="Button contained success icon">
-      <div data-v-54761eda="" class="w-4 h-4 i-fa-plus"></div>
-    </button><button data-v-54761eda="" type="button" class="Button contained danger">
-      <!--v-if-->Danger
-    </button><button data-v-54761eda="" type="button" class="Button contained warning">
-      <!--v-if-->Warning
-    </button><button data-v-54761eda="" type="button" class="Button contained info">
-      <!--v-if-->Info
-    </button></div>
-  <div class="flex space-x-2 justify-center py-4"><button data-v-54761eda="" type="button" class="Button contained primary disabled" disabled="">
-      <!--v-if-->Primary
-    </button><button data-v-54761eda="" type="button" class="Button contained secondary disabled" disabled="">
-      <!--v-if-->Secondary
-    </button><button data-v-54761eda="" type="button" class="Button contained success disabled" disabled="">
-      <!--v-if-->Success
-    </button><button data-v-54761eda="" type="button" class="Button contained danger disabled" disabled="">
-      <!--v-if-->Danger
-    </button><button data-v-54761eda="" type="button" class="Button contained warning disabled" disabled="">
-      <!--v-if-->Warning
-    </button><button data-v-54761eda="" type="button" class="Button contained info disabled" disabled="">
-      <!--v-if-->Info
-    </button></div>
-  <div class="flex space-x-2 justify-center bg-white dark:bg-slate-800 rounded-md shadow-md py-4"><button data-v-54761eda="" type="button" class="Button contained primary disabled" disabled="">
-      <!--v-if-->Primary
-    </button><button data-v-54761eda="" type="button" class="Button contained secondary disabled" disabled="">
-      <!--v-if-->Secondary
-    </button><button data-v-54761eda="" type="button" class="Button contained success disabled" disabled="">
-      <!--v-if-->Success
-    </button><button data-v-54761eda="" type="button" class="Button contained danger disabled" disabled="">
-      <!--v-if-->Danger
-    </button><button data-v-54761eda="" type="button" class="Button contained warning disabled" disabled="">
-      <!--v-if-->Warning
-    </button><button data-v-54761eda="" type="button" class="Button contained info disabled" disabled="">
-      <!--v-if-->Info
-    </button></div>
-</div>
-<div class="flex flex-col border p-4 mb-4">
-  <div class="mb-2">Outlined</div>
-  <div class="flex space-x-2 justify-center py-4"><button data-v-54761eda="" type="button" class="Button outlined primary icon">
-      <div data-v-54761eda="" class="w-4 h-4 i-fa-download"></div>
-    </button><button data-v-54761eda="" type="button" class="Button outlined secondary">
-      <!--v-if-->Secondary
-    </button><button data-v-54761eda="" type="button" class="Button outlined success">
-      <!--v-if-->Success
-    </button><button data-v-54761eda="" type="button" class="Button outlined danger">
-      <!--v-if-->Danger
-    </button><button data-v-54761eda="" type="button" class="Button outlined warning">
-      <!--v-if-->Warning
-    </button><button data-v-54761eda="" type="button" class="Button outlined info">
-      <!--v-if--> View <div class="i-bx-detail w-4 h-4"></div>
-    </button></div>
-  <div class="flex space-x-2 justify-center bg-white dark:bg-slate-800 rounded-md shadow-md py-4"><button data-v-54761eda="" type="button" class="Button outlined primary">
-      <!--v-if-->Primary
-    </button><button data-v-54761eda="" type="button" class="Button outlined secondary">
-      <!--v-if-->Secondary
-    </button><button data-v-54761eda="" type="button" class="Button outlined success">
-      <!--v-if-->Success
-    </button><button data-v-54761eda="" type="button" class="Button outlined danger">
-      <!--v-if-->Danger
-    </button><button data-v-54761eda="" type="button" class="Button outlined warning icon">
-      <div data-v-54761eda="" class="w-4 h-4 i-fa-exclamation"></div>
-    </button><button data-v-54761eda="" type="button" class="Button outlined info">
-      <!--v-if-->Info
-    </button></div>
-  <div class="flex space-x-2 justify-center py-4"><button data-v-54761eda="" type="button" class="Button outlined primary disabled" disabled="">
-      <!--v-if-->Primary
-    </button><button data-v-54761eda="" type="button" class="Button outlined secondary disabled" disabled="">
-      <!--v-if-->Secondary
-    </button><button data-v-54761eda="" type="button" class="Button outlined success disabled" disabled="">
-      <!--v-if-->Success
-    </button><button data-v-54761eda="" type="button" class="Button outlined danger disabled" disabled="">
-      <!--v-if-->Danger
-    </button><button data-v-54761eda="" type="button" class="Button outlined warning disabled" disabled="">
-      <!--v-if-->Warning
-    </button><button data-v-54761eda="" type="button" class="Button outlined info disabled" disabled="">
-      <!--v-if-->Info
-    </button></div>
-  <div class="flex space-x-2 justify-center bg-white dark:bg-slate-800 rounded-md shadow-md py-4"><button data-v-54761eda="" type="button" class="Button outlined primary disabled" disabled="">
-      <!--v-if-->Primary
-    </button><button data-v-54761eda="" type="button" class="Button outlined secondary disabled" disabled="">
-      <!--v-if-->Secondary
-    </button><button data-v-54761eda="" type="button" class="Button outlined success disabled" disabled="">
-      <!--v-if-->Success
-    </button><button data-v-54761eda="" type="button" class="Button outlined danger disabled" disabled="">
-      <!--v-if-->Danger
-    </button><button data-v-54761eda="" type="button" class="Button outlined warning disabled" disabled="">
-      <!--v-if-->Warning
-    </button><button data-v-54761eda="" type="button" class="Button outlined info disabled" disabled="">
-      <!--v-if-->Info
-    </button></div>
-</div>
-<div class="flex flex-col border p-4 mb-4">
-  <div class="mb-2">Text</div>
-  <div class="flex space-x-2 justify-center py-4"><button data-v-54761eda="" type="button" class="Button text primary">
-      <!--v-if-->Primary
-    </button><button data-v-54761eda="" type="button" class="Button text secondary icon">
-      <div data-v-54761eda="" class="w-4 h-4 i-fa-share-square-o"></div>
-    </button><button data-v-54761eda="" type="button" class="Button text success">
-      <!--v-if-->Success
-    </button><button data-v-54761eda="" type="button" class="Button text danger">
-      <!--v-if-->Danger
-    </button><button data-v-54761eda="" type="button" class="Button text warning">
-      <!--v-if-->Warning
-    </button><button data-v-54761eda="" type="button" class="Button text info">
-      <!--v-if-->Info
-    </button></div>
-  <div class="flex space-x-2 justify-center bg-white dark:bg-slate-800 rounded-md shadow-md py-4"><button data-v-54761eda="" type="button" class="Button text primary">
-      <!--v-if--> Send <div class="i-fa-send w-4 h-4"></div>
-    </button><button data-v-54761eda="" type="button" class="Button text secondary">
-      <!--v-if-->Secondary
-    </button><button data-v-54761eda="" type="button" class="Button text success">
-      <!--v-if-->Success
-    </button><button data-v-54761eda="" type="button" class="Button text danger icon">
-      <div data-v-54761eda="" class="w-4 h-4 i-fa-minus"></div>
-    </button><button data-v-54761eda="" type="button" class="Button text warning">
-      <!--v-if-->Warning
-    </button><button data-v-54761eda="" type="button" class="Button text info">
-      <!--v-if-->Info
-    </button></div>
-  <div class="flex space-x-2 justify-center py-4"><button data-v-54761eda="" type="button" class="Button text primary disabled" disabled="">
-      <!--v-if-->Primary
-    </button><button data-v-54761eda="" type="button" class="Button text secondary disabled" disabled="">
-      <!--v-if-->Secondary
-    </button><button data-v-54761eda="" type="button" class="Button text success disabled" disabled="">
-      <!--v-if-->Success
-    </button><button data-v-54761eda="" type="button" class="Button text danger disabled" disabled="">
-      <!--v-if-->Danger
-    </button><button data-v-54761eda="" type="button" class="Button text warning disabled" disabled="">
-      <!--v-if-->Warning
-    </button><button data-v-54761eda="" type="button" class="Button text info disabled" disabled="">
-      <!--v-if-->Info
-    </button></div>
-  <div class="flex space-x-2 justify-center bg-white dark:bg-slate-800 rounded-md shadow-md py-4"><button data-v-54761eda="" type="button" class="Button text primary disabled" disabled="">
-      <!--v-if-->Primary
-    </button><button data-v-54761eda="" type="button" class="Button text secondary disabled" disabled="">
-      <!--v-if-->Secondary
-    </button><button data-v-54761eda="" type="button" class="Button text success disabled" disabled="">
-      <!--v-if-->Success
-    </button><button data-v-54761eda="" type="button" class="Button text danger disabled" disabled="">
-      <!--v-if-->Danger
-    </button><button data-v-54761eda="" type="button" class="Button text warning disabled" disabled="">
-      <!--v-if-->Warning
-    </button><button data-v-54761eda="" type="button" class="Button text info disabled" disabled="">
-      <!--v-if-->Info
-    </button></div>
 </div>"
 `;

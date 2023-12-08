@@ -2,11 +2,17 @@
 import type { ButtonHTMLAttributes, Ref, WritableComputedRef } from 'vue';
 import { ref, computed, inject, onMounted } from 'vue';
 
+import Spinner from '../spinner/Spinner.vue';
+
 interface Props extends /* @vue-ignore */ ButtonHTMLAttributes {
+  label?: string;
+  icon?: string;
   variant?: 'contained' | 'outlined' | 'text';
   color?: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info';
   size?: 'small' | 'large';
-  icon?: string;
+  prepend?: string;
+  append?: string;
+  loading?: boolean;
   disabled?: boolean;
 }
 
@@ -65,13 +71,28 @@ function onClick(evt: Event) {
       small: size === 'small',
       large: size === 'large',
       icon,
-      disabled,
+      prepend,
+      append,
+      disabled: disabled || loading,
     }"
-    :disabled="disabled"
+    :disabled="disabled || loading"
     @click="onClick"
   >
-    <div v-if="icon" class="w-4 h-4" :class="icon"></div>
-    <slot></slot>
+    <slot>
+      <div v-if="icon" :class="icon"></div>
+
+      <div v-if="prepend && loading" class="flex items-center w-6 h-6">
+        <Spinner class="w-5 h-5" />
+      </div>
+      <div v-else-if="prepend" :class="prepend"></div>
+
+      <template v-if="label">{{ label }}</template>
+
+      <div v-if="append && loading" class="flex items-center w-6 h-6">
+        <Spinner class="w-5 h-5" />
+      </div>
+      <div v-else-if="append" :class="append"></div>
+    </slot>
   </button>
 </template>
 
@@ -159,6 +180,11 @@ function onClick(evt: Event) {
 
   &.icon {
     @apply p-0 rounded-full w-38px h-38px overflow-hidden;
+  }
+
+  &.prepend,
+  &.append {
+    @apply h-38px py-0 overflow-hidden;
   }
 
   &.disabled {

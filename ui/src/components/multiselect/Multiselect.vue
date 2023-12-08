@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { ref, reactive, computed, watch, watchEffect, nextTick, onMounted, onUnmounted } from 'vue';
+import { useLocaler, useLocale } from 'vue-localer';
 import { onClickOutside } from '@vueuse/core';
 
 import scrollableParent from '../../utilities/scrollable-parent/scrollableParent';
@@ -41,8 +42,8 @@ const props = withDefaults(
     value: () => [],
     options: () => [],
     display: 'label',
-    placeholder: 'Please select',
-    notFoundContent: 'No results found',
+    placeholder: '',
+    notFoundContent: '',
     invalid: undefined,
   },
 );
@@ -51,6 +52,9 @@ const emit = defineEmits<{
   (evt: 'update:value', val?: Option['value'][] | null): void;
   (evt: 'change', val?: Option['value'] | null, opt?: Option | null): void;
 }>();
+
+const localer = useLocaler();
+const locale = useLocale();
 
 const flux = reactive({
   show: false,
@@ -293,12 +297,12 @@ onUnmounted(() => {
         @click="selectedStatus = !selectedStatus"
       >
         <template v-if="!selectedStatus">
-          <span>Show</span>
+          <span>{{ locale.show || 'Show' }}</span>
           <div class="i-material-symbols-add-rounded w-4 h-4"></div>
         </template>
 
         <template v-else>
-          <span>Hide</span>
+          <span>{{ locale.hide || 'Hide' }}</span>
           <div class="i-material-symbols-check-indeterminate-small-rounded w-4 h-4"></div>
         </template>
       </span>
@@ -321,11 +325,17 @@ onUnmounted(() => {
         @click="open"
       >
         <div v-if="!flux.selected?.length" class="flex-1">
-          {{ placeholder }}
+          {{ placeholder || locale.pleaseSelect || 'Please select' }}
         </div>
 
         <div v-if="flux.selected?.length && selectedLabels && !selectedStatus" class="flex-1">
-          {{ flux.selected?.length }} Selected
+          {{
+            flux.selected.length === 1
+              ? localer.f(locale.oneItemSelected, { num: flux.selected.length }) ||
+                `1 item selected`
+              : localer.f(locale.numItemsSelected, { num: flux.selected.length }) ||
+                `${flux.selected.length} items selected`
+          }}
         </div>
 
         <div v-else-if="flux.selected?.length" class="flex-1 flex flex-wrap gap-1">
@@ -405,7 +415,7 @@ onUnmounted(() => {
           </div>
 
           <div v-if="flux.options.length === 0" class="p-4">
-            {{ notFoundContent }}
+            {{ notFoundContent || locale.notFoundContent || 'No results found' }}
           </div>
         </div>
       </Fade>
@@ -448,7 +458,7 @@ onUnmounted(() => {
 
   &.invalid {
     @apply border-red-500 dark:border-red-500;
-    @apply focus:ring-red-500 focus:border-red-500;
+    @apply ring-red-500 border-red-500;
   }
 
   &.disabled {
