@@ -48,9 +48,21 @@ const buttonGroup = ref(0);
     <div class="text-3xl font-bold my-4 pt-6">Icons</div>
 
     <div class="flex gap-4 my-4">
-      <XButton icon="i-material-symbols-add-rounded w-5 h-5" />
-      <XButton prepend="i-material-symbols-search-rounded w-5 h-5" label="Search" />
-      <XButton label="Next" append="i-material-symbols-arrow-right-alt-rounded w-5 h-5" />
+      <XButton icon="i-material-symbols-add-rounded" size="small" />
+      <XButton prepend="i-material-symbols-search-rounded" label="Search" size="small" />
+      <XButton label="Next" append="i-material-symbols-arrow-right-alt-rounded" size="small" />
+    </div>
+
+    <div class="flex gap-4 my-4">
+      <XButton icon="i-material-symbols-add-rounded" />
+      <XButton prepend="i-material-symbols-search-rounded" label="Search" />
+      <XButton label="Next" append="i-material-symbols-arrow-right-alt-rounded" />
+    </div>
+
+    <div class="flex gap-4 my-4">
+      <XButton icon="i-material-symbols-add-rounded" size="large" />
+      <XButton prepend="i-material-symbols-search-rounded" label="Search" size="large" />
+      <XButton label="Next" append="i-material-symbols-arrow-right-alt-rounded" size="large" />
     </div>
   </div>
 
@@ -67,12 +79,28 @@ const buttonGroup = ref(0);
   <div class="my-8">
     <div class="text-3xl font-bold my-4 pt-6">Loading</div>
 
-    <XButton
-      prepend="i-material-symbols-search-rounded w-6 h-6"
-      label="Search"
-      :loading="searchLoading"
-      @click="search"
-    />
+    <div class="space-y-4">
+      <XButton
+        prepend="i-material-symbols-search-rounded"
+        label="Search"
+        size="small"
+        :loading="searchLoading"
+        @click="search"
+      />
+      <XButton
+        prepend="i-material-symbols-search-rounded"
+        label="Search"
+        :loading="searchLoading"
+        @click="search"
+      />
+      <XButton
+        prepend="i-material-symbols-search-rounded"
+        label="Search"
+        size="large"
+        :loading="searchLoading"
+        @click="search"
+      />
+    </div>
   </div>
 
   <div class="my-8">

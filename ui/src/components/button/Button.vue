@@ -71,27 +71,53 @@ function onClick(evt: Event) {
       small: size === 'small',
       large: size === 'large',
       icon,
-      prepend,
-      append,
       disabled: disabled || loading,
     }"
     :disabled="disabled || loading"
     @click="onClick"
   >
     <slot>
-      <div v-if="icon" :class="icon"></div>
+      <div
+        v-if="icon"
+        class="Button-Icon"
+        :class="[icon, { small: size === 'small', large: size === 'large' }]"
+      ></div>
 
-      <div v-if="prepend && loading" class="flex items-center w-6 h-6">
-        <Spinner class="w-5 h-5" />
+      <div
+        v-if="prepend"
+        class="Button-Icon flex items-center overflow-hidden"
+        :class="{ small: size === 'small', large: size === 'large' }"
+      >
+        <Spinner
+          v-if="loading"
+          class="Button-Icon"
+          :class="{ small: size === 'small', large: size === 'large' }"
+        />
+        <div
+          v-else
+          class="Button-Icon"
+          :class="[prepend, { small: size === 'small', large: size === 'large' }]"
+        ></div>
       </div>
-      <div v-else-if="prepend" :class="prepend"></div>
 
-      <template v-if="label">{{ label }}</template>
+      <div v-if="label">{{ label }}</div>
 
-      <div v-if="append && loading" class="flex items-center w-6 h-6">
-        <Spinner class="w-5 h-5" />
+      <div
+        v-if="append"
+        class="Button-Icon flex items-center overflow-hidden"
+        :class="{ small: size === 'small', large: size === 'large' }"
+      >
+        <Spinner
+          v-if="loading"
+          class="Button-Icon"
+          :class="{ small: size === 'small', large: size === 'large' }"
+        />
+        <div
+          v-else
+          class="Button-Icon"
+          :class="[append, { small: size === 'small', large: size === 'large' }]"
+        ></div>
       </div>
-      <div v-else-if="append" :class="append"></div>
     </slot>
   </button>
 </template>
@@ -180,15 +206,30 @@ function onClick(evt: Event) {
 
   &.icon {
     @apply p-0 rounded-full w-38px h-38px overflow-hidden;
-  }
 
-  &.prepend,
-  &.append {
-    @apply h-38px py-0 overflow-hidden;
+    &.small {
+      @apply w-34px h-34px;
+    }
+
+    &.large {
+      @apply w-42px h-42px;
+    }
   }
 
   &.disabled {
     @apply opacity-60 cursor-not-allowed;
+  }
+}
+
+.Button-Icon {
+  @apply w-5 h-5;
+
+  &.small {
+    @apply w-4 h-4;
+  }
+
+  &.large {
+    @apply w-6 h-6;
   }
 }
 </style>

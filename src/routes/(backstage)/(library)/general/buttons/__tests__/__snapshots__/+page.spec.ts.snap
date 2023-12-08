@@ -22,158 +22,253 @@ exports[`/general/buttons 1`] = `
   <div class="text-3xl font-bold my-4">Basic</div>
   <div class="flex gap-4 my-4"><button data-v-54761eda="" type="button" class="Button contained primary small">
       <!--v-if-->
-      <!--v-if-->Contained
+      <!--v-if-->
+      <div data-v-54761eda="">Contained</div>
       <!--v-if-->
     </button><button data-v-54761eda="" type="button" class="Button outlined primary small">
       <!--v-if-->
-      <!--v-if-->Outlined
+      <!--v-if-->
+      <div data-v-54761eda="">Outlined</div>
       <!--v-if-->
     </button><button data-v-54761eda="" type="button" class="Button text primary small">
       <!--v-if-->
-      <!--v-if-->Text
+      <!--v-if-->
+      <div data-v-54761eda="">Text</div>
       <!--v-if-->
     </button></div>
   <div class="flex gap-4 my-4"><button data-v-54761eda="" type="button" class="Button contained primary">
       <!--v-if-->
-      <!--v-if-->Contained
+      <!--v-if-->
+      <div data-v-54761eda="">Contained</div>
       <!--v-if-->
     </button><button data-v-54761eda="" type="button" class="Button outlined primary">
       <!--v-if-->
-      <!--v-if-->Outlined
+      <!--v-if-->
+      <div data-v-54761eda="">Outlined</div>
       <!--v-if-->
     </button><button data-v-54761eda="" type="button" class="Button text primary">
       <!--v-if-->
-      <!--v-if-->Text
+      <!--v-if-->
+      <div data-v-54761eda="">Text</div>
       <!--v-if-->
     </button></div>
   <div class="flex gap-4 my-4"><button data-v-54761eda="" type="button" class="Button contained primary large">
       <!--v-if-->
-      <!--v-if-->Contained
+      <!--v-if-->
+      <div data-v-54761eda="">Contained</div>
       <!--v-if-->
     </button><button data-v-54761eda="" type="button" class="Button outlined primary large">
       <!--v-if-->
-      <!--v-if-->Outlined
+      <!--v-if-->
+      <div data-v-54761eda="">Outlined</div>
       <!--v-if-->
     </button><button data-v-54761eda="" type="button" class="Button text primary large">
       <!--v-if-->
-      <!--v-if-->Text
+      <!--v-if-->
+      <div data-v-54761eda="">Text</div>
       <!--v-if-->
     </button></div>
 </div>
 <div class="my-8">
   <div class="text-3xl font-bold my-4 pt-6">Icons</div>
+  <div class="flex gap-4 my-4"><button data-v-54761eda="" type="button" class="Button contained primary small icon">
+      <div data-v-54761eda="" class="Button-Icon i-material-symbols-add-rounded small"></div>
+      <!--v-if-->
+      <!--v-if-->
+      <!--v-if-->
+    </button><button data-v-54761eda="" type="button" class="Button contained primary small">
+      <!--v-if-->
+      <div data-v-54761eda="" class="Button-Icon flex items-center overflow-hidden small">
+        <div data-v-54761eda="" class="Button-Icon i-material-symbols-search-rounded small"></div>
+      </div>
+      <div data-v-54761eda="">Search</div>
+      <!--v-if-->
+    </button><button data-v-54761eda="" type="button" class="Button contained primary small">
+      <!--v-if-->
+      <!--v-if-->
+      <div data-v-54761eda="">Next</div>
+      <div data-v-54761eda="" class="Button-Icon flex items-center overflow-hidden small">
+        <div data-v-54761eda="" class="Button-Icon i-material-symbols-arrow-right-alt-rounded small"></div>
+      </div>
+    </button></div>
   <div class="flex gap-4 my-4"><button data-v-54761eda="" type="button" class="Button contained primary icon">
-      <div data-v-54761eda="" class="i-material-symbols-add-rounded w-5 h-5"></div>
+      <div data-v-54761eda="" class="Button-Icon i-material-symbols-add-rounded"></div>
       <!--v-if-->
       <!--v-if-->
       <!--v-if-->
-    </button><button data-v-54761eda="" type="button" class="Button contained primary prepend">
+    </button><button data-v-54761eda="" type="button" class="Button contained primary">
       <!--v-if-->
-      <div data-v-54761eda="" class="i-material-symbols-search-rounded w-5 h-5"></div>Search
+      <div data-v-54761eda="" class="Button-Icon flex items-center overflow-hidden">
+        <div data-v-54761eda="" class="Button-Icon i-material-symbols-search-rounded"></div>
+      </div>
+      <div data-v-54761eda="">Search</div>
       <!--v-if-->
-    </button><button data-v-54761eda="" type="button" class="Button contained primary append">
+    </button><button data-v-54761eda="" type="button" class="Button contained primary">
       <!--v-if-->
-      <!--v-if-->Next<div data-v-54761eda="" class="i-material-symbols-arrow-right-alt-rounded w-5 h-5"></div>
+      <!--v-if-->
+      <div data-v-54761eda="">Next</div>
+      <div data-v-54761eda="" class="Button-Icon flex items-center overflow-hidden">
+        <div data-v-54761eda="" class="Button-Icon i-material-symbols-arrow-right-alt-rounded"></div>
+      </div>
+    </button></div>
+  <div class="flex gap-4 my-4"><button data-v-54761eda="" type="button" class="Button contained primary large icon">
+      <div data-v-54761eda="" class="Button-Icon i-material-symbols-add-rounded large"></div>
+      <!--v-if-->
+      <!--v-if-->
+      <!--v-if-->
+    </button><button data-v-54761eda="" type="button" class="Button contained primary large">
+      <!--v-if-->
+      <div data-v-54761eda="" class="Button-Icon flex items-center overflow-hidden large">
+        <div data-v-54761eda="" class="Button-Icon i-material-symbols-search-rounded large"></div>
+      </div>
+      <div data-v-54761eda="">Search</div>
+      <!--v-if-->
+    </button><button data-v-54761eda="" type="button" class="Button contained primary large">
+      <!--v-if-->
+      <!--v-if-->
+      <div data-v-54761eda="">Next</div>
+      <div data-v-54761eda="" class="Button-Icon flex items-center overflow-hidden large">
+        <div data-v-54761eda="" class="Button-Icon i-material-symbols-arrow-right-alt-rounded large"></div>
+      </div>
     </button></div>
 </div>
 <div class="my-8">
   <div class="text-3xl font-bold my-4 pt-6">Disabled</div>
   <div class="flex gap-4 my-4"><button data-v-54761eda="" type="button" class="Button contained primary disabled" disabled="">
       <!--v-if-->
-      <!--v-if-->Contained
+      <!--v-if-->
+      <div data-v-54761eda="">Contained</div>
       <!--v-if-->
     </button><button data-v-54761eda="" type="button" class="Button outlined primary disabled" disabled="">
       <!--v-if-->
-      <!--v-if-->Outlined
+      <!--v-if-->
+      <div data-v-54761eda="">Outlined</div>
       <!--v-if-->
     </button><button data-v-54761eda="" type="button" class="Button text primary disabled" disabled="">
       <!--v-if-->
-      <!--v-if-->Text
+      <!--v-if-->
+      <div data-v-54761eda="">Text</div>
       <!--v-if-->
     </button></div>
 </div>
 <div class="my-8">
-  <div class="text-3xl font-bold my-4 pt-6">Loading</div><button data-v-54761eda="" type="button" class="Button contained primary prepend">
-    <!--v-if-->
-    <div data-v-54761eda="" class="i-material-symbols-search-rounded w-6 h-6"></div>Search
-    <!--v-if-->
-  </button>
+  <div class="text-3xl font-bold my-4 pt-6">Loading</div>
+  <div class="space-y-4"><button data-v-54761eda="" type="button" class="Button contained primary small">
+      <!--v-if-->
+      <div data-v-54761eda="" class="Button-Icon flex items-center overflow-hidden small">
+        <div data-v-54761eda="" class="Button-Icon i-material-symbols-search-rounded small"></div>
+      </div>
+      <div data-v-54761eda="">Search</div>
+      <!--v-if-->
+    </button><button data-v-54761eda="" type="button" class="Button contained primary">
+      <!--v-if-->
+      <div data-v-54761eda="" class="Button-Icon flex items-center overflow-hidden">
+        <div data-v-54761eda="" class="Button-Icon i-material-symbols-search-rounded"></div>
+      </div>
+      <div data-v-54761eda="">Search</div>
+      <!--v-if-->
+    </button><button data-v-54761eda="" type="button" class="Button contained primary large">
+      <!--v-if-->
+      <div data-v-54761eda="" class="Button-Icon flex items-center overflow-hidden large">
+        <div data-v-54761eda="" class="Button-Icon i-material-symbols-search-rounded large"></div>
+      </div>
+      <div data-v-54761eda="">Search</div>
+      <!--v-if-->
+    </button></div>
 </div>
 <div class="my-8">
   <div class="text-3xl font-bold my-4 pt-6">Colors</div>
   <div class="flex gap-4 my-4"><button data-v-54761eda="" type="button" class="Button contained primary">
       <!--v-if-->
-      <!--v-if-->Primary
+      <!--v-if-->
+      <div data-v-54761eda="">Primary</div>
       <!--v-if-->
     </button><button data-v-54761eda="" type="button" class="Button contained secondary">
       <!--v-if-->
-      <!--v-if-->Secondary
+      <!--v-if-->
+      <div data-v-54761eda="">Secondary</div>
       <!--v-if-->
     </button><button data-v-54761eda="" type="button" class="Button contained success">
       <!--v-if-->
-      <!--v-if-->Success
+      <!--v-if-->
+      <div data-v-54761eda="">Success</div>
       <!--v-if-->
     </button><button data-v-54761eda="" type="button" class="Button contained danger">
       <!--v-if-->
-      <!--v-if-->Danger
+      <!--v-if-->
+      <div data-v-54761eda="">Danger</div>
       <!--v-if-->
     </button><button data-v-54761eda="" type="button" class="Button contained warning">
       <!--v-if-->
-      <!--v-if-->Warning
+      <!--v-if-->
+      <div data-v-54761eda="">Warning</div>
       <!--v-if-->
     </button><button data-v-54761eda="" type="button" class="Button contained info">
       <!--v-if-->
-      <!--v-if-->Info
+      <!--v-if-->
+      <div data-v-54761eda="">Info</div>
       <!--v-if-->
     </button></div>
   <div class="flex gap-4 my-4"><button data-v-54761eda="" type="button" class="Button outlined primary">
       <!--v-if-->
-      <!--v-if-->Primary
+      <!--v-if-->
+      <div data-v-54761eda="">Primary</div>
       <!--v-if-->
     </button><button data-v-54761eda="" type="button" class="Button outlined secondary">
       <!--v-if-->
-      <!--v-if-->Secondary
+      <!--v-if-->
+      <div data-v-54761eda="">Secondary</div>
       <!--v-if-->
     </button><button data-v-54761eda="" type="button" class="Button outlined success">
       <!--v-if-->
-      <!--v-if-->Success
+      <!--v-if-->
+      <div data-v-54761eda="">Success</div>
       <!--v-if-->
     </button><button data-v-54761eda="" type="button" class="Button outlined danger">
       <!--v-if-->
-      <!--v-if-->Danger
+      <!--v-if-->
+      <div data-v-54761eda="">Danger</div>
       <!--v-if-->
     </button><button data-v-54761eda="" type="button" class="Button outlined warning">
       <!--v-if-->
-      <!--v-if-->Warning
+      <!--v-if-->
+      <div data-v-54761eda="">Warning</div>
       <!--v-if-->
     </button><button data-v-54761eda="" type="button" class="Button outlined info">
       <!--v-if-->
-      <!--v-if-->Info
+      <!--v-if-->
+      <div data-v-54761eda="">Info</div>
       <!--v-if-->
     </button></div>
   <div class="flex gap-4 my-4"><button data-v-54761eda="" type="button" class="Button text primary">
       <!--v-if-->
-      <!--v-if-->Primary
+      <!--v-if-->
+      <div data-v-54761eda="">Primary</div>
       <!--v-if-->
     </button><button data-v-54761eda="" type="button" class="Button text secondary">
       <!--v-if-->
-      <!--v-if-->Secondary
+      <!--v-if-->
+      <div data-v-54761eda="">Secondary</div>
       <!--v-if-->
     </button><button data-v-54761eda="" type="button" class="Button text success">
       <!--v-if-->
-      <!--v-if-->Success
+      <!--v-if-->
+      <div data-v-54761eda="">Success</div>
       <!--v-if-->
     </button><button data-v-54761eda="" type="button" class="Button text danger">
       <!--v-if-->
-      <!--v-if-->Danger
+      <!--v-if-->
+      <div data-v-54761eda="">Danger</div>
       <!--v-if-->
     </button><button data-v-54761eda="" type="button" class="Button text warning">
       <!--v-if-->
-      <!--v-if-->Warning
+      <!--v-if-->
+      <div data-v-54761eda="">Warning</div>
       <!--v-if-->
     </button><button data-v-54761eda="" type="button" class="Button text info">
       <!--v-if-->
-      <!--v-if-->Info
+      <!--v-if-->
+      <div data-v-54761eda="">Info</div>
       <!--v-if-->
     </button></div>
 </div>
@@ -188,38 +283,46 @@ exports[`/general/buttons 1`] = `
   <div class="text-3xl font-bold my-4 pt-6">Button Group</div>
   <div data-v-496d006f="" class="ButtonGroup"><button data-v-54761eda="" type="button" class="Button contained primary">
       <!--v-if-->
-      <!--v-if-->Year
+      <!--v-if-->
+      <div data-v-54761eda="">Year</div>
       <!--v-if-->
     </button><button data-v-54761eda="" type="button" class="Button contained primary">
       <!--v-if-->
-      <!--v-if-->Month
+      <!--v-if-->
+      <div data-v-54761eda="">Month</div>
       <!--v-if-->
     </button><button data-v-54761eda="" type="button" class="Button contained primary">
       <!--v-if-->
-      <!--v-if-->Week
+      <!--v-if-->
+      <div data-v-54761eda="">Week</div>
       <!--v-if-->
     </button><button data-v-54761eda="" type="button" class="Button contained primary">
       <!--v-if-->
-      <!--v-if-->Day
+      <!--v-if-->
+      <div data-v-54761eda="">Day</div>
       <!--v-if-->
     </button></div>
   <div class="my-4">
     <div class="text-2xl font-semibold my-4 pt-2">Controlled</div>
     <div data-v-496d006f="" class="ButtonGroup"><button data-v-54761eda="" type="button" class="Button outlined primary">
         <!--v-if-->
-        <!--v-if-->Year
+        <!--v-if-->
+        <div data-v-54761eda="">Year</div>
         <!--v-if-->
       </button><button data-v-54761eda="" type="button" class="Button outlined primary">
         <!--v-if-->
-        <!--v-if-->Month
+        <!--v-if-->
+        <div data-v-54761eda="">Month</div>
         <!--v-if-->
       </button><button data-v-54761eda="" type="button" class="Button outlined primary">
         <!--v-if-->
-        <!--v-if-->Week
+        <!--v-if-->
+        <div data-v-54761eda="">Week</div>
         <!--v-if-->
       </button><button data-v-54761eda="" type="button" class="Button outlined primary">
         <!--v-if-->
-        <!--v-if-->Day
+        <!--v-if-->
+        <div data-v-54761eda="">Day</div>
         <!--v-if-->
       </button></div>
   </div>
