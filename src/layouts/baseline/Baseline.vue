@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-import { reactive, watch, onMounted } from 'vue';
+import { ref, reactive, watch, onMounted } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import { useLocaler } from 'vue-localer';
-import { XTextField, XSelect, XDialog, XButton, XSpinner, XDropdown, XDrawer } from '@x/ui';
+import { XTextField, XDialog, XButton, XSpinner, XPopover, XDrawer } from '@x/ui';
 import { request } from '@x/ui';
-import { useDark, useToggle, useTextDirection } from '@vueuse/core';
+import { useColorMode, useTextDirection } from '@vueuse/core';
 
 import type { Link } from './links-list';
 import useStore from './store';
@@ -15,8 +15,7 @@ const router = useRouter();
 const route = useRoute();
 const localer = useLocaler();
 
-const isDark = useDark();
-const toggleDark = useToggle(isDark);
+const colorMode = useColorMode();
 const textDirection = useTextDirection();
 
 const { state } = useStore();
@@ -99,11 +98,44 @@ onMounted(async () => {
     flux.userError = response._data;
   }
 });
+
+type MenuType = '' | 'appearance' | 'language';
+
+const menuStatus = ref(false);
+const menuType = ref<MenuType>('');
+
+function menu(type: MenuType) {
+  menuType.value = type;
+
+  if (type === 'appearance') {
+    //
+  }
+
+  if (type === 'language') {
+    //
+  }
+}
+
+watch(
+  () => menuStatus.value,
+  (val) => {
+    if (!val) {
+      menuType.value = '';
+    }
+  },
+);
+
+const languageOptions = [
+  { label: 'English', value: 'en-US' },
+  { label: '日本語', value: 'ja-JP' },
+  { label: '한국어', value: 'ko-KR' },
+  { label: '正體中文', value: 'zh-TW' },
+];
 </script>
 
 <template>
   <div class="h-full">
-    <header class="topbar px-6 py-4 flex items-center gap-4 shadow-lg">
+    <header class="Topbar">
       <div
         class="i-ic-round-menu w-8 h-8 text-white cursor-pointer transition hover:scale-125 xl:hidden"
         @click="flux.navDrawer = true"
@@ -130,77 +162,174 @@ onMounted(async () => {
 
       <div class="flex-1"></div>
 
-      <div class="hidden md:block">
-        <XButton
-          variant="text"
-          class="!border-slate-500 !dark:border-slate-400 !bg-white !dark:bg-slate-800"
-          @click="flux.searchDialog = true"
-        >
-          <div class="i-material-symbols-search-rounded w-5 h-5"></div>
-          <div>Search</div>
-        </XButton>
-      </div>
+      <XButton icon="i-material-symbols-search-rounded" @click="flux.searchDialog = true" />
 
-      <XButton
-        :icon="isDark ? 'i-material-symbols-dark-mode-rounded' : 'i-material-symbols-light-mode'"
-        @click="toggleDark()"
-      />
+      <XButton icon="i-material-symbols-notifications-outline-rounded" />
 
-      <XButton
-        :icon="textDirection === 'rtl' ? 'i-mdi-rtl' : 'i-mdi-ltr'"
-        @click="textDirection = textDirection === 'rtl' ? 'ltr' : 'rtl'"
-      />
-
-      <XDropdown>
+      <XPopover v-model="menuStatus">
         <div
-          class="text-white bg-primary-600 rounded-full w-38px h-38px flex justify-center items-center cursor-pointer transition hover:scale-125"
+          class="text-white bg-primary-600 rounded-full w-38px h-38px flex justify-center items-center cursor-pointer"
         >
           {{ flux.avatar(flux.user.fullName) }}
         </div>
 
-        <template #options>
-          <div class="py-2 px-4 text-sm">
-            <div class="font-bold">{{ flux.user.fullName }}</div>
-            <div>{{ flux.user.email }}</div>
-          </div>
+        <template #content>
+          <div class="min-w-75">
+            <template v-if="!menuType">
+              <div class="py-2 px-4 text-sm">
+                <div class="font-bold">{{ flux.user.fullName }}</div>
+                <div>{{ flux.user.email }}</div>
+              </div>
 
-          <div class="border dark:border-slate-600"></div>
+              <div class="border dark:border-slate-600"></div>
 
-          <div class="px-1 py-2 text-sm">
-            <div
-              class="px-3 py-1 cursor-pointer hover:text-primary-500 dark:hover:text-primary-100 hover:bg-primary-100 dark:hover:bg-primary-600 hover:rounded-md"
-            >
-              Profile
-            </div>
-            <div
-              class="px-3 py-1 cursor-pointer hover:text-primary-500 dark:hover:text-primary-100 hover:bg-primary-100 dark:hover:bg-primary-600 hover:rounded-md"
-            >
-              Settings
-            </div>
-          </div>
+              <div class="px-1 py-2 text-sm">
+                <div
+                  class="px-3 py-1 cursor-pointer hover:text-primary-500 dark:hover:text-primary-100 hover:bg-primary-100 dark:hover:bg-primary-600 hover:rounded-md"
+                >
+                  Profile
+                </div>
+                <div
+                  class="px-3 py-1 cursor-pointer hover:text-primary-500 dark:hover:text-primary-100 hover:bg-primary-100 dark:hover:bg-primary-600 hover:rounded-md"
+                >
+                  Settings
+                </div>
+              </div>
 
-          <div class="border dark:border-slate-600"></div>
+              <div class="border dark:border-slate-600"></div>
 
-          <div class="px-1 py-2 text-sm">
-            <div
-              class="px-3 py-1 cursor-pointer hover:text-primary-500 dark:hover:text-primary-100 hover:bg-primary-100 dark:hover:bg-primary-600 hover:rounded-md"
-              @click="flux.signOut"
-            >
-              Sign out
-            </div>
+              <ul class="my-2">
+                <li
+                  class="px-3 py-1 cursor-pointer hover:text-primary-500 dark:hover:text-primary-100 hover:bg-primary-100 dark:hover:bg-primary-600"
+                  @click="menu('appearance')"
+                >
+                  <div class="flex justify-between items-center">
+                    <div class="flex items-center me-2">
+                      <div
+                        class="i-material-symbols-desktop-windows-outline-rounded w-5 h-5 me-2"
+                      ></div>
+                      <div>
+                        Appearance: Device theme
+                        {{ colorMode === 'light' ? 'Light' : '' }}
+                        {{ colorMode === 'dark' ? 'Dark' : '' }}
+                        {{ colorMode === 'auto' ? 'System' : '' }}
+                      </div>
+                    </div>
+
+                    <div class="i-material-symbols-chevron-right-rounded w-5 h-5"></div>
+                  </div>
+                </li>
+                <li
+                  class="px-3 py-1 cursor-pointer hover:text-primary-500 dark:hover:text-primary-100 hover:bg-primary-100 dark:hover:bg-primary-600"
+                  @click="menu('language')"
+                >
+                  <div class="flex justify-between items-center">
+                    <div class="flex items-center me-2">
+                      <div class="i-material-symbols-translate-rounded w-5 h-5 me-2"></div>
+                      <div>
+                        Language:
+                        {{
+                          languageOptions.find((lang) => lang.value === localer.lang.value)?.label
+                        }}
+                      </div>
+                    </div>
+
+                    <div class="i-material-symbols-chevron-right-rounded w-5 h-5"></div>
+                  </div>
+                </li>
+              </ul>
+
+              <div class="border dark:border-slate-600"></div>
+
+              <div class="px-1 py-2 text-sm">
+                <div
+                  class="px-3 py-1 cursor-pointer hover:text-primary-500 dark:hover:text-primary-100 hover:bg-primary-100 dark:hover:bg-primary-600 hover:rounded-md"
+                  @click="flux.signOut"
+                >
+                  Sign out
+                </div>
+              </div>
+            </template>
+
+            <template v-if="menuType === 'appearance'">
+              <div class="px-4 py-2 flex items-center gap-2">
+                <XButton
+                  icon="i-material-symbols-arrow-back-rounded"
+                  variant="text"
+                  @click="menu('')"
+                />
+                <div>Appearance</div>
+              </div>
+
+              <div class="border dark:border-slate-600"></div>
+
+              <div class="px-4 py-2">Setting applies to this browser only</div>
+
+              <ul>
+                <li
+                  class="flex items-center gap-2 px-3 py-1 cursor-pointer hover:text-primary-500 dark:hover:text-primary-100 hover:bg-primary-100 dark:hover:bg-primary-600"
+                  @click="colorMode = 'light'"
+                >
+                  <div class="i-material-symbols-light-mode-outline-rounded w-5 h-5"></div>
+                  <div>Light</div>
+                </li>
+                <li
+                  class="flex items-center gap-2 px-3 py-1 cursor-pointer hover:text-primary-500 dark:hover:text-primary-100 hover:bg-primary-100 dark:hover:bg-primary-600"
+                  @click="colorMode = 'dark'"
+                >
+                  <div class="i-material-symbols-dark-mode-outline-rounded w-5 h-5"></div>
+                  <div>Dark</div>
+                </li>
+                <li
+                  class="flex items-center gap-2 px-3 py-1 cursor-pointer hover:text-primary-500 dark:hover:text-primary-100 hover:bg-primary-100 dark:hover:bg-primary-600"
+                  @click="colorMode = 'auto'"
+                >
+                  <div class="i-material-symbols-desktop-windows-outline-rounded w-5 h-5"></div>
+                  <div>System</div>
+                </li>
+              </ul>
+            </template>
+
+            <template v-if="menuType === 'language'">
+              <div class="px-4 py-2 flex items-center gap-2">
+                <XButton
+                  icon="i-material-symbols-arrow-back-rounded"
+                  variant="text"
+                  @click="menu('')"
+                />
+                <div>Language</div>
+              </div>
+
+              <div class="border dark:border-slate-600"></div>
+
+              <ul>
+                <li
+                  v-for="lang in languageOptions"
+                  :key="lang.value"
+                  class="flex items-center gap-2 px-3 py-1 cursor-pointer hover:text-primary-500 dark:hover:text-primary-100 hover:bg-primary-100 dark:hover:bg-primary-600"
+                  @click="localer.lang.value = lang.value"
+                >
+                  <div
+                    class="w-5 h-5"
+                    :class="{
+                      'i-material-symbols-check-small-rounded': lang.value === localer.lang.value,
+                    }"
+                  ></div>
+                  <div>{{ lang.label }}</div>
+                </li>
+              </ul>
+            </template>
           </div>
         </template>
-      </XDropdown>
+      </XPopover>
     </header>
 
-    <aside
-      class="sidebar px-2 pt-4 pb-20 bg-white dark:bg-slate-900 dark:border-slate-700 shadow-lg hidden xl:block"
-    >
+    <aside class="Sidebar">
       <Navbar />
     </aside>
 
     <div class="flex flex-col h-full">
-      <main class="page container w-full self-center">
+      <main class="Page">
         <div v-if="state.userLoading" class="flex justify-center items-center h-full">
           <XSpinner class="w-12 h-12" />
         </div>
@@ -210,28 +339,8 @@ onMounted(async () => {
         </template>
       </main>
 
-      <footer class="footer">
-        <div>
-          <div class="font-bold">Backstage Management System</div>
-        </div>
-
-        <div class="flex-1"></div>
-
-        <div class="flex items-center">
-          <div class="i-fa-language w-6 h-6"></div>
-
-          <XSelect
-            v-model:value="localer.lang.value"
-            :options="[
-              { label: 'English', value: 'en-US' },
-              { label: '日本語', value: 'ja-JP' },
-              { label: '한국어', value: 'ko-KR' },
-              { label: '正體中文', value: 'zh-TW' },
-            ]"
-            class="min-w-50 ltr:ml-2 rtl:mr-2"
-            @change="flux.changeLang"
-          />
-        </div>
+      <footer class="Footer">
+        <div class="text-sm">Copyright © {{ new Date().getFullYear() }} Lorem Ipsum</div>
       </footer>
     </div>
   </div>
@@ -262,26 +371,28 @@ onMounted(async () => {
 </template>
 
 <style lang="scss" scoped>
-.topbar {
-  @apply fixed top-0 z-100 w-full;
+.Topbar {
+  @apply fixed top-0 z-100;
+  @apply flex items-center gap-4;
+  @apply w-full px-6 py-4 shadow-lg;
 
   background: linear-gradient(172deg, #172940 -50%, #64f 30%, #64f 50%, #f9d 200%);
 }
 
-.sidebar {
-  @apply fixed top-18 bottom-0 z-100 w-64 overflow-y-auto;
-  @apply ltr:left-0	rtl:right-0;
-  @apply ltr:border-r rtl:border-l;
+.Sidebar {
+  @apply fixed start-0 top-18 bottom-0 z-100 overflow-y-auto;
+  @apply w-64 hidden xl:block px-2 pt-4 pb-20;
+  @apply bg-white dark:bg-slate-900 border-s dark:border-slate-700 shadow-lg;
 }
 
-.page {
-  @apply p-8 pt-28 flex-1;
-  @apply ltr:xl:pl-72 rtl:xl:pr-72;
+.Page {
+  @apply container flex-1 self-center;
+  @apply w-full p-8 pt-28 ps-72;
 }
 
-.footer {
-  @apply flex flex-col md:flex-row p-8 gap-2;
+.Footer {
+  @apply flex flex-col flex justify-center md:flex-row p-8 gap-2;
   @apply bg-slate-50 dark:bg-slate-900 border-t dark:border-slate-700;
-  @apply ltr:xl:pl-72 rtl:xl:pr-72;
+  @apply xl:ps-72;
 }
 </style>
