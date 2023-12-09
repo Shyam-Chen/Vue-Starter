@@ -177,31 +177,37 @@ const languageOptions = [
         <template #content>
           <div class="min-w-75">
             <template v-if="!menuType">
-              <div class="py-2 px-4 text-sm">
+              <div class="px-4 py-2">
                 <div class="font-bold">{{ flux.user.fullName }}</div>
-                <div>{{ flux.user.email }}</div>
+                <div class="text-sm">{{ flux.user.email }}</div>
               </div>
 
               <div class="border dark:border-slate-600"></div>
 
-              <div class="px-1 py-2 text-sm">
-                <div
-                  class="px-3 py-1 cursor-pointer hover:text-primary-500 dark:hover:text-primary-100 hover:bg-primary-100 dark:hover:bg-primary-600 hover:rounded-md"
-                >
-                  Profile
-                </div>
-                <div
-                  class="px-3 py-1 cursor-pointer hover:text-primary-500 dark:hover:text-primary-100 hover:bg-primary-100 dark:hover:bg-primary-600 hover:rounded-md"
-                >
-                  Settings
-                </div>
-              </div>
-
-              <div class="border dark:border-slate-600"></div>
-
-              <ul class="my-2">
+              <ul class="px-1 py-2">
                 <li
-                  class="px-3 py-1 cursor-pointer hover:text-primary-500 dark:hover:text-primary-100 hover:bg-primary-100 dark:hover:bg-primary-600"
+                  class="px-3 py-1 cursor-pointer hover:text-primary-500 dark:hover:text-primary-100 hover:bg-primary-100 dark:hover:bg-primary-600 hover:rounded-md"
+                >
+                  <div class="flex items-center gap-2">
+                    <div class="i-material-symbols-account-circle-outline w-5 h-5"></div>
+                    <div>Profile</div>
+                  </div>
+                </li>
+                <li
+                  class="px-3 py-1 cursor-pointer hover:text-primary-500 dark:hover:text-primary-100 hover:bg-primary-100 dark:hover:bg-primary-600 hover:rounded-md"
+                >
+                  <div class="flex items-center gap-2">
+                    <div class="i-material-symbols-settings-outline-rounded w-5 h-5"></div>
+                    <div>Settings</div>
+                  </div>
+                </li>
+              </ul>
+
+              <div class="border dark:border-slate-600"></div>
+
+              <ul class="px-1 py-2">
+                <li
+                  class="px-3 py-1 cursor-pointer hover:text-primary-500 dark:hover:text-primary-100 hover:bg-primary-100 dark:hover:bg-primary-600 hover:rounded-md"
                   @click="menu('appearance')"
                 >
                   <div class="flex justify-between items-center">
@@ -221,7 +227,7 @@ const languageOptions = [
                   </div>
                 </li>
                 <li
-                  class="px-3 py-1 cursor-pointer hover:text-primary-500 dark:hover:text-primary-100 hover:bg-primary-100 dark:hover:bg-primary-600"
+                  class="px-3 py-1 cursor-pointer hover:text-primary-500 dark:hover:text-primary-100 hover:bg-primary-100 dark:hover:bg-primary-600 hover:rounded-md"
                   @click="menu('language')"
                 >
                   <div class="flex justify-between items-center">
@@ -242,18 +248,21 @@ const languageOptions = [
 
               <div class="border dark:border-slate-600"></div>
 
-              <div class="px-1 py-2 text-sm">
-                <div
+              <ul class="px-1 py-2">
+                <li
                   class="px-3 py-1 cursor-pointer hover:text-primary-500 dark:hover:text-primary-100 hover:bg-primary-100 dark:hover:bg-primary-600 hover:rounded-md"
                   @click="flux.signOut"
                 >
-                  Sign out
-                </div>
-              </div>
+                  <div class="flex items-center gap-2">
+                    <div class="i-material-symbols-logout-rounded w-5 h-5"></div>
+                    <div>Sign out</div>
+                  </div>
+                </li>
+              </ul>
             </template>
 
             <template v-if="menuType === 'appearance'">
-              <div class="px-4 py-2 flex items-center gap-2">
+              <div class="p-2 flex items-center gap-2">
                 <XButton
                   icon="i-material-symbols-arrow-back-rounded"
                   variant="text"
@@ -264,25 +273,25 @@ const languageOptions = [
 
               <div class="border dark:border-slate-600"></div>
 
-              <div class="px-4 py-2">Setting applies to this browser only</div>
+              <div class="px-4 py-2 text-sm">Setting applies to this browser only</div>
 
-              <ul>
+              <ul class="px-1 py-2">
                 <li
-                  class="flex items-center gap-2 px-3 py-1 cursor-pointer hover:text-primary-500 dark:hover:text-primary-100 hover:bg-primary-100 dark:hover:bg-primary-600"
+                  class="flex items-center gap-2 px-3 py-1 cursor-pointer hover:text-primary-500 dark:hover:text-primary-100 hover:bg-primary-100 dark:hover:bg-primary-600 hover:rounded-md"
                   @click="colorMode = 'light'"
                 >
                   <div class="i-material-symbols-light-mode-outline-rounded w-5 h-5"></div>
                   <div>Light</div>
                 </li>
                 <li
-                  class="flex items-center gap-2 px-3 py-1 cursor-pointer hover:text-primary-500 dark:hover:text-primary-100 hover:bg-primary-100 dark:hover:bg-primary-600"
+                  class="flex items-center gap-2 px-3 py-1 cursor-pointer hover:text-primary-500 dark:hover:text-primary-100 hover:bg-primary-100 dark:hover:bg-primary-600 hover:rounded-md"
                   @click="colorMode = 'dark'"
                 >
                   <div class="i-material-symbols-dark-mode-outline-rounded w-5 h-5"></div>
                   <div>Dark</div>
                 </li>
                 <li
-                  class="flex items-center gap-2 px-3 py-1 cursor-pointer hover:text-primary-500 dark:hover:text-primary-100 hover:bg-primary-100 dark:hover:bg-primary-600"
+                  class="flex items-center gap-2 px-3 py-1 cursor-pointer hover:text-primary-500 dark:hover:text-primary-100 hover:bg-primary-100 dark:hover:bg-primary-600 hover:rounded-md"
                   @click="colorMode = 'auto'"
                 >
                   <div class="i-material-symbols-desktop-windows-outline-rounded w-5 h-5"></div>
@@ -292,7 +301,7 @@ const languageOptions = [
             </template>
 
             <template v-if="menuType === 'language'">
-              <div class="px-4 py-2 flex items-center gap-2">
+              <div class="p-2 flex items-center gap-2">
                 <XButton
                   icon="i-material-symbols-arrow-back-rounded"
                   variant="text"
@@ -303,11 +312,11 @@ const languageOptions = [
 
               <div class="border dark:border-slate-600"></div>
 
-              <ul>
+              <ul class="px-1 py-2">
                 <li
                   v-for="lang in languageOptions"
                   :key="lang.value"
-                  class="flex items-center gap-2 px-3 py-1 cursor-pointer hover:text-primary-500 dark:hover:text-primary-100 hover:bg-primary-100 dark:hover:bg-primary-600"
+                  class="flex items-center gap-2 px-3 py-1 cursor-pointer hover:text-primary-500 dark:hover:text-primary-100 hover:bg-primary-100 dark:hover:bg-primary-600 hover:rounded-md"
                   @click="localer.lang.value = lang.value"
                 >
                   <div
@@ -383,7 +392,7 @@ const languageOptions = [
 .Sidebar {
   @apply fixed start-0 top-18 bottom-0 z-100 overflow-y-auto;
   @apply w-64 hidden xl:block px-2 pt-4 pb-20;
-  @apply bg-white dark:bg-slate-900 border-s dark:border-slate-700 shadow-lg;
+  @apply bg-white dark:bg-slate-900 border-e dark:border-slate-700 shadow-lg;
 }
 
 .Page {

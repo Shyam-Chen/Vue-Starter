@@ -166,32 +166,32 @@ function onClick(evt: Event) {
   &.outlined,
   &.text {
     &.primary {
-      @apply text-primary-500 hover:text-primary-600 active:text-primary-700;
+      @apply text-primary-500 hover:text-primary-600 dark:text-primary-400 active:text-primary-700 dark:active:text-primary-300;
       @apply hover:bg-primary-400/25 active:bg-primary-500/25;
     }
 
     &.secondary {
-      @apply text-secondary-500 hover:text-secondary-600 active:text-secondary-700;
+      @apply text-secondary-500 hover:text-secondary-600 dark:text-secondary-400 active:text-secondary-700 dark:active:text-secondary-300;
       @apply hover:bg-secondary-400/25 active:bg-secondary-500/25;
     }
 
     &.success {
-      @apply text-success-500 hover:text-success-600 active:text-success-700;
+      @apply text-success-500 hover:text-success-600 dark:text-success-400 active:text-success-700 dark:active:text-success-300;
       @apply hover:bg-success-400/25 active:bg-success-500/25;
     }
 
     &.danger {
-      @apply text-danger-500 hover:text-danger-600 active:text-danger-700;
+      @apply text-danger-500 hover:text-danger-600 dark:text-danger-400 active:text-danger-700 dark:active:text-danger-300;
       @apply hover:bg-danger-400/25 active:bg-danger-500/25;
     }
 
     &.warning {
-      @apply text-warning-500 hover:text-warning-600 active:text-warning-700;
+      @apply text-warning-500 hover:text-warning-600 dark:text-warning-400 active:text-warning-700 dark:active:text-warning-300;
       @apply hover:bg-warning-400/25 active:bg-warning-500/25;
     }
 
     &.info {
-      @apply text-info-500 hover:text-info-600 active:text-info-700;
+      @apply text-info-500 hover:text-info-600 dark:text-info-400 active:text-info-700 dark:active:text-info-300;
       @apply hover:bg-info-400/25 active:bg-info-500/25;
     }
   }
