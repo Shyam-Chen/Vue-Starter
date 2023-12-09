@@ -20,7 +20,7 @@ exports[`/general/buttons 1`] = `
 </div>
 <div class="my-8">
   <div class="text-3xl font-bold my-4">Basic</div>
-  <div class="flex gap-4 my-4"><button data-v-54761eda="" type="button" class="Button contained primary small">
+  <div class="flex flex-col md:flex-row gap-4 my-4"><button data-v-54761eda="" type="button" class="Button contained primary small">
       <!--v-if-->
       <!--v-if-->
       <div data-v-54761eda="">Contained</div>
@@ -36,7 +36,7 @@ exports[`/general/buttons 1`] = `
       <div data-v-54761eda="">Text</div>
       <!--v-if-->
     </button></div>
-  <div class="flex gap-4 my-4"><button data-v-54761eda="" type="button" class="Button contained primary">
+  <div class="flex flex-col md:flex-row gap-4 my-4"><button data-v-54761eda="" type="button" class="Button contained primary">
       <!--v-if-->
       <!--v-if-->
       <div data-v-54761eda="">Contained</div>
@@ -52,7 +52,7 @@ exports[`/general/buttons 1`] = `
       <div data-v-54761eda="">Text</div>
       <!--v-if-->
     </button></div>
-  <div class="flex gap-4 my-4"><button data-v-54761eda="" type="button" class="Button contained primary large">
+  <div class="flex flex-col md:flex-row gap-4 my-4"><button data-v-54761eda="" type="button" class="Button contained primary large">
       <!--v-if-->
       <!--v-if-->
       <div data-v-54761eda="">Contained</div>
@@ -71,7 +71,7 @@ exports[`/general/buttons 1`] = `
 </div>
 <div class="my-8">
   <div class="text-3xl font-bold my-4 pt-6">Icons</div>
-  <div class="flex gap-4 my-4"><button data-v-54761eda="" type="button" class="Button contained primary small icon">
+  <div class="flex flex-col md:flex-row gap-4 my-4"><button data-v-54761eda="" type="button" class="Button contained primary small icon">
       <div data-v-54761eda="" class="Button-Icon i-material-symbols-add-rounded small"></div>
       <!--v-if-->
       <!--v-if-->
@@ -91,7 +91,7 @@ exports[`/general/buttons 1`] = `
         <div data-v-54761eda="" class="Button-Icon i-material-symbols-arrow-right-alt-rounded small"></div>
       </div>
     </button></div>
-  <div class="flex gap-4 my-4"><button data-v-54761eda="" type="button" class="Button contained primary icon">
+  <div class="flex flex-col md:flex-row gap-4 my-4"><button data-v-54761eda="" type="button" class="Button contained primary icon">
       <div data-v-54761eda="" class="Button-Icon i-material-symbols-add-rounded"></div>
       <!--v-if-->
       <!--v-if-->
@@ -111,7 +111,7 @@ exports[`/general/buttons 1`] = `
         <div data-v-54761eda="" class="Button-Icon i-material-symbols-arrow-right-alt-rounded"></div>
       </div>
     </button></div>
-  <div class="flex gap-4 my-4"><button data-v-54761eda="" type="button" class="Button contained primary large icon">
+  <div class="flex flex-col md:flex-row gap-4 my-4"><button data-v-54761eda="" type="button" class="Button contained primary large icon">
       <div data-v-54761eda="" class="Button-Icon i-material-symbols-add-rounded large"></div>
       <!--v-if-->
       <!--v-if-->
@@ -134,7 +134,7 @@ exports[`/general/buttons 1`] = `
 </div>
 <div class="my-8">
   <div class="text-3xl font-bold my-4 pt-6">Disabled</div>
-  <div class="flex gap-4 my-4"><button data-v-54761eda="" type="button" class="Button contained primary disabled" disabled="">
+  <div class="flex flex-col md:flex-row gap-4 my-4"><button data-v-54761eda="" type="button" class="Button contained primary disabled" disabled="">
       <!--v-if-->
       <!--v-if-->
       <div data-v-54761eda="">Contained</div>
@@ -178,7 +178,7 @@ exports[`/general/buttons 1`] = `
 </div>
 <div class="my-8">
   <div class="text-3xl font-bold my-4 pt-6">Colors</div>
-  <div class="flex gap-4 my-4"><button data-v-54761eda="" type="button" class="Button contained primary">
+  <div class="flex flex-col md:flex-row flex-wrap gap-4 my-4"><button data-v-54761eda="" type="button" class="Button contained primary">
       <!--v-if-->
       <!--v-if-->
       <div data-v-54761eda="">Primary</div>
@@ -209,7 +209,7 @@ exports[`/general/buttons 1`] = `
       <div data-v-54761eda="">Info</div>
       <!--v-if-->
     </button></div>
-  <div class="flex gap-4 my-4"><button data-v-54761eda="" type="button" class="Button outlined primary">
+  <div class="flex flex-col md:flex-row flex-wrap gap-4 my-4"><button data-v-54761eda="" type="button" class="Button outlined primary">
       <!--v-if-->
       <!--v-if-->
       <div data-v-54761eda="">Primary</div>
@@ -240,7 +240,7 @@ exports[`/general/buttons 1`] = `
       <div data-v-54761eda="">Info</div>
       <!--v-if-->
     </button></div>
-  <div class="flex gap-4 my-4"><button data-v-54761eda="" type="button" class="Button text primary">
+  <div class="flex flex-col md:flex-row flex-wrap gap-4 my-4"><button data-v-54761eda="" type="button" class="Button text primary">
       <!--v-if-->
       <!--v-if-->
       <div data-v-54761eda="">Primary</div>

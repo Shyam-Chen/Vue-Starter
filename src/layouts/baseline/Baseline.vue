@@ -15,7 +15,7 @@ const router = useRouter();
 const route = useRoute();
 const localer = useLocaler();
 
-const colorMode = useColorMode();
+const colorMode = useColorMode({ emitAuto: true });
 const textDirection = useTextDirection();
 
 const { state } = useStore();
@@ -142,6 +142,7 @@ const languageOptions = [
       ></div>
 
       <svg
+        class="max-w-1/3vw"
         width="192"
         height="40"
         fill="none"
@@ -209,7 +210,7 @@ const languageOptions = [
                         class="i-material-symbols-desktop-windows-outline-rounded w-5 h-5 me-2"
                       ></div>
                       <div>
-                        Appearance: Device theme
+                        Appearance:
                         {{ colorMode === 'light' ? 'Light' : '' }}
                         {{ colorMode === 'dark' ? 'Dark' : '' }}
                         {{ colorMode === 'auto' ? 'System' : '' }}
@@ -374,7 +375,7 @@ const languageOptions = [
 .Topbar {
   @apply fixed top-0 z-100;
   @apply flex items-center gap-4;
-  @apply w-full px-6 py-4 shadow-lg;
+  @apply w-full px-4 md:px-6 py-4 shadow-lg;
 
   background: linear-gradient(172deg, #172940 -50%, #64f 30%, #64f 50%, #f9d 200%);
 }
@@ -387,7 +388,10 @@ const languageOptions = [
 
 .Page {
   @apply container flex-1 self-center;
-  @apply w-full p-8 pt-28 ps-72;
+  @apply pt-22 md:pt-24 lg:pt-26;
+  @apply ps-4 md:ps-6 lg:ps-8 xl:ps-72;
+  @apply pb-4 md:pb-6 lg:pb-8;
+  @apply pe-4 md:pe-6 lg:pe-8;
 }
 
 .Footer {

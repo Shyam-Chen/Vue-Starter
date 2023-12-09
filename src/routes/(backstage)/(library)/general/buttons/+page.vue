@@ -25,19 +25,19 @@ const buttonGroup = ref(0);
   <div class="my-8">
     <div class="text-3xl font-bold my-4">Basic</div>
 
-    <div class="flex gap-4 my-4">
+    <div class="flex flex-col md:flex-row gap-4 my-4">
       <XButton label="Contained" variant="contained" size="small" />
       <XButton label="Outlined" variant="outlined" size="small" />
       <XButton label="Text" variant="text" size="small" />
     </div>
 
-    <div class="flex gap-4 my-4">
+    <div class="flex flex-col md:flex-row gap-4 my-4">
       <XButton label="Contained" variant="contained" />
       <XButton label="Outlined" variant="outlined" />
       <XButton label="Text" variant="text" />
     </div>
 
-    <div class="flex gap-4 my-4">
+    <div class="flex flex-col md:flex-row gap-4 my-4">
       <XButton label="Contained" variant="contained" size="large" />
       <XButton label="Outlined" variant="outlined" size="large" />
       <XButton label="Text" variant="text" size="large" />
@@ -47,19 +47,19 @@ const buttonGroup = ref(0);
   <div class="my-8">
     <div class="text-3xl font-bold my-4 pt-6">Icons</div>
 
-    <div class="flex gap-4 my-4">
+    <div class="flex flex-col md:flex-row gap-4 my-4">
       <XButton icon="i-material-symbols-add-rounded" size="small" />
       <XButton prepend="i-material-symbols-search-rounded" label="Search" size="small" />
       <XButton label="Next" append="i-material-symbols-arrow-right-alt-rounded" size="small" />
     </div>
 
-    <div class="flex gap-4 my-4">
+    <div class="flex flex-col md:flex-row gap-4 my-4">
       <XButton icon="i-material-symbols-add-rounded" />
       <XButton prepend="i-material-symbols-search-rounded" label="Search" />
       <XButton label="Next" append="i-material-symbols-arrow-right-alt-rounded" />
     </div>
 
-    <div class="flex gap-4 my-4">
+    <div class="flex flex-col md:flex-row gap-4 my-4">
       <XButton icon="i-material-symbols-add-rounded" size="large" />
       <XButton prepend="i-material-symbols-search-rounded" label="Search" size="large" />
       <XButton label="Next" append="i-material-symbols-arrow-right-alt-rounded" size="large" />
@@ -69,7 +69,7 @@ const buttonGroup = ref(0);
   <div class="my-8">
     <div class="text-3xl font-bold my-4 pt-6">Disabled</div>
 
-    <div class="flex gap-4 my-4">
+    <div class="flex flex-col md:flex-row gap-4 my-4">
       <XButton label="Contained" variant="contained" disabled />
       <XButton label="Outlined" variant="outlined" disabled />
       <XButton label="Text" variant="text" disabled />
@@ -106,7 +106,7 @@ const buttonGroup = ref(0);
   <div class="my-8">
     <div class="text-3xl font-bold my-4 pt-6">Colors</div>
 
-    <div class="flex gap-4 my-4">
+    <div class="flex flex-col md:flex-row flex-wrap gap-4 my-4">
       <XButton label="Primary" color="primary" />
       <XButton label="Secondary" color="secondary" />
       <XButton label="Success" color="success" />
@@ -115,7 +115,7 @@ const buttonGroup = ref(0);
       <XButton label="Info" color="info" />
     </div>
 
-    <div class="flex gap-4 my-4">
+    <div class="flex flex-col md:flex-row flex-wrap gap-4 my-4">
       <XButton label="Primary" variant="outlined" color="primary" />
       <XButton label="Secondary" variant="outlined" color="secondary" />
       <XButton label="Success" variant="outlined" color="success" />
@@ -124,7 +124,7 @@ const buttonGroup = ref(0);
       <XButton label="Info" variant="outlined" color="info" />
     </div>
 
-    <div class="flex gap-4 my-4">
+    <div class="flex flex-col md:flex-row flex-wrap gap-4 my-4">
       <XButton label="Primary" variant="text" color="primary" />
       <XButton label="Secondary" variant="text" color="secondary" />
       <XButton label="Success" variant="text" color="success" />
