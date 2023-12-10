@@ -16,7 +16,7 @@ import { XBreadcrumb } from '@x/ui';
       <div
         v-for="num in 50"
         :key="num"
-        class="bg-primary-100 dark:bg-primary-900 text-primary-500 dark:text-primary-300 py-2"
+        class="bg-primary-100 dark:bg-primary-900 text-primary-500 dark:text-primary-200 py-2"
       >
         {{ num }}
       </div>
@@ -30,7 +30,7 @@ import { XBreadcrumb } from '@x/ui';
       <div
         v-for="num in 50"
         :key="num"
-        class="bg-primary-100 dark:bg-primary-900 text-primary-500 dark:text-primary-300 px-5 py-2"
+        class="bg-primary-100 dark:bg-primary-900 text-primary-500 dark:text-primary-200 px-5 py-2"
       >
         {{ num }}
       </div>

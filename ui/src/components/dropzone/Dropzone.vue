@@ -8,6 +8,8 @@ defineOptions({
 });
 
 const props = defineProps<{
+  label?: string;
+  required?: boolean;
   invalid?: string | boolean;
   title?: string;
   limit?: (file: File) => string;
@@ -79,10 +81,16 @@ function onDragLeave() {
 
 <template>
   <div>
+    <div class="Dropzone-Label">
+      <template v-if="label">{{ label }}</template>
+      <span v-if="required" class="text-red-500">*</span>
+      <slot></slot>
+    </div>
+
     <label
       v-bind="$attrs"
       class="Dropzone"
-      :class="{ 'important:bg-slate-200': dragover }"
+      :class="{ '!bg-slate-200/75 !dark:bg-slate-700/75': dragover }"
       @dragover.prevent="onDragOver"
       @dragleave.prevent="onDragLeave"
       @drop.prevent="onDrop"
@@ -105,8 +113,13 @@ function onDragLeave() {
 </template>
 
 <style lang="scss" scoped>
+.Dropzone-Label {
+  @apply empty:hidden flex items-center;
+  @apply text-sm font-bold mb-2;
+}
+
 .Dropzone {
-  @apply w-369.78px h-52 flex flex-col justify-center items-center cursor-pointer;
-  @apply border-4 border-dashed rounded border-slate-400/75 hover:border-slate-400 bg-white hover:bg-slate-200/75;
+  @apply w-full min-h-64 flex flex-col justify-center items-center cursor-pointer;
+  @apply border-4 border-dashed rounded border-slate-400/75 hover:border-slate-400 bg-white dark:bg-slate-800 hover:bg-slate-200/75 dark:hover:bg-slate-700/75;
 }
 </style>

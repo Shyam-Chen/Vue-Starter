@@ -14,9 +14,7 @@ const doFetch = async () => {
 <template>
   <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Network' }, { text: 'Fetch' }]" />
 
-  <div class="my-4">
-    <div class="text-3xl font-bold">Fetch</div>
-  </div>
+  <h1 class="text-4xl font-extrabold my-4">Fetch</h1>
 
   <div class="flex flex-col border p-4 mb-4">
     <div class="mb-2">Basic</div>

@@ -10,9 +10,7 @@ send('Hello from Vue!');
 <template>
   <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Network' }, { text: 'WebSocket' }]" />
 
-  <div class="my-4">
-    <div class="text-3xl font-bold">WebSocket</div>
-  </div>
+  <h1 class="text-4xl font-extrabold my-4">WebSocket</h1>
 
   <div class="flex flex-col border p-4 mb-4">
     <div class="mb-2">Basic examples</div>

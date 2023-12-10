@@ -72,9 +72,7 @@ const flux = reactive({
 <template>
   <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Charts' }, { text: 'Bar' }]" />
 
-  <div class="my-4">
-    <div class="text-3xl font-bold">Bar</div>
-  </div>
+  <h1 class="text-4xl font-extrabold my-4">BarChart</h1>
 
   <div class="flex flex-col border p-4 mb-4">
     <div class="mb-2">Basic</div>

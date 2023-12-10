@@ -69,21 +69,17 @@ const performance = ref<Options>({
 </script>
 
 <template>
-  <div class="mb-4">
-    <div class="text-3xl font-bold">Dashboard</div>
-  </div>
+  <h1 class="text-4xl font-extrabold">Dashboard</h1>
 
-  <div class="grid grid-cols-4 md:grid-cols-8 gap-6 mb-6">
+  <div class="grid grid-cols-4 md:grid-cols-8 gap-4 my-8">
     <div
       class="col-span-4 md:col-span-2 relative flex flex-col min-w-0 break-words bg-white dark:bg-slate-800 rounded xl:mb-0 shadow-lg"
     >
       <div class="flex-auto p-4">
         <div class="flex flex-wrap">
           <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
-            <h5 class="text-blueGray-400 uppercase font-bold text-xs">TRAFFIC</h5>
-            <span class="font-semibold text-xl text-blueGray-700 dark:text-blueGray-300"
-              >350,897</span
-            >
+            <h5 class="text-zinc-400 uppercase font-bold text-xs">TRAFFIC</h5>
+            <span class="font-semibold text-xl text-zinc-700 dark:text-zinc-300">350,897</span>
           </div>
           <div class="relative w-auto pl-4 flex-initial">
             <div
@@ -93,7 +89,7 @@ const performance = ref<Options>({
             </div>
           </div>
         </div>
-        <p class="text-sm text-blueGray-400 mt-4">
+        <p class="text-sm text-zinc-400 mt-4">
           <span class="mr-2 text-emerald-500">
             <span class="i-fa-arrow-up inline-flex align-middle"></span>
             3.48%
@@ -109,10 +105,8 @@ const performance = ref<Options>({
       <div class="flex-auto p-4">
         <div class="flex flex-wrap">
           <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
-            <h5 class="text-blueGray-400 uppercase font-bold text-xs">NEW USERS</h5>
-            <span class="font-semibold text-xl text-blueGray-700 dark:text-blueGray-300"
-              >2,356</span
-            >
+            <h5 class="text-zinc-400 uppercase font-bold text-xs">NEW USERS</h5>
+            <span class="font-semibold text-xl text-zinc-700 dark:text-zinc-300">2,356</span>
           </div>
           <div class="relative w-auto pl-4 flex-initial">
             <div
@@ -122,7 +116,7 @@ const performance = ref<Options>({
             </div>
           </div>
         </div>
-        <p class="text-sm text-blueGray-400 mt-4">
+        <p class="text-sm text-zinc-400 mt-4">
           <span class="mr-2 text-red-500">
             <span class="i-fa-arrow-down inline-flex align-middle"></span>
             3.48%
@@ -138,8 +132,8 @@ const performance = ref<Options>({
       <div class="flex-auto p-4">
         <div class="flex flex-wrap">
           <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
-            <h5 class="text-blueGray-400 uppercase font-bold text-xs">SALES</h5>
-            <span class="font-semibold text-xl text-blueGray-700 dark:text-blueGray-300">924</span>
+            <h5 class="text-zinc-400 uppercase font-bold text-xs">SALES</h5>
+            <span class="font-semibold text-xl text-zinc-700 dark:text-zinc-300">924</span>
           </div>
           <div class="relative w-auto pl-4 flex-initial">
             <div
@@ -149,7 +143,7 @@ const performance = ref<Options>({
             </div>
           </div>
         </div>
-        <p class="text-sm text-blueGray-400 mt-4">
+        <p class="text-sm text-zinc-400 mt-4">
           <span class="mr-2 text-orange-500">
             <span class="i-fa-arrow-down inline-flex align-middle"></span>
             1.10%
@@ -165,10 +159,8 @@ const performance = ref<Options>({
       <div class="flex-auto p-4">
         <div class="flex flex-wrap">
           <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
-            <h5 class="text-blueGray-400 uppercase font-bold text-xs">PERFORMANCE</h5>
-            <span class="font-semibold text-xl text-blueGray-700 dark:text-blueGray-300"
-              >49,65%</span
-            >
+            <h5 class="text-zinc-400 uppercase font-bold text-xs">PERFORMANCE</h5>
+            <span class="font-semibold text-xl text-zinc-700 dark:text-zinc-300">49,65%</span>
           </div>
           <div class="relative w-auto pl-4 flex-initial">
             <div
@@ -178,7 +170,7 @@ const performance = ref<Options>({
             </div>
           </div>
         </div>
-        <p class="text-sm text-blueGray-400 mt-4">
+        <p class="text-sm text-zinc-400 mt-4">
           <span class="mr-2 text-emerald-500">
             <span class="i-fa-arrow-up inline-flex align-middle"></span>
             12%
@@ -194,10 +186,8 @@ const performance = ref<Options>({
       <div class="rounded-t mb-0 px-4 py-3 bg-transparent">
         <div class="flex flex-wrap items-center">
           <div class="relative w-full max-w-full flex-grow flex-1">
-            <h6 class="uppercase text-blueGray-400 mb-1 text-xs font-semibold">OVERVIEW</h6>
-            <h2 class="text-blueGray-700 dark:text-blueGray-300 text-xl font-semibold">
-              Sales value
-            </h2>
+            <h6 class="uppercase text-zinc-400 mb-1 text-xs font-semibold">OVERVIEW</h6>
+            <h2 class="text-zinc-700 dark:text-zinc-300 text-xl font-semibold">Sales value</h2>
           </div>
         </div>
       </div>
@@ -220,10 +210,8 @@ const performance = ref<Options>({
       <div class="rounded-t mb-0 px-4 py-3 bg-transparent">
         <div class="flex flex-wrap items-center">
           <div class="relative w-full max-w-full flex-grow flex-1">
-            <h6 class="uppercase text-blueGray-400 mb-1 text-xs font-semibold">Performance</h6>
-            <h2 class="text-blueGray-700 dark:text-blueGray-300 text-xl font-semibold">
-              Total orders
-            </h2>
+            <h6 class="uppercase text-zinc-400 mb-1 text-xs font-semibold">Performance</h6>
+            <h2 class="text-zinc-700 dark:text-zinc-300 text-xl font-semibold">Total orders</h2>
           </div>
         </div>
       </div>
@@ -246,9 +234,7 @@ const performance = ref<Options>({
       <div class="rounded-t mb-0 px-4 py-3 border-0">
         <div class="flex flex-wrap items-center">
           <div class="relative w-full px-4 max-w-full flex-grow flex-1">
-            <h3 class="font-semibold text-base text-blueGray-700 dark:text-blueGray-300">
-              Page visits
-            </h3>
+            <h3 class="font-semibold text-base text-zinc-700 dark:text-zinc-300">Page visits</h3>
           </div>
           <div
             class="relative w-full px-4 max-w-full flex-grow flex-1 ltr:text-right rtl:text-left"
@@ -267,22 +253,22 @@ const performance = ref<Options>({
           <thead>
             <tr>
               <th
-                class="px-6 bg-blueGray-50 dark:bg-blueGray-700 text-blueGray-500 dark:text-blueGray-200 align-middle border border-solid border-blueGray-100 dark:border-blueGray-600 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+                class="px-6 bg-zinc-50 dark:bg-zinc-700 text-zinc-500 dark:text-zinc-200 align-middle border border-solid border-zinc-100 dark:border-zinc-600 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
               >
                 Page name
               </th>
               <th
-                class="px-6 bg-blueGray-50 dark:bg-blueGray-700 text-blueGray-500 dark:text-blueGray-200 align-middle border border-solid border-blueGray-100 dark:border-blueGray-600 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+                class="px-6 bg-zinc-50 dark:bg-zinc-700 text-zinc-500 dark:text-zinc-200 align-middle border border-solid border-zinc-100 dark:border-zinc-600 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
               >
                 Visitors
               </th>
               <th
-                class="px-6 bg-blueGray-50 dark:bg-blueGray-700 text-blueGray-500 dark:text-blueGray-200 align-middle border border-solid border-blueGray-100 dark:border-blueGray-600 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+                class="px-6 bg-zinc-50 dark:bg-zinc-700 text-zinc-500 dark:text-zinc-200 align-middle border border-solid border-zinc-100 dark:border-zinc-600 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
               >
                 Unique users
               </th>
               <th
-                class="px-6 bg-blueGray-50 dark:bg-blueGray-700 text-blueGray-500 dark:text-blueGray-200 align-middle border border-solid border-blueGray-100 dark:border-blueGray-600 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+                class="px-6 bg-zinc-50 dark:bg-zinc-700 text-zinc-500 dark:text-zinc-200 align-middle border border-solid border-zinc-100 dark:border-zinc-600 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
               >
                 Bounce rate
               </th>
@@ -415,9 +401,7 @@ const performance = ref<Options>({
       <div class="rounded-t mb-0 px-4 py-3 border-0">
         <div class="flex flex-wrap items-center">
           <div class="relative w-full px-4 max-w-full flex-grow flex-1">
-            <h3 class="font-semibold text-base text-blueGray-700 dark:text-blueGray-300">
-              Social traffic
-            </h3>
+            <h3 class="font-semibold text-base text-zinc-700 dark:text-zinc-300">Social traffic</h3>
           </div>
           <div
             class="relative w-full px-4 max-w-full flex-grow flex-1 ltr:text-right rtl:text-left"
@@ -436,17 +420,17 @@ const performance = ref<Options>({
           <thead class="thead-light">
             <tr>
               <th
-                class="px-6 bg-blueGray-50 dark:bg-blueGray-700 text-blueGray-500 dark:text-blueGray-200 align-middle border border-solid border-blueGray-100 dark:border-blueGray-600 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+                class="px-6 bg-zinc-50 dark:bg-zinc-700 text-zinc-500 dark:text-zinc-200 align-middle border border-solid border-zinc-100 dark:border-zinc-600 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
               >
                 Referral
               </th>
               <th
-                class="px-6 bg-blueGray-50 dark:bg-blueGray-700 text-blueGray-500 dark:text-blueGray-200 align-middle border border-solid border-blueGray-100 dark:border-blueGray-600 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+                class="px-6 bg-zinc-50 dark:bg-zinc-700 text-zinc-500 dark:text-zinc-200 align-middle border border-solid border-zinc-100 dark:border-zinc-600 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
               >
                 Users
               </th>
               <th
-                class="px-6 bg-blueGray-50 dark:bg-blueGray-700 text-blueGray-500 dark:text-blueGray-200 align-middle border border-solid border-blueGray-100 dark:border-blueGray-600 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left min-w-35"
+                class="px-6 bg-zinc-50 dark:bg-zinc-700 text-zinc-500 dark:text-zinc-200 align-middle border border-solid border-zinc-100 dark:border-zinc-600 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left min-w-35"
               ></th>
             </tr>
           </thead>

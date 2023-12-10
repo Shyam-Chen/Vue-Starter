@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
-import { XBreadcrumb, XFileInput, XDropzone } from '@x/ui';
+import { XBreadcrumb, XCard, XFileInput, XDropzone } from '@x/ui';
 import { request } from '@x/ui';
 
 const flux = reactive({
@@ -37,56 +37,55 @@ const flux = reactive({
 </script>
 
 <template>
-  <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Data Entry' }, { text: 'File inputs' }]" />
+  <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Data Entry' }, { text: 'FileInput' }]" />
 
-  <div class="my-4">
-    <div class="text-3xl font-bold">File inputs</div>
-  </div>
+  <h1 class="text-4xl font-extrabold my-4">FileInput</h1>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Basic examples</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4">Basic</h2>
 
-    <div class="flex justify-center">
-      <XFileInput @change="flux.changeFile" />
-    </div>
-  </div>
+    <XCard>
+      <XFileInput label="Example label" @change="flux.changeFile" />
+    </XCard>
+  </section>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Multiple</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Multiple</h2>
 
-    <div class="flex justify-center">
-      <XFileInput multiple />
-    </div>
-  </div>
+    <XCard>
+      <XFileInput label="Example label" multiple />
+    </XCard>
+  </section>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Disabled</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Disabled</h2>
 
-    <div class="flex justify-center gap-4">
-      <XFileInput disabled />
-      <XFileInput multiple disabled />
-    </div>
-  </div>
+    <XCard>
+      <XFileInput label="Example label" disabled />
+    </XCard>
+  </section>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Upload file to Cloudinary</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Upload file to Cloudinary</h2>
 
-    <div class="flex justify-center">
-      <XFileInput @change="flux.fileUploads" />
-    </div>
-  </div>
+    <XCard>
+      <XFileInput label="Example label" @change="flux.fileUploads" />
+    </XCard>
+  </section>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Import data from Excel</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Import data from Excel</h2>
 
-    <div class="flex justify-center">
-      <XFileInput @change="flux.importData" />
-    </div>
-  </div>
+    <XCard>
+      <XFileInput label="Example label" @change="flux.importData" />
+    </XCard>
+  </section>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Drag Zone</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Dropzone</h2>
 
-    <XDropzone />
-  </div>
+    <XCard>
+      <XDropzone label="Example label" />
+    </XCard>
+  </section>
 </template>

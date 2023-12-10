@@ -8,9 +8,7 @@ const { data } = useEventSource('/sse');
 <template>
   <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Network' }, { text: 'EventSource' }]" />
 
-  <div class="my-4">
-    <div class="text-3xl font-bold">EventSource</div>
-  </div>
+  <h1 class="text-4xl font-extrabold my-4">EventSource</h1>
 
   <div class="flex flex-col border p-4 mb-4">
     <div class="mb-2">Basic examples</div>

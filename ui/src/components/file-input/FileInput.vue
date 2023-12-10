@@ -2,15 +2,21 @@
 import { reactive, toRef } from 'vue';
 import uniqueId from 'lodash/uniqueId';
 
+import Chip from '../chip/Chip.vue';
+
 const props = defineProps<{
+  label?: string;
+  required?: boolean;
   placeholder?: string;
+  disabled?: boolean;
+  invalid?: boolean | string;
 }>();
 
 const emit = defineEmits<{
   (evt: 'change', val: Event): void;
 }>();
 
-const uid = uniqueId('file-input-');
+const uid = uniqueId('FileInput-');
 
 const placeholderRef = toRef(props, 'placeholder', 'Choose a file');
 
@@ -26,33 +32,45 @@ const flux = reactive({
 </script>
 
 <template>
-  <label
-    :for="uid"
-    class="flex justify-between bg-white dark:bg-slate-800 cursor-pointer appearance-none border border-slate-400 rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
-  >
-    <div v-if="flux.fileNames.length > 1" class="flex flex-wrap gap-1">
-      <div
-        v-for="item in flux.fileNames"
-        :key="item"
-        class="text-xs rounded inline-block whitespace-nowrap text-center bg-blue-600 text-white"
-        style="padding: 1.5px 0.5rem"
-      >
-        {{ item }}
-      </div>
+  <div class="flex flex-col w-full">
+    <div class="FileInput-Label">
+      <template v-if="label">{{ label }}</template>
+      <span v-if="required" class="text-red-500">*</span>
+      <slot></slot>
     </div>
-    <div v-else-if="flux.fileNames.length === 1">{{ flux.fileNames[0] }}</div>
-    <div v-else class="text-gray-400">{{ placeholderRef }}</div>
 
-    <div class="file-input-append">
-      <div class="i-fa-upload w-5 h-5"></div>
+    <label
+      :for="uid"
+      class="FileInput-Input"
+      :class="{
+        '!py-1': flux.fileNames.length > 1,
+        disabled,
+      }"
+    >
+      <div v-if="flux.fileNames.length > 1" class="flex flex-wrap gap-1">
+        <Chip v-for="item in flux.fileNames" :key="item">
+          {{ item }}
+        </Chip>
+      </div>
+      <div v-else-if="flux.fileNames.length === 1">{{ flux.fileNames[0] }}</div>
+      <div v-else class="text-slate-400 dark:text-slate-500">{{ placeholderRef }}</div>
+
+      <div class="ms-1">
+        <div class="i-material-symbols-upload-rounded w-5 h-5"></div>
+      </div>
+    </label>
+
+    <div v-if="invalid && typeof invalid === 'string'" class="text-red-500 text-xs mt-1">
+      {{ invalid }}
     </div>
-  </label>
+  </div>
 
   <input
     :id="uid"
     ref="input"
     v-bind="$attrs"
     type="file"
+    :disabled="disabled"
     class="hidden"
     @change="flux.onChange"
     @click="($refs.input as HTMLInputElement).value = ''"
@@ -60,8 +78,24 @@ const flux = reactive({
 </template>
 
 <style lang="scss" scoped>
-.file-input-append {
-  @apply flex justify-center items-center;
-  @apply -my-2 -mx-3 p-2 border-l border-slate-400 rounded rounded-l-0 bg-slate-100 dark:bg-slate-700;
+.FileInput-Label {
+  @apply empty:hidden flex items-center;
+  @apply text-sm font-bold mb-2;
+}
+
+.FileInput-Input {
+  @apply w-full flex justify-between items-center border rounded px-3 py-2 leading-tight;
+  @apply bg-white dark:bg-slate-800 border-slate-500 dark:border-slate-400;
+  @apply placeholder:text-slate-400 dark:placeholder:text-slate-500;
+  @apply focus:outline-none focus:ring-1 focus:ring-primary-400 focus:border-primary-400;
+
+  &.invalid {
+    @apply border-red-500 dark:border-red-500;
+    @apply focus:ring-red-500 focus:border-red-500;
+  }
+
+  &.disabled {
+    @apply cursor-not-allowed opacity-60;
+  }
 }
 </style>
