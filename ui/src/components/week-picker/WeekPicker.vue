@@ -89,7 +89,7 @@ const weekdays = ['Week', 'S', 'M', 'T', 'W', 'T', 'F', 'S'];
 type Week = Array<{ date?: Date; outOfRange?: boolean; week?: number }>;
 
 function resizePanel() {
-  const rect = input.value.$el.querySelector('.text-field-input').getBoundingClientRect();
+  const rect = input.value.$el.querySelector('.TextField-Input').getBoundingClientRect();
 
   picker.value.style.left = `${rect.left}px`;
 

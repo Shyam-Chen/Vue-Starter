@@ -1,12 +1,16 @@
 <script lang="ts" setup>
+import { ref } from 'vue';
+
 import TextField from '../text-field/TextField.vue';
 import Popover from '../popover/Popover.vue';
+
+const status = ref(false);
 </script>
 
 <template>
   <div>
-    <Popover>
-      <TextField v-bind="$attrs" type="password" />
+    <Popover v-model="status">
+      <TextField v-bind="$attrs" type="password" @focus="status = true" @blur="status = false" />
 
       <template #content>
         <div class="p-4">

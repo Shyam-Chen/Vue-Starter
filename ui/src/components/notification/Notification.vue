@@ -62,7 +62,7 @@ function close(item: NotificationMessage, index: number) {
   <TransitionGroup
     tag="div"
     name="list"
-    class="grid gap-4 fixed left-1/2 top-12 -translate-x-1/2 z-200"
+    class="grid gap-4 fixed left-1/2 top-12 -translate-x-1/2 z-200 w-full px-4 md:w-auto md:min-w-xs"
   >
     <Alert
       v-for="(item, index) in list"

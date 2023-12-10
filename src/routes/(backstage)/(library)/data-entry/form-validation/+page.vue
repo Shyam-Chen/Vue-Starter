@@ -9,9 +9,7 @@ import Basic from './Basic.vue';
     :items="[{ text: 'Library' }, { text: 'Data Entry' }, { text: 'Form Validation' }]"
   />
 
-  <div class="my-4">
-    <div class="text-4xl font-extrabold">Form Validation</div>
-  </div>
+  <h1 class="text-4xl font-extrabold my-4">Form Validation</h1>
 
   <Basic />
 </template>

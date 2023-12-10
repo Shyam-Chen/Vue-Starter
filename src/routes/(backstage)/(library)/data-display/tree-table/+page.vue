@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
-import { XBreadcrumb, XButton } from '@x/ui';
+import { XBreadcrumb, XTable, XButton } from '@x/ui';
 
 type TreeTableNode = {
   key?: string;
@@ -105,38 +105,32 @@ function treeNode(item: TreeTableNode) {
     <table class="TreeTable-Element">
       <thead>
         <tr>
-          <th
-            class="px-6 bg-blueGray-200 dark:bg-blueGray-700 text-blueGray-500 dark:text-blueGray-200 align-middle border border-solid border-blueGray-100 dark:border-blueGray-600 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
-          >
-            Name
-          </th>
-          <th
-            class="px-6 bg-blueGray-200 dark:bg-blueGray-700 text-blueGray-500 dark:text-blueGray-200 align-middle border border-solid border-blueGray-100 dark:border-blueGray-600 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
-          >
-            Size
-          </th>
-          <th
-            class="px-6 bg-blueGray-200 dark:bg-blueGray-700 text-blueGray-500 dark:text-blueGray-200 align-middle border border-solid border-blueGray-100 dark:border-blueGray-600 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
-          >
-            Type
-          </th>
+          <XTable.Column>
+            <div class="inline-flex items-center min-h-38px">Name</div>
+          </XTable.Column>
+          <XTable.Column>
+            <div class="inline-flex items-center min-h-38px">Size</div>
+          </XTable.Column>
+          <XTable.Column>
+            <div class="inline-flex items-center min-h-38px">Type</div>
+          </XTable.Column>
         </tr>
       </thead>
 
       <tbody>
-        <tr
-          v-for="node in treeTableNodes"
-          :key="node.name"
-          class="hover:bg-slate-100 dark:hover:bg-slate-600 border-b last:border-b-0 dark:border-slate-600"
-        >
-          <td class="px-6 py-3 align-middle whitespace-nowrap">
+        <XTable.Row v-for="node in treeTableNodes" :key="node.name">
+          <XTable.Cell>
             <div
               class="flex items-center"
               :style="{ 'padding-left': Number(node.level) > 1 ? `${node.level}rem` : '0' }"
             >
               <XButton
                 v-if="node.children?.length"
-                :icon="node.status ? 'i-fa-caret-up' : 'i-fa-caret-down'"
+                :icon="
+                  node.status
+                    ? 'i-material-symbols-arrow-drop-up-rounded !w-6 !h-6'
+                    : 'i-material-symbols-arrow-drop-down-rounded !w-6 !h-6'
+                "
                 color="secondary"
                 variant="text"
                 @click="treeNode(node)"
@@ -144,10 +138,10 @@ function treeNode(item: TreeTableNode) {
               <div v-else class="w-38px h-38px"></div>
               <div class="ml-2">{{ node.name }} - {{ node.level }}</div>
             </div>
-          </td>
-          <td class="px-6 py-3 align-middle whitespace-nowrap">{{ node.size }}</td>
-          <td class="px-6 py-3 align-middle whitespace-nowrap">{{ node.type }}</td>
-        </tr>
+          </XTable.Cell>
+          <XTable.Cell>{{ node.size }}</XTable.Cell>
+          <XTable.Cell>{{ node.type }}</XTable.Cell>
+        </XTable.Row>
       </tbody>
     </table>
   </div>

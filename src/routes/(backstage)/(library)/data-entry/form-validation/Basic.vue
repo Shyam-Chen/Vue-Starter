@@ -78,8 +78,8 @@ const submit = () => {
 </script>
 
 <template>
-  <div class="my-8">
-    <div class="text-3xl font-bold my-4 pt-6">Basic</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4">Basic</h2>
 
     <XCard>
       <div class="grid md:grid-cols-2 gap-4">
@@ -156,5 +156,5 @@ const submit = () => {
     <div class="flex justify-center mt-8">
       <XButton @click="submit">Submit</XButton>
     </div>
-  </div>
+  </section>
 </template>

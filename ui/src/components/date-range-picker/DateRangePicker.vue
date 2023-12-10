@@ -136,7 +136,7 @@ const flux = reactive({
   scrollableParent: null as HTMLElement | null,
   direction: '' as 'down' | 'up' | '',
   resizePanel() {
-    const rect = input.value.$el.querySelector('.text-field-input').getBoundingClientRect();
+    const rect = input.value.$el.querySelector('.TextField-Input').getBoundingClientRect();
 
     picker.value.style.left = `${rect.left}px`;
 
