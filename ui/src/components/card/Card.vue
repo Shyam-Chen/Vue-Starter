@@ -34,19 +34,15 @@
 }
 
 .CardBody {
-  @apply p-6 flex flex-col;
+  @apply p-4 lg:p-6 flex flex-col;
 }
 
 .CardTitle {
-  @apply text-2xl font-semibold mb-2;
+  @apply text-2xl font-semibold mb-2 empty:hidden;
 }
 
 .CardSubtitle {
-  @apply text-lg mb-2 text-zinc-400 dark:text-zinc-500;
-}
-
-.CardContent {
-  @apply my-4;
+  @apply text-lg mb-2 text-zinc-400 dark:text-zinc-500 empty:hidden;
 }
 
 .CardFooter {

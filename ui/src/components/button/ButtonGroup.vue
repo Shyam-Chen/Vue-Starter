@@ -30,7 +30,7 @@ provide('ButtonGroup', {
 
 <style lang="scss" scoped>
 .ButtonGroup {
-  @apply inline-flex;
+  @apply inline-flex w-full overflow-auto;
 
   :deep(.Button) {
     @apply !first:rounded-l !rounded-0 !last:rounded-r;

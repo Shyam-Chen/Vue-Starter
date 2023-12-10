@@ -15,316 +15,399 @@ exports[`/general/buttons 1`] = `
     <!--v-if-->
   </ol>
 </nav>
-<div class="my-4">
-  <div class="text-4xl font-extrabold">Button</div>
-</div>
-<div class="my-8">
-  <div class="text-3xl font-bold my-4">Basic</div>
-  <div class="flex flex-col md:flex-row gap-4 my-4"><button data-v-54761eda="" type="button" class="Button contained primary small">
-      <!--v-if-->
-      <!--v-if-->
-      <div data-v-54761eda="">Contained</div>
-      <!--v-if-->
-    </button><button data-v-54761eda="" type="button" class="Button outlined primary small">
-      <!--v-if-->
-      <!--v-if-->
-      <div data-v-54761eda="">Outlined</div>
-      <!--v-if-->
-    </button><button data-v-54761eda="" type="button" class="Button text primary small">
-      <!--v-if-->
-      <!--v-if-->
-      <div data-v-54761eda="">Text</div>
-      <!--v-if-->
-    </button></div>
-  <div class="flex flex-col md:flex-row gap-4 my-4"><button data-v-54761eda="" type="button" class="Button contained primary">
-      <!--v-if-->
-      <!--v-if-->
-      <div data-v-54761eda="">Contained</div>
-      <!--v-if-->
-    </button><button data-v-54761eda="" type="button" class="Button outlined primary">
-      <!--v-if-->
-      <!--v-if-->
-      <div data-v-54761eda="">Outlined</div>
-      <!--v-if-->
-    </button><button data-v-54761eda="" type="button" class="Button text primary">
-      <!--v-if-->
-      <!--v-if-->
-      <div data-v-54761eda="">Text</div>
-      <!--v-if-->
-    </button></div>
-  <div class="flex flex-col md:flex-row gap-4 my-4"><button data-v-54761eda="" type="button" class="Button contained primary large">
-      <!--v-if-->
-      <!--v-if-->
-      <div data-v-54761eda="">Contained</div>
-      <!--v-if-->
-    </button><button data-v-54761eda="" type="button" class="Button outlined primary large">
-      <!--v-if-->
-      <!--v-if-->
-      <div data-v-54761eda="">Outlined</div>
-      <!--v-if-->
-    </button><button data-v-54761eda="" type="button" class="Button text primary large">
-      <!--v-if-->
-      <!--v-if-->
-      <div data-v-54761eda="">Text</div>
-      <!--v-if-->
-    </button></div>
-</div>
-<div class="my-8">
-  <div class="text-3xl font-bold my-4 pt-6">Icons</div>
-  <div class="flex flex-col md:flex-row gap-4 my-4"><button data-v-54761eda="" type="button" class="Button contained primary small icon">
-      <div data-v-54761eda="" class="Button-Icon i-material-symbols-add-rounded small"></div>
-      <!--v-if-->
-      <!--v-if-->
-      <!--v-if-->
-    </button><button data-v-54761eda="" type="button" class="Button contained primary small">
-      <!--v-if-->
-      <div data-v-54761eda="" class="Button-Icon flex items-center overflow-hidden small">
-        <div data-v-54761eda="" class="Button-Icon i-material-symbols-search-rounded small"></div>
+<h1 class="text-4xl font-extrabold my-4">Button</h1>
+<section class="my-8">
+  <h2 class="text-3xl font-bold my-4">Basic</h2>
+  <div data-v-ac05e22a="" class="Card">
+    <div data-v-ac05e22a="" class="CardHeader"></div>
+    <div data-v-ac05e22a="" class="CardBody">
+      <div data-v-ac05e22a="" class="CardTitle"></div>
+      <div data-v-ac05e22a="" class="CardSubtitle"></div>
+      <div data-v-ac05e22a="" class="CardContent">
+        <div class="space-y-4">
+          <div class="flex flex-col md:flex-row gap-4"><button data-v-54761eda="" type="button" class="Button contained primary small">
+              <!--v-if-->
+              <!--v-if-->
+              <div data-v-54761eda="">Contained</div>
+              <!--v-if-->
+            </button><button data-v-54761eda="" type="button" class="Button outlined primary small">
+              <!--v-if-->
+              <!--v-if-->
+              <div data-v-54761eda="">Outlined</div>
+              <!--v-if-->
+            </button><button data-v-54761eda="" type="button" class="Button text primary small">
+              <!--v-if-->
+              <!--v-if-->
+              <div data-v-54761eda="">Text</div>
+              <!--v-if-->
+            </button></div>
+          <div class="flex flex-col md:flex-row gap-4"><button data-v-54761eda="" type="button" class="Button contained primary">
+              <!--v-if-->
+              <!--v-if-->
+              <div data-v-54761eda="">Contained</div>
+              <!--v-if-->
+            </button><button data-v-54761eda="" type="button" class="Button outlined primary">
+              <!--v-if-->
+              <!--v-if-->
+              <div data-v-54761eda="">Outlined</div>
+              <!--v-if-->
+            </button><button data-v-54761eda="" type="button" class="Button text primary">
+              <!--v-if-->
+              <!--v-if-->
+              <div data-v-54761eda="">Text</div>
+              <!--v-if-->
+            </button></div>
+          <div class="flex flex-col md:flex-row gap-4"><button data-v-54761eda="" type="button" class="Button contained primary large">
+              <!--v-if-->
+              <!--v-if-->
+              <div data-v-54761eda="">Contained</div>
+              <!--v-if-->
+            </button><button data-v-54761eda="" type="button" class="Button outlined primary large">
+              <!--v-if-->
+              <!--v-if-->
+              <div data-v-54761eda="">Outlined</div>
+              <!--v-if-->
+            </button><button data-v-54761eda="" type="button" class="Button text primary large">
+              <!--v-if-->
+              <!--v-if-->
+              <div data-v-54761eda="">Text</div>
+              <!--v-if-->
+            </button></div>
+        </div>
       </div>
-      <div data-v-54761eda="">Search</div>
-      <!--v-if-->
-    </button><button data-v-54761eda="" type="button" class="Button contained primary small">
-      <!--v-if-->
-      <!--v-if-->
-      <div data-v-54761eda="">Next</div>
-      <div data-v-54761eda="" class="Button-Icon flex items-center overflow-hidden small">
-        <div data-v-54761eda="" class="Button-Icon i-material-symbols-arrow-right-alt-rounded small"></div>
-      </div>
-    </button></div>
-  <div class="flex flex-col md:flex-row gap-4 my-4"><button data-v-54761eda="" type="button" class="Button contained primary icon">
-      <div data-v-54761eda="" class="Button-Icon i-material-symbols-add-rounded"></div>
-      <!--v-if-->
-      <!--v-if-->
-      <!--v-if-->
-    </button><button data-v-54761eda="" type="button" class="Button contained primary">
-      <!--v-if-->
-      <div data-v-54761eda="" class="Button-Icon flex items-center overflow-hidden">
-        <div data-v-54761eda="" class="Button-Icon i-material-symbols-search-rounded"></div>
-      </div>
-      <div data-v-54761eda="">Search</div>
-      <!--v-if-->
-    </button><button data-v-54761eda="" type="button" class="Button contained primary">
-      <!--v-if-->
-      <!--v-if-->
-      <div data-v-54761eda="">Next</div>
-      <div data-v-54761eda="" class="Button-Icon flex items-center overflow-hidden">
-        <div data-v-54761eda="" class="Button-Icon i-material-symbols-arrow-right-alt-rounded"></div>
-      </div>
-    </button></div>
-  <div class="flex flex-col md:flex-row gap-4 my-4"><button data-v-54761eda="" type="button" class="Button contained primary large icon">
-      <div data-v-54761eda="" class="Button-Icon i-material-symbols-add-rounded large"></div>
-      <!--v-if-->
-      <!--v-if-->
-      <!--v-if-->
-    </button><button data-v-54761eda="" type="button" class="Button contained primary large">
-      <!--v-if-->
-      <div data-v-54761eda="" class="Button-Icon flex items-center overflow-hidden large">
-        <div data-v-54761eda="" class="Button-Icon i-material-symbols-search-rounded large"></div>
-      </div>
-      <div data-v-54761eda="">Search</div>
-      <!--v-if-->
-    </button><button data-v-54761eda="" type="button" class="Button contained primary large">
-      <!--v-if-->
-      <!--v-if-->
-      <div data-v-54761eda="">Next</div>
-      <div data-v-54761eda="" class="Button-Icon flex items-center overflow-hidden large">
-        <div data-v-54761eda="" class="Button-Icon i-material-symbols-arrow-right-alt-rounded large"></div>
-      </div>
-    </button></div>
-</div>
-<div class="my-8">
-  <div class="text-3xl font-bold my-4 pt-6">Disabled</div>
-  <div class="flex flex-col md:flex-row gap-4 my-4"><button data-v-54761eda="" type="button" class="Button contained primary disabled" disabled="">
-      <!--v-if-->
-      <!--v-if-->
-      <div data-v-54761eda="">Contained</div>
-      <!--v-if-->
-    </button><button data-v-54761eda="" type="button" class="Button outlined primary disabled" disabled="">
-      <!--v-if-->
-      <!--v-if-->
-      <div data-v-54761eda="">Outlined</div>
-      <!--v-if-->
-    </button><button data-v-54761eda="" type="button" class="Button text primary disabled" disabled="">
-      <!--v-if-->
-      <!--v-if-->
-      <div data-v-54761eda="">Text</div>
-      <!--v-if-->
-    </button></div>
-</div>
-<div class="my-8">
-  <div class="text-3xl font-bold my-4 pt-6">Loading</div>
-  <div class="space-y-4"><button data-v-54761eda="" type="button" class="Button contained primary small">
-      <!--v-if-->
-      <div data-v-54761eda="" class="Button-Icon flex items-center overflow-hidden small">
-        <div data-v-54761eda="" class="Button-Icon i-material-symbols-search-rounded small"></div>
-      </div>
-      <div data-v-54761eda="">Search</div>
-      <!--v-if-->
-    </button><button data-v-54761eda="" type="button" class="Button contained primary">
-      <!--v-if-->
-      <div data-v-54761eda="" class="Button-Icon flex items-center overflow-hidden">
-        <div data-v-54761eda="" class="Button-Icon i-material-symbols-search-rounded"></div>
-      </div>
-      <div data-v-54761eda="">Search</div>
-      <!--v-if-->
-    </button><button data-v-54761eda="" type="button" class="Button contained primary large">
-      <!--v-if-->
-      <div data-v-54761eda="" class="Button-Icon flex items-center overflow-hidden large">
-        <div data-v-54761eda="" class="Button-Icon i-material-symbols-search-rounded large"></div>
-      </div>
-      <div data-v-54761eda="">Search</div>
-      <!--v-if-->
-    </button></div>
-</div>
-<div class="my-8">
-  <div class="text-3xl font-bold my-4 pt-6">Colors</div>
-  <div class="flex flex-col md:flex-row flex-wrap gap-4 my-4"><button data-v-54761eda="" type="button" class="Button contained primary">
-      <!--v-if-->
-      <!--v-if-->
-      <div data-v-54761eda="">Primary</div>
-      <!--v-if-->
-    </button><button data-v-54761eda="" type="button" class="Button contained secondary">
-      <!--v-if-->
-      <!--v-if-->
-      <div data-v-54761eda="">Secondary</div>
-      <!--v-if-->
-    </button><button data-v-54761eda="" type="button" class="Button contained success">
-      <!--v-if-->
-      <!--v-if-->
-      <div data-v-54761eda="">Success</div>
-      <!--v-if-->
-    </button><button data-v-54761eda="" type="button" class="Button contained danger">
-      <!--v-if-->
-      <!--v-if-->
-      <div data-v-54761eda="">Danger</div>
-      <!--v-if-->
-    </button><button data-v-54761eda="" type="button" class="Button contained warning">
-      <!--v-if-->
-      <!--v-if-->
-      <div data-v-54761eda="">Warning</div>
-      <!--v-if-->
-    </button><button data-v-54761eda="" type="button" class="Button contained info">
-      <!--v-if-->
-      <!--v-if-->
-      <div data-v-54761eda="">Info</div>
-      <!--v-if-->
-    </button></div>
-  <div class="flex flex-col md:flex-row flex-wrap gap-4 my-4"><button data-v-54761eda="" type="button" class="Button outlined primary">
-      <!--v-if-->
-      <!--v-if-->
-      <div data-v-54761eda="">Primary</div>
-      <!--v-if-->
-    </button><button data-v-54761eda="" type="button" class="Button outlined secondary">
-      <!--v-if-->
-      <!--v-if-->
-      <div data-v-54761eda="">Secondary</div>
-      <!--v-if-->
-    </button><button data-v-54761eda="" type="button" class="Button outlined success">
-      <!--v-if-->
-      <!--v-if-->
-      <div data-v-54761eda="">Success</div>
-      <!--v-if-->
-    </button><button data-v-54761eda="" type="button" class="Button outlined danger">
-      <!--v-if-->
-      <!--v-if-->
-      <div data-v-54761eda="">Danger</div>
-      <!--v-if-->
-    </button><button data-v-54761eda="" type="button" class="Button outlined warning">
-      <!--v-if-->
-      <!--v-if-->
-      <div data-v-54761eda="">Warning</div>
-      <!--v-if-->
-    </button><button data-v-54761eda="" type="button" class="Button outlined info">
-      <!--v-if-->
-      <!--v-if-->
-      <div data-v-54761eda="">Info</div>
-      <!--v-if-->
-    </button></div>
-  <div class="flex flex-col md:flex-row flex-wrap gap-4 my-4"><button data-v-54761eda="" type="button" class="Button text primary">
-      <!--v-if-->
-      <!--v-if-->
-      <div data-v-54761eda="">Primary</div>
-      <!--v-if-->
-    </button><button data-v-54761eda="" type="button" class="Button text secondary">
-      <!--v-if-->
-      <!--v-if-->
-      <div data-v-54761eda="">Secondary</div>
-      <!--v-if-->
-    </button><button data-v-54761eda="" type="button" class="Button text success">
-      <!--v-if-->
-      <!--v-if-->
-      <div data-v-54761eda="">Success</div>
-      <!--v-if-->
-    </button><button data-v-54761eda="" type="button" class="Button text danger">
-      <!--v-if-->
-      <!--v-if-->
-      <div data-v-54761eda="">Danger</div>
-      <!--v-if-->
-    </button><button data-v-54761eda="" type="button" class="Button text warning">
-      <!--v-if-->
-      <!--v-if-->
-      <div data-v-54761eda="">Warning</div>
-      <!--v-if-->
-    </button><button data-v-54761eda="" type="button" class="Button text info">
-      <!--v-if-->
-      <!--v-if-->
-      <div data-v-54761eda="">Info</div>
-      <!--v-if-->
-    </button></div>
-</div>
-<div class="my-8">
-  <div class="text-3xl font-bold my-4 pt-6">Template</div><button data-v-54761eda="" type="button" class="Button outlined primary"> Template <div data-v-cb727b1e="" class="flex">
-      <div data-v-cb727b1e="" class="Chip primary">5
-        <!--v-if-->
-      </div>
-    </div></button>
-</div>
-<div class="my-8">
-  <div class="text-3xl font-bold my-4 pt-6">Button Group</div>
-  <div data-v-496d006f="" class="ButtonGroup"><button data-v-54761eda="" type="button" class="Button contained primary">
-      <!--v-if-->
-      <!--v-if-->
-      <div data-v-54761eda="">Year</div>
-      <!--v-if-->
-    </button><button data-v-54761eda="" type="button" class="Button contained primary">
-      <!--v-if-->
-      <!--v-if-->
-      <div data-v-54761eda="">Month</div>
-      <!--v-if-->
-    </button><button data-v-54761eda="" type="button" class="Button contained primary">
-      <!--v-if-->
-      <!--v-if-->
-      <div data-v-54761eda="">Week</div>
-      <!--v-if-->
-    </button><button data-v-54761eda="" type="button" class="Button contained primary">
-      <!--v-if-->
-      <!--v-if-->
-      <div data-v-54761eda="">Day</div>
-      <!--v-if-->
-    </button></div>
-  <div class="my-4">
-    <div class="text-2xl font-semibold my-4 pt-2">Controlled</div>
-    <div data-v-496d006f="" class="ButtonGroup"><button data-v-54761eda="" type="button" class="Button outlined primary">
-        <!--v-if-->
-        <!--v-if-->
-        <div data-v-54761eda="">Year</div>
-        <!--v-if-->
-      </button><button data-v-54761eda="" type="button" class="Button outlined primary">
-        <!--v-if-->
-        <!--v-if-->
-        <div data-v-54761eda="">Month</div>
-        <!--v-if-->
-      </button><button data-v-54761eda="" type="button" class="Button outlined primary">
-        <!--v-if-->
-        <!--v-if-->
-        <div data-v-54761eda="">Week</div>
-        <!--v-if-->
-      </button><button data-v-54761eda="" type="button" class="Button outlined primary">
-        <!--v-if-->
-        <!--v-if-->
-        <div data-v-54761eda="">Day</div>
-        <!--v-if-->
-      </button></div>
+      <div data-v-ac05e22a="" class="CardFooter"></div>
+    </div>
   </div>
-</div>"
+</section>
+<section class="my-8">
+  <h2 class="text-3xl font-bold my-4 pt-6">Icons</h2>
+  <div data-v-ac05e22a="" class="Card">
+    <div data-v-ac05e22a="" class="CardHeader"></div>
+    <div data-v-ac05e22a="" class="CardBody">
+      <div data-v-ac05e22a="" class="CardTitle"></div>
+      <div data-v-ac05e22a="" class="CardSubtitle"></div>
+      <div data-v-ac05e22a="" class="CardContent">
+        <div class="space-y-4">
+          <div class="flex flex-col md:flex-row gap-4"><button data-v-54761eda="" type="button" class="Button contained primary small icon">
+              <div data-v-54761eda="" class="Button-Icon i-material-symbols-add-rounded small"></div>
+              <!--v-if-->
+              <!--v-if-->
+              <!--v-if-->
+            </button><button data-v-54761eda="" type="button" class="Button contained primary small">
+              <!--v-if-->
+              <div data-v-54761eda="" class="Button-Icon flex items-center overflow-hidden small">
+                <div data-v-54761eda="" class="Button-Icon i-material-symbols-search-rounded small"></div>
+              </div>
+              <div data-v-54761eda="">Search</div>
+              <!--v-if-->
+            </button><button data-v-54761eda="" type="button" class="Button contained primary small">
+              <!--v-if-->
+              <!--v-if-->
+              <div data-v-54761eda="">Next</div>
+              <div data-v-54761eda="" class="Button-Icon flex items-center overflow-hidden small">
+                <div data-v-54761eda="" class="Button-Icon i-material-symbols-arrow-right-alt-rounded small"></div>
+              </div>
+            </button></div>
+          <div class="flex flex-col md:flex-row gap-4"><button data-v-54761eda="" type="button" class="Button contained primary icon">
+              <div data-v-54761eda="" class="Button-Icon i-material-symbols-add-rounded"></div>
+              <!--v-if-->
+              <!--v-if-->
+              <!--v-if-->
+            </button><button data-v-54761eda="" type="button" class="Button contained primary">
+              <!--v-if-->
+              <div data-v-54761eda="" class="Button-Icon flex items-center overflow-hidden">
+                <div data-v-54761eda="" class="Button-Icon i-material-symbols-search-rounded"></div>
+              </div>
+              <div data-v-54761eda="">Search</div>
+              <!--v-if-->
+            </button><button data-v-54761eda="" type="button" class="Button contained primary">
+              <!--v-if-->
+              <!--v-if-->
+              <div data-v-54761eda="">Next</div>
+              <div data-v-54761eda="" class="Button-Icon flex items-center overflow-hidden">
+                <div data-v-54761eda="" class="Button-Icon i-material-symbols-arrow-right-alt-rounded"></div>
+              </div>
+            </button></div>
+          <div class="flex flex-col md:flex-row gap-4"><button data-v-54761eda="" type="button" class="Button contained primary large icon">
+              <div data-v-54761eda="" class="Button-Icon i-material-symbols-add-rounded large"></div>
+              <!--v-if-->
+              <!--v-if-->
+              <!--v-if-->
+            </button><button data-v-54761eda="" type="button" class="Button contained primary large">
+              <!--v-if-->
+              <div data-v-54761eda="" class="Button-Icon flex items-center overflow-hidden large">
+                <div data-v-54761eda="" class="Button-Icon i-material-symbols-search-rounded large"></div>
+              </div>
+              <div data-v-54761eda="">Search</div>
+              <!--v-if-->
+            </button><button data-v-54761eda="" type="button" class="Button contained primary large">
+              <!--v-if-->
+              <!--v-if-->
+              <div data-v-54761eda="">Next</div>
+              <div data-v-54761eda="" class="Button-Icon flex items-center overflow-hidden large">
+                <div data-v-54761eda="" class="Button-Icon i-material-symbols-arrow-right-alt-rounded large"></div>
+              </div>
+            </button></div>
+        </div>
+      </div>
+      <div data-v-ac05e22a="" class="CardFooter"></div>
+    </div>
+  </div>
+</section>
+<section class="my-8">
+  <h2 class="text-3xl font-bold my-4 pt-6">Disabled</h2>
+  <div data-v-ac05e22a="" class="Card">
+    <div data-v-ac05e22a="" class="CardHeader"></div>
+    <div data-v-ac05e22a="" class="CardBody">
+      <div data-v-ac05e22a="" class="CardTitle"></div>
+      <div data-v-ac05e22a="" class="CardSubtitle"></div>
+      <div data-v-ac05e22a="" class="CardContent">
+        <div class="flex flex-col md:flex-row gap-4"><button data-v-54761eda="" type="button" class="Button contained primary disabled" disabled="">
+            <!--v-if-->
+            <!--v-if-->
+            <div data-v-54761eda="">Contained</div>
+            <!--v-if-->
+          </button><button data-v-54761eda="" type="button" class="Button outlined primary disabled" disabled="">
+            <!--v-if-->
+            <!--v-if-->
+            <div data-v-54761eda="">Outlined</div>
+            <!--v-if-->
+          </button><button data-v-54761eda="" type="button" class="Button text primary disabled" disabled="">
+            <!--v-if-->
+            <!--v-if-->
+            <div data-v-54761eda="">Text</div>
+            <!--v-if-->
+          </button></div>
+      </div>
+      <div data-v-ac05e22a="" class="CardFooter"></div>
+    </div>
+  </div>
+</section>
+<section class="my-8">
+  <h2 class="text-3xl font-bold my-4 pt-6">Loading</h2>
+  <div data-v-ac05e22a="" class="Card">
+    <div data-v-ac05e22a="" class="CardHeader"></div>
+    <div data-v-ac05e22a="" class="CardBody">
+      <div data-v-ac05e22a="" class="CardTitle"></div>
+      <div data-v-ac05e22a="" class="CardSubtitle"></div>
+      <div data-v-ac05e22a="" class="CardContent">
+        <div class="space-y-4"><button data-v-54761eda="" type="button" class="Button contained primary small">
+            <!--v-if-->
+            <div data-v-54761eda="" class="Button-Icon flex items-center overflow-hidden small">
+              <div data-v-54761eda="" class="Button-Icon i-material-symbols-search-rounded small"></div>
+            </div>
+            <div data-v-54761eda="">Search</div>
+            <!--v-if-->
+          </button><button data-v-54761eda="" type="button" class="Button contained primary">
+            <!--v-if-->
+            <div data-v-54761eda="" class="Button-Icon flex items-center overflow-hidden">
+              <div data-v-54761eda="" class="Button-Icon i-material-symbols-search-rounded"></div>
+            </div>
+            <div data-v-54761eda="">Search</div>
+            <!--v-if-->
+          </button><button data-v-54761eda="" type="button" class="Button contained primary large">
+            <!--v-if-->
+            <div data-v-54761eda="" class="Button-Icon flex items-center overflow-hidden large">
+              <div data-v-54761eda="" class="Button-Icon i-material-symbols-search-rounded large"></div>
+            </div>
+            <div data-v-54761eda="">Search</div>
+            <!--v-if-->
+          </button></div>
+      </div>
+      <div data-v-ac05e22a="" class="CardFooter"></div>
+    </div>
+  </div>
+</section>
+<section class="my-8">
+  <h2 class="text-3xl font-bold my-4 pt-6">Colors</h2>
+  <div data-v-ac05e22a="" class="Card">
+    <div data-v-ac05e22a="" class="CardHeader"></div>
+    <div data-v-ac05e22a="" class="CardBody">
+      <div data-v-ac05e22a="" class="CardTitle"></div>
+      <div data-v-ac05e22a="" class="CardSubtitle"></div>
+      <div data-v-ac05e22a="" class="CardContent">
+        <div class="space-y-4">
+          <div class="flex flex-col md:flex-row flex-wrap gap-4"><button data-v-54761eda="" type="button" class="Button contained primary">
+              <!--v-if-->
+              <!--v-if-->
+              <div data-v-54761eda="">Primary</div>
+              <!--v-if-->
+            </button><button data-v-54761eda="" type="button" class="Button contained secondary">
+              <!--v-if-->
+              <!--v-if-->
+              <div data-v-54761eda="">Secondary</div>
+              <!--v-if-->
+            </button><button data-v-54761eda="" type="button" class="Button contained success">
+              <!--v-if-->
+              <!--v-if-->
+              <div data-v-54761eda="">Success</div>
+              <!--v-if-->
+            </button><button data-v-54761eda="" type="button" class="Button contained danger">
+              <!--v-if-->
+              <!--v-if-->
+              <div data-v-54761eda="">Danger</div>
+              <!--v-if-->
+            </button><button data-v-54761eda="" type="button" class="Button contained warning">
+              <!--v-if-->
+              <!--v-if-->
+              <div data-v-54761eda="">Warning</div>
+              <!--v-if-->
+            </button><button data-v-54761eda="" type="button" class="Button contained info">
+              <!--v-if-->
+              <!--v-if-->
+              <div data-v-54761eda="">Info</div>
+              <!--v-if-->
+            </button></div>
+          <div class="flex flex-col md:flex-row flex-wrap gap-4"><button data-v-54761eda="" type="button" class="Button outlined primary">
+              <!--v-if-->
+              <!--v-if-->
+              <div data-v-54761eda="">Primary</div>
+              <!--v-if-->
+            </button><button data-v-54761eda="" type="button" class="Button outlined secondary">
+              <!--v-if-->
+              <!--v-if-->
+              <div data-v-54761eda="">Secondary</div>
+              <!--v-if-->
+            </button><button data-v-54761eda="" type="button" class="Button outlined success">
+              <!--v-if-->
+              <!--v-if-->
+              <div data-v-54761eda="">Success</div>
+              <!--v-if-->
+            </button><button data-v-54761eda="" type="button" class="Button outlined danger">
+              <!--v-if-->
+              <!--v-if-->
+              <div data-v-54761eda="">Danger</div>
+              <!--v-if-->
+            </button><button data-v-54761eda="" type="button" class="Button outlined warning">
+              <!--v-if-->
+              <!--v-if-->
+              <div data-v-54761eda="">Warning</div>
+              <!--v-if-->
+            </button><button data-v-54761eda="" type="button" class="Button outlined info">
+              <!--v-if-->
+              <!--v-if-->
+              <div data-v-54761eda="">Info</div>
+              <!--v-if-->
+            </button></div>
+          <div class="flex flex-col md:flex-row flex-wrap gap-4"><button data-v-54761eda="" type="button" class="Button text primary">
+              <!--v-if-->
+              <!--v-if-->
+              <div data-v-54761eda="">Primary</div>
+              <!--v-if-->
+            </button><button data-v-54761eda="" type="button" class="Button text secondary">
+              <!--v-if-->
+              <!--v-if-->
+              <div data-v-54761eda="">Secondary</div>
+              <!--v-if-->
+            </button><button data-v-54761eda="" type="button" class="Button text success">
+              <!--v-if-->
+              <!--v-if-->
+              <div data-v-54761eda="">Success</div>
+              <!--v-if-->
+            </button><button data-v-54761eda="" type="button" class="Button text danger">
+              <!--v-if-->
+              <!--v-if-->
+              <div data-v-54761eda="">Danger</div>
+              <!--v-if-->
+            </button><button data-v-54761eda="" type="button" class="Button text warning">
+              <!--v-if-->
+              <!--v-if-->
+              <div data-v-54761eda="">Warning</div>
+              <!--v-if-->
+            </button><button data-v-54761eda="" type="button" class="Button text info">
+              <!--v-if-->
+              <!--v-if-->
+              <div data-v-54761eda="">Info</div>
+              <!--v-if-->
+            </button></div>
+        </div>
+      </div>
+      <div data-v-ac05e22a="" class="CardFooter"></div>
+    </div>
+  </div>
+</section>
+<section class="my-8">
+  <h2 class="text-3xl font-bold my-4 pt-6">Template</h2>
+  <div data-v-ac05e22a="" class="Card">
+    <div data-v-ac05e22a="" class="CardHeader"></div>
+    <div data-v-ac05e22a="" class="CardBody">
+      <div data-v-ac05e22a="" class="CardTitle"></div>
+      <div data-v-ac05e22a="" class="CardSubtitle"></div>
+      <div data-v-ac05e22a="" class="CardContent"><button data-v-54761eda="" type="button" class="Button outlined primary"> Template <div data-v-cb727b1e="" class="flex">
+            <div data-v-cb727b1e="" class="Chip primary">5
+              <!--v-if-->
+            </div>
+          </div></button></div>
+      <div data-v-ac05e22a="" class="CardFooter"></div>
+    </div>
+  </div>
+</section>
+<section class="my-8">
+  <h2 class="text-3xl font-bold my-4 pt-6">Button Group</h2>
+  <div data-v-ac05e22a="" class="Card">
+    <div data-v-ac05e22a="" class="CardHeader"></div>
+    <div data-v-ac05e22a="" class="CardBody">
+      <div data-v-ac05e22a="" class="CardTitle"></div>
+      <div data-v-ac05e22a="" class="CardSubtitle"></div>
+      <div data-v-ac05e22a="" class="CardContent">
+        <div data-v-496d006f="" class="ButtonGroup"><button data-v-54761eda="" type="button" class="Button contained primary">
+            <!--v-if-->
+            <!--v-if-->
+            <div data-v-54761eda="">Year</div>
+            <!--v-if-->
+          </button><button data-v-54761eda="" type="button" class="Button contained primary">
+            <!--v-if-->
+            <!--v-if-->
+            <div data-v-54761eda="">Month</div>
+            <!--v-if-->
+          </button><button data-v-54761eda="" type="button" class="Button contained primary">
+            <!--v-if-->
+            <!--v-if-->
+            <div data-v-54761eda="">Week</div>
+            <!--v-if-->
+          </button><button data-v-54761eda="" type="button" class="Button contained primary">
+            <!--v-if-->
+            <!--v-if-->
+            <div data-v-54761eda="">Day</div>
+            <!--v-if-->
+          </button></div>
+      </div>
+      <div data-v-ac05e22a="" class="CardFooter"></div>
+    </div>
+  </div>
+  <section class="my-4">
+    <h3 class="text-2xl font-semibold my-4 pt-2">Controlled</h3>
+    <div data-v-ac05e22a="" class="Card">
+      <div data-v-ac05e22a="" class="CardHeader"></div>
+      <div data-v-ac05e22a="" class="CardBody">
+        <div data-v-ac05e22a="" class="CardTitle"></div>
+        <div data-v-ac05e22a="" class="CardSubtitle"></div>
+        <div data-v-ac05e22a="" class="CardContent">
+          <div data-v-496d006f="" class="ButtonGroup"><button data-v-54761eda="" type="button" class="Button outlined primary">
+              <!--v-if-->
+              <!--v-if-->
+              <div data-v-54761eda="">Year</div>
+              <!--v-if-->
+            </button><button data-v-54761eda="" type="button" class="Button outlined primary">
+              <!--v-if-->
+              <!--v-if-->
+              <div data-v-54761eda="">Month</div>
+              <!--v-if-->
+            </button><button data-v-54761eda="" type="button" class="Button outlined primary">
+              <!--v-if-->
+              <!--v-if-->
+              <div data-v-54761eda="">Week</div>
+              <!--v-if-->
+            </button><button data-v-54761eda="" type="button" class="Button outlined primary">
+              <!--v-if-->
+              <!--v-if-->
+              <div data-v-54761eda="">Day</div>
+              <!--v-if-->
+            </button></div>
+        </div>
+        <div data-v-ac05e22a="" class="CardFooter"></div>
+      </div>
+    </div>
+  </section>
+</section>"
 `;
