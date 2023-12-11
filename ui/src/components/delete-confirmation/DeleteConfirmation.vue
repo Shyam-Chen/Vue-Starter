@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { computed, watch } from 'vue';
+import { useLocaler, useLocale } from 'vue-localer';
 
 import Dialog from '../dialog/Dialog.vue';
 import TextField from '../text-field/TextField.vue';
@@ -19,7 +20,10 @@ const emit = defineEmits<{
   (evt: 'delete'): void;
 }>();
 
-const modelValueModel = computed({
+const localer = useLocaler();
+const locale = useLocale();
+
+const model = computed({
   get: () => props.modelValue || false,
   set: (val) => emit('update:modelValue', val),
 });
@@ -30,11 +34,13 @@ const expectedModel = computed({
 });
 
 const expectedLabel = computed(
-  () => `To confirm deletion, type "${props.received}" in the box below`,
+  () =>
+    localer.f(locale.value?.confirmDeletionLabel, { received: props.received }) ||
+    `To confirm deletion, type "${props.received}" in the box below`,
 );
 
 watch(
-  () => modelValueModel.value,
+  () => model.value,
   () => {
     expectedModel.value = '';
   },
@@ -42,17 +48,21 @@ watch(
 </script>
 
 <template>
-  <Dialog v-model="modelValueModel" title="Confirm Deletion?" class="!w-150">
+  <Dialog v-model="model" :title="locale.confirmDeletion || 'Confirm Deletion?'" class="!w-150">
     <div class="space-y-4">
-      <div>Once deleted, the data must be re-created if needed.</div>
+      <div>
+        {{
+          locale.confirmDeletionContent || 'Once deleted, the data must be re-created if needed.'
+        }}
+      </div>
 
       <TextField v-model:value="expectedModel" :label="expectedLabel" />
     </div>
 
     <div class="flex justify-center gap-2 mt-8">
-      <Button color="secondary" @click="modelValueModel = false">
+      <Button color="secondary" @click="model = false">
         <div class="i-mdi-undo w-5 h-5"></div>
-        Cancel
+        {{ locale.cancel || 'Cancel' }}
       </Button>
 
       <Button
@@ -66,7 +76,7 @@ watch(
 
         <template v-else>
           <div class="i-mdi-delete-outline w-5 h-5"></div>
-          Delete
+          {{ locale.delete || 'Delete' }}
         </template>
       </Button>
     </div>
