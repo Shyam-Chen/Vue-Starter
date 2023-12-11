@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { computed } from 'vue';
+import { ref, computed } from 'vue';
 import uniqueId from 'lodash/uniqueId';
 
 defineOptions({
@@ -15,14 +15,28 @@ const props = defineProps<{
 
 const emit = defineEmits<{
   (evt: 'update:value', val: boolean): void;
+  (evt: 'focus', val: Event): void;
+  (evt: 'blur', val: Event): void;
 }>();
 
-const uid = uniqueId('switch-');
+const uid = uniqueId('Switch-');
 
-const switchValue = computed({
+const valueModel = computed({
   get: () => props.value || false,
   set: (val) => emit('update:value', val),
 });
+
+const focused = ref(false);
+
+function onFocus(evt: Event) {
+  focused.value = true;
+  emit('focus', evt);
+}
+
+function onBlur(evt: Event) {
+  focused.value = false;
+  emit('blur', evt);
+}
 </script>
 
 <template>
@@ -35,26 +49,28 @@ const switchValue = computed({
       <div class="relative">
         <input
           :id="uid"
-          v-model="switchValue"
+          v-model="valueModel"
           v-bind="$attrs"
           type="checkbox"
+          role="switch"
           :disabled="disabled"
           class="sr-only"
+          @focus="onFocus"
+          @blur="onBlur"
         />
 
         <div
-          class="block w-12 h-6 rounded-full"
+          class="w-10.5 h-6 rounded-full"
           :class="{
-            'bg-gray-400': !switchValue || !checked,
-            'bg-primary-500': switchValue || checked,
+            'bg-gray-300 dark:bg-gray-500': !valueModel || !checked,
+            'bg-primary-500 dark:bg-primary-500': valueModel || checked,
+            'ring-2 ring-primary-500/40': focused,
           }"
         ></div>
 
         <div
-          class="dot absolute left-1 top-0.5 w-5 h-5 bg-white rounded-full transition"
-          :class="{
-            'translate-x-full': switchValue || checked,
-          }"
+          class="absolute ms-0.5 top-1/2 -translate-y-1/2 w-5 h-5 bg-white dark:bg-white/60 rounded-full transition"
+          :class="{ 'translate-x-4.5': valueModel || checked }"
         ></div>
       </div>
 

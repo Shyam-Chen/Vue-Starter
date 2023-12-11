@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
-import { XBreadcrumb, XSlider, XInputMask } from '@x/ui';
+import { XBreadcrumb, XCard, XSlider, XInputMask } from '@x/ui';
 
 const flux = reactive({
   slider: '70',
@@ -12,21 +12,22 @@ const flux = reactive({
 <template>
   <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Data Entry' }, { text: 'Slider' }]" />
 
-  <div class="my-4">
-    <div class="text-3xl font-bold">Slider</div>
-  </div>
+  <h1 class="text-4xl font-extrabold my-4">Slider</h1>
 
-  <div class="flex flex-col border p-4 my-4 gap-2">
-    <div class="font-bold">Basic</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4">Basic</h2>
+    <p class="my-4">Two-way value binding is defined using `v-model:value`.</p>
 
-    <div class="flex justify-center">
-      <XSlider v-model:value="flux.slider" />
-    </div>
+    <XCard>
+      <div class="flex justify-center">
+        <XSlider v-model:value="flux.slider" />
+      </div>
+    </XCard>
 
     <div>
       <pre>Output: {{ flux.slider }}</pre>
     </div>
-  </div>
+  </section>
 
   <div class="flex flex-col border p-4 my-4 gap-2">
     <div class="font-bold">Disabled</div>

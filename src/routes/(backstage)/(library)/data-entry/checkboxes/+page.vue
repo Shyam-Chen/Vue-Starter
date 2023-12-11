@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { reactive, watch } from 'vue';
-import { XBreadcrumb, XCheckbox, XCheckboxGroup } from '@x/ui';
+import { XBreadcrumb, XCard, XCheckbox, XCheckboxGroup } from '@x/ui';
 
 const flux = reactive({
   checkbox1: false,
@@ -38,69 +38,74 @@ watch(
 </script>
 
 <template>
-  <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Data Entry' }, { text: 'Checkboxes' }]" />
+  <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Data Entry' }, { text: 'Checkbox' }]" />
 
-  <div class="my-4">
-    <div class="text-3xl font-bold">Checkboxes</div>
-  </div>
+  <h1 class="text-4xl font-extrabold my-4">Checkbox</h1>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Basic examples</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4">Basic</h2>
 
-    <div class="flex justify-center">
-      <XCheckbox v-model:value="flux.checkbox1">Checkbox 1</XCheckbox>
-    </div>
+    <XCard>
+      <div class="flex justify-center">
+        <XCheckbox v-model:value="flux.checkbox1">Checkbox 1</XCheckbox>
+      </div>
+    </XCard>
+  </section>
 
-    <div class="flex justify-center">{{ flux.checkbox1 }}</div>
-  </div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Readonly</h2>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Checked and Readonly</div>
+    <XCard>
+      <div class="flex justify-center gap-4">
+        <XCheckbox checked readonly>Checkbox (checked)</XCheckbox>
+        <XCheckbox readonly>Checkbox (unchecked)</XCheckbox>
+      </div>
+    </XCard>
+  </section>
 
-    <div class="flex justify-center">
-      <XCheckbox checked readonly>Checkbox (checked)</XCheckbox>
-    </div>
-  </div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Invalid</h2>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Invalid</div>
+    <XCard>
+      <div class="flex justify-center gap-4">
+        <XCheckbox invalid>Checkbox</XCheckbox>
+        <XCheckbox invalid="Error message">Checkbox</XCheckbox>
+      </div>
+    </XCard>
+  </section>
 
-    <div class="flex justify-center">
-      <XCheckbox invalid="Error message">Checkbox (invalid)</XCheckbox>
-    </div>
-  </div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Disabled</h2>
 
-  <div class="flex flex-col border p-4 mb-4 space-y-4">
-    <div class="mb-2">Disabled</div>
+    <XCard>
+      <div class="flex justify-center gap-4">
+        <XCheckbox v-model:value="flux.checkbox1" disabled>Checkbox 1</XCheckbox>
+        <XCheckbox checked disabled>Checkbox (checked + disabled)</XCheckbox>
+      </div>
+    </XCard>
+  </section>
 
-    <div class="flex justify-center">
-      <XCheckbox v-model:value="flux.checkbox1" disabled>Checkbox 1</XCheckbox>
-    </div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Indeterminate</h2>
 
-    <div class="flex justify-center">
-      <XCheckbox checked disabled>Checkbox (checked + disabled)</XCheckbox>
-    </div>
-  </div>
+    <XCard>
+      <div class="flex justify-center">
+        <XCheckbox v-model:value="flux.checkbox2" :indeterminate="flux.indeterminate2">
+          Checkbox 2
+        </XCheckbox>
+      </div>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Indeterminate</div>
-
-    <div class="flex justify-center">
-      <XCheckbox v-model:value="flux.checkbox2" :indeterminate="flux.indeterminate2">
-        Checkbox 2
-      </XCheckbox>
-    </div>
-
-    <div class="flex justify-center mt-2 space-x-6">
-      <XCheckbox
-        v-for="(item, index) in flux.checkboxes2"
-        :key="index"
-        v-model:value="item.checked"
-      >
-        Checkbox 2-{{ index + 1 }}
-      </XCheckbox>
-    </div>
-  </div>
+      <div class="flex justify-center mt-2 space-x-6">
+        <XCheckbox
+          v-for="(item, index) in flux.checkboxes2"
+          :key="index"
+          v-model:value="item.checked"
+        >
+          Checkbox 2-{{ index + 1 }}
+        </XCheckbox>
+      </div>
+    </XCard>
+  </section>
 
   <div class="flex flex-col border p-4 mb-4 space-y-4">
     <div class="mb-2">Group</div>

@@ -50,6 +50,8 @@ const flux = reactive({
     const center = window.innerHeight / 2;
     const middle = window.innerWidth / 2;
 
+    if (!panel.value) return;
+
     if (rect.top > center) {
       panel.value.style.top = `${rect.top}px`;
       flux.direction = 'up';

@@ -7,7 +7,7 @@ export interface Props extends /* @vue-ignore */ InputHTMLAttributes {
   value?: boolean;
   checked?: boolean;
   indeterminate?: boolean;
-  invalid?: string | boolean;
+  invalid?: boolean | string;
   disabled?: boolean;
   readonly?: boolean;
 }
