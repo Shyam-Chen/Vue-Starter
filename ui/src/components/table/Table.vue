@@ -1,9 +1,10 @@
 <script lang="ts" setup generic="T extends object">
 import type { VNode } from 'vue';
 import { computed, reactive, watch, toRef } from 'vue';
+import { useLocaler, useLocale } from 'vue-localer';
 
 import type staticTable from '../../utilities/static-table/staticTable';
-import ProgressBar from '../progress-bar/ProgressBar.vue';
+import Spinner from '../spinner/Spinner.vue';
 import Button from '../button/Button.vue';
 import Select from '../select/Select.vue';
 import Checkbox from '../checkbox/Checkbox.vue';
@@ -50,6 +51,9 @@ defineSlots<{
   collapsible(props: { row: T }): VNode;
   spanable(props: {}): VNode;
 }>();
+
+const localer = useLocaler();
+const locale = useLocale();
 
 const tableValue = computed({
   get: () => props.value || [],
@@ -132,6 +136,24 @@ const flux = reactive({
   },
 });
 
+const paginationInfo = computed(() => {
+  if (locale.value.paginationInfo) {
+    return localer.f(locale.value.paginationInfo, [
+      flux.currentPage * flux.rowsPerPage - flux.rowsPerPage + 1,
+      flux.currentPage * flux.rowsPerPage > countRef.value
+        ? countRef.value
+        : flux.currentPage * flux.rowsPerPage,
+      countRef.value,
+    ]);
+  }
+
+  return `${flux.currentPage * flux.rowsPerPage - flux.rowsPerPage + 1}-${
+    flux.currentPage * flux.rowsPerPage > countRef.value
+      ? countRef.value
+      : flux.currentPage * flux.rowsPerPage
+  } of ${countRef.value}`;
+});
+
 watch(
   () => controlValue.value,
   (val) => {
@@ -205,8 +227,11 @@ watch(
 
 <template>
   <div class="relative">
-    <div v-if="loading" class="absolute top-10 z-11 w-full">
-      <ProgressBar />
+    <div
+      v-if="loading"
+      class="absolute inset-0 z-11 flex justify-center items-center bg-gray-500/50 dark:bg-gray-200/20 rounded-md"
+    >
+      <Spinner class="w-10 h-10" />
     </div>
 
     <div class="Table-Wrapper" :class="{ 'max-h-100': stickyHeader }">
@@ -260,7 +285,7 @@ watch(
             <template v-for="row in flux.rows" :key="row._id || row.id">
               <Row
                 class="sticky-tr"
-                :class="{ 'bg-primary-500/25 important:hover:bg-primary-500/50': row.checked }"
+                :class="{ 'bg-primary-300/25 !hover:bg-primary-400/25': row.checked }"
                 @click="flux.clickRow(row)"
               >
                 <Cell v-if="selectable">
@@ -312,11 +337,12 @@ watch(
           </tbody>
 
           <tbody v-else>
-            <Row>
+            <Row class="bg-gray-200/20">
               <Cell :colspan="selectable ? Number(columns?.length) + 1 : columns?.length">
-                <div class="w-full min-h-100 flex flex-col justify-center items-center gap-2">
-                  <div class="i-mdi-package-variant w-24 h-24"></div>
-                  <div class="text-3xl font-bold">No Data</div>
+                <div class="w-full min-h-389.5px flex flex-col justify-center items-center">
+                  <div class="text-xl font-medium text-stone-300">
+                    {{ locale.noData || 'No data to display' }}
+                  </div>
                 </div>
               </Cell>
             </Row>
@@ -330,7 +356,7 @@ watch(
       class="flex flex-col md:flex-row items-center justify-end p-4 gap-4 text-sm"
     >
       <div class="Table-RowsPerPage">
-        Rows per page:
+        {{ locale.rowsPerPage || 'Rows per page:' }}
         <div class="w-20 ml-2">
           <Select
             v-model:value="flux.rowsPerPage"
@@ -340,24 +366,16 @@ watch(
         </div>
       </div>
 
-      <div class="flex items-center">
-        {{ flux.currentPage * flux.rowsPerPage - flux.rowsPerPage + 1 }}-{{
-          flux.currentPage * flux.rowsPerPage > countRef
-            ? countRef
-            : flux.currentPage * flux.rowsPerPage
-        }}
-        of
-        {{ countRef }}
-      </div>
+      <div class="flex items-center">{{ paginationInfo }}</div>
 
       <div class="flex gap-4">
         <Button variant="text" color="secondary" @click="flux.previousPage">
           <div class="i-fa-angle-left w-4 h-4"></div>
-          Previous
+          {{ locale.previousPage || 'Previous' }}
         </Button>
 
         <Button variant="text" color="secondary" @click="flux.nextPage">
-          Next
+          {{ locale.nextPage || 'Next' }}
           <div class="i-fa-angle-right w-4 h-4"></div>
         </Button>
       </div>

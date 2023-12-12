@@ -239,7 +239,10 @@ defineExpose({
 
 <template>
   <div v-if="editor" :class="[disabled ? 'opacity-60 cursor-not-allowed' : '']">
-    <div v-if="!viewonly" class="flex px-2 py-1 border border-b-0 border-slate-400 rounded-t">
+    <div
+      v-if="!viewonly"
+      class="flex flex-wrap px-2 py-1 border border-b-0 border-slate-400 rounded-t"
+    >
       <div class="flex gap-1">
         <div class="i-mdi-format-paragraph w-6 h-6" @click="setParagraph"></div>
         <div class="i-mdi-format-header-1 w-6 h-6" @click="toggleHeading(1)"></div>

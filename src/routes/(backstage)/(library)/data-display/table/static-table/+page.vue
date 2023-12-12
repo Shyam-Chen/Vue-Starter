@@ -3,6 +3,7 @@ import { XBreadcrumb } from '@x/ui';
 
 import Basic from './Basic.vue';
 import Selectable from './Selectable.vue';
+import NoData from './NoData.vue';
 </script>
 
 <template>
@@ -19,4 +20,5 @@ import Selectable from './Selectable.vue';
 
   <Basic class="my-8" />
   <Selectable class="my-8" />
+  <NoData class="my-8" />
 </template>
