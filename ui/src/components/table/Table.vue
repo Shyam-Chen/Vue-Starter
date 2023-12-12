@@ -201,6 +201,12 @@ watch(
   (val) => {
     if (props.static && props.rows?.length) {
       flux.rows = props.static(props.rows, controlValue.value);
+
+      const checked = props.rows.every((item: any) => item.checked);
+      const unchecked = props.rows.every((item: any) => !item.checked);
+      flux.indeterminate = !(checked || unchecked);
+      if (checked) flux.selecteAll = true;
+      if (unchecked) flux.selecteAll = false;
     } else {
       flux.rows = val || [];
     }
@@ -211,7 +217,7 @@ watch(
 watch(
   () => flux.rows,
   (val) => {
-    if (val.length) {
+    if (!props.static) {
       const checked = val.every((item) => item.checked);
       const unchecked = val.every((item) => !item.checked);
 
@@ -229,7 +235,7 @@ watch(
   <div class="relative">
     <div
       v-if="loading"
-      class="absolute inset-0 z-11 flex justify-center items-center bg-gray-500/50 dark:bg-gray-200/20 rounded-md"
+      class="absolute inset-0 z-11 flex justify-center items-center bg-white/80 dark:bg-gray-200/20 rounded-md"
     >
       <Spinner class="w-10 h-10" />
     </div>

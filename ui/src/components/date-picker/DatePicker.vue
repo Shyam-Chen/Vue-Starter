@@ -1,7 +1,17 @@
 <script lang="ts" setup>
 import { nextTick, ref, computed, reactive, watch, onMounted, onUnmounted } from 'vue';
+import { useLocaler, useLocale } from 'vue-localer';
 import { onClickOutside } from '@vueuse/core';
-import { format as _format, add, sub, getYear, setYear, getMonth, setMonth } from 'date-fns';
+import {
+  format as _format,
+  intlFormat,
+  add,
+  sub,
+  getYear,
+  setYear,
+  getMonth,
+  setMonth,
+} from 'date-fns';
 import chunk from 'lodash/chunk';
 import range from 'lodash/range';
 import uniqueId from 'lodash/uniqueId';
@@ -35,7 +45,14 @@ const props = withDefaults(
 
 const emit = defineEmits<{
   (evt: 'update:value', val: string): void;
+  (evt: 'change', val: string): void;
 }>();
+
+const localer = useLocaler();
+const locale = useLocale();
+
+const _weekdays = computed(() => locale.value?.weekdays || props.weekdays);
+const _months = computed(() => locale.value?.months || props.months);
 
 const uid = uniqueId('date-picker-');
 
@@ -226,6 +243,7 @@ const flux = reactive({
 
     flux.showDatePicker = false;
     emit('update:value', date);
+    emit('change', date);
   },
   selectYear(val: number) {
     flux.showYears = false;
@@ -301,6 +319,7 @@ onUnmounted(() => {
       :disabled="disabled"
       append="i-fa-calendar-o"
       readonly
+      @clear="modelDate = ''"
       @focus="flux.openPicker"
       @append="flux.openPicker"
     >
@@ -330,7 +349,15 @@ onUnmounted(() => {
             class="cursor-pointer hover:bg-slate-200 dark:hover:bg-slate-600 px-2 rounded"
             @click="flux.changeYearMonth"
           >
-            {{ _format(flux.currentMoment, 'MMM yyyy') }}
+            {{
+              localer.lang.value
+                ? intlFormat(
+                    flux.currentMoment,
+                    { year: 'numeric', month: 'short' },
+                    { locale: localer.lang.value },
+                  )
+                : _format(flux.currentMoment, 'MMM yyyy')
+            }}
           </div>
 
           <div v-if="flux.showYears">{{ flux.yearRange[0] }} ~ {{ flux.yearRange[15] }}</div>
@@ -346,7 +373,7 @@ onUnmounted(() => {
 
         <div v-show="flux.showWeeks" class="grid grid-cols-7 gap-1 text-center">
           <div
-            v-for="(weekday, weekdayIndex) in weekdays"
+            v-for="(weekday, weekdayIndex) in _weekdays"
             :key="weekdayIndex"
             class="text-sm text-slate-600"
           >
@@ -388,7 +415,7 @@ onUnmounted(() => {
 
         <div v-show="flux.showMonths" class="grid grid-cols-3 gap-1 text-center w-48">
           <div
-            v-for="(month, index) in months"
+            v-for="(month, index) in _months"
             :key="month"
             :value="index"
             class="flex justify-center items-center hover:bg-slate-200 dark:hover:bg-slate-600 rounded text-sm cursor-pointer"
