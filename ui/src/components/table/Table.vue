@@ -60,7 +60,7 @@ const tableValue = computed({
   set: (val) => emit('update:value', val),
 });
 
-const countRef = toRef(props, 'count', 0);
+const countRef = toRef(props, 'count', undefined);
 
 const controlValue = computed({
   get: () => {
@@ -233,13 +233,6 @@ watch(
 
 <template>
   <div class="relative">
-    <div
-      v-if="loading"
-      class="absolute inset-0 z-11 flex justify-center items-center bg-white/80 dark:bg-gray-200/20 rounded-md"
-    >
-      <Spinner class="w-10 h-10" />
-    </div>
-
     <div class="Table-Wrapper" :class="{ 'max-h-100': stickyHeader }">
       <table class="Table-Element">
         <thead>
@@ -286,7 +279,17 @@ watch(
           </tr>
         </thead>
 
-        <slot name="tbody">
+        <tbody v-if="loading">
+          <tr>
+            <td :colspan="selectable ? Number(columns?.length) + 1 : columns?.length">
+              <div class="w-full min-h-387px flex flex-col justify-center items-center">
+                <Spinner class="w-10 h-10" />
+              </div>
+            </td>
+          </tr>
+        </tbody>
+
+        <slot v-else name="tbody">
           <tbody v-if="flux.rows?.length">
             <template v-for="row in flux.rows" :key="row._id || row.id">
               <Row
@@ -345,7 +348,7 @@ watch(
           <tbody v-else>
             <Row class="bg-gray-200/20">
               <Cell :colspan="selectable ? Number(columns?.length) + 1 : columns?.length">
-                <div class="w-full min-h-389.5px flex flex-col justify-center items-center">
+                <div class="w-full min-h-389px flex flex-col justify-center items-center">
                   <div class="text-xl font-medium text-stone-300">
                     {{ locale.noData || 'No data to display' }}
                   </div>
@@ -358,7 +361,7 @@ watch(
     </div>
 
     <div
-      v-if="countRef"
+      v-if="typeof countRef === 'number'"
       class="flex flex-col md:flex-row items-center justify-end p-4 gap-4 text-sm"
     >
       <div class="Table-RowsPerPage">

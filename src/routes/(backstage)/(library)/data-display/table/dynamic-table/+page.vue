@@ -3,6 +3,7 @@ import { reactive } from 'vue';
 import { XBreadcrumb, XTable, XCollapse, XButton } from '@x/ui';
 
 import Basic from './Basic.vue';
+import Loading from './Loading.vue';
 import Controllable from './Controllable.vue';
 import Draggable from './Draggable.vue';
 
@@ -259,6 +260,8 @@ const flux = reactive({
     <div class="mt-2">{{ flux.tableChange }}</div>
   </div>
 
+  <Loading />
+
   <Controllable />
 
   <div class="flex flex-col border p-4 mb-4">
@@ -379,14 +382,6 @@ const flux = reactive({
 
     <div class="w-full bg-white dark:bg-slate-800 shadow-md rounded">
       <XTable stickyHeader :columns="flux.columns2" :rows="flux.dataTable1" />
-    </div>
-  </div>
-
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Loading</div>
-
-    <div class="w-full bg-white dark:bg-slate-800 shadow-md rounded">
-      <XTable stickyHeader loading :columns="flux.columns1" :rows="flux.dataTable1" :count="77" />
     </div>
   </div>
 
