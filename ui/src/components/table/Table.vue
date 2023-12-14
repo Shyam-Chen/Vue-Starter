@@ -327,7 +327,7 @@ watch(
                     v-else
                     class="min-h-38px flex items-center"
                     :class="{
-                      'dark:border-slate-600 px-6 py-3': col.sticky,
+                      'dark:border-slate-600 px-4 py-2': col.sticky,
                       'border-r-2': col.sticky === 'left',
                       'border-l-2': col.sticky === 'right',
                     }"

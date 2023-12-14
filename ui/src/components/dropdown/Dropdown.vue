@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { nextTick, ref, reactive, watch, onMounted, onUnmounted } from 'vue';
+import { nextTick, ref, reactive, watch, onUnmounted } from 'vue';
 
 import scrollableParent from '../../utilities/scrollable-parent/scrollableParent';
 
@@ -77,20 +77,8 @@ watch(
   },
 );
 
-onMounted(() => {
-  if (flux.scrollableParent && flux.scrollableParent instanceof HTMLElement) {
-    flux.scrollableParent?.addEventListener('scroll', flux.handleScroll);
-  } else {
-    window.addEventListener('scroll', flux.handleScroll);
-  }
-});
-
 onUnmounted(() => {
-  if (flux.scrollableParent && flux.scrollableParent instanceof HTMLElement) {
-    flux.scrollableParent?.removeEventListener('scroll', flux.handleScroll);
-  } else {
-    window.removeEventListener('scroll', flux.handleScroll);
-  }
+  flux.scrollableParent?.removeEventListener('scroll', flux.handleScroll);
 });
 </script>
 

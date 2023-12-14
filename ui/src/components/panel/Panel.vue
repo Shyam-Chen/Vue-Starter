@@ -40,11 +40,11 @@ const _status = computed(() => (typeof props.modelValue === 'boolean' ? model.va
 <template>
   <div class="w-full">
     <div
-      class="flex items-center px-4 py-3 text-zinc-600 dark:text-zinc-400 cursor-pointer shadow bg-white dark:bg-slate-800 transition rounded-md"
+      class="flex items-center px-4 lg:px-6 py-3 lg:py-4 text-zinc-600 dark:text-zinc-400 cursor-pointer shadow bg-white dark:bg-slate-800 transition rounded-md"
       :class="{ 'accordion-active': _status }"
       @click="flux.toggle"
     >
-      <div class="text-xl font-bold flex-1">
+      <div class="text-xl font-medium flex-1">
         <slot name="header">{{ title }}</slot>
       </div>
 
@@ -54,7 +54,7 @@ const _status = computed(() => (typeof props.modelValue === 'boolean' ? model.va
 
     <Collapse>
       <div v-show="_status" class="rounded-b-md shadow bg-white dark:bg-slate-800">
-        <div class="p-4">
+        <div class="p-4 lg:p-6">
           <slot name="content"></slot>
         </div>
       </div>
