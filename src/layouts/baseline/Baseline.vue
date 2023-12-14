@@ -106,14 +106,6 @@ const menuType = ref<MenuType>('');
 
 function menu(type: MenuType) {
   menuType.value = type;
-
-  if (type === 'appearance') {
-    //
-  }
-
-  if (type === 'language') {
-    //
-  }
 }
 
 watch(

@@ -6,7 +6,7 @@ import uniqueId from 'lodash/uniqueId';
 const props = defineProps<{
   id?: string;
   masked?: string;
-  unmasked?: any;
+  unmasked?: string | number;
   mask?: object;
   label?: string;
   required?: boolean;
@@ -16,7 +16,7 @@ const props = defineProps<{
 
 const emit = defineEmits<{
   (evt: 'update:masked', val?: string): void;
-  (evt: 'update:unmasked', val?: any): void;
+  (evt: 'update:unmasked', val?: string | number): void;
 }>();
 
 const maskedModel = computed({
@@ -38,7 +38,7 @@ function onAccept(evt: CustomEvent) {
 
 function onComplete(evt: CustomEvent) {
   const maskRef = evt.detail;
-  unmaskedModel.value = maskRef.unmaskedValue;
+  unmaskedModel.value = maskRef.unmaskedValue || undefined;
 }
 </script>
 
@@ -46,8 +46,8 @@ function onComplete(evt: CustomEvent) {
   <div class="InputMask-Wrapper" :class="[disabled ? 'opacity-60' : '']">
     <label :for="id || uid" class="InputMask-Label">
       <template v-if="label">{{ label }}</template>
-      <slot v-else></slot>
       <span v-if="required" class="text-red-500">*</span>
+      <slot></slot>
     </label>
 
     <div class="flex items-center w-full">
