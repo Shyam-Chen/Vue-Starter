@@ -15,7 +15,7 @@ defineProps<{
 
 <style lang="scss" scoped>
 .Link {
-  @apply font-bold text-sm text-primary-500;
+  @apply font-bold text-sm text-primary-500 cursor-pointer;
   @apply hover:underline hover:text-primary-600 dark:hover:text-primary-400;
 }
 </style>

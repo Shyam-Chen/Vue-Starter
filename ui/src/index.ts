@@ -12,6 +12,7 @@ export { default as XCheckbox } from './components/checkbox/Checkbox.vue';
 export { default as XCheckboxGroup } from './components/checkbox-group/CheckboxGroup.vue';
 export { default as XChip } from './components/chip/Chip.vue';
 export { default as XChipField } from './components/chip-field/ChipField.vue';
+export { default as XCode } from './components/code/Code.vue';
 export { default as XCodeBlock } from './components/code-block/CodeBlock.vue';
 export { default as XCollapse } from './components/collapse/Collapse.vue';
 export { default as XDatePicker } from './components/date-picker/DatePicker.vue';

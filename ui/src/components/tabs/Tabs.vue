@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import type { VNode } from 'vue';
 import { ref, computed, watch, provide, useSlots } from 'vue';
+import { useScroll } from '@vueuse/core';
 
 const props = defineProps<{
   modelValue?: number | string;
@@ -84,11 +85,32 @@ provide('Tabs', {
   modelValue: computed(() => props.modelValue),
   slotWrapper,
 });
+
+const hasScrollbar = ref(false);
+const tabWrapper = ref<HTMLDivElement>();
+const { arrivedState } = useScroll(tabWrapper);
+
+watch(
+  () => tabWrapper.value,
+  (el) => {
+    if (el) {
+      hasScrollbar.value = el.scrollWidth > el.clientWidth;
+    }
+  },
+);
 </script>
 
 <template>
   <div class="w-full">
-    <div class="Tabs-TabWrapper">
+    <div
+      ref="tabWrapper"
+      class="Tabs-TabWrapper"
+      :class="{
+        start: hasScrollbar && arrivedState.left,
+        range: hasScrollbar && !arrivedState.left && !arrivedState.right,
+        end: hasScrollbar && arrivedState.right,
+      }"
+    >
       <div
         v-for="(tab, idx) in tabs"
         :key="idx"
@@ -123,6 +145,26 @@ provide('Tabs', {
 .Tabs-TabWrapper {
   @apply flex flex-row items-center border-b border-gray-500;
   @apply overflow-x-auto;
+
+  --scroll-shadow-size: 5rem;
+
+  &.start {
+    mask-image: linear-gradient(90deg, black calc(100% - var(--scroll-shadow-size)), transparent);
+  }
+
+  &.range {
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      black var(--scroll-shadow-size),
+      black calc(100% - var(--scroll-shadow-size)),
+      transparent
+    );
+  }
+
+  &.end {
+    mask-image: linear-gradient(270deg, black calc(100% - var(--scroll-shadow-size)), transparent);
+  }
 
   &::-webkit-scrollbar {
     @apply w-0 h-0 bg-transparent;
