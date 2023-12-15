@@ -29,6 +29,7 @@ export { default as XIterator } from './components/iterator/Iterator.vue';
 export { default as XKeyboard } from './components/keyboard/Keyboard.vue';
 export { default as XLeaveConfirmation } from './components/leave-confirmation/LeaveConfirmation.vue';
 export { default as XLink } from './components/link/Link.vue';
+export { default as XListbox } from './components/listbox';
 export { default as XMonthPicker } from './components/month-picker/MonthPicker.vue';
 export { default as XMultiautocomplete } from './components/multiautocomplete/Multiautocomplete.vue';
 export { default as XMultiselect } from './components/multiselect/Multiselect.vue';

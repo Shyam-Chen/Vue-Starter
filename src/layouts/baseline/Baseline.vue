@@ -2,7 +2,16 @@
 import { ref, reactive, watch, onMounted } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import { useLocaler } from 'vue-localer';
-import { XTextField, XDialog, XButton, XSpinner, XPopover, XDrawer } from '@x/ui';
+import {
+  XTextField,
+  XDialog,
+  XButton,
+  XSpinner,
+  XPopover,
+  XListbox,
+  XDrawer,
+  XKeyboard,
+} from '@x/ui';
 import { request } from '@x/ui';
 import { useColorMode, useTextDirection } from '@vueuse/core';
 
@@ -123,6 +132,11 @@ const languageOptions = [
   { label: '한국어', value: 'ko-KR' },
   { label: '正體中文', value: 'zh-TW' },
 ];
+
+function changeLang(lang: string) {
+  localer.lang.value = lang;
+  localStorage.setItem('language', lang);
+}
 </script>
 
 <template>
@@ -155,11 +169,17 @@ const languageOptions = [
 
       <div class="flex-1"></div>
 
-      <XButton
-        icon="i-material-symbols-search-rounded"
-        variant="text"
-        @click="flux.searchDialog = true"
-      />
+      <div class="flex items-center">
+        <XButton
+          icon="i-material-symbols-search-rounded"
+          variant="text"
+          @click="flux.searchDialog = true"
+        />
+
+        <div class="hidden md:block">
+          <XKeyboard :keys="['command']">K</XKeyboard>
+        </div>
+      </div>
 
       <XButton icon="i-material-symbols-notifications-outline-rounded" variant="text" />
 
@@ -180,36 +200,35 @@ const languageOptions = [
 
               <div class="border dark:border-slate-600"></div>
 
-              <ul class="px-1 py-2">
-                <li
-                  class="px-3 py-1 cursor-pointer hover:text-primary-500 dark:hover:text-primary-100 hover:bg-primary-100 dark:hover:bg-primary-600 hover:rounded-md"
-                >
+              <XListbox>
+                <XListbox.Item>
                   <div class="flex items-center gap-2">
                     <div class="i-material-symbols-account-circle-outline w-5 h-5"></div>
                     <div>Profile</div>
                   </div>
-                </li>
-                <li
-                  class="px-3 py-1 cursor-pointer hover:text-primary-500 dark:hover:text-primary-100 hover:bg-primary-100 dark:hover:bg-primary-600 hover:rounded-md"
-                >
+                </XListbox.Item>
+                <XListbox.Item>
                   <div class="flex items-center gap-2">
                     <div class="i-material-symbols-settings-outline-rounded w-5 h-5"></div>
                     <div>Settings</div>
                   </div>
-                </li>
-              </ul>
+                </XListbox.Item>
+              </XListbox>
 
               <div class="border dark:border-slate-600"></div>
 
-              <ul class="px-1 py-2">
-                <li
-                  class="px-3 py-1 cursor-pointer hover:text-primary-500 dark:hover:text-primary-100 hover:bg-primary-100 dark:hover:bg-primary-600 hover:rounded-md"
-                  @click="menu('appearance')"
-                >
+              <XListbox>
+                <XListbox.Item @click="menu('appearance')">
                   <div class="flex justify-between items-center">
                     <div class="flex items-center me-2">
                       <div
-                        class="i-material-symbols-desktop-windows-outline-rounded w-5 h-5 me-2"
+                        class="w-5 h-5 me-2"
+                        :class="{
+                          'i-material-symbols-light-mode-outline-rounded': colorMode === 'light',
+                          'i-material-symbols-dark-mode-outline-rounded': colorMode === 'dark',
+                          'i-material-symbols-desktop-windows-outline-rounded':
+                            colorMode === 'auto',
+                        }"
                       ></div>
                       <div>
                         Appearance:
@@ -221,11 +240,8 @@ const languageOptions = [
 
                     <div class="i-material-symbols-chevron-right-rounded w-5 h-5"></div>
                   </div>
-                </li>
-                <li
-                  class="px-3 py-1 cursor-pointer hover:text-primary-500 dark:hover:text-primary-100 hover:bg-primary-100 dark:hover:bg-primary-600 hover:rounded-md"
-                  @click="menu('language')"
-                >
+                </XListbox.Item>
+                <XListbox.Item @click="menu('language')">
                   <div class="flex justify-between items-center">
                     <div class="flex items-center me-2">
                       <div class="i-material-symbols-translate-rounded w-5 h-5 me-2"></div>
@@ -239,22 +255,19 @@ const languageOptions = [
 
                     <div class="i-material-symbols-chevron-right-rounded w-5 h-5"></div>
                   </div>
-                </li>
-              </ul>
+                </XListbox.Item>
+              </XListbox>
 
               <div class="border dark:border-slate-600"></div>
 
-              <ul class="px-1 py-2">
-                <li
-                  class="px-3 py-1 cursor-pointer hover:text-primary-500 dark:hover:text-primary-100 hover:bg-primary-100 dark:hover:bg-primary-600 hover:rounded-md"
-                  @click="flux.signOut"
-                >
+              <XListbox>
+                <XListbox.Item @click="flux.signOut">
                   <div class="flex items-center gap-2">
                     <div class="i-material-symbols-logout-rounded w-5 h-5"></div>
                     <div>Sign out</div>
                   </div>
-                </li>
-              </ul>
+                </XListbox.Item>
+              </XListbox>
             </template>
 
             <template v-if="menuType === 'appearance'">
@@ -269,31 +282,30 @@ const languageOptions = [
 
               <div class="border dark:border-slate-600"></div>
 
-              <div class="px-4 py-2 text-sm">Setting applies to this browser only</div>
+              <div class="px-4 mt-3 text-sm text-gray-400 dark:text-gray-500">
+                Setting applies to this browser only
+              </div>
 
-              <ul class="px-1 py-2">
-                <li
-                  class="flex items-center gap-2 px-3 py-1 cursor-pointer hover:text-primary-500 dark:hover:text-primary-100 hover:bg-primary-100 dark:hover:bg-primary-600 hover:rounded-md"
-                  @click="colorMode = 'light'"
-                >
-                  <div class="i-material-symbols-light-mode-outline-rounded w-5 h-5"></div>
-                  <div>Light</div>
-                </li>
-                <li
-                  class="flex items-center gap-2 px-3 py-1 cursor-pointer hover:text-primary-500 dark:hover:text-primary-100 hover:bg-primary-100 dark:hover:bg-primary-600 hover:rounded-md"
-                  @click="colorMode = 'dark'"
-                >
-                  <div class="i-material-symbols-dark-mode-outline-rounded w-5 h-5"></div>
-                  <div>Dark</div>
-                </li>
-                <li
-                  class="flex items-center gap-2 px-3 py-1 cursor-pointer hover:text-primary-500 dark:hover:text-primary-100 hover:bg-primary-100 dark:hover:bg-primary-600 hover:rounded-md"
-                  @click="colorMode = 'auto'"
-                >
-                  <div class="i-material-symbols-desktop-windows-outline-rounded w-5 h-5"></div>
-                  <div>System</div>
-                </li>
-              </ul>
+              <XListbox>
+                <XListbox.Item @click="colorMode = 'light'">
+                  <div class="flex items-center gap-2">
+                    <div class="i-material-symbols-light-mode-outline-rounded w-5 h-5"></div>
+                    <div>Light</div>
+                  </div>
+                </XListbox.Item>
+                <XListbox.Item @click="colorMode = 'dark'">
+                  <div class="flex items-center gap-2">
+                    <div class="i-material-symbols-dark-mode-outline-rounded w-5 h-5"></div>
+                    <div>Dark</div>
+                  </div>
+                </XListbox.Item>
+                <XListbox.Item @click="colorMode = 'auto'">
+                  <div class="flex items-center gap-2">
+                    <div class="i-material-symbols-desktop-windows-outline-rounded w-5 h-5"></div>
+                    <div>System</div>
+                  </div>
+                </XListbox.Item>
+              </XListbox>
             </template>
 
             <template v-if="menuType === 'language'">
@@ -308,22 +320,23 @@ const languageOptions = [
 
               <div class="border dark:border-slate-600"></div>
 
-              <ul class="px-1 py-2">
-                <li
+              <XListbox>
+                <XListbox.Item
                   v-for="lang in languageOptions"
                   :key="lang.value"
-                  class="flex items-center gap-2 px-3 py-1 cursor-pointer hover:text-primary-500 dark:hover:text-primary-100 hover:bg-primary-100 dark:hover:bg-primary-600 hover:rounded-md"
-                  @click="localer.lang.value = lang.value"
+                  @click="changeLang(lang.value)"
                 >
-                  <div
-                    class="w-5 h-5"
-                    :class="{
-                      'i-material-symbols-check-small-rounded': lang.value === localer.lang.value,
-                    }"
-                  ></div>
-                  <div>{{ lang.label }}</div>
-                </li>
-              </ul>
+                  <div class="flex items-center gap-2">
+                    <div
+                      class="w-5 h-5"
+                      :class="{
+                        'i-material-symbols-check-small-rounded': lang.value === localer.lang.value,
+                      }"
+                    ></div>
+                    <div>{{ lang.label }}</div>
+                  </div>
+                </XListbox.Item>
+              </XListbox>
             </template>
           </div>
         </template>
