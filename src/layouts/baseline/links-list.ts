@@ -123,10 +123,10 @@ const links = [
     name: 'Feedback',
     sub: [
       { name: 'Alert', to: '/feedback/alert' },
-      { name: 'ConfirmLeaveDialog', to: '/feedback/confirm-leave-dialog' },
       { name: 'DeleteConfirmation', to: '/feedback/delete-confirmation' },
       { name: 'Dialogs', to: '/feedback/dialogs' },
       { name: 'Highlight', to: '/feedback/highlight' },
+      { name: 'LeaveConfirmation', to: '/feedback/leave-confirmation' },
       { name: 'Notification', to: '/feedback/notification' },
       { name: 'Progress', to: '/feedback/progress' },
       { name: 'Skeletons', to: '/feedback/skeletons' },

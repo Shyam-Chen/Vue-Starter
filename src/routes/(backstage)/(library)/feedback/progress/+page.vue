@@ -1,29 +1,37 @@
 <script lang="ts" setup>
-import { XBreadcrumb, XSpinner, XProgressBar } from '@x/ui';
+import { XBreadcrumb, XCard, XSpinner, XProgressBar, XProgressCircle } from '@x/ui';
 </script>
 
 <template>
   <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Feedback' }, { text: 'Progress' }]" />
 
-  <div class="my-4">
-    <div class="text-3xl font-bold">Progress</div>
-  </div>
+  <h1 class="text-4xl font-extrabold my-4">Progress</h1>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Basic</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4">Spinner</h2>
 
-    <div class="flex justify-center gap-4">
-      <XSpinner class="w-4 h-4" />
-      <XSpinner />
-      <XSpinner class="w-12 h-12" />
-    </div>
-  </div>
+    <XCard>
+      <div class="flex items-center justify-center gap-4">
+        <XSpinner class="w-4 h-4" />
+        <XSpinner />
+        <XSpinner class="w-12 h-12" />
+      </div>
+    </XCard>
+  </section>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Basic</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">ProgressBar</h2>
 
-    <div class="flex justify-center gap-4">
+    <XCard>
       <XProgressBar />
-    </div>
-  </div>
+    </XCard>
+  </section>
+
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">ProgressCircle</h2>
+
+    <XCard>
+      <XProgressCircle :percentage="72">72%</XProgressCircle>
+    </XCard>
+  </section>
 </template>

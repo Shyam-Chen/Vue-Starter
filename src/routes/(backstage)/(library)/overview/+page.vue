@@ -105,10 +105,10 @@ import { XBreadcrumb } from '@x/ui';
 
     <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
       <RouterLink to="/feedback/alert" class="card">Alert</RouterLink>
-      <RouterLink to="/feedback/confirm-leave-dialog" class="card">ConfirmLeaveDialog</RouterLink>
       <RouterLink to="/feedback/delete-confirmation" class="card">DeleteConfirmation</RouterLink>
       <RouterLink to="/feedback/dialogs" class="card">Dialogs</RouterLink>
       <RouterLink to="/feedback/highlight" class="card">Highlight</RouterLink>
+      <RouterLink to="/feedback/leave-confirmation" class="card">LeaveConfirmation</RouterLink>
       <RouterLink to="/feedback/notification" class="card">Notification</RouterLink>
       <RouterLink to="/feedback/progress" class="card">Progress</RouterLink>
       <RouterLink to="/feedback/skeletons" class="card">Skeletons</RouterLink>
