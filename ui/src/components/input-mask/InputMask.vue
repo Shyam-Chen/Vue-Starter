@@ -34,10 +34,6 @@ const uid = uniqueId('input-mask-');
 function onAccept(evt: CustomEvent) {
   const maskRef = evt.detail;
   maskedModel.value = maskRef.value;
-}
-
-function onComplete(evt: CustomEvent) {
-  const maskRef = evt.detail;
   unmaskedModel.value = maskRef.unmaskedValue || undefined;
 }
 </script>
@@ -62,7 +58,6 @@ function onComplete(evt: CustomEvent) {
         type="text"
         autocomplete="off"
         @accept="onAccept"
-        @complete="onComplete"
       />
     </div>
 

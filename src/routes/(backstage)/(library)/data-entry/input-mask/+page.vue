@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
-import { XBreadcrumb, XInputMask } from '@x/ui';
+import { XBreadcrumb, XCard, XInputMask, XCode } from '@x/ui';
 
 const flux = reactive({
   numberMasked: '',
@@ -20,103 +20,112 @@ const flux = reactive({
 <template>
   <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Data Entry' }, { text: 'InputMask' }]" />
 
-  <div class="my-4">
-    <div class="text-3xl font-bold">InputMask</div>
-  </div>
+  <h1 class="text-4xl font-extrabold my-4">InputMask</h1>
 
-  <div class="flex flex-col border my-4 p-4 gap-2">
-    <div class="text-xl font-bold">Number</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4">Number</h2>
 
-    <XInputMask
-      v-model:masked="flux.numberMasked"
-      v-model:unmasked.number="flux.numberUnmasked"
-      :mask="{
-        mask: Number,
-        min: -1_000_000_000_000,
-        max: 1_000_000_000_000,
-        thousandsSeparator: ',',
-      }"
-      label="Number Label"
-    />
+    <XCard>
+      <XInputMask
+        v-model:masked="flux.numberMasked"
+        v-model:unmasked.number="flux.numberUnmasked"
+        :mask="{
+          mask: Number,
+          min: -1_000_000_000_000,
+          max: 1_000_000_000_000,
+          thousandsSeparator: ',',
+        }"
+        label="Number Label"
+      />
 
-    <div>
-      <div>Masked: {{ flux.numberMasked }}</div>
+      <div class="mt-1">
+        <div>Masked: {{ flux.numberMasked }}</div>
 
-      <div>
-        Unmasked: {{ flux.numberUnmasked }}
-        <code class="text-sm text-gray-700 bg-gray-300 p-0.5 rounded">
-          {{ typeof flux.numberUnmasked }}
-        </code>
+        <div>
+          Unmasked: {{ flux.numberUnmasked }}
+          <XCode>{{ typeof flux.numberUnmasked }}</XCode>
+        </div>
       </div>
-    </div>
-  </div>
+    </XCard>
+  </section>
 
-  <div class="flex flex-col border my-4 p-4 gap-2">
-    <div class="text-xl font-bold">Percent</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Percent</h2>
 
-    <XInputMask
-      v-model:masked="flux.percentMasked"
-      v-model:unmasked="flux.percentUnmasked"
-      :mask="{
-        mask: 'num%',
-        lazy: false,
-        blocks: {
-          num: {
-            mask: Number,
-            scale: 0,
-            min: 0,
-            max: 100,
+    <XCard>
+      <XInputMask
+        v-model:masked="flux.percentMasked"
+        v-model:unmasked.number="flux.percentUnmasked"
+        :mask="{
+          mask: 'num%',
+          lazy: false,
+          blocks: {
+            num: {
+              mask: Number,
+              scale: 0,
+              min: 0,
+              max: 100,
+            },
           },
-        },
-      }"
-      label="Percent Label"
-    />
+        }"
+        label="Percent Label"
+      />
 
-    <div>
-      <div>Masked: {{ flux.percentMasked }}</div>
-      <div>Unmasked: {{ flux.percentUnmasked }}</div>
-    </div>
-  </div>
+      <div class="mt-1">
+        <div>Masked: {{ flux.percentMasked }}</div>
 
-  <div class="flex flex-col border my-4 p-4 gap-2">
-    <div class="text-xl font-bold">Phone</div>
+        <div>
+          Unmasked: {{ flux.percentUnmasked }}
+          <XCode>{{ typeof flux.percentUnmasked }}</XCode>
+        </div>
+      </div>
+    </XCard>
+  </section>
 
-    <XInputMask
-      v-model:masked="flux.phoneMasked"
-      v-model:unmasked="flux.phoneUnmasked"
-      :mask="{ mask: '+{1} (000) 000-0000' }"
-      label="Phone Label"
-    />
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Phone</h2>
 
-    <div>
-      <div>Masked: {{ flux.phoneMasked }}</div>
-      <div>Unmasked: {{ flux.phoneUnmasked }}</div>
-    </div>
-  </div>
+    <XCard>
+      <XInputMask
+        v-model:masked="flux.phoneMasked"
+        v-model:unmasked="flux.phoneUnmasked"
+        :mask="{ mask: '+{1} (000) 000-0000' }"
+        label="Phone Label"
+        placeholder="+1 (___) ___-____"
+      />
 
-  <div class="flex flex-col border my-4 p-4 gap-2">
-    <div class="text-xl font-bold">Currency</div>
+      <div class="mt-1">
+        <div>Masked: {{ flux.phoneMasked }}</div>
+        <div>Unmasked: {{ flux.phoneUnmasked }}</div>
+      </div>
+    </XCard>
+  </section>
 
-    <XInputMask
-      v-model:masked="flux.usdMasked"
-      v-model:unmasked="flux.usdUnmasked"
-      :mask="{
-        mask: '$num',
-        blocks: {
-          num: {
-            mask: Number,
-            thousandsSeparator: ',',
-            radix: '.',
-            scale: 2,
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Currency</h2>
+
+    <XCard>
+      <XInputMask
+        v-model:masked="flux.usdMasked"
+        v-model:unmasked="flux.usdUnmasked"
+        :mask="{
+          mask: '$num',
+          blocks: {
+            num: {
+              mask: Number,
+              thousandsSeparator: ',',
+              radix: '.',
+              scale: 2,
+            },
           },
-        },
-      }"
-      label="USD"
-    />
+        }"
+        label="USD"
+      />
 
-    <div>
-      <div>Masked: {{ flux.usdMasked }}</div>
-      <div>Unmasked: {{ flux.usdUnmasked }}</div>
-    </div>
-  </div>
+      <div class="mt-1">
+        <div>Masked: {{ flux.usdMasked }}</div>
+        <div>Unmasked: {{ flux.usdUnmasked }}</div>
+      </div>
+    </XCard>
+  </section>
 </template>

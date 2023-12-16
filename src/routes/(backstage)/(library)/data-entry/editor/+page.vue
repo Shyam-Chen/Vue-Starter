@@ -47,7 +47,7 @@ function setContent() {
   </section>
 
   <section class="my-8">
-    <h2 class="text-3xl font-bold my-4 py-6">Disabled</h2>
+    <h2 class="text-3xl font-bold my-4 pt-6">Disabled</h2>
 
     <XCard>
       <XRichTextEditor v-model="content" disabled />
@@ -55,7 +55,7 @@ function setContent() {
   </section>
 
   <section class="my-8">
-    <h2 class="text-3xl font-bold my-4 py-6">Viewonly</h2>
+    <h2 class="text-3xl font-bold my-4 pt-6">Viewonly</h2>
 
     <XCard>
       <XRichTextEditor v-model="content" viewonly />
