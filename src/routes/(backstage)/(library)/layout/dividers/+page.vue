@@ -1,13 +1,33 @@
 <script lang="ts" setup>
-import { XBreadcrumb } from '@x/ui';
+import { XBreadcrumb, XCard, XDivider } from '@x/ui';
 </script>
 
 <template>
-  <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Layout' }, { text: 'Dividers' }]" />
+  <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Layout' }, { text: 'Divider' }]" />
 
-  <div class="my-4">
-    <div class="text-3xl font-bold">Dividers</div>
-  </div>
+  <h1 class="text-4xl font-extrabold my-4">Divider</h1>
+
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4">Horizontal</h2>
+
+    <XCard>
+      <div>Text</div>
+      <XDivider />
+      <div>Text</div>
+    </XCard>
+  </section>
+
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Vertical</h2>
+
+    <XCard>
+      <div class="flex">
+        <div>Text</div>
+        <XDivider orientation="vertical" />
+        <div>Text</div>
+      </div>
+    </XCard>
+  </section>
 
   <div class="flex flex-col border p-4 mb-4">
     <div class="mb-2">

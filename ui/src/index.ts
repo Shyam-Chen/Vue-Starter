@@ -19,6 +19,7 @@ export { default as XDatePicker } from './components/date-picker/DatePicker.vue'
 export { default as XDateRangePicker } from './components/date-range-picker/DateRangePicker.vue';
 export { default as XDeleteConfirmation } from './components/delete-confirmation/DeleteConfirmation.vue';
 export { default as XDialog } from './components/dialog/Dialog.vue';
+export { default as XDivider } from './components/divider/Divider.vue';
 export { default as XDrawer } from './components/drawer/Drawer.vue';
 export { default as XDropdown } from './components/dropdown/Dropdown.vue';
 export { default as XDropzone } from './components/dropzone/Dropzone.vue';
