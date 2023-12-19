@@ -46,7 +46,7 @@ const schema = useValibotSchema(
       password: optional(
         string([
           minLength(1, valdnLocale.value.required),
-          minLength(8, localer.f(valdnLocale.value.minLength, 8)),
+          minLength(8, localer.f(valdnLocale.value.minLength, [8])),
         ]),
         '',
       ),
