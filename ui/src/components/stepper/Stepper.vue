@@ -1,14 +1,17 @@
 <script lang="ts" setup>
 import { ref, computed, provide, useSlots } from 'vue';
+import { useLocale } from 'vue-localer';
 
 import ProgressCircle from '../progress-circle/ProgressCircle.vue';
 
 const props = withDefaults(
   defineProps<{
     modelValue?: number;
+    completed?: string;
   }>(),
   {
     modelValue: 0,
+    completed: '',
   },
 );
 
@@ -17,6 +20,7 @@ defineEmits<{
 }>();
 
 const slots = useSlots();
+const locale = useLocale();
 
 const body = ref<HTMLDivElement>();
 
@@ -49,7 +53,7 @@ provide('Stepper', {
 
             <span
               class="text-success-500 dark:text-success-400 flex flex-col items-center flex-1 p-3"
-              >Completed!</span
+              >{{ completed || locale.completed || 'Completed!' }}</span
             >
           </template>
         </div>

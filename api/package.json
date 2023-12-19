@@ -6,11 +6,11 @@
   },
   "dependencies": {
     "@fastify/one-line-logger": "^1.2.0",
-    "fastify": "^4.24.3",
+    "fastify": "^4.25.1",
     "fastify-plugin": "^4.5.1"
   },
   "devDependencies": {
-    "vite": "^5.0.7",
+    "vite": "^5.0.10",
     "vite-plugin-fastify": "^1.2.5",
     "vite-plugin-fastify-routes": "^1.0.2"
   }

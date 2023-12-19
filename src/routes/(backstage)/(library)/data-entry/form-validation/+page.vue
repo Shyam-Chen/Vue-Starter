@@ -2,6 +2,7 @@
 import { XBreadcrumb } from '@x/ui';
 
 import Basic from './Basic.vue';
+import Touched from './Touched.vue';
 </script>
 
 <template>
@@ -12,4 +13,5 @@ import Basic from './Basic.vue';
   <h1 class="text-4xl font-extrabold my-4">Form Validation</h1>
 
   <Basic />
+  <Touched />
 </template>

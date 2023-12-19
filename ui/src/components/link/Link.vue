@@ -17,5 +17,6 @@ defineProps<{
 .Link {
   @apply font-bold text-sm text-primary-500 cursor-pointer;
   @apply hover:underline hover:text-primary-600 dark:hover:text-primary-400;
+  @apply focus:outline-none focus:underline focus:text-primary-600 dark:focus:text-primary-400;
 }
 </style>

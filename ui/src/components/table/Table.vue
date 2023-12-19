@@ -294,7 +294,7 @@ watch(
             <template v-for="row in flux.rows" :key="row._id || row.id">
               <Row
                 class="sticky-tr"
-                :class="{ 'bg-primary-300/25 !hover:bg-primary-400/25': row.checked }"
+                :class="{ 'bg-primary-300/25 !hover:bg-primary-400/25': selectable && row.checked }"
                 @click="flux.clickRow(row)"
               >
                 <Cell v-if="selectable">

@@ -7,7 +7,7 @@ const flux = reactive({
   numberUnmasked: undefined,
 
   percentMasked: '',
-  percentUnmasked: '',
+  percentUnmasked: undefined,
 
   phoneMasked: '',
   phoneUnmasked: '',
