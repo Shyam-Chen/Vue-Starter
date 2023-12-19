@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import { ref, reactive, computed, watch, watchEffect, nextTick, onMounted, onUnmounted } from 'vue';
+import { ref, reactive, computed, watch, watchEffect, nextTick } from 'vue';
 import { onClickOutside } from '@vueuse/core';
 import { useLocale } from 'vue-localer';
 
-import scrollableParent from '../../utilities/scrollable-parent/scrollableParent';
+import useScrollParent from '../../composables/scroll-parent/useScrollParent';
 
 import ProgressBar from '../progress-bar/ProgressBar.vue';
 import Fade from '../fade/Fade.vue';
@@ -89,8 +89,6 @@ const flux = reactive({
     selectValue.value = null;
     emit('change', null, null);
   },
-
-  scrollableParent: null as HTMLElement | null,
 });
 
 const target = ref();
@@ -135,8 +133,6 @@ const open = () => {
   flux.show = !flux.show;
 
   nextTick(() => {
-    flux.scrollableParent = scrollableParent(selectInput.value);
-
     resizePanel();
 
     /**
@@ -196,34 +192,12 @@ watchEffect(() => {
   }
 });
 
-const wrapper = computed(() => flux.scrollableParent);
-
-const handleScroll = () => {
-  if (flux.show) resizePanel();
-};
-
-watch(
-  () => wrapper.value,
-  (el) => {
-    el?.addEventListener('scroll', handleScroll);
+useScrollParent(
+  computed(() => selectPanel.value),
+  () => {
+    if (flux.show) resizePanel();
   },
 );
-
-onMounted(() => {
-  if (wrapper.value && wrapper.value instanceof HTMLElement) {
-    wrapper.value?.addEventListener('scroll', handleScroll);
-  } else {
-    window.addEventListener('scroll', handleScroll);
-  }
-});
-
-onUnmounted(() => {
-  if (wrapper.value && wrapper.value instanceof HTMLElement) {
-    wrapper.value?.removeEventListener('scroll', handleScroll);
-  } else {
-    window.removeEventListener('scroll', handleScroll);
-  }
-});
 </script>
 
 <template>
@@ -333,12 +307,11 @@ onUnmounted(() => {
   }
 
   &.focus {
-    @apply outline-0 ring-1 ring-primary-400 border-primary-400;
+    @apply border-primary-400 outline-0 ring-2 ring-primary-500/50;
   }
 
   &.invalid {
-    @apply border-red-500 dark:border-red-500;
-    @apply focus:ring-red-500 focus:border-red-500;
+    @apply border-red-500 ring-red-500/50;
   }
 
   &.disabled {

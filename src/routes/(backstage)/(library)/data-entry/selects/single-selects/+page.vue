@@ -1,8 +1,9 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
-import { XBreadcrumb, XSelect } from '@x/ui';
+import { XBreadcrumb, XCard, XSelect } from '@x/ui';
 
 import WithTable from './WithTable.vue';
+import WithTableInDialog from './WithTableInDialog.vue';
 
 const flux = reactive({
   select1: '',
@@ -16,161 +17,110 @@ const flux = reactive({
     { label: 'Fastify', value: 'b3' },
     { label: 'Koa', value: 'b4' },
   ],
-
-  cascader1: '',
-  cascader1Options: [
-    { label: 'HTML5', value: 'html5' },
-    { label: 'Node.js', value: 'nodejs' },
-    { label: 'Deno', value: 'deno' },
-  ],
-  changeCascader1() {
-    flux.cascader2 = '';
-
-    if (!flux.cascader1) {
-      flux.cascader2Options = [];
-    } else if (flux.cascader1 === 'html5') {
-      flux.cascader2Options = [
-        { label: 'Vue', value: 'vue' },
-        { label: 'Svelte', value: 'svelte' },
-        { label: 'Solid', value: 'solid' },
-      ];
-    } else if (flux.cascader1 === 'nodejs') {
-      flux.cascader2Options = [
-        { label: 'Fastify', value: 'fastify' },
-        { label: 'Express', value: 'express' },
-        { label: 'Nest', value: 'nest' },
-      ];
-    } else if (flux.cascader1 === 'deno') {
-      flux.cascader2Options = [
-        { label: 'Hono', value: 'hono' },
-        { label: 'Oak', value: 'oak' },
-        { label: 'Alosaur', value: 'alosaur' },
-      ];
-    }
-  },
-  cascader2: '',
-  cascader2Options: [] as any[],
-  changeCascader2() {
-    flux.cascader3 = '';
-  },
-  cascader3: '',
-  cascader3Options: [
-    { label: 'MongoDB', value: 'mongodb' },
-    { label: 'Redis', value: 'redis' },
-    { label: 'PostgreSQL', value: 'postgresql' },
-  ],
 });
 </script>
 
 <template>
   <XBreadcrumb
-    :items="[
-      { text: 'Library' },
-      { text: 'Data Entry' },
-      { text: 'Selects' },
-      { text: 'Single selects' },
-    ]"
+    :items="[{ text: 'Library' }, { text: 'Data Entry' }, { text: 'Selects' }, { text: 'Select' }]"
   />
 
-  <div class="my-4">
-    <div class="text-3xl font-bold">Single selects</div>
-  </div>
+  <h1 class="text-4xl font-extrabold my-4">Select</h1>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Basic</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4">Basic</h2>
 
-    <div class="flex justify-center">
-      <XSelect v-model:value="flux.select1" :options="flux.select1Options" />
-    </div>
-  </div>
+    <XCard>
+      <div class="max-w-xs">
+        <XSelect
+          v-model:value="flux.select1"
+          :label="'Example label'"
+          :options="flux.select1Options"
+        />
+      </div>
+    </XCard>
+  </section>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Disabled</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Disabled</h2>
 
-    <div class="flex justify-center">
-      <XSelect v-model:value="flux.select1" :options="flux.select1Options" disabled />
-    </div>
-  </div>
+    <XCard>
+      <div class="max-w-xs">
+        <XSelect
+          v-model:value="flux.select1"
+          :label="'Example label'"
+          :options="flux.select1Options"
+          disabled
+        />
+      </div>
+    </XCard>
+  </section>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Clearable</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Clearable</h2>
 
-    <div class="flex justify-center">
-      <XSelect v-model:value="flux.select1" :options="flux.select1Options" clearable />
-    </div>
-  </div>
+    <XCard>
+      <div class="max-w-xs">
+        <XSelect v-model:value="flux.select1" :options="flux.select1Options" clearable />
+      </div>
+    </XCard>
+  </section>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Filterable</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Filterable</h2>
 
-    <div class="flex justify-center">
-      <XSelect v-model:value="flux.select1" :options="flux.select1Options" filterable />
-    </div>
-  </div>
+    <XCard>
+      <div class="max-w-xs">
+        <XSelect v-model:value="flux.select1" :options="flux.select1Options" filterable />
+      </div>
+    </XCard>
+  </section>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Errors</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Invalid</h2>
 
-    <div class="flex justify-center">
-      <XSelect v-model:value="flux.select1" :options="flux.select1Options" :invalid="'Error'" />
-    </div>
-  </div>
+    <XCard>
+      <div class="max-w-xs">
+        <XSelect
+          v-model:value="flux.select1"
+          :options="flux.select1Options"
+          invalid="Incorrect entry"
+        />
+      </div>
+    </XCard>
+  </section>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Loading</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Loading</h2>
 
-    <div class="flex justify-center">
-      <XSelect v-model:value="flux.select1" :options="flux.select1Options" loading />
-    </div>
-  </div>
+    <XCard>
+      <div class="max-w-xs">
+        <XSelect v-model:value="flux.select1" :options="flux.select1Options" loading />
+      </div>
+    </XCard>
+  </section>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">WithTable</div>
-    <WithTable />
-  </div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">With Table</h2>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Option Groups (TODO)</div>
+    <XCard>
+      <WithTable />
+    </XCard>
 
-    <div class="flex justify-center">
+    <section class="my-4">
+      <h3 class="text-2xl font-semibold my-4 pt-2">In Dialog</h3>
+
+      <XCard>
+        <WithTableInDialog />
+      </XCard>
+    </section>
+  </section>
+
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Option Groups (TODO)</h2>
+
+    <XCard>
       <!--  -->
-    </div>
-  </div>
-
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Cascader</div>
-
-    <div class="grid grid-cols-3 gap-4">
-      <div>
-        <div class="text-sm font-bold mb-2">Platform</div>
-        <XSelect
-          v-model:value="flux.cascader1"
-          :options="flux.cascader1Options"
-          clearable
-          @change="flux.changeCascader1"
-        />
-      </div>
-
-      <div>
-        <div class="text-sm font-bold mb-2">Framework</div>
-        <XSelect
-          v-model:value="flux.cascader2"
-          :options="flux.cascader2Options"
-          clearable
-          :disabled="!flux.cascader1"
-          @change="flux.changeCascader2"
-        />
-      </div>
-
-      <div>
-        <div class="text-sm font-bold mb-2">Database</div>
-        <XSelect
-          v-model:value="flux.cascader3"
-          :options="flux.cascader3Options"
-          clearable
-          :disabled="!flux.cascader1 || !flux.cascader2 || flux.cascader1 === 'html5'"
-        />
-      </div>
-    </div>
-  </div>
+    </XCard>
+  </section>
 </template>

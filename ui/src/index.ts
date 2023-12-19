@@ -65,6 +65,7 @@ export { default as XYearPicker } from './components/year-picker/YearPicker.vue'
 
 export { default as useEventSource } from './composables/eventsource/useEventSource';
 export { default as useNotification } from './composables/notification/useNotification';
+export { default as useScrollParent } from './composables/scroll-parent/useScrollParent';
 export { default as useValdnLocale } from './composables/valdn-locale/useValdnLocale';
 export { default as useWebSocket } from './composables/websocket/useWebSocket';
 
