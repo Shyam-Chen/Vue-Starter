@@ -198,6 +198,18 @@ useScrollParent(
     if (flux.show) resizePanel();
   },
 );
+
+function onKeydown(evt: any) {
+  if (['Space', 'Enter'].includes(evt.code)) {
+    evt.preventDefault();
+    open();
+  }
+
+  if (evt.code === 'Tab') {
+    selectInput.value.blur();
+    flux.show = false;
+  }
+}
 </script>
 
 <template>
@@ -211,6 +223,7 @@ useScrollParent(
     <div ref="target">
       <div
         ref="selectInput"
+        :tabindex="disabled ? -1 : 0"
         class="Select-Input group"
         :class="{
           placeholder: !flux.selected,
@@ -219,6 +232,7 @@ useScrollParent(
           disabled: disabled,
         }"
         @click="open"
+        @keydown="onKeydown"
       >
         <div v-if="!flux.selected" class="flex-1">
           {{ placeholder || locale.pleaseSelect || 'Please select' }}
@@ -301,6 +315,7 @@ useScrollParent(
 .Select-Input {
   @apply relative flex items-center w-full px-3 py-2 cursor-pointer;
   @apply border border-slate-400 bg-white dark:bg-slate-800 rounded leading-tight;
+  @apply focus:border-primary-400 focus:outline-0 focus:ring-2 focus:ring-primary-500/50;
 
   &.placeholder {
     @apply text-slate-400 dark:text-slate-500 truncate;
@@ -312,6 +327,7 @@ useScrollParent(
 
   &.invalid {
     @apply border-red-500 ring-red-500/50;
+    @apply focus:border-red-400 focus:ring-red-500/50;
   }
 
   &.disabled {
