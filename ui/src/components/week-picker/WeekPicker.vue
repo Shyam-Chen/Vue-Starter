@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { nextTick, ref, computed, watch, onMounted, onUnmounted } from 'vue';
+import { nextTick, ref, computed } from 'vue';
 import { onClickOutside } from '@vueuse/core';
 import {
   format,
@@ -14,7 +14,7 @@ import {
 } from 'date-fns';
 import chunk from 'lodash/chunk';
 
-import scrollableParent from '../../utilities/scrollable-parent/scrollableParent';
+import useScrollParent from '../../composables/scroll-parent/useScrollParent';
 
 import TextField from '../text-field/TextField.vue';
 import Fade from '../fade/Fade.vue';
@@ -39,7 +39,6 @@ const picker = ref();
 
 const currentMoment = ref(new Date());
 const show = ref(false);
-const scrollableParentEl = ref<HTMLElement | null>(null);
 const direction = ref<'down' | 'up'>('down');
 
 const createWeeks = (y?: number, m?: number) => {
@@ -108,7 +107,6 @@ function openPicker() {
   show.value = true;
 
   nextTick(() => {
-    scrollableParentEl.value = scrollableParent(picker.value);
     resizePanel();
   });
 }
@@ -148,38 +146,16 @@ const weekify = computed(() => {
   return weekValue.value;
 });
 
-const handleScroll = () => {
-  if (show.value) {
-    resizePanel();
-  }
-};
-
 onClickOutside(target, () => {
   show.value = false;
 });
 
-watch(
-  () => scrollableParentEl.value,
-  (el) => {
-    el?.addEventListener('scroll', handleScroll);
+useScrollParent(
+  computed(() => picker.value),
+  () => {
+    if (show.value) resizePanel();
   },
 );
-
-onMounted(() => {
-  if (scrollableParentEl.value && scrollableParentEl.value instanceof HTMLElement) {
-    scrollableParentEl.value?.addEventListener('scroll', handleScroll);
-  } else {
-    window.addEventListener('scroll', handleScroll);
-  }
-});
-
-onUnmounted(() => {
-  if (scrollableParentEl.value && scrollableParentEl.value instanceof HTMLElement) {
-    scrollableParentEl.value?.removeEventListener('scroll', handleScroll);
-  } else {
-    window.removeEventListener('scroll', handleScroll);
-  }
-});
 </script>
 
 <template>

@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import { ref, reactive, computed, watch, nextTick, onMounted, onUnmounted } from 'vue';
+import { nextTick, ref, computed, reactive } from 'vue';
 import { useDebounceFn, onClickOutside } from '@vueuse/core';
 
-import scrollableParent from '../../utilities/scrollable-parent/scrollableParent';
+import useScrollParent from '../../composables/scroll-parent/useScrollParent';
 import request from '../../utilities/request/request';
 
 import TextField from '../text-field/TextField.vue';
@@ -52,8 +52,6 @@ const debouncedFn = useDebounceFn(async (val) => {
   const response = await request<any>('/suggestions', { query: { value: val } });
 
   nextTick(() => {
-    flux.scrollableParent = scrollableParent(autocompleteInput.value.$el);
-
     const rect = autocompleteInput.value.$el.getBoundingClientRect();
 
     autocompletePane.value.style.width = `${rect.width}px`;
@@ -159,47 +157,23 @@ const flux = reactive({
     emit('update:value', null);
     emit('change', null, null);
   },
-
-  scrollableParent: null as HTMLElement | null,
 });
 
 onClickOutside(target, () => {
   flux.show = false;
 });
 
-const wrapper = computed(() => flux.scrollableParent);
-
-const handleScroll = () => {
-  if (flux.show) {
-    const rect = autocompleteInput.value.$el.getBoundingClientRect();
-    autocompletePane.value.style.width = `${rect.width}px`;
-    autocompletePane.value.style.left = `${rect.left}px`;
-    autocompletePane.value.style.top = `${rect.bottom}px`;
-  }
-};
-
-watch(
-  () => wrapper.value,
-  (el) => {
-    el?.addEventListener('scroll', handleScroll);
+useScrollParent(
+  computed(() => autocompletePane.value),
+  () => {
+    if (flux.show) {
+      const rect = autocompleteInput.value.$el.getBoundingClientRect();
+      autocompletePane.value.style.width = `${rect.width}px`;
+      autocompletePane.value.style.left = `${rect.left}px`;
+      autocompletePane.value.style.top = `${rect.bottom}px`;
+    }
   },
 );
-
-onMounted(() => {
-  if (wrapper.value && wrapper.value instanceof HTMLElement) {
-    wrapper.value?.addEventListener('scroll', handleScroll);
-  } else {
-    window.addEventListener('scroll', handleScroll);
-  }
-});
-
-onUnmounted(() => {
-  if (wrapper.value && wrapper.value instanceof HTMLElement) {
-    wrapper.value?.removeEventListener('scroll', handleScroll);
-  } else {
-    window.removeEventListener('scroll', handleScroll);
-  }
-});
 </script>
 
 <template>

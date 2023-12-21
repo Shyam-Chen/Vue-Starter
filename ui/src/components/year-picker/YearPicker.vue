@@ -1,11 +1,11 @@
 <script lang="ts" setup>
-import { nextTick, ref, computed, reactive, watch, onMounted, onUnmounted } from 'vue';
+import { nextTick, ref, computed, reactive } from 'vue';
 import { onClickOutside } from '@vueuse/core';
 import { add, sub, getYear } from 'date-fns';
 import range from 'lodash/range';
 import uniqueId from 'lodash/uniqueId';
 
-import scrollableParent from '../../utilities/scrollable-parent/scrollableParent';
+import useScrollParent from '../../composables/scroll-parent/useScrollParent';
 
 import TextField from '../text-field/TextField.vue';
 import Fade from '../fade/Fade.vue';
@@ -32,7 +32,6 @@ const valueModel = computed({
 
 const flux = reactive({
   showDatePicker: false,
-  scrollableParent: null as HTMLElement | null,
   direction: '' as 'down' | 'up' | '',
   resizePanel() {
     const rect = input.value.$el.querySelector('.TextField-Input').getBoundingClientRect();
@@ -64,7 +63,6 @@ const flux = reactive({
     flux.yearRange = range(currentYear - 5, currentYear + 11);
 
     nextTick(() => {
-      flux.scrollableParent = scrollableParent(picker.value);
       flux.resizePanel();
     });
   },
@@ -94,38 +92,16 @@ const flux = reactive({
   },
 });
 
-const handleScroll = () => {
-  if (flux.showDatePicker) {
-    flux.resizePanel();
-  }
-};
-
 onClickOutside(target, () => {
   flux.showDatePicker = false;
 });
 
-watch(
-  () => flux.scrollableParent,
-  (el) => {
-    el?.addEventListener('scroll', handleScroll);
+useScrollParent(
+  computed(() => picker.value),
+  () => {
+    if (flux.showDatePicker) flux.resizePanel();
   },
 );
-
-onMounted(() => {
-  if (flux.scrollableParent && flux.scrollableParent instanceof HTMLElement) {
-    flux.scrollableParent?.addEventListener('scroll', handleScroll);
-  } else {
-    window.addEventListener('scroll', handleScroll);
-  }
-});
-
-onUnmounted(() => {
-  if (flux.scrollableParent && flux.scrollableParent instanceof HTMLElement) {
-    flux.scrollableParent?.removeEventListener('scroll', handleScroll);
-  } else {
-    window.removeEventListener('scroll', handleScroll);
-  }
-});
 </script>
 
 <template>

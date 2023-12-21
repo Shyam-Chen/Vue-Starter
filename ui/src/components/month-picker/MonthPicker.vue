@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-import { nextTick, ref, computed, reactive, watch, onMounted, onUnmounted } from 'vue';
+import { nextTick, ref, computed, reactive } from 'vue';
 import { onClickOutside } from '@vueuse/core';
 import { format as _format, add, sub, getYear, setYear, getMonth, setMonth } from 'date-fns';
 import uniqueId from 'lodash/uniqueId';
 
-import scrollableParent from '../../utilities/scrollable-parent/scrollableParent';
+import useScrollParent from '../../composables/scroll-parent/useScrollParent';
 
 import TextField from '../text-field/TextField.vue';
 import Fade from '../fade/Fade.vue';
@@ -44,7 +44,6 @@ const modelDate = computed({
 
 const flux = reactive({
   showDatePicker: false,
-  scrollableParent: null as HTMLElement | null,
   direction: '' as 'down' | 'up' | '',
   resizePanel() {
     const rect = input.value.$el.querySelector('.TextField-Input').getBoundingClientRect();
@@ -71,7 +70,6 @@ const flux = reactive({
     }
 
     nextTick(() => {
-      flux.scrollableParent = scrollableParent(picker.value);
       flux.resizePanel();
     });
   },
@@ -126,34 +124,12 @@ onClickOutside(target, () => {
   flux.showDatePicker = false;
 });
 
-const handleScroll = () => {
-  if (flux.showDatePicker) {
-    flux.resizePanel();
-  }
-};
-
-watch(
-  () => flux.scrollableParent,
-  (el) => {
-    el?.addEventListener('scroll', handleScroll);
+useScrollParent(
+  computed(() => picker.value),
+  () => {
+    if (flux.showDatePicker) flux.resizePanel();
   },
 );
-
-onMounted(() => {
-  if (flux.scrollableParent && flux.scrollableParent instanceof HTMLElement) {
-    flux.scrollableParent?.addEventListener('scroll', handleScroll);
-  } else {
-    window.addEventListener('scroll', handleScroll);
-  }
-});
-
-onUnmounted(() => {
-  if (flux.scrollableParent && flux.scrollableParent instanceof HTMLElement) {
-    flux.scrollableParent?.removeEventListener('scroll', handleScroll);
-  } else {
-    window.removeEventListener('scroll', handleScroll);
-  }
-});
 </script>
 
 <template>

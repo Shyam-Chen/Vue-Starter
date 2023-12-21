@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import { ref, reactive, computed, watch, watchEffect, nextTick, onMounted, onUnmounted } from 'vue';
+import { nextTick, ref, reactive, computed, watch, watchEffect } from 'vue';
 import { useLocaler, useLocale } from 'vue-localer';
 import { onClickOutside } from '@vueuse/core';
 
-import scrollableParent from '../../utilities/scrollable-parent/scrollableParent';
+import useScrollParent from '../../composables/scroll-parent/useScrollParent';
 
 import Checkbox from '../checkbox/Checkbox.vue';
 import Chip from '../chip/Chip.vue';
@@ -130,8 +130,6 @@ const flux = reactive({
       flux.selected.map((item) => item.value),
     );
   },
-
-  scrollableParent: null as HTMLElement | null,
 });
 
 const target = ref();
@@ -200,8 +198,6 @@ const open = () => {
   flux.show = !flux.show;
 
   nextTick(() => {
-    flux.scrollableParent = scrollableParent(selectInput.value);
-
     resizePanel();
 
     /**
@@ -254,34 +250,12 @@ watch(
   },
 );
 
-const wrapper = computed(() => flux.scrollableParent);
-
-const handleScroll = () => {
-  if (flux.show) resizePanel();
-};
-
-watch(
-  () => wrapper.value,
-  (el) => {
-    el?.addEventListener('scroll', handleScroll);
+useScrollParent(
+  computed(() => selectPanel.value),
+  () => {
+    if (flux.show) resizePanel();
   },
 );
-
-onMounted(() => {
-  if (wrapper.value && wrapper.value instanceof HTMLElement) {
-    wrapper.value?.addEventListener('scroll', handleScroll);
-  } else {
-    window.addEventListener('scroll', handleScroll);
-  }
-});
-
-onUnmounted(() => {
-  if (wrapper.value && wrapper.value instanceof HTMLElement) {
-    wrapper.value?.removeEventListener('scroll', handleScroll);
-  } else {
-    window.removeEventListener('scroll', handleScroll);
-  }
-});
 </script>
 
 <template>

@@ -2,7 +2,7 @@
 import { ref, reactive, computed, nextTick } from 'vue';
 import { useDebounceFn, onClickOutside } from '@vueuse/core';
 
-import scrollableParent from '../../utilities/scrollable-parent/scrollableParent';
+// import useScrollParent from '../../composables/scroll-parent/useScrollParent';
 import request from '../../utilities/request/request';
 
 import ChipField from '../chip-field/ChipField.vue';
@@ -33,8 +33,6 @@ const debouncedFn = useDebounceFn(async (val) => {
   const response = await request<any>('/suggestions', { query: { value: val } });
 
   nextTick(() => {
-    flux.scrollableParent = scrollableParent(autocompleteInput.value.$el);
-
     const rect = autocompleteInput.value.$el.getBoundingClientRect();
 
     autocompletePane.value.style.width = `${rect.width}px`;
@@ -55,8 +53,6 @@ const flux = reactive({
   show: false,
   direction: 'down',
   options: [] as any[],
-
-  scrollableParent: null as HTMLElement | null,
 
   onSelect(value: string) {
     modelValue.value = [...modelValue.value, value];

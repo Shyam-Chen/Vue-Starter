@@ -2,7 +2,7 @@
 import { computed, reactive } from 'vue';
 import range from 'lodash/range';
 
-// import scrollableParent from '../../utilities/scrollable-parent/scrollableParent';
+// import useScrollParent from '../../composables/scroll-parent/useScrollParent';
 
 import TextField from '../text-field/TextField.vue';
 import Select from '../select/Select.vue';

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { nextTick, ref, reactive, watch, onUnmounted } from 'vue';
+import { nextTick, ref, computed, reactive } from 'vue';
 
-import scrollableParent from '../../utilities/scrollable-parent/scrollableParent';
+import useScrollParent from '../../composables/scroll-parent/useScrollParent';
 
 import Fade from '../fade/Fade.vue';
 
@@ -19,7 +19,6 @@ const dropdown = ref();
 const flux = reactive({
   status: false,
   timeout: undefined as ReturnType<typeof setTimeout> | undefined,
-  scrollableParent: null as HTMLElement | null,
   direction: '' as 'down' | 'up' | '',
   resizePanel() {
     const rect = target.value.getBoundingClientRect();
@@ -47,7 +46,6 @@ const flux = reactive({
     clearTimeout(flux.timeout);
 
     nextTick(() => {
-      flux.scrollableParent = scrollableParent(dropdown.value);
       flux.resizePanel();
     });
   },
@@ -55,11 +53,6 @@ const flux = reactive({
     flux.timeout = setTimeout(() => {
       flux.status = false;
     }, 250);
-  },
-  handleScroll() {
-    if (flux.status) {
-      flux.resizePanel();
-    }
   },
 
   select(option: string) {
@@ -70,16 +63,12 @@ const flux = reactive({
   },
 });
 
-watch(
-  () => flux.scrollableParent,
-  (el) => {
-    el?.addEventListener('scroll', flux.handleScroll);
+useScrollParent(
+  computed(() => dropdown.value),
+  () => {
+    if (flux.status) flux.resizePanel();
   },
 );
-
-onUnmounted(() => {
-  flux.scrollableParent?.removeEventListener('scroll', flux.handleScroll);
-});
 </script>
 
 <template>
