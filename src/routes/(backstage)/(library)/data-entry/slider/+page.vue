@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
-import { XBreadcrumb, XCard, XSlider, XInputMask } from '@x/ui';
+import { XBreadcrumb, XCard, XSlider, XInputMask, XRangeSlider } from '@x/ui';
 
 const flux = reactive({
   slider: '70',
@@ -19,54 +19,49 @@ const flux = reactive({
     <p class="my-4">Two-way value binding is defined using `v-model:value`.</p>
 
     <XCard>
-      <div class="flex justify-center">
+      <XSlider v-model:value="flux.slider" />
+      <pre class="mt-1">Output: {{ flux.slider }}</pre>
+    </XCard>
+  </section>
+
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Disabled</h2>
+
+    <XCard>
+      <XSlider v-model:value="flux.slider" disabled />
+    </XCard>
+  </section>
+
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Input</h2>
+
+    <XCard>
+      <div class="flex flex-col justify-center gap-2">
+        <XInputMask
+          v-model:masked="flux.slider"
+          v-model:unmasked.number="flux.sliderVal"
+          :mask="{ mask: Number, min: 0, max: 100 }"
+        />
+
         <XSlider v-model:value="flux.slider" />
       </div>
     </XCard>
-
-    <div>
-      <pre>Output: {{ flux.slider }}</pre>
-    </div>
   </section>
 
-  <div class="flex flex-col border p-4 my-4 gap-2">
-    <div class="font-bold">Disabled</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Step</h2>
 
-    <div class="flex justify-center">
-      <XSlider v-model:value="flux.slider" disabled />
-    </div>
-  </div>
-
-  <div class="flex flex-col border p-4 my-4 gap-2">
-    <div class="font-bold">Input</div>
-
-    <div class="flex flex-col justify-center gap-2">
-      <XInputMask
-        v-model:masked="flux.slider"
-        v-model:unmasked.number="flux.sliderVal"
-        :mask="{ mask: Number, min: 0, max: 100 }"
-      />
-      <XSlider v-model:value="flux.slider" />
-    </div>
-
-    <div>
-      <pre>Output: {{ flux.slider }}</pre>
-    </div>
-  </div>
-
-  <div class="flex flex-col border p-4 my-4 gap-2">
-    <div class="font-bold">Step</div>
-
-    <div class="flex justify-center">
+    <XCard>
       <XSlider v-model:value="flux.stepSlider" steppable step="10" />
-    </div>
+      <pre class="mt-1">Output: {{ flux.stepSlider }}</pre>
+    </XCard>
+  </section>
 
-    <div>
-      <pre>Output: {{ flux.stepSlider }}</pre>
-    </div>
-  </div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">RangeSlider</h2>
 
-  <div class="flex flex-col border p-4 my-4 gap-2">
-    <div class="font-bold">Range (TODO)</div>
-  </div>
+    <XCard>
+      <XRangeSlider />
+    </XCard>
+  </section>
 </template>

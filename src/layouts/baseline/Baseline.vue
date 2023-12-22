@@ -169,16 +169,27 @@ function changeLang(lang: string) {
 
       <div class="flex-1"></div>
 
-      <div class="flex items-center">
-        <XButton
-          icon="i-material-symbols-search-rounded"
-          variant="text"
-          @click="flux.searchDialog = true"
-        />
+      <XButton
+        icon="i-material-symbols-search-rounded"
+        variant="text"
+        class="!md:hidden"
+        @click="flux.searchDialog = true"
+      />
 
-        <div class="hidden md:block">
-          <XKeyboard :keys="['command']">K</XKeyboard>
-        </div>
+      <div class="hidden md:flex md:items-center shadow-sm dark:md:bg-slate-800 md:rounded-md">
+        <XButton
+          variant="text"
+          size="small"
+          class="!h-38px !text-slate-400 !rounded-md"
+          @click="flux.searchDialog = true"
+        >
+          <div class="i-material-symbols-search-rounded w-5 h-5"></div>
+          <div>Search</div>
+
+          <div class="block ms-2">
+            <XKeyboard :keys="['command']">K</XKeyboard>
+          </div>
+        </XButton>
       </div>
 
       <XButton icon="i-material-symbols-notifications-outline-rounded" variant="text" />
