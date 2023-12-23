@@ -384,7 +384,8 @@ function onKeydown(evt: any) {
 }
 
 .Select-Panel {
-  @apply fixed w-full z-10 bg-white dark:bg-slate-800 shadow-lg rounded;
+  @apply fixed w-full z-10 border shadow-lg rounded;
+  @apply bg-white dark:bg-slate-800 border-gray-200 dark:border-gray-700;
 }
 
 .Select-Panel-PlacementBottom {

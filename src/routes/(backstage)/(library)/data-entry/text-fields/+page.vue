@@ -1,9 +1,10 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
-import { XBreadcrumb, XTextField, XChipField } from '@x/ui';
+import { XBreadcrumb, XCard, XTextField, XChipField } from '@x/ui';
 
 const flux = reactive({
   textField1: '',
+  textField2: 'Vue is excellent',
   chipField: ['Vue', 'Fastify', 'Tauri'],
 });
 </script>
@@ -11,134 +12,164 @@ const flux = reactive({
 <template>
   <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Data Entry' }, { text: 'TextField' }]" />
 
-  <div class="my-4">
-    <div class="text-4xl font-extrabold">TextField</div>
-  </div>
+  <h1 class="text-4xl font-extrabold my-4">TextField</h1>
 
-  <div class="my-8">
-    <div class="text-3xl font-bold my-4">Basic</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4">Basic</h2>
 
-    <XTextField v-model:value="flux.textField1" label="Example label" placeholder="Type here..." />
-  </div>
+    <XCard>
+      <XTextField v-model:value="flux.textField1" placeholder="Type here..." />
+    </XCard>
+  </section>
 
-  <div class="my-8">
-    <div class="text-3xl font-bold my-4 pt-6">Required</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Label</h2>
 
-    <XTextField
-      v-model:value="flux.textField1"
-      label="Example label"
-      placeholder="Type here..."
-      required
-    />
-  </div>
+    <XCard>
+      <XTextField
+        v-model:value="flux.textField1"
+        label="Example label"
+        placeholder="Type here..."
+      />
+    </XCard>
+  </section>
 
-  <div class="my-8">
-    <div class="text-3xl font-bold my-4 pt-6">Invalid</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Required</h2>
 
-    <XTextField
-      v-model:value="flux.textField1"
-      label="Example label"
-      placeholder="Type here..."
-      required
-      invalid
-    />
-
-    <div class="my-4">
-      <div class="text-2xl font-semibold my-4 pt-5">Error Message</div>
-
+    <XCard>
       <XTextField
         v-model:value="flux.textField1"
         label="Example label"
         placeholder="Type here..."
         required
-        invalid="Incorrect entry"
       />
-    </div>
-  </div>
+    </XCard>
+  </section>
 
-  <div class="my-8">
-    <div class="text-3xl font-bold my-4 pt-6">Disabled</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Invalid</h2>
 
-    <XTextField
-      v-model:value="flux.textField1"
-      label="Example label"
-      placeholder="Type here..."
-      disabled
-    />
-  </div>
-
-  <div class="my-8">
-    <div class="text-3xl font-bold my-4 pt-6">Clearable</div>
-
-    <XTextField
-      v-model:value="flux.textField1"
-      label="Example label"
-      placeholder="Type here..."
-      clearable
-    />
-
-    <div class="my-4">
-      <div class="text-2xl font-semibold my-4 pt-5">Append Icons</div>
-
+    <XCard>
       <XTextField
         v-model:value="flux.textField1"
         label="Example label"
         placeholder="Type here..."
-        append="i-mdi-user-circle"
+        required
+        invalid
+      />
+    </XCard>
+
+    <section class="my-4">
+      <h3 class="text-2xl font-semibold my-4 pt-2">Error Message</h3>
+
+      <XCard>
+        <XTextField
+          v-model:value="flux.textField1"
+          label="Example label"
+          placeholder="Type here..."
+          required
+          invalid="Incorrect entry"
+        />
+      </XCard>
+    </section>
+  </section>
+
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Disabled</h2>
+
+    <XCard>
+      <XTextField
+        v-model:value="flux.textField1"
+        label="Example label"
+        placeholder="Type here..."
+        disabled
+      />
+    </XCard>
+  </section>
+
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Clearable</h2>
+
+    <XCard>
+      <XTextField
+        v-model:value="flux.textField2"
+        label="Example label"
+        placeholder="Type here..."
         clearable
       />
-    </div>
-  </div>
+    </XCard>
 
-  <div class="my-8">
-    <div class="text-3xl font-bold my-4 pt-6">Icons</div>
+    <section class="my-4">
+      <h3 class="text-2xl font-semibold my-4 pt-2">Append Icons</h3>
 
-    <div class="grid grid-cols-2 gap-4">
-      <XTextField
-        v-model:value="flux.textField1"
-        label="Example label"
-        placeholder="Type here..."
-        prepend="i-mdi-user-circle"
-      />
+      <XCard>
+        <XTextField
+          v-model:value="flux.textField2"
+          label="Example label"
+          placeholder="Type here..."
+          append="i-mdi-user-circle"
+          clearable
+        />
+      </XCard>
+    </section>
+  </section>
 
-      <XTextField
-        v-model:value="flux.textField1"
-        label="Example label"
-        placeholder="Type here..."
-        append="i-mdi-user-circle"
-      />
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Icons</h2>
 
-      <XTextField
-        v-model:value="flux.textField1"
-        label="Example label"
-        placeholder="Type here..."
-        prepend="i-mdi-user-circle"
-        invalid="Incorrect entry"
-      />
+    <XCard>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <XTextField
+          v-model:value="flux.textField1"
+          label="Example label"
+          placeholder="Type here..."
+          prepend="i-mdi-user-circle"
+        />
 
-      <XTextField
-        v-model:value="flux.textField1"
-        label="Example label"
-        placeholder="Type here..."
-        append="i-mdi-user-circle"
-        invalid="Incorrect entry"
-      />
-    </div>
-  </div>
+        <XTextField
+          v-model:value="flux.textField1"
+          label="Example label"
+          placeholder="Type here..."
+          append="i-mdi-user-circle"
+        />
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Chips</div>
+        <XTextField
+          v-model:value="flux.textField1"
+          label="Example label"
+          placeholder="Type here..."
+          prepend="i-mdi-user-circle"
+          invalid="Incorrect entry"
+        />
 
-    <div class="flex justify-center mb-2">
+        <XTextField
+          v-model:value="flux.textField1"
+          label="Example label"
+          placeholder="Type here..."
+          append="i-mdi-user-circle"
+          invalid="Incorrect entry"
+        />
+      </div>
+    </XCard>
+  </section>
+
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">ChipField</h2>
+
+    <XCard>
       <XChipField v-model:value="flux.chipField" placeholder="Type here...">
         Example label
       </XChipField>
-    </div>
+    </XCard>
 
-    <div class="flex justify-center">
-      <XChipField v-model:value="flux.chipField" placeholder="Type here..." disabled>
-        Example label
-      </XChipField>
-    </div>
-  </div>
+    <section class="my-4">
+      <h3 class="text-2xl font-semibold my-4 pt-2">Disabled</h3>
+
+      <XCard>
+        <XChipField v-model:value="flux.chipField" placeholder="Type here..." disabled>
+          Example label
+        </XChipField>
+      </XCard>
+    </section>
+  </section>
 </template>

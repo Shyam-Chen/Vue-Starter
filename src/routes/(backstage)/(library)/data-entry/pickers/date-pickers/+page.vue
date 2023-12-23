@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
-import { XBreadcrumb, XDatePicker, XDateRangePicker } from '@x/ui';
+import { XBreadcrumb, XCard, XDatePicker, XDateRangePicker } from '@x/ui';
+import { subDays, addDays, format } from 'date-fns';
 
 const flux = reactive({
   datePicker: '',
@@ -15,55 +16,74 @@ const flux = reactive({
       { text: 'Library' },
       { text: 'Data Entry' },
       { text: 'Pickers' },
-      { text: 'Date pickers' },
+      { text: 'DatePicker' },
     ]"
   />
 
-  <div class="my-4">
-    <div class="text-3xl font-bold">Date pickers</div>
-  </div>
+  <h1 class="text-4xl font-extrabold my-4">DatePicker</h1>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Basic</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4">Basic</h2>
 
-    <div class="flex justify-center">
+    <XCard>
       <XDatePicker v-model:value="flux.datePicker" />
-    </div>
-  </div>
+    </XCard>
+  </section>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Error messages</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4">Min/Max Date</h2>
 
-    <div class="flex justify-center">
-      <XDatePicker v-model:value="flux.datePicker" invalid="This is a required field" />
-    </div>
-  </div>
+    <XCard>
+      <XDatePicker
+        v-model:value="flux.datePicker"
+        :minDate="subDays(new Date(), 1)"
+        :maxDate="addDays(new Date(), 6)"
+      />
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Range</div>
+      <div class="mt-1">
+        <div>Min Date: {{ format(subDays(new Date(), 1), 'yyyy-MM-dd') }}</div>
+        <div>Max Date: {{ format(addDays(new Date(), 6), 'yyyy-MM-dd') }}</div>
+      </div>
+    </XCard>
 
-    <div class="flex justify-center">
+    <section class="my-4">
+      <h3 class="text-2xl font-semibold my-4 pt-2">Min</h3>
+
+      <XCard>
+        <XDatePicker v-model:value="flux.datePicker" :minDate="subDays(new Date(), 1)" />
+
+        <div class="mt-1">
+          <div>Min Date: {{ format(subDays(new Date(), 1), 'yyyy-MM-dd') }}</div>
+        </div>
+      </XCard>
+    </section>
+
+    <section class="my-4">
+      <h3 class="text-2xl font-semibold my-4 pt-2">Max</h3>
+
+      <XCard>
+        <XDatePicker v-model:value="flux.datePicker" :maxDate="addDays(new Date(), 6)" />
+
+        <div class="mt-1">
+          <div>Max Date: {{ format(addDays(new Date(), 6), 'yyyy-MM-dd') }}</div>
+        </div>
+      </XCard>
+    </section>
+  </section>
+
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">DateRangePicker</h2>
+
+    <XCard>
       <XDateRangePicker
         v-model:startValue="flux.datePickerStartDate"
         v-model:endValue="flux.datePickerEndDate"
       />
-    </div>
 
-    <div class="mt-2">
-      <div>Start Date: {{ flux.datePickerStartDate }}</div>
-      <div>End Date: {{ flux.datePickerEndDate }}</div>
-    </div>
-  </div>
-
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Range with error messages</div>
-
-    <div class="flex justify-center">
-      <XDateRangePicker
-        v-model:startValue="flux.datePickerStartDate"
-        v-model:endValue="flux.datePickerEndDate"
-        invalid="This is a required field"
-      />
-    </div>
-  </div>
+      <div class="mt-1">
+        <div>Start Date: {{ flux.datePickerStartDate }}</div>
+        <div>End Date: {{ flux.datePickerEndDate }}</div>
+      </div>
+    </XCard>
+  </section>
 </template>

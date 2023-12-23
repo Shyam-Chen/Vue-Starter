@@ -339,7 +339,7 @@ useScrollParent(
       <div
         v-if="flux.showDatePicker"
         ref="picker"
-        class="fixed z-10 p-2 shadow-lg rounded bg-white dark:bg-slate-800"
+        class="fixed z-10 p-2 shadow-lg rounded bg-white dark:bg-slate-800 border border-gray-200 dark:border-gray-700"
         :class="{
           'DatePicker-DatePane-PlacementBottom': flux.direction === 'down',
           'DatePicker-DatePane-PlacementTop': flux.direction === 'up',
