@@ -131,6 +131,7 @@ const open = () => {
   if (props.disabled) return;
 
   flux.show = !flux.show;
+  hoverIndex.value = -1;
 
   nextTick(() => {
     resizePanel();
@@ -159,12 +160,17 @@ const open = () => {
     const offsetTop = props.filterable ? active?.offsetTop - 46 : active?.offsetTop;
     if (offsetTop) selectList.value.scrollTop = offsetTop - active.offsetHeight * 2;
 
+    if (selectValue.value) {
+      hoverIndex.value = flux.options?.findIndex((opt) => opt.value === selectValue.value);
+    }
+
     if (selectFilter.value) selectFilter.value.$el.querySelector('input').focus();
   });
 };
 
 onClickOutside(target, () => {
   flux.show = false;
+  hoverIndex.value = -1;
 });
 
 watch(
@@ -199,10 +205,39 @@ useScrollParent(
   },
 );
 
+const hoverIndex = ref(-1);
+
 function onKeydown(evt: any) {
   if (['Space', 'Enter'].includes(evt.code)) {
     evt.preventDefault();
-    open();
+
+    if (flux.show) {
+      flux.onSelect(flux.options?.[hoverIndex.value]?.value, flux.options?.[hoverIndex.value]);
+    } else {
+      open();
+    }
+  }
+
+  if (evt.code === 'ArrowDown') {
+    evt.preventDefault();
+    if (!flux.show && !flux.options?.length) return;
+    if (hoverIndex.value === Number(flux.options?.length) - 1) return;
+    hoverIndex.value += 1;
+
+    const hover = selectList.value.querySelector('.Select-Item-Hover');
+    const offsetTop = hover?.offsetTop;
+    if (offsetTop) selectList.value.scrollTop = offsetTop - hover.offsetHeight;
+  }
+
+  if (evt.code === 'ArrowUp') {
+    evt.preventDefault();
+    if (!flux.show && !flux.options?.length) return;
+    if (hoverIndex.value <= 0) return;
+    hoverIndex.value -= 1;
+
+    const hover = selectList.value.querySelector('.Select-Item-Hover');
+    const offsetTop = hover?.offsetTop;
+    if (offsetTop) selectList.value.scrollTop = offsetTop - hover.offsetHeight;
   }
 
   if (evt.code === 'Tab') {
@@ -216,8 +251,8 @@ function onKeydown(evt: any) {
   <div class="Select-Wrapper" :class="{ disabled }">
     <div class="Select-Label">
       <template v-if="label">{{ label }}</template>
-      <slot v-else></slot>
       <span v-if="required" class="text-red-500">*</span>
+      <slot></slot>
     </div>
 
     <div ref="target">
@@ -279,8 +314,13 @@ function onKeydown(evt: any) {
               :ref="(el) => (selectItem[index] = el)"
               :key="item.value"
               class="Select-Item"
-              :class="{ 'Select-Item-Active': value === item.value }"
+              :class="{
+                'Select-Item-Hover': index === hoverIndex,
+                'Select-Item-Active': value === item.value,
+              }"
               @click="flux.onSelect(item.value, item)"
+              @mouseenter="hoverIndex = index"
+              @mouseleave="hoverIndex = -1"
             >
               {{ flux.display(item) }}
             </div>
@@ -365,7 +405,10 @@ function onKeydown(evt: any) {
 
 .Select-Item {
   @apply px-3 py-1 cursor-pointer rounded-md whitespace-nowrap;
-  @apply hover:text-primary-500 dark:hover:text-primary-100 hover:bg-primary-100 dark:hover:bg-primary-600;
+}
+
+.Select-Item-Hover {
+  @apply text-primary-500 dark:text-primary-100 bg-primary-100 dark:bg-primary-600;
 }
 
 .Select-Item-Active {
