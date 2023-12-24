@@ -14,7 +14,6 @@ import {
 } from 'date-fns';
 import chunk from 'lodash/chunk';
 import range from 'lodash/range';
-import uniqueId from 'lodash/uniqueId';
 
 import useScrollParent from '../../composables/scroll-parent/useScrollParent';
 
@@ -53,8 +52,6 @@ const locale = useLocale();
 
 const _weekdays = computed(() => locale.value?.weekdays || props.weekdays);
 const _months = computed(() => locale.value?.months || props.months);
-
-const uid = uniqueId('date-picker-');
 
 const target = ref();
 const input = ref();
@@ -288,7 +285,6 @@ useScrollParent(
 <template>
   <div ref="target" class="w-full">
     <TextField
-      :id="uid"
       ref="input"
       v-bind="$attrs"
       :value="modelDate"

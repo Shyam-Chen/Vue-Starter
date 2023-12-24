@@ -25,7 +25,7 @@ const chipFieldValue = computed({
   set: (val) => emit('update:value', val),
 });
 
-const uid = uniqueId('chip-field-');
+const uid = uniqueId('uid-');
 const input = ref<HTMLInputElement>();
 
 const flux = reactive({

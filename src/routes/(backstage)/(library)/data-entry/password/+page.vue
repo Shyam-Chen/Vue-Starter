@@ -1,13 +1,17 @@
 <script lang="ts" setup>
-import { XBreadcrumb, XPassword } from '@x/ui';
+import { XBreadcrumb, XCard, XPassword } from '@x/ui';
 </script>
 
 <template>
   <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Data Entry' }, { text: 'Password' }]" />
 
-  <div class="my-4">
-    <div class="text-4xl font-extrabold">Password</div>
-  </div>
+  <h1 class="text-4xl font-extrabold my-4">Password</h1>
 
-  <XPassword label="New Password" />
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4">Basic</h2>
+
+    <XCard>
+      <XPassword label="New Password" />
+    </XCard>
+  </section>
 </template>

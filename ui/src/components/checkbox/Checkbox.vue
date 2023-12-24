@@ -27,7 +27,7 @@ const checkboxValue = computed({
   set: (val) => !props.readonly && emit('update:value', val),
 });
 
-const uid = uniqueId('Checkbox-');
+const uid = uniqueId('uid-');
 </script>
 
 <template>

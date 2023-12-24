@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
-import { XBreadcrumb, XRadioGroup } from '@x/ui';
+import { XBreadcrumb, XCard, XRadioGroup } from '@x/ui';
 
 const flux = reactive({
   radioGroup1: '',
@@ -9,25 +9,68 @@ const flux = reactive({
 </script>
 
 <template>
-  <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Data Entry' }, { text: 'Radio buttons' }]" />
+  <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Data Entry' }, { text: 'RadioGroup' }]" />
 
-  <div class="my-4">
-    <div class="text-3xl font-bold">Radio buttons</div>
-  </div>
+  <h1 class="text-4xl font-extrabold my-4">RadioGroup</h1>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Basic examples</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4">Basic</h2>
 
-    <div class="flex justify-center">
+    <XCard>
       <XRadioGroup v-model:value="flux.radioGroup1" :options="flux.radioGroup1Options" />
-    </div>
-  </div>
+    </XCard>
+  </section>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Disabled</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Label</h2>
 
-    <div class="flex justify-center">
+    <XCard>
+      <XRadioGroup
+        v-model:value="flux.radioGroup1"
+        label="Example label"
+        :options="flux.radioGroup1Options"
+      />
+    </XCard>
+  </section>
+
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Required</h2>
+
+    <XCard>
+      <XRadioGroup
+        v-model:value="flux.radioGroup1"
+        label="Example label"
+        :options="flux.radioGroup1Options"
+        required
+      />
+    </XCard>
+  </section>
+
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Disabled</h2>
+
+    <XCard>
       <XRadioGroup v-model:value="flux.radioGroup1" :options="flux.radioGroup1Options" disabled />
-    </div>
-  </div>
+    </XCard>
+  </section>
+
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Invalid</h2>
+
+    <XCard>
+      <XRadioGroup v-model:value="flux.radioGroup1" :options="flux.radioGroup1Options" invalid />
+    </XCard>
+
+    <section class="my-4">
+      <h3 class="text-2xl font-semibold my-4 pt-2">Error Message</h3>
+
+      <XCard>
+        <XRadioGroup
+          v-model:value="flux.radioGroup1"
+          :options="flux.radioGroup1Options"
+          invalid="Incorrect entry"
+        />
+      </XCard>
+    </section>
+  </section>
 </template>

@@ -20,7 +20,7 @@ const emit = defineEmits<{
   (evt: 'change', val: unknown): void;
 }>();
 
-const uid = uniqueId('radio-group-');
+const uid = uniqueId('uid-');
 
 const radioGroupValue = computed({
   get: () => props.value,

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
-import { XBreadcrumb, XAutocomplete, XMultiautocomplete } from '@x/ui';
+import { XBreadcrumb, XCard, XAutocomplete, XMultiautocomplete } from '@x/ui';
 
 const flux = reactive({
   autocomplete: 'sc',
@@ -11,27 +11,23 @@ const flux = reactive({
 <template>
   <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Data Entry' }, { text: 'Autocomplete' }]" />
 
-  <div class="my-4">
-    <div class="text-3xl font-bold">Autocomplete</div>
-  </div>
+  <h1 class="text-4xl font-extrabold my-4">Autocomplete</h1>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Basic</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4">Basic</h2>
 
-    <div class="flex justify-center">
+    <XCard>
       <XAutocomplete v-model:value="flux.autocomplete" />
-    </div>
+      <div class="mt-1">{{ flux.autocomplete }}</div>
+    </XCard>
+  </section>
 
-    <pre>{{ flux.autocomplete }}</pre>
-  </div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4">Multiautocomplete</h2>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Multiple</div>
-
-    <div class="flex justify-center">
+    <XCard>
       <XMultiautocomplete v-model:value="flux.multiautocomplete" />
-    </div>
-
-    <pre>{{ flux.multiautocomplete }}</pre>
-  </div>
+      <div class="mt-1">{{ flux.multiautocomplete }}</div>
+    </XCard>
+  </section>
 </template>

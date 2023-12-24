@@ -2,7 +2,6 @@
 import { nextTick, ref, computed, reactive } from 'vue';
 import { onClickOutside } from '@vueuse/core';
 import { format as _format, add, sub, getYear, setYear, getMonth, setMonth } from 'date-fns';
-import uniqueId from 'lodash/uniqueId';
 
 import useScrollParent from '../../composables/scroll-parent/useScrollParent';
 
@@ -26,8 +25,6 @@ const props = withDefaults(
 const emit = defineEmits<{
   (evt: 'update:value', val?: string): void;
 }>();
-
-const uid = uniqueId('month-picker-');
 
 const target = ref();
 const input = ref();
@@ -135,7 +132,6 @@ useScrollParent(
 <template>
   <div ref="target" class="w-full">
     <TextField
-      :id="uid"
       ref="input"
       v-bind="$attrs"
       :value="modelDate"

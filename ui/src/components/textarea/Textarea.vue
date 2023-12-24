@@ -23,7 +23,7 @@ const emit = defineEmits<{
   (evt: 'update:value', val: string): void;
 }>();
 
-const uid = uniqueId('Textarea-');
+const uid = uniqueId('uid-');
 
 const valueModel = computed({
   get: () => props.value || '',

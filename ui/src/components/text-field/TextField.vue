@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import type { InputHTMLAttributes } from 'vue';
-import { computed, reactive } from 'vue';
+import { computed } from 'vue';
 import uniqueId from 'lodash/uniqueId';
 
 interface Props extends /* @vue-ignore */ InputHTMLAttributes {
@@ -29,21 +29,17 @@ const emit = defineEmits<{
   (evt: 'append'): void;
 }>();
 
-const uid = uniqueId('text-field-');
+const uid = uniqueId('uid-');
 
-const textFieldValue = computed({
+const valueModel = computed({
   get: () => props.value || '',
   set: (val) => emit('update:value', val),
 });
 
-const flux = reactive({
-  focused: false,
-  touched: false,
-  clear() {
-    textFieldValue.value = '';
-    emit('clear');
-  },
-});
+function onClear() {
+  valueModel.value = '';
+  emit('clear');
+}
 </script>
 
 <template>
@@ -61,18 +57,13 @@ const flux = reactive({
 
       <input
         :id="id || uid"
-        v-model="textFieldValue"
+        v-model="valueModel"
         v-bind="$attrs"
         :type="type ? type : 'text'"
         :disabled="disabled"
+        autocomplete="off"
         class="TextField-Input"
         :class="{ invalid, disabled, prepend, append, clearable }"
-        autocomplete="off"
-        @focus="flux.focused = true"
-        @blur="
-          flux.focused = false;
-          flux.touched = true;
-        "
       />
 
       <div v-if="append" class="TextField-Append" @click.stop="emit('append')">
@@ -80,10 +71,10 @@ const flux = reactive({
       </div>
 
       <div
-        v-if="clearable && textFieldValue"
+        v-if="clearable && valueModel"
         class="i-material-symbols-close-small-rounded TextField-Clear"
         :class="{ prepend, append }"
-        @click.stop="flux.clear"
+        @click.stop="onClear"
       ></div>
     </div>
 

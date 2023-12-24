@@ -19,7 +19,7 @@ const emit = defineEmits<{
   (evt: 'blur', val: Event): void;
 }>();
 
-const uid = uniqueId('Switch-');
+const uid = uniqueId('uid-');
 
 const valueModel = computed({
   get: () => props.value || false,

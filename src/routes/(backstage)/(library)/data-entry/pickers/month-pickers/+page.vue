@@ -1,10 +1,8 @@
 <script lang="ts" setup>
-import { reactive } from 'vue';
-import { XBreadcrumb, XMonthPicker } from '@x/ui';
+import { ref } from 'vue';
+import { XBreadcrumb, XCard, XMonthPicker } from '@x/ui';
 
-const flux = reactive({
-  monthPicker: '',
-});
+const month = ref('');
 </script>
 
 <template>
@@ -13,51 +11,18 @@ const flux = reactive({
       { text: 'Library' },
       { text: 'Data Entry' },
       { text: 'Pickers' },
-      { text: 'Month pickers' },
+      { text: 'MonthPicker' },
     ]"
   />
 
-  <div class="my-4">
-    <div class="text-3xl font-bold">Month pickers</div>
-  </div>
+  <h1 class="text-4xl font-extrabold my-4">MonthPicker</h1>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Basic</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4">Basic</h2>
 
-    <div class="flex justify-center">
-      <XMonthPicker v-model:value="flux.monthPicker" />
-    </div>
-  </div>
-
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Disabled</div>
-
-    <div class="flex justify-center">
-      <XMonthPicker v-model:value="flux.monthPicker" disabled />
-    </div>
-  </div>
-
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Status</div>
-
-    <div class="flex justify-center">
-      <XMonthPicker v-model:value="flux.monthPicker" :invalid="'Error'" />
-    </div>
-  </div>
-
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Status</div>
-
-    <div class="flex justify-center">
-      <XMonthPicker v-model:value="flux.monthPicker" :invalid="'Error'" />
-    </div>
-  </div>
-
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Status</div>
-
-    <div class="flex justify-center">
-      <XMonthPicker v-model:value="flux.monthPicker" :invalid="'Error'" />
-    </div>
-  </div>
+    <XCard>
+      <XMonthPicker v-model:value="month" />
+      <div class="mt-1">{{ month }}</div>
+    </XCard>
+  </section>
 </template>

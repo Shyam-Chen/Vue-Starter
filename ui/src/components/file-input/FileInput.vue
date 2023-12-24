@@ -16,7 +16,7 @@ const emit = defineEmits<{
   (evt: 'change', val: Event): void;
 }>();
 
-const uid = uniqueId('FileInput-');
+const uid = uniqueId('uid-');
 
 const placeholderRef = toRef(props, 'placeholder', 'Choose a file');
 

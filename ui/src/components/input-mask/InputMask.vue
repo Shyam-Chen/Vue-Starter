@@ -29,7 +29,7 @@ const unmaskedModel = computed({
   set: (val) => emit('update:unmasked', val),
 });
 
-const uid = uniqueId('input-mask-');
+const uid = uniqueId('uid-');
 
 function onAccept(evt: CustomEvent) {
   const maskRef = evt.detail;

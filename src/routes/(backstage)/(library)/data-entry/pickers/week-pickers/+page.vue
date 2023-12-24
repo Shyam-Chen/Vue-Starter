@@ -1,13 +1,19 @@
 <script lang="ts" setup>
-import { reactive } from 'vue';
-import { XBreadcrumb, XWeekPicker } from '@x/ui';
+import type { ComponentProps } from 'vue-component-type-helpers';
+import { ref } from 'vue';
+import { XBreadcrumb, XCard, XWeekPicker } from '@x/ui';
 import { format } from 'date-fns';
 
-const flux = reactive({
-  weekPicker: '',
-  startDate: undefined as Date | undefined,
-  endDate: undefined as Date | undefined,
-});
+const week1 = ref('');
+
+const week2 = ref('');
+const week2start = ref<Date>();
+const week2end = ref<Date>();
+
+const week2change: ComponentProps<typeof XWeekPicker>['onChange'] = (week, startDate, endDate) => {
+  week2start.value = startDate;
+  week2end.value = endDate;
+};
 </script>
 
 <template>
@@ -20,77 +26,29 @@ const flux = reactive({
     ]"
   />
 
-  <div class="my-4">
-    <div class="text-3xl font-bold">WeekPicker</div>
-  </div>
+  <h1 class="text-4xl font-extrabold my-4">WeekPicker</h1>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Basic</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4">Basic</h2>
 
-    <div class="flex justify-center">
-      <XWeekPicker v-model:value="flux.weekPicker" />
-    </div>
+    <XCard>
+      <XWeekPicker v-model:value="week1" />
+      <div class="mt-1">{{ week1 }}</div>
+    </XCard>
+  </section>
 
-    <div class="mt-2">{{ flux.weekPicker }}</div>
-  </div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4">onChange</h2>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Label</div>
+    <XCard>
+      <XWeekPicker v-model:value="week2" @change="week2change" />
 
-    <div class="flex justify-center">
-      <XWeekPicker v-model:value="flux.weekPicker" label="Label" />
-    </div>
-  </div>
-
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Disabled</div>
-
-    <div class="flex justify-center">
-      <XWeekPicker v-model:value="flux.weekPicker" label="Label" disabled />
-    </div>
-  </div>
-
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Errors</div>
-
-    <div class="flex justify-center">
-      <XWeekPicker v-model:value="flux.weekPicker" :invalid="'This is a required field'" />
-    </div>
-  </div>
-
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Errors with Label</div>
-
-    <div class="flex justify-center">
-      <XWeekPicker
-        v-model:value="flux.weekPicker"
-        label="Label"
-        :invalid="'This is a required field'"
-        required
-      />
-    </div>
-  </div>
-
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">onChange</div>
-
-    <div class="flex justify-center">
-      <XWeekPicker
-        v-model:value="flux.weekPicker"
-        @change="
-          (week, startDate, endDate) => {
-            flux.startDate = startDate;
-            flux.endDate = endDate;
-          }
-        "
-      />
-    </div>
-
-    <div v-if="flux.startDate && flux.endDate" class="mt-2">
-      <div>Week: {{ flux.weekPicker }}</div>
-      <div>
-        Range: {{ format(flux.startDate, 'yyyy/MM/dd') }} ~ {{ format(flux.endDate, 'yyyy/MM/dd') }}
+      <div v-if="week2start && week2end" class="mt-1">
+        <div>Week: {{ week2 }}</div>
+        <div>
+          Range: {{ format(week2start, 'yyyy/MM/dd') }} ~ {{ format(week2end, 'yyyy/MM/dd') }}
+        </div>
       </div>
-    </div>
-  </div>
+    </XCard>
+  </section>
 </template>

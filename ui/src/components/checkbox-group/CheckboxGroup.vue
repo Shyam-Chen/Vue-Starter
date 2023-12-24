@@ -21,7 +21,7 @@ const emit = defineEmits<{
   (evt: 'change', val: CheckboxGroupValue): void;
 }>();
 
-const uid = uniqueId('checkbox-group-');
+const uid = uniqueId('uid-');
 
 const checkboxGroupValue = computed({
   get: () => props.value || [],
