@@ -41,8 +41,16 @@ function setContent() {
 
     <XCard>
       <XRichTextEditor ref="richTextEditor" v-model="content" />
-      <div class="border rounded p-4">{{ content }}</div>
+      <div class="border rounded p-4 my-4">{{ content }}</div>
       <XButton @click="setContent">Set Content</XButton>
+    </XCard>
+  </section>
+
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Label</h2>
+
+    <XCard>
+      <XRichTextEditor v-model="content" label="Example label" />
     </XCard>
   </section>
 

@@ -107,13 +107,12 @@ watch(
     </XCard>
   </section>
 
-  <div class="flex flex-col border p-4 mb-4 space-y-4">
-    <div class="mb-2">Group</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">CheckboxGroup</h2>
 
-    <div class="flex">
+    <XCard>
       <XCheckboxGroup v-model:value="flux.checkboxGroup1" :options="flux.checkboxGroup1Options" />
-    </div>
-
-    <pre>{{ flux.checkboxGroup1 }}</pre>
-  </div>
+      <div class="mt-1">{{ flux.checkboxGroup1 }}</div>
+    </XCard>
+  </section>
 </template>

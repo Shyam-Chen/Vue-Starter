@@ -1,11 +1,8 @@
 <script lang="ts" setup>
-import { reactive } from 'vue';
+import { ref } from 'vue';
+import { XBreadcrumb, XCard, XTimePicker } from '@x/ui';
 
-import { XBreadcrumb, XTimePicker } from '@x/ui';
-
-const flux = reactive({
-  timePicker: '',
-});
+const time = ref('');
 </script>
 
 <template>
@@ -14,21 +11,18 @@ const flux = reactive({
       { text: 'Library' },
       { text: 'Data Entry' },
       { text: 'Pickers' },
-      { text: 'Time pickers' },
+      { text: 'TimePicker' },
     ]"
   />
 
-  <div class="my-4">
-    <div class="text-3xl font-bold">Time pickers</div>
-  </div>
+  <h1 class="text-4xl font-extrabold my-4">TimePicker</h1>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Basic</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4">Basic</h2>
 
-    <div class="flex justify-center">
-      <XTimePicker v-model:value="flux.timePicker" />
-    </div>
-
-    <div class="mt-2">{{ flux.timePicker }}</div>
-  </div>
+    <XCard>
+      <XTimePicker v-model:value="time" />
+      <div class="mt-1">{{ time }}</div>
+    </XCard>
+  </section>
 </template>

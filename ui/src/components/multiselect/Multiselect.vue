@@ -427,12 +427,12 @@ useScrollParent(
   }
 
   &.focus {
-    @apply outline-0 ring-1 ring-primary-400 border-primary-400;
+    @apply outline-0 ring-2 ring-primary-500/50 border-primary-400;
   }
 
   &.invalid {
     @apply border-red-500 dark:border-red-500;
-    @apply ring-red-500 border-red-500;
+    @apply ring-red-500/50 border-red-500;
   }
 
   &.disabled {

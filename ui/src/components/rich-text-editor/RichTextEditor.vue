@@ -30,14 +30,18 @@ import Popover from '../popover/Popover.vue';
 
 const props = withDefaults(
   defineProps<{
+    label?: string;
     modelValue?: string;
     extension?: Extensions;
+    required?: boolean;
     disabled?: boolean;
     viewonly?: boolean;
   }>(),
   {
+    label: '',
     modelValue: '',
     extension: () => [],
+    required: false,
     disabled: false,
     viewonly: false,
   },
@@ -59,7 +63,7 @@ const editorClass = computed(() => {
     return 'rounded-b min-h-65';
   }
 
-  return 'border border-slate-400 rounded-b px-3 py-2 min-h-65 focus:outline-none focus:ring-1 focus:ring-primary-400 focus:border-primary-400 focus:rounded';
+  return 'border border-slate-400 rounded-b px-3 py-2 min-h-65 focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-primary-400 focus:rounded';
 });
 
 onMounted(() => {
@@ -238,127 +242,139 @@ defineExpose({
 </script>
 
 <template>
-  <div v-if="editor" :class="[disabled ? 'opacity-60 cursor-not-allowed' : '']">
-    <div
-      v-if="!viewonly"
-      class="flex flex-wrap px-2 py-1 border border-b-0 border-slate-400 rounded-t"
-    >
-      <div class="flex gap-1">
-        <div class="i-mdi-format-paragraph w-6 h-6" @click="setParagraph"></div>
-        <div class="i-mdi-format-header-1 w-6 h-6" @click="toggleHeading(1)"></div>
-        <div class="i-mdi-format-header-2 w-6 h-6" @click="toggleHeading(2)"></div>
-        <div class="i-mdi-format-header-3 w-6 h-6" @click="toggleHeading(3)"></div>
-        <div class="i-mdi-format-header-4 w-6 h-6" @click="toggleHeading(4)"></div>
-
-        <Popover :disabled="disabled">
-          <div class="i-mdi-format-color-text w-6 h-6"></div>
-
-          <template #content>
-            <div class="p-4 grid grid-cols-10 gap-2">
-              <div class="Color bg-black" @click="setColor('black')"></div>
-              <div class="Color bg-white" @click="setColor('white')"></div>
-              <div class="Color bg-gray-500" @click="setColor('#6b7280')"></div>
-              <div class="Color bg-red-500" @click="setColor('#ef4444')"></div>
-              <div class="Color bg-orange-500" @click="setColor('#f97316')"></div>
-              <div class="Color bg-amber-500" @click="setColor('#f59e0b')"></div>
-              <div class="Color bg-yellow-500" @click="setColor('#eab308')"></div>
-              <div class="Color bg-lime-500" @click="setColor('#84cc16')"></div>
-              <div class="Color bg-green-500" @click="setColor('#22c55e')"></div>
-              <div class="Color bg-emerald-500" @click="setColor('#10b981')"></div>
-              <div class="Color bg-teal-500" @click="setColor('#14b8a6')"></div>
-              <div class="Color bg-cyan-500" @click="setColor('#06b6d4')"></div>
-              <div class="Color bg-sky-500" @click="setColor('#0ea5e9')"></div>
-              <div class="Color bg-blue-500" @click="setColor('#3b82f6')"></div>
-              <div class="Color bg-indigo-500" @click="setColor('#6366f1')"></div>
-              <div class="Color bg-violet-500" @click="setColor('#8b5cf6')"></div>
-              <div class="Color bg-purple-500" @click="setColor('#a855f7')"></div>
-              <div class="Color bg-fuchsia-500" @click="setColor('#d946ef')"></div>
-              <div class="Color bg-pink-500" @click="setColor('#ec4899')"></div>
-              <div class="Color bg-rose-500" @click="setColor('#f43f5e')"></div>
-            </div>
-          </template>
-        </Popover>
-
-        <Popover :disabled="disabled">
-          <div class="i-mdi-format-color-fill w-6 h-6"></div>
-
-          <template #content>
-            <div class="p-4 grid grid-cols-10 gap-2">
-              <div class="Color bg-black" @click="toggleHighlight('black')"></div>
-              <div class="Color bg-white" @click="toggleHighlight('white')"></div>
-              <div class="Color bg-gray-500" @click="toggleHighlight('#6b7280')"></div>
-              <div class="Color bg-red-500" @click="toggleHighlight('#ef4444')"></div>
-              <div class="Color bg-orange-500" @click="toggleHighlight('#f97316')"></div>
-              <div class="Color bg-amber-500" @click="toggleHighlight('#f59e0b')"></div>
-              <div class="Color bg-yellow-500" @click="toggleHighlight('#eab308')"></div>
-              <div class="Color bg-lime-500" @click="toggleHighlight('#84cc16')"></div>
-              <div class="Color bg-green-500" @click="toggleHighlight('#22c55e')"></div>
-              <div class="Color bg-emerald-500" @click="toggleHighlight('#10b981')"></div>
-              <div class="Color bg-teal-500" @click="toggleHighlight('#14b8a6')"></div>
-              <div class="Color bg-cyan-500" @click="toggleHighlight('#06b6d4')"></div>
-              <div class="Color bg-sky-500" @click="toggleHighlight('#0ea5e9')"></div>
-              <div class="Color bg-blue-500" @click="toggleHighlight('#3b82f6')"></div>
-              <div class="Color bg-indigo-500" @click="toggleHighlight('#6366f1')"></div>
-              <div class="Color bg-violet-500" @click="toggleHighlight('#8b5cf6')"></div>
-              <div class="Color bg-purple-500" @click="toggleHighlight('#a855f7')"></div>
-              <div class="Color bg-fuchsia-500" @click="toggleHighlight('#d946ef')"></div>
-              <div class="Color bg-pink-500" @click="toggleHighlight('#ec4899')"></div>
-              <div class="Color bg-rose-500" @click="toggleHighlight('#f43f5e')"></div>
-            </div>
-          </template>
-        </Popover>
-      </div>
-
-      <div class="border-r mx-2"></div>
-
-      <div class="flex gap-1">
-        <div class="i-mdi-format-bold w-6 h-6" @click="toggleBold"></div>
-        <div class="i-mdi-format-italic w-6 h-6" @click="toggleItalic"></div>
-        <div class="i-mdi-format-underline w-6 h-6" @click="toggleUnderline"></div>
-        <div class="i-mdi-format-strikethrough-variant w-6 h-6" @click="toggleStrike"></div>
-      </div>
-
-      <div class="border-r mx-2"></div>
-
-      <div class="flex gap-1">
-        <div class="i-mdi-format-list-bulleted w-6 h-6" @click="toggleBulletList"></div>
-        <div class="i-mdi-format-list-numbered w-6 h-6" @click="toggleOrderedList"></div>
-      </div>
-
-      <div class="border-r mx-2"></div>
-
-      <div class="flex gap-1">
-        <div class="i-mdi-format-align-left w-6 h-6" @click="setTextAlign('left')"></div>
-        <div class="i-mdi-format-align-center w-6 h-6" @click="setTextAlign('center')"></div>
-        <div class="i-mdi-format-align-right w-6 h-6" @click="setTextAlign('right')"></div>
-        <div class="i-mdi-format-align-justify w-6 h-6" @click="setTextAlign('justify')"></div>
-      </div>
-
-      <div class="border-r mx-2"></div>
-
-      <div class="flex gap-1">
-        <div class="i-mdi-image-outline w-6 h-6" @click="setImage"></div>
-        <div class="i-mdi-link w-6 h-6" @click="setLink"></div>
-        <div class="i-mdi-format-quote-close w-6 h-6" @click="toggleBlockquote"></div>
-        <!-- <div class="i-mdi-code-tags w-6 h-6" @click="toggleCodeBlock"></div> -->
-        <div class="i-mdi-border-horizontal w-6 h-6" @click="setHorizontalRule"></div>
-      </div>
-
-      <div class="border-r mx-2"></div>
-
-      <div class="flex gap-1">
-        <div class="i-mdi-undo w-6 h-6" @click="undo"></div>
-        <div class="i-mdi-redo w-6 h-6" @click="redo"></div>
-      </div>
+  <div>
+    <div class="RichTextEditor-Label">
+      <template v-if="label">{{ label }}</template>
+      <span v-if="required" class="text-red-500">*</span>
+      <slot></slot>
     </div>
 
-    <div class="RichTextEditor">
-      <EditorContent :editor="editor" />
+    <div v-if="editor" :class="[disabled ? 'opacity-60 cursor-not-allowed' : '']">
+      <div
+        v-if="!viewonly"
+        class="flex flex-wrap px-2 py-1 border border-b-0 border-slate-400 rounded-t"
+      >
+        <div class="flex gap-1">
+          <div class="i-mdi-format-paragraph w-6 h-6" @click="setParagraph"></div>
+          <div class="i-mdi-format-header-1 w-6 h-6" @click="toggleHeading(1)"></div>
+          <div class="i-mdi-format-header-2 w-6 h-6" @click="toggleHeading(2)"></div>
+          <div class="i-mdi-format-header-3 w-6 h-6" @click="toggleHeading(3)"></div>
+          <div class="i-mdi-format-header-4 w-6 h-6" @click="toggleHeading(4)"></div>
+
+          <Popover :disabled="disabled">
+            <div class="i-mdi-format-color-text w-6 h-6"></div>
+
+            <template #content>
+              <div class="p-4 grid grid-cols-5 md:grid-cols-10 gap-2">
+                <div class="Color bg-black" @click="setColor('black')"></div>
+                <div class="Color bg-white" @click="setColor('white')"></div>
+                <div class="Color bg-gray-500" @click="setColor('#6b7280')"></div>
+                <div class="Color bg-red-500" @click="setColor('#ef4444')"></div>
+                <div class="Color bg-orange-500" @click="setColor('#f97316')"></div>
+                <div class="Color bg-amber-500" @click="setColor('#f59e0b')"></div>
+                <div class="Color bg-yellow-500" @click="setColor('#eab308')"></div>
+                <div class="Color bg-lime-500" @click="setColor('#84cc16')"></div>
+                <div class="Color bg-green-500" @click="setColor('#22c55e')"></div>
+                <div class="Color bg-emerald-500" @click="setColor('#10b981')"></div>
+                <div class="Color bg-teal-500" @click="setColor('#14b8a6')"></div>
+                <div class="Color bg-cyan-500" @click="setColor('#06b6d4')"></div>
+                <div class="Color bg-sky-500" @click="setColor('#0ea5e9')"></div>
+                <div class="Color bg-blue-500" @click="setColor('#3b82f6')"></div>
+                <div class="Color bg-indigo-500" @click="setColor('#6366f1')"></div>
+                <div class="Color bg-violet-500" @click="setColor('#8b5cf6')"></div>
+                <div class="Color bg-purple-500" @click="setColor('#a855f7')"></div>
+                <div class="Color bg-fuchsia-500" @click="setColor('#d946ef')"></div>
+                <div class="Color bg-pink-500" @click="setColor('#ec4899')"></div>
+                <div class="Color bg-rose-500" @click="setColor('#f43f5e')"></div>
+              </div>
+            </template>
+          </Popover>
+
+          <Popover :disabled="disabled">
+            <div class="i-mdi-format-color-fill w-6 h-6"></div>
+
+            <template #content>
+              <div class="p-4 grid grid-cols-5 md:grid-cols-10 gap-2">
+                <div class="Color bg-black" @click="toggleHighlight('black')"></div>
+                <div class="Color bg-white" @click="toggleHighlight('white')"></div>
+                <div class="Color bg-gray-500" @click="toggleHighlight('#6b7280')"></div>
+                <div class="Color bg-red-500" @click="toggleHighlight('#ef4444')"></div>
+                <div class="Color bg-orange-500" @click="toggleHighlight('#f97316')"></div>
+                <div class="Color bg-amber-500" @click="toggleHighlight('#f59e0b')"></div>
+                <div class="Color bg-yellow-500" @click="toggleHighlight('#eab308')"></div>
+                <div class="Color bg-lime-500" @click="toggleHighlight('#84cc16')"></div>
+                <div class="Color bg-green-500" @click="toggleHighlight('#22c55e')"></div>
+                <div class="Color bg-emerald-500" @click="toggleHighlight('#10b981')"></div>
+                <div class="Color bg-teal-500" @click="toggleHighlight('#14b8a6')"></div>
+                <div class="Color bg-cyan-500" @click="toggleHighlight('#06b6d4')"></div>
+                <div class="Color bg-sky-500" @click="toggleHighlight('#0ea5e9')"></div>
+                <div class="Color bg-blue-500" @click="toggleHighlight('#3b82f6')"></div>
+                <div class="Color bg-indigo-500" @click="toggleHighlight('#6366f1')"></div>
+                <div class="Color bg-violet-500" @click="toggleHighlight('#8b5cf6')"></div>
+                <div class="Color bg-purple-500" @click="toggleHighlight('#a855f7')"></div>
+                <div class="Color bg-fuchsia-500" @click="toggleHighlight('#d946ef')"></div>
+                <div class="Color bg-pink-500" @click="toggleHighlight('#ec4899')"></div>
+                <div class="Color bg-rose-500" @click="toggleHighlight('#f43f5e')"></div>
+              </div>
+            </template>
+          </Popover>
+        </div>
+
+        <div class="border-r mx-2"></div>
+
+        <div class="flex gap-1">
+          <div class="i-mdi-format-bold w-6 h-6" @click="toggleBold"></div>
+          <div class="i-mdi-format-italic w-6 h-6" @click="toggleItalic"></div>
+          <div class="i-mdi-format-underline w-6 h-6" @click="toggleUnderline"></div>
+          <div class="i-mdi-format-strikethrough-variant w-6 h-6" @click="toggleStrike"></div>
+        </div>
+
+        <div class="border-r mx-2"></div>
+
+        <div class="flex gap-1">
+          <div class="i-mdi-format-list-bulleted w-6 h-6" @click="toggleBulletList"></div>
+          <div class="i-mdi-format-list-numbered w-6 h-6" @click="toggleOrderedList"></div>
+        </div>
+
+        <div class="border-r mx-2"></div>
+
+        <div class="flex gap-1">
+          <div class="i-mdi-format-align-left w-6 h-6" @click="setTextAlign('left')"></div>
+          <div class="i-mdi-format-align-center w-6 h-6" @click="setTextAlign('center')"></div>
+          <div class="i-mdi-format-align-right w-6 h-6" @click="setTextAlign('right')"></div>
+          <div class="i-mdi-format-align-justify w-6 h-6" @click="setTextAlign('justify')"></div>
+        </div>
+
+        <div class="border-r mx-2"></div>
+
+        <div class="flex gap-1">
+          <div class="i-mdi-image-outline w-6 h-6" @click="setImage"></div>
+          <div class="i-mdi-link w-6 h-6" @click="setLink"></div>
+          <div class="i-mdi-format-quote-close w-6 h-6" @click="toggleBlockquote"></div>
+          <!-- <div class="i-mdi-code-tags w-6 h-6" @click="toggleCodeBlock"></div> -->
+          <div class="i-mdi-border-horizontal w-6 h-6" @click="setHorizontalRule"></div>
+        </div>
+
+        <div class="border-r mx-2"></div>
+
+        <div class="flex gap-1">
+          <div class="i-mdi-undo w-6 h-6" @click="undo"></div>
+          <div class="i-mdi-redo w-6 h-6" @click="redo"></div>
+        </div>
+      </div>
+
+      <div class="RichTextEditor">
+        <EditorContent :editor="editor" />
+      </div>
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
+.RichTextEditor-Label {
+  @apply flex items-center text-sm font-bold mb-2 empty:hidden;
+}
+
 .RichTextEditor {
   :deep(p) {
     @apply my-2 leading-tight;
@@ -402,7 +418,7 @@ defineExpose({
   }
 
   :deep(hr) {
-    @apply my-2;
+    @apply my-4;
   }
 }
 

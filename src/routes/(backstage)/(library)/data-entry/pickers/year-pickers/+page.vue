@@ -1,10 +1,8 @@
 <script lang="ts" setup>
-import { reactive } from 'vue';
-import { XBreadcrumb, XYearPicker } from '@x/ui';
+import { ref } from 'vue';
+import { XBreadcrumb, XCard, XYearPicker } from '@x/ui';
 
-const flux = reactive({
-  yearPicker: '',
-});
+const year = ref<number>();
 </script>
 
 <template>
@@ -17,15 +15,14 @@ const flux = reactive({
     ]"
   />
 
-  <div class="my-4">
-    <div class="text-3xl font-bold">Year Pickers</div>
-  </div>
+  <h1 class="text-4xl font-extrabold my-4">YearPicker</h1>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Basic</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4">Basic</h2>
 
-    <div class="flex justify-center">
-      <XYearPicker v-model:value="flux.yearPicker" />
-    </div>
-  </div>
+    <XCard>
+      <XYearPicker v-model:value="year" />
+      <div class="mt-1">{{ year }}</div>
+    </XCard>
+  </section>
 </template>

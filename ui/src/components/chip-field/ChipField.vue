@@ -123,7 +123,7 @@ defineExpose({
   @apply flex flex-wrap gap-1 bg-white dark:bg-slate-800 border border-slate-400 rounded w-full px-3 leading-tight;
 
   &.focused {
-    @apply ring-1 ring-primary-400 border-primary-400;
+    @apply ring-2 ring-primary-500/50 border-primary-400;
   }
 
   &.disabled {

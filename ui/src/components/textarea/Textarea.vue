@@ -77,7 +77,7 @@ const valueModel = computed({
 .Textarea-Input {
   @apply w-full border border-slate-400 dark:border-slate-500 rounded px-3 py-2;
   @apply bg-white dark:bg-slate-800 leading-tight;
-  @apply focus:outline-none focus:ring-1 focus:ring-primary-400 focus:border-primary-400;
+  @apply focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-primary-400;
 
   &::placeholder {
     @apply text-zinc-500/50 dark:text-zinc-500;
@@ -89,7 +89,7 @@ const valueModel = computed({
 
   &.invalid {
     @apply border-red-500 dark:border-red-500;
-    @apply focus:ring-red-500 focus:border-red-500;
+    @apply focus:ring-red-500/50 focus:border-red-500;
   }
 }
 </style>

@@ -258,6 +258,7 @@ function onKeydown(evt: any) {
     <div ref="target">
       <div
         ref="selectInput"
+        v-bind="$attrs"
         :tabindex="disabled ? -1 : 0"
         class="Select-Input group"
         :class="{
