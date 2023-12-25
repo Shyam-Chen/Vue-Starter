@@ -285,13 +285,14 @@ useScrollParent(
     <div ref="target">
       <div
         ref="selectInput"
+        :tabindex="disabled ? -1 : 0"
         class="Multiselect-Input group"
         :class="[
           {
             placeholder: !flux.selected?.length,
             focus: flux.show,
             invalid,
-            disabled: disabled,
+            disabled,
             'flex items-center': selectedLabels,
           },
           flux.selected?.length ? (selectedLabels && !selectedStatus ? 'py-2' : 'py-1') : 'py-2',
@@ -421,6 +422,7 @@ useScrollParent(
 .Multiselect-Input {
   @apply relative flex items-center w-full px-3 cursor-pointer;
   @apply border border-slate-400 bg-white dark:bg-slate-800 rounded leading-tight;
+  @apply focus:border-primary-400 focus:outline-0 focus:ring-2 focus:ring-primary-500/50;
 
   &.placeholder {
     @apply text-slate-400 dark:text-slate-500 truncate;

@@ -54,7 +54,7 @@ function onAccept(evt: CustomEvent) {
         :value="masked"
         :disabled="disabled"
         class="InputMask-Input"
-        :class="{ invalid }"
+        :class="{ invalid, disabled }"
         type="text"
         autocomplete="off"
         @accept="onAccept"
@@ -85,6 +85,10 @@ function onAccept(evt: CustomEvent) {
   &.invalid {
     @apply border-red-500;
     @apply focus:ring-red-500/50 focus:border-red-500;
+  }
+
+  &.disabled {
+    @apply cursor-not-allowed;
   }
 }
 </style>

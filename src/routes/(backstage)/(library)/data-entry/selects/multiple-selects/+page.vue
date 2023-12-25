@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
-import { XBreadcrumb, XMultiselect } from '@x/ui';
+import { XBreadcrumb, XCard, XMultiselect } from '@x/ui';
 
 const flux = reactive({
   basic: [],
@@ -39,92 +39,108 @@ const flux = reactive({
     ]"
   />
 
-  <div class="text-4xl font-extrabold my-4">Multiselect</div>
+  <h1 class="text-4xl font-extrabold my-4">Multiselect</h1>
 
-  <div class="my-8">
-    <div class="text-3xl font-bold my-4">Basic</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4">Basic</h2>
 
-    <XMultiselect
-      v-model:value="flux.basic"
-      label="Tech Stack"
-      :options="flux.multiselect1Options"
-    />
-  </div>
+    <XCard>
+      <XMultiselect
+        v-model:value="flux.basic"
+        label="Tech Stack"
+        :options="flux.multiselect1Options"
+      />
+    </XCard>
+  </section>
 
-  <div class="my-8">
-    <div class="text-3xl font-bold my-4 pt-6">Disabled</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Disabled</h2>
 
-    <XMultiselect
-      v-model:value="flux.multiselect1"
-      label="Tech Stack"
-      :options="flux.multiselect1Options"
-      disabled
-    />
-  </div>
-
-  <div class="my-8">
-    <div class="text-3xl font-bold my-4 pt-6">Clearable</div>
-
-    <XMultiselect
-      v-model:value="flux.multiselect1"
-      label="Tech Stack"
-      :options="flux.multiselect1Options"
-      clearable
-    />
-  </div>
-
-  <div class="my-8">
-    <div class="text-3xl font-bold my-4 pt-6">Filterable</div>
-
-    <XMultiselect
-      v-model:value="flux.multiselect1"
-      label="Tech Stack"
-      :options="flux.multiselect1Options"
-      filterable
-    />
-  </div>
-
-  <div class="my-8">
-    <div class="text-3xl font-bold my-4 pt-6">Invalid</div>
-
-    <XMultiselect
-      v-model:value="flux.multiselect1"
-      label="Tech Stack"
-      :options="flux.multiselect1Options"
-      invalid
-    />
-
-    <div class="my-4">
-      <div class="text-2xl font-semibold my-4 pt-5">Error Message</div>
-
+    <XCard>
       <XMultiselect
         v-model:value="flux.multiselect1"
         label="Tech Stack"
         :options="flux.multiselect1Options"
-        invalid="Incorrect entry"
+        disabled
       />
-    </div>
-  </div>
+    </XCard>
+  </section>
 
-  <div class="my-8">
-    <div class="text-3xl font-bold my-4 pt-6">Loading</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Clearable</h2>
 
-    <XMultiselect
-      v-model:value="flux.multiselect1"
-      label="Tech Stack"
-      :options="flux.multiselect1Options"
-      loading
-    />
-  </div>
+    <XCard>
+      <XMultiselect
+        v-model:value="flux.multiselect1"
+        label="Tech Stack"
+        :options="flux.multiselect1Options"
+        clearable
+      />
+    </XCard>
+  </section>
 
-  <div class="my-8">
-    <div class="text-3xl font-bold my-4 pt-6">Selected Labels</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Filterable</h2>
 
-    <XMultiselect
-      v-model:value="flux.multiselect1"
-      label="Tech Stack"
-      :options="flux.multiselect1Options"
-      selectedLabels
-    />
-  </div>
+    <XCard>
+      <XMultiselect
+        v-model:value="flux.multiselect1"
+        label="Tech Stack"
+        :options="flux.multiselect1Options"
+        filterable
+      />
+    </XCard>
+  </section>
+
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Invalid</h2>
+
+    <XCard>
+      <XMultiselect
+        v-model:value="flux.multiselect1"
+        label="Tech Stack"
+        :options="flux.multiselect1Options"
+        invalid
+      />
+    </XCard>
+
+    <section class="my-4">
+      <h3 class="text-2xl font-semibold my-4 pt-2">Error Message</h3>
+
+      <XCard>
+        <XMultiselect
+          v-model:value="flux.multiselect1"
+          label="Tech Stack"
+          :options="flux.multiselect1Options"
+          invalid="Incorrect entry"
+        />
+      </XCard>
+    </section>
+  </section>
+
+  <section class="my-8">
+    <h3 class="text-3xl font-bold my-4 pt-6">Loading</h3>
+
+    <XCard>
+      <XMultiselect
+        v-model:value="flux.multiselect1"
+        label="Tech Stack"
+        :options="flux.multiselect1Options"
+        loading
+      />
+    </XCard>
+  </section>
+
+  <section class="my-8">
+    <h3 class="text-3xl font-bold my-4 pt-6">Selected Labels</h3>
+
+    <XCard>
+      <XMultiselect
+        v-model:value="flux.multiselect1"
+        label="Tech Stack"
+        :options="flux.multiselect1Options"
+        selectedLabels
+      />
+    </XCard>
+  </section>
 </template>
