@@ -438,7 +438,7 @@ useScrollParent(
   }
 
   &.disabled {
-    @apply cursor-not-allowed;
+    @apply cursor-not-allowed focus:ring-0 focus:border-slate-400;
   }
 }
 

@@ -54,6 +54,7 @@ const props = withDefaults(
 const emit = defineEmits<{
   (evt: 'update:value', val?: string | number | null): void;
   (evt: 'change', val: string | number | null, opt: Option | null): void;
+  (evt: 'blur'): void;
 }>();
 
 const selectValue = computed({
@@ -98,6 +99,8 @@ const selectFilter = ref();
 const selectList = ref();
 const selectItem = ref<any[]>([]);
 
+const focused = ref(false);
+
 const initialOptions = computed(() => props.options);
 
 watch(
@@ -131,6 +134,7 @@ const open = () => {
   if (props.disabled) return;
 
   flux.show = !flux.show;
+  focused.value = true;
   hoverIndex.value = -1;
 
   nextTick(() => {
@@ -170,6 +174,7 @@ const open = () => {
 
 onClickOutside(target, () => {
   flux.show = false;
+  focused.value = false;
   hoverIndex.value = -1;
 });
 
@@ -207,15 +212,19 @@ useScrollParent(
 
 const hoverIndex = ref(-1);
 
-function onKeydown(evt: any) {
+function onKeydown(evt: KeyboardEvent) {
   if (['Space', 'Enter'].includes(evt.code)) {
     evt.preventDefault();
 
-    if (flux.show) {
+    if (flux.show && hoverIndex.value !== -1) {
       flux.onSelect(flux.options?.[hoverIndex.value]?.value, flux.options?.[hoverIndex.value]);
     } else {
       open();
     }
+  }
+
+  if (evt.code === 'Escape') {
+    flux.show = false;
   }
 
   if (evt.code === 'ArrowDown') {
@@ -243,8 +252,16 @@ function onKeydown(evt: any) {
   if (evt.code === 'Tab') {
     selectInput.value.blur();
     flux.show = false;
+    focused.value = false;
   }
 }
+
+watch(
+  () => focused.value,
+  (val) => {
+    if (!val) emit('blur');
+  },
+);
 </script>
 
 <template>
@@ -263,9 +280,9 @@ function onKeydown(evt: any) {
         class="Select-Input group"
         :class="{
           placeholder: !flux.selected,
-          focus: flux.show,
+          focused,
           invalid,
-          disabled: disabled,
+          disabled,
         }"
         @click="open"
         @keydown="onKeydown"
@@ -362,7 +379,7 @@ function onKeydown(evt: any) {
     @apply text-slate-400 dark:text-slate-500 truncate;
   }
 
-  &.focus {
+  &.focused {
     @apply border-primary-400 outline-0 ring-2 ring-primary-500/50;
   }
 
@@ -372,7 +389,7 @@ function onKeydown(evt: any) {
   }
 
   &.disabled {
-    @apply cursor-not-allowed;
+    @apply cursor-not-allowed focus:ring-0 focus:border-slate-400;
   }
 }
 
