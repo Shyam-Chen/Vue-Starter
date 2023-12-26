@@ -323,7 +323,7 @@ useScrollParent(
       v-bind="$attrs"
       :value="rangeValue"
       :disabled="disabled"
-      append="i-fa-calendar-o"
+      append="i-material-symbols-date-range-outline-rounded"
       readonly
       @focus="flux.openPicker"
       @append="flux.openPicker"
@@ -343,10 +343,10 @@ useScrollParent(
       >
         <div class="flex justify-between items-center mb-1">
           <div
-            class="cursor-pointer hover:bg-slate-200 dark:hover:bg-slate-600 p-2 rounded-full"
+            class="cursor-pointer hover:bg-slate-200 dark:hover:bg-slate-600 p-1 rounded-full"
             @click="flux.decrement"
           >
-            <div class="i-fa-chevron-left w-3 h-3"></div>
+            <div class="i-material-symbols-chevron-left-rounded w-4 h-4"></div>
           </div>
 
           <div
@@ -369,10 +369,10 @@ useScrollParent(
           <div v-if="flux.showMonths">{{ _format(flux.currentMoment, 'yyyy') }}</div>
 
           <div
-            class="cursor-pointer hover:bg-slate-200 dark:hover:bg-slate-600 p-2 rounded-full"
+            class="cursor-pointer hover:bg-slate-200 dark:hover:bg-slate-600 p-1 rounded-full"
             @click="flux.increment"
           >
-            <div class="i-fa-chevron-right w-3 h-3"></div>
+            <div class="i-material-symbols-chevron-right-rounded w-4 h-4"></div>
           </div>
         </div>
 
@@ -380,7 +380,7 @@ useScrollParent(
           <div
             v-for="(weekday, weekdayIndex) in _weekdays"
             :key="weekdayIndex"
-            class="text-sm text-slate-600"
+            class="text-sm font-bold"
           >
             {{ weekday }}
           </div>
@@ -391,10 +391,10 @@ useScrollParent(
               :key="weekIndex + item"
               class="flex justify-center items-center hover:bg-slate-200 dark:hover:bg-slate-600 rounded-full w-6 h-6 text-sm cursor-pointer"
               :class="{
-                'text-white bg-primary-600 important:hover:bg-primary-700': item.selected,
-                'text-slate-400 important:cursor-not-allowed': item.disabled,
-                'text-white bg-blue-400 important:hover:bg-blue-500': item.today,
-                'text-slate-400 dark:text-slate-600': item.outOfRange,
+                'text-white bg-primary-600 !hover:bg-primary-700': item.selected,
+                'text-slate-300 dark:text-slate-600 !cursor-not-allowed': item.disabled,
+                'text-white bg-blue-400 !hover:bg-blue-500': item.today,
+                'text-slate-300 dark:text-slate-600': item.outOfRange,
               }"
               @click="flux.selectDateItem(item)"
             >
@@ -410,7 +410,7 @@ useScrollParent(
             :value="year"
             class="flex justify-center items-center hover:bg-slate-200 dark:hover:bg-slate-600 rounded text-sm cursor-pointer"
             :class="{
-              'text-white bg-blue-400 important:hover:bg-blue-500': year === getYear(flux.now),
+              'text-white bg-blue-400 !hover:bg-blue-500': year === getYear(flux.now),
             }"
             @click="flux.selectYear(year)"
           >
@@ -425,7 +425,7 @@ useScrollParent(
             :value="index"
             class="flex justify-center items-center hover:bg-slate-200 dark:hover:bg-slate-600 rounded text-sm cursor-pointer"
             :class="{
-              'text-white bg-blue-400 important:hover:bg-blue-500':
+              'text-white bg-blue-400 !hover:bg-blue-500':
                 index === getMonth(flux.now) && flux.year === getYear(flux.now),
             }"
             @click="flux.selectMonth(index)"

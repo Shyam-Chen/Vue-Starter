@@ -135,7 +135,7 @@ useScrollParent(
       ref="input"
       v-bind="$attrs"
       :value="modelDate"
-      append="i-fa-calendar-o"
+      append="i-material-symbols-calendar-month-outline-rounded"
       readonly
       @focus="flux.openPicker"
       @append="flux.openPicker"
@@ -147,7 +147,7 @@ useScrollParent(
       <div
         v-if="flux.showDatePicker"
         ref="picker"
-        class="fixed z-10 p-2 shadow-lg rounded bg-white dark:bg-slate-800"
+        class="fixed z-10 p-2 shadow-lg rounded bg-white dark:bg-slate-800 border border-gray-200 dark:border-gray-700"
         :class="{
           'DatePicker-DatePane-PlacementBottom': flux.direction === 'down',
           'DatePicker-DatePane-PlacementTop': flux.direction === 'up',

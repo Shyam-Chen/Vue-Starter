@@ -25,4 +25,13 @@ const time = ref('');
       <div class="mt-1">{{ time }}</div>
     </XCard>
   </section>
+
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Clearable</h2>
+
+    <XCard>
+      <XTimePicker v-model:value="time" clearable />
+      <div class="mt-1">{{ time }}</div>
+    </XCard>
+  </section>
 </template>
