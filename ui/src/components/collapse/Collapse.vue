@@ -1,35 +1,40 @@
 <script lang="ts" setup>
-const onEnter = (element: any) => {
-  const width = getComputedStyle(element).width;
+const onEnter = (element: Element) => {
+  const el = element as HTMLElement;
 
-  element.style.width = width;
-  element.style.position = 'absolute';
-  element.style.visibility = 'hidden';
-  element.style.height = 'auto';
+  const width = getComputedStyle(el).width;
 
-  const height = getComputedStyle(element).height;
+  el.style.width = width;
+  el.style.position = 'absolute';
+  el.style.visibility = 'hidden';
+  el.style.height = 'auto';
 
-  element.style.width = '';
-  element.style.position = '';
-  element.style.visibility = '';
-  element.style.height = '0px';
+  const height = getComputedStyle(el).height;
+
+  el.style.width = '';
+  el.style.position = '';
+  el.style.visibility = '';
+  el.style.height = '0px';
 
   requestAnimationFrame(() => {
-    element.style.height = height;
+    el.style.height = height;
   });
 };
 
-const onAfterEnter = (element: any) => {
-  element.style.height = 'auto';
+const onAfterEnter = (element: Element) => {
+  const el = element as HTMLElement;
+  el.style.height = 'auto';
 };
 
-const onLeave = (element: any) => {
-  const height = getComputedStyle(element).height;
+const onLeave = (element: Element) => {
+  const el = element as HTMLElement;
 
-  element.style.height = height;
+  const height = getComputedStyle(el).height;
+
+  el.style.height = height;
 
   requestAnimationFrame(() => {
-    element.style.height = '0px';
+    el.style.height = '0px';
   });
 };
 </script>

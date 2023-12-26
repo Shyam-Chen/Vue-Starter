@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
-import { XBreadcrumb, XIterator, XTextField } from '@x/ui';
+import { XBreadcrumb, XCard, XIterator, XTextField } from '@x/ui';
 
 interface Iterator1 {
   address?: string;
@@ -20,38 +20,36 @@ const flux = reactive({
 <template>
   <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Data Display' }, { text: 'Iterator' }]" />
 
-  <div class="my-4">
-    <div class="text-3xl font-bold">Iterator</div>
-  </div>
+  <h1 class="text-4xl font-extrabold my-4">Iterator</h1>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Basic examples</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4">Basic</h2>
 
-    <div class="flex justify-center">
+    <XCard>
       <XIterator v-model:value="flux.iterator1">
-        <template #default="{ item }: { item: Iterator1 }">
+        <template #default="{ item }">
           <XTextField v-model:value="item.address" />
         </template>
       </XIterator>
-    </div>
 
-    <pre>{{ flux.iterator1 }}</pre>
-  </div>
+      <pre class="mt-1">{{ flux.iterator1 }}</pre>
+    </XCard>
+  </section>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Basic examples</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Multiple</h2>
 
-    <div class="flex justify-center">
+    <XCard>
       <XIterator v-model:value="flux.iterator2">
-        <template #default="{ item }: { item: Iterator2 }">
+        <template #default="{ item }">
           <div class="whitespace-nowrap">Deploy a</div>
-          <XTextField v-model:value="item.serviceName" :invalid="'Error Message'" />
+          <XTextField v-model:value="item.serviceName" invalid="Incorrect entry" />
           <div class="whitespace-nowrap">service to</div>
           <XTextField v-model:value="item.cloudName" />
         </template>
       </XIterator>
-    </div>
 
-    <pre>{{ flux.iterator2 }}</pre>
-  </div>
+      <pre class="mt-1">{{ flux.iterator2 }}</pre>
+    </XCard>
+  </section>
 </template>

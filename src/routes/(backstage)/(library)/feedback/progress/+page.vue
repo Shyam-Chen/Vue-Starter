@@ -34,4 +34,15 @@ import { XBreadcrumb, XCard, XSpinner, XProgressBar, XProgressCircle } from '@x/
       <XProgressCircle :percentage="72">72%</XProgressCircle>
     </XCard>
   </section>
+
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">ProgressBar Percentage</h2>
+
+    <XCard>
+      <div class="flex items-center gap-4">
+        <XProgressBar :percentage="66" class="!h-2 rounded-md" />
+        <div>66%</div>
+      </div>
+    </XCard>
+  </section>
 </template>

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
-import { XBreadcrumb, XPopover, XButton } from '@x/ui';
+import { XBreadcrumb, XPopover, XCode, XButton } from '@x/ui';
 
 const controlled = ref(false);
 </script>
@@ -8,12 +8,10 @@ const controlled = ref(false);
 <template>
   <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Data Display' }, { text: 'Popover' }]" />
 
-  <div class="my-4">
-    <div class="text-4xl font-extrabold">Popover</div>
-  </div>
+  <h1 class="text-4xl font-extrabold my-4">Popover</h1>
 
-  <div class="my-8">
-    <div class="text-3xl font-bold my-4">Basic</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4">Basic</h2>
 
     <XPopover>
       <XButton icon="i-mdi-atom" />
@@ -22,31 +20,24 @@ const controlled = ref(false);
         <div class="px-4 py-2">The content of the Popover.</div>
       </template>
     </XPopover>
-  </div>
+  </section>
 
   <div class="my-8">
     <div class="text-3xl font-bold mb-4 pt-6">Controlled</div>
 
-    <div class="flex">
+    <div class="flex items-center gap-2">
       Status:
-      <div>
-        <code class="text-sm text-gray-700 bg-gray-300 ml-2 px-2 py-1 rounded">
-          {{ controlled }}
-        </code>
-      </div>
+      <XCode>{{ controlled }}</XCode>
+      <XButton icon="i-mdi-add" @click="controlled = true" />
     </div>
 
     <XPopover v-model="controlled">
       <XButton icon="i-mdi-atom" />
 
       <template #content>
-        <div class="flex px-4 py-2">
+        <div class="flex gap-2 px-4 py-2">
           Status:
-          <div>
-            <code class="text-sm text-gray-700 bg-gray-300 ml-2 px-2 py-1 rounded">
-              {{ controlled }}
-            </code>
-          </div>
+          <XCode>{{ controlled }}</XCode>
         </div>
       </template>
     </XPopover>

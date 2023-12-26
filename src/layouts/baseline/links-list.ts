@@ -101,7 +101,8 @@ const links = [
       { name: 'Card', to: '/data-display/card' },
       { name: 'Carousel', to: '/data-display/carousel' },
       { name: 'Chip', to: '/data-display/chip' },
-      { name: 'Data iterators', to: '/data-display/data-iterators' },
+      { name: 'Iterator', to: '/data-display/iterator' },
+      { name: 'Popover', to: '/data-display/popover' },
       {
         name: 'Table',
         sub: [
@@ -110,7 +111,6 @@ const links = [
         ],
       },
       { name: 'Tag', to: '/data-display/tag' },
-      { name: 'Popover', to: '/data-display/popover' },
       { name: 'Timeline', to: '/data-display/timeline' },
       { name: 'Tooltip', to: '/data-display/tooltip' },
       { name: 'Tree', to: '/data-display/tree' },

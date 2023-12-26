@@ -1,21 +1,27 @@
 <script lang="ts" setup>
-import { nextTick, ref, computed, reactive } from 'vue';
+import { nextTick, ref, computed, reactive, watch } from 'vue';
 import { vOnClickOutside } from '@vueuse/components';
 
 import useScrollParent from '../../composables/scroll-parent/useScrollParent';
 
 import Fade from '../fade/Fade.vue';
 
-const props = defineProps<{
-  modelValue?: boolean;
-  disabled?: boolean;
-}>();
+const props = withDefaults(
+  defineProps<{
+    modelValue?: boolean;
+    disabled?: boolean;
+  }>(),
+  {
+    modelValue: undefined,
+    disabled: false,
+  },
+);
 
 const emit = defineEmits<{
   (evt: 'update:modelValue', val: boolean): void;
 }>();
 
-const model = computed({
+const defaultModel = computed({
   get: () => props.modelValue || false,
   set: (val) => emit('update:modelValue', val),
 });
@@ -28,16 +34,22 @@ const flux = reactive({
   toggle() {
     if (props.disabled) return;
 
-    flux.status = !flux.status;
-    model.value = !model.value;
+    if (typeof props.modelValue === 'boolean') {
+      defaultModel.value = !defaultModel.value;
+    } else {
+      flux.status = !flux.status;
 
-    nextTick(() => {
-      flux.resizePanel();
-    });
+      nextTick(() => {
+        flux.resizePanel();
+      });
+    }
   },
   close() {
-    flux.status = false;
-    model.value = false;
+    if (typeof props.modelValue === 'boolean') {
+      defaultModel.value = false;
+    } else {
+      flux.status = false;
+    }
   },
 
   direction: '' as 'down' | 'up' | '',
@@ -46,8 +58,6 @@ const flux = reactive({
 
     const center = window.innerHeight / 2;
     const middle = window.innerWidth / 2;
-
-    if (!panel.value) return;
 
     if (rect.top > center) {
       panel.value.style.top = `${rect.top}px`;
@@ -74,46 +84,63 @@ const flux = reactive({
 useScrollParent(
   computed(() => panel.value),
   () => {
-    if (flux.status) flux.resizePanel();
+    if (flux.status || defaultModel.value) flux.resizePanel();
+  },
+);
+
+watch(
+  () => defaultModel.value,
+  (val) => {
+    if (val) {
+      nextTick(() => {
+        flux.resizePanel();
+      });
+    }
   },
 );
 </script>
 
 <template>
-  <div v-on-click-outside="flux.close" class="relative inline-flex">
-    <div
-      ref="target"
-      class="inline-flex w-full justify-center items-center rounded-md"
-      @click="flux.toggle"
-    >
+  <div v-on-click-outside="flux.close" class="Popover">
+    <div ref="target" class="Popover-Target" @click="flux.toggle">
       <slot></slot>
     </div>
 
     <Fade>
       <div
-        v-if="flux.status || model"
+        v-if="typeof modelValue === 'boolean' ? defaultModel : flux.status"
         ref="panel"
         tabindex="-1"
-        class="fixed z-100 top-0 left-0 min-w-max bg-white dark:bg-slate-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700"
+        class="Popover-Panel"
         :class="{
-          'Dropdown-Panel-PlacementBottom': flux.direction === 'down',
-          'Dropdown-Panel-PlacementTop': flux.direction === 'up',
+          placementBottom: flux.direction === 'down',
+          placementTop: flux.direction === 'up',
         }"
       >
-        <div class="py-1">
-          <slot name="content"> </slot>
-        </div>
+        <slot name="content"></slot>
       </div>
     </Fade>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.Dropdown-Panel-PlacementBottom {
-  transform: translateY(0.5rem);
+.Popover {
+  @apply relative inline-flex;
 }
 
-.Dropdown-Panel-PlacementTop {
-  transform: translateY(-0.5rem) translateY(-100%);
+.Popover-Target {
+  @apply w-full inline-flex justify-center items-center;
+}
+
+.Popover-Panel {
+  @apply fixed z-100 min-w-max bg-white dark:bg-slate-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700;
+
+  &.placementBottom {
+    transform: translateY(0.5rem);
+  }
+
+  &.placementTop {
+    transform: translateY(-0.5rem) translateY(-100%);
+  }
 }
 </style>

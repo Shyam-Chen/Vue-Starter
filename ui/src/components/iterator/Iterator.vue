@@ -1,9 +1,9 @@
-<script lang="ts" setup>
+<script lang="ts" setup generic="T = object">
 import { computed, reactive } from 'vue';
 
 import Button from '../button/Button.vue';
 
-type IteratorItem = any;
+type IteratorItem = Partial<T>;
 
 const props = withDefaults(
   defineProps<{
@@ -45,20 +45,18 @@ const flux = reactive({
 </script>
 
 <template>
-  <div class="w-full flex flex-col">
-    <div
-      v-for="(item, index) in listValue"
-      :key="index"
-      class="flex items-baseline space-x-2 space-y-2"
-    >
-      <slot :item="item" :index="index"></slot>
+  <div class="w-full flex flex-col gap-2">
+    <div v-for="(item, index) in listValue" :key="index" class="flex">
+      <div class="w-full flex items-baseline gap-2">
+        <slot :item="item" :index="index"></slot>
+      </div>
 
       <div>
         <Button
           v-if="index === 0"
           floating
           class="ml-2"
-          icon="i-fa-plus"
+          icon="i-material-symbols-add-rounded"
           :disabled="disabled"
           @click="flux.add"
         />
@@ -68,7 +66,7 @@ const flux = reactive({
           color="danger"
           floating
           class="ml-2"
-          icon="i-fa-minus"
+          icon="i-material-symbols-check-indeterminate-small-rounded"
           :disabled="disabled"
           @click="flux.remove(index)"
         />
