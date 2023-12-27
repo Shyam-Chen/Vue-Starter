@@ -91,7 +91,7 @@ const uid = uniqueId('uid-');
 
 .Checkbox-Input {
   @apply appearance-none w-5 h-5 rounded border border-slate-400 dark:border-slate-600 overflow-hidden;
-  @apply focus:outline-none focus:ring-2 focus:ring-primary-400 focus:shadow-lg;
+  @apply focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:shadow-lg;
   @apply bg-white;
 
   &.hasValue {
@@ -100,7 +100,7 @@ const uid = uniqueId('uid-');
 
   &.invalid {
     @apply border-red-500 dark:border-red-500;
-    @apply focus:ring-red-500 focus:border-red-500;
+    @apply focus:ring-red-500/50 focus:border-red-500;
   }
 }
 

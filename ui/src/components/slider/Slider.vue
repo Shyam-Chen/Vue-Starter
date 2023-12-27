@@ -100,18 +100,32 @@ watch(
   @apply bg-gradient-to-r from-primary-400 to-primary-600 bg-no-repeat;
 
   width: calc(100% + 1rem);
-  left: -7.5px;
+  left: -0.46875rem;
+
+  &:focus {
+    &::-webkit-slider-thumb {
+      @apply ring-2 ring-primary-500/50;
+    }
+
+    &::-moz-range-thumb {
+      @apply ring-2 ring-primary-500/50;
+    }
+
+    & + .Slider-Output {
+      @apply block;
+    }
+  }
 
   &::-webkit-slider-thumb {
     @apply appearance-none cursor-ew-resize;
     @apply w-4 h-4 bg-primary-600 rounded-full shadow transition;
 
     &:hover {
-      @apply ring-5 ring-primary-500/40;
+      @apply ring-5 ring-primary-500/50;
     }
 
     &:active {
-      @apply ring-7 ring-primary-500/40;
+      @apply ring-7 ring-primary-500/50;
     }
   }
 
@@ -120,16 +134,12 @@ watch(
     @apply w-4 h-4 bg-primary-600 rounded-full shadow transition;
 
     &:hover {
-      @apply ring-5 ring-primary-500/40;
+      @apply ring-5 ring-primary-500/50;
     }
 
     &:active {
-      @apply ring-7 ring-primary-500/40;
+      @apply ring-7 ring-primary-500/50;
     }
-  }
-
-  &:hover + .Slider-Output {
-    @apply block;
   }
 }
 

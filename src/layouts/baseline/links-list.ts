@@ -59,6 +59,7 @@ const links = [
     name: 'Data Entry',
     sub: [
       { name: 'Autocomplete', to: '/data-entry/autocompletes' },
+      { name: 'CheckboxGroup', to: '/data-entry/checkbox-group' },
       { name: 'Checkbox', to: '/data-entry/checkboxes' },
       { name: 'Editor', to: '/data-entry/editor' },
       { name: 'FileInput', to: '/data-entry/file-inputs' },

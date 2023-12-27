@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
-import { XBreadcrumb, XTransfer } from '@x/ui';
+import { XBreadcrumb, XCard, XTransfer } from '@x/ui';
 
 const flux = reactive({
   source: [
@@ -10,10 +10,10 @@ const flux = reactive({
     { id: 4, name: 'Vue' },
   ],
   target: [
-    { id: 5, name: 'TypeScript' },
-    { id: 6, name: 'JavaScript' },
-    { id: 7, name: 'CoffeeScript' },
-    { id: 8, name: 'PureScript' },
+    { id: 5, name: 'Express' },
+    { id: 6, name: 'Fastify' },
+    { id: 7, name: 'Koa' },
+    { id: 8, name: 'Nest' },
   ],
 });
 </script>
@@ -21,21 +21,19 @@ const flux = reactive({
 <template>
   <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Data Entry' }, { text: 'Transfer' }]" />
 
-  <div class="my-4">
-    <div class="text-3xl font-bold">Transfer</div>
-  </div>
+  <h1 class="text-4xl font-extrabold my-4">Transfer</h1>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Basic</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4">Basic</h2>
 
-    <div class="flex flex-col justify-center">
+    <XCard>
       <XTransfer v-model:source="flux.source" v-model:target="flux.target" />
-    </div>
 
-    <div class="flex">
-      <pre class="flex-1">{{ flux.source }}</pre>
-      <div class="w-15"></div>
-      <pre class="flex-1">{{ flux.target }}</pre>
-    </div>
-  </div>
+      <div class="flex mt-1">
+        <pre class="flex-1">{{ flux.source }}</pre>
+        <div class="w-15"></div>
+        <pre class="flex-1">{{ flux.target }}</pre>
+      </div>
+    </XCard>
+  </section>
 </template>

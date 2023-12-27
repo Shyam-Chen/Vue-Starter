@@ -353,7 +353,11 @@ useScrollParent(
           }"
         >
           <div v-if="filterable" class="Multiselect-FilterWrapper">
-            <TextField ref="selectFilter" v-model:value="flux.filterValue" />
+            <TextField
+              ref="selectFilter"
+              v-model:value="flux.filterValue"
+              append="i-material-symbols-filter-alt-outline"
+            />
           </div>
 
           <div

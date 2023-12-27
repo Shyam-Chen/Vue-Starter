@@ -284,6 +284,7 @@ watch(
           invalid,
           disabled,
         }"
+        @focus="focused = true"
         @click="open"
         @keydown="onKeydown"
       >
@@ -323,7 +324,11 @@ watch(
           }"
         >
           <div v-if="filterable" class="Select-FilterWrapper">
-            <TextField ref="selectFilter" v-model:value="flux.filterValue" />
+            <TextField
+              ref="selectFilter"
+              v-model:value="flux.filterValue"
+              append="i-material-symbols-filter-alt-outline"
+            />
           </div>
 
           <div ref="selectList" class="Select-List">

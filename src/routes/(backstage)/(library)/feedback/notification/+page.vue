@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import type { ComponentProps } from 'vue-component-type-helpers';
 import { ref } from 'vue';
-import { XBreadcrumb, XButton, XNotification } from '@x/ui';
+import { XBreadcrumb, XCard, XButton, XNotification } from '@x/ui';
 import { useNotification } from '@x/ui';
 
 const notify = ref();
@@ -29,7 +29,7 @@ const notification = useNotification();
 type Color = ComponentProps<typeof XNotification>['color'];
 
 const colorSelector = (() => {
-  const colors: Color[] = ['primary', 'secondary', 'success', 'danger', 'warning', 'info'];
+  const colors: Color[] = ['success', 'danger', 'warning', 'info'];
 
   let currentIndex = 0;
 
@@ -53,33 +53,31 @@ const push3 = () => {
 <template>
   <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Feedback' }, { text: 'Notification' }]" />
 
-  <div class="my-4">
-    <div class="text-3xl font-bold">Notification</div>
-  </div>
+  <h1 class="text-4xl font-extrabold my-4">Notification</h1>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Basic</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4">Basic</h2>
 
-    <div class="flex gap-4">
+    <XCard>
       <XButton @click="push">Push</XButton>
       <XNotification ref="notify" />
-    </div>
-  </div>
+    </XCard>
+  </section>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Multiple</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Custom</h2>
 
-    <div class="flex gap-4">
+    <XCard>
       <XButton @click="push2">Push</XButton>
-      <XNotification ref="notify2" color="success" icon="i-mdi-checkbox-marked-circle-outline" />
-    </div>
-  </div>
+      <XNotification ref="notify2" color="secondary" icon="i-material-symbols-wifi-rounded" />
+    </XCard>
+  </section>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">useNotification</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Severity</h2>
 
-    <div class="flex gap-4">
+    <XCard>
       <XButton @click="push3">Push</XButton>
-    </div>
-  </div>
+    </XCard>
+  </section>
 </template>

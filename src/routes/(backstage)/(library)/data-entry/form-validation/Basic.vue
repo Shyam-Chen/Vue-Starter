@@ -2,7 +2,16 @@
 import { computed, reactive, toRef } from 'vue';
 import { useValibotSchema } from 'vue-formor';
 import { useLocaler } from 'vue-localer';
-import { XCard, XTextField, XSelect, XRadioGroup, XTextarea, XCheckbox, XButton } from '@x/ui';
+import {
+  XCard,
+  XTextField,
+  XSelect,
+  XRadioGroup,
+  XTextarea,
+  XCheckbox,
+  XDatePicker,
+  XButton,
+} from '@x/ui';
 import { useValdnLocale } from '@x/ui';
 import {
   optional,
@@ -23,6 +32,7 @@ interface BasicForm {
   confirmPassword?: string;
   pronouns?: 1 | 2 | 3;
   urlPasteBehavior?: 1 | 2;
+  birthday?: string;
   bio?: string;
   agreed?: boolean;
 }
@@ -62,6 +72,7 @@ const schema = useValibotSchema(
       ),
       pronouns: optional(number([minValue(1, valdnLocale.value.required)]), 0),
       urlPasteBehavior: optional(number([minValue(1, valdnLocale.value.required)]), 0),
+      birthday: optional(string([minLength(1, valdnLocale.value.required)]), ''),
       bio: optional(string([minLength(1, valdnLocale.value.required)]), ''),
       agreed: literal(true, valdnLocale.value.required),
     }),
@@ -134,6 +145,13 @@ const submit = () => {
           ]"
           required
           :invalid="state.valdn.urlPasteBehavior"
+        />
+
+        <XDatePicker
+          v-model:value="state.form.birthday"
+          label="Birthday"
+          required
+          :invalid="state.valdn.birthday"
         />
 
         <div class="md:col-span-2">

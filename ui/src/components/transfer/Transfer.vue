@@ -171,12 +171,12 @@ watch(
 }
 
 .container {
-  @apply border rounded-md min-w-50 overflow-auto;
+  @apply border border-gray-200 dark:border-gray-700 rounded-md min-w-50 overflow-auto;
 }
 
 .title {
   @apply sticky top-0 z-1 px-3 py-2 rounded-t-md flex justify-between items-center gap-2;
-  @apply bg-blueGray-200 dark:bg-blueGray-700 text-blueGray-500 dark:text-blueGray-200;
+  @apply bg-gray-200 dark:bg-gray-700 text-gray-500 dark:text-gray-200;
 }
 
 .list {

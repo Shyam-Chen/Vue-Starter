@@ -52,7 +52,8 @@ import { XBreadcrumb } from '@x/ui';
 
     <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
       <RouterLink to="/data-entry/autocompletes" class="card">Autocompletes</RouterLink>
-      <RouterLink to="/data-entry/checkboxes" class="card">Checkboxes</RouterLink>
+      <RouterLink to="/data-entry/checkbox-group" class="card">CheckboxGroup</RouterLink>
+      <RouterLink to="/data-entry/checkboxes" class="card">Checkbox</RouterLink>
       <RouterLink to="/data-entry/editor" class="card">Editor</RouterLink>
       <RouterLink to="/data-entry/file-inputs" class="card">File inputs</RouterLink>
       <RouterLink to="/data-entry/form-validation" class="card">Form Validation</RouterLink>

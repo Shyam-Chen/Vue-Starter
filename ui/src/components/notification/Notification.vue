@@ -20,6 +20,12 @@ const props = defineProps<{
 const list = ref(props.messages || []);
 const timeoutList = ref(props.timeouts || []);
 
+const severityIcon = new Map();
+severityIcon.set('success', 'i-material-symbols-check-circle-rounded');
+severityIcon.set('danger', 'i-material-symbols-dangerous-rounded');
+severityIcon.set('warning', 'i-material-symbols-warning-rounded');
+severityIcon.set('info', 'i-material-symbols-info-rounded');
+
 const push = ({ message, color, icon }: Omit<NotificationMessage, 'timeout'>) => {
   const item = {
     message,
@@ -69,15 +75,14 @@ function close(item: NotificationMessage, index: number) {
       :key="item.timeout as number"
       v-bind="$attrs"
       :color="color || item.color"
-      :icon="icon || item.icon"
-      class="shadow-xl"
+      :icon="icon || item.icon || severityIcon.get(item.color)"
+      class="shadow-xl dark:shadow-primary-500/50"
       :class="{
-        'dark:shadow-primary-500/50': color === 'primary' || item.color === 'primary',
-        'dark:shadow-secondary-500/50': color === 'secondary' || item.color === 'secondary',
-        'dark:shadow-success-500/50': color === 'success' || item.color === 'success',
-        'dark:shadow-danger-500/50': color === 'danger' || item.color === 'danger',
-        'dark:shadow-warning-500/50': color === 'warning' || item.color === 'warning',
-        'dark:shadow-info-500/50': color === 'info' || item.color === 'info',
+        '!dark:shadow-secondary-500/50': color === 'secondary' || item.color === 'secondary',
+        '!dark:shadow-success-500/50': color === 'success' || item.color === 'success',
+        '!dark:shadow-danger-500/50': color === 'danger' || item.color === 'danger',
+        '!dark:shadow-warning-500/50': color === 'warning' || item.color === 'warning',
+        '!dark:shadow-info-500/50': color === 'info' || item.color === 'info',
       }"
       @close="close(item, index)"
     >

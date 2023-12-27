@@ -1,18 +1,15 @@
 <script lang="ts" setup>
 import { reactive, watch } from 'vue';
-import { XBreadcrumb, XCard, XCheckbox, XCheckboxGroup } from '@x/ui';
+import { XBreadcrumb, XCard, XCheckbox } from '@x/ui';
 
 const flux = reactive({
   checkbox1: false,
 
   checkbox2: false,
-  checkboxes2: [{ checked: false }, { checked: false }, { checked: false }] as Array<{
-    checked?: boolean;
+  checkboxes2: [{ checked: true }, { checked: false }, { checked: false }] as Array<{
+    checked: boolean;
   }>,
-  indeterminate2: false,
-
-  checkboxGroup1: [],
-  checkboxGroup1Options: ['Angular', 'React', 'Svelte', 'Vue'],
+  indeterminate2: true,
 });
 
 watch(
@@ -46,9 +43,8 @@ watch(
     <h2 class="text-3xl font-bold my-4">Basic</h2>
 
     <XCard>
-      <div class="flex justify-center">
-        <XCheckbox v-model:value="flux.checkbox1">Checkbox 1</XCheckbox>
-      </div>
+      <XCheckbox v-model:value="flux.checkbox1">Checkbox 1</XCheckbox>
+      <div class="mt-1">{{ flux.checkbox1 }}</div>
     </XCard>
   </section>
 
@@ -56,7 +52,7 @@ watch(
     <h2 class="text-3xl font-bold my-4 pt-6">Readonly</h2>
 
     <XCard>
-      <div class="flex justify-center gap-4">
+      <div class="flex gap-4">
         <XCheckbox checked readonly>Checkbox (checked)</XCheckbox>
         <XCheckbox readonly>Checkbox (unchecked)</XCheckbox>
       </div>
@@ -67,18 +63,23 @@ watch(
     <h2 class="text-3xl font-bold my-4 pt-6">Invalid</h2>
 
     <XCard>
-      <div class="flex justify-center gap-4">
-        <XCheckbox invalid>Checkbox</XCheckbox>
-        <XCheckbox invalid="Error message">Checkbox</XCheckbox>
-      </div>
+      <XCheckbox invalid>Checkbox</XCheckbox>
     </XCard>
+
+    <section class="my-4">
+      <h3 class="text-2xl font-semibold my-4 pt-2">Error Message</h3>
+
+      <XCard>
+        <XCheckbox invalid="Incorrect entry">Checkbox</XCheckbox>
+      </XCard>
+    </section>
   </section>
 
   <section class="my-8">
     <h2 class="text-3xl font-bold my-4 pt-6">Disabled</h2>
 
     <XCard>
-      <div class="flex justify-center gap-4">
+      <div class="flex gap-4">
         <XCheckbox v-model:value="flux.checkbox1" disabled>Checkbox 1</XCheckbox>
         <XCheckbox checked disabled>Checkbox (checked + disabled)</XCheckbox>
       </div>
@@ -89,13 +90,13 @@ watch(
     <h2 class="text-3xl font-bold my-4 pt-6">Indeterminate</h2>
 
     <XCard>
-      <div class="flex justify-center">
+      <div class="flex">
         <XCheckbox v-model:value="flux.checkbox2" :indeterminate="flux.indeterminate2">
           Checkbox 2
         </XCheckbox>
       </div>
 
-      <div class="flex justify-center mt-2 space-x-6">
+      <div class="flex gap-4 ml-7 mt-1">
         <XCheckbox
           v-for="(item, index) in flux.checkboxes2"
           :key="index"
@@ -104,15 +105,6 @@ watch(
           Checkbox 2-{{ index + 1 }}
         </XCheckbox>
       </div>
-    </XCard>
-  </section>
-
-  <section class="my-8">
-    <h2 class="text-3xl font-bold my-4 pt-6">CheckboxGroup</h2>
-
-    <XCard>
-      <XCheckboxGroup v-model:value="flux.checkboxGroup1" :options="flux.checkboxGroup1Options" />
-      <div class="mt-1">{{ flux.checkboxGroup1 }}</div>
     </XCard>
   </section>
 </template>

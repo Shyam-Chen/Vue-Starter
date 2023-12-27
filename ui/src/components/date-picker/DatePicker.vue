@@ -45,6 +45,7 @@ const props = withDefaults(
 const emit = defineEmits<{
   (evt: 'update:value', val: string): void;
   (evt: 'change', val: string): void;
+  (evt: 'blur'): void;
 }>();
 
 const localer = useLocaler();
@@ -154,7 +155,8 @@ const flux = reactive({
   openPicker() {
     if (props.disabled) return;
 
-    flux.showDatePicker = true;
+    flux.showDatePicker = !flux.showDatePicker;
+    focused.value = true;
 
     flux.showWeeks = true;
     flux.showYears = false;
@@ -167,7 +169,7 @@ const flux = reactive({
     }
 
     nextTick(() => {
-      flux.resizePanel();
+      if (flux.showDatePicker) flux.resizePanel();
     });
   },
 
@@ -260,8 +262,18 @@ const flux = reactive({
   },
 });
 
+const focused = ref(false);
+
+watch(
+  () => focused.value,
+  (val) => {
+    if (!val) emit('blur');
+  },
+);
+
 onClickOutside(target, () => {
   flux.showDatePicker = false;
+  focused.value = false;
 });
 
 watch(
@@ -283,6 +295,23 @@ useScrollParent(
     if (flux.showDatePicker) flux.resizePanel();
   },
 );
+
+function onKeydown(evt: KeyboardEvent) {
+  if (['Space', 'Enter'].includes(evt.code)) {
+    evt.preventDefault();
+    flux.openPicker();
+  }
+
+  if (evt.code === 'Escape') {
+    flux.showDatePicker = false;
+  }
+
+  if (evt.code === 'Tab') {
+    input.value.$el.querySelector('.TextField-Input').blur();
+    flux.showDatePicker = false;
+    focused.value = false;
+  }
+}
 </script>
 
 <template>
@@ -295,8 +324,10 @@ useScrollParent(
       append="i-material-symbols-calendar-today-outline-rounded"
       readonly
       @clear="modelDate = ''"
-      @focus="flux.openPicker"
+      @focus="focused = true"
+      @click="flux.openPicker"
       @append="flux.openPicker"
+      @keydown="onKeydown"
     >
       <slot></slot>
     </TextField>
