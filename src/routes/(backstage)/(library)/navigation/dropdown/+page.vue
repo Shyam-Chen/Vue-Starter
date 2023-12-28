@@ -1,23 +1,21 @@
 <script lang="ts" setup>
-import { XBreadcrumb, XDropdown, XButton } from '@x/ui';
+import { XBreadcrumb, XCard, XDropdown, XButton } from '@x/ui';
 </script>
 
 <template>
   <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Navigation' }, { text: 'Dropdown' }]" />
 
-  <div class="my-4">
-    <div class="text-3xl font-bold">Dropdown</div>
-  </div>
+  <h1 class="text-4xl font-extrabold my-4">Dropdown</h1>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Basic</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4">Basic</h2>
 
-    <div class="flex justify-center">
+    <XCard>
       <XDropdown :options="['Action', 'Another action', '', 'Something else here']">
-        <XButton>Button</XButton>
+        <XButton label="Button" />
       </XDropdown>
-    </div>
-  </div>
+    </XCard>
+  </section>
 
   <div class="h-72"></div>
 

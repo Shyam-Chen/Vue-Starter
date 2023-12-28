@@ -20,11 +20,9 @@ function goToNext() {
 <template>
   <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Navigation' }, { text: 'Stepper' }]" />
 
-  <div class="my-4">
-    <div class="text-3xl font-bold">Stepper</div>
-  </div>
+  <h1 class="text-4xl font-extrabold my-4">Stepper</h1>
 
-  <XStepper v-model="flux.stepper1" class="my-4">
+  <XStepper v-model="flux.stepper1" class="my-8">
     <template #head>
       <XStepper.Step :step="1">1. Enter details</XStepper.Step>
       <XStepper.Step :step="2">2. Additional details</XStepper.Step>

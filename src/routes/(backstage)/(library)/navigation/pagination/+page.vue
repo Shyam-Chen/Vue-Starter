@@ -1,25 +1,31 @@
 <script lang="ts" setup>
-import { XBreadcrumb, XPagination } from '@x/ui';
+import { ref } from 'vue';
+import { XBreadcrumb, XCard, XPagination } from '@x/ui';
+
+const page = ref(1);
+const page2 = ref(1);
 </script>
 
 <template>
   <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Navigation' }, { text: 'Pagination' }]" />
 
-  <div class="my-4">
-    <div class="text-3xl font-bold">Pagination</div>
-  </div>
+  <h1 class="text-4xl font-extrabold my-4">Pagination</h1>
 
-  <div class="border grid gap-4 p-4 my-4">
-    <div class="font-bold">Basic</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4">Basic</h2>
 
-    <div class="flex flex-col gap-2">
-      <div class="text-sm">Page = 1, Rows per page = 10, Count = 144</div>
-      <XPagination :value="1" :rows="10" :count="144" />
-    </div>
+    <XCard>
+      <div class="grid gap-6">
+        <div class="flex flex-col gap-2">
+          <div class="text-sm">Page = {{ page }}, Rows per page = 10, Count = 65,536</div>
+          <XPagination v-model:value="page" :rows="10" :count="65_536" />
+        </div>
 
-    <div class="flex flex-col gap-2">
-      <div class="text-sm">Page = 1, Rows per page = 10, Count = 27</div>
-      <XPagination :value="1" :rows="10" :count="27" />
-    </div>
-  </div>
+        <div class="flex flex-col gap-2">
+          <div class="text-sm">Page = {{ page2 }}, Rows per page = 10, Count = 32</div>
+          <XPagination v-model:value="page2" :rows="10" :count="32" />
+        </div>
+      </div>
+    </XCard>
+  </section>
 </template>

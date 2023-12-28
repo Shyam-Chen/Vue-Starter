@@ -1,5 +1,8 @@
 <script lang="ts" setup>
+import { ref } from 'vue';
 import { XBreadcrumb, XCard, XPassword } from '@x/ui';
+
+const password = ref('oxlint');
 </script>
 
 <template>
@@ -11,7 +14,15 @@ import { XBreadcrumb, XCard, XPassword } from '@x/ui';
     <h2 class="text-3xl font-bold my-4">Basic</h2>
 
     <XCard>
-      <XPassword label="New Password" />
+      <XPassword v-model:value="password" label="Password" />
+    </XCard>
+  </section>
+
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Meter</h2>
+
+    <XCard>
+      <XPassword v-model:value="password" label="New Password" meter />
     </XCard>
   </section>
 </template>

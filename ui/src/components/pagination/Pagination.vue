@@ -123,6 +123,6 @@ watch(
 
 <style lang="scss" scoped>
 :deep(.Button) {
-  @apply rounded-full py-2 px-0 min-w-38px;
+  @apply rounded-full p-2 min-w-38px;
 }
 </style>

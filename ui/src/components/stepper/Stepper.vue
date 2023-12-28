@@ -2,6 +2,7 @@
 import { ref, computed, provide, useSlots } from 'vue';
 import { useLocale } from 'vue-localer';
 
+import Card from '../card/Card.vue';
 import ProgressCircle from '../progress-circle/ProgressCircle.vue';
 
 const props = withDefaults(
@@ -32,8 +33,10 @@ provide('Stepper', {
 
 <template>
   <div class="flex w-full">
-    <div class="bg-white dark:bg-slate-800 shadow w-full mt-8">
-      <nav class="stepper relative z-3 -top-8 mx-5 -mb-8 p-4 bg-white dark:bg-slate-700 shadow-md">
+    <Card class="w-full mt-10">
+      <nav
+        class="stepper relative z-3 -top-16 -mb-16 p-4 bg-white dark:bg-slate-700 rounded-md shadow-md border border-gray-200 dark:border-gray-700"
+      >
         <ul class="hidden md:flex justify-between">
           <slot name="head"></slot>
         </ul>
@@ -59,9 +62,9 @@ provide('Stepper', {
         </div>
       </nav>
 
-      <div ref="body" class="p-6">
+      <div ref="body" class="pt-6">
         <slot name="body"></slot>
       </div>
-    </div>
+    </Card>
   </div>
 </template>
