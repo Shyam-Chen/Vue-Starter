@@ -29,10 +29,11 @@ const controlled = ref(false);
       Status:
       <XCode>{{ controlled }}</XCode>
       <XButton icon="i-mdi-add" @click="controlled = true" />
+      <XButton icon="i-mdi-minus" @click="controlled = false" />
     </div>
 
     <XPopover v-model="controlled">
-      <XButton icon="i-mdi-atom" />
+      <XButton icon="i-mdi-atom" @click="controlled = !controlled" />
 
       <template #content>
         <div class="flex gap-2 px-4 py-2">
@@ -80,8 +81,8 @@ const controlled = ref(false);
       </div>
     </div>
 
-    <div class="flex justify-center h-50">
-      <div>
+    <div class="flex justify-evenly h-50">
+      <div v-for="num in 6" :key="num">
         <XPopover>
           <XButton icon="i-mdi-atom" />
 

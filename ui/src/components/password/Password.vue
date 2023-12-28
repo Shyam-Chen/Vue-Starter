@@ -9,7 +9,7 @@ const status = ref(false);
 
 <template>
   <div>
-    <Popover v-model="status">
+    <Popover v-model="status" class="w-full">
       <TextField v-bind="$attrs" type="password" @focus="status = true" @blur="status = false" />
 
       <template #content>

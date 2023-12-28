@@ -33,16 +33,13 @@ const flux = reactive({
   status: false,
   toggle() {
     if (props.disabled) return;
+    if (typeof props.modelValue === 'boolean') return;
 
-    if (typeof props.modelValue === 'boolean') {
-      defaultModel.value = !defaultModel.value;
-    } else {
-      flux.status = !flux.status;
+    flux.status = !flux.status;
 
-      nextTick(() => {
-        flux.resizePanel();
-      });
-    }
+    nextTick(() => {
+      flux.resizePanel();
+    });
   },
   close() {
     if (typeof props.modelValue === 'boolean') {
@@ -72,7 +69,7 @@ const flux = reactive({
     if (quarter <= rect.right && rect.right <= quarter * 3) {
       const panelRect = panel.value.getBoundingClientRect();
       panel.value.style.left = `${rect.left - panelRect.width / 2 + rect.width / 2}px`;
-    } else if (rect.right > middle) {
+    } else if (rect.right > middle && rect.width < middle) {
       const panelRect = panel.value.getBoundingClientRect();
       panel.value.style.left = `${rect.left - panelRect.width + rect.width}px`;
     } else {

@@ -197,6 +197,7 @@ function changeLang(lang: string) {
       <XPopover v-model="menuStatus">
         <div
           class="text-white bg-primary-600 rounded-full w-38px h-38px flex justify-center items-center cursor-pointer"
+          @click="menuStatus = !menuStatus"
         >
           {{ flux.avatar(flux.user.fullName) }}
         </div>
