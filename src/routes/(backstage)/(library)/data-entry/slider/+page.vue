@@ -63,5 +63,13 @@ const flux = reactive({
     <XCard>
       <XRangeSlider />
     </XCard>
+
+    <section class="my-4">
+      <h3 class="text-2xl font-semibold my-4 pt-2">Steppable</h3>
+
+      <XCard>
+        <XRangeSlider steppable step="10" />
+      </XCard>
+    </section>
   </section>
 </template>
