@@ -28,7 +28,7 @@ const emit = defineEmits<{
   (evt: 'change', val: string, startDate?: Date, endDate?: Date): void;
 }>();
 
-const weekValue = computed({
+const valueModel = computed({
   get: () => props.value || '',
   set: (val) => emit('update:value', val),
 });
@@ -129,21 +129,21 @@ function selectWeek(week: Week) {
   let year = end;
   if (week[0].week === 52) year = start;
 
-  weekValue.value = `${year}-W${isoWeek}`;
-  emit('change', weekValue.value, week[1].date, week[7].date);
+  valueModel.value = `${year}-W${isoWeek}`;
+  emit('change', valueModel.value, week[1].date, week[7].date);
 
   show.value = false;
 }
 
 const weekify = computed(() => {
-  if (weekValue.value) {
-    const [year, isoWeek] = weekValue.value.split('-W');
+  if (valueModel.value) {
+    const [year, isoWeek] = valueModel.value.split('-W');
     const start = setWeek(nextSunday(new Date(Number(year), 0, 4)), Number(isoWeek));
     const end = setWeek(nextSaturday(new Date(Number(year), 0, 4)), Number(isoWeek));
-    return `${weekValue.value} (${format(start, 'MM/dd')} ~ ${format(end, 'MM/dd')})`;
+    return `${valueModel.value} (${format(start, 'MM/dd')} ~ ${format(end, 'MM/dd')})`;
   }
 
-  return weekValue.value;
+  return valueModel.value;
 });
 
 onClickOutside(target, () => {

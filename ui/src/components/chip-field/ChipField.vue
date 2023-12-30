@@ -20,7 +20,7 @@ const emit = defineEmits<{
   (evt: 'input', val: string): void;
 }>();
 
-const chipFieldValue = computed({
+const valueModel = computed({
   get: () => props.value || [],
   set: (val) => emit('update:value', val),
 });
@@ -41,22 +41,22 @@ const flux = reactive({
     input.value?.blur();
   },
   onClose(idx: number) {
-    const chips = [...chipFieldValue.value];
+    const chips = [...valueModel.value];
     chips.splice(idx, 1);
-    chipFieldValue.value = chips;
+    valueModel.value = chips;
   },
   onEnter() {
     if (flux.text) {
-      chipFieldValue.value = [...chipFieldValue.value, flux.text];
+      valueModel.value = [...valueModel.value, flux.text];
       flux.text = '';
       flux.backspace = true;
     }
   },
   onDelete() {
     if (!flux.text && flux.backspace) {
-      const chips = [...chipFieldValue.value];
+      const chips = [...valueModel.value];
       chips.pop();
-      chipFieldValue.value = chips;
+      valueModel.value = chips;
     }
 
     if (!flux.text) {

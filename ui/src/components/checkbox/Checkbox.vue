@@ -22,7 +22,7 @@ const emit = defineEmits<{
   (evt: 'update:value', val: boolean): void;
 }>();
 
-const checkboxValue = computed({
+const valueModel = computed({
   get: () => props.value || false,
   set: (val) => !props.readonly && emit('update:value', val),
 });
@@ -36,7 +36,7 @@ const uid = uniqueId('uid-');
       <div class="Checkbox-Container">
         <input
           :id="uid"
-          v-model="checkboxValue"
+          v-model="valueModel"
           v-bind="$attrs"
           type="checkbox"
           :disabled="disabled"

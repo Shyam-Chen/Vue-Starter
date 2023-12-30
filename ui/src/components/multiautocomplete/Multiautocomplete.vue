@@ -22,7 +22,7 @@ const autocompleteInput = ref();
 const autocompletePane = ref();
 const autocompleteItem = ref<any[]>([]);
 
-const modelValue = computed({
+const valueModel = computed({
   get: () => props.value || [],
   set: (val) => emit('update:value', val),
 });
@@ -55,7 +55,7 @@ const flux = reactive({
   options: [] as any[],
 
   onSelect(value: string) {
-    modelValue.value = [...modelValue.value, value];
+    valueModel.value = [...valueModel.value, value];
     autocompleteInput.value.text = '';
     flux.show = false;
   },
@@ -69,7 +69,7 @@ onClickOutside(target, () => {
 <template>
   <div class="w-full">
     <div ref="target" class="relative">
-      <ChipField ref="autocompleteInput" v-model:value="modelValue" @input="flux.inputChipField" />
+      <ChipField ref="autocompleteInput" v-model:value="valueModel" @input="flux.inputChipField" />
 
       <Fade>
         <div

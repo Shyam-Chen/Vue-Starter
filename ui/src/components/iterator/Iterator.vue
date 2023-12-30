@@ -19,7 +19,7 @@ const emit = defineEmits<{
   (evt: 'update:value', val?: IteratorItem[]): void;
 }>();
 
-const listValue = computed<IteratorItem[]>({
+const valueModel = computed<IteratorItem[]>({
   get: () => {
     if (!props.value?.length) {
       emit('update:value', [{}]);
@@ -46,7 +46,7 @@ const flux = reactive({
 
 <template>
   <div class="w-full flex flex-col gap-2">
-    <div v-for="(item, index) in listValue" :key="index" class="flex">
+    <div v-for="(item, index) in valueModel" :key="index" class="flex gap-2">
       <div class="w-full flex items-baseline gap-2">
         <slot :item="item" :index="index"></slot>
       </div>
@@ -54,8 +54,6 @@ const flux = reactive({
       <div>
         <Button
           v-if="index === 0"
-          floating
-          class="ml-2"
           icon="i-material-symbols-add-rounded"
           :disabled="disabled"
           @click="flux.add"
@@ -63,10 +61,8 @@ const flux = reactive({
 
         <Button
           v-if="index > 0"
-          color="danger"
-          floating
-          class="ml-2"
           icon="i-material-symbols-check-indeterminate-small-rounded"
+          color="danger"
           :disabled="disabled"
           @click="flux.remove(index)"
         />

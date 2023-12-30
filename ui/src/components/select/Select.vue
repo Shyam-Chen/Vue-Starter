@@ -57,7 +57,7 @@ const emit = defineEmits<{
   (evt: 'blur'): void;
 }>();
 
-const selectValue = computed({
+const valueModel = computed({
   get: () => props.value,
   set: (val) => emit('update:value', val),
 });
@@ -72,7 +72,7 @@ const flux = reactive({
   options: [] as Options,
   onSelect(value: Option['value'], option: Option) {
     flux.show = false;
-    selectValue.value = value;
+    valueModel.value = value;
     emit('change', value, option);
   },
   display(item: Option) {
@@ -87,7 +87,7 @@ const flux = reactive({
     return `${item.value} - ${item.label}`;
   },
   clear() {
-    selectValue.value = null;
+    valueModel.value = null;
     emit('change', null, null);
   },
 });
@@ -164,8 +164,8 @@ const open = () => {
     const offsetTop = props.filterable ? active?.offsetTop - 46 : active?.offsetTop;
     if (offsetTop) selectList.value.scrollTop = offsetTop - active.offsetHeight * 2;
 
-    if (selectValue.value) {
-      hoverIndex.value = flux.options?.findIndex((opt) => opt.value === selectValue.value);
+    if (valueModel.value) {
+      hoverIndex.value = flux.options?.findIndex((opt) => opt.value === valueModel.value);
     }
 
     if (selectFilter.value) selectFilter.value.$el.querySelector('input').focus();
@@ -194,9 +194,9 @@ watch(
 );
 
 watchEffect(() => {
-  if (selectValue.value && initialOptions.value?.length) {
+  if (valueModel.value && initialOptions.value?.length) {
     const arr = [...initialOptions.value];
-    const found = arr.find((item) => item.value === selectValue.value);
+    const found = arr.find((item) => item.value === valueModel.value);
     flux.selected = found;
   } else {
     flux.selected = undefined;

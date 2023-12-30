@@ -30,13 +30,9 @@ const target = ref();
 const input = ref();
 const picker = ref();
 
-const modelDate = computed({
-  get: () => {
-    return props.value;
-  },
-  set(val) {
-    emit('update:value', val);
-  },
+const valueModel = computed({
+  get: () => props.value,
+  set: (val) => emit('update:value', val),
 });
 
 const flux = reactive({
@@ -60,8 +56,8 @@ const flux = reactive({
   openPicker() {
     flux.showDatePicker = true;
 
-    if (modelDate.value) {
-      flux.currentMoment = new Date(modelDate.value);
+    if (valueModel.value) {
+      flux.currentMoment = new Date(valueModel.value);
     } else {
       flux.currentMoment = new Date();
     }
@@ -134,7 +130,7 @@ useScrollParent(
     <TextField
       ref="input"
       v-bind="$attrs"
-      :value="modelDate"
+      :value="valueModel"
       append="i-material-symbols-calendar-month-outline-rounded"
       readonly
       @focus="flux.openPicker"
@@ -200,9 +196,9 @@ useScrollParent(
               'text-white bg-blue-400 important:hover:bg-blue-500':
                 index === getMonth(flux.now) && getYear(flux.currentMoment) === getYear(flux.now),
               'text-white bg-primary-600 important:hover:bg-primary-700':
-                modelDate &&
-                index === getMonth(new Date(modelDate)) &&
-                getYear(flux.currentMoment) === getYear(new Date(modelDate)),
+                valueModel &&
+                index === getMonth(new Date(valueModel)) &&
+                getYear(flux.currentMoment) === getYear(new Date(valueModel)),
             }"
             @click="flux.selectMonth(index)"
           >

@@ -55,14 +55,14 @@ defineSlots<{
 const localer = useLocaler();
 const locale = useLocale();
 
-const tableValue = computed({
+const valueModel = computed({
   get: () => props.value || [],
   set: (val) => emit('update:value', val),
 });
 
 const countRef = toRef(props, 'count', undefined);
 
-const controlValue = computed({
+const controlModel = computed({
   get: () => {
     if (
       !props.control ||
@@ -123,7 +123,7 @@ const flux = reactive({
       direction: flux.sortDirection,
     });
 
-    controlValue.value = {
+    controlModel.value = {
       rows: flux.rowsPerPage,
       page: flux.currentPage,
       field: flux.sortField,
@@ -155,7 +155,7 @@ const paginationInfo = computed(() => {
 });
 
 watch(
-  () => controlValue.value,
+  () => controlModel.value,
   (val) => {
     if (Object.keys(val)?.length) {
       flux.rowsPerPage = val.rows || 10;
@@ -164,7 +164,7 @@ watch(
       flux.sortDirection = val.direction || 'desc';
 
       if (props.static && props.rows?.length) {
-        flux.rows = props.static(props.rows, controlValue.value);
+        flux.rows = props.static(props.rows, controlModel.value);
       }
     }
   },
@@ -184,10 +184,10 @@ watch(
   (val) => {
     if (props.static) {
       const arr = props.rows?.map((item) => ({ ...item, checked: val })) || [];
-      flux.rows = props.static(arr, controlValue.value);
+      flux.rows = props.static(arr, controlModel.value);
 
       arr.forEach((row: any) => {
-        const found: any = tableValue.value.find((item: any) => item.id === row.id);
+        const found: any = valueModel.value.find((item: any) => item.id === row.id);
         if (found) found.checked = val;
       });
     } else {
@@ -200,7 +200,7 @@ watch(
   () => props.rows,
   (val) => {
     if (props.static && props.rows?.length) {
-      flux.rows = props.static(props.rows, controlValue.value);
+      flux.rows = props.static(props.rows, controlModel.value);
 
       const checked = props.rows.every((item: any) => item.checked);
       const unchecked = props.rows.every((item: any) => !item.checked);

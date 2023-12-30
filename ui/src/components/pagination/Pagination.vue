@@ -14,7 +14,7 @@ const emit = defineEmits<{
   (evt: 'update:value', val?: number): void;
 }>();
 
-const valueRef = computed({
+const valueModel = computed({
   get: () => props.value || 1,
   set: (val) => emit('update:value', val),
 });
@@ -23,7 +23,7 @@ const rowsRef = computed(() => props.rows || 10);
 const countRef = computed(() => props.count || 0);
 
 const { currentPage, isFirstPage, isLastPage, prev, next } = useOffsetPagination({
-  page: valueRef.value,
+  page: valueModel.value,
   pageSize: rowsRef.value,
   total: countRef.value,
 });
@@ -49,7 +49,7 @@ function onPage(page: number) {
 watch(
   () => currentPage.value,
   (val) => {
-    valueRef.value = val;
+    valueModel.value = val;
   },
 );
 </script>

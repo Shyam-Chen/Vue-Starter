@@ -22,7 +22,7 @@ const emit = defineEmits<{
 
 const uid = uniqueId('uid-');
 
-const radioGroupValue = computed({
+const valueModel = computed({
   get: () => props.value,
   set: (val) => emit('update:value', val),
 });
@@ -46,7 +46,7 @@ const radioGroupValue = computed({
         <div class="relative flex justify-center items-center">
           <input
             :id="`${uid}-${idx}`"
-            v-model="radioGroupValue"
+            v-model="valueModel"
             v-bind="$attrs"
             type="radio"
             :name="uid"
@@ -54,13 +54,13 @@ const radioGroupValue = computed({
             :disabled="disabled"
             class="radio"
             :class="{ invalid }"
-            @change="emit('change', radioGroupValue)"
+            @change="emit('change', valueModel)"
           />
 
           <div
             class="absolute select-none w-3.5 h-3.5 text-primary-500"
             :class="{
-              'i-mdi-circle': radioGroupValue === (typeof item === 'object' ? item.value : item),
+              'i-mdi-circle': valueModel === (typeof item === 'object' ? item.value : item),
             }"
           ></div>
         </div>

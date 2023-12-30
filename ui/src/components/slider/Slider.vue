@@ -27,7 +27,7 @@ const emit = defineEmits<{
   (evt: 'change', val: string): void;
 }>();
 
-const sliderValue = computed({
+const valueModel = computed({
   get: () => props.value || '0',
   set: (val) => emit('update:value', val),
 });
@@ -36,7 +36,7 @@ const backgroundSize = ref('0 100%');
 const left = ref('0');
 
 watch(
-  () => sliderValue.value,
+  () => valueModel.value,
   (val) => {
     const _val = Number(val);
     const _min = Number(props.min);
@@ -57,7 +57,7 @@ watch(
   >
     <div class="Slider-Wrapper">
       <input
-        v-model="sliderValue"
+        v-model="valueModel"
         v-bind="$attrs"
         type="range"
         :min="min"
@@ -68,7 +68,7 @@ watch(
         :style="{ 'background-size': backgroundSize }"
       />
 
-      <output class="Slider-Output" :style="{ left }">{{ sliderValue }}</output>
+      <output class="Slider-Output" :style="{ left }">{{ valueModel }}</output>
 
       <div v-if="steppable" class="Slider-Steps">
         <div class="Slider-Step">

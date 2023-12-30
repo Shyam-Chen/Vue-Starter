@@ -58,7 +58,7 @@ const target = ref();
 const input = ref();
 const picker = ref();
 
-const modelDate = computed({
+const valueModel = computed({
   get: () => props.value,
   set: (val) => emit('update:value', val),
 });
@@ -162,8 +162,8 @@ const flux = reactive({
     flux.showYears = false;
     flux.showMonths = false;
 
-    if (modelDate.value) {
-      flux.currentMoment = new Date(modelDate.value);
+    if (valueModel.value) {
+      flux.currentMoment = new Date(valueModel.value);
     } else {
       flux.currentMoment = new Date();
     }
@@ -319,11 +319,11 @@ function onKeydown(evt: KeyboardEvent) {
     <TextField
       ref="input"
       v-bind="$attrs"
-      :value="modelDate"
+      :value="valueModel"
       :disabled="disabled"
       append="i-material-symbols-calendar-today-outline-rounded"
       readonly
-      @clear="modelDate = ''"
+      @clear="valueModel = ''"
       @focus="focused = true"
       @click="flux.openPicker"
       @append="flux.openPicker"

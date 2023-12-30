@@ -23,7 +23,7 @@ const emit = defineEmits<{
 const localer = useLocaler();
 const locale = useLocale();
 
-const model = computed({
+const defaultModel = computed({
   get: () => props.modelValue || false,
   set: (val) => emit('update:modelValue', val),
 });
@@ -40,7 +40,7 @@ const expectedLabel = computed(
 );
 
 watch(
-  () => model.value,
+  () => defaultModel.value,
   () => {
     expectedModel.value = '';
   },
@@ -48,7 +48,11 @@ watch(
 </script>
 
 <template>
-  <Dialog v-model="model" :title="locale.confirmDeletion || 'Confirm Deletion?'" class="!w-150">
+  <Dialog
+    v-model="defaultModel"
+    :title="locale.confirmDeletion || 'Confirm Deletion?'"
+    class="!w-150"
+  >
     <div class="space-y-4">
       <div>
         {{
@@ -60,7 +64,7 @@ watch(
     </div>
 
     <div class="flex justify-center gap-2 mt-8">
-      <Button color="secondary" @click="model = false">
+      <Button color="secondary" @click="defaultModel = false">
         <div class="i-mdi-undo w-5 h-5"></div>
         {{ locale.cancel || 'Cancel' }}
       </Button>

@@ -18,7 +18,7 @@ const emit = defineEmits<{
   (evt: 'update:modelValue', val: boolean): void;
 }>();
 
-const model = computed({
+const defaultModel = computed({
   get: () => props.modelValue || false,
   set: (val) => emit('update:modelValue', val),
 });
@@ -27,14 +27,16 @@ const flux = reactive({
   status: true,
   toggle() {
     if (typeof props.modelValue === 'boolean') {
-      model.value = !model.value;
+      defaultModel.value = !defaultModel.value;
     } else {
       flux.status = !flux.status;
     }
   },
 });
 
-const _status = computed(() => (typeof props.modelValue === 'boolean' ? model.value : flux.status));
+const _status = computed(() =>
+  typeof props.modelValue === 'boolean' ? defaultModel.value : flux.status,
+);
 </script>
 
 <template>

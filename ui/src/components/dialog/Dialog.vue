@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref, watch, onUnmounted } from 'vue';
+import { ref, computed, watch, onUnmounted } from 'vue';
 import { useResizeObserver } from '@vueuse/core';
 
 defineOptions({
@@ -15,15 +15,20 @@ const emit = defineEmits<{
   (evt: 'update:modelValue', val: boolean): void;
 }>();
 
+const defaultModel = computed({
+  get: () => props.modelValue || false,
+  set: (val) => emit('update:modelValue', val),
+});
+
 const container = ref<HTMLDivElement>();
 const backdropHeight = ref('100%');
 
 const closeDialog = () => {
-  emit('update:modelValue', !props.modelValue);
+  defaultModel.value = false;
 };
 
 watch(
-  () => props.modelValue,
+  () => defaultModel.value,
   (val) => {
     document.body.style.overflow = val ? 'hidden' : 'auto';
 
@@ -38,7 +43,7 @@ watch(
 );
 
 onUnmounted(() => {
-  if (props.modelValue) {
+  if (defaultModel.value) {
     closeDialog();
   }
 });
@@ -46,7 +51,7 @@ onUnmounted(() => {
 
 <template>
   <Transition name="bounce">
-    <div v-if="props.modelValue" class="dialog">
+    <div v-if="defaultModel" class="dialog">
       <div ref="container" class="dialog-container">
         <div
           class="dialog-backdrop"

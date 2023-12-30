@@ -10,7 +10,7 @@ const emit = defineEmits<{
   (evt: 'update:modelValue', val: string[]): void;
 }>();
 
-const accordionGroupValue = computed({
+const defaultModel = computed({
   get: () => props.modelValue || [],
   set: (val) => emit('update:modelValue', val),
 });
@@ -22,7 +22,7 @@ provide('Accordion', {
   group,
   curIdx,
   value: computed(() => props.modelValue),
-  modelValue: accordionGroupValue,
+  modelValue: defaultModel,
   multiple: computed(() => props.multiple),
 });
 </script>

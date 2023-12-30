@@ -9,7 +9,7 @@ const emit = defineEmits<{
   (evt: 'update:modelValue', val: number): void;
 }>();
 
-const model = computed({
+const defaultModel = computed({
   get: () => (typeof props.modelValue === 'number' ? props.modelValue : -1),
   set: (val) => emit('update:modelValue', val),
 });
@@ -17,7 +17,7 @@ const model = computed({
 const group = ref<HTMLDivElement>();
 
 provide('ButtonGroup', {
-  model,
+  defaultModel,
   group,
 });
 </script>

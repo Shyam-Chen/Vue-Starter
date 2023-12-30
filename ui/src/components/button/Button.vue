@@ -23,10 +23,10 @@ const emit = defineEmits<{
 }>();
 
 const buttonGroup = inject('ButtonGroup', {
-  model: undefined,
+  defaultModel: undefined,
   group: undefined,
 }) as {
-  model?: WritableComputedRef<number>;
+  defaultModel?: WritableComputedRef<number>;
   group?: Ref<HTMLDivElement>;
 };
 
@@ -39,14 +39,14 @@ onMounted(() => {
   }
 });
 
-const hasGroup = computed(() => typeof buttonGroup.model?.value === 'number');
+const hasGroup = computed(() => typeof buttonGroup.defaultModel?.value === 'number');
 
 function onClick(evt: Event) {
   emit('click', evt);
 
   if (hasGroup.value) {
-    if (typeof buttonGroup.model?.value === 'number') {
-      buttonGroup.model.value = idx.value;
+    if (typeof buttonGroup.defaultModel?.value === 'number') {
+      buttonGroup.defaultModel.value = idx.value;
     }
   }
 }
@@ -59,8 +59,10 @@ function onClick(evt: Event) {
     type="button"
     class="Button"
     :class="{
-      contained: hasGroup ? idx === buttonGroup.model?.value : variant === 'contained' || !variant,
-      outlined: hasGroup ? idx !== buttonGroup.model?.value : variant === 'outlined',
+      contained: hasGroup
+        ? idx === buttonGroup.defaultModel?.value
+        : variant === 'contained' || !variant,
+      outlined: hasGroup ? idx !== buttonGroup.defaultModel?.value : variant === 'outlined',
       text: variant === 'text',
       primary: color === 'primary' || !color,
       secondary: color === 'secondary',

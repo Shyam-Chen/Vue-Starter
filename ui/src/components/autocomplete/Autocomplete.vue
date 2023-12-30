@@ -39,11 +39,9 @@ const autocompletePane = ref();
 const autocompleteList = ref();
 const autocompleteItem = ref<any[]>([]);
 
-const modelValue = computed({
+const valueModel = computed({
   get: () => props.value,
-  set(val) {
-    emit('update:value', val);
-  },
+  set: (val) => emit('update:value', val),
 });
 
 const debouncedFn = useDebounceFn(async (val) => {
@@ -91,12 +89,12 @@ const debouncedFn = useDebounceFn(async (val) => {
 
 const flux = reactive({
   onInput() {
-    debouncedFn(modelValue.value);
+    debouncedFn(valueModel.value);
   },
   onFocus() {
-    if (modelValue.value && !flux.options?.length) {
-      debouncedFn(modelValue.value);
-    } else if (modelValue.value && flux.options?.length) {
+    if (valueModel.value && !flux.options?.length) {
+      debouncedFn(valueModel.value);
+    } else if (valueModel.value && flux.options?.length) {
       flux.show = true;
 
       nextTick(() => {
@@ -182,7 +180,7 @@ useScrollParent(
       <TextField
         ref="autocompleteInput"
         v-bind="$attrs"
-        v-model:value="modelValue"
+        v-model:value="valueModel"
         @focus="flux.onFocus"
         @input.stop="flux.onInput"
         @keyup.down.stop="flux.onDown"
@@ -218,7 +216,7 @@ useScrollParent(
             </div>
           </div>
 
-          <div v-if="modelValue && flux.options?.length === 0" class="p-2">
+          <div v-if="valueModel && flux.options?.length === 0" class="p-2">
             {{ notFoundContent }}
           </div>
         </div>
