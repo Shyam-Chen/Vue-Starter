@@ -30,12 +30,10 @@ const actions = readonly({
     :items="[{ text: 'Library' }, { text: 'Feedback' }, { text: 'DeleteConfirmation' }]"
   />
 
-  <div class="my-4">
-    <div class="text-4xl font-extrabold">DeleteConfirmation</div>
-  </div>
+  <h1 class="text-4xl font-extrabold my-4">DeleteConfirmation</h1>
 
-  <div class="my-8">
-    <div class="text-3xl font-bold mb-4">Basic</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4">Basic</h2>
 
     <XButton color="danger" @click="state.deleteDialog = true">
       <div class="i-mdi-delete-outline w-5 h-5"></div>
@@ -49,5 +47,5 @@ const actions = readonly({
       :loading="state.deleteLoading"
       @delete="actions.delete"
     />
-  </div>
+  </section>
 </template>

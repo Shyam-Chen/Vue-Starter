@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { XSpinner } from '@x/ui';
+import { XSkeleton } from '@x/ui';
 
 import useStore from './store';
 import NavLink from './NavLink.vue';
@@ -8,8 +8,20 @@ const { state } = useStore();
 </script>
 
 <template>
-  <div v-if="state.userLoading" class="flex justify-center items-center h-full">
-    <XSpinner class="w-12 h-12" />
+  <div v-if="state.userLoading" class="flex flex-col h-full">
+    <XSkeleton class="w-full h-10" />
+
+    <div class="w-full h-9 mt-4 py-2">
+      <XSkeleton class="w-1/3 h-full" />
+    </div>
+
+    <XSkeleton v-for="num in 7" :key="num" class="w-full h-10 mb-1" />
+
+    <div class="w-full h-9 mt-4 py-2">
+      <XSkeleton class="w-1/3 h-full" />
+    </div>
+
+    <XSkeleton v-for="num in 4" :key="num" class="w-full h-10 mb-1" />
   </div>
 
   <template v-else>

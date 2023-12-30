@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
-import { XBreadcrumb, XButton, XDialog } from '@x/ui';
+import { XBreadcrumb, XCard, XButton, XDialog } from '@x/ui';
 
 const flux = reactive({
   dialog: false,
@@ -19,15 +19,13 @@ const flux = reactive({
 <template>
   <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Feedback' }, { text: 'Dialog' }]" />
 
-  <div class="my-4">
-    <div class="text-3xl font-bold">Dialog</div>
-  </div>
+  <h1 class="text-4xl font-extrabold my-4">Dialog</h1>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Basic</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4">Basic</h2>
 
-    <div class="flex justify-center">
-      <XButton @click="flux.launch">Launch</XButton>
+    <XCard>
+      <XButton label="Launch" @click="flux.launch" />
 
       <XDialog v-model="flux.dialog" title="Lorem Ipsum">
         <div class="text-2xl font-bold mb-2">Lorem ipsum dolor sit amet.</div>
@@ -63,18 +61,18 @@ const flux = reactive({
           <XButton @click="flux.close">Laoreet</XButton>
         </div>
       </XDialog>
-    </div>
-  </div>
+    </XCard>
+  </section>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Size</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Size</h2>
 
-    <div class="flex justify-center">
-      <XButton @click="flux.sizeDialog = true">Launch</XButton>
-    </div>
+    <XCard>
+      <XButton label="Launch" @click="flux.sizeDialog = true" />
 
-    <XDialog v-model="flux.sizeDialog" title="Lorem Ipsum" class="!w-100">
-      <div>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
-    </XDialog>
-  </div>
+      <XDialog v-model="flux.sizeDialog" title="Lorem Ipsum" class="!w-100">
+        <div>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
+      </XDialog>
+    </XCard>
+  </section>
 </template>
