@@ -6,6 +6,11 @@ const flux = reactive({
   slider: '70',
   sliderVal: 70,
   stepSlider: '30',
+
+  rangeSliderStartVal: '0',
+  rangeSliderEndVal: '100',
+  stepRangeSliderStartVal: '0',
+  stepRangeSliderEndVal: '100',
 });
 </script>
 
@@ -20,7 +25,7 @@ const flux = reactive({
 
     <XCard>
       <XSlider v-model:value="flux.slider" />
-      <pre class="mt-1">Output: {{ flux.slider }}</pre>
+      <div class="mt-1">Output: {{ flux.slider }}</div>
     </XCard>
   </section>
 
@@ -53,7 +58,7 @@ const flux = reactive({
 
     <XCard>
       <XSlider v-model:value="flux.stepSlider" steppable step="10" />
-      <pre class="mt-1">Output: {{ flux.stepSlider }}</pre>
+      <div class="mt-1">Output: {{ flux.stepSlider }}</div>
     </XCard>
   </section>
 
@@ -61,14 +66,26 @@ const flux = reactive({
     <h2 class="text-3xl font-bold my-4 pt-6">RangeSlider</h2>
 
     <XCard>
-      <XRangeSlider />
+      <XRangeSlider
+        v-model:startValue="flux.rangeSliderStartVal"
+        v-model:endValue="flux.rangeSliderEndVal"
+      />
+      <div class="mt-1">Output: {{ flux.rangeSliderStartVal }} ~ {{ flux.rangeSliderEndVal }}</div>
     </XCard>
 
     <section class="my-4">
       <h3 class="text-2xl font-semibold my-4 pt-2">Steppable</h3>
 
       <XCard>
-        <XRangeSlider steppable step="10" />
+        <XRangeSlider
+          v-model:startValue="flux.stepRangeSliderStartVal"
+          v-model:endValue="flux.stepRangeSliderEndVal"
+          steppable
+          step="10"
+        />
+        <div class="mt-1">
+          Output: {{ flux.stepRangeSliderStartVal }} ~ {{ flux.stepRangeSliderEndVal }}
+        </div>
       </XCard>
     </section>
   </section>

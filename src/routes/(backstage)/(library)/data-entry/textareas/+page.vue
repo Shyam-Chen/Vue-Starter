@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
-import { XBreadcrumb, XTextarea } from '@x/ui';
+import { XBreadcrumb, XCard, XTextarea } from '@x/ui';
 
 const flux = reactive({
   textarea1: '',
@@ -11,65 +11,75 @@ const flux = reactive({
 <template>
   <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Data Entry' }, { text: 'Textarea' }]" />
 
-  <div class="my-4">
-    <div class="text-4xl font-extrabold">Textarea</div>
-  </div>
+  <h1 class="text-4xl font-extrabold my-4">Textarea</h1>
 
-  <div class="my-8">
-    <div class="text-3xl font-bold my-4">Basic</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4">Basic</h2>
 
-    <XTextarea v-model:value="flux.textarea1" label="Example label" placeholder="Type here..." />
-  </div>
+    <XCard>
+      <XTextarea v-model:value="flux.textarea1" label="Example label" placeholder="Type here..." />
+    </XCard>
+  </section>
 
-  <div class="my-8">
-    <div class="text-3xl font-bold my-4 pt-6">Required</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Required</h2>
 
-    <XTextarea
-      v-model:value="flux.textarea2"
-      label="Example label"
-      placeholder="Type here..."
-      required
-    />
-  </div>
-
-  <div class="my-8">
-    <div class="text-3xl font-bold my-4 pt-6">Invalid</div>
-
-    <XTextarea
-      v-model:value="flux.textarea2"
-      label="Example label"
-      placeholder="Type here..."
-      required
-      invalid
-    />
-
-    <div class="my-4">
-      <div class="text-2xl font-semibold my-4 pt-5">Error Message</div>
-
+    <XCard>
       <XTextarea
         v-model:value="flux.textarea2"
         label="Example label"
         placeholder="Type here..."
         required
-        invalid="Incorrect entry"
       />
-    </div>
-  </div>
+    </XCard>
+  </section>
 
-  <div class="my-8">
-    <div class="text-3xl font-bold my-4 pt-6">Disabled</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Invalid</h2>
 
-    <XTextarea
-      v-model:value="flux.textarea2"
-      label="Example label"
-      placeholder="Type here..."
-      disabled
-    />
-  </div>
+    <XCard>
+      <XTextarea
+        v-model:value="flux.textarea2"
+        label="Example label"
+        placeholder="Type here..."
+        required
+        invalid
+      />
+    </XCard>
 
-  <div class="my-8">
-    <div class="text-3xl font-bold my-4 pt-6">Read Only</div>
+    <section class="my-4">
+      <h3 class="text-2xl font-semibold my-4 pt-2">Error Message</h3>
 
-    <XTextarea v-model:value="flux.textarea2" label="Example label" readonly />
-  </div>
+      <XCard>
+        <XTextarea
+          v-model:value="flux.textarea2"
+          label="Example label"
+          placeholder="Type here..."
+          required
+          invalid="Incorrect entry"
+        />
+      </XCard>
+    </section>
+  </section>
+
+  <section class="my-8">
+    <h3 class="text-3xl font-bold my-4 pt-6">Disabled</h3>
+
+    <XCard>
+      <XTextarea
+        v-model:value="flux.textarea2"
+        label="Example label"
+        placeholder="Type here..."
+        disabled
+      />
+    </XCard>
+  </section>
+
+  <section class="my-8">
+    <h3 class="text-3xl font-bold my-4 pt-6">Read Only</h3>
+
+    <XCard>
+      <XTextarea v-model:value="flux.textarea2" label="Example label" readonly />
+    </XCard>
+  </section>
 </template>

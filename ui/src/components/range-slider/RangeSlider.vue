@@ -20,6 +20,9 @@ withDefaults(
   },
 );
 
+const startValueModel = defineModel<string>('startValue');
+const endValueModel = defineModel<string>('endValue');
+
 const target = ref();
 
 function onInput(evt: Event) {
@@ -50,6 +53,8 @@ function onInput(evt: Event) {
 
   target.value.querySelector('.RangeSlider-Output').setAttribute('data-low', slide1);
   target.value.querySelector('.RangeSlider-Output').setAttribute('data-high', slide2);
+  startValueModel.value = String(slide1);
+  endValueModel.value = String(slide2);
 }
 </script>
 
