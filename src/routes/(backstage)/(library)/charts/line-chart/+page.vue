@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import type { Options } from 'highcharts';
 import { reactive } from 'vue';
-import { XBreadcrumb, XButton } from '@x/ui';
+import { XBreadcrumb, XCard, XButton } from '@x/ui';
 
 import Chart from '~/components/Chart.vue';
 
@@ -51,15 +51,14 @@ const flux = reactive({
 <template>
   <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Charts' }, { text: 'Line' }]" />
 
-  <div class="my-4">
-    <div class="text-3xl font-bold">Line</div>
-  </div>
+  <h1 class="text-4xl font-extrabold my-4">LineChart</h1>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Basic</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4">Basic</h2>
 
-    <Chart :options="flux.basicLineChart" />
-
-    <XButton class="mt-2" @click="flux.update">Update</XButton>
-  </div>
+    <XCard>
+      <Chart :options="flux.basicLineChart" />
+      <XButton class="mt-2" @click="flux.update">Update</XButton>
+    </XCard>
+  </section>
 </template>

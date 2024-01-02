@@ -1,19 +1,19 @@
 <script lang="ts" setup>
-import { XBreadcrumb } from '@x/ui';
+import { XBreadcrumb, XCard } from '@x/ui';
 
 import LineColumnChart from './LineColumnChart.vue';
 </script>
 
 <template>
-  <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Charts' }, { text: 'LineColumnChart' }]" />
+  <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Charts' }, { text: 'LineColumn' }]" />
 
-  <div class="my-4">
-    <div class="text-4xl font-extrabold">LineColumnChart</div>
-  </div>
+  <h1 class="text-4xl font-extrabold my-4">LineColumnChart</h1>
 
-  <div class="my-8">
-    <div class="text-3xl font-bold mb-4">Basic</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4">Basic</h2>
 
-    <LineColumnChart />
-  </div>
+    <XCard>
+      <LineColumnChart />
+    </XCard>
+  </section>
 </template>

@@ -58,7 +58,7 @@ const kbdKeys: Record<KbdKey, string> = {
 
 <style lang="scss" scoped>
 .Kbd {
-  @apply min-h-7.5 inline-flex justify-center items-center py-1 px-1.5;
+  @apply min-h-7.5 inline-flex justify-center items-center px-1.5 py-0.5;
   @apply bg-white border border-gray-200 font-sans text-sm text-gray-800 rounded-md dark:bg-slate-900 dark:border-gray-700 dark:text-gray-200;
 }
 </style>

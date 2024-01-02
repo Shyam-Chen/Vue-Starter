@@ -1,19 +1,19 @@
 <script lang="ts" setup>
-import { XBreadcrumb } from '@x/ui';
+import { XBreadcrumb, XCard } from '@x/ui';
 
 import MapChart from './MapChart.vue';
 </script>
 
 <template>
-  <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Charts' }, { text: 'MapChart' }]" />
+  <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Charts' }, { text: 'Map' }]" />
 
-  <div class="my-4">
-    <div class="text-4xl font-extrabold">MapChart</div>
-  </div>
+  <h1 class="text-4xl font-extrabold my-4">MapChart</h1>
 
-  <div class="my-8">
-    <div class="text-3xl font-bold mb-4">Basic</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4">Basic</h2>
 
-    <MapChart />
-  </div>
+    <XCard>
+      <MapChart />
+    </XCard>
+  </section>
 </template>

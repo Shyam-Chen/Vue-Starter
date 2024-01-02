@@ -135,7 +135,7 @@ function onClear() {
 }
 
 .TextField-Clear {
-  @apply absolute end-2 top-1/2 z-99 w-5 h-5 -translate-y-1/2 cursor-pointer transition-transform	 hover:scale-125;
+  @apply absolute end-2 top-1/2 z-99 w-5 h-5 -translate-y-1/2 cursor-pointer transition-transform hover:scale-125;
 
   &.append {
     @apply end-8;

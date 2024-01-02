@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import type { Options } from 'highcharts';
 import { reactive } from 'vue';
-import { XBreadcrumb } from '@x/ui';
+import { XBreadcrumb, XCard } from '@x/ui';
 
 import Chart from '~/components/Chart.vue';
 
@@ -74,11 +74,19 @@ const flux = reactive({
 
   <h1 class="text-4xl font-extrabold my-4">BarChart</h1>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Basic</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4">Basic</h2>
 
-    <Chart :options="flux.barChartOptions" />
-  </div>
+    <XCard>
+      <Chart :options="flux.barChartOptions" />
+    </XCard>
+  </section>
 
-  <BarChart />
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4">Basic</h2>
+
+    <XCard>
+      <BarChart />
+    </XCard>
+  </section>
 </template>

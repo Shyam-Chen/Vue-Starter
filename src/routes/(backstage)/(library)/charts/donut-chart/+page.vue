@@ -1,19 +1,19 @@
 <script lang="ts" setup>
-import { XBreadcrumb } from '@x/ui';
+import { XBreadcrumb, XCard } from '@x/ui';
 
 import DonutChart from './DonutChart.vue';
 </script>
 
 <template>
-  <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Charts' }, { text: 'DonutChart' }]" />
+  <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Charts' }, { text: 'Donut' }]" />
 
-  <div class="my-4">
-    <div class="text-4xl font-extrabold">DonutChart</div>
-  </div>
+  <h1 class="text-4xl font-extrabold my-4">DonutChart</h1>
 
-  <div class="my-8">
-    <div class="text-3xl font-bold mb-4">Basic</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4">Basic</h2>
 
-    <DonutChart />
-  </div>
+    <XCard>
+      <DonutChart />
+    </XCard>
+  </section>
 </template>

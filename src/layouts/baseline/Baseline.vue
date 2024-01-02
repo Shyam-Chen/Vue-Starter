@@ -172,7 +172,7 @@ function changeLang(lang: string) {
         <XButton
           variant="text"
           size="small"
-          class="!h-38px !text-slate-400 !rounded-md"
+          class="!h-38px !text-slate-400 !rounded-md !border-slate-900/10 !hover:bg-slate-100 !dark:hover:bg-slate-700"
           @click="flux.searchDialog = true"
         >
           <div class="i-material-symbols-search-rounded w-5 h-5"></div>
@@ -380,7 +380,7 @@ function changeLang(lang: string) {
   </XDialog>
 
   <XDialog v-model="flux.searchDialog">
-    <XTextField placeholder="Search here..." prepend="i-fa-search" autocomplete="off" />
+    <XTextField placeholder="Search here..." prepend="i-material-symbols-search-rounded" />
     <div class="flex justify-center items-center h-66">No recent searches</div>
   </XDialog>
 

@@ -4,6 +4,7 @@ export type ColumnItem = {
   sortable?: boolean;
   spanable?: boolean;
   sticky?: string | 'left' | 'right';
+  class?: unknown;
 };
 
 export type Control = {

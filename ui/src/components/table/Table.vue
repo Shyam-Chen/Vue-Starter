@@ -239,18 +239,21 @@ watch(
           <slot name="thead"></slot>
 
           <tr :class="{ 'sticky top-0 z-10': stickyHeader }">
-            <Column v-if="selectable" :class="{ 'important:border-0': stickyHeader }">
+            <Column v-if="selectable" :class="{ '!border-0': stickyHeader }">
               <Checkbox v-model:value="flux.selecteAll" :indeterminate="flux.indeterminate" />
             </Column>
 
             <Column
               v-for="col in columns"
               :key="col.key"
-              :class="{
-                'important:border-0': stickyHeader,
-                'sticky left-0 z-5': col.sticky === 'left',
-                'sticky right-0 z-5': col.sticky === 'right',
-              }"
+              :class="[
+                {
+                  '!border-0': stickyHeader,
+                  'sticky left-0 z-5': col.sticky === 'left',
+                  'sticky right-0 z-5': col.sticky === 'right',
+                },
+                col.class,
+              ]"
             >
               <div
                 class="inline-flex gap-1 items-center min-h-38px"
@@ -304,12 +307,15 @@ watch(
                 <Cell
                   v-for="col in columns"
                   :key="col.key"
-                  :class="{
-                    'sticky-col sticky left-0 z-5 bg-white dark:bg-slate-800 important:p-0':
-                      col.sticky === 'left',
-                    'sticky-col sticky right-0 z-5 bg-white dark:bg-slate-800 important:p-0':
-                      col.sticky === 'right',
-                  }"
+                  :class="[
+                    {
+                      'sticky-col sticky left-0 z-5 bg-white dark:bg-slate-800 !p-0':
+                        col.sticky === 'left',
+                      'sticky-col sticky right-0 z-5 bg-white dark:bg-slate-800 !p-0':
+                        col.sticky === 'right',
+                    },
+                    col.class,
+                  ]"
                 >
                   <div v-if="col.spanable" class="flex flex-col gap-2">
                     <div
@@ -407,7 +413,7 @@ watch(
 
 .sticky-tr:hover {
   .sticky-col {
-    @apply important:bg-inherit;
+    @apply !bg-inherit;
   }
 }
 </style>

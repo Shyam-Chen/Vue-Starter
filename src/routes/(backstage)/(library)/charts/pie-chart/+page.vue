@@ -2,7 +2,7 @@
 import type { Options } from 'highcharts';
 import { reactive } from 'vue';
 import highcharts from 'highcharts';
-import { XBreadcrumb } from '@x/ui';
+import { XBreadcrumb, XCard } from '@x/ui';
 
 import Chart from '~/components/Chart.vue';
 
@@ -106,21 +106,29 @@ const flux = reactive({
 <template>
   <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Charts' }, { text: 'Pie' }]" />
 
-  <div class="my-4">
-    <div class="text-3xl font-bold">Pie</div>
-  </div>
+  <h1 class="text-4xl font-extrabold my-4">PieChart</h1>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Basic</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4">Basic</h2>
 
-    <Chart :options="flux.basicBarChart" />
-  </div>
+    <XCard>
+      <Chart :options="flux.basicBarChart" />
+    </XCard>
+  </section>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Pattern Fill</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Patterns</h2>
 
-    <Chart :options="flux.patternFillPieChart" />
-  </div>
+    <XCard>
+      <Chart :options="flux.patternFillPieChart" />
+    </XCard>
+  </section>
 
-  <PieChart />
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Basic</h2>
+
+    <XCard>
+      <PieChart />
+    </XCard>
+  </section>
 </template>
