@@ -19,13 +19,11 @@ type Option = {
 //   values: Option[];
 // };
 
-type Options = Option[];
-
 const props = withDefaults(
   defineProps<{
     label?: string;
-    value?: Option['value'] | null;
-    options?: Options;
+    value?: Option['value'];
+    options?: Option[];
     display?: 'label' | 'value' | ((opt: Option) => string);
     placeholder?: string;
     clearable?: boolean;
@@ -46,21 +44,18 @@ const props = withDefaults(
     filterable: false,
     disabled: false,
     required: false,
+    loading: false,
     notFoundContent: '',
     invalid: undefined,
   },
 );
 
 const emit = defineEmits<{
-  (evt: 'update:value', val?: string | number | null): void;
-  (evt: 'change', val: string | number | null, opt: Option | null): void;
+  (evt: 'change', val?: Option['value'], opt?: Option): void;
   (evt: 'blur'): void;
 }>();
 
-const valueModel = computed({
-  get: () => props.value,
-  set: (val) => emit('update:value', val),
-});
+const valueModel = defineModel<Option['value']>('value');
 
 const locale = useLocale();
 
@@ -69,7 +64,7 @@ const flux = reactive({
   direction: 'down' as 'down' | 'up',
   selected: undefined as Option | undefined,
   filterValue: '',
-  options: [] as Options,
+  options: [] as Option[],
   onSelect(value: Option['value'], option: Option) {
     flux.show = false;
     valueModel.value = value;
@@ -87,8 +82,8 @@ const flux = reactive({
     return `${item.value} - ${item.label}`;
   },
   clear() {
-    valueModel.value = null;
-    emit('change', null, null);
+    valueModel.value = undefined;
+    emit('change', undefined, undefined);
   },
 });
 
@@ -97,7 +92,7 @@ const selectInput = ref();
 const selectPanel = ref();
 const selectFilter = ref();
 const selectList = ref();
-const selectItem = ref<any[]>([]);
+const selectItem = ref<HTMLDivElement[]>([]);
 
 const focused = ref(false);
 
@@ -334,7 +329,7 @@ watch(
           <div ref="selectList" class="Select-List">
             <div
               v-for="(item, index) in flux.options"
-              :ref="(el) => (selectItem[index] = el)"
+              :ref="(el) => (selectItem[index] = el as HTMLDivElement)"
               :key="item.value"
               class="Select-Item"
               :class="{
