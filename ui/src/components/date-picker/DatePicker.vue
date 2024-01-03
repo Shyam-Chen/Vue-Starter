@@ -20,25 +20,28 @@ import useScrollParent from '../../composables/scroll-parent/useScrollParent';
 import TextField from '../text-field/TextField.vue';
 import Fade from '../fade/Fade.vue';
 
+type Day = {
+  date: Date;
+  outOfRange?: boolean;
+  today?: boolean;
+  selected?: boolean;
+  disabled?: boolean;
+};
+
 const props = withDefaults(
   defineProps<{
     value?: string;
     disabled?: boolean;
-    format?: string;
-    weekdays?: string[];
-    months?: string[];
-    startWeekOnMonday?: boolean;
     minDate?: string | Date;
     maxDate?: string | Date;
+    format?: string;
   }>(),
   {
     value: '',
-    format: 'yyyy/MM/dd',
-    weekdays: () => ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
-    // prettier-ignore
-    months: () => ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+    disabled: false,
     minDate: '',
     maxDate: '',
+    format: 'yyyy/MM/dd',
   },
 );
 
@@ -51,8 +54,9 @@ const emit = defineEmits<{
 const localer = useLocaler();
 const locale = useLocale();
 
-const _weekdays = computed(() => locale.value?.weekdays || props.weekdays);
-const _months = computed(() => locale.value?.months || props.months);
+const _weekdays = computed(() => locale.value?.weekdays || ['S', 'M', 'T', 'W', 'T', 'F', 'S']);
+// prettier-ignore
+const _months = computed(() => locale.value?.months || ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']);
 
 const target = ref();
 const input = ref();
@@ -70,15 +74,14 @@ const createDays = (y?: number, m?: number) => {
   };
 
   const [year, month] = currentPeriod();
-  const days = [] as Array<{
-    date: Date;
-    outOfRange?: boolean;
-    today?: boolean;
-    selected?: boolean;
-    disabled?: boolean;
-  }>;
+  const days = [] as Day[];
   const date = new Date(year, month, 1);
-  const offset = 1;
+  const offset =
+    typeof locale.value?.startWeekOnMonday === 'boolean'
+      ? locale.value?.startWeekOnMonday
+        ? 0
+        : 1
+      : 1;
 
   const startDay = date.getDay() || 7;
 
@@ -179,7 +182,7 @@ const flux = reactive({
 
   now: new Date(),
   currentMoment: new Date(),
-  currentPeriodDates: [] as any[],
+  currentPeriodDates: [] as Day[][],
 
   yearRange: [] as number[],
   year: null as null | number,
@@ -224,7 +227,7 @@ const flux = reactive({
       flux.yearRange = range(currentYear - 5, currentYear + 11);
     }
   },
-  selectDateItem(val: any) {
+  selectDateItem(val: Day) {
     const date = _format(val.date, props.format);
 
     if (
@@ -377,25 +380,25 @@ function onKeydown(evt: KeyboardEvent) {
           </div>
         </div>
 
-        <div v-show="flux.showWeeks" class="grid grid-cols-7 gap-1 text-center">
+        <div v-show="flux.showWeeks" class="grid grid-cols-7 grid-rows-7 text-center gap-y-0.5">
           <div
             v-for="(weekday, weekdayIndex) in _weekdays"
             :key="weekdayIndex"
-            class="text-sm font-bold"
+            class="flex justify-center items-center text-sm font-bold w-6 h-6 p-4"
           >
             {{ weekday }}
           </div>
 
           <template v-for="(week, weekIndex) in flux.currentPeriodDates">
             <div
-              v-for="item in week"
-              :key="weekIndex + item"
-              class="flex justify-center items-center hover:bg-slate-200 dark:hover:bg-slate-600 rounded-full w-6 h-6 text-sm cursor-pointer"
+              v-for="(item, idx) in week"
+              :key="`${weekIndex}-${idx}`"
+              class="flex justify-center items-center hover:bg-slate-200 dark:hover:bg-slate-600 rounded-full w-6 h-6 p-4 text-sm cursor-pointer"
               :class="{
                 'text-white bg-primary-600 !hover:bg-primary-700': item.selected,
                 'text-slate-300 dark:text-slate-600 !cursor-not-allowed': item.disabled,
-                'text-white bg-blue-400 !hover:bg-blue-500': item.today,
-                'text-slate-300 dark:text-slate-600': item.outOfRange,
+                'ring-1 ring-primary-500': item.today,
+                invisible: item.outOfRange,
               }"
               @click="flux.selectDateItem(item)"
             >

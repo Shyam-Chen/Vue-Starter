@@ -234,6 +234,8 @@ const flux = reactive({
     }
   },
   selectDateItem(val: any) {
+    if (val.outOfRange) return;
+
     const date = _format(val.date, props.format);
 
     if (props.minDate && _format(new Date(props.minDate), props.format) > date) return;
@@ -376,11 +378,11 @@ useScrollParent(
           </div>
         </div>
 
-        <div v-show="flux.showWeeks" class="grid grid-cols-7 gap-1 text-center">
+        <div v-show="flux.showWeeks" class="grid grid-cols-7 grid-rows-7 text-center gap-y-0.5">
           <div
             v-for="(weekday, weekdayIndex) in _weekdays"
             :key="weekdayIndex"
-            class="text-sm font-bold"
+            class="flex justify-center items-center text-sm font-bold w-6 h-6 p-4"
           >
             {{ weekday }}
           </div>
@@ -389,16 +391,29 @@ useScrollParent(
             <div
               v-for="item in week"
               :key="weekIndex + item"
-              class="flex justify-center items-center hover:bg-slate-200 dark:hover:bg-slate-600 rounded-full w-6 h-6 text-sm cursor-pointer"
               :class="{
-                'text-white bg-primary-600 !hover:bg-primary-700': item.selected,
-                'text-slate-300 dark:text-slate-600 !cursor-not-allowed': item.disabled,
-                'text-white bg-blue-400 !hover:bg-blue-500': item.today,
-                'text-slate-300 dark:text-slate-600': item.outOfRange,
+                '!rounded-s-full':
+                  item.selected && startValueModel === _format(item.date, props.format),
+                'Day-selectedInRange': item.selected,
+                '!rounded-e-full':
+                  item.selected && endValueModel === _format(item.date, props.format),
+                invisible: item.outOfRange,
               }"
               @click="flux.selectDateItem(item)"
             >
-              {{ item.date.getDate() }}
+              <div
+                class="flex justify-center items-center hover:bg-slate-200 dark:hover:bg-slate-600 rounded-full w-6 h-6 p-4 text-sm cursor-pointer"
+                :class="{
+                  'Day-selectedStart':
+                    item.selected && startValueModel === _format(item.date, props.format),
+                  'Day-selectedEnd':
+                    item.selected && endValueModel === _format(item.date, props.format),
+                  'text-slate-300 dark:text-slate-600 !cursor-not-allowed': item.disabled,
+                  'ring-1 ring-primary-500': item.today,
+                }"
+              >
+                {{ item.date.getDate() }}
+              </div>
             </div>
           </template>
         </div>
@@ -445,5 +460,17 @@ useScrollParent(
 
 .DatePicker-DatePane-PlacementTop {
   transform: translateY(-0.5rem) translateY(-100%);
+}
+
+.Day-selectedInRange {
+  @apply bg-primary-500/25 rounded-none;
+}
+
+.Day-selectedStart {
+  @apply text-white bg-primary-600 hover:bg-primary-700;
+}
+
+.Day-selectedEnd {
+  @apply text-white bg-primary-600 hover:bg-primary-700;
 }
 </style>

@@ -1,7 +1,12 @@
 <script lang="ts" setup>
 import type { VNode } from 'vue';
+import type { ComponentProps } from 'vue-component-type-helpers';
 import { ref, computed, watch, provide, useSlots } from 'vue';
 import { useScroll } from '@vueuse/core';
+
+import Tab from './Tab.vue';
+
+type TabProps = ComponentProps<typeof Tab>;
 
 const props = defineProps<{
   modelValue?: number | string;
@@ -121,8 +126,8 @@ watch(
         }"
         @click="onClickTab(tab?.props, idx)"
       >
-        <template v-if="(tab?.children as any)?.title">
-          <component :is="(tab?.children as any)?.title"></component>
+        <template v-if="(tab?.children as TabProps)?.title">
+          <component :is="(tab?.children as TabProps)?.title"></component>
         </template>
 
         <template v-else>{{ tab?.props?.title }}</template>
