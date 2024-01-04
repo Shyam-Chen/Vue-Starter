@@ -29,8 +29,8 @@ const props = withDefaults(
     weekdays?: string[];
     months?: string[];
     startWeekOnMonday?: boolean;
-    minDate?: string;
-    maxDate?: string;
+    minDate?: string | Date;
+    maxDate?: string | Date;
   }>(),
   {
     startValue: '',
@@ -329,6 +329,10 @@ useScrollParent(
       readonly
       @focus="flux.openPicker"
       @append="flux.openPicker"
+      @clear="
+        startValueModel = '';
+        endValueModel = '';
+      "
     >
       <slot></slot>
     </TextField>
@@ -378,47 +382,51 @@ useScrollParent(
           </div>
         </div>
 
-        <div v-show="flux.showWeeks" class="grid grid-cols-7 grid-rows-7 text-center gap-y-0.5">
-          <div
-            v-for="(weekday, weekdayIndex) in _weekdays"
-            :key="weekdayIndex"
-            class="flex justify-center items-center text-sm font-bold w-6 h-6 p-4"
-          >
-            {{ weekday }}
+        <template v-if="flux.showWeeks">
+          <div class="grid grid-cols-7 grid-rows-7 text-center gap-y-0.5">
+            <div
+              v-for="(weekday, weekdayIndex) in _weekdays"
+              :key="weekdayIndex"
+              class="flex justify-center items-center text-sm font-bold w-6 h-6 p-4"
+            >
+              {{ weekday }}
+            </div>
+
+            <template v-for="(week, weekIndex) in flux.currentPeriodDates">
+              <div
+                v-for="item in week"
+                :key="weekIndex + item"
+                :class="{
+                  '!rounded-s-full':
+                    item.selected && startValueModel === _format(item.date, props.format),
+                  'Day-selectedInRange': item.selected,
+                  '!rounded-e-full':
+                    item.selected && endValueModel === _format(item.date, props.format),
+                  invisible: item.outOfRange,
+                }"
+                @click="flux.selectDateItem(item)"
+              >
+                <div
+                  class="flex justify-center items-center hover:bg-slate-200 dark:hover:bg-slate-600 rounded-full w-6 h-6 p-4 text-sm cursor-pointer"
+                  :class="{
+                    'Day-selectedStart':
+                      item.selected && startValueModel === _format(item.date, props.format),
+                    'Day-selectedEnd':
+                      item.selected && endValueModel === _format(item.date, props.format),
+                    'text-slate-300 dark:text-slate-600 !cursor-not-allowed': item.disabled,
+                    'ring-1 ring-primary-500': item.today,
+                  }"
+                >
+                  {{ item.date.getDate() }}
+                </div>
+              </div>
+            </template>
           </div>
 
-          <template v-for="(week, weekIndex) in flux.currentPeriodDates">
-            <div
-              v-for="item in week"
-              :key="weekIndex + item"
-              :class="{
-                '!rounded-s-full':
-                  item.selected && startValueModel === _format(item.date, props.format),
-                'Day-selectedInRange': item.selected,
-                '!rounded-e-full':
-                  item.selected && endValueModel === _format(item.date, props.format),
-                invisible: item.outOfRange,
-              }"
-              @click="flux.selectDateItem(item)"
-            >
-              <div
-                class="flex justify-center items-center hover:bg-slate-200 dark:hover:bg-slate-600 rounded-full w-6 h-6 p-4 text-sm cursor-pointer"
-                :class="{
-                  'Day-selectedStart':
-                    item.selected && startValueModel === _format(item.date, props.format),
-                  'Day-selectedEnd':
-                    item.selected && endValueModel === _format(item.date, props.format),
-                  'text-slate-300 dark:text-slate-600 !cursor-not-allowed': item.disabled,
-                  'ring-1 ring-primary-500': item.today,
-                }"
-              >
-                {{ item.date.getDate() }}
-              </div>
-            </div>
-          </template>
-        </div>
+          <slot name="panel"></slot>
+        </template>
 
-        <div v-show="flux.showYears" class="grid grid-cols-4 gap-1 text-center w-48">
+        <div v-if="flux.showYears" class="grid grid-cols-4 gap-1 text-center w-48">
           <div
             v-for="year in flux.yearRange"
             :key="year"
@@ -433,7 +441,7 @@ useScrollParent(
           </div>
         </div>
 
-        <div v-show="flux.showMonths" class="grid grid-cols-3 gap-1 text-center w-48">
+        <div v-if="flux.showMonths" class="grid grid-cols-3 gap-1 text-center w-48">
           <div
             v-for="(month, index) in _months"
             :key="month"
