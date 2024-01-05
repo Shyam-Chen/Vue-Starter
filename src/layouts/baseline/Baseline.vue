@@ -389,7 +389,7 @@ function changeLang(lang: string) {
 
 <style lang="scss" scoped>
 .Topbar {
-  @apply fixed top-0 z-101;
+  @apply fixed top-0 z-100;
   @apply flex items-center gap-3 md:gap-4 w-full px-4 md:px-6 py-4;
   @apply backdrop-blur bg-white/75 dark:bg-slate-900/75 border-b dark:border-slate-700 shadow;
 }

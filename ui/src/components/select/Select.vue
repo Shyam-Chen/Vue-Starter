@@ -402,7 +402,7 @@ watch(
 }
 
 .Select-Panel {
-  @apply fixed w-full z-10 border shadow-lg rounded;
+  @apply fixed w-full z-101 border shadow-lg rounded;
   @apply bg-white dark:bg-slate-800 border-gray-200 dark:border-gray-700;
 }
 

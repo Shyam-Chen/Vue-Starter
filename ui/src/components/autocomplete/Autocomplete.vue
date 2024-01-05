@@ -233,7 +233,7 @@ useScrollParent(
   $height: 40px;
 
   &-section {
-    @apply fixed w-full z-10;
+    @apply fixed w-full z-101;
 
     transform: translateY(0) translateY(8px) translateY(0);
 

@@ -176,7 +176,7 @@ useScrollParent(
       <div
         v-if="show"
         ref="picker"
-        class="week-picker-panel fixed z-10 p-2 shadow-lg rounded bg-white dark:bg-slate-800 border border-gray-200 dark:border-gray-700"
+        class="week-picker-panel fixed z-101 p-2 shadow-lg rounded bg-white dark:bg-slate-800 border border-gray-200 dark:border-gray-700"
         :class="{ 'week-picker-panel-up': direction === 'up' }"
       >
         <div class="flex justify-between items-center mb-1">
