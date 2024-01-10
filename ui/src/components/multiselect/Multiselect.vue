@@ -284,6 +284,7 @@ useScrollParent(
 
     <div ref="target">
       <div
+        v-bind="$attrs"
         ref="selectInput"
         :tabindex="disabled ? -1 : 0"
         class="Multiselect-Input group"

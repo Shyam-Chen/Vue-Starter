@@ -5,10 +5,12 @@ import Collapse from '../collapse/Collapse.vue';
 
 const props = withDefaults(
   defineProps<{
+    status?: boolean;
     modelValue?: boolean;
     title?: string;
   }>(),
   {
+    status: true,
     modelValue: undefined,
     title: '',
   },
@@ -24,7 +26,7 @@ const defaultModel = computed({
 });
 
 const flux = reactive({
-  status: true,
+  status: props.status,
   toggle() {
     if (typeof props.modelValue === 'boolean') {
       defaultModel.value = !defaultModel.value;
@@ -55,7 +57,7 @@ const _status = computed(() =>
     </div>
 
     <Collapse>
-      <div v-show="_status" class="rounded-b-md shadow bg-white dark:bg-slate-800">
+      <div v-if="_status" class="rounded-b-md shadow bg-white dark:bg-slate-800">
         <div class="p-4 lg:p-6">
           <slot name="content"></slot>
         </div>

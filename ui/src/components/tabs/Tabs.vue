@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import type { VNode } from 'vue';
 import type { ComponentProps } from 'vue-component-type-helpers';
-import { ref, computed, watch, provide, useSlots } from 'vue';
+import { nextTick, ref, computed, watch, provide, useSlots } from 'vue';
 import { useScroll } from '@vueuse/core';
 
 import Tab from './Tab.vue';
@@ -61,6 +61,11 @@ function onClickTab(tab: VNode['props'], idx: number) {
   if (tab?.disabled) return;
 
   curIdx.value = idx;
+
+  nextTick(() => {
+    const active = tabWrapper.value?.querySelector('.Tabs-Tab.active');
+    active?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  });
 
   if (typeof props.modelValue === 'number') {
     emit('update:modelValue', idx);
