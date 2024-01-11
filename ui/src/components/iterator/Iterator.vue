@@ -9,9 +9,12 @@ const props = withDefaults(
   defineProps<{
     value?: IteratorItem[];
     disabled?: boolean;
+    maxlength?: string | number;
   }>(),
   {
     value: () => [{}],
+    disabled: false,
+    maxlength: undefined,
   },
 );
 
@@ -31,6 +34,10 @@ const valueModel = computed<IteratorItem[]>({
   },
   set: (val) => emit('update:value', val),
 });
+
+const hasMaxlength = computed(
+  () => typeof props.maxlength === 'string' || typeof props.maxlength === 'number',
+);
 
 const flux = reactive({
   add() {
@@ -55,7 +62,7 @@ const flux = reactive({
         <Button
           v-if="index === 0"
           icon="i-material-symbols-add-rounded"
-          :disabled="disabled"
+          :disabled="disabled || (hasMaxlength && valueModel.length >= Number(maxlength))"
           @click="flux.add"
         />
 

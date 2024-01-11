@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
-import { XBreadcrumb, XCard, XIterator, XTextField } from '@x/ui';
+import { XBreadcrumb, XCard, XIterator, XTextField, XCode } from '@x/ui';
 
 interface Iterator1 {
   address?: string;
@@ -14,6 +14,7 @@ interface Iterator2 {
 const flux = reactive({
   iterator1: [] as Iterator1[],
   iterator2: [] as Iterator2[],
+  iterator3: [] as Iterator1[],
 });
 </script>
 
@@ -50,6 +51,20 @@ const flux = reactive({
       </XIterator>
 
       <pre class="mt-1">{{ flux.iterator2 }}</pre>
+    </XCard>
+  </section>
+
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Max Length</h2>
+
+    <XCard>
+      <div class="mb-1">Maximum iterator length: <XCode>5</XCode></div>
+
+      <XIterator v-model:value="flux.iterator3" maxlength="5">
+        <template #default="{ item }">
+          <XTextField v-model:value="item.address" />
+        </template>
+      </XIterator>
     </XCard>
   </section>
 </template>
