@@ -102,6 +102,7 @@ const links = [
       { name: 'Card', to: '/data-display/card' },
       { name: 'Carousel', to: '/data-display/carousel' },
       { name: 'Chip', to: '/data-display/chip' },
+      { name: 'Infinite Scroll', to: '/data-display/infinite-scroll' },
       { name: 'Iterator', to: '/data-display/iterator' },
       { name: 'Popover', to: '/data-display/popover' },
       {

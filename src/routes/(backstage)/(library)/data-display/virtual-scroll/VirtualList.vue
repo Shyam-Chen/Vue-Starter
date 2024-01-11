@@ -1,23 +1,26 @@
 <script setup lang="ts">
+import { ref } from 'vue';
 import { useVirtualList } from '@vueuse/core';
 
 import leetcode from './leetcode';
 
-const height = 43;
+const height = 40;
 
-const allItems = Array.from([
-  ...leetcode.page1,
-  ...leetcode.page2,
-  ...leetcode.page3,
-  ...leetcode.page4,
-  ...leetcode.page5,
-]).map((item) => ({
-  title: item.title,
-  height: height,
-}));
+const allItems = ref(
+  Array.from([
+    ...leetcode.page1,
+    ...leetcode.page2,
+    ...leetcode.page3,
+    ...leetcode.page4,
+    ...leetcode.page5,
+  ]).map((item) => ({
+    title: item.title,
+    height: height,
+  })),
+);
 
 const { list, containerProps, wrapperProps } = useVirtualList(allItems, {
-  itemHeight: (i) => allItems[i].height,
+  itemHeight: (i) => allItems.value[i].height,
   overscan: 10,
 });
 </script>
