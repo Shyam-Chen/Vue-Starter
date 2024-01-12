@@ -17,6 +17,10 @@ defineProps<{
 <style lang="scss" scoped>
 .TimelineItem {
   @apply mb-10 ml-4;
+
+  &:last-child {
+    @apply mb-0;
+  }
 }
 
 .TimelineItem-Line {
