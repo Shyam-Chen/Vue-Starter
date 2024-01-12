@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
-import { XBreadcrumb, XButton, XCard, XChip } from '@x/ui';
+import { XBreadcrumb, XButton, XCard, XChip, XPopover, XListbox } from '@x/ui';
 
 const searchLoading = ref(false);
 
@@ -163,12 +163,21 @@ const buttonGroup = ref(0);
     <h2 class="text-3xl font-bold my-4 pt-6">Button Group</h2>
 
     <XCard>
-      <XButton.Group>
-        <XButton label="Year" variant="outlined" />
-        <XButton label="Month" variant="outlined" />
-        <XButton label="Week" variant="outlined" />
-        <XButton label="Day" variant="outlined" />
-      </XButton.Group>
+      <div class="grid grid-rows-2 gap-4">
+        <XButton.Group>
+          <XButton label="Year" />
+          <XButton label="Month" />
+          <XButton label="Week" />
+          <XButton label="Day" />
+        </XButton.Group>
+
+        <XButton.Group>
+          <XButton label="Year" variant="outlined" />
+          <XButton label="Month" variant="outlined" />
+          <XButton label="Week" variant="outlined" />
+          <XButton label="Day" variant="outlined" />
+        </XButton.Group>
+      </div>
     </XCard>
 
     <section class="my-4">
@@ -181,6 +190,53 @@ const buttonGroup = ref(0);
           <XButton label="Week" />
           <XButton label="Day" />
         </XButton.Group>
+      </XCard>
+    </section>
+
+    <section class="my-4">
+      <h3 class="text-2xl font-semibold my-4 pt-2">Split</h3>
+
+      <XCard>
+        <div class="flex justify-end">
+          <div>
+            <XButton.Group>
+              <XButton prepend="i-material-symbols-add-rounded" label="Add" />
+
+              <XPopover>
+                <XButton prepend="i-material-symbols-keyboard-arrow-down-rounded" />
+
+                <template #content>
+                  <XListbox>
+                    <XListbox.Item>
+                      <div class="flex items-center gap-2">
+                        <div class="i-material-symbols-refresh-rounded w-5 h-5"></div>
+                        <div>Refresh</div>
+                      </div>
+                    </XListbox.Item>
+                    <XListbox.Item>
+                      <div class="flex items-center gap-2">
+                        <div class="i-material-symbols-edit-rounded w-5 h-5"></div>
+                        <div>Edit</div>
+                      </div>
+                    </XListbox.Item>
+                    <XListbox.Item>
+                      <div class="flex items-center gap-2">
+                        <div class="i-material-symbols-delete-rounded w-5 h-5"></div>
+                        <div>Delete</div>
+                      </div>
+                    </XListbox.Item>
+                    <XListbox.Item>
+                      <div class="flex items-center gap-2">
+                        <div class="i-material-symbols-upload-rounded w-5 h-5"></div>
+                        <div>Upload</div>
+                      </div>
+                    </XListbox.Item>
+                  </XListbox>
+                </template>
+              </XPopover>
+            </XButton.Group>
+          </div>
+        </div>
       </XCard>
     </section>
   </section>

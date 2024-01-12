@@ -37,9 +37,11 @@ const flux = reactive({
 
     flux.status = !flux.status;
 
-    nextTick(() => {
-      flux.resizePanel();
-    });
+    if (flux.status) {
+      nextTick(() => {
+        flux.resizePanel();
+      });
+    }
   },
   close() {
     if (typeof props.modelValue === 'boolean') {

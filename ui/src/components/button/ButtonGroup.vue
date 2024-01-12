@@ -6,11 +6,11 @@ const props = defineProps<{
 }>();
 
 const emit = defineEmits<{
-  (evt: 'update:modelValue', val: number): void;
+  (evt: 'update:modelValue', val?: number): void;
 }>();
 
 const defaultModel = computed({
-  get: () => (typeof props.modelValue === 'number' ? props.modelValue : -1),
+  get: () => props.modelValue,
   set: (val) => emit('update:modelValue', val),
 });
 
@@ -35,6 +35,12 @@ provide('ButtonGroup', {
   :deep(.Button) {
     @apply !first:rounded-l !rounded-0 !last:rounded-r;
     @apply !first:border-l !border-l-0;
+  }
+
+  :deep(.Popover .Button) {
+    @apply !px-2;
+    @apply !rounded-0 !rounded-r;
+    @apply !border-l-0;
   }
 }
 </style>

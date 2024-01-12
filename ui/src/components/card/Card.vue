@@ -1,15 +1,15 @@
 <template>
   <div class="Card">
-    <div class="CardHeader">
+    <div class="Card-Header">
       <slot name="header"></slot>
     </div>
 
-    <div class="CardBody">
-      <div class="CardTitle">
+    <div class="Card-Body">
+      <div class="Card-Title">
         <slot name="title"></slot>
       </div>
 
-      <div class="CardSubtitle">
+      <div class="Card-Subtitle">
         <slot name="subtitle"></slot>
       </div>
 
@@ -17,7 +17,7 @@
         <slot></slot>
       </div>
 
-      <div class="CardFooter">
+      <div class="Card-Footer">
         <slot name="footer"></slot>
       </div>
     </div>
@@ -29,23 +29,23 @@
   @apply bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700;
 }
 
-.CardHeader {
+.Card-Header {
   @apply empty:hidden;
 }
 
-.CardBody {
+.Card-Body {
   @apply p-4 lg:p-6 flex flex-col;
 }
 
-.CardTitle {
+.Card-Title {
   @apply text-2xl font-semibold mb-2 empty:hidden;
 }
 
-.CardSubtitle {
+.Card-Subtitle {
   @apply text-lg mb-2 text-zinc-400 dark:text-zinc-500 empty:hidden;
 }
 
-.CardFooter {
+.Card-Footer {
   @apply empty:hidden mt-8;
 }
 </style>
