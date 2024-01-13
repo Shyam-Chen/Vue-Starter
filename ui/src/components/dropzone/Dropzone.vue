@@ -10,7 +10,7 @@ defineOptions({
 const props = defineProps<{
   label?: string;
   required?: boolean;
-  invalid?: string | boolean;
+  invalid?: boolean | string;
   title?: string;
   limit?: (file: File) => string;
 }>();
