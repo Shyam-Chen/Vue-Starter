@@ -1,6 +1,6 @@
-:8080 {
+localhost {
   encode gzip
-  root * ./dist
+  root * /usr/share/caddy
 
   route {
     try_files {path} /index.html
