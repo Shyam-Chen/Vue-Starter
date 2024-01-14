@@ -10,11 +10,13 @@ const props = withDefaults(
     value?: IteratorItem[];
     disabled?: boolean;
     maxlength?: string | number;
+    inGrid?: string;
   }>(),
   {
     value: () => [{}],
     disabled: false,
     maxlength: undefined,
+    inGrid: undefined,
   },
 );
 
@@ -53,12 +55,17 @@ const flux = reactive({
 
 <template>
   <div class="w-full flex flex-col gap-2">
-    <div v-for="(item, index) in valueModel" :key="index" class="flex gap-2">
+    <div
+      v-for="(item, index) in valueModel"
+      :key="index"
+      class="flex gap-2"
+      :class="{ relative: inGrid }"
+    >
       <div class="w-full flex items-baseline gap-2">
         <slot :item="item" :index="index"></slot>
       </div>
 
-      <div>
+      <div :class="[{ 'absolute left-full': inGrid }, inGrid]">
         <Button
           v-if="index === 0"
           icon="i-material-symbols-add-rounded"

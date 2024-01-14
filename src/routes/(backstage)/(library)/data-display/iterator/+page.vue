@@ -15,6 +15,7 @@ const flux = reactive({
   iterator1: [] as Iterator1[],
   iterator2: [] as Iterator2[],
   iterator3: [] as Iterator1[],
+  iterator4: [] as Iterator1[],
 });
 </script>
 
@@ -65,6 +66,28 @@ const flux = reactive({
           <XTextField v-model:value="item.address" />
         </template>
       </XIterator>
+    </XCard>
+  </section>
+
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">In Grid</h2>
+
+    <XCard>
+      <div class="grid grid-cols-2 gap-4">
+        <XTextField label="Name" />
+        <div></div>
+
+        <div>
+          <div class="mb-2 text-sm font-bold">IP Address</div>
+
+          <XIterator v-model:value="flux.iterator4" inGrid="ml-2">
+            <template #default="{ item }">
+              <XTextField v-model:value="item.address" />
+            </template>
+          </XIterator>
+        </div>
+        <div></div>
+      </div>
     </XCard>
   </section>
 </template>
