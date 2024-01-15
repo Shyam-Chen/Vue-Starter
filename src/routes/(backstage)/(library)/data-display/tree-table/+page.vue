@@ -43,7 +43,17 @@ const initial = ref<TreeTableNode[]>([
     children: [
       { key: '2-1', name: 'AWS', size: '25kb', type: 'Folder', level: 2 },
       { key: '2-2', name: 'Azure', size: '25kb', type: 'Folder', level: 2 },
-      { key: '2-3', name: 'GCP', size: '25kb', type: 'Folder', level: 2 },
+      {
+        key: '2-3',
+        name: 'GCP',
+        size: '25kb',
+        type: 'Folder',
+        level: 2,
+        children: [
+          { key: '2-3-1', name: 'Cloud Run', size: '10kb', type: 'Folder', level: 3 },
+          { key: '2-3-2', name: 'Artifact Registry', size: '50kb', type: 'Folder', level: 3 },
+        ],
+      },
     ],
   },
   {

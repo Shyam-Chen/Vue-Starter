@@ -80,7 +80,7 @@ const flux = reactive({
         <div>
           <div class="mb-2 text-sm font-bold">IP Address</div>
 
-          <XIterator v-model:value="flux.iterator4" inGrid="ml-2">
+          <XIterator v-model:value="flux.iterator4" inGrid>
             <template #default="{ item }">
               <XTextField v-model:value="item.address" />
             </template>

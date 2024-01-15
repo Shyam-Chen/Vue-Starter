@@ -10,7 +10,7 @@ const props = withDefaults(
     value?: IteratorItem[];
     disabled?: boolean;
     maxlength?: string | number;
-    inGrid?: string;
+    inGrid?: boolean | string;
   }>(),
   {
     value: () => [{}],
@@ -63,7 +63,7 @@ function onDelete(idx: number) {
         <slot :item="item" :index="index"></slot>
       </div>
 
-      <div :class="[{ 'absolute left-full': inGrid }, inGrid]">
+      <div :class="[{ 'absolute left-full ml-2': inGrid }, inGrid]">
         <Button
           v-if="index === 0"
           icon="i-material-symbols-add-rounded"
