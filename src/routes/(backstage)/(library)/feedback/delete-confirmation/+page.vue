@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { reactive, readonly } from 'vue';
-import { XBreadcrumb, XButton, XDeleteConfirmation } from '@x/ui';
+import { XBreadcrumb, XCard, XButton, XDeleteConfirmation } from '@x/ui';
 import { useNotification } from '@x/ui';
 
 const notification = useNotification();
@@ -13,14 +13,18 @@ const state = reactive({
 });
 
 const actions = readonly({
-  delete() {
+  async delete() {
+    state.deleteLoading = true;
+
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
+    state.deleteLoading = false;
+    state.deleteDialog = false;
+
     notification.actions.add({
       message: 'Successfully Deleted',
       color: 'success',
-      icon: 'i-mdi-checkbox-marked-circle-outline',
     });
-
-    state.deleteDialog = false;
   },
 });
 </script>
@@ -35,17 +39,21 @@ const actions = readonly({
   <section class="my-8">
     <h2 class="text-3xl font-bold my-4">Basic</h2>
 
-    <XButton color="danger" @click="state.deleteDialog = true">
-      <div class="i-mdi-delete-outline w-5 h-5"></div>
-      Delete
-    </XButton>
+    <XCard>
+      <XButton
+        prepend="i-material-symbols-delete-outline-rounded"
+        label="Delete"
+        color="danger"
+        @click="state.deleteDialog = true"
+      />
 
-    <XDeleteConfirmation
-      v-model="state.deleteDialog"
-      v-model:expected="state.deleteExpected"
-      :received="state.deleteContent.received"
-      :loading="state.deleteLoading"
-      @delete="actions.delete"
-    />
+      <XDeleteConfirmation
+        v-model="state.deleteDialog"
+        v-model:expected="state.deleteExpected"
+        :received="state.deleteContent.received"
+        :loading="state.deleteLoading"
+        @delete="actions.delete"
+      />
+    </XCard>
   </section>
 </template>

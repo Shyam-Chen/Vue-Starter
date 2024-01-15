@@ -31,6 +31,7 @@ const valueModel = computed<IteratorItem[]>({
       return [{}];
     }
 
+    emit('update:value', props.value);
     return props.value;
   },
   set: (val) => emit('update:value', val),

@@ -5,7 +5,6 @@ import { useLocaler, useLocale } from 'vue-localer';
 import Dialog from '../dialog/Dialog.vue';
 import TextField from '../text-field/TextField.vue';
 import Button from '../button/Button.vue';
-import Spinner from '../spinner/Spinner.vue';
 
 const props = defineProps<{
   modelValue?: boolean;
@@ -64,25 +63,21 @@ watch(
     </div>
 
     <div class="flex justify-center gap-2 mt-8">
-      <Button color="secondary" @click="defaultModel = false">
-        <div class="i-mdi-undo w-5 h-5"></div>
-        {{ locale.cancel || 'Cancel' }}
-      </Button>
+      <Button
+        prepend="i-material-symbols-undo-rounded"
+        :label="locale.cancel || 'Cancel'"
+        color="secondary"
+        @click="defaultModel = false"
+      />
 
       <Button
+        prepend="i-material-symbols-delete-outline-rounded"
+        :label="locale.delete || 'Delete'"
         color="danger"
-        :disabled="expectedModel !== received || loading"
+        :disabled="expectedModel !== received"
+        :loading="loading"
         @click="emit('delete')"
-      >
-        <template v-if="loading">
-          <Spinner class="w-5 h-5" />
-        </template>
-
-        <template v-else>
-          <div class="i-mdi-delete-outline w-5 h-5"></div>
-          {{ locale.delete || 'Delete' }}
-        </template>
-      </Button>
+      />
     </div>
   </Dialog>
 </template>
