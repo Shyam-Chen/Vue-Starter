@@ -1,5 +1,5 @@
 <script lang="ts" setup generic="T = object">
-import { computed, reactive } from 'vue';
+import { computed } from 'vue';
 
 import Button from '../button/Button.vue';
 
@@ -31,7 +31,6 @@ const valueModel = computed<IteratorItem[]>({
       return [{}];
     }
 
-    emit('update:value', props.value);
     return props.value;
   },
   set: (val) => emit('update:value', val),
@@ -41,16 +40,15 @@ const hasMaxlength = computed(
   () => typeof props.maxlength === 'string' || typeof props.maxlength === 'number',
 );
 
-const flux = reactive({
-  add() {
-    emit('update:value', [...props.value, {}]);
-  },
-  remove(idx: number) {
-    const arr = [...props.value];
-    arr.splice(idx, 1);
-    emit('update:value', arr);
-  },
-});
+function onAdd() {
+  emit('update:value', [...props.value, {}]);
+}
+
+function onDelete(idx: number) {
+  const arr = [...props.value];
+  arr.splice(idx, 1);
+  emit('update:value', arr);
+}
 </script>
 
 <template>
@@ -70,7 +68,7 @@ const flux = reactive({
           v-if="index === 0"
           icon="i-material-symbols-add-rounded"
           :disabled="disabled || (hasMaxlength && valueModel.length >= Number(maxlength))"
-          @click="flux.add"
+          @click="onAdd"
         />
 
         <Button
@@ -78,7 +76,7 @@ const flux = reactive({
           icon="i-material-symbols-check-indeterminate-small-rounded"
           color="danger"
           :disabled="disabled"
-          @click="flux.remove(index)"
+          @click="onDelete(index)"
         />
       </div>
     </div>
