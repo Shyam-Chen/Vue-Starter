@@ -24,7 +24,7 @@ onMounted(() => {
   <XBreadcrumb
     :items="[
       { text: 'Playground' },
-      { text: 'CRUD operations', href: '/crud-operations' },
+      { text: 'CRUD operations', to: '/crud-operations' },
       { text: 'Todo' },
     ]"
   />

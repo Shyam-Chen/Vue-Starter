@@ -1,17 +1,13 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`/general/buttons 1`] = `
-"<nav class="rounded-md w-full">
-  <ol class="list-reset flex">
-    <li><span class="text-slate-500">Library</span></li>
-    <li>
-      <div class="mx-2 flex items-center h-full">/</div>
-    </li>
-    <li><span class="text-slate-500">General</span></li>
-    <li>
-      <div class="mx-2 flex items-center h-full">/</div>
-    </li>
-    <li><span class="text-slate-500">Button</span></li>
+"<nav class="flex" aria-label="Breadcrumb">
+  <ol class="inline-flex flex-wrap items-center">
+    <li class="inline-flex items-center"><span class="inline-flex text-sm font-bold text-slate-600 dark:text-slate-400"><!--v-if--> Library</span></li>
+    <li class="inline-flex items-center"><span class="mx-2 text-sm">/</span></li>
+    <li class="inline-flex items-center"><span class="inline-flex text-sm font-bold text-slate-600 dark:text-slate-400"><!--v-if--> General</span></li>
+    <li class="inline-flex items-center"><span class="mx-2 text-sm">/</span></li>
+    <li class="inline-flex items-center"><span class="inline-flex text-sm font-bold text-slate-600 dark:text-slate-400"><!--v-if--> Button</span></li>
     <!--v-if-->
   </ol>
 </nav>

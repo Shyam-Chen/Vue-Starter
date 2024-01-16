@@ -60,6 +60,7 @@ export { default as XTextarea } from './components/textarea/Textarea.vue';
 export { default as XTimePicker } from './components/time-picker/TimePicker.vue';
 export { default as XTimeline } from './components/timeline';
 export { default as XTooltip } from './components/tooltip/Tooltip.vue';
+export { default as XTour } from './components/tour/Tour.vue';
 export { default as XTransfer } from './components/transfer/Transfer.vue';
 export { default as XTree } from './components/tree';
 export { default as XWeekPicker } from './components/week-picker/WeekPicker.vue';
