@@ -2,8 +2,10 @@
 import Link from '../link/Link.vue';
 
 interface Breadcrumb {
+  icon?: string;
   text: string;
   disabled?: boolean;
+  to?: string;
   href?: string;
 }
 
@@ -13,17 +15,21 @@ defineProps<{
 </script>
 
 <template>
-  <nav class="rounded-md w-full">
-    <ol class="list-reset flex">
+  <nav class="flex" aria-label="Breadcrumb">
+    <ol class="inline-flex flex-wrap items-center">
       <template v-for="(item, index) in items" :key="item.text">
-        <li>
-          <Link v-if="item.href" :to="item.href">{{ item.text }}</Link>
-          <span v-else class="text-slate-500">{{ item.text }}</span>
+        <li class="inline-flex items-center">
+          <Link v-if="item.to || item.href" :to="item.to" :href="item.href" class="inline-flex">
+            <div v-if="item.icon" :class="item.icon" class="w-5 h-5 me-1.5"></div>
+            {{ item.text }}
+          </Link>
+          <span v-else class="inline-flex text-sm font-bold text-slate-600 dark:text-slate-400">
+            <div v-if="item.icon" :class="item.icon" class="w-5 h-5 me-1.5"></div>
+            {{ item.text }}
+          </span>
         </li>
-        <li v-if="index !== items.length - 1">
-          <div class="mx-2 flex items-center h-full">
-            <slot name="divider">/</slot>
-          </div>
+        <li v-if="index !== items.length - 1" class="inline-flex items-center">
+          <span class="mx-2 text-sm">/</span>
         </li>
       </template>
     </ol>

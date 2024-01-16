@@ -13,29 +13,25 @@ import { XBreadcrumb, XCard } from '@x/ui';
     <XCard>
       <XBreadcrumb
         :items="[
-          { text: 'Dashboard', href: '#' },
-          { text: 'Link 1', href: '#' },
-          { text: 'Link 2' },
+          { text: 'Home', to: '/navigation/breadcrumbs' },
+          { text: 'Projects', href: '#breadcrumb' },
+          { text: 'Flowbite' },
         ]"
       />
     </XCard>
   </section>
 
   <section class="my-8">
-    <h2 class="text-3xl font-bold my-4 pt-6">Divider</h2>
+    <h2 class="text-3xl font-bold my-4 pt-6">Icon</h2>
 
     <XCard>
       <XBreadcrumb
         :items="[
-          { text: 'Dashboard', href: '#' },
-          { text: 'Link 1', href: '#' },
-          { text: 'Link 2' },
+          { icon: 'i-material-symbols-house-rounded', text: 'Home', to: '/navigation/breadcrumbs' },
+          { icon: 'i-material-symbols-folder-rounded', text: 'Projects', href: '#breadcrumb' },
+          { icon: 'i-material-symbols-local-fire-department-rounded', text: 'Flowbite' },
         ]"
-      >
-        <template #divider>
-          <div class="i-fa-arrow-right w-3 h-3"></div>
-        </template>
-      </XBreadcrumb>
+      />
     </XCard>
   </section>
 </template>

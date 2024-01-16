@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ref, reactive, watch, onUnmounted, nextTick } from 'vue';
-import { XBreadcrumb, XButton } from '@x/ui';
+import { XBreadcrumb, XCard, XButton } from '@x/ui';
 
 const tour = ref();
 const guide = ref();
@@ -110,17 +110,15 @@ onUnmounted(() => {
 <template>
   <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Navigation' }, { text: 'Tours' }]" />
 
-  <div class="my-4">
-    <div ref="el1" class="text-3xl font-bold">Tours</div>
-  </div>
+  <h1 ref="el1" class="text-4xl font-extrabold my-4">Tours</h1>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Basic</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4">Basic</h2>
 
-    <div>
-      <XButton @click="flux.begin">Begin Tour</XButton>
-    </div>
-  </div>
+    <XCard>
+      <XButton label="Begin Tour" @click="flux.begin" />
+    </XCard>
+  </section>
 
   <div
     v-if="flux.showTour"

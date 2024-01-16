@@ -384,15 +384,20 @@ watch(
       <div class="flex items-center">{{ paginationInfo }}</div>
 
       <div class="flex gap-4">
-        <Button variant="text" color="secondary" @click="flux.previousPage">
-          <div class="i-fa-angle-left w-4 h-4"></div>
-          {{ locale.previousPage || 'Previous' }}
-        </Button>
-
-        <Button variant="text" color="secondary" @click="flux.nextPage">
-          {{ locale.nextPage || 'Next' }}
-          <div class="i-fa-angle-right w-4 h-4"></div>
-        </Button>
+        <Button
+          prepend="i-material-symbols-chevron-left-rounded"
+          :label="locale.previousPage || 'Previous'"
+          variant="text"
+          color="secondary"
+          @click="flux.previousPage"
+        />
+        <Button
+          :label="locale.nextPage || 'Next'"
+          append="i-material-symbols-chevron-right-rounded"
+          variant="text"
+          color="secondary"
+          @click="flux.nextPage"
+        />
       </div>
     </div>
   </div>
