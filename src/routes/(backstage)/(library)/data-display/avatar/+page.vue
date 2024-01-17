@@ -1,44 +1,46 @@
 <script lang="ts" setup>
-import { XBreadcrumb, XAvatar, XBadge } from '@x/ui';
+import { XBreadcrumb, XCard, XAvatar, XBadge } from '@x/ui';
 </script>
 
 <template>
   <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Data Display' }, { text: 'Avatar' }]" />
 
-  <div class="my-4">
-    <div class="text-3xl font-bold">Avatar</div>
-  </div>
+  <h1 class="text-4xl font-extrabold my-4">Avatar</h1>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Basic</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4">Basic</h2>
 
-    <div class="flex justify-center gap-2">
-      <XAvatar src="https://mui.com/static/images/avatar/1.jpg" alt="Remy Sharp" />
-      <XAvatar icon="i-mdi-account" class="bg-indigo-700 text-white" />
-      <XAvatar class="bg-red-700 text-white">SC</XAvatar>
-    </div>
-  </div>
+    <XCard>
+      <div class="flex justify-center gap-4">
+        <XAvatar src="https://mui.com/static/images/avatar/1.jpg" alt="Remy Sharp" />
+        <XAvatar icon="i-mdi-account" class="bg-indigo-700 text-white" />
+        <XAvatar class="bg-red-700 text-white">SC</XAvatar>
+      </div>
+    </XCard>
+  </section>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Grouped</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Grouped</h2>
 
-    <div class="flex justify-center">
+    <XCard>
       <XAvatar.Group :total="24">
         <XAvatar src="https://mui.com/static/images/avatar/1.jpg" alt="Remy Sharp" />
         <XAvatar src="https://mui.com/static/images/avatar/2.jpg" alt="Travis Howard" />
         <XAvatar src="https://mui.com/static/images/avatar/3.jpg" alt="Cindy Baker" />
         <XAvatar src="https://mui.com/static/images/avatar/4.jpg" alt="Agnes Walker" />
       </XAvatar.Group>
-    </div>
-  </div>
+    </XCard>
+  </section>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">With badge</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">With badge</h2>
 
-    <div class="flex justify-center">
-      <XBadge class="important:bg-green-500 top-auto right-1 -bottom-1 border">
-        <XAvatar src="https://mui.com/static/images/avatar/1.jpg" alt="Remy Sharp" />
-      </XBadge>
-    </div>
-  </div>
+    <XCard>
+      <div class="flex">
+        <XBadge class="!bg-green-500 top-auto right-1 -bottom-1 border">
+          <XAvatar src="https://mui.com/static/images/avatar/1.jpg" alt="Remy Sharp" />
+        </XBadge>
+      </div>
+    </XCard>
+  </section>
 </template>

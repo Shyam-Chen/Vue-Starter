@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
-import { XBreadcrumb, XPopover, XCode, XButton } from '@x/ui';
+import { XBreadcrumb, XCard, XPopover, XCode, XButton } from '@x/ui';
 
 const controlled = ref(false);
 </script>
@@ -13,106 +13,114 @@ const controlled = ref(false);
   <section class="my-8">
     <h2 class="text-3xl font-bold my-4">Basic</h2>
 
-    <XPopover>
-      <XButton icon="i-mdi-atom" />
+    <XCard>
+      <XPopover>
+        <XButton icon="i-mdi-atom" />
 
-      <template #content>
-        <div class="px-4 py-2">The content of the Popover.</div>
-      </template>
-    </XPopover>
+        <template #content>
+          <div class="px-4 py-2">The content of the Popover.</div>
+        </template>
+      </XPopover>
+    </XCard>
   </section>
 
-  <div class="my-8">
-    <div class="text-3xl font-bold mb-4 pt-6">Controlled</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold mb-4 pt-6">Controlled</h2>
 
-    <div class="flex items-center gap-2">
-      Status:
-      <XCode>{{ controlled }}</XCode>
-      <XButton icon="i-mdi-add" @click="controlled = true" />
-      <XButton icon="i-mdi-minus" @click="controlled = false" />
-    </div>
+    <XCard>
+      <div class="flex items-center gap-2">
+        Status:
+        <XCode>{{ controlled }}</XCode>
+        <XButton icon="i-mdi-add" @click="controlled = true" />
+        <XButton icon="i-mdi-minus" @click="controlled = false" />
+      </div>
 
-    <XPopover v-model="controlled">
-      <XButton icon="i-mdi-atom" @click="controlled = !controlled" />
+      <XPopover v-model="controlled">
+        <XButton icon="i-mdi-atom" @click="controlled = !controlled" />
 
-      <template #content>
-        <div class="flex gap-2 px-4 py-2">
-          Status:
-          <XCode>{{ controlled }}</XCode>
+        <template #content>
+          <div class="flex gap-2 px-4 py-2">
+            Status:
+            <XCode>{{ controlled }}</XCode>
+          </div>
+        </template>
+      </XPopover>
+    </XCard>
+  </section>
+
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Disabled</h2>
+
+    <XCard>
+      <XPopover disabled>
+        <XButton icon="i-mdi-atom" disabled />
+
+        <template #content>
+          <div class="px-4 py-2">The content of the Popover.</div>
+        </template>
+      </XPopover>
+    </XCard>
+  </section>
+
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Placement</h2>
+
+    <XCard>
+      <div class="flex justify-between h-50">
+        <div>
+          <XPopover>
+            <XButton icon="i-mdi-atom" />
+
+            <template #content>
+              <div class="px-4 py-2">The content of the Popover.</div>
+            </template>
+          </XPopover>
         </div>
-      </template>
-    </XPopover>
-  </div>
 
-  <div class="my-8">
-    <div class="text-3xl font-bold my-4 pt-6">Disabled</div>
+        <div>
+          <XPopover>
+            <XButton icon="i-mdi-atom" />
 
-    <XPopover disabled>
-      <XButton icon="i-mdi-atom" disabled />
-
-      <template #content>
-        <div class="px-4 py-2">The content of the Popover.</div>
-      </template>
-    </XPopover>
-  </div>
-
-  <div class="my-8">
-    <div class="text-3xl font-bold my-4 pt-6">Placement</div>
-
-    <div class="flex justify-between h-50">
-      <div>
-        <XPopover>
-          <XButton icon="i-mdi-atom" />
-
-          <template #content>
-            <div class="px-4 py-2">The content of the Popover.</div>
-          </template>
-        </XPopover>
+            <template #content>
+              <div class="px-4 py-2">The content of the Popover.</div>
+            </template>
+          </XPopover>
+        </div>
       </div>
 
-      <div>
-        <XPopover>
-          <XButton icon="i-mdi-atom" />
+      <div class="flex justify-evenly h-50">
+        <div v-for="num in 6" :key="num">
+          <XPopover>
+            <XButton icon="i-mdi-atom" />
 
-          <template #content>
-            <div class="px-4 py-2">The content of the Popover.</div>
-          </template>
-        </XPopover>
-      </div>
-    </div>
-
-    <div class="flex justify-evenly h-50">
-      <div v-for="num in 6" :key="num">
-        <XPopover>
-          <XButton icon="i-mdi-atom" />
-
-          <template #content>
-            <div class="px-4 py-2">The content of the Popover.</div>
-          </template>
-        </XPopover>
-      </div>
-    </div>
-
-    <div class="flex justify-between h-50">
-      <div>
-        <XPopover>
-          <XButton icon="i-mdi-atom" />
-
-          <template #content>
-            <div class="px-4 py-2">The content of the Popover.</div>
-          </template>
-        </XPopover>
+            <template #content>
+              <div class="px-4 py-2">The content of the Popover.</div>
+            </template>
+          </XPopover>
+        </div>
       </div>
 
-      <div>
-        <XPopover>
-          <XButton icon="i-mdi-atom" />
+      <div class="flex justify-between h-50">
+        <div>
+          <XPopover>
+            <XButton icon="i-mdi-atom" />
 
-          <template #content>
-            <div class="px-4 py-2">The content of the Popover.</div>
-          </template>
-        </XPopover>
+            <template #content>
+              <div class="px-4 py-2">The content of the Popover.</div>
+            </template>
+          </XPopover>
+        </div>
+
+        <div>
+          <XPopover>
+            <XButton icon="i-mdi-atom" />
+
+            <template #content>
+              <div class="px-4 py-2">The content of the Popover.</div>
+            </template>
+          </XPopover>
+        </div>
       </div>
-    </div>
-  </div>
+    </XCard>
+  </section>
 </template>

@@ -1,69 +1,51 @@
 <script lang="ts" setup>
-import { XBreadcrumb, XTooltip } from '@x/ui';
+import { XBreadcrumb, XCard, XTooltip } from '@x/ui';
 </script>
 
 <template>
   <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Data Display' }, { text: 'Tooltip' }]" />
 
-  <div class="my-4">
-    <div class="text-3xl font-bold">Tooltip</div>
-  </div>
+  <h1 class="text-4xl font-extrabold my-4">Tooltip</h1>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Basic</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4">Basic</h2>
 
-    <div class="flex justify-center">
+    <XCard>
       <XTooltip title="Hi! I'm tooltip">
         <span>Tooltip will show on mouse enter.</span>
       </XTooltip>
-    </div>
-  </div>
+    </XCard>
+  </section>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Basic</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Placement</h2>
 
-    <div class="flex justify-between">
-      <XTooltip title="Hi! I'm tooltip">
-        <span>Tooltip will show on mouse enter.</span>
-      </XTooltip>
+    <XCard>
+      <div class="flex flex-col gap-16">
+        <div class="flex justify-between">
+          <XTooltip v-for="num in 2" :key="num" title="Hi! I'm tooltip">
+            <span>Tooltip will show on mouse enter.</span>
+          </XTooltip>
+        </div>
 
-      <XTooltip title="Hi! I'm tooltip">
-        <span>Tooltip will show on mouse enter.</span>
-      </XTooltip>
-    </div>
-  </div>
+        <div class="flex justify-center">
+          <XTooltip title="Hi! I'm tooltip">
+            <span>Tooltip will show on mouse enter.</span>
+          </XTooltip>
+        </div>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Basic</div>
+        <div class="flex justify-between">
+          <XTooltip v-for="num in 3" :key="num" title="Hi! I'm tooltip">
+            <span>Tooltip will show on mouse enter.</span>
+          </XTooltip>
+        </div>
 
-    <div class="flex justify-center">
-      <XTooltip title="Hi! I'm tooltip">
-        <span>Tooltip will show on mouse enter.</span>
-      </XTooltip>
-    </div>
-  </div>
-
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Basic</div>
-
-    <div class="flex justify-between">
-      <XTooltip title="Hi! I'm tooltip">
-        <span>Tooltip will show on mouse enter.</span>
-      </XTooltip>
-
-      <XTooltip title="Hi! I'm tooltip">
-        <span>Tooltip will show on mouse enter.</span>
-      </XTooltip>
-    </div>
-  </div>
-
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Basic</div>
-
-    <div class="flex justify-center">
-      <XTooltip title="Hi! I'm tooltip">
-        <span>Tooltip will show on mouse enter.</span>
-      </XTooltip>
-    </div>
-  </div>
+        <div class="flex justify-center">
+          <XTooltip title="Hi! I'm tooltip">
+            <span>Tooltip will show on mouse enter.</span>
+          </XTooltip>
+        </div>
+      </div>
+    </XCard>
+  </section>
 </template>

@@ -9,12 +9,10 @@ const accordionGroupMultiple = ref<string[]>([]);
 <template>
   <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Data Display' }, { text: 'Accordion' }]" />
 
-  <div class="my-4">
-    <div class="text-4xl font-extrabold">Accordion</div>
-  </div>
+  <h1 class="text-4xl font-extrabold my-4">Accordion</h1>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Group</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4">Basic</h2>
 
     <XAccordion>
       <XAccordion.Item>
@@ -56,10 +54,10 @@ const accordionGroupMultiple = ref<string[]>([]);
         </template>
       </XAccordion.Item>
     </XAccordion>
-  </div>
+  </section>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Model</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Model</h2>
 
     <div class="mb-2">{{ accordionGroup }}</div>
 
@@ -103,10 +101,10 @@ const accordionGroupMultiple = ref<string[]>([]);
         </template>
       </XAccordion.Item>
     </XAccordion>
-  </div>
+  </section>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Model with multiple</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Model with multiple</h2>
 
     <div class="mb-2">{{ accordionGroupMultiple }}</div>
 
@@ -150,5 +148,5 @@ const accordionGroupMultiple = ref<string[]>([]);
         </template>
       </XAccordion.Item>
     </XAccordion>
-  </div>
+  </section>
 </template>
