@@ -11,12 +11,14 @@ const props = withDefaults(
     disabled?: boolean;
     maxlength?: string | number;
     inGrid?: boolean | string;
+    newItem?: IteratorItem;
   }>(),
   {
     value: () => [{}],
     disabled: false,
     maxlength: undefined,
     inGrid: undefined,
+    newItem: () => ({}),
   },
 );
 
@@ -42,7 +44,7 @@ const hasMaxlength = computed(
 );
 
 function onAdd() {
-  emit('update:value', [...props.value, {}]);
+  emit('update:value', [...props.value, props.newItem]);
 }
 
 function onDelete(idx: number) {

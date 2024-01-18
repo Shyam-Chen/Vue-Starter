@@ -9,7 +9,7 @@ defineOptions({
 const props = defineProps<{
   label?: string;
   value?: unknown;
-  options?: string[] | Array<{ label: string; value: unknown }>;
+  options?: string[] | { label: string; value: unknown; [key: string]: unknown }[];
   disabled?: boolean;
   required?: boolean;
   invalid?: boolean | string;
