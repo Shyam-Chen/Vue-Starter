@@ -102,8 +102,10 @@ function onDragLeave() {
         @change="onChange"
         @click="($refs.dropzone as HTMLInputElement).value = ''"
       />
-      <div class="i-mdi-tray-arrow-up w-24 h-24"></div>
-      <div class="text-xl">{{ title || 'Click or drag to upload image' }}</div>
+      <slot name="dropzone">
+        <div class="i-mdi-tray-arrow-up w-24 h-24"></div>
+        <div class="text-xl">{{ title || 'Click or drag to upload image' }}</div>
+      </slot>
     </label>
 
     <div v-if="invalid" class="text-red-500 text-sm mt-1">
