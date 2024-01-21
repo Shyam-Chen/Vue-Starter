@@ -1,33 +1,29 @@
 <script lang="ts" setup>
-import { XBreadcrumb, XCodeBlock } from '@x/ui';
+import { XBreadcrumb, XCard, XCodeBlock } from '@x/ui';
 
-const a = `<div class="i-fa-bell w-3 h-3 text-blue-500"></div>`
-  .replaceAll('<', '&lt;')
-  .replaceAll('>', '&gt;');
+function escape(html: string) {
+  return html.replaceAll('<', '&lt;').replaceAll('>', '&gt;');
+}
 
-const b = `<div class="i-fa-bell w-10 h-10 text-yellow-500"></div>`
-  .replaceAll('<', '&lt;')
-  .replaceAll('>', '&gt;');
-
-const code = `<pre><code class="language-html">${a}
-${b}</code></pre>`;
+const codeBasic = `<pre><code class="language-html">${escape(`<div class="i-material-symbols-notifications-rounded size-5 text-blue-500"></div>`)}
+${escape(`<div class="i-material-symbols-notifications-rounded size-8 text-yellow-500"></div>`)}</code></pre>`;
 </script>
 
 <template>
   <XBreadcrumb :items="[{ text: 'Library' }, { text: 'General' }, { text: 'Icons' }]" />
 
-  <div class="my-4">
-    <div class="text-3xl font-bold">Icons</div>
-  </div>
+  <h1 class="text-4xl font-extrabold my-4">Icons</h1>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Basic</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4">Basic</h2>
 
-    <div class="flex justify-center items-center space-x-4">
-      <div class="i-fa-bell w-3 h-3 text-blue-500"></div>
-      <div class="i-fa-bell w-10 h-10 text-yellow-500"></div>
-    </div>
-  </div>
+    <XCard>
+      <div class="flex justify-center items-center gap-4">
+        <div class="i-material-symbols-notifications-rounded size-5 text-blue-500"></div>
+        <div class="i-material-symbols-notifications-rounded size-8 text-yellow-500"></div>
+      </div>
+    </XCard>
 
-  <XCodeBlock :code="code" />
+    <XCodeBlock :code="codeBasic" />
+  </section>
 </template>

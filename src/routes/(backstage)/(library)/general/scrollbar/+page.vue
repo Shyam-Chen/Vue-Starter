@@ -1,41 +1,53 @@
 <script lang="ts" setup>
-import { XBreadcrumb } from '@x/ui';
+import { XBreadcrumb, XCard } from '@x/ui';
 </script>
 
 <template>
   <XBreadcrumb :items="[{ text: 'Library' }, { text: 'General' }, { text: 'Scrollbar' }]" />
 
-  <div class="my-4">
-    <div class="text-3xl font-bold">Scrollbar</div>
-  </div>
+  <h1 class="text-4xl font-extrabold my-4">Scrollbar</h1>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Basic</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4">Vertical</h2>
 
-    <div class="scrollbar flex flex-col gap-3 h-100 text-center">
-      <div
-        v-for="num in 50"
-        :key="num"
-        class="bg-primary-100 dark:bg-primary-900 text-primary-500 dark:text-primary-200 py-2"
-      >
-        {{ num }}
+    <XCard>
+      <div class="scrollbar flex flex-col gap-3 h-100 text-center">
+        <div
+          v-for="num in 50"
+          :key="num"
+          class="bg-primary-100 dark:bg-primary-900 text-primary-500 dark:text-primary-200 py-2"
+        >
+          {{ num }}
+        </div>
       </div>
-    </div>
-  </div>
+    </XCard>
+  </section>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Horizontal</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Horizontal</h2>
 
-    <div class="scrollbar flex gap-3 text-center">
-      <div
-        v-for="num in 50"
-        :key="num"
-        class="bg-primary-100 dark:bg-primary-900 text-primary-500 dark:text-primary-200 px-5 py-2"
-      >
-        {{ num }}
+    <XCard>
+      <div class="scrollbar flex gap-3 text-center">
+        <div
+          v-for="num in 50"
+          :key="num"
+          class="bg-primary-100 dark:bg-primary-900 text-primary-500 dark:text-primary-200 px-5 py-2"
+        >
+          {{ num }}
+        </div>
       </div>
-    </div>
-  </div>
+    </XCard>
+  </section>
+
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Both</h2>
+
+    <XCard>
+      <div class="scrollbar w-full h-80">
+        <div class="w-100vw h-100dvh"></div>
+      </div>
+    </XCard>
+  </section>
 </template>
 
 <style lang="scss" scoped>
@@ -43,33 +55,27 @@ import { XBreadcrumb } from '@x/ui';
   @apply overflow-auto;
 }
 
-/* total width */
 .scrollbar::-webkit-scrollbar {
   @apply w-2 h-2 z-999;
 }
 
-/* background of the scrollbar except button or resizer */
-// .scrollbar::-webkit-scrollbar-track {
-
-// }
-
-/* scrollbar itself */
-.scrollbar::-webkit-scrollbar-thumb {
-  @apply rounded-xl;
-}
-
-/* set button(top and bottom of the scrollbar) */
 .scrollbar::-webkit-scrollbar-button {
   @apply hidden;
 }
 
-/* scrollbar when element is hovered */
-.scrollbar:hover::-webkit-scrollbar-thumb {
-  @apply bg-gray-500 dark:bg-gray-500;
+.scrollbar::-webkit-scrollbar-thumb {
+  @apply rounded-xl bg-gray-400 dark:bg-gray-500;
 }
 
-/* scrollbar when scrollbar is hovered */
-// .scrollbar::-webkit-scrollbar-thumb:hover {
+.scrollbar::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
 
-// }
+.scrollbar::-webkit-scrollbar-track-piece {
+  @apply bg-transparent;
+}
+
+.scrollbar::-webkit-scrollbar-corner {
+  @apply bg-transparent;
+}
 </style>
