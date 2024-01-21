@@ -3,7 +3,7 @@ import { reactive } from 'vue';
 import { XBreadcrumb, XCard, XTabs, XCode } from '@x/ui';
 
 const flux = reactive({
-  tabControlled: 0,
+  tabControlled: 3,
   tabControlledCustomValue: 'vue',
 });
 </script>
