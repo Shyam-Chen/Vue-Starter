@@ -55,14 +55,14 @@ usePointerSwipe(target, {
       <slot></slot>
     </div>
 
-    <div class="absolute bottom-3 left-1/2 z-10 -translate-x-1/2 flex space-x-1 text-primary-500">
+    <div class="absolute bottom-3 left-1/2 z-10 -translate-x-1/2 flex text-primary-500">
       <template v-for="num in length" :key="num">
         <div
-          class="cursor-pointer"
+          class="cursor-pointer w-5 h-5"
           :class="[
             left === -moveRef * (num - 1)
-              ? 'i-mdi-checkbox-blank-circle'
-              : 'i-mdi-checkbox-blank-circle-outline',
+              ? 'i-material-symbols-fiber-manual-record'
+              : 'i-material-symbols-fiber-manual-record-outline',
           ]"
           @click="goTo(num)"
         ></div>
@@ -70,13 +70,13 @@ usePointerSwipe(target, {
     </div>
 
     <Button
-      icon="i-mdi-chevron-left"
+      icon="i-material-symbols-chevron-left-rounded"
       class="absolute top-1/2 left-3 z-10 -translate-y-1/2"
       :disabled="left === 0"
       @click="previous"
     />
     <Button
-      icon="i-mdi-chevron-right"
+      icon="i-material-symbols-chevron-right-rounded"
       class="absolute top-1/2 right-3 z-10 -translate-y-1/2"
       :disabled="left === -moveRef * (length - 1)"
       @click="next"

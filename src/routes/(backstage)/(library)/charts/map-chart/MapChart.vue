@@ -22,6 +22,7 @@ const color = [
 
 const dataset = [
   { name: 'Australia', value: getRandomInt() },
+  { name: 'Brazil', value: 10 },
   { name: 'Canada', value: getRandomInt() },
   { name: 'China', value: getRandomInt() },
   { name: 'England', value: getRandomInt() },
@@ -31,6 +32,7 @@ const dataset = [
   { name: 'Japan', value: getRandomInt() },
   { name: 'Russia', value: getRandomInt() },
   { name: 'South Korea', value: getRandomInt() },
+  { name: 'Spain', value: 990 },
   { name: 'Taiwan', value: getRandomInt() },
   { name: 'USA', value: getRandomInt() },
 ];
@@ -115,19 +117,18 @@ onMounted(async () => {
       const current = dataset.find((item) => item.name === d.properties.name);
 
       if (current?.value) {
-        // Define your color scale and domain
-        const colorScale = d3
-          .scaleThreshold<number, string>()
-          .domain([100, 200, 300, 400, 500, 600, 700, 800, 900, 1000])
-          .range(color);
+        const colorScale = d3.scaleLinear(
+          [0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000],
+          color,
+        );
 
-        // Get the color based on the value
-        return colorScale(current.value) || '#a1a1aa';
+        return colorScale(current.value);
       }
 
       return '#a1a1aa';
     })
     .attr('d', d3.geoPath().projection(gfg) as any)
+    .style('stroke-width', '0.25')
     .style('stroke', '#fafafa')
     .on('mouseover', function () {
       tooltip.style('display', 'block');
@@ -210,8 +211,16 @@ function getRandomInt() {
 </script>
 
 <template>
-  <XButton @click="restore">Restore</XButton>
-  <div ref="worldMap" class="WorldMap"></div>
+  <div class="relative">
+    <XButton
+      icon="i-tabler-restore"
+      color="secondary"
+      size="small"
+      class="absolute top-2 right-2 z-1"
+      @click="restore"
+    />
+    <div ref="worldMap" class="WorldMap"></div>
+  </div>
 </template>
 
 <style lang="scss" scoped>
