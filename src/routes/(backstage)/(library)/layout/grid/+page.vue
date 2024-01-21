@@ -1,33 +1,35 @@
 <script lang="ts" setup>
-import { XBreadcrumb } from '@x/ui';
+import { XBreadcrumb, XCard } from '@x/ui';
 </script>
 
 <template>
   <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Layout' }, { text: 'Grid' }]" />
 
-  <div class="my-4">
-    <div class="text-3xl font-bold">Grid</div>
-  </div>
+  <h1 class="text-4xl font-extrabold my-4">Grid</h1>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Columns</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4">Columns</h2>
 
-    <div class="grid grid-cols-12 gap-2 text-white">
-      <div class="col-span-8 bg-blue-400 rounded p-2 text-center">col-8</div>
-      <div class="col-span-4 bg-blue-400 rounded p-2 text-center">col-4</div>
+    <XCard>
+      <div class="grid grid-cols-12 gap-2 text-white">
+        <div class="col-span-8 bg-primary-400 rounded p-2 text-center">col-8</div>
+        <div class="col-span-4 bg-primary-400 rounded p-2 text-center">col-4</div>
 
-      <div class="col-span-4 bg-blue-400 rounded p-2 text-center">col-4</div>
-      <div class="col-span-8 bg-blue-400 rounded p-2 text-center">col-8</div>
-    </div>
-  </div>
+        <div class="col-span-4 bg-primary-400 rounded p-2 text-center">col-4</div>
+        <div class="col-span-8 bg-primary-400 rounded p-2 text-center">col-8</div>
+      </div>
+    </XCard>
+  </section>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Rows</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Rows</h2>
 
-    <div class="grid grid-cols-12 grid-rows-3 gap-2 text-white">
-      <div class="col-span-4 row-span-3 bg-blue-400 rounded p-2 text-center">col-4 row-3</div>
-      <div class="col-span-8 bg-blue-400 rounded p-2 text-center">col-8 row-1</div>
-      <div class="col-span-8 row-span-2 bg-blue-400 rounded p-2 text-center">col-8 row-2</div>
-    </div>
-  </div>
+    <XCard>
+      <div class="grid grid-cols-12 grid-rows-3 gap-2 text-white">
+        <div class="col-span-4 row-span-3 bg-primary-400 rounded p-2 text-center">col-4 row-3</div>
+        <div class="col-span-8 bg-primary-400 rounded p-2 text-center">col-8 row-1</div>
+        <div class="col-span-8 row-span-2 bg-primary-400 rounded p-2 text-center">col-8 row-2</div>
+      </div>
+    </XCard>
+  </section>
 </template>

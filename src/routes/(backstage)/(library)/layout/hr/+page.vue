@@ -1,39 +1,16 @@
 <script lang="ts" setup>
-import { XBreadcrumb } from '@x/ui';
+import { XBreadcrumb, XCard } from '@x/ui';
 </script>
 
 <template>
   <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Layout' }, { text: 'HR' }]" />
 
-  <div class="my-4">
-    <div class="text-3xl font-bold">HR</div>
-  </div>
+  <h1 class="text-4xl font-extrabold my-4">HR</h1>
 
-  <div class="mt-4 mb-6">
-    <div class="text-xl font-bold mb-2">Default HR</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4">Icon</h2>
 
-    <div class="w-full p-4 border border-gray-200 rounded-xl dark:border-gray-600">
-      <p class="text-gray-500 dark:text-gray-400">
-        Track work across the enterprise through an open, collaborative platform. Link issues across
-        Jira and ingest data from other software development tools, so your IT support and
-        operations teams have richer contextual information to rapidly respond to requests,
-        incidents, and changes.
-      </p>
-
-      <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700" />
-
-      <p class="text-gray-500 dark:text-gray-400">
-        Deliver great service experiences fast - without the complexity of traditional ITSM
-        solutions.Accelerate critical development work, eliminate toil, and deploy changes with
-        ease, with a complete audit trail for every change.
-      </p>
-    </div>
-  </div>
-
-  <div class="mt-4 mb-6">
-    <div class="text-xl font-bold mb-2">Icon HR</div>
-
-    <div class="w-full p-4 border border-gray-200 rounded-xl dark:border-gray-600">
+    <XCard>
       <p class="text-gray-500 dark:text-gray-400">
         Track work across the enterprise through an open, collaborative platform. Link issues across
         Jira and ingest data from other software development tools, so your IT support and
@@ -44,7 +21,7 @@ import { XBreadcrumb } from '@x/ui';
       <div class="relative inline-flex items-center justify-center w-full">
         <hr class="w-64 h-1 my-8 bg-gray-200 border-0 rounded dark:bg-gray-700" />
 
-        <div class="absolute px-4 -translate-x-1/2 bg-white left-1/2 dark:bg-gray-900">
+        <div class="absolute px-4 -translate-x-1/2 bg-white left-1/2 dark:bg-gray-800">
           <div class="i-bi-quote w-5 h-5 text-gray-700 dark:text-gray-300"></div>
         </div>
       </div>
@@ -53,13 +30,13 @@ import { XBreadcrumb } from '@x/ui';
         Deliver great service experiences fast - without the complexity of traditional ITSM
         solutions.Accelerate critical development work, eliminate toil.
       </p>
-    </div>
-  </div>
+    </XCard>
+  </section>
 
-  <div class="mt-4 mb-6">
-    <div class="text-xl font-bold mb-2">HR with text</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Text</h2>
 
-    <div class="w-full p-4 border border-gray-200 rounded-xl dark:border-gray-600">
+    <XCard>
       <p class="text-gray-500 dark:text-gray-400">
         Track work across the enterprise through an open, collaborative platform. Link issues across
         Jira and ingest data from other software development tools, so your IT support and
@@ -70,8 +47,7 @@ import { XBreadcrumb } from '@x/ui';
       <div class="relative inline-flex items-center justify-center w-full">
         <hr class="w-64 h-px my-8 bg-gray-200 border-0 dark:bg-gray-700" />
 
-        <span
-          class="absolute px-3 font-medium text-gray-900 -translate-x-1/2 bg-white left-1/2 dark:text-white dark:bg-gray-900"
+        <span class="absolute px-3 font-medium -translate-x-1/2 bg-white left-1/2 dark:bg-gray-800"
           >or</span
         >
       </div>
@@ -80,6 +56,6 @@ import { XBreadcrumb } from '@x/ui';
         Deliver great service experiences fast - without the complexity of traditional ITSM
         solutions.Accelerate critical development work, eliminate toil.
       </p>
-    </div>
-  </div>
+    </XCard>
+  </section>
 </template>

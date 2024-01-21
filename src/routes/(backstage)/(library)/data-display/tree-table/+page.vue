@@ -107,9 +107,7 @@ function treeNode(item: TreeTableNode) {
 <template>
   <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Data Display' }, { text: 'TreeTable' }]" />
 
-  <div class="my-4">
-    <div class="text-3xl font-bold">TreeTable</div>
-  </div>
+  <h1 class="text-4xl font-extrabold my-4">TreeTable</h1>
 
   <div class="TreeTable-Wrapper">
     <table class="TreeTable-Element">

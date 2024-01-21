@@ -23,7 +23,7 @@ const flux = reactive({
   </section>
 
   <section class="my-8">
-    <h2 class="text-3xl font-bold my-4">Multiautocomplete</h2>
+    <h2 class="text-3xl font-bold my-4 pt-6">Multiautocomplete</h2>
 
     <XCard>
       <XMultiautocomplete v-model:value="flux.multiautocomplete" />

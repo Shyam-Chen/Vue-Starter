@@ -16,9 +16,7 @@ const onIntersectionObserver = (num: number): IntersectionObserverCallback => {
 <template>
   <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Navigation' }, { text: 'Scrollspy' }]" />
 
-  <div class="my-4">
-    <div class="text-3xl font-bold">Scrollspy</div>
-  </div>
+  <h1 class="text-4xl font-extrabold my-4">Scrollspy</h1>
 
   <div class="grid grid-cols-12 gap-2">
     <div class="col-span-9">

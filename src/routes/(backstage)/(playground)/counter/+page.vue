@@ -13,9 +13,7 @@ $subscribe((state) => {
 <template>
   <XBreadcrumb :items="[{ text: 'Playground' }, { text: 'Counter' }]" />
 
-  <div class="my-4">
-    <div class="text-3xl font-bold">Counter</div>
-  </div>
+  <h1 class="text-4xl font-extrabold my-4">Counter</h1>
 
   <div class="flex flex-col gap-1 my-4">
     <XTextField v-model:value="state.name" label="Name" />

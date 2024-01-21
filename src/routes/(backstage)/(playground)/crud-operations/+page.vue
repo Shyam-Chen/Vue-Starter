@@ -32,9 +32,7 @@ onMounted(() => {
 <template>
   <XBreadcrumb :items="[{ text: 'Playground' }, { text: 'CRUD Operations' }]" />
 
-  <div class="my-4">
-    <div class="text-3xl font-bold">CRUD Operations</div>
-  </div>
+  <h1 class="text-4xl font-extrabold my-4">CRUD Operations</h1>
 
   <XPanel class="mb-6">
     <template #header>

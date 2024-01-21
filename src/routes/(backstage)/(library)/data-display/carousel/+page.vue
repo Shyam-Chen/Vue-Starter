@@ -5,9 +5,7 @@ import { XBreadcrumb, XCarousel } from '@x/ui';
 <template>
   <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Data Display' }, { text: 'Carousel' }]" />
 
-  <div class="my-4">
-    <div class="text-3xl font-bold">Carousel</div>
-  </div>
+  <h1 class="text-4xl font-extrabold my-4">Carousel</h1>
 
   <div class="mt-4 mb-12">
     <div class="text-xl mb-2">Basic</div>

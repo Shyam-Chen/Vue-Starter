@@ -29,9 +29,7 @@ onMounted(() => {
     ]"
   />
 
-  <div class="my-4">
-    <div class="text-3xl font-bold">CRUD Operations - {{ route.params.id }}</div>
-  </div>
+  <h1 class="text-4xl font-extrabold my-4">CRUD Operations - {{ route.params.id }}</h1>
 
   <div class="p-6 space-y-4 bg-white dark:bg-slate-800 rounded-lg shadow-lg">
     <div class="grid grid-cols-3">

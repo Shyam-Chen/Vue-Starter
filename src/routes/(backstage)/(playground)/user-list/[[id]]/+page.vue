@@ -63,9 +63,7 @@ onMounted(async () => {
 <template>
   <XBreadcrumb :items="[{ text: 'Management' }, { text: 'User List' }]" />
 
-  <div class="my-4">
-    <div class="text-3xl font-bold">User List</div>
-  </div>
+  <h1 class="text-4xl font-extrabold my-4">User List</h1>
 
   <div
     class="col-span-3 relative flex flex-col min-w-0 break-words bg-white dark:bg-slate-800 w-full shadow-lg rounded"

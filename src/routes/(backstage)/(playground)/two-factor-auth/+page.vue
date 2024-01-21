@@ -13,9 +13,7 @@ const flux = reactive({
 <template>
   <XBreadcrumb :items="[{ text: 'Settings' }, { text: 'Two-factor Authentication' }]" />
 
-  <div class="my-4">
-    <div class="text-3xl font-bold">Two-factor Authentication</div>
-  </div>
+  <h1 class="text-4xl font-extrabold my-4">Two-factor Authentication</h1>
 
   <div class="bg-white dark:bg-slate-800 rounded-md shadow-lg px-6 py-5 w-125">
     <div class="text-xl font-bold">Turn on Two-step Verification</div>
