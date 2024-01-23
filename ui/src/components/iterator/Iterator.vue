@@ -1,5 +1,6 @@
 <script lang="ts" setup generic="T = object">
 import { computed } from 'vue';
+import { useMediaQuery } from '@vueuse/core';
 
 import Button from '../button/Button.vue';
 
@@ -39,9 +40,13 @@ const valueModel = computed<IteratorItem[]>({
   set: (val) => emit('update:value', val),
 });
 
+const md = useMediaQuery('(min-width: 768px)');
+
 const hasMaxlength = computed(
   () => typeof props.maxlength === 'string' || typeof props.maxlength === 'number',
 );
+
+const hasInGrid = computed(() => (props.inGrid && md.value ? props.inGrid : false));
 
 function onAdd() {
   emit('update:value', [...props.value, props.newItem]);
@@ -60,13 +65,13 @@ function onDelete(idx: number) {
       v-for="(item, index) in valueModel"
       :key="index"
       class="flex gap-2"
-      :class="{ relative: inGrid }"
+      :class="{ relative: hasInGrid }"
     >
       <div class="w-full flex items-baseline gap-2">
         <slot :item="item" :index="index"></slot>
       </div>
 
-      <div :class="[{ 'absolute left-full ml-2': inGrid }, inGrid]">
+      <div :class="{ 'absolute left-full ml-2': hasInGrid }">
         <Button
           v-if="index === 0"
           icon="i-material-symbols-add-rounded"

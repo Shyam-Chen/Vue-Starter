@@ -73,7 +73,7 @@ const flux = reactive({
     <h2 class="text-3xl font-bold my-4 pt-6">In Grid</h2>
 
     <XCard>
-      <div class="grid grid-cols-2 gap-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <XTextField label="Name" />
         <div></div>
 
