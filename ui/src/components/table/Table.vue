@@ -253,6 +253,7 @@ watch(
                   'sticky right-0 z-5': col.sticky === 'right',
                 },
                 col.class,
+                col.classColumn,
               ]"
             >
               <div
@@ -315,6 +316,7 @@ watch(
                         col.sticky === 'right',
                     },
                     col.class,
+                    col.classCell,
                   ]"
                 >
                   <div v-if="col.spanable" class="flex flex-col gap-2">

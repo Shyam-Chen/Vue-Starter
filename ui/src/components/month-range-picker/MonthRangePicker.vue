@@ -255,32 +255,36 @@ function monthDisabled(index: number) {
           </div>
         </div>
 
-        <div v-show="flux.showMonths" class="grid grid-cols-3 gap-1 text-center w-48">
-          <div
-            v-for="(month, index) in months"
-            :key="month"
-            :value="index"
-            class="flex justify-center items-center hover:bg-slate-200 dark:hover:bg-slate-600 rounded text-sm cursor-pointer"
-            :class="{
-              'ring-1 ring-primary-500':
-                index === getMonth(flux.now) && getYear(flux.currentMoment) === getYear(flux.now),
-              'text-slate-300 dark:text-slate-600 !cursor-not-allowed': monthDisabled(index),
-              'text-white bg-primary-600 important:hover:bg-primary-700':
-                (startValueModel &&
-                  index === getMonth(new Date(startValueModel)) &&
-                  getYear(flux.currentMoment) === getYear(new Date(startValueModel))) ||
-                (startValueModel &&
-                  endValueModel &&
-                  startValueModel <=
-                    _format(new Date(getYear(flux.currentMoment), index), props.format) &&
-                  _format(new Date(getYear(flux.currentMoment), index), props.format) <=
-                    endValueModel),
-            }"
-            @click="flux.selectMonth(index)"
-          >
-            {{ month }}
+        <template v-if="flux.showMonths">
+          <div class="grid grid-cols-3 gap-1 text-center w-48">
+            <div
+              v-for="(month, index) in months"
+              :key="month"
+              :value="index"
+              class="flex justify-center items-center hover:bg-slate-200 dark:hover:bg-slate-600 rounded text-sm cursor-pointer"
+              :class="{
+                'ring-1 ring-primary-500':
+                  index === getMonth(flux.now) && getYear(flux.currentMoment) === getYear(flux.now),
+                'text-slate-300 dark:text-slate-600 !cursor-not-allowed': monthDisabled(index),
+                'text-white bg-primary-600 important:hover:bg-primary-700':
+                  (startValueModel &&
+                    index === getMonth(new Date(startValueModel)) &&
+                    getYear(flux.currentMoment) === getYear(new Date(startValueModel))) ||
+                  (startValueModel &&
+                    endValueModel &&
+                    startValueModel <=
+                      _format(new Date(getYear(flux.currentMoment), index), props.format) &&
+                    _format(new Date(getYear(flux.currentMoment), index), props.format) <=
+                      endValueModel),
+              }"
+              @click="flux.selectMonth(index)"
+            >
+              {{ month }}
+            </div>
           </div>
-        </div>
+
+          <slot name="panel"></slot>
+        </template>
       </div>
     </Fade>
   </div>

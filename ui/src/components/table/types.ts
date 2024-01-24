@@ -5,6 +5,8 @@ export type ColumnItem = {
   spanable?: boolean;
   sticky?: string | 'left' | 'right';
   class?: unknown;
+  classColumn?: unknown;
+  classCell?: unknown;
 };
 
 export type Control = {
