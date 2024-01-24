@@ -17,7 +17,7 @@
     "@vueuse/core": "^10.7.2",
     "@x/ui": "workspace:*",
     "d3": "^7.8.5",
-    "date-fns": "^3.3.0",
+    "date-fns": "^3.3.1",
     "exceljs": "^4.4.0",
     "highcharts": "^11.3.0",
     "highcharts-vue": "^1.4.3",
@@ -35,7 +35,7 @@
     "vuedraggable": "^4.1.0"
   },
   "devDependencies": {
-    "@iconify/json": "^2.2.171",
+    "@iconify/json": "^2.2.172",
     "@types/d3": "^7.4.3",
     "@types/lodash": "^4.14.202",
     "@vitejs/plugin-vue": "^5.0.3",
@@ -45,7 +45,7 @@
     "@vue/test-utils": "^2.4.3",
     "eslint": "^8.56.0",
     "eslint-plugin-vue": "^9.20.1",
-    "happy-dom": "^13.2.0",
+    "happy-dom": "^13.3.1",
     "prettier": "^3.2.4",
     "process-envify": "^2.0.0",
     "sass": "^1.70.0",

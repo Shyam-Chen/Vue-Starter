@@ -24,8 +24,8 @@ importers:
         specifier: ^7.8.5
         version: 7.8.5
       date-fns:
-        specifier: ^3.3.0
-        version: 3.3.0
+        specifier: ^3.3.1
+        version: 3.3.1
       exceljs:
         specifier: ^4.4.0
         version: 4.4.0
@@ -73,8 +73,8 @@ importers:
         version: 4.1.0(vue@3.4.15)
     devDependencies:
       '@iconify/json':
-        specifier: ^2.2.171
-        version: 2.2.171
+        specifier: ^2.2.172
+        version: 2.2.172
       '@types/d3':
         specifier: ^7.4.3
         version: 7.4.3
@@ -103,8 +103,8 @@ importers:
         specifier: ^9.20.1
         version: 9.20.1(eslint@8.56.0)
       happy-dom:
-        specifier: ^13.2.0
-        version: 13.2.0
+        specifier: ^13.3.1
+        version: 13.3.1
       prettier:
         specifier: ^3.2.4
         version: 3.2.4
@@ -128,7 +128,7 @@ importers:
         version: 1.1.0
       vitest:
         specifier: ^1.2.1
-        version: 1.2.1(happy-dom@13.2.0)(sass@1.70.0)
+        version: 1.2.1(happy-dom@13.3.1)(sass@1.70.0)
       vue-tsc:
         specifier: ^1.8.27
         version: 1.8.27(typescript@5.3.3)
@@ -260,8 +260,8 @@ importers:
         specifier: ^7.8.5
         version: 7.8.5
       date-fns:
-        specifier: ^3.3.0
-        version: 3.3.0
+        specifier: ^3.3.1
+        version: 3.3.1
       highlight.js:
         specifier: ^11.9.0
         version: 11.9.0
@@ -297,8 +297,8 @@ importers:
         version: 4.1.0(vue@3.4.15)
     devDependencies:
       '@iconify/json':
-        specifier: ^2.2.171
-        version: 2.2.171
+        specifier: ^2.2.172
+        version: 2.2.172
       '@unocss/postcss':
         specifier: ^0.58.3
         version: 0.58.3(postcss@8.4.33)
@@ -324,8 +324,8 @@ importers:
         specifier: ^9.20.1
         version: 9.20.1(eslint@8.56.0)
       happy-dom:
-        specifier: ^13.2.0
-        version: 13.2.0
+        specifier: ^13.3.1
+        version: 13.3.1
       prettier:
         specifier: ^3.2.4
         version: 3.2.4
@@ -352,7 +352,7 @@ importers:
         version: 1.1.0
       vitest:
         specifier: ^1.2.1
-        version: 1.2.1(happy-dom@13.2.0)(sass@1.70.0)
+        version: 1.2.1(happy-dom@13.3.1)(sass@1.70.0)
       vue-tsc:
         specifier: ^1.8.27
         version: 1.8.27(typescript@5.3.3)
@@ -1042,8 +1042,8 @@ packages:
     resolution: {integrity: sha512-dvuCeX5fC9dXgJn9t+X5atfmgQAzUOWqS1254Gh0m6i8wKd10ebXkfNKiRK+1GWi/yTvvLDHpoxLr0xxxeslWw==}
     dev: true
 
-  /@iconify/json@2.2.171:
-    resolution: {integrity: sha512-NfmbMQpM+rUUMdLfNPEvUUrNmhp0+xshVuPsZk7c8MfGjwEnn14pb80KJlNV5toiAP/0uGAfrhJ+6WZY0nUY/A==}
+  /@iconify/json@2.2.172:
+    resolution: {integrity: sha512-/QX702onUWOyj7RZyZD1x+QgrjYMUHRPGaz7ycqXg+YOcxYKZ0pZ6HqaL6njstTc9THrWnTF0ZsQEM1eCq86Ag==}
     dependencies:
       '@iconify/types': 2.0.0
       pathe: 1.1.2
@@ -2301,7 +2301,7 @@ packages:
       std-env: 3.7.0
       test-exclude: 6.0.0
       v8-to-istanbul: 9.2.0
-      vitest: 1.2.1(happy-dom@13.2.0)(sass@1.70.0)
+      vitest: 1.2.1(happy-dom@13.3.1)(sass@1.70.0)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -3324,8 +3324,8 @@ packages:
     resolution: {integrity: sha512-4FbVrHDwfOASx7uQVxeiCTo7ggSdYZbqs8lH+WU6ViypPlDbe9y6IP5VVUDQBv9DcnyaiPT5XT0UWHgJ64zLeQ==}
     dev: false
 
-  /date-fns@3.3.0:
-    resolution: {integrity: sha512-xuouT0GuI2W8yXhCMn/AXbSl1Av3wu2hJXxMnnILTY3bYY0UgNK0qOwVXqdFBrobW5qbX1TuOTgMw7c2H2OuhA==}
+  /date-fns@3.3.1:
+    resolution: {integrity: sha512-y8e109LYGgoQDveiEBD3DYXKba1jWf5BA8YU1FL5Tvm0BTdEfy54WLCwnuYWZNnzzvALy/QQ4Hov+Q9RVRv+Zw==}
     dev: false
 
   /dateformat@4.6.3:
@@ -4026,8 +4026,8 @@ packages:
       duplexer: 0.1.2
     dev: true
 
-  /happy-dom@13.2.0:
-    resolution: {integrity: sha512-aeFD9M5d1sN618nOpWy/76IiU5/UJxdYydPdzpXxEn4r7MQByrmtoH1iU9v8v9bJJ0fMte6OAMy6rDD/mGawfg==}
+  /happy-dom@13.3.1:
+    resolution: {integrity: sha512-KIlztn+nRWstprUyI3Wzy1UJrg72uOaoo4SaBLNrV6xrn2Rq86eQruKOL7ZyDhkfou3nEZX6rgRYtvsqwMInvQ==}
     engines: {node: '>=16.0.0'}
     dependencies:
       entities: 4.5.0
@@ -6080,7 +6080,7 @@ packages:
       fsevents: 2.3.3
     dev: true
 
-  /vitest@1.2.1(happy-dom@13.2.0)(sass@1.70.0):
+  /vitest@1.2.1(happy-dom@13.3.1)(sass@1.70.0):
     resolution: {integrity: sha512-TRph8N8rnSDa5M2wKWJCMnztCZS9cDcgVTQ6tsTFTG/odHJ4l5yNVqvbeDJYJRZ6is3uxaEpFs8LL6QM+YFSdA==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
@@ -6115,7 +6115,7 @@ packages:
       chai: 4.4.1
       debug: 4.3.4
       execa: 8.0.1
-      happy-dom: 13.2.0
+      happy-dom: 13.3.1
       local-pkg: 0.5.0
       magic-string: 0.30.5
       pathe: 1.1.2

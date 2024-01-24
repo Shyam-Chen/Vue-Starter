@@ -48,7 +48,7 @@
     "@vueuse/components": "^10.7.2",
     "@vueuse/core": "^10.7.2",
     "d3": "^7.8.5",
-    "date-fns": "^3.3.0",
+    "date-fns": "^3.3.1",
     "highlight.js": "^11.9.0",
     "lodash": "^4.17.21",
     "lowlight": "^3.1.0",
@@ -62,7 +62,7 @@
     "vuedraggable": "^4.1.0"
   },
   "devDependencies": {
-    "@iconify/json": "^2.2.171",
+    "@iconify/json": "^2.2.172",
     "@unocss/postcss": "^0.58.3",
     "@vitejs/plugin-vue": "^5.0.3",
     "@vitest/coverage-v8": "^1.2.1",
@@ -71,7 +71,7 @@
     "@vue/test-utils": "^2.4.3",
     "eslint": "^8.56.0",
     "eslint-plugin-vue": "^9.20.1",
-    "happy-dom": "^13.2.0",
+    "happy-dom": "^13.3.1",
     "prettier": "^3.2.4",
     "process-envify": "^2.0.0",
     "sass": "^1.70.0",

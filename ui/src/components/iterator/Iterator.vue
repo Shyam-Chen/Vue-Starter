@@ -49,7 +49,7 @@ const hasMaxlength = computed(
 const hasInGrid = computed(() => (props.inGrid && md.value ? props.inGrid : false));
 
 function onAdd() {
-  emit('update:value', [...props.value, props.newItem]);
+  emit('update:value', [...props.value, structuredClone(props.newItem)]);
 }
 
 function onDelete(idx: number) {

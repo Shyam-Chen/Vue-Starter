@@ -217,6 +217,19 @@ watch(
 watch(
   () => flux.rows,
   (val) => {
+    if (props.static && val?.length) {
+      const checked = val.every((item: any) => item.checked);
+      const unchecked = val.every((item: any) => !item.checked);
+      flux.indeterminate = !(checked || unchecked);
+      if (checked) flux.selecteAll = true;
+      if (unchecked) flux.selecteAll = false;
+
+      val.forEach((row) => {
+        const found: any = valueModel.value.find((item: any) => item.id === row.id);
+        if (found) found.checked = row.checked;
+      });
+    }
+
     if (!props.static) {
       const checked = val.every((item) => item.checked);
       const unchecked = val.every((item) => !item.checked);
@@ -257,7 +270,7 @@ watch(
               ]"
             >
               <div
-                class="inline-flex gap-1 items-center min-h-38px"
+                class="gap-1"
                 :class="{
                   'cursor-pointer': typeof col.sortable === 'boolean' ? col.sortable : true,
                 }"
@@ -310,21 +323,20 @@ watch(
                   :key="col.key"
                   :class="[
                     {
-                      'sticky-col sticky left-0 z-5 bg-white dark:bg-slate-800 !p-0':
-                        col.sticky === 'left',
-                      'sticky-col sticky right-0 z-5 bg-white dark:bg-slate-800 !p-0':
-                        col.sticky === 'right',
+                      'sticky-col sticky z-5 bg-white dark:bg-slate-800 !p-0': col.sticky,
+                      'left-0': col.sticky === 'left',
+                      'right-0': col.sticky === 'right',
                     },
                     col.class,
                     col.classCell,
                   ]"
                 >
-                  <div v-if="col.spanable" class="flex flex-col gap-2">
-                    <div
-                      v-for="(sub, subIdx) in row.details"
-                      :key="subIdx"
-                      class="min-h-38px flex items-center"
-                    >
+                  <div
+                    v-if="col.spanable"
+                    class="flex-col justify-center gap-1"
+                    :class="{ 'py-2': row.details?.length > 1 }"
+                  >
+                    <div v-for="(sub, subIdx) in row.details" :key="subIdx">
                       <slot :name="col.key" :row="row">
                         {{ sub[col.key] }}
                       </slot>
@@ -333,9 +345,8 @@ watch(
 
                   <div
                     v-else
-                    class="min-h-38px flex items-center"
                     :class="{
-                      'dark:border-slate-600 px-4 py-2': col.sticky,
+                      'border-slate-400/50 w-full px-4': col.sticky,
                       'border-r-2': col.sticky === 'left',
                       'border-l-2': col.sticky === 'right',
                     }"
@@ -356,7 +367,7 @@ watch(
           <tbody v-else>
             <Row class="bg-gray-200/20">
               <Cell :colspan="selectable ? Number(columns?.length) + 1 : columns?.length">
-                <div class="w-full min-h-389px flex flex-col justify-center items-center">
+                <div class="w-full !min-h-389px flex flex-col justify-center items-center">
                   <div class="text-xl font-medium text-stone-300">
                     {{ locale.noData || 'No data to display' }}
                   </div>
