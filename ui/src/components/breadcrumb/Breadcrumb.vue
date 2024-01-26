@@ -29,7 +29,7 @@ defineProps<{
           </span>
         </li>
         <li v-if="index !== items.length - 1" class="inline-flex items-center">
-          <span class="mx-2 text-sm">/</span>
+          <span class="mx-2 text-sm"><slot name="divider">/</slot></span>
         </li>
       </template>
     </ol>
