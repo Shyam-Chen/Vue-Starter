@@ -11,9 +11,10 @@ interface Props extends /* @vue-ignore */ InputHTMLAttributes {
   clearable?: boolean;
   disabled?: boolean;
   required?: boolean;
+  pattern?: string;
+  invalid?: boolean | string;
   prepend?: string;
   append?: string;
-  invalid?: boolean | string;
 }
 
 defineOptions({
@@ -32,7 +33,23 @@ const emit = defineEmits<{
 const uid = uniqueId('uid-');
 
 const valueModel = computed({
-  get: () => props.value || '',
+  get: () => {
+    if (props.pattern && props.value && typeof props.value === 'string') {
+      const regex = new RegExp(props.pattern);
+
+      let newVal = '';
+
+      for (let i = 0; i < props.value.length; i++) {
+        const letter = props.value[i];
+        if (regex.test(letter)) newVal += letter;
+      }
+
+      emit('update:value', newVal);
+      return newVal;
+    }
+
+    return props.value || '';
+  },
   set: (val) => emit('update:value', val),
 });
 

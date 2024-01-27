@@ -1,10 +1,11 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
-import { XBreadcrumb, XCard, XTextField, XChipField } from '@x/ui';
+import { XBreadcrumb, XCard, XTextField, XCode, XChipField } from '@x/ui';
 
 const flux = reactive({
   textField1: '',
   textField2: 'Vue is excellent',
+  pattern1: '',
   chipField: ['Vue', 'Fastify', 'Tauri'],
 });
 </script>
@@ -149,6 +150,18 @@ const flux = reactive({
           append="i-mdi-user-circle"
           invalid="Incorrect entry"
         />
+      </div>
+    </XCard>
+  </section>
+
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Pattern</h2>
+
+    <XCard>
+      <XTextField v-model:value="flux.pattern1" pattern="^[A-Za-z0-9]+$" />
+      <div class="mt-1">
+        Only input English uppercase and lowercase letters, and numbers
+        (<XCode>pattern="^[A-Za-z0-9]+$"</XCode>)
       </div>
     </XCard>
   </section>
