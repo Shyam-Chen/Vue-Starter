@@ -1,20 +1,16 @@
 <script lang="ts" setup>
 import { XBreadcrumb, XCard, XTag, XCodeBlock } from '@x/ui';
 
-function escape(html: string) {
-  return html.replaceAll('<', '&lt;').replaceAll('>', '&gt;');
-}
+const importCode = `import { XTag } from '@x/ui';`;
 
-const importCode = `<pre><code class="language-ts">import { XTag } from '@x/ui';</code></pre>`;
+const basicCode = `<XTag>Primary</XTag>`;
 
-const basicCode = `<pre><code class="language-html">${escape(`<XTag>Primary</XTag>`)}</code></pre>`;
-
-const severityCode = `<pre><code class="language-html">${escape(`<XTag color="primary">Primary</XTag>`)}
-${escape(`<XTag color="secondary">Secondary</XTag>`)}
-${escape(`<XTag color="success">Success</XTag>`)}
-${escape(`<XTag color="danger">Danger</XTag>`)}
-${escape(`<XTag color="warning">Warning</XTag>`)}
-${escape(`<XTag color="info">Info</XTag>`)}</code></pre>`;
+const severityCode = `<XTag color="primary">Primary</XTag>
+<XTag color="secondary">Secondary</XTag>
+<XTag color="success">Success</XTag>
+<XTag color="danger">Danger</XTag>
+<XTag color="warning">Warning</XTag>
+<XTag color="info">Info</XTag>`;
 </script>
 
 <template>
@@ -26,7 +22,7 @@ ${escape(`<XTag color="info">Info</XTag>`)}</code></pre>`;
   <section class="my-8">
     <h2 class="text-3xl font-bold my-4">Import</h2>
 
-    <XCodeBlock :code="importCode" />
+    <XCodeBlock :code="importCode" language="ts" />
   </section>
 
   <section class="my-8">
@@ -36,7 +32,7 @@ ${escape(`<XTag color="info">Info</XTag>`)}</code></pre>`;
       <XTag>Primary</XTag>
     </XCard>
 
-    <XCodeBlock :code="basicCode" />
+    <XCodeBlock :code="basicCode" language="html" />
   </section>
 
   <section class="my-8">
@@ -53,6 +49,6 @@ ${escape(`<XTag color="info">Info</XTag>`)}</code></pre>`;
       </div>
     </XCard>
 
-    <XCodeBlock :code="severityCode" />
+    <XCodeBlock :code="severityCode" language="html" />
   </section>
 </template>

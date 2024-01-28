@@ -2,18 +2,17 @@
 import { reactive } from 'vue';
 import { XBreadcrumb, XCard, XCodeBlock, XSwitch } from '@x/ui';
 
-function escape(html: string) {
-  return html.replaceAll('<', '&lt;').replaceAll('>', '&gt;');
-}
+import Basic from './Basic.vue';
+import BasicCode from './Basic.vue?raw';
 
-const codeImport = `<pre><code class="language-ts">import { XSwitch } from '@x/ui';</code></pre>`;
-const codeBasic = `<pre><code class="language-html">${escape(
-  `<XSwitch v-model:value="checked">Switch</XSwitch>`,
-)}</code></pre>`;
+const codeImport = `import { XSwitch } from '@x/ui';`;
 
-const codeWithoutLabels = `<pre><code class="language-html">${escape(
-  `<XSwitch v-model:value="checked" />`,
-)}</code></pre>`;
+const codeReadonly = `<XSwitch checked readonly>Switch (checked)</XSwitch>
+<XSwitch :checked="false" readonly>Switch (unchecked)</XSwitch>`;
+
+const codeDisabled = `<XSwitch v-model:value="checked" disabled>Switch</XSwitch>`;
+
+const codeWithoutLabels = `<XSwitch v-model:value="checked" />`;
 
 const flux = reactive({
   switch1: false,
@@ -29,7 +28,7 @@ const flux = reactive({
   <section class="my-8">
     <h2 class="text-3xl font-bold my-4">Import</h2>
 
-    <XCodeBlock :code="codeImport" />
+    <XCodeBlock :code="codeImport" language="ts" />
   </section>
 
   <section class="my-8">
@@ -37,23 +36,23 @@ const flux = reactive({
     <p class="my-4">Two-way value binding is defined using `v-model:value`.</p>
 
     <XCard>
-      <div class="flex justify-center">
-        <XSwitch v-model:value="flux.switch1">Switch</XSwitch>
-      </div>
+      <Basic />
     </XCard>
 
-    <XCodeBlock :code="codeBasic" />
+    <XCodeBlock :code="BasicCode" language="html" />
   </section>
 
   <section class="my-8">
     <h2 class="text-3xl font-bold my-4 pt-6">Readonly</h2>
 
     <XCard>
-      <div class="flex justify-center gap-4">
+      <div class="flex gap-4">
         <XSwitch checked readonly>Switch (checked)</XSwitch>
         <XSwitch :checked="false" readonly>Switch (unchecked)</XSwitch>
       </div>
     </XCard>
+
+    <XCodeBlock :code="codeReadonly" language="html" />
   </section>
 
   <section class="my-8">
@@ -61,21 +60,19 @@ const flux = reactive({
     <p class="my-4">When `disabled` is present, the element cannot be edited and focused.</p>
 
     <XCard>
-      <div class="flex justify-center">
-        <XSwitch v-model:value="flux.switch1" disabled>Switch</XSwitch>
-      </div>
+      <XSwitch v-model:value="flux.switch1" disabled>Switch</XSwitch>
     </XCard>
+
+    <XCodeBlock :code="codeDisabled" language="html" />
   </section>
 
   <section class="my-8">
     <h2 class="text-3xl font-bold my-4 pt-6">Without labels</h2>
 
     <XCard>
-      <div class="flex justify-center">
-        <XSwitch v-model:value="flux.switch1" />
-      </div>
+      <XSwitch v-model:value="flux.switch1" />
     </XCard>
 
-    <XCodeBlock :code="codeWithoutLabels" />
+    <XCodeBlock :code="codeWithoutLabels" language="html" />
   </section>
 </template>

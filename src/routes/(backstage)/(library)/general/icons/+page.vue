@@ -1,12 +1,8 @@
 <script lang="ts" setup>
 import { XBreadcrumb, XCard, XCodeBlock } from '@x/ui';
 
-function escape(html: string) {
-  return html.replaceAll('<', '&lt;').replaceAll('>', '&gt;');
-}
-
-const codeBasic = `<pre><code class="language-html">${escape(`<div class="i-material-symbols-notifications-rounded size-5 text-blue-500"></div>`)}
-${escape(`<div class="i-material-symbols-notifications-rounded size-8 text-yellow-500"></div>`)}</code></pre>`;
+const codeBasic = `<div class="i-material-symbols-notifications-rounded size-5 text-blue-500"></div>
+<div class="i-material-symbols-notifications-rounded size-8 text-yellow-500"></div>`;
 </script>
 
 <template>
@@ -24,6 +20,6 @@ ${escape(`<div class="i-material-symbols-notifications-rounded size-8 text-yello
       </div>
     </XCard>
 
-    <XCodeBlock :code="codeBasic" />
+    <XCodeBlock :code="codeBasic" language="html" />
   </section>
 </template>
