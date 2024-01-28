@@ -125,6 +125,7 @@ const links = [
     name: 'Feedback',
     sub: [
       { name: 'Alert', to: '/feedback/alert' },
+      { name: 'ChatBubble', to: '/feedback/chat-bubble' },
       { name: 'DeleteConfirmation', to: '/feedback/delete-confirmation' },
       { name: 'Dialogs', to: '/feedback/dialogs' },
       { name: 'Highlight', to: '/feedback/highlight' },

@@ -395,7 +395,7 @@ function changeLang(lang: string) {
 }
 
 .Sidebar {
-  @apply fixed start-0 top-18 bottom-0 z-100 overflow-y-auto;
+  @apply fixed start-0 top-18 bottom-0 z-99 overflow-y-auto;
   @apply w-64 hidden xl:block px-2 pt-4 pb-20;
   @apply bg-white dark:bg-slate-900 border-e dark:border-slate-700 shadow;
 }
