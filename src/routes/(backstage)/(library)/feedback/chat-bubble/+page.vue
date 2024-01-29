@@ -13,7 +13,8 @@ import { XBreadcrumb, XCard, XChatBubble } from '@x/ui';
     <XCard>
       <div class="flex flex-col gap-4">
         <XChatBubble />
-        <XChatBubble />
+
+        <XChatBubble self class="justify-end" />
       </div>
     </XCard>
   </section>
