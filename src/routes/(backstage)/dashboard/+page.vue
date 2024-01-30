@@ -1,70 +1,88 @@
 <script lang="ts" setup>
-import type { Options } from 'highcharts';
-import { ref } from 'vue';
+import type { EChartsOption } from 'echarts';
+import { computed } from 'vue';
+import { use } from 'echarts/core';
+import { LineChart, BarChart } from 'echarts/charts';
 
-import Chart from '~/components/Chart.vue';
+import Echarts from '~/components/Echarts.vue';
 
-const overview = ref<Options>({
-  title: {
-    text: '',
-  },
-  xAxis: {
-    categories: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-  },
-  yAxis: {
-    title: {
-      text: '',
+use([LineChart, BarChart]);
+
+const overviewOption = computed<EChartsOption>(() => {
+  return {
+    legend: {
+      bottom: '2.5%',
+      data: ['2021', '2022'],
     },
-  },
-  tooltip: {
-    shared: true,
-  },
-  series: [
-    {
-      type: 'spline',
-      name: '2021',
-      data: [40, 68, 86, 74, 56, 60, 87],
-      color: '#6366f1',
+    grid: {
+      top: '5%',
     },
-    {
-      type: 'spline',
-      name: '2022',
-      data: [65, 78, 66, 44, 56, 67, 75],
-      color: '#ec4899',
+    xAxis: {
+      type: 'category',
+      data: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
     },
-  ],
+    yAxis: {
+      type: 'value',
+    },
+    tooltip: {
+      trigger: 'axis',
+    },
+    series: [
+      {
+        type: 'line',
+        name: '2021',
+        itemStyle: { color: '#6366f1' },
+        smooth: true,
+        data: [40, 68, 86, 74, 56, 60, 87],
+      },
+      {
+        type: 'line',
+        name: '2022',
+        itemStyle: { color: '#ec4899' },
+        smooth: true,
+        data: [65, 78, 66, 44, 56, 67, 75],
+      },
+    ],
+  };
 });
 
-const performance = ref<Options>({
-  title: {
-    text: '',
-  },
-  xAxis: {
-    categories: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-    crosshair: true,
-  },
-  yAxis: {
-    title: {
-      text: '',
+const performanceOption = computed<EChartsOption>(() => {
+  return {
+    legend: {
+      bottom: '2.5%',
+      data: ['2021', '2022'],
     },
-  },
-  tooltip: {
-    shared: true,
-  },
-  series: [
-    {
-      type: 'column',
-      name: '2021',
-      data: [27, 68, 86, 74, 10, 4, 87],
-      color: '#6366f1',
+    grid: {
+      top: '5%',
     },
-    {
-      type: 'column',
-      name: '2022',
-      data: [30, 78, 56, 34, 100, 45, 13],
-      color: '#ec4899',
+    xAxis: {
+      type: 'category',
+      data: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
     },
-  ],
+    yAxis: {
+      type: 'value',
+    },
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: {
+        type: 'shadow',
+      },
+    },
+    series: [
+      {
+        type: 'bar',
+        name: '2021',
+        itemStyle: { color: '#6366f1' },
+        data: [27, 68, 86, 74, 10, 4, 87],
+      },
+      {
+        type: 'bar',
+        name: '2022',
+        itemStyle: { color: '#ec4899' },
+        data: [30, 78, 56, 34, 100, 45, 13],
+      },
+    ],
+  };
 });
 </script>
 
@@ -199,7 +217,7 @@ const performance = ref<Options>({
             <div class="chartjs-size-monitor-shrink"><div class=""></div></div>
           </div>
 
-          <Chart :options="overview" />
+          <Echarts :option="overviewOption" class="w-full h-100" />
         </div>
       </div>
     </div>
@@ -223,7 +241,7 @@ const performance = ref<Options>({
             <div class="chartjs-size-monitor-shrink"><div class=""></div></div>
           </div>
 
-          <Chart :options="performance" />
+          <Echarts :option="performanceOption" class="w-full h-100" />
         </div>
       </div>
     </div>

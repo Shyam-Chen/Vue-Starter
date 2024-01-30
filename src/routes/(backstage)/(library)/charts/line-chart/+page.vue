@@ -1,51 +1,60 @@
 <script lang="ts" setup>
-import type { Options } from 'highcharts';
-import { reactive } from 'vue';
+import type { EChartsOption } from 'echarts';
+import { ref, computed } from 'vue';
 import { XBreadcrumb, XCard, XButton } from '@x/ui';
+import { use } from 'echarts/core';
+import { LineChart } from 'echarts/charts';
 
-import Chart from '~/components/Chart.vue';
+import Echarts from '~/components/Echarts.vue';
 
-const flux = reactive({
-  basicLineChart: {
-    title: {
-      text: '',
+use([LineChart]);
+
+const data2021 = ref([40, 68, 86, 74, 56, 60, 87]);
+const data2022 = ref([65, 78, 66, 44, 56, 67, 75]);
+
+const lineChartOption = computed<EChartsOption>(() => {
+  return {
+    legend: {
+      bottom: '2.5%',
+      data: ['2021', '2022'],
+    },
+    grid: {
+      top: '5%',
     },
     xAxis: {
-      categories: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+      type: 'category',
+      data: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
     },
     yAxis: {
-      title: {
-        text: '',
-      },
+      type: 'value',
     },
     tooltip: {
-      shared: true,
+      trigger: 'axis',
     },
     series: [
       {
-        type: 'spline',
+        type: 'line',
         name: '2021',
-        data: [40, 68, 86, 74, 56, 60, 87],
-        color: '#6366f1',
+        itemStyle: { color: '#6366f1' },
+        smooth: true,
+        data: data2021.value,
       },
       {
-        type: 'spline',
+        type: 'line',
         name: '2022',
-        data: [65, 78, 66, 44, 56, 67, 75],
-        color: '#ec4899',
+        itemStyle: { color: '#ec4899' },
+        smooth: true,
+        data: data2022.value,
       },
     ],
-  } as Options & { series: (Options['series'] & { data: number[] })[] },
-  update() {
-    const randomInt = (max = 99) => Math.floor(Math.random() * max) + 1;
-
-    const idx_2021 = flux.basicLineChart.series.findIndex((serie) => serie.name === '2021');
-    flux.basicLineChart.series[idx_2021].data = Array.from({ length: 7 }, () => randomInt());
-
-    const idx_2022 = flux.basicLineChart.series.findIndex((serie) => serie.name === '2022');
-    flux.basicLineChart.series[idx_2022].data = Array.from({ length: 7 }, () => randomInt());
-  },
+  };
 });
+
+function onUpdate() {
+  const randomInt = (max = 99) => Math.floor(Math.random() * max) + 1;
+  data2021.value = Array.from({ length: 7 }, () => randomInt());
+  data2022.value = Array.from({ length: 7 }, () => randomInt());
+}
 </script>
 
 <template>
@@ -57,8 +66,11 @@ const flux = reactive({
     <h2 class="text-3xl font-bold my-4">Basic</h2>
 
     <XCard>
-      <Chart :options="flux.basicLineChart" />
-      <XButton class="mt-2" @click="flux.update">Update</XButton>
+      <div class="flex justify-end mb-4 lg:mb-6">
+        <XButton @click="onUpdate">Update</XButton>
+      </div>
+
+      <Echarts :option="lineChartOption" class="w-full h-100" />
     </XCard>
   </section>
 </template>
