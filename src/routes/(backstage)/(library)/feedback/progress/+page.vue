@@ -33,6 +33,24 @@ import { XBreadcrumb, XCard, XSpinner, XProgressBar, XProgressCircle } from '@x/
     <XCard>
       <XProgressCircle :percentage="72">72%</XProgressCircle>
     </XCard>
+
+    <section class="my-4">
+      <h3 class="text-2xl font-semibold my-4 pt-2">Stroke</h3>
+
+      <XCard>
+        <XProgressCircle :percentage="56" stroke="stroke-3">56%</XProgressCircle>
+      </XCard>
+    </section>
+
+    <section class="my-4">
+      <h3 class="text-2xl font-semibold my-4 pt-2">Size</h3>
+
+      <XCard>
+        <XProgressCircle :percentage="17" size="size-50" stroke="stroke-3">
+          <div class="text-4xl font-extrabold">17%</div>
+        </XProgressCircle>
+      </XCard>
+    </section>
   </section>
 
   <section class="my-8">

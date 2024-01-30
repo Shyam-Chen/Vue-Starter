@@ -2,19 +2,24 @@
 withDefaults(
   defineProps<{
     percentage?: number;
+    size?: string;
+    stroke?: string;
   }>(),
   {
     percentage: 0,
+    size: 'size-25',
+    stroke: 'stroke-2',
   },
 );
 </script>
 
 <template>
   <div class="ProgressCircle">
-    <svg class="ProgressCircle-Container" width="150" viewBox="0 0 20 20">
-      <circle class="ProgressCircle-Track" cx="10" cy="10" r="8" />
+    <svg class="ProgressCircle-Container" :class="size" viewBox="0 0 20 20">
+      <circle class="ProgressCircle-Track" :class="stroke" cx="10" cy="10" r="8" />
       <circle
         class="ProgressCircle-Value"
+        :class="stroke"
         cx="10"
         cy="10"
         r="8"
@@ -34,15 +39,15 @@ withDefaults(
 }
 
 .ProgressCircle-Container {
-  @apply w-25 h-25 -rotate-90;
+  @apply -rotate-90;
 }
 
 .ProgressCircle-Track {
-  @apply fill-none stroke-zinc-200 dark:stroke-zinc-600 stroke-2;
+  @apply fill-none stroke-zinc-200 dark:stroke-zinc-600;
 }
 
 .ProgressCircle-Value {
-  @apply fill-none stroke-primary-500 stroke-2;
+  @apply fill-none stroke-primary-500;
 
   stroke-dasharray: 100 100;
   stroke-linecap: round;
