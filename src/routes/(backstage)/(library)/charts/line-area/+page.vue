@@ -50,6 +50,47 @@ const lineChartOption = computed<EChartsOption>(() => {
   };
 });
 
+const areaChartOption = computed<EChartsOption>(() => {
+  return {
+    legend: {
+      bottom: '2.5%',
+      data: ['2021', '2022'],
+    },
+    grid: {
+      top: '5%',
+    },
+    xAxis: {
+      type: 'category',
+      boundaryGap: false,
+      data: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+    },
+    yAxis: {
+      type: 'value',
+    },
+    tooltip: {
+      trigger: 'axis',
+    },
+    series: [
+      {
+        type: 'line',
+        name: '2021',
+        itemStyle: { color: '#6366f1' },
+        areaStyle: {},
+        smooth: true,
+        data: data2021.value,
+      },
+      {
+        type: 'line',
+        name: '2022',
+        itemStyle: { color: '#ec4899' },
+        areaStyle: {},
+        smooth: true,
+        data: data2022.value,
+      },
+    ],
+  };
+});
+
 function onUpdate() {
   const randomInt = (max = 99) => Math.floor(Math.random() * max) + 1;
   data2021.value = Array.from({ length: 7 }, () => randomInt());
@@ -58,12 +99,12 @@ function onUpdate() {
 </script>
 
 <template>
-  <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Charts' }, { text: 'Line' }]" />
+  <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Charts' }, { text: 'Line & Area' }]" />
 
-  <h1 class="text-4xl font-extrabold my-4">LineChart</h1>
+  <h1 class="text-4xl font-extrabold my-4">Line & Area</h1>
 
   <section class="my-8">
-    <h2 class="text-3xl font-bold my-4">Basic</h2>
+    <h2 class="text-3xl font-bold my-4">Line</h2>
 
     <XCard>
       <div class="flex justify-end mb-4 lg:mb-6">
@@ -71,6 +112,18 @@ function onUpdate() {
       </div>
 
       <Echarts :option="lineChartOption" class="w-full h-100" />
+    </XCard>
+  </section>
+
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Area</h2>
+
+    <XCard>
+      <div class="flex justify-end mb-4 lg:mb-6">
+        <XButton @click="onUpdate">Update</XButton>
+      </div>
+
+      <Echarts :option="areaChartOption" class="w-full h-100" />
     </XCard>
   </section>
 </template>
