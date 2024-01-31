@@ -32,12 +32,6 @@ importers:
       exceljs:
         specifier: ^4.4.0
         version: 4.4.0
-      highcharts:
-        specifier: ^11.3.0
-        version: 11.3.0
-      highcharts-vue:
-        specifier: ^1.4.3
-        version: 1.4.3(highcharts@11.3.0)(vue@3.4.15)
       lodash:
         specifier: ^4.17.21
         version: 4.17.21
@@ -4046,20 +4040,6 @@ packages:
     dependencies:
       glob: 8.1.0
       readable-stream: 3.6.2
-    dev: false
-
-  /highcharts-vue@1.4.3(highcharts@11.3.0)(vue@3.4.15):
-    resolution: {integrity: sha512-qIy9EFuLIgOw+reNkTvu0pvMBcSE0BAPtONAqZoEl0qaAIpGxiyXqhRNPDufWieSC0YlybpCznxE8EK19Kcg+A==}
-    peerDependencies:
-      highcharts: '>=5.0.0'
-      vue: '>=1.0.0'
-    dependencies:
-      highcharts: 11.3.0
-      vue: 3.4.15(typescript@5.3.3)
-    dev: false
-
-  /highcharts@11.3.0:
-    resolution: {integrity: sha512-Dk+Qfk/xit8KnXKPDxmcVcq48ZlcVSq7oYJR5VZlAVWnJ0BY3JFFi1GOvgSNUzlh2wzsfenihWpkAkWoag4Xqg==}
     dev: false
 
   /html-escaper@2.0.2:
