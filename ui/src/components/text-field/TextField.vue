@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import type { InputHTMLAttributes } from 'vue';
-import { computed } from 'vue';
+import { watch } from 'vue';
 import uniqueId from 'lodash/uniqueId';
 
 interface Props extends /* @vue-ignore */ InputHTMLAttributes {
@@ -24,34 +24,33 @@ defineOptions({
 const props = defineProps<Props>();
 
 const emit = defineEmits<{
-  (evt: 'update:value', val: string | number): void;
   (evt: 'clear'): void;
   (evt: 'prepend'): void;
   (evt: 'append'): void;
 }>();
 
+const valueModel = defineModel<string | number>('value');
+
 const uid = uniqueId('uid-');
 
-const valueModel = computed({
-  get: () => {
-    if (props.pattern && props.value && typeof props.value === 'string') {
+watch(
+  () => valueModel.value,
+  (val, oldVal) => {
+    if (props.pattern && typeof val === 'string') {
       const regex = new RegExp(props.pattern);
 
-      let newVal = '';
-
-      for (let i = 0; i < props.value.length; i++) {
-        const letter = props.value[i];
-        if (regex.test(letter)) newVal += letter;
+      if (regex.test(val)) {
+        valueModel.value = val;
+      } else {
+        if (val === '') {
+          valueModel.value = val;
+        } else {
+          valueModel.value = oldVal;
+        }
       }
-
-      emit('update:value', newVal);
-      return newVal;
     }
-
-    return props.value || '';
   },
-  set: (val) => emit('update:value', val),
-});
+);
 
 function onClear() {
   valueModel.value = '';
@@ -107,8 +106,7 @@ function onClear() {
 }
 
 .TextField-Label {
-  @apply empty:hidden flex items-center;
-  @apply text-sm font-bold mb-2;
+  @apply flex items-center mb-2 text-sm font-bold empty:hidden;
 }
 
 .TextField-Prepend {

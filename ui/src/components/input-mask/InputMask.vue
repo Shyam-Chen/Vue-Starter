@@ -39,7 +39,7 @@ function onAccept(evt: CustomEvent) {
 </script>
 
 <template>
-  <div class="InputMask-Wrapper" :class="[disabled ? 'opacity-60' : '']">
+  <div class="InputMask" :class="[disabled ? 'opacity-60' : '']">
     <label :for="id || uid" class="InputMask-Label">
       <template v-if="label">{{ label }}</template>
       <span v-if="required" class="text-red-500">*</span>
@@ -68,12 +68,12 @@ function onAccept(evt: CustomEvent) {
 </template>
 
 <style lang="scss" scoped>
-.InputMask-Wrapper {
-  @apply relative flex flex-col w-full;
+.InputMask {
+  @apply flex flex-col w-full;
 }
 
 .InputMask-Label {
-  @apply text-sm font-bold mb-2 empty:hidden;
+  @apply flex items-center mb-2 text-sm font-bold empty:hidden;
 }
 
 .InputMask-Input {

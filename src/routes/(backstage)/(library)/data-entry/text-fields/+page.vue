@@ -1,13 +1,15 @@
 <script lang="ts" setup>
-import { reactive } from 'vue';
+import { ref, reactive } from 'vue';
 import { XBreadcrumb, XCard, XTextField, XCode, XChipField } from '@x/ui';
 
 const flux = reactive({
   textField1: '',
   textField2: 'Vue is excellent',
-  pattern1: '',
   chipField: ['Vue', 'Fastify', 'Tauri'],
 });
+
+const alpha = ref('');
+const alphanum = ref('');
 </script>
 
 <template>
@@ -158,10 +160,14 @@ const flux = reactive({
     <h2 class="text-3xl font-bold my-4 pt-6">Pattern</h2>
 
     <XCard>
-      <XTextField v-model:value="flux.pattern1" pattern="^[A-Za-z0-9]+$" />
-      <div class="mt-1">
-        Only input English uppercase and lowercase letters, and numbers
-        (<XCode>pattern="^[A-Za-z0-9]+$"</XCode>)
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <XTextField v-model:value="alpha" label="Alphabetic" pattern="^[A-Za-z]+$">
+          <XCode class="ms-1">^[A-Za-z]+$</XCode>
+        </XTextField>
+
+        <XTextField v-model:value="alphanum" label="Alphanumeric" pattern="^[A-Za-z0-9]+$">
+          <XCode class="ms-1">^[A-Za-z0-9]+$</XCode>
+        </XTextField>
       </div>
     </XCard>
   </section>
