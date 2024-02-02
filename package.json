@@ -16,7 +16,6 @@
     "@vueuse/components": "^10.7.2",
     "@vueuse/core": "^10.7.2",
     "@x/ui": "workspace:*",
-    "d3": "^7.8.5",
     "date-fns": "^3.3.1",
     "echarts": "^5.4.3",
     "exceljs": "^4.4.0",
@@ -36,7 +35,6 @@
   },
   "devDependencies": {
     "@iconify/json": "^2.2.175",
-    "@types/d3": "^7.4.3",
     "@types/lodash": "^4.14.202",
     "@vitejs/plugin-vue": "^5.0.3",
     "@vitest/coverage-v8": "^1.2.2",

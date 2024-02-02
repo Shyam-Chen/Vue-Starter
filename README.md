@@ -107,8 +107,8 @@ This seed repository provides the following features:
 - [x] [Date Fns](https://github.com/date-fns/date-fns) - Date Utilities
 - [x] [UnoCSS](https://github.com/unocss/unocss) - CSS Utilities
 - [x] [Iconify](https://github.com/iconify/iconify) - Icon Utilities
-- [x] [Tiptap Editor](https://github.com/ueberdosis/tiptap) - Rich Text Editor Utilities
-- [x] [D3](https://github.com/d3/d3) - Data Visualization Utilities
+- [x] [Tiptap](https://github.com/ueberdosis/tiptap) - Rich Text Editor
+- [x] [ECharts](https://github.com/apache/echarts) - Data Visualization
 - ---------- **Tools** ----------
 - [x] [Vite](https://github.com/vitejs/vite) - Bundler
 - [x] [TypeScript](https://github.com/microsoft/TypeScript) - JavaScript with Syntax for Types
