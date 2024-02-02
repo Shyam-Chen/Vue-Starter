@@ -9,14 +9,12 @@ interface Step {
   target?: any;
 }
 
-const props = defineProps<{
-  open?: boolean;
-  step?: number;
-  steps?: Step[];
-}>();
-
 const openModel = defineModel<boolean>('open');
 const stepModel = defineModel<number>('step', { default: 0 });
+
+const props = defineProps<{
+  steps?: Step[];
+}>();
 
 function onPrevious() {
   stepModel.value -= 1;

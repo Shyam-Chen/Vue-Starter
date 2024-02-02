@@ -19,10 +19,11 @@ type Option = {
 //   values: Option[];
 // };
 
+const valueModel = defineModel<Option['value']>('value');
+
 const props = withDefaults(
   defineProps<{
     label?: string;
-    value?: Option['value'];
     options?: Option[];
     display?: 'label' | 'value' | ((opt: Option) => string);
     placeholder?: string;
@@ -36,7 +37,6 @@ const props = withDefaults(
   }>(),
   {
     label: '',
-    value: undefined,
     options: () => [],
     display: 'label',
     placeholder: '',
@@ -54,8 +54,6 @@ const emit = defineEmits<{
   (evt: 'change', val?: Option['value'], opt?: Option): void;
   (evt: 'blur'): void;
 }>();
-
-const valueModel = defineModel<Option['value']>('value');
 
 const locale = useLocale();
 

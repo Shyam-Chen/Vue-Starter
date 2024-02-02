@@ -1,10 +1,11 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
 
+const startValueModel = defineModel<string>('startValue', { default: '0' });
+const endValueModel = defineModel<string>('endValue', { default: '100' });
+
 withDefaults(
   defineProps<{
-    startValue?: string;
-    endValue?: string;
     min?: string;
     max?: string;
     step?: string;
@@ -12,16 +13,13 @@ withDefaults(
     disabled?: boolean;
   }>(),
   {
-    startValue: '0',
-    endValue: '100',
     min: '0',
     max: '100',
     step: '1',
+    steppable: false,
+    disabled: false,
   },
 );
-
-const startValueModel = defineModel<string>('startValue');
-const endValueModel = defineModel<string>('endValue');
 
 const target = ref();
 

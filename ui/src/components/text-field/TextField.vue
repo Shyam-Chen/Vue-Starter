@@ -6,7 +6,6 @@ import uniqueId from 'lodash/uniqueId';
 interface Props extends /* @vue-ignore */ InputHTMLAttributes {
   id?: string;
   label?: string;
-  value?: string | number;
   type?: string;
   clearable?: boolean;
   disabled?: boolean;
@@ -21,6 +20,8 @@ defineOptions({
   inheritAttrs: false,
 });
 
+const valueModel = defineModel<string | number>('value');
+
 const props = defineProps<Props>();
 
 const emit = defineEmits<{
@@ -28,8 +29,6 @@ const emit = defineEmits<{
   (evt: 'prepend'): void;
   (evt: 'append'): void;
 }>();
-
-const valueModel = defineModel<string | number>('value');
 
 const uid = uniqueId('uid-');
 
