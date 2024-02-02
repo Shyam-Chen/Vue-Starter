@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import type { EChartsOption } from 'echarts';
-import { ref, computed } from 'vue';
+import { computed } from 'vue';
 import { XBreadcrumb, XCard } from '@x/ui';
 import { use } from 'echarts/core';
 import { PieChart } from 'echarts/charts';
@@ -9,15 +9,15 @@ import Echarts from '~/components/Echarts.vue';
 
 use([PieChart]);
 
-const dataBrowser = ref([
-  { value: 77.4, name: 'Chrome' },
-  { value: 10.6, name: 'Edge' },
-  { value: 4.9, name: 'Firefox' },
-  { value: 3.9, name: 'Safari' },
-  { value: 2.4, name: 'Opera' },
-]);
-
 const pieChartOption = computed<EChartsOption>(() => {
+  const dataBrowser = [
+    { value: 77.4, name: 'Chrome' },
+    { value: 10.6, name: 'Edge' },
+    { value: 4.9, name: 'Firefox' },
+    { value: 3.9, name: 'Safari' },
+    { value: 2.4, name: 'Opera' },
+  ];
+
   return {
     legend: {
       bottom: '2.5%',
@@ -31,7 +31,68 @@ const pieChartOption = computed<EChartsOption>(() => {
         name: 'Browser',
         radius: '60%',
         top: '-5%',
-        data: dataBrowser.value,
+        data: dataBrowser,
+      },
+    ],
+  };
+});
+
+const donutChartOption = computed<EChartsOption>(() => {
+  return {
+    tooltip: {
+      trigger: 'item',
+      formatter: '{a} <br/>{b}: {c} ({d}%)',
+    },
+    legend: {
+      bottom: '2.5%',
+      data: [
+        'Direct',
+        'Marketing',
+        'Search Engine',
+        'Email',
+        'Union Ads',
+        'Video Ads',
+        'Baidu',
+        'Google',
+        'Bing',
+        'Others',
+      ],
+    },
+    series: [
+      {
+        name: 'Access From',
+        type: 'pie',
+        radius: [0, '35%'],
+        label: {
+          position: 'inner',
+          fontSize: 14,
+        },
+        labelLine: {
+          show: false,
+        },
+        data: [
+          { value: 1548, name: 'Search Engine' },
+          { value: 775, name: 'Direct' },
+          { value: 679, name: 'Marketing', selected: true },
+        ],
+      },
+      {
+        name: 'Access From',
+        type: 'pie',
+        radius: ['40%', '60%'],
+        labelLine: {
+          length: 30,
+        },
+        data: [
+          { value: 1048, name: 'Baidu' },
+          { value: 335, name: 'Direct' },
+          { value: 310, name: 'Email' },
+          { value: 251, name: 'Google' },
+          { value: 234, name: 'Union Ads' },
+          { value: 147, name: 'Bing' },
+          { value: 135, name: 'Video Ads' },
+          { value: 102, name: 'Others' },
+        ],
       },
     ],
   };
@@ -55,7 +116,7 @@ const pieChartOption = computed<EChartsOption>(() => {
     <h2 class="text-3xl font-bold my-4 pt-6">Donut</h2>
 
     <XCard>
-      <!-- <Echarts :option="donutChartOption" class="w-full h-100" /> -->
+      <Echarts :option="donutChartOption" class="w-full h-100" />
     </XCard>
   </section>
 </template>

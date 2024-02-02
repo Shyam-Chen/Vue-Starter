@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import type { EChartsOption } from 'echarts';
 import { ref, computed } from 'vue';
-import { XBreadcrumb, XCard, XButton } from '@x/ui';
+import { XBreadcrumb, XCard } from '@x/ui';
 import { use } from 'echarts/core';
 import { LineChart } from 'echarts/charts';
 
@@ -19,7 +19,7 @@ const lineChartOption = computed<EChartsOption>(() => {
       data: ['2021', '2022'],
     },
     grid: {
-      top: '5%',
+      top: '10%',
     },
     xAxis: {
       type: 'category',
@@ -57,7 +57,7 @@ const areaChartOption = computed<EChartsOption>(() => {
       data: ['2021', '2022'],
     },
     grid: {
-      top: '5%',
+      top: '10%',
     },
     xAxis: {
       type: 'category',
@@ -90,12 +90,6 @@ const areaChartOption = computed<EChartsOption>(() => {
     ],
   };
 });
-
-function onUpdate() {
-  const randomInt = (max = 99) => Math.floor(Math.random() * max) + 1;
-  data2021.value = Array.from({ length: 7 }, () => randomInt());
-  data2022.value = Array.from({ length: 7 }, () => randomInt());
-}
 </script>
 
 <template>
@@ -107,10 +101,6 @@ function onUpdate() {
     <h2 class="text-3xl font-bold my-4">Line</h2>
 
     <XCard>
-      <div class="flex justify-end mb-4 lg:mb-6">
-        <XButton @click="onUpdate">Update</XButton>
-      </div>
-
       <Echarts :option="lineChartOption" class="w-full h-100" />
     </XCard>
   </section>
@@ -119,10 +109,6 @@ function onUpdate() {
     <h2 class="text-3xl font-bold my-4 pt-6">Area</h2>
 
     <XCard>
-      <div class="flex justify-end mb-4 lg:mb-6">
-        <XButton @click="onUpdate">Update</XButton>
-      </div>
-
       <Echarts :option="areaChartOption" class="w-full h-100" />
     </XCard>
   </section>

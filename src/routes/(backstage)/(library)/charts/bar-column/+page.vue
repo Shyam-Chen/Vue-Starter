@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import type { EChartsOption } from 'echarts';
 import { ref, computed } from 'vue';
-import { XBreadcrumb, XCard, XButton } from '@x/ui';
+import { XBreadcrumb, XCard } from '@x/ui';
 import { use } from 'echarts/core';
 import { BarChart } from 'echarts/charts';
 
@@ -58,7 +58,7 @@ const columnChartOption = computed<EChartsOption>(() => {
       data: ['2021', '2022'],
     },
     grid: {
-      top: '5%',
+      top: '10%',
     },
     xAxis: {
       type: 'category',
@@ -89,12 +89,6 @@ const columnChartOption = computed<EChartsOption>(() => {
     ],
   };
 });
-
-function onUpdate() {
-  const randomInt = (max = 99) => Math.floor(Math.random() * max) + 1;
-  data2021.value = Array.from({ length: 7 }, () => randomInt());
-  data2022.value = Array.from({ length: 7 }, () => randomInt());
-}
 </script>
 
 <template>
@@ -106,10 +100,6 @@ function onUpdate() {
     <h2 class="text-3xl font-bold my-4">Bar</h2>
 
     <XCard>
-      <div class="flex justify-end mb-4 lg:mb-6">
-        <XButton @click="onUpdate">Update</XButton>
-      </div>
-
       <Echarts :option="barChartOption" class="w-full h-100" />
     </XCard>
   </section>
@@ -118,10 +108,6 @@ function onUpdate() {
     <h2 class="text-3xl font-bold my-4 pt-6">Column</h2>
 
     <XCard>
-      <div class="flex justify-end mb-4 lg:mb-6">
-        <XButton @click="onUpdate">Update</XButton>
-      </div>
-
       <Echarts :option="columnChartOption" class="w-full h-100" />
     </XCard>
   </section>
