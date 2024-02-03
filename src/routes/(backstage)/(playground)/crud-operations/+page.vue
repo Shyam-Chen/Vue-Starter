@@ -82,7 +82,6 @@ onBeforeRouteLeave((to, from) => {
     </div>
 
     <XTable
-      v-model:control="state.todosControl"
       :loading="state.todosLoading"
       :columns="[
         { key: '_id', name: 'Identifier' },
@@ -92,6 +91,7 @@ onBeforeRouteLeave((to, from) => {
       ]"
       :rows="state.todosRows"
       :count="state.todosCount"
+      :control="state.todosControl"
       @change="actions.changeTodos"
     >
       <template #completed="{ row }">
@@ -102,7 +102,12 @@ onBeforeRouteLeave((to, from) => {
         <div class="flex gap-2">
           <XTooltip title="Edit">
             <RouterLink :to="`/crud-operations/${row._id}`">
-              <XButton icon="i-material-symbols-edit-rounded" variant="text" color="info" />
+              <XButton
+                icon="i-material-symbols-edit-rounded"
+                variant="text"
+                color="info"
+                size="small"
+              />
             </RouterLink>
           </XTooltip>
 
@@ -111,6 +116,7 @@ onBeforeRouteLeave((to, from) => {
               icon="i-material-symbols-delete-rounded"
               variant="text"
               color="danger"
+              size="small"
               @click="
                 state.deleteDialog = true;
                 state.deleteContent = row;
