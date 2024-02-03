@@ -139,6 +139,9 @@ importers:
         specifier: ^4.5.1
         version: 4.5.1
     devDependencies:
+      process-envify:
+        specifier: ^2.0.0
+        version: 2.0.0
       vite:
         specifier: ^5.0.12
         version: 5.0.12(sass@1.70.0)

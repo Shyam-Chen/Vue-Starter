@@ -16,7 +16,7 @@ export default () => {
   app.register(multipart);
 
   app.register(router);
-  // app.register(sleep);
+  app.register(sleep);
 
   return app;
 };

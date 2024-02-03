@@ -41,6 +41,7 @@ export default defineConfig({
       '@': path.resolve(__dirname, 'src'),
       api: path.resolve(__dirname, 'api/src/routes'),
     },
+    mainFields: ['module'],
   },
   server: {
     proxy: {
