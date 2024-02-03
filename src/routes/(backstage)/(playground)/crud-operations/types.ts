@@ -1,27 +1,27 @@
+import type { ComponentProps } from 'vue-component-type-helpers';
+import { XTable } from '@x/ui';
+
 export interface TodoItem {
   _id?: string;
   title?: string;
   completed?: boolean;
 }
 
-// enum Filter {
-//   All,
-//   Active,
-//   Completed,
-// }
-
 export interface State {
-  searchConditions: {
+  searchForm: {
     title?: string;
     filter?: number;
   };
 
-  loading: boolean;
+  todosLoading: boolean;
+  todosRows: TodoItem[];
+  todosCount: number;
+  todosControl: {};
 
-  dataSource: TodoItem[];
-  dataCount: number;
-
-  todoItem: TodoItem;
-
-  errors: Record<string, string>;
+  deleteDialog: boolean;
+  deleteExpected: TodoItem['title'];
+  deleteContent: TodoItem;
+  deleteLoading: boolean;
 }
+
+export type XTableProps = ComponentProps<typeof XTable>;

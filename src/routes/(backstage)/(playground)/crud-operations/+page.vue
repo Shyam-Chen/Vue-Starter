@@ -1,31 +1,30 @@
 <script lang="ts" setup>
-import { reactive, onMounted } from 'vue';
+import { onMounted } from 'vue';
+import { RouterLink, onBeforeRouteLeave } from 'vue-router';
 import {
   XBreadcrumb,
   XPanel,
   XTextField,
   XRadioGroup,
+  XButton,
+  XTable,
   XCheckbox,
   XTooltip,
-  XTable,
-  XButton,
+  XDeleteConfirmation,
 } from '@x/ui';
 
 import useStore from './store';
 
-const { state, actions } = useStore();
-
-const flux = reactive({
-  columns: [
-    { key: '_id', name: 'Identifier' },
-    { key: 'title', name: 'Title' },
-    { key: 'completed', name: 'Completed' },
-    { key: 'actions', name: 'Actions', sortable: false },
-  ],
-});
+const { state, actions, $reset } = useStore();
 
 onMounted(() => {
-  actions.todosList();
+  actions.initial();
+});
+
+onBeforeRouteLeave((to, from) => {
+  if (!to.path.startsWith(from.path)) {
+    $reset();
+  }
 });
 </script>
 
@@ -34,17 +33,15 @@ onMounted(() => {
 
   <h1 class="text-4xl font-extrabold my-4">CRUD Operations</h1>
 
-  <XPanel class="mb-6">
-    <template #header>
-      <div class="text-lg font-bold">Search Conditions</div>
-    </template>
+  <XPanel class="my-8">
+    <template #header>Search Conditions</template>
 
     <template #content>
-      <div class="grid grid-cols-2 gap-5 mb-6">
-        <XTextField v-model:value="state.searchConditions.title" label="Title" />
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <XTextField v-model:value="state.searchForm.title" label="Title" />
 
         <XRadioGroup
-          v-model:value="state.searchConditions.filter"
+          v-model:value="state.searchForm.filter"
           label="Filter"
           :options="[
             { label: 'All', value: 0 },
@@ -54,26 +51,47 @@ onMounted(() => {
         />
       </div>
 
-      <div class="flex justify-center gap-4">
-        <XButton color="secondary" @click="state.searchConditions = { filter: 0 }">Reset</XButton>
-        <XButton @click="actions.searchTodos">Search</XButton>
+      <div class="grid grid-cols-2 gap-4 mt-6">
+        <div class="place-self-end">
+          <XButton
+            prepend="i-material-symbols-restart-alt-rounded"
+            label="Reset"
+            color="secondary"
+            @click="actions.reset"
+          />
+        </div>
+
+        <div>
+          <XButton
+            prepend="i-material-symbols-search-rounded"
+            label="Search"
+            @click="actions.search"
+          />
+        </div>
       </div>
     </template>
   </XPanel>
 
-  <div class="w-full bg-white dark:bg-slate-800 shadow-md rounded">
-    <div class="flex justify-between p-4">
-      <div class="text-3xl font-bold">Todo List</div>
+  <div class="w-full bg-white dark:bg-slate-800 shadow rounded-md">
+    <div class="flex justify-between p-4 lg:p-6">
+      <h2 class="text-3xl font-bold">Todo List</h2>
 
-      <XButton color="primary" @click="actions.addToDo">Add</XButton>
+      <RouterLink to="/crud-operations/new">
+        <XButton prepend="i-material-symbols-add-rounded" label="Add" />
+      </RouterLink>
     </div>
 
     <XTable
-      stickyHeader
-      :columns="flux.columns"
-      :rows="state.dataSource"
-      :count="state.dataCount"
-      :loading="state.loading"
+      v-model:control="state.todosControl"
+      :loading="state.todosLoading"
+      :columns="[
+        { key: '_id', name: 'Identifier' },
+        { key: 'title', name: 'Title' },
+        { key: 'completed', name: 'Completed' },
+        { key: 'actions', name: 'Actions', sortable: false },
+      ]"
+      :rows="state.todosRows"
+      :count="state.todosCount"
       @change="actions.changeTodos"
     >
       <template #completed="{ row }">
@@ -81,17 +99,34 @@ onMounted(() => {
       </template>
 
       <template #actions="{ row }">
-        <div class="space-x-4">
-          <XTooltip title="Detail">
+        <div class="flex gap-2">
+          <XTooltip title="Edit">
+            <RouterLink :to="`/crud-operations/${row._id}`">
+              <XButton icon="i-material-symbols-edit-rounded" variant="text" color="info" />
+            </RouterLink>
+          </XTooltip>
+
+          <XTooltip title="Delete">
             <XButton
+              icon="i-material-symbols-delete-rounded"
               variant="text"
-              color="info"
-              icon="i-bx-detail"
-              @click="actions.viewTodo(row)"
+              color="danger"
+              @click="
+                state.deleteDialog = true;
+                state.deleteContent = row;
+              "
             />
           </XTooltip>
         </div>
       </template>
     </XTable>
   </div>
+
+  <XDeleteConfirmation
+    v-model="state.deleteDialog"
+    v-model:expected="state.deleteExpected"
+    :received="state.deleteContent.title"
+    :loading="state.deleteLoading"
+    @delete="actions.delete"
+  />
 </template>

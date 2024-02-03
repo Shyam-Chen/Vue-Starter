@@ -1,11 +1,11 @@
 import { computed, toRef } from 'vue';
 import { useValibotSchema } from 'vue-formor';
 import { useValdnLocale } from '@x/ui';
-import { optional, object, string, minLength } from 'valibot';
+import { object, nullish, string, minLength } from 'valibot';
 
 import useStore from './store';
 
-export const useCrudOperationsSchema = () => {
+export default () => {
   const valdnLocale = useValdnLocale();
 
   const { state } = useStore();
@@ -13,11 +13,11 @@ export const useCrudOperationsSchema = () => {
   const schema = useValibotSchema(
     computed(() =>
       object({
-        title: optional(string([minLength(1, valdnLocale.value.required)]), ''),
+        title: nullish(string([minLength(1, valdnLocale.value.required)]), ''),
       }),
     ),
-    toRef(state, 'todoItem'),
-    toRef(state, 'errors'),
+    toRef(state, 'todoForm'),
+    toRef(state, 'todoValdn'),
   );
 
   return schema;

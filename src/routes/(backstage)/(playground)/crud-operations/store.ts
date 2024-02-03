@@ -1,88 +1,95 @@
 import { reactive, readonly } from 'vue';
-import { useRouter } from 'vue-router';
 import { defineStore } from 'vue-storer';
+import { useNotification } from '@x/ui';
 import { request } from '@x/ui';
 
-import type { State, TodoItem } from './types';
+import type { State, TodoItem, XTableProps } from './types';
 
-export default defineStore('/(library)/data-entry/form-validation', () => {
-  const router = useRouter();
+export default defineStore('/crud-operations', () => {
+  const notification = useNotification();
 
   const state = reactive<State>({
-    searchConditions: { filter: 0 },
+    searchForm: { filter: 0 },
 
-    loading: false,
+    todosLoading: false,
+    todosRows: [],
+    todosCount: 0,
+    todosControl: {},
 
-    dataSource: [],
-    dataCount: 0,
-
-    todoItem: {},
-
-    errors: {},
+    deleteDialog: false,
+    deleteExpected: '',
+    deleteContent: {},
+    deleteLoading: false,
   });
 
   const actions = readonly({
-    searchTodos() {
-      actions.todosList();
-    },
-    async todosList() {
-      state.loading = true;
+    async todos() {
+      state.todosLoading = true;
 
-      const response = await request<any>('/todos', {
+      const response = await request<{ result: TodoItem[]; total: number }>('/todos', {
         method: 'POST',
-        body: state.searchConditions,
+        body: state.searchForm,
       });
 
-      state.loading = false;
-      state.dataSource = response._data.result;
-      state.dataCount = response._data.total;
+      state.todosLoading = false;
+      state.todosRows = response._data?.result || [];
+      state.todosCount = response._data?.total || 0;
     },
-    addToDo() {
-      router.push('/crud-operations/new');
-    },
-    async addNewToDo() {
-      const response = await request('/todos/new', {
-        method: 'POST',
-        body: state.todoItem,
-      });
 
-      if (response.status === 200) {
-        router.replace('/crud-operations');
-      }
+    initial() {
+      actions.todos();
     },
-    viewTodo(row: TodoItem) {
-      router.push(`/crud-operations/${row._id}`);
-    },
-    async todoById(id: TodoItem['_id']) {
-      const response = await request<any>(`/todos/${id}`);
-      state.todoItem = response._data.result;
-    },
-    async saveToDo() {
-      const response = await request(`/todos/${state.todoItem._id}`, {
-        method: 'PUT',
-        body: state.todoItem,
-      });
 
-      if (response.status === 200) {
-        router.replace('/crud-operations');
-      }
+    reset() {
+      state.searchForm = { filter: 0 };
+      actions.todos();
     },
-    async removeToDo() {
-      const response = await request(`/todos/${state.todoItem._id}`, {
+    search() {
+      state.todosControl = { rows: 10, page: 1, field: 'createdAt', direction: 'desc' };
+
+      state.searchForm = {
+        ...state.searchForm,
+        ...state.todosControl,
+      };
+
+      actions.todos();
+    },
+
+    changeTodos(control: XTableProps['control']) {
+      state.searchForm = {
+        ...state.searchForm,
+        ...control,
+      };
+
+      state.todosControl = control;
+      actions.todos();
+    },
+    async delete() {
+      state.deleteLoading = true;
+
+      const response = await request(`/todos/${state.deleteContent._id}`, {
         method: 'DELETE',
       });
 
-      if (response.status === 200) {
-        router.replace('/crud-operations');
-      }
-    },
-    async changeTodos(tableControl: any) {
-      state.searchConditions = {
-        ...state.searchConditions,
-        ...tableControl,
-      };
+      state.deleteLoading = false;
 
-      await actions.todosList();
+      if (response.status === 200) {
+        state.deleteDialog = false;
+
+        notification.actions.add({
+          message: 'Delete successful',
+          color: 'success',
+        });
+
+        actions.todos();
+      }
+
+      if (response.status === 400) {
+        notification.actions.add({
+          message: 'Delete failed',
+          color: 'danger',
+        });
+      }
     },
   });
 
