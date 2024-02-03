@@ -8,6 +8,7 @@ export { default as XButton } from './components/button';
 export { default as XCalendar } from './components/calendar/Calendar.vue';
 export { default as XCard } from './components/card/Card.vue';
 export { default as XCarousel } from './components/carousel/Carousel.vue';
+export { default as XChart } from './components/chart/Chart.vue';
 export { default as XChatBubble } from './components/chat-bubble/ChatBubble.vue';
 export { default as XCheckbox } from './components/checkbox/Checkbox.vue';
 export { default as XCheckboxGroup } from './components/checkbox-group/CheckboxGroup.vue';

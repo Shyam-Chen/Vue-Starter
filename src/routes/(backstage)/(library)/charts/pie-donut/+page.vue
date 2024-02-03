@@ -1,11 +1,9 @@
 <script lang="ts" setup>
 import type { EChartsOption } from 'echarts';
 import { computed } from 'vue';
-import { XBreadcrumb, XCard } from '@x/ui';
+import { XBreadcrumb, XCard, XChart } from '@x/ui';
 import { use } from 'echarts/core';
 import { PieChart } from 'echarts/charts';
-
-import Echarts from '~/components/Echarts.vue';
 
 use([PieChart]);
 
@@ -108,7 +106,7 @@ const donutChartOption = computed<EChartsOption>(() => {
     <h2 class="text-3xl font-bold my-4">Pie</h2>
 
     <XCard>
-      <Echarts :option="pieChartOption" class="w-full h-100" />
+      <XChart :option="pieChartOption" class="w-full h-100" />
     </XCard>
   </section>
 
@@ -116,7 +114,7 @@ const donutChartOption = computed<EChartsOption>(() => {
     <h2 class="text-3xl font-bold my-4 pt-6">Donut</h2>
 
     <XCard>
-      <Echarts :option="donutChartOption" class="w-full h-100" />
+      <XChart :option="donutChartOption" class="w-full h-100" />
     </XCard>
   </section>
 </template>

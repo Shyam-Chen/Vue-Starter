@@ -1,11 +1,9 @@
 <script lang="ts" setup>
 import type { EChartsOption } from 'echarts';
 import { ref, computed } from 'vue';
-import { XBreadcrumb, XCard } from '@x/ui';
+import { XBreadcrumb, XCard, XChart } from '@x/ui';
 import { use } from 'echarts/core';
 import { LineChart } from 'echarts/charts';
-
-import Echarts from '~/components/Echarts.vue';
 
 use([LineChart]);
 
@@ -101,7 +99,7 @@ const areaChartOption = computed<EChartsOption>(() => {
     <h2 class="text-3xl font-bold my-4">Line</h2>
 
     <XCard>
-      <Echarts :option="lineChartOption" class="w-full h-100" />
+      <XChart :option="lineChartOption" class="w-full h-100" />
     </XCard>
   </section>
 
@@ -109,7 +107,7 @@ const areaChartOption = computed<EChartsOption>(() => {
     <h2 class="text-3xl font-bold my-4 pt-6">Area</h2>
 
     <XCard>
-      <Echarts :option="areaChartOption" class="w-full h-100" />
+      <XChart :option="areaChartOption" class="w-full h-100" />
     </XCard>
   </section>
 </template>

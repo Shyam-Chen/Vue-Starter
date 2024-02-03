@@ -1,11 +1,9 @@
 <script lang="ts" setup>
 import type { EChartsOption } from 'echarts';
 import { computed } from 'vue';
-import { XBreadcrumb, XCard } from '@x/ui';
+import { XBreadcrumb, XCard, XChart } from '@x/ui';
 import { use, graphic } from 'echarts/core';
 import { ScatterChart } from 'echarts/charts';
-
-import Echarts from '~/components/Echarts.vue';
 
 use([ScatterChart]);
 
@@ -269,7 +267,7 @@ const bubbleChartOption = computed<EChartsOption>(() => {
     <h2 class="text-3xl font-bold my-4">Scatter</h2>
 
     <XCard>
-      <Echarts :option="scatterChartOption" class="w-full h-100" />
+      <XChart :option="scatterChartOption" class="w-full h-100" />
     </XCard>
   </section>
 
@@ -277,7 +275,7 @@ const bubbleChartOption = computed<EChartsOption>(() => {
     <h2 class="text-3xl font-bold my-4 pt-6">Bubble</h2>
 
     <XCard>
-      <Echarts :option="bubbleChartOption" class="w-full h-100" />
+      <XChart :option="bubbleChartOption" class="w-full h-100" />
     </XCard>
   </section>
 </template>

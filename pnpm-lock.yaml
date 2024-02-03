@@ -47,9 +47,6 @@ importers:
       vue-component-type-helpers:
         specifier: ^1.8.27
         version: 1.8.27
-      vue-echarts:
-        specifier: ^6.6.8
-        version: 6.6.8(echarts@5.4.3)(vue@3.4.15)
       vue-formor:
         specifier: ^4.1.1
         version: 4.1.1
@@ -250,6 +247,9 @@ importers:
       date-fns:
         specifier: ^3.3.1
         version: 3.3.1
+      echarts:
+        specifier: ^5.4.3
+        version: 5.4.3
       lodash:
         specifier: ^4.17.21
         version: 4.17.21
@@ -265,6 +265,9 @@ importers:
       vue-component-type-helpers:
         specifier: ^1.8.27
         version: 1.8.27
+      vue-echarts:
+        specifier: ^6.6.8
+        version: 6.6.8(echarts@5.4.3)(vue@3.4.15)
       vue-imask:
         specifier: ^7.3.0
         version: 7.3.0(vue@3.4.15)

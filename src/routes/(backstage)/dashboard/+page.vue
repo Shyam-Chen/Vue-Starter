@@ -1,10 +1,9 @@
 <script lang="ts" setup>
 import type { EChartsOption } from 'echarts';
 import { computed } from 'vue';
+import { XChart } from '@x/ui';
 import { use } from 'echarts/core';
 import { LineChart, BarChart } from 'echarts/charts';
-
-import Echarts from '~/components/Echarts.vue';
 
 use([LineChart, BarChart]);
 
@@ -217,7 +216,7 @@ const performanceOption = computed<EChartsOption>(() => {
             <div class="chartjs-size-monitor-shrink"><div class=""></div></div>
           </div>
 
-          <Echarts :option="overviewOption" class="w-full h-100" />
+          <XChart :option="overviewOption" class="w-full h-100" />
         </div>
       </div>
     </div>
@@ -241,7 +240,7 @@ const performanceOption = computed<EChartsOption>(() => {
             <div class="chartjs-size-monitor-shrink"><div class=""></div></div>
           </div>
 
-          <Echarts :option="performanceOption" class="w-full h-100" />
+          <XChart :option="performanceOption" class="w-full h-100" />
         </div>
       </div>
     </div>

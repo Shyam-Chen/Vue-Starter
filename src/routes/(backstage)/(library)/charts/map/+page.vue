@@ -1,12 +1,10 @@
 <script lang="ts" setup>
 import type { EChartsOption } from 'echarts';
 import { computed } from 'vue';
-import { XBreadcrumb, XCard } from '@x/ui';
+import { XBreadcrumb, XCard, XChart } from '@x/ui';
 import { use, registerMap } from 'echarts/core';
 import { MapChart } from 'echarts/charts';
 import { VisualMapComponent, ToolboxComponent } from 'echarts/components';
-
-import Echarts from '~/components/Echarts.vue';
 
 // https://public.opendatasoft.com/explore/dataset/natural-earth-countries-1_110m/export/
 // Geographic file formats -> GeoJSON
@@ -95,7 +93,7 @@ const mapChartOption = computed<EChartsOption>(() => {
     <h2 class="text-3xl font-bold my-4">Countries-110m</h2>
 
     <XCard>
-      <Echarts :option="mapChartOption" class="w-full min-h-100 h-75dvh" />
+      <XChart :option="mapChartOption" class="w-full min-h-100 h-75dvh" />
     </XCard>
   </section>
 </template>

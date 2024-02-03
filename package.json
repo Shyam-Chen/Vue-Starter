@@ -25,7 +25,6 @@
     "valibot": "^0.27.1",
     "vue": "^3.4.15",
     "vue-component-type-helpers": "^1.8.27",
-    "vue-echarts": "^6.6.8",
     "vue-formor": "^4.1.1",
     "vue-localer": "^1.4.0",
     "vue-qrcode-image": "^1.1.0",

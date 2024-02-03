@@ -1,11 +1,9 @@
 <script lang="ts" setup>
 import type { EChartsOption } from 'echarts';
 import { ref, computed } from 'vue';
-import { XBreadcrumb, XCard } from '@x/ui';
+import { XBreadcrumb, XCard, XChart } from '@x/ui';
 import { use } from 'echarts/core';
 import { BarChart } from 'echarts/charts';
-
-import Echarts from '~/components/Echarts.vue';
 
 use([BarChart]);
 
@@ -100,7 +98,7 @@ const columnChartOption = computed<EChartsOption>(() => {
     <h2 class="text-3xl font-bold my-4">Bar</h2>
 
     <XCard>
-      <Echarts :option="barChartOption" class="w-full h-100" />
+      <XChart :option="barChartOption" class="w-full h-100" />
     </XCard>
   </section>
 
@@ -108,7 +106,7 @@ const columnChartOption = computed<EChartsOption>(() => {
     <h2 class="text-3xl font-bold my-4 pt-6">Column</h2>
 
     <XCard>
-      <Echarts :option="columnChartOption" class="w-full h-100" />
+      <XChart :option="columnChartOption" class="w-full h-100" />
     </XCard>
   </section>
 </template>

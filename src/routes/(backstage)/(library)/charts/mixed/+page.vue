@@ -1,11 +1,9 @@
 <script lang="ts" setup>
 import type { EChartsOption } from 'echarts';
 import { ref, computed } from 'vue';
-import { XBreadcrumb, XCard } from '@x/ui';
+import { XBreadcrumb, XCard, XChart } from '@x/ui';
 import { use } from 'echarts/core';
 import { LineChart, BarChart, ScatterChart } from 'echarts/charts';
-
-import Echarts from '~/components/Echarts.vue';
 
 use([LineChart, BarChart, ScatterChart]);
 
@@ -177,7 +175,7 @@ const lineScatterChartOption = computed<EChartsOption>(() => {
     <h2 class="text-3xl font-bold my-4">Line Column</h2>
 
     <XCard>
-      <Echarts :option="lineColumnChartOption" class="w-full h-100" />
+      <XChart :option="lineColumnChartOption" class="w-full h-100" />
     </XCard>
   </section>
 
@@ -185,7 +183,7 @@ const lineScatterChartOption = computed<EChartsOption>(() => {
     <h2 class="text-3xl font-bold my-4 pt-6">Line Scatter</h2>
 
     <XCard>
-      <Echarts :option="lineScatterChartOption" class="w-full h-100" />
+      <XChart :option="lineScatterChartOption" class="w-full h-100" />
     </XCard>
   </section>
 </template>
