@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { XBreadcrumb, XCard, XChatBubble, XTextarea, XButton } from '@x/ui';
+import { XBreadcrumb, XCard, XChatBubble, XRichTextEditor, XButton } from '@x/ui';
 </script>
 
 <template>
@@ -21,7 +21,7 @@ import { XBreadcrumb, XCard, XChatBubble, XTextarea, XButton } from '@x/ui';
   </XCard>
 
   <XCard class="my-8">
-    <XTextarea />
+    <XRichTextEditor />
 
     <div class="flex justify-end mt-6">
       <XButton prepend="i-material-symbols-comment-rounded" label="Comment" />

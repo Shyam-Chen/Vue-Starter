@@ -26,6 +26,7 @@ import TextAlign from '@tiptap/extension-text-align';
 import Image from '@tiptap/extension-image';
 import Link from '@tiptap/extension-link';
 
+import Divider from '../divider/Divider.vue';
 import Popover from '../popover/Popover.vue';
 
 const props = withDefaults(
@@ -320,7 +321,7 @@ defineExpose({
           </Popover>
         </div>
 
-        <div class="border-r mx-2"></div>
+        <Divider orientation="vertical" class="!mx-2" />
 
         <div class="flex gap-1">
           <div class="i-mdi-format-bold w-6 h-6" @click="toggleBold"></div>
@@ -329,14 +330,14 @@ defineExpose({
           <div class="i-mdi-format-strikethrough-variant w-6 h-6" @click="toggleStrike"></div>
         </div>
 
-        <div class="border-r mx-2"></div>
+        <Divider orientation="vertical" class="!mx-2" />
 
         <div class="flex gap-1">
           <div class="i-mdi-format-list-bulleted w-6 h-6" @click="toggleBulletList"></div>
           <div class="i-mdi-format-list-numbered w-6 h-6" @click="toggleOrderedList"></div>
         </div>
 
-        <div class="border-r mx-2"></div>
+        <Divider orientation="vertical" class="!mx-2" />
 
         <div class="flex gap-1">
           <div class="i-mdi-format-align-left w-6 h-6" @click="setTextAlign('left')"></div>
@@ -345,7 +346,7 @@ defineExpose({
           <div class="i-mdi-format-align-justify w-6 h-6" @click="setTextAlign('justify')"></div>
         </div>
 
-        <div class="border-r mx-2"></div>
+        <Divider orientation="vertical" class="!mx-2" />
 
         <div class="flex gap-1">
           <div class="i-mdi-image-outline w-6 h-6" @click="setImage"></div>
@@ -355,7 +356,7 @@ defineExpose({
           <div class="i-mdi-border-horizontal w-6 h-6" @click="setHorizontalRule"></div>
         </div>
 
-        <div class="border-r mx-2"></div>
+        <Divider orientation="vertical" class="!mx-2" />
 
         <div class="flex gap-1">
           <div class="i-mdi-undo w-6 h-6" @click="undo"></div>
