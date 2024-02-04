@@ -61,9 +61,9 @@ onMounted(async () => {
 </script>
 
 <template>
-  <XBreadcrumb :items="[{ text: 'Management' }, { text: 'User List' }]" />
+  <XBreadcrumb :items="[{ text: 'Management' }, { text: 'Users' }]" />
 
-  <h1 class="text-4xl font-extrabold my-4">User List</h1>
+  <h1 class="text-4xl font-extrabold my-4">Users</h1>
 
   <div
     class="col-span-3 relative flex flex-col min-w-0 break-words bg-white dark:bg-slate-800 w-full shadow-lg rounded"
@@ -71,7 +71,9 @@ onMounted(async () => {
     <div class="rounded-t mb-0 px-4 py-3 border-0">
       <div class="flex flex-wrap items-center">
         <div class="relative w-full px-4 max-w-full flex-grow flex-1">
-          <h3 class="font-semibold text-base text-blueGray-700 dark:text-blueGray-300">Users</h3>
+          <h3 class="font-semibold text-base text-blueGray-700 dark:text-blueGray-300">
+            User List
+          </h3>
         </div>
 
         <div class="px-4">

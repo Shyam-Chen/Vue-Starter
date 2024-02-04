@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
-import { XBreadcrumb, XTable, XCollapse, XButton } from '@x/ui';
+import { XBreadcrumb, XTable, XCollapse, XButton, XDivider } from '@x/ui';
 
 import Basic from './Basic.vue';
 import Loading from './Loading.vue';
@@ -296,6 +296,7 @@ const flux = reactive({
             icon="i-fa-caret-down"
             color="secondary"
             variant="text"
+            size="small"
             @click.stop="flux.clickCollapsible(row)"
           />
           <XButton
@@ -303,19 +304,22 @@ const flux = reactive({
             icon="i-fa-caret-up"
             color="secondary"
             variant="text"
+            size="small"
             @click.stop="flux.clickCollapsible(row)"
           />
         </template>
 
         <template #collapsible="{ row }">
           <tr>
-            <td :colspan="flux.collapsibleCols.length" class="py-0">
+            <td :colspan="flux.collapsibleCols.length">
               <XCollapse>
                 <div v-if="row.collapsible">
                   <div class="px-4 py-2">
                     <div class="text-2xl mb-2">History</div>
                     <XTable :columns="flux.colspanCols" :rows="flux.colspanRows" />
                   </div>
+
+                  <XDivider class="!my-0" />
                 </div>
               </XCollapse>
             </td>

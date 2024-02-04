@@ -164,8 +164,9 @@ const links = [
     name: 'CRUD Operations',
     to: '/crud-operations',
   },
-  { icon: 'i-mdi-user-group', name: 'User List', to: '/user-list' },
+  { icon: 'i-mdi-user-group', name: 'Management', to: '/user-list' },
   { icon: 'i-carbon-two-factor-authentication', name: 'Two-factor Auth', to: '/two-factor-auth' },
+  { icon: 'i-ph-chats-fill', name: 'Discussions', to: '/discussions' },
 ] as Link[];
 
 const createLevel = (arr: Link[], level = 1): Link[] => {
