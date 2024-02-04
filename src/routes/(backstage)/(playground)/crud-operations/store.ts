@@ -45,23 +45,14 @@ export default defineStore('/crud-operations', () => {
       actions.todos();
     },
     search() {
-      state.todosControl = { rows: 10, page: 1, field: 'createdAt', direction: 'desc' };
-
-      state.searchForm = {
-        ...state.searchForm,
-        ...state.todosControl,
-      };
-
+      state.todosControl = { ...state.todosControl, page: 1 };
+      state.searchForm = { ...state.searchForm, ...state.todosControl };
       actions.todos();
     },
 
     changeTodos(control: XTableProps['control']) {
-      state.searchForm = {
-        ...state.searchForm,
-        ...control,
-      };
-
       state.todosControl = control;
+      state.searchForm = { ...state.searchForm, ...state.todosControl };
       actions.todos();
     },
     async delete() {

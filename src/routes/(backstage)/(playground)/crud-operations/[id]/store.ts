@@ -30,7 +30,11 @@ export default defineStore('/crud-operations/:id', () => {
     },
 
     initial() {
-      actions.todo();
+      if (route.params.id === 'new') {
+        state.todoForm = {};
+      } else {
+        actions.todo();
+      }
     },
 
     async add() {

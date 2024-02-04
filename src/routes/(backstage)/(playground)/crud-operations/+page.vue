@@ -17,9 +17,7 @@ import useStore from './store';
 
 const { state, actions, $reset } = useStore();
 
-onMounted(() => {
-  actions.initial();
-});
+onMounted(() => actions.initial());
 
 onBeforeRouteLeave((to, from) => {
   if (!to.path.startsWith(from.path)) {

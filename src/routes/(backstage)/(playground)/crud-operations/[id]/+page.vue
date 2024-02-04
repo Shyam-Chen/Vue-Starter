@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { onMounted, onBeforeMount } from 'vue';
+import { onMounted, onUnmounted } from 'vue';
 import { useRoute } from 'vue-router';
 import {
   XBreadcrumb,
@@ -11,7 +11,6 @@ import {
   XLeaveConfirmation,
 } from '@x/ui';
 import isEqual from 'lodash/isEqual';
-// import { isEqual } from 'lodash';
 
 import useStore from './store';
 import useSchema from './schema';
@@ -21,17 +20,8 @@ const route = useRoute();
 const { state, actions, $reset } = useStore();
 const schema = useSchema();
 
-onMounted(() => {
-  if (route.params.id === 'new') {
-    state.todoForm = {};
-  } else {
-    actions.todo();
-  }
-});
-
-onBeforeMount(() => {
-  $reset();
-});
+onMounted(() => actions.initial());
+onUnmounted(() => $reset());
 </script>
 
 <template>

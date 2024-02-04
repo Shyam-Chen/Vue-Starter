@@ -104,6 +104,8 @@ const flux = reactive({
   sortField: 'createdAt' as string | undefined,
   sortDirection: 'desc' as string | undefined,
   onSort(col: any) {
+    if (props.loading) return;
+
     if (flux.sortDirection === 'asc') {
       flux.sortField = col.key;
       flux.sortDirection = 'desc';
@@ -389,11 +391,12 @@ watch(
     >
       <div class="Table-RowsPerPage">
         {{ locale.rowsPerPage || 'Rows per page:' }}
-        <div class="w-20 ml-2">
+        <div class="w-auto ml-2">
           <Select
             v-model:value="flux.rowsPerPage"
             :options="flux.rowsPerPageOptions"
-            display="label"
+            :disabled="loading"
+            class="!border-transparent"
           />
         </div>
       </div>
@@ -406,6 +409,7 @@ watch(
           :label="locale.previousPage || 'Previous'"
           variant="text"
           color="secondary"
+          :disabled="loading"
           @click="flux.previousPage"
         />
         <Button
@@ -413,6 +417,7 @@ watch(
           append="i-material-symbols-chevron-right-rounded"
           variant="text"
           color="secondary"
+          :disabled="loading"
           @click="flux.nextPage"
         />
       </div>
