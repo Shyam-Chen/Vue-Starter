@@ -29,8 +29,9 @@ onBeforeMount(async () => {
 </script>
 
 <template>
-  <Card class="my-4">
+  <Card class="overflow-x-auto my-4">
     <div
+      class="w-fit px-4 lg:px-6"
       v-html="
         highlighter?.codeToHtml(props.code, {
           lang: props.language,
@@ -40,3 +41,9 @@ onBeforeMount(async () => {
     ></div>
   </Card>
 </template>
+
+<style lang="scss" scoped>
+:deep(.Card-Body) {
+  @apply !px-0;
+}
+</style>
