@@ -222,12 +222,6 @@ watch(
   () => flux.rows,
   (val) => {
     if (props.static && val?.length) {
-      const checked = val.every((item: any) => item.checked);
-      const unchecked = val.every((item: any) => !item.checked);
-      flux.indeterminate = !(checked || unchecked);
-      if (checked) flux.selecteAll = true;
-      if (unchecked) flux.selecteAll = false;
-
       val.forEach((row) => {
         const found: any = valueModel.value.find(
           (item: any) => item._id === row._id || item.id === row.id,
