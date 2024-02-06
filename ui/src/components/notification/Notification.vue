@@ -39,10 +39,6 @@ const push = ({ message, color, icon }: Omit<NotificationMessage, 'timeout'>) =>
   list.value.push(item);
 };
 
-defineExpose({
-  push,
-});
-
 watch(
   () => timeoutList.value,
   (arr) => {
@@ -62,6 +58,10 @@ function close(item: NotificationMessage, index: number) {
   item.timeout = -1;
   list.value.splice(index, 1);
 }
+
+defineExpose({
+  push,
+});
 </script>
 
 <template>
