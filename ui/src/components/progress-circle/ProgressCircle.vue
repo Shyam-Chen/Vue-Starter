@@ -23,7 +23,7 @@ withDefaults(
         cx="10"
         cy="10"
         r="8"
-        :stroke-dashoffset="100 - percentage / 2"
+        :stroke-dashoffset="percentage >= 100 ? 50 : 100 - percentage / 2"
       />
     </svg>
 
