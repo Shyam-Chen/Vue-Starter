@@ -1,13 +1,5 @@
 <script lang="ts" setup>
-import { ref } from 'vue';
-import { XBreadcrumb, XCard, XSpinner, XProgressBar, XProgressCircle, XMeterGroup } from '@x/ui';
-
-const meterGroup = ref([
-  { label: 'Apps', color: 'bg-emerald-400', value: 16 },
-  { label: 'Messages', color: 'bg-amber-400', value: 8 },
-  { label: 'Media', color: 'bg-blue-400', value: 24 },
-  { label: 'System', color: 'bg-purple-400', value: 10 },
-]);
+import { XBreadcrumb, XCard, XSpinner, XProgressBar, XProgressCircle } from '@x/ui';
 </script>
 
 <template>
@@ -69,14 +61,6 @@ const meterGroup = ref([
         <XProgressBar :percentage="66" class="!h-2 rounded-md" />
         <div>66%</div>
       </div>
-    </XCard>
-  </section>
-
-  <section class="my-8">
-    <h2 class="text-3xl font-bold my-4 pt-6">MeterGroup</h2>
-
-    <XCard>
-      <XMeterGroup v-model="meterGroup" />
     </XCard>
   </section>
 </template>

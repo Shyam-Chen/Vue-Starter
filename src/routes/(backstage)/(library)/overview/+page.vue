@@ -112,6 +112,7 @@ import { XBreadcrumb } from '@x/ui';
       <RouterLink to="/feedback/dialogs" class="card">Dialog</RouterLink>
       <RouterLink to="/feedback/highlight" class="card">Highlight</RouterLink>
       <RouterLink to="/feedback/leave-confirmation" class="card">LeaveConfirmation</RouterLink>
+      <RouterLink to="/feedback/meter-group" class="card">MeterGroup</RouterLink>
       <RouterLink to="/feedback/notification" class="card">Notification</RouterLink>
       <RouterLink to="/feedback/progress" class="card">Progress</RouterLink>
       <RouterLink to="/feedback/skeletons" class="card">Skeleton</RouterLink>

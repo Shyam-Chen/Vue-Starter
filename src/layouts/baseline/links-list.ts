@@ -130,6 +130,7 @@ const links = [
       { name: 'Dialogs', to: '/feedback/dialogs' },
       { name: 'Highlight', to: '/feedback/highlight' },
       { name: 'LeaveConfirmation', to: '/feedback/leave-confirmation' },
+      { name: 'MeterGroup', to: '/feedback/meter-group' },
       { name: 'Notification', to: '/feedback/notification' },
       { name: 'Progress', to: '/feedback/progress' },
       { name: 'Skeletons', to: '/feedback/skeletons' },
