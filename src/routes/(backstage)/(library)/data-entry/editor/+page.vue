@@ -2,7 +2,6 @@
 import { ref, onMounted } from 'vue';
 import { XBreadcrumb, XCard, XRichTextEditor, XButton } from '@x/ui';
 
-const richTextEditor = ref();
 const content = ref('');
 
 onMounted(() => {
@@ -39,7 +38,7 @@ function setContent() {
     <p class="my-4">Two-way value binding is defined using `v-model`.</p>
 
     <XCard>
-      <XRichTextEditor ref="richTextEditor" v-model="content" />
+      <XRichTextEditor v-model="content" />
       <div class="border rounded p-4 my-4">{{ content }}</div>
       <XButton @click="setContent">Set Content</XButton>
     </XCard>

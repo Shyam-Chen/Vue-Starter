@@ -379,48 +379,54 @@ defineExpose({
 
 .RichTextEditor {
   :deep(p) {
-    @apply my-2 leading-tight;
+    @apply my-1 leading-tight;
   }
 
   :deep(h1) {
-    @apply text-4xl font-extrabold;
+    @apply my-1 text-4xl font-extrabold;
   }
 
   :deep(h2) {
-    @apply text-3xl font-bold;
+    @apply my-1 text-3xl font-bold;
   }
 
   :deep(h3) {
-    @apply text-2xl font-semibold;
+    @apply my-1 text-2xl font-semibold;
   }
 
   :deep(h4) {
-    @apply text-xl font-medium;
+    @apply my-1 text-xl font-medium;
   }
 
   :deep(ul) {
-    @apply list-disc ml-6;
+    @apply my-1 list-disc ml-6;
   }
 
   :deep(ol) {
-    @apply list-decimal ml-6;
+    @apply my-1 list-decimal ml-6;
   }
 
   :deep(blockquote) {
-    @apply px-2 border-l-4 border-slate-500;
+    @apply my-1 px-2 border-l-4 border-slate-500;
   }
 
   :deep(a) {
     @apply font-bold text-sm text-primary-500;
-    @apply hover:underline hover:text-primary-600 dark:hover:text-primary-400;
-  }
-
-  :deep(pre) {
-    @apply p-2 rounded bg-slate-700 text-white;
+    @apply hover:underline hover:text-primary-600;
   }
 
   :deep(hr) {
-    @apply my-4;
+    @apply my-4 border-t border-gray-200;
+  }
+}
+
+.dark .RichTextEditor {
+  :deep(a) {
+    @apply hover:text-primary-400;
+  }
+
+  :deep(hr) {
+    @apply border-gray-700;
   }
 }
 
