@@ -7,6 +7,7 @@ import { request } from '@x/ui';
 const router = useRouter();
 const route = useRoute();
 
+const loading = ref(false);
 const users = ref<any[]>([]);
 const total = ref(0);
 
@@ -42,7 +43,9 @@ watch(
 );
 
 onMounted(async () => {
+  loading.value = true;
   const response = await request<any>('/user-list', { method: 'POST', body: {} });
+  loading.value = false;
   users.value = response._data.result;
   total.value = response._data.total;
 });
@@ -67,6 +70,7 @@ onMounted(async () => {
         { key: 'status', name: 'Status' },
         { key: 'actions', name: 'Actions', sortable: false },
       ]"
+      :loading="loading"
       :rows="users"
       :count="total"
     >
