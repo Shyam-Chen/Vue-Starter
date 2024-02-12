@@ -2,7 +2,7 @@ import type { VueWrapper } from '@vue/test-utils';
 import { afterEach, test, vi } from 'vitest';
 import { mount } from '@vue/test-utils';
 import * as xui from '@x/ui';
-import user from 'api/auth/user/response';
+import user from 'mock/auth/user/response';
 
 import router from '~/plugins/router';
 import localer from '~/plugins/localer';

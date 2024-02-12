@@ -39,7 +39,7 @@ export default defineConfig({
     alias: {
       '~': path.resolve(__dirname, 'src'),
       '@': path.resolve(__dirname, 'src'),
-      api: path.resolve(__dirname, 'api/src/routes'),
+      mock: path.resolve(__dirname, 'mock/src/routes'),
     },
     mainFields: ['module'],
   },
@@ -55,7 +55,7 @@ export default defineConfig({
     globals: true,
     environment: 'happy-dom',
     coverage: {
-      exclude: ['ui', 'api', 'e2e'],
+      exclude: ['ui', 'mock', 'e2e'],
     },
   },
 });

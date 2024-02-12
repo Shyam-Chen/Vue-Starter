@@ -1,8 +1,8 @@
 import type { VueWrapper } from '@vue/test-utils';
 import { mount } from '@vue/test-utils';
 import * as xui from '@x/ui';
-import signIn from 'api/auth/sign-in/response';
-import opt from 'api/auth/otp/validate/response';
+import signIn from 'mock/auth/sign-in/response';
+import opt from 'mock/auth/otp/validate/response';
 
 import router from '~/plugins/router';
 import localer from '~/plugins/localer';

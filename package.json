@@ -3,7 +3,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "mock": "cd api && pnpm mock",
+    "mock": "cd mock && pnpm mock",
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint 'src/**/*.{ts,vue}'",

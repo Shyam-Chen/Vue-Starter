@@ -9,7 +9,7 @@
     "moduleResolution": "node",
     "paths": {
       "~/*": ["src/*"],
-      "api/*": ["api/src/routes/*"]
+      "mock/*": ["mock/src/routes/*"]
     },
     "resolveJsonModule": true,
     "types": ["vite/client", "vitest/globals"],
@@ -28,5 +28,5 @@
 
     "skipLibCheck": true
   },
-  "exclude": ["node_modules", "dist", "coverage", "ui", "api", "e2e"]
+  "exclude": ["node_modules", "dist", "coverage", "ui", "mock", "e2e"]
 }

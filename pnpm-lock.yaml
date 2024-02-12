@@ -124,7 +124,16 @@ importers:
         specifier: ^1.8.27
         version: 1.8.27(typescript@5.3.3)
 
-  api:
+  e2e:
+    devDependencies:
+      '@playwright/test':
+        specifier: ^1.41.2
+        version: 1.41.2
+      '@types/node':
+        specifier: ^20.11.17
+        version: 20.11.17
+
+  mock:
     dependencies:
       '@fastify/multipart':
         specifier: ^8.1.0
@@ -151,15 +160,6 @@ importers:
       vite-plugin-fastify-routes:
         specifier: ^1.1.0
         version: 1.1.0
-
-  e2e:
-    devDependencies:
-      '@playwright/test':
-        specifier: ^1.41.2
-        version: 1.41.2
-      '@types/node':
-        specifier: ^20.11.17
-        version: 20.11.17
 
   ui:
     dependencies:
@@ -4448,7 +4448,7 @@ packages:
       pump: 3.0.0
       readable-stream: 4.4.2
       secure-json-parse: 2.7.0
-      sonic-boom: 3.7.0
+      sonic-boom: 3.8.0
       strip-json-comments: 3.1.1
     dev: false
 
@@ -5056,12 +5056,6 @@ packages:
     resolution: {integrity: sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==}
     engines: {node: '>=8'}
     dev: true
-
-  /sonic-boom@3.7.0:
-    resolution: {integrity: sha512-IudtNvSqA/ObjN97tfgNmOKyDOs4dNcg4cUUsHDebqsgb8wGBBwb31LIgShNO8fye0dFI52X1+tFoKKI6Rq1Gg==}
-    dependencies:
-      atomic-sleep: 1.0.0
-    dev: false
 
   /sonic-boom@3.8.0:
     resolution: {integrity: sha512-ybz6OYOUjoQQCQ/i4LU8kaToD8ACtYP+Cj5qd2AO36bwbdewxWJ3ArmJ2cr6AvxlL2o0PqnCcPGUgkILbfkaCA==}

@@ -8,7 +8,7 @@
     "module": "esnext",
     "moduleResolution": "node",
     "paths": {
-      "api/*": ["../api/src/routes/*"]
+      "mock/*": ["../mock/src/routes/*"]
     },
     "resolveJsonModule": true,
 

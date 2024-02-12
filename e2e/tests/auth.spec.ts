@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import signIn from 'api/auth/sign-in/response';
+import signIn from 'mock/auth/sign-in/response';
 
 test('Sign-in', async ({ page }) => {
   await page.goto('/sign-in', { waitUntil: 'networkidle' });

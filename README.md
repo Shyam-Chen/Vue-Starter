@@ -163,8 +163,8 @@ The structure follows the LIFT Guidelines.
 ```coffee
 .
 ├── .github/workflows/ci.yml
-├── api
 ├── e2e
+├── mock
 ├── public
 ├── src
 │   ├── assets
