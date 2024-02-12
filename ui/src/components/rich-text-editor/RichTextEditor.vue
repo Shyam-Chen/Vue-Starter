@@ -67,6 +67,8 @@ const editorClass = computed(() => {
   return 'border border-slate-400 rounded-b px-3 py-2 min-h-65 focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-primary-400 focus:rounded';
 });
 
+const typing = ref(false);
+
 onMounted(() => {
   editor.value = new Editor({
     editable: !props.disabled && !props.viewonly,
@@ -105,6 +107,7 @@ onMounted(() => {
       },
     },
     onUpdate({ editor }) {
+      typing.value = true;
       defaultModel.value = editor.getHTML();
     },
   });
@@ -203,11 +206,6 @@ function toggleBlockquote() {
   editor.value?.chain().focus().toggleBlockquote().run();
 }
 
-// function toggleCodeBlock() {
-//   if (props.disabled || props.viewonly) return;
-//   editor.value?.chain().focus().toggleCodeBlock().run();
-// }
-
 function setHorizontalRule() {
   if (props.disabled || props.viewonly) return;
   editor.value?.chain().focus().setHorizontalRule().run();
@@ -233,6 +231,9 @@ watch(
     } else if (!completed.value) {
       completed.value = true;
       editor.value?.commands?.setContent(val);
+    } else {
+      if (!typing.value) editor.value?.commands?.setContent(val);
+      typing.value = false;
     }
   },
 );

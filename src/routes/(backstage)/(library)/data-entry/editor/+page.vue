@@ -20,13 +20,12 @@ function setContent() {
 
     <p><span style="color: #FE68C9">Text Color</span></p>
 
-    <p>This isn’t bold.</p>
+    <p>This isn't bold.</p>
     <p><strong>This is bold.</strong></p>
     <p><em>This is italic.</em></p>
   `;
 
-  richTextEditor.value.editor.commands.setContent(newContent);
-  content.value = richTextEditor.value.editor.getHTML();
+  content.value = newContent;
 }
 </script>
 
