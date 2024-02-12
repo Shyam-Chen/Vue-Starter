@@ -29,42 +29,32 @@ import Link from '@tiptap/extension-link';
 import Divider from '../divider/Divider.vue';
 import Popover from '../popover/Popover.vue';
 
+const defaultModel = defineModel<string>({ default: '' });
+
 const props = withDefaults(
   defineProps<{
     label?: string;
-    modelValue?: string;
     extension?: Extensions;
     required?: boolean;
     disabled?: boolean;
     viewonly?: boolean;
+    class?: string;
   }>(),
   {
     label: '',
-    modelValue: '',
     extension: () => [],
     required: false,
     disabled: false,
     viewonly: false,
+    class: '',
   },
 );
-
-const emit = defineEmits<{
-  (evt: 'update:modelValue', val: string): void;
-}>();
-
-const defaultModel = computed({
-  get: () => props.modelValue,
-  set: (val) => emit('update:modelValue', val),
-});
 
 const editor = ref<Editor>();
 
 const editorClass = computed(() => {
-  if (props.viewonly) {
-    return 'rounded-b min-h-65';
-  }
-
-  return 'border border-slate-400 rounded-b px-3 py-2 min-h-65 focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-primary-400 focus:rounded';
+  if (props.viewonly) return `min-h-54.5 ${props.class}`;
+  return `border border-slate-400 rounded-b px-3 py-1 min-h-54.5 focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-primary-400 focus:rounded ${props.class}`;
 });
 
 const typing = ref(false);
@@ -224,7 +214,7 @@ function redo() {
 const completed = ref(false);
 
 watch(
-  () => props.modelValue,
+  () => defaultModel.value,
   (val) => {
     if (props.viewonly) {
       editor.value?.commands?.setContent(val);
@@ -257,11 +247,11 @@ defineExpose({
         class="flex flex-wrap px-2 py-1 border border-b-0 border-slate-400 rounded-t"
       >
         <div class="flex gap-1">
-          <div class="i-mdi-format-paragraph w-6 h-6" @click="setParagraph"></div>
           <div class="i-mdi-format-header-1 w-6 h-6" @click="toggleHeading(1)"></div>
           <div class="i-mdi-format-header-2 w-6 h-6" @click="toggleHeading(2)"></div>
           <div class="i-mdi-format-header-3 w-6 h-6" @click="toggleHeading(3)"></div>
           <div class="i-mdi-format-header-4 w-6 h-6" @click="toggleHeading(4)"></div>
+          <div class="i-mdi-format-paragraph w-6 h-6" @click="setParagraph"></div>
 
           <Popover :disabled="disabled">
             <div class="i-mdi-format-color-text w-6 h-6"></div>
@@ -353,7 +343,6 @@ defineExpose({
           <div class="i-mdi-image-outline w-6 h-6" @click="setImage"></div>
           <div class="i-mdi-link w-6 h-6" @click="setLink"></div>
           <div class="i-mdi-format-quote-close w-6 h-6" @click="toggleBlockquote"></div>
-          <!-- <div class="i-mdi-code-tags w-6 h-6" @click="toggleCodeBlock"></div> -->
           <div class="i-mdi-border-horizontal w-6 h-6" @click="setHorizontalRule"></div>
         </div>
 
@@ -411,8 +400,11 @@ defineExpose({
   }
 
   :deep(a) {
-    @apply font-bold text-sm text-primary-500;
-    @apply hover:underline hover:text-primary-600;
+    @apply text-primary-500 hover:underline hover:text-primary-600;
+  }
+
+  :deep(img) {
+    @apply my-1;
   }
 
   :deep(hr) {
