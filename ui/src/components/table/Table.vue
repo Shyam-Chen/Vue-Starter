@@ -189,8 +189,8 @@ watch(
       flux.rows = props.static(arr, controlModel.value);
 
       arr.forEach((row: any) => {
-        const found: any = valueModel.value.find(
-          (item: any) => item._id === row._id || item.id === row.id,
+        const found: any = valueModel.value.find((item: any) =>
+          item._id ? item._id === row._id : item.id === row.id,
         );
         if (found) found.checked = val;
       });
@@ -223,8 +223,8 @@ watch(
   (val) => {
     if (props.static && val?.length) {
       val.forEach((row) => {
-        const found: any = valueModel.value.find(
-          (item: any) => item._id === row._id || item.id === row.id,
+        const found: any = valueModel.value.find((item: any) =>
+          item._id ? item._id === row._id : item.id === row.id,
         );
         if (found) found.checked = row.checked;
       });
