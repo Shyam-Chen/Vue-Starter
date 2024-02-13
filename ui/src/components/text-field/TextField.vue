@@ -1,10 +1,10 @@
 <script lang="ts" setup>
 import type { InputHTMLAttributes } from 'vue';
 import { watch } from 'vue';
-import uniqueId from 'lodash/uniqueId';
+
+import FormControl from '../form-control/FormControl.vue';
 
 interface Props extends /* @vue-ignore */ InputHTMLAttributes {
-  id?: string;
   label?: string;
   type?: string;
   clearable?: boolean;
@@ -12,6 +12,7 @@ interface Props extends /* @vue-ignore */ InputHTMLAttributes {
   required?: boolean;
   pattern?: string;
   invalid?: boolean | string;
+  help?: string;
   prepend?: string;
   append?: string;
 }
@@ -29,8 +30,6 @@ const emit = defineEmits<{
   (evt: 'prepend'): void;
   (evt: 'append'): void;
 }>();
-
-const uid = uniqueId('uid-');
 
 watch(
   () => valueModel.value,
@@ -58,56 +57,44 @@ function onClear() {
 </script>
 
 <template>
-  <div class="TextField" :class="[disabled ? 'opacity-60' : '']">
-    <label :for="id || uid" class="TextField-Label">
-      <template v-if="label">{{ label }}</template>
-      <span v-if="required" class="text-red-500">*</span>
+  <FormControl :label="label" :required="required" :invalid="invalid" :help="help">
+    <template #label>
       <slot></slot>
-    </label>
+    </template>
 
-    <div class="relative">
-      <div v-if="prepend" class="TextField-Prepend" @click.stop="emit('prepend')">
-        <div :class="prepend" class="w-5 h-5"></div>
+    <template #default="{ uid }">
+      <div class="relative w-full">
+        <div v-if="prepend" class="TextField-Prepend" @click.stop="emit('prepend')">
+          <div :class="prepend" class="w-5 h-5"></div>
+        </div>
+
+        <input
+          :id="uid"
+          v-model="valueModel"
+          v-bind="$attrs"
+          :type="type ? type : 'text'"
+          :disabled="disabled"
+          autocomplete="off"
+          class="TextField-Input"
+          :class="{ invalid, disabled, prepend, append, clearable }"
+        />
+
+        <div v-if="append" class="TextField-Append" @click.stop="emit('append')">
+          <div :class="append" class="w-5 h-5"></div>
+        </div>
+
+        <div
+          v-if="clearable && valueModel"
+          class="i-material-symbols-close-small-rounded TextField-Clear"
+          :class="{ prepend, append }"
+          @click.stop="onClear"
+        ></div>
       </div>
-
-      <input
-        :id="id || uid"
-        v-model="valueModel"
-        v-bind="$attrs"
-        :type="type ? type : 'text'"
-        :disabled="disabled"
-        autocomplete="off"
-        class="TextField-Input"
-        :class="{ invalid, disabled, prepend, append, clearable }"
-      />
-
-      <div v-if="append" class="TextField-Append" @click.stop="emit('append')">
-        <div :class="append" class="w-5 h-5"></div>
-      </div>
-
-      <div
-        v-if="clearable && valueModel"
-        class="i-material-symbols-close-small-rounded TextField-Clear"
-        :class="{ prepend, append }"
-        @click.stop="onClear"
-      ></div>
-    </div>
-
-    <div v-if="invalid && typeof invalid === 'string'" class="text-red-500 text-xs mt-1">
-      {{ invalid }}
-    </div>
-  </div>
+    </template>
+  </FormControl>
 </template>
 
 <style lang="scss" scoped>
-.TextField {
-  @apply flex flex-col w-full;
-}
-
-.TextField-Label {
-  @apply flex items-center mb-2 text-sm font-bold empty:hidden;
-}
-
 .TextField-Prepend {
   @apply absolute start-2 top-1/2 z-1 w-5 h-5 -translate-y-1/2;
 }
@@ -124,7 +111,7 @@ function onClear() {
   }
 
   &.disabled {
-    @apply cursor-not-allowed;
+    @apply cursor-not-allowed opacity-60;
   }
 
   &.prepend {

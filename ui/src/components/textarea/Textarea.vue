@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import type { TextareaHTMLAttributes } from 'vue';
-import { computed } from 'vue';
-import uniqueId from 'lodash/uniqueId';
+
+import FormControl from '../form-control/FormControl.vue';
 
 interface Props extends /* @vue-ignore */ TextareaHTMLAttributes {
   label?: string;
@@ -11,69 +11,46 @@ interface Props extends /* @vue-ignore */ TextareaHTMLAttributes {
   readonly?: boolean;
   rows?: string;
   invalid?: boolean | string;
+  help?: string;
 }
 
 defineOptions({
   inheritAttrs: false,
 });
 
-const props = defineProps<Props>();
+const valueModel = defineModel<string>('value');
 
-const emit = defineEmits<{
-  (evt: 'update:value', val: string): void;
-}>();
-
-const uid = uniqueId('uid-');
-
-const valueModel = computed({
-  get: () => props.value || '',
-  set: (val) => emit('update:value', val),
-});
+defineProps<Props>();
 </script>
 
 <template>
-  <div class="Textarea" :class="[disabled ? 'opacity-60' : '']">
-    <label :for="uid" class="Textarea-Label">
-      <template v-if="label">{{ label }}</template>
-      <span v-if="required" class="text-red-500">*</span>
+  <FormControl :label="label" :required="required" :invalid="invalid" :help="help">
+    <template #label>
       <slot></slot>
-    </label>
+    </template>
 
-    <div v-if="readonly">
-      <textarea :id="uid" readonly class="hidden"></textarea>
-
-      <div v-for="(item, index) in valueModel?.split('\n')" :key="index">
-        {{ item }}
+    <template #default="{ uid }">
+      <div v-if="readonly">
+        <textarea :id="uid" readonly class="hidden"></textarea>
+        <div v-for="(item, index) in valueModel?.split('\n')" :key="index">{{ item }}</div>
       </div>
-    </div>
 
-    <textarea
-      v-else
-      :id="uid"
-      v-model="valueModel"
-      v-bind="$attrs"
-      :disabled="disabled"
-      :rows="rows ? rows : '5'"
-      wrap="hard"
-      class="Textarea-Input"
-      :class="{ disabled, invalid }"
-    ></textarea>
-
-    <div v-if="invalid && typeof invalid === 'string'" class="text-red-500 text-xs mt-1">
-      {{ invalid }}
-    </div>
-  </div>
+      <textarea
+        v-else
+        :id="uid"
+        v-model="valueModel"
+        v-bind="$attrs"
+        :disabled="disabled"
+        :rows="rows ? rows : '5'"
+        wrap="hard"
+        class="Textarea-Input"
+        :class="{ disabled, invalid }"
+      ></textarea>
+    </template>
+  </FormControl>
 </template>
 
 <style lang="scss" scoped>
-.Textarea {
-  @apply flex flex-col w-full;
-}
-
-.Textarea-Label {
-  @apply text-sm font-bold mb-2 empty:hidden;
-}
-
 .Textarea-Input {
   @apply w-full border border-slate-400 dark:border-slate-500 rounded px-3 py-2;
   @apply bg-white dark:bg-slate-800 leading-tight;
@@ -84,7 +61,7 @@ const valueModel = computed({
   }
 
   &.disabled {
-    @apply cursor-not-allowed;
+    @apply cursor-not-allowed opacity-60;
   }
 
   &.invalid {

@@ -1,31 +1,29 @@
 <script lang="ts" setup>
-import { ref, computed, reactive, watch, toRef } from 'vue';
+import { ref, reactive, watch, toRef } from 'vue';
 import { vOnClickOutside } from '@vueuse/components';
-import uniqueId from 'lodash/uniqueId';
 
+import FormControl from '../form-control/FormControl.vue';
 import Chip from '../chip/Chip.vue';
 
 defineOptions({
   inheritAttrs: false,
 });
 
-const props = defineProps<{
-  value?: string[];
+const valueModel = defineModel<string[]>('value', { default: [] });
+
+defineProps<{
+  label?: string;
+  required?: boolean;
+  invalid?: boolean | string;
+  help?: string;
   placeholder?: string;
   disabled?: boolean;
 }>();
 
 const emit = defineEmits<{
-  (evt: 'update:value', val: string[]): void;
   (evt: 'input', val: string): void;
 }>();
 
-const valueModel = computed({
-  get: () => props.value || [],
-  set: (val) => emit('update:value', val),
-});
-
-const uid = uniqueId('uid-');
 const input = ref<HTMLInputElement>();
 
 const flux = reactive({
@@ -80,42 +78,45 @@ defineExpose({
 </script>
 
 <template>
-  <div
-    v-on-click-outside="flux.onBlur"
-    class="ChipField"
-    :class="[
-      value?.length ? 'py-1.5' : 'py-2',
-      {
-        focused: flux.focused,
-        disabled,
-      },
-    ]"
-    @click="flux.onFocus"
-  >
-    <Chip
-      v-for="(val, idx) in value"
-      :key="val"
-      closable
-      :disabled="disabled"
-      @close="flux.onClose(idx)"
+  <FormControl v-slot="{ uid }" :label="label" :required="required" :invalid="invalid" :help="help">
+    <div
+      v-on-click-outside="flux.onBlur"
+      class="ChipField"
+      :class="[
+        value?.length ? 'py-1.5' : 'py-2',
+        {
+          focused: flux.focused,
+          invalid,
+          disabled,
+        },
+      ]"
+      @click="flux.onFocus"
     >
-      {{ val }}
-    </Chip>
+      <Chip
+        v-for="(val, idx) in value"
+        :key="val"
+        closable
+        :disabled="disabled"
+        @close="flux.onClose(idx)"
+      >
+        {{ val }}
+      </Chip>
 
-    <input
-      :id="uid"
-      ref="input"
-      v-model="flux.text"
-      v-bind="$attrs"
-      class="outline-none w-fit bg-inherit"
-      :class="{ 'cursor-not-allowed': disabled }"
-      :placeholder="placeholder"
-      :disabled="disabled"
-      @input.stop="emit('input', flux.text)"
-      @keyup.enter="flux.onEnter"
-      @keyup.delete="flux.onDelete"
-    />
-  </div>
+      <input
+        :id="uid"
+        ref="input"
+        v-model="flux.text"
+        v-bind="$attrs"
+        class="outline-none w-fit bg-inherit"
+        :class="{ 'cursor-not-allowed': disabled }"
+        :placeholder="placeholder"
+        :disabled="disabled"
+        @input.stop="emit('input', flux.text)"
+        @keyup.enter="flux.onEnter"
+        @keyup.delete="flux.onDelete"
+      />
+    </div>
+  </FormControl>
 </template>
 
 <style lang="scss" scoped>
@@ -124,6 +125,11 @@ defineExpose({
 
   &.focused {
     @apply ring-2 ring-primary-500/50 border-primary-400;
+  }
+
+  &.invalid {
+    @apply border-red-500 dark:border-red-500;
+    @apply focus:ring-red-500/40 focus:border-red-500;
   }
 
   &.disabled {
