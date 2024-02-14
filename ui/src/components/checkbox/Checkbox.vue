@@ -3,7 +3,7 @@ import type { InputHTMLAttributes } from 'vue';
 import { computed } from 'vue';
 import uniqueId from 'lodash/uniqueId';
 
-export interface Props extends /* @vue-ignore */ InputHTMLAttributes {
+interface Props extends /* @vue-ignore */ InputHTMLAttributes {
   value?: boolean;
   checked?: boolean;
   indeterminate?: boolean;

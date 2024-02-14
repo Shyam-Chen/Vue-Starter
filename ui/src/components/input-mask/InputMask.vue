@@ -1,35 +1,19 @@
 <script lang="ts" setup>
-import { computed } from 'vue';
 import { IMaskDirective as vImask } from 'vue-imask';
-import uniqueId from 'lodash/uniqueId';
 
-const props = defineProps<{
-  id?: string;
-  masked?: string;
-  unmasked?: string | number;
+import FormControl from '../form-control/FormControl.vue';
+
+const maskedModel = defineModel<string>('masked');
+const unmaskedModel = defineModel<string | number>('unmasked');
+
+defineProps<{
   mask?: object;
   label?: string;
   required?: boolean;
   disabled?: boolean;
   invalid?: boolean | string;
+  help?: string;
 }>();
-
-const emit = defineEmits<{
-  (evt: 'update:masked', val?: string): void;
-  (evt: 'update:unmasked', val?: string | number): void;
-}>();
-
-const maskedModel = computed({
-  get: () => props.masked,
-  set: (val) => emit('update:masked', val),
-});
-
-const unmaskedModel = computed({
-  get: () => props.unmasked,
-  set: (val) => emit('update:unmasked', val),
-});
-
-const uid = uniqueId('uid-');
 
 function onAccept(evt: CustomEvent) {
   const maskRef = evt.detail;
@@ -39,43 +23,23 @@ function onAccept(evt: CustomEvent) {
 </script>
 
 <template>
-  <div class="InputMask" :class="[disabled ? 'opacity-60' : '']">
-    <label :for="id || uid" class="InputMask-Label">
-      <template v-if="label">{{ label }}</template>
-      <span v-if="required" class="text-red-500">*</span>
-      <slot></slot>
-    </label>
-
-    <div class="flex items-center w-full">
-      <input
-        :id="id || uid"
-        v-imask="mask"
-        v-bind="$attrs"
-        :value="masked"
-        :disabled="disabled"
-        class="InputMask-Input"
-        :class="{ invalid, disabled }"
-        type="text"
-        autocomplete="off"
-        @accept="onAccept"
-      />
-    </div>
-
-    <div v-if="invalid && typeof invalid === 'string'" class="text-red-500 text-xs mt-1">
-      {{ invalid }}
-    </div>
-  </div>
+  <FormControl v-slot="{ uid }" :label="label" :required="required" :invalid="invalid" :help="help">
+    <input
+      :id="uid"
+      v-imask="mask"
+      v-bind="$attrs"
+      :value="masked"
+      :disabled="disabled"
+      class="InputMask-Input"
+      :class="{ invalid, disabled }"
+      type="text"
+      autocomplete="off"
+      @accept="onAccept"
+    />
+  </FormControl>
 </template>
 
 <style lang="scss" scoped>
-.InputMask {
-  @apply flex flex-col w-full;
-}
-
-.InputMask-Label {
-  @apply flex items-center mb-2 text-sm font-bold empty:hidden;
-}
-
 .InputMask-Input {
   @apply w-full border border-slate-400 rounded px-3 py-2 z-2;
   @apply bg-white dark:bg-slate-800 leading-tight;

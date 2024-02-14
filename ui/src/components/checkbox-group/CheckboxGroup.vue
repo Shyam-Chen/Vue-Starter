@@ -1,35 +1,29 @@
 <script lang="ts" setup>
 import type { InputHTMLAttributes } from 'vue';
-import { computed } from 'vue';
-import uniqueId from 'lodash/uniqueId';
 
+import FormControl from '../form-control/FormControl.vue';
 import Checkbox from '../checkbox/Checkbox.vue';
 
-export interface Props extends /* @vue-ignore */ InputHTMLAttributes {
+interface Props extends /* @vue-ignore */ InputHTMLAttributes {
   label?: string;
   value?: unknown[];
   options?: string[] | Array<{ label: string; value: unknown }>;
   required?: boolean;
   invalid?: boolean | string;
+  help?: string;
 }
 
 defineOptions({
   inheritAttrs: false,
 });
 
-const props = defineProps<Props>();
+const valueModel = defineModel<unknown[]>('value', { default: [] });
 
-const emit = defineEmits<{
-  (evt: 'update:value', val: unknown[]): void;
+defineProps<Props>();
+
+defineEmits<{
   (evt: 'change', val: unknown[]): void;
 }>();
-
-const uid = uniqueId('uid-');
-
-const valueModel = computed({
-  get: () => props.value || [],
-  set: (val) => emit('update:value', val),
-});
 
 function onChange(val: unknown) {
   const idx = valueModel.value.findIndex((item) => item === val);
@@ -45,18 +39,12 @@ function onChange(val: unknown) {
 </script>
 
 <template>
-  <div class="CheckboxGroup">
-    <div class="CheckboxGroup-Label">
-      <template v-if="label">{{ label }}</template>
-      <span v-if="required" class="text-red-500">*</span>
-      <slot></slot>
-    </div>
-
+  <FormControl v-slot="{ uid }" :label="label" :required="required" :invalid="invalid" :help="help">
     <div class="flex items-center gap-4">
       <Checkbox
-        v-for="(item, idx) in options"
+        v-for="(item, index) in options"
         v-bind="$attrs"
-        :key="idx"
+        :key="index"
         :name="uid"
         :value="valueModel.includes(typeof item === 'object' ? item.value : item)"
         :invalid="Boolean(invalid)"
@@ -65,19 +53,5 @@ function onChange(val: unknown) {
         {{ typeof item === 'object' ? item.label : item }}
       </Checkbox>
     </div>
-
-    <div v-if="typeof invalid === 'string' && invalid" class="text-red-500 text-xs mt-1">
-      {{ invalid }}
-    </div>
-  </div>
+  </FormControl>
 </template>
-
-<style lang="scss" scoped>
-.CheckboxGroup {
-  @apply flex flex-col;
-}
-
-.CheckboxGroup-Label {
-  @apply flex items-center text-sm font-bold mb-2 empty:hidden;
-}
-</style>

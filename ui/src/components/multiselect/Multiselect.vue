@@ -266,7 +266,7 @@ useScrollParent(
       <slot></slot>
       <span class="flex-1"></span>
       <span
-        v-if="selectedLabels"
+        v-if="selectedLabels && flux.selected?.length"
         class="Multiselect-LabelHelper"
         @click="selectedStatus = !selectedStatus"
       >

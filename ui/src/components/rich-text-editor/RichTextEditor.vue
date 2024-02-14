@@ -26,6 +26,7 @@ import TextAlign from '@tiptap/extension-text-align';
 import Image from '@tiptap/extension-image';
 import Link from '@tiptap/extension-link';
 
+import FormControl from '../form-control/FormControl.vue';
 import Divider from '../divider/Divider.vue';
 import Popover from '../popover/Popover.vue';
 
@@ -36,6 +37,8 @@ const props = withDefaults(
     label?: string;
     extension?: Extensions;
     required?: boolean;
+    invalid?: boolean | string;
+    help?: string;
     disabled?: boolean;
     viewonly?: boolean;
     class?: string;
@@ -44,6 +47,8 @@ const props = withDefaults(
     label: '',
     extension: () => [],
     required: false,
+    invalid: undefined,
+    help: '',
     disabled: false,
     viewonly: false,
     class: '',
@@ -234,14 +239,8 @@ defineExpose({
 </script>
 
 <template>
-  <div>
-    <div class="RichTextEditor-Label">
-      <template v-if="label">{{ label }}</template>
-      <span v-if="required" class="text-red-500">*</span>
-      <slot></slot>
-    </div>
-
-    <div v-if="editor" :class="[disabled ? 'opacity-60 cursor-not-allowed' : '']">
+  <FormControl :label="label" :required="required" :invalid="invalid" :help="help">
+    <div v-if="editor" class="w-full" :class="[disabled ? 'opacity-60 cursor-not-allowed' : '']">
       <div
         v-if="!viewonly"
         class="flex flex-wrap px-2 py-1 border border-b-0 border-slate-400 rounded-t"
@@ -358,14 +357,10 @@ defineExpose({
         <EditorContent :editor="editor" />
       </div>
     </div>
-  </div>
+  </FormControl>
 </template>
 
 <style lang="scss" scoped>
-.RichTextEditor-Label {
-  @apply flex items-center text-sm font-bold mb-2 empty:hidden;
-}
-
 .RichTextEditor {
   :deep(p) {
     @apply my-1 leading-tight;

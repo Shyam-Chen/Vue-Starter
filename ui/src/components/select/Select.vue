@@ -3,11 +3,11 @@ import { ref, reactive, computed, watch, watchEffect, nextTick } from 'vue';
 import { onClickOutside } from '@vueuse/core';
 import { useLocale } from 'vue-localer';
 
-import useScrollParent from '../../composables/scroll-parent/useScrollParent';
-
+import FormControl from '../form-control/FormControl.vue';
 import ProgressBar from '../progress-bar/ProgressBar.vue';
 import Fade from '../fade/Fade.vue';
 import TextField from '../text-field/TextField.vue';
+import useScrollParent from '../../composables/scroll-parent/useScrollParent';
 
 type Option = {
   label: string;
@@ -34,6 +34,7 @@ const props = withDefaults(
     loading?: boolean;
     notFoundContent?: string;
     invalid?: boolean | string;
+    help?: string;
   }>(),
   {
     label: '',
@@ -47,6 +48,7 @@ const props = withDefaults(
     loading: false,
     notFoundContent: '',
     invalid: undefined,
+    help: '',
   },
 );
 
@@ -258,14 +260,8 @@ watch(
 </script>
 
 <template>
-  <div class="Select-Wrapper" :class="{ disabled }">
-    <div class="Select-Label">
-      <template v-if="label">{{ label }}</template>
-      <span v-if="required" class="text-red-500">*</span>
-      <slot></slot>
-    </div>
-
-    <div ref="target">
+  <FormControl :label="label" :required="required" :invalid="invalid" :help="help">
+    <div ref="target" class="w-full">
       <div
         ref="selectInput"
         v-bind="$attrs"
@@ -348,26 +344,10 @@ watch(
         </div>
       </Fade>
     </div>
-
-    <div v-if="invalid && typeof invalid === 'string'" class="text-red-500 text-xs mt-1">
-      {{ invalid }}
-    </div>
-  </div>
+  </FormControl>
 </template>
 
 <style lang="scss" scoped>
-.Select-Wrapper {
-  @apply flex flex-col w-full;
-
-  &.disabled {
-    @apply opacity-60;
-  }
-}
-
-.Select-Label {
-  @apply text-sm font-bold mb-2 empty:hidden;
-}
-
 .Select-Input {
   @apply relative flex items-center w-full px-3 py-2 cursor-pointer;
   @apply border border-slate-400 bg-white dark:bg-slate-800 rounded leading-tight;
@@ -387,7 +367,7 @@ watch(
   }
 
   &.disabled {
-    @apply cursor-not-allowed focus:ring-0 focus:border-slate-400;
+    @apply cursor-not-allowed opacity-60 focus:ring-0 focus:border-slate-400;
   }
 }
 
