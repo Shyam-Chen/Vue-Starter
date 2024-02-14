@@ -3,13 +3,13 @@ import { nextTick, ref, reactive, computed, watch, watchEffect } from 'vue';
 import { useLocaler, useLocale } from 'vue-localer';
 import { onClickOutside } from '@vueuse/core';
 
-import useScrollParent from '../../composables/scroll-parent/useScrollParent';
-
+import FormControl from '../form-control/FormControl.vue';
 import Checkbox from '../checkbox/Checkbox.vue';
 import Chip from '../chip/Chip.vue';
 import TextField from '../text-field/TextField.vue';
 import ProgressBar from '../progress-bar/ProgressBar.vue';
 import Fade from '../fade/Fade.vue';
+import useScrollParent from '../../composables/scroll-parent/useScrollParent';
 
 type Option = {
   checked?: boolean;
@@ -35,6 +35,7 @@ const props = withDefaults(
     loading?: boolean;
     notFoundContent?: string;
     invalid?: boolean | string;
+    help?: string;
     selectedLabels?: boolean;
   }>(),
   {
@@ -45,6 +46,7 @@ const props = withDefaults(
     placeholder: '',
     notFoundContent: '',
     invalid: undefined,
+    help: '',
   },
 );
 
@@ -259,10 +261,8 @@ useScrollParent(
 </script>
 
 <template>
-  <div class="Multiselect-Wrapper" :class="{ disabled }">
-    <div class="Multiselect-Label">
-      <template v-if="label">{{ label }}</template>
-      <span v-if="required" class="text-red-500">*</span>
+  <FormControl :label="label" :required="required" :invalid="invalid" :help="help">
+    <template #label>
       <slot></slot>
       <span class="flex-1"></span>
       <span
@@ -280,131 +280,129 @@ useScrollParent(
           <div class="i-material-symbols-check-indeterminate-small-rounded w-4 h-4"></div>
         </template>
       </span>
-    </div>
+    </template>
 
-    <div ref="target">
-      <div
-        v-bind="$attrs"
-        ref="selectInput"
-        :tabindex="disabled ? -1 : 0"
-        class="Multiselect-Input group"
-        :class="[
-          {
-            placeholder: !flux.selected?.length,
-            focus: flux.show,
-            invalid,
-            disabled,
-            'flex items-center': selectedLabels,
-          },
-          flux.selected?.length ? (selectedLabels && !selectedStatus ? 'py-2' : 'py-1') : 'py-2',
-        ]"
-        @click="open"
-      >
-        <div v-if="!flux.selected?.length" class="flex-1">
-          {{ placeholder || locale.pleaseSelect || 'Please select' }}
-        </div>
-
-        <div v-if="flux.selected?.length && selectedLabels && !selectedStatus" class="flex-1">
-          {{
-            flux.selected.length === 1
-              ? localer.f(locale.oneItemSelected, { num: flux.selected.length }) ||
-                `1 item selected`
-              : localer.f(locale.numItemsSelected, { num: flux.selected.length }) ||
-                `${flux.selected.length} items selected`
-          }}
-        </div>
-
-        <div v-else-if="flux.selected?.length" class="flex-1 flex flex-wrap gap-1">
-          <Chip
-            v-for="item in flux.selected"
-            :key="item.value"
-            :closable="clearable || selectedStatus"
-            :disabled="disabled"
-            @close="flux.clear(item.value)"
-          >
-            {{ flux.display(item) }}
-          </Chip>
-        </div>
-
+    <template #default>
+      <div ref="target" class="w-full">
         <div
-          v-if="flux.selected?.length && clearable && !disabled"
-          class="i-fa-times-circle w-4 h-4 ml-2 invisible hover:text-slate-600 group-hover:visible"
-          @click.stop="flux.clear(null)"
-        ></div>
-
-        <div class="Multiselect-ArrowWrapper">
-          <div
-            v-if="!flux.show"
-            class="Multiselect-Arrow i-material-symbols-arrow-drop-down-rounded"
-          ></div>
-          <div v-else class="Multiselect-Arrow i-material-symbols-arrow-drop-up-rounded"></div>
-        </div>
-
-        <ProgressBar v-if="loading" class="absolute left-0 bottom-0 rounded" />
-      </div>
-
-      <Fade>
-        <div
-          v-show="flux.show"
-          ref="selectPanel"
-          class="Multiselect-Panel"
-          :class="{
-            'Multiselect-Panel-PlacementBottom': flux.direction === 'down',
-            'Multiselect-Panel-PlacementTop': flux.direction === 'up',
-          }"
+          v-bind="$attrs"
+          ref="selectInput"
+          :tabindex="disabled ? -1 : 0"
+          class="Multiselect-Input group"
+          :class="[
+            {
+              placeholder: !flux.selected?.length,
+              focus: flux.show,
+              invalid,
+              disabled,
+              'flex items-center': selectedLabels,
+            },
+            flux.selected?.length ? (selectedLabels && !selectedStatus ? 'py-2' : 'py-1') : 'py-2',
+          ]"
+          @click="open"
         >
-          <div v-if="filterable" class="Multiselect-FilterWrapper">
-            <TextField
-              ref="selectFilter"
-              v-model:value="flux.filterValue"
-              append="i-material-symbols-filter-alt-outline"
-            />
+          <div v-if="!flux.selected?.length" class="flex-1">
+            {{ placeholder || locale.pleaseSelect || 'Please select' }}
+          </div>
+
+          <div v-if="flux.selected?.length && selectedLabels && !selectedStatus" class="flex-1">
+            {{
+              flux.selected.length === 1
+                ? localer.f(locale.oneItemSelected, { num: flux.selected.length }) ||
+                  `1 item selected`
+                : localer.f(locale.numItemsSelected, { num: flux.selected.length }) ||
+                  `${flux.selected.length} items selected`
+            }}
+          </div>
+
+          <div v-else-if="flux.selected?.length" class="flex-1 flex flex-wrap gap-1">
+            <Chip
+              v-for="item in flux.selected"
+              :key="item.value"
+              :closable="clearable || selectedStatus"
+              :disabled="disabled"
+              @close="flux.clear(item.value)"
+            >
+              {{ flux.display(item) }}
+            </Chip>
           </div>
 
           <div
-            v-if="flux.options?.length"
-            class="cursor-pointer bg-slate-200 dark:bg-slate-600 rounded"
-            @click.stop="flux.onSelectAll"
-          >
-            <div class="flex items-center px-5">
-              <Checkbox
-                :checked="flux.selectAll"
-                :indeterminate="flux.selectAllIndeterminate"
-                @change.stop="flux.onSelectAll"
-              />
-              <span class="ml-2">All</span>
-            </div>
-          </div>
+            v-if="flux.selected?.length && clearable && !disabled"
+            class="i-fa-times-circle w-4 h-4 ml-2 invisible hover:text-slate-600 group-hover:visible"
+            @click.stop="flux.clear(null)"
+          ></div>
 
-          <div ref="selectList" class="Multiselect-List">
+          <div class="Multiselect-ArrowWrapper">
             <div
-              v-for="(item, index) in flux.options"
-              :ref="(el) => (selectItem[index] = el)"
-              :key="item.value"
-              class="Multiselect-Item"
-              :class="{ 'Multiselect-Item-Active': item.checked }"
-              @click.stop="flux.onSelect(item.value, item)"
-            >
-              <Checkbox
-                :checked="item.checked"
-                class="align-self-start"
-                @change.stop="flux.onSelect(item.value, item)"
+              v-if="!flux.show"
+              class="Multiselect-Arrow i-material-symbols-arrow-drop-down-rounded"
+            ></div>
+            <div v-else class="Multiselect-Arrow i-material-symbols-arrow-drop-up-rounded"></div>
+          </div>
+
+          <ProgressBar v-if="loading" class="absolute left-0 bottom-0 rounded" />
+        </div>
+
+        <Fade>
+          <div
+            v-show="flux.show"
+            ref="selectPanel"
+            class="Multiselect-Panel"
+            :class="{
+              'Multiselect-Panel-PlacementBottom': flux.direction === 'down',
+              'Multiselect-Panel-PlacementTop': flux.direction === 'up',
+            }"
+          >
+            <div v-if="filterable" class="Multiselect-FilterWrapper">
+              <TextField
+                ref="selectFilter"
+                v-model:value="flux.filterValue"
+                append="i-material-symbols-filter-alt-outline"
               />
-              <span class="ml-2">{{ flux.display(item) }}</span>
+            </div>
+
+            <div
+              v-if="flux.options?.length"
+              class="cursor-pointer bg-slate-200 dark:bg-slate-600 rounded"
+              @click.stop="flux.onSelectAll"
+            >
+              <div class="flex items-center px-5">
+                <Checkbox
+                  :checked="flux.selectAll"
+                  :indeterminate="flux.selectAllIndeterminate"
+                  @change.stop="flux.onSelectAll"
+                />
+                <span class="ml-2">All</span>
+              </div>
+            </div>
+
+            <div ref="selectList" class="Multiselect-List">
+              <div
+                v-for="(item, index) in flux.options"
+                :ref="(el) => (selectItem[index] = el)"
+                :key="item.value"
+                class="Multiselect-Item"
+                :class="{ 'Multiselect-Item-Active': item.checked }"
+                @click.stop="flux.onSelect(item.value, item)"
+              >
+                <Checkbox
+                  :checked="item.checked"
+                  class="align-self-start"
+                  @change.stop="flux.onSelect(item.value, item)"
+                />
+                <span class="ml-2">{{ flux.display(item) }}</span>
+              </div>
+            </div>
+
+            <div v-if="flux.options.length === 0" class="p-4">
+              {{ notFoundContent || locale.notFoundContent || 'No results found' }}
             </div>
           </div>
-
-          <div v-if="flux.options.length === 0" class="p-4">
-            {{ notFoundContent || locale.notFoundContent || 'No results found' }}
-          </div>
-        </div>
-      </Fade>
-    </div>
-
-    <div v-if="invalid && typeof invalid === 'string'" class="text-red-500 text-xs mt-1">
-      {{ invalid }}
-    </div>
-  </div>
+        </Fade>
+      </div>
+    </template>
+  </FormControl>
 </template>
 
 <style lang="scss" scoped>
@@ -438,8 +436,8 @@ useScrollParent(
   }
 
   &.invalid {
-    @apply border-red-500 dark:border-red-500;
-    @apply ring-red-500/50 border-red-500;
+    @apply !border-red-500 !dark:border-red-500;
+    @apply !ring-red-500/50 !border-red-500;
   }
 
   &.disabled {

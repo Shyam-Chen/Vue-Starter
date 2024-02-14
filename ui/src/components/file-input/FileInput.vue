@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { reactive, toRef } from 'vue';
-import uniqueId from 'lodash/uniqueId';
 
+import FormControl from '../form-control/FormControl.vue';
 import Chip from '../chip/Chip.vue';
 
 const props = defineProps<{
@@ -10,13 +10,12 @@ const props = defineProps<{
   placeholder?: string;
   disabled?: boolean;
   invalid?: boolean | string;
+  help?: string;
 }>();
 
 const emit = defineEmits<{
   (evt: 'change', val: Event): void;
 }>();
-
-const uid = uniqueId('uid-');
 
 const placeholderRef = toRef(props, 'placeholder', 'Choose a file');
 
@@ -32,13 +31,7 @@ const flux = reactive({
 </script>
 
 <template>
-  <div class="flex flex-col w-full">
-    <div class="FileInput-Label">
-      <template v-if="label">{{ label }}</template>
-      <span v-if="required" class="text-red-500">*</span>
-      <slot></slot>
-    </div>
-
+  <FormControl v-slot="{ uid }" :label="label" :required="required" :invalid="invalid" :help="help">
     <label
       :for="uid"
       class="FileInput-Input"
@@ -60,29 +53,20 @@ const flux = reactive({
       </div>
     </label>
 
-    <div v-if="invalid && typeof invalid === 'string'" class="text-red-500 text-xs mt-1">
-      {{ invalid }}
-    </div>
-  </div>
-
-  <input
-    :id="uid"
-    ref="input"
-    v-bind="$attrs"
-    type="file"
-    :disabled="disabled"
-    class="hidden"
-    @change="flux.onChange"
-    @click="($refs.input as HTMLInputElement).value = ''"
-  />
+    <input
+      :id="uid"
+      ref="input"
+      v-bind="$attrs"
+      type="file"
+      :disabled="disabled"
+      class="hidden"
+      @change="flux.onChange"
+      @click="($refs.input as HTMLInputElement).value = ''"
+    />
+  </FormControl>
 </template>
 
 <style lang="scss" scoped>
-.FileInput-Label {
-  @apply empty:hidden flex items-center;
-  @apply text-sm font-bold mb-2;
-}
-
 .FileInput-Input {
   @apply w-full flex justify-between items-center border rounded px-3 py-2 leading-tight;
   @apply bg-white dark:bg-slate-800 border-slate-500 dark:border-slate-400;

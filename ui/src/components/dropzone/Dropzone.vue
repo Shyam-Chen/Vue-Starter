@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
 
+import FormControl from '../form-control/FormControl.vue';
 import useNotification from '../../composables/notification/useNotification';
 
 defineOptions({
@@ -11,6 +12,7 @@ const props = defineProps<{
   label?: string;
   required?: boolean;
   invalid?: boolean | string;
+  help?: string;
   title?: string;
   limit?: (file: File) => string;
 }>();
@@ -80,13 +82,7 @@ function onDragLeave() {
 </script>
 
 <template>
-  <div>
-    <div class="Dropzone-Label">
-      <template v-if="label">{{ label }}</template>
-      <span v-if="required" class="text-red-500">*</span>
-      <slot></slot>
-    </div>
-
+  <FormControl :label="label" :required="required" :invalid="invalid" :help="help">
     <label
       v-bind="$attrs"
       class="Dropzone"
@@ -107,19 +103,10 @@ function onDragLeave() {
         <div class="text-xl">{{ title || 'Click or drag to upload image' }}</div>
       </slot>
     </label>
-
-    <div v-if="invalid" class="text-red-500 text-sm mt-1">
-      {{ invalid }}
-    </div>
-  </div>
+  </FormControl>
 </template>
 
 <style lang="scss" scoped>
-.Dropzone-Label {
-  @apply empty:hidden flex items-center;
-  @apply text-sm font-bold mb-2;
-}
-
 .Dropzone {
   @apply w-full min-h-64 flex flex-col justify-center items-center cursor-pointer;
   @apply border-4 border-dashed rounded border-slate-400/75 hover:border-slate-400 bg-white dark:bg-slate-800 hover:bg-slate-200/75 dark:hover:bg-slate-700/75;

@@ -1,51 +1,38 @@
 <script lang="ts" setup>
-import { computed } from 'vue';
-import uniqueId from 'lodash/uniqueId';
+import FormControl from '../form-control/FormControl.vue';
 
 defineOptions({
   inheritAttrs: false,
 });
 
-const props = defineProps<{
+const valueModel = defineModel<unknown>('value');
+
+defineProps<{
   label?: string;
-  value?: unknown;
   options?: string[] | { label: string; value: unknown; [key: string]: unknown }[];
   disabled?: boolean;
   required?: boolean;
   invalid?: boolean | string;
+  help?: string;
 }>();
 
 const emit = defineEmits<{
-  (evt: 'update:value', val: unknown): void;
   (evt: 'change', val: unknown): void;
 }>();
-
-const uid = uniqueId('uid-');
-
-const valueModel = computed({
-  get: () => props.value,
-  set: (val) => emit('update:value', val),
-});
 </script>
 
 <template>
-  <div class="radio-group">
-    <div class="text-sm mb-2 font-bold empty:hidden">
-      <template v-if="label">{{ label }}</template>
-      <span v-if="required" class="text-red-500">*</span>
-      <slot></slot>
-    </div>
-
-    <div class="flex items-center h-38px space-x-4">
+  <FormControl v-slot="{ uid }" :label="label" :required="required" :invalid="invalid" :help="help">
+    <div class="flex items-center gap-4">
       <label
-        v-for="(item, idx) in options"
-        :key="idx"
+        v-for="(item, index) in options"
+        :key="index"
         class="flex items-center"
         :class="[disabled ? 'cursor-not-allowed opacity-60' : 'cursor-pointer']"
       >
         <div class="relative flex justify-center items-center">
           <input
-            :id="`${uid}-${idx}`"
+            :id="`${uid}-${index}`"
             v-model="valueModel"
             v-bind="$attrs"
             type="radio"
@@ -70,18 +57,10 @@ const valueModel = computed({
         </div>
       </label>
     </div>
-
-    <div v-if="invalid && typeof invalid === 'string'" class="text-red-500 text-xs mt-1">
-      {{ invalid }}
-    </div>
-  </div>
+  </FormControl>
 </template>
 
 <style lang="scss" scoped>
-.radio-group {
-  @apply flex flex-col;
-}
-
 .radio {
   @apply appearance-none w-5 h-5 rounded-full bg-white border border-slate-400 dark:border-slate-600;
   @apply focus:outline-none focus:ring-2 focus:ring-primary-400 focus:shadow-lg;
