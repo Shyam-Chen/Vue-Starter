@@ -238,6 +238,11 @@ watch(
 
       if (checked) flux.selecteAll = true;
       if (unchecked) flux.selecteAll = false;
+
+      emit(
+        'update:selected',
+        val.filter((item) => item.checked),
+      );
     }
   },
   { deep: true },
