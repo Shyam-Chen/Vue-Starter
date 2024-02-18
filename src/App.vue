@@ -19,6 +19,7 @@ watch(
 
       if (_language) {
         lang.value = _language;
+        document.documentElement.lang = _language;
         return;
       }
 
@@ -26,6 +27,7 @@ watch(
 
       if (found) {
         lang.value = found;
+        document.documentElement.lang = found;
         return;
       }
     }

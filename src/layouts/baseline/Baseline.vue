@@ -126,6 +126,7 @@ const languageOptions = [
 
 function changeLang(lang: string) {
   localer.lang.value = lang;
+  document.documentElement.lang = lang;
   localStorage.setItem('language', lang);
 }
 </script>
