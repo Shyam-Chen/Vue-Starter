@@ -14,7 +14,7 @@ import {
 } from '@x/ui';
 import { useValdnLocale } from '@x/ui';
 import {
-  optional,
+  nullish,
   object,
   string,
   number,
@@ -49,19 +49,19 @@ const state = reactive({
 const schema = useValibotSchema(
   computed(() =>
     object({
-      username: optional(string([minLength(1, valdnLocale.value.required)]), ''),
-      email: optional(
+      username: nullish(string([minLength(1, valdnLocale.value.required)]), ''),
+      email: nullish(
         string([minLength(1, valdnLocale.value.required), email(valdnLocale.value.email)]),
         '',
       ),
-      password: optional(
+      password: nullish(
         string([
           minLength(1, valdnLocale.value.required),
           minLength(8, localer.f(valdnLocale.value.minLength, [8])),
         ]),
         '',
       ),
-      confirmPassword: optional(
+      confirmPassword: nullish(
         string([
           minLength(1, valdnLocale.value.required),
           custom(
@@ -71,10 +71,10 @@ const schema = useValibotSchema(
         ]),
         '',
       ),
-      pronouns: optional(number([minValue(1, valdnLocale.value.required)]), 0),
-      urlPasteBehavior: optional(number([minValue(1, valdnLocale.value.required)]), 0),
-      birthday: optional(string([minLength(1, valdnLocale.value.required)]), ''),
-      bio: optional(string([minLength(1, valdnLocale.value.required)]), ''),
+      pronouns: nullish(number([minValue(1, valdnLocale.value.required)]), 0),
+      urlPasteBehavior: nullish(number([minValue(1, valdnLocale.value.required)]), 0),
+      birthday: nullish(string([minLength(1, valdnLocale.value.required)]), ''),
+      bio: nullish(string([minLength(1, valdnLocale.value.required)]), ''),
       agreed: literal(true, valdnLocale.value.required),
     }),
   ),
