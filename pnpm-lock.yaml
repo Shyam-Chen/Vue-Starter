@@ -24,8 +24,8 @@ importers:
         specifier: ^3.3.1
         version: 3.3.1
       echarts:
-        specifier: ^5.4.3
-        version: 5.4.3
+        specifier: ^5.5.0
+        version: 5.5.0
       exceljs:
         specifier: ^4.4.0
         version: 4.4.0
@@ -39,8 +39,8 @@ importers:
         specifier: ^3.4.1
         version: 3.4.1
       valibot:
-        specifier: ^0.28.1
-        version: 0.28.1
+        specifier: ^0.29.0
+        version: 0.29.0
       vue:
         specifier: ^3.4.19
         version: 3.4.19(typescript@5.3.3)
@@ -67,8 +67,8 @@ importers:
         version: 4.1.0(vue@3.4.19)
     devDependencies:
       '@iconify/json':
-        specifier: ^2.2.183
-        version: 2.2.183
+        specifier: ^2.2.184
+        version: 2.2.184
       '@types/lodash':
         specifier: ^4.14.202
         version: 4.14.202
@@ -251,8 +251,8 @@ importers:
         specifier: ^3.3.1
         version: 3.3.1
       echarts:
-        specifier: ^5.4.3
-        version: 5.4.3
+        specifier: ^5.5.0
+        version: 5.5.0
       lodash:
         specifier: ^4.17.21
         version: 4.17.21
@@ -260,8 +260,8 @@ importers:
         specifier: ^1.3.3
         version: 1.3.3
       shiki:
-        specifier: ^1.1.3
-        version: 1.1.3
+        specifier: ^1.1.5
+        version: 1.1.5
       vue:
         specifier: ^3.4.19
         version: 3.4.19(typescript@5.3.3)
@@ -269,8 +269,8 @@ importers:
         specifier: ^1.8.27
         version: 1.8.27
       vue-echarts:
-        specifier: ^6.6.8
-        version: 6.6.8(echarts@5.4.3)(vue@3.4.19)
+        specifier: ^6.6.9
+        version: 6.6.9(echarts@5.5.0)(vue@3.4.19)
       vue-imask:
         specifier: ^7.4.0
         version: 7.4.0(vue@3.4.19)
@@ -288,8 +288,8 @@ importers:
         version: 4.1.0(vue@3.4.19)
     devDependencies:
       '@iconify/json':
-        specifier: ^2.2.183
-        version: 2.2.183
+        specifier: ^2.2.184
+        version: 2.2.184
       '@unocss/postcss':
         specifier: ^0.58.5
         version: 0.58.5(postcss@8.4.35)
@@ -1056,8 +1056,8 @@ packages:
     resolution: {integrity: sha512-dvuCeX5fC9dXgJn9t+X5atfmgQAzUOWqS1254Gh0m6i8wKd10ebXkfNKiRK+1GWi/yTvvLDHpoxLr0xxxeslWw==}
     dev: true
 
-  /@iconify/json@2.2.183:
-    resolution: {integrity: sha512-LvlU0SWHlDGEmX9XZpK5lVVANRQNdToF2Vd0CgV+q6ntEYtza2QEvKHY318m+9sCEMm5CH6RkaSOtWTguAENjQ==}
+  /@iconify/json@2.2.184:
+    resolution: {integrity: sha512-GIIbPLdSPyVdKbH7R6AgHZX9Bjztj7spIWyNZjl6GalaFe0vzYx/IFQg4O2DPDS/4DA+j9zoVlNPX3quK97LUA==}
     dependencies:
       '@iconify/types': 2.0.0
       pathe: 1.1.2
@@ -1406,8 +1406,8 @@ packages:
       string-argv: 0.3.2
     dev: true
 
-  /@shikijs/core@1.1.3:
-    resolution: {integrity: sha512-1QWSvWcPbvZXsDxB1F7ejW+Kuxp3z/JHs944hp/f8BYOlFd5gplzseFIkE/GTu/qytFef3zNME4qw1oHbQ0j2A==}
+  /@shikijs/core@1.1.5:
+    resolution: {integrity: sha512-cKc5vGQ4p/4sjx48BHIO7CvLaN32vqpz5Wh7v2n+U1EezGdfX4Wms7khBctKz3iCg9yYq4sfGUc2t+JWj6EUsw==}
     dev: false
 
   /@sinclair/typebox@0.27.8:
@@ -2098,7 +2098,7 @@ packages:
       istanbul-lib-coverage: 3.2.2
       istanbul-lib-report: 3.0.1
       istanbul-lib-source-maps: 4.0.1
-      istanbul-reports: 3.1.6
+      istanbul-reports: 3.1.7
       magic-string: 0.30.7
       magicast: 0.3.3
       picocolors: 1.0.0
@@ -2982,11 +2982,11 @@ packages:
   /eastasianwidth@0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
 
-  /echarts@5.4.3:
-    resolution: {integrity: sha512-mYKxLxhzy6zyTi/FaEbJMOZU1ULGEQHaeIeuMR5L+JnJTpz+YR03mnnpBhbR4+UYJAgiXgpyTVLffPAjOTLkZA==}
+  /echarts@5.5.0:
+    resolution: {integrity: sha512-rNYnNCzqDAPCr4m/fqyUFv7fD9qIsd50S6GDFgO1DxZhncCsNsG7IfUlAlvZe5oSEQxtsjnHiUuppzccry93Xw==}
     dependencies:
       tslib: 2.3.0
-      zrender: 5.4.4
+      zrender: 5.5.0
     dev: false
 
   /editorconfig@1.0.4:
@@ -3795,8 +3795,8 @@ packages:
       - supports-color
     dev: true
 
-  /istanbul-reports@3.1.6:
-    resolution: {integrity: sha512-TLgnMkKg3iTDsQ9PbPTdpfAK2DzjF9mqUG7RMgcQl8oFjad8ob4laGxv5XV5U9MAfx8D6tSJiUyuAwzLicaxlg==}
+  /istanbul-reports@3.1.7:
+    resolution: {integrity: sha512-BewmUXImeuRk2YY0PVbxgKAysvhRPUQE0h5QRM++nVWyubKGV0l8qQ5op8+B2DOmwSe63Jivj0BjkPQVf8fP5g==}
     engines: {node: '>=8'}
     dependencies:
       html-escaper: 2.0.2
@@ -5037,10 +5037,10 @@ packages:
     resolution: {integrity: sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==}
     engines: {node: '>=8'}
 
-  /shiki@1.1.3:
-    resolution: {integrity: sha512-k/B4UvtWmGcHMLp6JnQminlex3Go5MHKXEiormmzTJECAiSQiwSon6USuwTyto8EMUQc9aYRJ7HojkfVLbBk+g==}
+  /shiki@1.1.5:
+    resolution: {integrity: sha512-754GuKIwkUdT810Xm8btuyNQPL+q3PqOkwGW/VlmAWyMYp+HbvvDt69sWXO1sm5aeczBJQjmQTTMR4GkKQNQPw==}
     dependencies:
-      '@shikijs/core': 1.1.3
+      '@shikijs/core': 1.1.5
     dev: false
 
   /siginfo@2.0.0:
@@ -5508,8 +5508,8 @@ packages:
       convert-source-map: 2.0.0
     dev: true
 
-  /valibot@0.28.1:
-    resolution: {integrity: sha512-zQnjwNJuXk6362Leu0+4eFa/SMwRom3/hEvH6s1EGf3oXIPbo2WFKDra9ymnbVh3clLRvd8hw4sKF5ruI2Lyvw==}
+  /valibot@0.29.0:
+    resolution: {integrity: sha512-JhZn08lwZPhAamOCfBwBkv/btQt4KeQhekULPH8crH053zUCLSOGEF2zKExu3bFf245tsj6J1dY0ysd/jUiMIQ==}
     dev: false
 
   /validator@13.11.0:
@@ -5720,8 +5720,8 @@ packages:
       vue: 3.4.19(typescript@5.3.3)
     dev: false
 
-  /vue-echarts@6.6.8(echarts@5.4.3)(vue@3.4.19):
-    resolution: {integrity: sha512-3EGrxKGCGjHnkhudRQQ4fkK5iJxxXNQ1fXvSWA/7mzR/oV7BBSHYvC3gDbG/WIW0A/Fcx2H8k5H3NDyWgjyi8g==}
+  /vue-echarts@6.6.9(echarts@5.5.0)(vue@3.4.19):
+    resolution: {integrity: sha512-mojIq3ZvsjabeVmDthhAUDV8Kgf2Rr/X4lV4da7gEFd1fP05gcSJ0j7wa7HQkW5LlFmF2gdCJ8p4Chas6NNIQQ==}
     requiresBuild: true
     peerDependencies:
       '@vue/composition-api': ^1.0.5
@@ -5734,7 +5734,7 @@ packages:
       '@vue/runtime-core':
         optional: true
     dependencies:
-      echarts: 5.4.3
+      echarts: 5.5.0
       resize-detector: 0.3.0
       vue: 3.4.19(typescript@5.3.3)
       vue-demi: 0.13.11(vue@3.4.19)
@@ -5961,8 +5961,8 @@ packages:
       readable-stream: 3.6.2
     dev: false
 
-  /zrender@5.4.4:
-    resolution: {integrity: sha512-0VxCNJ7AGOMCWeHVyTrGzUgrK4asT4ml9PEkeGirAkKNYXYzoPJCLvmyfdoOXcjTHPs10OZVMfD1Rwg16AZyYw==}
+  /zrender@5.5.0:
+    resolution: {integrity: sha512-O3MilSi/9mwoovx77m6ROZM7sXShR/O/JIanvzTwjN3FORfLSr81PsUGd7jlaYOeds9d8tw82oP44+3YucVo+w==}
     dependencies:
       tslib: 2.3.0
     dev: false
