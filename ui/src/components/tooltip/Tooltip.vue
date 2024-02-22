@@ -56,8 +56,10 @@ const flux = reactive({
       leave-from-class="opacity-100"
       leave-to-class="opacity-0"
     >
-      <div v-if="flux.status" ref="tip" class="fixed z-101 top-0 left-0" tabindex="-1">
-        <div class="bg-slate-500 text-slate-100 px-3 py-1 rounded text-sm">{{ title }}</div>
+      <div v-if="flux.status" ref="tip" class="fixed top-0 left-0 z-101" tabindex="-1">
+        <div class="px-3 py-1 text-sm text-slate-100 normal-case text-pretty bg-slate-500 rounded">
+          {{ title }}
+        </div>
       </div>
     </Transition>
   </div>
