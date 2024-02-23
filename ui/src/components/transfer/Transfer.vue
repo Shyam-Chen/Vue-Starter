@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref, computed, watch, toRef } from 'vue';
+import { ref, computed, watch } from 'vue';
 import Draggable from 'vuedraggable';
 import remove from 'lodash/remove';
 
@@ -12,55 +12,49 @@ type Item = {
   checked?: boolean;
 };
 
-const props = defineProps<{
-  source?: Item[];
-  target?: Item[];
-}>();
+const sourceModel = defineModel<Item[]>('source', { default: [] });
+const targetModel = defineModel<Item[]>('target', { default: [] });
 
-const emit = defineEmits<{
-  (evt: 'update:source', val?: Item[]): void;
-  (evt: 'update:target', val?: Item[]): void;
-}>();
-
-const sourceRef = toRef(props, 'source', []);
 const sourceSelectAll = ref(false);
 const sourceIndeterminate = ref(false);
-const sourceChecked = computed(() => sourceRef.value.filter((item) => item.checked).length);
+const sourceChecked = computed(() => sourceModel.value.filter((item) => item.checked).length);
 
-const targetRef = toRef(props, 'target', []);
 const targetSelectAll = ref(false);
 const targetIndeterminate = ref(false);
-const targetChecked = computed(() => targetRef.value.filter((item) => item.checked).length);
+const targetChecked = computed(() => targetModel.value.filter((item) => item.checked).length);
 
 function changeList() {
-  const source = [...sourceRef.value].map((item) => ({ ...item, checked: false }));
-  const target = [...targetRef.value].map((item) => ({ ...item, checked: false }));
-  emit('update:source', source);
-  emit('update:target', target);
+  sourceModel.value = [...sourceModel.value].map((item) => ({ ...item, checked: false }));
+  targetModel.value = [...targetModel.value].map((item) => ({ ...item, checked: false }));
 }
 
 function toRight() {
-  const source = remove(sourceRef.value, (item) => item.checked);
-  const target = [...targetRef.value, ...source].map((item) => ({ ...item, checked: false }));
-  emit('update:target', target);
+  const source = remove(sourceModel.value, (item) => item.checked);
+
+  targetModel.value = [...targetModel.value, ...source].map((item) => ({
+    ...item,
+    checked: false,
+  }));
 }
 
 function toLeft() {
-  const target = remove(targetRef.value, (item) => item.checked);
-  const source = [...sourceRef.value, ...target].map((item) => ({ ...item, checked: false }));
-  emit('update:source', source);
+  const target = remove(targetModel.value, (item) => item.checked);
+
+  sourceModel.value = [...sourceModel.value, ...target].map((item) => ({
+    ...item,
+    checked: false,
+  }));
 }
 
 watch(
   () => sourceSelectAll.value,
   (checked) => {
-    const source = [...sourceRef.value].map((item) => ({ ...item, checked }));
-    emit('update:source', source);
+    sourceModel.value = [...sourceModel.value].map((item) => ({ ...item, checked }));
   },
 );
 
 watch(
-  () => sourceRef.value,
+  () => sourceModel.value,
   (val) => {
     const checked = val.every((item) => item.checked);
     const unchecked = val.every((item) => !item.checked);
@@ -76,13 +70,12 @@ watch(
 watch(
   () => targetSelectAll.value,
   (checked) => {
-    const target = [...targetRef.value].map((item) => ({ ...item, checked }));
-    emit('update:target', target);
+    targetModel.value = [...targetModel.value].map((item) => ({ ...item, checked }));
   },
 );
 
 watch(
-  () => targetRef.value,
+  () => targetModel.value,
   (val) => {
     const checked = val.every((item) => item.checked);
     const unchecked = val.every((item) => !item.checked);
@@ -97,33 +90,33 @@ watch(
 </script>
 
 <template>
-  <div class="transfer">
-    <div class="container">
-      <div class="title">
+  <div class="Transfer">
+    <div class="Transfer-Panel">
+      <div class="Transfer-PanelTitle">
         <Checkbox v-model:value="sourceSelectAll" :indeterminate="sourceIndeterminate">
           Source List
         </Checkbox>
 
-        <span class="text-sm text-slate-400">{{ sourceChecked }}/{{ sourceRef.length }}</span>
+        <span class="text-sm text-slate-400">{{ sourceChecked }}/{{ sourceModel.length }}</span>
       </div>
 
       <Draggable
-        :list="sourceRef"
+        :list="sourceModel"
         group="list"
         itemKey="name"
-        class="list"
+        class="Transfer-PanelList"
         style="height: calc(100% - 54px)"
         @change="changeList"
       >
         <template #item="{ element }">
-          <div class="item">
+          <div class="Transfer-PanelItem">
             <Checkbox v-model:value="element.checked">{{ element.name }} </Checkbox>
           </div>
         </template>
       </Draggable>
     </div>
 
-    <div class="controller">
+    <div class="Transfer-Controller">
       <Button
         :color="sourceChecked ? 'primary' : 'secondary'"
         icon="i-mdi-chevron-right"
@@ -138,25 +131,25 @@ watch(
       />
     </div>
 
-    <div class="container">
-      <div class="title">
+    <div class="Transfer-Panel">
+      <div class="Transfer-PanelTitle">
         <Checkbox v-model:value="targetSelectAll" :indeterminate="targetIndeterminate">
           Target List
         </Checkbox>
 
-        <span class="text-sm text-slate-400">{{ targetChecked }}/{{ targetRef.length }}</span>
+        <span class="text-sm text-slate-400">{{ targetChecked }}/{{ targetModel.length }}</span>
       </div>
 
       <Draggable
-        :list="targetRef"
+        :list="targetModel"
         group="list"
         itemKey="name"
-        class="list"
+        class="Transfer-PanelList"
         style="height: calc(100% - 54px)"
         @change="changeList"
       >
         <template #item="{ element }">
-          <div class="item">
+          <div class="Transfer-PanelItem">
             <Checkbox v-model:value="element.checked">{{ element.name }}</Checkbox>
           </div>
         </template>
@@ -166,28 +159,28 @@ watch(
 </template>
 
 <style lang="scss" scoped>
-.transfer {
-  @apply flex h-75 gap-3;
+.Transfer {
+  @apply flex gap-3 h-75;
 }
 
-.container {
-  @apply border border-gray-200 dark:border-gray-700 rounded-md min-w-50 overflow-auto;
+.Transfer-Panel {
+  @apply overflow-auto flex-1 rounded-md border border-gray-200 dark:border-gray-700;
 }
 
-.title {
-  @apply sticky top-0 z-1 px-3 py-2 rounded-t-md flex justify-between items-center gap-2;
-  @apply bg-gray-200 dark:bg-gray-700 text-gray-500 dark:text-gray-200;
+.Transfer-Controller {
+  @apply self-center space-y-2;
 }
 
-.list {
+.Transfer-PanelTitle {
+  @apply flex sticky top-0 z-1 gap-2 justify-between items-center px-3 py-2;
+  @apply text-gray-500 dark:text-gray-200 bg-gray-200 dark:bg-gray-700 rounded-t-md;
+}
+
+.Transfer-PanelList {
   @apply flex flex-col gap-1 bg-white dark:bg-slate-900;
 }
 
-.item {
-  @apply bg-gray-100 dark:bg-slate-800 px-3 py-1;
-}
-
-.controller {
-  @apply self-center space-y-2;
+.Transfer-PanelItem {
+  @apply px-3 py-1 bg-gray-100 dark:bg-slate-800;
 }
 </style>

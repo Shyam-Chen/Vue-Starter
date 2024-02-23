@@ -19,19 +19,11 @@ import useScrollParent from '../../composables/scroll-parent/useScrollParent';
 import TextField from '../text-field/TextField.vue';
 import Fade from '../fade/Fade.vue';
 
-const props = defineProps<{
-  value?: string;
-}>();
+const valueModel = defineModel<string>('value', { default: '' });
 
 const emit = defineEmits<{
-  (evt: 'update:value', val: string): void;
   (evt: 'change', val: string, startDate?: Date, endDate?: Date): void;
 }>();
-
-const valueModel = computed({
-  get: () => props.value || '',
-  set: (val) => emit('update:value', val),
-});
 
 const target = ref();
 const input = ref();

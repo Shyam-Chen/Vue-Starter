@@ -9,23 +9,15 @@ import useScrollParent from '../../composables/scroll-parent/useScrollParent';
 import TextField from '../text-field/TextField.vue';
 import Fade from '../fade/Fade.vue';
 
-const props = defineProps<{
-  value?: number | string;
-  disabled?: boolean;
-}>();
+const valueModel = defineModel<number | string>('value');
 
-const emit = defineEmits<{
-  (evt: 'update:value', val?: number | string): void;
+defineProps<{
+  disabled?: boolean;
 }>();
 
 const target = ref();
 const input = ref();
 const picker = ref();
-
-const valueModel = computed({
-  get: () => props.value,
-  set: (val) => emit('update:value', val),
-});
 
 const flux = reactive({
   showDatePicker: false,
@@ -85,7 +77,7 @@ const flux = reactive({
   },
   selectYear(val: number) {
     flux.showDatePicker = false;
-    emit('update:value', val);
+    valueModel.value = val;
   },
 });
 
