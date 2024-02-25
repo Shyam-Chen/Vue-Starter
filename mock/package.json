@@ -12,8 +12,8 @@
   },
   "devDependencies": {
     "process-envify": "^2.0.0",
-    "vite": "^5.1.3",
+    "vite": "^5.1.4",
     "vite-plugin-fastify": "^1.2.5",
-    "vite-plugin-fastify-routes": "^1.1.0"
+    "vite-plugin-fastify-routes": "^1.1.1"
   }
 }
