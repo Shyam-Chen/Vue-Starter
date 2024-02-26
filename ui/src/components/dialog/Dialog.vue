@@ -44,6 +44,7 @@ watch(
 
 onUnmounted(() => {
   if (defaultModel.value) {
+    document.body.style.overflow = 'auto';
     closeDialog();
   }
 });
