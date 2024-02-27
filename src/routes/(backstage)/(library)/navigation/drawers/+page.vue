@@ -37,12 +37,12 @@ const flux = reactive({
     <h2 class="text-3xl font-bold my-4 pt-6">Placement</h2>
 
     <XCard>
-      <div class="space-y-4">
+      <div class="flex flex-col gap-4">
         <XRadioGroup v-model:value="flux.placement2" :options="flux.placementOptions2" />
         <div><XButton @click="flux.drawer2 = true">Open</XButton></div>
-
-        <XDrawer v-model="flux.drawer2" :placement="flux.placement2" />
       </div>
+
+      <XDrawer v-model="flux.drawer2" :placement="flux.placement2" />
     </XCard>
   </section>
 
@@ -50,19 +50,19 @@ const flux = reactive({
     <h2 class="text-3xl font-bold my-4 pt-6">Size</h2>
 
     <XCard>
-      <div class="space-y-4">
+      <div class="flex flex-col gap-4">
         <XRadioGroup v-model:value="flux.placement3" :options="flux.placementOptions3" />
         <div><XButton @click="flux.drawer3 = true">Open</XButton></div>
-
-        <XDrawer
-          v-model="flux.drawer3"
-          :placement="flux.placement3"
-          :class="{
-            '!w-80': ['left', 'right'].includes(flux.placement3),
-            '!h-80': ['top', 'bottom'].includes(flux.placement3),
-          }"
-        />
       </div>
+
+      <XDrawer
+        v-model="flux.drawer3"
+        :placement="flux.placement3"
+        :class="{
+          '!w-80': ['left', 'right'].includes(flux.placement3),
+          '!h-80': ['top', 'bottom'].includes(flux.placement3),
+        }"
+      />
     </XCard>
   </section>
 
