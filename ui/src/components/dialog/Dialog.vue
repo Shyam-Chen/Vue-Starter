@@ -1,25 +1,20 @@
 <script lang="ts" setup>
-import { ref, computed, watch, onUnmounted } from 'vue';
+import { nextTick, ref, watch, onUnmounted } from 'vue';
 import { useResizeObserver } from '@vueuse/core';
+
+import Bounce from '../bounce/Bounce.vue';
 
 defineOptions({
   inheritAttrs: false,
 });
 
-const props = defineProps<{
-  modelValue?: boolean;
+const defaultModel = defineModel<boolean>({ default: false });
+
+defineProps<{
   title?: string;
 }>();
 
-const emit = defineEmits<{
-  (evt: 'update:modelValue', val: boolean): void;
-}>();
-
-const defaultModel = computed({
-  get: () => props.modelValue || false,
-  set: (val) => emit('update:modelValue', val),
-});
-
+const dialog = ref<HTMLDivElement>();
 const container = ref<HTMLDivElement>();
 const backdropHeight = ref('100%');
 
@@ -33,6 +28,10 @@ watch(
     document.body.style.overflow = val ? 'hidden' : 'auto';
 
     if (val) {
+      nextTick(() => {
+        dialog.value?.focus();
+      });
+
       useResizeObserver(container, (entries) => {
         const entry = entries[0];
         const height = entry?.borderBoxSize?.[0]?.blockSize;
@@ -51,8 +50,14 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <Transition name="bounce">
-    <div v-if="defaultModel" class="dialog">
+  <Bounce>
+    <div
+      v-if="defaultModel"
+      ref="dialog"
+      tabindex="0"
+      class="dialog"
+      @keyup.esc="defaultModel = false"
+    >
       <div ref="container" class="dialog-container">
         <div
           class="dialog-backdrop"
@@ -80,7 +85,7 @@ onUnmounted(() => {
         </div>
       </div>
     </div>
-  </Transition>
+  </Bounce>
 </template>
 
 <style lang="scss" scoped>
@@ -99,29 +104,5 @@ onUnmounted(() => {
 .dialog-content {
   @apply relative inline-block align-bottom rounded-lg text-left overflow-hidden shadow-xl;
   @apply my-8 align-middle md:max-w-lg lg:max-w-2xl xl:max-w-4xl w-full;
-}
-
-.bounce-enter-active {
-  animation: bounce-in 0.33s;
-}
-
-.bounce-leave-active {
-  animation: bounce-in 0.33s reverse;
-}
-
-@keyframes bounce-in {
-  0% {
-    transform: scale(0);
-    opacity: 0;
-  }
-
-  50% {
-    transform: scale(1.1);
-  }
-
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
 }
 </style>

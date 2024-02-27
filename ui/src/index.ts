@@ -3,6 +3,7 @@ export { default as XAlert } from './components/alert/Alert.vue';
 export { default as XAutocomplete } from './components/autocomplete/Autocomplete.vue';
 export { default as XAvatar } from './components/avatar';
 export { default as XBadge } from './components/badge/Badge.vue';
+export { default as XBounce } from './components/bounce/Bounce.vue';
 export { default as XBreadcrumb } from './components/breadcrumb/Breadcrumb.vue';
 export { default as XButton } from './components/button';
 export { default as XCalendar } from './components/calendar/Calendar.vue';
