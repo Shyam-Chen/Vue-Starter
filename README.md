@@ -1,6 +1,6 @@
 # Vue Starter
 
-:poodle: A boilerplate for HTML5, Vue, TypeScript, Vite, Vitest, and Render.
+:poodle: A boilerplate for SPA Client with HTML5, Vue, and Tailwind on Vite.
 
 :rainbow: [Live Demo](https://vue-starter-6fa6.onrender.com) - The server application is [here](https://github.com/Shyam-Chen/Fastify-Starter).
 
@@ -67,8 +67,17 @@ $ pnpm preview
 
 ### Lints and fixes files
 
+Biome CLI
+
 ```sh
-$ pnpm lint
+# format
+$ pnpm biome format ./app ./ui ./mock ./e2e --write
+
+# lint
+$ pnpm biome lint ./app ./ui ./mock ./e2e
+
+# format, lint & sort
+$ pnpm biome check --apply ./app ./ui ./mock ./e2e
 ```
 
 ### Check types
@@ -113,6 +122,7 @@ This seed repository provides the following features:
 - [x] [Vite](https://github.com/vitejs/vite) - Bundler
 - [x] [TypeScript](https://github.com/microsoft/TypeScript) - JavaScript with Syntax for Types
 - [x] [Sassy CSS](https://github.com/sass/sass) - CSS Extension
+- [x] [Biome](https://github.com/biomejs/biome) - Formatter and Linter
 - [x] [ESLint](https://github.com/eslint/eslint) - Linter
 - [x] [Prettier](https://github.com/prettier/prettier) - Formatter
 - [x] [Vitest](https://github.com/vitest-dev/vitest) - Test Runner
@@ -163,36 +173,52 @@ The structure follows the LIFT Guidelines.
 ```coffee
 .
 ├── .github/workflows/ci.yml
+├── app
+│   ├── public
+│   ├── src
+│   │   ├── assets
+│   │   ├── components
+│   │   ├── composables
+│   │   ├── layouts
+│   │   ├── locales
+│   │   ├── middleware
+│   │   ├── plugins
+│   │   ├── routes
+│   │   ├── utilities
+│   │   ├── workers
+│   │   ├── App.vue
+│   │   ├── main.ts
+│   │   └── shims.d.ts
+│   ├── index.html
+│   ├── package.json
+│   ├── tsconfig.json
+│   └── vite.config.ts
 ├── e2e
+│   ├── src
+│   ├── package.json
+│   ├── playwright.config.ts
+│   └── tsconfig.json
 ├── mock
-├── public
-├── src
-│   ├── assets
-│   ├── components
-│   ├── composables
-│   ├── layouts
-│   ├── locales
-│   ├── middleware
-│   ├── plugins
-│   ├── routes
-│   ├── utilities
-│   ├── App.vue
-│   ├── main.ts
-│   └── shims.d.ts
+│   ├── src
+│   ├── package.json
+│   ├── tsconfig.json
+│   └── vite.config.ts
 ├── ui
+│   ├── src
+│   ├── package.json
+│   ├── tsconfig.json
+│   └── vite.config.ts
 ├── .editorconfig
 ├── .eslintrc
 ├── .gitignore
 ├── .prettierrc
+├── biome.json
 ├── Caddyfile
-├── docker-compose.yml
+├── compose.yaml
 ├── Dockerfile
-├── index.html
 ├── package.json
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
 ├── README.md
-├── render.yaml
-├── tsconfig.json
-└── vite.config.ts
+└── render.yaml
 ```
