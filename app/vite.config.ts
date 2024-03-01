@@ -39,7 +39,7 @@ export default defineConfig({
     alias: {
       '~': path.resolve(__dirname, 'src'),
       '@': path.resolve(__dirname, 'src'),
-      mock: path.resolve(__dirname, 'mock/src/routes'),
+      mock: path.resolve(__dirname, '../mock/src/routes'),
     },
     mainFields: ['module'],
   },

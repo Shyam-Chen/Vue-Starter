@@ -28,5 +28,5 @@
 
     "skipLibCheck": true
   },
-  "exclude": ["node_modules", "dist", "coverage", "ui", "mock", "e2e"]
+  "include": ["src"]
 }
