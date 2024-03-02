@@ -5,13 +5,13 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "check": "vue-tsc",
+    "check": "vue-tsc --noEmit",
     "test": "vitest --dir src --coverage --run"
   },
   "dependencies": {
     "@unocss/reset": "^0.58.5",
-    "@vueuse/components": "^10.8.0",
-    "@vueuse/core": "^10.8.0",
+    "@vueuse/components": "^10.9.0",
+    "@vueuse/core": "^10.9.0",
     "@x/ui": "workspace:^",
     "date-fns": "^3.3.1",
     "echarts": "^5.5.0",
@@ -20,8 +20,8 @@
     "ofetch": "^1.3.3",
     "tailwindcss": "^3.4.1",
     "valibot": "^0.29.0",
-    "vue": "^3.4.19",
-    "vue-component-type-helpers": "^1.8.27",
+    "vue": "^3.4.21",
+    "vue-component-type-helpers": "^2.0.2",
     "vue-formor": "^4.1.1",
     "vue-localer": "^1.4.0",
     "vue-qrcode-image": "^1.1.0",
@@ -35,7 +35,7 @@
     "@vitejs/plugin-vue": "^5.0.4",
     "@vitest/coverage-v8": "^1.3.1",
     "@vue/test-utils": "^2.4.4",
-    "happy-dom": "^13.5.0",
+    "happy-dom": "^13.6.2",
     "process-envify": "^2.0.0",
     "sass": "^1.71.1",
     "typescript": "^5.3.3",
@@ -43,6 +43,6 @@
     "vite": "^5.1.4",
     "vite-plugin-vue-routes": "^1.1.0",
     "vitest": "^1.3.1",
-    "vue-tsc": "^1.8.27"
+    "vue-tsc": "^2.0.2"
   }
 }

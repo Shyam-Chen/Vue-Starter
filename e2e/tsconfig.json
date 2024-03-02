@@ -26,5 +26,6 @@
 
     "skipLibCheck": true
   },
+  "include": ["src", "playwright.config.ts"],
   "exclude": ["node_modules"]
 }

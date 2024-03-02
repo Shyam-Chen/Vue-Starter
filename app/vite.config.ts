@@ -12,13 +12,7 @@ export default defineConfig({
     API_URL: process.env.API_URL || '',
   }),
   plugins: [
-    vue({
-      template: {
-        compilerOptions: {
-          isCustomElement: (tag) => tag.includes('-'),
-        },
-      },
-    }),
+    vue(),
     vueRoutes(),
     unocss({
       presets: [presetUno(), presetIcons()],
@@ -54,8 +48,5 @@ export default defineConfig({
   test: {
     globals: true,
     environment: 'happy-dom',
-    coverage: {
-      exclude: ['ui', 'mock', 'e2e'],
-    },
   },
 });
