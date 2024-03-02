@@ -22,12 +22,13 @@ Prerequisites:
 Get started with Vue Starter.
 
 ```sh
+# install dependencies
 $ pnpm install
 
-# dev server
+# dev server (in one terminal)
 $ pnpm dev
 
-# mock server
+# mock server (in another terminal)
 $ pnpm mock
 ```
 

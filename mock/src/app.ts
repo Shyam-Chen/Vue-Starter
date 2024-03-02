@@ -1,5 +1,5 @@
-import fastify from 'fastify';
 import multipart from '@fastify/multipart';
+import fastify from 'fastify';
 
 import router from '~/plugins/router';
 import sleep from '~/plugins/sleep';

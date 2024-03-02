@@ -1,11 +1,11 @@
 import path from 'path';
-import { defineConfig } from 'vite';
-import envify from 'process-envify';
 import vue from '@vitejs/plugin-vue';
-import vueRoutes from 'vite-plugin-vue-routes';
-import unocss from 'unocss/vite';
-import { presetUno, presetIcons, transformerDirectives } from 'unocss';
+import envify from 'process-envify';
 import tailwindColors from 'tailwindcss/colors';
+import { presetIcons, presetUno, transformerDirectives } from 'unocss';
+import unocss from 'unocss/vite';
+import { defineConfig } from 'vite';
+import vueRoutes from 'vite-plugin-vue-routes';
 
 export default defineConfig({
   define: envify({

@@ -4,6 +4,6 @@ import response from './response';
 
 export default async (app: FastifyInstance) => {
   app.get('', async () => {
-    return response['admin'];
+    return response.admin;
   });
 };

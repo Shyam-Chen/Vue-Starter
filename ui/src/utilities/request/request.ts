@@ -1,8 +1,8 @@
-import type { FetchRequest, FetchOptions, FetchResponse } from 'ofetch';
+import type { FetchOptions, FetchRequest, FetchResponse } from 'ofetch';
 import { ofetch } from 'ofetch';
 
 const fetcher = ofetch.create({
-  baseURL: process.env.API_URL + '/api',
+  baseURL: `${process.env.API_URL}/api`,
   async onRequest({ options }) {
     const accessToken = localStorage.getItem('accessToken');
     const language = localStorage.getItem('language');
@@ -24,7 +24,7 @@ const fetcher = ofetch.create({
   async onResponse({ response }) {
     if (response.status === 401 && localStorage.getItem('refreshToken')) {
       const { accessToken } = await ofetch('/auth/token', {
-        baseURL: process.env.API_URL + '/api',
+        baseURL: `${process.env.API_URL}/api`,
         method: 'POST',
         body: {
           accessToken: localStorage.getItem('accessToken'),

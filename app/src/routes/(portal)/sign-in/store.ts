@@ -60,7 +60,7 @@ export default defineStore('/sign-in', () => {
 
         if (found) {
           const errKey = found.replace('#', '') as keyof SignInForm;
-          state.signInValdn[errKey] = result?.message.replace(found + ' ', '');
+          state.signInValdn[errKey] = result?.message.replace(`${found} `, '');
         }
 
         state.signInLoading = false;

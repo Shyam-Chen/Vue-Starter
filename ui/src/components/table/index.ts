@@ -1,7 +1,7 @@
-import Table from './Table.vue';
+import Cell from './Cell.vue';
 import Column from './Column.vue';
 import Row from './Row.vue';
-import Cell from './Cell.vue';
+import Table from './Table.vue';
 
 export default Object.assign(Table, {
   Column,

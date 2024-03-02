@@ -18,7 +18,7 @@ afterEach(() => {
 test('Baseline', async () => {
   vi.spyOn(xui, 'request').mockImplementation((url): any => {
     if (url === '/auth/user') {
-      return { _data: user['admin'], status: 200 };
+      return { _data: user.admin, status: 200 };
     }
   });
 

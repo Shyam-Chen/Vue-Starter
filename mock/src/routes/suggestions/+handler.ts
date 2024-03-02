@@ -1,7 +1,7 @@
 import type { FastifyInstance } from 'fastify';
 
 export default async (app: FastifyInstance) => {
-  app.get('', async (request: any, reply) => {
+  app.get<{ Querystring: { value?: string } }>('', async (request, reply) => {
     const arr = [
       { label: 'TypeScript', value: 'ts' },
       { label: 'JaveScript', value: 'js' },

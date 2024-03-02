@@ -1,6 +1,6 @@
 import Stepper from './Stepper.vue';
-import StepperStep from './StepperStep.vue';
 import StepperContent from './StepperContent.vue';
+import StepperStep from './StepperStep.vue';
 
 Stepper.Step = StepperStep;
 Stepper.Content = StepperContent;

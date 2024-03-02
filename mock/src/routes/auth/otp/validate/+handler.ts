@@ -4,6 +4,6 @@ import response from './response';
 
 export default async (app: FastifyInstance) => {
   app.post('', async () => {
-    return response['successful'];
+    return response.successful;
   });
 };

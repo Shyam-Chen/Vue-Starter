@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 import signIn from 'mock/auth/sign-in/response';
 
 test('Sign-in', async ({ page }) => {
@@ -9,7 +9,7 @@ test('Sign-in', async ({ page }) => {
   await page.route('**/api/auth/sign-in', (route) =>
     route.fulfill({
       status: 200,
-      body: JSON.stringify(signIn['successful']),
+      body: JSON.stringify(signIn.successful),
     }),
   );
 

@@ -22,7 +22,7 @@ afterEach(() => {
 test('successful', async () => {
   vi.spyOn(xui, 'request').mockImplementation((url): any => {
     if (url === '/auth/sign-in') {
-      return { _data: signIn['successful'], status: 200 };
+      return { _data: signIn.successful, status: 200 };
     }
   });
 
@@ -40,7 +40,7 @@ test('successful', async () => {
 test('failed', async () => {
   vi.spyOn(xui, 'request').mockImplementation((url): any => {
     if (url === '/auth/sign-in') {
-      return { _data: signIn['failed'], status: 400 };
+      return { _data: signIn.failed, status: 400 };
     }
   });
 
@@ -54,11 +54,11 @@ test('failed', async () => {
 test('2fa', async () => {
   vi.spyOn(xui, 'request').mockImplementation((url): any => {
     if (url === '/auth/sign-in') {
-      return { _data: signIn['successful_hasMFA'], status: 200 };
+      return { _data: signIn.successful_hasMFA, status: 200 };
     }
 
     if (url === '/auth/otp/validate') {
-      return { _data: opt['successful'], status: 200 };
+      return { _data: opt.successful, status: 200 };
     }
   });
 
@@ -80,7 +80,7 @@ test('2fa', async () => {
 test('2fa_unverified', async () => {
   vi.spyOn(xui, 'request').mockImplementation((url): any => {
     if (url === '/auth/sign-in') {
-      return { _data: signIn['successful_hasMFA_unverified'], status: 200 };
+      return { _data: signIn.successful_hasMFA_unverified, status: 200 };
     }
   });
 

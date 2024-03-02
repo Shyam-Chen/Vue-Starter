@@ -1,9 +1,9 @@
-import { defineConfig } from 'vite';
-import envify from 'process-envify';
 import vue from '@vitejs/plugin-vue';
-import unocss from 'unocss/vite';
-import { presetUno, presetIcons, transformerDirectives } from 'unocss';
+import envify from 'process-envify';
 import tailwindColors from 'tailwindcss/colors';
+import { presetIcons, presetUno, transformerDirectives } from 'unocss';
+import unocss from 'unocss/vite';
+import { defineConfig } from 'vite';
 
 export default defineConfig({
   define: envify({}),

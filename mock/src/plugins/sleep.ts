@@ -1,5 +1,5 @@
-import { setTimeout as sleep } from 'timers/promises';
 import plugin from 'fastify-plugin';
+import { setTimeout as sleep } from 'timers/promises';
 
 export default plugin(
   async (app) => {
