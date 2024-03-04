@@ -2,6 +2,7 @@
 import type { VNode } from 'vue';
 import type { ComponentProps } from 'vue-component-type-helpers';
 import { nextTick, ref, computed, watch, provide, useSlots } from 'vue';
+import { RouterLink } from 'vue-router';
 import { useScroll } from '@vueuse/core';
 
 import Tab from './Tab.vue';
@@ -121,28 +122,30 @@ watch(
         end: hasScrollbar && arrivedState.right,
       }"
     >
-      <div
-        v-for="(tab, idx) in tabs"
-        :key="idx"
-        class="Tabs-Tab"
-        :class="{
-          active: isActive(tab?.props, idx),
-          disabled: tab?.props?.disabled,
-        }"
-        @click="onClickTab(tab?.props, idx)"
-      >
-        <template v-if="(tab?.children as TabProps)?.title">
-          <component :is="(tab?.children as TabProps)?.title"></component>
-        </template>
+      <template v-for="(tab, idx) in tabs" :key="idx">
+        <component
+          :is="tab?.props?.to ? RouterLink : 'div'"
+          class="Tabs-Tab"
+          :class="{
+            active: isActive(tab?.props, idx),
+            disabled: tab?.props?.disabled,
+          }"
+          :to="tab?.props?.to"
+          @click="onClickTab(tab?.props, idx)"
+        >
+          <template v-if="(tab?.children as TabProps)?.title">
+            <component :is="(tab?.children as TabProps)?.title"></component>
+          </template>
 
-        <template v-else>{{ tab?.props?.title }}</template>
+          <template v-else>{{ tab?.props?.title }}</template>
 
-        <div
-          v-if="closeable"
-          class="i-fa-close w-3 h-3 ml-3 transition hover:scale-125"
-          @click.stop="onClose(tab?.props, idx)"
-        ></div>
-      </div>
+          <div
+            v-if="closeable"
+            class="i-fa-close w-3 h-3 ml-3 transition hover:scale-125"
+            @click.stop="onClose(tab?.props, idx)"
+          ></div>
+        </component>
+      </template>
     </div>
 
     <div ref="slotWrapper">

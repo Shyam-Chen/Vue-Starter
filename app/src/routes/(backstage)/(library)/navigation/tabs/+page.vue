@@ -218,4 +218,28 @@ const flux = reactive({
       </XTabs>
     </XCard>
   </section>
+
+  <section class="my-8">
+    <h2 class="text-3xl font-bold mb-4 pt-6">Router</h2>
+
+    <XCard>
+      <XTabs>
+        <XTabs.Tab title="Angular" to="/navigation/tabs">
+          <div class="text-red-500 p-4">Angular Content</div>
+        </XTabs.Tab>
+
+        <XTabs.Tab title="React" to="/navigation/tabs">
+          <div class="text-blue-500 p-4">React Content</div>
+        </XTabs.Tab>
+
+        <XTabs.Tab title="Svelte" to="/navigation/tabs">
+          <div class="text-orange-500 p-4">Svelte Content</div>
+        </XTabs.Tab>
+
+        <XTabs.Tab title="Vue" to="/navigation/tabs">
+          <div class="text-green-500 p-4">Vue Content</div>
+        </XTabs.Tab>
+      </XTabs>
+    </XCard>
+  </section>
 </template>
