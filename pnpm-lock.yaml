@@ -241,6 +241,9 @@ importers:
 
   e2e:
     devDependencies:
+      '@lyra/tsconfig':
+        specifier: workspace:^
+        version: 'link:../packages/tsconfig '
       '@playwright/test':
         specifier: ^1.42.1
         version: 1.42.1
@@ -263,6 +266,9 @@ importers:
         specifier: ^4.5.1
         version: 4.5.1
     devDependencies:
+      '@lyra/tsconfig':
+        specifier: workspace:^
+        version: 'link:../packages/tsconfig '
       process-envify:
         specifier: ^2.0.0
         version: 2.0.0
@@ -410,6 +416,9 @@ importers:
       '@iconify/json':
         specifier: ^2.2.186
         version: 2.2.186
+      '@lyra/tsconfig':
+        specifier: workspace:^
+        version: 'link:../tsconfig '
       '@types/lodash':
         specifier: ^4.14.202
         version: 4.14.202

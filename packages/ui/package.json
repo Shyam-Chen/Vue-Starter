@@ -61,6 +61,7 @@
     "vuedraggable": "^4.1.0"
   },
   "devDependencies": {
+    "@lyra/tsconfig": "workspace:^",
     "@iconify/json": "^2.2.186",
     "@types/lodash": "^4.14.202",
     "@vitejs/plugin-vue": "^5.0.4",
