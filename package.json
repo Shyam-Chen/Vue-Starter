@@ -2,18 +2,18 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "pnpm -C app dev",
+    "dev": "pnpm --recursive --parallel --stream run dev",
     "mock": "pnpm -C mock mock",
-    "build": "pnpm -C app build",
-    "preview": "pnpm -C app preview",
-    "check": "pnpm -C app check",
-    "test": "pnpm -C app test",
+    "build": "pnpm --recursive --parallel --stream run build",
+    "preview": "pnpm --recursive --parallel --stream run preview",
+    "check": "pnpm --recursive --parallel --stream run check",
+    "test": "pnpm --recursive --parallel --stream run test",
     "e2e": "pnpm -C e2e e2e"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.5.3-nightly.69f9031",
+    "@biomejs/biome": "1.6.0",
     "@vue/eslint-config-prettier": "^9.0.0",
-    "@vue/eslint-config-typescript": "^12.0.0",
+    "@vue/eslint-config-typescript": "^13.0.0",
     "eslint": "^8.57.0",
     "eslint-plugin-vue": "^9.22.0",
     "prettier": "^3.2.5"

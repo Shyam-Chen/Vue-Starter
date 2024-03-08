@@ -1,6 +1,6 @@
 packages:
   - '.'
-  - 'app'
-  - 'ui'
+  - 'apps/*'
+  - 'packages/*'
   - 'mock'
   - 'e2e'

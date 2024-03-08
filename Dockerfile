@@ -1,6 +1,6 @@
 FROM mcr.microsoft.com/playwright:v1.42.0-jammy
 
-ENV HOME=/vue-starter
+ENV HOME=/lyra-ui
 
 WORKDIR ${HOME}
 ADD . $HOME
