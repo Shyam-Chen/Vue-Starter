@@ -17,6 +17,7 @@
     "test": "vitest --dir src --run --coverage"
   },
   "dependencies": {
+    "@tiptap/core": "^2.2.4",
     "@tiptap/extension-blockquote": "^2.2.4",
     "@tiptap/extension-bold": "^2.2.4",
     "@tiptap/extension-bullet-list": "^2.2.4",
