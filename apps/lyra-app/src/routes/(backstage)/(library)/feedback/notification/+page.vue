@@ -43,7 +43,7 @@ const colorSelector = (() => {
 const push3 = () => {
   count3 += 1;
 
-  notification.actions.add({
+  notification.add({
     message: `This is a test notification. (${count3})`,
     color: colorSelector(),
   });

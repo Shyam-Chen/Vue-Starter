@@ -1,32 +1,37 @@
-import vue from '@vitejs/plugin-vue';
+/** @type {import('vite').UserConfig} */
+import Vue from '@vitejs/plugin-vue';
+import dts from 'vite-plugin-dts';
 import envify from 'process-envify';
-import tailwindColors from 'tailwindcss/colors';
-import { presetIcons, presetUno, transformerDirectives } from 'unocss';
 import unocss from 'unocss/vite';
 import { defineConfig } from 'vite';
+import { resolve } from 'path';
 
+// https://vitejs.dev/config/
 export default defineConfig({
-  define: envify({}),
-  plugins: [
-    vue(),
-    unocss({
-      presets: [presetUno(), presetIcons()],
-      transformers: [transformerDirectives({ enforce: 'pre' })],
-      theme: {
-        colors: {
-          primary: tailwindColors.indigo,
-          secondary: tailwindColors.neutral,
-          success: tailwindColors.emerald,
-          danger: tailwindColors.rose,
-          warning: tailwindColors.amber,
-          info: tailwindColors.sky,
+  build: {
+    cssCodeSplit: true,
+    target: 'esnext',
+    lib: {
+      entry: resolve(__dirname, './src/index.ts'),
+      fileName: 'lyra-vue-ui',
+      // formats: ['es'],
+      name: 'lyra-vue-ui',
+    },
+    rollupOptions: {
+      external: ['vue'],
+      output: {
+        globals: {
+          vue: 'Vue',
         },
       },
-    }),
-  ],
+    },
+  },
+  define: envify({}),
+  plugins: [Vue(), dts(), unocss({})],
   resolve: {
     mainFields: ['module'],
   },
+  // @ts-ignore
   test: {
     globals: true,
     environment: 'happy-dom',

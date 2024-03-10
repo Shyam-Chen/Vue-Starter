@@ -2,7 +2,7 @@ import { request } from '@lyra/ui';
 import { addHours, formatISO } from 'date-fns';
 import { reactive, readonly } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import { defineStore } from 'vue-storer';
+import { defineStore } from 'pinia';
 
 import type { OtpValidateRes, SignInForm, SignInRes } from './types';
 
@@ -92,5 +92,17 @@ export default defineStore('/sign-in', () => {
     },
   });
 
-  return { state, getters, actions };
+  function $reset() {
+    // Reset the state to its initial state
+    state.signInForm = {
+      username: 'shyam.chen',
+      password: '12345678',
+    };
+    state.signInValdn = {} as Record<keyof SignInForm, string>;
+    state.signInLoading = false;
+    state.otpEnabled = false;
+    state.mfaAuthCode = '';
+  }
+
+  return { state, getters, actions, $reset };
 });

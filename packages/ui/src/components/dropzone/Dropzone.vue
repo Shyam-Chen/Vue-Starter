@@ -35,7 +35,7 @@ function fileLimit(file: File) {
   }
 
   if (message) {
-    notification.actions.add({
+    notification.add({
       message,
       color: 'danger',
       icon: 'i-mdi-close-circle-outline',

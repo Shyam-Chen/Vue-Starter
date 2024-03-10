@@ -1,20 +1,40 @@
 {
   "name": "@lyra/ui",
+  "description": "UI components for Lyra",
+  "version": "0.0.1",
   "private": true,
   "type": "module",
   "sideEffects": false,
-  "types": "./src/index.ts",
+  "main": "./dist/lyra-vue-ui.umd.js",
+  "module": "./dist/lyra-vue-ui.mjs",
+  "types": "./dist/src/index.d.ts",
+  "styles": "./dist/index.css",
   "exports": {
     ".": {
+      "types": "./dist/src/index.d.ts",
+      "require": "./dist/lyra-vue-ui.umd.js",
       "import": {
         "types": "./src/index.ts",
         "default": "./src/index.ts"
       }
     }
   },
+  "keywords": [
+    "vue",
+    "common ui"
+  ],
   "scripts": {
+    "build:types": "vue-tsc --noEmit && tsc-alias -p tsconfig.json",
+    "build:vite": "vite build",
     "check": "vue-tsc --noEmit",
-    "test": "vitest --dir src --run --coverage"
+    "build": "run-p build:vite build:types",
+    "clean": "rm -rf dist",
+    "test": "vitest --dir src --run --coverage",
+    "typecheck": "vue-tsc --noEmit"
+  },
+  "peerDependencies": {
+    "typescript": ">=4.7",
+    "vue": "^3.3.0"
   },
   "dependencies": {
     "@tiptap/core": "^2.2.4",
@@ -50,31 +70,36 @@
     "echarts": "^5.5.0",
     "lodash": "^4.17.21",
     "ofetch": "^1.3.3",
+    "pinia": "^2.1.7",
     "shiki": "^1.1.7",
     "vue": "^3.4.21",
-    "vue-component-type-helpers": "^2.0.2",
+    "vue-component-type-helpers": "^2.0.6",
     "vue-echarts": "^6.6.9",
     "vue-imask": "^7.5.0",
-    "vue-localer": "^1.4.0",
+    "vue-localer": "^1.4.1",
     "vue-router": "^4.3.0",
-    "vue-storer": "^0.6.0",
     "vuedraggable": "^4.1.0"
   },
   "devDependencies": {
+    "@unocss/postcss": "^0.58.5",
+    "@unocss/reset": "^0.58.5",
+    "@iconify/json": "^2.2.190",
+    "@lyra/css-config": "workspace:^",
     "@lyra/tsconfig": "workspace:^",
-    "@iconify/json": "^2.2.186",
     "@types/lodash": "^4.14.202",
     "@vitejs/plugin-vue": "^5.0.4",
     "@vitest/coverage-v8": "^1.3.1",
     "@vue/test-utils": "^2.4.4",
-    "happy-dom": "^13.6.2",
+    "happy-dom": "^13.7.1",
     "process-envify": "^2.0.0",
     "sass": "^1.71.1",
     "tailwindcss": "^3.4.1",
-    "typescript": "^5.3.3",
+    "tsc-alias": "1.8.8",
+    "typescript": "^5.4.2",
     "unocss": "^0.58.5",
-    "vite": "^5.1.4",
+    "vite": "^5.1.5",
+    "vite-plugin-dts": "^3.7.3",
     "vitest": "^1.3.1",
-    "vue-tsc": "^2.0.2"
+    "vue-tsc": "^2.0.6"
   }
 }

@@ -1,7 +1,5 @@
-import { reactive, readonly } from 'vue';
-import { defineStore } from 'vue-storer';
-
-import type Alert from '../../components/alert/Alert.vue';
+import { defineStore } from 'pinia';
+import Alert from '../../components/alert/Alert.vue';
 
 type NotificationMessage = {
   message: string;
@@ -15,30 +13,24 @@ type State = {
   timeouts: NotificationMessage[];
 };
 
-type Actions = {
-  add(params: Omit<NotificationMessage, 'timeout'>): void;
-};
-
-export default defineStore<State, object, Actions>('useNotification', () => {
-  const state = reactive<State>({
+export default defineStore({
+  id: 'notification',
+  state: (): State => ({
     messages: [],
     timeouts: [],
-  });
-
-  const actions = readonly<Actions>({
-    add({ message, color, icon }) {
+  }),
+  actions: {
+    add({ message, color, icon }: Omit<NotificationMessage, 'timeout'>) {
       const item = {
         message,
         timeout: setTimeout(() => {
-          state.timeouts.push(item);
+          this.timeouts.push(item);
         }, 3000),
         color,
         icon,
       };
 
-      state.messages.push(item);
+      this.messages.push(item);
     },
-  });
-
-  return { state, actions };
+  },
 });

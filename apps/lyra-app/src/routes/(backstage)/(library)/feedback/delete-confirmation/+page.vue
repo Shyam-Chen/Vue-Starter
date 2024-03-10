@@ -21,7 +21,7 @@ const actions = readonly({
     state.deleteLoading = false;
     state.deleteDialog = false;
 
-    notification.actions.add({
+    notification.add({
       message: 'Successfully Deleted',
       color: 'success',
     });

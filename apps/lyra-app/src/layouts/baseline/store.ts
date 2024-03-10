@@ -1,8 +1,8 @@
-import { reactive, readonly } from 'vue';
-import { defineStore } from 'vue-storer';
+import { defineStore } from 'pinia';
 
 import type { Link } from './links-list';
 import listOfLinks from './links-list';
+import { reactive, readonly } from 'vue';
 
 export default defineStore('/layouts/baseline', () => {
   const state = reactive({
@@ -32,6 +32,9 @@ export default defineStore('/layouts/baseline', () => {
       }
     },
   });
-
-  return { state, actions };
+  function $reset() {
+    state.userLoading = true;
+    state.listOfLinks = listOfLinks;
+  }
+  return { state, actions, $reset };
 });

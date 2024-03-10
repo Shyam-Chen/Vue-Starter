@@ -38,5 +38,5 @@ watch(
 
 <template>
   <RouterView />
-  <XNotification :messages="notification.state.messages" :timeouts="notification.state.timeouts" />
+  <XNotification :messages="notification.messages" :timeouts="notification.timeouts" />
 </template>

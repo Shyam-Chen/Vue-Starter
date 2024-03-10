@@ -1,5 +1,5 @@
+import { defineStore } from 'pinia';
 import { reactive } from 'vue';
-import { defineStore } from 'vue-storer';
 
 export default defineStore('/forgot-password', () => {
   const state = reactive({
@@ -9,5 +9,9 @@ export default defineStore('/forgot-password', () => {
     valdn: {} as Record<string, string>,
   });
 
-  return { state };
+  function $reset() {
+    state.form.email = '';
+    state.valdn = {};
+  }
+  return { state, $reset};
 });

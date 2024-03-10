@@ -1,5 +1,5 @@
 import { computed, reactive, readonly } from 'vue';
-import { defineStore } from 'vue-storer';
+import { defineStore } from 'pinia';
 
 export const useCounter = defineStore('counter', () => {
   const state = reactive({
@@ -16,6 +16,9 @@ export const useCounter = defineStore('counter', () => {
       state.count += 1;
     },
   });
-
-  return { state, getters, actions };
+  function $reset() {
+    state.name = 'My Counter';
+    state.count = 0;
+  }
+  return { state, getters, actions, $reset };
 });

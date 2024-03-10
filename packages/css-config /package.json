@@ -1,0 +1,46 @@
+{
+  "name": "@lyra/css-config",
+  "description": "Lyra CSS config",
+  "version": "0.0.1",
+  "private": true,
+  "main": "index.ts",
+  "types": "index.ts",
+  "type": "module",
+  "author": "Yuniel Acosta <www.yunielacosta.com>",
+  "license": "MIT",
+  "files": [
+    "index.css",
+    "postcss.config.cjs",
+    "stylelint.config.cjs",
+    "uno.config.cjs"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yacosta738/lyra.git",
+    "directory": "apps/frontend/packages/css-config",
+    "branch": "main"
+  },
+  "bugs": {
+    "url": "https://github.com/yacosta738/lyra/issues"
+  },
+  "scripts": {
+    "test": "echo No test specified 😎 && exit 0"
+  },
+  "homepage": "lyra-nwhm.onrender.com",
+  "dependencies": {
+    "@unocss/postcss": "^0.58.5",
+    "@unocss/reset": "^0.58.5",
+    "postcss": "^8.4.35",
+    "stylelint": "^16.2.1",
+    "stylelint-config-rational-order": "^0.1.2",
+    "stylelint-config-standard-scss": "^13.0.0",
+    "stylelint-order": "^6.0.4",
+    "@julr/unocss-preset-flowbite": "^0.0.2",
+    "tailwindcss": "^3.4.1",
+    "unocss": "^0.58.5"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "packageManager": "pnpm@8.14.1"
+}

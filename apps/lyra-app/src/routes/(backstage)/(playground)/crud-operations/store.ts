@@ -1,7 +1,6 @@
-import { useNotification } from '@lyra/ui';
-import { request } from '@lyra/ui';
+import { useNotification, request } from '@lyra/ui';
 import { reactive, readonly } from 'vue';
-import { defineStore } from 'vue-storer';
+import { defineStore } from 'pinia';
 
 import type { State, TodoItem, XTableProps } from './types';
 
@@ -67,7 +66,7 @@ export default defineStore('/crud-operations', () => {
       if (response.status === 200) {
         state.deleteDialog = false;
 
-        notification.actions.add({
+        notification.add({
           message: 'Delete successful',
           color: 'success',
         });
@@ -76,7 +75,7 @@ export default defineStore('/crud-operations', () => {
       }
 
       if (response.status === 400) {
-        notification.actions.add({
+        notification.add({
           message: 'Delete failed',
           color: 'danger',
         });
@@ -84,5 +83,18 @@ export default defineStore('/crud-operations', () => {
     },
   });
 
-  return { state, actions };
+  function $reset() {
+    state.searchForm = { filter: 0 };
+    state.todosLoading = false;
+    state.todosRows = [];
+    state.todosCount = 0;
+    state.todosControl = {};
+
+    state.deleteDialog = false;
+    state.deleteExpected = '';
+    state.deleteContent = {};
+    state.deleteLoading = false;
+  }
+
+  return { state, actions, $reset };
 });

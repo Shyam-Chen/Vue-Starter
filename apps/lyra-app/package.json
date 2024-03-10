@@ -25,11 +25,12 @@
     "vue-localer": "^1.4.1",
     "vue-qrcode-image": "^1.1.0",
     "vue-router": "^4.3.0",
-    "vue-storer": "^0.6.0",
+    "pinia": "^2.1.7",
     "vuedraggable": "^4.1.0"
   },
   "devDependencies": {
     "@lyra/tsconfig": "workspace:^",
+    "@lyra/css-config": "workspace:^",
     "@iconify/json": "^2.2.190",
     "@types/lodash": "^4.14.202",
     "@vitejs/plugin-vue": "^5.0.4",

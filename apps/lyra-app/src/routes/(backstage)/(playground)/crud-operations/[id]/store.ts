@@ -1,8 +1,7 @@
-import { useNotification } from '@lyra/ui';
-import { request } from '@lyra/ui';
+import { useNotification, request } from '@lyra/ui';
 import { reactive, readonly, toRaw } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import { defineStore } from 'vue-storer';
+import { defineStore } from 'pinia';
 
 import type { State, TodoItem } from './types';
 
@@ -50,7 +49,7 @@ export default defineStore('/crud-operations/:id', () => {
       if (response.status === 200) {
         state.todoSent = true;
 
-        notification.actions.add({
+        notification.add({
           message: 'Add successful',
           color: 'success',
         });
@@ -59,7 +58,7 @@ export default defineStore('/crud-operations/:id', () => {
       }
 
       if (response.status === 400) {
-        notification.actions.add({
+        notification.add({
           message: 'Add failed',
           color: 'danger',
         });
@@ -78,7 +77,7 @@ export default defineStore('/crud-operations/:id', () => {
       if (response.status === 200) {
         state.todoSent = true;
 
-        notification.actions.add({
+        notification.add({
           message: 'Edit successful',
           color: 'success',
         });
@@ -87,13 +86,20 @@ export default defineStore('/crud-operations/:id', () => {
       }
 
       if (response.status === 400) {
-        notification.actions.add({
+        notification.add({
           message: 'Edit failed',
           color: 'danger',
         });
       }
     },
   });
-
-  return { state, actions };
+  function $reset() {
+    state.todo = {};
+    state.todoLoading = false;
+    state.todoForm = {};
+    state.todoValdn = {};
+    state.todoSending = false;
+    state.todoSent = false;
+  }
+  return { state, actions, $reset };
 });

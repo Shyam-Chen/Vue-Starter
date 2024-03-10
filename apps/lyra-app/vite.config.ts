@@ -1,9 +1,10 @@
 import path from 'path';
-import vue from '@vitejs/plugin-vue';
+import Vue from '@vitejs/plugin-vue';
 import envify from 'process-envify';
-import tailwindColors from 'tailwindcss/colors';
-import { presetIcons, presetUno, transformerDirectives } from 'unocss';
+// import tailwindColors from 'tailwindcss/colors';
+// import { presetIcons, presetUno, transformerDirectives } from 'unocss';
 import unocss from 'unocss/vite';
+// import config from '@lyra/css-config/uno.config.mjs'
 import { defineConfig } from 'vite';
 import vueRoutes from 'vite-plugin-vue-routes';
 
@@ -11,24 +12,7 @@ export default defineConfig({
   define: envify({
     API_URL: process.env.API_URL || '',
   }),
-  plugins: [
-    vue(),
-    vueRoutes(),
-    unocss({
-      presets: [presetUno(), presetIcons()],
-      transformers: [transformerDirectives({ enforce: 'pre' })],
-      theme: {
-        colors: {
-          primary: tailwindColors.indigo,
-          secondary: tailwindColors.neutral,
-          success: tailwindColors.emerald,
-          danger: tailwindColors.rose,
-          warning: tailwindColors.amber,
-          info: tailwindColors.sky,
-        },
-      },
-    }),
-  ],
+  plugins: [Vue(), vueRoutes(), unocss({})],
   resolve: {
     alias: {
       '~': path.resolve(__dirname, 'src'),
@@ -45,6 +29,7 @@ export default defineConfig({
       },
     },
   },
+  // @ts-ignore
   test: {
     globals: true,
     environment: 'happy-dom',

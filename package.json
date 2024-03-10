@@ -12,10 +12,14 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.6.0",
+    "@types/node": "^20.11.25",
     "@vue/eslint-config-prettier": "^9.0.0",
     "@vue/eslint-config-typescript": "^13.0.0",
     "eslint": "^8.57.0",
     "eslint-plugin-vue": "^9.22.0",
-    "prettier": "^3.2.5"
+    "npm-run-all2": "^6.1.2",
+    "postcss": "^8.4.35",
+    "prettier": "^3.2.5",
+    "unocss": "^0.58.5"
   }
 }
