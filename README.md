@@ -32,6 +32,12 @@ $ pnpm dev
 $ pnpm mock
 ```
 
+Or use barebones scaffolding for your new Vue app
+
+```sh
+$ pnpm dlx degit Shyam-Chen/Starter-Templates/vue my-vue-app
+```
+
 ## Project Setup
 
 Follow steps to execute this boilerplate.
