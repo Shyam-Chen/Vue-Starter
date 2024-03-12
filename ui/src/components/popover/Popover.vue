@@ -6,25 +6,16 @@ import useScrollParent from '../../composables/scroll-parent/useScrollParent';
 
 import Fade from '../fade/Fade.vue';
 
+const defaultModel = defineModel<boolean>({ default: undefined });
+
 const props = withDefaults(
   defineProps<{
-    modelValue?: boolean;
     disabled?: boolean;
   }>(),
   {
-    modelValue: undefined,
     disabled: false,
   },
 );
-
-const emit = defineEmits<{
-  (evt: 'update:modelValue', val: boolean): void;
-}>();
-
-const defaultModel = computed({
-  get: () => props.modelValue || false,
-  set: (val) => emit('update:modelValue', val),
-});
 
 const target = ref();
 const panel = ref();
@@ -33,7 +24,7 @@ const flux = reactive({
   status: false,
   toggle() {
     if (props.disabled) return;
-    if (typeof props.modelValue === 'boolean') return;
+    if (typeof defaultModel.value === 'boolean') return;
 
     flux.status = !flux.status;
 
@@ -44,7 +35,7 @@ const flux = reactive({
     }
   },
   close() {
-    if (typeof props.modelValue === 'boolean') {
+    if (typeof defaultModel.value === 'boolean') {
       defaultModel.value = false;
     } else {
       flux.status = false;
@@ -105,20 +96,22 @@ watch(
       <slot></slot>
     </div>
 
-    <Fade>
-      <div
-        v-if="typeof modelValue === 'boolean' ? defaultModel : flux.status"
-        ref="panel"
-        tabindex="-1"
-        class="Popover-Panel"
-        :class="{
-          placementBottom: flux.direction === 'down',
-          placementTop: flux.direction === 'up',
-        }"
-      >
-        <slot name="content"></slot>
-      </div>
-    </Fade>
+    <Teleport to="body">
+      <Fade>
+        <div
+          v-if="typeof modelValue === 'boolean' ? defaultModel : flux.status"
+          ref="panel"
+          tabindex="-1"
+          class="Popover-Panel"
+          :class="{
+            placementBottom: flux.direction === 'down',
+            placementTop: flux.direction === 'up',
+          }"
+        >
+          <slot name="content"></slot>
+        </div>
+      </Fade>
+    </Teleport>
   </div>
 </template>
 
