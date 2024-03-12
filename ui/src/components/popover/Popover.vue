@@ -91,7 +91,7 @@ watch(
 </script>
 
 <template>
-  <div v-on-click-outside="flux.close" class="Popover">
+  <div class="Popover">
     <div ref="target" class="Popover-Target" @click="flux.toggle">
       <slot></slot>
     </div>
@@ -101,6 +101,7 @@ watch(
         <div
           v-if="typeof modelValue === 'boolean' ? defaultModel : flux.status"
           ref="panel"
+          v-on-click-outside="flux.close"
           tabindex="-1"
           class="Popover-Panel"
           :class="{

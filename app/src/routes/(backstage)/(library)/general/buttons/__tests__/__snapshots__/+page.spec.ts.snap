@@ -455,7 +455,8 @@ exports[`/general/buttons 1`] = `
                       <!--v-if-->
                       <!--v-if-->
                     </button></div>
-                  <transition-stub data-v-ec374dba="" data-v-3ff4d40f="" name="fade" appear="false" persisted="false" css="true"></transition-stub>
+                  <!--teleport start-->
+                  <!--teleport end-->
                 </div>
               </div>
             </div>
