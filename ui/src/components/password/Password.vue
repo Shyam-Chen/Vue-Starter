@@ -1,42 +1,28 @@
 <script lang="ts" setup>
 import type { ComponentProps } from 'vue-component-type-helpers';
-import { ref, computed } from 'vue';
+import { ref } from 'vue';
 
+import FormControl from '../form-control/FormControl.vue';
 import TextField from '../text-field/TextField.vue';
 import Popover from '../popover/Popover.vue';
 
 type TextFieldProps = ComponentProps<typeof TextField>;
 
 interface Props extends /* @vue-ignore */ TextFieldProps {
+  label?: string;
   value?: string;
   meter?: boolean;
+  required?: boolean;
+  invalid?: boolean | string;
+  help?: string;
 }
 
-const props = defineProps<Props>();
+const valueModel = defineModel<string>('value', { default: '' });
 
-const emit = defineEmits<{
-  (evt: 'update:value', val: string): void;
-  (evt: 'focus', val: FocusEvent): void;
-  (evt: 'blur', val: FocusEvent): void;
-}>();
-
-const valueModel = computed({
-  get: () => props.value || '',
-  set: (val) => emit('update:value', val),
-});
+defineProps<Props>();
 
 const status = ref(false);
 const show = ref(false);
-
-function onFocus(evt: FocusEvent) {
-  if (props.meter) status.value = true;
-  emit('focus', evt);
-}
-
-function onBlur(evt: FocusEvent) {
-  if (props.meter) status.value = false;
-  emit('blur', evt);
-}
 
 const passed = 'i-material-symbols-check-small-rounded text-success-500';
 const failed = 'i-material-symbols-close-small-rounded text-danger-500';
@@ -49,21 +35,23 @@ const symbols = /[!@#$%^&*()+_\-=}{[\]|:;"/?><,`~]/; // !@#$%^&*()+_-=}{[]|:;"/?
 </script>
 
 <template>
-  <div>
+  <FormControl v-slot="{ uid }" :label="label" :required="required" :invalid="invalid" :help="help">
     <Popover v-model="status" class="w-full">
-      <TextField
-        v-model:value="valueModel"
-        v-bind="$attrs"
-        :type="show ? 'text' : 'password'"
-        :append="
-          show
-            ? 'i-material-symbols-visibility-off-outline-rounded'
-            : 'i-material-symbols-visibility-outline-rounded'
-        "
-        @focus="onFocus"
-        @blur="onBlur"
-        @append="show = !show"
-      />
+      <div class="w-full" @click="meter && (status = true)">
+        <TextField
+          :id="uid"
+          v-model:value="valueModel"
+          v-bind="$attrs"
+          :type="show ? 'text' : 'password'"
+          :append="
+            show
+              ? 'i-material-symbols-visibility-off-outline-rounded'
+              : 'i-material-symbols-visibility-outline-rounded'
+          "
+          :invalid="!!invalid"
+          @append="show = !show"
+        />
+      </div>
 
       <template #content>
         <div class="p-4">
@@ -94,5 +82,5 @@ const symbols = /[!@#$%^&*()+_\-=}{[\]|:;"/?><,`~]/; // !@#$%^&*()+_-=}{[]|:;"/?
         </div>
       </template>
     </Popover>
-  </div>
+  </FormControl>
 </template>
