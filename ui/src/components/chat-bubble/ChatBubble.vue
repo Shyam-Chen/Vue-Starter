@@ -14,10 +14,6 @@ defineProps<{
 
 const morePopover = ref(false);
 
-const onMouseLeave = () => {
-  morePopover.value = false;
-};
-
 const edit = ref(false);
 const message = ref('');
 
@@ -37,10 +33,14 @@ const flux = reactive({
 </script>
 
 <template>
-  <div class="flex items-start gap-2.5 group" @mouseleave="onMouseLeave">
+  <div class="flex items-start gap-2.5 group">
     <Avatar v-if="!self" class="bg-primary-500 text-white">BG</Avatar>
 
-    <div v-if="self" class="self-center hidden group-hover:block">
+    <div
+      v-if="self"
+      class="self-center hidden group-hover:block"
+      :class="{ '!block': morePopover }"
+    >
       <Popover v-model="morePopover">
         <Button
           icon="i-material-symbols-more-vert"
@@ -77,18 +77,18 @@ const flux = reactive({
 
     <div class="flex flex-col gap-1 md:max-w-xs lg:max-w-sm xl:max-w-sm 2xl:max-w-md">
       <div class="flex items-center space-x-2 rtl:space-x-reverse" :class="{ 'justify-end': self }">
-        <span v-if="!self" class="text-sm font-semibold text-gray-900 dark:text-white"
-          >Bonnie Green</span
-        >
+        <span v-if="!self" class="text-sm font-semibold text-gray-900 dark:text-white">{{
+          chat?.name
+        }}</span>
         <span class="text-sm font-normal text-gray-500 dark:text-gray-400">{{ chat?.time }}</span>
       </div>
 
       <div
         v-if="!edit"
-        class="flex flex-col leading-1.5 p-4 border-gray-200 bg-gray-100 rounded-e-xl rounded-es-xl dark:bg-gray-700"
+        class="flex flex-col leading-1.5 px-4 py-3 border-gray-200 bg-gray-100 rounded-e-xl rounded-es-xl dark:bg-gray-700"
         :class="{ 'rounded-s-xl !rounded-se-0': self }"
       >
-        <p class="text-sm font-normal text-gray-900 dark:text-white" v-html="chat?.message"></p>
+        <ChatBox :modelValue="chat?.message" viewonly />
       </div>
 
       <ChatBox v-if="edit" v-model="message" editing />

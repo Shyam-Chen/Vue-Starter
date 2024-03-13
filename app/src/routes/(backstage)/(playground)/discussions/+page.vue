@@ -24,6 +24,7 @@ const replies = [
 ];
 
 interface Bubble {
+  name?: string;
   message?: string;
   time?: string;
   self?: boolean;
@@ -58,6 +59,7 @@ const onSend = () => {
       self: true,
     },
     {
+      name: 'Bonnie Green',
       message: randomReply,
       time: intlFormat(
         new Date(),
@@ -77,6 +79,9 @@ const onSend = () => {
 
   message.value = '';
 };
+
+message.value = `I'm working from home today! 😅`;
+onSend();
 </script>
 
 <template>

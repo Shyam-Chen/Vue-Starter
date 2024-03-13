@@ -31,13 +31,11 @@ const flux = reactive({
     <h2 class="text-3xl font-bold my-4">Basic</h2>
 
     <XCard>
-      <div class="max-w-xs">
-        <XSelect
-          v-model:value="flux.select1"
-          :label="'Example label'"
-          :options="flux.select1Options"
-        />
-      </div>
+      <XSelect
+        v-model:value="flux.select1"
+        :label="'Example label'"
+        :options="flux.select1Options"
+      />
     </XCard>
   </section>
 
@@ -45,14 +43,12 @@ const flux = reactive({
     <h2 class="text-3xl font-bold my-4 pt-6">Disabled</h2>
 
     <XCard>
-      <div class="max-w-xs">
-        <XSelect
-          v-model:value="flux.select1"
-          :label="'Example label'"
-          :options="flux.select1Options"
-          disabled
-        />
-      </div>
+      <XSelect
+        v-model:value="flux.select1"
+        :label="'Example label'"
+        :options="flux.select1Options"
+        disabled
+      />
     </XCard>
   </section>
 
@@ -60,9 +56,7 @@ const flux = reactive({
     <h2 class="text-3xl font-bold my-4 pt-6">Clearable</h2>
 
     <XCard>
-      <div class="max-w-xs">
-        <XSelect v-model:value="flux.select1" :options="flux.select1Options" clearable />
-      </div>
+      <XSelect v-model:value="flux.select1" :options="flux.select1Options" clearable />
     </XCard>
   </section>
 
@@ -70,9 +64,7 @@ const flux = reactive({
     <h2 class="text-3xl font-bold my-4 pt-6">Filterable</h2>
 
     <XCard>
-      <div class="max-w-xs">
-        <XSelect v-model:value="flux.select1" :options="flux.select1Options" filterable />
-      </div>
+      <XSelect v-model:value="flux.select1" :options="flux.select1Options" filterable />
     </XCard>
   </section>
 
@@ -80,13 +72,11 @@ const flux = reactive({
     <h2 class="text-3xl font-bold my-4 pt-6">Invalid</h2>
 
     <XCard>
-      <div class="max-w-xs">
-        <XSelect
-          v-model:value="flux.select1"
-          :options="flux.select1Options"
-          invalid="Incorrect entry"
-        />
-      </div>
+      <XSelect
+        v-model:value="flux.select1"
+        :options="flux.select1Options"
+        invalid="Incorrect entry"
+      />
     </XCard>
   </section>
 
@@ -94,9 +84,7 @@ const flux = reactive({
     <h2 class="text-3xl font-bold my-4 pt-6">Loading</h2>
 
     <XCard>
-      <div class="max-w-xs">
-        <XSelect v-model:value="flux.select1" :options="flux.select1Options" loading />
-      </div>
+      <XSelect v-model:value="flux.select1" :options="flux.select1Options" loading />
     </XCard>
   </section>
 

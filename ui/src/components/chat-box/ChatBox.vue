@@ -58,8 +58,11 @@ const DisableEnter = Extension.create({
 const editor = ref<Editor>();
 
 const editorClass = computed(() => {
-  let clx = `border border-slate-400 rounded-b focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-primary-400 focus:rounded ${props.class}`;
+  if (props.viewonly) {
+    return `text-sm font-normal text-gray-900 dark:text-white`;
+  }
 
+  let clx = `border border-slate-400 rounded-b focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-primary-400 focus:rounded ${props.class}`;
   if (props.editing) clx += `px-3 py-1 min-h-38px`;
   else clx += `px-7 py-5 min-h-70px`;
 
@@ -143,7 +146,7 @@ defineExpose({
       <div class="ChatBox">
         <EditorContent :editor="editor" />
 
-        <template v-if="!editing">
+        <template v-if="!editing && !viewonly">
           <div class="ChatBox-Attach">
             <Button
               icon="i-material-symbols-attach-file-add-rounded"

@@ -12,7 +12,7 @@ const uid = uniqueId('uid-');
 </script>
 
 <template>
-  <div class="flex flex-col">
+  <div class="flex flex-col w-full">
     <label :for="uid" class="flex items-center mb-2 text-sm font-bold empty:hidden">
       <template v-if="label">{{ label }}</template>
       <span v-if="required" class="text-red-500">*</span>

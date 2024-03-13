@@ -1,5 +1,7 @@
 <script lang="ts" setup>
 import { XBreadcrumb, XCard, XChatBubble } from '@x/ui';
+
+const messageWithLink = `Check out this open-source UI component library based on Tailwind CSS: <a target="_blank" rel="noopener noreferrer nofollow" href="https://github.com/themesberg/flowbite">https://github.com/themesberg/flowbite</a>`;
 </script>
 
 <template>
@@ -12,9 +14,33 @@ import { XBreadcrumb, XCard, XChatBubble } from '@x/ui';
 
     <XCard>
       <div class="flex flex-col gap-4">
-        <XChatBubble />
+        <XChatBubble
+          :chat="{
+            name: 'Bonnie Green',
+            message: `That's awesome. I think our users will really appreciate the improvements.`,
+            time: '11:46',
+          }"
+        />
 
-        <XChatBubble self class="justify-end" />
+        <XChatBubble
+          :chat="{ message: `I'm working from home today! 😅` }"
+          self
+          class="justify-end"
+        />
+
+        <XChatBubble
+          :chat="{
+            name: 'Bonnie Green',
+            message: messageWithLink,
+            time: '11:46',
+          }"
+        />
+
+        <XChatBubble
+          :chat="{ message: `I'm working from home today! 😅` }"
+          self
+          class="justify-end"
+        />
       </div>
     </XCard>
   </section>

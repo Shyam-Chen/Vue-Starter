@@ -2,7 +2,9 @@
 
 :poodle: A boilerplate for SPA Client with HTML5, Vue, and Tailwind on Vite.
 
-:rainbow: [Live Demo](https://vue-starter-6fa6.onrender.com) - The server application is [here](https://github.com/Shyam-Chen/Fastify-Starter).
+:rainbow: View Demo: [Live](https://vue-starter-6fa6.onrender.com) | Windows | macOS | Android | iOS
+
+:octocat: Source Code: [Web-side](https://github.com/Shyam-Chen/Vue-Starter) | Native-side | [Server-side](https://github.com/Shyam-Chen/Fastify-Starter)
 
 ## Table of Contents
 
