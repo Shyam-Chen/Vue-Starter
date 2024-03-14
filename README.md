@@ -4,7 +4,7 @@
 
 :rainbow: View Demo: [Live](https://vue-starter-6fa6.onrender.com) | Windows | macOS | Android | iOS
 
-:octocat: Source Code: [Web-side](https://github.com/Shyam-Chen/Vue-Starter) | Native-side | [Server-side](https://github.com/Shyam-Chen/Fastify-Starter)
+:octocat: Source Code: [Web-side](https://github.com/Shyam-Chen/Vue-Starter) | [Native-side](https://github.com/Shyam-Chen/Tauri-Starter) | [Server-side](https://github.com/Shyam-Chen/Fastify-Starter)
 
 ## Table of Contents
 

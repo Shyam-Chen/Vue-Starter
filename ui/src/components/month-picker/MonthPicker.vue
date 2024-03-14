@@ -178,7 +178,7 @@ useScrollParent(
             :value="year"
             class="flex justify-center items-center hover:bg-slate-200 dark:hover:bg-slate-600 rounded text-sm cursor-pointer"
             :class="{
-              'text-white bg-blue-400 important:hover:bg-blue-500': year === getYear(flux.now),
+              'ring-1 ring-primary-500': year === getYear(flux.now),
             }"
             @click="flux.selectYear(year)"
           >
@@ -193,7 +193,7 @@ useScrollParent(
             :value="index"
             class="flex justify-center items-center hover:bg-slate-200 dark:hover:bg-slate-600 rounded text-sm cursor-pointer"
             :class="{
-              'text-white bg-blue-400 important:hover:bg-blue-500':
+              'ring-1 ring-primary-500':
                 index === getMonth(flux.now) && getYear(flux.currentMoment) === getYear(flux.now),
               'text-white bg-primary-600 important:hover:bg-primary-700':
                 valueModel &&
