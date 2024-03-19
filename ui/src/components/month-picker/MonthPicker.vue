@@ -11,11 +11,15 @@ import Fade from '../fade/Fade.vue';
 const props = withDefaults(
   defineProps<{
     value?: string;
+    minMonth?: string | Date;
+    maxMonth?: string | Date;
     format?: string;
     months?: string[];
   }>(),
   {
     value: '',
+    minMonth: undefined,
+    maxMonth: undefined,
     format: 'yyyy/MM',
     // prettier-ignore
     months: () => ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
@@ -106,9 +110,12 @@ const flux = reactive({
   },
   selectMonth(month: number) {
     flux.currentMoment = setMonth(flux.currentMoment, month);
-    flux.showDatePicker = false;
-
     const value = _format(flux.currentMoment, props.format);
+
+    if (props.minMonth && _format(new Date(props.minMonth), props.format) > value) return;
+    if (props.maxMonth && _format(new Date(props.maxMonth), props.format) < value) return;
+
+    flux.showDatePicker = false;
     emit('update:value', value);
   },
 });
@@ -123,6 +130,22 @@ useScrollParent(
     if (flux.showDatePicker) flux.resizePanel();
   },
 );
+
+function monthDisabled(index: number) {
+  const currentMonth = _format(new Date(getYear(flux.currentMoment), index), props.format);
+  const minMonth = props.minMonth && _format(new Date(props.minMonth), props.format);
+  const maxMonth = props.maxMonth && _format(new Date(props.maxMonth), props.format);
+
+  if (minMonth && maxMonth) {
+    return minMonth > currentMonth || maxMonth < currentMonth;
+  } else if (minMonth) {
+    return minMonth > currentMonth;
+  } else if (maxMonth) {
+    return maxMonth < currentMonth;
+  }
+
+  return false;
+}
 </script>
 
 <template>
@@ -195,6 +218,7 @@ useScrollParent(
             :class="{
               'ring-1 ring-primary-500':
                 index === getMonth(flux.now) && getYear(flux.currentMoment) === getYear(flux.now),
+              'text-slate-300 dark:text-slate-600 !cursor-not-allowed': monthDisabled(index),
               'text-white bg-primary-600 important:hover:bg-primary-700':
                 valueModel &&
                 index === getMonth(new Date(valueModel)) &&

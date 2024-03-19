@@ -5,6 +5,10 @@ import { subMonths, addMonths, format } from 'date-fns';
 
 const month = ref('');
 
+const month2 = ref('');
+const month2MinMonth = ref(true);
+const month2MaxMonth = ref(true);
+
 const startMonth = ref('');
 const endMonth = ref('');
 
@@ -33,6 +37,28 @@ const maxMonth = ref(true);
       <XMonthPicker v-model:value="month" />
       <div class="mt-1">{{ month }}</div>
     </XCard>
+
+    <section class="my-4">
+      <h3 class="text-2xl font-semibold my-4 pt-2">Min/Max Month</h3>
+
+      <XCard>
+        <XMonthPicker
+          v-model:value="month2"
+          :minMonth="month2MinMonth ? subMonths(new Date(), 2) : undefined"
+          :maxMonth="month2MaxMonth ? addMonths(new Date(), 2) : undefined"
+          clearable
+        />
+
+        <div class="mt-1 space-y-1">
+          <XSwitch v-model:value="month2MinMonth">
+            Min Month: {{ format(subMonths(new Date(), 2), 'yyyy-MM') }}
+          </XSwitch>
+          <XSwitch v-model:value="month2MaxMonth">
+            Max Month: {{ format(addMonths(new Date(), 2), 'yyyy-MM') }}
+          </XSwitch>
+        </div>
+      </XCard>
+    </section>
   </section>
 
   <section class="my-8">
@@ -56,6 +82,7 @@ const maxMonth = ref(true);
           v-model:endValue="endMonth2"
           :minMonth="minMonth ? subMonths(new Date(), 2) : undefined"
           :maxMonth="maxMonth ? addMonths(new Date(), 2) : undefined"
+          clearable
         />
 
         <div class="mt-1 space-y-1">
