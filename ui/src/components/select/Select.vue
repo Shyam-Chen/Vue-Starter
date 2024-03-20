@@ -35,6 +35,7 @@ const props = withDefaults(
     notFoundContent?: string;
     invalid?: boolean | string;
     help?: string;
+    useParentOffset?: boolean;
   }>(),
   {
     label: '',
@@ -49,6 +50,7 @@ const props = withDefaults(
     notFoundContent: '',
     invalid: undefined,
     help: '',
+    useParentOffset: false,
   },
 );
 
@@ -110,17 +112,25 @@ watch(
 
 function resizePanel() {
   const rect = selectInput.value.getBoundingClientRect();
+  const offsetParent = selectInput.value.offsetParent as HTMLElement;
+  const parentRect = offsetParent.getBoundingClientRect();
 
   selectPanel.value.style.width = `${rect.width}px`;
-  selectPanel.value.style.left = `${rect.left}px`;
+  selectPanel.value.style.left = props.useParentOffset
+    ? `${rect.left - parentRect.left}px`
+    : `${rect.left}px`;
 
   const center = window.innerHeight / 2;
 
   if (rect.top > center) {
-    selectPanel.value.style.top = `${rect.top}px`;
+    selectPanel.value.style.top = props.useParentOffset
+      ? `${rect.top - parentRect.top}px`
+      : `${rect.top}px`;
     flux.direction = 'up';
   } else {
-    selectPanel.value.style.top = `${rect.bottom}px`;
+    selectPanel.value.style.top = props.useParentOffset
+      ? `${rect.bottom - parentRect.top}px`
+      : `${rect.bottom}px`;
     flux.direction = 'down';
   }
 }
