@@ -79,13 +79,6 @@ $ pnpm preview
 Biome CLI
 
 ```sh
-# format
-$ pnpm biome format ./app ./ui ./mock ./e2e --write
-
-# lint
-$ pnpm biome lint ./app ./ui ./mock ./e2e
-
-# format, lint & sort
 $ pnpm biome check --apply ./app ./ui ./mock ./e2e
 ```
 
@@ -202,17 +195,26 @@ The structure follows the LIFT Guidelines.
 │   ├── package.json
 │   ├── tsconfig.json
 │   └── vite.config.ts
-├── e2e
+├── cdk -> Cloud Development Kit for Terraform with TypeScript
+│   ├── cdktf.json
+│   ├── package.json
+│   └── tsconfig.json
+├── docs -> Write documentation with VitePress
+│   ├── .vitepress
+│   ├── index.md
+│   ├── package.json
+│   └── vite.config.ts
+├── e2e -> End-to-end testing of web pages
 │   ├── src
 │   ├── package.json
 │   ├── playwright.config.ts
 │   └── tsconfig.json
-├── mock
+├── mock -> Mock backend API
 │   ├── src
 │   ├── package.json
 │   ├── tsconfig.json
 │   └── vite.config.ts
-├── ui
+├── ui -> Design system
 │   ├── src
 │   ├── package.json
 │   ├── tsconfig.json
