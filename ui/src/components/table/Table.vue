@@ -1,7 +1,8 @@
 <script lang="ts" setup generic="T extends object">
 import type { VNode } from 'vue';
-import { computed, reactive, watch, toRef } from 'vue';
+import { ref, computed, reactive, watch, toRef } from 'vue';
 import { useLocaler, useLocale } from 'vue-localer';
+import { useScroll } from '@vueuse/core';
 
 import type staticTable from '../../utilities/static-table/staticTable';
 import Spinner from '../spinner/Spinner.vue';
@@ -247,11 +248,24 @@ watch(
   },
   { deep: true },
 );
+
+const hasScrollbar = ref(false);
+const tableWrapper = ref<HTMLDivElement>();
+const { arrivedState } = useScroll(tableWrapper);
+
+watch(
+  () => tableWrapper.value,
+  (el) => {
+    if (el) {
+      hasScrollbar.value = el.scrollWidth > el.clientWidth;
+    }
+  },
+);
 </script>
 
 <template>
   <div class="relative">
-    <div class="Table-Wrapper" :class="{ 'max-h-100': stickyHeader }">
+    <div ref="tableWrapper" class="Table-Wrapper" :class="{ 'max-h-100': stickyHeader }">
       <table class="Table-Element">
         <thead>
           <slot name="thead"></slot>
@@ -352,8 +366,8 @@ watch(
                     v-else
                     :class="{
                       'border-slate-400/50 w-full px-4': col.sticky,
-                      'border-r-2': col.sticky === 'left',
-                      'border-l-2': col.sticky === 'right',
+                      'border-r-2': hasScrollbar && !arrivedState.left && col.sticky === 'left',
+                      'border-l-2': hasScrollbar && !arrivedState.right && col.sticky === 'right',
                     }"
                   >
                     <slot :name="col.key" :row="row">
