@@ -20,10 +20,11 @@ import useScrollParent from '../../composables/scroll-parent/useScrollParent';
 import TextField from '../text-field/TextField.vue';
 import Fade from '../fade/Fade.vue';
 
+const startValueModel = defineModel<string>('startValue', { default: '' });
+const endValueModel = defineModel<string>('endValue', { default: '' });
+
 const props = withDefaults(
   defineProps<{
-    startValue?: string;
-    endValue?: string;
     disabled?: boolean;
     format?: string;
     weekdays?: string[];
@@ -33,8 +34,6 @@ const props = withDefaults(
     maxDate?: string | Date;
   }>(),
   {
-    startValue: '',
-    endValue: '',
     format: 'yyyy/MM/dd',
     weekdays: () => ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
     // prettier-ignore
@@ -43,11 +42,6 @@ const props = withDefaults(
     maxDate: '',
   },
 );
-
-const emit = defineEmits<{
-  (evt: 'update:startValue', val?: string): void;
-  (evt: 'update:endValue', val?: string): void;
-}>();
 
 const localer = useLocaler();
 const locale = useLocale();
@@ -58,16 +52,6 @@ const _months = computed(() => locale.value?.months || props.months);
 const target = ref();
 const input = ref();
 const picker = ref();
-
-const startValueModel = computed({
-  get: () => props.startValue,
-  set: (val) => emit('update:startValue', val),
-});
-
-const endValueModel = computed({
-  get: () => props.endValue,
-  set: (val) => emit('update:endValue', val),
-});
 
 const createDays = (y?: number, m?: number) => {
   const currentPeriod = () => {
@@ -304,7 +288,7 @@ watch(
   },
 );
 
-watch([() => props.startValue, () => props.endValue], () => {
+watch([startValueModel, endValueModel], () => {
   flux.currentPeriodDates = createDays(getYear(flux.currentMoment), getMonth(flux.currentMoment));
 });
 

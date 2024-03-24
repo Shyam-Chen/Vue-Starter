@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref, reactive, computed, nextTick } from 'vue';
+import { ref, reactive, nextTick } from 'vue';
 import { useDebounceFn, onClickOutside } from '@vueuse/core';
 
 // import useScrollParent from '../../composables/scroll-parent/useScrollParent';
@@ -8,12 +8,9 @@ import request from '../../utilities/request/request';
 import ChipField from '../chip-field/ChipField.vue';
 import Fade from '../fade/Fade.vue';
 
-const props = defineProps<{
-  value: string[];
-}>();
+const valueModel = defineModel<string[]>('value', { default: [] });
 
-const emit = defineEmits<{
-  (evt: 'update:value', val: string[]): void;
+defineEmits<{
   (evt: 'input', val: string): void;
 }>();
 
@@ -21,11 +18,6 @@ const target = ref();
 const autocompleteInput = ref();
 const autocompletePane = ref();
 const autocompleteItem = ref<any[]>([]);
-
-const valueModel = computed({
-  get: () => props.value || [],
-  set: (val) => emit('update:value', val),
-});
 
 const debouncedFn = useDebounceFn(async (val) => {
   if (!val.length) return;

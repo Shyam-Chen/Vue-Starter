@@ -23,7 +23,7 @@ const uid = uniqueId('uid-');
 
 const valueModel = computed({
   get: () => props.value || false,
-  set: (val) => emit('update:value', val),
+  set: (val) => !props.readonly && emit('update:value', val),
 });
 
 const focused = ref(false);

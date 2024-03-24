@@ -28,16 +28,16 @@ type Day = {
   disabled?: boolean;
 };
 
+const valueModel = defineModel<string>('value', { default: '' });
+
 const props = withDefaults(
   defineProps<{
-    value?: string;
     disabled?: boolean;
     minDate?: string | Date;
     maxDate?: string | Date;
     format?: string;
   }>(),
   {
-    value: '',
     disabled: false,
     minDate: '',
     maxDate: '',
@@ -55,17 +55,21 @@ const localer = useLocaler();
 const locale = useLocale();
 
 const _weekdays = computed(() => locale.value?.weekdays || ['S', 'M', 'T', 'W', 'T', 'F', 'S']);
+
 // prettier-ignore
-const _months = computed(() => locale.value?.months || ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']);
+const _months = computed(
+  () =>
+    locale.value?.months || [
+      'Jan', 'Feb', 'Mar',
+      'Apr', 'May', 'Jun',
+      'Jul', 'Aug', 'Sep',
+      'Oct', 'Nov', 'Dec',
+    ],
+);
 
 const target = ref();
 const input = ref();
 const picker = ref();
-
-const valueModel = computed({
-  get: () => props.value,
-  set: (val) => emit('update:value', val),
-});
 
 const createDays = (y?: number, m?: number) => {
   const currentPeriod = () => {
@@ -121,7 +125,7 @@ const createDays = (y?: number, m?: number) => {
       day.disabled = maxDate < currentDate;
     }
 
-    day.selected = _format(day.date, props.format) === props.value;
+    day.selected = _format(day.date, props.format) === valueModel.value;
   });
 
   const chunked = chunk(days, 7);
@@ -286,7 +290,7 @@ watch(
   },
 );
 
-watch([() => props.value, () => props.minDate, () => props.maxDate], () => {
+watch([valueModel, () => props.minDate, () => props.maxDate], () => {
   flux.currentPeriodDates = createDays(getYear(flux.currentMoment), getMonth(flux.currentMoment));
 });
 

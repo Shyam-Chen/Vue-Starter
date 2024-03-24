@@ -4,20 +4,12 @@ import { useOffsetPagination } from '@vueuse/core';
 
 import Button from '../button/Button.vue';
 
+const valueModel = defineModel<number>('value', { default: 1 });
+
 const props = defineProps<{
-  value?: number;
   rows?: number;
   count?: number;
 }>();
-
-const emit = defineEmits<{
-  (evt: 'update:value', val?: number): void;
-}>();
-
-const valueModel = computed({
-  get: () => props.value || 1,
-  set: (val) => emit('update:value', val),
-});
 
 const rowsRef = computed(() => props.rows || 10);
 const countRef = computed(() => props.count || 0);

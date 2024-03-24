@@ -8,6 +8,8 @@ import useScrollParent from '../../composables/scroll-parent/useScrollParent';
 import TextField from '../text-field/TextField.vue';
 import Fade from '../fade/Fade.vue';
 
+const valueModel = defineModel<string>('value', { default: '' });
+
 const props = withDefaults(
   defineProps<{
     value?: string;
@@ -26,18 +28,9 @@ const props = withDefaults(
   },
 );
 
-const emit = defineEmits<{
-  (evt: 'update:value', val?: string): void;
-}>();
-
 const target = ref();
 const input = ref();
 const picker = ref();
-
-const valueModel = computed({
-  get: () => props.value,
-  set: (val) => emit('update:value', val),
-});
 
 const flux = reactive({
   showDatePicker: false,
@@ -116,7 +109,7 @@ const flux = reactive({
     if (props.maxMonth && _format(new Date(props.maxMonth), props.format) < value) return;
 
     flux.showDatePicker = false;
-    emit('update:value', value);
+    valueModel.value = value;
   },
 });
 

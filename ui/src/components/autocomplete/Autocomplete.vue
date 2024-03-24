@@ -12,16 +12,16 @@ defineOptions({
   inheritAttrs: false,
 });
 
+const valueModel = defineModel<string>('value', { default: '' });
+
 const props = withDefaults(
   defineProps<{
-    value?: string;
     options?: any[];
     display?: 'label' | 'value' | ((opt: any) => void);
     clearable?: boolean;
     notFoundContent?: string;
   }>(),
   {
-    value: '',
     options: () => [],
     display: 'label',
     notFoundContent: 'No results found',
@@ -29,7 +29,6 @@ const props = withDefaults(
 );
 
 const emit = defineEmits<{
-  (evt: 'update:value', val: string | null): void;
   (evt: 'change', val: string | null, opt: any | null): void;
 }>();
 
@@ -38,11 +37,6 @@ const autocompleteInput = ref();
 const autocompletePane = ref();
 const autocompleteList = ref();
 const autocompleteItem = ref<any[]>([]);
-
-const valueModel = computed({
-  get: () => props.value,
-  set: (val) => emit('update:value', val),
-});
 
 const debouncedFn = useDebounceFn(async (val) => {
   if (!val.length) return;
@@ -137,7 +131,7 @@ const flux = reactive({
   options: null as any[] | null,
   onSelect(value: any, option: any) {
     flux.show = false;
-    emit('update:value', value);
+    valueModel.value = value;
     emit('change', value, option);
   },
   display(item: any) {
@@ -152,7 +146,7 @@ const flux = reactive({
     return `${item.value} - ${item.label}`;
   },
   clear() {
-    emit('update:value', null);
+    valueModel.value = '';
     emit('change', null, null);
   },
 });

@@ -7,19 +7,11 @@ import useScrollParent from '../../composables/scroll-parent/useScrollParent';
 import TextField from '../text-field/TextField.vue';
 import Fade from '../fade/Fade.vue';
 
-const props = defineProps<{
-  value?: string;
+const valueModel = defineModel<string>('value', { default: '' });
+
+defineProps<{
   clearable?: boolean;
 }>();
-
-const emit = defineEmits<{
-  (evt: 'update:value', val?: string): void;
-}>();
-
-const valueModel = computed({
-  get: () => props.value,
-  set: (val) => emit('update:value', val),
-});
 
 const flux = reactive({
   show: false,

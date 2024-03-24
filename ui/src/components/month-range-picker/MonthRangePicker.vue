@@ -9,27 +9,21 @@ import useScrollParent from '../../composables/scroll-parent/useScrollParent';
 import TextField from '../text-field/TextField.vue';
 import Fade from '../fade/Fade.vue';
 
+const startValueModel = defineModel<string>('startValue', { default: '' });
+const endValueModel = defineModel<string>('endValue', { default: '' });
+
 const props = withDefaults(
   defineProps<{
-    startValue?: string;
-    endValue?: string;
     minMonth?: string | Date;
     maxMonth?: string | Date;
     format?: string;
   }>(),
   {
-    startValue: '',
-    endValue: '',
     minMonth: undefined,
     maxMonth: undefined,
     format: 'yyyy/MM',
   },
 );
-
-const emit = defineEmits<{
-  (evt: 'update:startValue', val?: string): void;
-  (evt: 'update:endValue', val?: string): void;
-}>();
 
 const locale = useLocale();
 
@@ -37,18 +31,16 @@ const target = ref();
 const input = ref();
 const picker = ref();
 
-const startValueModel = computed({
-  get: () => props.startValue,
-  set: (val) => emit('update:startValue', val),
-});
-
-const endValueModel = computed({
-  get: () => props.endValue,
-  set: (val) => emit('update:endValue', val),
-});
-
 // prettier-ignore
-const months = computed(() => locale.value?.months || ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']);
+const months = computed(
+  () =>
+    locale.value?.months || [
+      'Jan', 'Feb', 'Mar',
+      'Apr', 'May', 'Jun',
+      'Jul', 'Aug', 'Sep',
+      'Oct', 'Nov', 'Dec',
+    ],
+);
 
 const flux = reactive({
   showDatePicker: false,
