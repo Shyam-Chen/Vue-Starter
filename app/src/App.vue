@@ -3,11 +3,9 @@ import { watch } from 'vue';
 import { RouterView } from 'vue-router';
 import { useLocaler } from 'vue-localer';
 import { XNotification } from '@x/ui';
-import { useNotification } from '@x/ui';
 import { useNavigatorLanguage, useDark } from '@vueuse/core';
 
 const { lang, langs } = useLocaler();
-const notification = useNotification();
 const { language } = useNavigatorLanguage();
 useDark();
 
@@ -38,5 +36,5 @@ watch(
 
 <template>
   <RouterView />
-  <XNotification :messages="notification.state.messages" :timeouts="notification.state.timeouts" />
+  <XNotification />
 </template>

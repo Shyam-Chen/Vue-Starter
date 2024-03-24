@@ -1,42 +1,25 @@
-import { reactive, readonly } from 'vue';
+import type { ComponentProps } from 'vue-component-type-helpers';
+import { reactive } from 'vue';
 import { defineStore } from 'vue-storer';
 
-import type Alert from '../../components/alert/Alert.vue';
-
-type NotificationMessage = {
-  message: string;
-  timeout: ReturnType<typeof setTimeout>;
-  color?: InstanceType<typeof Alert>['color'];
-  icon?: InstanceType<typeof Alert>['icon'];
-};
+import type Toast from '../../components/notification/Toast.vue';
 
 type State = {
-  messages: NotificationMessage[];
-  timeouts: NotificationMessage[];
+  messages: ComponentProps<typeof Toast>[];
 };
 
 type Actions = {
-  add(params: Omit<NotificationMessage, 'timeout'>): void;
+  add(params: ComponentProps<typeof Toast>): void;
 };
 
-export default defineStore<State, object, Actions>('useNotification', () => {
+export default defineStore<State, {}, Actions>('useNotification', () => {
   const state = reactive<State>({
     messages: [],
-    timeouts: [],
   });
 
-  const actions = readonly<Actions>({
-    add({ message, color, icon }) {
-      const item = {
-        message,
-        timeout: setTimeout(() => {
-          state.timeouts.push(item);
-        }, 3000),
-        color,
-        icon,
-      };
-
-      state.messages.push(item);
+  const actions = reactive<Actions>({
+    add(params) {
+      state.messages.push(params);
     },
   });
 

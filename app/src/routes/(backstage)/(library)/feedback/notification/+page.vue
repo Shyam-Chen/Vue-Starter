@@ -1,83 +1,68 @@
 <script lang="ts" setup>
-import type { ComponentProps } from 'vue-component-type-helpers';
-import { ref } from 'vue';
-import { XBreadcrumb, XCard, XButton, XNotification } from '@x/ui';
-import { useNotification } from '@x/ui';
+import { XBreadcrumb, XCard, XCodeBlock } from '@x/ui';
 
-const notify = ref();
+import Basic from './Basic.vue';
+import BasicCode from './Basic.vue?raw';
+import Custom from './Custom.vue';
+import CustomCode from './Custom.vue?raw';
+import Severity from './Severity.vue';
+import SeverityCode from './Severity.vue?raw';
 
-let count = 0;
+const codeImport1 =
+  `<!-- Recommend putting it into \`App.vue\`. -->
+<script lang="ts" setup>
+import { XNotification } from '@x/ui';
+</script` +
+  '>' +
+  `
 
-const push = () => {
-  count += 1;
-  notify.value.push({ message: `This is a test notification. (${count})` });
-};
+<template>
+  <XNotification />
+</template>`;
 
-const notify2 = ref();
-
-let count2 = 0;
-
-const push2 = () => {
-  count2 += 1;
-  notify2.value.push({ message: `This is a test notification. (${count2})` });
-};
-
-let count3 = 0;
-
-const notification = useNotification();
-
-type Color = ComponentProps<typeof XNotification>['color'];
-
-const colorSelector = (() => {
-  const colors: Color[] = ['success', 'danger', 'warning', 'info'];
-
-  let currentIndex = 0;
-
-  return () => {
-    const currentColor = colors[currentIndex];
-    currentIndex = (currentIndex + 1) % colors.length;
-    return currentColor;
-  };
-})();
-
-const push3 = () => {
-  count3 += 1;
-
-  notification.actions.add({
-    message: `This is a test notification. (${count3})`,
-    color: colorSelector(),
-  });
-};
+const codeImport2 = `import { useNotification } from '@x/ui';`;
 </script>
 
 <template>
   <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Feedback' }, { text: 'Notification' }]" />
 
   <h1 class="text-4xl font-extrabold my-4">Notification</h1>
+  <p class="my-4">Notification is used to display messages in an overlay.</p>
 
   <section class="my-8">
-    <h2 class="text-3xl font-bold my-4">Basic</h2>
+    <h2 class="text-3xl font-bold my-4">Import</h2>
+
+    <XCodeBlock :code="codeImport1" language="vue" />
+    <XCodeBlock :code="codeImport2" language="ts" />
+  </section>
+
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Basic</h2>
 
     <XCard>
-      <XButton @click="push">Push</XButton>
-      <XNotification ref="notify" />
+      <Basic />
     </XCard>
+
+    <XCodeBlock :code="BasicCode" language="vue" />
   </section>
 
   <section class="my-8">
     <h2 class="text-3xl font-bold my-4 pt-6">Custom</h2>
 
     <XCard>
-      <XButton @click="push2">Push</XButton>
-      <XNotification ref="notify2" color="secondary" icon="i-material-symbols-wifi-rounded" />
+      <Custom />
     </XCard>
+
+    <XCodeBlock :code="CustomCode" language="vue" />
   </section>
 
   <section class="my-8">
     <h2 class="text-3xl font-bold my-4 pt-6">Severity</h2>
 
     <XCard>
-      <XButton @click="push3">Push</XButton>
+      <Severity />
     </XCard>
+
+    <XCodeBlock :code="SeverityCode" language="vue" />
   </section>
 </template>
