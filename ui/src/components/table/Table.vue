@@ -330,7 +330,7 @@ watch(
             <template v-for="row in flux.rows" :key="row._id || row.id">
               <Row
                 class="sticky-tr"
-                :class="{ 'bg-primary-300/25 !hover:bg-primary-400/25': selectable && row.checked }"
+                :class="{ selected: selectable && row.checked }"
                 @click="flux.clickRow(row)"
               >
                 <Cell v-if="selectable">
@@ -343,6 +343,7 @@ watch(
                   :class="[
                     {
                       'sticky-col sticky z-5 bg-white dark:bg-slate-800 !p-0': col.sticky,
+                      selected: col.sticky && selectable && row.checked,
                       'left-0': col.sticky === 'left',
                       'right-0': col.sticky === 'right',
                     },
@@ -445,6 +446,10 @@ watch(
 
 .Table-Element {
   @apply w-full border-collapse;
+}
+
+.selected {
+  @apply !bg-primary-50 !hover:bg-primary-100 !dark:bg-primary-950 !dark:hover:bg-primary-900;
 }
 
 .Table-RowsPerPage {
