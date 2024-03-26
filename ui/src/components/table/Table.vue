@@ -1,6 +1,6 @@
 <script lang="ts" setup generic="T extends object">
 import type { VNode } from 'vue';
-import { ref, computed, reactive, watch, toRef } from 'vue';
+import { ref, computed, reactive, watch, watchEffect, toRef } from 'vue';
 import { useLocaler, useLocale } from 'vue-localer';
 import { useScroll } from '@vueuse/core';
 
@@ -251,16 +251,14 @@ watch(
 
 const hasScrollbar = ref(false);
 const tableWrapper = ref<HTMLDivElement>();
-const { arrivedState } = useScroll(tableWrapper);
+const { arrivedState, measure } = useScroll(tableWrapper);
 
-watch(
-  () => tableWrapper.value,
-  (el) => {
-    if (el) {
-      hasScrollbar.value = el.scrollWidth > el.clientWidth;
-    }
-  },
-);
+watchEffect(() => {
+  if (tableWrapper.value && !props.loading) {
+    hasScrollbar.value = tableWrapper.value.scrollWidth > tableWrapper.value.clientWidth;
+    measure();
+  }
+});
 </script>
 
 <template>
@@ -292,6 +290,8 @@ watch(
                 class="gap-1"
                 :class="{
                   'cursor-pointer': typeof col.sortable === 'boolean' ? col.sortable : true,
+                  'border-r-2': hasScrollbar && !arrivedState.left && col.sticky === 'left',
+                  'border-l-2': hasScrollbar && !arrivedState.right && col.sticky === 'right',
                 }"
                 @click="flux.onSort(col)"
               >
