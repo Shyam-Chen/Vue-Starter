@@ -37,6 +37,8 @@ watch(
         const tab = defaultSlot[i];
 
         if (tab.children?.length) {
+          if (tab.children === 'v-if') break;
+
           const tabChildren = tab.children as VNode[];
 
           for (let j = 0; j < tabChildren.length; j++) {
@@ -63,11 +65,6 @@ function onClickTab(tab: VNode['props'], idx: number) {
 
   curIdx.value = idx;
 
-  nextTick(() => {
-    const active = tabWrapper.value?.querySelector('.Tabs-Tab.active');
-    active?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-  });
-
   if (typeof props.modelValue === 'number') {
     emit('update:modelValue', idx);
     emit('change', idx);
@@ -77,6 +74,11 @@ function onClickTab(tab: VNode['props'], idx: number) {
     emit('update:modelValue', tab?.value);
     emit('change', tab?.value);
   }
+
+  nextTick(() => {
+    const active = tabWrapper.value?.querySelector('.Tabs-Tab.active');
+    active?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  });
 }
 
 function onClose(tab: VNode['props'], idx: number) {
