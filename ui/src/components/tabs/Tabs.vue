@@ -37,7 +37,7 @@ watch(
         const tab = defaultSlot[i];
 
         if (tab.children?.length) {
-          if (tab.children === 'v-if') break;
+          if (tab.children === 'v-if') continue;
 
           const tabChildren = tab.children as VNode[];
 

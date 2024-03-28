@@ -253,12 +253,15 @@ const hasScrollbar = ref(false);
 const tableWrapper = ref<HTMLDivElement>();
 const { arrivedState, measure } = useScroll(tableWrapper);
 
-watchEffect(() => {
-  if (tableWrapper.value && !props.loading) {
-    hasScrollbar.value = tableWrapper.value.scrollWidth > tableWrapper.value.clientWidth;
-    measure();
-  }
-});
+watchEffect(
+  () => {
+    if (tableWrapper.value && !props.loading) {
+      hasScrollbar.value = tableWrapper.value.scrollWidth > tableWrapper.value.clientWidth;
+      measure();
+    }
+  },
+  { flush: 'post' },
+);
 </script>
 
 <template>
@@ -290,8 +293,10 @@ watchEffect(() => {
                 class="gap-1"
                 :class="{
                   'cursor-pointer': typeof col.sortable === 'boolean' ? col.sortable : true,
-                  'border-r-2': hasScrollbar && !arrivedState.left && col.sticky === 'left',
-                  'border-l-2': hasScrollbar && !arrivedState.right && col.sticky === 'right',
+                  'border-r-2 border-transparent':
+                    hasScrollbar && !arrivedState.left && col.sticky === 'left',
+                  'border-l-2 border-transparent':
+                    hasScrollbar && !arrivedState.right && col.sticky === 'right',
                 }"
                 @click="flux.onSort(col)"
               >
