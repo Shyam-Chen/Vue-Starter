@@ -24,6 +24,7 @@ const tabs = inject('Tabs') as {
   currentTab: Ref<number>;
   defaultModel: ModelRef<string | number | undefined, string>;
   tabs: Ref<TabProps[]>;
+  moveSlider: () => Promise<void>;
 };
 
 const tabIndex = ref<number>();
@@ -37,6 +38,8 @@ watch(
         titleSlot: slots.title,
         index: tabIndex.value,
       };
+
+      tabs.moveSlider();
     }
   },
 );
@@ -49,6 +52,8 @@ onBeforeMount(() => {
     titleSlot: slots.title,
     index: tabs.tabs.value.length,
   });
+
+  tabs.moveSlider();
 });
 
 const curTab = computed(() => {

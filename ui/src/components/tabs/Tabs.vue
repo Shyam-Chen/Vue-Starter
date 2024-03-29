@@ -18,6 +18,7 @@ const emit = defineEmits<{
 
 const currentTab = ref(0);
 const tabs = ref<TabProps[]>([]);
+const tabSlider = ref<HTMLDivElement>();
 
 function isActive(tab: TabProps) {
   if (typeof defaultModel.value === 'number') return tab.index === defaultModel.value;
@@ -42,6 +43,19 @@ async function onClickTab(tab: TabProps) {
   await nextTick();
   const active = tabWrapper.value?.querySelector('.Tabs-Tab.active');
   active?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+
+  moveSlider();
+}
+
+async function moveSlider() {
+  await nextTick();
+  const active = tabWrapper.value?.querySelector('.Tabs-Tab.active');
+  const activeRect = active?.getBoundingClientRect();
+
+  if (tabSlider.value && activeRect && active) {
+    tabSlider.value.style.width = activeRect.width + 'px';
+    tabSlider.value.style.left = (active as HTMLDivElement).offsetLeft + 'px';
+  }
 }
 
 function onClose(tab: TabProps) {
@@ -54,12 +68,11 @@ function onClose(tab: TabProps) {
   }
 }
 
-const slotWrapper = ref<HTMLDivElement>();
-
 provide('Tabs', {
   currentTab,
   defaultModel,
   tabs,
+  moveSlider,
 });
 
 const hasScrollbar = ref(false);
@@ -108,9 +121,14 @@ watch(
           ></div>
         </component>
       </template>
+
+      <div
+        ref="tabSlider"
+        class="transition-all absolute bottom-0 h-0.5 bg-primary-500 rounded"
+      ></div>
     </div>
 
-    <div ref="slotWrapper">
+    <div>
       <slot></slot>
     </div>
   </div>
@@ -118,6 +136,7 @@ watch(
 
 <style lang="scss" scoped>
 .Tabs-TabWrapper {
+  @apply relative;
   @apply flex flex-row items-center border-b border-gray-500;
   @apply overflow-x-auto;
 
@@ -151,7 +170,7 @@ watch(
   @apply font-medium uppercase leading-tight text-neutral-500 whitespace-nowrap;
 
   &.active {
-    @apply text-primary-500 border-primary-500;
+    @apply text-primary-500;
   }
 
   &.disabled {
