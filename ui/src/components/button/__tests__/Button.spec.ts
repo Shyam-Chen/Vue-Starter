@@ -1,7 +1,7 @@
 import type { VueWrapper } from '@vue/test-utils';
 import { mount } from '@vue/test-utils';
 
-import Button from './Button.vue';
+import Button from '../Button.vue';
 
 let wrapper: VueWrapper;
 

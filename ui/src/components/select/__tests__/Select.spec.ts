@@ -1,25 +1,21 @@
-import {mount} from '@vue/test-utils';
-import Select from '../Select.vue';
+import { createLocaler } from 'vue-localer';
+import { mount } from '@vue/test-utils';
 
-import {createLocaler} from 'vue-localer';
+import Select from '../Select.vue';
 
 const localer = createLocaler({
   fallbackLocale: 'en-US',
   messages: {
-    'en-US': {
-      table: {
-        pleaseSelect: 'Please select',
-        notFoundContent: 'No results found'
-      },
-    },
+    'en-US': {},
   },
 });
+
 describe('Select.vue', () => {
   it('displays placeholder when no option is selected', () => {
     const wrapper = mount(Select, {
       props: {
         placeholder: 'Select an option',
-        options: [{label: 'Option 1', value: '1'}],
+        options: [{ label: 'Option 1', value: '1' }],
       },
       global: {
         plugins: [localer],
@@ -32,14 +28,14 @@ describe('Select.vue', () => {
   it('displays selected option', async () => {
     const wrapper = mount(Select, {
       props: {
-        options: [{label: 'Option 1', value: '1'}],
+        options: [{ label: 'Option 1', value: '1' }],
       },
       global: {
         plugins: [localer],
       },
     });
 
-    await wrapper.setProps({modelValue: '1'});
+    await wrapper.setProps({ modelValue: '1' });
 
     expect(wrapper.text()).toContain('Option 1');
   });
@@ -47,7 +43,7 @@ describe('Select.vue', () => {
   it('emits change event when option is selected', async () => {
     const wrapper = mount(Select, {
       props: {
-        options: [{label: 'Option 1', value: '1'}],
+        options: [{ label: 'Option 1', value: '1' }],
       },
       global: {
         plugins: [localer],
@@ -57,18 +53,19 @@ describe('Select.vue', () => {
     await wrapper.find('.Select-Item').trigger('click');
 
     expect(wrapper.emitted()).toHaveProperty('change');
-    expect(wrapper.emitted().change[0]).toEqual(['1', {label: 'Option 1', value: '1'}]);
+    expect(wrapper.emitted().change[0]).toEqual(['1', { label: 'Option 1', value: '1' }]);
   });
 
   it('filters options based on input', async () => {
     const wrapper = mount(Select, {
       props: {
         options: [
-          {label: 'Option 1', value: '1'},
-          {label: 'Option 2', value: '2'},
+          { label: 'Option 1', value: '1' },
+          { label: 'Option 2', value: '2' },
         ],
         filterable: true,
-      }, global: {
+      },
+      global: {
         plugins: [localer],
       },
     });
@@ -83,12 +80,13 @@ describe('Select.vue', () => {
     const wrapper = mount(Select, {
       props: {
         options: [
-          {label: 'Option 1', value: '1'},
-          {label: 'Option 2', value: '2'},
+          { label: 'Option 1', value: '1' },
+          { label: 'Option 2', value: '2' },
         ],
         filterable: true,
         notFoundContent: 'No options found',
-      }, global: {
+      },
+      global: {
         plugins: [localer],
       },
     });
@@ -101,9 +99,10 @@ describe('Select.vue', () => {
   it('does not allow selection when disabled', async () => {
     const wrapper = mount(Select, {
       props: {
-        options: [{label: 'Option 1', value: '1'}],
+        options: [{ label: 'Option 1', value: '1' }],
         disabled: true,
-      }, global: {
+      },
+      global: {
         plugins: [localer],
       },
     });

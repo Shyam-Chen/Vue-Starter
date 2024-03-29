@@ -1,6 +1,7 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import { reactive } from 'vue';
 import { XPopover, XButton, XSelect, XCard } from '@x/ui';
+
 const flux = reactive({
   popoverStatus: false,
   select: '',
@@ -20,13 +21,14 @@ const flux = reactive({
 <template>
   <XPopover v-model="flux.popoverStatus">
     <XButton label="Launch" @click="flux.popoverStatus = true" />
+
     <template #content>
       <XCard>
         <XSelect
           v-model:value="flux.select"
           :label="'Example label'"
           :options="flux.select1Options"
-          use-parent-offset
+          useParentOffset
         />
       </XCard>
     </template>
