@@ -1,46 +1,67 @@
 <script lang="ts" setup>
-import type { Ref, ComputedRef } from 'vue';
+import type { Ref, ModelRef, VNode } from 'vue';
 import type { ComponentProps } from 'vue-component-type-helpers';
-import { ref, computed, inject, onMounted } from 'vue';
+import { ref, computed, watch, inject, onBeforeMount } from 'vue';
 import { RouterLink } from 'vue-router';
 
-const props = defineProps<{
+export interface TabProps {
+  titleSlot?: any;
+  index?: number;
   title?: string;
   value?: string;
   to?: ComponentProps<typeof RouterLink>['to'];
   disabled?: boolean;
+}
+
+const props = defineProps<TabProps>();
+
+const slots = defineSlots<{
+  default(props: {}): VNode;
+  title(props: {}): VNode;
 }>();
 
 const tabs = inject('Tabs') as {
-  curIdx: Ref<number>;
-  modelValue: ComputedRef<string | number | undefined>;
-  slotWrapper: Ref<HTMLDivElement | undefined>;
+  currentTab: Ref<number>;
+  defaultModel: ModelRef<string | number | undefined, string>;
+  tabs: Ref<TabProps[]>;
 };
 
-const self = ref<HTMLDivElement>();
-const currentIndex = ref(-1);
+const tabIndex = ref<number>();
 
-onMounted(() => {
-  if (tabs.slotWrapper.value?.children?.length) {
-    currentIndex.value = Array.from(tabs.slotWrapper.value.children).indexOf(self.value as Element);
-  }
+watch(
+  () => Object.assign({}, props),
+  () => {
+    if (typeof tabIndex.value === 'number') {
+      tabs.tabs.value[tabIndex.value] = { ...props, index: tabIndex.value };
+    }
+  },
+);
+
+onBeforeMount(() => {
+  tabIndex.value = tabs.tabs.value.length;
+
+  tabs.tabs.value.push({
+    ...props,
+    titleSlot: slots.title,
+    index: tabs.tabs.value.length,
+  });
 });
 
 const curTab = computed(() => {
-  if (typeof tabs.modelValue.value === 'number') {
-    return currentIndex.value === tabs.modelValue.value;
+  if (typeof tabs.defaultModel.value === 'number') {
+    return tabIndex.value === tabs.defaultModel.value;
   }
 
-  if (typeof tabs.modelValue.value === 'string') {
-    return props.value === tabs.modelValue.value;
+  if (typeof tabs.defaultModel.value === 'string') {
+    return props.value === tabs.defaultModel.value;
   }
 
-  return tabs.curIdx.value === currentIndex.value;
+  return tabIndex.value === tabs.currentTab.value;
 });
 </script>
 
 <template>
-  <div v-show="curTab" ref="self">
+  <div v-show="curTab">
     <slot></slot>
   </div>
 </template>

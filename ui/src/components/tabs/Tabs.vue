@@ -1,102 +1,65 @@
 <script lang="ts" setup>
-import type { VNode } from 'vue';
-import type { ComponentProps } from 'vue-component-type-helpers';
-import { nextTick, ref, computed, watch, provide, useSlots } from 'vue';
+import { nextTick, ref, watch, provide } from 'vue';
 import { RouterLink } from 'vue-router';
 import { useScroll } from '@vueuse/core';
 
-import Tab from './Tab.vue';
+import type { TabProps } from './Tab.vue';
 
-type TabProps = ComponentProps<typeof Tab>;
+const defaultModel = defineModel<number | string>();
 
-const props = defineProps<{
-  modelValue?: number | string;
+defineProps<{
   closeable?: boolean;
 }>();
 
 const emit = defineEmits<{
-  (evt: 'update:modelValue', val?: number | string): void;
-  (evt: 'change', val: string | number): void;
-  (evt: 'close', val: string | number): void;
+  (evt: 'change', val?: string | number): void;
+  (evt: 'close', val?: string | number): void;
 }>();
 
-const slots = useSlots();
-const tabs = ref<VNode[]>([]);
+const currentTab = ref(0);
+const tabs = ref<TabProps[]>([]);
 
-const curIdx = ref(0);
-
-watch(
-  () => slots.default?.(),
-  () => {
-    const defaultSlot = slots.default?.();
-
-    if (defaultSlot) {
-      tabs.value = [];
-
-      for (let i = 0; i < defaultSlot.length; i++) {
-        const tab = defaultSlot[i];
-
-        if (tab.children?.length) {
-          if (tab.children === 'v-if') continue;
-
-          const tabChildren = tab.children as VNode[];
-
-          for (let j = 0; j < tabChildren.length; j++) {
-            const child = tabChildren[j];
-            tabs.value = [...tabs.value, child];
-          }
-        } else {
-          tabs.value = [...tabs.value, tab];
-        }
-      }
-    }
-  },
-  { deep: true, immediate: true },
-);
-
-function isActive(tab: VNode['props'], idx: number) {
-  if (typeof props.modelValue === 'number') return idx === props.modelValue;
-  if (typeof props.modelValue === 'string') return tab?.value === props.modelValue;
-  return curIdx.value === idx;
+function isActive(tab: TabProps) {
+  if (typeof defaultModel.value === 'number') return tab.index === defaultModel.value;
+  if (typeof defaultModel.value === 'string') return tab.value === defaultModel.value;
+  return tab.index === currentTab.value;
 }
 
-function onClickTab(tab: VNode['props'], idx: number) {
-  if (tab?.disabled) return;
+async function onClickTab(tab: TabProps) {
+  if (tab.disabled) return;
 
-  curIdx.value = idx;
-
-  if (typeof props.modelValue === 'number') {
-    emit('update:modelValue', idx);
-    emit('change', idx);
+  if (typeof defaultModel.value === 'number') {
+    defaultModel.value = tab.index;
+    emit('change', tab.index);
+  } else if (typeof defaultModel.value === 'string') {
+    defaultModel.value = tab.value;
+    emit('change', tab.value);
+  } else {
+    currentTab.value = tab.index || 0;
+    emit('change', tab.index);
   }
 
-  if (typeof props.modelValue === 'string') {
-    emit('update:modelValue', tab?.value);
-    emit('change', tab?.value);
-  }
-
-  nextTick(() => {
-    const active = tabWrapper.value?.querySelector('.Tabs-Tab.active');
-    active?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-  });
+  await nextTick();
+  const active = tabWrapper.value?.querySelector('.Tabs-Tab.active');
+  active?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
 }
 
-function onClose(tab: VNode['props'], idx: number) {
-  if (typeof props.modelValue === 'number') {
-    emit('close', idx);
-  }
-
-  if (typeof props.modelValue === 'string') {
-    emit('close', idx);
+function onClose(tab: TabProps) {
+  if (typeof defaultModel.value === 'number') {
+    emit('close', tab.index);
+  } else if (typeof defaultModel.value === 'string') {
+    emit('close', tab.value);
+  } else {
+    emit('close', tab.index);
   }
 }
 
 const slotWrapper = ref<HTMLDivElement>();
 
 provide('Tabs', {
-  curIdx,
-  modelValue: computed(() => props.modelValue),
-  slotWrapper,
+  currentTab,
+  defaultModel,
+  tabs,
 });
 
 const hasScrollbar = ref(false);
@@ -124,27 +87,24 @@ watch(
         end: hasScrollbar && arrivedState.right,
       }"
     >
-      <template v-for="(tab, idx) in tabs" :key="idx">
+      <template v-for="tab in tabs" :key="tab.index">
         <component
-          :is="tab?.props?.to ? RouterLink : 'div'"
+          :is="tab.to ? RouterLink : 'div'"
           class="Tabs-Tab"
           :class="{
-            active: isActive(tab?.props, idx),
-            disabled: tab?.props?.disabled,
+            active: isActive(tab),
+            disabled: tab.disabled,
           }"
-          :to="tab?.props?.to"
-          @click="onClickTab(tab?.props, idx)"
+          :to="tab.to"
+          @click="onClickTab(tab)"
         >
-          <template v-if="(tab?.children as TabProps)?.title">
-            <component :is="(tab?.children as TabProps)?.title"></component>
-          </template>
-
-          <template v-else>{{ tab?.props?.title }}</template>
+          <template v-if="tab.titleSlot"><component :is="tab.titleSlot"></component></template>
+          <template v-else>{{ tab.title }}</template>
 
           <div
             v-if="closeable"
             class="i-fa-close w-3 h-3 ml-3 transition hover:scale-125"
-            @click.stop="onClose(tab?.props, idx)"
+            @click.stop="onClose(tab)"
           ></div>
         </component>
       </template>

@@ -6,6 +6,14 @@ const flux = reactive({
   tabControlled: 3,
   tabControlledCustomValue: 'vue',
 });
+
+function onChange(val: string | number | undefined) {
+  console.log(val);
+}
+
+function onClose(val: string | number | undefined) {
+  console.log(val);
+}
 </script>
 
 <template>
@@ -94,7 +102,7 @@ const flux = reactive({
       </div>
 
       <XCard>
-        <XTabs v-model="flux.tabControlledCustomValue">
+        <XTabs v-model="flux.tabControlledCustomValue" @change="onChange">
           <XTabs.Tab title="Angular" value="angular">
             <div class="text-red-500 p-4">Angular Content</div>
           </XTabs.Tab>
@@ -155,7 +163,7 @@ const flux = reactive({
     <h2 class="text-3xl font-bold mb-4 pt-6">Closeable</h2>
 
     <XCard>
-      <XTabs closeable>
+      <XTabs closeable @close="onClose">
         <XTabs.Tab title="Angular">
           <div class="text-red-500 p-4">Angular Content</div>
         </XTabs.Tab>
@@ -189,7 +197,7 @@ const flux = reactive({
           <div class="text-red-500 p-4">Angular Content</div>
         </XTabs.Tab>
 
-        <XTabs.Tab title="React">
+        <XTabs.Tab>
           <template #title>
             <div class="i-simple-icons-react w-5 h-5 mr-1"></div>
             <div>React</div>
@@ -198,7 +206,7 @@ const flux = reactive({
           <div class="text-blue-500 p-4">React Content</div>
         </XTabs.Tab>
 
-        <XTabs.Tab title="Svelte">
+        <XTabs.Tab>
           <template #title>
             <div class="i-simple-icons-svelte w-5 h-5 mr-1"></div>
             <div>Svelte</div>
@@ -207,7 +215,7 @@ const flux = reactive({
           <div class="text-orange-500 p-4">Svelte Content</div>
         </XTabs.Tab>
 
-        <XTabs.Tab title="Vue">
+        <XTabs.Tab>
           <template #title>
             <div class="i-simple-icons-vuedotjs w-5 h-5 mr-1"></div>
             <div>Vue</div>
