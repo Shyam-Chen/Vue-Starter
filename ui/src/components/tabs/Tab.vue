@@ -32,7 +32,11 @@ watch(
   () => Object.assign({}, props),
   () => {
     if (typeof tabIndex.value === 'number') {
-      tabs.tabs.value[tabIndex.value] = { ...props, index: tabIndex.value };
+      tabs.tabs.value[tabIndex.value] = {
+        ...props,
+        titleSlot: slots.title,
+        index: tabIndex.value,
+      };
     }
   },
 );
