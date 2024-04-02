@@ -22,6 +22,8 @@ const isDark = useDark();
 const highlighter = useHighlighter();
 
 onBeforeMount(async () => {
+  if (highlighter.state.core) return;
+
   highlighter.state.core = await getHighlighterCore({
     themes: [import('shiki/themes/github-dark.mjs'), import('shiki/themes/github-light.mjs')],
     langs: [
