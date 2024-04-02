@@ -91,7 +91,7 @@ import { XBreadcrumb } from '@x/ui';
       <RouterLink to="/data-display/infinite-scroll" class="card">Infinite Scroll</RouterLink>
       <RouterLink to="/data-display/iterator" class="card">Iterator</RouterLink>
       <RouterLink to="/data-display/popover" class="card">Popover</RouterLink>
-      <RouterLink to="/data-display/table/dynamic-table" classß="card">Dynamic Table</RouterLink>
+      <RouterLink to="/data-display/table/dynamic-table" class="card">Dynamic Table</RouterLink>
       <RouterLink to="/data-display/table/static-table" class="card">Static Table</RouterLink>
       <RouterLink to="/data-display/tag" class="card">Tag</RouterLink>
       <RouterLink to="/data-display/timeline" class="card">Timeline</RouterLink>
