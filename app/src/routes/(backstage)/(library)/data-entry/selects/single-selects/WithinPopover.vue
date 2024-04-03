@@ -28,7 +28,6 @@ const flux = reactive({
           v-model:value="flux.select"
           :label="'Example label'"
           :options="flux.select1Options"
-          useParentOffset
         />
       </XCard>
     </template>
