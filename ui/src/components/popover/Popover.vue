@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { nextTick, ref, computed, reactive, watch } from 'vue';
+import { nextTick, ref, computed, reactive, watch, provide } from 'vue';
 import { vOnClickOutside } from '@vueuse/components';
 
 import useScrollParent from '../../composables/scroll-parent/useScrollParent';
@@ -88,6 +88,10 @@ watch(
     }
   },
 );
+
+provide('Popover', {
+  withinPopover: true,
+});
 </script>
 
 <template>

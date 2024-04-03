@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref, reactive, computed, watch, watchEffect, nextTick } from 'vue';
+import { ref, reactive, computed, watch, watchEffect, nextTick, inject } from 'vue';
 import { onClickOutside } from '@vueuse/core';
 import { useLocale } from 'vue-localer';
 
@@ -35,7 +35,6 @@ const props = withDefaults(
     notFoundContent?: string;
     invalid?: boolean | string;
     help?: string;
-    useParentOffset?: boolean;
   }>(),
   {
     label: '',
@@ -50,7 +49,6 @@ const props = withDefaults(
     notFoundContent: '',
     invalid: undefined,
     help: '',
-    useParentOffset: false,
   },
 );
 
@@ -60,6 +58,8 @@ const emit = defineEmits<{
 }>();
 
 const locale = useLocale();
+
+const popover = inject('Popover', { withinPopover: false });
 
 const flux = reactive({
   show: false,
@@ -116,19 +116,19 @@ function resizePanel() {
   const parentRect = offsetParent.getBoundingClientRect();
 
   selectPanel.value.style.width = `${rect.width}px`;
-  selectPanel.value.style.left = props.useParentOffset
+  selectPanel.value.style.left = popover.withinPopover
     ? `${rect.left - parentRect.left}px`
     : `${rect.left}px`;
 
   const center = window.innerHeight / 2;
 
   if (rect.top > center) {
-    selectPanel.value.style.top = props.useParentOffset
+    selectPanel.value.style.top = popover.withinPopover
       ? `${rect.top - parentRect.top}px`
       : `${rect.top}px`;
     flux.direction = 'up';
   } else {
-    selectPanel.value.style.top = props.useParentOffset
+    selectPanel.value.style.top = popover.withinPopover
       ? `${rect.bottom - parentRect.top}px`
       : `${rect.bottom}px`;
     flux.direction = 'down';

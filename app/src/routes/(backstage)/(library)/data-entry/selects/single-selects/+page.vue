@@ -4,7 +4,7 @@ import { XBreadcrumb, XCard, XSelect } from '@x/ui';
 
 import WithTable from './WithTable.vue';
 import WithTableInDialog from './WithTableInDialog.vue';
-import InPopover from './InPopover.vue';
+import WithinPopover from './WithinPopover.vue';
 
 const flux = reactive({
   select1: '',
@@ -106,10 +106,10 @@ const flux = reactive({
   </section>
 
   <section class="my-8">
-    <h2 class="text-3xl font-bold my-4 pt-6">In Popover</h2>
+    <h2 class="text-3xl font-bold my-4 pt-6">Within Popover</h2>
 
     <XCard>
-      <InPopover />
+      <WithinPopover />
     </XCard>
   </section>
 
