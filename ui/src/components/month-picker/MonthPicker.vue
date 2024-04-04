@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { nextTick, ref, computed, reactive } from 'vue';
+import { useLocale } from 'vue-localer';
 import { onClickOutside } from '@vueuse/core';
 import { format as _format, add, sub, getYear, setYear, getMonth, setMonth } from 'date-fns';
 
@@ -12,25 +13,33 @@ const valueModel = defineModel<string>('value', { default: '' });
 
 const props = withDefaults(
   defineProps<{
-    value?: string;
     minMonth?: string | Date;
     maxMonth?: string | Date;
     format?: string;
-    months?: string[];
   }>(),
   {
-    value: '',
     minMonth: undefined,
     maxMonth: undefined,
     format: 'yyyy/MM',
-    // prettier-ignore
-    months: () => ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
   },
 );
+
+const locale = useLocale();
 
 const target = ref();
 const input = ref();
 const picker = ref();
+
+// prettier-ignore
+const months = computed(
+  () =>
+    locale.value?.months || [
+      'Jan', 'Feb', 'Mar',
+      'Apr', 'May', 'Jun',
+      'Jul', 'Aug', 'Sep',
+      'Oct', 'Nov', 'Dec',
+    ],
+);
 
 const flux = reactive({
   showDatePicker: false,
