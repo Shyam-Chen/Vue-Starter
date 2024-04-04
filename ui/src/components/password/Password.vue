@@ -35,7 +35,7 @@ const symbols = /[!@#$%^&*()+_\-=}{[\]|:;"/?><,`~]/; // !@#$%^&*()+_-=}{[]|:;"/?
 </script>
 
 <template>
-  <FormControl v-slot="{ uid }" :label="label" :required="required" :invalid="invalid" :help="help">
+  <FormControl v-slot="{ uid }" :label :required :invalid :help>
     <Popover v-model="status" class="w-full">
       <div class="w-full" @click="meter && (status = true)">
         <TextField

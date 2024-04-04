@@ -82,7 +82,7 @@ function onDragLeave() {
 </script>
 
 <template>
-  <FormControl :label="label" :required="required" :invalid="invalid" :help="help">
+  <FormControl :label :required :invalid :help>
     <label
       v-bind="$attrs"
       class="Dropzone"

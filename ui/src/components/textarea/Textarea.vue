@@ -24,7 +24,7 @@ defineProps<Props>();
 </script>
 
 <template>
-  <FormControl :label="label" :required="required" :invalid="invalid" :help="help">
+  <FormControl :label :required :invalid :help>
     <template #label>
       <slot></slot>
     </template>

@@ -239,7 +239,7 @@ defineExpose({
 </script>
 
 <template>
-  <FormControl :label="label" :required="required" :invalid="invalid" :help="help">
+  <FormControl :label :required :invalid :help>
     <div v-if="editor" class="w-full" :class="[disabled ? 'opacity-60 cursor-not-allowed' : '']">
       <div
         v-if="!viewonly"

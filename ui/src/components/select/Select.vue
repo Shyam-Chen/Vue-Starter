@@ -270,7 +270,7 @@ watch(
 </script>
 
 <template>
-  <FormControl :label="label" :required="required" :invalid="invalid" :help="help">
+  <FormControl :label :required :invalid :help>
     <div ref="target" class="w-full">
       <div
         ref="selectInput"

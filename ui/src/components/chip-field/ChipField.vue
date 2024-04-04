@@ -78,7 +78,7 @@ defineExpose({
 </script>
 
 <template>
-  <FormControl v-slot="{ uid }" :label="label" :required="required" :invalid="invalid" :help="help">
+  <FormControl v-slot="{ uid }" :label :required :invalid :help>
     <div
       v-on-click-outside="flux.onBlur"
       class="ChipField"
