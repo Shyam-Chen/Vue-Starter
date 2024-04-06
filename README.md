@@ -195,10 +195,6 @@ The structure follows the LIFT Guidelines.
 │   ├── package.json
 │   ├── tsconfig.json
 │   └── vite.config.ts
-├── cdk -> Cloud Development Kit for Terraform with TypeScript
-│   ├── cdktf.json
-│   ├── package.json
-│   └── tsconfig.json
 ├── docs -> Write documentation with VitePress
 │   ├── .vitepress
 │   ├── index.md
@@ -208,6 +204,11 @@ The structure follows the LIFT Guidelines.
 │   ├── src
 │   ├── package.json
 │   ├── playwright.config.ts
+│   └── tsconfig.json
+├── iac -> Infrastructure as code
+│   ├── src
+│   ├── package.json
+│   ├── Pulumi.yaml
 │   └── tsconfig.json
 ├── mock -> Mock backend API
 │   ├── src
