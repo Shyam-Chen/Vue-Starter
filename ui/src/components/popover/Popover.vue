@@ -47,7 +47,6 @@ const flux = reactive({
     const rect = target.value.getBoundingClientRect();
 
     const center = window.innerHeight / 2;
-    const middle = window.innerWidth / 2;
 
     if (rect.top > center) {
       panel.value.style.top = `${rect.top}px`;
@@ -58,6 +57,7 @@ const flux = reactive({
     }
 
     const quarter = window.innerWidth / 4;
+    const middle = window.innerWidth / 2;
 
     if (quarter <= rect.right && rect.right <= quarter * 3) {
       const panelRect = panel.value.getBoundingClientRect();

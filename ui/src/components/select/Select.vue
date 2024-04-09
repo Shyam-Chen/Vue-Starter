@@ -271,89 +271,95 @@ watch(
 
 <template>
   <FormControl :label :required :invalid :help>
-    <div ref="target" class="w-full">
-      <div
-        ref="selectInput"
-        v-bind="$attrs"
-        :tabindex="disabled ? -1 : 0"
-        class="Select-Input group"
-        :class="{
-          placeholder: !flux.selected,
-          focused,
-          invalid,
-          disabled,
-        }"
-        @focus="focused = true"
-        @click="open"
-        @keydown="onKeydown"
-      >
-        <div v-if="!flux.selected" class="flex-1">
-          {{ placeholder || locale.pleaseSelect || 'Please select' }}
-        </div>
+    <template #label>
+      <slot></slot>
+    </template>
 
-        <div v-if="flux.selected" class="flex-1">
-          {{ flux.display(flux.selected) }}
-        </div>
-
+    <template #default>
+      <div ref="target" class="w-full">
         <div
-          v-if="value && clearable && !disabled"
-          class="i-fa-times-circle w-4 h-4 ml-2 invisible hover:text-slate-600 group-hover:visible"
-          @click.stop="flux.clear"
-        ></div>
-
-        <div class="Select-ArrowWrapper">
-          <div
-            v-if="!flux.show"
-            class="Select-Arrow i-material-symbols-arrow-drop-down-rounded"
-          ></div>
-          <div v-else class="Select-Arrow i-material-symbols-arrow-drop-up-rounded"></div>
-        </div>
-
-        <ProgressBar v-if="loading" class="absolute left-0 bottom-0 rounded" />
-      </div>
-
-      <Fade>
-        <div
-          v-show="flux.show"
-          ref="selectPanel"
-          class="Select-Panel"
+          ref="selectInput"
+          v-bind="$attrs"
+          :tabindex="disabled ? -1 : 0"
+          class="Select-Input group"
           :class="{
-            'Select-Panel-PlacementBottom': flux.direction === 'down',
-            'Select-Panel-PlacementTop': flux.direction === 'up',
+            placeholder: !flux.selected,
+            focused,
+            invalid,
+            disabled,
           }"
+          @focus="focused = true"
+          @click="open"
+          @keydown="onKeydown"
         >
-          <div v-if="filterable" class="Select-FilterWrapper">
-            <TextField
-              ref="selectFilter"
-              v-model:value="flux.filterValue"
-              append="i-material-symbols-filter-alt-outline"
-            />
+          <div v-if="!flux.selected" class="flex-1">
+            {{ placeholder || locale.pleaseSelect || 'Please select' }}
           </div>
 
-          <div ref="selectList" class="Select-List">
+          <div v-if="flux.selected" class="flex-1">
+            {{ flux.display(flux.selected) }}
+          </div>
+
+          <div
+            v-if="value && clearable && !disabled"
+            class="i-fa-times-circle w-4 h-4 ml-2 invisible hover:text-slate-600 group-hover:visible"
+            @click.stop="flux.clear"
+          ></div>
+
+          <div class="Select-ArrowWrapper">
             <div
-              v-for="(item, index) in flux.options"
-              :ref="(el) => (selectItem[index] = el as HTMLDivElement)"
-              :key="item.value"
-              class="Select-Item"
-              :class="{
-                'Select-Item-Hover': index === hoverIndex,
-                'Select-Item-Active': value === item.value,
-              }"
-              @click="flux.onSelect(item.value, item)"
-              @mouseenter="hoverIndex = index"
-              @mouseleave="hoverIndex = -1"
-            >
-              {{ flux.display(item) }}
+              v-if="!flux.show"
+              class="Select-Arrow i-material-symbols-arrow-drop-down-rounded"
+            ></div>
+            <div v-else class="Select-Arrow i-material-symbols-arrow-drop-up-rounded"></div>
+          </div>
+
+          <ProgressBar v-if="loading" class="absolute left-0 bottom-0 rounded" />
+        </div>
+
+        <Fade>
+          <div
+            v-show="flux.show"
+            ref="selectPanel"
+            class="Select-Panel"
+            :class="{
+              'Select-Panel-PlacementBottom': flux.direction === 'down',
+              'Select-Panel-PlacementTop': flux.direction === 'up',
+            }"
+          >
+            <div v-if="filterable" class="Select-FilterWrapper">
+              <TextField
+                ref="selectFilter"
+                v-model:value="flux.filterValue"
+                append="i-material-symbols-filter-alt-outline"
+              />
+            </div>
+
+            <div ref="selectList" class="Select-List">
+              <div
+                v-for="(item, index) in flux.options"
+                :ref="(el) => (selectItem[index] = el as HTMLDivElement)"
+                :key="item.value"
+                class="Select-Item"
+                :class="{
+                  'Select-Item-Hover': index === hoverIndex,
+                  'Select-Item-Active': value === item.value,
+                }"
+                @click="flux.onSelect(item.value, item)"
+                @mouseenter="hoverIndex = index"
+                @mouseleave="hoverIndex = -1"
+              >
+                {{ flux.display(item) }}
+              </div>
+            </div>
+
+            <div v-if="flux.options.length === 0" class="p-2">
+              {{ notFoundContent || locale.notFoundContent || 'No results found' }}
             </div>
           </div>
-
-          <div v-if="flux.options.length === 0" class="p-2">
-            {{ notFoundContent || locale.notFoundContent || 'No results found' }}
-          </div>
-        </div>
-      </Fade>
-    </div>
+        </Fade>
+      </div>
+    </template>
   </FormControl>
 </template>
 
