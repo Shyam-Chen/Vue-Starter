@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { nextTick, ref, computed, reactive, watch, provide } from 'vue';
-import { vOnClickOutside } from '@vueuse/components';
+import { onClickOutside } from '@vueuse/core';
 
 import useScrollParent from '../../composables/scroll-parent/useScrollParent';
 
@@ -89,6 +89,14 @@ watch(
   },
 );
 
+onClickOutside(
+  target,
+  () => {
+    flux.close();
+  },
+  { ignore: [panel] },
+);
+
 provide('Popover', {
   withinPopover: true,
 });
@@ -105,7 +113,6 @@ provide('Popover', {
         <div
           v-if="typeof modelValue === 'boolean' ? defaultModel : flux.status"
           ref="panel"
-          v-on-click-outside="flux.close"
           tabindex="-1"
           class="Popover-Panel"
           :class="{
