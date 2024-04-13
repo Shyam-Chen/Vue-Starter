@@ -1,9 +1,7 @@
-FROM mcr.microsoft.com/playwright:v1.42.0-jammy
+FROM mcr.microsoft.com/playwright:v1.43.0-jammy
 
-ENV HOME=/vue-starter
-
-WORKDIR ${HOME}
-ADD . $HOME
+WORKDIR /usr/src/app
+ADD . .
 
 RUN npm install -g pnpm
 RUN pnpm install
