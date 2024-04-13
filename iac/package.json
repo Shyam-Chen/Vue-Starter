@@ -1,0 +1,9 @@
+{
+  "private": true,
+  "main": "./src/index.ts",
+  "dependencies": {
+    "@pulumi/docker": "^4.5.3",
+    "@pulumi/google-native": "^0.32.0",
+    "@pulumi/pulumi": "^3.112.0"
+  }
+}
