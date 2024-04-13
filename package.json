@@ -14,8 +14,8 @@
     "@biomejs/biome": "^1.6.4",
     "@vue/eslint-config-prettier": "^9.0.0",
     "@vue/eslint-config-typescript": "^13.0.0",
-    "eslint": "^8.57.0",
-    "eslint-plugin-vue": "^9.24.0",
+    "eslint": "^9.0.0",
+    "eslint-plugin-vue": "^9.24.1",
     "prettier": "^3.2.5"
   }
 }
