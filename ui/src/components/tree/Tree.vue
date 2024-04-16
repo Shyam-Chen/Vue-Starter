@@ -1,15 +1,18 @@
 <script lang="ts" setup>
-import { ref, watch, provide } from 'vue';
+import { ref, watch } from 'vue';
 
 import type { Node } from './types';
 import TreeNode from './TreeNode.vue';
 
+const defaultModel = defineModel<any>();
+
 const props = defineProps<{
   nodes?: Node[];
+  multiple?: boolean;
 }>();
 
 const emit = defineEmits<{
-  (evt: 'nodeSelect', val: Node): void;
+  (evt: 'select', val: Node): void;
 }>();
 
 const createTree = (
@@ -36,19 +39,14 @@ watch(
   { deep: true, immediate: true },
 );
 
-provide('Tree', {
-  nodesRef,
-  nodeSelect: (val: Node) => emit('nodeSelect', val),
-});
+function onSelect(val: Node) {
+  defaultModel.value = val.value;
+  emit('select', val);
+}
 </script>
 
 <template>
   <div v-for="node in nodesRef" :key="node.label">
-    <TreeNode
-      :label="node.label"
-      :children="node.children"
-      :level="node.level"
-      :status="node.status"
-    />
+    <TreeNode :node :multiple @select="onSelect" />
   </div>
 </template>

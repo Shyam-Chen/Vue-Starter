@@ -1,11 +1,12 @@
 <script lang="ts" setup>
-import { XBreadcrumb, XCard, XTree } from '@x/ui';
+import { XBreadcrumb, XCard, XCodeBlock, XTabs } from '@x/ui';
 
-type NodeSelect = InstanceType<typeof XTree>['onNodeSelect'];
-
-const nodeSelect: NodeSelect = (node) => {
-  console.log(node);
-};
+import Basic from './Basic.vue';
+import BasicCode from './Basic.vue?raw';
+import Controlled from './Controlled.vue';
+import MultipleSelection from './MultipleSelection.vue';
+import Lazy from './Lazy.vue';
+import nodesDataCode from './nodesData?raw';
 </script>
 
 <template>
@@ -17,54 +18,41 @@ const nodeSelect: NodeSelect = (node) => {
     <h2 class="text-3xl font-bold my-4">Basic</h2>
 
     <XCard>
-      <XTree
-        :nodes="[
-          {
-            label: '1',
-            children: [
-              {
-                label: '1-1',
-                children: [{ label: '1-1-1' }, { label: '1-1-2' }],
-              },
-              {
-                label: '1-2',
-                children: [{ label: '1-2-1' }, { label: '1-2-2' }],
-              },
-              {
-                label: '1-3',
-                children: [
-                  { label: '1-3-1' },
-                  { label: '1-3-2', children: [{ label: '1-3-2-1' }, { label: '1-3-2-2' }] },
-                  { label: '1-3-3' },
-                ],
-              },
-            ],
-          },
-          {
-            label: '2',
-            children: [
-              {
-                label: '2-1',
-                children: [
-                  { label: '2-1-1', children: [{ label: '2-1-1-1' }, { label: '2-1-1-2' }] },
-                  { label: '2-1-2' },
-                ],
-              },
-              { label: '2-2' },
-            ],
-          },
-          { label: '3' },
-        ]"
-        @nodeSelect="nodeSelect"
-      />
+      <Basic />
+    </XCard>
+
+    <XTabs>
+      <XTabs.Tab title="Vue">
+        <XCodeBlock :code="BasicCode" language="vue" />
+      </XTabs.Tab>
+
+      <XTabs.Tab title="nodes">
+        <XCodeBlock :code="nodesDataCode" language="ts" />
+      </XTabs.Tab>
+    </XTabs>
+  </section>
+
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Controlled (WIP)</h2>
+
+    <XCard>
+      <Controlled />
     </XCard>
   </section>
 
   <section class="my-8">
-    <h2 class="text-3xl font-bold my-4 pt-6">Lazy</h2>
+    <h2 class="text-3xl font-bold my-4 pt-6">Multiple Selection (WIP)</h2>
 
     <XCard>
-      <div>TODO</div>
+      <MultipleSelection />
+    </XCard>
+  </section>
+
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Lazy (WIP)</h2>
+
+    <XCard>
+      <Lazy />
     </XCard>
   </section>
 </template>
