@@ -4,17 +4,24 @@ import { ref, reactive } from 'vue';
 import Avatar from '../avatar/Avatar.vue';
 import Button from '../button/Button.vue';
 import Popover from '../popover/Popover.vue';
-import Listbox from '../listbox/Listbox.vue';
+import Listbox from '../listbox';
 import ChatBox from '../chat-box/ChatBox.vue';
+import Dialog from '../dialog/Dialog.vue';
 
 defineProps<{
   chat?: any;
   self?: boolean;
 }>();
 
+const emit = defineEmits<{
+  (evt: 'save', chat: any): void;
+  (evt: 'delete', chat: any): void;
+}>();
+
 const morePopover = ref(false);
 
 const edit = ref(false);
+const deleteDialog = ref(false);
 const message = ref('');
 
 const flux = reactive({
@@ -29,6 +36,19 @@ const flux = reactive({
     arr.splice(index, 1);
     flux.files = arr;
   },
+});
+
+function closeEdit() {
+  edit.value = false;
+}
+
+function closeDeleteDialog() {
+  deleteDialog.value = false;
+}
+
+defineExpose({
+  closeEdit,
+  closeDeleteDialog,
 });
 </script>
 
@@ -64,7 +84,7 @@ const flux = reactive({
                 <div>Edit</div>
               </div>
             </Listbox.Item>
-            <Listbox.Item>
+            <Listbox.Item @click="deleteDialog = true">
               <div class="flex items-center gap-2">
                 <div class="i-material-symbols-delete-rounded w-5 h-5"></div>
                 <div>Delete</div>
@@ -123,8 +143,19 @@ const flux = reactive({
         </div>
 
         <Button color="secondary" size="small" @click="edit = false">Cancel</Button>
-        <Button size="small">Save</Button>
+        <Button size="small" @click="emit('save', { ...chat, message })">Save</Button>
       </div>
     </div>
+
+    <Dialog v-model="deleteDialog" :title="'Delete Message'" class="!max-w-lg">
+      <div class="mb-4">Are you sure you want to delete this message?</div>
+
+      <ChatBox :modelValue="chat?.message" viewonly />
+
+      <div class="flex justify-end gap-2 mt-6">
+        <Button color="secondary" size="small" @click="deleteDialog = false">Cancel</Button>
+        <Button color="danger" size="small" @click="emit('delete', chat)">Delete</Button>
+      </div>
+    </Dialog>
   </div>
 </template>

@@ -26,6 +26,7 @@ const props = withDefaults(
     viewonly?: boolean;
     class?: string;
     editing?: boolean;
+    loading?: boolean;
   }>(),
   {
     label: '',
@@ -37,6 +38,7 @@ const props = withDefaults(
     viewonly: false,
     class: '',
     editing: false,
+    loading: false,
   },
 );
 
@@ -168,7 +170,7 @@ defineExpose({
           </div>
 
           <div class="ChatBox-Send">
-            <Button icon="i-material-symbols-send-rounded" @click="emit('send')" />
+            <Button icon="i-material-symbols-send-rounded" :loading @click="emit('send')" />
           </div>
         </template>
       </div>
