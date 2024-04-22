@@ -1,5 +1,6 @@
 <script lang="ts" setup>
-import { ref, reactive } from 'vue';
+import type { ComponentExposed } from 'vue-component-type-helpers';
+import { nextTick, ref, reactive } from 'vue';
 
 import Avatar from '../avatar/Avatar.vue';
 import Button from '../button/Button.vue';
@@ -8,7 +9,7 @@ import Listbox from '../listbox';
 import ChatBox from '../chat-box/ChatBox.vue';
 import Dialog from '../dialog/Dialog.vue';
 
-defineProps<{
+const props = defineProps<{
   chat?: any;
   self?: boolean;
 }>();
@@ -21,11 +22,20 @@ const emit = defineEmits<{
 const morePopover = ref(false);
 
 const edit = ref(false);
+const editBox = ref<ComponentExposed<typeof ChatBox>>();
 const deleteDialog = ref(false);
 const message = ref('');
 
 const flux = reactive({
   files: [] as File[],
+  async onEdit() {
+    edit.value = true;
+    morePopover.value = false;
+    message.value = props.chat?.message;
+
+    await nextTick();
+    if (editBox.value?.editor) editBox.value.editor.commands.focus('end');
+  },
   onChange(event: Event) {
     const el = event.target as HTMLInputElement;
     const files = Array.from(el.files || []);
@@ -72,13 +82,7 @@ defineExpose({
 
         <template #content>
           <Listbox>
-            <Listbox.Item
-              @click="
-                edit = true;
-                morePopover = false;
-                message = chat?.message;
-              "
-            >
+            <Listbox.Item @click="flux.onEdit">
               <div class="flex items-center gap-2">
                 <div class="i-material-symbols-edit-rounded w-5 h-5"></div>
                 <div>Edit</div>
@@ -111,7 +115,7 @@ defineExpose({
         <ChatBox :modelValue="chat?.message" viewonly />
       </div>
 
-      <ChatBox v-if="edit" v-model="message" editing />
+      <ChatBox v-if="edit" ref="editBox" v-model="message" editing />
 
       <div>
         <div v-for="(file, index) in flux.files" :key="index" class="flex items-center gap-2">

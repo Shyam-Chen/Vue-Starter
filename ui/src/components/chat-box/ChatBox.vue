@@ -121,6 +121,7 @@ watch(
       typing.value = false;
     }
   },
+  { immediate: true },
 );
 
 const flux = reactive({
