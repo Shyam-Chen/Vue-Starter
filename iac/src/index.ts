@@ -1,14 +1,37 @@
-import * as pulumi from '@pulumi/pulumi';
-import * as googleNative from '@pulumi/google-native';
+import * as azureNative from '@pulumi/azure-native';
 
-// https://www.pulumi.com/registry/packages/google-native/api-docs/run/v2/service/
-const service = new googleNative.run.v2.Service('vue-starter', {
-  serviceId: 'vue',
+// Create an Azure resource group
+const resourceGroup = new azureNative.resources.ResourceGroup('myResourceGroup');
+
+// Define the container app environment
+const containerAppEnv = new azureNative.app.ManagedEnvironment('myContainerAppEnv', {
+  resourceGroupName: resourceGroup.name,
+});
+
+// Create the Azure Container App
+const containerApp = new azureNative.app.ContainerApp('myContainerApp', {
+  resourceGroupName: resourceGroup.name,
+  managedEnvironmentId: containerAppEnv.id,
+  configuration: {
+    ingress: {
+      // Ingress settings can be customized as needed
+      external: true,
+      targetPort: 80,
+    },
+  },
   template: {
     containers: [
       {
-        image: 'us-central1-docker.pkg.dev/xxx/xxx/vue-starter',
+        name: 'myfrontendcontainer',
+        image: 'vue-starter', // Replace with your front-end container image
+        resources: {
+          cpu: 0.5,
+          memory: '250Mb',
+        },
       },
     ],
   },
 });
+
+// Export the URL of the container app
+export const url = containerApp.configuration.apply((config) => config?.ingress?.fqdn);

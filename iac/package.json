@@ -2,8 +2,12 @@
   "private": true,
   "main": "./src/index.ts",
   "dependencies": {
+    "@pulumi/azure-native": "^2.38.0",
     "@pulumi/docker": "^4.5.3",
-    "@pulumi/google-native": "^0.32.0",
-    "@pulumi/pulumi": "^3.112.0"
+    "@pulumi/pulumi": "^3.113.3"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
   }
 }
