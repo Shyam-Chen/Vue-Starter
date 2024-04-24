@@ -6,11 +6,7 @@ const spinner = ref();
 </script>
 
 <template>
-  <div
-    ref="spinnerWrapper"
-    v-bind="$attrs"
-    :class="{ 'size-8': !Object.prototype.hasOwnProperty.call($attrs, 'class') }"
-  >
+  <div ref="spinnerWrapper" v-bind="$attrs" :class="{ 'size-8': !$attrs.hasOwnProperty('class') }">
     <div
       ref="spinner"
       class="spinner"
