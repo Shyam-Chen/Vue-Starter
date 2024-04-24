@@ -264,7 +264,7 @@ useScrollParent(
   <FormControl :label :required :invalid :help>
     <template #label>
       <slot></slot>
-      <span class="flex-1"></span>
+      <span v-if="label" class="flex-1"></span>
       <span
         v-if="selectedLabels && flux.selected?.length"
         class="Multiselect-LabelHelper"
