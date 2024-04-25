@@ -9,7 +9,7 @@ interface Props extends /* @vue-ignore */ TextareaHTMLAttributes {
   required?: boolean;
   disabled?: boolean;
   readonly?: boolean;
-  rows?: string;
+  rows?: number | string;
   invalid?: boolean | string;
   help?: string;
 }
