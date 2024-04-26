@@ -1,5 +1,6 @@
 <script lang="ts" setup>
-import { ref } from 'vue';
+import type { ComponentProps } from 'vue-component-type-helpers';
+import { ref, shallowRef } from 'vue';
 import { useLocaler } from 'vue-localer';
 import { XBreadcrumb, XCard, XChatBubble, XChatBox } from '@x/ui';
 import { intlFormat } from 'date-fns';
@@ -23,26 +24,24 @@ const replies = [
   'Curabitur tincidunt lectus ac nisi lacinia, vel ultricies odio lobortis.',
 ];
 
-interface Bubble {
-  name?: string;
-  message?: string;
-  time?: string;
-  self?: boolean;
-}
+type XChatBubbleProps = ComponentProps<typeof XChatBubble>;
+type XChatBoxProps = ComponentProps<typeof XChatBox>;
 
-const bubbles = ref<Bubble[]>([]);
-
-const message = ref('');
+const bubbles = ref<XChatBubbleProps['chat'][]>([]);
+const chatBox = shallowRef<XChatBoxProps['modelValue']>({ message: '', files: [] });
 
 const onSend = () => {
-  if (!message.value) return;
+  if (!chatBox.value?.message) return;
 
   const randomReply = replies[Math.floor(Math.random() * replies.length)];
 
   bubbles.value = [
     ...bubbles.value,
     {
-      message: message.value,
+      chatBox: {
+        message: chatBox.value.message,
+        files: chatBox.value.files,
+      },
       time: intlFormat(
         new Date(),
         {
@@ -60,7 +59,10 @@ const onSend = () => {
     },
     {
       name: 'Bonnie Green',
-      message: randomReply,
+      chatBox: {
+        message: randomReply,
+        files: [],
+      },
       time: intlFormat(
         new Date(),
         {
@@ -77,11 +79,45 @@ const onSend = () => {
     },
   ];
 
-  message.value = '';
+  chatBox.value = { message: '', files: [] };
 };
 
-message.value = `I'm working from home today! 😅`;
+chatBox.value!.message = `I'm working from home today! 😅`;
 onSend();
+
+const onUploadFiles: XChatBubbleProps['onUploadFiles'] = (files) => {
+  chatBox.value = {
+    message: chatBox.value!.message,
+    files: files.map((file) => ({
+      ...file,
+      name: file.name,
+      url: 'https://example.com',
+    })),
+  };
+};
+
+const onBubbleUploadFiles = (
+  files: File[],
+  chatBox: XChatBoxProps['modelValue'],
+  bubbleIndex: number,
+) => {
+  bubbles.value[bubbleIndex]!.chatBox!.files = [
+    ...bubbles.value[bubbleIndex]!.chatBox!.files,
+    ...files.map((file) => ({
+      ...file,
+      name: file.name,
+      url: 'https://example.com',
+    })),
+  ];
+};
+
+const onSave = () => {
+  console.log('save');
+};
+
+const onDelete = () => {
+  console.log('delete');
+};
 </script>
 
 <template>
@@ -94,14 +130,17 @@ onSend();
       <XChatBubble
         v-for="(bubble, bubbleIndex) in bubbles"
         :key="bubbleIndex"
+        v-model="bubble!.chatBox"
         :chat="bubble"
-        :self="bubble.self"
-        :class="{ 'justify-end': bubble.self }"
+        :class="{ 'justify-end': bubble?.self }"
+        @uploadFiles="onBubbleUploadFiles($event, bubble!.chatBox, bubbleIndex)"
+        @save="onSave"
+        @delete="onDelete"
       />
     </div>
   </XCard>
 
   <XCard class="my-8">
-    <XChatBox v-model="message" @send="onSend" />
+    <XChatBox v-model="chatBox" @uploadFiles="onUploadFiles" @send="onSend" />
   </XCard>
 </template>

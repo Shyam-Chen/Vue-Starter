@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import type { Extensions } from '@tiptap/vue-3';
-import { ref, reactive, computed, watch, onMounted } from 'vue';
+import { ref, computed, watch, onMounted } from 'vue';
 import { Extension } from '@tiptap/core';
 import { Editor, EditorContent } from '@tiptap/vue-3';
 import Document from '@tiptap/extension-document';
@@ -12,8 +12,16 @@ import Link from '@tiptap/extension-link';
 
 import FormControl from '../form-control/FormControl.vue';
 import Button from '../button/Button.vue';
+import LinkComp from '../link/Link.vue';
 
-const defaultModel = defineModel<string>({ default: '' });
+type ChatFile = File & { url?: string };
+
+const defaultModel = defineModel<{ message: string; files: ChatFile[] }>({
+  default: {
+    message: '',
+    files: [],
+  },
+});
 
 const props = withDefaults(
   defineProps<{
@@ -26,6 +34,7 @@ const props = withDefaults(
     viewonly?: boolean;
     class?: string;
     editing?: boolean;
+    uploading?: boolean;
     loading?: boolean;
   }>(),
   {
@@ -38,11 +47,13 @@ const props = withDefaults(
     viewonly: false,
     class: '',
     editing: false,
+    uploading: false,
     loading: false,
   },
 );
 
 const emit = defineEmits<{
+  (evt: 'uploadFiles', val: ChatFile[]): void;
   (evt: 'send'): void;
 }>();
 
@@ -86,7 +97,7 @@ onMounted(() => {
       Text,
       Link,
     ],
-    content: defaultModel.value,
+    content: defaultModel.value.message,
     editorProps: {
       attributes: {
         class: editorClass.value,
@@ -94,7 +105,7 @@ onMounted(() => {
     },
     onUpdate({ editor }) {
       typing.value = true;
-      defaultModel.value = editor.getHTML();
+      defaultModel.value.message = editor.getHTML();
     },
   });
 });
@@ -109,7 +120,7 @@ watch(
 const completed = ref(false);
 
 watch(
-  () => defaultModel.value,
+  () => defaultModel.value.message,
   (val) => {
     if (props.viewonly) {
       editor.value?.commands?.setContent(val);
@@ -124,19 +135,17 @@ watch(
   { immediate: true },
 );
 
-const flux = reactive({
-  files: [] as File[],
-  onChange(event: Event) {
-    const el = event.target as HTMLInputElement;
-    const files = Array.from(el.files || []);
-    flux.files = [...flux.files, ...files];
-  },
-  onDelete(index: number) {
-    const arr = [...flux.files];
-    arr.splice(index, 1);
-    flux.files = arr;
-  },
-});
+function onChange(event: Event) {
+  const el = event.target as HTMLInputElement;
+  const files = Array.from(el.files || []);
+  emit('uploadFiles', files);
+}
+
+function onDelete(index: number) {
+  const arr = [...defaultModel.value.files];
+  arr.splice(index, 1);
+  defaultModel.value.files = arr;
+}
 
 defineExpose({
   editor,
@@ -156,6 +165,7 @@ defineExpose({
               variant="text"
               color="secondary"
               size="small"
+              :loading="uploading"
               @click="($refs.fileInput as HTMLInputElement).click()"
             />
 
@@ -165,7 +175,7 @@ defineExpose({
               :disabled="disabled"
               multiple
               class="hidden"
-              @change="flux.onChange"
+              @change="onChange"
               @click="($refs.fileInput as HTMLInputElement).value = ''"
             />
           </div>
@@ -177,11 +187,20 @@ defineExpose({
       </div>
 
       <div class="mt-1">
-        <div v-for="(file, index) in flux.files" :key="index" class="flex items-center gap-2">
-          {{ file.name }}
+        <div
+          v-for="(file, index) in defaultModel.files"
+          :key="index"
+          class="flex items-center gap-2"
+        >
+          <LinkComp v-if="file.url" :href="file.url" target="_blank" rel="noopener noreferrer">{{
+            file.name
+          }}</LinkComp>
+          <template v-else>{{ file.name }}</template>
+
           <div
-            class="i-material-symbols-delete-rounded size-5 cursor-pointer"
-            @click="flux.onDelete(index)"
+            v-if="!viewonly"
+            class="i-material-symbols-delete-outline-rounded size-5 cursor-pointer text-red-500"
+            @click="onDelete(index)"
           ></div>
         </div>
       </div>
