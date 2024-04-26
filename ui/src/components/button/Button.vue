@@ -80,10 +80,15 @@ function onClick(evt: Event) {
   >
     <slot>
       <div
-        v-if="icon"
+        v-if="icon && !loading"
         class="Button-Icon"
         :class="[icon, { small: size === 'small', large: size === 'large' }]"
       ></div>
+      <Spinner
+        v-if="icon && loading"
+        class="Button-Icon"
+        :class="{ small: size === 'small', large: size === 'large' }"
+      />
 
       <div
         v-if="prepend"

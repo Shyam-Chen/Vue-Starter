@@ -64,7 +64,7 @@ const editorClass = computed(() => {
     return `text-sm font-normal text-gray-900 dark:text-white`;
   }
 
-  let clx = `border border-slate-400 rounded-b focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-primary-400 focus:rounded ${props.class}`;
+  let clx = `border border-slate-400 rounded focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-primary-400 focus:rounded ${props.class}`;
   if (props.editing) clx += `px-3 py-1 min-h-38px`;
   else clx += `px-7 py-5 min-h-70px`;
 

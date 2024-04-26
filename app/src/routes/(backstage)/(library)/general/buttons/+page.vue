@@ -89,6 +89,26 @@ const buttonGroup = ref(0);
 
     <XCard>
       <div class="space-y-4">
+        <div class="flex gap-4">
+          <XButton
+            icon="i-material-symbols-search-rounded"
+            size="small"
+            :loading="searchLoading"
+            @click="search"
+          />
+          <XButton
+            icon="i-material-symbols-search-rounded"
+            :loading="searchLoading"
+            @click="search"
+          />
+          <XButton
+            icon="i-material-symbols-search-rounded"
+            size="large"
+            :loading="searchLoading"
+            @click="search"
+          />
+        </div>
+
         <XButton
           prepend="i-material-symbols-search-rounded"
           label="Search"
