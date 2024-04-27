@@ -14,6 +14,9 @@ const flux = reactive({
 
   usdMasked: '',
   usdUnmasked: '',
+
+  verificationCodeMasked: '',
+  verificationCodeUnmasked: undefined,
 });
 </script>
 
@@ -125,6 +128,27 @@ const flux = reactive({
       <div class="mt-1">
         <div>Masked: {{ flux.usdMasked }}</div>
         <div>Unmasked: {{ flux.usdUnmasked }}</div>
+      </div>
+    </XCard>
+  </section>
+
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">One-time Password</h2>
+
+    <XCard>
+      <XInputMask
+        v-model:masked="flux.verificationCodeMasked"
+        v-model:unmasked="flux.verificationCodeUnmasked"
+        :mask="{ mask: '000 000' }"
+        label="Verification Code"
+      />
+
+      <div class="mt-1">
+        <div>Masked: {{ flux.verificationCodeMasked }}</div>
+        <div>
+          Unmasked: {{ flux.verificationCodeUnmasked }}
+          <XCode>{{ typeof flux.verificationCodeUnmasked }}</XCode>
+        </div>
       </div>
     </XCard>
   </section>
