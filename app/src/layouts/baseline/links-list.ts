@@ -104,6 +104,7 @@ const links = [
       { name: 'Chip', to: '/data-display/chip' },
       { name: 'Infinite Scroll', to: '/data-display/infinite-scroll' },
       { name: 'Iterator', to: '/data-display/iterator' },
+      { name: 'Listbox', to: '/data-display/listbox' },
       { name: 'Popover', to: '/data-display/popover' },
       {
         name: 'Table',
