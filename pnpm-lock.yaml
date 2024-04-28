@@ -151,7 +151,7 @@ importers:
         specifier: ^20.12.7
         version: 20.12.7
 
-  iac:
+  infra:
     dependencies:
       '@pulumi/azure-native':
         specifier: ^2.38.0

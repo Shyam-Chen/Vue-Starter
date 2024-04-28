@@ -5,4 +5,4 @@ packages:
   - 'mock'
   - 'e2e'
   - 'docs'
-  - 'iac'
+  - 'infra'

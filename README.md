@@ -205,7 +205,7 @@ The structure follows the LIFT Guidelines.
 │   ├── package.json
 │   ├── playwright.config.ts
 │   └── tsconfig.json
-├── iac -> Infrastructure as code
+├── infra -> Infrastructure as code
 │   ├── src
 │   ├── package.json
 │   ├── Pulumi.yaml
