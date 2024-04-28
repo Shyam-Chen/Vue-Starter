@@ -82,6 +82,7 @@ const links = [
         sub: [
           { name: 'Select', to: '/data-entry/selects/single-selects' },
           { name: 'Multiselect', to: '/data-entry/selects/multiple-selects' },
+          { name: 'TreeSelect', to: '/data-entry/selects/tree-select' },
         ],
       },
       { name: 'Slider', to: '/data-entry/slider' },

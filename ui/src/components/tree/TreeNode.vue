@@ -36,8 +36,8 @@ function nodeSelect(node?: Node) {
       }"
     ></div>
     <div v-else class="i-mdi-dot size-6"></div>
-    <Checkbox v-if="multiple" class="me-2" />
-    <div>{{ node?.label }}</div>
+    <Checkbox v-if="multiple" />
+    <div class="mx-2">{{ node?.label }}</div>
   </div>
 
   <Collapse>

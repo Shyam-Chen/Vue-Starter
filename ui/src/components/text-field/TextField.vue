@@ -21,7 +21,7 @@ defineOptions({
   inheritAttrs: false,
 });
 
-const valueModel = defineModel<string | number>('value');
+const valueModel = defineModel<string | number | string[]>('value');
 
 const props = defineProps<Props>();
 

@@ -69,6 +69,7 @@ import { XBreadcrumb } from '@x/ui';
       <RouterLink to="/data-entry/radio-buttons" class="card">RadioGroup</RouterLink>
       <RouterLink to="/data-entry/selects/single-selects" class="card">Select</RouterLink>
       <RouterLink to="/data-entry/selects/multiple-selects" class="card">Multiselect</RouterLink>
+      <RouterLink to="/data-entry/selects/tree-select" class="card">TreeSelect</RouterLink>
       <RouterLink to="/data-entry/slider" class="card">Slider</RouterLink>
       <RouterLink to="/data-entry/switches" class="card">Switch</RouterLink>
       <RouterLink to="/data-entry/text-fields" class="card">TextField</RouterLink>
