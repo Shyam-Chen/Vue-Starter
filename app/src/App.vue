@@ -48,10 +48,9 @@ html.dark {
 <style lang="scss">
 #nprogress {
   @apply pointer-events-none;
-}
 
-#nprogress .bar {
-  @apply fixed top-0 left-0 z-1000 w-full h-0.5;
-  @apply bg-primary-500/75;
+  .bar {
+    @apply fixed top-0 left-0 z-1000 w-full h-0.5 bg-primary-500/75;
+  }
 }
 </style>
