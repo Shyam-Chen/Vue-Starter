@@ -36,7 +36,8 @@ const state = reactive<{
 });
 
 const onSend = () => {
-  if (!state.chatBox?.message) return;
+  const { chatBox } = state;
+  if (!((chatBox?.message && chatBox?.message !== '<p></p>') || chatBox?.files?.length)) return;
 
   const randomReply = replies[Math.floor(Math.random() * replies.length)];
 

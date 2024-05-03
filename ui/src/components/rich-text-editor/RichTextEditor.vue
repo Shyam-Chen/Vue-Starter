@@ -25,6 +25,7 @@ import Underline from '@tiptap/extension-underline';
 import TextAlign from '@tiptap/extension-text-align';
 import Image from '@tiptap/extension-image';
 import Link from '@tiptap/extension-link';
+import { useFileDialog } from '@vueuse/core';
 
 import FormControl from '../form-control/FormControl.vue';
 import Divider from '../divider/Divider.vue';
@@ -92,7 +93,9 @@ onMounted(() => {
       TextAlign.configure({
         types: ['heading', 'paragraph'],
       }),
-      Image,
+      Image.configure({
+        allowBase64: true,
+      }),
       Link,
     ],
     content: defaultModel.value,
@@ -170,15 +173,30 @@ function setTextAlign(alignment: 'left' | 'center' | 'right' | 'justify') {
   editor.value?.chain().focus().setTextAlign(alignment).run();
 }
 
-function setImage() {
+const { open, onChange } = useFileDialog({ accept: 'image/*', reset: true });
+
+async function setImage() {
   if (props.disabled || props.viewonly) return;
-
-  const url = window.prompt('URL');
-
-  if (url) {
-    editor.value?.chain().focus().setImage({ src: url }).run();
-  }
+  open();
 }
+
+onChange((files) => {
+  if (!files?.length) return;
+  const file = files[0];
+  const reader = new FileReader();
+
+  reader.onload = (event) => {
+    const el = event.target;
+
+    if (el) {
+      const base64String = el.result as string;
+      editor.value?.chain().focus().setImage({ src: base64String }).run();
+      editor.value?.chain().focus().createParagraphNear().run();
+    }
+  };
+
+  reader.readAsDataURL(file);
+});
 
 function setLink() {
   if (props.disabled || props.viewonly) return;
