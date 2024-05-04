@@ -30,6 +30,7 @@ import { useFileDialog } from '@vueuse/core';
 import FormControl from '../form-control/FormControl.vue';
 import Divider from '../divider/Divider.vue';
 import Popover from '../popover/Popover.vue';
+import Listbox from '../listbox';
 
 const defaultModel = defineModel<string>({ default: '' });
 
@@ -70,33 +71,34 @@ onMounted(() => {
     editable: !props.disabled && !props.viewonly,
     extensions: [
       ...props.extension,
-      Blockquote,
-      Bold,
-      BulletList,
+      Heading,
+      Paragraph,
+      Text,
+      TextStyle,
+
       Color,
       Highlight.configure({ multicolor: true }),
+
+      Bold,
+      Italic,
+      Underline,
+      Strike,
+
+      ListItem,
+      BulletList,
+      OrderedList,
+      TextAlign.configure({ types: ['heading', 'paragraph'] }),
+
+      Image.configure({ allowBase64: true }),
+      Link,
+      Blockquote,
+      HorizontalRule,
+
       Document,
       Dropcursor,
       Gapcursor,
       HardBreak,
-      Heading,
       History,
-      HorizontalRule,
-      Italic,
-      ListItem,
-      OrderedList,
-      Paragraph,
-      Strike,
-      Text,
-      TextStyle,
-      Underline,
-      TextAlign.configure({
-        types: ['heading', 'paragraph'],
-      }),
-      Image.configure({
-        allowBase64: true,
-      }),
-      Link,
     ],
     content: defaultModel.value,
     editorProps: {
@@ -118,14 +120,18 @@ watch(
   },
 );
 
-function toggleHeading(level: 1 | 2 | 3 | 4) {
+const textPopover = ref(false);
+
+function toggleHeading(level: 3 | 4) {
   if (props.disabled || props.viewonly) return;
   editor.value?.chain().focus().toggleHeading({ level }).run();
+  textPopover.value = false;
 }
 
 function setParagraph() {
   if (props.disabled || props.viewonly) return;
   editor.value?.chain().focus().setParagraph().run();
+  textPopover.value = false;
 }
 
 function setColor(color: string) {
@@ -136,6 +142,11 @@ function setColor(color: string) {
 function toggleHighlight(color: string) {
   if (props.disabled || props.viewonly) return;
   editor.value?.chain().focus().toggleHighlight({ color }).run();
+}
+
+function unset() {
+  if (props.disabled || props.viewonly) return;
+  editor.value?.chain().focus().unsetColor().unsetHighlight().run();
 }
 
 function toggleBold() {
@@ -224,16 +235,6 @@ function setHorizontalRule() {
   editor.value?.chain().focus().setHorizontalRule().run();
 }
 
-function undo() {
-  if (props.disabled || props.viewonly) return;
-  editor.value?.chain().focus().undo().run();
-}
-
-function redo() {
-  if (props.disabled || props.viewonly) return;
-  editor.value?.chain().focus().redo().run();
-}
-
 const completed = ref(false);
 
 watch(
@@ -264,17 +265,49 @@ defineExpose({
         class="flex flex-wrap px-2 py-1 border border-b-0 border-slate-400 rounded-t"
       >
         <div class="flex gap-1">
-          <div class="i-mdi-format-header-1 w-6 h-6" @click="toggleHeading(1)"></div>
-          <div class="i-mdi-format-header-2 w-6 h-6" @click="toggleHeading(2)"></div>
-          <div class="i-mdi-format-header-3 w-6 h-6" @click="toggleHeading(3)"></div>
-          <div class="i-mdi-format-header-4 w-6 h-6" @click="toggleHeading(4)"></div>
-          <div class="i-mdi-format-paragraph w-6 h-6" @click="setParagraph"></div>
-
-          <Popover :disabled="disabled">
-            <div class="i-mdi-format-color-text w-6 h-6"></div>
+          <Popover v-model="textPopover" :disabled>
+            <div class="flex items-center cursor-pointer" @click="textPopover = true">
+              <div
+                v-if="editor.isActive('heading', { level: 3 })"
+                :class="{ 'text-primary-500': editor.isFocused }"
+              >
+                Heading
+              </div>
+              <div
+                v-else-if="editor.isActive('heading', { level: 4 })"
+                :class="{ 'text-primary-500': editor.isFocused }"
+              >
+                Subheading
+              </div>
+              <div v-else :class="{ 'text-primary-500': editor.isFocused }">Normal</div>
+              <div
+                class="i-material-symbols-arrow-drop-down-rounded size-5"
+                :class="{ 'text-primary-500': editor.isFocused }"
+              ></div>
+            </div>
 
             <template #content>
-              <div class="p-4 grid grid-cols-5 md:grid-cols-10 gap-2">
+              <Listbox>
+                <Listbox.Item class="text-2xl font-semibold" @click="toggleHeading(3)">
+                  Heading
+                </Listbox.Item>
+                <Listbox.Item class="text-xl font-medium" @click="toggleHeading(4)">
+                  Subheading
+                </Listbox.Item>
+                <Listbox.Item class="leading-tight" @click="setParagraph">Normal</Listbox.Item>
+              </Listbox>
+            </template>
+          </Popover>
+        </div>
+
+        <Divider orientation="vertical" class="!mx-2" />
+
+        <div class="flex gap-1">
+          <Popover :disabled>
+            <div class="i-material-symbols-format-color-text-rounded size-5 cursor-pointer"></div>
+
+            <template #content>
+              <div class="p-4 grid grid-cols-5 gap-2">
                 <div class="Color bg-black" @click="setColor('black')"></div>
                 <div class="Color bg-white" @click="setColor('white')"></div>
                 <div class="Color bg-gray-500" @click="setColor('#6b7280')"></div>
@@ -299,11 +332,11 @@ defineExpose({
             </template>
           </Popover>
 
-          <Popover :disabled="disabled">
-            <div class="i-mdi-format-color-fill w-6 h-6"></div>
+          <Popover :disabled>
+            <div class="i-material-symbols-format-color-fill-rounded size-5 cursor-pointer"></div>
 
             <template #content>
-              <div class="p-4 grid grid-cols-5 md:grid-cols-10 gap-2">
+              <div class="p-4 grid grid-cols-5 gap-2">
                 <div class="Color bg-black" @click="toggleHighlight('black')"></div>
                 <div class="Color bg-white" @click="toggleHighlight('white')"></div>
                 <div class="Color bg-gray-500" @click="toggleHighlight('#6b7280')"></div>
@@ -327,47 +360,104 @@ defineExpose({
               </div>
             </template>
           </Popover>
+
+          <div
+            class="i-material-symbols-format-clear-rounded size-5 cursor-pointer"
+            @click="unset"
+          ></div>
         </div>
 
         <Divider orientation="vertical" class="!mx-2" />
 
         <div class="flex gap-1">
-          <div class="i-mdi-format-bold w-6 h-6" @click="toggleBold"></div>
-          <div class="i-mdi-format-italic w-6 h-6" @click="toggleItalic"></div>
-          <div class="i-mdi-format-underline w-6 h-6" @click="toggleUnderline"></div>
-          <div class="i-mdi-format-strikethrough-variant w-6 h-6" @click="toggleStrike"></div>
+          <div
+            class="i-material-symbols-format-bold-rounded size-6 cursor-pointer"
+            :class="{ 'text-primary-500': editor.isActive('bold') && editor.isFocused }"
+            @click="toggleBold"
+          ></div>
+          <div
+            class="i-material-symbols-format-italic-rounded size-6 cursor-pointer"
+            :class="{ 'text-primary-500': editor.isActive('italic') && editor.isFocused }"
+            @click="toggleItalic"
+          ></div>
+          <div
+            class="i-material-symbols-format-underlined-rounded size-6 cursor-pointer"
+            :class="{ 'text-primary-500': editor.isActive('underline') && editor.isFocused }"
+            @click="toggleUnderline"
+          ></div>
+          <div
+            class="i-material-symbols-strikethrough-s-rounded size-6 cursor-pointer"
+            :class="{ 'text-primary-500': editor.isActive('strike') && editor.isFocused }"
+            @click="toggleStrike"
+          ></div>
         </div>
 
         <Divider orientation="vertical" class="!mx-2" />
 
         <div class="flex gap-1">
-          <div class="i-mdi-format-list-bulleted w-6 h-6" @click="toggleBulletList"></div>
-          <div class="i-mdi-format-list-numbered w-6 h-6" @click="toggleOrderedList"></div>
+          <div
+            class="i-material-symbols-format-list-bulleted-rounded size-6 cursor-pointer"
+            @click="toggleBulletList"
+          ></div>
+          <div
+            class="i-material-symbols-format-list-numbered-rounded size-6 cursor-pointer"
+            @click="toggleOrderedList"
+          ></div>
+
+          <Popover :disabled>
+            <div
+              class="size-6 cursor-pointer"
+              :class="{
+                'i-material-symbols-format-align-left-rounded': editor.isActive({
+                  textAlign: 'left',
+                }),
+                'i-material-symbols-format-align-center-rounded': editor.isActive({
+                  textAlign: 'center',
+                }),
+                'i-material-symbols-format-align-right-rounded': editor.isActive({
+                  textAlign: 'right',
+                }),
+                'i-material-symbols-format-align-justify-rounded': editor.isActive({
+                  textAlign: 'justify',
+                }),
+              }"
+            ></div>
+
+            <template #content>
+              <Listbox>
+                <Listbox.Item @click="setTextAlign('left')">
+                  <div class="i-material-symbols-format-align-left-rounded size-6"></div>
+                </Listbox.Item>
+                <Listbox.Item @click="setTextAlign('center')">
+                  <div class="i-material-symbols-format-align-center-rounded size-6"></div>
+                </Listbox.Item>
+                <Listbox.Item @click="setTextAlign('right')">
+                  <div class="i-material-symbols-format-align-right-rounded size-6"></div>
+                </Listbox.Item>
+                <Listbox.Item @click="setTextAlign('justify')">
+                  <div class="i-material-symbols-format-align-justify-rounded size-6"></div>
+                </Listbox.Item>
+              </Listbox>
+            </template>
+          </Popover>
         </div>
 
         <Divider orientation="vertical" class="!mx-2" />
 
         <div class="flex gap-1">
-          <div class="i-mdi-format-align-left w-6 h-6" @click="setTextAlign('left')"></div>
-          <div class="i-mdi-format-align-center w-6 h-6" @click="setTextAlign('center')"></div>
-          <div class="i-mdi-format-align-right w-6 h-6" @click="setTextAlign('right')"></div>
-          <div class="i-mdi-format-align-justify w-6 h-6" @click="setTextAlign('justify')"></div>
-        </div>
-
-        <Divider orientation="vertical" class="!mx-2" />
-
-        <div class="flex gap-1">
-          <div class="i-mdi-image-outline w-6 h-6" @click="setImage"></div>
-          <div class="i-mdi-link w-6 h-6" @click="setLink"></div>
-          <div class="i-mdi-format-quote-close w-6 h-6" @click="toggleBlockquote"></div>
-          <div class="i-mdi-border-horizontal w-6 h-6" @click="setHorizontalRule"></div>
-        </div>
-
-        <Divider orientation="vertical" class="!mx-2" />
-
-        <div class="flex gap-1">
-          <div class="i-mdi-undo w-6 h-6" @click="undo"></div>
-          <div class="i-mdi-redo w-6 h-6" @click="redo"></div>
+          <div
+            class="i-material-symbols-imagesmode-outline-rounded size-6 cursor-pointer"
+            @click="setImage"
+          ></div>
+          <div class="i-material-symbols-link-rounded size-6 cursor-pointer" @click="setLink"></div>
+          <div
+            class="i-material-symbols-format-quote-rounded size-6 cursor-pointer"
+            @click="toggleBlockquote"
+          ></div>
+          <div
+            class="i-material-symbols-border-horizontal-rounded size-6 cursor-pointer"
+            @click="setHorizontalRule"
+          ></div>
         </div>
       </div>
 

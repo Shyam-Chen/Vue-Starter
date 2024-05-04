@@ -5,17 +5,13 @@ import { XBreadcrumb, XCard, XRichTextEditor, XButton } from '@x/ui';
 const content = ref('');
 
 onMounted(() => {
-  content.value = `<h1>h1. Heading</h1>`;
+  content.value = `<h3>Heading</h3>`;
 });
 
 function setContent() {
   const newContent = `
-    <h1>h1. Heading</h1>
-    <h2>h2. Heading</h2>
-    <h3>h3. Heading</h3>
-    <h4>h4. Heading</h4>
-    <h5>h5. Heading</h5>
-    <h6>h6. Heading</h6>
+    <h3>Heading</h3>
+    <h4>Subheading</h4>
 
     <p><span style="color: #FE68C9">Text Color</span></p>
 
@@ -57,6 +53,14 @@ function setContent() {
 
     <XCard>
       <XRichTextEditor v-model="content" disabled />
+    </XCard>
+  </section>
+
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Invalid</h2>
+
+    <XCard>
+      <XRichTextEditor v-model="content" invalid="Incorrect entry" />
     </XCard>
   </section>
 
