@@ -39,7 +39,7 @@ const props = withDefaults(
     label?: string;
     extension?: Extensions;
     required?: boolean;
-    invalid?: boolean | string;
+    invalid?: string | boolean;
     help?: string;
     disabled?: boolean;
     viewonly?: boolean;
@@ -61,7 +61,10 @@ const editor = ref<Editor>();
 
 const editorClass = computed(() => {
   if (props.viewonly) return `min-h-54.5 ${props.class}`;
-  return `border border-slate-400 rounded-b px-3 py-1 min-h-54.5 focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-primary-400 focus:rounded ${props.class}`;
+  const base = `border border-slate-500 dark:border-slate-400 rounded-b px-3 py-1 min-h-54.5`;
+  const focus = `focus:outline-none focus:ring-2 focus:ring-primary-500/40 focus:border-primary-400 focus:rounded`;
+  const invalid = `!border-red-500 !dark:border-red-500 !focus:ring-red-500/40 !focus:border-red-500`;
+  return `${base} ${focus} ${props.invalid ? invalid : ''} ${props.class}`;
 });
 
 const typing = ref(false);
@@ -112,6 +115,13 @@ onMounted(() => {
     },
   });
 });
+
+watch(
+  () => props.invalid,
+  () => {
+    editor.value?.setOptions({ editorProps: { attributes: { class: editorClass.value } } });
+  },
+);
 
 watch(
   () => props.disabled,
