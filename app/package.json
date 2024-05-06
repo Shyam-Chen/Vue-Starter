@@ -20,8 +20,8 @@
     "nprogress": "^0.2.0",
     "ofetch": "^1.3.4",
     "valibot": "^0.30.0",
-    "vue": "^3.4.25",
-    "vue-component-type-helpers": "^2.0.14",
+    "vue": "^3.4.26",
+    "vue-component-type-helpers": "^2.0.16",
     "vue-formor": "^4.1.1",
     "vue-localer": "^1.4.1",
     "vue-qrcode-image": "^1.2.0",
@@ -30,21 +30,21 @@
     "vuedraggable": "^4.1.0"
   },
   "devDependencies": {
-    "@iconify/json": "^2.2.203",
-    "@types/lodash": "^4.17.0",
+    "@iconify/json": "^2.2.206",
+    "@types/lodash": "^4.17.1",
     "@types/nprogress": "^0.2.3",
     "@vitejs/plugin-vue": "^5.0.4",
-    "@vitest/coverage-v8": "^1.5.1",
+    "@vitest/coverage-v8": "^1.6.0",
     "@vue/test-utils": "^2.4.5",
     "happy-dom": "^14.7.1",
     "process-envify": "^2.0.0",
-    "sass": "^1.75.0",
+    "sass": "^1.76.0",
     "tailwindcss": "^3.4.3",
     "typescript": "^5.4.5",
     "unocss": "^0.59.4",
-    "vite": "^5.2.10",
+    "vite": "^5.2.11",
     "vite-plugin-vue-routes": "^1.1.0",
-    "vitest": "^1.5.1",
-    "vue-tsc": "^2.0.14"
+    "vitest": "^1.6.0",
+    "vue-tsc": "^2.0.16"
   }
 }
