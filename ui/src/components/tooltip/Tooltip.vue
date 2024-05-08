@@ -84,6 +84,6 @@ useScrollParent(
 }
 
 .Tooltip-Panel {
-  @apply fixed left-0 top-0 z-101 text-slate-100 bg-slate-500 rounded-lg shadow-lg;
+  @apply fixed left-0 top-0 z-102 text-slate-100 bg-slate-500 rounded-lg shadow-lg;
 }
 </style>
