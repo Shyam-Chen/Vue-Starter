@@ -4,6 +4,7 @@ import { XBreadcrumb, XCard, XCodeBlock, XTabs } from '@x/ui';
 import Basic from './Basic.vue';
 import BasicCode from './Basic.vue?raw';
 import Controlled from './Controlled.vue';
+import ControlledCode from './Controlled.vue?raw';
 import MultipleSelection from './MultipleSelection.vue';
 import Lazy from './Lazy.vue';
 import nodesDataCode from './nodesData?raw';
@@ -33,11 +34,13 @@ import nodesDataCode from './nodesData?raw';
   </section>
 
   <section class="my-8">
-    <h2 class="text-3xl font-bold my-4 pt-6">Controlled (WIP)</h2>
+    <h2 class="text-3xl font-bold my-4 pt-6">Controlled</h2>
 
     <XCard>
       <Controlled />
     </XCard>
+
+    <XCodeBlock :code="ControlledCode" language="vue" />
   </section>
 
   <section class="my-8">

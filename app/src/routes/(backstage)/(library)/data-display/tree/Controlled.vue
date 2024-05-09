@@ -1,41 +1,29 @@
 <script lang="ts" setup>
+import type { ComponentExposed } from 'vue-component-type-helpers';
 import { ref, onMounted } from 'vue';
 import { XTree, XButton } from '@x/ui';
 
 import nodesData from './nodesData';
 
+const tree = ref<ComponentExposed<typeof XTree>>();
+const selected = ref();
 const nodes = ref();
 
 onMounted(() => {
-  nodes.value = nodesData;
+  nodes.value = structuredClone(nodesData);
 });
-
-const expandAll = () => {
-  for (const node of nodes.value) {
-    node.status = true;
-
-    if (node.children?.length) {
-      node.status = true;
-    }
-  }
-};
-
-const collapseAll = () => {
-  for (const node of nodes.value) {
-    node.status = false;
-
-    if (node.children?.length) {
-      node.status = false;
-    }
-  }
-};
 </script>
 
 <template>
   <div class="flex gap-2 mb-2">
-    <XButton label="Expand All" @click="expandAll" />
-    <XButton label="Collapse All" @click="collapseAll" />
+    <XButton label="Expand All" @click="tree?.expandAll" />
+    <XButton label="Collapse All" @click="tree?.collapseAll" />
   </div>
 
-  <XTree :nodes="nodes" />
+  <XTree ref="tree" v-model="selected" :nodes="nodes" />
+
+  <div class="mt-1 flex gap-2">
+    Selected:
+    <pre>{{ selected }}</pre>
+  </div>
 </template>

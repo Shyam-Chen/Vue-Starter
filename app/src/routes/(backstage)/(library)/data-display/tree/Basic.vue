@@ -7,7 +7,7 @@ import nodesData from './nodesData';
 const nodes = ref();
 
 onMounted(() => {
-  nodes.value = nodesData;
+  nodes.value = structuredClone(nodesData);
 });
 
 type XTreeProps = InstanceType<typeof XTree>;

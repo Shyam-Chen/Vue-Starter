@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref, watch } from 'vue';
+import { ref, watch, provide } from 'vue';
 
 import type { Node } from './types';
 import TreeNode from './TreeNode.vue';
@@ -43,6 +43,33 @@ function onSelect(val: Node) {
   defaultModel.value = val.value;
   emit('select', val);
 }
+
+const onToggleAll = (nodes: Node[], status: boolean) => {
+  for (const node of nodes) {
+    node.status = status;
+
+    if (node.children?.length) {
+      onToggleAll(node.children, status);
+    }
+  }
+};
+
+const expandAll = () => {
+  onToggleAll(nodesRef.value, true);
+};
+
+const collapseAll = () => {
+  onToggleAll(nodesRef.value, false);
+};
+
+provide('Tree', {
+  defaultModel,
+});
+
+defineExpose({
+  expandAll,
+  collapseAll,
+});
 </script>
 
 <template>

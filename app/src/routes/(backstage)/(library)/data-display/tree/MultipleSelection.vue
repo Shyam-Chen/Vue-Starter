@@ -8,7 +8,7 @@ const selected = ref();
 const nodes = ref();
 
 onMounted(() => {
-  nodes.value = nodesData;
+  nodes.value = structuredClone(nodesData);
 });
 </script>
 
