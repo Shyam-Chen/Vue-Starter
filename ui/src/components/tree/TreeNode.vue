@@ -1,10 +1,12 @@
 <script lang="ts" setup>
+import { computed } from 'vue';
+
 import Checkbox from '../checkbox/Checkbox.vue';
 import Collapse from '../collapse/Collapse.vue';
 
 import type { Node } from './types';
 
-defineProps<{
+const props = defineProps<{
   node?: Node;
   multiple?: boolean;
 }>();
@@ -19,12 +21,23 @@ function nodeSelect(node?: Node) {
     emit('select', node);
   }
 }
+
+const lineLeftValue = 0.74;
+
+const lineLeftBind = computed(() => {
+  if (typeof props.node?.level === 'number' && props.node.level > 2) {
+    return `${lineLeftValue + props.node.level - 2}rem`;
+  }
+
+  return `${lineLeftValue}rem`;
+});
 </script>
 
 <template>
   <div
     class="TreeNode-Element"
     :class="{ 'cursor-pointer': node?.children?.length, 'TreeNode-Line': node?.level !== 1 }"
+    :style="[typeof node?.level === 'number' && `padding-left: ${node.level - 1}rem`]"
     @click.stop="nodeSelect(node)"
   >
     <div
@@ -43,7 +56,7 @@ function nodeSelect(node?: Node) {
   <Collapse>
     <div
       v-if="node?.children?.length && node?.status"
-      class="pl-4 relative"
+      class="relative"
       :class="{ 'TreeNode-Line': node?.level !== 1 }"
     >
       <TreeNode
@@ -65,8 +78,10 @@ function nodeSelect(node?: Node) {
 
 .TreeNode-Line {
   &::after {
-    @apply content-[''] absolute left-0 top-0 flex h-full;
-    @apply border-l border-slate-300 dark:border-slate-600;
+    @apply content-[''] absolute top-0 flex h-full;
+    @apply border-l-2 border-slate-200/50 dark:border-slate-600/50;
+
+    left: v-bind(lineLeftBind);
   }
 }
 </style>
