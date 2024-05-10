@@ -144,7 +144,7 @@ function onClose(val: string | number | undefined) {
           <div class="text-red-500 p-4">Angular Content</div>
         </XTabs.Tab>
 
-        <XTabs.Tab title="React" :disabled="true">
+        <XTabs.Tab title="React" disabled>
           <div class="text-blue-500 p-4">React Content</div>
         </XTabs.Tab>
 

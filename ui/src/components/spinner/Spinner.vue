@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
 
-const spinnerWrapper = ref();
-const spinner = ref();
+const spinnerWrapper = ref<HTMLDivElement>();
+const spinner = ref<HTMLDivElement>();
 </script>
 
 <template>

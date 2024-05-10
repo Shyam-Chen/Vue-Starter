@@ -21,9 +21,11 @@ withDefaults(
   },
 );
 
-const target = ref();
+const target = ref<HTMLDivElement>();
 
 function onInput(evt: Event) {
+  if (!target.value) return;
+
   const slides = target.value.querySelectorAll('input');
   const min = parseFloat(slides[0].min);
   const max = parseFloat(slides[0].max);
@@ -34,8 +36,8 @@ function onInput(evt: Event) {
   const percentageMin = (slide1 / (max - min)) * 100;
   const percentageMax = (slide2 / (max - min)) * 100;
 
-  target.value.style.setProperty('--range-slider-value-low', percentageMin);
-  target.value.style.setProperty('--range-slider-value-high', percentageMax);
+  target.value.style.setProperty('--range-slider-value-low', String(percentageMin));
+  target.value.style.setProperty('--range-slider-value-high', String(percentageMax));
 
   if (slide1 >= slide2) {
     const tmp = slide2;
@@ -49,8 +51,9 @@ function onInput(evt: Event) {
     }
   }
 
-  target.value.querySelector('.RangeSlider-Output').setAttribute('data-low', slide1);
-  target.value.querySelector('.RangeSlider-Output').setAttribute('data-high', slide2);
+  const output = target.value.querySelector('.RangeSlider-Output') as HTMLOutputElement;
+  output.setAttribute('data-low', String(slide1));
+  output.setAttribute('data-high', String(slide2));
   startValueModel.value = String(slide1);
   endValueModel.value = String(slide2);
 }

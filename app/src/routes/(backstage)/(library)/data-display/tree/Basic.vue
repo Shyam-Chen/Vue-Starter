@@ -4,7 +4,7 @@ import { XTree } from '@x/ui';
 
 import nodesData from './nodesData';
 
-const nodes = ref();
+const nodes = ref<typeof nodesData>();
 
 onMounted(() => {
   nodes.value = structuredClone(nodesData);
@@ -12,10 +12,10 @@ onMounted(() => {
 
 type XTreeProps = InstanceType<typeof XTree>;
 
-const selected = ref();
+const selected = ref('');
 
 const nodeSelect: XTreeProps['onSelect'] = (node) => {
-  selected.value = node.value;
+  selected.value = node.value as string;
 };
 </script>
 

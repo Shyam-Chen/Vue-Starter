@@ -8,28 +8,30 @@ defineProps<{
   title?: string;
 }>();
 
-const target = ref();
-const panel = ref();
+const target = ref<HTMLDivElement>();
+const panel = ref<HTMLDivElement>();
 
 const flux = reactive({
   status: false,
   timeout: undefined as ReturnType<typeof setTimeout> | undefined,
   resizePanel() {
-    const rect = target.value.getBoundingClientRect();
+    if (target.value && panel.value) {
+      const rect = target.value.getBoundingClientRect();
 
-    const center = window.innerHeight / 2;
+      const center = window.innerHeight / 2;
 
-    panel.value.style.left = `${rect.x}px`;
-    panel.value.style.top = `${rect.y}px`;
+      panel.value.style.left = `${rect.x}px`;
+      panel.value.style.top = `${rect.y}px`;
 
-    const xAxis = `calc(${rect.width / 2}px - 50%)`;
+      const xAxis = `calc(${rect.width / 2}px - 50%)`;
 
-    if (rect.top > center) {
-      const yAxis = `calc(-100% - 0.25rem)`;
-      panel.value.style.transform = `translate(${xAxis}, ${yAxis})`;
-    } else {
-      const yAxis = `calc(${rect.height}px + 0.25rem)`;
-      panel.value.style.transform = `translate(${xAxis}, ${yAxis})`;
+      if (rect.top > center) {
+        const yAxis = `calc(-100% - 0.25rem)`;
+        panel.value.style.transform = `translate(${xAxis}, ${yAxis})`;
+      } else {
+        const yAxis = `calc(${rect.height}px + 0.25rem)`;
+        panel.value.style.transform = `translate(${xAxis}, ${yAxis})`;
+      }
     }
   },
   onMouseenter() {

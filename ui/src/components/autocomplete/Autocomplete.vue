@@ -32,11 +32,11 @@ const emit = defineEmits<{
   (evt: 'change', val: string | null, opt: any | null): void;
 }>();
 
-const target = ref();
-const autocompleteInput = ref();
-const autocompletePane = ref();
-const autocompleteList = ref();
-const autocompleteItem = ref<any[]>([]);
+const target = ref<HTMLDivElement>();
+const autocompleteInput = ref<typeof TextField>();
+const autocompletePane = ref<HTMLDivElement>();
+const autocompleteList = ref<HTMLDivElement>();
+const autocompleteItem = ref<HTMLDivElement[]>([]);
 
 const debouncedFn = useDebounceFn(async (val) => {
   if (!val.length) return;
@@ -44,6 +44,8 @@ const debouncedFn = useDebounceFn(async (val) => {
   const response = await request<any>('/suggestions', { query: { value: val } });
 
   nextTick(() => {
+    if (!autocompleteInput.value || !autocompletePane.value || !autocompleteList.value) return;
+
     const rect = autocompleteInput.value.$el.getBoundingClientRect();
 
     autocompletePane.value.style.width = `${rect.width}px`;
@@ -92,7 +94,11 @@ const flux = reactive({
       flux.show = true;
 
       nextTick(() => {
-        const active = autocompleteList.value.querySelector('.autocomplete-item-active');
+        if (!autocompleteList.value) return;
+
+        const active = autocompleteList.value.querySelector(
+          '.autocomplete-item-active',
+        ) as HTMLDivElement;
         const offsetTop = active?.offsetTop;
         if (offsetTop) autocompleteList.value.scrollTop = offsetTop - active.offsetHeight * 2;
       });
@@ -105,18 +111,26 @@ const flux = reactive({
     if (flux.itemHoverIndex === Number(flux.options?.length) - 1) return;
     flux.itemHoverIndex += 1;
 
-    const hover = autocompleteList.value.querySelector('.autocomplete-item-hover');
-    const offsetTop = hover?.offsetTop;
-    if (offsetTop) autocompleteList.value.scrollTop = offsetTop - hover.offsetHeight;
+    if (autocompleteList.value) {
+      const hover = autocompleteList.value.querySelector(
+        '.autocomplete-item-hover',
+      ) as HTMLDivElement;
+      const offsetTop = hover?.offsetTop;
+      if (offsetTop) autocompleteList.value.scrollTop = offsetTop - hover.offsetHeight;
+    }
   },
   onUp() {
     if (!flux.show && !flux.options?.length) return;
     if (flux.itemHoverIndex <= 0) return;
     flux.itemHoverIndex -= 1;
 
-    const hover = autocompleteList.value.querySelector('.autocomplete-item-hover');
-    const offsetTop = hover?.offsetTop;
-    if (offsetTop) autocompleteList.value.scrollTop = offsetTop - hover.offsetHeight * 3;
+    if (autocompleteList.value) {
+      const hover = autocompleteList.value.querySelector(
+        '.autocomplete-item-hover',
+      ) as HTMLDivElement;
+      const offsetTop = hover?.offsetTop;
+      if (offsetTop) autocompleteList.value.scrollTop = offsetTop - hover.offsetHeight * 3;
+    }
   },
   onEnter() {
     flux.onSelect(flux.options?.[flux.itemHoverIndex]?.value, flux.options?.[flux.itemHoverIndex]);
@@ -159,6 +173,7 @@ useScrollParent(
   computed(() => autocompletePane.value),
   () => {
     if (flux.show) {
+      if (!autocompleteInput.value || !autocompletePane.value) return;
       const rect = autocompleteInput.value.$el.getBoundingClientRect();
       autocompletePane.value.style.width = `${rect.width}px`;
       autocompletePane.value.style.left = `${rect.left}px`;
@@ -195,7 +210,7 @@ useScrollParent(
           <div ref="autocompleteList" class="select-menu">
             <div
               v-for="(item, index) in flux.options"
-              :ref="(el) => (autocompleteItem[index] = el)"
+              :ref="(el) => (autocompleteItem[index] = el as HTMLDivElement)"
               :key="item.value"
               class="select-menu-item"
               :class="{

@@ -17,8 +17,8 @@ const props = withDefaults(
   },
 );
 
-const target = ref();
-const panel = ref();
+const target = ref<HTMLDivElement>();
+const panel = ref<HTMLDivElement>();
 
 const flux = reactive({
   status: false,
@@ -44,6 +44,8 @@ const flux = reactive({
 
   direction: '' as 'down' | 'up' | '',
   resizePanel() {
+    if (!target.value || !panel.value) return;
+
     const rect = target.value.getBoundingClientRect();
 
     const center = window.innerHeight / 2;

@@ -1,8 +1,9 @@
 <script lang="ts" setup>
+import type { ComponentProps } from 'vue-component-type-helpers';
 import { ref, onMounted } from 'vue';
 import { XTree } from '@x/ui';
 
-const nodes = ref();
+const nodes = ref<ComponentProps<typeof XTree>['nodes']>();
 
 onMounted(() => {
   nodes.value = [

@@ -2,11 +2,11 @@
 import type { VNode } from 'vue';
 import { toRef, useSlots, h } from 'vue';
 
-const prop = defineProps<{
+const props = defineProps<{
   query?: string[];
 }>();
 
-const queryRef = toRef(prop, 'query', []);
+const queryRef = toRef(props, 'query', []);
 
 const slots = useSlots();
 const defaultSlot = slots.default?.();

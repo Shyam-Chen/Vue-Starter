@@ -35,7 +35,7 @@ describe('Select.vue', () => {
       },
     });
 
-    await wrapper.setProps({ modelValue: '1' });
+    await wrapper.setProps({ value: '1' });
 
     expect(wrapper.text()).toContain('Option 1');
   });

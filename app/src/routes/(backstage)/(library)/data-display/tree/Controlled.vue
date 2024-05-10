@@ -6,8 +6,8 @@ import { XTree, XButton } from '@x/ui';
 import nodesData from './nodesData';
 
 const tree = ref<ComponentExposed<typeof XTree>>();
-const selected = ref();
-const nodes = ref();
+const selected = ref('');
+const nodes = ref<typeof nodesData>();
 
 onMounted(() => {
   nodes.value = structuredClone(nodesData);

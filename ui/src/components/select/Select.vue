@@ -89,11 +89,11 @@ const flux = reactive({
   },
 });
 
-const target = ref();
-const selectInput = ref();
-const selectPanel = ref();
-const selectFilter = ref();
-const selectList = ref();
+const target = ref<HTMLDivElement>();
+const selectInput = ref<HTMLDivElement>();
+const selectPanel = ref<HTMLDivElement>();
+const selectFilter = ref<typeof TextField>();
+const selectList = ref<HTMLDivElement>();
 const selectItem = ref<HTMLDivElement[]>([]);
 
 const focused = ref(false);
@@ -111,6 +111,8 @@ watch(
 );
 
 function resizePanel() {
+  if (!selectInput.value || !selectPanel.value) return;
+
   const rect = selectInput.value.getBoundingClientRect();
   const offsetParent = selectInput.value.offsetParent as HTMLElement;
   const parentRect = offsetParent.getBoundingClientRect();
@@ -145,6 +147,8 @@ const open = () => {
   nextTick(() => {
     resizePanel();
 
+    if (!selectList.value || !selectPanel.value) return;
+
     /**
      * Because of the use of `whitespace-nowrap` on `Select-Item`,
      * if there's a scrollbar, set that width for all options; otherwise, keep it at 100%.
@@ -165,7 +169,7 @@ const open = () => {
       }
     }
 
-    const active = selectPanel.value.querySelector('.Select-Item-Active');
+    const active = selectPanel.value.querySelector('.Select-Item-Active') as HTMLDivElement;
     const offsetTop = props.filterable ? active?.offsetTop - 46 : active?.offsetTop;
     if (offsetTop) selectList.value.scrollTop = offsetTop - active.offsetHeight * 2;
 
@@ -238,9 +242,11 @@ function onKeydown(evt: KeyboardEvent) {
     if (hoverIndex.value === Number(flux.options?.length) - 1) return;
     hoverIndex.value += 1;
 
-    const hover = selectList.value.querySelector('.Select-Item-Hover');
-    const offsetTop = hover?.offsetTop;
-    if (offsetTop) selectList.value.scrollTop = offsetTop - hover.offsetHeight;
+    if (selectList.value) {
+      const hover = selectList.value.querySelector('.Select-Item-Hover') as HTMLDivElement;
+      const offsetTop = hover?.offsetTop;
+      if (offsetTop) selectList.value.scrollTop = offsetTop - hover.offsetHeight;
+    }
   }
 
   if (evt.code === 'ArrowUp') {
@@ -249,13 +255,15 @@ function onKeydown(evt: KeyboardEvent) {
     if (hoverIndex.value <= 0) return;
     hoverIndex.value -= 1;
 
-    const hover = selectList.value.querySelector('.Select-Item-Hover');
-    const offsetTop = hover?.offsetTop;
-    if (offsetTop) selectList.value.scrollTop = offsetTop - hover.offsetHeight;
+    if (selectList.value) {
+      const hover = selectList.value.querySelector('.Select-Item-Hover') as HTMLDivElement;
+      const offsetTop = hover?.offsetTop;
+      if (offsetTop) selectList.value.scrollTop = offsetTop - hover.offsetHeight;
+    }
   }
 
   if (evt.code === 'Tab') {
-    selectInput.value.blur();
+    selectInput.value?.blur();
     flux.show = false;
     focused.value = false;
   }

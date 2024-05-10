@@ -72,7 +72,7 @@ onClickOutside(target, () => {
             'select-section-up': flux.direction === 'up',
           }"
         >
-          <div ref="autocompleteList" class="list">
+          <div class="list">
             <div
               v-for="(item, index) in flux.options"
               :ref="(el) => (autocompleteItem[index] = el)"

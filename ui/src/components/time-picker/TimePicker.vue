@@ -55,25 +55,27 @@ const flux = reactive({
   },
 });
 
-const target = ref();
-const input = ref();
-const picker = ref();
+const target = ref<HTMLDivElement>();
+const input = ref<typeof TextField>();
+const picker = ref<HTMLDivElement>();
 
 const direction = ref<'down' | 'up'>('down');
 
 function resizePanel() {
-  const rect = input.value.$el.querySelector('.TextField-Input').getBoundingClientRect();
+  if (input.value && picker.value) {
+    const rect = input.value.$el.querySelector('.TextField-Input').getBoundingClientRect();
 
-  picker.value.style.left = `${rect.left}px`;
+    picker.value.style.left = `${rect.left}px`;
 
-  const center = window.innerHeight / 2;
+    const center = window.innerHeight / 2;
 
-  if (rect.top > center) {
-    picker.value.style.top = `${rect.top}px`;
-    direction.value = 'up';
-  } else {
-    picker.value.style.top = `${rect.bottom}px`;
-    direction.value = 'down';
+    if (rect.top > center) {
+      picker.value.style.top = `${rect.top}px`;
+      direction.value = 'up';
+    } else {
+      picker.value.style.top = `${rect.bottom}px`;
+      direction.value = 'down';
+    }
   }
 }
 

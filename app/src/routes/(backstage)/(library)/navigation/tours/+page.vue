@@ -6,10 +6,10 @@ import { XBreadcrumb, XCard, XButton, XTour } from '@x/ui';
 const open = ref(false);
 const step = ref(0);
 
-const el1 = ref();
-const el2 = ref();
-const el3 = ref();
-const el4 = ref();
+const el1 = ref<HTMLHeadingElement>();
+const el2 = ref<HTMLDivElement>();
+const el3 = ref<HTMLDivElement>();
+const el4 = ref<HTMLDivElement>();
 
 const steps = computed<ComponentProps<typeof XTour>['steps']>(() => [
   {

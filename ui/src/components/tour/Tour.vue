@@ -28,8 +28,8 @@ function onFinish() {
   openModel.value = false;
 }
 
-const tour = ref();
-const guide = ref();
+const tour = ref<HTMLDivElement>();
+const guide = ref<HTMLDivElement>();
 
 watch(
   () => openModel.value,
@@ -43,13 +43,17 @@ watch(
       currentTarget.scrollIntoView({ block: 'center' });
       const rect = currentTarget.getBoundingClientRect();
 
-      tour.value.style.width = `${rect.width}px`;
-      tour.value.style.height = `${rect.height}px`;
-      tour.value.style.left = `${rect.x}px`;
-      tour.value.style.top = `${rect.y}px`;
+      if (tour.value) {
+        tour.value.style.width = `${rect.width}px`;
+        tour.value.style.height = `${rect.height}px`;
+        tour.value.style.left = `${rect.x}px`;
+        tour.value.style.top = `${rect.y}px`;
+      }
 
-      guide.value.style.left = `${rect.x}px`;
-      guide.value.style.top = `${rect.y + rect.height + 16}px`;
+      if (guide.value) {
+        guide.value.style.left = `${rect.x}px`;
+        guide.value.style.top = `${rect.y + rect.height + 16}px`;
+      }
     } else {
       stepModel.value = 0;
     }
@@ -67,13 +71,17 @@ watch(
     currentTarget.scrollIntoView({ block: 'center' });
     const rect = currentTarget.getBoundingClientRect();
 
-    tour.value.style.width = `${rect.width}px`;
-    tour.value.style.height = `${rect.height}px`;
-    tour.value.style.left = `${rect.x}px`;
-    tour.value.style.top = `${rect.y}px`;
+    if (tour.value) {
+      tour.value.style.width = `${rect.width}px`;
+      tour.value.style.height = `${rect.height}px`;
+      tour.value.style.left = `${rect.x}px`;
+      tour.value.style.top = `${rect.y}px`;
+    }
 
-    guide.value.style.left = `${rect.x}px`;
-    guide.value.style.top = `${rect.y + rect.height + 16}px`;
+    if (guide.value) {
+      guide.value.style.left = `${rect.x}px`;
+      guide.value.style.top = `${rect.y + rect.height + 16}px`;
+    }
   },
 );
 

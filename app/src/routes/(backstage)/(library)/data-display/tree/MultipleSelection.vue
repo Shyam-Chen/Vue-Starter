@@ -4,8 +4,8 @@ import { XTree } from '@x/ui';
 
 import nodesData from './nodesData';
 
-const selected = ref();
-const nodes = ref();
+const selected = ref<string[]>();
+const nodes = ref<typeof nodesData>();
 
 onMounted(() => {
   nodes.value = structuredClone(nodesData);
