@@ -4,7 +4,12 @@ import { ref, watch, provide } from 'vue';
 import type { Node } from './types';
 import TreeNode from './TreeNode.vue';
 
-const defaultModel = defineModel<any>();
+const defaultModel = defineModel<Node['value'] | Node['value'][]>({
+  get(val) {
+    if (props.multiple) return val || [];
+    return val;
+  },
+});
 
 const props = defineProps<{
   nodes?: Node[];
@@ -53,7 +58,7 @@ watch(
 );
 
 function onSelect(val: Node) {
-  defaultModel.value = val.value;
+  if (!props.multiple) defaultModel.value = val.value;
   emit('select', val);
 }
 
@@ -108,6 +113,18 @@ function setIndeterminate(node: Node) {
   }
 }
 
+function getCheckedValues(values: Node['value'][], nodes: Node[]) {
+  for (const node of nodes) {
+    if (node.checked || node.indeterminate) {
+      values.push(node.value);
+    }
+
+    if (node.children?.length) {
+      getCheckedValues(values, node.children);
+    }
+  }
+}
+
 watch(
   nodesRef,
   (val) => {
@@ -116,6 +133,10 @@ watch(
     for (const node of val) {
       setIndeterminate(node);
     }
+
+    let values = [] as Node['value'][];
+    getCheckedValues(values, nodesRef.value);
+    defaultModel.value = values;
   },
   { deep: true },
 );

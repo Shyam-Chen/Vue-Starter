@@ -16,10 +16,10 @@ const emit = defineEmits<{
   (evt: 'select', val: Node): void;
 }>();
 
-function nodeSelect(node?: Node) {
+function nodeSelect(node?: Node, toggle?: boolean, select?: boolean) {
   if (node) {
-    node.status = !node.status;
-    emit('select', node);
+    if (toggle) node.status = !node.status;
+    if (select) emit('select', node);
   }
 }
 
@@ -49,8 +49,8 @@ const tree = inject('Tree') as {
     }"
     :style="[typeof node?.level === 'number' && `padding-left: ${node.level - 1}rem`]"
     @click.stop="
-      !multiple && nodeSelect(node);
       multiple && tree.onChecked(node);
+      nodeSelect(node, !multiple, true);
     "
   >
     <div
@@ -60,14 +60,17 @@ const tree = inject('Tree') as {
         'i-material-symbols-arrow-drop-down-rounded': node.status,
         'i-material-symbols-arrow-right-rounded': !node.status,
       }"
-      @click.stop="multiple && nodeSelect(node)"
+      @click.stop="nodeSelect(node, multiple, false)"
     ></div>
     <div v-else class="i-mdi-dot size-6"></div>
     <Checkbox
       v-if="multiple"
-      :value="node?.checked"
+      :checked="node?.checked"
       :indeterminate="node?.indeterminate"
-      @change="tree.onChecked(node)"
+      @change.stop="
+        tree.onChecked(node);
+        nodeSelect(node, !multiple, true);
+      "
     />
     <div class="mx-2">{{ node?.label }}</div>
   </div>

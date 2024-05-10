@@ -15,7 +15,7 @@ onMounted(() => {
 <template>
   <XTree v-model="selected" :nodes="nodes" multiple />
 
-  <div class="mt-1 flex gap-2">
+  <div class="mt-1 flex flex-col">
     Selected:
     <pre>{{ selected }}</pre>
   </div>
