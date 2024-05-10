@@ -33,7 +33,10 @@ const lineLeftBind = computed(() => {
   return `${lineLeftValue}rem`;
 });
 
-const tree = inject('Tree') as { defaultModel?: ModelRef<any> };
+const tree = inject('Tree') as {
+  defaultModel?: ModelRef<any>;
+  onChecked: (node?: Node) => void;
+};
 </script>
 
 <template>
@@ -45,7 +48,10 @@ const tree = inject('Tree') as { defaultModel?: ModelRef<any> };
       active: tree.defaultModel?.value === node?.value,
     }"
     :style="[typeof node?.level === 'number' && `padding-left: ${node.level - 1}rem`]"
-    @click.stop="nodeSelect(node)"
+    @click.stop="
+      !multiple && nodeSelect(node);
+      multiple && tree.onChecked(node);
+    "
   >
     <div
       v-if="Array.isArray(node?.children)"
@@ -54,9 +60,15 @@ const tree = inject('Tree') as { defaultModel?: ModelRef<any> };
         'i-material-symbols-arrow-drop-down-rounded': node.status,
         'i-material-symbols-arrow-right-rounded': !node.status,
       }"
+      @click.stop="multiple && nodeSelect(node)"
     ></div>
     <div v-else class="i-mdi-dot size-6"></div>
-    <Checkbox v-if="multiple" />
+    <Checkbox
+      v-if="multiple"
+      :value="node?.checked"
+      :indeterminate="node?.indeterminate"
+      @change="tree.onChecked(node)"
+    />
     <div class="mx-2">{{ node?.label }}</div>
   </div>
 
@@ -84,6 +96,10 @@ const tree = inject('Tree') as { defaultModel?: ModelRef<any> };
 
   &.active {
     @apply ring-1 ring-primary-500/40 !border-primary-400;
+  }
+
+  :deep(.Checkbox-Label) {
+    @apply !min-h-auto;
   }
 }
 

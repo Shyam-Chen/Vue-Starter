@@ -4,4 +4,6 @@ export type Node = {
   children?: Node[];
   level?: number;
   status?: boolean;
+  checked?: boolean;
+  indeterminate?: boolean;
 };

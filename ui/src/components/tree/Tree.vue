@@ -22,10 +22,23 @@ const createTree = (
 ): Array<Node & { level?: number; status?: boolean }> => {
   return [...arr].map((item) => {
     if (item.children) {
-      return { ...item, level, status, children: createTree(item.children, level + 1) };
+      return {
+        ...item,
+        level,
+        status,
+        children: createTree(item.children, level + 1),
+        checked: props.multiple ? false : undefined,
+        indeterminate: props.multiple ? false : undefined,
+      };
     }
 
-    return { ...item, level, status };
+    return {
+      ...item,
+      level,
+      status,
+      checked: props.multiple ? false : undefined,
+      indeterminate: props.multiple ? false : undefined,
+    };
   });
 };
 
@@ -43,6 +56,69 @@ function onSelect(val: Node) {
   defaultModel.value = val.value;
   emit('select', val);
 }
+
+const onCheckAll = (nodes: Node[], checked: boolean) => {
+  for (const node of nodes) {
+    node.checked = checked;
+
+    if (node.children?.length) {
+      onCheckAll(node.children, checked);
+    }
+  }
+};
+
+function onChecked(node?: Node) {
+  if (!node) return;
+  node.checked = !node.checked;
+
+  if (node.children?.length) {
+    onCheckAll(node.children, node.checked);
+  }
+}
+
+function areAllChecked(nodes: Node[]): boolean {
+  return nodes.every((node) => {
+    if (!node.checked) return false;
+    if (node.children?.length) return areAllChecked(node.children);
+    return true;
+  });
+}
+
+function areAllUnchecked(nodes: Node[]): boolean {
+  return nodes.every((node) => {
+    if (node.checked) return false;
+    if (node.children?.length) return areAllUnchecked(node.children);
+    return true;
+  });
+}
+
+function setIndeterminate(node: Node) {
+  if (node.children?.length) {
+    const checked = areAllChecked(node.children);
+    const unchecked = areAllUnchecked(node.children);
+
+    node.indeterminate = !(checked || unchecked);
+
+    if (checked) node.checked = true;
+    if (unchecked) node.checked = false;
+
+    for (const childNode of node.children) {
+      if (childNode.children?.length) setIndeterminate(childNode);
+    }
+  }
+}
+
+watch(
+  nodesRef,
+  (val) => {
+    if (!props.multiple) return;
+
+    for (const node of val) {
+      setIndeterminate(node);
+    }
+  },
+  { deep: true },
+);
 
 const onToggleAll = (nodes: Node[], status: boolean) => {
   for (const node of nodes) {
@@ -64,6 +140,7 @@ const collapseAll = () => {
 
 provide('Tree', {
   defaultModel,
+  onChecked,
 });
 
 defineExpose({
