@@ -11,14 +11,26 @@ defineOptions({
 
 const valueModel = defineModel<string[]>('value', { default: [] });
 
-defineProps<{
-  label?: string;
-  required?: boolean;
-  invalid?: boolean | string;
-  help?: string;
-  placeholder?: string;
-  disabled?: boolean;
-}>();
+withDefaults(
+  defineProps<{
+    label?: string;
+    required?: boolean;
+    invalid?: boolean | string;
+    help?: string;
+    placeholder?: string;
+    disabled?: boolean;
+    closable?: boolean;
+  }>(),
+  {
+    label: '',
+    required: false,
+    invalid: undefined,
+    help: '',
+    placeholder: '',
+    disabled: false,
+    closable: true,
+  },
+);
 
 const emit = defineEmits<{
   (evt: 'input', val: string): void;
@@ -92,13 +104,7 @@ defineExpose({
       ]"
       @click="flux.onFocus"
     >
-      <Chip
-        v-for="(val, idx) in value"
-        :key="val"
-        closable
-        :disabled="disabled"
-        @close="flux.onClose(idx)"
-      >
+      <Chip v-for="(val, idx) in value" :key="val" :closable :disabled @close="flux.onClose(idx)">
         {{ val }}
       </Chip>
 
@@ -109,8 +115,8 @@ defineExpose({
         v-bind="$attrs"
         class="outline-none w-fit bg-inherit"
         :class="{ 'cursor-not-allowed': disabled }"
-        :placeholder="placeholder"
-        :disabled="disabled"
+        :placeholder
+        :disabled
         @input.stop="emit('input', flux.text)"
         @keyup.enter="flux.onEnter"
         @keyup.delete="flux.onDelete"

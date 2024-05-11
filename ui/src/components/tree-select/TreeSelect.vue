@@ -34,13 +34,14 @@ const status = ref(false);
         "
         :invalid="!!invalid"
         readonly
-        :placeholder="'Please select'"
-        @click="status = !status"
+        :placeholder="valueModel.length ? '' : 'Please select'"
+        :closable="false"
+        @focus="status = !status"
         @append="status = !status"
       />
 
       <template #content>
-        <div class="p-2">
+        <div class="p-2 max-h-50 overflow-auto">
           <Tree v-model="valueModel" :nodes="options" multiple />
         </div>
       </template>

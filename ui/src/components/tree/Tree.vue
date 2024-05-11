@@ -20,34 +20,21 @@ const emit = defineEmits<{
   (evt: 'select', val: Node): void;
 }>();
 
-const createTree = (
-  arr: Node[] = [],
-  level = 1,
-  status = false,
-): Array<Node & { level?: number; status?: boolean }> => {
+const createTree = (arr: Node[] = [], level = 1): Node[] => {
   return [...arr].map((item) => {
-    if (item.children) {
-      return {
-        ...item,
-        level,
-        status,
-        children: createTree(item.children, level + 1),
-        checked: props.multiple ? false : undefined,
-        indeterminate: props.multiple ? false : undefined,
-      };
+    const selected = props.multiple
+      ? (defaultModel.value as Node['value'][]).includes(item.value)
+      : undefined;
+
+    if (item.children?.length) {
+      return { ...item, level, children: createTree(item.children, level + 1), checked: selected };
     }
 
-    return {
-      ...item,
-      level,
-      status,
-      checked: props.multiple ? false : undefined,
-      indeterminate: props.multiple ? false : undefined,
-    };
+    return { ...item, level, checked: selected };
   });
 };
 
-const nodesRef = ref<Array<Node & { level?: number; status?: boolean }>>([]);
+const nodesRef = ref<Node[]>([]);
 
 watch(
   () => props.nodes,
@@ -138,7 +125,7 @@ watch(
     getCheckedValues(values, nodesRef.value);
     defaultModel.value = values;
   },
-  { deep: true },
+  { deep: true, immediate: true },
 );
 
 const onToggleAll = (nodes: Node[], status: boolean) => {
