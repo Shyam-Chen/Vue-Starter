@@ -9,7 +9,7 @@
     "test": "vitest --dir src --coverage --run"
   },
   "dependencies": {
-    "@unocss/reset": "^0.60.1",
+    "@unocss/reset": "^0.60.2",
     "@vueuse/components": "^10.9.0",
     "@vueuse/core": "^10.9.0",
     "@x/ui": "workspace:^",
@@ -41,7 +41,7 @@
     "sass": "^1.77.1",
     "tailwindcss": "^3.4.3",
     "typescript": "^5.4.5",
-    "unocss": "^0.60.1",
+    "unocss": "^0.60.2",
     "vite": "^5.2.11",
     "vite-plugin-vue-routes": "^1.1.0",
     "vitest": "^1.6.0",

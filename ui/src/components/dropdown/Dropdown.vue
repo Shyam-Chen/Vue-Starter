@@ -13,15 +13,17 @@ const emit = defineEmits<{
   (evt: 'select', val: string): void;
 }>();
 
-const target = ref();
-const dropdown = ref();
+const target = ref<HTMLDivElement>();
+const dropdown = ref<HTMLDivElement>();
 
 const flux = reactive({
   status: false,
   timeout: undefined as ReturnType<typeof setTimeout> | undefined,
   direction: '' as 'down' | 'up' | '',
   resizePanel() {
-    const rect = target.value.getBoundingClientRect();
+    const rect = target.value?.getBoundingClientRect();
+
+    if (!rect || !dropdown.value) return;
 
     const center = window.innerHeight / 2;
     const middle = window.innerWidth / 2;

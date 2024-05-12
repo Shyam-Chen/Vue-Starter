@@ -14,25 +14,29 @@ defineEmits<{
   (evt: 'input', val: string): void;
 }>();
 
-const target = ref();
-const autocompleteInput = ref();
-const autocompletePane = ref();
-const autocompleteItem = ref<any[]>([]);
+const target = ref<HTMLDivElement>();
+const autocompleteInput = ref<typeof ChipField>();
+const autocompletePane = ref<HTMLDivElement>();
+const autocompleteItem = ref<HTMLDivElement[]>([]);
 
 const debouncedFn = useDebounceFn(async (val) => {
   if (!val.length) return;
 
   const response = await request<any>('/suggestions', { query: { value: val } });
 
-  nextTick(() => {
+  await nextTick();
+
+  if (autocompleteInput.value) {
     const rect = autocompleteInput.value.$el.getBoundingClientRect();
 
-    autocompletePane.value.style.width = `${rect.width}px`;
-    autocompletePane.value.style.left = `${rect.left}px`;
-    autocompletePane.value.style.top = `${rect.bottom}px`;
+    if (autocompletePane.value) {
+      autocompletePane.value.style.width = `${rect.width}px`;
+      autocompletePane.value.style.left = `${rect.left}px`;
+      autocompletePane.value.style.top = `${rect.bottom}px`;
+    }
+  }
 
-    flux.show = true;
-  });
+  flux.show = true;
 
   flux.options = response._data;
 }, 333);
@@ -48,7 +52,7 @@ const flux = reactive({
 
   onSelect(value: string) {
     valueModel.value = [...valueModel.value, value];
-    autocompleteInput.value.text = '';
+    if (autocompleteInput.value) autocompleteInput.value.text = '';
     flux.show = false;
   },
 });
@@ -75,7 +79,7 @@ onClickOutside(target, () => {
           <div class="list">
             <div
               v-for="(item, index) in flux.options"
-              :ref="(el) => (autocompleteItem[index] = el)"
+              :ref="(el) => (autocompleteItem[index] = el as HTMLDivElement)"
               :key="item.value"
               class="item"
               @click="flux.onSelect(item.value)"

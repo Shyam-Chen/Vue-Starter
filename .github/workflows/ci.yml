@@ -14,6 +14,8 @@ jobs:
         run: docker compose exec --no-TTY ci pnpm build
       - name: pnpm preview
         run: docker compose exec --detach --no-TTY ci pnpm preview
+      - name: pnpm lint
+        run: docker compose exec --no-TTY ci pnpm lint
       - name: pnpm check
         run: docker compose exec --no-TTY ci pnpm check
       - name: pnpm test

@@ -49,9 +49,9 @@ const locale = useLocale();
 const _weekdays = computed(() => locale.value?.weekdays || props.weekdays);
 const _months = computed(() => locale.value?.months || props.months);
 
-const target = ref();
-const input = ref();
-const picker = ref();
+const target = ref<HTMLDivElement>();
+const input = ref<typeof TextField>();
+const picker = ref<HTMLDivElement>();
 
 const createDays = (y?: number, m?: number) => {
   const currentPeriod = () => {
@@ -132,18 +132,20 @@ const flux = reactive({
   showDatePicker: false,
   direction: '' as 'down' | 'up' | '',
   resizePanel() {
-    const rect = input.value.$el.querySelector('.TextField-Input').getBoundingClientRect();
+    const rect = input.value?.$el.querySelector('.TextField-Input').getBoundingClientRect();
 
-    picker.value.style.left = `${rect.left}px`;
+    if (picker.value) {
+      picker.value.style.left = `${rect.left}px`;
 
-    const center = window.innerHeight / 2;
+      const center = window.innerHeight / 2;
 
-    if (rect.top > center) {
-      picker.value.style.top = `${rect.top}px`;
-      flux.direction = 'up';
-    } else {
-      picker.value.style.top = `${rect.bottom}px`;
-      flux.direction = 'down';
+      if (rect.top > center) {
+        picker.value.style.top = `${rect.top}px`;
+        flux.direction = 'up';
+      } else {
+        picker.value.style.top = `${rect.bottom}px`;
+        flux.direction = 'down';
+      }
     }
   },
   openPicker() {

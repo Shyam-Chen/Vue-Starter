@@ -134,12 +134,12 @@ const flux = reactive({
   },
 });
 
-const target = ref();
-const selectInput = ref();
-const selectPanel = ref();
-const selectFilter = ref();
-const selectList = ref();
-const selectItem = ref<any[]>([]);
+const target = ref<HTMLDivElement>();
+const selectInput = ref<HTMLDivElement>();
+const selectPanel = ref<HTMLDivElement>();
+const selectFilter = ref<typeof TextField>();
+const selectList = ref<HTMLDivElement>();
+const selectItem = ref<HTMLDivElement[]>([]);
 
 const initOptions = computed(() => props.options);
 
@@ -176,6 +176,8 @@ watchEffect(() => {
 });
 
 function resizePanel() {
+  if (!selectInput.value || !selectPanel.value) return;
+
   const rect = selectInput.value.getBoundingClientRect();
 
   selectPanel.value.style.width = `${rect.width}px`;
@@ -202,6 +204,8 @@ const open = () => {
   nextTick(() => {
     resizePanel();
 
+    if (!selectList.value) return;
+
     /**
      * Because of the use of `whitespace-nowrap` on `Select-Item`,
      * if there's a scrollbar, set that width for all options; otherwise, keep it at 100%.
@@ -222,9 +226,11 @@ const open = () => {
       }
     }
 
-    const active = selectPanel.value.querySelector('.Multiselect-Item-Active');
-    const offsetTop = props.filterable ? active?.offsetTop - 54 : active?.offsetTop;
-    if (offsetTop) selectList.value.scrollTop = offsetTop - active.offsetHeight * 2;
+    if (selectPanel.value) {
+      const active = selectPanel.value.querySelector('.Multiselect-Item-Active') as HTMLDivElement;
+      const offsetTop = props.filterable ? active?.offsetTop - 54 : active?.offsetTop;
+      if (offsetTop) selectList.value.scrollTop = offsetTop - active.offsetHeight * 2;
+    }
 
     if (selectFilter.value) selectFilter.value.$el.querySelector('input').focus();
   });
@@ -380,7 +386,7 @@ useScrollParent(
             <div ref="selectList" class="Multiselect-List">
               <div
                 v-for="(item, index) in flux.options"
-                :ref="(el) => (selectItem[index] = el)"
+                :ref="(el) => (selectItem[index] = el as HTMLDivElement)"
                 :key="item.value"
                 class="Multiselect-Item"
                 :class="{ 'Multiselect-Item-Active': item.checked }"

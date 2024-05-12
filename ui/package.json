@@ -43,7 +43,7 @@
     "@tiptap/extension-underline": "^2.3.2",
     "@tiptap/pm": "^2.3.2",
     "@tiptap/vue-3": "^2.3.2",
-    "@unocss/reset": "^0.60.1",
+    "@unocss/reset": "^0.60.2",
     "@vueuse/components": "^10.9.0",
     "@vueuse/core": "^10.9.0",
     "date-fns": "^3.6.0",
@@ -71,7 +71,7 @@
     "sass": "^1.77.1",
     "tailwindcss": "^3.4.3",
     "typescript": "^5.4.5",
-    "unocss": "^0.60.1",
+    "unocss": "^0.60.2",
     "vite": "^5.2.11",
     "vitest": "^1.6.0",
     "vue-tsc": "2.0.16"
