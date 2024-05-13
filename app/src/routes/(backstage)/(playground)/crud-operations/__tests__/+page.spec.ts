@@ -1,5 +1,6 @@
 import type { VueWrapper } from '@vue/test-utils';
 import { mount, flushPromises } from '@vue/test-utils';
+import * as vueRouter from 'vue-router';
 import * as xui from '@x/ui';
 import todos from 'mock/todos/response';
 
@@ -13,6 +14,7 @@ let wrapper: VueWrapper;
 
 afterEach(() => {
   wrapper.unmount();
+  vi.clearAllMocks();
 });
 
 test('initial', async () => {
@@ -20,6 +22,15 @@ test('initial', async () => {
     if (url === '/todos' && method === 'POST') {
       return { _data: todos.basic, status: 200 };
     }
+  });
+
+  vi.mock('vue-router', async (importOriginal) => {
+    const actual = await importOriginal<typeof vueRouter>();
+
+    return {
+      ...actual,
+      onBeforeRouteLeave: vi.fn(),
+    };
   });
 
   wrapper = mount(Page, { global: { plugins: [router, localer] } });
