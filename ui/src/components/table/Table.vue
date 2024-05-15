@@ -305,15 +305,15 @@ watchEffect(
                 <template v-if="typeof col.sortable === 'boolean' ? col.sortable : true">
                   <div
                     v-if="flux.sortField === col.key && flux.sortDirection === 'desc'"
-                    class="i-fa-sort-desc w-3.5 h-3.5"
+                    class="i-ph-sort-descending-bold size-5"
                   ></div>
 
                   <div
                     v-else-if="flux.sortField === col.key && flux.sortDirection === 'asc'"
-                    class="i-fa-sort-asc w-3.5 h-3.5"
+                    class="i-ph-sort-ascending-bold size-5"
                   ></div>
 
-                  <div v-else class="i-fa-sort w-3.5 h-3.5"></div>
+                  <div v-else class="i-flowbite-sort-outline size-5"></div>
                 </template>
               </div>
             </Column>
@@ -321,13 +321,13 @@ watchEffect(
         </thead>
 
         <tbody v-if="loading">
-          <tr>
-            <td :colspan="selectable ? Number(columns?.length) + 1 : columns?.length">
-              <div class="w-full min-h-387px flex flex-col justify-center items-center">
+          <Row>
+            <Cell :colspan="selectable ? Number(columns?.length) + 1 : columns?.length">
+              <div class="w-full !min-h-379.5px flex flex-col justify-center items-center">
                 <Spinner class="w-10 h-10" />
               </div>
-            </td>
-          </tr>
+            </Cell>
+          </Row>
         </tbody>
 
         <slot v-else name="tbody">
@@ -392,7 +392,7 @@ watchEffect(
           <tbody v-else>
             <Row class="bg-gray-200/20">
               <Cell :colspan="selectable ? Number(columns?.length) + 1 : columns?.length">
-                <div class="w-full !min-h-389px flex flex-col justify-center items-center">
+                <div class="w-full !min-h-379.5px flex flex-col justify-center items-center">
                   <div class="text-xl font-medium text-stone-300">
                     {{ locale.noData || 'No data to display' }}
                   </div>
