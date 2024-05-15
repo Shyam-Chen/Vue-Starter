@@ -30,6 +30,7 @@ const defaultModel = defineModel<BubbleChatBox>({
 
 defineProps<{
   chat?: Chat;
+  viewonly?: boolean;
 }>();
 
 const emit = defineEmits<{
@@ -96,8 +97,11 @@ defineExpose({
 
     <div
       v-if="chat?.self"
-      class="self-center hidden group-hover:block"
-      :class="{ '!block': morePopover }"
+      class="self-center hidden"
+      :class="{
+        'group-hover:block': !viewonly,
+        '!block': morePopover,
+      }"
     >
       <Popover v-model="morePopover">
         <Button
