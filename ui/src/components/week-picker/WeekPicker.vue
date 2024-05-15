@@ -41,7 +41,7 @@ const createWeeks = (y?: number, m?: number) => {
 
   const [year, month] = currentPeriod();
 
-  const days = [] as Array<{ date?: Date; outOfRange?: boolean; week?: number }>;
+  const days = [] as Array<{ date?: Date; outOfRange?: boolean; week?: number; today?: boolean }>;
 
   const date = new Date(year, month, 1);
 
@@ -68,6 +68,12 @@ const createWeeks = (y?: number, m?: number) => {
     const nextDate = new Date(date);
     nextDate.setDate(i);
     days.push({ outOfRange: true, date: nextDate });
+  }
+
+  for (const day of days) {
+    if (day.date) {
+      day.today = format(day.date, 'yyyy/MM/dd') === format(new Date(), 'yyyy/MM/dd');
+    }
   }
 
   return chunk(days, 7).map((week) => [{ week: getISOWeek(week[6].date || 0) }, ...week]);
@@ -128,6 +134,18 @@ function selectWeek(week: Week) {
 
   show.value = false;
 }
+
+const isCurrentWeek = (week: Week) => {
+  const isoWeek = week[0].week;
+  const start = week[1].date && getYear(week[1].date);
+  const end = week[7].date && getYear(week[7].date);
+
+  let year = end;
+  if (week[0].week === 52) year = start;
+
+  const [currentYear, currentWeek] = valueModel.value.split('-W');
+  return year === Number(currentYear) && isoWeek === Number(currentWeek);
+};
 
 const weekify = computed(() => {
   if (valueModel.value) {
@@ -198,7 +216,7 @@ useScrollParent(
             <div
               v-for="(weekday, weekdayIndex) in weekdays"
               :key="weekdayIndex"
-              class="text-sm text-slate-600"
+              class="flex justify-center items-center text-sm font-bold w-6 h-6 p-4"
             >
               {{ weekday }}
             </div>
@@ -207,16 +225,18 @@ useScrollParent(
           <div
             v-for="(week, weekIndex) in weeks"
             :key="weekIndex"
-            class="grid grid-cols-8 gap-1 text-center hover:bg-primary-500 hover:text-white hover:rounded cursor-pointer"
+            class="grid grid-cols-8 gap-1 text-center hover:bg-slate-200 dark:hover:bg-slate-600 rounded-lg cursor-pointer"
+            :class="{ 'text-white bg-primary-600 !hover:bg-primary-700': isCurrentWeek(week) }"
             @click="selectWeek(week)"
           >
             <div
               v-for="(item, idx) in week"
               :key="idx"
-              class="flex justify-center items-center"
+              class="flex justify-center items-center rounded-full size-6 p-4 text-sm"
               :class="{
                 'font-bold': item.week,
                 'text-slate-600': item.outOfRange,
+                'ring-1 ring-primary-500': item.today,
               }"
             >
               {{ item.week ? item.week : item.date?.getDate() }}

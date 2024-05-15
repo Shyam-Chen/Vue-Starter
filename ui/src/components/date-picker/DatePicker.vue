@@ -420,7 +420,7 @@ function onKeydown(evt: KeyboardEvent) {
             :value="year"
             class="flex justify-center items-center hover:bg-slate-200 dark:hover:bg-slate-600 rounded text-sm cursor-pointer"
             :class="{
-              'text-white bg-blue-400 !hover:bg-blue-500': year === getYear(flux.now),
+              'ring-1 ring-primary-500': year === getYear(flux.now),
             }"
             @click="flux.selectYear(year)"
           >
@@ -435,7 +435,7 @@ function onKeydown(evt: KeyboardEvent) {
             :value="index"
             class="flex justify-center items-center hover:bg-slate-200 dark:hover:bg-slate-600 rounded text-sm cursor-pointer"
             :class="{
-              'text-white bg-blue-400 !hover:bg-blue-500':
+              'ring-1 ring-primary-500':
                 index === getMonth(flux.now) && flux.year === getYear(flux.now),
             }"
             @click="flux.selectMonth(index)"
