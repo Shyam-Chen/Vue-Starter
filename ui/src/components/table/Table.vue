@@ -305,15 +305,15 @@ watchEffect(
                 <template v-if="typeof col.sortable === 'boolean' ? col.sortable : true">
                   <div
                     v-if="flux.sortField === col.key && flux.sortDirection === 'desc'"
-                    class="i-ph-sort-descending-bold size-5"
+                    class="i-tabler-sort-descending size-5"
                   ></div>
 
                   <div
                     v-else-if="flux.sortField === col.key && flux.sortDirection === 'asc'"
-                    class="i-ph-sort-ascending-bold size-5"
+                    class="i-tabler-sort-ascending size-5"
                   ></div>
 
-                  <div v-else class="i-flowbite-sort-outline size-5"></div>
+                  <div v-else class="i-tabler-arrows-sort size-5"></div>
                 </template>
               </div>
             </Column>

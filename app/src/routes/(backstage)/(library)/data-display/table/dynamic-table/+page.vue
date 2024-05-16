@@ -343,11 +343,11 @@ const flux = reactive({
     <div class="w-full bg-white dark:bg-slate-800 shadow-md rounded">
       <XTable :columns="flux.colspanCols" :rows="flux.colspanRows">
         <template #spanable>
-          <tr>
-            <td colspan="2" class="px-6 py-3">Sum:</td>
-            <td class="px-6 py-3">108</td>
-            <td></td>
-          </tr>
+          <XTable.Row>
+            <XTable.Cell colspan="2">Sum:</XTable.Cell>
+            <XTable.Cell>108</XTable.Cell>
+            <XTable.Cell />
+          </XTable.Row>
         </template>
       </XTable>
     </div>

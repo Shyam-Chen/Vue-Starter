@@ -1,5 +1,5 @@
 import chunk from 'lodash/chunk';
-import sortBy from 'lodash/sortBy';
+import orderBy from 'lodash/orderBy';
 
 export default <T extends Record<string, any>>(
   rows: T[],
@@ -10,11 +10,11 @@ export default <T extends Record<string, any>>(
   let arr = [...rows];
 
   if (control.field && control.direction === 'asc') {
-    arr = sortBy(arr, (item) => item[control.field]);
+    arr = orderBy(arr, control.field, 'asc');
   }
 
   if (control.field && control.direction === 'desc') {
-    arr = sortBy(arr, (item) => item[control.field]).reverse();
+    arr = orderBy(arr, control.field, 'desc');
   }
 
   const chunked = chunk(arr, control.rows);
