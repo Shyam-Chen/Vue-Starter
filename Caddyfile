@@ -5,8 +5,12 @@ localhost {
   route {
     try_files {path} /index.html
     file_server browse
-    reverse_proxy /api/* localhost:3000
   }
+
+  handle_path /api/* {
+    rewrite * /api{uri}
+		reverse_proxy 192.168.100.202:3000
+	}
 
   header /service-worker.js {
     Cache-Control max-age=0,no-cache,no-store,must-revalidate
