@@ -1,4 +1,4 @@
-localhost {
+{$SITE_ADDRESS} {
   encode gzip
   root * /usr/share/caddy
 
