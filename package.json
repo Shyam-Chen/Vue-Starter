@@ -12,11 +12,11 @@
     "e2e": "pnpm -C e2e e2e"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.7.3",
-    "@vue/eslint-config-prettier": "^9.0.0",
-    "@vue/eslint-config-typescript": "^13.0.0",
-    "eslint": "^8.57.0",
-    "eslint-plugin-vue": "^9.26.0",
-    "prettier": "^3.2.5"
+    "@biomejs/biome": "1.7.3",
+    "@vue/eslint-config-prettier": "9.0.0",
+    "@vue/eslint-config-typescript": "13.0.0",
+    "eslint": "8.57.0",
+    "eslint-plugin-vue": "9.26.0",
+    "prettier": "3.2.5"
   }
 }
