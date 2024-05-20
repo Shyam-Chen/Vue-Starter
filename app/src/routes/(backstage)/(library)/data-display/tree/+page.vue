@@ -44,7 +44,7 @@ import nodesDataCode from './nodesData?raw';
   </section>
 
   <section class="my-8">
-    <h2 class="text-3xl font-bold my-4 pt-6">Multiple Selection (WIP)</h2>
+    <h2 class="text-3xl font-bold my-4 pt-6">Multiple Selection</h2>
 
     <XCard>
       <MultipleSelection />

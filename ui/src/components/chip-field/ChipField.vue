@@ -20,6 +20,7 @@ withDefaults(
     placeholder?: string;
     disabled?: boolean;
     closable?: boolean;
+    append?: string;
   }>(),
   {
     label: '',
@@ -29,11 +30,13 @@ withDefaults(
     placeholder: '',
     disabled: false,
     closable: true,
+    append: '',
   },
 );
 
 const emit = defineEmits<{
   (evt: 'input', val: string): void;
+  (evt: 'append'): void;
 }>();
 
 const input = ref<HTMLInputElement>();
@@ -90,44 +93,55 @@ defineExpose({
 </script>
 
 <template>
-  <FormControl v-slot="{ uid }" :label :required :invalid :help>
-    <div
-      v-on-click-outside="flux.onBlur"
-      class="ChipField"
-      :class="[
-        value?.length ? 'py-1.5' : 'py-2',
-        {
-          focused: flux.focused,
-          invalid,
-          disabled,
-        },
-      ]"
-      @click="flux.onFocus"
-    >
-      <Chip v-for="(val, idx) in value" :key="val" :closable :disabled @close="flux.onClose(idx)">
-        {{ val }}
-      </Chip>
+  <FormControl :label :required :invalid :help>
+    <template #label>
+      <slot></slot>
+    </template>
 
-      <input
-        :id="uid"
-        ref="input"
-        v-model="flux.text"
-        v-bind="$attrs"
-        class="outline-none w-fit bg-inherit"
-        :class="{ 'cursor-not-allowed': disabled }"
-        :placeholder
-        :disabled
-        @input.stop="emit('input', flux.text)"
-        @keyup.enter="flux.onEnter"
-        @keyup.delete="flux.onDelete"
-      />
-    </div>
+    <template #default="{ uid }">
+      <div
+        v-on-click-outside="flux.onBlur"
+        class="ChipField"
+        :class="[
+          value?.length ? 'py-1' : 'py-2',
+          {
+            focused: flux.focused,
+            invalid,
+            disabled,
+            append,
+          },
+        ]"
+        @click="flux.onFocus"
+      >
+        <Chip v-for="(val, idx) in value" :key="val" :closable :disabled @close="flux.onClose(idx)">
+          {{ val }}
+        </Chip>
+
+        <input
+          :id="uid"
+          ref="input"
+          v-model="flux.text"
+          v-bind="$attrs"
+          class="ChipField-Input outline-none w-fit bg-inherit"
+          :class="{ 'cursor-not-allowed': disabled }"
+          :placeholder
+          :disabled
+          @input.stop="emit('input', flux.text)"
+          @keyup.enter="flux.onEnter"
+          @keyup.delete="flux.onDelete"
+        />
+
+        <div v-if="append" class="ChipField-Append" @click.stop="emit('append')">
+          <div :class="append" class="size-5"></div>
+        </div>
+      </div>
+    </template>
   </FormControl>
 </template>
 
 <style lang="scss" scoped>
 .ChipField {
-  @apply flex flex-wrap gap-1 bg-white dark:bg-slate-800 border border-slate-400 rounded w-full px-3 leading-tight;
+  @apply relative flex flex-wrap gap-1 bg-white dark:bg-slate-800 border border-slate-400 rounded w-full px-3 leading-tight;
 
   &.focused {
     @apply ring-2 ring-primary-500/50 border-primary-400;
@@ -141,5 +155,17 @@ defineExpose({
   &.disabled {
     @apply cursor-not-allowed opacity-60;
   }
+
+  &.append {
+    @apply pe-8;
+  }
+}
+
+.ChipField-Input {
+  @apply placeholder:text-slate-400 dark:placeholder:text-slate-500;
+}
+
+.ChipField-Append {
+  @apply absolute end-2 top-1/2 z-1 w-5 h-5 -translate-y-1/2;
 }
 </style>

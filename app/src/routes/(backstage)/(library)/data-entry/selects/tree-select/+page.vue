@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
-import { XBreadcrumb, XCard, XTreeSelect } from '@x/ui';
+import { XBreadcrumb, XCard, XTreeSelect, XButton } from '@x/ui';
 
 const values = ref<string[]>([]);
 
@@ -67,6 +67,10 @@ const options = [
   },
   { label: '3', value: '3' },
 ];
+
+const setValues = () => {
+  values.value = ['2', '2-1', '2-1-2', '2-2'];
+};
 </script>
 
 <template>
@@ -82,11 +86,12 @@ const options = [
   <h1 class="text-4xl font-extrabold my-4">TreeSelect</h1>
 
   <section class="my-8">
-    <h2 class="text-3xl font-bold my-4">Basic (WIP)</h2>
+    <h2 class="text-3xl font-bold my-4">Basic</h2>
 
     <XCard>
       <XTreeSelect v-model:value="values" :options />
-      <pre class="mt-1">{{ values }}</pre>
+      <div class="my-1">{{ values }}</div>
+      <XButton label="Set Values" @click="setValues" />
     </XCard>
   </section>
 </template>
