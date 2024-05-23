@@ -21,7 +21,7 @@ const props = withDefaults(
   {
     minMonth: undefined,
     maxMonth: undefined,
-    format: 'yyyy/MM',
+    format: 'yyyy-MM',
   },
 );
 
