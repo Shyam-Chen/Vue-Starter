@@ -3,7 +3,10 @@ FROM node:20
 WORKDIR /usr/src/app
 ADD . .
 
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+RUN corepack enable pnpm
+
 RUN npx -y playwright@1.44.0 install --with-deps
 
-RUN npm install -g pnpm
-RUN pnpm install
+RUN corepack use pnpm@9

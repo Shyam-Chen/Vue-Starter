@@ -5,9 +5,9 @@ ADD . .
 
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
-RUN corepack enable
+RUN corepack enable pnpm
+RUN corepack use pnpm@9
 
-RUN pnpm install
 RUN pnpm build
 
 FROM caddy:2
