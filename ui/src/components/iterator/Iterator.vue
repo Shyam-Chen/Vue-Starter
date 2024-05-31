@@ -1,6 +1,6 @@
 <script lang="ts" setup generic="T = object">
-import { useMediaQuery } from '@vueuse/core';
 import { computed } from 'vue';
+import { useMediaQuery } from '@vueuse/core';
 
 import Button from '../button/Button.vue';
 
@@ -23,7 +23,9 @@ const props = withDefaults(
   },
 );
 
-const emit = defineEmits<(evt: 'update:value', val?: IteratorItem[]) => void>();
+const emit = defineEmits<{
+  (evt: 'update:value', val?: IteratorItem[]): void;
+}>();
 
 const valueModel = computed<IteratorItem[]>({
   get: () => {

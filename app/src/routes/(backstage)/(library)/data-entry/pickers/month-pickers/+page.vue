@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { XBreadcrumb, XCard, XMonthPicker, XMonthRangePicker, XSwitch } from '@x/ui';
-import { addMonths, format, subMonths } from 'date-fns';
 import { ref } from 'vue';
+import { XBreadcrumb, XCard, XMonthPicker, XMonthRangePicker, XSwitch } from '@x/ui';
+import { subMonths, addMonths, format } from 'date-fns';
 
 const month = ref('');
 

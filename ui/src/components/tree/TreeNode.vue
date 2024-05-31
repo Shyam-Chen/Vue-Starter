@@ -12,7 +12,9 @@ const props = defineProps<{
   multiple?: boolean;
 }>();
 
-const emit = defineEmits<(evt: 'select', val: Node) => void>();
+const emit = defineEmits<{
+  (evt: 'select', val: Node): void;
+}>();
 
 function nodeSelect(node?: Node, toggle?: boolean, select?: boolean) {
   if (node) {

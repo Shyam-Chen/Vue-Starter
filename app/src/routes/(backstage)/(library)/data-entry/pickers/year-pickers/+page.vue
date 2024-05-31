@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { XBreadcrumb, XCard, XYearPicker } from '@x/ui';
 import { ref } from 'vue';
+import { XBreadcrumb, XCard, XYearPicker } from '@x/ui';
 
 const year = ref<number>();
 </script>

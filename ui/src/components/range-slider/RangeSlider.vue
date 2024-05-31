@@ -27,11 +27,11 @@ function onInput(evt: Event) {
   if (!target.value) return;
 
   const slides = target.value.querySelectorAll('input');
-  const min = Number.parseFloat(slides[0].min);
-  const max = Number.parseFloat(slides[0].max);
+  const min = parseFloat(slides[0].min);
+  const max = parseFloat(slides[0].max);
 
-  let slide1 = Number.parseFloat(slides[0].value);
-  let slide2 = Number.parseFloat(slides[1].value);
+  let slide1 = parseFloat(slides[0].value);
+  let slide2 = parseFloat(slides[1].value);
 
   const percentageMin = (slide1 / (max - min)) * 100;
   const percentageMax = (slide2 / (max - min)) * 100;

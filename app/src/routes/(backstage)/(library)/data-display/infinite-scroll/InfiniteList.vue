@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { useInfiniteScroll } from '@vueuse/core';
 import { ref } from 'vue';
+import { useInfiniteScroll } from '@vueuse/core';
 
 import leetcode from './leetcode';
 

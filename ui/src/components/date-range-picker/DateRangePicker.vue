@@ -1,24 +1,24 @@
 <script lang="ts" setup>
+import { nextTick, ref, computed, reactive, watch } from 'vue';
+import { useLocaler, useLocale } from 'vue-localer';
 import { onClickOutside } from '@vueuse/core';
 import {
   format as _format,
-  add,
-  getMonth,
-  getYear,
   intlFormat,
-  setMonth,
-  setYear,
+  add,
   sub,
+  getYear,
+  setYear,
+  getMonth,
+  setMonth,
 } from 'date-fns';
 import chunk from 'lodash/chunk';
 import range from 'lodash/range';
-import { computed, nextTick, reactive, ref, watch } from 'vue';
-import { useLocale, useLocaler } from 'vue-localer';
 
 import useScrollParent from '../../composables/scroll-parent/useScrollParent';
 
+import TextField from '../text-field/TextField.vue';
 import Fade from '../fade/Fade.vue';
-import type TextField from '../text-field/TextField.vue';
 
 const startValueModel = defineModel<string>('startValue', { default: '' });
 const endValueModel = defineModel<string>('endValue', { default: '' });
@@ -37,7 +37,6 @@ const props = withDefaults(
     format: 'yyyy/MM/dd',
     weekdays: () => ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
     // prettier-ignore
-    // biome-ignore format: months
     months: () => ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
     minDate: '',
     maxDate: '',

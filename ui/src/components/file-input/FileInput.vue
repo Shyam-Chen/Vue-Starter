@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { reactive, toRef } from 'vue';
 
-import Chip from '../chip/Chip.vue';
 import FormControl from '../form-control/FormControl.vue';
+import Chip from '../chip/Chip.vue';
 
 const props = defineProps<{
   label?: string;
@@ -13,7 +13,9 @@ const props = defineProps<{
   help?: string;
 }>();
 
-const emit = defineEmits<(evt: 'change', val: Event) => void>();
+const emit = defineEmits<{
+  (evt: 'change', val: Event): void;
+}>();
 
 const placeholderRef = toRef(props, 'placeholder', 'Choose a file');
 

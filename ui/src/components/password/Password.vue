@@ -1,11 +1,11 @@
 <script lang="ts" setup>
-import { ref } from 'vue';
 import type { ComponentProps } from 'vue-component-type-helpers';
+import { ref } from 'vue';
 import { useLocale } from 'vue-localer';
 
 import FormControl from '../form-control/FormControl.vue';
 import Popover from '../popover/Popover.vue';
-import type TextField from '../text-field/TextField.vue';
+import TextField from '../text-field/TextField.vue';
 
 type TextFieldProps = ComponentProps<typeof TextField>;
 

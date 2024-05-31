@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-import remove from 'lodash/remove';
-import { computed, ref, watch } from 'vue';
+import { ref, computed, watch } from 'vue';
 import Draggable from 'vuedraggable';
+import remove from 'lodash/remove';
 
-import Button from '../button/Button.vue';
 import Checkbox from '../checkbox/Checkbox.vue';
+import Button from '../button/Button.vue';
 
 type Item = {
   id?: string | number;

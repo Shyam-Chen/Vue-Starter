@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import { useDark, useNavigatorLanguage } from '@vueuse/core';
-import { XNotification } from '@x/ui';
 import { watch } from 'vue';
-import { useLocaler } from 'vue-localer';
 import { RouterView } from 'vue-router';
+import { useLocaler } from 'vue-localer';
+import { XNotification } from '@x/ui';
+import { useNavigatorLanguage, useDark } from '@vueuse/core';
 
 const { lang, langs } = useLocaler();
 const { language } = useNavigatorLanguage();

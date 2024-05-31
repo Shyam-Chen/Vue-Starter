@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import type { ButtonHTMLAttributes, Ref, WritableComputedRef } from 'vue';
-import { computed, inject, onMounted, ref } from 'vue';
+import { ref, computed, inject, onMounted } from 'vue';
 
 import Spinner from '../spinner/Spinner.vue';
 
@@ -18,7 +18,9 @@ interface Props extends /* @vue-ignore */ ButtonHTMLAttributes {
 
 defineProps<Props>();
 
-const emit = defineEmits<(evt: 'click', val: Event) => void>();
+const emit = defineEmits<{
+  (evt: 'click', val: Event): void;
+}>();
 
 const buttonGroup = inject('ButtonGroup', {
   defaultModel: undefined,

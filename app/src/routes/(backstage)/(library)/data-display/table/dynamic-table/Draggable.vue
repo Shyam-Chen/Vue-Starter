@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { XTable } from '@x/ui';
 import { reactive } from 'vue';
+import { XTable } from '@x/ui';
 import Draggable from 'vuedraggable';
 
 const flux = reactive({

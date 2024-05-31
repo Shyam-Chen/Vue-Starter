@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { onMounted, ref } from 'vue';
+import { ref, onMounted } from 'vue';
 
-import type Alert from '../alert/Alert.vue';
+import Alert from '../alert/Alert.vue';
 
 defineProps<{
   message: string;

@@ -1,5 +1,5 @@
-import nprogress from 'nprogress';
 import { createRouter, createWebHistory } from 'vue-router';
+import nprogress from 'nprogress';
 
 import routes from 'virtual:vue-routes';
 

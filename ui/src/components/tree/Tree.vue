@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import { provide, ref, watch } from 'vue';
+import { ref, watch, provide } from 'vue';
 
-import TreeNode from './TreeNode.vue';
 import type { Node } from './types';
+import TreeNode from './TreeNode.vue';
 
 const defaultModel = defineModel<Node['value'] | Node['value'][]>({
   get(val) {
@@ -16,7 +16,9 @@ const props = defineProps<{
   multiple?: boolean;
 }>();
 
-const emit = defineEmits<(evt: 'select', val: Node) => void>();
+const emit = defineEmits<{
+  (evt: 'select', val: Node): void;
+}>();
 
 const createTree = (arr: Node[] = [], level = 1): Node[] => {
   return [...arr].map((item) => {
@@ -119,7 +121,7 @@ watch(
       setIndeterminate(node);
     }
 
-    const values = [] as Node['value'][];
+    let values = [] as Node['value'][];
     getCheckedValues(values, nodesRef.value);
     defaultModel.value = values;
   },

@@ -1,11 +1,13 @@
 <script lang="ts" setup>
-import { computed, provide, ref } from 'vue';
+import { ref, computed, provide } from 'vue';
 
 const props = defineProps<{
   modelValue?: number;
 }>();
 
-const emit = defineEmits<(evt: 'update:modelValue', val?: number) => void>();
+const emit = defineEmits<{
+  (evt: 'update:modelValue', val?: number): void;
+}>();
 
 const defaultModel = computed({
   get: () => props.modelValue,

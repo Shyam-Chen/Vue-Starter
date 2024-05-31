@@ -1,7 +1,7 @@
 <script lang="ts" setup>
+import { onBeforeMount } from 'vue';
 import { useDark } from '@vueuse/core';
 import { getHighlighterCore } from 'shiki/core';
-import { onBeforeMount } from 'vue';
 
 import Card from '../card/Card.vue';
 import useHighlighter from './useHighlighter';

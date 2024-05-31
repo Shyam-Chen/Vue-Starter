@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { useScroll } from '@vueuse/core';
-import { nextTick, provide, ref, watch } from 'vue';
+import { nextTick, ref, watch, provide } from 'vue';
 import { RouterLink } from 'vue-router';
+import { useScroll } from '@vueuse/core';
 
 import type { TabProps } from './Tab.vue';
 

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { XBreadcrumb, XCard, XCheckbox } from '@x/ui';
 import { reactive, watch } from 'vue';
+import { XBreadcrumb, XCard, XCheckbox } from '@x/ui';
 
 const flux = reactive({
   checkbox1: false,

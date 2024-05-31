@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { XButton, XSelect, XTable, XTextField } from '@x/ui';
+import { ref, onMounted } from 'vue';
+import { XTextField, XSelect, XButton, XTable } from '@x/ui';
 import { staticTable } from '@x/ui';
-import { onMounted, ref } from 'vue';
 
 import leetcode from './leetcode';
 

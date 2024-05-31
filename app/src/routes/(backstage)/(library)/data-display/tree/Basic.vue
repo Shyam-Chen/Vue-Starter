@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import type { XTree } from '@x/ui';
-import { onMounted, ref } from 'vue';
+import { ref, onMounted } from 'vue';
+import { XTree } from '@x/ui';
 
 import nodesData from './nodesData';
 

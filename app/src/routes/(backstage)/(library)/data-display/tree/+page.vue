@@ -5,8 +5,8 @@ import Basic from './Basic.vue';
 import BasicCode from './Basic.vue?raw';
 import Controlled from './Controlled.vue';
 import ControlledCode from './Controlled.vue?raw';
-import Lazy from './Lazy.vue';
 import MultipleSelection from './MultipleSelection.vue';
+import Lazy from './Lazy.vue';
 import nodesDataCode from './nodesData?raw';
 </script>
 

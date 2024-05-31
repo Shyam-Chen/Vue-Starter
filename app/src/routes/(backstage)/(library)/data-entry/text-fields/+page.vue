@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { XBreadcrumb, XCard, XChipField, XCode, XTextField } from '@x/ui';
-import { reactive, ref } from 'vue';
+import { ref, reactive } from 'vue';
+import { XBreadcrumb, XCard, XTextField, XCode, XChipField } from '@x/ui';
 
 const flux = reactive({
   textField1: '',

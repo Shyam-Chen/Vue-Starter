@@ -1,19 +1,19 @@
 <script lang="ts" setup generic="T extends object">
-import { useScroll } from '@vueuse/core';
 import type { VNode } from 'vue';
-import { computed, reactive, ref, toRef, watch, watchEffect } from 'vue';
-import { useLocale, useLocaler } from 'vue-localer';
+import { ref, computed, reactive, watch, watchEffect, toRef } from 'vue';
+import { useLocaler, useLocale } from 'vue-localer';
+import { useScroll } from '@vueuse/core';
 
 import type staticTable from '../../utilities/static-table/staticTable';
-import Button from '../button/Button.vue';
-import Checkbox from '../checkbox/Checkbox.vue';
-import Select from '../select/Select.vue';
 import Spinner from '../spinner/Spinner.vue';
+import Button from '../button/Button.vue';
+import Select from '../select/Select.vue';
+import Checkbox from '../checkbox/Checkbox.vue';
 
-import Cell from './Cell.vue';
+import type { ColumnItem, Control } from './types';
 import Column from './Column.vue';
 import Row from './Row.vue';
-import type { ColumnItem, Control } from './types';
+import Cell from './Cell.vue';
 
 const props = defineProps<{
   value?: T[];

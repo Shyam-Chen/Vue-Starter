@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import type { InputHTMLAttributes } from 'vue';
 
-import Checkbox from '../checkbox/Checkbox.vue';
 import FormControl from '../form-control/FormControl.vue';
+import Checkbox from '../checkbox/Checkbox.vue';
 
 interface Props extends /* @vue-ignore */ InputHTMLAttributes {
   label?: string;
@@ -21,7 +21,9 @@ const valueModel = defineModel<unknown[]>('value', { default: [] });
 
 defineProps<Props>();
 
-defineEmits<(evt: 'change', val: unknown[]) => void>();
+defineEmits<{
+  (evt: 'change', val: unknown[]): void;
+}>();
 
 function onChange(val: unknown) {
   const idx = valueModel.value.findIndex((item) => item === val);

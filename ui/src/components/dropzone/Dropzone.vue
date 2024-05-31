@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
 
-import useNotification from '../../composables/notification/useNotification';
 import FormControl from '../form-control/FormControl.vue';
+import useNotification from '../../composables/notification/useNotification';
 
 defineOptions({
   inheritAttrs: false,
@@ -17,7 +17,9 @@ const props = defineProps<{
   limit?: (file: File) => string;
 }>();
 
-const emit = defineEmits<(evt: 'upload', file: File, formData: FormData) => void>();
+const emit = defineEmits<{
+  (evt: 'upload', file: File, formData: FormData): void;
+}>();
 
 const notification = useNotification();
 

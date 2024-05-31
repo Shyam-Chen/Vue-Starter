@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { onUnmounted, watch } from 'vue';
+import { watch, onUnmounted } from 'vue';
 
 const defaultModel = defineModel<boolean>({ default: false });
 

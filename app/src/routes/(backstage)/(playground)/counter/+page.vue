@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { XBreadcrumb, XButton, XTextField } from '@x/ui';
+import { XBreadcrumb, XTextField, XButton } from '@x/ui';
 
 import { useCounter } from './store';
 

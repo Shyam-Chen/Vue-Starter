@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { XBreadcrumb, XCard, XMultiselect } from '@x/ui';
 import { reactive } from 'vue';
+import { XBreadcrumb, XCard, XMultiselect } from '@x/ui';
 
 const flux = reactive({
   basic: [],

@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-import { XButton, XLink, XTextField } from '@x/ui';
 import { reactive } from 'vue';
 import { RouterLink } from 'vue-router';
+import { XTextField, XButton, XLink } from '@x/ui';
 
-import useSchema from './schema';
 import useStore from './store';
+import useSchema from './schema';
 
 const { state } = useStore();
 const schema = useSchema();

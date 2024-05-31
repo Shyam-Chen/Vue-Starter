@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import { format as _format, add, getMonth, getYear, setMonth, setYear, sub } from 'date-fns';
-import chunk from 'lodash/chunk';
-import groupBy from 'lodash/groupBy';
-import range from 'lodash/range';
 import { computed, reactive, watch } from 'vue';
+import { format as _format, add, sub, getYear, setYear, getMonth, setMonth } from 'date-fns';
+import chunk from 'lodash/chunk';
+import range from 'lodash/range';
+import groupBy from 'lodash/groupBy';
 
 const props = withDefaults(
   defineProps<{
@@ -23,7 +23,6 @@ const props = withDefaults(
     format: 'yyyy/MM/dd',
     weekdays: () => ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
     // prettier-ignore
-    // biome-ignore format: months
     months: () => ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
     events: () => [],
     minDate: '',
@@ -31,7 +30,9 @@ const props = withDefaults(
   },
 );
 
-const emit = defineEmits<(evt: 'update:value', val: string) => void>();
+const emit = defineEmits<{
+  (evt: 'update:value', val: string): void;
+}>();
 
 const eventsRef = computed(() => {
   const _events = props.events.map((event) => ({

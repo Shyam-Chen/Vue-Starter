@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { XButton, XTable } from '@x/ui';
 import { reactive } from 'vue';
+import { XTable, XButton } from '@x/ui';
 
 const flux = reactive({
   cols: [

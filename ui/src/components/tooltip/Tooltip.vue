@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import { computed, nextTick, reactive, ref } from 'vue';
+import { ref, computed, reactive, nextTick } from 'vue';
 
-import useScrollParent from '../../composables/scroll-parent/useScrollParent';
 import Fade from '../fade/Fade.vue';
+import useScrollParent from '../../composables/scroll-parent/useScrollParent';
 
 defineProps<{
   title?: string;

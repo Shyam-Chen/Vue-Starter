@@ -1,16 +1,18 @@
 <script lang="ts" setup>
-import { onClickOutside, useDebounceFn } from '@vueuse/core';
-import { nextTick, reactive, ref } from 'vue';
+import { ref, reactive, nextTick } from 'vue';
+import { useDebounceFn, onClickOutside } from '@vueuse/core';
 
 // import useScrollParent from '../../composables/scroll-parent/useScrollParent';
 import request from '../../utilities/request/request';
 
-import type ChipField from '../chip-field/ChipField.vue';
+import ChipField from '../chip-field/ChipField.vue';
 import Fade from '../fade/Fade.vue';
 
 const valueModel = defineModel<string[]>('value', { default: [] });
 
-defineEmits<(evt: 'input', val: string) => void>();
+defineEmits<{
+  (evt: 'input', val: string): void;
+}>();
 
 const target = ref<HTMLDivElement>();
 const autocompleteInput = ref<typeof ChipField>();

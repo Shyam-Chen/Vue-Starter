@@ -1,6 +1,6 @@
 <script lang="ts" setup>
+import { ref, computed } from 'vue';
 import uniqueId from 'lodash/uniqueId';
-import { computed, ref } from 'vue';
 
 defineOptions({
   inheritAttrs: false,

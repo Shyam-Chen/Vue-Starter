@@ -1,8 +1,8 @@
 import type { VueWrapper } from '@vue/test-utils';
-import { flushPromises, mount } from '@vue/test-utils';
+import { mount, flushPromises } from '@vue/test-utils';
+import * as vueRouter from 'vue-router';
 import * as xui from '@x/ui';
 import todos from 'mock/todos/response';
-import type * as vueRouter from 'vue-router';
 
 import localer from '~/plugins/localer';
 import router from '~/plugins/router';

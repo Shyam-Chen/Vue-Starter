@@ -1,14 +1,14 @@
 <script lang="ts" setup>
-import { nextTick, ref, toRaw } from 'vue';
 import type { ComponentExposed } from 'vue-component-type-helpers';
+import { nextTick, ref, toRaw } from 'vue';
 import { useLocale } from 'vue-localer';
 
 import Avatar from '../avatar/Avatar.vue';
 import Button from '../button/Button.vue';
-import type ChatBox from '../chat-box/ChatBox.vue';
-import Dialog from '../dialog/Dialog.vue';
-import Listbox from '../listbox';
 import Popover from '../popover/Popover.vue';
+import Listbox from '../listbox';
+import ChatBox from '../chat-box/ChatBox.vue';
+import Dialog from '../dialog/Dialog.vue';
 
 type Chat = {
   name?: string;

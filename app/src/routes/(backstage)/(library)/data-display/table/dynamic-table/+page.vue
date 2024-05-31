@@ -1,11 +1,11 @@
 <script lang="ts" setup>
-import { XBreadcrumb, XButton, XCollapse, XDivider, XTable } from '@x/ui';
 import { reactive } from 'vue';
+import { XBreadcrumb, XTable, XCollapse, XButton, XDivider } from '@x/ui';
 
 import Basic from './Basic.vue';
+import Loading from './Loading.vue';
 import Controllable from './Controllable.vue';
 import Draggable from './Draggable.vue';
-import Loading from './Loading.vue';
 
 const data = [
   {

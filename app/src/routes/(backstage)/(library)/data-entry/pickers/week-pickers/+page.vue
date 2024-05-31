@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import { XBreadcrumb, XCard, type XWeekPicker } from '@x/ui';
-import { format } from 'date-fns';
-import { ref } from 'vue';
 import type { ComponentProps } from 'vue-component-type-helpers';
+import { ref } from 'vue';
+import { XBreadcrumb, XCard, XWeekPicker } from '@x/ui';
+import { format } from 'date-fns';
 
 const week1 = ref('');
 

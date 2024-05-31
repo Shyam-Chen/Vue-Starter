@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { XBreadcrumb, XButton, XCard, XCode, XPopover } from '@x/ui';
 import { ref } from 'vue';
+import { XBreadcrumb, XCard, XPopover, XCode, XButton } from '@x/ui';
 
 const controlled = ref(false);
 </script>

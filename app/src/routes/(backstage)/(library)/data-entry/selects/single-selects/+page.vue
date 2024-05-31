@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { XBreadcrumb, XCard, XSelect } from '@x/ui';
 import { reactive } from 'vue';
+import { XBreadcrumb, XCard, XSelect } from '@x/ui';
 
 import WithTable from './WithTable.vue';
 import WithTableInDialog from './WithTableInDialog.vue';

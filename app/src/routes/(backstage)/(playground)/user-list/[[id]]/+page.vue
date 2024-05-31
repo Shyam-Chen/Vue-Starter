@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import { XBreadcrumb, XButton, XChip, XDialog, XTable, XTextField, XTooltip } from '@x/ui';
+import { ref, reactive, watch, onMounted } from 'vue';
+import { useRouter, useRoute } from 'vue-router';
+import { XBreadcrumb, XTable, XTooltip, XButton, XChip, XDialog, XTextField } from '@x/ui';
 import { request } from '@x/ui';
-import { onMounted, reactive, ref, watch } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
 
 const router = useRouter();
 const route = useRoute();

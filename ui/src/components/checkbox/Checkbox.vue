@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import uniqueId from 'lodash/uniqueId';
 import type { InputHTMLAttributes } from 'vue';
 import { computed } from 'vue';
+import uniqueId from 'lodash/uniqueId';
 
 interface Props extends /* @vue-ignore */ InputHTMLAttributes {
   value?: boolean;
@@ -18,7 +18,9 @@ defineOptions({
 
 const props = defineProps<Props>();
 
-const emit = defineEmits<(evt: 'update:value', val: boolean) => void>();
+const emit = defineEmits<{
+  (evt: 'update:value', val: boolean): void;
+}>();
 
 const valueModel = computed({
   get: () => props.value || false,

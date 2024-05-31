@@ -1,19 +1,19 @@
 <script lang="ts" setup>
-import {
-  XBreadcrumb,
-  XButton,
-  XCard,
-  XCheckbox,
-  XLeaveConfirmation,
-  XProgressBar,
-  XTextField,
-} from '@x/ui';
-import isEqual from 'lodash/isEqual';
 import { onMounted, onUnmounted } from 'vue';
 import { useRoute } from 'vue-router';
+import {
+  XBreadcrumb,
+  XCard,
+  XProgressBar,
+  XTextField,
+  XCheckbox,
+  XButton,
+  XLeaveConfirmation,
+} from '@x/ui';
+import isEqual from 'lodash/isEqual';
 
-import useSchema from './schema';
 import useStore from './store';
+import useSchema from './schema';
 
 const route = useRoute();
 

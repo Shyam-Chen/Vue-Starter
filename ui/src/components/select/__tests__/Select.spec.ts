@@ -1,5 +1,5 @@
-import { mount } from '@vue/test-utils';
 import { createLocaler } from 'vue-localer';
+import { mount } from '@vue/test-utils';
 
 import Select from '../Select.vue';
 

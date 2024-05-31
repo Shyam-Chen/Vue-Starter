@@ -1,29 +1,29 @@
 <script lang="ts" setup>
+import { computed, reactive, toRef, onMounted } from 'vue';
+import { useValibotSchema } from 'vue-formor';
+import { useLocaler } from 'vue-localer';
 import {
-  XButton,
   XCard,
+  XTextField,
+  XSelect,
+  XRadioGroup,
+  XTextarea,
   XCheckbox,
   XDatePicker,
-  XRadioGroup,
-  XSelect,
-  XTextField,
-  XTextarea,
+  XButton,
 } from '@x/ui';
 import { useValdnLocale } from '@x/ui';
 import {
-  custom,
-  email,
-  literal,
-  minLength,
-  minValue,
   nullish,
-  number,
   object,
   string,
+  number,
+  email,
+  minLength,
+  minValue,
+  literal,
+  custom,
 } from 'valibot';
-import { computed, onMounted, reactive, toRef } from 'vue';
-import { useValibotSchema } from 'vue-formor';
-import { useLocaler } from 'vue-localer';
 
 interface BasicForm {
   username?: string;

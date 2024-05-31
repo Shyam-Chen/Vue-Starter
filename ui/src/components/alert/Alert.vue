@@ -4,7 +4,9 @@ defineProps<{
   icon?: string;
 }>();
 
-const emit = defineEmits<(evt: 'close') => void>();
+const emit = defineEmits<{
+  (evt: 'close'): void;
+}>();
 </script>
 
 <template>

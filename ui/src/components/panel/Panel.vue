@@ -16,7 +16,9 @@ const props = withDefaults(
   },
 );
 
-const emit = defineEmits<(evt: 'update:modelValue', val: boolean) => void>();
+const emit = defineEmits<{
+  (evt: 'update:modelValue', val: boolean): void;
+}>();
 
 const defaultModel = computed({
   get: () => props.modelValue || false,

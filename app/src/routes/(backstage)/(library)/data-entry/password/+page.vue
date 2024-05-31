@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { XBreadcrumb, XCard, XPassword } from '@x/ui';
 import { ref } from 'vue';
+import { XBreadcrumb, XCard, XPassword } from '@x/ui';
 
 const password = ref('oxlint');
 </script>

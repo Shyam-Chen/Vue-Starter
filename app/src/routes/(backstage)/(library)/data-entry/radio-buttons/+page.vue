@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { XBreadcrumb, XCard, XRadioGroup } from '@x/ui';
 import { reactive } from 'vue';
+import { XBreadcrumb, XCard, XRadioGroup } from '@x/ui';
 
 const flux = reactive({
   radioGroup1: '',

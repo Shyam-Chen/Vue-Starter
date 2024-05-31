@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { useOffsetPagination } from '@vueuse/core';
 import { computed, watch } from 'vue';
+import { useOffsetPagination } from '@vueuse/core';
 
 import Button from '../button/Button.vue';
 

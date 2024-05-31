@@ -1,11 +1,11 @@
 <script lang="ts" setup>
-import { computed, onMounted, onUnmounted, ref } from 'vue';
-import { useLocale } from 'vue-localer';
 import type { RouteLocationNormalized } from 'vue-router';
-import { onBeforeRouteLeave, useRouter } from 'vue-router';
+import { ref, computed, onMounted, onUnmounted } from 'vue';
+import { useRouter, onBeforeRouteLeave } from 'vue-router';
+import { useLocale } from 'vue-localer';
 
-import Button from '../button/Button.vue';
 import Dialog from '../dialog/Dialog.vue';
+import Button from '../button/Button.vue';
 
 const props = defineProps<{
   trigger?: boolean;

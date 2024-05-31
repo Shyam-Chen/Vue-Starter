@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { computed, provide, ref, useSlots } from 'vue';
+import { ref, computed, provide, useSlots } from 'vue';
 import { useLocale } from 'vue-localer';
 
 import Card from '../card/Card.vue';
@@ -16,7 +16,9 @@ const props = withDefaults(
   },
 );
 
-defineEmits<(evt: 'update:modelValue', val: number) => void>();
+defineEmits<{
+  (evt: 'update:modelValue', val: number): void;
+}>();
 
 const slots = useSlots();
 const locale = useLocale();

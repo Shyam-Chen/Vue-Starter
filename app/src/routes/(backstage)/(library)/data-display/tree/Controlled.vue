@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { XButton, type XTree } from '@x/ui';
-import { onMounted, ref } from 'vue';
 import type { ComponentExposed } from 'vue-component-type-helpers';
+import { ref, onMounted } from 'vue';
+import { XTree, XButton } from '@x/ui';
 
 import nodesData from './nodesData';
 

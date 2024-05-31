@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { XBreadcrumb, XCard, XTimePicker } from '@x/ui';
 import { ref } from 'vue';
+import { XBreadcrumb, XCard, XTimePicker } from '@x/ui';
 
 const time = ref('');
 </script>

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { XSwitch } from '@x/ui';
 import { ref } from 'vue';
+import { XSwitch } from '@x/ui';
 
 const checked = ref(false);
 </script>

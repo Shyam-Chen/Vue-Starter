@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { XButton, XDialog } from '@x/ui';
 import { ref } from 'vue';
+import { XButton, XDialog } from '@x/ui';
 
 import WithTable from './WithTable.vue';
 

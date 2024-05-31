@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import type { UseSwipeDirection } from '@vueuse/core';
-import { usePointerSwipe, useSwipe } from '@vueuse/core';
-import { ref, toRef, useSlots } from 'vue';
+import { ref, useSlots, toRef } from 'vue';
+import { useSwipe, usePointerSwipe } from '@vueuse/core';
 
 import Button from '../button/Button.vue';
 
