@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import Toast from './Toast.vue';
 import useNotification from '../../composables/notification/useNotification';
+import Toast from './Toast.vue';
 
 const notification = useNotification();
 </script>

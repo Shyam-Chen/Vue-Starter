@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import EChart from 'vue-echarts';
 import { useColorMode } from '@vueuse/core';
+import { GridComponent, LegendComponent, TooltipComponent } from 'echarts/components';
 import { use } from 'echarts/core';
-import { LegendComponent, GridComponent, TooltipComponent } from 'echarts/components';
 import { SVGRenderer } from 'echarts/renderers';
+import EChart from 'vue-echarts';
 
 use([LegendComponent, GridComponent, TooltipComponent, SVGRenderer]);
 

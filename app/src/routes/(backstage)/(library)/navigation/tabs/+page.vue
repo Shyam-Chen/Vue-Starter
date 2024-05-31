@@ -1,6 +1,6 @@
 <script lang="ts" setup>
+import { XBreadcrumb, XCard, XCode, XTabs } from '@x/ui';
 import { reactive } from 'vue';
-import { XBreadcrumb, XCard, XTabs, XCode } from '@x/ui';
 
 const flux = reactive({
   tabControlled: 3,

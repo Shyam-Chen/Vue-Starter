@@ -1,14 +1,14 @@
 <script lang="ts" setup>
-import { XBreadcrumb, XCard, XCodeBlock, XCode } from '@x/ui';
+import { XBreadcrumb, XCard, XCode, XCodeBlock } from '@x/ui';
 
 import Basic from './Basic.vue';
 import BasicCode from './Basic.vue?raw';
-import Multiple from './Multiple.vue';
-import MultipleCode from './Multiple.vue?raw';
 import Icon from './Icon.vue';
 import IconCode from './Icon.vue?raw';
 import MinMax from './MinMax.vue';
 import MinMaxCode from './MinMax.vue?raw';
+import Multiple from './Multiple.vue';
+import MultipleCode from './Multiple.vue?raw';
 
 const codeImport = `import { XMeterGroup } from '@x/ui';`;
 </script>

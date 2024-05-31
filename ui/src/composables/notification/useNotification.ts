@@ -1,5 +1,5 @@
-import type { ComponentProps } from 'vue-component-type-helpers';
 import { reactive } from 'vue';
+import type { ComponentProps } from 'vue-component-type-helpers';
 import { defineStore } from 'vue-storer';
 
 import type Toast from '../../components/notification/Toast.vue';

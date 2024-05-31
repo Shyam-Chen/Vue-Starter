@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import type { EChartsOption } from 'echarts';
-import { computed } from 'vue';
 import { XChart } from '@x/ui';
+import type { EChartsOption } from 'echarts';
+import { BarChart, LineChart } from 'echarts/charts';
 import { use } from 'echarts/core';
-import { LineChart, BarChart } from 'echarts/charts';
+import { computed } from 'vue';
 
 use([LineChart, BarChart]);
 

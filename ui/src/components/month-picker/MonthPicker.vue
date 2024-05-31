@@ -1,13 +1,13 @@
 <script lang="ts" setup>
-import { nextTick, ref, computed, reactive } from 'vue';
-import { useLocale } from 'vue-localer';
 import { onClickOutside } from '@vueuse/core';
-import { format as _format, add, sub, getYear, setYear, getMonth, setMonth } from 'date-fns';
+import { format as _format, add, getMonth, getYear, setMonth, setYear, sub } from 'date-fns';
+import { computed, nextTick, reactive, ref } from 'vue';
+import { useLocale } from 'vue-localer';
 
 import useScrollParent from '../../composables/scroll-parent/useScrollParent';
 
-import TextField from '../text-field/TextField.vue';
 import Fade from '../fade/Fade.vue';
+import type TextField from '../text-field/TextField.vue';
 
 const valueModel = defineModel<string>('value', { default: '' });
 
@@ -31,6 +31,7 @@ const input = ref<typeof TextField>();
 const picker = ref<HTMLDivElement>();
 
 // prettier-ignore
+// biome-ignore format: months
 const months = computed(
   () =>
     locale.value?.months || [

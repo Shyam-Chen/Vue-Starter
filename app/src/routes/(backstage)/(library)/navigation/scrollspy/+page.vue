@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { ref } from 'vue';
 import { vIntersectionObserver } from '@vueuse/components';
+import { ref } from 'vue';
 
 import { XBreadcrumb } from '@x/ui';
 

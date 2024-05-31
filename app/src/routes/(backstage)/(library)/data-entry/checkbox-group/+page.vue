@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { reactive } from 'vue';
 import { XBreadcrumb, XCard, XCheckboxGroup } from '@x/ui';
+import { reactive } from 'vue';
 
 const flux = reactive({
   checkboxGroup1: [] as string[],

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import type { Ref, ComputedRef } from 'vue';
-import { ref, onMounted, inject } from 'vue';
+import type { ComputedRef, Ref } from 'vue';
+import { inject, onMounted, ref } from 'vue';
 
 const self = ref<HTMLDivElement>();
 const stepself = ref<number>();

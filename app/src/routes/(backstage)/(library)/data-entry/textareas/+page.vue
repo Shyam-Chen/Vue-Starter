@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { reactive } from 'vue';
 import { XBreadcrumb, XCard, XTextarea } from '@x/ui';
+import { reactive } from 'vue';
 
 const flux = reactive({
   textarea1: '',

@@ -1,17 +1,17 @@
 <script lang="ts" setup>
-import { onMounted } from 'vue';
-import { RouterLink, onBeforeRouteLeave } from 'vue-router';
 import {
   XBreadcrumb,
-  XPanel,
-  XTextField,
-  XRadioGroup,
   XButton,
-  XTable,
   XCheckbox,
-  XTooltip,
   XDeleteConfirmation,
+  XPanel,
+  XRadioGroup,
+  XTable,
+  XTextField,
+  XTooltip,
 } from '@x/ui';
+import { onMounted } from 'vue';
+import { RouterLink, onBeforeRouteLeave } from 'vue-router';
 
 import useStore from './store';
 

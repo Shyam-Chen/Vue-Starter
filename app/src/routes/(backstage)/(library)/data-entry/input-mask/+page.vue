@@ -1,6 +1,6 @@
 <script lang="ts" setup>
+import { XBreadcrumb, XCard, XCode, XInputMask } from '@x/ui';
 import { reactive } from 'vue';
-import { XBreadcrumb, XCard, XInputMask, XCode } from '@x/ui';
 
 const flux = reactive({
   numberMasked: '',

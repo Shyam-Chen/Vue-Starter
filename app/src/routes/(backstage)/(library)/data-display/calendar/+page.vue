@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { reactive } from 'vue';
 import { XBreadcrumb, XCalendar } from '@x/ui';
+import { reactive } from 'vue';
 
 const year = new Date().getFullYear();
 const month = new Date().getMonth();

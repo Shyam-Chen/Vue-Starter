@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { nextTick, ref, computed, reactive } from 'vue';
+import { computed, nextTick, reactive, ref } from 'vue';
 
 import useScrollParent from '../../composables/scroll-parent/useScrollParent';
 
@@ -9,9 +9,7 @@ defineProps<{
   options?: string[];
 }>();
 
-const emit = defineEmits<{
-  (evt: 'select', val: string): void;
-}>();
+const emit = defineEmits<(evt: 'select', val: string) => void>();
 
 const target = ref<HTMLDivElement>();
 const dropdown = ref<HTMLDivElement>();

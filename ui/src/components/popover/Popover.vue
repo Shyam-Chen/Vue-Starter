@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { nextTick, ref, computed, reactive, watch, provide } from 'vue';
 import { onClickOutside } from '@vueuse/core';
+import { computed, nextTick, provide, reactive, ref, watch } from 'vue';
 
 import useScrollParent from '../../composables/scroll-parent/useScrollParent';
 

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { reactive, onBeforeMount } from 'vue';
-import { useRouter, useRoute } from 'vue-router';
 import { XButton } from '@x/ui';
+import { onBeforeMount, reactive } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
 
 const router = useRouter();
 const route = useRoute();

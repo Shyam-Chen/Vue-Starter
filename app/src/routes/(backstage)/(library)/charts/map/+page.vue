@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-import type { EChartsOption } from 'echarts';
-import { computed } from 'vue';
 import { XBreadcrumb, XCard, XChart } from '@x/ui';
-import { use, registerMap } from 'echarts/core';
+import type { EChartsOption } from 'echarts';
 import { MapChart } from 'echarts/charts';
-import { VisualMapComponent, ToolboxComponent } from 'echarts/components';
+import { ToolboxComponent, VisualMapComponent } from 'echarts/components';
+import { registerMap, use } from 'echarts/core';
+import { computed } from 'vue';
 
 // https://public.opendatasoft.com/explore/dataset/natural-earth-countries-1_110m/export/
 // Geographic file formats -> GeoJSON

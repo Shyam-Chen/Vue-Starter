@@ -1,6 +1,6 @@
 <script lang="ts" setup>
+import { XButton, XCard, XPopover, XSelect } from '@x/ui';
 import { reactive } from 'vue';
-import { XPopover, XButton, XSelect, XCard } from '@x/ui';
 
 const flux = reactive({
   popoverStatus: false,

@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import { ref, reactive, watch, toRef } from 'vue';
 import { vOnClickOutside } from '@vueuse/components';
+import { reactive, ref, toRef, watch } from 'vue';
 
-import FormControl from '../form-control/FormControl.vue';
 import Chip from '../chip/Chip.vue';
+import FormControl from '../form-control/FormControl.vue';
 
 defineOptions({
   inheritAttrs: false,

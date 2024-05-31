@@ -1,7 +1,7 @@
 <script lang="ts" setup>
+import { useMediaQuery } from '@vueuse/core';
 import type { ComputedRef } from 'vue';
 import { inject } from 'vue';
-import { useMediaQuery } from '@vueuse/core';
 
 defineProps<{
   step: number;

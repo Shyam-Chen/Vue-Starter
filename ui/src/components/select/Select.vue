@@ -1,13 +1,13 @@
 <script lang="ts" setup>
-import { ref, reactive, computed, watch, watchEffect, nextTick, inject } from 'vue';
 import { onClickOutside } from '@vueuse/core';
+import { computed, inject, nextTick, reactive, ref, watch, watchEffect } from 'vue';
 import { useLocale } from 'vue-localer';
 
+import useScrollParent from '../../composables/scroll-parent/useScrollParent';
+import Fade from '../fade/Fade.vue';
 import FormControl from '../form-control/FormControl.vue';
 import ProgressBar from '../progress-bar/ProgressBar.vue';
-import Fade from '../fade/Fade.vue';
-import TextField from '../text-field/TextField.vue';
-import useScrollParent from '../../composables/scroll-parent/useScrollParent';
+import type TextField from '../text-field/TextField.vue';
 
 type Option = {
   label: string;

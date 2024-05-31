@@ -16,9 +16,7 @@ defineProps<{
   help?: string;
 }>();
 
-const emit = defineEmits<{
-  (evt: 'change', val: unknown): void;
-}>();
+const emit = defineEmits<(evt: 'change', val: unknown) => void>();
 </script>
 
 <template>

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { ref } from 'vue';
 import { XBreadcrumb, XCard, XChatBubble } from '@x/ui';
+import { ref } from 'vue';
 
 const bubbles = ref([
   {

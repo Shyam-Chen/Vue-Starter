@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { XBreadcrumb, XCard, XAlert } from '@x/ui';
+import { XAlert, XBreadcrumb, XCard } from '@x/ui';
 </script>
 
 <template>

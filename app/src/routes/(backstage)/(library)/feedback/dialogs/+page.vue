@@ -1,6 +1,6 @@
 <script lang="ts" setup>
+import { XBreadcrumb, XButton, XCard, XDialog } from '@x/ui';
 import { reactive } from 'vue';
-import { XBreadcrumb, XCard, XButton, XDialog } from '@x/ui';
 
 const flux = reactive({
   dialog: false,

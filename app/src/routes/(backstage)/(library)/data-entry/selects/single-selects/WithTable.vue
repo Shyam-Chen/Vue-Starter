@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { reactive } from 'vue';
 import { XSelect, XTable } from '@x/ui';
+import { reactive } from 'vue';
 
 const flux = reactive({
   rows: [

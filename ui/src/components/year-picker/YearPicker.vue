@@ -1,13 +1,13 @@
 <script lang="ts" setup>
-import { nextTick, ref, computed, reactive } from 'vue';
 import { onClickOutside } from '@vueuse/core';
-import { add, sub, getYear } from 'date-fns';
+import { add, getYear, sub } from 'date-fns';
 import range from 'lodash/range';
+import { computed, nextTick, reactive, ref } from 'vue';
 
 import useScrollParent from '../../composables/scroll-parent/useScrollParent';
 
-import TextField from '../text-field/TextField.vue';
 import Fade from '../fade/Fade.vue';
+import type TextField from '../text-field/TextField.vue';
 
 const valueModel = defineModel<number | string>('value');
 

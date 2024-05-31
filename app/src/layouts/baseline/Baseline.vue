@@ -1,15 +1,15 @@
 <script lang="ts" setup>
-import { ref, reactive, watch, onMounted } from 'vue';
-import { useRouter, useRoute } from 'vue-router';
-import { useLocaler } from 'vue-localer';
-import { XTextField, XDialog, XButton, XPopover, XListbox, XDrawer, XKeyboard } from '@x/ui';
-import { request } from '@x/ui';
 import { useColorMode, useTextDirection } from '@vueuse/core';
+import { XButton, XDialog, XDrawer, XKeyboard, XListbox, XPopover, XTextField } from '@x/ui';
+import { request } from '@x/ui';
+import { onMounted, reactive, ref, watch } from 'vue';
+import { useLocaler } from 'vue-localer';
+import { useRoute, useRouter } from 'vue-router';
 
+import IdleDialog from './IdleDialog.vue';
+import Navbar from './Navbar.vue';
 import type { Link } from './links-list';
 import useStore from './store';
-import Navbar from './Navbar.vue';
-import IdleDialog from './IdleDialog.vue';
 
 const router = useRouter();
 const route = useRoute();

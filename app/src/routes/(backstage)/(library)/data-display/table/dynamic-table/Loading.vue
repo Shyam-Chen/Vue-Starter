@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import type { ComponentProps } from 'vue-component-type-helpers';
+import { XButton, XCard, type XTable } from '@x/ui';
 import { reactive } from 'vue';
-import { XCard, XButton, XTable } from '@x/ui';
+import type { ComponentProps } from 'vue-component-type-helpers';
 
 import leetcode from './leetcode';
 

@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
 
+import ChipField from '../chip-field/ChipField.vue';
 import FormControl from '../form-control/FormControl.vue';
 import Popover from '../popover/Popover.vue';
-import ChipField from '../chip-field/ChipField.vue';
 import Tree from '../tree';
 import type { Node } from '../tree/types';
 

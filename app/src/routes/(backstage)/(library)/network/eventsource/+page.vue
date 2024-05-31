@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import { ref } from 'vue';
-import { XBreadcrumb, XCard, XButton, XTextField } from '@x/ui';
+import { XBreadcrumb, XButton, XCard, XTextField } from '@x/ui';
 import { useEventSource } from '@x/ui';
 import { request } from '@x/ui';
+import { ref } from 'vue';
 
 const { data } = useEventSource('/sse');
 const { data: dataEvent } = useEventSource('/sse/event');

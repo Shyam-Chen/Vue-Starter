@@ -2,8 +2,8 @@
 import { XBreadcrumb } from '@x/ui';
 
 import Basic from './Basic.vue';
-import Selectable from './Selectable.vue';
 import NoData from './NoData.vue';
+import Selectable from './Selectable.vue';
 </script>
 
 <template>

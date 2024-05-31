@@ -1,4 +1,4 @@
-import { XTable } from '@x/ui';
+import type { XTable } from '@x/ui';
 import type { ComponentProps } from 'vue-component-type-helpers';
 
 export type TodoItem = {

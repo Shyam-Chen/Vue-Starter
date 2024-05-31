@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import type { EChartsOption } from 'echarts';
-import { computed } from 'vue';
 import { XBreadcrumb, XCard, XChart } from '@x/ui';
-import { use } from 'echarts/core';
+import type { EChartsOption } from 'echarts';
 import { PieChart } from 'echarts/charts';
+import { use } from 'echarts/core';
+import { computed } from 'vue';
 
 use([PieChart]);
 

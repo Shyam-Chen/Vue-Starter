@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { XSkeleton } from '@x/ui';
 
-import useStore from './store';
 import NavLink from './NavLink.vue';
+import useStore from './store';
 
 const { state } = useStore();
 </script>
