@@ -1,10 +1,10 @@
 # Vue Starter
 
-:poodle: A boilerplate for SPA Client with HTML5, Vue, and Tailwind on Vite.
+:poodle: A boilerplate for web applications with Vue and Tailwind using TypeScript on Vite.
 
 :rainbow: View Demo: [Live](https://vue-starter-6fa6.onrender.com) | Windows | macOS | Android | iOS
 
-:octocat: Source Code: [Web-side](https://github.com/Shyam-Chen/Vue-Starter) | [Native-side](https://github.com/Shyam-Chen/Tauri-Starter) | [Server-side](https://github.com/Shyam-Chen/Fastify-Starter)
+:octocat: Source Code: [Web-side](https://github.com/Shyam-Chen/Vue-Starter) | [Native-side](https://github.com/Shyam-Chen/Tauri-Starter) | [Server-side](https://github.com/Shyam-Chen/Fastify-Starter) | [Cloud-side](https://github.com/Shyam-Chen/Pulumi-Starter)
 
 ## Table of Contents
 
@@ -37,7 +37,7 @@ $ pnpm mock
 Or use barebones scaffolding for your new Vue app
 
 ```sh
-$ pnpm dlx degit Shyam-Chen/Starter-Templates/vue my-vue-app
+$ pnpm dlx degit Shyam-Chen/Barebones-Templates/vue my-vue-app
 ```
 
 ## Project Setup
@@ -76,10 +76,8 @@ $ pnpm preview
 
 ### Lints and fixes files
 
-Biome CLI
-
 ```sh
-$ pnpm biome check --apply ./app ./ui ./mock ./e2e
+$ pnpm lint
 ```
 
 ### Check types
@@ -124,7 +122,6 @@ This seed repository provides the following features:
 - [x] [Vite](https://github.com/vitejs/vite) - Bundler
 - [x] [TypeScript](https://github.com/microsoft/TypeScript) - JavaScript with Syntax for Types
 - [x] [Sassy CSS](https://github.com/sass/sass) - CSS Extension
-- [x] [Biome](https://github.com/biomejs/biome) - Formatter and Linter
 - [x] [ESLint](https://github.com/eslint/eslint) - Linter
 - [x] [Prettier](https://github.com/prettier/prettier) - Formatter
 - [x] [Vitest](https://github.com/vitest-dev/vitest) - Test Runner
@@ -204,11 +201,6 @@ The structure follows the LIFT Guidelines.
 │   ├── src
 │   ├── package.json
 │   ├── playwright.config.ts
-│   └── tsconfig.json
-├── infra -> Infrastructure as code
-│   ├── src
-│   ├── package.json
-│   ├── Pulumi.yaml
 │   └── tsconfig.json
 ├── mock -> Mock backend API
 │   ├── src
