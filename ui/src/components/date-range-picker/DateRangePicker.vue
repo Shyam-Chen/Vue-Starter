@@ -43,6 +43,10 @@ const props = withDefaults(
   },
 );
 
+const emit = defineEmits<{
+  (evt: 'change', { startDate, endDate }: { startDate: string; endDate: string }): void;
+}>();
+
 const localer = useLocaler();
 const locale = useLocale();
 
@@ -239,6 +243,7 @@ const flux = reactive({
 
     startValueModel.value = startDate || '';
     endValueModel.value = endDate || '';
+    emit('change', { startDate, endDate });
   },
   selectYear(val: number) {
     flux.showYears = false;

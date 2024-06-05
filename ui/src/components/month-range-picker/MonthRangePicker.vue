@@ -25,6 +25,10 @@ const props = withDefaults(
   },
 );
 
+const emit = defineEmits<{
+  (evt: 'change', { startMonth, endMonth }: { startMonth: string; endMonth: string }): void;
+}>();
+
 const locale = useLocale();
 
 const target = ref<HTMLDivElement>();
@@ -135,6 +139,7 @@ const flux = reactive({
 
     startValueModel.value = startMonth || '';
     endValueModel.value = endMonth || '';
+    emit('change', { startMonth, endMonth });
   },
 });
 
