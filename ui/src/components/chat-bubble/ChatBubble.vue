@@ -144,10 +144,10 @@ defineExpose({
 
       <div
         v-if="!edit"
-        class="flex flex-col leading-1.5 px-4 py-3 border-gray-200 bg-gray-100 rounded-e-xl rounded-es-xl dark:bg-gray-700"
+        class="flex flex-col p-4 border-gray-200 bg-gray-100 rounded-e-xl rounded-es-xl dark:bg-gray-700"
         :class="{ 'rounded-s-xl !rounded-se-0': chat?.self }"
       >
-        <ChatBox v-model="defaultModel" viewonly />
+        <ChatBox v-model="defaultModel" :self="chat?.self" viewonly />
       </div>
 
       <ChatBox
@@ -206,9 +206,7 @@ defineExpose({
         {{ locale.deleteMessageContent || 'Are you sure you want to delete this message?' }}
       </div>
 
-      <div
-        class="flex flex-col leading-1.5 px-4 py-3 border-gray-200 bg-gray-100 rounded-xl dark:bg-gray-700"
-      >
+      <div class="flex flex-col p-4 border-gray-200 bg-gray-100 rounded-xl dark:bg-gray-700">
         <ChatBox :modelValue="originalDefaultModel || defaultModel" viewonly />
       </div>
 

@@ -144,6 +144,12 @@ const onDelete = () => {
   </XCard>
 
   <XCard class="my-8">
-    <XChatBox v-model="state.chatBox" @uploadFiles="onUploadFiles" @send="onSend" />
+    <XChatBox
+      v-model="state.chatBox"
+      :uploading="false"
+      :loading="false"
+      @uploadFiles="onUploadFiles"
+      @send="onSend"
+    />
   </XCard>
 </template>

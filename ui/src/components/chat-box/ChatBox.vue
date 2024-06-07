@@ -12,7 +12,6 @@ import Link from '@tiptap/extension-link';
 
 import FormControl from '../form-control/FormControl.vue';
 import Button from '../button/Button.vue';
-import LinkComp from '../link/Link.vue';
 
 type ChatFile = File & { url?: string };
 
@@ -36,6 +35,7 @@ const props = withDefaults(
     editing?: boolean;
     uploading?: boolean;
     loading?: boolean;
+    self?: boolean;
   }>(),
   {
     label: '',
@@ -49,6 +49,7 @@ const props = withDefaults(
     editing: false,
     uploading: false,
     loading: false,
+    self: false,
   },
 );
 
@@ -71,13 +72,11 @@ const DisableEnter = Extension.create({
 const editor = ref<Editor>();
 
 const editorClass = computed(() => {
-  if (props.viewonly) {
-    return `text-sm font-normal text-gray-900 dark:text-white`;
-  }
+  if (props.viewonly) return '';
 
-  let clx = `border border-slate-400 rounded focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-primary-400 focus:rounded ${props.class}`;
-  if (props.editing) clx += `px-3 py-1 min-h-38px`;
-  else clx += `px-7 py-5 min-h-70px`;
+  let clx = `focus:outline-none ${props.class}`;
+  if (props.editing) clx += `p-4 min-h-13`;
+  else clx += `px-12 py-3 min-h-13`;
 
   return clx;
 });
@@ -141,10 +140,21 @@ function onChange(event: Event) {
   emit('uploadFiles', files);
 }
 
+function onPreview(url?: string) {
+  if (url) open(url, '_blank');
+}
+
 function onDelete(index: number) {
   const arr = [...defaultModel.value.files];
   arr.splice(index, 1);
   defaultModel.value.files = arr;
+}
+
+function isImageFileType(filename: string) {
+  // prettier-ignore
+  const validExtensions = ['.apng', '.avif', '.gif', '.jpg', '.jpeg', '.jfif', '.pjpeg', '.pjp', '.png', '.svg', '.webp'];
+  const extension = filename.slice(filename.lastIndexOf('.')).toLowerCase();
+  return validExtensions.includes(extension);
 }
 
 defineExpose({
@@ -155,8 +165,52 @@ defineExpose({
 <template>
   <FormControl :label :required :invalid :help>
     <div v-if="editor" class="w-full" :class="[disabled ? 'opacity-60 cursor-not-allowed' : '']">
-      <div class="ChatBox">
+      <div class="ChatBox" :class="{ viewonly }">
         <EditorContent :editor="editor" />
+
+        <div v-if="defaultModel.files?.length" class="mt-1">
+          <div
+            class="flex items-center gap-4 px-4 pb-4"
+            :class="{
+              '!p-0 flex-col !items-start mt-4': viewonly,
+              '!items-end': self,
+              'flex-col !items-end': editing,
+            }"
+          >
+            <div
+              v-for="(file, index) in defaultModel.files"
+              :key="index"
+              class="bg-zinc-400 rounded-lg p-4 w-40 h-40"
+            >
+              <div class="relative">
+                <img
+                  v-if="isImageFileType(file.name)"
+                  :src="file.url"
+                  class="rounded-lg object-cover object-center w-32 h-25 hover:opacity-75 cursor-pointer"
+                  @click.stop="onPreview(file.url)"
+                />
+
+                <div
+                  v-else
+                  class="i-material-symbols-file-present-outline-rounded w-32 h-25 hover:opacity-75 cursor-pointer text-zinc-50"
+                  @click.stop="onPreview(file.url)"
+                ></div>
+
+                <div
+                  v-if="!viewonly"
+                  class="absolute -top-3 -right-3 z-1 size-6 bg-zinc-400 rounded-full"
+                >
+                  <div
+                    class="i-material-symbols-cancel-rounded size-6 text-zinc-50 cursor-pointer"
+                    @click.stop="onDelete(index)"
+                  ></div>
+                </div>
+              </div>
+
+              <div class="text-zinc-50 mt-1 truncate">{{ file.name }}</div>
+            </div>
+          </div>
+        </div>
 
         <template v-if="!editing && !viewonly">
           <div class="ChatBox-Attach">
@@ -164,7 +218,6 @@ defineExpose({
               icon="i-material-symbols-attach-file-add-rounded"
               variant="text"
               color="secondary"
-              size="small"
               :loading="uploading"
               @click="($refs.fileInput as HTMLInputElement).click()"
             />
@@ -185,25 +238,6 @@ defineExpose({
           </div>
         </template>
       </div>
-
-      <div class="mt-1">
-        <div
-          v-for="(file, index) in defaultModel.files"
-          :key="index"
-          class="flex items-center gap-2"
-        >
-          <LinkComp v-if="file.url" :href="file.url" target="_blank" rel="noopener noreferrer">{{
-            file.name
-          }}</LinkComp>
-          <template v-else>{{ file.name }}</template>
-
-          <div
-            v-if="!viewonly"
-            class="i-material-symbols-delete-outline-rounded size-5 cursor-pointer text-red-500"
-            @click="onDelete(index)"
-          ></div>
-        </div>
-      </div>
     </div>
   </FormControl>
 </template>
@@ -211,49 +245,18 @@ defineExpose({
 <style lang="scss" scoped>
 .ChatBox {
   @apply relative;
+  @apply border border-slate-400 rounded-3xl;
+
+  &.viewonly {
+    @apply !border-0 !rounded-0;
+  }
 
   :deep(p) {
     @apply my-1 leading-tight;
   }
 
-  :deep(h1) {
-    @apply my-1 text-4xl font-extrabold;
-  }
-
-  :deep(h2) {
-    @apply my-1 text-3xl font-bold;
-  }
-
-  :deep(h3) {
-    @apply my-1 text-2xl font-semibold;
-  }
-
-  :deep(h4) {
-    @apply my-1 text-xl font-medium;
-  }
-
-  :deep(ul) {
-    @apply my-1 list-disc ml-6;
-  }
-
-  :deep(ol) {
-    @apply my-1 list-decimal ml-6;
-  }
-
-  :deep(blockquote) {
-    @apply my-1 px-2 border-l-4 border-slate-500;
-  }
-
   :deep(a) {
     @apply text-primary-500 hover:underline hover:text-primary-600;
-  }
-
-  :deep(img) {
-    @apply my-1;
-  }
-
-  :deep(hr) {
-    @apply my-4 border-t border-gray-200;
   }
 }
 
@@ -261,17 +264,13 @@ defineExpose({
   :deep(a) {
     @apply hover:text-primary-400;
   }
-
-  :deep(hr) {
-    @apply border-gray-700;
-  }
 }
 
 .ChatBox-Attach {
-  @apply absolute bottom-4.5 end-16;
+  @apply absolute top-7px start-2;
 }
 
 .ChatBox-Send {
-  @apply absolute bottom-4 end-4;
+  @apply absolute top-7px end-2;
 }
 </style>
