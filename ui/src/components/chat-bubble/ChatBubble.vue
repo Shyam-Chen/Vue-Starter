@@ -150,7 +150,13 @@ defineExpose({
         <ChatBox v-model="defaultModel" viewonly />
       </div>
 
-      <ChatBox v-if="edit" ref="editBox" v-model="defaultModel" editing />
+      <ChatBox
+        v-if="edit"
+        ref="editBox"
+        v-model="defaultModel"
+        editing
+        @send="emit('save', chat)"
+      />
 
       <div v-if="edit" class="flex gap-2">
         <div class="flex-1">
