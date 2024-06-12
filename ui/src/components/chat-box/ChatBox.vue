@@ -9,6 +9,7 @@ import Text from '@tiptap/extension-text';
 import HardBreak from '@tiptap/extension-hard-break';
 import History from '@tiptap/extension-history';
 import Link from '@tiptap/extension-link';
+import isMobile from 'is-mobile';
 
 import FormControl from '../form-control/FormControl.vue';
 import Button from '../button/Button.vue';
@@ -62,6 +63,8 @@ const DisableEnter = Extension.create({
   addKeyboardShortcuts() {
     return {
       Enter() {
+        if (isMobile()) return false;
+
         emit('send');
         return true;
       },
