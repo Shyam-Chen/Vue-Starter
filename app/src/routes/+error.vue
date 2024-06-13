@@ -57,6 +57,6 @@ onBeforeMount(() => {
 }
 
 .Error-Description {
-  @apply mb-4 text-lg font-light text-gray-500 dark:text-gray-400;
+  @apply mb-4 text-lg text-gray-500 dark:text-gray-400;
 }
 </style>
