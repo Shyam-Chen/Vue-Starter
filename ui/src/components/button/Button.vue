@@ -4,7 +4,7 @@ import { ref, computed, inject, onMounted } from 'vue';
 
 import Spinner from '../spinner/Spinner.vue';
 
-interface Props extends /* @vue-ignore */ ButtonHTMLAttributes {
+interface Props extends /* @vue-ignore */ Omit<ButtonHTMLAttributes, 'onClick'> {
   label?: string;
   icon?: string;
   variant?: 'contained' | 'outlined' | 'text';
@@ -19,7 +19,7 @@ interface Props extends /* @vue-ignore */ ButtonHTMLAttributes {
 defineProps<Props>();
 
 const emit = defineEmits<{
-  (evt: 'click', val: Event): void;
+  (evt: 'click', payload: MouseEvent): void;
 }>();
 
 const buttonGroup = inject('ButtonGroup', {
@@ -41,7 +41,7 @@ onMounted(() => {
 
 const hasGroup = computed(() => typeof buttonGroup.defaultModel?.value === 'number');
 
-function onClick(evt: Event) {
+function onClick(evt: MouseEvent) {
   emit('click', evt);
 
   if (hasGroup.value) {
