@@ -5,7 +5,6 @@ on: push
 jobs:
   ci:
     runs-on: ubuntu-latest
-    environment: ${{ github.ref_name }}
     steps:
       - uses: actions/checkout@v4
       - name: Build the Docker image
