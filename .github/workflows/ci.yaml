@@ -23,5 +23,6 @@ jobs:
         run: docker compose exec --no-TTY ci pnpm e2e
       - name: Trigger deployment
         if: ${{ contains(fromJSON('["refs/heads/main", "refs/heads/release", "refs/heads/prod"]'), github.ref) }}
-        environment: ${{ github.ref_name }}
-        run: curl -k ${{ secrets.DEPLOY_HOOK }}
+        env:
+          - DEPLOY_HOOK: ${{ secrets.DEPLOY_HOOK }}
+        run: curl -k $DEPLOY_HOOK
