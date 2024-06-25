@@ -43,7 +43,7 @@ const codeImport2 = `import { useNotification } from '@x/ui';`;
       <Basic />
     </XCard>
 
-    <XCodeBlock :code="BasicCode" language="vue" />
+    <XCodeBlock :code="BasicCode" language="vue" class="max-h-100" />
   </section>
 
   <section class="my-8">
@@ -53,7 +53,7 @@ const codeImport2 = `import { useNotification } from '@x/ui';`;
       <Custom />
     </XCard>
 
-    <XCodeBlock :code="CustomCode" language="vue" />
+    <XCodeBlock :code="CustomCode" language="vue" class="max-h-100" />
   </section>
 
   <section class="my-8">
@@ -63,6 +63,6 @@ const codeImport2 = `import { useNotification } from '@x/ui';`;
       <Severity />
     </XCard>
 
-    <XCodeBlock :code="SeverityCode" language="vue" />
+    <XCodeBlock :code="SeverityCode" language="vue" class="max-h-100" />
   </section>
 </template>

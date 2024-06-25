@@ -1,6 +1,9 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
-import { XBreadcrumb, XCard, XButton, XDialog } from '@x/ui';
+import { XBreadcrumb, XCard, XButton, XDialog, XCodeBlock } from '@x/ui';
+
+import Size from './Size.vue';
+import SizeCode from './Size.vue?raw';
 
 const flux = reactive({
   dialog: false,
@@ -11,8 +14,6 @@ const flux = reactive({
     flux.dialog = false;
   },
   more: false,
-
-  sizeDialog: false,
 });
 </script>
 
@@ -68,11 +69,9 @@ const flux = reactive({
     <h2 class="text-3xl font-bold my-4 pt-6">Size</h2>
 
     <XCard>
-      <XButton label="Launch" @click="flux.sizeDialog = true" />
-
-      <XDialog v-model="flux.sizeDialog" title="Lorem Ipsum" class="!w-100">
-        <div>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
-      </XDialog>
+      <Size />
     </XCard>
+
+    <XCodeBlock :code="SizeCode" language="vue" />
   </section>
 </template>
