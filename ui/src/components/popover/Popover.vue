@@ -12,9 +12,13 @@ const defaultModel = defineModel<boolean>({ default: undefined });
 const props = withDefaults(
   defineProps<{
     disabled?: boolean;
+    start?: boolean;
+    end?: boolean;
   }>(),
   {
     disabled: false,
+    start: false,
+    end: false,
   },
 );
 
@@ -63,7 +67,12 @@ const flux = reactive({
     const quarter = window.innerWidth / 4;
     const middle = window.innerWidth / 2;
 
-    if (quarter <= rect.right && rect.right <= quarter * 3) {
+    if (props.start) {
+      panel.value.style.left = `${rect.left}px`;
+    } else if (props.end) {
+      const panelRect = panel.value.getBoundingClientRect();
+      panel.value.style.left = `${rect.left - panelRect.width + rect.width}px`;
+    } else if (quarter <= rect.right && rect.right <= quarter * 3) {
       const panelRect = panel.value.getBoundingClientRect();
       panel.value.style.left = `${rect.left - panelRect.width / 2 + rect.width / 2}px`;
     } else if (rect.right > middle && rect.width < middle) {
@@ -98,7 +107,7 @@ onClickOutside(
   () => {
     flux.close();
   },
-  { ignore: [panel] },
+  { ignore: ['.Popover-Panel'] },
 );
 
 provide('Popover', {

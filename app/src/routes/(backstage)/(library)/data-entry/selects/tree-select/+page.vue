@@ -2,6 +2,8 @@
 import { ref } from 'vue';
 import { XBreadcrumb, XCard, XTreeSelect, XButton } from '@x/ui';
 
+import WithinPopover from './WithinPopover.vue';
+
 const values = ref<string[]>([]);
 
 const options = [
@@ -92,6 +94,14 @@ const setValues = () => {
       <XTreeSelect v-model:value="values" :options />
       <div class="my-1">{{ values }}</div>
       <XButton label="Set Values" @click="setValues" />
+    </XCard>
+  </section>
+
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Within Popover</h2>
+
+    <XCard>
+      <WithinPopover />
     </XCard>
   </section>
 </template>

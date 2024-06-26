@@ -1,5 +1,6 @@
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { ref, inject } from 'vue';
+import { onClickOutside } from '@vueuse/core';
 
 import FormControl from '../form-control/FormControl.vue';
 import Popover from '../popover/Popover.vue';
@@ -17,12 +18,21 @@ defineProps<{
   help?: string;
 }>();
 
+const popover = inject('Popover', { withinPopover: false });
+
+const target = ref<HTMLDivElement>();
 const status = ref(false);
+
+if (popover.withinPopover) {
+  onClickOutside(target, () => {
+    status.value = false;
+  });
+}
 </script>
 
 <template>
   <FormControl v-slot="{ uid }" :label :required :invalid :help>
-    <Popover v-model="status" class="w-full">
+    <Popover v-model="status" start class="w-full">
       <ChipField
         :id="uid"
         v-model:value="valueModel"
@@ -36,12 +46,13 @@ const status = ref(false);
         readonly
         :placeholder="valueModel.length ? '' : 'Please select'"
         :closable="false"
+        :class="{ '!w-0': valueModel.length }"
         @focus="status = !status"
         @append="status = !status"
       />
 
       <template #content>
-        <div class="p-2 max-h-50 overflow-auto">
+        <div ref="target" class="p-2 max-h-50 overflow-auto">
           <Tree v-model="valueModel" :nodes="options" multiple />
         </div>
       </template>
