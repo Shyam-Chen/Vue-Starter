@@ -3,6 +3,7 @@ import { nextTick, ref, computed, reactive, watch, provide } from 'vue';
 import { onClickOutside } from '@vueuse/core';
 
 import useScrollParent from '../../composables/scroll-parent/useScrollParent';
+import scrollableParent from '../../composables/scroll-parent/scrollableParent';
 
 import Fade from '../fade/Fade.vue';
 
@@ -47,14 +48,15 @@ const flux = reactive({
     if (!target.value || !panel.value) return;
 
     const rect = target.value.getBoundingClientRect();
-
     const center = window.innerHeight / 2;
 
     if (rect.top > center) {
-      panel.value.style.top = `${rect.top}px`;
+      const top = scrollableParent(target.value)?.getBoundingClientRect().top || 0;
+      panel.value.style.top = `${Math.abs(top) + rect.top}px`;
       flux.direction = 'up';
     } else {
-      panel.value.style.top = `${rect.bottom}px`;
+      const top = scrollableParent(target.value)?.getBoundingClientRect().top || 0;
+      panel.value.style.top = `${Math.abs(top) + rect.bottom}px`;
       flux.direction = 'down';
     }
 
@@ -139,7 +141,7 @@ provide('Popover', {
 }
 
 .Popover-Panel {
-  @apply fixed z-101 min-w-max bg-white dark:bg-slate-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700;
+  @apply absolute z-101 min-w-max bg-white dark:bg-slate-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700;
 
   &.placementBottom {
     transform: translateY(0.5rem);
