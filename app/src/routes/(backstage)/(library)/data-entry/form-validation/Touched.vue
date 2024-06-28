@@ -1,29 +1,11 @@
 <script lang="ts" setup>
 import { computed, reactive, toRef, onMounted } from 'vue';
-import { useValibotSchema } from 'vue-formor';
+import { useSchema } from 'vue-formor';
 import { useLocaler } from 'vue-localer';
-import {
-  XCard,
-  XTextField,
-  XSelect,
-  XRadioGroup,
-  XTextarea,
-  XCheckbox,
-  XDatePicker,
-  XButton,
-} from '@x/ui';
+import { XButton, XCard, XCheckbox, XDatePicker, XRadioGroup, XSelect, XTextField } from '@x/ui';
+import { XTextarea } from '@x/ui';
 import { useValdnLocale } from '@x/ui';
-import {
-  nullish,
-  object,
-  string,
-  number,
-  email,
-  minLength,
-  minValue,
-  literal,
-  custom,
-} from 'valibot';
+import * as v from 'valibot';
 
 interface BasicForm {
   username?: string;
@@ -46,36 +28,42 @@ const state = reactive({
   touched: {} as Record<keyof BasicForm, boolean>,
 });
 
-const schema = useValibotSchema(
+const schema = useSchema(
   computed(() =>
-    object({
-      username: nullish(string([minLength(1, valdnLocale.value.required)]), ''),
-      email: nullish(
-        string([minLength(1, valdnLocale.value.required), email(valdnLocale.value.email)]),
+    v.object({
+      username: v.nullish(v.pipe(v.string(), v.minLength(1, valdnLocale.value.required)), ''),
+      email: v.nullish(
+        v.pipe(
+          v.string(),
+          v.minLength(1, valdnLocale.value.required),
+          v.email(valdnLocale.value.email),
+        ),
         '',
       ),
-      password: nullish(
-        string([
-          minLength(1, valdnLocale.value.required),
-          minLength(8, localer.f(valdnLocale.value.minLength, [8])),
-        ]),
+      password: v.nullish(
+        v.pipe(
+          v.string(),
+          v.minLength(1, valdnLocale.value.required),
+          v.minLength(8, localer.f(valdnLocale.value.minLength, [8])),
+        ),
         '',
       ),
-      confirmPassword: nullish(
-        string([
-          minLength(1, valdnLocale.value.required),
-          custom(
+      confirmPassword: v.nullish(
+        v.pipe(
+          v.string(),
+          v.minLength(1, valdnLocale.value.required),
+          v.check(
             (input) => state.form.password === input,
             'Password and Confirm Password must be match',
           ),
-        ]),
+        ),
         '',
       ),
-      pronouns: nullish(number([minValue(1, valdnLocale.value.required)]), 0),
-      urlPasteBehavior: nullish(number([minValue(1, valdnLocale.value.required)]), 0),
-      birthday: nullish(string([minLength(1, valdnLocale.value.required)]), ''),
-      bio: nullish(string([minLength(1, valdnLocale.value.required)]), ''),
-      agreed: literal(true, valdnLocale.value.required),
+      pronouns: v.nullish(v.pipe(v.number(), v.minValue(1, valdnLocale.value.required)), 0),
+      urlPasteBehavior: v.nullish(v.pipe(v.number(), v.minValue(1, valdnLocale.value.required)), 0),
+      birthday: v.nullish(v.pipe(v.string(), v.minLength(1, valdnLocale.value.required)), ''),
+      bio: v.nullish(v.pipe(v.string(), v.minLength(1, valdnLocale.value.required)), ''),
+      agreed: v.literal(true, valdnLocale.value.required),
     }),
   ),
   toRef(state, 'form'),
