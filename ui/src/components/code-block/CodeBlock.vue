@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { onBeforeMount } from 'vue';
 import { useDark } from '@vueuse/core';
-import { getHighlighterCore } from 'shiki/core';
+import { createHighlighterCore } from 'shiki/core';
 
 import Card from '../card/Card.vue';
 import useHighlighter from './useHighlighter';
@@ -24,7 +24,7 @@ const highlighter = useHighlighter();
 onBeforeMount(async () => {
   if (highlighter.state.core) return;
 
-  highlighter.state.core = await getHighlighterCore({
+  highlighter.state.core = await createHighlighterCore({
     themes: [import('shiki/themes/github-dark.mjs'), import('shiki/themes/github-light.mjs')],
     langs: [
       import('shiki/langs/html.mjs'),
