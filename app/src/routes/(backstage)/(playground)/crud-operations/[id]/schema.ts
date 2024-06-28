@@ -1,7 +1,7 @@
-import { useValdnLocale } from '@x/ui';
-import { minLength, nullish, object, string } from 'valibot';
 import { computed, toRef } from 'vue';
-import { useValibotSchema } from 'vue-formor';
+import { useSchema } from 'vue-formor';
+import { useValdnLocale } from '@x/ui';
+import * as v from 'valibot';
 
 import useStore from './store';
 
@@ -10,10 +10,10 @@ export default () => {
 
   const { state } = useStore();
 
-  const schema = useValibotSchema(
+  const schema = useSchema(
     computed(() =>
-      object({
-        title: nullish(string([minLength(1, valdnLocale.value.required)]), ''),
+      v.object({
+        title: v.nullish(v.pipe(v.string(), v.minLength(1, valdnLocale.value.required)), ''),
       }),
     ),
     toRef(state, 'todoForm'),

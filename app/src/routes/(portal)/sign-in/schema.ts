@@ -1,8 +1,8 @@
-import { useValdnLocale } from '@x/ui';
-import { minLength, object, string } from 'valibot';
 import { computed, toRef } from 'vue';
-import { useValibotSchema } from 'vue-formor';
+import { useSchema } from 'vue-formor';
 import { useLocaler } from 'vue-localer';
+import { useValdnLocale } from '@x/ui';
+import * as v from 'valibot';
 
 import useStore from './store';
 
@@ -12,14 +12,18 @@ export default () => {
 
   const { state } = useStore();
 
-  const schema = useValibotSchema(
+  const schema = useSchema(
     computed(() =>
-      object({
-        username: string([minLength(1, valdnLocale.value.required)]),
-        password: string([
-          minLength(1, valdnLocale.value.required),
-          minLength(8, localer.f(valdnLocale.value.minLength, [8])),
-        ]),
+      v.object({
+        username: v.nullish(v.pipe(v.string(), v.minLength(1, valdnLocale.value.required)), ''),
+        password: v.nullish(
+          v.pipe(
+            v.string(),
+            v.minLength(1, valdnLocale.value.required),
+            v.minLength(8, localer.f(valdnLocale.value.minLength, [8])),
+          ),
+          '',
+        ),
       }),
     ),
     toRef(state, 'signInForm'),
