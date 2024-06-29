@@ -8,11 +8,13 @@ type State = {
   messages: ComponentProps<typeof Toast>[];
 };
 
+type Getters = NonNullable<unknown>;
+
 type Actions = {
   add(params: ComponentProps<typeof Toast>): void;
 };
 
-export default defineStore<State, {}, Actions>('useNotification', () => {
+export default defineStore<State, Getters, Actions>('useNotification', () => {
   const state = reactive<State>({
     messages: [],
   });
