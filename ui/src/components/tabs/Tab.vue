@@ -16,8 +16,8 @@ export interface TabProps {
 const props = defineProps<TabProps>();
 
 const slots = defineSlots<{
-  default(props: {}): VNode;
-  title(props: {}): VNode;
+  default(props: NonNullable<unknown>): VNode;
+  title(props: NonNullable<unknown>): VNode;
 }>();
 
 const tabs = inject('Tabs') as {
