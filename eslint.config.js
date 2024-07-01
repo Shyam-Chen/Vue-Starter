@@ -1,43 +1,49 @@
+// @ts-check
+
 import globals from 'globals';
-import pluginJs from '@eslint/js';
-import tseslint from 'typescript-eslint';
-import pluginVue from 'eslint-plugin-vue';
-import pluginPrettierRecommendedConfigs from 'eslint-plugin-prettier/recommended';
-import parserVue from 'vue-eslint-parser';
+import js from '@eslint/js';
+import ts from 'typescript-eslint';
+import vue from 'eslint-plugin-vue';
+import vueParser from 'vue-eslint-parser';
+import prettier from 'eslint-plugin-prettier/recommended';
 
-export default [
-  // js
-  pluginJs.configs.recommended,
-  // ts
-  ...tseslint.configs.recommended,
-  {
-    rules: {
-      // The core 'no-unused-vars' rules (in the eslint:recommeded ruleset)
-      // does not work with type definitions
-      'no-unused-vars': 'off',
-      // TS already checks for that, and Typescript-Eslint recommends to disable it
-      // https://typescript-eslint.io/linting/troubleshooting#i-get-errors-from-the-no-undef-rule-about-global-variables-not-being-defined-even-though-there-are-no-typescript-errors
-      'no-undef': 'off',
-      '@typescript-eslint/no-unused-vars': 'warn',
-
-      '@typescript-eslint/no-explicit-any': 'warn',
-    },
-  },
-  // vue
-  ...pluginVue.configs['flat/recommended'],
+export default ts.config(
   {
     languageOptions: {
       globals: {
         ...globals.browser,
         ...globals.node,
       },
-      parser: parserVue,
+      parser: vueParser,
       parserOptions: {
-        parser: tseslint.parser,
+        parser: ts.parser,
         sourceType: 'module',
         extraFileExtensions: ['.vue'],
       },
     },
+  },
+
+  // js
+  js.configs.recommended,
+  {
+    rules: {
+      'no-unused-vars': 'off',
+      'no-undef': 'off',
+    },
+  },
+
+  // ts
+  ...ts.configs.recommended,
+  {
+    rules: {
+      '@typescript-eslint/no-unused-vars': 'warn',
+      '@typescript-eslint/no-explicit-any': 'warn',
+    },
+  },
+
+  // vue
+  ...vue.configs['flat/recommended'],
+  {
     rules: {
       'vue/multi-word-component-names': 'off',
       'vue/attribute-hyphenation': ['error', 'never'],
@@ -75,6 +81,12 @@ export default [
       'vue/valid-define-options': 'error',
     },
   },
+
   // prettier
-  pluginPrettierRecommendedConfigs,
-];
+  prettier,
+  {
+    rules: {
+      'prettier/prettier': 'warn',
+    },
+  },
+);
