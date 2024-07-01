@@ -7,7 +7,7 @@
   "dependencies": {
     "@fastify/multipart": "8.3.0",
     "@fastify/one-line-logger": "1.4.0",
-    "fastify": "4.28.0",
+    "fastify": "4.28.1",
     "fastify-plugin": "4.5.1"
   },
   "devDependencies": {
