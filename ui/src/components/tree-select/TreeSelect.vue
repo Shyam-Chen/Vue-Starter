@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref, inject } from 'vue';
+import { ref, computed, inject } from 'vue';
 import { onClickOutside } from '@vueuse/core';
 
 import FormControl from '../form-control/FormControl.vue';
@@ -10,7 +10,7 @@ import type { Node } from '../tree/types';
 
 const valueModel = defineModel<string[]>('value', { default: [] });
 
-defineProps<{
+const props = defineProps<{
   options?: Node[];
   label?: string;
   required?: boolean;
@@ -28,15 +28,41 @@ if (popover.withinPopover) {
     status.value = false;
   });
 }
+
+const flatten = (options: Node[] = []) => {
+  const flatArray: Node[] = [];
+
+  const traverse = (options: Node[]) => {
+    for (const option of options) {
+      flatArray.push({ label: option.label, value: option.value });
+      if (option.children) traverse(option.children);
+    }
+  };
+
+  traverse(options);
+
+  return flatArray;
+};
+
+const flattenOptions = computed(() => flatten(props.options));
+
+const displayChips = computed(() => {
+  const selected = flattenOptions.value.filter((opt) =>
+    valueModel.value.includes(opt.value as string),
+  );
+
+  return selected.map((opt) => opt.label || '');
+});
 </script>
 
 <template>
-  <FormControl v-slot="{ uid }" :label :required :invalid :help>
+  <FormControl v-slot="{ uid }" :required :invalid :help>
     <Popover v-model="status" start class="w-full">
       <ChipField
         :id="uid"
-        v-model:value="valueModel"
         v-bind="$attrs"
+        :label
+        :value="displayChips"
         :append="
           status
             ? 'i-material-symbols-keyboard-arrow-up-rounded'

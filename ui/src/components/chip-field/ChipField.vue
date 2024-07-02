@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { ref, reactive, watch, toRef } from 'vue';
+import { useLocaler, useLocale } from 'vue-localer';
 import { vOnClickOutside } from '@vueuse/components';
 
 import FormControl from '../form-control/FormControl.vue';
@@ -21,6 +22,7 @@ withDefaults(
     disabled?: boolean;
     closable?: boolean;
     append?: string;
+    selectedLabels?: boolean;
   }>(),
   {
     label: '',
@@ -31,6 +33,7 @@ withDefaults(
     disabled: false,
     closable: true,
     append: '',
+    selectedLabels: false,
   },
 );
 
@@ -39,7 +42,11 @@ const emit = defineEmits<{
   (evt: 'append'): void;
 }>();
 
+const localer = useLocaler();
+const locale = useLocale();
+
 const input = ref<HTMLInputElement>();
+const selectedStatus = ref(false);
 
 const flux = reactive({
   text: '',
@@ -96,6 +103,22 @@ defineExpose({
   <FormControl :label :required :invalid :help>
     <template #label>
       <slot></slot>
+      <div v-if="label" class="flex-1"></div>
+      <div
+        v-if="selectedLabels && valueModel?.length"
+        class="flex text-xs font-normal text-info-500 cursor-pointer"
+        @click="selectedStatus = !selectedStatus"
+      >
+        <template v-if="!selectedStatus">
+          <span>{{ locale.show || 'Show' }}</span>
+          <div class="i-material-symbols-add-rounded w-4 h-4"></div>
+        </template>
+
+        <template v-else>
+          <span>{{ locale.hide || 'Hide' }}</span>
+          <div class="i-material-symbols-check-indeterminate-small-rounded w-4 h-4"></div>
+        </template>
+      </div>
     </template>
 
     <template #default="{ uid }">
@@ -103,7 +126,7 @@ defineExpose({
         v-on-click-outside="flux.onBlur"
         class="ChipField"
         :class="[
-          value?.length ? 'py-1' : 'py-2',
+          selectedLabels && !selectedStatus ? 'py-2' : valueModel?.length ? 'py-1' : 'py-2',
           {
             focused: flux.focused,
             invalid,
@@ -113,9 +136,26 @@ defineExpose({
         ]"
         @click="flux.onFocus"
       >
-        <Chip v-for="(val, idx) in value" :key="val" :closable :disabled @close="flux.onClose(idx)">
-          {{ val }}
-        </Chip>
+        <template v-if="selectedLabels && !selectedStatus && valueModel.length">
+          {{
+            valueModel.length === 1
+              ? localer.f(locale.oneItemSelected, { num: valueModel.length }) || `1 item selected`
+              : localer.f(locale.numItemsSelected, { num: valueModel.length }) ||
+                `${valueModel.length} items selected`
+          }}
+        </template>
+
+        <template v-else>
+          <Chip
+            v-for="(val, idx) in valueModel"
+            :key="val"
+            :closable
+            :disabled
+            @close="flux.onClose(idx)"
+          >
+            {{ val }}
+          </Chip>
+        </template>
 
         <input
           :id="uid"
