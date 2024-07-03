@@ -24,11 +24,7 @@ const flux = reactive({
 
     <template #content>
       <XCard>
-        <XSelect
-          v-model:value="flux.select"
-          :label="'Example label'"
-          :options="flux.select1Options"
-        />
+        <XSelect v-model:value="flux.select" label="Example label" :options="flux.select1Options" />
       </XCard>
     </template>
   </XPopover>

@@ -79,7 +79,7 @@ const flux = reactive({
       <XCard class="w-xs">
         <XTreeSelect
           v-model:value="flux.select"
-          :label="'Example label'"
+          label="Example label"
           :options="flux.select1Options"
         />
       </XCard>

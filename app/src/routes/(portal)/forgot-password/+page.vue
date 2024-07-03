@@ -102,7 +102,7 @@ const flux = reactive({
       </div>
 
       <div class="mb-8">
-        <XTextField :value="'2803bn3VO7'" readonly>Your New Password:</XTextField>
+        <XTextField value="2803bn3VO7" readonly>Your New Password:</XTextField>
       </div>
 
       <RouterLink

@@ -32,11 +32,7 @@ const flux = reactive({
     <h2 class="text-3xl font-bold my-4">Basic</h2>
 
     <XCard>
-      <XSelect
-        v-model:value="flux.select1"
-        :label="'Example label'"
-        :options="flux.select1Options"
-      />
+      <XSelect v-model:value="flux.select1" label="Example label" :options="flux.select1Options" />
     </XCard>
   </section>
 
@@ -46,7 +42,7 @@ const flux = reactive({
     <XCard>
       <XSelect
         v-model:value="flux.select1"
-        :label="'Example label'"
+        label="Example label"
         :options="flux.select1Options"
         disabled
       />
