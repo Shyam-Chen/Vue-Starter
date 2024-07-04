@@ -11,6 +11,7 @@ defineOptions({
 });
 
 const valueModel = defineModel<string[]>('value', { default: [] });
+const statusModel = defineModel<boolean>('status', { default: true });
 
 withDefaults(
   defineProps<{
@@ -46,7 +47,6 @@ const localer = useLocaler();
 const locale = useLocale();
 
 const input = ref<HTMLInputElement>();
-const selectedStatus = ref(false);
 
 const flux = reactive({
   text: '',
@@ -103,22 +103,6 @@ defineExpose({
   <FormControl :label :required :invalid :help>
     <template #label>
       <slot></slot>
-      <div v-if="label" class="flex-1"></div>
-      <div
-        v-if="selectedLabels && valueModel?.length"
-        class="flex text-xs font-normal text-info-500 cursor-pointer"
-        @click="selectedStatus = !selectedStatus"
-      >
-        <template v-if="!selectedStatus">
-          <span>{{ locale.show || 'Show' }}</span>
-          <div class="i-material-symbols-add-rounded w-4 h-4"></div>
-        </template>
-
-        <template v-else>
-          <span>{{ locale.hide || 'Hide' }}</span>
-          <div class="i-material-symbols-check-indeterminate-small-rounded w-4 h-4"></div>
-        </template>
-      </div>
     </template>
 
     <template #default="{ uid }">
@@ -126,7 +110,7 @@ defineExpose({
         v-on-click-outside="flux.onBlur"
         class="ChipField"
         :class="[
-          selectedLabels && !selectedStatus ? 'py-2' : valueModel?.length ? 'py-1' : 'py-2',
+          selectedLabels && statusModel ? 'py-2' : valueModel?.length ? 'py-1' : 'py-2',
           {
             focused: flux.focused,
             invalid,
@@ -136,7 +120,7 @@ defineExpose({
         ]"
         @click="flux.onFocus"
       >
-        <template v-if="selectedLabels && !selectedStatus && valueModel.length">
+        <template v-if="selectedLabels && statusModel && valueModel.length">
           {{
             valueModel.length === 1
               ? localer.f(locale.oneItemSelected, { num: valueModel.length }) || `1 item selected`
@@ -188,8 +172,7 @@ defineExpose({
   }
 
   &.invalid {
-    @apply border-red-500 dark:border-red-500;
-    @apply focus:ring-red-500/40 focus:border-red-500;
+    @apply border-red-500 dark:border-red-500 ring-red-500/40;
   }
 
   &.disabled {

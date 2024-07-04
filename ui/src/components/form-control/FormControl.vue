@@ -1,23 +1,20 @@
 <script lang="ts" setup>
 import uniqueId from 'lodash/uniqueId';
 
-defineProps<{
-  label?: string;
-  required?: boolean;
-  invalid?: boolean | string;
-  help?: string;
-}>();
+import { type FormControlProps, formControlDefaults } from './config';
+
+withDefaults(defineProps<FormControlProps>(), formControlDefaults);
 
 const uid = uniqueId('uid-');
 </script>
 
 <template>
   <div class="flex flex-col w-full">
-    <label :for="uid" class="flex items-center mb-2 text-sm font-bold empty:hidden">
-      <template v-if="label">{{ label }}</template>
-      <span v-if="required" class="text-red-500">*</span>
+    <div v-if="label" class="flex items-center text-sm mb-1">
+      <label :for="uid" class="inline-flex font-bold empty:hidden">{{ label }} </label>
+      <span v-if="required" class="text-red-500 ms-0.5">*</span>
       <slot name="label"></slot>
-    </label>
+    </div>
 
     <div class="flex items-center min-h-38px">
       <slot :uid="uid" :invalid="!!invalid"></slot>

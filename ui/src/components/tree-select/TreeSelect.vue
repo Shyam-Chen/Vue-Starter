@@ -2,21 +2,33 @@
 import { ref, computed, inject } from 'vue';
 import { onClickOutside } from '@vueuse/core';
 
+import { type FormControlProps, formControlDefaults } from '../form-control/config';
 import FormControl from '../form-control/FormControl.vue';
 import Popover from '../popover/Popover.vue';
 import ChipField from '../chip-field/ChipField.vue';
+import ToggleShowHide from '../chip-field/ToggleShowHide.vue';
 import Tree from '../tree';
 import type { Node } from '../tree/types';
 
+defineOptions({
+  inheritAttrs: false,
+});
+
 const valueModel = defineModel<string[]>('value', { default: [] });
 
-const props = defineProps<{
-  options?: Node[];
-  label?: string;
-  required?: boolean;
-  invalid?: boolean | string;
-  help?: string;
-}>();
+const props = withDefaults(
+  defineProps<
+    {
+      options?: Node[];
+      selectedLabels?: boolean;
+    } & FormControlProps
+  >(),
+  {
+    options: () => [],
+    selectedLabels: false,
+    ...formControlDefaults,
+  },
+);
 
 const popover = inject('Popover', { withinPopover: false });
 
@@ -53,35 +65,44 @@ const displayChips = computed(() => {
 
   return selected.map((opt) => opt.label || '');
 });
+
+const toggleShowHide = ref(true);
 </script>
 
 <template>
-  <FormControl v-slot="{ uid }" :required :invalid :help>
-    <Popover v-model="status" start class="w-full">
-      <ChipField
-        :id="uid"
-        v-bind="$attrs"
-        :label
-        :value="displayChips"
-        :append="
-          status
-            ? 'i-material-symbols-keyboard-arrow-up-rounded'
-            : 'i-material-symbols-keyboard-arrow-down-rounded'
-        "
-        :invalid="!!invalid"
-        readonly
-        :placeholder="valueModel.length ? '' : 'Please select'"
-        :closable="false"
-        :class="{ '!w-0': valueModel.length }"
-        @focus="status = !status"
-        @append="status = !status"
-      />
+  <FormControl :label :required :invalid :help>
+    <template #label>
+      <ToggleShowHide v-model:status="toggleShowHide" :label :value :selectedLabels />
+    </template>
 
-      <template #content>
-        <div ref="target" class="p-2 max-h-50 overflow-auto">
-          <Tree v-model="valueModel" :nodes="options" multiple />
-        </div>
-      </template>
-    </Popover>
+    <template #default="{ uid }">
+      <Popover v-model="status" start class="w-full">
+        <ChipField
+          :id="uid"
+          v-model:status="toggleShowHide"
+          v-bind="{ ...$attrs, ...formControlDefaults }"
+          :invalid="!!invalid"
+          :value="displayChips"
+          :append="
+            status
+              ? 'i-material-symbols-keyboard-arrow-up-rounded'
+              : 'i-material-symbols-keyboard-arrow-down-rounded'
+          "
+          readonly
+          :placeholder="valueModel.length ? '' : 'Please select'"
+          :closable="false"
+          :selectedLabels
+          :class="{ '!w-0': valueModel.length }"
+          @focus="status = !status"
+          @append="status = !status"
+        />
+
+        <template #content>
+          <div ref="target" class="p-2 max-h-50 overflow-auto">
+            <Tree v-model="valueModel" :nodes="options" multiple />
+          </div>
+        </template>
+      </Popover>
+    </template>
   </FormControl>
 </template>
