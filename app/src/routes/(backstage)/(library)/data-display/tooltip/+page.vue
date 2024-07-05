@@ -48,4 +48,14 @@ import { XBreadcrumb, XCard, XTooltip } from '@x/ui';
       </div>
     </XCard>
   </section>
+
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Delay</h2>
+
+    <XCard>
+      <XTooltip title="Hi! I'm tooltip" delay="250">
+        <span>Tooltip will show on mouse enter.</span>
+      </XTooltip>
+    </XCard>
+  </section>
 </template>

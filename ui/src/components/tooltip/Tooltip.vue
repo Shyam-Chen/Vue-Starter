@@ -4,16 +4,24 @@ import { ref, computed, reactive, nextTick } from 'vue';
 import Fade from '../fade/Fade.vue';
 import useScrollParent from '../../composables/scroll-parent/useScrollParent';
 
-defineProps<{
-  title?: string;
-}>();
+const props = withDefaults(
+  defineProps<{
+    title?: string;
+    delay?: number | string;
+  }>(),
+  {
+    title: '',
+    delay: 0,
+  },
+);
 
 const target = ref<HTMLDivElement>();
 const panel = ref<HTMLDivElement>();
 
 const flux = reactive({
   status: false,
-  timeout: undefined as ReturnType<typeof setTimeout> | undefined,
+  enterTimeout: undefined as ReturnType<typeof setTimeout> | undefined,
+  leaveTimeout: undefined as ReturnType<typeof setTimeout> | undefined,
   resizePanel() {
     if (target.value && panel.value) {
       const rect = target.value.getBoundingClientRect();
@@ -35,17 +43,22 @@ const flux = reactive({
     }
   },
   onMouseenter() {
-    flux.status = true;
-    clearTimeout(flux.timeout);
+    clearTimeout(flux.leaveTimeout);
 
-    nextTick(() => {
-      flux.resizePanel();
-    });
+    flux.enterTimeout = setTimeout(() => {
+      flux.status = true;
+
+      nextTick(() => {
+        flux.resizePanel();
+      });
+    }, Number(props.delay));
   },
   onMouseleave() {
-    flux.timeout = setTimeout(() => {
+    clearTimeout(flux.enterTimeout);
+
+    flux.leaveTimeout = setTimeout(() => {
       flux.status = false;
-    }, 50);
+    }, 0);
   },
 });
 
