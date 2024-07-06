@@ -1,11 +1,10 @@
 <script lang="ts" setup>
 import { ref, reactive } from 'vue';
-import { XBreadcrumb, XCard, XTextField, XCode, XChipField } from '@x/ui';
+import { XBreadcrumb, XCard, XTextField, XCode } from '@x/ui';
 
 const flux = reactive({
   textField1: '',
   textField2: 'Vue is excellent',
-  chipField: ['Vue', 'Fastify', 'Tauri'],
 });
 
 const alpha = ref('');
@@ -170,25 +169,5 @@ const alphanum = ref('');
         </XTextField>
       </div>
     </XCard>
-  </section>
-
-  <section class="my-8">
-    <h2 class="text-3xl font-bold my-4 pt-6">ChipField</h2>
-
-    <XCard>
-      <XChipField v-model:value="flux.chipField" placeholder="Type here...">
-        Example label
-      </XChipField>
-    </XCard>
-
-    <section class="my-4">
-      <h3 class="text-2xl font-semibold my-4 pt-2">Disabled</h3>
-
-      <XCard>
-        <XChipField v-model:value="flux.chipField" placeholder="Type here..." disabled>
-          Example label
-        </XChipField>
-      </XCard>
-    </section>
   </section>
 </template>

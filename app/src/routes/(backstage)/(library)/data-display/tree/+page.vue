@@ -6,6 +6,7 @@ import BasicCode from './Basic.vue?raw';
 import Controlled from './Controlled.vue';
 import ControlledCode from './Controlled.vue?raw';
 import MultipleSelection from './MultipleSelection.vue';
+import MultipleSelectionCode from './MultipleSelection.vue?raw';
 import Lazy from './Lazy.vue';
 import nodesDataCode from './nodesData?raw';
 </script>
@@ -24,11 +25,11 @@ import nodesDataCode from './nodesData?raw';
 
     <XTabs>
       <XTabs.Tab title="Vue">
-        <XCodeBlock :code="BasicCode" language="vue" />
+        <XCodeBlock :code="BasicCode" language="vue" class="max-h-100" />
       </XTabs.Tab>
 
-      <XTabs.Tab title="nodes">
-        <XCodeBlock :code="nodesDataCode" language="ts" />
+      <XTabs.Tab title="Nodes">
+        <XCodeBlock :code="nodesDataCode" language="ts" class="max-h-100" />
       </XTabs.Tab>
     </XTabs>
   </section>
@@ -40,7 +41,7 @@ import nodesDataCode from './nodesData?raw';
       <Controlled />
     </XCard>
 
-    <XCodeBlock :code="ControlledCode" language="vue" />
+    <XCodeBlock :code="ControlledCode" language="vue" class="max-h-100" />
   </section>
 
   <section class="my-8">
@@ -49,6 +50,8 @@ import nodesDataCode from './nodesData?raw';
     <XCard>
       <MultipleSelection />
     </XCard>
+
+    <XCodeBlock :code="MultipleSelectionCode" language="vue" class="max-h-100" />
   </section>
 
   <section class="my-8">

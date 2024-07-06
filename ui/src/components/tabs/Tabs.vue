@@ -167,7 +167,7 @@ watch(
 
 .Tabs-Tab {
   @apply flex items-center cursor-pointer px-7 pt-4 pb-3.5 border-b-2 border-transparent;
-  @apply font-medium uppercase leading-tight text-neutral-500 whitespace-nowrap;
+  @apply font-medium leading-tight text-neutral-500 whitespace-nowrap;
 
   &.active {
     @apply text-primary-500;
