@@ -11,7 +11,7 @@ const uid = uniqueId('uid-');
 <template>
   <div class="flex flex-col w-full">
     <div v-if="label" class="flex items-center text-sm mb-1">
-      <label :for="uid" class="inline-flex font-bold empty:hidden">{{ label }} </label>
+      <label :for="uid" class="inline-flex font-bold empty:hidden">{{ label }}</label>
       <span v-if="required" class="text-red-500 ms-0.5">*</span>
       <slot name="label"></slot>
     </div>

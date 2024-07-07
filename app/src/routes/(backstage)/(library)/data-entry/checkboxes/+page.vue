@@ -1,6 +1,9 @@
 <script lang="ts" setup>
 import { reactive, watch } from 'vue';
-import { XBreadcrumb, XCard, XCheckbox } from '@x/ui';
+import { XBreadcrumb, XCard, XCodeBlock, XCheckbox } from '@x/ui';
+
+import Basic from './Basic.vue';
+import BasicCode from './Basic.vue?raw';
 
 const flux = reactive({
   checkbox1: false,
@@ -43,9 +46,10 @@ watch(
     <h2 class="text-3xl font-bold my-4">Basic</h2>
 
     <XCard>
-      <XCheckbox v-model:value="flux.checkbox1">Checkbox 1</XCheckbox>
-      <div class="mt-1">{{ flux.checkbox1 }}</div>
+      <Basic />
     </XCard>
+
+    <XCodeBlock :code="BasicCode" language="vue" />
   </section>
 
   <section class="my-8">

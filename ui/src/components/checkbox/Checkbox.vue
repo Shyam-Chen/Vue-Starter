@@ -4,6 +4,7 @@ import { computed } from 'vue';
 import uniqueId from 'lodash/uniqueId';
 
 interface Props extends /* @vue-ignore */ InputHTMLAttributes {
+  label?: string;
   value?: boolean;
   checked?: boolean;
   indeterminate?: boolean;
@@ -58,6 +59,7 @@ const uid = uniqueId('uid-');
       </div>
 
       <div class="Checkbox-Text">
+        {{ label }}
         <slot></slot>
       </div>
     </label>
