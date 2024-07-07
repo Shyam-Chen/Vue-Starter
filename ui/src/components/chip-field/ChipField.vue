@@ -3,6 +3,7 @@ import { ref, reactive, watch, toRef } from 'vue';
 import { useLocaler, useLocale } from 'vue-localer';
 import { vOnClickOutside } from '@vueuse/components';
 
+import { type FormControlProps, formControlDefaults } from '../form-control/config';
 import FormControl from '../form-control/FormControl.vue';
 import Chip from '../chip/Chip.vue';
 
@@ -14,27 +15,22 @@ const valueModel = defineModel<string[]>('value', { default: [] });
 const statusModel = defineModel<boolean>('status', { default: true });
 
 withDefaults(
-  defineProps<{
-    label?: string;
-    required?: boolean;
-    invalid?: boolean | string;
-    help?: string;
-    placeholder?: string;
-    disabled?: boolean;
-    closable?: boolean;
-    append?: string;
-    selectedLabels?: boolean;
-  }>(),
+  defineProps<
+    {
+      placeholder?: string;
+      disabled?: boolean;
+      closable?: boolean;
+      append?: string;
+      selectedLabels?: boolean;
+    } & FormControlProps
+  >(),
   {
-    label: '',
-    required: false,
-    invalid: undefined,
-    help: '',
     placeholder: '',
     disabled: false,
     closable: true,
     append: '',
     selectedLabels: false,
+    ...formControlDefaults,
   },
 );
 

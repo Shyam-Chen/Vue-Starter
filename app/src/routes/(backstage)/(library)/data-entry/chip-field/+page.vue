@@ -5,6 +5,8 @@ import Basic from './Basic.vue';
 import BasicCode from './Basic.vue?raw';
 import Disabled from './Disabled.vue';
 import DisabledCode from './Disabled.vue?raw';
+import Invalid from './Invalid.vue';
+import InvalidCode from './Invalid.vue?raw';
 
 const codeImport = `import { XChipField } from '@x/ui';`;
 </script>
@@ -39,5 +41,15 @@ const codeImport = `import { XChipField } from '@x/ui';`;
     </XCard>
 
     <XCodeBlock :code="DisabledCode" language="vue" />
+  </section>
+
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Invalid</h2>
+
+    <XCard>
+      <Invalid />
+    </XCard>
+
+    <XCodeBlock :code="InvalidCode" language="vue" />
   </section>
 </template>
