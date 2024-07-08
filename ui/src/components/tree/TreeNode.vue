@@ -34,7 +34,7 @@ const lineLeftBind = computed(() => {
 });
 
 const tree = inject('Tree') as {
-  defaultModel?: ModelRef<any>;
+  defaultModel?: ModelRef<Node['value'] | Node['value'][]>;
   onChecked: (node?: Node) => void;
 };
 </script>
@@ -60,7 +60,7 @@ const tree = inject('Tree') as {
         'i-material-symbols-arrow-drop-down-rounded': node.status,
         'i-material-symbols-arrow-right-rounded': !node.status,
       }"
-      @click.stop="nodeSelect(node, multiple, false)"
+      @click.stop="nodeSelect(node, true, false)"
     ></div>
     <div v-else class="i-mdi-dot size-6"></div>
     <Checkbox
