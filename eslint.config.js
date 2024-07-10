@@ -1,24 +1,15 @@
-// @ts-check
-
 import globals from 'globals';
 import js from '@eslint/js';
 import ts from 'typescript-eslint';
 import vue from 'eslint-plugin-vue';
-import vueParser from 'vue-eslint-parser';
 import prettier from 'eslint-plugin-prettier/recommended';
 
-export default ts.config(
+export default [
   {
     languageOptions: {
       globals: {
         ...globals.browser,
         ...globals.node,
-      },
-      parser: vueParser,
-      parserOptions: {
-        parser: ts.parser,
-        sourceType: 'module',
-        extraFileExtensions: ['.vue'],
       },
     },
   },
@@ -43,6 +34,14 @@ export default ts.config(
 
   // vue
   ...vue.configs['flat/recommended'],
+  {
+    files: ['*.vue', '**/*.vue'],
+    languageOptions: {
+      parserOptions: {
+        parser: ts.parser,
+      },
+    },
+  },
   {
     rules: {
       'vue/multi-word-component-names': 'off',
@@ -93,4 +92,4 @@ export default ts.config(
       'prettier/prettier': 'warn',
     },
   },
-);
+];

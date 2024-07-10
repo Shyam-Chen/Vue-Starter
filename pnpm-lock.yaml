@@ -29,9 +29,6 @@ importers:
       typescript-eslint:
         specifier: 7.15.0
         version: 7.15.0(eslint@9.6.0)(typescript@5.5.3)
-      vue-eslint-parser:
-        specifier: 9.4.3
-        version: 9.4.3(eslint@9.6.0)
 
   app:
     dependencies:
