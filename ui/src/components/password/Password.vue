@@ -38,7 +38,7 @@ const symbols = /[!@#$%^&*()+_\-=}{[\]|:;"/?><,`~]/; // !@#$%^&*()+_-=}{[]|:;"/?
 
 <template>
   <FormControl v-slot="{ uid }" :label :required :invalid :help>
-    <Popover v-model="status" class="w-full">
+    <Popover v-model="status" start class="w-full">
       <div class="w-full" @click="meter && (status = true)">
         <TextField
           :id="uid"

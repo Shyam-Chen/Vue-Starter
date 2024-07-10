@@ -1,8 +1,10 @@
 <script lang="ts" setup>
-import { ref } from 'vue';
-import { XBreadcrumb, XCard, XPassword } from '@x/ui';
+import { XBreadcrumb, XCard, XCodeBlock } from '@x/ui';
 
-const password = ref('oxlint');
+import Basic from './Basic.vue';
+import BasicCode from './Basic.vue?raw';
+import Meter from './Meter.vue';
+import MeterCode from './Meter.vue?raw';
 </script>
 
 <template>
@@ -14,15 +16,19 @@ const password = ref('oxlint');
     <h2 class="text-3xl font-bold my-4">Basic</h2>
 
     <XCard>
-      <XPassword v-model:value="password" label="Password" />
+      <Basic />
     </XCard>
+
+    <XCodeBlock :code="BasicCode" language="vue" />
   </section>
 
   <section class="my-8">
     <h2 class="text-3xl font-bold my-4 pt-6">Meter</h2>
 
     <XCard>
-      <XPassword v-model:value="password" label="New Password" meter />
+      <Meter />
     </XCard>
+
+    <XCodeBlock :code="MeterCode" language="vue" />
   </section>
 </template>
