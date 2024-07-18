@@ -17,6 +17,10 @@ interface Props extends /* @vue-ignore */ TextFieldProps {
   help?: string;
 }
 
+defineOptions({
+  inheritAttrs: false,
+});
+
 const valueModel = defineModel<string>('value', { default: '' });
 
 defineProps<Props>();
