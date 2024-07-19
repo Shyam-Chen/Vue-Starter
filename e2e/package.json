@@ -5,7 +5,7 @@
     "e2e": "playwright test"
   },
   "devDependencies": {
-    "@playwright/test": "1.45.1",
-    "@types/node": "20.14.9"
+    "@playwright/test": "1.45.2",
+    "@types/node": "20.14.11"
   }
 }
