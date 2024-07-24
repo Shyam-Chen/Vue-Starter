@@ -1,6 +1,9 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
-import { XBreadcrumb, XCard, XCheckboxGroup } from '@x/ui';
+import { XBreadcrumb, XCard, XCodeBlock, XCheckboxGroup } from '@x/ui';
+
+import Basic from './Basic.vue';
+import BasicCode from './Basic.vue?raw';
 
 const flux = reactive({
   checkboxGroup1: [] as string[],
@@ -25,21 +28,10 @@ const flux = reactive({
     <h2 class="text-3xl font-bold my-4">Basic</h2>
 
     <XCard>
-      <XCheckboxGroup v-model:value="flux.checkboxGroup1" :options="flux.checkboxGroup1Options" />
-      <div class="mt-1">{{ flux.checkboxGroup1 }}</div>
+      <Basic />
     </XCard>
-  </section>
 
-  <section class="my-8">
-    <h2 class="text-3xl font-bold my-4 pt-6">Label</h2>
-
-    <XCard>
-      <XCheckboxGroup
-        v-model:value="flux.checkboxGroup1"
-        label="Example label"
-        :options="flux.checkboxGroup1Options"
-      />
-    </XCard>
+    <XCodeBlock :code="BasicCode" language="vue" class="max-h-100" />
   </section>
 
   <section class="my-8">
