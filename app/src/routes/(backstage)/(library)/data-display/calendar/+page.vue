@@ -95,7 +95,7 @@ const flux = reactive({
 <template>
   <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Data Display' }, { text: 'Calendar' }]" />
 
-  <h1 class="text-4xl font-extrabold my-4">Calendar</h1>
+  <h1 class="text-4xl font-extrabold my-4">Calendar (TODO)</h1>
 
   <section class="my-8">
     <h2 class="text-3xl font-bold my-4">Basic</h2>

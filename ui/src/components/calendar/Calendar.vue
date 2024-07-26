@@ -14,8 +14,8 @@ const props = withDefaults(
     months?: string[];
     events?: Array<{ date: Date; title: string; class?: string }>;
     startWeekOnSunday?: boolean;
-    minDate?: string;
-    maxDate?: string;
+    minDate?: string | Date;
+    maxDate?: string | Date;
   }>(),
   {
     value: '',
@@ -85,17 +85,20 @@ const createDays = (y?: number, m?: number) => {
 
   days.forEach((day) => {
     day.today = _format(day.date, props.format) === _format(flux.now, props.format);
+
+    const currentDate = _format(day.date, props.format);
+    const minDate = props.minDate && _format(new Date(props.minDate), props.format);
+    const maxDate = props.maxDate && _format(new Date(props.maxDate), props.format);
+
+    if (props.minDate && props.maxDate) {
+      day.disabled = minDate > currentDate || maxDate < currentDate;
+    } else if (props.minDate) {
+      day.disabled = minDate > currentDate;
+    } else if (props.maxDate) {
+      day.disabled = maxDate < currentDate;
+    }
+
     day.selected = _format(day.date, props.format) === props.value;
-
-    if (props.minDate) {
-      day.disabled =
-        _format(new Date(props.minDate), props.format) > _format(day.date, props.format);
-    }
-
-    if (props.maxDate) {
-      day.disabled =
-        _format(new Date(props.maxDate), props.format) < _format(day.date, props.format);
-    }
   });
 
   const chunked = chunk(days, 7);
@@ -235,8 +238,8 @@ flux.currentPeriodDates = createDays();
           :key="weekIndex + item"
           class="day-frame"
           :class="{
-            'text-white bg-blue-600 important:hover:bg-blue-700': item.selected,
-            'text-slate-400 important:cursor-not-allowed': item.disabled,
+            'text-white bg-blue-600 !hover:bg-blue-700': item.selected,
+            'text-slate-400 !cursor-not-allowed': item.disabled,
             'text-slate-400 dark:text-slate-600': item.outOfRange,
           }"
           @click="flux.selectDateItem(item)"
@@ -246,7 +249,7 @@ flux.currentPeriodDates = createDays();
             :class="{
               'px-2': String(item.date.getDate()).length === 1,
               'px-1': String(item.date.getDate()).length === 2,
-              'text-white bg-blue-400 important:hover:bg-blue-500': item.today,
+              'text-white bg-primary-500': item.today,
             }"
           >
             {{ item.date.getDate() }}
@@ -288,7 +291,7 @@ flux.currentPeriodDates = createDays();
 
 <style lang="scss" scoped>
 .day-frame {
-  @apply flex flex-col hover:bg-slate-200 dark:hover:bg-slate-600 w-full p-1 gap-1 border-t-1 dark:border-slate-600;
+  @apply flex flex-col w-full p-1 gap-1 border-t-1 dark:border-slate-600;
 }
 
 .day-date {
