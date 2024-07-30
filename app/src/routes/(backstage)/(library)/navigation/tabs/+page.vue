@@ -1,6 +1,9 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
-import { XBreadcrumb, XCard, XTabs, XCode } from '@x/ui';
+import { RouterLink } from 'vue-router';
+import { XBreadcrumb, XButton, XCard, XCode, XTabs } from '@x/ui';
+
+import TabsInDialog from './TabsInDialog.vue';
 
 const flux = reactive({
   tabControlled: 3,
@@ -228,26 +231,20 @@ function onClose(val: string | number | undefined) {
   </section>
 
   <section class="my-8">
-    <h2 class="text-3xl font-bold mb-4 pt-6">Router</h2>
+    <h2 class="text-3xl font-bold mb-4 pt-6">Routing Tabs</h2>
 
     <XCard>
-      <XTabs>
-        <XTabs.Tab title="Angular" to="/navigation/tabs">
-          <div class="text-red-500 p-4">Angular Content</div>
-        </XTabs.Tab>
+      <RouterLink to="/navigation/tabs/routing-vue">
+        <XButton label="Go check it out" />
+      </RouterLink>
+    </XCard>
+  </section>
 
-        <XTabs.Tab title="React" to="/navigation/tabs">
-          <div class="text-blue-500 p-4">React Content</div>
-        </XTabs.Tab>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold mb-4 pt-6">Tabs in Dialog</h2>
 
-        <XTabs.Tab title="Svelte" to="/navigation/tabs">
-          <div class="text-orange-500 p-4">Svelte Content</div>
-        </XTabs.Tab>
-
-        <XTabs.Tab title="Vue" to="/navigation/tabs">
-          <div class="text-green-500 p-4">Vue Content</div>
-        </XTabs.Tab>
-      </XTabs>
+    <XCard>
+      <TabsInDialog />
     </XCard>
   </section>
 </template>
