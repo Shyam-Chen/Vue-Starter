@@ -112,13 +112,17 @@ watch(
           @click="onClickTab(tab)"
         >
           <template v-if="tab.titleSlot"><component :is="tab.titleSlot"></component></template>
-          <template v-else>{{ tab.title }}</template>
+          <div v-else>{{ tab.title }}</div>
 
           <div
             v-if="closeable"
-            class="i-fa-close w-3 h-3 ml-3 transition hover:scale-125"
-            @click.stop="onClose(tab)"
-          ></div>
+            class="size-5 rounded-full ml-1 hover:bg-slate-200 dark:hover:bg-slate-700"
+          >
+            <div
+              class="i-material-symbols-close-small-rounded size-5"
+              @click.stop="onClose(tab)"
+            ></div>
+          </div>
         </component>
       </template>
 
@@ -166,11 +170,11 @@ watch(
 }
 
 .Tabs-Tab {
-  @apply flex items-center cursor-pointer px-7 pt-4 pb-3.5 border-b-2 border-transparent;
+  @apply flex items-center cursor-pointer px-7 pt-4 pb-3.5 transition-border border-b-2 border-transparent;
   @apply font-medium leading-tight text-neutral-500 whitespace-nowrap;
 
   &.active {
-    @apply text-primary-500;
+    @apply text-primary-500 border-primary-500;
   }
 
   &.disabled {
