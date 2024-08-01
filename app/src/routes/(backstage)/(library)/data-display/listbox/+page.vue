@@ -1,5 +1,8 @@
 <script lang="ts" setup>
+import { ref } from 'vue';
 import { XBreadcrumb, XCard, XListbox } from '@x/ui';
+
+const selected = ref('right');
 </script>
 
 <template>
@@ -12,31 +15,53 @@ import { XBreadcrumb, XCard, XListbox } from '@x/ui';
 
     <XCard>
       <XListbox>
-        <XListbox.Item class="flex items-center gap-2">
-          <div class="i-material-symbols-arrow-circle-up-outline-rounded size-5"></div>
-          <div>Top</div>
+        <XListbox.Item
+          prepend="i-material-symbols-arrow-circle-up-outline-rounded"
+          append="i-material-symbols-chevron-right-rounded"
+        >
+          Top
         </XListbox.Item>
-        <XListbox.Item class="flex items-center gap-2">
-          <div class="i-material-symbols-arrow-circle-right-outline-rounded size-5"></div>
-          <div>Right</div>
+        <XListbox.Item prepend="i-material-symbols-arrow-circle-right-outline-rounded">
+          Right
         </XListbox.Item>
-        <XListbox.Item class="flex items-center gap-2">
-          <div class="i-material-symbols-arrow-circle-down-outline-rounded size-5"></div>
-          <div>Bottom</div>
-        </XListbox.Item>
-        <XListbox.Item class="flex items-center gap-2">
-          <div class="i-material-symbols-arrow-circle-left-outline-rounded size-5"></div>
-          <div>Left</div>
+        <XListbox.Item prepend>Bottom</XListbox.Item>
+        <XListbox.Item prepend append="i-material-symbols-chevron-right-rounded">
+          Left
         </XListbox.Item>
       </XListbox>
     </XCard>
   </section>
 
   <section class="my-8">
-    <h2 class="text-3xl font-bold my-4 pt-6">...</h2>
+    <h2 class="text-3xl font-bold my-4 pt-6">Checkmark</h2>
 
     <XCard>
-      <!-- ... -->
+      <XListbox>
+        <XListbox.Item
+          :prepend="selected === 'top' ? 'i-material-symbols-check-small-rounded' : true"
+          @click="selected = 'top'"
+        >
+          Top
+        </XListbox.Item>
+        <XListbox.Item
+          :prepend="selected === 'right' ? 'i-material-symbols-check-small-rounded' : true"
+          @click="selected = 'right'"
+        >
+          Right
+        </XListbox.Item>
+        <XListbox.Item
+          :prepend="selected === 'bottom' ? 'i-material-symbols-check-small-rounded' : true"
+          @click="selected = 'bottom'"
+        >
+          Bottom
+        </XListbox.Item>
+        <XListbox.Item
+          :prepend="selected === 'left' ? 'i-material-symbols-check-small-rounded' : true"
+          @click="selected = 'left'"
+        >
+          Left
+        </XListbox.Item>
+      </XListbox>
     </XCard>
   </section>
 </template>

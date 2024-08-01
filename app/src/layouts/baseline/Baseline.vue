@@ -2,7 +2,8 @@
 import { ref, reactive, watch, onMounted } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import { useLocaler } from 'vue-localer';
-import { XTextField, XDialog, XButton, XPopover, XListbox, XDrawer, XKeyboard } from '@x/ui';
+import { XAvatar, XButton, XDialog, XDrawer, XKeyboard, XListbox, XPopover } from '@x/ui';
+import { XTextField } from '@x/ui';
 import { request } from '@x/ui';
 import { useColorMode, useTextDirection } from '@vueuse/core';
 
@@ -188,12 +189,9 @@ function changeLang(lang: string) {
       <XButton icon="i-material-symbols-notifications-outline-rounded" variant="text" />
 
       <XPopover v-model="menuStatus">
-        <div
-          class="text-white bg-primary-600 rounded-full w-38px h-38px flex justify-center items-center cursor-pointer"
-          @click="menuStatus = !menuStatus"
-        >
+        <XAvatar class="text-white bg-primary-600 cursor-pointer" @click="menuStatus = !menuStatus">
           {{ flux.avatar(flux.user.fullName) }}
-        </div>
+        </XAvatar>
 
         <template #content>
           <div class="min-w-75">
@@ -206,71 +204,48 @@ function changeLang(lang: string) {
               <div class="border dark:border-slate-600"></div>
 
               <XListbox>
-                <XListbox.Item>
-                  <div class="flex items-center gap-2">
-                    <div class="i-material-symbols-account-circle-outline w-5 h-5"></div>
-                    <div>Profile</div>
-                  </div>
+                <XListbox.Item prepend="i-material-symbols-account-circle-outline">
+                  Profile
                 </XListbox.Item>
-                <XListbox.Item>
-                  <div class="flex items-center gap-2">
-                    <div class="i-material-symbols-settings-outline-rounded w-5 h-5"></div>
-                    <div>Settings</div>
-                  </div>
+                <XListbox.Item prepend="i-material-symbols-settings-outline-rounded">
+                  Settings
                 </XListbox.Item>
               </XListbox>
 
               <div class="border dark:border-slate-600"></div>
 
               <XListbox>
-                <XListbox.Item @click="menu('appearance')">
-                  <div class="flex justify-between items-center">
-                    <div class="flex items-center me-2">
-                      <div
-                        class="w-5 h-5 me-2"
-                        :class="{
-                          'i-material-symbols-light-mode-outline-rounded': colorMode === 'light',
-                          'i-material-symbols-dark-mode-outline-rounded': colorMode === 'dark',
-                          'i-material-symbols-desktop-windows-outline-rounded':
-                            colorMode === 'auto',
-                        }"
-                      ></div>
-                      <div>
-                        Appearance:
-                        {{ colorMode === 'light' ? 'Light' : '' }}
-                        {{ colorMode === 'dark' ? 'Dark' : '' }}
-                        {{ colorMode === 'auto' ? 'System' : '' }}
-                      </div>
-                    </div>
-
-                    <div class="i-material-symbols-chevron-right-rounded w-5 h-5"></div>
-                  </div>
+                <XListbox.Item
+                  :prepend="
+                    colorMode === 'light'
+                      ? 'i-material-symbols-light-mode-outline-rounded'
+                      : colorMode === 'dark'
+                        ? 'i-material-symbols-dark-mode-outline-rounded'
+                        : 'i-material-symbols-desktop-windows-outline-rounded'
+                  "
+                  append="i-material-symbols-chevron-right-rounded"
+                  @click="menu('appearance')"
+                >
+                  Appearance:
+                  {{ colorMode === 'light' ? 'Light' : '' }}
+                  {{ colorMode === 'dark' ? 'Dark' : '' }}
+                  {{ colorMode === 'auto' ? 'System' : '' }}
                 </XListbox.Item>
-                <XListbox.Item @click="menu('language')">
-                  <div class="flex justify-between items-center">
-                    <div class="flex items-center me-2">
-                      <div class="i-material-symbols-translate-rounded w-5 h-5 me-2"></div>
-                      <div>
-                        Language:
-                        {{
-                          languageOptions.find((lang) => lang.value === localer.lang.value)?.label
-                        }}
-                      </div>
-                    </div>
-
-                    <div class="i-material-symbols-chevron-right-rounded w-5 h-5"></div>
-                  </div>
+                <XListbox.Item
+                  prepend="i-material-symbols-translate-rounded"
+                  append="i-material-symbols-chevron-right-rounded"
+                  @click="menu('language')"
+                >
+                  Language:
+                  {{ languageOptions.find((lang) => lang.value === localer.lang.value)?.label }}
                 </XListbox.Item>
               </XListbox>
 
               <div class="border dark:border-slate-600"></div>
 
               <XListbox>
-                <XListbox.Item @click="flux.signOut">
-                  <div class="flex items-center gap-2">
-                    <div class="i-material-symbols-logout-rounded w-5 h-5"></div>
-                    <div>Sign out</div>
-                  </div>
+                <XListbox.Item prepend="i-material-symbols-logout-rounded" @click="flux.signOut">
+                  Sign out
                 </XListbox.Item>
               </XListbox>
             </template>
@@ -292,23 +267,23 @@ function changeLang(lang: string) {
               </div>
 
               <XListbox>
-                <XListbox.Item @click="colorMode = 'light'">
-                  <div class="flex items-center gap-2">
-                    <div class="i-material-symbols-light-mode-outline-rounded w-5 h-5"></div>
-                    <div>Light</div>
-                  </div>
+                <XListbox.Item
+                  prepend="i-material-symbols-light-mode-outline-rounded"
+                  @click="colorMode = 'light'"
+                >
+                  Light
                 </XListbox.Item>
-                <XListbox.Item @click="colorMode = 'dark'">
-                  <div class="flex items-center gap-2">
-                    <div class="i-material-symbols-dark-mode-outline-rounded w-5 h-5"></div>
-                    <div>Dark</div>
-                  </div>
+                <XListbox.Item
+                  prepend="i-material-symbols-dark-mode-outline-rounded"
+                  @click="colorMode = 'dark'"
+                >
+                  Dark
                 </XListbox.Item>
-                <XListbox.Item @click="colorMode = 'auto'">
-                  <div class="flex items-center gap-2">
-                    <div class="i-material-symbols-desktop-windows-outline-rounded w-5 h-5"></div>
-                    <div>System</div>
-                  </div>
+                <XListbox.Item
+                  prepend="i-material-symbols-desktop-windows-outline-rounded"
+                  @click="colorMode = 'auto'"
+                >
+                  System
                 </XListbox.Item>
               </XListbox>
             </template>
@@ -329,17 +304,14 @@ function changeLang(lang: string) {
                 <XListbox.Item
                   v-for="lang in languageOptions"
                   :key="lang.value"
+                  :prepend="
+                    lang.value === localer.lang.value
+                      ? 'i-material-symbols-check-small-rounded'
+                      : true
+                  "
                   @click="changeLang(lang.value)"
                 >
-                  <div class="flex items-center gap-2">
-                    <div
-                      class="w-5 h-5"
-                      :class="{
-                        'i-material-symbols-check-small-rounded': lang.value === localer.lang.value,
-                      }"
-                    ></div>
-                    <div>{{ lang.label }}</div>
-                  </div>
+                  {{ lang.label }}
                 </XListbox.Item>
               </XListbox>
             </template>
