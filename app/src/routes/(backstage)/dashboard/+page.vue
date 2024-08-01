@@ -209,15 +209,8 @@ const performanceOption = computed<EChartsOption>(() => {
         </div>
       </div>
 
-      <div class="p-4 flex-auto">
-        <div class="relative h-350-px">
-          <div class="chartjs-size-monitor">
-            <div class="chartjs-size-monitor-expand"><div class=""></div></div>
-            <div class="chartjs-size-monitor-shrink"><div class=""></div></div>
-          </div>
-
-          <XChart :option="overviewOption" class="w-full h-100" />
-        </div>
+      <div class="p-4">
+        <XChart :option="overviewOption" class="w-full h-100" />
       </div>
     </div>
 
@@ -233,15 +226,8 @@ const performanceOption = computed<EChartsOption>(() => {
         </div>
       </div>
 
-      <div class="p-4 flex-auto">
-        <div class="relative h-350-px">
-          <div class="chartjs-size-monitor">
-            <div class="chartjs-size-monitor-expand"><div class=""></div></div>
-            <div class="chartjs-size-monitor-shrink"><div class=""></div></div>
-          </div>
-
-          <XChart :option="performanceOption" class="w-full h-100" />
-        </div>
+      <div class="p-4">
+        <XChart :option="performanceOption" class="w-full h-100" />
       </div>
     </div>
 

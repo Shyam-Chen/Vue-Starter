@@ -116,6 +116,7 @@ const links = [
         ],
       },
       { name: 'Tag', to: '/data-display/tag' },
+      { name: 'Time Ago', to: '/data-display/time-ago' },
       { name: 'Timeline', to: '/data-display/timeline' },
       { name: 'Tooltip', to: '/data-display/tooltip' },
       { name: 'Tree', to: '/data-display/tree' },
