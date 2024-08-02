@@ -30,3 +30,19 @@ jobs:
     steps:
       - name: Trigger deployment
         run: curl -k ${{ secrets.DEPLOY_HOOK }}
+
+  cd:
+    needs: test
+    runs-on: ubuntu-latest
+    if: ${{ contains(fromJSON('["refs/heads/main", "refs/heads/release", "refs/heads/prod"]'), github.ref) }}
+    environment: ${{ github.ref_name }}
+    steps:
+      - name: Trigger deployment
+        run: |
+          curl -L \
+            -X POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer ${{ secrets.PERSONAL_ACCESS_TOKEN }}" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            https://api.github.com/repos/Shyam-Chen/Pulumi-Starter/dispatches \
+            -d '{ "event_type": "trigger-client-workflow", "client_payload": { "sha": "${{ github.sha }}" } }'
