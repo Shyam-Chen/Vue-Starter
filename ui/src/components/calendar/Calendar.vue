@@ -1,9 +1,17 @@
 <script lang="ts" setup>
 import { computed, reactive, watch } from 'vue';
-import { format as _format, add, sub, getYear, setYear, getMonth, setMonth } from 'date-fns';
+import * as d from 'date-fns';
 import chunk from 'lodash/chunk';
 import range from 'lodash/range';
 import groupBy from 'lodash/groupBy';
+
+type Day = {
+  date: Date;
+  outOfRange?: boolean;
+  today?: boolean;
+  selected?: boolean;
+  disabled?: boolean;
+};
 
 const props = withDefaults(
   defineProps<{
@@ -37,7 +45,7 @@ const emit = defineEmits<{
 const eventsRef = computed(() => {
   const _events = props.events.map((event) => ({
     ...event,
-    dayDate: _format(event.date, props.format),
+    dayDate: d.format(event.date, props.format),
   }));
 
   return groupBy(_events, (item) => item.dayDate);
@@ -50,13 +58,7 @@ const createDays = (y?: number, m?: number) => {
   };
 
   const [year, month] = currentPeriod();
-  const days = [] as Array<{
-    date: Date;
-    outOfRange?: boolean;
-    today?: boolean;
-    selected?: boolean;
-    disabled?: boolean;
-  }>;
+  const days = [] as Day[];
   const date = new Date(year, month, 1);
   const offset = 1;
 
@@ -84,11 +86,11 @@ const createDays = (y?: number, m?: number) => {
   }
 
   days.forEach((day) => {
-    day.today = _format(day.date, props.format) === _format(flux.now, props.format);
+    day.today = d.format(day.date, props.format) === d.format(flux.now, props.format);
 
-    const currentDate = _format(day.date, props.format);
-    const minDate = props.minDate && _format(new Date(props.minDate), props.format);
-    const maxDate = props.maxDate && _format(new Date(props.maxDate), props.format);
+    const currentDate = d.format(day.date, props.format);
+    const minDate = props.minDate && d.format(new Date(props.minDate), props.format);
+    const maxDate = props.maxDate && d.format(new Date(props.maxDate), props.format);
 
     if (props.minDate && props.maxDate) {
       day.disabled = minDate > currentDate || maxDate < currentDate;
@@ -98,7 +100,7 @@ const createDays = (y?: number, m?: number) => {
       day.disabled = maxDate < currentDate;
     }
 
-    day.selected = _format(day.date, props.format) === props.value;
+    day.selected = d.format(day.date, props.format) === props.value;
   });
 
   const chunked = chunk(days, 7);
@@ -121,7 +123,7 @@ const flux = reactive({
 
   now: new Date(),
   currentMoment: new Date(),
-  currentPeriodDates: [] as any[],
+  currentPeriodDates: [] as Day[][],
 
   yearRange: [] as number[],
   year: null as null | number,
@@ -132,30 +134,30 @@ const flux = reactive({
     flux.currentMoment = new Date();
   },
   decrement() {
-    flux.currentMoment = sub(flux.currentMoment, { months: 1 });
+    flux.currentMoment = d.sub(flux.currentMoment, { months: 1 });
   },
   increment() {
-    flux.currentMoment = add(flux.currentMoment, { months: 1 });
+    flux.currentMoment = d.add(flux.currentMoment, { months: 1 });
   },
   changeYearMonth() {
     if (flux.showWeeks) {
       flux.showWeeks = false;
       flux.showYears = true;
-      const currentYear = getYear(flux.currentMoment);
+      const currentYear = d.getYear(flux.currentMoment);
       flux.yearRange = range(currentYear - 5, currentYear + 11);
     }
   },
-  selectDateItem(val: any) {
-    const date = _format(val.date, props.format);
+  selectDateItem(val: Day) {
+    const date = d.format(val.date, props.format);
 
     if (
       props.minDate &&
-      _format(new Date(props.minDate), props.format) > _format(val.date, props.format)
+      d.format(new Date(props.minDate), props.format) > d.format(val.date, props.format)
     )
       return;
     if (
       props.maxDate &&
-      _format(new Date(props.maxDate), props.format) < _format(val.date, props.format)
+      d.format(new Date(props.maxDate), props.format) < d.format(val.date, props.format)
     )
       return;
 
@@ -166,27 +168,33 @@ const flux = reactive({
     flux.showMonths = true;
     flux.year = val;
 
-    flux.currentMoment = setYear(flux.currentMoment, val);
+    flux.currentMoment = d.setYear(flux.currentMoment, val);
   },
   selectMonth(val: number) {
     flux.showMonths = false;
     flux.showWeeks = true;
     flux.month = val;
-    flux.currentMoment = setMonth(flux.currentMoment, val);
+    flux.currentMoment = d.setMonth(flux.currentMoment, val);
 
-    flux.currentPeriodDates = createDays(getYear(flux.currentMoment), getMonth(flux.currentMoment));
+    flux.currentPeriodDates = createDays(
+      d.getYear(flux.currentMoment),
+      d.getMonth(flux.currentMoment),
+    );
   },
 });
 
 watch(
   () => flux.currentMoment,
   (val) => {
-    flux.currentPeriodDates = createDays(getYear(val), getMonth(val));
+    flux.currentPeriodDates = createDays(d.getYear(val), d.getMonth(val));
   },
 );
 
 watch([() => props.value, () => props.minDate, () => props.maxDate], () => {
-  flux.currentPeriodDates = createDays(getYear(flux.currentMoment), getMonth(flux.currentMoment));
+  flux.currentPeriodDates = createDays(
+    d.getYear(flux.currentMoment),
+    d.getMonth(flux.currentMoment),
+  );
 });
 
 flux.currentPeriodDates = createDays();
@@ -196,7 +204,7 @@ flux.currentPeriodDates = createDays();
   <div class="p-2 shadow-lg rounded bg-white dark:bg-slate-800 w-full">
     <div class="flex justify-between items-center mb-1">
       <div class="px-2 text-2xl font-bold">
-        {{ _format(flux.currentMoment, 'MMMM yyyy') }}
+        {{ d.format(flux.currentMoment, 'MMMM yyyy') }}
       </div>
 
       <div class="flex space-x-3">
@@ -234,8 +242,8 @@ flux.currentPeriodDates = createDays();
 
       <template v-for="(week, weekIndex) in flux.currentPeriodDates">
         <div
-          v-for="item in week"
-          :key="weekIndex + item"
+          v-for="(item, idx) in week"
+          :key="`${weekIndex}-${idx}`"
           class="day-frame"
           :class="{
             'text-white bg-blue-600 !hover:bg-blue-700': item.selected,
@@ -257,7 +265,7 @@ flux.currentPeriodDates = createDays();
 
           <div class="day-events">
             <template v-for="(val, key) in eventsRef">
-              <template v-if="key === _format(item.date, 'yyyy/MM/dd')">
+              <template v-if="key === d.format(item.date, 'yyyy/MM/dd')">
                 <template v-if="val.length > 3">
                   <div
                     v-for="(event, eventIndex) in [val[0], val[1], null]"

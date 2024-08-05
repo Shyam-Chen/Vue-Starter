@@ -1,17 +1,7 @@
 <script lang="ts" setup>
 import { nextTick, ref, computed } from 'vue';
 import { onClickOutside } from '@vueuse/core';
-import {
-  format,
-  getISOWeek,
-  getYear,
-  getMonth,
-  sub,
-  add,
-  setWeek,
-  nextSunday,
-  nextSaturday,
-} from 'date-fns';
+import * as d from 'date-fns';
 import chunk from 'lodash/chunk';
 
 import useScrollParent from '../../composables/scroll-parent/useScrollParent';
@@ -72,14 +62,14 @@ const createWeeks = (y?: number, m?: number) => {
 
   for (const day of days) {
     if (day.date) {
-      day.today = format(day.date, 'yyyy/MM/dd') === format(new Date(), 'yyyy/MM/dd');
+      day.today = d.format(day.date, 'yyyy/MM/dd') === d.format(new Date(), 'yyyy/MM/dd');
     }
   }
 
-  return chunk(days, 7).map((week) => [{ week: getISOWeek(week[6].date || 0) }, ...week]);
+  return chunk(days, 7).map((week) => [{ week: d.getISOWeek(week[6].date || 0) }, ...week]);
 };
 
-const weeks = ref(createWeeks(getYear(currentMoment.value), getMonth(currentMoment.value)));
+const weeks = ref(createWeeks(d.getYear(currentMoment.value), d.getMonth(currentMoment.value)));
 
 const weekdays = ['Week', 'S', 'M', 'T', 'W', 'T', 'F', 'S'];
 
@@ -112,19 +102,19 @@ function openPicker() {
 }
 
 function decrement() {
-  currentMoment.value = sub(currentMoment.value, { months: 1 });
-  weeks.value = createWeeks(getYear(currentMoment.value), getMonth(currentMoment.value));
+  currentMoment.value = d.sub(currentMoment.value, { months: 1 });
+  weeks.value = createWeeks(d.getYear(currentMoment.value), d.getMonth(currentMoment.value));
 }
 
 function increment() {
-  currentMoment.value = add(currentMoment.value, { months: 1 });
-  weeks.value = createWeeks(getYear(currentMoment.value), getMonth(currentMoment.value));
+  currentMoment.value = d.add(currentMoment.value, { months: 1 });
+  weeks.value = createWeeks(d.getYear(currentMoment.value), d.getMonth(currentMoment.value));
 }
 
 function selectWeek(week: Week) {
   const isoWeek = week[0].week;
-  const start = week[1].date && getYear(week[1].date);
-  const end = week[7].date && getYear(week[7].date);
+  const start = week[1].date && d.getYear(week[1].date);
+  const end = week[7].date && d.getYear(week[7].date);
 
   let year = end;
   if (week[0].week === 52) year = start;
@@ -137,8 +127,8 @@ function selectWeek(week: Week) {
 
 const isCurrentWeek = (week: Week) => {
   const isoWeek = week[0].week;
-  const start = week[1].date && getYear(week[1].date);
-  const end = week[7].date && getYear(week[7].date);
+  const start = week[1].date && d.getYear(week[1].date);
+  const end = week[7].date && d.getYear(week[7].date);
 
   let year = end;
   if (week[0].week === 52) year = start;
@@ -150,9 +140,9 @@ const isCurrentWeek = (week: Week) => {
 const weekify = computed(() => {
   if (valueModel.value) {
     const [year, isoWeek] = valueModel.value.split('-W');
-    const start = setWeek(nextSunday(new Date(Number(year), 0, 4)), Number(isoWeek));
-    const end = setWeek(nextSaturday(new Date(Number(year), 0, 4)), Number(isoWeek));
-    return `${valueModel.value} (${format(start, 'MM/dd')} ~ ${format(end, 'MM/dd')})`;
+    const start = d.setWeek(d.nextSunday(new Date(Number(year), 0, 4)), Number(isoWeek));
+    const end = d.setWeek(d.nextSaturday(new Date(Number(year), 0, 4)), Number(isoWeek));
+    return `${valueModel.value} (${d.format(start, 'MM/dd')} ~ ${d.format(end, 'MM/dd')})`;
   }
 
   return valueModel.value;
@@ -200,7 +190,7 @@ useScrollParent(
           </div>
 
           <div class="cursor-pointer hover:bg-slate-200 dark:hover:bg-slate-600 px-2 rounded">
-            {{ format(currentMoment, 'MMM yyyy') }}
+            {{ d.format(currentMoment, 'MMM yyyy') }}
           </div>
 
           <div

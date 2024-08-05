@@ -2,16 +2,7 @@
 import { nextTick, ref, computed, reactive, watch } from 'vue';
 import { useLocaler, useLocale } from 'vue-localer';
 import { onClickOutside } from '@vueuse/core';
-import {
-  format as _format,
-  intlFormat,
-  add,
-  sub,
-  getYear,
-  setYear,
-  getMonth,
-  setMonth,
-} from 'date-fns';
+import * as d from 'date-fns';
 import chunk from 'lodash/chunk';
 import range from 'lodash/range';
 
@@ -57,6 +48,14 @@ const target = ref<HTMLDivElement>();
 const input = ref<typeof TextField>();
 const picker = ref<HTMLDivElement>();
 
+type Day = {
+  date: Date;
+  outOfRange?: boolean;
+  today?: boolean;
+  selected?: boolean;
+  disabled?: boolean;
+};
+
 const createDays = (y?: number, m?: number) => {
   const currentPeriod = () => {
     const today = new Date();
@@ -64,13 +63,7 @@ const createDays = (y?: number, m?: number) => {
   };
 
   const [year, month] = currentPeriod();
-  const days = [] as Array<{
-    date: Date;
-    outOfRange?: boolean;
-    today?: boolean;
-    selected?: boolean;
-    disabled?: boolean;
-  }>;
+  const days = [] as Day[];
   const date = new Date(year, month, 1);
   const offset = 1;
 
@@ -98,11 +91,11 @@ const createDays = (y?: number, m?: number) => {
   }
 
   days.forEach((day) => {
-    day.today = _format(day.date, props.format) === _format(flux.now, props.format);
+    day.today = d.format(day.date, props.format) === d.format(flux.now, props.format);
 
-    const currentDate = _format(day.date, props.format);
-    const minDate = props.minDate && _format(new Date(props.minDate), props.format);
-    const maxDate = props.maxDate && _format(new Date(props.maxDate), props.format);
+    const currentDate = d.format(day.date, props.format);
+    const minDate = props.minDate && d.format(new Date(props.minDate), props.format);
+    const maxDate = props.maxDate && d.format(new Date(props.maxDate), props.format);
 
     if (props.minDate && props.maxDate) {
       day.disabled = minDate > currentDate || maxDate < currentDate;
@@ -176,60 +169,60 @@ const flux = reactive({
 
   now: new Date(),
   currentMoment: new Date(),
-  currentPeriodDates: [] as any[],
+  currentPeriodDates: [] as Day[][],
 
   yearRange: [] as number[],
   year: null as null | number,
   months: [] as string[],
   month: null as null | number,
 
-  selectedRange: [] as any[],
+  selectedRange: [] as string[],
 
   decrement() {
     if (flux.showWeeks) {
-      flux.currentMoment = sub(flux.currentMoment, { months: 1 });
+      flux.currentMoment = d.sub(flux.currentMoment, { months: 1 });
     }
 
     if (flux.showYears) {
-      flux.currentMoment = sub(flux.currentMoment, { years: 16 });
-      const currentYear = getYear(flux.currentMoment);
+      flux.currentMoment = d.sub(flux.currentMoment, { years: 16 });
+      const currentYear = d.getYear(flux.currentMoment);
       flux.yearRange = range(currentYear - 5, currentYear + 11);
     }
 
     if (flux.showMonths) {
-      flux.currentMoment = sub(flux.currentMoment, { years: 1 });
+      flux.currentMoment = d.sub(flux.currentMoment, { years: 1 });
     }
   },
   increment() {
     if (flux.showWeeks) {
-      flux.currentMoment = add(flux.currentMoment, { months: 1 });
+      flux.currentMoment = d.add(flux.currentMoment, { months: 1 });
     }
 
     if (flux.showYears) {
-      flux.currentMoment = add(flux.currentMoment, { years: 16 });
-      const currentYear = getYear(flux.currentMoment);
+      flux.currentMoment = d.add(flux.currentMoment, { years: 16 });
+      const currentYear = d.getYear(flux.currentMoment);
       flux.yearRange = range(currentYear - 5, currentYear + 11);
     }
 
     if (flux.showMonths) {
-      flux.currentMoment = add(flux.currentMoment, { years: 1 });
+      flux.currentMoment = d.add(flux.currentMoment, { years: 1 });
     }
   },
   changeYearMonth() {
     if (flux.showWeeks) {
       flux.showWeeks = false;
       flux.showYears = true;
-      const currentYear = getYear(flux.currentMoment);
+      const currentYear = d.getYear(flux.currentMoment);
       flux.yearRange = range(currentYear - 5, currentYear + 11);
     }
   },
-  selectDateItem(val: any) {
+  selectDateItem(val: Day) {
     if (val.outOfRange) return;
 
-    const date = _format(val.date, props.format);
+    const date = d.format(val.date, props.format);
 
-    if (props.minDate && _format(new Date(props.minDate), props.format) > date) return;
-    if (props.maxDate && _format(new Date(props.maxDate), props.format) < date) return;
+    if (props.minDate && d.format(new Date(props.minDate), props.format) > date) return;
+    if (props.maxDate && d.format(new Date(props.maxDate), props.format) < date) return;
 
     if (flux.selectedRange.length === 0) {
       flux.selectedRange = [date];
@@ -250,15 +243,18 @@ const flux = reactive({
     flux.showMonths = true;
     flux.year = val;
 
-    flux.currentMoment = setYear(flux.currentMoment, val);
+    flux.currentMoment = d.setYear(flux.currentMoment, val);
   },
   selectMonth(val: number) {
     flux.showMonths = false;
     flux.showWeeks = true;
     flux.month = val;
-    flux.currentMoment = setMonth(flux.currentMoment, val);
+    flux.currentMoment = d.setMonth(flux.currentMoment, val);
 
-    flux.currentPeriodDates = createDays(getYear(flux.currentMoment), getMonth(flux.currentMoment));
+    flux.currentPeriodDates = createDays(
+      d.getYear(flux.currentMoment),
+      d.getMonth(flux.currentMoment),
+    );
   },
 });
 
@@ -291,12 +287,15 @@ watch(
 watch(
   () => flux.currentMoment,
   (val) => {
-    flux.currentPeriodDates = createDays(getYear(val), getMonth(val));
+    flux.currentPeriodDates = createDays(d.getYear(val), d.getMonth(val));
   },
 );
 
 watch([startValueModel, endValueModel], () => {
-  flux.currentPeriodDates = createDays(getYear(flux.currentMoment), getMonth(flux.currentMoment));
+  flux.currentPeriodDates = createDays(
+    d.getYear(flux.currentMoment),
+    d.getMonth(flux.currentMoment),
+  );
 });
 
 flux.currentPeriodDates = createDays();
@@ -353,17 +352,17 @@ useScrollParent(
           >
             {{
               localer.lang.value
-                ? intlFormat(
+                ? d.intlFormat(
                     flux.currentMoment,
                     { year: 'numeric', month: 'short' },
                     { locale: localer.lang.value },
                   )
-                : _format(flux.currentMoment, 'MMM yyyy')
+                : d.format(flux.currentMoment, 'MMM yyyy')
             }}
           </div>
 
           <div v-if="flux.showYears">{{ flux.yearRange[0] }} ~ {{ flux.yearRange[15] }}</div>
-          <div v-if="flux.showMonths">{{ _format(flux.currentMoment, 'yyyy') }}</div>
+          <div v-if="flux.showMonths">{{ d.format(flux.currentMoment, 'yyyy') }}</div>
 
           <div
             class="cursor-pointer hover:bg-slate-200 dark:hover:bg-slate-600 p-1 rounded-full"
@@ -385,14 +384,14 @@ useScrollParent(
 
             <template v-for="(week, weekIndex) in flux.currentPeriodDates">
               <div
-                v-for="item in week"
-                :key="weekIndex + item"
+                v-for="(item, idx) in week"
+                :key="`${weekIndex}-${idx}`"
                 :class="{
                   '!rounded-s-full':
-                    item.selected && startValueModel === _format(item.date, props.format),
+                    item.selected && startValueModel === d.format(item.date, props.format),
                   'Day-selectedInRange': item.selected,
                   '!rounded-e-full':
-                    item.selected && endValueModel === _format(item.date, props.format),
+                    item.selected && endValueModel === d.format(item.date, props.format),
                   invisible: item.outOfRange,
                 }"
                 @click="flux.selectDateItem(item)"
@@ -401,9 +400,9 @@ useScrollParent(
                   class="flex justify-center items-center hover:bg-slate-200 dark:hover:bg-slate-600 rounded-full w-6 h-6 p-4 text-sm cursor-pointer"
                   :class="{
                     'Day-selectedStart':
-                      item.selected && startValueModel === _format(item.date, props.format),
+                      item.selected && startValueModel === d.format(item.date, props.format),
                     'Day-selectedEnd':
-                      item.selected && endValueModel === _format(item.date, props.format),
+                      item.selected && endValueModel === d.format(item.date, props.format),
                     'text-slate-300 dark:text-slate-600 !cursor-not-allowed': item.disabled,
                     'ring-1 ring-primary-500': item.today,
                   }"
@@ -424,7 +423,7 @@ useScrollParent(
             :value="year"
             class="flex justify-center items-center hover:bg-slate-200 dark:hover:bg-slate-600 rounded text-sm cursor-pointer"
             :class="{
-              'ring-1 ring-primary-500': year === getYear(flux.now),
+              'ring-1 ring-primary-500': year === d.getYear(flux.now),
             }"
             @click="flux.selectYear(year)"
           >
@@ -440,7 +439,7 @@ useScrollParent(
             class="flex justify-center items-center hover:bg-slate-200 dark:hover:bg-slate-600 rounded text-sm cursor-pointer"
             :class="{
               'ring-1 ring-primary-500':
-                index === getMonth(flux.now) && flux.year === getYear(flux.now),
+                index === d.getMonth(flux.now) && flux.year === d.getYear(flux.now),
             }"
             @click="flux.selectMonth(index)"
           >

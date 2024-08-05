@@ -2,7 +2,7 @@
 import { nextTick, ref, computed, reactive } from 'vue';
 import { useLocale } from 'vue-localer';
 import { onClickOutside } from '@vueuse/core';
-import { format as _format, add, sub, getYear, setYear, getMonth, setMonth } from 'date-fns';
+import * as d from 'date-fns';
 
 import useScrollParent from '../../composables/scroll-parent/useScrollParent';
 
@@ -87,7 +87,7 @@ const flux = reactive({
 
   decrement() {
     if (flux.showMonths) {
-      flux.currentMoment = sub(flux.currentMoment, { years: 1 });
+      flux.currentMoment = d.sub(flux.currentMoment, { years: 1 });
     }
 
     if (flux.showYears) {
@@ -97,7 +97,7 @@ const flux = reactive({
   },
   increment() {
     if (flux.showMonths) {
-      flux.currentMoment = add(flux.currentMoment, { years: 1 });
+      flux.currentMoment = d.add(flux.currentMoment, { years: 1 });
     }
 
     if (flux.showYears) {
@@ -110,14 +110,14 @@ const flux = reactive({
     flux.showMonths = true;
     flux.year = val;
 
-    flux.currentMoment = setYear(flux.currentMoment, val);
+    flux.currentMoment = d.setYear(flux.currentMoment, val);
   },
   selectMonth(month: number) {
-    flux.currentMoment = setMonth(flux.currentMoment, month);
-    const value = _format(flux.currentMoment, props.format);
+    flux.currentMoment = d.setMonth(flux.currentMoment, month);
+    const value = d.format(flux.currentMoment, props.format);
 
-    if (props.minMonth && _format(new Date(props.minMonth), props.format) > value) return;
-    if (props.maxMonth && _format(new Date(props.maxMonth), props.format) < value) return;
+    if (props.minMonth && d.format(new Date(props.minMonth), props.format) > value) return;
+    if (props.maxMonth && d.format(new Date(props.maxMonth), props.format) < value) return;
 
     flux.showDatePicker = false;
     valueModel.value = value;
@@ -136,9 +136,9 @@ useScrollParent(
 );
 
 function monthDisabled(index: number) {
-  const currentMonth = _format(new Date(getYear(flux.currentMoment), index), props.format);
-  const minMonth = props.minMonth && _format(new Date(props.minMonth), props.format);
-  const maxMonth = props.maxMonth && _format(new Date(props.maxMonth), props.format);
+  const currentMonth = d.format(new Date(d.getYear(flux.currentMoment), index), props.format);
+  const minMonth = props.minMonth && d.format(new Date(props.minMonth), props.format);
+  const maxMonth = props.maxMonth && d.format(new Date(props.maxMonth), props.format);
 
   if (minMonth && maxMonth) {
     return minMonth > currentMonth || maxMonth < currentMonth;
@@ -187,7 +187,7 @@ function monthDisabled(index: number) {
           <div v-if="flux.showYears">{{ flux.yearRange[0] }} ~ {{ flux.yearRange[15] }}</div>
 
           <div v-if="flux.showMonths">
-            {{ _format(flux.currentMoment, 'yyyy') }}
+            {{ d.format(flux.currentMoment, 'yyyy') }}
           </div>
 
           <div
@@ -205,7 +205,7 @@ function monthDisabled(index: number) {
             :value="year"
             class="flex justify-center items-center hover:bg-slate-200 dark:hover:bg-slate-600 rounded text-sm cursor-pointer"
             :class="{
-              'ring-1 ring-primary-500': year === getYear(flux.now),
+              'ring-1 ring-primary-500': year === d.getYear(flux.now),
             }"
             @click="flux.selectYear(year)"
           >
@@ -221,12 +221,13 @@ function monthDisabled(index: number) {
             class="flex justify-center items-center hover:bg-slate-200 dark:hover:bg-slate-600 rounded text-sm cursor-pointer"
             :class="{
               'ring-1 ring-primary-500':
-                index === getMonth(flux.now) && getYear(flux.currentMoment) === getYear(flux.now),
+                index === d.getMonth(flux.now) &&
+                d.getYear(flux.currentMoment) === d.getYear(flux.now),
               'text-slate-300 dark:text-slate-600 !cursor-not-allowed': monthDisabled(index),
               'text-white bg-primary-600 important:hover:bg-primary-700':
                 valueModel &&
-                index === getMonth(new Date(valueModel)) &&
-                getYear(flux.currentMoment) === getYear(new Date(valueModel)),
+                index === d.getMonth(new Date(valueModel)) &&
+                d.getYear(flux.currentMoment) === d.getYear(new Date(valueModel)),
             }"
             @click="flux.selectMonth(index)"
           >

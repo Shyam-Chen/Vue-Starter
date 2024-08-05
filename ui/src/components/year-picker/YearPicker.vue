@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { nextTick, ref, computed, reactive } from 'vue';
 import { onClickOutside } from '@vueuse/core';
-import { add, sub, getYear } from 'date-fns';
+import * as d from 'date-fns';
 import range from 'lodash/range';
 
 import useScrollParent from '../../composables/scroll-parent/useScrollParent';
@@ -50,7 +50,7 @@ const flux = reactive({
       flux.currentMoment = new Date();
     }
 
-    const currentYear = getYear(flux.currentMoment);
+    const currentYear = d.getYear(flux.currentMoment);
     flux.yearRange = range(currentYear - 5, currentYear + 11);
 
     nextTick(() => {
@@ -62,19 +62,18 @@ const flux = reactive({
 
   now: new Date(),
   currentMoment: new Date(),
-  currentPeriodDates: [] as any[],
 
   yearRange: [] as number[],
   year: null as null | number,
 
   decrement() {
-    flux.currentMoment = sub(flux.currentMoment, { years: 16 });
-    const currentYear = getYear(flux.currentMoment);
+    flux.currentMoment = d.sub(flux.currentMoment, { years: 16 });
+    const currentYear = d.getYear(flux.currentMoment);
     flux.yearRange = range(currentYear - 5, currentYear + 11);
   },
   increment() {
-    flux.currentMoment = add(flux.currentMoment, { years: 16 });
-    const currentYear = getYear(flux.currentMoment);
+    flux.currentMoment = d.add(flux.currentMoment, { years: 16 });
+    const currentYear = d.getYear(flux.currentMoment);
     flux.yearRange = range(currentYear - 5, currentYear + 11);
   },
   selectYear(val: number) {
@@ -145,11 +144,11 @@ useScrollParent(
             :value="year"
             class="flex justify-center items-center hover:bg-slate-200 dark:hover:bg-slate-600 rounded text-sm cursor-pointer"
             :class="{
-              'ring-1 ring-primary-500': year === getYear(flux.now),
+              'ring-1 ring-primary-500': year === d.getYear(flux.now),
               'text-white bg-primary-600 important:hover:bg-primary-700':
                 valueModel &&
-                year === getYear(new Date(Number(valueModel), 0)) &&
-                getYear(flux.currentMoment) === getYear(new Date(Number(valueModel), 0)),
+                year === d.getYear(new Date(Number(valueModel), 0)) &&
+                d.getYear(flux.currentMoment) === d.getYear(new Date(Number(valueModel), 0)),
             }"
             @click="flux.selectYear(year)"
           >
