@@ -88,6 +88,7 @@ import { XBreadcrumb } from '@x/ui';
       <RouterLink to="/data-display/badge" class="card">Badge</RouterLink>
       <RouterLink to="/data-display/calendar" class="card">Calendar</RouterLink>
       <RouterLink to="/data-display/card" class="card">Card</RouterLink>
+      <RouterLink to="/data-display/cropper" class="card">Cropper</RouterLink>
       <RouterLink to="/data-display/carousel" class="card">Carousel</RouterLink>
       <RouterLink to="/data-display/chip" class="card">Chip</RouterLink>
       <RouterLink to="/data-display/infinite-scroll" class="card">Infinite Scroll</RouterLink>
