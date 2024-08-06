@@ -3,6 +3,7 @@ import 'vue-advanced-cropper/dist/style.css';
 import type { ComponentExposed } from 'vue-component-type-helpers';
 import { ref } from 'vue';
 import { XBreadcrumb, XCard, XButton } from '@x/ui';
+import { request } from '@x/ui';
 import { CircleStencil, Cropper } from 'vue-advanced-cropper';
 
 const cropper = ref<ComponentExposed<typeof Cropper>>();
@@ -11,6 +12,22 @@ const image = ref<string>();
 function crop() {
   const result = cropper.value?.getResult();
   image.value = result?.canvas?.toDataURL();
+}
+
+const uploading = ref(false);
+
+function upload() {
+  const result = cropper.value?.getResult();
+
+  result?.canvas?.toBlob(async (blob) => {
+    if (blob) {
+      uploading.value = true;
+      const formData = new FormData();
+      formData.append('file', blob, 'avatar.png');
+      await request('/file-uploads', { method: 'POST', body: formData });
+      uploading.value = false;
+    }
+  });
 }
 </script>
 
@@ -38,6 +55,15 @@ function crop() {
         <div>Result:</div>
         <img v-if="image" :src="image" class="size-50 rounded-full" />
       </div>
+
+      <XButton
+        prepend="i-material-symbols-upload-rounded"
+        label="Upload"
+        :loading="uploading"
+        :disabled="!image"
+        class="mt-4"
+        @click="upload"
+      />
     </XCard>
   </section>
 </template>
