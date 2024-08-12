@@ -27,10 +27,11 @@ import Image from '@tiptap/extension-image';
 import Link from '@tiptap/extension-link';
 import { useFileDialog } from '@vueuse/core';
 
-import FormControl from '../form-control/FormControl.vue';
 import Divider from '../divider/Divider.vue';
-import Popover from '../popover/Popover.vue';
+import FormControl from '../form-control/FormControl.vue';
 import Listbox from '../listbox';
+import Popover from '../popover/Popover.vue';
+import Tooltip from '../tooltip/Tooltip.vue';
 
 const defaultModel = defineModel<string>({ default: '' });
 
@@ -588,39 +589,51 @@ defineExpose({
         <Divider orientation="vertical" class="!mx-2" />
 
         <div class="flex gap-1">
-          <div
-            class="i-material-symbols-format-bold-rounded size-6 cursor-pointer"
-            :class="{ 'text-primary-500': editor.isActive('bold') && editor.isFocused }"
-            @click="toggleBold"
-          ></div>
-          <div
-            class="i-material-symbols-format-italic-rounded size-6 cursor-pointer"
-            :class="{ 'text-primary-500': editor.isActive('italic') && editor.isFocused }"
-            @click="toggleItalic"
-          ></div>
-          <div
-            class="i-material-symbols-format-underlined-rounded size-6 cursor-pointer"
-            :class="{ 'text-primary-500': editor.isActive('underline') && editor.isFocused }"
-            @click="toggleUnderline"
-          ></div>
-          <div
-            class="i-material-symbols-strikethrough-s-rounded size-6 cursor-pointer"
-            :class="{ 'text-primary-500': editor.isActive('strike') && editor.isFocused }"
-            @click="toggleStrike"
-          ></div>
+          <Tooltip title="Bold" delay="500">
+            <div
+              class="i-material-symbols-format-bold-rounded size-6 cursor-pointer"
+              :class="{ 'text-primary-500': editor.isActive('bold') && editor.isFocused }"
+              @click="toggleBold"
+            ></div>
+          </Tooltip>
+          <Tooltip title="Italic" delay="500">
+            <div
+              class="i-material-symbols-format-italic-rounded size-6 cursor-pointer"
+              :class="{ 'text-primary-500': editor.isActive('italic') && editor.isFocused }"
+              @click="toggleItalic"
+            ></div>
+          </Tooltip>
+          <Tooltip title="Underline" delay="500">
+            <div
+              class="i-material-symbols-format-underlined-rounded size-6 cursor-pointer"
+              :class="{ 'text-primary-500': editor.isActive('underline') && editor.isFocused }"
+              @click="toggleUnderline"
+            ></div>
+          </Tooltip>
+          <Tooltip title="Strikethrough" delay="500">
+            <div
+              class="i-material-symbols-strikethrough-s-rounded size-6 cursor-pointer"
+              :class="{ 'text-primary-500': editor.isActive('strike') && editor.isFocused }"
+              @click="toggleStrike"
+            ></div>
+          </Tooltip>
         </div>
 
         <Divider orientation="vertical" class="!mx-2" />
 
         <div class="flex gap-1">
-          <div
-            class="i-material-symbols-format-list-bulleted-rounded size-6 cursor-pointer"
-            @click="toggleBulletList"
-          ></div>
-          <div
-            class="i-material-symbols-format-list-numbered-rounded size-6 cursor-pointer"
-            @click="toggleOrderedList"
-          ></div>
+          <Tooltip title="Bullets" delay="500">
+            <div
+              class="i-material-symbols-format-list-bulleted-rounded size-6 cursor-pointer"
+              @click="toggleBulletList"
+            ></div>
+          </Tooltip>
+          <Tooltip title="Numbering" delay="500">
+            <div
+              class="i-material-symbols-format-list-numbered-rounded size-6 cursor-pointer"
+              @click="toggleOrderedList"
+            ></div>
+          </Tooltip>
 
           <Popover :disabled>
             <div
