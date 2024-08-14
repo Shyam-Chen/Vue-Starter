@@ -138,6 +138,7 @@ const links = [
       { name: 'MeterGroup', to: '/feedback/meter-group' },
       { name: 'Notification', to: '/feedback/notification' },
       { name: 'Progress', to: '/feedback/progress' },
+      { name: 'PullToRefresh', to: '/feedback/pull-to-refresh' },
       { name: 'Skeletons', to: '/feedback/skeletons' },
     ],
   },

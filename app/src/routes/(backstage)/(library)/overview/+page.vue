@@ -120,6 +120,7 @@ import { XBreadcrumb } from '@x/ui';
       <RouterLink to="/feedback/meter-group" class="card">MeterGroup</RouterLink>
       <RouterLink to="/feedback/notification" class="card">Notification</RouterLink>
       <RouterLink to="/feedback/progress" class="card">Progress</RouterLink>
+      <RouterLink to="/feedback/pull-to-refresh" class="card">PullToRefresh</RouterLink>
       <RouterLink to="/feedback/skeletons" class="card">Skeleton</RouterLink>
     </div>
   </div>

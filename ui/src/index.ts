@@ -49,6 +49,7 @@ export { default as XPassword } from './components/password/Password.vue';
 export { default as XPopover } from './components/popover/Popover.vue';
 export { default as XProgressBar } from './components/progress-bar/ProgressBar.vue';
 export { default as XProgressCircle } from './components/progress-circle/ProgressCircle.vue';
+export { default as XPullToRefresh } from './components/pull-to-refresh/PullToRefresh.vue';
 export { default as XRadioGroup } from './components/radio-group/RadioGroup.vue';
 export { default as XRangeSlider } from './components/range-slider/RangeSlider.vue';
 export { default as XRichTextEditor } from './components/rich-text-editor/RichTextEditor.vue';
