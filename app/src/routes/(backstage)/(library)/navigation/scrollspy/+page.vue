@@ -11,6 +11,16 @@ const onIntersectionObserver = (num: number): IntersectionObserverCallback => {
     sections.value[num] = entry.isIntersecting;
   };
 };
+
+function currentSectionStatus(index: number) {
+  if (sections.value[index]) {
+    const _sections = [...sections.value];
+    if (_sections.slice(0, index).includes(true)) return false;
+    return true;
+  }
+
+  return false;
+}
 </script>
 
 <template>
@@ -21,7 +31,7 @@ const onIntersectionObserver = (num: number): IntersectionObserverCallback => {
   <div class="grid grid-cols-12 gap-2">
     <div class="col-span-9">
       <div
-        v-intersection-observer="[onIntersectionObserver(0), { rootMargin: '-41.5% 0px' }]"
+        v-intersection-observer="[onIntersectionObserver(0), { rootMargin: '-33.33% 0px' }]"
         class="flex flex-col gap-3 mb-12"
       >
         <div class="text-2xl font-bold">1. Create a Project</div>
@@ -56,7 +66,7 @@ const onIntersectionObserver = (num: number): IntersectionObserverCallback => {
       </div>
 
       <div
-        v-intersection-observer="[onIntersectionObserver(1), { rootMargin: '-41.5% 0px' }]"
+        v-intersection-observer="[onIntersectionObserver(1), { rootMargin: '-33.33% 0px' }]"
         class="flex flex-col gap-3 mt-8 mb-12"
       >
         <div class="text-2xl font-bold">2. Create a Collection</div>
@@ -91,7 +101,7 @@ const onIntersectionObserver = (num: number): IntersectionObserverCallback => {
       </div>
 
       <div
-        v-intersection-observer="[onIntersectionObserver(2), { rootMargin: '-41.5% 0px' }]"
+        v-intersection-observer="[onIntersectionObserver(2), { rootMargin: '-33.33% 0px' }]"
         class="flex flex-col gap-3 mt-8 mb-12"
       >
         <div class="text-2xl font-bold">3. Create a Field</div>
@@ -126,7 +136,7 @@ const onIntersectionObserver = (num: number): IntersectionObserverCallback => {
       </div>
 
       <div
-        v-intersection-observer="[onIntersectionObserver(3), { rootMargin: '-41.5% 0px' }]"
+        v-intersection-observer="[onIntersectionObserver(3), { rootMargin: '-33.33% 0px' }]"
         class="flex flex-col gap-3 mt-8 mb-12"
       >
         <div class="text-2xl font-bold">4. Create an Item</div>
@@ -161,7 +171,7 @@ const onIntersectionObserver = (num: number): IntersectionObserverCallback => {
       </div>
 
       <div
-        v-intersection-observer="[onIntersectionObserver(4), { rootMargin: '-41.5% 0px' }]"
+        v-intersection-observer="[onIntersectionObserver(4), { rootMargin: '-33.33% 0px' }]"
         class="flex flex-col gap-3 mt-8 mb-12"
       >
         <div class="text-2xl font-bold">5. Set Roles & Permissions</div>
@@ -196,7 +206,7 @@ const onIntersectionObserver = (num: number): IntersectionObserverCallback => {
       </div>
 
       <div
-        v-intersection-observer="[onIntersectionObserver(5), { rootMargin: '-41.5% 0px' }]"
+        v-intersection-observer="[onIntersectionObserver(5), { rootMargin: '-33.33% 0px' }]"
         class="flex flex-col gap-3 mt-8 mb-12"
       >
         <div class="text-2xl font-bold">6. Connect to the API</div>
@@ -233,12 +243,12 @@ const onIntersectionObserver = (num: number): IntersectionObserverCallback => {
 
     <div class="col-span-3">
       <div class="sticky top-24 flex flex-col gap-1">
-        <a class="link" :class="{ active: sections[0] }">1. Create a Project</a>
-        <a class="link" :class="{ active: sections[1] }">2. Create a Collection</a>
-        <a class="link" :class="{ active: sections[2] }">3. Create a Field</a>
-        <a class="link" :class="{ active: sections[3] }">4. Create an Item</a>
-        <a class="link" :class="{ active: sections[4] }">5. Set Roles & Permissions</a>
-        <a class="link" :class="{ active: sections[5] }">6. Connect to the API</a>
+        <a class="link" :class="{ active: currentSectionStatus(0) }">1. Create a Project</a>
+        <a class="link" :class="{ active: currentSectionStatus(1) }">2. Create a Collection</a>
+        <a class="link" :class="{ active: currentSectionStatus(2) }">3. Create a Field</a>
+        <a class="link" :class="{ active: currentSectionStatus(3) }">4. Create an Item</a>
+        <a class="link" :class="{ active: currentSectionStatus(4) }">5. Set Roles & Permissions</a>
+        <a class="link" :class="{ active: currentSectionStatus(5) }">6. Connect to the API</a>
       </div>
     </div>
   </div>
