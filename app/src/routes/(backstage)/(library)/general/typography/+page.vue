@@ -23,4 +23,23 @@ import { XBreadcrumb, XCard } from '@x/ui';
       </p>
     </XCard>
   </section>
+
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Prose</h2>
+
+    <XCard>
+      <article class="prose">
+        <h1>h1. Heading</h1>
+        <h2>h2. Heading</h2>
+        <h3>h3. Heading</h3>
+        <h4>h4. Heading</h4>
+
+        <p>
+          p. Paragraph Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis
+          tenetur unde suscipit, quam beatae rerum inventore consectetur, neque doloribus,
+          cupiditate numquam dignissimos laborum fugiat deleniti? Eum quasi quidem quibusdam.
+        </p>
+      </article>
+    </XCard>
+  </section>
 </template>
