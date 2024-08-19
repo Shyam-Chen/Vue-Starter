@@ -1,38 +1,25 @@
 <script lang="ts" setup>
-import { ref } from 'vue';
-import { XBreadcrumb } from '@x/ui';
-import { vIntersectionObserver } from '@vueuse/components';
+import { XBreadcrumb, XOutline } from '@x/ui';
+import { useOutline } from '@x/ui';
 
-const sections = ref(Array(6).fill(false));
-
-const onIntersectionObserver = (num: number): IntersectionObserverCallback => {
-  return ([entry]) => {
-    sections.value[num] = entry.isIntersecting;
-  };
-};
-
-function currentSectionStatus(index: number) {
-  if (sections.value[index]) {
-    const _sections = [...sections.value];
-    if (_sections.slice(0, index).includes(true)) return false;
-    return true;
-  }
-
-  return false;
-}
+const outline = useOutline([
+  { text: '1. Create a Project' },
+  { text: '2. Create a Collection' },
+  { text: '3. Create a Field' },
+  { text: '4. Create an Item' },
+  { text: '5. Set Roles & Permissions' },
+  { text: '6. Connect to the API' },
+]) as any;
 </script>
 
 <template>
-  <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Navigation' }, { text: 'Scrollspy' }]" />
+  <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Navigation' }, { text: 'Outline' }]" />
 
-  <h1 class="text-4xl font-extrabold my-4">Scrollspy</h1>
+  <h1 class="text-4xl font-extrabold my-4">Outline</h1>
 
   <div class="grid grid-cols-12 gap-2">
     <div class="col-span-9">
-      <div
-        v-intersection-observer="[onIntersectionObserver(0), { rootMargin: '-33.33% 0px' }]"
-        class="flex flex-col gap-3 mb-12"
-      >
+      <div :ref="(el) => (outline[0].el = el)" class="scroll-mt-24 flex flex-col gap-3 mb-12">
         <div class="text-2xl font-bold">1. Create a Project</div>
 
         <div class="flex flex-col gap-3">
@@ -64,10 +51,7 @@ function currentSectionStatus(index: number) {
         </div>
       </div>
 
-      <div
-        v-intersection-observer="[onIntersectionObserver(1), { rootMargin: '-33.33% 0px' }]"
-        class="flex flex-col gap-3 mt-8 mb-12"
-      >
+      <div :ref="(el) => (outline[1].el = el)" class="scroll-mt-24 flex flex-col gap-3 mt-8 mb-12">
         <div class="text-2xl font-bold">2. Create a Collection</div>
 
         <div class="flex flex-col gap-3">
@@ -99,10 +83,7 @@ function currentSectionStatus(index: number) {
         </div>
       </div>
 
-      <div
-        v-intersection-observer="[onIntersectionObserver(2), { rootMargin: '-33.33% 0px' }]"
-        class="flex flex-col gap-3 mt-8 mb-12"
-      >
+      <div :ref="(el) => (outline[2].el = el)" class="scroll-mt-24 flex flex-col gap-3 mt-8 mb-12">
         <div class="text-2xl font-bold">3. Create a Field</div>
 
         <div class="flex flex-col gap-3">
@@ -134,10 +115,7 @@ function currentSectionStatus(index: number) {
         </div>
       </div>
 
-      <div
-        v-intersection-observer="[onIntersectionObserver(3), { rootMargin: '-33.33% 0px' }]"
-        class="flex flex-col gap-3 mt-8 mb-12"
-      >
+      <div :ref="(el) => (outline[3].el = el)" class="scroll-mt-24 flex flex-col gap-3 mt-8 mb-12">
         <div class="text-2xl font-bold">4. Create an Item</div>
 
         <div class="flex flex-col gap-3">
@@ -169,10 +147,7 @@ function currentSectionStatus(index: number) {
         </div>
       </div>
 
-      <div
-        v-intersection-observer="[onIntersectionObserver(4), { rootMargin: '-33.33% 0px' }]"
-        class="flex flex-col gap-3 mt-8 mb-12"
-      >
+      <div :ref="(el) => (outline[4].el = el)" class="scroll-mt-24 flex flex-col gap-3 mt-8 mb-12">
         <div class="text-2xl font-bold">5. Set Roles & Permissions</div>
 
         <div class="flex flex-col gap-3">
@@ -204,10 +179,7 @@ function currentSectionStatus(index: number) {
         </div>
       </div>
 
-      <div
-        v-intersection-observer="[onIntersectionObserver(5), { rootMargin: '-33.33% 0px' }]"
-        class="flex flex-col gap-3 mt-8 mb-12"
-      >
+      <div :ref="(el) => (outline[5].el = el)" class="scroll-mt-24 flex flex-col gap-3 mt-8 mb-12">
         <div class="text-2xl font-bold">6. Connect to the API</div>
 
         <div class="flex flex-col gap-3">
@@ -241,14 +213,11 @@ function currentSectionStatus(index: number) {
     </div>
 
     <div class="col-span-3">
-      <div class="sticky top-24 flex flex-col gap-1">
-        <a class="link" :class="{ active: currentSectionStatus(0) }">1. Create a Project</a>
-        <a class="link" :class="{ active: currentSectionStatus(1) }">2. Create a Collection</a>
-        <a class="link" :class="{ active: currentSectionStatus(2) }">3. Create a Field</a>
-        <a class="link" :class="{ active: currentSectionStatus(3) }">4. Create an Item</a>
-        <a class="link" :class="{ active: currentSectionStatus(4) }">5. Set Roles & Permissions</a>
-        <a class="link" :class="{ active: currentSectionStatus(5) }">6. Connect to the API</a>
-      </div>
+      <XOutline
+        :items="outline"
+        class="top-24"
+        @clickItem="(index) => outline?.[index]?.clickItem?.()"
+      />
     </div>
   </div>
 </template>

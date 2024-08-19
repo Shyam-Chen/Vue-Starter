@@ -40,6 +40,7 @@ import { XBreadcrumb } from '@x/ui';
       <RouterLink to="/navigation/breadcrumbs" class="card">Breadcrumb</RouterLink>
       <RouterLink to="/navigation/drawers" class="card">Drawer</RouterLink>
       <RouterLink to="/navigation/dropdown" class="card">Dropdown</RouterLink>
+      <RouterLink to="/navigation/outline" class="card">Outline</RouterLink>
       <RouterLink to="/navigation/pagination" class="card">Pagination</RouterLink>
       <RouterLink to="/navigation/scrollspy" class="card">Scrollspy</RouterLink>
       <RouterLink to="/navigation/stepper" class="card">Stepper</RouterLink>

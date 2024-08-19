@@ -43,6 +43,7 @@ export { default as XMonthRangePicker } from './components/month-range-picker/Mo
 export { default as XMultiautocomplete } from './components/multiautocomplete/Multiautocomplete.vue';
 export { default as XMultiselect } from './components/multiselect/Multiselect.vue';
 export { default as XNotification } from './components/notification/Notification.vue';
+export { default as XOutline } from './components/outline/Outline.vue';
 export { default as XPagination } from './components/pagination/Pagination.vue';
 export { default as XPanel } from './components/panel/Panel.vue';
 export { default as XPassword } from './components/password/Password.vue';
@@ -76,6 +77,7 @@ export { default as XYearPicker } from './components/year-picker/YearPicker.vue'
 
 export { default as useEventSource } from './composables/eventsource/useEventSource';
 export { default as useNotification } from './composables/notification/useNotification';
+export { default as useOutline } from './composables/outline/useOutline';
 export { default as useScrollParent } from './composables/scroll-parent/useScrollParent';
 export { default as useValdnLocale } from './composables/valdn-locale/useValdnLocale';
 export { default as useWebSocket } from './composables/websocket/useWebSocket';

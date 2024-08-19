@@ -47,6 +47,7 @@ const links = [
       { name: 'Breadcrumb', to: '/navigation/breadcrumbs' },
       { name: 'Drawer', to: '/navigation/drawers' },
       { name: 'Dropdown', to: '/navigation/dropdown' },
+      { name: 'Outline', to: '/navigation/outline' },
       { name: 'Pagination', to: '/navigation/pagination' },
       { name: 'Scrollspy', to: '/navigation/scrollspy' },
       { name: 'Stepper', to: '/navigation/stepper' },
