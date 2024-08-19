@@ -24,7 +24,7 @@ export default (items: OutlineProps['items'] | ComputedRef<OutlineProps['items']
         ([entry]) => {
           sections.value[i].status = entry.isIntersecting;
         },
-        { rootMargin: '-33.33% 0px' },
+        { rootMargin: '-12.5% 0px' },
       );
 
       sections.value[i].clickItem = () => {

@@ -1,13 +1,16 @@
 <script lang="ts" setup>
 import type { VNode } from 'vue';
-import type { UseIntersectionObserverReturn } from '@vueuse/core';
+import type { useIntersectionObserver } from '@vueuse/core';
 
 interface OutlineItem {
   text: string;
-  status?: boolean;
-  intersectionObserver?: UseIntersectionObserverReturn;
-  clickItem?: () => void;
+  sub?: boolean;
+
+  intersectionObserver?: typeof useIntersectionObserver;
   el?: HTMLElement | VNode['el'];
+  status?: boolean;
+
+  clickItem?: () => void;
 }
 
 defineOptions({
@@ -39,15 +42,15 @@ function currentSectionStatus(index: number) {
 </script>
 
 <template>
-  <div v-bind="$attrs" class="sticky border-l border-gray-200 dark:border-gray-700">
-    <div class="pl-2 border-l-2 border-transparent my-1 font-bold">On this page</div>
+  <div v-bind="$attrs" class="sticky border-s border-gray-200 dark:border-gray-700">
+    <div class="ps-2 border-s-2 border-transparent my-1 font-bold">On this page</div>
 
     <ul>
       <li
         v-for="(item, index) in items"
         :key="index"
         class="OutlineItem"
-        :class="{ active: currentSectionStatus(index) }"
+        :class="{ active: currentSectionStatus(index), '!ps-6': item.sub }"
         @click="emit('clickItem', index)"
       >
         {{ item.text }}
@@ -58,7 +61,7 @@ function currentSectionStatus(index: number) {
 
 <style lang="scss" scoped>
 .OutlineItem {
-  @apply pl-2 border-l-2 border-transparent my-1 cursor-pointer;
+  @apply ps-2 border-s-2 border-transparent my-1 cursor-pointer;
 
   &:not(.active) {
     @apply hover:text-slate-600 dark:hover:text-slate-300;
