@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { XBreadcrumb, XOutline } from '@x/ui';
+import { XBreadcrumb, XButton, XOutline } from '@x/ui';
 import { useOutline } from '@x/ui';
 
 const outline = useOutline([
@@ -8,9 +8,10 @@ const outline = useOutline([
   /* 2 */ { text: '3. Create a Field' },
   /* 3 */ { text: '3-1. Create a Text Field', sub: true },
   /* 4 */ { text: '3-2. Create a Number Field', sub: true },
-  /* 5 */ { text: '4. Create an Item' },
-  /* 6 */ { text: '5. Set Roles & Permissions' },
-  /* 7 */ { text: '6. Connect to the API' },
+  /* 5 */ { text: 'Complete Field', sub: true },
+  /* 6 */ { text: '4. Create an Item' },
+  /* 7 */ { text: '5. Set Roles & Permissions' },
+  /* 8 */ { text: '6. Connect to the API' },
 ]) as any;
 </script>
 
@@ -124,10 +125,16 @@ const outline = useOutline([
             tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna.
             Sed consequat, leo eget bibendum sodales, augue velit cursus nunc,
           </p>
+
+          <XButton
+            :ref="(el) => (outline[5].el = el)"
+            label="Complete Field"
+            class="scroll-mt-24"
+          />
         </div>
       </div>
 
-      <div :ref="(el) => (outline[5].el = el)" class="scroll-mt-24 flex flex-col gap-3 mt-8 mb-12">
+      <div :ref="(el) => (outline[6].el = el)" class="scroll-mt-24 flex flex-col gap-3 mt-8 mb-12">
         <h2 class="text-3xl font-bold">4. Create an Item</h2>
 
         <div class="flex flex-col gap-3">
@@ -159,7 +166,7 @@ const outline = useOutline([
         </div>
       </div>
 
-      <div :ref="(el) => (outline[6].el = el)" class="scroll-mt-24 flex flex-col gap-3 mt-8 mb-12">
+      <div :ref="(el) => (outline[7].el = el)" class="scroll-mt-24 flex flex-col gap-3 mt-8 mb-12">
         <h2 class="text-3xl font-bold">5. Set Roles & Permissions</h2>
 
         <div class="flex flex-col gap-3">
@@ -191,7 +198,7 @@ const outline = useOutline([
         </div>
       </div>
 
-      <div :ref="(el) => (outline[7].el = el)" class="scroll-mt-24 flex flex-col gap-3 mt-8 mb-12">
+      <div :ref="(el) => (outline[8].el = el)" class="scroll-mt-24 flex flex-col gap-3 mt-8 mb-12">
         <h2 class="text-3xl font-bold">6. Connect to the API</h2>
 
         <div class="flex flex-col gap-3">

@@ -17,9 +17,7 @@ export default (items: OutlineProps['items'] | ComputedRef<OutlineProps['items']
 
   onMounted(() => {
     for (let i = 0; i < sections.value.length; i++) {
-      // @ts-expect-error TODO
-      sections.value[i].intersectionObserver = useIntersectionObserver(
-        // @ts-expect-error TODO
+      useIntersectionObserver(
         sections.value[i].el,
         ([entry]) => {
           sections.value[i].status = entry.isIntersecting;
@@ -28,13 +26,12 @@ export default (items: OutlineProps['items'] | ComputedRef<OutlineProps['items']
       );
 
       sections.value[i].clickItem = () => {
-        // @ts-expect-error TODO
-        if (sections.value[i].el.$el) {
-          // @ts-expect-error TODO
-          sections.value[i].el.$el.scrollIntoView({ behavior: 'smooth' });
-        } else if (sections.value[i].el instanceof Element) {
-          // @ts-expect-error TODO
-          sections.value[i].el.scrollIntoView({ behavior: 'smooth' });
+        const el = sections.value[i].el;
+
+        if (el instanceof Element) {
+          el.scrollIntoView({ behavior: 'smooth' });
+        } else {
+          el?.$el.scrollIntoView({ behavior: 'smooth' });
         }
       };
     }

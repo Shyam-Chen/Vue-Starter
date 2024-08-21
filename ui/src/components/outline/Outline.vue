@@ -1,13 +1,11 @@
 <script lang="ts" setup>
-import type { VNode } from 'vue';
-import type { useIntersectionObserver } from '@vueuse/core';
+import type { MaybeElement } from '@vueuse/core';
 
 interface OutlineItem {
   text: string;
   sub?: boolean;
 
-  intersectionObserver?: typeof useIntersectionObserver;
-  el?: HTMLElement | VNode['el'];
+  el?: MaybeElement;
   status?: boolean;
 
   clickItem?: () => void;
