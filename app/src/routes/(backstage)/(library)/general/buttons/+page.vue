@@ -220,7 +220,7 @@ const buttonGroup = ref(0);
         <div class="flex justify-end">
           <div>
             <XButton.Group>
-              <XButton prepend="i-material-symbols-add-rounded" label="Add" />
+              <XButton prepend="i-material-symbols-add-rounded" label="New" />
 
               <XPopover>
                 <XButton prepend="i-material-symbols-keyboard-arrow-down-rounded" />

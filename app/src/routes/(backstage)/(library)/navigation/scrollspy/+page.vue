@@ -241,7 +241,7 @@ function currentSectionStatus(index: number) {
     </div>
 
     <div class="col-span-3">
-      <div class="sticky top-24 flex flex-col gap-1">
+      <div class="sticky top-24 flex flex-col gap-1 border-s border-gray-200 dark:border-gray-700">
         <a class="link" :class="{ active: currentSectionStatus(0) }">1. Create a Project</a>
         <a class="link" :class="{ active: currentSectionStatus(1) }">2. Create a Collection</a>
         <a class="link" :class="{ active: currentSectionStatus(2) }">3. Create a Field</a>
@@ -255,10 +255,10 @@ function currentSectionStatus(index: number) {
 
 <style lang="scss" scoped>
 .link {
-  @apply pl-2 border-l-2 border-transparent;
+  @apply ps-2 border-s-2 border-transparent;
 
   &.active {
-    @apply text-primary-500 border-primary-500;
+    @apply text-primary-500 border-primary-500 dark:text-primary-400 dark:border-primary-400;
   }
 }
 </style>

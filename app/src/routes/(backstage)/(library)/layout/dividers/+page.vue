@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { XBreadcrumb, XCard, XDivider } from '@x/ui';
+import { XBreadcrumb, XCard, XCode, XDivider } from '@x/ui';
 </script>
 
 <template>
@@ -29,29 +29,31 @@ import { XBreadcrumb, XCard, XDivider } from '@x/ui';
     </XCard>
   </section>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">
-      Horizontal
-      <code class="text-sm text-gray-700 bg-gray-300 p-1 rounded">divide-x-2</code>
-    </div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">
+      Horizontal <XCode class="align-middle">divide-x</XCode>
+    </h2>
 
-    <div class="flex shadow rounded bg-white dark:bg-slate-700 divide-x-2">
-      <div v-for="num in 5" :key="num" class="flex-1 px-4 py-2">
-        {{ num }}
+    <XCard>
+      <div class="flex divide-x divide-gray-200 dark:divide-gray-700">
+        <div v-for="num in 5" :key="num" class="flex-1 px-4 py-2">
+          {{ num }}
+        </div>
       </div>
-    </div>
-  </div>
+    </XCard>
+  </section>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">
-      Vertical
-      <code class="text-sm text-gray-700 bg-gray-300 p-1 rounded">divide-y-2</code>
-    </div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">
+      Vertical <XCode class="align-middle">divide-y</XCode>
+    </h2>
 
-    <div class="flex flex-col shadow rounded bg-white dark:bg-slate-700 divide-y-2">
-      <div v-for="num in 5" :key="num" class="px-4 py-2">
-        {{ num }}
+    <XCard>
+      <div class="flex flex-col divide-y divide-gray-200 dark:divide-gray-700">
+        <div v-for="num in 5" :key="num" class="flex-1 px-4 py-2">
+          {{ num }}
+        </div>
       </div>
-    </div>
-  </div>
+    </XCard>
+  </section>
 </template>

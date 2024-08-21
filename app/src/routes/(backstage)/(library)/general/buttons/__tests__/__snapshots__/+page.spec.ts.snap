@@ -518,7 +518,7 @@ exports[`/general/buttons 1`] = `
                   <div data-v-e3d5c012="" class="Button-Icon flex items-center overflow-hidden">
                     <div data-v-e3d5c012="" class="Button-Icon i-material-symbols-add-rounded"></div>
                   </div>
-                  <div data-v-e3d5c012="">Add</div>
+                  <div data-v-e3d5c012="">New</div>
                   <!--v-if-->
                 </button>
                 <div data-v-3ff4d40f="" class="Popover">
