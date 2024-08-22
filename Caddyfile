@@ -1,4 +1,4 @@
-localhost {
+:4173 {
   encode gzip
   root * /usr/share/caddy
 
@@ -9,7 +9,7 @@ localhost {
 
   handle_path /api/* {
     rewrite * /api{uri}
-		reverse_proxy 192.168.100.202:3000
+		reverse_proxy :3000
 	}
 
   header /service-worker.js {

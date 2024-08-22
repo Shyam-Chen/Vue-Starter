@@ -4,4 +4,3 @@ packages:
   - 'ui'
   - 'mock'
   - 'e2e'
-  - 'docs'

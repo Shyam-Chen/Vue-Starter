@@ -15,5 +15,5 @@ FROM caddy:2
 ARG SITE_ADDRESS
 ENV SITE_ADDRESS=$SITE_ADDRESS
 
-COPY --from=base /usr/src/app/infra/Caddyfile /etc/caddy/Caddyfile
+COPY --from=base /usr/src/app/.github/registry/Caddyfile /etc/caddy/Caddyfile
 COPY --from=base /usr/src/app/app/dist /usr/share/caddy

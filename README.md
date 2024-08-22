@@ -165,13 +165,27 @@ Add environment variables to the Render build.
 API_URL=xxx
 ```
 
+### Container registry
+
+Push the image to your registry.
+
+```sh
+$ docker build -f ./.github/registry/Dockerfile \
+               --build-arg SITE_ADDRESS=$SITE_ADDRESS \
+               -t $SITE_NAME .
+
+$ docker tag $SITE_NAME $REGISTRY_URL
+
+$ docker push $REGISTRY_URL
+```
+
 ## Directory Structure
 
 The structure follows the LIFT Guidelines.
 
 ```coffee
 .
-├── .github/workflows/ci.yml
+├── .github
 ├── app
 │   ├── public
 │   ├── src
@@ -192,11 +206,6 @@ The structure follows the LIFT Guidelines.
 │   ├── package.json
 │   ├── tsconfig.json
 │   └── vite.config.ts
-├── docs -> Write documentation with VitePress
-│   ├── .vitepress
-│   ├── index.md
-│   ├── package.json
-│   └── vite.config.ts
 ├── e2e -> End-to-end testing of web pages
 │   ├── src
 │   ├── package.json
@@ -212,17 +221,17 @@ The structure follows the LIFT Guidelines.
 │   ├── package.json
 │   ├── tsconfig.json
 │   └── vite.config.ts
+├── .dockerignore
 ├── .editorconfig
-├── .eslintrc
 ├── .gitignore
-├── .prettierrc
-├── biome.json
 ├── Caddyfile
 ├── compose.yaml
 ├── Dockerfile
+├── eslint.config.js
 ├── package.json
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
+├── prettier.config.js
 ├── README.md
 └── render.yaml
 ```

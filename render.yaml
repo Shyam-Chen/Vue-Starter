@@ -7,7 +7,7 @@ services:
     branch: main
     healthCheckPath: /
 
-    dockerfilePath: ./infra/Dockerfile
+    dockerfilePath: ./.github/registry/Dockerfile
 
     envVars:
       - key: SITE_ADDRESS
