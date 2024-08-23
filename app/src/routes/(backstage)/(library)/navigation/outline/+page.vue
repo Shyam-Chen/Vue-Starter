@@ -8,11 +8,11 @@ const outline = useOutline([
   /* 2 */ { text: '3. Create a Field' },
   /* 3 */ { text: '3-1. Create a Text Field', sub: true },
   /* 4 */ { text: '3-2. Create a Number Field', sub: true },
-  /* 5 */ { text: 'Complete Field', sub: true },
+  /* 5 */ { text: '3-3. Complete Field', sub: true },
   /* 6 */ { text: '4. Create an Item' },
   /* 7 */ { text: '5. Set Roles & Permissions' },
   /* 8 */ { text: '6. Connect to the API' },
-]) as any;
+]);
 </script>
 
 <template>
@@ -22,7 +22,7 @@ const outline = useOutline([
 
   <div class="grid grid-cols-12 gap-2">
     <div class="col-span-9">
-      <div :ref="(el) => (outline[0].el = el)" class="scroll-mt-24 flex flex-col gap-3 mb-12">
+      <div :ref="(el) => (outline[0].el = el)" class="flex flex-col gap-3 mb-12">
         <h2 class="text-3xl font-bold">1. Create a Project</h2>
 
         <div class="flex flex-col gap-3">
@@ -54,7 +54,7 @@ const outline = useOutline([
         </div>
       </div>
 
-      <div :ref="(el) => (outline[1].el = el)" class="scroll-mt-24 flex flex-col gap-3 mt-8 mb-12">
+      <div :ref="(el) => (outline[1].el = el)" class="flex flex-col gap-3 mt-8 mb-12">
         <h2 class="text-3xl font-bold">2. Create a Collection</h2>
 
         <div class="flex flex-col gap-3">
@@ -87,9 +87,7 @@ const outline = useOutline([
       </div>
 
       <div class="flex flex-col gap-3 mt-8 mb-12">
-        <h2 :ref="(el) => (outline[2].el = el)" class="scroll-mt-24 text-3xl font-bold">
-          3. Create a Field
-        </h2>
+        <h2 :ref="(el) => (outline[2].el = el)" class="text-3xl font-bold">3. Create a Field</h2>
 
         <div class="flex flex-col gap-3">
           <p>
@@ -100,7 +98,7 @@ const outline = useOutline([
             vulputate eget, arcu.
           </p>
 
-          <h3 :ref="(el) => (outline[3].el = el)" class="scroll-mt-24 text-2xl font-semibold">
+          <h3 :ref="(el) => (outline[3].el = el)" class="text-2xl font-semibold">
             3-1. Create a Text Field
           </h3>
 
@@ -111,7 +109,7 @@ const outline = useOutline([
             eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus.
           </p>
 
-          <h3 :ref="(el) => (outline[4].el = el)" class="scroll-mt-24 text-2xl font-semibold">
+          <h3 :ref="(el) => (outline[4].el = el)" class="text-2xl font-semibold">
             3-2. Create a Number Field
           </h3>
 
@@ -126,15 +124,11 @@ const outline = useOutline([
             Sed consequat, leo eget bibendum sodales, augue velit cursus nunc,
           </p>
 
-          <XButton
-            :ref="(el) => (outline[5].el = el)"
-            label="Complete Field"
-            class="scroll-mt-24"
-          />
+          <XButton :ref="(el) => (outline[5].el = el)" label="3-3. Complete Field" class="" />
         </div>
       </div>
 
-      <div :ref="(el) => (outline[6].el = el)" class="scroll-mt-24 flex flex-col gap-3 mt-8 mb-12">
+      <div :ref="(el) => (outline[6].el = el)" class="flex flex-col gap-3 mt-8 mb-12">
         <h2 class="text-3xl font-bold">4. Create an Item</h2>
 
         <div class="flex flex-col gap-3">
@@ -166,7 +160,7 @@ const outline = useOutline([
         </div>
       </div>
 
-      <div :ref="(el) => (outline[7].el = el)" class="scroll-mt-24 flex flex-col gap-3 mt-8 mb-12">
+      <div :ref="(el) => (outline[7].el = el)" class="flex flex-col gap-3 mt-8 mb-12">
         <h2 class="text-3xl font-bold">5. Set Roles & Permissions</h2>
 
         <div class="flex flex-col gap-3">
@@ -198,7 +192,7 @@ const outline = useOutline([
         </div>
       </div>
 
-      <div :ref="(el) => (outline[8].el = el)" class="scroll-mt-24 flex flex-col gap-3 mt-8 mb-12">
+      <div :ref="(el) => (outline[8].el = el)" class="flex flex-col gap-3 mt-8 mb-12">
         <h2 class="text-3xl font-bold">6. Connect to the API</h2>
 
         <div class="flex flex-col gap-3">
@@ -232,21 +226,7 @@ const outline = useOutline([
     </div>
 
     <div class="col-span-3">
-      <XOutline
-        :items="outline"
-        class="top-24"
-        @clickItem="(index) => outline?.[index]?.clickItem?.()"
-      />
+      <XOutline :items="outline" @clickItem="(index) => outline?.[index]?.clickItem?.()" />
     </div>
   </div>
 </template>
-
-<style lang="scss" scoped>
-.link {
-  @apply pl-2 border-l-2 border-transparent;
-
-  &.active {
-    @apply text-primary-500 border-primary-500;
-  }
-}
-</style>

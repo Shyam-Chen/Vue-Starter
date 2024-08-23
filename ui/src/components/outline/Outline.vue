@@ -1,11 +1,9 @@
 <script lang="ts" setup>
-import type { MaybeElement } from '@vueuse/core';
-
 interface OutlineItem {
   text: string;
   sub?: boolean;
 
-  el?: MaybeElement;
+  el?: any;
   status?: boolean;
 
   clickItem?: () => void;
@@ -40,7 +38,7 @@ function currentSectionStatus(index: number) {
 </script>
 
 <template>
-  <div v-bind="$attrs" class="sticky border-s border-gray-200 dark:border-gray-700">
+  <div v-bind="$attrs" class="sticky top-24 border-s border-gray-200 dark:border-gray-700">
     <div class="ps-2 border-s-2 border-transparent my-1 font-bold">On this page</div>
 
     <ul>

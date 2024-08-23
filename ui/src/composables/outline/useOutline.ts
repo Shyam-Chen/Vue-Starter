@@ -1,3 +1,5 @@
+/* @unocss-include */
+
 import type { ComputedRef } from 'vue';
 import type { ComponentProps } from 'vue-component-type-helpers';
 import { toRef, toValue, computed, onMounted, watch } from 'vue';
@@ -17,6 +19,14 @@ export default (items: OutlineProps['items'] | ComputedRef<OutlineProps['items']
 
   onMounted(() => {
     for (let i = 0; i < sections.value.length; i++) {
+      const el = sections.value[i].el;
+
+      if (el instanceof Element) {
+        el.classList.add('scroll-mt-24');
+      } else {
+        el?.$el.classList.add('scroll-mt-24');
+      }
+
       useIntersectionObserver(
         sections.value[i].el,
         ([entry]) => {
@@ -50,5 +60,5 @@ export default (items: OutlineProps['items'] | ComputedRef<OutlineProps['items']
     },
   );
 
-  return sections as ComputedRef<OutlineProps['items']>;
+  return sections;
 };
