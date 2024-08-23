@@ -131,6 +131,7 @@ const flux = reactive({
       'update:value',
       flux.selected.map((item) => item.value),
     );
+    emit('change');
   },
 });
 
