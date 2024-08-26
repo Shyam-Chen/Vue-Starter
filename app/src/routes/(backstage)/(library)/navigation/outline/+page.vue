@@ -1,6 +1,10 @@
 <script lang="ts" setup>
-import { XBreadcrumb, XButton, XOutline } from '@x/ui';
+import { onMounted } from 'vue';
+import { useRoute } from 'vue-router';
+import { XBreadcrumb, XButton, XOutline, XHashAnchor } from '@x/ui';
 import { useOutline } from '@x/ui';
+
+const route = useRoute();
 
 const outline = useOutline([
   /* 0 */ { text: '1. Create a Project' },
@@ -13,6 +17,10 @@ const outline = useOutline([
   /* 7 */ { text: '5. Set Roles & Permissions' },
   /* 8 */ { text: '6. Connect to the API' },
 ]);
+
+onMounted(() => {
+  if (route.hash) location.href = route.hash;
+});
 </script>
 
 <template>
@@ -23,7 +31,12 @@ const outline = useOutline([
   <div class="grid grid-cols-12 gap-2">
     <div class="col-span-9">
       <div :ref="(el) => (outline[0].el = el)" class="flex flex-col gap-3 mb-12">
-        <h2 class="text-3xl font-bold">1. Create a Project</h2>
+        <XHashAnchor v-slot="{ Hashtag }" hash="create-a-project">
+          <h2 class="text-3xl font-bold">
+            1. Create a Project
+            <component :is="Hashtag"></component>
+          </h2>
+        </XHashAnchor>
 
         <div class="flex flex-col gap-3">
           <p>
@@ -55,7 +68,12 @@ const outline = useOutline([
       </div>
 
       <div :ref="(el) => (outline[1].el = el)" class="flex flex-col gap-3 mt-8 mb-12">
-        <h2 class="text-3xl font-bold">2. Create a Collection</h2>
+        <XHashAnchor v-slot="{ Hashtag }" hash="create-a-collection">
+          <h2 class="text-3xl font-bold">
+            2. Create a Collection
+            <component :is="Hashtag"></component>
+          </h2>
+        </XHashAnchor>
 
         <div class="flex flex-col gap-3">
           <p>
@@ -87,7 +105,12 @@ const outline = useOutline([
       </div>
 
       <div class="flex flex-col gap-3 mt-8 mb-12">
-        <h2 :ref="(el) => (outline[2].el = el)" class="text-3xl font-bold">3. Create a Field</h2>
+        <XHashAnchor v-slot="{ Hashtag }" hash="create-a-field">
+          <h2 :ref="(el) => (outline[2].el = el)" class="text-3xl font-bold">
+            3. Create a Field
+            <component :is="Hashtag"></component>
+          </h2>
+        </XHashAnchor>
 
         <div class="flex flex-col gap-3">
           <p>
@@ -129,7 +152,12 @@ const outline = useOutline([
       </div>
 
       <div :ref="(el) => (outline[6].el = el)" class="flex flex-col gap-3 mt-8 mb-12">
-        <h2 class="text-3xl font-bold">4. Create an Item</h2>
+        <XHashAnchor v-slot="{ Hashtag }" hash="create-an-item">
+          <h2 class="text-3xl font-bold">
+            4. Create an Item
+            <component :is="Hashtag"></component>
+          </h2>
+        </XHashAnchor>
 
         <div class="flex flex-col gap-3">
           <p>
@@ -161,7 +189,12 @@ const outline = useOutline([
       </div>
 
       <div :ref="(el) => (outline[7].el = el)" class="flex flex-col gap-3 mt-8 mb-12">
-        <h2 class="text-3xl font-bold">5. Set Roles & Permissions</h2>
+        <XHashAnchor v-slot="{ Hashtag }" hash="set-roles-&-permissions">
+          <h2 class="text-3xl font-bold">
+            5. Set Roles & Permissions
+            <component :is="Hashtag"></component>
+          </h2>
+        </XHashAnchor>
 
         <div class="flex flex-col gap-3">
           <p>
@@ -193,7 +226,12 @@ const outline = useOutline([
       </div>
 
       <div :ref="(el) => (outline[8].el = el)" class="flex flex-col gap-3 mt-8 mb-12">
-        <h2 class="text-3xl font-bold">6. Connect to the API</h2>
+        <XHashAnchor v-slot="{ Hashtag }" hash="connect-to-the-api">
+          <h2 class="text-3xl font-bold">
+            6. Connect to the API
+            <component :is="Hashtag"></component>
+          </h2>
+        </XHashAnchor>
 
         <div class="flex flex-col gap-3">
           <p>

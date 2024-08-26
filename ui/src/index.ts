@@ -30,6 +30,7 @@ export { default as XDropzone } from './components/dropzone/Dropzone.vue';
 export { default as XFade } from './components/fade/Fade.vue';
 export { default as XFileInput } from './components/file-input/FileInput.vue';
 export { default as XFormControl } from './components/form-control/FormControl.vue';
+export { default as XHashAnchor } from './components/hash-anchor/HashAnchor.vue';
 export { default as XHighlight } from './components/highlight/Highlight.vue';
 export { default as XInputMask } from './components/input-mask/InputMask.vue';
 export { default as XIterator } from './components/iterator/Iterator.vue';
