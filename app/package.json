@@ -38,7 +38,7 @@
     "@vitejs/plugin-vue": "5.1.2",
     "@vitest/coverage-v8": "2.0.5",
     "@vue/test-utils": "2.4.6",
-    "happy-dom": "15.0.0",
+    "happy-dom": "14.12.3",
     "process-envify": "2.0.0",
     "sass": "1.77.8",
     "tailwindcss": "3.4.10",

@@ -110,13 +110,13 @@ importers:
         version: 5.1.2(vite@5.4.2(@types/node@22.5.1)(sass@1.77.8))(vue@3.4.38(typescript@5.5.4))
       '@vitest/coverage-v8':
         specifier: 2.0.5
-        version: 2.0.5(vitest@2.0.5(@types/node@22.5.1)(happy-dom@15.0.0)(sass@1.77.8))
+        version: 2.0.5(vitest@2.0.5(@types/node@22.5.1)(happy-dom@14.12.3)(sass@1.77.8))
       '@vue/test-utils':
         specifier: 2.4.6
         version: 2.4.6
       happy-dom:
-        specifier: 15.0.0
-        version: 15.0.0
+        specifier: 14.12.3
+        version: 14.12.3
       process-envify:
         specifier: 2.0.0
         version: 2.0.0
@@ -140,7 +140,7 @@ importers:
         version: 1.1.0
       vitest:
         specifier: 2.0.5
-        version: 2.0.5(@types/node@22.5.1)(happy-dom@15.0.0)(sass@1.77.8)
+        version: 2.0.5(@types/node@22.5.1)(happy-dom@14.12.3)(sass@1.77.8)
       vue-tsc:
         specifier: 2.0.29
         version: 2.0.29(typescript@5.5.4)
@@ -325,13 +325,13 @@ importers:
         version: 5.1.2(vite@5.4.2(@types/node@22.5.1)(sass@1.77.8))(vue@3.4.38(typescript@5.5.4))
       '@vitest/coverage-v8':
         specifier: 2.0.5
-        version: 2.0.5(vitest@2.0.5(@types/node@22.5.1)(happy-dom@15.0.0)(sass@1.77.8))
+        version: 2.0.5(vitest@2.0.5(@types/node@22.5.1)(happy-dom@14.12.3)(sass@1.77.8))
       '@vue/test-utils':
         specifier: 2.4.6
         version: 2.4.6
       happy-dom:
-        specifier: 15.0.0
-        version: 15.0.0
+        specifier: 14.12.3
+        version: 14.12.3
       process-envify:
         specifier: 2.0.0
         version: 2.0.0
@@ -352,7 +352,7 @@ importers:
         version: 5.4.2(@types/node@22.5.1)(sass@1.77.8)
       vitest:
         specifier: 2.0.5
-        version: 2.0.5(@types/node@22.5.1)(happy-dom@15.0.0)(sass@1.77.8)
+        version: 2.0.5(@types/node@22.5.1)(happy-dom@14.12.3)(sass@1.77.8)
       vue-tsc:
         specifier: 2.0.29
         version: 2.0.29(typescript@5.5.4)
@@ -2191,9 +2191,9 @@ packages:
     resolution: {integrity: sha512-ax7ZYomf6jqPTQ4+XCpUGyXKHk5WweS+e05MBO4/y3WJ5RkmPXNKvX+bx1behVILVwr6JSQvZAku021CHPXG3Q==}
     engines: {node: '>=10'}
 
-  happy-dom@15.0.0:
-    resolution: {integrity: sha512-DsvANUcxxY20iCo3Yllm7dqwzPVPduGfVFxa7mONwMBLczFeQgkN0LpDir1kIY322JMh+hrcPV3aGLyHCESDlA==}
-    engines: {node: '>=18.0.0'}
+  happy-dom@14.12.3:
+    resolution: {integrity: sha512-vsYlEs3E9gLwA1Hp+w3qzu+RUDFf4VTT8cyKqVICoZ2k7WM++Qyd2LwzyTi5bqMJFiIC/vNpTDYuxdreENRK/g==}
+    engines: {node: '>=16.0.0'}
 
   has-flag@3.0.0:
     resolution: {integrity: sha512-sKJf1+ceQBr4SMkvQnBDNDtf4TXpVhVGateu0t918bl30FnbE2m4vNLX+VWe/dpjlb+HugGYzW7uQXH98HPEYw==}
@@ -4592,7 +4592,7 @@ snapshots:
       vite: 5.4.2(@types/node@22.5.1)(sass@1.77.8)
       vue: 3.4.38(typescript@5.5.4)
 
-  '@vitest/coverage-v8@2.0.5(vitest@2.0.5(@types/node@22.5.1)(happy-dom@15.0.0)(sass@1.77.8))':
+  '@vitest/coverage-v8@2.0.5(vitest@2.0.5(@types/node@22.5.1)(happy-dom@14.12.3)(sass@1.77.8))':
     dependencies:
       '@ampproject/remapping': 2.3.0
       '@bcoe/v8-coverage': 0.2.3
@@ -4606,7 +4606,7 @@ snapshots:
       std-env: 3.7.0
       test-exclude: 7.0.1
       tinyrainbow: 1.2.0
-      vitest: 2.0.5(@types/node@22.5.1)(happy-dom@15.0.0)(sass@1.77.8)
+      vitest: 2.0.5(@types/node@22.5.1)(happy-dom@14.12.3)(sass@1.77.8)
     transitivePeerDependencies:
       - supports-color
 
@@ -5544,7 +5544,7 @@ snapshots:
     dependencies:
       duplexer: 0.1.2
 
-  happy-dom@15.0.0:
+  happy-dom@14.12.3:
     dependencies:
       entities: 4.5.0
       webidl-conversions: 7.0.0
@@ -6718,7 +6718,7 @@ snapshots:
       fsevents: 2.3.3
       sass: 1.77.8
 
-  vitest@2.0.5(@types/node@22.5.1)(happy-dom@15.0.0)(sass@1.77.8):
+  vitest@2.0.5(@types/node@22.5.1)(happy-dom@14.12.3)(sass@1.77.8):
     dependencies:
       '@ampproject/remapping': 2.3.0
       '@vitest/expect': 2.0.5
@@ -6741,7 +6741,7 @@ snapshots:
       why-is-node-running: 2.3.0
     optionalDependencies:
       '@types/node': 22.5.1
-      happy-dom: 15.0.0
+      happy-dom: 14.12.3
     transitivePeerDependencies:
       - less
       - lightningcss
