@@ -1,53 +1,39 @@
 <script lang="ts" setup>
-import { computed, reactive } from 'vue';
+import { ref, computed } from 'vue';
 
 import Collapse from '../collapse/Collapse.vue';
+
+const defaultModel = defineModel<boolean>({ default: undefined });
 
 const props = withDefaults(
   defineProps<{
     status?: boolean;
-    modelValue?: boolean;
     title?: string;
   }>(),
   {
     status: true,
-    modelValue: undefined,
     title: '',
   },
 );
 
-const emit = defineEmits<{
-  (evt: 'update:modelValue', val: boolean): void;
-}>();
+const staticStatus = ref(props.status);
 
-const defaultModel = computed({
-  get: () => props.modelValue || false,
-  set: (val) => emit('update:modelValue', val),
-});
-
-const flux = reactive({
-  status: props.status,
-  toggle() {
-    if (typeof props.modelValue === 'boolean') {
-      defaultModel.value = !defaultModel.value;
-    } else {
-      flux.status = !flux.status;
-    }
-  },
-});
+function toggleStatus() {
+  if (typeof defaultModel.value === 'boolean') {
+    defaultModel.value = !defaultModel.value;
+  } else {
+    staticStatus.value = !staticStatus.value;
+  }
+}
 
 const _status = computed(() =>
-  typeof props.modelValue === 'boolean' ? defaultModel.value : flux.status,
+  typeof defaultModel.value === 'boolean' ? defaultModel.value : staticStatus.value,
 );
 </script>
 
 <template>
-  <div class="w-full">
-    <div
-      class="flex items-center px-4 lg:px-6 py-3 lg:py-4 text-zinc-600 dark:text-zinc-400 cursor-pointer shadow bg-white dark:bg-slate-800 transition rounded-md"
-      :class="{ 'accordion-active': _status }"
-      @click="flux.toggle"
-    >
+  <div class="Panel">
+    <div class="Panel-Header" :class="{ active: _status }" @click="toggleStatus">
       <div class="text-xl font-medium flex-1">
         <slot name="header">{{ title }}</slot>
       </div>
@@ -57,8 +43,9 @@ const _status = computed(() =>
     </div>
 
     <Collapse>
-      <div v-if="_status" class="rounded-b-md shadow bg-white dark:bg-slate-800">
+      <div v-if="_status" class="Panel-Body">
         <div class="p-4 lg:p-6">
+          <slot></slot>
           <slot name="content"></slot>
         </div>
       </div>
@@ -67,7 +54,20 @@ const _status = computed(() =>
 </template>
 
 <style lang="scss" scoped>
-.accordion-active {
-  @apply bg-gray-200 dark:bg-gray-700 rounded-t-md rounded-b-0;
+.Panel {
+  @apply w-full;
+}
+
+.Panel-Header {
+  @apply flex items-center px-4 lg:px-6 py-3 lg:py-4;
+  @apply text-zinc-600 dark:text-zinc-400 cursor-pointer shadow bg-white dark:bg-slate-800 transition rounded-md;
+
+  &.active {
+    @apply bg-gray-200 dark:bg-gray-700 rounded-t-md rounded-b-0;
+  }
+}
+
+.Panel-Body {
+  @apply rounded-b-md shadow bg-white dark:bg-slate-800;
 }
 </style>
