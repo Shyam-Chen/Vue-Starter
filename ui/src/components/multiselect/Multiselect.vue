@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import type { ComponentProps } from 'vue-component-type-helpers';
 import { nextTick, ref, reactive, computed, watch, watchEffect } from 'vue';
 import { useLocaler, useLocale } from 'vue-localer';
 import { onClickOutside } from '@vueuse/core';
@@ -11,12 +12,15 @@ import ProgressBar from '../progress-bar/ProgressBar.vue';
 import Fade from '../fade/Fade.vue';
 import useScrollParent from '../../composables/scroll-parent/useScrollParent';
 
+type ChipProps = ComponentProps<typeof Chip>;
+
 type Option = {
   checked?: boolean;
   label: string;
   value: string | number;
   [key: string]: unknown;
   options?: Options;
+  color?: ChipProps['color'];
 };
 
 type Options = Option[];
@@ -326,8 +330,9 @@ useScrollParent(
             <Chip
               v-for="item in flux.selected"
               :key="item.value"
+              :color="item.color"
               :closable="clearable || selectedStatus"
-              :disabled="disabled"
+              :disabled
               @close="flux.clear(item.value)"
             >
               {{ flux.display(item) }}
