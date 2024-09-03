@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import { ref } from 'vue';
-import { XBreadcrumb, XCard, XYearPicker } from '@x/ui';
+import { XBreadcrumb, XCard, XCodeBlock } from '@x/ui';
 
-const year = ref<number>();
+import Basic from './Basic.vue';
+import BasicCode from './Basic.vue?raw';
 </script>
 
 <template>
@@ -21,8 +21,9 @@ const year = ref<number>();
     <h2 class="text-3xl font-bold my-4">Basic</h2>
 
     <XCard>
-      <XYearPicker v-model:value="year" />
-      <div class="mt-1">{{ year }}</div>
+      <Basic />
     </XCard>
+
+    <XCodeBlock :code="BasicCode" language="vue" class="max-h-100" />
   </section>
 </template>
