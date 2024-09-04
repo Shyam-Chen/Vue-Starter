@@ -286,10 +286,10 @@ function onKeydown(evt: KeyboardEvent) {
       <slot></slot>
     </template>
 
-    <template #default="{ uid }">
+    <template #default="{ id }">
       <Popover v-model="flux.showDatePicker" start class="w-full">
         <TextField
-          :id="uid"
+          :id
           ref="input"
           v-bind="$attrs"
           label=""

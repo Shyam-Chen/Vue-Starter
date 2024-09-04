@@ -24,6 +24,7 @@ const emit = defineEmits<{
 const notification = useNotification();
 
 const dragover = ref(false);
+const fileInput = ref<HTMLInputElement>();
 
 function fileLimit(file: File) {
   let message = '';
@@ -82,8 +83,9 @@ function onDragLeave() {
 </script>
 
 <template>
-  <FormControl :label :required :invalid :help>
+  <FormControl v-slot="{ id }" :label :required :invalid :help>
     <label
+      :for="id"
       v-bind="$attrs"
       class="Dropzone"
       :class="{ '!bg-slate-200/75 !dark:bg-slate-700/75': dragover }"
@@ -92,11 +94,12 @@ function onDragLeave() {
       @drop.prevent="onDrop"
     >
       <input
-        ref="dropzone"
+        :id
+        ref="fileInput"
         type="file"
         class="hidden"
         @change="onChange"
-        @click="($refs.dropzone as HTMLInputElement).value = ''"
+        @click="fileInput && (fileInput.value = '')"
       />
       <slot name="dropzone">
         <div class="i-mdi-tray-arrow-up w-24 h-24"></div>

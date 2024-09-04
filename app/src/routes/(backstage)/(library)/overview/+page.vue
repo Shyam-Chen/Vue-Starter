@@ -58,7 +58,7 @@ import { XBreadcrumb } from '@x/ui';
       <RouterLink to="/data-entry/checkbox-group" class="card">CheckboxGroup</RouterLink>
       <RouterLink to="/data-entry/checkboxes" class="card">Checkbox</RouterLink>
       <RouterLink to="/data-entry/chip-field" class="card">ChipField</RouterLink>
-      <RouterLink to="/data-entry/editor" class="card">RichTextEditor</RouterLink>
+      <RouterLink to="/data-entry/rich-text-editor" class="card">RichTextEditor</RouterLink>
       <RouterLink to="/data-entry/file-inputs" class="card">FileInput</RouterLink>
       <RouterLink to="/data-entry/form-validation" class="card">Form Validation</RouterLink>
       <RouterLink to="/data-entry/input-mask" class="card">InputMask</RouterLink>

@@ -119,10 +119,10 @@ function keyboard(evt: KeyboardEvent) {
       <slot></slot>
     </template>
 
-    <template #default="{ uid }">
+    <template #default="{ id }">
       <Popover v-model="status" start class="w-full">
         <TextField
-          :id="uid"
+          :id
           ref="input"
           v-bind="$attrs"
           label=""

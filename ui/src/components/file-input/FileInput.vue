@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { reactive, toRef } from 'vue';
+import { ref, reactive, toRef } from 'vue';
 
 import FormControl from '../form-control/FormControl.vue';
 import Chip from '../chip/Chip.vue';
@@ -18,6 +18,7 @@ const emit = defineEmits<{
 }>();
 
 const placeholderRef = toRef(props, 'placeholder', 'Choose a file');
+const fileInput = ref<HTMLInputElement>();
 
 const flux = reactive({
   fileNames: [] as string[],
@@ -31,9 +32,9 @@ const flux = reactive({
 </script>
 
 <template>
-  <FormControl v-slot="{ uid }" :label :required :invalid :help>
+  <FormControl v-slot="{ id }" :label :required :invalid :help>
     <label
-      :for="uid"
+      :for="id"
       class="FileInput-Input"
       :class="{
         '!py-1': flux.fileNames.length > 1,
@@ -54,14 +55,14 @@ const flux = reactive({
     </label>
 
     <input
-      :id="uid"
-      ref="input"
+      :id
+      ref="fileInput"
       v-bind="$attrs"
       type="file"
       :disabled="disabled"
       class="hidden"
       @change="flux.onChange"
-      @click="($refs.input as HTMLInputElement).value = ''"
+      @click="fileInput && (fileInput.value = '')"
     />
   </FormControl>
 </template>

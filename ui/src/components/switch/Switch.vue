@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { ref, computed } from 'vue';
-import uniqueId from 'lodash/uniqueId';
+import { ref, computed, useId } from 'vue';
 
 defineOptions({
   inheritAttrs: false,
@@ -19,7 +18,7 @@ const emit = defineEmits<{
   (evt: 'blur', val: Event): void;
 }>();
 
-const uid = uniqueId('uid-');
+const id = useId();
 
 const valueModel = computed({
   get: () => props.value || false,
@@ -42,13 +41,13 @@ function onBlur(evt: Event) {
 <template>
   <div class="flex items-center">
     <label
-      :for="uid"
+      :for="id"
       class="flex items-center"
       :class="[disabled ? 'cursor-not-allowed opacity-60' : readonly ? '' : 'cursor-pointer']"
     >
       <div class="relative">
         <input
-          :id="uid"
+          :id
           v-model="valueModel"
           v-bind="$attrs"
           type="checkbox"

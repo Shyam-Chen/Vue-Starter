@@ -75,10 +75,10 @@ const toggleShowHide = ref(true);
       <ToggleShowHide v-model:status="toggleShowHide" :label :value :selectedLabels />
     </template>
 
-    <template #default="{ uid }">
+    <template #default="{ id }">
       <Popover v-model="status" start class="w-full">
         <ChipField
-          :id="uid"
+          :id
           v-model:status="toggleShowHide"
           v-bind="{ ...$attrs, ...formControlDefaults }"
           :invalid="!!invalid"

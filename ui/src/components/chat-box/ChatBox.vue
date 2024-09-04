@@ -73,6 +73,7 @@ const DisableEnter = Extension.create({
 });
 
 const editor = ref<Editor>();
+const fileInput = ref<HTMLInputElement>();
 
 const editorClass = computed(() => {
   if (props.viewonly) return '';
@@ -222,7 +223,7 @@ defineExpose({
               variant="text"
               color="secondary"
               :loading="uploading"
-              @click="($refs.fileInput as HTMLInputElement).click()"
+              @click="fileInput?.click()"
             />
 
             <input
@@ -232,7 +233,7 @@ defineExpose({
               multiple
               class="hidden"
               @change="onChange"
-              @click="($refs.fileInput as HTMLInputElement).value = ''"
+              @click="fileInput && (fileInput.value = '')"
             />
           </div>
 

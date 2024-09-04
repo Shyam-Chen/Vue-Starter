@@ -63,7 +63,7 @@ const links = [
       { name: 'CheckboxGroup', to: '/data-entry/checkbox-group' },
       { name: 'Checkbox', to: '/data-entry/checkboxes' },
       { name: 'ChipField', to: '/data-entry/chip-field' },
-      { name: 'Editor', to: '/data-entry/editor' },
+      { name: 'RichTextEditor', to: '/data-entry/rich-text-editor' },
       { name: 'FileInput', to: '/data-entry/file-inputs' },
       { name: 'Form Validation', to: '/data-entry/form-validation' },
       { name: 'InputMask', to: '/data-entry/input-mask' },

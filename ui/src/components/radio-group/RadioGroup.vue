@@ -22,21 +22,22 @@ const emit = defineEmits<{
 </script>
 
 <template>
-  <FormControl v-slot="{ uid }" :label :required :invalid :help>
+  <FormControl v-slot="{ id }" :label :required :invalid :help>
     <div class="flex flex-wrap items-center gap-4">
       <label
         v-for="(item, index) in options"
         :key="index"
+        :for="`${id}-${index}`"
         class="flex items-center"
         :class="[disabled ? 'cursor-not-allowed opacity-60' : 'cursor-pointer']"
       >
         <div class="relative flex justify-center items-center">
           <input
-            :id="`${uid}-${index}`"
+            :id="`${id}-${index}`"
             v-model="valueModel"
             v-bind="$attrs"
             type="radio"
-            :name="uid"
+            :name="id"
             :value="typeof item === 'object' ? item.value : item"
             :disabled="disabled"
             class="radio"

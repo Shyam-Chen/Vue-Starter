@@ -62,14 +62,14 @@ function onClear() {
       <slot></slot>
     </template>
 
-    <template #default="{ uid }">
+    <template #default="{ id }">
       <div class="relative w-full">
         <div v-if="prepend" class="TextField-Prepend" @click.stop="emit('prepend')">
           <div :class="prepend" class="w-5 h-5"></div>
         </div>
 
         <input
-          :id="uid"
+          :id
           v-model="valueModel"
           v-bind="$attrs"
           :type="type ? type : 'text'"

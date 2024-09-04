@@ -23,9 +23,9 @@ function onAccept(evt: CustomEvent) {
 </script>
 
 <template>
-  <FormControl v-slot="{ uid }" :label :required :invalid :help>
+  <FormControl v-slot="{ id }" :label :required :invalid :help>
     <input
-      :id="uid"
+      :id
       v-imask="mask"
       v-bind="$attrs"
       :value="masked"

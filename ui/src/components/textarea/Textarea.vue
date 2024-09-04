@@ -29,15 +29,15 @@ defineProps<Props>();
       <slot></slot>
     </template>
 
-    <template #default="{ uid }">
+    <template #default="{ id }">
       <div v-if="readonly">
-        <textarea :id="uid" readonly class="hidden"></textarea>
+        <textarea :id readonly class="hidden"></textarea>
         <div v-for="(item, index) in valueModel?.split('\n')" :key="index">{{ item }}</div>
       </div>
 
       <textarea
         v-else
-        :id="uid"
+        :id
         v-model="valueModel"
         v-bind="$attrs"
         :disabled="disabled"

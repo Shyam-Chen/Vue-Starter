@@ -101,7 +101,7 @@ defineExpose({
       <slot></slot>
     </template>
 
-    <template #default="{ uid }">
+    <template #default="{ id }">
       <div
         v-on-click-outside="flux.onBlur"
         class="ChipField"
@@ -138,7 +138,7 @@ defineExpose({
         </template>
 
         <input
-          :id="uid"
+          :id
           ref="input"
           v-model="flux.text"
           v-bind="$attrs"
