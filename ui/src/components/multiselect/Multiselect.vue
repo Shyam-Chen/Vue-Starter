@@ -333,6 +333,7 @@ useScrollParent(
               :color="item.color"
               :closable="clearable || selectedStatus"
               :disabled
+              class="!opacity-100"
               @close="flux.clear(item.value)"
             >
               {{ flux.display(item) }}
