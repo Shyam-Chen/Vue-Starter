@@ -58,8 +58,6 @@ import { XBreadcrumb } from '@x/ui';
       <RouterLink to="/data-entry/checkbox-group" class="card">CheckboxGroup</RouterLink>
       <RouterLink to="/data-entry/checkboxes" class="card">Checkbox</RouterLink>
       <RouterLink to="/data-entry/chip-field" class="card">ChipField</RouterLink>
-      <RouterLink to="/data-entry/rich-text-editor" class="card">RichTextEditor</RouterLink>
-      <RouterLink to="/data-entry/file-inputs" class="card">FileInput</RouterLink>
       <RouterLink to="/data-entry/form-validation" class="card">Form Validation</RouterLink>
       <RouterLink to="/data-entry/input-mask" class="card">InputMask</RouterLink>
       <RouterLink to="/data-entry/password" class="card">Password</RouterLink>
@@ -69,6 +67,7 @@ import { XBreadcrumb } from '@x/ui';
       <RouterLink to="/data-entry/pickers/year-pickers" class="card">YearPicker</RouterLink>
       <RouterLink to="/data-entry/pickers/week-pickers" class="card">WeekPicker</RouterLink>
       <RouterLink to="/data-entry/radio-buttons" class="card">RadioGroup</RouterLink>
+      <RouterLink to="/data-entry/rich-text-editor" class="card">RichTextEditor</RouterLink>
       <RouterLink to="/data-entry/selects/single-selects" class="card">Select</RouterLink>
       <RouterLink to="/data-entry/selects/multiple-selects" class="card">Multiselect</RouterLink>
       <RouterLink to="/data-entry/selects/tree-select" class="card">TreeSelect</RouterLink>
@@ -77,6 +76,9 @@ import { XBreadcrumb } from '@x/ui';
       <RouterLink to="/data-entry/text-fields" class="card">TextField</RouterLink>
       <RouterLink to="/data-entry/textareas" class="card">Textarea</RouterLink>
       <RouterLink to="/data-entry/transfer" class="card">Transfer</RouterLink>
+      <RouterLink to="/data-entry/upload-files/dropzone" class="card">Dropzone</RouterLink>
+      <RouterLink to="/data-entry/upload-files/file-button" class="card">FileButton</RouterLink>
+      <RouterLink to="/data-entry/upload-files/file-input" class="card">FileInput</RouterLink>
     </div>
   </div>
 

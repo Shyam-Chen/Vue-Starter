@@ -63,8 +63,6 @@ const links = [
       { name: 'CheckboxGroup', to: '/data-entry/checkbox-group' },
       { name: 'Checkbox', to: '/data-entry/checkboxes' },
       { name: 'ChipField', to: '/data-entry/chip-field' },
-      { name: 'RichTextEditor', to: '/data-entry/rich-text-editor' },
-      { name: 'FileInput', to: '/data-entry/file-inputs' },
       { name: 'Form Validation', to: '/data-entry/form-validation' },
       { name: 'InputMask', to: '/data-entry/input-mask' },
       { name: 'Password', to: '/data-entry/password' },
@@ -79,6 +77,7 @@ const links = [
         ],
       },
       { name: 'RadioGroup', to: '/data-entry/radio-buttons' },
+      { name: 'RichTextEditor', to: '/data-entry/rich-text-editor' },
       {
         name: 'Selects',
         sub: [
@@ -92,6 +91,14 @@ const links = [
       { name: 'TextField', to: '/data-entry/text-fields' },
       { name: 'Textarea', to: '/data-entry/textareas' },
       { name: 'Transfer', to: '/data-entry/transfer' },
+      {
+        name: 'Upload Files',
+        sub: [
+          { name: 'Dropzone', to: '/data-entry/upload-files/dropzone' },
+          { name: 'FileButton', to: '/data-entry/upload-files/file-button' },
+          { name: 'FileInput', to: '/data-entry/upload-files/file-input' },
+        ],
+      },
     ],
   },
   {

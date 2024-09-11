@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
-import { XBreadcrumb, XCard, XFileInput, XDropzone } from '@x/ui';
+import { XBreadcrumb, XCard, XFileInput } from '@x/ui';
 import { request } from '@x/ui';
 
 const flux = reactive({
@@ -37,7 +37,14 @@ const flux = reactive({
 </script>
 
 <template>
-  <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Data Entry' }, { text: 'FileInput' }]" />
+  <XBreadcrumb
+    :items="[
+      { text: 'Library' },
+      { text: 'Data Entry' },
+      { text: 'Upload Files' },
+      { text: 'FileInput' },
+    ]"
+  />
 
   <h1 class="text-4xl font-extrabold my-4">FileInput</h1>
 
@@ -78,14 +85,6 @@ const flux = reactive({
 
     <XCard>
       <XFileInput label="Example label" @change="flux.importData" />
-    </XCard>
-  </section>
-
-  <section class="my-8">
-    <h2 class="text-3xl font-bold my-4 pt-6">Dropzone</h2>
-
-    <XCard>
-      <XDropzone label="Example label" />
     </XCard>
   </section>
 </template>
