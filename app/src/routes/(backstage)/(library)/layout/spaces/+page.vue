@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { XBreadcrumb } from '@x/ui';
+import { XBreadcrumb, XCard, XCode } from '@x/ui';
 </script>
 
 <template>
@@ -7,29 +7,35 @@ import { XBreadcrumb } from '@x/ui';
 
   <h1 class="text-4xl font-extrabold my-4">Spaces</h1>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">
-      Horizontal
-      <code class="text-sm text-gray-700 bg-gray-300 p-1 rounded">space-x-4</code>
-    </div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4">Horizontal <XCode>space-x-4</XCode></h2>
 
-    <div class="flex space-x-4">
-      <div v-for="num in 5" :key="num" class="px-4 py-2 rounded shadow bg-white dark:bg-slate-700">
-        {{ num }}
+    <XCard>
+      <div class="space-x-4">
+        <div
+          v-for="num in 5"
+          :key="num"
+          class="inline-block px-4 py-2 rounded shadow bg-white dark:bg-slate-700"
+        >
+          {{ num }}
+        </div>
       </div>
-    </div>
-  </div>
+    </XCard>
+  </section>
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">
-      Vertical
-      <code class="text-sm text-gray-700 bg-gray-300 p-1 rounded">space-y-4</code>
-    </div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Vertical <XCode>space-y-4</XCode></h2>
 
-    <div class="flex flex-col space-y-4">
-      <div v-for="num in 5" :key="num" class="px-4 py-2 rounded shadow bg-white dark:bg-slate-700">
-        {{ num }}
+    <XCard>
+      <div class="space-y-4">
+        <div
+          v-for="num in 5"
+          :key="num"
+          class="px-4 py-2 rounded shadow bg-white dark:bg-slate-700"
+        >
+          {{ num }}
+        </div>
       </div>
-    </div>
-  </div>
+    </XCard>
+  </section>
 </template>

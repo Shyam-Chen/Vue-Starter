@@ -162,6 +162,7 @@ const links = [
       { name: 'Map', to: '/charts/map' },
     ],
   },
+  { icon: 'i-material-symbols-flowsheet-outline-rounded', name: 'Diagrams', to: '/diagrams' },
   {
     icon: 'i-bi-hdd-network',
     name: 'Network',
