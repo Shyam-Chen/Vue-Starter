@@ -4,13 +4,13 @@ import { computed } from 'vue';
 import { XBreadcrumb, XCard, XChart } from '@x/ui';
 import { use, registerMap } from 'echarts/core';
 import { MapChart } from 'echarts/charts';
-import { VisualMapComponent, ToolboxComponent } from 'echarts/components';
+import { ToolboxComponent, VisualMapComponent } from 'echarts/components';
 
 // https://public.opendatasoft.com/explore/dataset/natural-earth-countries-1_110m/export/
 // Geographic file formats -> GeoJSON
 import geojson from './countries-110m.json';
 
-use([MapChart, VisualMapComponent, ToolboxComponent]);
+use([MapChart, ToolboxComponent, VisualMapComponent]);
 
 const countries110m = geojson.features.filter((item) => item.properties.name !== 'Antarctica');
 geojson.features = countries110m;

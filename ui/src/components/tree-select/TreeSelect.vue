@@ -2,13 +2,11 @@
 import { ref, computed, inject } from 'vue';
 import { onClickOutside } from '@vueuse/core';
 
-import { type FormControlProps, formControlDefaults } from '../form-control/config';
-import FormControl from '../form-control/FormControl.vue';
-import Popover from '../popover/Popover.vue';
 import ChipField from '../chip-field/ChipField.vue';
 import ToggleShowHide from '../chip-field/ToggleShowHide.vue';
-import Tree from '../tree';
-import type { Node } from '../tree/types';
+import FormControl, { type FormControlProps, formControlDefaults } from '../form-control';
+import Popover from '../popover/Popover.vue';
+import Tree, { type Node } from '../tree';
 
 defineOptions({
   inheritAttrs: false,

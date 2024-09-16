@@ -4,8 +4,8 @@ import { ref, computed, onMounted, onUnmounted } from 'vue';
 import { useRouter, onBeforeRouteLeave } from 'vue-router';
 import { useLocale } from 'vue-localer';
 
-import Dialog from '../dialog/Dialog.vue';
 import Button from '../button/Button.vue';
+import Dialog from '../dialog/Dialog.vue';
 
 const props = defineProps<{
   trigger?: boolean;

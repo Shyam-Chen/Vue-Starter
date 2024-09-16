@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { XBreadcrumb, XCard, XTag, XCodeBlock } from '@x/ui';
+import { XBreadcrumb, XCard, XCodeBlock, XTag } from '@x/ui';
 
 const importCode = `import { XTag } from '@x/ui';`;
 

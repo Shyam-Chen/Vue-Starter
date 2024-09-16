@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import type { ComponentProps } from 'vue-component-type-helpers';
-import { XButton, XAlert } from '@x/ui';
-import { useNotification } from '@x/ui';
+import { XAlert, XButton, useNotification } from '@x/ui';
 
 const notification = useNotification();
 

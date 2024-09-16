@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { ref, reactive } from 'vue';
-import { XBreadcrumb, XCard, XDatePicker, XDateRangePicker, XSwitch, XButton } from '@x/ui';
-import { subDays, addDays, startOfMonth, subMonths, startOfYear, subYears, format } from 'date-fns';
+import { XBreadcrumb, XButton, XCard, XDatePicker, XDateRangePicker, XSwitch } from '@x/ui';
+import { addDays, format, startOfMonth, startOfYear, subDays, subMonths, subYears } from 'date-fns';
 
 const flux = reactive({
   datePicker: '',

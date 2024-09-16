@@ -2,7 +2,7 @@
 import type { ComponentProps } from 'vue-component-type-helpers';
 import { reactive } from 'vue';
 import { useLocaler } from 'vue-localer';
-import { XBreadcrumb, XCard, XChatBubble, XChatBox } from '@x/ui';
+import { XBreadcrumb, XCard, XChatBox, XChatBubble } from '@x/ui';
 import { intlFormat } from 'date-fns';
 
 const localer = useLocaler();

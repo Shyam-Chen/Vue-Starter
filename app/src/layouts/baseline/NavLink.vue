@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
-import { useRoute, RouterLink } from 'vue-router';
+import { RouterLink, useRoute } from 'vue-router';
 import { XCollapse } from '@x/ui';
 import { useTextDirection } from '@vueuse/core';
 

@@ -3,8 +3,8 @@ import '@vue-flow/core/dist/style.css';
 import '@vue-flow/core/dist/theme-default.css';
 import type { Node, Edge } from '@vue-flow/core';
 import { ref } from 'vue';
-import { XBreadcrumb, XCard } from '@x/ui';
 import { VueFlow as Diagram } from '@vue-flow/core';
+import { XBreadcrumb, XCard } from '@x/ui';
 
 const nodes = ref<Node[]>([
   {

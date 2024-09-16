@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
-import { XBreadcrumb, XButton, XCard, XChip, XPopover, XListbox } from '@x/ui';
+import { XBreadcrumb, XButton, XCard, XChip, XListbox, XPopover } from '@x/ui';
 
 const searchLoading = ref(false);
 

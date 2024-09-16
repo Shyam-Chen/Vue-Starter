@@ -1,18 +1,18 @@
 <script lang="ts" setup>
 import type { Extensions } from '@tiptap/vue-3';
 import { ref, computed, watch, onMounted } from 'vue';
-import { Extension } from '@tiptap/core';
 import { Editor, EditorContent } from '@tiptap/vue-3';
+import { Extension } from '@tiptap/core';
 import Document from '@tiptap/extension-document';
-import Paragraph from '@tiptap/extension-paragraph';
-import Text from '@tiptap/extension-text';
 import HardBreak from '@tiptap/extension-hard-break';
 import History from '@tiptap/extension-history';
 import Link from '@tiptap/extension-link';
+import Paragraph from '@tiptap/extension-paragraph';
+import Text from '@tiptap/extension-text';
 import isMobile from 'is-mobile';
 
-import FormControl from '../form-control/FormControl.vue';
 import Button from '../button/Button.vue';
+import FormControl from '../form-control/FormControl.vue';
 
 type ChatFile = File & { url?: string };
 

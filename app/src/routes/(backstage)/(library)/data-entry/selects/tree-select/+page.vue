@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
-import { XBreadcrumb, XCard, XTreeSelect, XButton } from '@x/ui';
+import { XBreadcrumb, XButton, XCard, XTreeSelect } from '@x/ui';
 
 import WithinPopover from './WithinPopover.vue';
 

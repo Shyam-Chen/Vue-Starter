@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { XBreadcrumb, XCard, XCodeBlock, XCode } from '@x/ui';
+import { XBreadcrumb, XCard, XCode, XCodeBlock } from '@x/ui';
 
 import Basic from './Basic.vue';
 import BasicCode from './Basic.vue?raw';

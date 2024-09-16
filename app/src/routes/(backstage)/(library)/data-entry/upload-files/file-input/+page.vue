@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
-import { XBreadcrumb, XCard, XFileInput } from '@x/ui';
-import { request } from '@x/ui';
+import { XBreadcrumb, XCard, XFileInput, request } from '@x/ui';
 
 const flux = reactive({
   changeFile(event: Event) {

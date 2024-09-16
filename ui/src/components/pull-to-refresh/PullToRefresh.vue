@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
 import { useSwipe } from '@vueuse/core';
+
 import Spinner from '../spinner/Spinner.vue';
 
 const emit = defineEmits<{

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
-import { XBreadcrumb, XCard, XSkeleton, XButton } from '@x/ui';
+import { XBreadcrumb, XButton, XCard, XSkeleton } from '@x/ui';
 import { useImage } from '@vueuse/core';
 
 const imageOptions = ref({ src: 'https://place-hold.it/300x200' });

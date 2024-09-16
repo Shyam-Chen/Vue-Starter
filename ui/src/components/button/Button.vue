@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import type { ButtonHTMLAttributes, Ref, WritableComputedRef } from 'vue';
-import { ref, computed, inject, onMounted } from 'vue';
+import { ref, computed, onMounted, inject } from 'vue';
 
 import Spinner from '../spinner/Spinner.vue';
 

@@ -5,10 +5,9 @@ import * as d from 'date-fns';
 import chunk from 'lodash/chunk';
 import range from 'lodash/range';
 
-import { type FormControlProps, formControlDefaults } from '../form-control/config';
-import FormControl from '../form-control/FormControl.vue';
-import TextField from '../text-field/TextField.vue';
+import FormControl, { type FormControlProps, formControlDefaults } from '../form-control';
 import Popover from '../popover/Popover.vue';
+import TextField from '../text-field/TextField.vue';
 
 type Day = {
   date: Date;

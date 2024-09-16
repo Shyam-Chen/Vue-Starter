@@ -1,7 +1,6 @@
-import { useNotification } from '@x/ui';
-import { request } from '@x/ui';
-import { reactive, readonly } from 'vue';
+import { reactive } from 'vue';
 import { defineStore } from 'vue-storer';
+import { useNotification, request } from '@x/ui';
 
 import type { State, TodoItem, XTableProps } from './types';
 
@@ -22,7 +21,7 @@ export default defineStore('/crud-operations', () => {
     deleteLoading: false,
   });
 
-  const actions = readonly({
+  const actions = reactive({
     async todos() {
       state.todosLoading = true;
 

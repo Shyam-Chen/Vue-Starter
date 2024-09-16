@@ -1,8 +1,7 @@
-import { useNotification } from '@x/ui';
-import { request } from '@x/ui';
-import { reactive, readonly, toRaw } from 'vue';
+import { reactive, toRaw } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { defineStore } from 'vue-storer';
+import { useNotification, request } from '@x/ui';
 
 import type { State, TodoItem } from './types';
 
@@ -20,7 +19,7 @@ export default defineStore('/crud-operations/:id', () => {
     todoSent: false,
   });
 
-  const actions = readonly({
+  const actions = reactive({
     async todo() {
       state.todoLoading = true;
       const response = await request<{ result: TodoItem }>(`/todos/${route.params.id}`);

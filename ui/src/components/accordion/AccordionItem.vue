@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import type { Ref, ComputedRef, WritableComputedRef } from 'vue';
-import { ref, reactive, inject, onMounted } from 'vue';
+import { ref, reactive, onMounted, inject } from 'vue';
 
 import Collapse from '../collapse/Collapse.vue';
 

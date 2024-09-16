@@ -2,7 +2,7 @@
 import type { InputHTMLAttributes } from 'vue';
 import { watch } from 'vue';
 
-import FormControl from '../form-control/FormControl.vue';
+import FormControl from '../form-control';
 
 interface Props extends /* @vue-ignore */ InputHTMLAttributes {
   label?: string;

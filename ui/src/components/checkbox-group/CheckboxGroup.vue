@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import type { InputHTMLAttributes } from 'vue';
 
-import FormControl from '../form-control/FormControl.vue';
 import Checkbox from '../checkbox/Checkbox.vue';
+import FormControl from '../form-control/FormControl.vue';
 
 interface Props extends /* @vue-ignore */ InputHTMLAttributes {
   label?: string;

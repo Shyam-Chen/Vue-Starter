@@ -1,8 +1,7 @@
 <script lang="ts" setup>
 import { ref, reactive, watch, onMounted } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
-import { XBreadcrumb, XTable, XTooltip, XButton, XChip, XDialog, XTextField } from '@x/ui';
-import { request } from '@x/ui';
+import { XBreadcrumb, XButton, XChip, XDialog, XTable, XTextField, XTooltip, request } from '@x/ui';
 
 const router = useRouter();
 const route = useRoute();

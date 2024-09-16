@@ -5,10 +5,10 @@ import { useLocale } from 'vue-localer';
 
 import Avatar from '../avatar/Avatar.vue';
 import Button from '../button/Button.vue';
-import Popover from '../popover/Popover.vue';
-import Listbox from '../listbox';
 import ChatBox from '../chat-box/ChatBox.vue';
 import Dialog from '../dialog/Dialog.vue';
+import Listbox from '../listbox';
+import Popover from '../popover/Popover.vue';
 
 type Chat = {
   name?: string;

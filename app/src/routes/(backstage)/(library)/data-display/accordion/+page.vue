@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
-import { XBreadcrumb, XAccordion } from '@x/ui';
+import { XAccordion, XBreadcrumb } from '@x/ui';
 
 const accordionGroup = ref<string[]>([]);
 const accordionGroupMultiple = ref<string[]>([]);

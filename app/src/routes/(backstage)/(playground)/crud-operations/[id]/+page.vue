@@ -1,15 +1,8 @@
 <script lang="ts" setup>
 import { onMounted, onUnmounted } from 'vue';
 import { useRoute } from 'vue-router';
-import {
-  XBreadcrumb,
-  XCard,
-  XProgressBar,
-  XTextField,
-  XCheckbox,
-  XButton,
-  XLeaveConfirmation,
-} from '@x/ui';
+import { XBreadcrumb, XButton, XCard, XCheckbox, XLeaveConfirmation, XProgressBar } from '@x/ui';
+import { XTextField } from '@x/ui';
 import isEqual from 'lodash/isEqual';
 
 import useStore from './store';

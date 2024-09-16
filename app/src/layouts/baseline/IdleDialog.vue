@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { reactive, watch } from 'vue';
 import { useRouter } from 'vue-router';
-import { XDialog, XButton } from '@x/ui';
+import { XButton, XDialog } from '@x/ui';
 import { useIdle } from '@vueuse/core';
 
 const router = useRouter();

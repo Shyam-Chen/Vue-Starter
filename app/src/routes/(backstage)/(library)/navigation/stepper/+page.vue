@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
-import { XBreadcrumb, XStepper, XButton } from '@x/ui';
+import { XBreadcrumb, XButton, XStepper } from '@x/ui';
 
 const flux = reactive({
   stepper1: 3,

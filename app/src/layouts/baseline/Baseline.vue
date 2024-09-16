@@ -3,8 +3,7 @@ import { ref, reactive, watch, onMounted } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import { useLocaler } from 'vue-localer';
 import { XAvatar, XButton, XDialog, XDrawer, XKeyboard, XListbox, XPopover } from '@x/ui';
-import { XTextField } from '@x/ui';
-import { request } from '@x/ui';
+import { XTextField, request } from '@x/ui';
 import { useColorMode, useTextDirection } from '@vueuse/core';
 
 import type { Link } from './links-list';

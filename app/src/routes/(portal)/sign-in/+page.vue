@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { onUnmounted } from 'vue';
-import { XTextField, XButton, XSpinner, XLink } from '@x/ui';
+import { XButton, XLink, XSpinner, XTextField } from '@x/ui';
 
 import useStore from './store';
 import useSchema from './schema';

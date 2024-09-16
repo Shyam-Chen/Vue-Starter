@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { ref, reactive, toRef } from 'vue';
 
-import FormControl from '../form-control/FormControl.vue';
 import Chip from '../chip/Chip.vue';
+import FormControl from '../form-control/FormControl.vue';
 
 const props = defineProps<{
   label?: string;

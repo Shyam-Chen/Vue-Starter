@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
-import { XChipField, XDivider, XCheckbox } from '@x/ui';
+import { XCheckbox, XChipField, XDivider } from '@x/ui';
 
 const values = ref<string[]>([]);
 const disabled = ref(true);

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
-import { XBreadcrumb, XCard, XTextField, XLeaveConfirmation } from '@x/ui';
+import { XBreadcrumb, XCard, XLeaveConfirmation, XTextField } from '@x/ui';
 
 const initText = ref('');
 const text = ref('');

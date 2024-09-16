@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import type { TextareaHTMLAttributes } from 'vue';
 
-import FormControl from '../form-control/FormControl.vue';
+import FormControl from '../form-control';
 
 interface Props extends /* @vue-ignore */ TextareaHTMLAttributes {
   label?: string;

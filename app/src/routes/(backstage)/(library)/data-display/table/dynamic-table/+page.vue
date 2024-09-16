@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
-import { XBreadcrumb, XTable, XCollapse, XButton, XDivider } from '@x/ui';
+import { XBreadcrumb, XButton, XCollapse, XDivider, XTable } from '@x/ui';
 
 import Basic from './Basic.vue';
 import Loading from './Loading.vue';

@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { XButton } from '@x/ui';
-import { useNotification } from '@x/ui';
+import { XButton, useNotification } from '@x/ui';
 
 const notification = useNotification();
 

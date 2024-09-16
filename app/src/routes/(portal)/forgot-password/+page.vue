@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
 import { RouterLink } from 'vue-router';
-import { XTextField, XButton, XLink } from '@x/ui';
+import { XButton, XLink, XTextField } from '@x/ui';
 
 import useStore from './store';
 import useSchema from './schema';

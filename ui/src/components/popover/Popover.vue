@@ -2,10 +2,9 @@
 import { nextTick, ref, computed, reactive, watch, provide } from 'vue';
 import { onClickOutside } from '@vueuse/core';
 
+import Fade from '../fade/Fade.vue';
 import useScrollParent from '../../composables/scroll-parent/useScrollParent';
 import scrollableParent from '../../composables/scroll-parent/scrollableParent';
-
-import Fade from '../fade/Fade.vue';
 
 const defaultModel = defineModel<boolean>({ default: undefined });
 

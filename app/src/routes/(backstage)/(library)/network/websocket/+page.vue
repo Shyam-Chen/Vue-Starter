@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { XBreadcrumb, XCard } from '@x/ui';
-import { useWebSocket } from '@x/ui';
+import { XBreadcrumb, XCard, useWebSocket } from '@x/ui';
 
 const { data, send } = useWebSocket('/echo');
 

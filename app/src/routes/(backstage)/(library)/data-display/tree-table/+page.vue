@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
-import { XBreadcrumb, XTable, XButton } from '@x/ui';
+import { XBreadcrumb, XButton, XTable } from '@x/ui';
 
 type TreeTableNode = {
   key?: string;

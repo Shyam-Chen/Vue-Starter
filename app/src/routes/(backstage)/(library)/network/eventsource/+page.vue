@@ -1,8 +1,6 @@
 <script lang="ts" setup>
 import { ref, onMounted } from 'vue';
-import { XBreadcrumb, XCard, XButton, XTextField } from '@x/ui';
-import { useEventSource } from '@x/ui';
-import { request } from '@x/ui';
+import { XBreadcrumb, XButton, XCard, XTextField, useEventSource, request } from '@x/ui';
 import { stream } from 'fetch-event-stream';
 
 const { data } = useEventSource('/sse');

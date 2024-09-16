@@ -4,12 +4,12 @@ import { nextTick, ref, reactive, computed, watch, watchEffect } from 'vue';
 import { useLocaler, useLocale } from 'vue-localer';
 import { onClickOutside } from '@vueuse/core';
 
-import FormControl from '../form-control/FormControl.vue';
 import Checkbox from '../checkbox/Checkbox.vue';
 import Chip from '../chip/Chip.vue';
-import TextField from '../text-field/TextField.vue';
-import ProgressBar from '../progress-bar/ProgressBar.vue';
 import Fade from '../fade/Fade.vue';
+import FormControl from '../form-control/FormControl.vue';
+import ProgressBar from '../progress-bar/ProgressBar.vue';
+import TextField from '../text-field/TextField.vue';
 import useScrollParent from '../../composables/scroll-parent/useScrollParent';
 
 type ChipProps = ComponentProps<typeof Chip>;

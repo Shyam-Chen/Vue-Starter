@@ -3,8 +3,8 @@ import { ref, computed, watch } from 'vue';
 import Draggable from 'vuedraggable';
 import remove from 'lodash/remove';
 
-import Checkbox from '../checkbox/Checkbox.vue';
 import Button from '../button/Button.vue';
+import Checkbox from '../checkbox/Checkbox.vue';
 
 type Item = {
   id?: string | number;

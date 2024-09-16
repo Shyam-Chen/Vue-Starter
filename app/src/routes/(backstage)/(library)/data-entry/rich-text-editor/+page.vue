@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ref, onMounted } from 'vue';
-import { XBreadcrumb, XCard, XRichTextEditor, XButton } from '@x/ui';
+import { XBreadcrumb, XButton, XCard, XRichTextEditor } from '@x/ui';
 
 const content = ref('');
 

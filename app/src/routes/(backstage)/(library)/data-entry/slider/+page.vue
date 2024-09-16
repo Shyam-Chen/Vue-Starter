@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
-import { XBreadcrumb, XCard, XSlider, XInputMask, XRangeSlider } from '@x/ui';
+import { XBreadcrumb, XCard, XInputMask, XRangeSlider, XSlider } from '@x/ui';
 
 const flux = reactive({
   slider: '70',

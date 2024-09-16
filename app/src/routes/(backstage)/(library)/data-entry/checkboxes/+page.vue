@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { reactive, watch } from 'vue';
-import { XBreadcrumb, XCard, XCodeBlock, XCheckbox } from '@x/ui';
+import { XBreadcrumb, XCard, XCheckbox, XCodeBlock } from '@x/ui';
 
 import Basic from './Basic.vue';
 import BasicCode from './Basic.vue?raw';

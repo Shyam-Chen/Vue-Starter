@@ -3,9 +3,8 @@ import { ref, reactive, watch, toRef } from 'vue';
 import { useLocaler, useLocale } from 'vue-localer';
 import { vOnClickOutside } from '@vueuse/components';
 
-import { type FormControlProps, formControlDefaults } from '../form-control/config';
-import FormControl from '../form-control/FormControl.vue';
 import Chip from '../chip/Chip.vue';
+import FormControl, { type FormControlProps, formControlDefaults } from '../form-control';
 
 defineOptions({
   inheritAttrs: false,
