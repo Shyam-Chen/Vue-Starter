@@ -5,6 +5,8 @@ import { XBreadcrumb, XCard, XChart } from '@x/ui';
 import { use } from 'echarts/core';
 import { BarChart } from 'echarts/charts';
 
+import DataZoom from './DataZoom.vue';
+
 use([BarChart]);
 
 const data2021 = ref([27, 68, 86, 74, 10, 4, 87]);
@@ -107,6 +109,14 @@ const columnChartOption = computed<EChartsOption>(() => {
 
     <XCard>
       <XChart :option="columnChartOption" class="w-full h-100" />
+    </XCard>
+  </section>
+
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">DataZoom</h2>
+
+    <XCard>
+      <DataZoom />
     </XCard>
   </section>
 </template>
