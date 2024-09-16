@@ -57,6 +57,7 @@ const props = withDefaults(
 const emit = defineEmits<{
   (evt: 'update:value', val?: Option['value'][] | null): void;
   (evt: 'change', val?: Option['value'] | null, opt?: Option | null): void;
+  (evt: 'blur'): void;
 }>();
 
 const localer = useLocaler();
@@ -267,6 +268,15 @@ useScrollParent(
   computed(() => selectPanel.value),
   () => {
     if (flux.show) resizePanel();
+  },
+);
+
+watch(
+  () => flux.show,
+  (val) => {
+    if (!val) {
+      emit('blur');
+    }
   },
 );
 </script>

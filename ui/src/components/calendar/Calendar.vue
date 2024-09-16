@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { computed, reactive, watch } from 'vue';
 import chunk from 'lodash/chunk';
-import range from 'lodash/range';
 import groupBy from 'lodash/groupBy';
+import range from 'lodash/range';
 import * as d from 'date-fns';
 
 type Day = {

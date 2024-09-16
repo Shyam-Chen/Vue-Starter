@@ -44,7 +44,7 @@ const props = withDefaults(
 const emit = defineEmits<{
   (evt: 'update:value', val: string): void;
   (evt: 'change', val: string): void;
-  // (evt: 'blur'): void;
+  (evt: 'blur'): void;
 }>();
 
 const localer = useLocaler();
@@ -245,6 +245,15 @@ const flux = reactive({
     );
   },
 });
+
+watch(
+  () => flux.showDatePicker,
+  (val) => {
+    if (!val) {
+      emit('blur');
+    }
+  },
+);
 
 watch(
   () => flux.currentMoment,

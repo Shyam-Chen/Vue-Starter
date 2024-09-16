@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { nextTick, ref, computed } from 'vue';
 import { onClickOutside } from '@vueuse/core';
-import * as d from 'date-fns';
 import chunk from 'lodash/chunk';
+import * as d from 'date-fns';
 
 import Fade from '../fade/Fade.vue';
 import TextField from '../text-field/TextField.vue';

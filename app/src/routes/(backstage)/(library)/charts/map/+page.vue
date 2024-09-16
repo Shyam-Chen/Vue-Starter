@@ -63,7 +63,7 @@ const mapChartOption = computed<EChartsOption>(() => {
       right: 'right',
       top: 'top',
       feature: {
-        restore: {},
+        restore: { title: 'Restore' },
       },
     },
     series: [
@@ -71,6 +71,10 @@ const mapChartOption = computed<EChartsOption>(() => {
         name: 'Population',
         type: 'map',
         roam: true,
+        scaleLimit: {
+          min: 1,
+          max: 5.5,
+        },
         map: 'world',
         emphasis: {
           label: {

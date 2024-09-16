@@ -1,5 +1,5 @@
 import type { Ref } from 'vue';
-import { onMounted, onUnmounted, ref, watch } from 'vue';
+import { ref, watch, onMounted, onUnmounted } from 'vue';
 
 import scrollableParent from './scrollableParent';
 

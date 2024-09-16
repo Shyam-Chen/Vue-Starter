@@ -2,7 +2,7 @@
 
 import type { ComputedRef } from 'vue';
 import type { ComponentProps } from 'vue-component-type-helpers';
-import { toRef, toValue, computed, onMounted, watch } from 'vue';
+import { computed, watch, toRef, toValue, onMounted } from 'vue';
 import { useIntersectionObserver } from '@vueuse/core';
 
 import type Outline from '../../components/outline/Outline.vue';

@@ -1,12 +1,10 @@
 <script lang="ts" setup>
-import { ref, reactive, nextTick } from 'vue';
+import { nextTick, ref, reactive } from 'vue';
 import { useDebounceFn, onClickOutside } from '@vueuse/core';
-
-// import useScrollParent from '../../composables/scroll-parent/useScrollParent';
-import request from '../../utilities/request/request';
 
 import ChipField from '../chip-field/ChipField.vue';
 import Fade from '../fade/Fade.vue';
+import request from '../../utilities/request/request';
 
 const valueModel = defineModel<string[]>('value', { default: [] });
 

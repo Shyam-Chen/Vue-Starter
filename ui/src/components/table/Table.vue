@@ -1,14 +1,14 @@
 <script lang="ts" setup generic="T extends object">
 import type { VNode } from 'vue';
-import { ref, computed, reactive, watch, watchEffect, toRef } from 'vue';
+import { ref, computed, reactive, watchEffect, watch, toRef } from 'vue';
 import { useLocaler, useLocale } from 'vue-localer';
 import { useScroll } from '@vueuse/core';
 
 import type staticTable from '../../utilities/static-table/staticTable';
-import Spinner from '../spinner/Spinner.vue';
 import Button from '../button/Button.vue';
-import Select from '../select/Select.vue';
 import Checkbox from '../checkbox/Checkbox.vue';
+import Select from '../select/Select.vue';
+import Spinner from '../spinner/Spinner.vue';
 
 import type { ColumnItem, Control } from './types';
 import Column from './Column.vue';
