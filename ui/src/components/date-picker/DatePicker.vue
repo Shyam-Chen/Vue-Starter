@@ -285,6 +285,100 @@ function onKeydown(evt: KeyboardEvent) {
     input.value?.$el.querySelector('.TextField-Input').blur();
     flux.showDatePicker = false;
   }
+
+  if (['ArrowUp', 'ArrowRight', 'ArrowDown', 'ArrowLeft'].includes(evt.code)) {
+    if (flux.showDatePicker) {
+      evt.preventDefault();
+
+      if (!valueModel.value) {
+        valueModel.value = d.format(new Date(), props.format);
+      } else {
+        let matrix = flux.currentPeriodDates;
+
+        let rowIndex = -1;
+        let colIndex = -1;
+
+        for (let row = 0; row < matrix.length; row++) {
+          for (let col = 0; col < matrix[row].length; col++) {
+            if (d.format(matrix[row][col].date, props.format) === valueModel.value) {
+              rowIndex = row;
+              colIndex = col;
+              break;
+            }
+          }
+        }
+
+        if (evt.code === 'ArrowUp') {
+          rowIndex -= 1;
+
+          if (rowIndex === -1 || (rowIndex === 0 && matrix?.[rowIndex]?.[colIndex]?.outOfRange)) {
+            flux.decrement();
+            matrix = createDays(d.getYear(flux.currentMoment), d.getMonth(flux.currentMoment));
+            rowIndex = matrix.length - 1;
+            if (matrix?.[rowIndex]?.[colIndex]?.outOfRange) rowIndex -= 1;
+          }
+        } else if (evt.code === 'ArrowRight') {
+          colIndex += 1;
+
+          if (colIndex === 7) {
+            rowIndex += 1;
+            colIndex = 0;
+
+            if (rowIndex === matrix.length) {
+              flux.increment();
+              matrix = createDays(d.getYear(flux.currentMoment), d.getMonth(flux.currentMoment));
+              rowIndex = 0;
+            }
+          }
+
+          if (matrix?.[rowIndex]?.[colIndex]?.outOfRange) {
+            flux.increment();
+            matrix = createDays(d.getYear(flux.currentMoment), d.getMonth(flux.currentMoment));
+            rowIndex = 0;
+            if (matrix?.[rowIndex]?.[colIndex]?.outOfRange) rowIndex += 1;
+          }
+        } else if (evt.code === 'ArrowDown') {
+          rowIndex += 1;
+
+          if (
+            rowIndex === matrix.length ||
+            (rowIndex === matrix.length - 1 && matrix?.[rowIndex]?.[colIndex]?.outOfRange)
+          ) {
+            flux.increment();
+            matrix = createDays(d.getYear(flux.currentMoment), d.getMonth(flux.currentMoment));
+            rowIndex = 0;
+            if (matrix?.[rowIndex]?.[colIndex]?.outOfRange) rowIndex += 1;
+          }
+        } else if (evt.code === 'ArrowLeft') {
+          colIndex -= 1;
+
+          if (colIndex === -1) {
+            rowIndex -= 1;
+            colIndex = 6;
+
+            if (rowIndex === -1) {
+              flux.decrement();
+              matrix = createDays(d.getYear(flux.currentMoment), d.getMonth(flux.currentMoment));
+              rowIndex = matrix.length - 1;
+            }
+          }
+
+          if (matrix?.[rowIndex]?.[colIndex]?.outOfRange) {
+            flux.decrement();
+            matrix = createDays(d.getYear(flux.currentMoment), d.getMonth(flux.currentMoment));
+            rowIndex = matrix.length - 1;
+            if (matrix?.[rowIndex]?.[colIndex]?.outOfRange) rowIndex -= 1;
+          }
+        }
+
+        const current = matrix?.[rowIndex]?.[colIndex];
+
+        if (current && !current.outOfRange && !current.disabled) {
+          valueModel.value = d.format(current.date, props.format);
+        }
+      }
+    }
+  }
 }
 </script>
 

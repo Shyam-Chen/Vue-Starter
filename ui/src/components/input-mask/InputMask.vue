@@ -47,7 +47,7 @@ function onAccept(evt: CustomEvent) {
   @apply focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-primary-400;
 
   &.invalid {
-    @apply border-red-500;
+    @apply border-red-500 dark:border-red-500;
     @apply focus:ring-red-500/50 focus:border-red-500;
   }
 
