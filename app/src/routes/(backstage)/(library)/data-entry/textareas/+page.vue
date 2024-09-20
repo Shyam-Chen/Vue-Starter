@@ -76,10 +76,23 @@ const flux = reactive({
   </section>
 
   <section class="my-8">
-    <h3 class="text-3xl font-bold my-4 pt-6">Read Only</h3>
+    <h3 class="text-3xl font-bold my-4 pt-6">Read-only</h3>
 
     <XCard>
-      <XTextarea v-model:value="flux.textarea2" label="Example label" readonly />
+      <XTextarea
+        v-model:value="flux.textarea2"
+        label="Example label"
+        placeholder="Type here..."
+        readonly
+      />
+    </XCard>
+  </section>
+
+  <section class="my-8">
+    <h3 class="text-3xl font-bold my-4 pt-6">View-only</h3>
+
+    <XCard>
+      <XTextarea v-model:value="flux.textarea2" label="Example label" viewonly />
     </XCard>
   </section>
 </template>
