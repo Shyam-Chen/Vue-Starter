@@ -65,7 +65,15 @@ function setContent() {
   </section>
 
   <section class="my-8">
-    <h2 class="text-3xl font-bold my-4 pt-6">Viewonly</h2>
+    <h2 class="text-3xl font-bold my-4 pt-6">Read-only</h2>
+
+    <XCard>
+      <XRichTextEditor v-model="content" readonly />
+    </XCard>
+  </section>
+
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">View-only</h2>
 
     <XCard>
       <XRichTextEditor v-model="content" viewonly />

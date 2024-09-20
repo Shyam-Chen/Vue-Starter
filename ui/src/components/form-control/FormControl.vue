@@ -16,7 +16,7 @@ const id = useId();
       <slot name="label"></slot>
     </div>
 
-    <div class="flex items-center min-h-38px">
+    <div class="flex items-center">
       <slot :id :invalid="!!invalid"></slot>
     </div>
 

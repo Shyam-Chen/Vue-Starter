@@ -1,20 +1,22 @@
 <script lang="ts" setup>
-import FormControl from '../form-control/FormControl.vue';
+import type { InputHTMLAttributes } from 'vue';
 
-defineOptions({
-  inheritAttrs: false,
-});
+import FormControl, { type FormControlProps, formControlDefaults } from '../form-control';
+
+interface Props extends /* @vue-ignore */ InputHTMLAttributes {
+  options?: string[] | { label: string; value: unknown; [key: string]: unknown }[];
+  disabled?: boolean;
+}
+
+defineOptions({ inheritAttrs: false });
 
 const valueModel = defineModel<unknown>('value');
 
-defineProps<{
-  label?: string;
-  options?: string[] | { label: string; value: unknown; [key: string]: unknown }[];
-  disabled?: boolean;
-  required?: boolean;
-  invalid?: boolean | string;
-  help?: string;
-}>();
+withDefaults(defineProps<Props & FormControlProps>(), {
+  options: () => [],
+  disabled: false,
+  ...formControlDefaults,
+});
 
 const emit = defineEmits<{
   (evt: 'change', val: unknown): void;
@@ -23,7 +25,7 @@ const emit = defineEmits<{
 
 <template>
   <FormControl v-slot="{ id }" :label :required :invalid :help>
-    <div class="flex flex-wrap items-center gap-4">
+    <div class="flex flex-wrap items-center gap-4 min-h-38px">
       <label
         v-for="(item, index) in options"
         :key="index"
@@ -46,14 +48,14 @@ const emit = defineEmits<{
           />
 
           <div
-            class="absolute select-none w-3.5 h-3.5 text-primary-500"
+            class="absolute select-none size-3.5 text-primary-500"
             :class="{
               'i-mdi-circle': valueModel === (typeof item === 'object' ? item.value : item),
             }"
           ></div>
         </div>
 
-        <div class="ml-2">
+        <div class="ms-2">
           {{ typeof item === 'object' ? item.label : item }}
         </div>
       </label>

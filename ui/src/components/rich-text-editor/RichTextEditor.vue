@@ -28,7 +28,7 @@ import Underline from '@tiptap/extension-underline';
 import { useFileDialog } from '@vueuse/core';
 
 import Divider from '../divider/Divider.vue';
-import FormControl from '../form-control/FormControl.vue';
+import FormControl, { type FormControlProps, formControlDefaults } from '../form-control';
 import Listbox from '../listbox';
 import Popover from '../popover/Popover.vue';
 import Tooltip from '../tooltip/Tooltip.vue';
@@ -36,25 +36,22 @@ import Tooltip from '../tooltip/Tooltip.vue';
 const defaultModel = defineModel<string>({ default: '' });
 
 const props = withDefaults(
-  defineProps<{
-    label?: string;
-    extension?: Extensions;
-    required?: boolean;
-    invalid?: string | boolean;
-    help?: string;
-    disabled?: boolean;
-    viewonly?: boolean;
-    class?: string;
-  }>(),
+  defineProps<
+    {
+      extension?: Extensions;
+      disabled?: boolean;
+      readonly?: boolean;
+      viewonly?: boolean;
+      class?: string;
+    } & FormControlProps
+  >(),
   {
-    label: '',
     extension: () => [],
-    required: false,
-    invalid: undefined,
-    help: '',
     disabled: false,
+    readonly: false,
     viewonly: false,
     class: '',
+    ...formControlDefaults,
   },
 );
 
@@ -74,7 +71,7 @@ const my1 = `margin-top: 0.25rem; margin-bottom: 0.25rem;`;
 
 onMounted(() => {
   editor.value = new Editor({
-    editable: !props.disabled && !props.viewonly,
+    editable: !props.disabled && !props.readonly && !props.viewonly,
     extensions: [
       ...props.extension,
       Heading,
@@ -335,78 +332,80 @@ watch(
 watch(
   () => props.disabled,
   (val) => {
-    editor.value?.setOptions({ editable: !val && !props.viewonly });
+    editor.value?.setOptions({ editable: !val && !props.readonly && !props.viewonly });
   },
 );
+
+const editable = computed(() => !props.disabled && !props.readonly && !props.viewonly);
 
 const textPopover = ref(false);
 
 function toggleHeading(level: 3 | 4) {
-  if (props.disabled || props.viewonly) return;
+  if (!editable.value) return;
   editor.value?.chain().focus().toggleHeading({ level }).run();
   textPopover.value = false;
 }
 
 function setParagraph() {
-  if (props.disabled || props.viewonly) return;
+  if (!editable.value) return;
   editor.value?.chain().focus().setParagraph().run();
   textPopover.value = false;
 }
 
 function setColor(color: string) {
-  if (props.disabled || props.viewonly) return;
+  if (!editable.value) return;
   editor.value?.chain().focus().setColor(color).run();
 }
 
 function toggleHighlight(color: string) {
-  if (props.disabled || props.viewonly) return;
+  if (!editable.value) return;
   editor.value?.chain().focus().toggleHighlight({ color }).run();
 }
 
 function unset() {
-  if (props.disabled || props.viewonly) return;
+  if (!editable.value) return;
   editor.value?.chain().focus().unsetColor().unsetHighlight().run();
 }
 
 function toggleBold() {
-  if (props.disabled || props.viewonly) return;
+  if (!editable.value) return;
   editor.value?.chain().focus().toggleBold().run();
 }
 
 function toggleItalic() {
-  if (props.disabled || props.viewonly) return;
+  if (!editable.value) return;
   editor.value?.chain().focus().toggleItalic().run();
 }
 
 function toggleUnderline() {
-  if (props.disabled || props.viewonly) return;
+  if (!editable.value) return;
   editor.value?.chain().focus().toggleUnderline().run();
 }
 
 function toggleStrike() {
-  if (props.disabled || props.viewonly) return;
+  if (!editable.value) return;
   editor.value?.chain().focus().toggleStrike().run();
 }
 
 function toggleBulletList() {
-  if (props.disabled || props.viewonly) return;
+  if (!editable.value) return;
   editor.value?.chain().focus().toggleBulletList().run();
 }
 
 function toggleOrderedList() {
-  if (props.disabled || props.viewonly) return;
+  if (!editable.value) return;
   editor.value?.chain().focus().toggleOrderedList().run();
 }
 
 function setTextAlign(alignment: 'left' | 'center' | 'right' | 'justify') {
-  if (props.disabled || props.viewonly) return;
+  if (!editable.value) return;
   editor.value?.chain().focus().setTextAlign(alignment).run();
 }
 
 const { open, onChange } = useFileDialog({ accept: 'image/*', reset: true });
 
 async function setImage() {
-  if (props.disabled || props.viewonly) return;
+  if (!editable.value) return;
   open();
 }
 
@@ -429,7 +428,7 @@ onChange((files) => {
 });
 
 function setLink() {
-  if (props.disabled || props.viewonly) return;
+  if (!editable.value) return;
 
   const previousUrl = editor.value?.getAttributes('link').href;
   const url = window.prompt('URL', previousUrl);
@@ -445,12 +444,12 @@ function setLink() {
 }
 
 function toggleBlockquote() {
-  if (props.disabled || props.viewonly) return;
+  if (!editable.value) return;
   editor.value?.chain().focus().toggleBlockquote().run();
 }
 
 function setHorizontalRule() {
-  if (props.disabled || props.viewonly) return;
+  if (!editable.value) return;
   editor.value?.chain().focus().setHorizontalRule().run();
 }
 
@@ -484,8 +483,8 @@ defineExpose({
         class="flex flex-wrap px-2 py-1 border border-b-0 border-slate-400 rounded-t"
       >
         <div class="flex gap-1">
-          <Popover v-model="textPopover" :disabled>
-            <div class="flex items-center cursor-pointer" @click="textPopover = true">
+          <Popover v-model="textPopover" :disabled="!editable">
+            <div class="flex items-center cursor-pointer" @click="editable && (textPopover = true)">
               <div
                 v-if="editor.isActive('heading', { level: 3 })"
                 :class="{ 'text-primary-500': editor.isFocused }"
@@ -522,8 +521,10 @@ defineExpose({
         <Divider orientation="vertical" class="!mx-2" />
 
         <div class="flex gap-1">
-          <Popover :disabled>
-            <div class="i-material-symbols-format-color-text-rounded size-5 cursor-pointer"></div>
+          <Popover :disabled="!editable">
+            <Tooltip title="Text Color" delay="500">
+              <div class="i-material-symbols-format-color-text-rounded size-5 cursor-pointer"></div>
+            </Tooltip>
 
             <template #content>
               <div class="p-4 grid grid-cols-5 gap-2">
@@ -551,8 +552,10 @@ defineExpose({
             </template>
           </Popover>
 
-          <Popover :disabled>
-            <div class="i-material-symbols-format-color-fill-rounded size-5 cursor-pointer"></div>
+          <Popover :disabled="!editable">
+            <Tooltip title="Text Highlight Color" delay="500">
+              <div class="i-material-symbols-format-color-fill-rounded size-5 cursor-pointer"></div>
+            </Tooltip>
 
             <template #content>
               <div class="p-4 grid grid-cols-5 gap-2">
@@ -580,10 +583,12 @@ defineExpose({
             </template>
           </Popover>
 
-          <div
-            class="i-material-symbols-format-clear-rounded size-5 cursor-pointer"
-            @click="unset"
-          ></div>
+          <Tooltip title="Clear All Color" delay="500">
+            <div
+              class="i-material-symbols-format-clear-rounded size-5 cursor-pointer"
+              @click="unset"
+            ></div>
+          </Tooltip>
         </div>
 
         <Divider orientation="vertical" class="!mx-2" />
@@ -635,24 +640,26 @@ defineExpose({
             ></div>
           </Tooltip>
 
-          <Popover :disabled>
-            <div
-              class="size-6 cursor-pointer"
-              :class="{
-                'i-material-symbols-format-align-left-rounded': editor.isActive({
-                  textAlign: 'left',
-                }),
-                'i-material-symbols-format-align-center-rounded': editor.isActive({
-                  textAlign: 'center',
-                }),
-                'i-material-symbols-format-align-right-rounded': editor.isActive({
-                  textAlign: 'right',
-                }),
-                'i-material-symbols-format-align-justify-rounded': editor.isActive({
-                  textAlign: 'justify',
-                }),
-              }"
-            ></div>
+          <Popover :disabled="!editable">
+            <Tooltip title="Align" delay="500">
+              <div
+                class="size-6 cursor-pointer"
+                :class="{
+                  'i-material-symbols-format-align-left-rounded': editor.isActive({
+                    textAlign: 'left',
+                  }),
+                  'i-material-symbols-format-align-center-rounded': editor.isActive({
+                    textAlign: 'center',
+                  }),
+                  'i-material-symbols-format-align-right-rounded': editor.isActive({
+                    textAlign: 'right',
+                  }),
+                  'i-material-symbols-format-align-justify-rounded': editor.isActive({
+                    textAlign: 'justify',
+                  }),
+                }"
+              ></div>
+            </Tooltip>
 
             <template #content>
               <Listbox>
@@ -676,19 +683,30 @@ defineExpose({
         <Divider orientation="vertical" class="!mx-2" />
 
         <div class="flex gap-1">
-          <div
-            class="i-material-symbols-imagesmode-outline-rounded size-6 cursor-pointer"
-            @click="setImage"
-          ></div>
-          <div class="i-material-symbols-link-rounded size-6 cursor-pointer" @click="setLink"></div>
-          <div
-            class="i-material-symbols-format-quote-rounded size-6 cursor-pointer"
-            @click="toggleBlockquote"
-          ></div>
-          <div
-            class="i-material-symbols-border-horizontal-rounded size-6 cursor-pointer"
-            @click="setHorizontalRule"
-          ></div>
+          <Tooltip title="Image" delay="500">
+            <div
+              class="i-material-symbols-imagesmode-outline-rounded size-6 cursor-pointer"
+              @click="setImage"
+            ></div>
+          </Tooltip>
+          <Tooltip title="Link" delay="500">
+            <div
+              class="i-material-symbols-link-rounded size-6 cursor-pointer"
+              @click="setLink"
+            ></div>
+          </Tooltip>
+          <Tooltip title="Quote" delay="500">
+            <div
+              class="i-material-symbols-format-quote-rounded size-6 cursor-pointer"
+              @click="toggleBlockquote"
+            ></div>
+          </Tooltip>
+          <Tooltip title="Divider" delay="500">
+            <div
+              class="i-material-symbols-border-horizontal-rounded size-6 cursor-pointer"
+              @click="setHorizontalRule"
+            ></div>
+          </Tooltip>
         </div>
       </div>
 
