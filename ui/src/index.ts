@@ -86,3 +86,4 @@ export { default as useWebSocket } from './composables/websocket/useWebSocket';
 export { default as queueGuard } from './utilities/queue-guard/queueGuard';
 export { default as request } from './utilities/request/request';
 export { default as staticTable } from './utilities/static-table/staticTable';
+export { default as stream } from './utilities/stream';
