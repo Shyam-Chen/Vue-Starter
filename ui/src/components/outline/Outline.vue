@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import { useLocale } from 'vue-localer';
+
 interface OutlineItem {
   text: string;
   sub?: boolean;
@@ -26,6 +28,8 @@ const emit = defineEmits<{
   (evt: 'clickItem', index: number): void;
 }>();
 
+const locale = useLocale();
+
 function currentSectionStatus(index: number) {
   if (props.items[index].status) {
     const _sections = [...props.items];
@@ -39,7 +43,9 @@ function currentSectionStatus(index: number) {
 
 <template>
   <div v-bind="$attrs" class="sticky top-24 border-s border-gray-200 dark:border-gray-700">
-    <div class="ps-2 border-s-2 border-transparent my-1 font-bold">On this page</div>
+    <div class="ps-2 border-s-2 border-transparent my-1 font-bold">
+      {{ locale.onThisPage || 'On this page' }}
+    </div>
 
     <ul>
       <li
