@@ -48,6 +48,13 @@ export default defineConfig({
     },
     mainFields: ['module'],
   },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        api: 'modern',
+      },
+    },
+  },
   server: {
     proxy: {
       '/api': {

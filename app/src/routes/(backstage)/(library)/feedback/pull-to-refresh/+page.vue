@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import type { ComponentProps } from 'vue-component-type-helpers';
 import { ref } from 'vue';
-import { XBreadcrumb, XCard, XPullToRefresh } from '@x/ui';
+import { XBreadcrumb, XButton, XCard, XPullToRefresh } from '@x/ui';
 
 type XPullToRefreshProps = ComponentProps<typeof XPullToRefresh>;
 
@@ -14,22 +14,38 @@ const onRefresh: XPullToRefreshProps['onRefresh'] = async (done) => {
   console.log('load finish');
   done();
 };
+
+const more = ref(false);
 </script>
 
 <template>
-  <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Feedback' }, { text: 'PullToRefresh' }]" />
+  <XPullToRefresh @refresh="onRefresh">
+    <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Feedback' }, { text: 'PullToRefresh' }]" />
 
-  <h1 class="text-4xl font-extrabold my-4">PullToRefresh</h1>
+    <h1 class="text-4xl font-extrabold my-4">PullToRefresh</h1>
 
-  <section class="my-8">
-    <h2 class="text-3xl font-bold my-4">Basic</h2>
+    <section class="my-8">
+      <h2 class="text-3xl font-bold my-4">Basic</h2>
 
-    <XCard>
-      <XPullToRefresh @refresh="onRefresh">
-        <div v-for="item in list" :key="item">
-          {{ item }}
+      <XCard>
+        <div>Pull this page down to trigger the refresh.</div>
+
+        <div class="mt-4">
+          <XButton color="info" @click="more = !more">More</XButton>
+
+          <div v-if="more" class="flex flex-col gap-4 mt-4">
+            <div v-for="num in 5" :key="num">
+              {{ num }}. Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+              Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+              unknown printer took a galley of type and scrambled it to make a type specimen book.
+              It has survived not only five centuries, but also the leap into electronic
+              typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
+              release of Letraset sheets containing Lorem Ipsum passages, and more recently with
+              desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+            </div>
+          </div>
         </div>
-      </XPullToRefresh>
-    </XCard>
-  </section>
+      </XCard>
+    </section>
+  </XPullToRefresh>
 </template>

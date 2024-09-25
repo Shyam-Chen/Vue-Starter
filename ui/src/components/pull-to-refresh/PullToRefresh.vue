@@ -1,29 +1,47 @@
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { ref, onMounted, onBeforeUnmount } from 'vue';
+import { useLocale } from 'vue-localer';
 import { useSwipe } from '@vueuse/core';
 
 import Spinner from '../spinner/Spinner.vue';
+import scrollableParent from '../../composables/scroll-parent/scrollableParent';
 
 const emit = defineEmits<{
   (evt: 'refresh', done: () => void): void;
 }>();
 
-const container = ref<HTMLDivElement>();
+const locale = useLocale();
+
 const content = ref<HTMLDivElement>();
 const translateY = ref(0);
 const isRefreshing = ref(false);
+const isReleaseToRefresh = ref(false);
+const preventScroll = ref(false);
+
+const maxPullDistance = 80;
 
 const { lengthY } = useSwipe(content, {
-  passive: false,
+  threshold: 60,
   onSwipe() {
-    if (lengthY.value < 0 && !isRefreshing.value) {
-      translateY.value = Math.min(lengthY.value, 100);
+    const isAtTop = scrollableParent(content.value)?.scrollTop === 0;
+
+    if (lengthY.value < 0 && isAtTop && !isRefreshing.value) {
+      translateY.value = Math.min(-lengthY.value, maxPullDistance);
+      preventScroll.value = true;
+
+      if (translateY.value >= maxPullDistance) {
+        isReleaseToRefresh.value = true;
+      } else {
+        isReleaseToRefresh.value = false;
+      }
     }
   },
   onSwipeEnd(_, direction) {
-    if (direction === 'down' && translateY.value < 50) {
+    preventScroll.value = false;
+
+    if (direction === 'down' && translateY.value >= maxPullDistance) {
       isRefreshing.value = true;
-      translateY.value = 50;
+      translateY.value = maxPullDistance;
       emit('refresh', stopRefreshing);
     } else {
       translateY.value = 0;
@@ -33,18 +51,41 @@ const { lengthY } = useSwipe(content, {
 
 function stopRefreshing() {
   isRefreshing.value = false;
+  isReleaseToRefresh.value = false;
   translateY.value = 0;
+}
+
+onMounted(() => {
+  document.addEventListener('touchmove', handlePreventScroll, { passive: false });
+});
+
+onBeforeUnmount(() => {
+  document.removeEventListener('touchmove', handlePreventScroll);
+});
+
+function handlePreventScroll(event: TouchEvent) {
+  if (preventScroll.value) {
+    event.preventDefault();
+  }
 }
 </script>
 
 <template>
-  <div ref="container" class="PullToRefresh">
+  <div class="PullToRefresh">
     <div
       class="PullToRefresh-Indicator"
       :style="{ transform: `translateY(${Math.abs(translateY)}px)` }"
     >
-      {{ translateY }}<br />
-      {{ lengthY }}
+      <div v-if="!isRefreshing && translateY > 0">
+        <div v-if="isReleaseToRefresh" class="flex flex-col items-center">
+          <div class="i-material-symbols-arrow-warm-up-rounded size-5"></div>
+          <div>{{ locale.releaseToRefresh || 'Release to refresh' }}</div>
+        </div>
+        <div v-else class="flex flex-col items-center">
+          <div class="i-material-symbols-arrow-cool-down-rounded size-5"></div>
+          <div>{{ locale.pullDownToRefresh || 'Pull down to refresh' }}</div>
+        </div>
+      </div>
       <Spinner v-if="isRefreshing" class="size-8" />
     </div>
 
@@ -60,21 +101,15 @@ function stopRefreshing() {
 
 <style lang="scss" scoped>
 .PullToRefresh {
-  overflow-y: auto;
-  position: relative;
+  @apply relative h-full;
 }
 
 .PullToRefresh-Indicator {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  transition: transform 0.3s ease;
-  width: 100px;
-  height: 2rem;
+  @apply absolute -top-20 w-full h-20 flex justify-center items-center;
+  @apply transition-transform duration-300 ease-linear;
 }
 
 .PullToRefresh-Content {
-  transition: transform 0.3s ease;
+  @apply h-full transition-transform duration-300 ease-linear;
 }
 </style>

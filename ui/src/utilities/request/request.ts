@@ -4,22 +4,15 @@ import { ofetch } from 'ofetch';
 const fetcher = ofetch.create({
   baseURL: `${process.env.API_URL}/api`,
   async onRequest({ options }) {
+    const headers = new Headers(options.headers);
+
     const accessToken = localStorage.getItem('accessToken');
+    if (accessToken) headers.set('Authorization', `Bearer ${accessToken}`);
+
     const language = localStorage.getItem('language');
+    if (language) headers.set('Accept-Language', language);
 
-    if (accessToken) {
-      options.headers = {
-        ...options.headers,
-        Authorization: `Bearer ${accessToken}`,
-      };
-    }
-
-    if (language) {
-      options.headers = {
-        ...options.headers,
-        'Accept-Language': language,
-      };
-    }
+    options.headers = headers;
   },
   async onResponse({ response }) {
     if (response.status === 401 && localStorage.getItem('refreshToken')) {
