@@ -161,12 +161,25 @@ const alphanum = ref('');
     <XCard>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <XTextField v-model:value="alpha" label="Alphabetic" pattern="^[A-Za-z]+$">
-          <XCode class="ms-1">^[A-Za-z]+$</XCode>
+          <XCode class="!text-xs ms-1">^[A-Za-z]+$</XCode>
         </XTextField>
 
         <XTextField v-model:value="alphanum" label="Alphanumeric" pattern="^[A-Za-z0-9]+$">
-          <XCode class="ms-1">^[A-Za-z0-9]+$</XCode>
+          <XCode class="!text-xs ms-1">^[A-Za-z0-9]+$</XCode>
         </XTextField>
+      </div>
+    </XCard>
+  </section>
+
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Sub</h2>
+
+    <XCard>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="flex gap-2">
+          <XTextField label="Example label" />
+          <XTextField sub />
+        </div>
       </div>
     </XCard>
   </section>

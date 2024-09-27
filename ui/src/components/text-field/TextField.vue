@@ -2,34 +2,37 @@
 import type { InputHTMLAttributes } from 'vue';
 import { watch } from 'vue';
 
-import FormControl from '../form-control';
+import type { FormControlProps } from '../form-control';
+import FormControl, { formControlDefaults, useFormControlAttrs } from '../form-control';
 
 interface Props extends /* @vue-ignore */ InputHTMLAttributes {
-  label?: string;
-  type?: string;
+  type?: InputHTMLAttributes['type'];
+  disabled?: InputHTMLAttributes['disabled'];
   clearable?: boolean;
-  disabled?: boolean;
-  required?: boolean;
-  pattern?: string;
-  invalid?: boolean | string;
-  help?: string;
   prepend?: string;
   append?: string;
 }
 
-defineOptions({
-  inheritAttrs: false,
-});
+defineOptions({ inheritAttrs: false });
 
 const valueModel = defineModel<string | number | string[]>('value');
 
-const props = defineProps<Props>();
+const props = withDefaults(defineProps<Props & FormControlProps>(), {
+  type: 'text',
+  disabled: false,
+  clearable: false,
+  prepend: '',
+  append: '',
+  ...formControlDefaults,
+});
 
 const emit = defineEmits<{
   (evt: 'clear'): void;
   (evt: 'prepend'): void;
   (evt: 'append'): void;
 }>();
+
+const formControlAttrs = useFormControlAttrs(props);
 
 watch(
   () => valueModel.value,
@@ -57,7 +60,7 @@ function onClear() {
 </script>
 
 <template>
-  <FormControl :label :required :invalid :help>
+  <FormControl v-bind="formControlAttrs">
     <template #label>
       <slot></slot>
     </template>
@@ -72,8 +75,8 @@ function onClear() {
           :id
           v-model="valueModel"
           v-bind="$attrs"
-          :type="type ? type : 'text'"
-          :disabled="disabled"
+          :type
+          :disabled
           autocomplete="off"
           class="TextField-Input"
           :class="{ invalid, disabled, prepend, append, clearable }"
