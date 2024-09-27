@@ -10,7 +10,7 @@ const id = useId();
 
 <template>
   <div class="flex flex-col w-full">
-    <div v-if="label || sub" class="flex items-center text-sm mb-1" :class="{ 'pt-5': sub }">
+    <div v-if="label || sub" class="flex items-center text-sm mb-1" :class="{ 'md:pt-5': sub }">
       <label :for="id" class="inline-flex font-bold empty:hidden">{{ label }}</label>
       <span v-if="required" class="text-red-500 ms-0.5">*</span>
       <slot name="label"></slot>

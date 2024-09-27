@@ -1,19 +1,25 @@
 <script lang="ts" setup>
+import type { InputHTMLAttributes } from 'vue';
 import { IMaskDirective as vImask } from 'vue-imask';
 
-import FormControl from '../form-control/FormControl.vue';
+import type { FormControlProps } from '../form-control';
+import FormControl, { formControlDefaults, useFormControlAttrs } from '../form-control';
+
+interface Props extends /* @vue-ignore */ InputHTMLAttributes {
+  disabled?: InputHTMLAttributes['disabled'];
+  mask?: object;
+}
 
 const maskedModel = defineModel<string>('masked');
 const unmaskedModel = defineModel<string | number>('unmasked');
 
-defineProps<{
-  mask?: object;
-  label?: string;
-  required?: boolean;
-  disabled?: boolean;
-  invalid?: boolean | string;
-  help?: string;
-}>();
+const props = withDefaults(defineProps<Props & FormControlProps>(), {
+  disabled: false,
+  mask: () => ({}),
+  ...formControlDefaults,
+});
+
+const formControlAttrs = useFormControlAttrs(props);
 
 function onAccept(evt: CustomEvent) {
   const maskRef = evt.detail;
@@ -23,19 +29,25 @@ function onAccept(evt: CustomEvent) {
 </script>
 
 <template>
-  <FormControl v-slot="{ id }" :label :required :invalid :help>
-    <input
-      :id
-      v-imask="mask"
-      v-bind="$attrs"
-      :value="masked"
-      :disabled="disabled"
-      class="InputMask-Input"
-      :class="{ invalid, disabled }"
-      type="text"
-      autocomplete="off"
-      @accept="onAccept"
-    />
+  <FormControl v-bind="formControlAttrs">
+    <template #label>
+      <slot></slot>
+    </template>
+
+    <template #default="{ id }">
+      <input
+        :id
+        v-imask="mask"
+        v-bind="$attrs"
+        :value="masked"
+        :disabled
+        type="text"
+        autocomplete="off"
+        class="InputMask-Input"
+        :class="{ invalid, disabled }"
+        @accept="onAccept"
+      />
+    </template>
   </FormControl>
 </template>
 

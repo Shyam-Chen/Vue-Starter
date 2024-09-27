@@ -152,4 +152,49 @@ const flux = reactive({
       </div>
     </XCard>
   </section>
+
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Sub</h2>
+
+    <XCard>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="flex flex-col md:flex-row gap-2">
+          <XInputMask
+            v-model:masked="flux.numberMasked"
+            v-model:unmasked.number="flux.numberUnmasked"
+            :mask="{
+              mask: Number,
+              min: -1_000_000_000_000,
+              max: 1_000_000_000_000,
+              thousandsSeparator: ',',
+            }"
+            label="Number Label"
+          />
+          <XInputMask
+            v-model:masked="flux.numberMasked"
+            v-model:unmasked.number="flux.numberUnmasked"
+            :mask="{
+              mask: Number,
+              min: -1_000_000_000_000,
+              max: 1_000_000_000_000,
+              thousandsSeparator: ',',
+            }"
+            sub
+          />
+        </div>
+
+        <XInputMask
+          v-model:masked="flux.numberMasked"
+          v-model:unmasked.number="flux.numberUnmasked"
+          :mask="{
+            mask: Number,
+            min: -1_000_000_000_000,
+            max: 1_000_000_000_000,
+            thousandsSeparator: ',',
+          }"
+          label="Number Label 2"
+        />
+      </div>
+    </XCard>
+  </section>
 </template>

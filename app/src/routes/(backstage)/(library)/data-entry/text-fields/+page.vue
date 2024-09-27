@@ -176,10 +176,12 @@ const alphanum = ref('');
 
     <XCard>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div class="flex gap-2">
+        <div class="flex flex-col md:flex-row gap-2">
           <XTextField label="Example label" />
           <XTextField sub />
         </div>
+
+        <XTextField label="Example label 2" />
       </div>
     </XCard>
   </section>
