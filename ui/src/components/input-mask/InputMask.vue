@@ -6,16 +6,16 @@ import type { FormControlProps } from '../form-control';
 import FormControl, { formControlDefaults, useFormControlAttrs } from '../form-control';
 
 interface Props extends /* @vue-ignore */ InputHTMLAttributes {
-  disabled?: InputHTMLAttributes['disabled'];
   mask?: object;
+  disabled?: boolean;
 }
 
 const maskedModel = defineModel<string>('masked');
 const unmaskedModel = defineModel<string | number>('unmasked');
 
 const props = withDefaults(defineProps<Props & FormControlProps>(), {
-  disabled: false,
   mask: () => ({}),
+  disabled: false,
   ...formControlDefaults,
 });
 

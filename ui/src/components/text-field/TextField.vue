@@ -7,10 +7,10 @@ import FormControl, { formControlDefaults, useFormControlAttrs } from '../form-c
 
 interface Props extends /* @vue-ignore */ InputHTMLAttributes {
   type?: InputHTMLAttributes['type'];
-  disabled?: InputHTMLAttributes['disabled'];
-  clearable?: boolean;
+  disabled?: boolean;
   prepend?: string;
   append?: string;
+  clearable?: boolean;
 }
 
 defineOptions({ inheritAttrs: false });
@@ -20,9 +20,9 @@ const valueModel = defineModel<string | number | string[]>('value');
 const props = withDefaults(defineProps<Props & FormControlProps>(), {
   type: 'text',
   disabled: false,
-  clearable: false,
   prepend: '',
   append: '',
+  clearable: false,
   ...formControlDefaults,
 });
 
