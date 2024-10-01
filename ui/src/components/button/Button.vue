@@ -1,10 +1,11 @@
 <script lang="ts" setup>
-import type { ButtonHTMLAttributes, Ref, WritableComputedRef } from 'vue';
-import { ref, computed, onMounted, inject } from 'vue';
+import type { ButtonHTMLAttributes, ModelRef, ShallowRef } from 'vue';
+import { ref, computed, watchEffect, inject, useTemplateRef } from 'vue';
 
 import Spinner from '../spinner/Spinner.vue';
 
 interface Props extends /* @vue-ignore */ Omit<ButtonHTMLAttributes, 'onClick'> {
+  disabled?: ButtonHTMLAttributes['disabled'];
   label?: string;
   icon?: string;
   variant?: 'contained' | 'outlined' | 'text';
@@ -13,7 +14,6 @@ interface Props extends /* @vue-ignore */ Omit<ButtonHTMLAttributes, 'onClick'> 
   prepend?: string;
   append?: string;
   loading?: boolean;
-  disabled?: boolean;
 }
 
 defineProps<Props>();
@@ -24,18 +24,18 @@ const emit = defineEmits<{
 
 const buttonGroup = inject('ButtonGroup', {
   defaultModel: undefined,
-  group: undefined,
+  container: undefined,
 }) as {
-  defaultModel?: WritableComputedRef<number | undefined>;
-  group?: Ref<HTMLDivElement | undefined>;
+  defaultModel?: ModelRef<number, string, number, number>;
+  container?: Readonly<ShallowRef<HTMLDivElement | null>>;
 };
 
 const idx = ref(-1);
-const self = ref<HTMLButtonElement>();
+const self = useTemplateRef<HTMLButtonElement>('self');
 
-onMounted(() => {
-  if (buttonGroup.group?.value && self.value) {
-    idx.value = Array.from(buttonGroup.group.value.children).indexOf(self.value);
+watchEffect(() => {
+  if (buttonGroup.container?.value && self.value) {
+    idx.value = Array.from(buttonGroup.container.value.children).indexOf(self.value);
   }
 });
 

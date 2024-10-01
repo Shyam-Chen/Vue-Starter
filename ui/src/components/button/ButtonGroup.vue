@@ -1,29 +1,18 @@
 <script lang="ts" setup>
-import { ref, computed, provide } from 'vue';
+import { provide, useTemplateRef } from 'vue';
 
-const props = defineProps<{
-  modelValue?: number;
-}>();
+const defaultModel = defineModel<number>({ default: undefined });
 
-const emit = defineEmits<{
-  (evt: 'update:modelValue', val?: number): void;
-}>();
-
-const defaultModel = computed({
-  get: () => props.modelValue,
-  set: (val) => emit('update:modelValue', val),
-});
-
-const group = ref<HTMLDivElement>();
+const container = useTemplateRef<HTMLDivElement>('container');
 
 provide('ButtonGroup', {
   defaultModel,
-  group,
+  container,
 });
 </script>
 
 <template>
-  <div ref="group" class="ButtonGroup">
+  <div ref="container" class="ButtonGroup">
     <slot></slot>
   </div>
 </template>
