@@ -5,7 +5,6 @@ import { ref, computed, watchEffect, inject, useTemplateRef } from 'vue';
 import Spinner from '../spinner/Spinner.vue';
 
 interface Props extends /* @vue-ignore */ Omit<ButtonHTMLAttributes, 'onClick'> {
-  disabled?: ButtonHTMLAttributes['disabled'];
   label?: string;
   icon?: string;
   variant?: 'contained' | 'outlined' | 'text';
@@ -14,6 +13,7 @@ interface Props extends /* @vue-ignore */ Omit<ButtonHTMLAttributes, 'onClick'> 
   prepend?: string;
   append?: string;
   loading?: boolean;
+  disabled?: boolean;
 }
 
 defineProps<Props>();
