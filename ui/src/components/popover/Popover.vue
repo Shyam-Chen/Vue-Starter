@@ -1,9 +1,8 @@
 <script lang="ts" setup>
-import { nextTick, ref, computed, reactive, watch, provide, inject } from 'vue';
+import { nextTick, ref, watchEffect, watch, provide, inject, useTemplateRef } from 'vue';
 import { onClickOutside } from '@vueuse/core';
 
 import Fade from '../fade/Fade.vue';
-import useScrollParent from '../../composables/scroll-parent/useScrollParent';
 import scrollableParent from '../../composables/scroll-parent/scrollableParent';
 
 const defaultModel = defineModel<boolean>({ default: undefined });
@@ -23,84 +22,98 @@ const props = withDefaults(
 
 const dialog = inject('Dialog', { withinDialog: false });
 
-const target = ref<HTMLDivElement>();
-const panel = ref<HTMLDivElement>();
+const target = useTemplateRef<HTMLDivElement>('target');
+const panel = useTemplateRef<HTMLDivElement>('panel');
 
-const flux = reactive({
-  status: false,
-  toggle() {
-    if (props.disabled) return;
-    if (typeof defaultModel.value === 'boolean') return;
+const status = ref(false);
+const direction = ref<'down' | 'up' | ''>('');
 
-    flux.status = !flux.status;
+async function onToggle() {
+  if (props.disabled) return;
+  if (typeof defaultModel.value === 'boolean') return;
 
-    if (flux.status) {
-      nextTick(() => {
-        flux.resizePanel();
-      });
-    }
-  },
-  close() {
-    if (typeof defaultModel.value === 'boolean') {
-      defaultModel.value = false;
-    } else {
-      flux.status = false;
-    }
-  },
+  status.value = !status.value;
 
-  direction: '' as 'down' | 'up' | '',
-  resizePanel() {
-    if (!target.value || !panel.value) return;
+  if (status.value) {
+    await nextTick();
+    onResize();
+  }
+}
 
-    const rect = target.value.getBoundingClientRect();
-    const center = window.innerHeight / 2;
+function onClose() {
+  if (typeof defaultModel.value === 'boolean') {
+    defaultModel.value = false;
+  } else {
+    status.value = false;
+  }
+}
 
-    if (rect.top > center) {
-      const top = scrollableParent(target.value, 'y')?.getBoundingClientRect().top || 0;
-      panel.value.style.top = `${Math.abs(top) + rect.top}px`;
-      flux.direction = 'up';
-    } else {
-      const top = scrollableParent(target.value, 'y')?.getBoundingClientRect().top || 0;
-      panel.value.style.top = `${Math.abs(top) + rect.top + rect.height}px`;
-      flux.direction = 'down';
-    }
+function onResize() {
+  if (!target.value || !panel.value) return;
 
-    const quarter = window.innerWidth / 4;
-    const middle = window.innerWidth / 2;
+  const rect = target.value.getBoundingClientRect();
+  const center = window.innerHeight / 2;
 
-    if (props.start) {
-      panel.value.style.left = `${rect.left}px`;
-    } else if (props.end) {
-      const panelRect = panel.value.getBoundingClientRect();
-      panel.value.style.left = `${rect.left - panelRect.width + rect.width}px`;
-    } else if (quarter <= rect.right && rect.right <= quarter * 3) {
-      const panelRect = panel.value.getBoundingClientRect();
-      panel.value.style.left = `${rect.left - panelRect.width / 2 + rect.width / 2}px`;
-    } else if (rect.right > middle && rect.width < middle) {
-      const panelRect = panel.value.getBoundingClientRect();
-      panel.value.style.left = `${rect.left - panelRect.width + rect.width}px`;
-    } else {
-      panel.value.style.left = `${rect.left}px`;
-    }
-  },
+  if (rect.top > center) {
+    const top = document.documentElement.getBoundingClientRect().top;
+    panel.value.style.top = `${Math.abs(top) + rect.top}px`;
+    direction.value = 'up';
+  } else {
+    const top = document.documentElement.getBoundingClientRect().top;
+    panel.value.style.top = `${Math.abs(top) + rect.top + rect.height}px`;
+    direction.value = 'down';
+  }
+
+  const quarter = window.innerWidth / 4;
+  const middle = window.innerWidth / 2;
+
+  if (props.start) {
+    panel.value.style.left = `${rect.left}px`;
+  } else if (props.end) {
+    const panelRect = panel.value.getBoundingClientRect();
+    panel.value.style.left = `${rect.left - panelRect.width + rect.width}px`;
+  } else if (quarter <= rect.right && rect.right <= quarter * 3) {
+    const panelRect = panel.value.getBoundingClientRect();
+    panel.value.style.left = `${rect.left - panelRect.width / 2 + rect.width / 2}px`;
+  } else if (rect.right > middle && rect.width < middle) {
+    const panelRect = panel.value.getBoundingClientRect();
+    panel.value.style.left = `${rect.left - panelRect.width + rect.width}px`;
+  } else {
+    panel.value.style.left = `${rect.left}px`;
+  }
+}
+
+const scrollParent = ref<HTMLElement>();
+const scrollGrandparent = ref<HTMLElement>();
+
+function onScroll() {
+  onResize();
+}
+
+watchEffect((onCleanup) => {
+  const el = target.value;
+
+  if (el && (status.value || defaultModel.value)) {
+    document.addEventListener('scroll', onScroll);
+    scrollParent.value = scrollableParent(el);
+    scrollParent.value?.addEventListener('scroll', onScroll);
+    scrollGrandparent.value = scrollableParent(scrollParent.value?.parentElement);
+    scrollGrandparent.value?.addEventListener('scroll', onScroll);
+  }
+
+  onCleanup(() => {
+    document.removeEventListener('scroll', onScroll);
+    scrollParent.value?.removeEventListener('scroll', onScroll);
+    scrollGrandparent.value?.removeEventListener('scroll', onScroll);
+  });
 });
-
-useScrollParent(
-  computed(() => target.value),
-  () => {
-    if (flux.status || defaultModel.value) {
-      flux.resizePanel();
-    }
-  },
-);
 
 watch(
   () => defaultModel.value,
-  (val) => {
+  async (val) => {
     if (val) {
-      nextTick(() => {
-        flux.resizePanel();
-      });
+      await nextTick();
+      onResize();
     }
   },
 );
@@ -108,7 +121,7 @@ watch(
 onClickOutside(
   target,
   () => {
-    flux.close();
+    onClose();
   },
   { ignore: ['.Popover-Panel'] },
 );
@@ -120,21 +133,21 @@ provide('Popover', {
 
 <template>
   <div class="Popover">
-    <div ref="target" class="Popover-Target" @click="flux.toggle">
+    <div ref="target" class="Popover-Target" @click="onToggle">
       <slot></slot>
     </div>
 
     <Teleport to="body">
       <Fade>
         <div
-          v-if="typeof modelValue === 'boolean' ? defaultModel : flux.status"
+          v-if="typeof modelValue === 'boolean' ? defaultModel : status"
           ref="panel"
           tabindex="-1"
           class="Popover-Panel"
           :class="[
             {
-              placementBottom: flux.direction === 'down',
-              placementTop: flux.direction === 'up',
+              placementBottom: direction === 'down',
+              placementTop: direction === 'up',
             },
             dialog.withinDialog ? 'z-111' : 'z-101',
           ]"
