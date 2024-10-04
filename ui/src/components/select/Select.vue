@@ -11,7 +11,7 @@ import useScrollParent from '../../composables/scroll-parent/useScrollParent';
 
 type Option = {
   label: string;
-  value: string | number;
+  value: any;
 };
 
 // type OptionGroup = {
@@ -53,7 +53,7 @@ const props = withDefaults(
 );
 
 const emit = defineEmits<{
-  (evt: 'change', val?: Option['value'], opt?: Option): void;
+  <T extends Option>(evt: 'change', val?: T['value'], opt?: T): void;
   (evt: 'blur'): void;
 }>();
 

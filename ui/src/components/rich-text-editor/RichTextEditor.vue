@@ -95,12 +95,7 @@ onMounted(() => {
       Image.configure({ allowBase64: true }).extend({
         addAttributes() {
           return {
-            src: {
-              default: null,
-            },
-            alt: {
-              default: null,
-            },
+            ...this.parent?.(),
             style: {
               default: `${my1} width: auto; height: auto;`,
               parseHTML: (element) => {
@@ -110,66 +105,6 @@ onMounted(() => {
                   ? `${my1} width: ${width}px; height: auto;`
                   : `${my1} ${element.style.cssText}`;
               },
-            },
-            title: {
-              default: null,
-            },
-            loading: {
-              default: null,
-            },
-            srcset: {
-              default: null,
-            },
-            sizes: {
-              default: null,
-            },
-            crossorigin: {
-              default: null,
-            },
-            usemap: {
-              default: null,
-            },
-            ismap: {
-              default: null,
-            },
-            width: {
-              default: null,
-            },
-            height: {
-              default: null,
-            },
-            referrerpolicy: {
-              default: null,
-            },
-            longdesc: {
-              default: null,
-            },
-            decoding: {
-              default: null,
-            },
-            class: {
-              default: null,
-            },
-            id: {
-              default: null,
-            },
-            name: {
-              default: null,
-            },
-            draggable: {
-              default: true,
-            },
-            tabindex: {
-              default: null,
-            },
-            'aria-label': {
-              default: null,
-            },
-            'aria-labelledby': {
-              default: null,
-            },
-            'aria-describedby': {
-              default: null,
             },
           };
         },
