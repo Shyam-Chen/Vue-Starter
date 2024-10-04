@@ -3,6 +3,8 @@ import { ref } from 'vue';
 import { XBreadcrumb, XButton, XCard, XTreeSelect } from '@x/ui';
 
 import WithinPopover from './WithinPopover.vue';
+import WithinTableCell from './WithinTableCell.vue';
+import WithinTableCellWithinDialog from './WithinTableCellWithinDialog.vue';
 
 const values = ref<string[]>([]);
 
@@ -153,6 +155,22 @@ const values2 = ref<string[]>([]);
 
     <XCard>
       <WithinPopover />
+    </XCard>
+  </section>
+
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Within TableCell</h2>
+
+    <XCard>
+      <WithinTableCell />
+    </XCard>
+  </section>
+
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Within TableCell within Dialog</h2>
+
+    <XCard>
+      <WithinTableCellWithinDialog />
     </XCard>
   </section>
 </template>

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { nextTick, ref, watch, onUnmounted } from 'vue';
+import { nextTick, ref, watch, onUnmounted, provide } from 'vue';
 import { useResizeObserver } from '@vueuse/core';
 
 import Bounce from '../bounce/Bounce.vue';
@@ -46,6 +46,10 @@ onUnmounted(() => {
     document.body.style.overflow = 'auto';
     closeDialog();
   }
+});
+
+provide('Dialog', {
+  withinDialog: true,
 });
 </script>
 

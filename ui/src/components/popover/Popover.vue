@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { nextTick, ref, computed, reactive, watch, provide } from 'vue';
+import { nextTick, ref, computed, reactive, watch, provide, inject } from 'vue';
 import { onClickOutside } from '@vueuse/core';
 
 import Fade from '../fade/Fade.vue';
@@ -20,6 +20,8 @@ const props = withDefaults(
     end: false,
   },
 );
+
+const dialog = inject('Dialog', { withinDialog: false });
 
 const target = ref<HTMLDivElement>();
 const panel = ref<HTMLDivElement>();
@@ -54,12 +56,12 @@ const flux = reactive({
     const center = window.innerHeight / 2;
 
     if (rect.top > center) {
-      const top = scrollableParent(target.value)?.getBoundingClientRect().top || 0;
+      const top = scrollableParent(target.value, 'y')?.getBoundingClientRect().top || 0;
       panel.value.style.top = `${Math.abs(top) + rect.top}px`;
       flux.direction = 'up';
     } else {
-      const top = scrollableParent(target.value)?.getBoundingClientRect().top || 0;
-      panel.value.style.top = `${Math.abs(top) + rect.bottom}px`;
+      const top = scrollableParent(target.value, 'y')?.getBoundingClientRect().top || 0;
+      panel.value.style.top = `${Math.abs(top) + rect.top + rect.height}px`;
       flux.direction = 'down';
     }
 
@@ -84,9 +86,11 @@ const flux = reactive({
 });
 
 useScrollParent(
-  computed(() => panel.value),
+  computed(() => target.value),
   () => {
-    if (flux.status || defaultModel.value) flux.resizePanel();
+    if (flux.status || defaultModel.value) {
+      flux.resizePanel();
+    }
   },
 );
 
@@ -127,10 +131,13 @@ provide('Popover', {
           ref="panel"
           tabindex="-1"
           class="Popover-Panel"
-          :class="{
-            placementBottom: flux.direction === 'down',
-            placementTop: flux.direction === 'up',
-          }"
+          :class="[
+            {
+              placementBottom: flux.direction === 'down',
+              placementTop: flux.direction === 'up',
+            },
+            dialog.withinDialog ? 'z-111' : 'z-101',
+          ]"
         >
           <slot name="content"></slot>
         </div>
@@ -149,7 +156,7 @@ provide('Popover', {
 }
 
 .Popover-Panel {
-  @apply absolute z-101 min-w-max bg-white dark:bg-slate-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700;
+  @apply absolute min-w-max bg-white dark:bg-slate-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700;
 
   &.placementBottom {
     transform: translateY(0.5rem);

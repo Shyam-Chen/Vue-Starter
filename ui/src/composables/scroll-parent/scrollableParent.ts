@@ -1,4 +1,4 @@
-export default (el?: HTMLElement | null): HTMLElement | undefined => {
+export default (el?: HTMLElement | null, axis?: 'x' | 'y'): HTMLElement | undefined => {
   if (!el) return undefined;
 
   let parent = el.parentElement;
@@ -10,7 +10,7 @@ export default (el?: HTMLElement | null): HTMLElement | undefined => {
 
     if (
       (overflow.includes('auto') || overflow.includes('scroll')) &&
-      (hasScrollbarY || hasScrollbarX)
+      (axis === 'x' ? hasScrollbarX : axis === 'y' ? hasScrollbarY : hasScrollbarY || hasScrollbarX)
     ) {
       return parent;
     }
