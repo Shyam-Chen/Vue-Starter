@@ -47,27 +47,31 @@ const flux = reactive({
     :rows="flux.rows"
   >
     <template #C="{ row }">
-      <XSelect
-        v-model:value="row.C"
-        :options="
-          ['Padding', 'Margin', 'Space Between'].map((item) => ({ label: item, value: item }))
-        "
-      />
+      <div class="w-48 py-1">
+        <XSelect
+          v-model:value="row.C"
+          :options="
+            ['Padding', 'Margin', 'Space Between'].map((item) => ({ label: item, value: item }))
+          "
+        />
+      </div>
     </template>
 
     <template #H="{ row }">
-      <XSelect
-        v-model:value="row.H"
-        :options="
-          [
-            'Box Shadow',
-            'Box Shadow Color',
-            'Opacity',
-            'Mix Blend Mode',
-            'Background Blend Mode',
-          ].map((item) => ({ label: item, value: item }))
-        "
-      />
+      <div class="w-48 py-1">
+        <XSelect
+          v-model:value="row.H"
+          :options="
+            [
+              'Box Shadow',
+              'Box Shadow Color',
+              'Opacity',
+              'Mix Blend Mode',
+              'Background Blend Mode',
+            ].map((item) => ({ label: item, value: item }))
+          "
+        />
+      </div>
     </template>
   </XTable>
 </template>

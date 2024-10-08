@@ -2,21 +2,25 @@
 import { reactive } from 'vue';
 import { XBreadcrumb, XCard, XSelect } from '@x/ui';
 
-import WithTable from './WithTable.vue';
-import WithTableInDialog from './WithTableInDialog.vue';
 import WithinPopover from './WithinPopover.vue';
+import WithinTableCell from './WithinTableCell.vue';
+import WithinTableCellWithinDialog from './WithinTableCellWithinDialog.vue';
 
 const flux = reactive({
   select1: '',
   select1Options: [
-    { label: 'Angular', value: 'f1' },
-    { label: 'React', value: 'f2' },
-    { label: 'Svelte', value: 'f3' },
-    { label: 'Vue', value: 'f4' },
-    { label: 'Nest', value: 'b1' },
-    { label: 'Express', value: 'b2' },
-    { label: 'Fastify', value: 'b3' },
-    { label: 'Koa', value: 'b4' },
+    { label: 'Angular', value: 'angular' },
+    { label: 'React', value: 'react' },
+    { label: 'Svelte', value: 'svelte' },
+    { label: 'Vue', value: 'vue' },
+    { label: 'Nest', value: 'nest' },
+    { label: 'Express', value: 'express' },
+    { label: 'Fastify', value: 'fastify' },
+    { label: 'Koa', value: 'koa' },
+    { label: 'Analog', value: 'analog' },
+    { label: 'Next', value: 'next' },
+    { label: 'SvelteKit', value: 'svelte-kit' },
+    { label: 'Nuxt', value: 'nuxt' },
   ],
 });
 </script>
@@ -86,22 +90,6 @@ const flux = reactive({
   </section>
 
   <section class="my-8">
-    <h2 class="text-3xl font-bold my-4 pt-6">With Table</h2>
-
-    <XCard>
-      <WithTable />
-    </XCard>
-
-    <section class="my-4">
-      <h3 class="text-2xl font-semibold my-4 pt-2">In Dialog</h3>
-
-      <XCard>
-        <WithTableInDialog />
-      </XCard>
-    </section>
-  </section>
-
-  <section class="my-8">
     <h2 class="text-3xl font-bold my-4 pt-6">Within Popover</h2>
 
     <XCard>
@@ -110,7 +98,23 @@ const flux = reactive({
   </section>
 
   <section class="my-8">
-    <h2 class="text-3xl font-bold my-4 pt-6">Option Groups (TODO)</h2>
+    <h2 class="text-3xl font-bold my-4 pt-6">Within TableCell</h2>
+
+    <XCard>
+      <WithinTableCell />
+    </XCard>
+
+    <section class="my-4">
+      <h3 class="text-2xl font-semibold my-4 pt-2">Within TableCell within Dialog</h3>
+
+      <XCard>
+        <WithinTableCellWithinDialog />
+      </XCard>
+    </section>
+  </section>
+
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Group (TODO)</h2>
 
     <XCard>
       <!--  -->

@@ -1,223 +1,156 @@
 <script lang="ts" setup>
-import { nextTick, ref, computed, reactive, watchEffect, watch, inject } from 'vue';
+import { nextTick, ref, computed, watchEffect, watch, inject, useTemplateRef } from 'vue';
 import { onClickOutside } from '@vueuse/core';
 import { useLocale } from 'vue-localer';
 
-import Fade from '../fade/Fade.vue';
-import FormControl from '../form-control/FormControl.vue';
-import ProgressBar from '../progress-bar/ProgressBar.vue';
+import type { FormControlProps } from '../form-control';
+import FormControl, { formControlDefaults, useFormControlAttrs } from '../form-control';
+import Popover from '../popover/Popover.vue';
 import TextField from '../text-field/TextField.vue';
-import useScrollParent from '../../composables/scroll-parent/useScrollParent';
 
 type Option = {
   label: string;
-  value: any;
+  value?: any;
+  items?: Option[];
 };
 
-// type OptionGroup = {
-//   label: string;
-//   values: Option[];
-// };
+defineOptions({ inheritAttrs: false });
 
 const valueModel = defineModel<Option['value']>('value');
 
 const props = withDefaults(
-  defineProps<{
-    label?: string;
-    options?: Option[];
-    display?: 'label' | 'value' | ((opt: Option) => string);
-    placeholder?: string;
-    clearable?: boolean;
-    filterable?: boolean;
-    disabled?: boolean;
-    required?: boolean;
-    loading?: boolean;
-    notFoundContent?: string;
-    invalid?: boolean | string;
-    help?: string;
-  }>(),
+  defineProps<
+    {
+      options?: Option[];
+      placeholder?: string;
+      filterable?: boolean;
+      disabled?: boolean;
+      loading?: boolean;
+    } & FormControlProps
+  >(),
   {
-    label: '',
     options: () => [],
-    display: 'label',
     placeholder: '',
-    clearable: false,
     filterable: false,
     disabled: false,
-    required: false,
     loading: false,
-    notFoundContent: '',
-    invalid: undefined,
-    help: '',
+    ...formControlDefaults,
   },
 );
 
 const emit = defineEmits<{
   <T extends Option>(evt: 'change', val?: T['value'], opt?: T): void;
-  (evt: 'blur'): void;
 }>();
 
 const locale = useLocale();
 
-const popover = inject('Popover', { withinPopover: false });
+const formControlAttrs = useFormControlAttrs(props);
 
-const flux = reactive({
-  show: false,
-  direction: 'down' as 'down' | 'up',
-  selected: undefined as Option | undefined,
-  filterValue: '',
-  options: [] as Option[],
-  onSelect(value: Option['value'], option: Option) {
-    flux.show = false;
-    valueModel.value = value;
-    emit('change', value, option);
-  },
-  display(item: Option) {
-    if (props.display && typeof props.display === 'string') {
-      return item[props.display];
+const show = ref(false);
+const initialOptions = computed(() => props.options);
+const renderOptions = ref<Option[]>([]);
+const selected = ref<Option | null | undefined>(null);
+const input = useTemplateRef('input');
+const panel = useTemplateRef('panel');
+const filter = useTemplateRef('filter');
+const list = useTemplateRef('list');
+const items = ref<HTMLDivElement[]>([]);
+
+async function showPicker() {
+  if (props.disabled) return;
+
+  show.value = !show.value;
+  hoverIndex.value = -1;
+
+  await nextTick();
+
+  // Due to the use of `whitespace-nowrap` on `.Select-Item`,
+  // if a scrollbar is present, set the width for all options to accommodate it;
+  // otherwise, keep the width at 100%.
+  if (list.value) {
+    if (list.value.scrollWidth > list.value.offsetWidth) {
+      const width = `${list.value.scrollWidth}px`;
+
+      for (let index = 0; index < items.value.length; index++) {
+        if (items.value[index]) {
+          items.value[index].style.width = width;
+        }
+      }
+    } else {
+      for (let index = 0; index < items.value.length; index++) {
+        if (items.value[index]) {
+          items.value[index].style.width = '100%';
+        }
+      }
     }
+  }
 
-    if (props.display && typeof props.display === 'function') {
-      return props.display(item);
-    }
+  // Scroll to the selected option
+  const active = panel.value?.querySelector('.Select-Item-Active') as HTMLDivElement;
+  const offsetTop = props.filterable ? active?.offsetTop - 46 : active?.offsetTop;
+  if (offsetTop && list.value) list.value.scrollTop = offsetTop - active.offsetHeight * 2;
 
-    return `${item.value} - ${item.label}`;
-  },
-  clear() {
-    valueModel.value = undefined;
-    emit('change', undefined, undefined);
-  },
+  // -
+  if (valueModel.value) {
+    hoverIndex.value = renderOptions.value?.findIndex((opt) => opt.value === valueModel.value);
+  }
+
+  // -
+  if (filter.value) filter.value.$el.querySelector('input').focus();
+}
+
+watchEffect(() => {
+  if (panel.value) {
+    panel.value.style.width = `${input.value?.$el.getBoundingClientRect().width}px`;
+  }
 });
 
-const target = ref<HTMLDivElement>();
-const selectInput = ref<HTMLDivElement>();
-const selectPanel = ref<HTMLDivElement>();
-const selectFilter = ref<typeof TextField>();
-const selectList = ref<HTMLDivElement>();
-const selectItem = ref<HTMLDivElement[]>([]);
+function onSelect(value: Option['value'], option: Option) {
+  show.value = false;
+  valueModel.value = value;
+  emit('change', value, option);
+}
 
-const focused = ref(false);
-
-const initialOptions = computed(() => props.options);
+function onClear() {
+  valueModel.value = undefined;
+  emit('change', undefined, undefined);
+}
 
 watch(
   () => props.options,
   (val) => {
-    if (val?.length) {
-      flux.options = val;
-    }
+    renderOptions.value = val || [];
   },
   { deep: true, immediate: true },
 );
 
-function resizePanel() {
-  if (!selectInput.value || !selectPanel.value) return;
-
-  const rect = selectInput.value.getBoundingClientRect();
-  const offsetParent = selectInput.value.offsetParent as HTMLElement;
-  const parentRect = offsetParent.getBoundingClientRect();
-
-  selectPanel.value.style.width = `${rect.width}px`;
-  selectPanel.value.style.left = popover.withinPopover
-    ? `${rect.left - parentRect.left}px`
-    : `${rect.left}px`;
-
-  const center = window.innerHeight / 2;
-
-  if (rect.top > center) {
-    selectPanel.value.style.top = popover.withinPopover
-      ? `${rect.top - parentRect.top}px`
-      : `${rect.top}px`;
-    flux.direction = 'up';
-  } else {
-    selectPanel.value.style.top = popover.withinPopover
-      ? `${rect.bottom - parentRect.top}px`
-      : `${rect.bottom}px`;
-    flux.direction = 'down';
-  }
-}
-
-const open = () => {
-  if (props.disabled) return;
-
-  flux.show = !flux.show;
-  focused.value = true;
-  hoverIndex.value = -1;
-
-  nextTick(() => {
-    resizePanel();
-
-    if (!selectList.value || !selectPanel.value) return;
-
-    /**
-     * Because of the use of `whitespace-nowrap` on `Select-Item`,
-     * if there's a scrollbar, set that width for all options; otherwise, keep it at 100%.
-     */
-    if (selectList.value.scrollWidth > selectList.value.offsetWidth) {
-      const width = `${selectList.value.scrollWidth}px`;
-
-      for (let index = 0; index < selectItem.value.length; index++) {
-        if (selectItem.value[index]) {
-          selectItem.value[index].style.width = width;
-        }
-      }
-    } else {
-      for (let index = 0; index < selectItem.value.length; index++) {
-        if (selectItem.value[index]) {
-          selectItem.value[index].style.width = '100%';
-        }
-      }
-    }
-
-    const active = selectPanel.value.querySelector('.Select-Item-Active') as HTMLDivElement;
-    const offsetTop = props.filterable ? active?.offsetTop - 46 : active?.offsetTop;
-    if (offsetTop) selectList.value.scrollTop = offsetTop - active.offsetHeight * 2;
-
-    if (valueModel.value) {
-      hoverIndex.value = flux.options?.findIndex((opt) => opt.value === valueModel.value);
-    }
-
-    if (selectFilter.value) selectFilter.value.$el.querySelector('input').focus();
-  });
-};
-
-onClickOutside(target, () => {
-  flux.show = false;
-  focused.value = false;
-  hoverIndex.value = -1;
-});
-
-watch(
-  () => flux.filterValue,
-  (val) => {
-    const arr = [...initialOptions.value];
-
-    const filter = arr.filter(
-      (item) =>
-        item.label.toUpperCase().includes(val.toUpperCase()) ||
-        String(item.value).toUpperCase().includes(val.toUpperCase()),
-    );
-
-    flux.options = filter;
-  },
-);
-
 watchEffect(() => {
   if (valueModel.value && initialOptions.value?.length) {
-    const arr = [...initialOptions.value];
-    const found = arr.find((item) => item.value === valueModel.value);
-    flux.selected = found;
+    const options = [...initialOptions.value];
+    const found = options.find((item) => item.value === valueModel.value);
+    selected.value = found;
   } else {
-    flux.selected = undefined;
+    selected.value = undefined;
   }
 });
 
-useScrollParent(
-  computed(() => selectPanel.value),
-  () => {
-    if (flux.show) resizePanel();
-  },
-);
+// -
+
+const filterValue = ref('');
+
+watch(filterValue, (val) => {
+  const options = [...initialOptions.value];
+
+  const filtered = options.filter(
+    (item) =>
+      item.label.toUpperCase().includes(val.toUpperCase()) ||
+      String(item.value).toUpperCase().includes(val.toUpperCase()),
+  );
+
+  renderOptions.value = filtered;
+});
+
+// -
 
 const hoverIndex = ref(-1);
 
@@ -225,197 +158,147 @@ function onKeydown(evt: KeyboardEvent) {
   if (['Space', 'Enter'].includes(evt.code)) {
     evt.preventDefault();
 
-    if (flux.show && hoverIndex.value !== -1) {
-      flux.onSelect(flux.options?.[hoverIndex.value]?.value, flux.options?.[hoverIndex.value]);
+    if (show.value && hoverIndex.value !== -1) {
+      onSelect(
+        renderOptions.value?.[hoverIndex.value]?.value,
+        renderOptions.value?.[hoverIndex.value],
+      );
     } else {
-      open();
+      showPicker();
     }
   }
 
   if (evt.code === 'Escape') {
-    flux.show = false;
+    show.value = false;
   }
 
   if (evt.code === 'ArrowDown') {
     evt.preventDefault();
-    if (!flux.show && !flux.options?.length) return;
-    if (hoverIndex.value === Number(flux.options?.length) - 1) return;
+    if (!show.value && !renderOptions.value?.length) return;
+    if (hoverIndex.value === Number(renderOptions.value?.length) - 1) return;
     hoverIndex.value += 1;
 
-    if (selectList.value) {
-      const hover = selectList.value.querySelector('.Select-Item-Hover') as HTMLDivElement;
+    if (list.value) {
+      const hover = list.value.querySelector('.Select-Item-Hover') as HTMLDivElement;
       const offsetTop = hover?.offsetTop;
-      if (offsetTop) selectList.value.scrollTop = offsetTop - hover.offsetHeight;
+      if (offsetTop) list.value.scrollTop = offsetTop - hover.offsetHeight;
     }
   }
 
   if (evt.code === 'ArrowUp') {
     evt.preventDefault();
-    if (!flux.show && !flux.options?.length) return;
+    if (!show.value && !renderOptions.value?.length) return;
     if (hoverIndex.value <= 0) return;
     hoverIndex.value -= 1;
 
-    if (selectList.value) {
-      const hover = selectList.value.querySelector('.Select-Item-Hover') as HTMLDivElement;
+    if (list.value) {
+      const hover = list.value.querySelector('.Select-Item-Hover') as HTMLDivElement;
       const offsetTop = hover?.offsetTop;
-      if (offsetTop) selectList.value.scrollTop = offsetTop - hover.offsetHeight;
+      if (offsetTop) list.value.scrollTop = offsetTop - hover.offsetHeight;
     }
   }
 
   if (evt.code === 'Tab') {
-    selectInput.value?.blur();
-    flux.show = false;
-    focused.value = false;
+    show.value = false;
   }
 }
 
-watch(
-  () => focused.value,
-  (val) => {
-    if (!val) emit('blur');
-  },
-);
+// -
+
+const popover = inject('Popover', { withinPopover: false });
+
+if (popover.withinPopover) {
+  onClickOutside(panel, () => {
+    show.value = false;
+    hoverIndex.value = -1;
+  });
+}
 </script>
 
 <template>
-  <FormControl :label :required :invalid :help>
+  <FormControl v-bind="formControlAttrs">
     <template #label>
       <slot></slot>
     </template>
 
-    <template #default>
-      <div ref="target" class="w-full">
-        <div
-          ref="selectInput"
+    <template #default="{ id }">
+      <Popover v-model="show" start class="w-full">
+        <TextField
+          :id
+          ref="input"
           v-bind="$attrs"
-          :tabindex="disabled ? -1 : 0"
-          class="Select-Input group"
-          :class="{
-            placeholder: !flux.selected,
-            focused,
-            invalid,
-            disabled,
-          }"
-          @focus="focused = true"
-          @click="open"
+          label=""
+          :required="false"
+          :invalid="!!invalid"
+          help=""
+          :value="selected?.label"
+          :placeholder="
+            loading ? 'Loading...' : placeholder || locale.pleaseSelect || 'Please select...'
+          "
+          :disabled="disabled || loading"
+          :append="
+            loading
+              ? 'i-line-md-loading-twotone-loop'
+              : show
+                ? 'i-material-symbols-arrow-drop-up-rounded'
+                : 'i-material-symbols-arrow-drop-down-rounded'
+          "
+          readonly
+          class="text-ellipsis"
+          :class="{ '!opacity-100 !cursor-progress': loading }"
+          @clear="onClear"
+          @click="showPicker"
+          @append="showPicker"
           @keydown="onKeydown"
-        >
-          <div v-if="!flux.selected" class="flex-1">
-            {{ placeholder || locale.pleaseSelect || 'Please select' }}
-          </div>
+        />
 
-          <div v-if="flux.selected" class="flex-1">
-            {{ flux.display(flux.selected) }}
-          </div>
-
+        <template #content>
           <div
-            v-if="value && clearable && !disabled"
-            class="i-fa-times-circle w-4 h-4 ml-2 invisible hover:text-slate-600 group-hover:visible"
-            @click.stop="flux.clear"
-          ></div>
-
-          <div class="Select-ArrowWrapper">
-            <div
-              v-if="!flux.show"
-              class="Select-Arrow i-material-symbols-arrow-drop-down-rounded"
-            ></div>
-            <div v-else class="Select-Arrow i-material-symbols-arrow-drop-up-rounded"></div>
-          </div>
-
-          <ProgressBar v-if="loading" class="absolute left-0 bottom-0 rounded" />
-        </div>
-
-        <Fade>
-          <div
-            v-show="flux.show"
-            ref="selectPanel"
-            class="Select-Panel"
-            :class="{
-              'Select-Panel-PlacementBottom': flux.direction === 'down',
-              'Select-Panel-PlacementTop': flux.direction === 'up',
-            }"
+            v-if="show"
+            ref="panel"
+            class="shadow-lg rounded bg-white dark:bg-slate-800 border border-gray-200 dark:border-gray-700"
           >
             <div v-if="filterable" class="Select-FilterWrapper">
               <TextField
-                ref="selectFilter"
-                v-model:value="flux.filterValue"
+                ref="filter"
+                v-model:value="filterValue"
                 append="i-material-symbols-filter-alt-outline"
               />
             </div>
 
-            <div ref="selectList" class="Select-List">
+            <div ref="list" class="Select-List">
               <div
-                v-for="(item, index) in flux.options"
-                :ref="(el) => (selectItem[index] = el as HTMLDivElement)"
+                v-for="(item, index) in renderOptions"
+                :ref="(el: any) => (items[index] = el)"
                 :key="item.value"
                 class="Select-Item"
                 :class="{
                   'Select-Item-Hover': index === hoverIndex,
                   'Select-Item-Active': value === item.value,
                 }"
-                @click="flux.onSelect(item.value, item)"
+                @click="onSelect(item.value, item)"
                 @mouseenter="hoverIndex = index"
                 @mouseleave="hoverIndex = -1"
               >
-                {{ flux.display(item) }}
+                {{ item.label }}
               </div>
             </div>
 
-            <div v-if="flux.options.length === 0" class="p-2">
-              {{ notFoundContent || locale.notFoundContent || 'No results found' }}
+            <div v-if="renderOptions.length === 0" class="p-2">
+              {{
+                initialOptions.length === 0
+                  ? locale.noAvailableOptions || 'No available options'
+                  : locale.noResultsFound || 'No results found'
+              }}
             </div>
           </div>
-        </Fade>
-      </div>
+        </template>
+      </Popover>
     </template>
   </FormControl>
 </template>
 
 <style lang="scss" scoped>
-.Select-Input {
-  @apply relative flex items-center w-full px-3 py-2 cursor-pointer;
-  @apply border border-slate-400 bg-white dark:bg-slate-800 rounded leading-tight;
-  @apply focus:border-primary-400 focus:outline-0 focus:ring-2 focus:ring-primary-500/50;
-
-  &.placeholder {
-    @apply text-slate-400 dark:text-slate-500 truncate;
-  }
-
-  &.focused {
-    @apply border-primary-400 outline-0 ring-2 ring-primary-500/50;
-  }
-
-  &.invalid {
-    @apply border-red-500 ring-red-500/50;
-    @apply focus:border-red-400 focus:ring-red-500/50;
-  }
-
-  &.disabled {
-    @apply cursor-not-allowed opacity-60 focus:ring-0 focus:border-slate-400;
-  }
-}
-
-.Select-ArrowWrapper {
-  @apply w-5 h-5 overflow-hidden flex justify-center items-center;
-}
-
-.Select-Arrow {
-  @apply min-w-6 min-h-6 ml-2;
-}
-
-.Select-Panel {
-  @apply fixed w-full z-101 border shadow-lg rounded;
-  @apply bg-white dark:bg-slate-800 border-gray-200 dark:border-gray-700;
-}
-
-.Select-Panel-PlacementBottom {
-  transform: translateY(0.5rem);
-}
-
-.Select-Panel-PlacementTop {
-  transform: translateY(-0.5rem) translateY(-100%);
-}
-
 .Select-FilterWrapper {
   @apply px-2 pt-2;
 }
