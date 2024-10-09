@@ -9,7 +9,8 @@
     "lint": "eslint app/src ui/src",
     "check": "pnpm -C app check && pnpm -C ui check",
     "test": "pnpm -C app test",
-    "e2e": "pnpm -C e2e e2e"
+    "e2e": "pnpm -C e2e e2e",
+    "playwright": "pnpm -C e2e playwright"
   },
   "devDependencies": {
     "eslint": "9.11.0",
