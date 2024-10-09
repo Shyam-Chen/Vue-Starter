@@ -60,7 +60,7 @@ watch(
     <Button label="1" :variant="currentPage === 1 ? 'contained' : 'text'" @click="onPage(1)" />
 
     <template v-if="currentPage">
-      <div v-if="currentPage > 3" class="w-38px text-center">...</div>
+      <div v-if="currentPage > 3" class="w-9.5 text-center">...</div>
 
       <Button
         v-else
@@ -83,7 +83,7 @@ watch(
     />
 
     <template v-if="currentPage">
-      <div v-if="currentPage < pages - 3" class="w-38px text-center">...</div>
+      <div v-if="currentPage < pages - 3" class="w-9.5 text-center">...</div>
 
       <Button
         v-else
@@ -140,6 +140,6 @@ watch(
 
 <style lang="scss" scoped>
 :deep(.Button) {
-  @apply rounded-full p-2 min-w-38px;
+  @apply rounded-full p-2 min-w-9.5;
 }
 </style>

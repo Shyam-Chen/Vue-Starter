@@ -8,9 +8,7 @@ import FormControl, { type FormControlProps, formControlDefaults } from '../form
 import Popover from '../popover/Popover.vue';
 import Tree, { type Node } from '../tree';
 
-defineOptions({
-  inheritAttrs: false,
-});
+defineOptions({ inheritAttrs: false });
 
 const valueModel = defineModel<string[]>('value', { default: [] });
 

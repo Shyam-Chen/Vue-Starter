@@ -258,7 +258,7 @@ if (popover.withinPopover) {
             ref="panel"
             class="shadow-lg rounded bg-white dark:bg-slate-800 border border-gray-200 dark:border-gray-700"
           >
-            <div v-if="filterable" class="Select-FilterWrapper">
+            <div v-if="filterable" class="px-2 pt-2">
               <TextField
                 ref="filter"
                 v-model:value="filterValue"
@@ -299,12 +299,8 @@ if (popover.withinPopover) {
 </template>
 
 <style lang="scss" scoped>
-.Select-FilterWrapper {
-  @apply px-2 pt-2;
-}
-
 .Select-List {
-  @apply cursor-pointer max-h-40 overflow-auto p-2 empty:hidden;
+  @apply max-h-40 overflow-auto p-2 empty:hidden;
 }
 
 .Select-Item {

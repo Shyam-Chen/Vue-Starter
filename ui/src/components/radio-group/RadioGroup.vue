@@ -25,7 +25,7 @@ const emit = defineEmits<{
 
 <template>
   <FormControl v-slot="{ id }" :label :required :invalid :help>
-    <div class="flex flex-wrap items-center gap-4 min-h-38px">
+    <div class="flex flex-wrap items-center gap-4 min-h-9.5">
       <label
         v-for="(item, index) in options"
         :key="index"

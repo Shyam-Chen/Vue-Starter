@@ -114,13 +114,13 @@ function treeNode(item: TreeTableNode) {
       <thead>
         <tr>
           <XTable.Column>
-            <div class="inline-flex items-center min-h-38px">Name</div>
+            <div class="inline-flex items-center min-h-9.5">Name</div>
           </XTable.Column>
           <XTable.Column>
-            <div class="inline-flex items-center min-h-38px">Size</div>
+            <div class="inline-flex items-center min-h-9.5">Size</div>
           </XTable.Column>
           <XTable.Column>
-            <div class="inline-flex items-center min-h-38px">Type</div>
+            <div class="inline-flex items-center min-h-9.5">Type</div>
           </XTable.Column>
         </tr>
       </thead>
@@ -143,7 +143,7 @@ function treeNode(item: TreeTableNode) {
                 variant="text"
                 @click="treeNode(node)"
               />
-              <div v-else class="w-38px h-38px"></div>
+              <div v-else class="size-9.5"></div>
               <div class="ml-2">{{ node.name }} - {{ node.level }}</div>
             </div>
           </XTable.Cell>

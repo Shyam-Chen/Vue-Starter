@@ -114,7 +114,7 @@ function onInput(evt: Event) {
   --range-slider-value-low-fallback: calc(var(--range-slider-value-low, 0) * 1%);
   --range-slider-value-high-fallback: calc(var(--range-slider-value-high, 100) * 1%);
 
-  @apply relative min-h-38px flex items-center;
+  @apply relative min-h-9.5 flex items-center;
 
   width: calc(100% - 1rem);
 

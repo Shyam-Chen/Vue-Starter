@@ -173,7 +173,7 @@ function changeLang(lang: string) {
         <XButton
           variant="text"
           size="small"
-          class="!h-38px !text-slate-400 !rounded-md !border-slate-900/10 !hover:bg-slate-100 !dark:hover:bg-slate-700"
+          class="!h-9.5 !text-slate-400 !rounded-md !border-slate-900/10 !hover:bg-slate-100 !dark:hover:bg-slate-700"
           @click="flux.searchDialog = true"
         >
           <div class="i-material-symbols-search-rounded w-5 h-5"></div>

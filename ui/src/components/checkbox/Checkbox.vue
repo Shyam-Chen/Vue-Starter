@@ -75,7 +75,7 @@ const id = useId();
 }
 
 .Checkbox-Label {
-  @apply flex items-center min-h-38px cursor-pointer;
+  @apply flex items-center min-h-9.5 cursor-pointer;
 
   &.disabled {
     @apply cursor-not-allowed opacity-60;

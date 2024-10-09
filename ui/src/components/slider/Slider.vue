@@ -89,7 +89,7 @@ watch(
 
 <style lang="scss" scoped>
 .Slider-Wrapper {
-  @apply relative min-h-38px flex items-center;
+  @apply relative min-h-9.5 flex items-center;
 
   width: calc(100% - 1rem);
 }

@@ -212,14 +212,14 @@ function onClick(evt: MouseEvent) {
   }
 
   &.icon {
-    @apply p-0 rounded-full w-38px h-38px overflow-hidden;
+    @apply p-0 rounded-full size-9.5 overflow-hidden;
 
     &.small {
-      @apply w-34px h-34px;
+      @apply size-8.5;
     }
 
     &.large {
-      @apply w-42px h-42px;
+      @apply size-10.5;
     }
   }
 

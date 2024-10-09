@@ -76,7 +76,7 @@ const flux = reactive({
               <XTable.Row>
                 <XTable.Cell>
                   <div
-                    class="min-h-38px i-ic-baseline-drag-indicator handle w-6 h-6 cursor-move"
+                    class="min-h-9.5 i-ic-baseline-drag-indicator handle w-6 h-6 cursor-move"
                   ></div>
                 </XTable.Cell>
 
