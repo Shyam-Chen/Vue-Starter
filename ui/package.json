@@ -14,7 +14,7 @@
   },
   "scripts": {
     "check": "vue-tsc --noEmit",
-    "test": "vitest --dir src --run --coverage"
+    "test": "vitest --dir src --run"
   },
   "dependencies": {
     "@tiptap/core": "2.7.2",

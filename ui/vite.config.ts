@@ -27,6 +27,13 @@ export default defineConfig({
   resolve: {
     mainFields: ['module'],
   },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        api: 'modern',
+      },
+    },
+  },
   test: {
     globals: true,
     environment: 'happy-dom',
