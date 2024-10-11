@@ -4,17 +4,22 @@ import '@vue-flow/core/dist/theme-default.css';
 import type { Node, Edge } from '@vue-flow/core';
 import { ref } from 'vue';
 import { VueFlow as Diagram } from '@vue-flow/core';
-import { XBreadcrumb, XCard } from '@x/ui';
+import { XBreadcrumb } from '@x/ui';
+
+import BlankCard from './BlankCard.vue';
+import Controls from './Controls.vue';
 
 const nodes = ref<Node[]>([
   {
     id: '1',
+    type: BlankCard.name,
     position: { x: 10, y: 10 },
     data: { label: 'Node 1' },
   },
   {
     id: '2',
-    position: { x: 60, y: 110 },
+    type: BlankCard.name,
+    position: { x: 60, y: 160 },
     data: { label: 'Node 2' },
   },
 ]);
@@ -34,12 +39,14 @@ const edges = ref<Edge[]>([
   <h1 class="text-4xl font-extrabold my-4">Diagrams</h1>
 
   <section class="my-8">
-    <h2 class="text-3xl font-bold my-4">Basic</h2>
+    <div class="w-full h-100">
+      <Diagram :nodes :edges>
+        <template #[`node-${BlankCard.name}`]="{ data, selected }">
+          <BlankCard :data :selected />
+        </template>
 
-    <XCard>
-      <div class="w-full h-100">
-        <Diagram :nodes :edges />
-      </div>
-    </XCard>
+        <Controls />
+      </Diagram>
+    </div>
   </section>
 </template>
