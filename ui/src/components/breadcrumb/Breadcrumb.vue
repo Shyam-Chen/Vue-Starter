@@ -3,7 +3,7 @@ import Link from '../link/Link.vue';
 
 interface Breadcrumb {
   icon?: string;
-  text: string;
+  text?: string;
   disabled?: boolean;
   to?: string;
   href?: string;

@@ -5,6 +5,8 @@ import { XBreadcrumb, XCard, XSelect } from '@x/ui';
 import WithinPopover from './WithinPopover.vue';
 import WithinTableCell from './WithinTableCell.vue';
 import WithinTableCellWithinDialog from './WithinTableCellWithinDialog.vue';
+import Group from './Group.vue';
+import VirtualScroll from './VirtualScroll.vue';
 
 const flux = reactive({
   select1: '',
@@ -117,7 +119,15 @@ const flux = reactive({
     <h2 class="text-3xl font-bold my-4 pt-6">Group (TODO)</h2>
 
     <XCard>
-      <!--  -->
+      <Group />
+    </XCard>
+  </section>
+
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Virtual Scroll (TODO)</h2>
+
+    <XCard>
+      <VirtualScroll />
     </XCard>
   </section>
 </template>

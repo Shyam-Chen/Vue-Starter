@@ -27,7 +27,7 @@ import { XBreadcrumb, XCard } from '@x/ui';
     <XCard>
       <XBreadcrumb
         :items="[
-          { icon: 'i-material-symbols-house-rounded', text: 'Home', to: '/navigation/breadcrumbs' },
+          { icon: 'i-material-symbols-house-rounded', to: '/navigation/breadcrumbs' },
           { icon: 'i-material-symbols-folder-rounded', text: 'Projects', href: '#breadcrumb' },
           { icon: 'i-material-symbols-local-fire-department-rounded', text: 'Flowbite' },
         ]"
