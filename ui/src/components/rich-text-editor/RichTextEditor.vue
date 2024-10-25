@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import type { Extensions } from '@tiptap/vue-3';
-import { ref, computed, watch, onMounted } from 'vue';
+import { nextTick, ref, computed, watch, onMounted, getCurrentInstance } from 'vue';
 import { Editor, EditorContent } from '@tiptap/vue-3';
 import Blockquote from '@tiptap/extension-blockquote';
 import Bold from '@tiptap/extension-bold';
@@ -32,6 +32,7 @@ import FormControl, { type FormControlProps, formControlDefaults } from '../form
 import Listbox from '../listbox';
 import Popover from '../popover/Popover.vue';
 import Tooltip from '../tooltip/Tooltip.vue';
+import request from '../../utilities/request/request';
 
 const defaultModel = defineModel<string>({ default: '' });
 
@@ -55,6 +56,12 @@ const props = withDefaults(
   },
 );
 
+const emit = defineEmits<{
+  (evt: 'upload', file: File, uploaded: (src: string) => void): void;
+}>();
+
+const instance = getCurrentInstance();
+
 const editor = ref<Editor>();
 
 const editorClass = computed(() => {
@@ -66,8 +73,7 @@ const editorClass = computed(() => {
 });
 
 const typing = ref(false);
-
-const my1 = `margin-top: 0.25rem; margin-bottom: 0.25rem;`;
+const uploadIndicatorRange = ref<{ start: number; end: number }>();
 
 onMounted(() => {
   editor.value = new Editor({
@@ -92,148 +98,7 @@ onMounted(() => {
       OrderedList,
       TextAlign.configure({ types: ['heading', 'paragraph'] }),
 
-      Image.configure({ allowBase64: true }).extend({
-        addAttributes() {
-          return {
-            ...this.parent?.(),
-            style: {
-              default: `${my1} width: auto; height: auto;`,
-              parseHTML: (element) => {
-                const width = element.getAttribute('width');
-
-                return width
-                  ? `${my1} width: ${width}px; height: auto;`
-                  : `${my1} ${element.style.cssText}`;
-              },
-            },
-          };
-        },
-        addNodeView() {
-          return ({ node, editor, getPos }) => {
-            const {
-              view,
-              options: { editable },
-            } = editor;
-
-            const { style } = node.attrs;
-            const $wrapper = document.createElement('div');
-            const $container = document.createElement('div');
-            const $img = document.createElement('img');
-
-            const dispatchNodeView = () => {
-              if (typeof getPos === 'function') {
-                // Add back the `my-1` class after finishing the image adjustment
-                $img.style.marginTop = '0.25rem';
-                $img.style.marginBottom = '0.25rem';
-
-                const newAttrs = {
-                  ...node.attrs,
-                  style: `${$img.style.cssText}`,
-                };
-
-                view.dispatch(view.state.tr.setNodeMarkup(getPos(), null, newAttrs));
-              }
-            };
-
-            $wrapper.setAttribute('style', `display: flex;`);
-            $wrapper.appendChild($container);
-
-            $container.setAttribute('style', `${style}`);
-            $container.appendChild($img);
-
-            Object.entries(node.attrs).forEach(([key, value]) => {
-              if (value === undefined || value === null) return;
-              if (key === 'style') return; // Do not apply the wrapper styles to the `img` tag
-              $img.setAttribute(key, value);
-            });
-
-            if (!editable) return { dom: $wrapper };
-
-            const dotsPosition = [
-              'top: -4px; left: -4px; cursor: nwse-resize;',
-              'top: -4px; right: -4px; cursor: nesw-resize;',
-              'bottom: -4px; left: -4px; cursor: nesw-resize;',
-              'bottom: -4px; right: -4px; cursor: nwse-resize;',
-            ];
-
-            let isResizing = false;
-            let startX: number, startWidth: number;
-
-            const resizerColor = `#71717a`;
-            const resizerBorder = `border: 1px dashed ${resizerColor};`;
-            const resizerDot = `width: 8px; height: 8px; border: 2px solid ${resizerColor}; border-radius: 50%;`;
-
-            function cleanDots() {
-              if ($container.childElementCount > 2) {
-                for (let i = 0; i < dotsPosition.length; i++) {
-                  $container.removeChild($container.lastChild as Node);
-                }
-              }
-            }
-
-            $container.addEventListener('click', () => {
-              cleanDots();
-
-              $container.setAttribute(
-                'style',
-                `${my1}; position: relative; ${resizerBorder} ${style}`,
-              );
-
-              Array.from({ length: 4 }, (_, index) => {
-                const $dot = document.createElement('div');
-
-                $dot.setAttribute(
-                  'style',
-                  `position: absolute; ${resizerDot} ${dotsPosition[index]}`,
-                );
-
-                $dot.addEventListener('mousedown', (e) => {
-                  e.preventDefault();
-                  isResizing = true;
-                  startX = e.clientX;
-                  startWidth = $container.offsetWidth;
-
-                  const onMouseMove = (e: MouseEvent) => {
-                    if (!isResizing) return;
-                    const deltaX = index % 2 === 0 ? -(e.clientX - startX) : e.clientX - startX;
-                    const newWidth = startWidth + deltaX;
-                    $container.style.width = newWidth + 'px';
-                    $img.style.width = newWidth + 'px';
-                  };
-
-                  const onMouseUp = () => {
-                    if (isResizing) isResizing = false;
-
-                    dispatchNodeView();
-
-                    document.removeEventListener('mousemove', onMouseMove);
-                    document.removeEventListener('mouseup', onMouseUp);
-                  };
-
-                  document.addEventListener('mousemove', onMouseMove);
-                  document.addEventListener('mouseup', onMouseUp);
-                });
-
-                $container.appendChild($dot);
-              });
-            });
-
-            document.addEventListener('click', (e: MouseEvent) => {
-              const $target = e.target as HTMLElement;
-              const isClickInside = $container.contains($target);
-
-              if (!isClickInside) {
-                const containerStyle = $container.getAttribute('style');
-                const newStyle = containerStyle?.replace(resizerBorder, '');
-                $container.setAttribute('style', newStyle as string);
-                cleanDots();
-              }
-            });
-
-            return { dom: $wrapper };
-          };
-        },
-      }),
+      Image,
       Link,
       Blockquote,
       HorizontalRule,
@@ -249,10 +114,29 @@ onMounted(() => {
       attributes: {
         class: editorClass.value,
       },
+      handlePaste() {
+        return false;
+      },
     },
     onUpdate({ editor }) {
       typing.value = true;
       defaultModel.value = editor.getHTML();
+    },
+    onPaste(event) {
+      const clipboardData = event.clipboardData;
+
+      if (clipboardData) {
+        const items = clipboardData.items;
+
+        for (let i = 0; i < items.length; i++) {
+          const item = items[i];
+
+          if (item.type.startsWith('image/')) {
+            const file = item.getAsFile();
+            if (file) uploadFile(file);
+          }
+        }
+      }
     },
   });
 });
@@ -347,20 +231,46 @@ async function setImage() {
 onChange((files) => {
   if (!files?.length) return;
   const file = files[0];
-  const reader = new FileReader();
+  uploadFile(file);
+});
 
-  reader.onload = (event) => {
-    const el = event.target;
+async function uploadFile(file: File) {
+  const uploadIndicator = '[Uploading...]';
 
-    if (el) {
-      const base64String = el.result as string;
-      editor.value?.chain().focus().setImage({ src: base64String }).run();
-      editor.value?.chain().focus().createParagraphNear().run();
-    }
+  uploadIndicatorRange.value = {
+    start: editor.value!.state.selection.from,
+    end: editor.value!.state.selection.from + uploadIndicator.length,
   };
 
-  reader.readAsDataURL(file);
-});
+  editor.value?.chain().focus().insertContent(uploadIndicator).run();
+
+  if (instance?.vnode?.props?.onUpload) {
+    emit('upload', file, uploaded);
+  } else {
+    const formData = new FormData();
+    formData.append('file', file);
+
+    const response = await request<{ url: string }>('/file-uploads', {
+      method: 'POST',
+      body: formData,
+    });
+
+    if (response.ok && response._data) {
+      uploaded(response._data.url);
+    }
+  }
+}
+
+async function uploaded(src: string) {
+  await nextTick();
+
+  if (uploadIndicatorRange.value) {
+    const { start, end } = uploadIndicatorRange.value;
+    editor.value?.chain().focus().deleteRange({ from: start, to: end }).run();
+    uploadIndicatorRange.value = undefined;
+    editor.value?.chain().focus().setImage({ src }).run();
+  }
+}
 
 function setLink() {
   if (!editable.value) return;
@@ -691,7 +601,12 @@ defineExpose({
   }
 
   :deep(img) {
-    @apply w-full;
+    @apply my-1;
+  }
+
+  :deep(img.ProseMirror-selectednode) {
+    outline: 1px solid #64748b;
+    animation: blink 1s step-end infinite;
   }
 
   :deep(hr) {
@@ -704,8 +619,19 @@ defineExpose({
     @apply hover:text-primary-400;
   }
 
+  :deep(img.ProseMirror-selectednode) {
+    outline: 1px solid #94a3b8;
+    animation: blink 1s step-end infinite;
+  }
+
   :deep(hr) {
     @apply border-gray-700;
+  }
+}
+
+@keyframes blink {
+  50% {
+    outline: 0;
   }
 }
 

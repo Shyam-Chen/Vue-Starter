@@ -53,11 +53,11 @@
     "lodash": "4.17.21",
     "ofetch": "1.4.0",
     "shiki": "1.18.0",
-    "vue": "3.5.8",
+    "vue": "3.5.12",
     "vue-component-type-helpers": "2.1.6",
     "vue-echarts": "7.0.3",
     "vue-imask": "7.6.1",
-    "vue-localer": "1.5.2",
+    "vue-localer": "1.5.3",
     "vue-router": "4.4.5",
     "vue-storer": "0.6.0",
     "vuedraggable": "4.1.0"
