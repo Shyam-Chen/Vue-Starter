@@ -1,12 +1,6 @@
 import { computed } from 'vue';
 
-export type FormControlProps = {
-  label?: string;
-  required?: boolean;
-  invalid?: boolean | string;
-  help?: string;
-  sub?: boolean;
-};
+import type { FormControlProps } from './types';
 
 export const formControlDefaults: FormControlProps = {
   label: '',

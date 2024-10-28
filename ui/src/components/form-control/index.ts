@@ -1,5 +1,6 @@
 import FormControl from './FormControl.vue';
 
-export * from './config';
+export * from './helpers';
+export * from './types';
 
 export default FormControl;

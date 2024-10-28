@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import type { Extensions } from '@tiptap/vue-3';
-import { nextTick, ref, computed, watch, onMounted, getCurrentInstance } from 'vue';
+import { nextTick, ref, computed, watch, onMounted } from 'vue';
 import { Editor, EditorContent } from '@tiptap/vue-3';
 import Blockquote from '@tiptap/extension-blockquote';
 import Bold from '@tiptap/extension-bold';
@@ -32,7 +32,8 @@ import FormControl, { type FormControlProps, formControlDefaults } from '../form
 import Listbox from '../listbox';
 import Popover from '../popover/Popover.vue';
 import Tooltip from '../tooltip/Tooltip.vue';
-import request from '../../utilities/request/request';
+
+import { uploadImage } from './config';
 
 const defaultModel = defineModel<string>({ default: '' });
 
@@ -55,12 +56,6 @@ const props = withDefaults(
     ...formControlDefaults,
   },
 );
-
-const emit = defineEmits<{
-  (evt: 'upload', file: File, uploaded: (src: string) => void): void;
-}>();
-
-const instance = getCurrentInstance();
 
 const editor = ref<Editor>();
 
@@ -234,7 +229,7 @@ onChange((files) => {
   uploadFile(file);
 });
 
-async function uploadFile(file: File) {
+function uploadFile(file: File) {
   const uploadIndicator = '[Uploading...]';
 
   uploadIndicatorRange.value = {
@@ -244,21 +239,7 @@ async function uploadFile(file: File) {
 
   editor.value?.chain().focus().insertContent(uploadIndicator).run();
 
-  if (instance?.vnode?.props?.onUpload) {
-    emit('upload', file, uploaded);
-  } else {
-    const formData = new FormData();
-    formData.append('file', file);
-
-    const response = await request<{ url: string }>('/file-uploads', {
-      method: 'POST',
-      body: formData,
-    });
-
-    if (response.ok && response._data) {
-      uploaded(response._data.url);
-    }
-  }
+  uploadImage(file, uploaded);
 }
 
 async function uploaded(src: string) {
