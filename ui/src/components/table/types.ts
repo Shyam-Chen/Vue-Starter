@@ -13,5 +13,5 @@ export type Control = {
   rows?: number;
   page?: number;
   field?: string;
-  direction?: string;
+  direction?: string | 'asc' | 'desc';
 };

@@ -1,23 +1,20 @@
-import chunk from 'lodash/chunk';
 import orderBy from 'lodash/orderBy';
 
-export default <T extends Record<string, any>>(
-  rows: T[],
-  control = { rows: 10, page: 1, field: 'createdAt', direction: 'desc' } as any,
-) => {
+import type { Control } from '../../components/table/types';
+import { controlDefaults } from '../../components/table/config';
+
+export default <T>(rows: T[], control: Control) => {
   if (!rows?.length) return [];
 
-  let arr = [...rows];
+  const _rows = control.rows || controlDefaults.rows;
+  const _page = control.page || controlDefaults.page;
+  const _field = control.field || controlDefaults.field;
+  const _direction = control.direction || controlDefaults.direction;
 
-  if (control.field && control.direction === 'asc') {
-    arr = orderBy(arr, control.field, 'asc');
-  }
+  const ordered = orderBy(rows, _field, _direction as 'asc' | 'desc');
 
-  if (control.field && control.direction === 'desc') {
-    arr = orderBy(arr, control.field, 'desc');
-  }
+  const start = (_page - 1) * _rows;
+  const pagedRows = ordered.slice(start, start + _rows);
 
-  const chunked = chunk(arr, control.rows);
-
-  return chunked[control.page - 1];
+  return pagedRows;
 };

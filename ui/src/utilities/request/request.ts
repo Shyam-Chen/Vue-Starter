@@ -34,12 +34,14 @@ export default async <T>(request: FetchRequest, options?: FetchOptions) => {
   try {
     const response = await fetcher.raw(request, options);
     return response as FetchResponse<T>;
-  } catch (error: any) {
-    if (error.response?.status === 401 && localStorage.getItem('refreshToken')) {
+  } catch (error) {
+    const fetchError = error as { response: FetchResponse<T> };
+
+    if (fetchError.response?.status === 401 && localStorage.getItem('refreshToken')) {
       const response = await fetcher.raw(request, options);
       return response as FetchResponse<T>;
     }
 
-    return error.response as FetchResponse<T>;
+    return fetchError.response as FetchResponse<T>;
   }
 };

@@ -11,6 +11,7 @@ import Select from '../select/Select.vue';
 import Spinner from '../spinner/Spinner.vue';
 
 import type { ColumnItem, Control } from './types';
+import { controlDefaults } from './config';
 import Column from './Column.vue';
 import Row from './Row.vue';
 import Cell from './Cell.vue';
@@ -36,12 +37,9 @@ const props = defineProps<{
 const emit = defineEmits<{
   (evt: 'update:value', val: T[]): void;
   (evt: 'update:selected', val: T[]): void;
-  (evt: 'change', val: { rows?: number; page?: number; field?: string; direction?: string }): void;
+  (evt: 'change', val: Control): void;
   (evt: 'clickRow', val: T): void;
-  (
-    evt: 'update:control',
-    val: { rows?: number; page?: number; field?: string; direction?: string },
-  ): void;
+  (evt: 'update:control', val: Control): void;
   (evt: 'selecteAll', val: boolean, arr: T[]): void;
 }>();
 
@@ -69,7 +67,7 @@ const controlModel = computed({
       !props.control ||
       (typeof props.control === 'object' && Object.keys(props.control).length === 0)
     ) {
-      return { rows: 10, page: 1, field: 'createdAt', direction: 'desc' };
+      return controlDefaults;
     }
 
     return props.control;
@@ -102,8 +100,8 @@ const flux = reactive({
     flux._updateChange();
   },
 
-  sortField: 'createdAt' as string | undefined,
-  sortDirection: 'desc' as string | undefined,
+  sortField: 'createdAt' as Control['field'],
+  sortDirection: 'desc' as Control['direction'],
   onSort(col: any) {
     if (props.loading) return;
 
@@ -161,10 +159,10 @@ watch(
   () => controlModel.value,
   (val) => {
     if (Object.keys(val)?.length) {
-      flux.rowsPerPage = val.rows || 10;
-      flux.currentPage = val.page || 1;
-      flux.sortField = val.field || 'createdAt';
-      flux.sortDirection = val.direction || 'desc';
+      flux.rowsPerPage = val.rows || controlDefaults.rows;
+      flux.currentPage = val.page || controlDefaults.page;
+      flux.sortField = val.field || controlDefaults.field;
+      flux.sortDirection = val.direction || controlDefaults.direction;
 
       if (props.static && props.rows?.length) {
         flux.rows = props.static(props.rows, controlModel.value);
