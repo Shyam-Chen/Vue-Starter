@@ -82,12 +82,6 @@ const flux = reactive({
   selecteAll: false,
 
   rowsPerPage: 10,
-  rowsPerPageOptions: [
-    { label: '10', value: 10 },
-    { label: '20', value: 20 },
-    { label: '30', value: 30 },
-    { label: '50', value: 50 },
-  ],
   currentPage: 1,
   previousPage() {
     if (flux.currentPage === 1) return;
@@ -411,7 +405,12 @@ watchEffect(
         <div class="w-auto ml-2">
           <Select
             v-model:value="flux.rowsPerPage"
-            :options="flux.rowsPerPageOptions"
+            :options="[
+              { label: '10', value: 10 },
+              { label: '25', value: 25 },
+              { label: '50', value: 50 },
+              { label: '100', value: 100 },
+            ]"
             :disabled="loading"
             class="!border-transparent"
           />

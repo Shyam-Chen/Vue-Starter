@@ -42,7 +42,6 @@ const props = withDefaults(
 );
 
 const emit = defineEmits<{
-  (evt: 'update:value', val: string): void;
   (evt: 'change', val: string): void;
   (evt: 'blur'): void;
 }>();
@@ -223,7 +222,7 @@ const flux = reactive({
     }
 
     flux.showDatePicker = false;
-    emit('update:value', date);
+    valueModel.value = date;
     emit('change', date);
   },
   selectYear(val: number) {
