@@ -265,7 +265,9 @@ watchEffect(
 
           <tr :class="{ 'sticky top-0 z-10': stickyHeader }">
             <Column v-if="selectable" :class="{ '!border-0': stickyHeader }">
-              <Checkbox v-model:value="flux.selecteAll" :indeterminate="flux.indeterminate" />
+              <div class="flex items-center">
+                <Checkbox v-model:value="flux.selecteAll" :indeterminate="flux.indeterminate" />
+              </div>
             </Column>
 
             <Column
@@ -331,7 +333,9 @@ watchEffect(
                 @click="flux.clickRow(row)"
               >
                 <Cell v-if="selectable">
-                  <Checkbox v-model:value="row.checked" />
+                  <div class="flex items-center">
+                    <Checkbox v-model:value="row.checked" />
+                  </div>
                 </Cell>
 
                 <Cell
@@ -402,7 +406,7 @@ watchEffect(
     >
       <div class="Table-RowsPerPage">
         {{ locale.rowsPerPage || 'Rows per page:' }}
-        <div class="w-auto ml-2">
+        <div class="w-20 ml-2">
           <Select
             v-model:value="flux.rowsPerPage"
             :options="[
@@ -448,6 +452,10 @@ watchEffect(
 
 .Table-Element {
   @apply w-full border-collapse;
+}
+
+:deep(.Checkbox-Label) {
+  @apply !min-h-auto;
 }
 
 .selected {

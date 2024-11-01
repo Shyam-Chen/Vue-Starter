@@ -1,6 +1,15 @@
 import { staticTable } from '@x/ui';
 
+export type Problem = {
+  id: number;
+  title: string;
+  difficulty: string;
+  createdAt: Date;
+};
+
 export default async (body: any = {}) => {
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+
   const data = [
     { id: 1, title: '1. Two Sum', difficulty: 'Easy', createdAt: new Date() },
     { id: 2, title: '2. Add Two Numbers', difficulty: 'Medium', createdAt: new Date() },

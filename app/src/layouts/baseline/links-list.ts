@@ -120,8 +120,8 @@ const links = [
       {
         name: 'Table',
         sub: [
-          { name: 'Dynamic Table', to: '/data-display/table/dynamic-table' },
           { name: 'Static Table', to: '/data-display/table/static-table' },
+          { name: 'Dynamic Table', to: '/data-display/table/dynamic-table' },
         ],
       },
       { name: 'Tag', to: '/data-display/tag' },

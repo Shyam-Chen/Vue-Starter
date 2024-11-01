@@ -1,11 +1,12 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
-import { XBreadcrumb, XButton, XCollapse, XDivider, XTable } from '@x/ui';
+import { XBreadcrumb, XButton, XCard, XCollapse, XDivider, XTable } from '@x/ui';
 
 import Basic from './Basic.vue';
 import Loading from './Loading.vue';
 import Controllable from './Controllable.vue';
 import Draggable from './Draggable.vue';
+import Selectable from './Selectable.vue';
 
 const data = [
   {
@@ -264,20 +265,13 @@ const flux = reactive({
 
   <Controllable />
 
-  <div class="flex flex-col border p-4 mb-4">
-    <div class="mb-2">Selectable</div>
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Selectable</h2>
 
-    <div class="w-full bg-white dark:bg-slate-800 shadow-md rounded">
-      <XTable
-        v-model:selected="flux.selected"
-        selectable
-        :columns="flux.columns1"
-        :rows="flux.table"
-      />
-    </div>
-
-    <div class="mt-2">{{ flux.selectedName(flux.selected) }}</div>
-  </div>
+    <XCard>
+      <Selectable />
+    </XCard>
+  </section>
 
   <div class="flex flex-col border p-4 mb-4">
     <div class="mb-2">Collapsible</div>

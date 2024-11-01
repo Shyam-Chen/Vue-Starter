@@ -22,7 +22,6 @@ const body = reactive({
 async function search() {
   state.loading = true;
   state.control = { rows: 10, page: 1, field: 'id', direction: 'asc' };
-  await new Promise((resolve) => setTimeout(resolve, 1000));
   const response = await leetcode({ ...body, ...state.control });
   state.loading = false;
   state.rows = response.result;
@@ -32,7 +31,6 @@ async function search() {
 async function change(control: TableProps['control']) {
   state.loading = true;
   state.control = control;
-  await new Promise((resolve) => setTimeout(resolve, 1000));
   const response = await leetcode({ ...body, ...state.control });
   state.loading = false;
   state.rows = response.result;

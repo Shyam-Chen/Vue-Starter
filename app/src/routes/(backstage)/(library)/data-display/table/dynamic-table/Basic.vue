@@ -1,11 +1,13 @@
 <script lang="ts" setup>
 import type { ComponentProps } from 'vue-component-type-helpers';
-import { reactive, onMounted } from 'vue';
+import { ref, reactive, onMounted } from 'vue';
 import { XButton, XSelect, XTable, XTextField } from '@x/ui';
 
 import leetcode from './leetcode';
 
 type TableProps = ComponentProps<typeof XTable>;
+
+const loading = ref(true);
 
 const state = reactive({
   rows: [] as any[],
@@ -29,15 +31,19 @@ function reset() {
 }
 
 async function search() {
+  loading.value = true;
   state.control = { rows: 10, page: 1, field: 'id', direction: 'asc' };
   const response = await leetcode({ ...body, ...state.control });
+  loading.value = false;
   state.rows = response.result;
   state.count = response.count;
 }
 
 async function change(params: TableProps['control']) {
+  loading.value = true;
   state.control = params;
   const response = await leetcode({ ...body, ...params });
+  loading.value = false;
   state.rows = response.result;
 }
 </script>
@@ -71,6 +77,7 @@ async function change(params: TableProps['control']) {
           { key: 'title', name: 'Title' },
           { key: 'difficulty', name: 'Difficulty' },
         ]"
+        :loading
         :rows="state.rows"
         :count="state.count"
         @change="change"
