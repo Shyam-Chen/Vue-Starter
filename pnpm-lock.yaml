@@ -110,13 +110,13 @@ importers:
         version: 5.1.4(vite@5.4.10(@types/node@22.8.7)(sass@1.80.6))(vue@3.5.12(typescript@5.6.3))
       '@vitest/coverage-v8':
         specifier: 2.1.4
-        version: 2.1.4(vitest@2.1.4(@types/node@22.8.7)(happy-dom@15.8.3)(sass@1.80.6))
+        version: 2.1.4(vitest@2.1.4(@types/node@22.8.7)(happy-dom@15.7.4)(sass@1.80.6))
       '@vue/test-utils':
         specifier: 2.4.6
         version: 2.4.6
       happy-dom:
-        specifier: 15.8.3
-        version: 15.8.3
+        specifier: 15.7.4
+        version: 15.7.4
       process-envify:
         specifier: 2.0.0
         version: 2.0.0
@@ -140,7 +140,7 @@ importers:
         version: 1.1.0
       vitest:
         specifier: 2.1.4
-        version: 2.1.4(@types/node@22.8.7)(happy-dom@15.8.3)(sass@1.80.6)
+        version: 2.1.4(@types/node@22.8.7)(happy-dom@15.7.4)(sass@1.80.6)
       vue-tsc:
         specifier: 2.1.10
         version: 2.1.10(typescript@5.6.3)
@@ -325,13 +325,13 @@ importers:
         version: 5.1.4(vite@5.4.10(@types/node@22.8.7)(sass@1.80.6))(vue@3.5.12(typescript@5.6.3))
       '@vitest/coverage-v8':
         specifier: 2.1.4
-        version: 2.1.4(vitest@2.1.4(@types/node@22.8.7)(happy-dom@15.8.3)(sass@1.80.6))
+        version: 2.1.4(vitest@2.1.4(@types/node@22.8.7)(happy-dom@15.7.4)(sass@1.80.6))
       '@vue/test-utils':
         specifier: 2.4.6
         version: 2.4.6
       happy-dom:
-        specifier: 15.8.3
-        version: 15.8.3
+        specifier: 15.7.4
+        version: 15.7.4
       process-envify:
         specifier: 2.0.0
         version: 2.0.0
@@ -352,7 +352,7 @@ importers:
         version: 5.4.10(@types/node@22.8.7)(sass@1.80.6)
       vitest:
         specifier: 2.1.4
-        version: 2.1.4(@types/node@22.8.7)(happy-dom@15.8.3)(sass@1.80.6)
+        version: 2.1.4(@types/node@22.8.7)(happy-dom@15.7.4)(sass@1.80.6)
       vue-tsc:
         specifier: 2.1.10
         version: 2.1.10(typescript@5.6.3)
@@ -2206,8 +2206,8 @@ packages:
     resolution: {integrity: sha512-ax7ZYomf6jqPTQ4+XCpUGyXKHk5WweS+e05MBO4/y3WJ5RkmPXNKvX+bx1behVILVwr6JSQvZAku021CHPXG3Q==}
     engines: {node: '>=10'}
 
-  happy-dom@15.8.3:
-    resolution: {integrity: sha512-YR9nUWN/T2bH7pPLEYMhTp4DQExPH+mC4KulJDgimCb+FY3Er0Vp6SOOcBXrNfMTri3lAk9uSZqUTG2hgZOYwg==}
+  happy-dom@15.7.4:
+    resolution: {integrity: sha512-r1vadDYGMtsHAAsqhDuk4IpPvr6N8MGKy5ntBo7tSdim+pWDxus2PNqOcOt8LuDZ4t3KJHE+gCuzupcx/GKnyQ==}
     engines: {node: '>=18.0.0'}
 
   has-flag@4.0.0:
@@ -4515,7 +4515,7 @@ snapshots:
       vite: 5.4.10(@types/node@22.8.7)(sass@1.80.6)
       vue: 3.5.12(typescript@5.6.3)
 
-  '@vitest/coverage-v8@2.1.4(vitest@2.1.4(@types/node@22.8.7)(happy-dom@15.8.3)(sass@1.80.6))':
+  '@vitest/coverage-v8@2.1.4(vitest@2.1.4(@types/node@22.8.7)(happy-dom@15.7.4)(sass@1.80.6))':
     dependencies:
       '@ampproject/remapping': 2.3.0
       '@bcoe/v8-coverage': 0.2.3
@@ -4529,7 +4529,7 @@ snapshots:
       std-env: 3.7.0
       test-exclude: 7.0.1
       tinyrainbow: 1.2.0
-      vitest: 2.1.4(@types/node@22.8.7)(happy-dom@15.8.3)(sass@1.80.6)
+      vitest: 2.1.4(@types/node@22.8.7)(happy-dom@15.7.4)(sass@1.80.6)
     transitivePeerDependencies:
       - supports-color
 
@@ -5482,7 +5482,7 @@ snapshots:
     dependencies:
       duplexer: 0.1.2
 
-  happy-dom@15.8.3:
+  happy-dom@15.7.4:
     dependencies:
       entities: 4.5.0
       webidl-conversions: 7.0.0
@@ -6717,7 +6717,7 @@ snapshots:
       fsevents: 2.3.3
       sass: 1.80.6
 
-  vitest@2.1.4(@types/node@22.8.7)(happy-dom@15.8.3)(sass@1.80.6):
+  vitest@2.1.4(@types/node@22.8.7)(happy-dom@15.7.4)(sass@1.80.6):
     dependencies:
       '@vitest/expect': 2.1.4
       '@vitest/mocker': 2.1.4(vite@5.4.10(@types/node@22.8.7)(sass@1.80.6))
@@ -6741,7 +6741,7 @@ snapshots:
       why-is-node-running: 2.3.0
     optionalDependencies:
       '@types/node': 22.8.7
-      happy-dom: 15.8.3
+      happy-dom: 15.7.4
     transitivePeerDependencies:
       - less
       - lightningcss

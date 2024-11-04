@@ -6,7 +6,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "check": "vue-tsc --noEmit",
-    "test": "vitest --dir src --coverage --run"
+    "test": "vitest --dir src --run"
   },
   "dependencies": {
     "@unocss/reset": "0.63.6",
@@ -38,7 +38,7 @@
     "@vitejs/plugin-vue": "5.1.4",
     "@vitest/coverage-v8": "2.1.4",
     "@vue/test-utils": "2.4.6",
-    "happy-dom": "15.8.3",
+    "happy-dom": "15.7.4",
     "process-envify": "2.0.0",
     "sass": "1.80.6",
     "tailwindcss": "3.4.14",
