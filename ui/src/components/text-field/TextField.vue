@@ -54,6 +54,7 @@ watch(
 );
 
 function onClear() {
+  if (props.disabled) return;
   valueModel.value = '';
   emit('clear');
 }
@@ -66,9 +67,9 @@ function onClear() {
     </template>
 
     <template #default="{ id }">
-      <div class="relative w-full">
+      <div class="TextField" :class="{ disabled }">
         <div v-if="prepend" class="TextField-Prepend" @click.stop="emit('prepend')">
-          <div :class="prepend" class="w-5 h-5"></div>
+          <div :class="prepend" class="size-5"></div>
         </div>
 
         <input
@@ -83,13 +84,13 @@ function onClear() {
         />
 
         <div v-if="append" class="TextField-Append" @click.stop="emit('append')">
-          <div :class="append" class="w-5 h-5"></div>
+          <div :class="append" class="size-5"></div>
         </div>
 
         <div
           v-if="clearable && valueModel"
           class="i-material-symbols-close-small-rounded TextField-Clear"
-          :class="{ prepend, append }"
+          :class="{ disabled, prepend, append }"
           @click.stop="onClear"
         ></div>
       </div>
@@ -98,6 +99,14 @@ function onClear() {
 </template>
 
 <style lang="scss" scoped>
+.TextField {
+  @apply relative w-full;
+
+  &.disabled {
+    @apply cursor-not-allowed opacity-60;
+  }
+}
+
 .TextField-Prepend {
   @apply absolute start-2 top-1/2 z-1 w-5 h-5 -translate-y-1/2;
 }
@@ -114,7 +123,7 @@ function onClear() {
   }
 
   &.disabled {
-    @apply cursor-not-allowed opacity-60;
+    @apply cursor-not-allowed;
   }
 
   &.prepend {
@@ -140,6 +149,10 @@ function onClear() {
 
 .TextField-Clear {
   @apply absolute end-2 top-1/2 z-99 w-5 h-5 -translate-y-1/2 cursor-pointer transition-transform hover:scale-125;
+
+  &.disabled {
+    @apply cursor-not-allowed;
+  }
 
   &.append {
     @apply end-8;

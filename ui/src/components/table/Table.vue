@@ -84,12 +84,10 @@ const flux = reactive({
   rowsPerPage: 10,
   currentPage: 1,
   previousPage() {
-    if (flux.currentPage === 1) return;
     flux.currentPage -= 1;
     flux._updateChange();
   },
   nextPage() {
-    if (flux.currentPage === Math.ceil(countRef.value / flux.rowsPerPage)) return;
     flux.currentPage += 1;
     flux._updateChange();
   },
@@ -429,7 +427,7 @@ watchEffect(
           :label="locale.previousPage || 'Previous'"
           variant="text"
           color="secondary"
-          :disabled="loading"
+          :disabled="!countRef || flux.currentPage === 1 || loading"
           @click="flux.previousPage"
         />
         <Button
@@ -437,7 +435,9 @@ watchEffect(
           append="i-material-symbols-chevron-right-rounded"
           variant="text"
           color="secondary"
-          :disabled="loading"
+          :disabled="
+            !countRef || flux.currentPage === Math.ceil(countRef / flux.rowsPerPage) || loading
+          "
           @click="flux.nextPage"
         />
       </div>
