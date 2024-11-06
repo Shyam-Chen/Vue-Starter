@@ -40,7 +40,7 @@ const defaultModel = defineModel<string>({ default: '' });
 const props = withDefaults(
   defineProps<
     {
-      extension?: Extensions;
+      extensions?: Extensions;
       disabled?: boolean;
       readonly?: boolean;
       viewonly?: boolean;
@@ -48,7 +48,7 @@ const props = withDefaults(
     } & FormControlProps
   >(),
   {
-    extension: () => [],
+    extensions: () => [],
     disabled: false,
     readonly: false,
     viewonly: false,
@@ -74,7 +74,7 @@ onMounted(() => {
   editor.value = new Editor({
     editable: !props.disabled && !props.readonly && !props.viewonly,
     extensions: [
-      ...props.extension,
+      ...props.extensions,
       Heading,
       Paragraph,
       Text,
@@ -93,7 +93,7 @@ onMounted(() => {
       OrderedList,
       TextAlign.configure({ types: ['heading', 'paragraph'] }),
 
-      Image,
+      Image.configure({ inline: true }),
       Link,
       Blockquote,
       HorizontalRule,
@@ -582,7 +582,7 @@ defineExpose({
   }
 
   :deep(img) {
-    @apply my-1;
+    @apply inline-block my-1 align-bottom;
   }
 
   :deep(img.ProseMirror-selectednode) {
