@@ -41,7 +41,6 @@ async function search() {
 
 async function change(params: TableProps['control']) {
   loading.value = true;
-  state.control = params;
   const response = await leetcode({ ...body, ...params });
   loading.value = false;
   state.rows = response.result;

@@ -1,6 +1,6 @@
-<script lang="ts" setup generic="T extends object">
-import type { VNode } from 'vue';
-import { ref, computed, reactive, watchEffect, watch, toRef } from 'vue';
+<script lang="ts" setup generic="T">
+import type { Ref, VNode } from 'vue';
+import { ref, computed, watchEffect, watch } from 'vue';
 import { useLocaler, useLocale } from 'vue-localer';
 import { useScroll } from '@vueuse/core';
 
@@ -16,228 +16,213 @@ import Column from './Column.vue';
 import Row from './Row.vue';
 import Cell from './Cell.vue';
 
-const props = defineProps<{
-  value?: T[];
+type U = T & { _id?: string; id?: number; checked?: boolean; details?: unknown[] };
 
-  columns?: ColumnItem[];
-  rows?: T[];
+const valueModel = defineModel<U[]>('value', { default: [] });
 
-  static?: typeof staticTable;
+const controlModel = defineModel<Control>('control', {
+  get(val) {
+    return {
+      rows: val?.rows || controlDefaults.rows,
+      page: val?.page || controlDefaults.page,
+      field: val?.field || controlDefaults.field,
+      direction: val?.direction || controlDefaults.direction,
+    };
+  },
+  default: controlDefaults,
+});
 
-  count?: number;
-  control?: Control;
+const selectedModel = defineModel<T[]>('selected', { default: [] });
 
-  selectable?: boolean;
-  selected?: T[];
-
-  stickyHeader?: boolean;
-  loading?: boolean;
-}>();
+const props = withDefaults(
+  defineProps<{
+    stickyHeader?: boolean;
+    stickyFooter?: boolean;
+    selectable?: boolean;
+    columns?: ColumnItem[];
+    static?: typeof staticTable;
+    loading?: boolean;
+    rows?: U[];
+    count?: number;
+  }>(),
+  {
+    stickyHeader: false,
+    stickyFooter: false,
+    selectable: false,
+    columns: () => [],
+    static: undefined,
+    loading: false,
+    rows: () => [],
+    count: undefined,
+  },
+);
 
 const emit = defineEmits<{
-  (evt: 'update:value', val: T[]): void;
-  (evt: 'update:selected', val: T[]): void;
   (evt: 'change', val: Control): void;
-  (evt: 'clickRow', val: T): void;
-  (evt: 'update:control', val: Control): void;
-  (evt: 'selecteAll', val: boolean, arr: T[]): void;
+  (evt: 'rowClick', val: U): void;
 }>();
 
 defineSlots<{
   thead(props: NonNullable<unknown>): VNode;
   tbody(props: NonNullable<unknown>): VNode;
-  [colKey: string]: (props: { row: T }) => VNode;
-  collapsible(props: { row: T }): VNode;
+  [colKey: string]: (props: { row: U }) => VNode;
+  collapsible(props: { row: U }): VNode;
   spanable(props: NonNullable<unknown>): VNode;
 }>();
+
+// -
 
 const localer = useLocaler();
 const locale = useLocale();
 
-const valueModel = computed({
-  get: () => props.value || [],
-  set: (val) => emit('update:value', val),
-});
+// -
 
-const countRef = toRef(props, 'count', undefined);
-
-const controlModel = computed({
-  get: () => {
-    if (
-      !props.control ||
-      (typeof props.control === 'object' && Object.keys(props.control).length === 0)
-    ) {
-      return controlDefaults;
-    }
-
-    return props.control;
-  },
-  set: (val) => emit('update:control', val),
-});
-
-const flux = reactive({
-  rows: [] as any[],
-
-  indeterminate: false,
-  selecteAll: false,
-
-  rowsPerPage: 10,
-  currentPage: 1,
-  previousPage() {
-    flux.currentPage -= 1;
-    flux._updateChange();
-  },
-  nextPage() {
-    flux.currentPage += 1;
-    flux._updateChange();
-  },
-
-  sortField: 'createdAt' as Control['field'],
-  sortDirection: 'desc' as Control['direction'],
-  onSort(col: any) {
-    if (props.loading) return;
-
-    if (flux.sortDirection === 'asc') {
-      flux.sortField = col.key;
-      flux.sortDirection = 'desc';
-    } else if (flux.sortDirection === 'desc') {
-      flux.sortField = col.key;
-      flux.sortDirection = 'asc';
-    }
-
-    flux._updateChange();
-  },
-
-  _updateChange() {
-    emit('change', {
-      rows: flux.rowsPerPage,
-      page: flux.currentPage,
-      field: flux.sortField,
-      direction: flux.sortDirection,
-    });
-
-    controlModel.value = {
-      rows: flux.rowsPerPage,
-      page: flux.currentPage,
-      field: flux.sortField,
-      direction: flux.sortDirection,
-    };
-  },
-
-  clickRow(row: T) {
-    emit('clickRow', row);
-  },
-});
+const rowsPerPage = ref(controlDefaults.rows);
+const currentPage = ref(controlDefaults.page);
+const sortField = ref(controlDefaults.field);
+const sortDirection = ref(controlDefaults.direction);
 
 const paginationInfo = computed(() => {
+  const start = props.rows?.length
+    ? currentPage.value * rowsPerPage.value - rowsPerPage.value + 1
+    : 0;
+
+  const end =
+    currentPage.value * rowsPerPage.value > Number(props.count)
+      ? props.count
+      : currentPage.value * rowsPerPage.value;
+
   if (locale.value.paginationInfo) {
-    return localer.f(locale.value.paginationInfo, [
-      flux.currentPage * flux.rowsPerPage - flux.rowsPerPage + 1,
-      flux.currentPage * flux.rowsPerPage > countRef.value
-        ? countRef.value
-        : flux.currentPage * flux.rowsPerPage,
-      countRef.value,
-    ]);
+    return localer.f(locale.value.paginationInfo, [start, end, props.count]);
   }
 
-  return `${flux.currentPage * flux.rowsPerPage - flux.rowsPerPage + 1}-${
-    flux.currentPage * flux.rowsPerPage > countRef.value
-      ? countRef.value
-      : flux.currentPage * flux.rowsPerPage
-  } of ${countRef.value}`;
+  return `${start}-${end} of ${props.count}`;
 });
 
+function onChange() {
+  const control = {
+    rows: rowsPerPage.value,
+    page: currentPage.value,
+    field: sortField.value,
+    direction: sortDirection.value,
+  };
+
+  controlModel.value = control;
+  emit('change', control);
+}
+
+function onPreviousPage() {
+  currentPage.value -= 1;
+  onChange();
+}
+
+function onNextPage() {
+  currentPage.value += 1;
+  onChange();
+}
+
+function onColumnSort(col: ColumnItem) {
+  if (props.loading) return;
+  sortField.value = col.key;
+  sortDirection.value = sortDirection.value === 'asc' ? 'desc' : 'asc';
+  onChange();
+}
+
+function onRowsPerPageChange() {
+  currentPage.value = 1;
+  onChange();
+}
+
 watch(
-  () => controlModel.value,
+  controlModel,
   (val) => {
     if (Object.keys(val)?.length) {
-      flux.rowsPerPage = val.rows || controlDefaults.rows;
-      flux.currentPage = val.page || controlDefaults.page;
-      flux.sortField = val.field || controlDefaults.field;
-      flux.sortDirection = val.direction || controlDefaults.direction;
+      rowsPerPage.value = val.rows || controlDefaults.rows;
+      currentPage.value = val.page || controlDefaults.page;
+      sortField.value = val.field || controlDefaults.field;
+      sortDirection.value = val.direction || controlDefaults.direction;
 
       if (props.static && props.rows?.length) {
-        flux.rows = props.static(props.rows, controlModel.value);
+        _rows.value = props.static(props.rows, controlModel.value);
       }
     }
   },
   { immediate: true },
 );
 
-watch(
-  () => flux.rowsPerPage,
-  () => {
-    flux.currentPage = 1;
-    flux._updateChange();
-  },
-);
+// -
 
-watch(
-  () => flux.selecteAll,
-  (val) => {
-    if (props.static) {
-      const arr = props.rows?.map((item) => ({ ...item, checked: val })) || [];
-      flux.rows = props.static(arr, controlModel.value);
+function onRowClick(row: U) {
+  emit('rowClick', row);
+}
 
-      arr.forEach((row: any) => {
-        const found: any = valueModel.value.find((item: any) =>
-          item._id ? item._id === row._id : item.id === row.id,
-        );
-        if (found) found.checked = val;
-      });
-    } else {
-      flux.rows = props.rows?.map((item) => ({ ...item, checked: val })) || [];
-    }
-  },
-);
+// -
+
+const _rows = ref([]) as Ref<U[]>;
+
+const selectAll = ref(false);
+const indeterminate = ref(false);
+
+watch(selectAll, (val) => {
+  if (props.static) {
+    const arr = props.rows?.map((item) => ({ ...item, checked: val }));
+    _rows.value = props.static(arr, controlModel.value);
+
+    arr.forEach((row) => {
+      const found = valueModel.value.find((item) =>
+        item._id ? item._id === row._id : item.id === row.id,
+      );
+
+      if (found) found.checked = val;
+    });
+  } else {
+    _rows.value = props.rows?.map((item) => ({ ...item, checked: val }));
+  }
+});
 
 watch(
   () => props.rows,
   (val) => {
-    if (props.static && props.rows?.length) {
-      flux.rows = props.static(props.rows, controlModel.value);
+    if (props.static && val?.length) {
+      _rows.value = props.static(props.rows, controlModel.value);
 
-      const checked = props.rows.every((item: any) => item.checked);
-      const unchecked = props.rows.every((item: any) => !item.checked);
-      flux.indeterminate = !(checked || unchecked);
-      if (checked) flux.selecteAll = true;
-      if (unchecked) flux.selecteAll = false;
+      const checked = props.rows.every((item) => item.checked);
+      const unchecked = props.rows.every((item) => !item.checked);
+      indeterminate.value = !(checked || unchecked);
+      if (checked) selectAll.value = true;
+      if (unchecked) selectAll.value = false;
     } else {
-      flux.rows = val || [];
+      _rows.value = val;
     }
   },
   { deep: true, immediate: true },
 );
 
 watch(
-  () => flux.rows,
+  _rows,
   (val) => {
     if (props.static && val?.length) {
       val.forEach((row) => {
-        const found: any = valueModel.value.find((item: any) =>
+        const found = valueModel.value.find((item) =>
           item._id ? item._id === row._id : item.id === row.id,
         );
+
         if (found) found.checked = row.checked;
       });
-    }
-
-    if (!props.static) {
+    } else {
       const checked = val.every((item) => item.checked);
       const unchecked = val.every((item) => !item.checked);
+      indeterminate.value = !(checked || unchecked);
+      if (checked) selectAll.value = true;
+      if (unchecked) selectAll.value = false;
 
-      flux.indeterminate = !(checked || unchecked);
-
-      if (checked) flux.selecteAll = true;
-      if (unchecked) flux.selecteAll = false;
-
-      emit(
-        'update:selected',
-        val.filter((item) => item.checked),
-      );
+      selectedModel.value = val.filter((item) => item.checked);
     }
   },
   { deep: true },
 );
+
+// -
 
 const hasScrollbar = ref(false);
 const tableWrapper = ref<HTMLDivElement>();
@@ -264,7 +249,7 @@ watchEffect(
           <tr :class="{ 'sticky top-0 z-10': stickyHeader }">
             <Column v-if="selectable" :class="{ '!border-0': stickyHeader }">
               <div class="flex items-center">
-                <Checkbox v-model:value="flux.selecteAll" :indeterminate="flux.indeterminate" />
+                <Checkbox v-model:value="selectAll" :indeterminate />
               </div>
             </Column>
 
@@ -290,18 +275,18 @@ watchEffect(
                   'border-l-2 border-transparent':
                     hasScrollbar && !arrivedState.right && col.sticky === 'right',
                 }"
-                @click="flux.onSort(col)"
+                @click="onColumnSort(col)"
               >
                 <div>{{ col.name }}</div>
 
                 <template v-if="typeof col.sortable === 'boolean' ? col.sortable : true">
                   <div
-                    v-if="flux.sortField === col.key && flux.sortDirection === 'desc'"
+                    v-if="sortField === col.key && sortDirection === 'desc'"
                     class="i-tabler-sort-descending size-5"
                   ></div>
 
                   <div
-                    v-else-if="flux.sortField === col.key && flux.sortDirection === 'asc'"
+                    v-else-if="sortField === col.key && sortDirection === 'asc'"
                     class="i-tabler-sort-ascending size-5"
                   ></div>
 
@@ -323,12 +308,12 @@ watchEffect(
         </tbody>
 
         <slot v-else name="tbody">
-          <tbody v-if="flux.rows?.length">
-            <template v-for="row in flux.rows" :key="row._id || row.id">
+          <tbody v-if="_rows?.length">
+            <template v-for="(row, index) in _rows" :key="row._id || row.id || index">
               <Row
                 class="sticky-tr"
                 :class="{ selected: selectable && row.checked }"
-                @click="flux.clickRow(row)"
+                @click="onRowClick(row)"
               >
                 <Cell v-if="selectable">
                   <div class="flex items-center">
@@ -353,12 +338,12 @@ watchEffect(
                   <div
                     v-if="col.spanable"
                     class="flex-col justify-center gap-1"
-                    :class="{ 'py-2': row.details?.length > 1 }"
+                    :class="{ 'py-2': Number(row.details?.length) > 1 }"
                   >
-                    <div v-for="(sub, subIdx) in row.details" :key="subIdx">
-                      <slot :name="col.key" :row="row">
-                        {{ sub[col.key] }}
-                      </slot>
+                    <div v-for="(subrow, subindex) in row.details" :key="subindex">
+                      <slot :name="col.key" :row>{{
+                        subrow?.[col.key as keyof typeof subrow]
+                      }}</slot>
                     </div>
                   </div>
 
@@ -370,14 +355,12 @@ watchEffect(
                       'border-l-2': hasScrollbar && !arrivedState.right && col.sticky === 'right',
                     }"
                   >
-                    <slot :name="col.key" :row="row">
-                      {{ row[col.key] }}
-                    </slot>
+                    <slot :name="col.key" :row>{{ row[col.key as keyof typeof row] }}</slot>
                   </div>
                 </Cell>
               </Row>
 
-              <slot name="collapsible" :row="row"></slot>
+              <slot name="collapsible" :row></slot>
             </template>
 
             <slot name="spanable"></slot>
@@ -399,14 +382,14 @@ watchEffect(
     </div>
 
     <div
-      v-if="typeof countRef === 'number'"
+      v-if="typeof count === 'number'"
       class="flex flex-col md:flex-row items-center justify-end p-4 gap-4 text-sm"
     >
       <div class="Table-RowsPerPage">
         {{ locale.rowsPerPage || 'Rows per page:' }}
         <div class="w-20 ml-2">
           <Select
-            v-model:value="flux.rowsPerPage"
+            v-model:value="rowsPerPage"
             :options="[
               { label: '10', value: 10 },
               { label: '25', value: 25 },
@@ -415,6 +398,7 @@ watchEffect(
             ]"
             :disabled="loading"
             class="!border-transparent"
+            @change="onRowsPerPageChange"
           />
         </div>
       </div>
@@ -427,18 +411,16 @@ watchEffect(
           :label="locale.previousPage || 'Previous'"
           variant="text"
           color="secondary"
-          :disabled="!countRef || flux.currentPage === 1 || loading"
-          @click="flux.previousPage"
+          :disabled="!count || currentPage === 1 || loading"
+          @click="onPreviousPage"
         />
         <Button
           :label="locale.nextPage || 'Next'"
           append="i-material-symbols-chevron-right-rounded"
           variant="text"
           color="secondary"
-          :disabled="
-            !countRef || flux.currentPage === Math.ceil(countRef / flux.rowsPerPage) || loading
-          "
-          @click="flux.nextPage"
+          :disabled="!count || currentPage === Math.ceil(count / rowsPerPage) || loading"
+          @click="onNextPage"
         />
       </div>
     </div>

@@ -22,7 +22,6 @@ async function initial() {
 
 async function change(params: TableProps['control']) {
   loading.value = true;
-  control.value = params;
   const response = await leetcode(params);
   loading.value = false;
   rows.value = response.result;

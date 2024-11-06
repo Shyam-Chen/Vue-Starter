@@ -120,6 +120,7 @@ const flux = reactive({
     { key: 'name', name: 'Name' },
     { key: 'email', name: 'Email' },
     { key: 'status', name: 'Status' },
+    { key: 'actions', name: 'Actions', sortable: false },
   ],
   collapsibleRows: [
     {
@@ -141,7 +142,7 @@ const flux = reactive({
       status: 'Active',
     },
   ].map((item) => ({ ...item, collapsible: false })),
-  clickRow(row: any) {
+  rowClick(row: any) {
     console.log(row);
   },
   clickCollapsible(row: any) {
@@ -282,20 +283,15 @@ const flux = reactive({
         :columns="flux.collapsibleCols"
         :rows="flux.collapsibleRows"
         :count="77"
-        @clickRow="flux.clickRow"
+        @rowClick="flux.rowClick"
       >
         <template #icon="{ row }">
           <XButton
-            v-if="!row.collapsible"
-            icon="i-fa-caret-down"
-            color="secondary"
-            variant="text"
-            size="small"
-            @click.stop="flux.clickCollapsible(row)"
-          />
-          <XButton
-            v-if="row.collapsible"
-            icon="i-fa-caret-up"
+            :icon="
+              row.collapsible
+                ? 'i-material-symbols-keyboard-arrow-up-rounded'
+                : 'i-material-symbols-keyboard-arrow-down-rounded'
+            "
             color="secondary"
             variant="text"
             size="small"
@@ -303,12 +299,17 @@ const flux = reactive({
           />
         </template>
 
+        <template #actions>
+          <XButton label="Edit" color="info" variant="text" size="small" @click.stop />
+          <XButton label="Delete" color="danger" variant="text" size="small" @click.stop />
+        </template>
+
         <template #collapsible="{ row }">
           <tr>
             <td :colspan="flux.collapsibleCols.length">
               <XCollapse>
                 <div v-if="row.collapsible">
-                  <div class="px-4 py-2">
+                  <div class="p-4">
                     <div class="text-2xl mb-2">History</div>
                     <XTable :columns="flux.colspanCols" :rows="flux.colspanRows" />
                   </div>

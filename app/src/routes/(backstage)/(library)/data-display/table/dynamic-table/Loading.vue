@@ -28,9 +28,8 @@ async function search() {
   state.count = response.count;
 }
 
-async function change(control: TableProps['control']) {
+async function change() {
   state.loading = true;
-  state.control = control;
   const response = await leetcode({ ...body, ...state.control });
   state.loading = false;
   state.rows = response.result;
