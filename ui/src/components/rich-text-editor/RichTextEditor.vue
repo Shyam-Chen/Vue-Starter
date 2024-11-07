@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import type { Transaction } from '@tiptap/pm/state';
 import type { Extensions } from '@tiptap/vue-3';
 import { nextTick, ref, computed, watch, onMounted } from 'vue';
 import { Editor, EditorContent } from '@tiptap/vue-3';
@@ -238,19 +239,32 @@ function uploadFile(file: File) {
   };
 
   editor.value?.chain().focus().insertContent(uploadIndicator).run();
+  editor.value?.on('transaction', updateUploadIndicator);
 
   uploadImage(file, uploaded);
 }
 
+function updateUploadIndicator({ transaction }: { transaction: Transaction }) {
+  if (!uploadIndicatorRange.value) return;
+
+  const { start, end } = uploadIndicatorRange.value;
+
+  uploadIndicatorRange.value = {
+    start: transaction.mapping.map(start),
+    end: transaction.mapping.map(end),
+  };
+}
+
 async function uploaded(src: string) {
+  if (!uploadIndicatorRange.value) return;
+
   await nextTick();
 
-  if (uploadIndicatorRange.value) {
-    const { start, end } = uploadIndicatorRange.value;
-    editor.value?.chain().focus().deleteRange({ from: start, to: end }).run();
-    uploadIndicatorRange.value = undefined;
-    editor.value?.chain().focus().setImage({ src }).run();
-  }
+  const { start, end } = uploadIndicatorRange.value;
+  editor.value?.chain().focus().deleteRange({ from: start, to: end }).run();
+  uploadIndicatorRange.value = undefined;
+  editor.value?.off('transaction', updateUploadIndicator);
+  editor.value?.chain().focus().insertContentAt(start, `<img src="${src}" />`).run();
 }
 
 function setLink() {
