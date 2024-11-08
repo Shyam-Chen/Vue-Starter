@@ -230,13 +230,17 @@ onChange((files) => {
   uploadFile(file);
 });
 
-function uploadFile(file: File) {
+async function uploadFile(file: File) {
   const uploadIndicator = '[Uploading...]';
 
   uploadIndicatorRange.value = {
     start: editor.value!.state.selection.from,
     end: editor.value!.state.selection.from + uploadIndicator.length,
   };
+
+  if (!defaultModel.value) defaultModel.value = '<p></p>';
+
+  await nextTick();
 
   editor.value?.chain().focus().insertContent(uploadIndicator).run();
   editor.value?.on('transaction', updateUploadIndicator);
