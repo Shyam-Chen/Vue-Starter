@@ -9,7 +9,7 @@
     "test": "vitest --dir src --run"
   },
   "dependencies": {
-    "@unocss/reset": "0.63.6",
+    "@unocss/reset": "0.64.0",
     "@vue-flow/core": "1.41.4",
     "@vueuse/components": "11.2.0",
     "@vueuse/core": "11.2.0",
@@ -32,10 +32,10 @@
     "vuedraggable": "4.1.0"
   },
   "devDependencies": {
-    "@iconify/json": "2.2.267",
+    "@iconify/json": "2.2.270",
     "@types/lodash": "4.17.13",
     "@types/nprogress": "0.2.3",
-    "@vitejs/plugin-vue": "5.1.4",
+    "@vitejs/plugin-vue": "5.1.5",
     "@vitest/coverage-v8": "2.1.4",
     "@vue/test-utils": "2.4.6",
     "happy-dom": "15.7.4",
@@ -43,7 +43,7 @@
     "sass": "1.80.6",
     "tailwindcss": "3.4.14",
     "typescript": "5.6.3",
-    "unocss": "0.63.6",
+    "unocss": "0.64.0",
     "vite": "5.4.10",
     "vite-plugin-vue-routes": "1.1.0",
     "vitest": "2.1.4",
