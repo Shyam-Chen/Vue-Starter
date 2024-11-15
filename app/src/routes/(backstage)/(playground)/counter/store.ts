@@ -1,4 +1,4 @@
-import { computed, reactive, readonly } from 'vue';
+import { computed, reactive } from 'vue';
 import { defineStore } from 'vue-storer';
 
 export const useCounter = defineStore('counter', () => {
@@ -7,11 +7,11 @@ export const useCounter = defineStore('counter', () => {
     count: 0,
   });
 
-  const getters = readonly({
+  const getters = reactive({
     doubleCount: computed(() => state.count * 2),
   });
 
-  const actions = readonly({
+  const actions = reactive({
     increment() {
       state.count += 1;
     },

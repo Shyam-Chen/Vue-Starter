@@ -183,6 +183,7 @@ const links = [
   { icon: 'i-mdi-user-group', name: 'Management', to: '/user-list' },
   { icon: 'i-carbon-two-factor-authentication', name: 'Two-factor Auth', to: '/two-factor-auth' },
   { icon: 'i-ph-chats-fill', name: 'Discussions', to: '/discussions' },
+  { icon: 'i-material-symbols-robot-2-outline', name: 'Chatbot', to: '/chatbot' },
 ] as Link[];
 
 const createLevel = (arr: Link[], level = 1): Link[] => {
