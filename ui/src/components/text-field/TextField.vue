@@ -53,6 +53,16 @@ watch(
   },
 );
 
+function onPrepend() {
+  if (props.disabled) return;
+  emit('prepend');
+}
+
+function onAppend() {
+  if (props.disabled) return;
+  emit('append');
+}
+
 function onClear() {
   if (props.disabled) return;
   valueModel.value = '';
@@ -61,14 +71,14 @@ function onClear() {
 </script>
 
 <template>
-  <FormControl v-bind="formControlAttrs">
+  <FormControl v-bind="formControlAttrs" class="TextField">
     <template #label>
       <slot></slot>
     </template>
 
     <template #default="{ id }">
-      <div class="TextField" :class="{ disabled }">
-        <div v-if="prepend" class="TextField-Prepend" @click.stop="emit('prepend')">
+      <div class="TextField-Container" :class="{ disabled }">
+        <div v-if="prepend" class="TextField-Prepend" @click.stop="onPrepend">
           <div :class="prepend" class="size-5"></div>
         </div>
 
@@ -83,7 +93,7 @@ function onClear() {
           :class="{ invalid, disabled, prepend, append, clearable }"
         />
 
-        <div v-if="append" class="TextField-Append" @click.stop="emit('append')">
+        <div v-if="append" class="TextField-Append" @click.stop="onAppend">
           <div :class="append" class="size-5"></div>
         </div>
 
@@ -99,7 +109,7 @@ function onClear() {
 </template>
 
 <style lang="scss" scoped>
-.TextField {
+.TextField-Container {
   @apply relative w-full;
 
   &.disabled {

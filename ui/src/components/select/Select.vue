@@ -86,7 +86,7 @@ async function showPicker() {
   }
 
   // Scroll to the selected option
-  const active = panel.value?.querySelector('.Select-Item-Active') as HTMLDivElement;
+  const active = panel.value?.querySelector('.Select-Item.active') as HTMLDivElement;
   const offsetTop = props.filterable ? active?.offsetTop - 46 : active?.offsetTop;
   if (offsetTop && list.value) list.value.scrollTop = offsetTop - active.offsetHeight * 2;
 
@@ -179,7 +179,7 @@ function onKeydown(evt: KeyboardEvent) {
     hoverIndex.value += 1;
 
     if (list.value) {
-      const hover = list.value.querySelector('.Select-Item-Hover') as HTMLDivElement;
+      const hover = list.value.querySelector('.Select-Item.hover') as HTMLDivElement;
       const offsetTop = hover?.offsetTop;
       if (offsetTop) list.value.scrollTop = offsetTop - hover.offsetHeight;
     }
@@ -192,7 +192,7 @@ function onKeydown(evt: KeyboardEvent) {
     hoverIndex.value -= 1;
 
     if (list.value) {
-      const hover = list.value.querySelector('.Select-Item-Hover') as HTMLDivElement;
+      const hover = list.value.querySelector('.Select-Item.hover') as HTMLDivElement;
       const offsetTop = hover?.offsetTop;
       if (offsetTop) list.value.scrollTop = offsetTop - hover.offsetHeight;
     }
@@ -216,7 +216,7 @@ if (popover.withinPopover) {
 </script>
 
 <template>
-  <FormControl v-bind="formControlAttrs">
+  <FormControl v-bind="formControlAttrs" class="Select">
     <template #label>
       <slot></slot>
     </template>
@@ -244,8 +244,8 @@ if (popover.withinPopover) {
                 : 'i-material-symbols-arrow-drop-down-rounded'
           "
           readonly
-          class="text-ellipsis"
-          :class="{ '!opacity-100 !cursor-progress': loading }"
+          class="Select-Input"
+          :class="{ loading }"
           @clear="onClear"
           @click="showPicker"
           @append="showPicker"
@@ -273,8 +273,8 @@ if (popover.withinPopover) {
                 :key="item.value"
                 class="Select-Item"
                 :class="{
-                  'Select-Item-Hover': index === hoverIndex,
-                  'Select-Item-Active': value === item.value,
+                  hover: index === hoverIndex,
+                  active: value === item.value,
                 }"
                 @click="onSelect(item.value, item)"
                 @mouseenter="hoverIndex = index"
@@ -299,19 +299,39 @@ if (popover.withinPopover) {
 </template>
 
 <style lang="scss" scoped>
+.Select :deep(.Select-Input:not(.disabled)) {
+  @apply cursor-pointer;
+}
+
+.Select :deep(.Select-Input:not(.disabled) + .TextField-Append) {
+  @apply cursor-pointer;
+}
+
+.Select :deep(.Select-Input) {
+  @apply text-ellipsis;
+
+  &.loading {
+    @apply opacity-100 cursor-progress;
+  }
+}
+
+.Select :deep(.Select-Input.loading + .TextField-Append) {
+  @apply opacity-100 cursor-progress;
+}
+
 .Select-List {
   @apply max-h-40 overflow-auto p-2 empty:hidden;
 }
 
 .Select-Item {
   @apply px-3 py-1 cursor-pointer rounded-md whitespace-nowrap;
-}
 
-.Select-Item-Hover {
-  @apply text-primary-500 dark:text-primary-100 bg-primary-100 dark:bg-primary-600;
-}
+  &.hover {
+    @apply text-primary-500 dark:text-primary-100 bg-primary-100 dark:bg-primary-600;
+  }
 
-.Select-Item-Active {
-  @apply bg-primary-500 text-white hover:bg-primary-700 hover:text-white;
+  &.active {
+    @apply bg-primary-500 text-white hover:bg-primary-700 hover:text-white;
+  }
 }
 </style>
