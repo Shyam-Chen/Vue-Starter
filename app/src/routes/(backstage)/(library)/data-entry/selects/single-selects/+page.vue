@@ -1,30 +1,15 @@
 <script lang="ts" setup>
-import { reactive } from 'vue';
-import { XBreadcrumb, XCard, XSelect } from '@x/ui';
+import { XBreadcrumb, XCard, XCodeBlock } from '@x/ui';
 
+import Basic from './Basic.vue';
+import BasicCode from './Basic.vue?raw';
+import Statuses from './Statuses.vue';
+import StatusesCode from './Statuses.vue?raw';
 import WithinPopover from './WithinPopover.vue';
 import WithinTableCell from './WithinTableCell.vue';
 import WithinTableCellWithinDialog from './WithinTableCellWithinDialog.vue';
 import Group from './Group.vue';
 import VirtualScroll from './VirtualScroll.vue';
-
-const flux = reactive({
-  select1: '',
-  select1Options: [
-    { label: 'Angular', value: 'angular' },
-    { label: 'React', value: 'react' },
-    { label: 'Svelte', value: 'svelte' },
-    { label: 'Vue', value: 'vue' },
-    { label: 'Nest', value: 'nest' },
-    { label: 'Express', value: 'express' },
-    { label: 'Fastify', value: 'fastify' },
-    { label: 'Koa', value: 'koa' },
-    { label: 'Analog', value: 'analog' },
-    { label: 'Next', value: 'next' },
-    { label: 'SvelteKit', value: 'svelte-kit' },
-    { label: 'Nuxt', value: 'nuxt' },
-  ],
-});
 </script>
 
 <template>
@@ -38,57 +23,20 @@ const flux = reactive({
     <h2 class="text-3xl font-bold my-4">Basic</h2>
 
     <XCard>
-      <XSelect v-model:value="flux.select1" label="Example label" :options="flux.select1Options" />
+      <Basic />
     </XCard>
+
+    <XCodeBlock :code="BasicCode" language="vue" class="max-h-100" />
   </section>
 
   <section class="my-8">
-    <h2 class="text-3xl font-bold my-4 pt-6">Disabled</h2>
+    <h2 class="text-3xl font-bold my-4 pt-6">Statuses</h2>
 
     <XCard>
-      <XSelect
-        v-model:value="flux.select1"
-        label="Example label"
-        :options="flux.select1Options"
-        disabled
-      />
+      <Statuses />
     </XCard>
-  </section>
 
-  <section class="my-8">
-    <h2 class="text-3xl font-bold my-4 pt-6">Clearable</h2>
-
-    <XCard>
-      <XSelect v-model:value="flux.select1" :options="flux.select1Options" clearable />
-    </XCard>
-  </section>
-
-  <section class="my-8">
-    <h2 class="text-3xl font-bold my-4 pt-6">Filterable</h2>
-
-    <XCard>
-      <XSelect v-model:value="flux.select1" :options="flux.select1Options" filterable />
-    </XCard>
-  </section>
-
-  <section class="my-8">
-    <h2 class="text-3xl font-bold my-4 pt-6">Invalid</h2>
-
-    <XCard>
-      <XSelect
-        v-model:value="flux.select1"
-        :options="flux.select1Options"
-        invalid="Incorrect entry"
-      />
-    </XCard>
-  </section>
-
-  <section class="my-8">
-    <h2 class="text-3xl font-bold my-4 pt-6">Loading</h2>
-
-    <XCard>
-      <XSelect v-model:value="flux.select1" :options="flux.select1Options" loading />
-    </XCard>
+    <XCodeBlock :code="StatusesCode" language="vue" class="max-h-100" />
   </section>
 
   <section class="my-8">

@@ -67,23 +67,15 @@ async function showPicker() {
   // Due to the use of `whitespace-nowrap` on `.Select-Item`,
   // if a scrollbar is present, set the width for all options to accommodate it;
   // otherwise, keep the width at 100%.
-  if (list.value) {
-    if (list.value.scrollWidth > list.value.offsetWidth) {
-      const width = `${list.value.scrollWidth}px`;
+  if (list.value && list.value.scrollWidth > list.value.offsetWidth) {
+    const width = `${list.value.scrollWidth}px`;
 
-      for (let index = 0; index < items.value.length; index++) {
-        if (items.value[index]) {
-          items.value[index].style.width = width;
-        }
-      }
-    } else {
-      for (let index = 0; index < items.value.length; index++) {
-        if (items.value[index]) {
-          items.value[index].style.width = '100%';
-        }
-      }
+    for (let index = 0; index < items.value.length; index++) {
+      items.value[index].style.width = width;
     }
   }
+
+  await nextTick();
 
   // Scroll to the selected option
   const active = panel.value?.querySelector('.Select-Item.active') as HTMLDivElement;
@@ -231,20 +223,21 @@ if (popover.withinPopover) {
           :required="false"
           :invalid="!!invalid"
           help=""
-          :value="selected?.label"
+          :value="loading ? '' : selected?.label"
           :placeholder="
-            loading ? 'Loading...' : placeholder || locale.pleaseSelect || 'Please select...'
+            loading
+              ? locale.loading || 'Loading...'
+              : placeholder || locale.pleaseSelect || 'Please select...'
           "
           :disabled="disabled || loading"
+          :prepend="loading ? 'i-line-md-loading-twotone-loop' : ''"
           :append="
-            loading
-              ? 'i-line-md-loading-twotone-loop'
-              : show
-                ? 'i-material-symbols-arrow-drop-up-rounded'
-                : 'i-material-symbols-arrow-drop-down-rounded'
+            show
+              ? 'i-material-symbols-arrow-drop-up-rounded'
+              : 'i-material-symbols-arrow-drop-down-rounded'
           "
           readonly
-          class="Select-Input"
+          class="Select-Input text-ellipsis"
           :class="{ loading }"
           @clear="onClear"
           @click="showPicker"
@@ -299,23 +292,14 @@ if (popover.withinPopover) {
 </template>
 
 <style lang="scss" scoped>
-.Select :deep(.Select-Input:not(.disabled)) {
-  @apply cursor-pointer;
-}
-
+.Select :deep(.Select-Input:not(.disabled)),
 .Select :deep(.Select-Input:not(.disabled) + .TextField-Append) {
   @apply cursor-pointer;
 }
 
-.Select :deep(.Select-Input) {
-  @apply text-ellipsis;
-
-  &.loading {
-    @apply opacity-100 cursor-progress;
-  }
-}
-
-.Select :deep(.Select-Input.loading + .TextField-Append) {
+.Select :deep(.Select-Input.loading),
+.Select :deep(:has(.Select-Input.loading) > .TextField-Prepend),
+.Select :deep(:has(.Select-Input.loading) > .TextField-Append) {
   @apply opacity-100 cursor-progress;
 }
 

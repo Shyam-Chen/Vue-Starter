@@ -11,7 +11,7 @@ const more = ref(false);
 <template>
   <XButton label="Launch" @click="status = true" />
 
-  <XDialog v-model="status" title="With Table in Dialog">
+  <XDialog v-model="status" title="With Table within Dialog">
     <p>
       Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
       been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
