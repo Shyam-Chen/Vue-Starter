@@ -185,7 +185,7 @@ function onKeydown(evt: KeyboardEvent) {
 
     if (list.value) {
       const hover = list.value.querySelector('.Select-Item.hover') as HTMLDivElement;
-      const offsetTop = hover?.offsetTop;
+      const offsetTop = hover?.offsetTop - 64;
       if (offsetTop) list.value.scrollTop = offsetTop - hover.offsetHeight;
     }
   }
