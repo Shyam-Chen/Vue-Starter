@@ -243,7 +243,15 @@ const flux = reactive({
     <div class="mb-2">Sticky Header</div>
 
     <div class="w-full bg-white dark:bg-slate-800 shadow-md rounded">
-      <XTable stickyHeader :columns="flux.columns1" :rows="flux.dataTable1" />
+      <XTable stickyHeader :columns="flux.columns1" :rows="flux.dataTable1">
+        <template #email="{ row }">
+          <div class="w-50 truncate">{{ row.email }}</div>
+        </template>
+
+        <template #address="{ row }">
+          <div class="w-50 truncate">{{ row.address }}</div>
+        </template>
+      </XTable>
     </div>
   </div>
 
