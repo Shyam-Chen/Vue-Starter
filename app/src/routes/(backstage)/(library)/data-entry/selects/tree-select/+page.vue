@@ -143,7 +143,15 @@ const values2 = ref<string[]>([]);
   </section>
 
   <section class="my-8">
-    <h2 class="text-3xl font-bold my-4">Labels</h2>
+    <h2 class="text-3xl font-bold my-4 pt-6">Filterable (TODO)</h2>
+
+    <XCard>
+      <!-- <XTreeSelect v-model:value="value" label="Tech Stack" :options filterable /> -->
+    </XCard>
+  </section>
+
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Labels</h2>
 
     <XCard>
       <XTreeSelect v-model:value="values2" label="Tech Stack" :options selectedLabels />

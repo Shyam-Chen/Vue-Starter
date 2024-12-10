@@ -143,4 +143,12 @@ const flux = reactive({
       />
     </XCard>
   </section>
+
+  <section class="my-8">
+    <h2 class="text-3xl font-bold my-4 pt-6">Group (TODO)</h2>
+
+    <XCard>
+      <!-- <Group /> -->
+    </XCard>
+  </section>
 </template>
