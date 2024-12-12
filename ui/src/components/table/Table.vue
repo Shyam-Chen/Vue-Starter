@@ -65,7 +65,7 @@ const emit = defineEmits<{
 defineSlots<{
   thead(props: NonNullable<unknown>): VNode;
   tbody(props: NonNullable<unknown>): VNode;
-  [colKey: string]: (props: { row: U }) => VNode;
+  [colKey: string]: (props: { row: U; subrow?: any }) => VNode;
   collapsible(props: { row: U }): VNode;
   spanable(props: NonNullable<unknown>): VNode;
 }>();

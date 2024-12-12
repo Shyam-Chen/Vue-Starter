@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref, computed, watch, inject, useTemplateRef } from 'vue';
+import { ref, computed, watch, inject } from 'vue';
 import { onClickOutside } from '@vueuse/core';
 
 import ChipField from '../chip-field/ChipField.vue';
@@ -69,7 +69,7 @@ const toggleShowHide = ref(true);
 
 // -
 
-const filter = useTemplateRef('filter');
+// const filter = useTemplateRef('filter');
 const filterValue = ref('');
 
 watch(filterValue, (val) => {
