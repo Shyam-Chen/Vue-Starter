@@ -92,25 +92,29 @@ const flux = reactive({
     { key: 'name', name: 'Name' },
     { key: 'email', name: 'Email' },
     { key: 'score', name: 'Score', spanable: true },
+    { key: 'percent', name: 'Percent', spanable: true },
     { key: 'status', name: 'Status' },
   ],
   spanableRows: [
     {
       name: 'Martin Blank',
       email: 'martinblank@mail.com',
-      details: [{ score: 32 }, { score: 55 }, { score: 21 }],
+      details: [{ score: 32, percent: 50 }, { score: 55 }, { score: 21, percent: 82 }],
       status: 'Active',
     },
     {
       name: 'Fran Wilson',
       email: 'franwilson@mail.com',
-      details: [{ score: 34 }],
+      details: [{ score: 34 }, { percent: 57 }],
       status: 'Active',
     },
     {
       name: 'Maria Anders',
       email: 'mariaanders@mail.com',
-      details: [{ score: 51 }, { score: 32 }],
+      details: [
+        { score: 51, percent: 31 },
+        { score: 32, percent: 72 },
+      ],
       status: 'Active',
     },
   ],
@@ -179,10 +183,10 @@ const flux = reactive({
   colspanTheadCols: [
     { key: 'name', name: 'Name' },
     { key: 'email', name: 'Email' },
-    { key: 'cost', name: 'Cost' },
-    { key: 'income', name: 'Income' },
-    { key: 'lastCost', name: 'Cost' },
-    { key: 'lastIncome', name: 'Income' },
+    { key: 'cost', name: 'Cost', class: '!text-right' },
+    { key: 'income', name: 'Income', class: '!text-right' },
+    { key: 'lastCost', name: 'Cost', class: '!text-right' },
+    { key: 'lastIncome', name: 'Income', class: '!text-right' },
     { key: 'status', name: 'Status' },
   ],
   colspanTheadRows: [
@@ -336,7 +340,15 @@ const flux = reactive({
     <div class="mb-2">Rowspan (key: `details`)</div>
 
     <div class="w-full bg-white dark:bg-slate-800 shadow-md rounded">
-      <XTable :columns="flux.spanableCols" :rows="flux.spanableRows" />
+      <XTable :columns="flux.spanableCols" :rows="flux.spanableRows">
+        <template #score="{ subrow }">
+          {{ subrow.score || '-' }}
+        </template>
+
+        <template #percent="{ subrow }">
+          {{ subrow.percent || '-' }}
+        </template>
+      </XTable>
     </div>
   </div>
 
@@ -363,21 +375,21 @@ const flux = reactive({
       <XTable :columns="flux.colspanTheadCols" :rows="flux.colspanTheadRows">
         <template #thead>
           <tr class="bg-blueGray-200 dark:bg-blueGray-700 text-blueGray-500 dark:text-blueGray-200">
-            <th colspan="2" class="px-6 py-3"></th>
-            <th colspan="2" class="px-6 py-3 text-center">2023</th>
-            <th colspan="2" class="px-6 py-3 text-center">2022</th>
-            <th></th>
+            <XTable.Column colspan="2"></XTable.Column>
+            <XTable.Column colspan="2" class="!text-center">2023</XTable.Column>
+            <XTable.Column colspan="2" class="!text-center">2022</XTable.Column>
+            <XTable.Column></XTable.Column>
           </tr>
         </template>
 
         <template #spanable>
           <tr>
-            <td colspan="2" class="px-6 py-3">Sum:</td>
-            <td class="px-6 py-3">108</td>
-            <td class="px-6 py-3">154</td>
-            <td class="px-6 py-3">152</td>
-            <td class="px-6 py-3">198</td>
-            <td></td>
+            <XTable.Cell colspan="2">Sum:</XTable.Cell>
+            <XTable.Cell class="!text-right">108</XTable.Cell>
+            <XTable.Cell class="!text-right">154</XTable.Cell>
+            <XTable.Cell class="!text-right">152</XTable.Cell>
+            <XTable.Cell class="!text-right">198</XTable.Cell>
+            <XTable.Cell></XTable.Cell>
           </tr>
         </template>
       </XTable>

@@ -341,7 +341,7 @@ watchEffect(
                     :class="{ 'py-2': Number(row.details?.length) > 1 }"
                   >
                     <div v-for="(subrow, subindex) in row.details" :key="subindex">
-                      <slot :name="col.key" :row>{{
+                      <slot :name="col.key" :row :subrow>{{
                         subrow?.[col.key as keyof typeof subrow]
                       }}</slot>
                     </div>

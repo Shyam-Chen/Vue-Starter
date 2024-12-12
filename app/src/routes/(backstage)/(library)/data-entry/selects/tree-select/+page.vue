@@ -2,6 +2,7 @@
 import { ref } from 'vue';
 import { XBreadcrumb, XButton, XCard, XTreeSelect } from '@x/ui';
 
+import Filterable from './Filterable.vue';
 import WithinPopover from './WithinPopover.vue';
 import WithinTableCell from './WithinTableCell.vue';
 import WithinTableCellWithinDialog from './WithinTableCellWithinDialog.vue';
@@ -146,7 +147,7 @@ const values2 = ref<string[]>([]);
     <h2 class="text-3xl font-bold my-4 pt-6">Filterable (TODO)</h2>
 
     <XCard>
-      <!-- <XTreeSelect v-model:value="value" label="Tech Stack" :options filterable /> -->
+      <Filterable />
     </XCard>
   </section>
 

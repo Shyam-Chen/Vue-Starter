@@ -1,11 +1,12 @@
 <script lang="ts" setup>
-import { ref, computed, inject } from 'vue';
+import { ref, computed, watch, inject, useTemplateRef } from 'vue';
 import { onClickOutside } from '@vueuse/core';
 
 import ChipField from '../chip-field/ChipField.vue';
 import ToggleShowHide from '../chip-field/ToggleShowHide.vue';
 import FormControl, { type FormControlProps, formControlDefaults } from '../form-control';
 import Popover from '../popover/Popover.vue';
+import TextField from '../text-field/TextField.vue';
 import Tree, { type Node } from '../tree';
 
 defineOptions({ inheritAttrs: false });
@@ -16,11 +17,13 @@ const props = withDefaults(
   defineProps<
     {
       options?: Node[];
+      filterable?: boolean;
       selectedLabels?: boolean;
     } & FormControlProps
   >(),
   {
     options: () => [],
+    filterable: false,
     selectedLabels: false,
     ...formControlDefaults,
   },
@@ -63,6 +66,23 @@ const displayChips = computed(() => {
 });
 
 const toggleShowHide = ref(true);
+
+// -
+
+const filter = useTemplateRef('filter');
+const filterValue = ref('');
+
+watch(filterValue, (val) => {
+  // const options = [...initialOptions.value];
+  //
+  // const filtered = options.filter(
+  //   (item) =>
+  //     item.label.toUpperCase().includes(val.toUpperCase()) ||
+  //     String(item.value).toUpperCase().includes(val.toUpperCase()),
+  // );
+  //
+  // renderOptions.value = filtered;
+});
 </script>
 
 <template>
@@ -94,8 +114,18 @@ const toggleShowHide = ref(true);
         />
 
         <template #content>
-          <div ref="target" class="p-2 max-h-50 overflow-auto">
-            <Tree v-model="valueModel" :nodes="options" multiple />
+          <div ref="target">
+            <div v-if="filterable" class="px-2 pt-2">
+              <TextField
+                ref="filter"
+                v-model:value="filterValue"
+                append="i-material-symbols-filter-alt-outline"
+              />
+            </div>
+
+            <div class="p-2 max-h-50 overflow-auto">
+              <Tree v-model="valueModel" :nodes="options" multiple />
+            </div>
           </div>
         </template>
       </Popover>
