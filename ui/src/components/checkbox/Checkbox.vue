@@ -91,17 +91,17 @@ const id = useId();
 }
 
 .Checkbox-Input {
-  @apply appearance-none w-5 h-5 rounded border border-slate-400 dark:border-slate-600 overflow-hidden;
-  @apply focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:shadow-lg;
-  @apply bg-white;
+  @apply appearance-none size-5 rounded border overflow-hidden;
+  @apply bg-white dark:bg-slate-800 border-slate-500 dark:border-slate-400;
+  @apply focus:outline-none focus:ring-2 focus:ring-primary-500/40 focus:border-primary-400;
 
   &.hasValue {
-    @apply bg-primary-500;
+    @apply bg-primary-500 dark:bg-primary-500;
   }
 
   &.invalid {
     @apply border-red-500 dark:border-red-500;
-    @apply focus:ring-red-500/50 focus:border-red-500;
+    @apply focus:ring-red-500/40 focus:border-red-500;
   }
 }
 

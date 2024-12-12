@@ -24,7 +24,7 @@ const emit = defineEmits<{
 </script>
 
 <template>
-  <FormControl v-slot="{ id }" :label :required :invalid :help>
+  <FormControl v-slot="{ id }" :label :required :invalid :help class="RadioGroup">
     <div class="flex flex-wrap items-center gap-4 min-h-9.5">
       <label
         v-for="(item, index) in options"
@@ -41,8 +41,8 @@ const emit = defineEmits<{
             type="radio"
             :name="id"
             :value="typeof item === 'object' ? item.value : item"
-            :disabled="disabled"
-            class="radio"
+            :disabled
+            class="RadioGroup-Input"
             :class="{ invalid }"
             @change="emit('change', valueModel)"
           />
@@ -64,13 +64,14 @@ const emit = defineEmits<{
 </template>
 
 <style lang="scss" scoped>
-.radio {
-  @apply appearance-none w-5 h-5 rounded-full bg-white border border-slate-400 dark:border-slate-600;
-  @apply focus:outline-none focus:ring-2 focus:ring-primary-400 focus:shadow-lg;
+.RadioGroup-Input {
+  @apply appearance-none size-5 rounded-full border overflow-hidden;
+  @apply bg-white dark:bg-slate-800 border-slate-500 dark:border-slate-400;
+  @apply focus:outline-none focus:ring-2 focus:ring-primary-500/40 focus:border-primary-400;
 
   &.invalid {
     @apply border-red-500 dark:border-red-500;
-    @apply focus:ring-red-500 focus:border-red-500;
+    @apply focus:ring-red-500/40 focus:border-red-500;
   }
 }
 </style>
