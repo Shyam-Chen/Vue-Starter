@@ -1,6 +1,8 @@
 import type { FetchOptions, FetchRequest, FetchResponse } from 'ofetch';
 import { ofetch } from 'ofetch';
 
+import useNotification from '../../composables/notification/useNotification';
+
 const fetcher = ofetch.create({
   baseURL: `${process.env.API_URL}/api`,
   async onRequest({ options }) {
@@ -26,6 +28,13 @@ const fetcher = ofetch.create({
       });
 
       localStorage.setItem('accessToken', accessToken);
+    } else if (400 <= response.status && response.status <= 599) {
+      const notification = useNotification();
+
+      notification.actions.add({
+        message: response?._data?.message || 'Something went wrong...',
+        color: 'danger',
+      });
     }
   },
 });

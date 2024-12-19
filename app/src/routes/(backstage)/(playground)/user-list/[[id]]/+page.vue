@@ -1,10 +1,15 @@
 <script lang="ts" setup>
 import { ref, reactive, watch, onMounted } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
-import { XBreadcrumb, XButton, XChip, XDialog, XTable, XTextField, XTooltip, request } from '@x/ui';
+import { XBreadcrumb, XButton, XCheckboxGroup, XChip, XDialog, XFormControl } from '@x/ui';
+import { XRadioGroup, XTable, XTextField, XTooltip, request } from '@x/ui';
+
+import useLocale from './locales';
 
 const router = useRouter();
 const route = useRoute();
+
+const locale = useLocale();
 
 const loading = ref(false);
 const users = ref<any[]>([]);
@@ -47,6 +52,57 @@ onMounted(async () => {
   loading.value = false;
   users.value = response._data.result;
   total.value = response._data.total;
+});
+
+const permissions = ref<any[]>([
+  {
+    resource: 'library',
+    operations: [],
+    children: [{ resource: 'overview', operations: ['read'] }],
+  },
+  {
+    resource: 'playground',
+    operations: [],
+    children: [
+      { resource: 'counter', operations: [] },
+      { resource: 'crudOperations', operations: [] },
+      {
+        resource: 'management',
+        operations: [],
+        children: [
+          { resource: 'groups', operations: [] },
+          { resource: 'users', operations: [] },
+        ],
+      },
+    ],
+  },
+]);
+
+const options = ref({
+  library: [{ label: 'Read', value: 'read' }],
+  'library.overview': [{ label: 'Read', value: 'read' }],
+  playground: [{ label: 'Read', value: 'read' }],
+  'playground.counter': [{ label: 'Read', value: 'read' }],
+  'playground.crudOperations': [
+    { label: 'Read', value: 'read' },
+    { label: 'Create', value: 'create' },
+    { label: 'Update', value: 'update' },
+    { label: 'Delete', value: 'delete' },
+  ],
+  'playground.management': [{ label: 'Read', value: 'read' }],
+  'playground.management.groups': [
+    { label: 'Read', value: 'read' },
+    { label: 'Create', value: 'create' },
+    { label: 'Update', value: 'update' },
+    { label: 'Delete', value: 'delete' },
+  ],
+  'playground.management.users': [
+    { label: 'Read', value: 'read' },
+    { label: 'Create', value: 'create' },
+    { label: 'Suspend', value: 'suspend' },
+    { label: 'Active', value: 'active' },
+    { label: 'Delete', value: 'delete' },
+  ],
 });
 </script>
 
@@ -129,14 +185,103 @@ onMounted(async () => {
     </XTable>
   </div>
 
-  <XDialog v-model="flux.userDialog" class="!w-md">
+  <XDialog v-model="flux.userDialog">
     <div class="grid">
-      <div class="text-xl font-bold mb-4">Add User</div>
+      <div class="text-xl font-bold mb-4">Add</div>
 
       <form class="space-y-5 mb-8">
-        <XTextField v-model:value="flux.userForm.username" required>Username</XTextField>
-        <XTextField v-model:value="flux.userForm.email" required>Email</XTextField>
-        <XTextField v-model:value="flux.userForm.fullName" required>Full Name</XTextField>
+        <XTextField v-model:value="flux.userForm.username" label="Username" required />
+        <XTextField v-model:value="flux.userForm.email" label="Email" required />
+        <XTextField v-model:value="flux.userForm.fullName" label="Full Name" required />
+
+        <XRadioGroup
+          v-model:value="flux.userForm.role"
+          label="Role"
+          :options="[
+            { label: 'Viewer', value: 'viewer' },
+            { label: 'Editor', value: 'editor' },
+            { label: 'Admin', value: 'admin' },
+            { label: 'Custom', value: 'custom' },
+          ]"
+          required
+        />
+
+        <XFormControl v-if="flux.userForm.role === 'custom'" label="Permissions" required>
+          <div class="flex flex-col w-full divide-y divide-gray-300 dark:divide-gray-600">
+            <div
+              v-for="permission in permissions"
+              :key="permission.resource"
+              class="w-full divide-y divide-gray-300 dark:divide-gray-600"
+            >
+              <div
+                class="grid grid-cols-4 text-zinc-600 dark:text-zinc-400 bg-gray-200 dark:bg-gray-700 px-4"
+              >
+                <div class="flex items-center">
+                  {{ locale[permission.resource as keyof typeof locale] }}
+                </div>
+                <div class="col-span-3">
+                  <XCheckboxGroup
+                    v-model:value="permission.operations"
+                    :options="options[permission.resource as keyof typeof options]"
+                  />
+                </div>
+              </div>
+
+              <div
+                v-if="permission.children?.length"
+                class="w-full divide-y divide-gray-300 dark:divide-gray-600"
+              >
+                <div
+                  v-for="subPermission in permission.children"
+                  :key="subPermission.resource"
+                  class="w-full divide-y divide-gray-300 dark:divide-gray-600"
+                >
+                  <div class="grid grid-cols-4 px-4">
+                    <div class="flex items-center ps-4">
+                      {{ locale[subPermission.resource as keyof typeof locale] }}
+                    </div>
+                    <div class="col-span-3">
+                      <XCheckboxGroup
+                        v-model:value="subPermission.operations"
+                        :options="
+                          options[
+                            `${permission.resource}.${subPermission.resource}` as keyof typeof options
+                          ]
+                        "
+                      />
+                    </div>
+                  </div>
+
+                  <div
+                    v-if="subPermission.children?.length"
+                    class="w-full divide-y divide-gray-300 dark:divide-gray-600"
+                  >
+                    <div
+                      v-for="subSubPermission in subPermission.children"
+                      :key="subSubPermission.resource"
+                    >
+                      <div class="grid grid-cols-4 px-4">
+                        <div class="flex items-center ps-8">
+                          {{ locale[subSubPermission.resource as keyof typeof locale] }}
+                        </div>
+                        <div class="col-span-3">
+                          <XCheckboxGroup
+                            v-model:value="subSubPermission.operations"
+                            :options="
+                              options[
+                                `${permission.resource}.${subPermission.resource}.${subSubPermission.resource}` as keyof typeof options
+                              ]
+                            "
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </XFormControl>
       </form>
 
       <div class="flex justify-end gap-4">
