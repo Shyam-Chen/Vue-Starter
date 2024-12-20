@@ -10,7 +10,7 @@ import useLocale from './locales';
 const router = useRouter();
 const route = useRoute();
 
-const { state, getters, actions, $reset } = useStore();
+const { state, actions, $reset } = useStore();
 const locale = useLocale();
 
 onMounted(() => actions.initialize());

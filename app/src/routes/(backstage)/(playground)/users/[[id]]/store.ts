@@ -1,12 +1,10 @@
 import { reactive } from 'vue';
 import { defineStore } from 'vue-storer';
-import { useNotification, request } from '@x/ui';
+import { request } from '@x/ui';
 
 import type { State, User } from './types';
 
 export default defineStore('/users', () => {
-  const notification = useNotification();
-
   const state = reactive<State>({
     usersDialog: false,
     usersFilter: {},
@@ -52,7 +50,7 @@ export default defineStore('/users', () => {
       state.userDialog = true;
     },
     async createUser() {
-      const response = await request<any>('/users/new', {
+      await request<any>('/users/new', {
         method: 'POST',
         body: state.userForm,
       });
@@ -66,28 +64,28 @@ export default defineStore('/users', () => {
       }
     },
     async saveUser() {
-      const response = await request<any>(`/users/${state.userForm._id}`, {
+      await request<any>(`/users/${state.userForm._id}`, {
         method: 'PUT',
         body: state.userForm,
       });
     },
     async suspendUser(row: User) {
-      const response = await request<any>(`/users/${row._id}`, {
+      await request<any>(`/users/${row._id}`, {
         method: 'PUT',
         body: { ...row, status: false },
       });
     },
     async activeUser(row: User) {
-      const response = await request<any>(`/users/${row._id}`, {
+      await request<any>(`/users/${row._id}`, {
         method: 'PUT',
         body: { ...row, status: true },
       });
     },
     async settingUser(row: User) {
-      const response = await request<any>(`/users/${row._id}/settings`);
+      await request<any>(`/users/${row._id}/settings`);
     },
     async deleteUser() {
-      const response = await request(`/users/${state.deleteContent._id}`, { method: 'DELETE' });
+      await request(`/users/${state.deleteContent._id}`, { method: 'DELETE' });
     },
   });
 
