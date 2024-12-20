@@ -1,58 +1,35 @@
 <script lang="ts" setup>
-import { ref, reactive, watch, onMounted } from 'vue';
+import { ref, watch, onMounted, onUnmounted } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import { XBreadcrumb, XButton, XCheckboxGroup, XChip, XDialog, XFormControl } from '@x/ui';
-import { XRadioGroup, XTable, XTextField, XTooltip, request } from '@x/ui';
+import { XRadioGroup, XTable, XTextField, XTooltip, XDeleteConfirmation } from '@x/ui';
 
+import useStore from './store';
 import useLocale from './locales';
 
 const router = useRouter();
 const route = useRoute();
 
+const { state, getters, actions, $reset } = useStore();
 const locale = useLocale();
 
-const loading = ref(false);
-const users = ref<any[]>([]);
-const total = ref(0);
-
-const flux = reactive({
-  userDialog: false,
-  addUser() {
-    router.push('/user-list/new');
-    flux.userForm = {};
-  },
-  userForm: {} as any,
-  async viewUser(user: any) {
-    const response = await request<any>(`/user-list/${user._id}`, { method: 'GET' });
-    router.push(`/user-list/${response._data.result._id}`);
-    flux.userForm = response._data.result;
-  },
-});
+onMounted(() => actions.initialize());
+onUnmounted(() => $reset());
 
 watch(
-  () => flux.userDialog,
+  () => state.userDialog,
   (val) => {
-    if (!val) {
-      router.push('/user-list');
-    }
+    if (!val) router.push('/users');
   },
 );
 
 watch(
   () => route.params.id,
   (val) => {
-    flux.userDialog = Boolean(val);
+    state.userDialog = !!val;
   },
   { immediate: true },
 );
-
-onMounted(async () => {
-  loading.value = true;
-  const response = await request<any>('/user-list', { method: 'POST', body: {} });
-  loading.value = false;
-  users.value = response._data.result;
-  total.value = response._data.total;
-});
 
 const permissions = ref<any[]>([
   {
@@ -101,6 +78,7 @@ const options = ref({
     { label: 'Create', value: 'create' },
     { label: 'Suspend', value: 'suspend' },
     { label: 'Active', value: 'active' },
+    { label: 'Settings', value: 'settings' },
     { label: 'Delete', value: 'delete' },
   ],
 });
@@ -113,11 +91,19 @@ const options = ref({
 
   <div class="w-full bg-white dark:bg-slate-800 shadow rounded-md">
     <div class="flex justify-between p-4 lg:p-6">
-      <h2 class="text-3xl font-bold">User List</h2>
-      <XButton prepend="i-material-symbols-add-rounded" label="Add" @click="flux.addUser" />
+      <XButton
+        prepend="i-mdi-filter-outline"
+        label="Filter"
+        variant="outlined"
+        color="info"
+        @click="state.usersDialog = true"
+      />
+
+      <XButton prepend="i-mdi-add" label="New" @click="actions.newUser()" />
     </div>
 
     <XTable
+      v-model:control="state.usersControl"
       :columns="[
         { key: 'username', name: 'Username' },
         { key: 'fullName', name: 'Full Name' },
@@ -125,9 +111,9 @@ const options = ref({
         { key: 'status', name: 'Status' },
         { key: 'actions', name: 'Actions', sortable: false },
       ]"
-      :loading="loading"
-      :rows="users"
-      :count="total"
+      :loading="state.usersLoading"
+      :rows="state.usersRows"
+      :count="state.usersCount"
     >
       <template #status="{ row }">
         <XChip
@@ -148,7 +134,7 @@ const options = ref({
               variant="text"
               color="info"
               size="small"
-              @click="flux.viewUser(row)"
+              @click="actions.editUser(row)"
             />
           </XTooltip>
 
@@ -158,7 +144,7 @@ const options = ref({
               variant="text"
               color="danger"
               size="small"
-              @click="flux.viewUser(row)"
+              @click="actions.suspendUser(row)"
             />
           </XTooltip>
           <XTooltip v-else title="Active">
@@ -167,17 +153,30 @@ const options = ref({
               variant="text"
               color="success"
               size="small"
-              @click="flux.viewUser(row)"
+              @click="actions.activeUser(row)"
             />
           </XTooltip>
 
-          <XTooltip title="Authentication">
+          <XTooltip title="Settings">
             <XButton
-              icon="i-mdi-user-access-control"
+              icon="i-mdi-settings"
               variant="text"
               color="warning"
               size="small"
-              @click="flux.viewUser(row)"
+              @click="actions.settingUser(row)"
+            />
+          </XTooltip>
+
+          <XTooltip title="Delete">
+            <XButton
+              icon="i-mdi-delete"
+              variant="text"
+              color="danger"
+              size="small"
+              @click="
+                state.deleteDialog = true;
+                state.deleteContent = row;
+              "
             />
           </XTooltip>
         </div>
@@ -185,17 +184,20 @@ const options = ref({
     </XTable>
   </div>
 
-  <XDialog v-model="flux.userDialog">
+  <XDialog v-model="state.userDialog">
     <div class="grid">
-      <div class="text-xl font-bold mb-4">Add</div>
+      <div class="text-xl font-bold mb-4">
+        <template v-if="state.userMode === 'new'">Create</template>
+        <template v-if="state.userMode === 'edit'">Edit</template>
+      </div>
 
       <form class="space-y-5 mb-8">
-        <XTextField v-model:value="flux.userForm.username" label="Username" required />
-        <XTextField v-model:value="flux.userForm.email" label="Email" required />
-        <XTextField v-model:value="flux.userForm.fullName" label="Full Name" required />
+        <XTextField v-model:value="state.userForm.username" label="Username" required />
+        <XTextField v-model:value="state.userForm.email" label="Email" required />
+        <XTextField v-model:value="state.userForm.fullName" label="Full Name" required />
 
         <XRadioGroup
-          v-model:value="flux.userForm.role"
+          v-model:value="state.userForm.role"
           label="Role"
           :options="[
             { label: 'Viewer', value: 'viewer' },
@@ -206,7 +208,7 @@ const options = ref({
           required
         />
 
-        <XFormControl v-if="flux.userForm.role === 'custom'" label="Permissions" required>
+        <XFormControl v-if="state.userForm.role === 'custom'" label="Permissions" required>
           <div class="flex flex-col w-full divide-y divide-gray-300 dark:divide-gray-600">
             <div
               v-for="permission in permissions"
@@ -285,11 +287,23 @@ const options = ref({
       </form>
 
       <div class="flex justify-end gap-4">
-        <XButton variant="outlined" color="secondary" @click="flux.userDialog = false">
-          Cancel
-        </XButton>
-        <XButton>Add</XButton>
+        <XButton
+          prepend="i-mdi-keyboard-return"
+          label="Cancel"
+          variant="outlined"
+          color="secondary"
+          @click="state.userDialog = false"
+        />
+        <XButton prepend="i-mdi-add" label="Create" @click="actions.createUser()" />
       </div>
     </div>
   </XDialog>
+
+  <XDeleteConfirmation
+    v-model="state.deleteDialog"
+    v-model:expected="state.deleteExpected"
+    :received="state.deleteContent.username"
+    :loading="state.deleteLoading"
+    @delete="actions.deleteUser()"
+  />
 </template>

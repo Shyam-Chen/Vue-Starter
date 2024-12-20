@@ -180,7 +180,7 @@ const links = [
     name: 'CRUD Operations',
     to: '/crud-operations',
   },
-  { icon: 'i-mdi-user-group', name: 'Management', to: '/user-list' },
+  { icon: 'i-mdi-user-group', name: 'Management', to: '/users' },
   { icon: 'i-carbon-two-factor-authentication', name: 'Two-factor Auth', to: '/two-factor-auth' },
   { icon: 'i-ph-chats-fill', name: 'Discussions', to: '/discussions' },
   { icon: 'i-material-symbols-robot-2-outline', name: 'Chatbot', to: '/chatbot' },
