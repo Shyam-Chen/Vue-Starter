@@ -21,7 +21,7 @@ const valueModel = defineModel<unknown[]>('value', { default: [] });
 
 defineProps<Props>();
 
-defineEmits<{
+const emit = defineEmits<{
   (evt: 'change', val: unknown[]): void;
 }>();
 
@@ -32,15 +32,17 @@ function onChange(val: unknown) {
     const arr = [...valueModel.value];
     arr.splice(idx, 1);
     valueModel.value = arr;
+    emit('change', arr);
   } else {
     valueModel.value = [...valueModel.value, val];
+    emit('change', [...valueModel.value, val]);
   }
 }
 </script>
 
 <template>
   <FormControl v-slot="{ id }" :label :required :invalid :help>
-    <div class="flex flex-wrap items-center gap-4">
+    <div class="flex flex-wrap items-center gap-x-4">
       <Checkbox
         v-for="(item, index) in options"
         v-bind="$attrs"

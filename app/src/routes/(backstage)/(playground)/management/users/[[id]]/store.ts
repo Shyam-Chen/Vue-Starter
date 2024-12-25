@@ -4,10 +4,11 @@ import { request } from '@x/ui';
 
 import type { State, User } from './types';
 
-export default defineStore('/users', () => {
+export default defineStore('/management/users', () => {
   const state = reactive<State>({
     usersDialog: false,
     usersFilter: {},
+    usersFiltered: {},
     usersLoading: false,
     usersRows: [],
     usersCount: 0,
@@ -15,7 +16,33 @@ export default defineStore('/users', () => {
 
     userDialog: false,
     userMode: 'new',
+    userLoading: false,
     userForm: {},
+    userValdn: {},
+    userTouched: {},
+    permissions: [
+      {
+        resource: 'library',
+        operations: [],
+        children: [{ resource: 'overview', operations: ['read'] }],
+      },
+      {
+        resource: 'playground',
+        operations: [],
+        children: [
+          { resource: 'counter', operations: [] },
+          { resource: 'crudOperations', operations: [] },
+          {
+            resource: 'management',
+            operations: [],
+            children: [
+              { resource: 'groups', operations: [] },
+              { resource: 'users', operations: [] },
+            ],
+          },
+        ],
+      },
+    ],
 
     deleteDialog: false,
     deleteExpected: '',
@@ -45,9 +72,30 @@ export default defineStore('/users', () => {
       actions.users();
     },
 
+    filterUsers() {
+      state.usersFiltered = { ...state.usersFilter };
+      state.usersDialog = false;
+    },
+
+    changeFeatureGroup(permission: any) {
+      if (!permission.operations.includes('read')) {
+        // ...
+      }
+    },
+    changePrimaryFeature() {
+      //
+    },
+    changeSecondaryFeature() {
+      //
+    },
+    changeTertiaryFeature() {
+      //
+    },
+
     newUser() {
       if (state.userMode === 'edit') state.userForm = {};
       state.userDialog = true;
+      state.userMode = 'new';
     },
     async createUser() {
       await request<any>('/users/new', {
@@ -56,10 +104,15 @@ export default defineStore('/users', () => {
       });
     },
     async editUser(row: User) {
+      state.userDialog = true;
+      state.userMode = 'edit';
+      state.userLoading = true;
+
       const response = await request<any>(`/users/${row._id}`);
 
+      state.userLoading = false;
+
       if (response.ok) {
-        state.userDialog = true;
         state.userForm = response._data.result;
       }
     },

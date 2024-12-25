@@ -19,6 +19,7 @@ export type User = {
 export type State = {
   usersDialog: boolean;
   usersFilter: User;
+  usersFiltered: User;
   usersLoading: boolean;
   usersRows: User[];
   usersCount: number;
@@ -26,7 +27,11 @@ export type State = {
 
   userDialog: boolean;
   userMode: 'new' | 'edit';
+  userLoading: boolean;
   userForm: User;
+  userValdn: Partial<Record<keyof User, string>>;
+  userTouched: Partial<Record<keyof User, boolean>>;
+  permissions: any[];
 
   deleteDialog: boolean;
   deleteExpected: User['username'];
