@@ -37,6 +37,8 @@ const props = withDefaults(
     uploading?: boolean;
     loading?: boolean;
     self?: boolean;
+    hideUploadButton?: boolean;
+    stoppable?: boolean;
   }>(),
   {
     label: '',
@@ -51,12 +53,15 @@ const props = withDefaults(
     uploading: false,
     loading: false,
     self: false,
+    hideUploadButton: false,
+    stoppable: false,
   },
 );
 
 const emit = defineEmits<{
   (evt: 'uploadFiles', val: ChatFile[]): void;
   (evt: 'send'): void;
+  (evt: 'stop'): void;
 }>();
 
 const DisableEnter = Extension.create({
@@ -80,7 +85,7 @@ const editorClass = computed(() => {
 
   let clx = `focus:outline-none ${props.class}`;
   if (props.editing) clx += `p-4 min-h-13`;
-  else clx += `px-12 py-3 min-h-13`;
+  else clx += `${props.hideUploadButton ? 'ps-4 pe-12' : 'px-12'} py-3 min-h-13`;
 
   return clx;
 });
@@ -89,7 +94,7 @@ const typing = ref(false);
 
 onMounted(() => {
   editor.value = new Editor({
-    editable: !props.disabled && !props.viewonly,
+    editable: !props.disabled && !props.viewonly && !props.loading,
     extensions: [
       ...props.extension,
       DisableEnter,
@@ -219,6 +224,7 @@ defineExpose({
         <template v-if="!editing && !viewonly">
           <div class="ChatBox-Attach">
             <Button
+              v-if="!hideUploadButton"
               icon="i-material-symbols-attach-file-add-rounded"
               variant="text"
               color="secondary"
@@ -238,7 +244,17 @@ defineExpose({
           </div>
 
           <div class="ChatBox-Send">
-            <Button icon="i-material-symbols-send-rounded" :loading @click="emit('send')" />
+            <Button
+              :icon="
+                !stoppable
+                  ? 'i-material-symbols-send-rounded'
+                  : loading
+                    ? 'i-material-symbols-stop-rounded'
+                    : 'i-material-symbols-send-rounded'
+              "
+              :loading="!stoppable ? loading : false"
+              @click="!stoppable ? emit('send') : loading ? emit('stop') : emit('send')"
+            />
           </div>
         </template>
       </div>

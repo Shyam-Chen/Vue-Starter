@@ -89,11 +89,9 @@ onMounted(async () => {
 
   state.userLoading = false;
 
-  if (response.status === 200) {
+  if (response.ok) {
     flux.user = response._data;
-  }
-
-  if (400 <= response.status && response.status <= 500) {
+  } else {
     flux.authDialog = true;
     flux.userError = response._data;
   }

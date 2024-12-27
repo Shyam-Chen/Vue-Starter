@@ -7,16 +7,13 @@ import MarkdownRenderer from './MarkdownRenderer.vue';
 const conversation = useTemplateRef('conversation');
 
 const bubbles = ref<any[]>([]);
-
-const uploading = ref(false);
 const loading = ref(false);
 const content = ref({ message: '', files: [] });
-
-async function onUpload() {
-  //
-}
+const controller = ref<AbortController>();
 
 async function onSend() {
+  loading.value = true;
+
   const _message = content.value.message;
 
   bubbles.value = [
@@ -29,6 +26,15 @@ async function onSend() {
 
   content.value = { message: '', files: [] };
 
+  const assistantUuid = self.crypto.randomUUID();
+  bubbles.value.push({ id: assistantUuid, content: '', role: 'assistant' });
+  const targetIndex = bubbles.value.findIndex((item) => item.id === assistantUuid);
+
+  await nextTick();
+  conversation.value?.scrollTo({ top: conversation.value.scrollHeight });
+
+  controller.value = new AbortController();
+
   const events = await stream('/conversation', {
     method: 'POST',
     body: JSON.stringify({
@@ -40,25 +46,23 @@ async function onSend() {
         },
       ],
     }),
+    signal: controller.value.signal,
   });
-
-  const assistantUuid = self.crypto.randomUUID();
-
-  bubbles.value.push({
-    id: assistantUuid,
-    content: '',
-    role: 'assistant',
-  });
-
-  const targetIndex = bubbles.value.findIndex((item) => item.id === assistantUuid);
 
   for await (const event of events) {
-    if (targetIndex !== -1) {
-      bubbles.value[targetIndex].content += JSON.parse(event.data as string)?.answer || '';
-      await nextTick();
-      conversation.value?.scrollTo({ top: conversation.value.scrollHeight });
-    }
+    if (event.event === 'end') break;
+
+    bubbles.value[targetIndex].content += JSON.parse(event.data as string)?.answer || '';
+    await nextTick();
+    conversation.value?.scrollTo({ top: conversation.value.scrollHeight });
   }
+
+  loading.value = false;
+}
+
+function onStop() {
+  controller.value?.abort();
+  loading.value = false;
 }
 </script>
 
@@ -95,7 +99,14 @@ async function onSend() {
         </div>
       </div>
 
-      <XChatBox v-model="content" :uploading :loading @uploadFiles="onUpload" @send="onSend" />
+      <XChatBox
+        v-model="content"
+        :loading
+        hideUploadButton
+        stoppable
+        @send="onSend"
+        @stop="onStop"
+      />
     </div>
   </div>
 </template>
