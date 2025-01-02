@@ -21,10 +21,29 @@ export default defineStore('/management/users', () => {
     userValdn: {},
     userTouched: {},
     permissions: [
+      { resource: 'dashboard', operations: [] },
       {
         resource: 'library',
         operations: [],
-        children: [{ resource: 'overview', operations: ['read'] }],
+        children: [
+          { resource: 'overview', operations: [] },
+          { resource: 'general', operations: [] },
+          {
+            resource: 'dataEntry',
+            operations: [],
+            children: [
+              {
+                resource: 'selects',
+                operations: [],
+                children: [
+                  { resource: 'select', operations: [] },
+                  { resource: 'multiselect', operations: [] },
+                  { resource: 'treeSelect', operations: [] },
+                ],
+              },
+            ],
+          },
+        ],
       },
       {
         resource: 'playground',

@@ -41,8 +41,17 @@ watch(
 );
 
 const options = ref({
+  dashboard: [{ label: 'Read', value: 'read' }],
+
   library: [{ label: 'Read', value: 'read' }],
   'library.overview': [{ label: 'Read', value: 'read' }],
+  'library.general': [{ label: 'Read', value: 'read' }],
+  'library.dataEntry': [{ label: 'Read', value: 'read' }],
+  'library.dataEntry.selects': [{ label: 'Read', value: 'read' }],
+  'library.dataEntry.selects.select': [{ label: 'Read', value: 'read' }],
+  'library.dataEntry.selects.multiselect': [{ label: 'Read', value: 'read' }],
+  'library.dataEntry.selects.treeSelect': [{ label: 'Read', value: 'read' }],
+
   playground: [{ label: 'Read', value: 'read' }],
   'playground.counter': [{ label: 'Read', value: 'read' }],
   'playground.crudOperations': [
@@ -261,7 +270,11 @@ const options = ref({
             class="w-full divide-y divide-gray-300 dark:divide-gray-600"
           >
             <div
-              class="grid grid-cols-4 text-zinc-600 dark:text-zinc-400 bg-gray-200 dark:bg-gray-700 px-4"
+              class="grid grid-cols-4 px-4"
+              :class="{
+                'text-zinc-600 dark:text-zinc-400 bg-gray-200 dark:bg-gray-700':
+                  permission.children?.length,
+              }"
             >
               <div class="flex items-center">
                 {{ locale[permission.resource as keyof typeof locale] }}
@@ -307,6 +320,7 @@ const options = ref({
                   <div
                     v-for="subSubPermission in subPermission.children"
                     :key="subSubPermission.resource"
+                    class="w-full divide-y divide-gray-300 dark:divide-gray-600"
                   >
                     <div class="grid grid-cols-4 px-4">
                       <div class="flex items-center ps-8">
@@ -321,6 +335,32 @@ const options = ref({
                             ]
                           "
                         />
+                      </div>
+                    </div>
+
+                    <div
+                      v-if="subSubPermission.children?.length"
+                      class="w-full divide-y divide-gray-300 dark:divide-gray-600"
+                    >
+                      <div
+                        v-for="subSubSubPermission in subSubPermission.children"
+                        :key="subSubSubPermission.resource"
+                      >
+                        <div class="grid grid-cols-4 px-4">
+                          <div class="flex items-center ps-12">
+                            {{ locale[subSubSubPermission.resource as keyof typeof locale] }}
+                          </div>
+                          <div class="col-span-3">
+                            <XCheckboxGroup
+                              v-model:value="subSubSubPermission.operations"
+                              :options="
+                                options[
+                                  `${permission.resource}.${subPermission.resource}.${subSubPermission.resource}.${subSubSubPermission.resource}` as keyof typeof options
+                                ]
+                              "
+                            />
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
