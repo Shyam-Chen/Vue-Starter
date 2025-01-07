@@ -167,13 +167,7 @@ const options = ref({
           </XTooltip>
 
           <XTooltip title="Settings">
-            <XButton
-              icon="i-mdi-settings"
-              variant="text"
-              color="warning"
-              size="small"
-              @click="actions.settingUser(row)"
-            />
+            <XButton icon="i-mdi-settings" variant="text" color="warning" size="small" />
           </XTooltip>
 
           <XTooltip title="Delete">

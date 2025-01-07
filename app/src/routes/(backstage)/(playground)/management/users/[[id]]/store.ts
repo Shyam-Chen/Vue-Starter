@@ -1,10 +1,12 @@
 import { reactive } from 'vue';
 import { defineStore } from 'vue-storer';
-import { request } from '@x/ui';
+import { useNotification, request } from '@x/ui';
 
 import type { State, User } from './types';
 
 export default defineStore('/management/users', () => {
+  const notification = useNotification();
+
   const state = reactive<State>({
     usersDialog: false,
     usersFilter: {},
@@ -117,10 +119,20 @@ export default defineStore('/management/users', () => {
       state.userMode = 'new';
     },
     async createUser() {
-      await request<any>('/users/new', {
+      const response = await request<any>('/users/new', {
         method: 'POST',
-        body: state.userForm,
+        body: {
+          ...state.userForm,
+          permissions: state.permissions,
+        },
       });
+
+      if (response.ok) {
+        notification.actions.add({
+          message: 'OK',
+          color: 'success',
+        });
+      }
     },
     async editUser(row: User) {
       state.userDialog = true;
@@ -153,8 +165,11 @@ export default defineStore('/management/users', () => {
         body: { ...row, status: true },
       });
     },
-    async settingUser(row: User) {
-      await request<any>(`/users/${row._id}/settings`);
+    async resetUserPassword(row: User) {
+      await request<any>(`/users/${row._id}/password-reset`);
+    },
+    async resetUser2fa(row: User) {
+      await request<any>(`/users/${row._id}/2fa-reset`);
     },
     async deleteUser() {
       await request(`/users/${state.deleteContent._id}`, { method: 'DELETE' });
