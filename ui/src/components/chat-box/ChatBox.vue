@@ -26,7 +26,7 @@ const defaultModel = defineModel<{ message: string; files: ChatFile[] }>({
 const props = withDefaults(
   defineProps<{
     label?: string;
-    extension?: Extensions;
+    extensions?: Extensions;
     required?: boolean;
     invalid?: boolean | string;
     help?: string;
@@ -42,7 +42,7 @@ const props = withDefaults(
   }>(),
   {
     label: '',
-    extension: () => [],
+    extensions: () => [],
     required: false,
     invalid: undefined,
     help: '',
@@ -70,7 +70,12 @@ const DisableEnter = Extension.create({
       Enter() {
         if (isMobile()) return false;
 
-        emit('send');
+        if (!props.stoppable) {
+          if (!props.loading) emit('send');
+        } else if (!props.loading) {
+          emit('send');
+        }
+
         return true;
       },
     };
@@ -96,7 +101,7 @@ onMounted(() => {
   editor.value = new Editor({
     editable: !props.disabled && !props.viewonly && !props.loading,
     extensions: [
-      ...props.extension,
+      ...props.extensions,
       DisableEnter,
       Document,
       HardBreak,
