@@ -148,6 +148,7 @@ const links = [
       { name: 'Progress', to: '/feedback/progress' },
       { name: 'PullToRefresh', to: '/feedback/pull-to-refresh' },
       { name: 'Skeletons', to: '/feedback/skeletons' },
+      { name: 'Watermark', to: '/feedback/watermark' },
     ],
   },
   {

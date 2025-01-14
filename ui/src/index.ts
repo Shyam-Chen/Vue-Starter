@@ -73,6 +73,7 @@ export { default as XTour } from './components/tour/Tour.vue';
 export { default as XTransfer } from './components/transfer/Transfer.vue';
 export { default as XTree } from './components/tree';
 export { default as XTreeSelect } from './components/tree-select/TreeSelect.vue';
+export { default as XWatermark } from './components/watermark/Watermark.vue';
 export { default as XWeekPicker } from './components/week-picker/WeekPicker.vue';
 export { default as XYearPicker } from './components/year-picker/YearPicker.vue';
 
