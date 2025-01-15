@@ -4,31 +4,45 @@ import { XBreadcrumb, XChatBox, stream } from '@x/ui';
 
 import MarkdownRenderer from './MarkdownRenderer.vue';
 
+// TODO:
+// If the AI is still responding and the user triggers a scroll event,
+// stop auto-scrolling until the user scrolls to the bottom of the page,
+// at which point auto-scrolling will resume.
+
+type Bubble =
+  | {
+      id?: string;
+      content: string;
+      role: 'user';
+      querying?: boolean;
+      stopped?: boolean;
+    }
+  | {
+      id: string;
+      content: string;
+      role: 'assistant';
+      querying?: boolean;
+      stopped?: boolean;
+    };
+
 const conversation = useTemplateRef('conversation');
 
-const bubbles = ref<any[]>([]);
-const loading = ref(false);
+const bubbles = ref<Bubble[]>([]);
+const connecting = ref(false);
 const content = ref({ message: '', files: [] });
 const controller = ref<AbortController>();
+const assistantUuid = ref<null | string>(null);
 
 async function onSend() {
-  loading.value = true;
+  connecting.value = true;
 
   const _message = content.value.message;
-
-  bubbles.value = [
-    ...bubbles.value,
-    {
-      chatBox: _message,
-      role: 'user',
-    },
-  ];
-
+  bubbles.value = [...bubbles.value, { content: _message, role: 'user' }];
   content.value = { message: '', files: [] };
 
-  const assistantUuid = self.crypto.randomUUID();
-  bubbles.value.push({ id: assistantUuid, content: '', role: 'assistant' });
-  const targetIndex = bubbles.value.findIndex((item) => item.id === assistantUuid);
+  assistantUuid.value = self.crypto.randomUUID();
+  bubbles.value.push({ id: assistantUuid.value, content: '', role: 'assistant', querying: true });
+  const targetIndex = bubbles.value.findIndex((item) => item.id === assistantUuid.value);
 
   await nextTick();
   conversation.value?.scrollTo({ top: conversation.value.scrollHeight });
@@ -52,17 +66,27 @@ async function onSend() {
   for await (const event of events) {
     if (event.event === 'end') break;
 
-    bubbles.value[targetIndex].content += JSON.parse(event.data as string)?.answer || '';
+    const content = JSON.parse(event.data as string)?.answer || '';
+    if (content && bubbles.value[targetIndex].querying) bubbles.value[targetIndex].querying = false;
+    bubbles.value[targetIndex].content += content;
+
     await nextTick();
     conversation.value?.scrollTo({ top: conversation.value.scrollHeight });
   }
 
-  loading.value = false;
+  connecting.value = false;
+  assistantUuid.value = null;
 }
 
 function onStop() {
   controller.value?.abort();
-  loading.value = false;
+  connecting.value = false;
+
+  if (assistantUuid.value) {
+    const targetIndex = bubbles.value.findIndex((item) => item.id === assistantUuid.value);
+    if (bubbles.value[targetIndex].querying) bubbles.value[targetIndex].stopped = true;
+    assistantUuid.value = null;
+  }
 }
 </script>
 
@@ -75,12 +99,9 @@ function onStop() {
     <div class="flex flex-col justify-between gap-4 h-full">
       <div ref="conversation" class="flex flex-col gap-4 overflow-auto">
         <div v-for="(bubble, index) in bubbles" :key="index">
-          <div class="flex" :class="{ 'justify-end': bubble.role === 'user' }">
-            <div
-              v-if="bubble.role === 'user'"
-              class="justify-end bg-gray-200 dark:bg-slate-700 px-5 py-2.5 rounded-3xl"
-            >
-              <div v-html="bubble.chatBox"></div>
+          <div v-if="bubble.role === 'user'" class="flex justify-end">
+            <div class="justify-end bg-gray-200 dark:bg-slate-700 px-5 py-2.5 rounded-3xl">
+              <div v-html="bubble.content"></div>
             </div>
           </div>
 
@@ -89,19 +110,20 @@ function onStop() {
               <div class="i-material-symbols-robot-2-outline size-8"></div>
             </div>
 
-            <MarkdownRenderer v-if="bubble.content" :content="bubble.content" />
-            <div v-else class="py-1">
+            <MarkdownRenderer v-if="bubble.stopped" content="<em>Query canceled.</em>" />
+            <div v-else-if="bubble.querying" class="py-1">
               <div class="ChatAns-Dot"></div>
               <div class="ChatAns-Dot"></div>
               <div class="ChatAns-Dot"></div>
             </div>
+            <MarkdownRenderer v-else :content="bubble.content" />
           </div>
         </div>
       </div>
 
       <XChatBox
         v-model="content"
-        :loading
+        :loading="connecting"
         hideUploadButton
         stoppable
         @send="onSend"
