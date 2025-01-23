@@ -279,6 +279,7 @@ watch(
       flux.selectedRange = [date, date];
       startValueModel.value = date;
       endValueModel.value = date;
+      emit('change', { startDate: date, endDate: date });
     }
   },
 );
