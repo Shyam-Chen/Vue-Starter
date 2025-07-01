@@ -340,7 +340,7 @@ watchEffect(
                     class="flex-col justify-center gap-1"
                     :class="{ 'py-2': Number(row.details?.length) > 1 }"
                   >
-                    <div v-for="(subrow, subindex) in row.details" :key="subindex">
+                    <div v-for="(subrow, subindex) in row.details" :key="subindex" class="flex-1">
                       <slot :name="col.key" :row :subrow>{{
                         subrow?.[col.key as keyof typeof subrow]
                       }}</slot>

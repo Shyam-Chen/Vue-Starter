@@ -318,7 +318,7 @@ const flux = reactive({
 
         <template #collapsible="{ row }">
           <tr>
-            <td :colspan="flux.collapsibleCols.length">
+            <td :colspan="flux.collapsibleCols.length" class="empty:hidden">
               <XCollapse>
                 <div v-if="row.collapsible">
                   <div class="p-4">
