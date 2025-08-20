@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { computed, reactive, watch } from 'vue';
 import chunk from 'lodash/chunk';
-import groupBy from 'lodash/groupBy';
+import groupBy from 'lodash/groupby';
 import range from 'lodash/range';
 import * as d from 'date-fns';
 

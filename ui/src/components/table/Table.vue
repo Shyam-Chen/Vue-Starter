@@ -77,6 +77,8 @@ const locale = useLocale();
 
 // -
 
+const _rows = ref([]) as Ref<U[]>;
+
 const rowsPerPage = ref(controlDefaults.rows);
 const currentPage = ref(controlDefaults.page);
 const sortField = ref(controlDefaults.field);
@@ -157,8 +159,6 @@ function onRowClick(row: U) {
 }
 
 // -
-
-const _rows = ref([]) as Ref<U[]>;
 
 const selectAll = ref(false);
 const indeterminate = ref(false);

@@ -1,4 +1,4 @@
-import orderBy from 'lodash/orderBy';
+import orderBy from 'lodash/orderby';
 
 import type { Control } from '../../components/table/types';
 import { controlDefaults } from '../../components/table/config';
