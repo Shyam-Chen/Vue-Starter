@@ -21,6 +21,7 @@ defineOptions({
   inheritAttrs: false,
 });
 
+// TODO: ISOString
 const valueModel = defineModel<string>('value', { default: '' });
 
 const props = withDefaults(

@@ -322,6 +322,7 @@ useScrollParent(
       @clear="
         startValueModel = '';
         endValueModel = '';
+        emit('change', { startDate: '', endDate: '' });
       "
     >
       <slot></slot>
