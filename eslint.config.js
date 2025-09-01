@@ -1,6 +1,6 @@
 import globals from 'globals';
-import js from '@eslint/js';
-import ts from 'typescript-eslint';
+import eslint from '@eslint/js';
+import typescript from 'typescript-eslint';
 import vue from 'eslint-plugin-vue';
 import prettier from 'eslint-plugin-prettier/recommended';
 
@@ -14,35 +14,23 @@ export default [
     },
   },
 
-  // js
-  js.configs.recommended,
-  {
-    rules: {
-      'no-unused-vars': 'off',
-      'no-undef': 'off',
-    },
-  },
+  eslint.configs.recommended,
 
-  // ts
-  ...ts.configs.recommended,
+  ...typescript.configs.recommended,
   {
     rules: {
-      '@typescript-eslint/no-unused-vars': 'warn',
       '@typescript-eslint/no-explicit-any': 'warn',
+      '@typescript-eslint/no-unused-vars': 'warn',
     },
   },
 
-  // vue
   ...vue.configs['flat/recommended'],
   {
-    files: ['*.vue', '**/*.vue'],
     languageOptions: {
       parserOptions: {
-        parser: ts.parser,
+        parser: typescript.parser,
       },
     },
-  },
-  {
     rules: {
       'vue/multi-word-component-names': 'off',
       'vue/attribute-hyphenation': ['error', 'never'],
@@ -85,7 +73,6 @@ export default [
     },
   },
 
-  // prettier
   prettier,
   {
     rules: {
