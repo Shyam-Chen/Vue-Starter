@@ -18,9 +18,7 @@ withDefaults(defineProps<Props & FormControlProps>(), {
   ...formControlDefaults,
 });
 
-const emit = defineEmits<{
-  (evt: 'change', val: unknown): void;
-}>();
+const emit = defineEmits<(evt: 'change', val: unknown) => void>();
 </script>
 
 <template>

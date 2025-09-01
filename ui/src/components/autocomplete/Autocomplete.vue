@@ -1,11 +1,10 @@
 <script lang="ts" setup>
-import { nextTick, ref, computed, reactive } from 'vue';
-import { useDebounceFn, onClickOutside } from '@vueuse/core';
-
-import Fade from '../fade/Fade.vue';
-import TextField from '../text-field/TextField.vue';
+import { onClickOutside, useDebounceFn } from '@vueuse/core';
+import { computed, nextTick, reactive, ref } from 'vue';
 import useScrollParent from '../../composables/scroll-parent/useScrollParent';
 import request from '../../utilities/request/request';
+import Fade from '../fade/Fade.vue';
+import TextField from '../text-field/TextField.vue';
 
 defineOptions({
   inheritAttrs: false,
@@ -27,9 +26,7 @@ const props = withDefaults(
   },
 );
 
-const emit = defineEmits<{
-  (evt: 'change', val: string | null, opt: any | null): void;
-}>();
+const emit = defineEmits<(evt: 'change', val: string | null, opt: any | null) => void>();
 
 const target = ref<HTMLDivElement>();
 const autocompleteInput = ref<typeof TextField>();

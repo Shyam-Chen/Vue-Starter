@@ -1,8 +1,4 @@
 <script lang="ts" setup>
-import type { Transaction } from '@tiptap/pm/state';
-import type { Extensions } from '@tiptap/vue-3';
-import { nextTick, ref, computed, watch, onMounted } from 'vue';
-import { Editor, EditorContent } from '@tiptap/vue-3';
 import Blockquote from '@tiptap/extension-blockquote';
 import Bold from '@tiptap/extension-bold';
 import BulletList from '@tiptap/extension-bullet-list';
@@ -26,7 +22,11 @@ import Text from '@tiptap/extension-text';
 import TextAlign from '@tiptap/extension-text-align';
 import TextStyle from '@tiptap/extension-text-style';
 import Underline from '@tiptap/extension-underline';
+import type { Transaction } from '@tiptap/pm/state';
+import type { Extensions } from '@tiptap/vue-3';
+import { Editor, EditorContent } from '@tiptap/vue-3';
 import { useFileDialog } from '@vueuse/core';
+import { computed, nextTick, onMounted, ref, watch } from 'vue';
 
 import Divider from '../divider/Divider.vue';
 import FormControl, { type FormControlProps, formControlDefaults } from '../form-control';

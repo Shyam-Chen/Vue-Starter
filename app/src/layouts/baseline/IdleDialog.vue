@@ -1,8 +1,8 @@
 <script lang="ts" setup>
+import { useIdle } from '@vueuse/core';
+import { XButton, XDialog } from '@x/ui';
 import { reactive, watch } from 'vue';
 import { useRouter } from 'vue-router';
-import { XButton, XDialog } from '@x/ui';
-import { useIdle } from '@vueuse/core';
 
 const router = useRouter();
 const { idle } = useIdle(30 * 60 * 1000);

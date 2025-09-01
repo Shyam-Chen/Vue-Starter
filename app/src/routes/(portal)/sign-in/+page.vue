@@ -1,10 +1,9 @@
 <script lang="ts" setup>
-import { onUnmounted } from 'vue';
 import { XButton, XLink, XSpinner, XTextField } from '@x/ui';
-
-import useStore from './store';
-import useSchema from './schema';
+import { onUnmounted } from 'vue';
 import useLocale from './locales';
+import useSchema from './schema';
+import useStore from './store';
 
 const { state, actions, $reset } = useStore();
 const schema = useSchema();

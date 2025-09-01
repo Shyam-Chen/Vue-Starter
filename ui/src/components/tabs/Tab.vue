@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import type { Ref, ModelRef, VNode } from 'vue';
+import type { ModelRef, Ref, VNode } from 'vue';
+import { computed, inject, onBeforeMount, ref, watch } from 'vue';
 import type { ComponentProps } from 'vue-component-type-helpers';
-import { ref, computed, watch, inject, onBeforeMount } from 'vue';
 import { RouterLink } from 'vue-router';
 
 export interface TabProps {

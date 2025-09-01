@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { ref } from 'vue';
 import { XChipField } from '@x/ui';
+import { ref } from 'vue';
 
 const values = ref<string[]>([]);
 </script>

@@ -1,14 +1,11 @@
 <script lang="ts" setup>
-import { ref, onMounted, onBeforeUnmount } from 'vue';
-import { useLocale } from 'vue-localer';
 import { useSwipe } from '@vueuse/core';
-
-import Spinner from '../spinner/Spinner.vue';
+import { onBeforeUnmount, onMounted, ref } from 'vue';
+import { useLocale } from 'vue-localer';
 import scrollableParent from '../../composables/scroll-parent/scrollableParent';
+import Spinner from '../spinner/Spinner.vue';
 
-const emit = defineEmits<{
-  (evt: 'refresh', done: () => void): void;
-}>();
+const emit = defineEmits<(evt: 'refresh', done: () => void) => void>();
 
 const locale = useLocale();
 

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
+import { XCheckboxGroup, XDivider, XSelect } from '@x/ui';
 import { ref } from 'vue';
-import { XSelect, XDivider, XCheckboxGroup } from '@x/ui';
 
 const value = ref('');
 

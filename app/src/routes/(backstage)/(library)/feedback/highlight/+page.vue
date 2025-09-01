@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { ref } from 'vue';
 import { XBreadcrumb, XCard, XChipField, XHighlight, XTextField } from '@x/ui';
+import { ref } from 'vue';
 
 const query1 = ref('spotlight, emphasize and accentuate');
 const query2 = ref(['spotlight', 'emphasize', 'Accentuate']);

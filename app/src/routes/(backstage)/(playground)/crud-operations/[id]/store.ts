@@ -1,7 +1,7 @@
+import { request, useNotification } from '@x/ui';
 import { reactive, toRaw } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { defineStore } from 'vue-storer';
-import { useNotification, request } from '@x/ui';
 
 import type { State, TodoItem } from './types';
 

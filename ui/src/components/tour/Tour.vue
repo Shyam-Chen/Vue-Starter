@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { nextTick, ref, watch, onUnmounted } from 'vue';
+import { nextTick, onUnmounted, ref, watch } from 'vue';
 
 import Button from '../button/Button.vue';
 

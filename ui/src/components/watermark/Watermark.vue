@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref, watchEffect, useTemplateRef } from 'vue';
+import { ref, useTemplateRef, watchEffect } from 'vue';
 
 withDefaults(
   defineProps<{

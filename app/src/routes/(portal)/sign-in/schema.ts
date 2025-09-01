@@ -1,8 +1,8 @@
+import { useValdnLocale } from '@x/ui';
+import * as v from 'valibot';
 import { computed, toRef } from 'vue';
 import { useSchema } from 'vue-formor';
 import { useLocaler } from 'vue-localer';
-import { useValdnLocale } from '@x/ui';
-import * as v from 'valibot';
 
 import useStore from './store';
 

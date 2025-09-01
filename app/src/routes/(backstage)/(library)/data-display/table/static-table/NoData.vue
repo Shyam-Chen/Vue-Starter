@@ -1,6 +1,6 @@
 <script lang="ts" setup>
+import { staticTable, XCard, XTable } from '@x/ui';
 import { ref } from 'vue';
-import { XCard, XTable, staticTable } from '@x/ui';
 
 const rows = ref([]);
 const control = ref({ rows: 10, page: 1, field: 'id', direction: 'asc' });

@@ -1,8 +1,7 @@
 <script lang="ts" setup>
 import { useId } from 'vue';
-
-import type { FormControlProps } from './types';
 import { formControlDefaults } from './helpers';
+import type { FormControlProps } from './types';
 
 withDefaults(defineProps<FormControlProps>(), formControlDefaults);
 

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { ref, computed, watch, inject } from 'vue';
 import { onClickOutside } from '@vueuse/core';
+import { computed, inject, ref, watch } from 'vue';
 
 import ChipField from '../chip-field/ChipField.vue';
 import ToggleShowHide from '../chip-field/ToggleShowHide.vue';

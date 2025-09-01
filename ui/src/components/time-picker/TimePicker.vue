@@ -1,10 +1,9 @@
 <script lang="ts" setup>
-import { nextTick, ref, computed, reactive } from 'vue';
 import { onClickOutside } from '@vueuse/core';
-
+import { computed, nextTick, reactive, ref } from 'vue';
+import useScrollParent from '../../composables/scroll-parent/useScrollParent';
 import Fade from '../fade/Fade.vue';
 import TextField from '../text-field/TextField.vue';
-import useScrollParent from '../../composables/scroll-parent/useScrollParent';
 
 const valueModel = defineModel<string>('value', { default: '' });
 

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref, reactive, toRef } from 'vue';
+import { reactive, ref, toRef } from 'vue';
 
 import Chip from '../chip/Chip.vue';
 import FormControl from '../form-control/FormControl.vue';
@@ -13,9 +13,7 @@ const props = defineProps<{
   help?: string;
 }>();
 
-const emit = defineEmits<{
-  (evt: 'change', val: Event): void;
-}>();
+const emit = defineEmits<(evt: 'change', val: Event) => void>();
 
 const placeholderRef = toRef(props, 'placeholder', 'Choose a file');
 const fileInput = ref<HTMLInputElement>();

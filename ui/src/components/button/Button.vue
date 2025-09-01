@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import type { ButtonHTMLAttributes, ModelRef, ShallowRef } from 'vue';
-import { ref, computed, watchEffect, inject, useTemplateRef } from 'vue';
+import { computed, inject, ref, useTemplateRef, watchEffect } from 'vue';
 
 import Spinner from '../spinner/Spinner.vue';
 
@@ -18,9 +18,7 @@ interface Props extends /* @vue-ignore */ Omit<ButtonHTMLAttributes, 'onClick'> 
 
 defineProps<Props>();
 
-const emit = defineEmits<{
-  (evt: 'click', payload: MouseEvent): void;
-}>();
+const emit = defineEmits<(evt: 'click', payload: MouseEvent) => void>();
 
 const buttonGroup = inject('ButtonGroup', {
   defaultModel: undefined,

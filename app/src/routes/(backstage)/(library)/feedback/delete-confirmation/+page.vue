@@ -1,6 +1,6 @@
 <script lang="ts" setup>
+import { useNotification, XBreadcrumb, XButton, XCard, XDeleteConfirmation } from '@x/ui';
 import { reactive, readonly } from 'vue';
-import { XBreadcrumb, XButton, XCard, XDeleteConfirmation, useNotification } from '@x/ui';
 
 const notification = useNotification();
 

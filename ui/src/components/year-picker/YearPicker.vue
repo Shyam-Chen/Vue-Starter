@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import type { ComponentExposed } from 'vue-component-type-helpers';
-import { ref, inject } from 'vue';
 import { onClickOutside } from '@vueuse/core';
-import range from 'lodash/range';
 import * as d from 'date-fns';
+import range from 'lodash/range';
+import { inject, ref } from 'vue';
+import type { ComponentExposed } from 'vue-component-type-helpers';
 
 import FormControl, { type FormControlProps, formControlDefaults } from '../form-control';
 import Popover from '../popover/Popover.vue';

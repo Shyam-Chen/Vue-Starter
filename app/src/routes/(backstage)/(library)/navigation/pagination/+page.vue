@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { ref } from 'vue';
 import { XBreadcrumb, XCard, XPagination } from '@x/ui';
+import { ref } from 'vue';
 
 const page = ref(1);
 const page2 = ref(1);

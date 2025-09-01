@@ -6,20 +6,13 @@
     "mock": "pnpm -C mock mock",
     "build": "pnpm -C app build",
     "preview": "pnpm -C app preview",
-    "lint": "eslint app/src ui/src",
+    "lint": "biome check --write",
     "check": "pnpm -C app check && pnpm -C ui check",
     "test": "pnpm -C app test",
     "e2e": "pnpm -C e2e e2e",
     "playwright": "pnpm -C e2e playwright"
   },
   "devDependencies": {
-    "@eslint/js": "9.34.0",
-    "eslint": "9.34.0",
-    "eslint-config-prettier": "10.1.8",
-    "eslint-plugin-prettier": "5.5.4",
-    "eslint-plugin-vue": "10.4.0",
-    "globals": "16.3.0",
-    "prettier": "3.6.2",
-    "typescript-eslint": "8.41.0"
+    "@biomejs/biome": "2.2.2"
   }
 }

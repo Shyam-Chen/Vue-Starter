@@ -1,14 +1,13 @@
 <script lang="ts" setup>
-import { nextTick, ref, computed, reactive, watch } from 'vue';
-import { useLocaler, useLocale } from 'vue-localer';
 import { onClickOutside } from '@vueuse/core';
 import * as d from 'date-fns';
 import chunk from 'lodash/chunk';
 import range from 'lodash/range';
-
+import { computed, nextTick, reactive, ref, watch } from 'vue';
+import { useLocale, useLocaler } from 'vue-localer';
+import useScrollParent from '../../composables/scroll-parent/useScrollParent';
 import Fade from '../fade/Fade.vue';
 import TextField from '../text-field/TextField.vue';
-import useScrollParent from '../../composables/scroll-parent/useScrollParent';
 
 const startValueModel = defineModel<string>('startValue', { default: '' });
 const endValueModel = defineModel<string>('endValue', { default: '' });
@@ -27,15 +26,29 @@ const props = withDefaults(
     format: 'yyyy/MM/dd',
     weekdays: () => ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
     // prettier-ignore
-    months: () => ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+    months: () => [
+      'Jan',
+      'Feb',
+      'Mar',
+      'Apr',
+      'May',
+      'Jun',
+      'Jul',
+      'Aug',
+      'Sep',
+      'Oct',
+      'Nov',
+      'Dec',
+    ],
     minDate: '',
     maxDate: '',
   },
 );
 
-const emit = defineEmits<{
-  (evt: 'change', { startDate, endDate }: { startDate: string; endDate: string }): void;
-}>();
+const emit =
+  defineEmits<
+    (evt: 'change', { startDate, endDate }: { startDate: string; endDate: string }) => void
+  >();
 
 const localer = useLocaler();
 const locale = useLocale();

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { ref, reactive, watch, toRef } from 'vue';
-import { useLocaler, useLocale } from 'vue-localer';
 import { vOnClickOutside } from '@vueuse/components';
+import { reactive, ref, toRef, watch } from 'vue';
+import { useLocale, useLocaler } from 'vue-localer';
 
 import Chip from '../chip/Chip.vue';
 import FormControl, { type FormControlProps, formControlDefaults } from '../form-control';

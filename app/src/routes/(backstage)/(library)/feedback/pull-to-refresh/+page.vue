@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import type { ComponentProps } from 'vue-component-type-helpers';
-import { ref } from 'vue';
 import { XBreadcrumb, XButton, XCard, XPullToRefresh } from '@x/ui';
+import { ref } from 'vue';
+import type { ComponentProps } from 'vue-component-type-helpers';
 
 type XPullToRefreshProps = ComponentProps<typeof XPullToRefresh>;
 

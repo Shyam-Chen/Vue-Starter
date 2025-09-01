@@ -1,16 +1,15 @@
 <script lang="ts" setup>
-import type { ComponentProps } from 'vue-component-type-helpers';
-import { nextTick, ref, reactive, computed, watch, watchEffect } from 'vue';
-import { useLocaler, useLocale } from 'vue-localer';
 import { onClickOutside } from '@vueuse/core';
-
+import { computed, nextTick, reactive, ref, watch, watchEffect } from 'vue';
+import type { ComponentProps } from 'vue-component-type-helpers';
+import { useLocale, useLocaler } from 'vue-localer';
+import useScrollParent from '../../composables/scroll-parent/useScrollParent';
 import Checkbox from '../checkbox/Checkbox.vue';
 import Chip from '../chip/Chip.vue';
 import Fade from '../fade/Fade.vue';
 import FormControl from '../form-control/FormControl.vue';
 import ProgressBar from '../progress-bar/ProgressBar.vue';
 import TextField from '../text-field/TextField.vue';
-import useScrollParent from '../../composables/scroll-parent/useScrollParent';
 
 type ChipProps = ComponentProps<typeof Chip>;
 

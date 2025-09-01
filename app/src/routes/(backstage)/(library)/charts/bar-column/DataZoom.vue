@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-import type { EChartsOption } from 'echarts';
-import { computed } from 'vue';
 import { XChart } from '@x/ui';
-import { use } from 'echarts/core';
+import type { EChartsOption } from 'echarts';
 import { BarChart } from 'echarts/charts';
 import { DataZoomComponent } from 'echarts/components';
+import { use } from 'echarts/core';
+import { computed } from 'vue';
 
 use([BarChart, DataZoomComponent]);
 
@@ -24,7 +24,7 @@ const chart = computed<EChartsOption>(() => {
     'December',
   ];
 
-  let dataZoom = undefined;
+  let dataZoom: any;
 
   if (months.length > 10) {
     const num = 10;

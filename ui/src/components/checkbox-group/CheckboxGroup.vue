@@ -21,9 +21,7 @@ const valueModel = defineModel<unknown[]>('value', { default: [] });
 
 defineProps<Props>();
 
-const emit = defineEmits<{
-  (evt: 'change', val: unknown[]): void;
-}>();
+const emit = defineEmits<(evt: 'change', val: unknown[]) => void>();
 
 function onChange(val: unknown) {
   const idx = valueModel.value.findIndex((item) => item === val);

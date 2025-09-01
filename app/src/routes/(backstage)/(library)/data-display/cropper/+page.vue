@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import 'vue-advanced-cropper/dist/style.css';
-import type { ComponentExposed } from 'vue-component-type-helpers';
+import { request, XBreadcrumb, XButton, XCard } from '@x/ui';
 import { ref } from 'vue';
-import { Cropper, CircleStencil } from 'vue-advanced-cropper';
-import { XBreadcrumb, XButton, XCard, request } from '@x/ui';
+import { CircleStencil, Cropper } from 'vue-advanced-cropper';
+import type { ComponentExposed } from 'vue-component-type-helpers';
 
 const cropper = ref<ComponentExposed<typeof Cropper>>();
 const image = ref<string>();

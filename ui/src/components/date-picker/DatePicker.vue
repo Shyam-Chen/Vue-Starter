@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import { ref, computed, reactive, watch } from 'vue';
-import { useLocaler, useLocale } from 'vue-localer';
 import * as d from 'date-fns';
 import chunk from 'lodash/chunk';
 import range from 'lodash/range';
+import { computed, reactive, ref, watch } from 'vue';
+import { useLocale, useLocaler } from 'vue-localer';
 
 import FormControl, { type FormControlProps, formControlDefaults } from '../form-control';
 import Popover from '../popover/Popover.vue';
@@ -56,10 +56,18 @@ const _weekdays = computed(() => locale.value?.weekdays || ['S', 'M', 'T', 'W', 
 const _months = computed(
   () =>
     locale.value?.months || [
-      'Jan', 'Feb', 'Mar',
-      'Apr', 'May', 'Jun',
-      'Jul', 'Aug', 'Sep',
-      'Oct', 'Nov', 'Dec',
+      'Jan',
+      'Feb',
+      'Mar',
+      'Apr',
+      'May',
+      'Jun',
+      'Jul',
+      'Aug',
+      'Sep',
+      'Oct',
+      'Nov',
+      'Dec',
     ],
 );
 

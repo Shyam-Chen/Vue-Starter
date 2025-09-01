@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import type { ComponentProps } from 'vue-component-type-helpers';
-import { ref, onMounted } from 'vue';
 import { XTable } from '@x/ui';
+import { onMounted, ref } from 'vue';
+import type { ComponentProps } from 'vue-component-type-helpers';
 
 import leetcode, { type Problem } from './leetcode';
 

@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import type { ComponentProps } from 'vue-component-type-helpers';
-import { ref } from 'vue';
 import { XBreadcrumb, XCard, XWeekPicker } from '@x/ui';
 import { format } from 'date-fns';
+import { ref } from 'vue';
+import type { ComponentProps } from 'vue-component-type-helpers';
 
 const week1 = ref('');
 
@@ -10,7 +10,7 @@ const week2 = ref('');
 const week2start = ref<Date>();
 const week2end = ref<Date>();
 
-const week2change: ComponentProps<typeof XWeekPicker>['onChange'] = (week, startDate, endDate) => {
+const week2change: ComponentProps<typeof XWeekPicker>['onChange'] = (_, startDate, endDate) => {
   week2start.value = startDate;
   week2end.value = endDate;
 };

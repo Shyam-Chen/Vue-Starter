@@ -1,12 +1,23 @@
 <script lang="ts" setup>
-import { ref, watch, onMounted, onUnmounted } from 'vue';
-import { useRouter, useRoute } from 'vue-router';
-import { XBreadcrumb, XButton, XCheckboxGroup, XChip, XDeleteConfirmation, XDialog } from '@x/ui';
-import { XFormControl, XRadioGroup, XTable, XTextField, XTooltip, XSkeleton } from '@x/ui';
-
-import useStore from './store';
-import useSchema from './schema';
+import {
+  XBreadcrumb,
+  XButton,
+  XCheckboxGroup,
+  XChip,
+  XDeleteConfirmation,
+  XDialog,
+  XFormControl,
+  XRadioGroup,
+  XSkeleton,
+  XTable,
+  XTextField,
+  XTooltip,
+} from '@x/ui';
+import { onMounted, onUnmounted, ref, watch } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
 import useLocale from './locales';
+import useSchema from './schema';
+import useStore from './store';
 
 const router = useRouter();
 const route = useRoute();

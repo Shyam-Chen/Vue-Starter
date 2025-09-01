@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { nextTick, ref, computed, watchEffect, watch, inject, useTemplateRef } from 'vue';
 import { onClickOutside } from '@vueuse/core';
+import { computed, inject, nextTick, ref, useTemplateRef, watch, watchEffect } from 'vue';
 import { useLocale } from 'vue-localer';
 
 import type { FormControlProps } from '../form-control';
@@ -38,9 +38,7 @@ const props = withDefaults(
   },
 );
 
-const emit = defineEmits<{
-  <T extends Option>(evt: 'change', val?: T['value'], opt?: T): void;
-}>();
+const emit = defineEmits<<T extends Option>(evt: 'change', val?: T['value'], opt?: T) => void>();
 
 const locale = useLocale();
 

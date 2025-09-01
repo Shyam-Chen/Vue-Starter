@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { reactive } from 'vue';
 import { XBreadcrumb, XButton, XCard, XCodeBlock, XDialog } from '@x/ui';
+import { reactive } from 'vue';
 
 import Size from './Size.vue';
 import SizeCode from './Size.vue?raw';

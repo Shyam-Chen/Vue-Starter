@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref, computed, useId } from 'vue';
+import { computed, ref, useId } from 'vue';
 
 defineOptions({
   inheritAttrs: false,

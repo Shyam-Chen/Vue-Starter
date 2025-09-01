@@ -1,7 +1,6 @@
 import orderBy from 'lodash/orderBy';
-
-import type { Control } from '../../components/table/types';
 import { controlDefaults } from '../../components/table/config';
+import type { Control } from '../../components/table/types';
 
 export default <T>(rows: T[], control: Control) => {
   if (!rows?.length) return [];

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import type { ComponentProps } from 'vue-component-type-helpers';
 import { ref } from 'vue';
+import type { ComponentProps } from 'vue-component-type-helpers';
 import { useLocale } from 'vue-localer';
 
 import FormControl from '../form-control/FormControl.vue';

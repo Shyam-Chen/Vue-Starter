@@ -1,10 +1,20 @@
 <script lang="ts" setup>
-import { computed, reactive, toRef, onMounted } from 'vue';
+import {
+  useValdnLocale,
+  XButton,
+  XCard,
+  XCheckbox,
+  XDatePicker,
+  XMultiselect,
+  XRadioGroup,
+  XSelect,
+  XTextarea,
+  XTextField,
+} from '@x/ui';
+import * as v from 'valibot';
+import { computed, onMounted, reactive, toRef } from 'vue';
 import { useSchema } from 'vue-formor';
 import { useLocaler } from 'vue-localer';
-import { XButton, XCard, XCheckbox, XDatePicker, XRadioGroup, XSelect, XTextField } from '@x/ui';
-import { XTextarea, XMultiselect, useValdnLocale } from '@x/ui';
-import * as v from 'valibot';
 
 interface BasicForm {
   username?: string;

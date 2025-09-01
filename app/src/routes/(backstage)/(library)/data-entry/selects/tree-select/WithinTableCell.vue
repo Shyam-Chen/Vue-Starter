@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { ref } from 'vue';
 import { XTable, XTreeSelect } from '@x/ui';
+import { ref } from 'vue';
 
 import options from './options';
 

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { RouterLink } from 'vue-router';
 import { XBreadcrumb } from '@x/ui';
+import { RouterLink } from 'vue-router';
 </script>
 
 <template>

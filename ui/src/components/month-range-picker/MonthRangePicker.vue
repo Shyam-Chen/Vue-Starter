@@ -1,12 +1,11 @@
 <script lang="ts" setup>
-import { nextTick, ref, computed, reactive, watch } from 'vue';
-import { useLocale } from 'vue-localer';
 import { onClickOutside } from '@vueuse/core';
 import * as d from 'date-fns';
-
+import { computed, nextTick, reactive, ref, watch } from 'vue';
+import { useLocale } from 'vue-localer';
+import useScrollParent from '../../composables/scroll-parent/useScrollParent';
 import Fade from '../fade/Fade.vue';
 import TextField from '../text-field/TextField.vue';
-import useScrollParent from '../../composables/scroll-parent/useScrollParent';
 
 const startValueModel = defineModel<string>('startValue', { default: '' });
 const endValueModel = defineModel<string>('endValue', { default: '' });
@@ -24,9 +23,10 @@ const props = withDefaults(
   },
 );
 
-const emit = defineEmits<{
-  (evt: 'change', { startMonth, endMonth }: { startMonth: string; endMonth: string }): void;
-}>();
+const emit =
+  defineEmits<
+    (evt: 'change', { startMonth, endMonth }: { startMonth: string; endMonth: string }) => void
+  >();
 
 const locale = useLocale();
 
@@ -38,10 +38,18 @@ const picker = ref<HTMLDivElement>();
 const months = computed(
   () =>
     locale.value?.months || [
-      'Jan', 'Feb', 'Mar',
-      'Apr', 'May', 'Jun',
-      'Jul', 'Aug', 'Sep',
-      'Oct', 'Nov', 'Dec',
+      'Jan',
+      'Feb',
+      'Mar',
+      'Apr',
+      'May',
+      'Jun',
+      'Jul',
+      'Aug',
+      'Sep',
+      'Oct',
+      'Nov',
+      'Dec',
     ],
 );
 

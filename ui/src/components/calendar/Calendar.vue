@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import { computed, reactive, watch } from 'vue';
+import * as d from 'date-fns';
 import chunk from 'lodash/chunk';
 import groupBy from 'lodash/groupBy';
 import range from 'lodash/range';
-import * as d from 'date-fns';
+import { computed, reactive, watch } from 'vue';
 
 type Day = {
   date: Date;
@@ -31,16 +31,27 @@ const props = withDefaults(
     format: 'yyyy/MM/dd',
     weekdays: () => ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
     // prettier-ignore
-    months: () => ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+    months: () => [
+      'Jan',
+      'Feb',
+      'Mar',
+      'Apr',
+      'May',
+      'Jun',
+      'Jul',
+      'Aug',
+      'Sep',
+      'Oct',
+      'Nov',
+      'Dec',
+    ],
     events: () => [],
     minDate: '',
     maxDate: '',
   },
 );
 
-const emit = defineEmits<{
-  (evt: 'update:value', val: string): void;
-}>();
+const emit = defineEmits<(evt: 'update:value', val: string) => void>();
 
 const eventsRef = computed(() => {
   const _events = props.events.map((event) => ({

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { computed, watch } from 'vue';
-import { useLocaler, useLocale } from 'vue-localer';
+import { useLocale, useLocaler } from 'vue-localer';
 
 import Button from '../button/Button.vue';
 import Dialog from '../dialog/Dialog.vue';

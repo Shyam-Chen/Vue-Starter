@@ -1,6 +1,6 @@
 <script lang="ts" setup>
+import { stream, XBreadcrumb, XChatBox } from '@x/ui';
 import { nextTick, ref, useTemplateRef } from 'vue';
-import { XBreadcrumb, XChatBox, stream } from '@x/ui';
 
 import MarkdownRenderer from './MarkdownRenderer.vue';
 

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { ref, onMounted } from 'vue';
-import { XBreadcrumb, XCard, useEventSource, stream } from '@x/ui';
+import { stream, useEventSource, XBreadcrumb, XCard } from '@x/ui';
+import { onMounted, ref } from 'vue';
 
 import TriggerEventById from './TriggerEventById.vue';
 

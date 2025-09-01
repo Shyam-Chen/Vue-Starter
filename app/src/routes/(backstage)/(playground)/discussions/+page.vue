@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import type { ComponentProps } from 'vue-component-type-helpers';
-import { reactive } from 'vue';
-import { useLocaler } from 'vue-localer';
 import { XBreadcrumb, XCard, XChatBox, XChatBubble } from '@x/ui';
 import { intlFormat } from 'date-fns';
+import { reactive } from 'vue';
+import type { ComponentProps } from 'vue-component-type-helpers';
+import { useLocaler } from 'vue-localer';
 
 const localer = useLocaler();
 

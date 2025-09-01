@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { ref } from 'vue';
-import { XBreadcrumb } from '@x/ui';
 import { vIntersectionObserver } from '@vueuse/components';
+import { XBreadcrumb } from '@x/ui';
+import { ref } from 'vue';
 
 const sections = ref(Array(6).fill(false));
 

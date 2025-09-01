@@ -1,10 +1,10 @@
 <script lang="ts" setup>
 import '@vue-flow/core/dist/style.css';
 import '@vue-flow/core/dist/theme-default.css';
-import type { Node, Edge } from '@vue-flow/core';
-import { ref } from 'vue';
+import type { Edge, Node } from '@vue-flow/core';
 import { VueFlow as Diagram } from '@vue-flow/core';
 import { XBreadcrumb } from '@x/ui';
+import { ref } from 'vue';
 
 import BlankCard from './BlankCard.vue';
 import Controls from './Controls.vue';

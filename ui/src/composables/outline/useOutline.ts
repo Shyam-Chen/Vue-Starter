@@ -1,9 +1,9 @@
 /* @unocss-include */
 
-import type { ComputedRef } from 'vue';
-import type { ComponentProps } from 'vue-component-type-helpers';
-import { computed, watch, toRef, toValue, onMounted } from 'vue';
 import { useIntersectionObserver } from '@vueuse/core';
+import type { ComputedRef } from 'vue';
+import { computed, onMounted, toRef, toValue, watch } from 'vue';
+import type { ComponentProps } from 'vue-component-type-helpers';
 
 import type Outline from '../../components/outline/Outline.vue';
 

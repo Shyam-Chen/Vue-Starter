@@ -1,7 +1,8 @@
 <script lang="ts" setup>
-import { computed, onBeforeMount } from 'vue';
 // import { useDark } from '@vueuse/core';
 import MarkdownIt from 'markdown-it';
+import { computed, onBeforeMount } from 'vue';
+
 // import { fromHighlighter } from '@shikijs/markdown-it/core';
 // import { bundledLanguages, createHighlighter } from 'shiki/bundle/full';
 

@@ -1,7 +1,7 @@
-import { computed, toRef } from 'vue';
-import { useSchema } from 'vue-formor';
 import { useValdnLocale } from '@x/ui';
 import * as v from 'valibot';
+import { computed, toRef } from 'vue';
+import { useSchema } from 'vue-formor';
 
 import useStore from './store';
 

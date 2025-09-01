@@ -1,8 +1,7 @@
 <script lang="ts" setup>
-import { ref, watch, provide } from 'vue';
-
-import type { Node } from './types';
+import { provide, ref, watch } from 'vue';
 import TreeNode from './TreeNode.vue';
+import type { Node } from './types';
 
 const defaultModel = defineModel<Node['value'] | Node['value'][]>({
   get(val) {
@@ -16,9 +15,7 @@ const props = defineProps<{
   multiple?: boolean;
 }>();
 
-const emit = defineEmits<{
-  (evt: 'select', val: Node): void;
-}>();
+const emit = defineEmits<(evt: 'select', val: Node) => void>();
 
 const createTree = (arr: Node[] = [], level = 1): Node[] => {
   return [...arr].map((item) => {

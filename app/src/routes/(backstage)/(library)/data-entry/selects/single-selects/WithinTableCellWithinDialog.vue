@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { ref } from 'vue';
 import { XButton, XDialog, XDivider } from '@x/ui';
+import { ref } from 'vue';
 
 import WithinTableCell from './WithinTableCell.vue';
 

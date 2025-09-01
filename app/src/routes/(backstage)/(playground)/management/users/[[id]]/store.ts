@@ -1,6 +1,6 @@
+import { request, useNotification } from '@x/ui';
 import { reactive } from 'vue';
 import { defineStore } from 'vue-storer';
-import { useNotification, request } from '@x/ui';
 
 import type { State, User } from './types';
 

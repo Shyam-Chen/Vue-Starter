@@ -18,9 +18,7 @@ defineOptions({
 
 const props = defineProps<Props>();
 
-const emit = defineEmits<{
-  (evt: 'update:value', val: boolean): void;
-}>();
+const emit = defineEmits<(evt: 'update:value', val: boolean) => void>();
 
 const valueModel = computed({
   get: () => props.value || false,

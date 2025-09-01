@@ -1,20 +1,19 @@
 <script lang="ts" setup generic="T">
-import type { Ref, VNode } from 'vue';
-import { ref, computed, watchEffect, watch } from 'vue';
-import { useLocaler, useLocale } from 'vue-localer';
 import { useScroll } from '@vueuse/core';
+import type { Ref, VNode } from 'vue';
+import { computed, ref, watch, watchEffect } from 'vue';
+import { useLocale, useLocaler } from 'vue-localer';
 
 import type staticTable from '../../utilities/static-table/staticTable';
 import Button from '../button/Button.vue';
 import Checkbox from '../checkbox/Checkbox.vue';
 import Select from '../select/Select.vue';
 import Spinner from '../spinner/Spinner.vue';
-
-import type { ColumnItem, Control } from './types';
-import { controlDefaults } from './config';
-import Column from './Column.vue';
-import Row from './Row.vue';
 import Cell from './Cell.vue';
+import Column from './Column.vue';
+import { controlDefaults } from './config';
+import Row from './Row.vue';
+import type { ColumnItem, Control } from './types';
 
 type U = T & { _id?: string; id?: number; checked?: boolean; details?: unknown[] };
 

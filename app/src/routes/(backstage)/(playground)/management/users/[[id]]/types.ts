@@ -1,5 +1,5 @@
+import type { XTable } from '@x/ui';
 import type { ComponentProps } from 'vue-component-type-helpers';
-import { XTable } from '@x/ui';
 
 export type XTableProps = ComponentProps<typeof XTable>;
 

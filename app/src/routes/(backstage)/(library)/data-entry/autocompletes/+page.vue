@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { reactive } from 'vue';
 import { XAutocomplete, XBreadcrumb, XCard, XMultiautocomplete } from '@x/ui';
+import { reactive } from 'vue';
 
 const flux = reactive({
   autocomplete: 'sc',

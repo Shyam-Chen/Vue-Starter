@@ -2,8 +2,13 @@ import path from 'node:path';
 import vue from '@vitejs/plugin-vue';
 import envify from 'process-envify';
 import tailwindColors from 'tailwindcss/colors';
-import { presetIcons, presetTypography, presetUno, presetWebFonts } from 'unocss';
-import { transformerDirectives } from 'unocss';
+import {
+  presetIcons,
+  presetTypography,
+  presetUno,
+  presetWebFonts,
+  transformerDirectives,
+} from 'unocss';
 import unocss from 'unocss/vite';
 import { defineConfig } from 'vite';
 import vueRoutes from 'vite-plugin-vue-routes';

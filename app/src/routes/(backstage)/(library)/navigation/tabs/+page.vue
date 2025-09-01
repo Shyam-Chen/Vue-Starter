@@ -1,7 +1,7 @@
 <script lang="ts" setup>
+import { XBreadcrumb, XButton, XCard, XCode, XTabs } from '@x/ui';
 import { reactive } from 'vue';
 import { RouterLink } from 'vue-router';
-import { XBreadcrumb, XButton, XCard, XCode, XTabs } from '@x/ui';
 
 import TabsInDialog from './TabsInDialog.vue';
 

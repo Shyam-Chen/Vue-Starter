@@ -24,9 +24,7 @@ const props = withDefaults(
   },
 );
 
-const emit = defineEmits<{
-  (evt: 'clickItem', index: number): void;
-}>();
+const emit = defineEmits<(evt: 'clickItem', index: number) => void>();
 
 const locale = useLocale();
 

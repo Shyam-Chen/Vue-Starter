@@ -1,6 +1,6 @@
 <script lang="ts" setup>
+import { request, XBreadcrumb, XButton, XCard } from '@x/ui';
 import { ref } from 'vue';
-import { XBreadcrumb, XButton, XCard, request } from '@x/ui';
 
 const text = ref<string>();
 

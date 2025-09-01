@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import type { EChartsOption } from 'echarts';
-import { ref, computed } from 'vue';
 import { XBreadcrumb, XCard, XChart } from '@x/ui';
-import { use } from 'echarts/core';
+import type { EChartsOption } from 'echarts';
 import { BarChart } from 'echarts/charts';
+import { use } from 'echarts/core';
+import { computed, ref } from 'vue';
 
 import DataZoom from './DataZoom.vue';
 

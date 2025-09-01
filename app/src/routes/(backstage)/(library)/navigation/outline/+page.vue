@@ -1,7 +1,7 @@
 <script lang="ts" setup>
+import { useOutline, XBreadcrumb, XButton, XHashAnchor, XOutline } from '@x/ui';
 import { onMounted } from 'vue';
 import { useRoute } from 'vue-router';
-import { XBreadcrumb, XButton, XHashAnchor, XOutline, useOutline } from '@x/ui';
 
 const route = useRoute();
 

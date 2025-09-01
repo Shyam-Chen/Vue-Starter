@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import type { ComponentProps } from 'vue-component-type-helpers';
-import { ref, computed } from 'vue';
 import { XBreadcrumb, XButton, XCard, XTour } from '@x/ui';
+import { computed, ref } from 'vue';
+import type { ComponentProps } from 'vue-component-type-helpers';
 
 const open = ref(false);
 const step = ref(0);

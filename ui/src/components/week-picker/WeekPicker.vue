@@ -1,18 +1,15 @@
 <script lang="ts" setup>
-import { nextTick, ref, computed } from 'vue';
 import { onClickOutside } from '@vueuse/core';
-import chunk from 'lodash/chunk';
 import * as d from 'date-fns';
-
+import chunk from 'lodash/chunk';
+import { computed, nextTick, ref } from 'vue';
+import useScrollParent from '../../composables/scroll-parent/useScrollParent';
 import Fade from '../fade/Fade.vue';
 import TextField from '../text-field/TextField.vue';
-import useScrollParent from '../../composables/scroll-parent/useScrollParent';
 
 const valueModel = defineModel<string>('value', { default: '' });
 
-const emit = defineEmits<{
-  (evt: 'change', val: string, startDate?: Date, endDate?: Date): void;
-}>();
+const emit = defineEmits<(evt: 'change', val: string, startDate?: Date, endDate?: Date) => void>();
 
 const target = ref<HTMLDivElement>();
 const input = ref<typeof TextField>();

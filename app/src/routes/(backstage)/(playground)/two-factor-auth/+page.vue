@@ -1,7 +1,7 @@
 <script lang="ts" setup>
+import { XBreadcrumb, XButton, XTextField } from '@x/ui';
 import { reactive } from 'vue';
 import QrcodeImage from 'vue-qrcode-image';
-import { XBreadcrumb, XButton, XTextField } from '@x/ui';
 
 const flux = reactive({
   os: 'ios',

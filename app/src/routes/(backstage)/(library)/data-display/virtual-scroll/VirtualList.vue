@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { ref } from 'vue';
 import { useVirtualList } from '@vueuse/core';
+import { ref } from 'vue';
 
 import leetcode from './leetcode';
 

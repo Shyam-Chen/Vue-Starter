@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { ref, watch, onMounted } from 'vue';
-import { XButton, XTextField, useEventSource, request } from '@x/ui';
+import { request, useEventSource, XButton, XTextField } from '@x/ui';
+import { onMounted, ref, watch } from 'vue';
 
 const id = Math.floor(Math.random() * 10) + 1;
 

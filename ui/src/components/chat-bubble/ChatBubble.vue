@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import type { ComponentExposed } from 'vue-component-type-helpers';
 import { nextTick, ref, toRaw } from 'vue';
+import type { ComponentExposed } from 'vue-component-type-helpers';
 import { useLocale } from 'vue-localer';
 
 import Avatar from '../avatar/Avatar.vue';

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { ref } from 'vue';
 import { XBreadcrumb, XCard, XListbox } from '@x/ui';
+import { ref } from 'vue';
 
 const selected = ref('right');
 </script>

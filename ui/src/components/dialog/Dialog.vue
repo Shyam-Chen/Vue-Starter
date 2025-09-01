@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { nextTick, ref, watch, onUnmounted, provide } from 'vue';
 import { useResizeObserver } from '@vueuse/core';
+import { nextTick, onUnmounted, provide, ref, watch } from 'vue';
 
 import Bounce from '../bounce/Bounce.vue';
 

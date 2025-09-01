@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { ref } from 'vue';
 import { XBreadcrumb, XButton, XCard, XDropzone } from '@x/ui';
+import { ref } from 'vue';
 
 const loading = ref(false);
 const uploaded = ref('');

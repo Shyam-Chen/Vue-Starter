@@ -1,7 +1,7 @@
 <script lang="ts" setup>
+import { XBreadcrumb, XTabs } from '@x/ui';
 import { watch } from 'vue';
 import { RouterView, useRoute } from 'vue-router';
-import { XBreadcrumb, XTabs } from '@x/ui';
 
 import useStore from './store';
 

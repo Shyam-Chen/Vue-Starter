@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import type { VNode } from 'vue';
-import { toRef, useSlots, h } from 'vue';
+import { h, toRef, useSlots } from 'vue';
 
 const props = defineProps<{
   query?: string[];

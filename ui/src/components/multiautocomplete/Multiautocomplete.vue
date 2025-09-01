@@ -1,16 +1,13 @@
 <script lang="ts" setup>
-import { nextTick, ref, reactive } from 'vue';
-import { useDebounceFn, onClickOutside } from '@vueuse/core';
-
+import { onClickOutside, useDebounceFn } from '@vueuse/core';
+import { nextTick, reactive, ref } from 'vue';
+import request from '../../utilities/request/request';
 import ChipField from '../chip-field/ChipField.vue';
 import Fade from '../fade/Fade.vue';
-import request from '../../utilities/request/request';
 
 const valueModel = defineModel<string[]>('value', { default: [] });
 
-defineEmits<{
-  (evt: 'input', val: string): void;
-}>();
+defineEmits<(evt: 'input', val: string) => void>();
 
 const target = ref<HTMLDivElement>();
 const autocompleteInput = ref<typeof ChipField>();
