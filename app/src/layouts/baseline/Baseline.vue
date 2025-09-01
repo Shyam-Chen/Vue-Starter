@@ -14,7 +14,7 @@ import {
 import { onMounted, reactive, ref, watch } from 'vue';
 import { useLocaler } from 'vue-localer';
 import { useRoute, useRouter } from 'vue-router';
-import IdleDialog from './IdleDialog.vue';
+// import IdleDialog from './IdleDialog.vue';
 import type { Link } from './links-list';
 import Navbar from './Navbar.vue';
 import useStore from './store';
@@ -362,7 +362,7 @@ function changeLang(lang: string) {
     <div class="flex justify-center items-center h-66">No recent searches</div>
   </XDialog>
 
-  <IdleDialog />
+  <!-- <IdleDialog /> -->
 </template>
 
 <style lang="scss" scoped>
