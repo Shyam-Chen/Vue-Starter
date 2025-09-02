@@ -16,7 +16,6 @@ const links = [
   { icon: 'i-ic-round-dashboard', name: 'Dashboard', to: '/dashboard' },
 
   { name: 'Library' },
-  { icon: 'i-mdi-cube-scan', name: 'Overview', to: '/overview' },
   {
     icon: 'i-mdi-bookmark-outline',
     name: 'General',
@@ -63,8 +62,10 @@ const links = [
       { name: 'CheckboxGroup', to: '/data-entry/checkbox-group' },
       { name: 'Checkbox', to: '/data-entry/checkboxes' },
       { name: 'ChipField', to: '/data-entry/chip-field' },
+      { name: 'Cropper', to: '/data-entry/cropper' },
       { name: 'Form Validation', to: '/data-entry/form-validation' },
       { name: 'InputMask', to: '/data-entry/input-mask' },
+      { name: 'Iterator', to: '/data-entry/iterator' },
       { name: 'Password', to: '/data-entry/password' },
       {
         name: 'Pickers',
@@ -112,9 +113,7 @@ const links = [
       { name: 'Card', to: '/data-display/card' },
       { name: 'Carousel', to: '/data-display/carousel' },
       { name: 'Chip', to: '/data-display/chip' },
-      { name: 'Cropper', to: '/data-display/cropper' },
       { name: 'Infinite Scroll', to: '/data-display/infinite-scroll' },
-      { name: 'Iterator', to: '/data-display/iterator' },
       { name: 'Listbox', to: '/data-display/listbox' },
       { name: 'Popover', to: '/data-display/popover' },
       {
@@ -160,6 +159,7 @@ const links = [
       { name: 'Pie & Donut', to: '/charts/pie-donut' },
       { name: 'Scatter & Bubble', to: '/charts/scatter-bubble' },
       { name: 'Mixed', to: '/charts/mixed' },
+      { name: 'Gantt', to: '/charts/gantt' },
       { name: 'Map', to: '/charts/map' },
     ],
   },

@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { XBreadcrumb, XCalendar } from '@x/ui';
 import { reactive } from 'vue';
+import MyCalendar from './MyCalendar.vue';
 
 const year = new Date().getFullYear();
 const month = new Date().getMonth();
@@ -95,11 +96,12 @@ const flux = reactive({
 <template>
   <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Data Display' }, { text: 'Calendar' }]" />
 
-  <h1 class="text-4xl font-extrabold my-4">Calendar (TODO)</h1>
+  <h1 class="text-4xl font-extrabold my-4">Calendar (FullCalendar.js)</h1>
 
   <section class="my-8">
     <h2 class="text-3xl font-bold my-4">Basic</h2>
 
-    <XCalendar :events="flux.calendar1" />
+    <!-- <XCalendar :events="flux.calendar1" /> -->
+    <MyCalendar />
   </section>
 </template>
