@@ -46,17 +46,17 @@ const schema = useSchema(
         v.pipe(
           v.string(),
           v.minLength(1, valdnLocale.value.required),
-          v.email(valdnLocale.value.email),
+          v.email(valdnLocale.value.email)
         ),
-        '',
+        ''
       ),
       password: v.nullish(
         v.pipe(
           v.string(),
           v.minLength(1, valdnLocale.value.required),
-          v.minLength(8, localer.f(valdnLocale.value.minLength, [8])),
+          v.minLength(8, localer.f(valdnLocale.value.minLength, [8]))
         ),
-        '',
+        ''
       ),
       confirmPassword: v.nullish(
         v.pipe(
@@ -64,25 +64,25 @@ const schema = useSchema(
           v.minLength(1, valdnLocale.value.required),
           v.check(
             (input) => state.form.password === input,
-            'Password and Confirm Password must be match',
-          ),
+            'Password and Confirm Password must be match'
+          )
         ),
-        '',
+        ''
       ),
       pronouns: v.nullish(v.pipe(v.number(), v.minValue(1, valdnLocale.value.required)), 0),
       urlPasteBehavior: v.nullish(v.pipe(v.number(), v.minValue(1, valdnLocale.value.required)), 0),
       birthday: v.nullish(v.pipe(v.string(), v.minLength(1, valdnLocale.value.required)), ''),
       topics: v.nullish(
         v.pipe(v.array(v.string()), v.minLength(1, valdnLocale.value.required)),
-        [],
+        []
       ),
       bio: v.nullish(v.pipe(v.string(), v.minLength(1, valdnLocale.value.required)), ''),
-      agreed: v.literal(true, valdnLocale.value.required),
-    }),
+      agreed: v.nullish(v.pipe(v.boolean(), v.literal(true, valdnLocale.value.required)), false),
+    })
   ),
   toRef(state, 'form'),
   toRef(state, 'valdn'),
-  toRef(state, 'touched'),
+  toRef(state, 'touched')
 );
 
 onMounted(() => {

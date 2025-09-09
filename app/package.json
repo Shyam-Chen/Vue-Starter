@@ -26,15 +26,15 @@
     "markdown-it": "14.1.0",
     "nprogress": "0.2.0",
     "ofetch": "1.4.1",
-    "valibot": "0.42.1",
+    "valibot": "1.1.0",
     "vue": "3.5.12",
     "vue-advanced-cropper": "2.8.9",
     "vue-component-type-helpers": "2.1.10",
-    "vue-formor": "5.0.0",
+    "vue-formor": "6.0.0",
     "vue-localer": "1.5.3",
     "vue-qrcode-image": "1.2.0",
     "vue-router": "4.4.5",
-    "vue-storer": "0.6.0",
+    "vue-storer": "0.7.1",
     "vuedraggable": "4.1.0"
   },
   "devDependencies": {

@@ -66,8 +66,8 @@ importers:
         specifier: 1.4.1
         version: 1.4.1
       valibot:
-        specifier: 0.42.1
-        version: 0.42.1(typescript@5.6.3)
+        specifier: 1.1.0
+        version: 1.1.0(typescript@5.6.3)
       vue:
         specifier: 3.5.12
         version: 3.5.12(typescript@5.6.3)
@@ -78,8 +78,8 @@ importers:
         specifier: 2.1.10
         version: 2.1.10
       vue-formor:
-        specifier: 5.0.0
-        version: 5.0.0
+        specifier: 6.0.0
+        version: 6.0.0
       vue-localer:
         specifier: 1.5.3
         version: 1.5.3
@@ -90,8 +90,8 @@ importers:
         specifier: 4.4.5
         version: 4.4.5(vue@3.5.12(typescript@5.6.3))
       vue-storer:
-        specifier: 0.6.0
-        version: 0.6.0
+        specifier: 0.7.1
+        version: 0.7.1
       vuedraggable:
         specifier: 4.1.0
         version: 4.1.0(vue@3.5.12(typescript@5.6.3))
@@ -311,8 +311,8 @@ importers:
         specifier: 4.4.5
         version: 4.4.5(vue@3.5.12(typescript@5.6.3))
       vue-storer:
-        specifier: 0.6.0
-        version: 0.6.0
+        specifier: 0.7.1
+        version: 0.7.1
       vuedraggable:
         specifier: 4.1.0
         version: 4.1.0(vue@3.5.12(typescript@5.6.3))
@@ -3119,8 +3119,8 @@ packages:
     resolution: {integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==}
     hasBin: true
 
-  valibot@0.42.1:
-    resolution: {integrity: sha512-3keXV29Ar5b//Hqi4MbSdV7lfVp6zuYLZuA9V1PvQUsXqogr+u5lvLPLk3A4f74VUXDnf/JfWMN6sB+koJ/FFw==}
+  valibot@1.1.0:
+    resolution: {integrity: sha512-Nk8lX30Qhu+9txPYTwM0cFlWLdPFsFr6LblzqIySfbZph9+BFsAHsNvHOymEviUepeIW6KFHzpX8TKhbptBXXw==}
     peerDependencies:
       typescript: '>=5'
     peerDependenciesMeta:
@@ -3252,8 +3252,8 @@ packages:
     peerDependencies:
       vue: ^3.4.37
 
-  vue-formor@5.0.0:
-    resolution: {integrity: sha512-8Xs/Z7oLEMldvTIqbSaDsKhSj6ARsCjpIgD+utJo0dGKdkQmN81FwhJfHvQvufhfsGkzaUPrcxjbHltYiMUjlw==}
+  vue-formor@6.0.0:
+    resolution: {integrity: sha512-4ePbmbASNGSM9Is0e2PQkQEC8Q2UVImKhwMfFES39JBoXjWVazsmGLP7kyz15iRKulcqffjLs4732pexJmQusA==}
 
   vue-imask@7.6.1:
     resolution: {integrity: sha512-/5ZVNerI9Dn6gZ/cSCYGiZK4JHdwsEBgHBTRpVwS2U0URxK/Jt5FlQuoL1DhbxC6t4ElcVMWYOvkE2hR8hdt1w==}
@@ -3271,8 +3271,8 @@ packages:
     peerDependencies:
       vue: ^3.2.0
 
-  vue-storer@0.6.0:
-    resolution: {integrity: sha512-Trt/7lvlv49r70z0Yzqif8yi8KBzT1x88P0jamive6x3ijgMlm5g8EsL46Y/plTPwFa6bkUYiEJEIpkLn7SjBg==}
+  vue-storer@0.7.1:
+    resolution: {integrity: sha512-mpVaVbW4TgKf475CtnOJQoxXNYZQVomRQrW4J15DyUtH2pLFgmIwMYU1hLxBra8RHnb8d6Yc06DqykIWrmOrNw==}
 
   vue-tsc@2.1.10:
     resolution: {integrity: sha512-RBNSfaaRHcN5uqVqJSZh++Gy/YUzryuv9u1aFWhsammDJXNtUiJMNoJ747lZcQ68wUQFx6E73y4FY3D8E7FGMA==}
@@ -6140,7 +6140,7 @@ snapshots:
 
   uuid@8.3.2: {}
 
-  valibot@0.42.1(typescript@5.6.3):
+  valibot@1.1.0(typescript@5.6.3):
     optionalDependencies:
       typescript: 5.6.3
 
@@ -6260,7 +6260,7 @@ snapshots:
     dependencies:
       vue: 3.5.12(typescript@5.6.3)
 
-  vue-formor@5.0.0: {}
+  vue-formor@6.0.0: {}
 
   vue-imask@7.6.1(vue@3.5.12(typescript@5.6.3)):
     dependencies:
@@ -6283,7 +6283,7 @@ snapshots:
       '@vue/devtools-api': 6.6.4
       vue: 3.5.12(typescript@5.6.3)
 
-  vue-storer@0.6.0: {}
+  vue-storer@0.7.1: {}
 
   vue-tsc@2.1.10(typescript@5.6.3):
     dependencies:

@@ -53,7 +53,7 @@ const props = withDefaults(
     loading: false,
     rows: () => [],
     count: undefined,
-  },
+  }
 );
 
 const emit = defineEmits<{
@@ -148,7 +148,7 @@ watch(
       }
     }
   },
-  { immediate: true },
+  { immediate: true }
 );
 
 // -
@@ -169,7 +169,7 @@ watch(selectAll, (val) => {
 
     arr.forEach((row) => {
       const found = valueModel.value.find((item) =>
-        item._id ? item._id === row._id : item.id === row.id,
+        item._id ? item._id === row._id : item.id === row.id
       );
 
       if (found) found.checked = val;
@@ -194,7 +194,7 @@ watch(
       _rows.value = val;
     }
   },
-  { deep: true, immediate: true },
+  { deep: true, immediate: true }
 );
 
 watch(
@@ -203,7 +203,7 @@ watch(
     if (props.static && val?.length) {
       val.forEach((row) => {
         const found = valueModel.value.find((item) =>
-          item._id ? item._id === row._id : item.id === row.id,
+          item._id ? item._id === row._id : item.id === row.id
         );
 
         if (found) found.checked = row.checked;
@@ -218,7 +218,7 @@ watch(
       selectedModel.value = val.filter((item) => item.checked);
     }
   },
-  { deep: true },
+  { deep: true }
 );
 
 // -
@@ -234,7 +234,7 @@ watchEffect(
       measure();
     }
   },
-  { flush: 'post' },
+  { flush: 'post' }
 );
 </script>
 
@@ -246,7 +246,7 @@ watchEffect(
           <slot name="thead"></slot>
 
           <tr :class="{ 'sticky top-0 z-10': stickyHeader }">
-            <Column v-if="selectable" :class="{ '!border-0': stickyHeader }">
+            <Column v-if="selectable">
               <div class="flex items-center">
                 <Checkbox v-model:value="selectAll" :indeterminate />
               </div>
@@ -257,7 +257,7 @@ watchEffect(
               :key="col.key"
               :class="[
                 {
-                  '!border-0': stickyHeader,
+                  '!p-0': col.sticky,
                   'sticky left-0 z-5': col.sticky === 'left',
                   'sticky right-0 z-5': col.sticky === 'right',
                 },
@@ -269,10 +269,9 @@ watchEffect(
                 class="gap-1"
                 :class="{
                   'cursor-pointer': typeof col.sortable === 'boolean' ? col.sortable : true,
-                  'border-r-2 border-transparent':
-                    hasScrollbar && !arrivedState.left && col.sticky === 'left',
-                  'border-l-2 border-transparent':
-                    hasScrollbar && !arrivedState.right && col.sticky === 'right',
+                  'border-slate-400/50 w-full px-4': col.sticky,
+                  'border-r-2': hasScrollbar && !arrivedState.left && col.sticky === 'left',
+                  'border-l-2': hasScrollbar && !arrivedState.right && col.sticky === 'right',
                 }"
                 @click="onColumnSort(col)"
               >

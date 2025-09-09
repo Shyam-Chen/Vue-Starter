@@ -59,7 +59,7 @@
     "vue-imask": "7.6.1",
     "vue-localer": "1.5.3",
     "vue-router": "4.4.5",
-    "vue-storer": "0.6.0",
+    "vue-storer": "0.7.1",
     "vuedraggable": "4.1.0"
   },
   "devDependencies": {

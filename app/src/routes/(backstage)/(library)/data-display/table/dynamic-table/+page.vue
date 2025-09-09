@@ -374,23 +374,61 @@ const flux = reactive({
     <div class="w-full bg-white dark:bg-slate-800 shadow-md rounded">
       <XTable :columns="flux.colspanTheadCols" :rows="flux.colspanTheadRows">
         <template #thead>
-          <tr class="bg-blueGray-200 dark:bg-blueGray-700 text-blueGray-500 dark:text-blueGray-200">
+          <XTable.Row>
             <XTable.Column colspan="2"></XTable.Column>
             <XTable.Column colspan="2" class="!text-center">2023</XTable.Column>
             <XTable.Column colspan="2" class="!text-center">2022</XTable.Column>
             <XTable.Column></XTable.Column>
-          </tr>
+          </XTable.Row>
         </template>
 
         <template #spanable>
-          <tr>
+          <XTable.Row>
             <XTable.Cell colspan="2">Sum:</XTable.Cell>
             <XTable.Cell class="!text-right">108</XTable.Cell>
             <XTable.Cell class="!text-right">154</XTable.Cell>
             <XTable.Cell class="!text-right">152</XTable.Cell>
             <XTable.Cell class="!text-right">198</XTable.Cell>
             <XTable.Cell></XTable.Cell>
-          </tr>
+          </XTable.Row>
+        </template>
+      </XTable>
+    </div>
+  </div>
+
+  <div class="flex flex-col border p-4 mb-4">
+    <div class="mb-2">Colspan (thead + stickyHeader) TODO:</div>
+
+    <div class="w-full bg-white dark:bg-slate-800 shadow-md rounded">
+      <XTable
+        stickyHeader
+        :columns="flux.colspanTheadCols"
+        :rows="[
+          ...flux.colspanTheadRows,
+          ...flux.colspanTheadRows,
+          ...flux.colspanTheadRows,
+          ...flux.colspanTheadRows,
+          ...flux.colspanTheadRows,
+        ]"
+      >
+        <template #thead>
+          <XTable.Row class="sticky top-0 z-10">
+            <XTable.Column colspan="2"></XTable.Column>
+            <XTable.Column colspan="2" class="!text-center">2023</XTable.Column>
+            <XTable.Column colspan="2" class="!text-center">2022</XTable.Column>
+            <XTable.Column></XTable.Column>
+          </XTable.Row>
+        </template>
+
+        <template #spanable>
+          <XTable.Row class="sticky bottom-0 z-10 bg-white">
+            <XTable.Cell colspan="2">Sum:</XTable.Cell>
+            <XTable.Cell class="!text-right">108</XTable.Cell>
+            <XTable.Cell class="!text-right">154</XTable.Cell>
+            <XTable.Cell class="!text-right">152</XTable.Cell>
+            <XTable.Cell class="!text-right">198</XTable.Cell>
+            <XTable.Cell></XTable.Cell>
+          </XTable.Row>
         </template>
       </XTable>
     </div>
