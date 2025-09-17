@@ -138,7 +138,7 @@ function changeLang(lang: string) {
 
 <template>
   <div class="h-full">
-    <header class="Topbar">
+    <header class="Header">
       <XButton
         icon="i-material-symbols-menu-rounded"
         variant="text"
@@ -340,7 +340,7 @@ function changeLang(lang: string) {
     </header>
 
     <nav
-      class="Sidebar"
+      class="Sider"
       :class="[state.navSidebar ? 'w-64' : 'w-22']"
       @mouseenter="state.navMode === 'slim' && (state.navSidebar = true)"
       @mouseleave="state.navMode === 'slim' && (state.navSidebar = false)"
@@ -349,11 +349,11 @@ function changeLang(lang: string) {
     </nav>
 
     <div class="flex flex-col h-full">
-      <main class="Page" :class="[state.navSidebar ? '' : '!xl:ps-30']">
+      <main class="Content" :class="[state.navSidebar ? '' : '!xl:ps-30']">
         <slot></slot>
       </main>
 
-      <footer class="Footer">
+      <footer class="Footer" :class="[state.navSidebar ? '' : '!xl:ps-30']">
         <div class="text-sm">Copyright © {{ new Date().getFullYear() }} Lorem Ipsum</div>
       </footer>
     </div>
@@ -385,24 +385,24 @@ function changeLang(lang: string) {
 </template>
 
 <style lang="scss" scoped>
-.Topbar {
+.Header {
   @apply fixed top-0 z-100;
   @apply flex items-center gap-3 md:gap-4 w-full px-4 md:px-6 py-4;
   @apply backdrop-blur bg-white/75 dark:bg-slate-900/75 border-b dark:border-slate-700 shadow;
 }
 
-.Sidebar {
+.Sider {
   @apply fixed start-0 top-18 bottom-0 z-99 overflow-y-auto;
   @apply transition-all hidden xl:block px-2 pt-4 pb-20;
   @apply bg-white dark:bg-slate-900 border-e dark:border-slate-700 shadow;
 }
 
-.Page {
+.Content {
   @apply container flex-1 self-center;
   @apply pt-22 md:pt-24 lg:pt-26;
-  @apply ps-4 md:ps-6 lg:ps-8 xl:ps-72;
-  @apply pb-4 md:pb-6 lg:pb-8;
   @apply pe-4 md:pe-6 lg:pe-8;
+  @apply pb-4 md:pb-6 lg:pb-8;
+  @apply ps-4 md:ps-6 lg:ps-8 xl:ps-72;
 }
 
 .Footer {
