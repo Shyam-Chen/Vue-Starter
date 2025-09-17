@@ -183,7 +183,7 @@ const events = ref(
   ].map((event, index) => ({
     ...event,
     className: `p-0 my-0.5 ${colorCycle[index % colorCycle.length]} text-white border-none`,
-  }))
+  })),
 );
 
 const title = ref('');

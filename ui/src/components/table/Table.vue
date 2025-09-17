@@ -53,7 +53,7 @@ const props = withDefaults(
     loading: false,
     rows: () => [],
     count: undefined,
-  }
+  },
 );
 
 const emit = defineEmits<{
@@ -148,7 +148,7 @@ watch(
       }
     }
   },
-  { immediate: true }
+  { immediate: true },
 );
 
 // -
@@ -169,7 +169,7 @@ watch(selectAll, (val) => {
 
     arr.forEach((row) => {
       const found = valueModel.value.find((item) =>
-        item._id ? item._id === row._id : item.id === row.id
+        item._id ? item._id === row._id : item.id === row.id,
       );
 
       if (found) found.checked = val;
@@ -194,7 +194,7 @@ watch(
       _rows.value = val;
     }
   },
-  { deep: true, immediate: true }
+  { deep: true, immediate: true },
 );
 
 watch(
@@ -203,7 +203,7 @@ watch(
     if (props.static && val?.length) {
       val.forEach((row) => {
         const found = valueModel.value.find((item) =>
-          item._id ? item._id === row._id : item.id === row.id
+          item._id ? item._id === row._id : item.id === row.id,
         );
 
         if (found) found.checked = row.checked;
@@ -218,7 +218,7 @@ watch(
       selectedModel.value = val.filter((item) => item.checked);
     }
   },
-  { deep: true }
+  { deep: true },
 );
 
 // -
@@ -234,7 +234,7 @@ watchEffect(
       measure();
     }
   },
-  { flush: 'post' }
+  { flush: 'post' },
 );
 </script>
 

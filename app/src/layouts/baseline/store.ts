@@ -8,6 +8,9 @@ export default defineStore('/layouts/baseline', () => {
   const state = reactive({
     userLoading: true,
     listOfLinks,
+
+    navMode: 'wide' as 'wide' | 'slim',
+    navSidebar: true,
   });
 
   const actions = readonly({

@@ -22,7 +22,6 @@ import useStore from './store';
 const router = useRouter();
 const route = useRoute();
 const localer = useLocaler();
-
 const colorMode = useColorMode({ emitAuto: true });
 const textDirection = useTextDirection();
 
@@ -140,10 +139,25 @@ function changeLang(lang: string) {
 <template>
   <div class="h-full">
     <header class="Topbar">
-      <div
-        class="i-material-symbols-menu-rounded w-7 h-7 cursor-pointer transition hover:scale-125 xl:hidden"
-        @click="flux.navDrawer = true"
-      ></div>
+      <XButton
+        icon="i-material-symbols-menu-rounded"
+        variant="text"
+        class="!xl:hidden"
+        @click="
+          flux.navDrawer = true;
+          state.navSidebar = true;
+        "
+      />
+
+      <XButton
+        :icon="state.navSidebar ? 'i-ic-round-chevron-left' : 'i-ic-round-chevron-right'"
+        variant="text"
+        class="!hidden !xl:flex"
+        @click="
+          state.navMode = state.navMode === 'wide' ? 'slim' : 'wide';
+          state.navSidebar = !state.navSidebar;
+        "
+      />
 
       <svg
         class="max-w-30vw cursor-pointer"
@@ -225,8 +239,8 @@ function changeLang(lang: string) {
                     colorMode === 'light'
                       ? 'i-material-symbols-light-mode-outline-rounded'
                       : colorMode === 'dark'
-                        ? 'i-material-symbols-dark-mode-outline-rounded'
-                        : 'i-material-symbols-desktop-windows-outline-rounded'
+                      ? 'i-material-symbols-dark-mode-outline-rounded'
+                      : 'i-material-symbols-desktop-windows-outline-rounded'
                   "
                   append="i-material-symbols-chevron-right-rounded"
                   @click="menu('appearance')"
@@ -325,12 +339,17 @@ function changeLang(lang: string) {
       </XPopover>
     </header>
 
-    <nav class="Sidebar">
+    <nav
+      class="Sidebar"
+      :class="[state.navSidebar ? 'w-64' : 'w-22']"
+      @mouseenter="state.navMode === 'slim' && (state.navSidebar = true)"
+      @mouseleave="state.navMode === 'slim' && (state.navSidebar = false)"
+    >
       <Navbar />
     </nav>
 
     <div class="flex flex-col h-full">
-      <main class="Page">
+      <main class="Page" :class="[state.navSidebar ? '' : '!xl:ps-30']">
         <slot></slot>
       </main>
 
@@ -374,7 +393,7 @@ function changeLang(lang: string) {
 
 .Sidebar {
   @apply fixed start-0 top-18 bottom-0 z-99 overflow-y-auto;
-  @apply w-64 hidden xl:block px-2 pt-4 pb-20;
+  @apply transition-all hidden xl:block px-2 pt-4 pb-20;
   @apply bg-white dark:bg-slate-900 border-e dark:border-slate-700 shadow;
 }
 

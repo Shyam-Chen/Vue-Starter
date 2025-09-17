@@ -32,7 +32,7 @@ withDefaults(
 const route = useRoute();
 const textDirection = useTextDirection({ observe: true });
 
-const { actions } = useStore();
+const { state, actions } = useStore();
 
 const flux = reactive({
   parent(sub: Link['sub']): any {
@@ -82,10 +82,16 @@ const hasPermission = true; // props?.permissions?.includes(getters.currentRole)
     ]"
     @click.stop="actions.changeStatus(name, level)"
   >
-    <div v-if="icon" :class="icon" class="w-6 h-6 ltr:mr-2 rtl:ml-2"></div>
-    <div class="flex-1" :class="{ 'ltr:pl-4 rtl:pr-4': level !== 1 }">{{ name }}</div>
-    <div v-if="!status" class="i-ic-baseline-arrow-drop-down w-6 h-6"></div>
-    <div v-if="status" class="i-ic-baseline-arrow-drop-up w-6 h-6"></div>
+    <div
+      v-if="icon"
+      :class="[icon, { 'ltr:mr-2 rtl:ml-2': state.navSidebar }]"
+      class="size-6 min-size-6"
+    ></div>
+    <div v-if="state.navSidebar" class="flex-1" :class="{ 'ltr:pl-4 rtl:pr-4': level !== 1 }">
+      {{ name }}
+    </div>
+    <div v-if="state.navSidebar && !status" class="i-ic-baseline-arrow-drop-down w-6 h-6"></div>
+    <div v-if="state.navSidebar && status" class="i-ic-baseline-arrow-drop-up w-6 h-6"></div>
   </div>
 
   <RouterLink
@@ -102,16 +108,22 @@ const hasPermission = true; // props?.permissions?.includes(getters.currentRole)
         : { 'padding-left': `${level}rem` },
     ]"
   >
-    <div v-if="icon" :class="icon" class="w-6 h-6 ltr:mr-2 rtl:ml-2"></div>
-    <div class="flex-1" :class="{ 'ltr:pl-4 rtl:pr-4': level !== 1 }">{{ name }}</div>
+    <div
+      v-if="icon"
+      :class="[icon, { 'ltr:mr-2 rtl:ml-2': state.navSidebar }]"
+      class="size-6 min-size-6"
+    ></div>
+    <div v-if="state.navSidebar" class="flex-1" :class="{ 'ltr:pl-4 rtl:pr-4': level !== 1 }">
+      {{ name }}
+    </div>
   </RouterLink>
 
   <div v-else class="mt-4 px-4 py-2 text-sm text-slate-400 dark:text-slate-500 uppercase font-bold">
-    {{ name }}
+    {{ state.navSidebar ? name : '' }}
   </div>
 
   <XCollapse>
-    <div v-show="sub.length && status">
+    <div v-if="state.navSidebar && sub.length && status">
       <NavLink
         v-for="(item, index) in sub"
         :key="index"
