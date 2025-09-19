@@ -242,7 +242,7 @@ watchEffect(
   <div class="relative">
     <div ref="tableWrapper" class="Table-Wrapper" :class="{ 'max-h-100': stickyHeader }">
       <table class="Table-Element">
-        <thead>
+        <thead :class="{ 'sticky top-0 z-10': stickyHeader }">
           <slot name="thead"></slot>
 
           <tr :class="{ 'sticky top-0 z-10': stickyHeader }">
