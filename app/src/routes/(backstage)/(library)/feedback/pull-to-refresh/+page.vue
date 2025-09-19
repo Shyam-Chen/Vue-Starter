@@ -23,6 +23,10 @@ const more = ref(false);
     <XBreadcrumb :items="[{ text: 'Library' }, { text: 'Feedback' }, { text: 'PullToRefresh' }]" />
 
     <h1 class="text-4xl font-extrabold my-4">PullToRefresh</h1>
+    <p class="my-4">
+      PullToRefresh is used to guide users to reload content through a pull-down gesture, designed
+      for tools encapsulated with web technologies such as Tauri, Capacitor, or Electron.
+    </p>
 
     <section class="my-8">
       <h2 class="text-3xl font-bold my-4">Basic</h2>

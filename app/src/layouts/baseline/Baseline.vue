@@ -150,7 +150,7 @@ function changeLang(lang: string) {
       />
 
       <XButton
-        :icon="state.navSidebar ? 'i-ic-round-chevron-left' : 'i-ic-round-chevron-right'"
+        :icon="state.navMode === 'wide' ? 'i-ic-round-first-page' : 'i-ic-round-last-page'"
         variant="text"
         class="!hidden !xl:flex"
         @click="

@@ -104,6 +104,10 @@ function onScroll(evt: Event) {
   <XBreadcrumb :items="[{ text: 'Playground' }, { text: 'Chatbot' }]" />
 
   <h1 class="text-4xl font-extrabold my-4">Chatbot</h1>
+  <p class="my-4">
+    This feature is not available for online demonstration. It requires configuring the
+    OPENAI_API_KEY on the backend and importing the knowledge base.
+  </p>
 
   <div class="Chatbot">
     <div class="flex flex-col justify-between gap-4 h-full">
