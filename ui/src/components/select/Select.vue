@@ -12,6 +12,8 @@ type Option = {
   label: string;
   value?: any;
   items?: Option[];
+  disabled?: boolean; // TODO
+  hidden?: boolean; // TODO
 };
 
 defineOptions({ inheritAttrs: false });

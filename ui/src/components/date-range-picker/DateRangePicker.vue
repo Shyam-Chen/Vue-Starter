@@ -64,7 +64,7 @@ type Day = {
   date: Date;
   outOfRange?: boolean;
   today?: boolean;
-  selected?: boolean;
+  selected?: boolean; // TODO: hover
   disabled?: boolean;
 };
 
