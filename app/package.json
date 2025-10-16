@@ -20,7 +20,7 @@
     "@vueuse/core": "13.9.0",
     "@x/ui": "workspace:*",
     "date-fns": "4.1.0",
-    "echarts": "5.5.1",
+    "echarts": "6.0.0",
     "exceljs": "4.4.0",
     "lodash": "4.17.21",
     "markdown-it": "14.1.0",

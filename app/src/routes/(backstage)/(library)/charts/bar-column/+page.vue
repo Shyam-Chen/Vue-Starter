@@ -20,6 +20,8 @@ const barChartOption = computed<EChartsOption>(() => {
     },
     grid: {
       top: '5%',
+      right: '5%',
+      left: '5%',
     },
     xAxis: {
       type: 'value',
@@ -58,7 +60,9 @@ const columnChartOption = computed<EChartsOption>(() => {
       data: ['2021', '2022'],
     },
     grid: {
-      top: '10%',
+      top: '5%',
+      right: '5%',
+      left: '5%',
     },
     xAxis: {
       type: 'category',

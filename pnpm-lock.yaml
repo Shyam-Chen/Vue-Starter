@@ -48,8 +48,8 @@ importers:
         specifier: 4.1.0
         version: 4.1.0
       echarts:
-        specifier: 5.5.1
-        version: 5.5.1
+        specifier: 6.0.0
+        version: 6.0.0
       exceljs:
         specifier: 4.4.0
         version: 4.4.0
@@ -275,8 +275,8 @@ importers:
         specifier: 4.1.0
         version: 4.1.0
       echarts:
-        specifier: 5.5.1
-        version: 5.5.1
+        specifier: 6.0.0
+        version: 6.0.0
       fetch-event-stream:
         specifier: 0.1.5
         version: 0.1.5
@@ -299,8 +299,8 @@ importers:
         specifier: 3.1.1
         version: 3.1.1
       vue-echarts:
-        specifier: 7.0.3
-        version: 7.0.3(@vue/runtime-core@3.5.22)(echarts@5.5.1)(vue@3.5.22(typescript@5.9.3))
+        specifier: 8.0.1
+        version: 8.0.1(echarts@6.0.0)(vue@3.5.22(typescript@5.9.3))
       vue-imask:
         specifier: 7.6.1
         version: 7.6.1(vue@3.5.22(typescript@5.9.3))
@@ -1761,8 +1761,8 @@ packages:
   easy-bem@1.1.1:
     resolution: {integrity: sha512-GJRqdiy2h+EXy6a8E6R+ubmqUM08BK0FWNq41k24fup6045biQ8NXxoXimiwegMQvFFV3t1emADdGNL1TlS61A==}
 
-  echarts@5.5.1:
-    resolution: {integrity: sha512-Fce8upazaAXUVUVsjgV6mBnGuqgO+JNDlcgF79Dksy4+wgGpQB2lmYoO4TSweFg/mZITdpGHomw/cNBJZj1icA==}
+  echarts@6.0.0:
+    resolution: {integrity: sha512-Tte/grDQRiETQP4xz3iZWSvoHrkCQtwqd6hs+mifXcjrCuo2iKWbajFObuLJVBlDIJlOzgQPd1hsaKt/3+OMkQ==}
 
   editorconfig@1.0.4:
     resolution: {integrity: sha512-L9Qe08KWTlqYMVvMcTIvMAdl1cDUubzRNYL+WfA4bLDMHe4nemKkpmYzkznE1FwLKu0EEmy6obgQKzMJrg4x9Q==}
@@ -3141,17 +3141,6 @@ packages:
   vue-component-type-helpers@3.1.1:
     resolution: {integrity: sha512-B0kHv7qX6E7+kdc5nsaqjdGZ1KwNKSUQDWGy7XkTYT7wFsOpkEyaJ1Vq79TjwrrtuLRgizrTV7PPuC4rRQo+vw==}
 
-  vue-demi@0.13.11:
-    resolution: {integrity: sha512-IR8HoEEGM65YY3ZJYAjMlKygDQn25D5ajNFNoKh9RSDMQtlzCxtfQjdQgv9jjK+m3377SsJXY8ysq8kLCZL25A==}
-    engines: {node: '>=12'}
-    hasBin: true
-    peerDependencies:
-      '@vue/composition-api': ^1.0.0-rc.1
-      vue: ^3.0.0-0 || ^2.6.0
-    peerDependenciesMeta:
-      '@vue/composition-api':
-        optional: true
-
   vue-demi@0.14.10:
     resolution: {integrity: sha512-nMZBOwuzabUO0nLgIcc6rycZEebF6eeUfaiQx9+WSk8e29IbLvPU9feI6tqW4kTo3hvoYAJkMh8n8D0fuISphg==}
     engines: {node: '>=12'}
@@ -3163,15 +3152,11 @@ packages:
       '@vue/composition-api':
         optional: true
 
-  vue-echarts@7.0.3:
-    resolution: {integrity: sha512-/jSxNwOsw5+dYAUcwSfkLwKPuzTQ0Cepz1LxCOpj2QcHrrmUa/Ql0eQqMmc1rTPQVrh2JQ29n2dhq75ZcHvRDw==}
+  vue-echarts@8.0.1:
+    resolution: {integrity: sha512-23rJTFLu1OUEGRWjJGmdGt8fP+8+ja1gVgzMYPIPaHWpXegcO1viIAaeu2H4QHESlVeHzUAHIxKXGrwjsyXAaA==}
     peerDependencies:
-      '@vue/runtime-core': ^3.0.0
-      echarts: ^5.5.1
-      vue: ^2.7.0 || ^3.1.1
-    peerDependenciesMeta:
-      '@vue/runtime-core':
-        optional: true
+      echarts: ^6.0.0
+      vue: ^3.3.0
 
   vue-flow-layout@0.2.0:
     resolution: {integrity: sha512-zKgsWWkXq0xrus7H4Mc+uFs1ESrmdTXlO0YNbR6wMdPaFvosL3fMB8N7uTV308UhGy9UvTrGhIY7mVz9eN+L0Q==}
@@ -3257,8 +3242,8 @@ packages:
     resolution: {integrity: sha512-9qv4rlDiopXg4E69k+vMHjNN63YFMe9sZMrdlvKnCjlCRWeCBswPPMPUfx+ipsAWq1LXHe70RcbaHdJJpS6hyQ==}
     engines: {node: '>= 10'}
 
-  zrender@5.6.0:
-    resolution: {integrity: sha512-uzgraf4njmmHAbEUxMJ8Oxg+P3fT04O+9p7gY+wJRVxo8Ge+KmYv0WJev945EH4wFuc4OY2NLXz46FZrWS9xJg==}
+  zrender@6.0.0:
+    resolution: {integrity: sha512-41dFXEEXuJpNecuUQq6JlbybmnHaqqpGlbH1yxnA5V9MMP4SbohSVZsJIwz+zdjQXSSlR1Vc34EgH1zxyTDvhg==}
 
   zwitch@2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
@@ -4652,10 +4637,10 @@ snapshots:
 
   easy-bem@1.1.1: {}
 
-  echarts@5.5.1:
+  echarts@6.0.0:
     dependencies:
       tslib: 2.3.0
-      zrender: 5.6.0
+      zrender: 6.0.0
 
   editorconfig@1.0.4:
     dependencies:
@@ -6157,23 +6142,14 @@ snapshots:
 
   vue-component-type-helpers@3.1.1: {}
 
-  vue-demi@0.13.11(vue@3.5.22(typescript@5.9.3)):
-    dependencies:
-      vue: 3.5.22(typescript@5.9.3)
-
   vue-demi@0.14.10(vue@3.5.22(typescript@5.9.3)):
     dependencies:
       vue: 3.5.22(typescript@5.9.3)
 
-  vue-echarts@7.0.3(@vue/runtime-core@3.5.22)(echarts@5.5.1)(vue@3.5.22(typescript@5.9.3)):
+  vue-echarts@8.0.1(echarts@6.0.0)(vue@3.5.22(typescript@5.9.3)):
     dependencies:
-      echarts: 5.5.1
+      echarts: 6.0.0
       vue: 3.5.22(typescript@5.9.3)
-      vue-demi: 0.13.11(vue@3.5.22(typescript@5.9.3))
-    optionalDependencies:
-      '@vue/runtime-core': 3.5.22
-    transitivePeerDependencies:
-      - '@vue/composition-api'
 
   vue-flow-layout@0.2.0: {}
 
@@ -6260,7 +6236,7 @@ snapshots:
       compress-commons: 4.1.2
       readable-stream: 3.6.2
 
-  zrender@5.6.0:
+  zrender@6.0.0:
     dependencies:
       tslib: 2.3.0
 

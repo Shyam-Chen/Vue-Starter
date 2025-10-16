@@ -56,10 +56,14 @@ const chart = computed<EChartsOption>(() => {
   return {
     legend: {
       data: ['2021', '2022'],
+      top: 'top',
     },
     grid: {
+      top: '10%',
+      right: '3%',
+      left: '3%',
       bottom: '12.5%',
-      containLabel: true,
+      outerBoundsMode: 'same',
     },
     xAxis: [
       {
