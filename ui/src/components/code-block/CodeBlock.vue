@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { useDark } from '@vueuse/core';
 import { createHighlighterCore } from 'shiki/core';
+import { createOnigurumaEngine } from 'shiki/engine/oniguruma';
 import { onBeforeMount } from 'vue';
 
 import Card from '../card/Card.vue';
@@ -32,7 +33,7 @@ onBeforeMount(async () => {
       import('shiki/langs/typescript.mjs'),
       import('shiki/langs/vue.mjs'),
     ],
-    loadWasm: import('shiki/wasm'),
+    engine: createOnigurumaEngine(() => import('shiki/wasm')),
   });
 });
 </script>

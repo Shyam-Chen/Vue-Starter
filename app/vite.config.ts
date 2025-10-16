@@ -5,7 +5,7 @@ import tailwindColors from 'tailwindcss/colors';
 import {
   presetIcons,
   presetTypography,
-  presetUno,
+  presetWind3,
   presetWebFonts,
   transformerDirectives,
 } from 'unocss';
@@ -22,7 +22,7 @@ export default defineConfig({
     vueRoutes(),
     unocss({
       presets: [
-        presetUno(),
+        presetWind3(),
         presetTypography(),
         presetIcons(),
         presetWebFonts({
@@ -50,14 +50,6 @@ export default defineConfig({
       '~': path.resolve(__dirname, 'src'),
       '@': path.resolve(__dirname, 'src'),
       mock: path.resolve(__dirname, '../mock/src/routes'),
-    },
-    mainFields: ['module'],
-  },
-  css: {
-    preprocessorOptions: {
-      scss: {
-        api: 'modern',
-      },
     },
   },
   server: {
