@@ -4,6 +4,9 @@
     "includes": ["./app/src/**", "./ui/src/**"]
   },
   "linter": {
+    "domains": {
+      "vue": "recommended"
+    },
     "rules": {
       "suspicious": {
         "noAssignInExpressions": "off",
