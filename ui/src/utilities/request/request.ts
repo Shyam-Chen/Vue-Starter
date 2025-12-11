@@ -51,6 +51,15 @@ export default async <T>(request: FetchRequest, options?: FetchOptions) => {
       return response as FetchResponse<T>;
     }
 
+    if (!fetchError.response) {
+      const notification = useNotification();
+
+      notification.actions.add({
+        message: 'Something went wrong...',
+        color: 'danger',
+      });
+    }
+
     return fetchError.response as FetchResponse<T>;
   }
 };
