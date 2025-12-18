@@ -8,6 +8,7 @@ import TextField from '../text-field/TextField.vue';
 
 const props = defineProps<{
   modelValue?: boolean;
+  label?: string;
   expected?: string;
   received?: string;
   loading?: boolean;
@@ -55,7 +56,10 @@ watch(
     <div class="space-y-4">
       <div>
         {{
-          locale.confirmDeletionContent || 'Once deleted, the data must be re-created if needed.'
+          label
+            ? `Are you sure you want to delete this "${label}: ${received}"?`
+            : locale.confirmDeletionContent ||
+              'Once deleted, the data must be re-created if needed.'
         }}
       </div>
 
