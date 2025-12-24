@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+// TODO: Refactor using Motion Vue
 import { onMounted, onUnmounted, useTemplateRef } from 'vue';
 
 const stackCards = useTemplateRef('stackCards');
@@ -158,8 +159,12 @@ onUnmounted(() => {
 
 <template>
   <!-- Hero -->
-  <div class="h-screen flex flex-col items-center justify-center text-center p-8">
-    <h1 class="text-4xl md:text-6xl font-black mb-4 tracking-tighter text-slate-900">
+  <div
+    class="h-screen flex flex-col items-center justify-center text-center p-8"
+  >
+    <h1
+      class="text-4xl md:text-6xl font-black mb-4 tracking-tighter text-slate-900"
+    >
       Stacking Cards
     </h1>
     <p class="text-lg text-slate-500">Scroll down to see the effect.</p>
@@ -193,9 +198,12 @@ onUnmounted(() => {
             <path d="m13.8 13a4 4 0 0 1 0 7.2" />
           </svg>
         </div>
-        <h2 class="text-4xl md:text-5xl font-bold mb-4 tracking-tight">Modern Design</h2>
+        <h2 class="text-4xl md:text-5xl font-bold mb-4 tracking-tight">
+          Modern Design
+        </h2>
         <p class="text-xl md:text-2xl opacity-90 max-w-2xl font-light">
-          Craft beautiful user interfaces with utility-first CSS and component-driven architecture.
+          Craft beautiful user interfaces with utility-first CSS and
+          component-driven architecture.
         </p>
       </div>
     </li>
@@ -227,11 +235,16 @@ onUnmounted(() => {
             <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
           </svg>
         </div>
-        <h2 class="relative z-10 text-4xl md:text-5xl font-bold mb-4 text-white tracking-tight">
+        <h2
+          class="relative z-10 text-4xl md:text-5xl font-bold mb-4 text-white tracking-tight"
+        >
           High Performance
         </h2>
-        <p class="relative z-10 text-xl md:text-2xl text-slate-400 max-w-2xl font-light">
-          Powered by Vue 3's reactive core for silky smooth animations and instant feedback.
+        <p
+          class="relative z-10 text-xl md:text-2xl text-slate-400 max-w-2xl font-light"
+        >
+          Powered by Vue 3's reactive core for silky smooth animations and
+          instant feedback.
         </p>
       </div>
     </li>
@@ -255,15 +268,20 @@ onUnmounted(() => {
             stroke-linejoin="round"
             class="w-12 h-12 text-blue-600"
           >
-            <path d="M21 11V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h6" />
+            <path
+              d="M21 11V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h6"
+            />
             <path d="m12 12 4 10 1.7-4.3L22 16Z" />
           </svg>
         </div>
-        <h2 class="text-4xl md:text-5xl font-bold mb-4 text-slate-900 tracking-tight">
+        <h2
+          class="text-4xl md:text-5xl font-bold mb-4 text-slate-900 tracking-tight"
+        >
           Interactive
         </h2>
         <p class="text-xl md:text-2xl text-slate-600 max-w-2xl mb-8 font-light">
-          Engage users with scroll-driven interactions that bring your content to life.
+          Engage users with scroll-driven interactions that bring your content
+          to life.
         </p>
         <button
           class="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-full transition-colors shadow-lg shadow-blue-600/30"

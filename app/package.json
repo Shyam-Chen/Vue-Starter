@@ -24,6 +24,7 @@
     "exceljs": "4.4.0",
     "lodash": "4.17.21",
     "markdown-it": "14.1.0",
+    "motion-v": "^1.7.4",
     "nprogress": "0.2.0",
     "ofetch": "1.4.1",
     "valibot": "1.1.0",
