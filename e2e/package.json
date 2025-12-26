@@ -2,8 +2,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "e2e": "playwright test",
-    "playwright": "playwright"
+    "e2e": "playwright test"
   },
   "devDependencies": {
     "@playwright/test": "1.56.1"

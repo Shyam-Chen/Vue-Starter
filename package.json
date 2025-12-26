@@ -9,10 +9,9 @@
     "lint": "biome check --write",
     "check": "pnpm -C app check && pnpm -C ui check",
     "test": "pnpm -C app test",
-    "e2e": "pnpm -C e2e e2e",
-    "playwright": "pnpm -C e2e playwright"
+    "e2e": "pnpm -C e2e e2e"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.3.8"
+    "@biomejs/biome": "2.3.10"
   }
 }

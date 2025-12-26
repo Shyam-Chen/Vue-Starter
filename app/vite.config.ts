@@ -5,8 +5,8 @@ import tailwindColors from 'tailwindcss/colors';
 import {
   presetIcons,
   presetTypography,
-  presetWind3,
   presetWebFonts,
+  presetWind3,
   transformerDirectives,
 } from 'unocss';
 import unocss from 'unocss/vite';

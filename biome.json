@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
   "files": {
-    "includes": ["./app/src/**", "./ui/src/**"]
+    "includes": ["**", "!**/dist", "!**/coverage", "!**/test-results"]
   },
   "linter": {
     "domains": {
