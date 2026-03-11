@@ -1,5 +1,6 @@
 import { expect, test } from '@playwright/test';
 import signIn from 'mock/auth/sign-in/response';
+import me from 'mock/auth/user/response';
 
 test('Sign-in', async ({ page }) => {
   await page.goto('/sign-in', { waitUntil: 'networkidle' });
@@ -10,6 +11,13 @@ test('Sign-in', async ({ page }) => {
     route.fulfill({
       status: 200,
       body: JSON.stringify(signIn.successful),
+    }),
+  );
+
+  await page.route('**/api/auth/user', (route) =>
+    route.fulfill({
+      status: 200,
+      body: JSON.stringify(me.admin),
     }),
   );
 
