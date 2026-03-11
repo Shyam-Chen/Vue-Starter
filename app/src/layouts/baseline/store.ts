@@ -7,6 +7,7 @@ import listOfLinks from './links-list';
 export default defineStore('/layouts/baseline', () => {
   const state = reactive({
     userLoading: true,
+    user: {} as any,
     listOfLinks,
 
     navMode: 'wide' as 'wide' | 'slim',

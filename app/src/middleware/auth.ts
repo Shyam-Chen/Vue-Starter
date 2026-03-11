@@ -1,7 +1,7 @@
-// import { request } from '@x/ui';
+import { request } from '@x/ui';
 import type { NavigationGuard } from 'vue-router';
 
-// import { Baseline, useBaselineStore } from '~/layouts/baseline';
+import { useBaselineStore } from '~/layouts/baseline';
 
 export default (async () => {
   if (!localStorage.getItem('accessToken')) {
@@ -14,14 +14,14 @@ export default (async () => {
     return { path: '/sign-in' };
   }
 
-  // const response = await request('/auth/user', { method: 'GET' });
+  const response = await request('/auth/user', { method: 'GET' });
 
-  // if (!response.ok) {
-  //   return { path: '/sign-in' };
-  // }
+  if (!response.ok) {
+    return { path: '/sign-in' };
+  }
 
-  // const baselineStore = useBaselineStore();
-  // baselineStore.state.user = response._data;
+  const baselineStore = useBaselineStore();
+  baselineStore.state.user = response._data;
 
   return true;
 }) as NavigationGuard;

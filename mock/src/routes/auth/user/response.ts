@@ -1,4 +1,5 @@
 export default {
+  superAdmin: {},
   admin: {
     message: 'OK',
     _id: '6462f6b2c0ae46c0c9fbca5e',
@@ -18,4 +19,6 @@ export default {
       },
     ],
   },
+  manager: {},
+  user: {},
 };

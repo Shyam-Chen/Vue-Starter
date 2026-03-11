@@ -9,6 +9,9 @@
 > [!NOTE]
 > Plan to adopt Vue v3.6 with Vapor Mode and Tailwind CSS v4.x for development.
 
+> [!IMPORTANT]
+> The default version will use NaiveUI (`naive-ui`) and UnoCSS (`presetWind4`).
+
 ## Table of Contents
 
 - [Getting Started](#getting-started)
