@@ -11,9 +11,13 @@ const props = defineProps<{
   disabled?: boolean;
   invalid?: boolean | string;
   help?: string;
+  clearable?: boolean;
 }>();
 
-const emit = defineEmits<(evt: 'change', val: Event) => void>();
+const emit = defineEmits<{
+  (evt: 'change', val: Event): void;
+  (evt: 'clear'): void;
+}>();
 
 const placeholderRef = toRef(props, 'placeholder', 'Choose a file');
 const fileInput = ref<HTMLInputElement>();
@@ -27,10 +31,15 @@ const flux = reactive({
     emit('change', event);
   },
 });
+
+function onClear() {
+  flux.fileNames = [];
+  emit('clear');
+}
 </script>
 
 <template>
-  <FormControl v-slot="{ id }" :label :required :invalid :help>
+  <FormControl v-slot="{ id }" :label :required :invalid :help class="FileInput">
     <label
       :for="id"
       class="FileInput-Input"
@@ -50,6 +59,13 @@ const flux = reactive({
       <div class="ms-1">
         <div class="i-material-symbols-upload-rounded w-5 h-5"></div>
       </div>
+
+      <div
+        v-if="clearable && flux.fileNames?.length"
+        class="i-material-symbols-close-small-rounded FileInput-Clear"
+        :class="{ disabled }"
+        @click.prevent.stop="onClear"
+      ></div>
     </label>
 
     <input
@@ -67,6 +83,7 @@ const flux = reactive({
 
 <style lang="scss" scoped>
 .FileInput-Input {
+  @apply relative;
   @apply w-full flex justify-between items-center border rounded px-3 py-2 leading-tight;
   @apply bg-white dark:bg-slate-800 border-slate-500 dark:border-slate-400;
   @apply placeholder:text-slate-400 dark:placeholder:text-slate-500;
@@ -79,6 +96,15 @@ const flux = reactive({
 
   &.disabled {
     @apply cursor-not-allowed opacity-60;
+  }
+}
+
+.FileInput-Clear {
+  @apply absolute end-8 top-1/2 z-99 size-5;
+  @apply -translate-y-1/2 cursor-pointer transition-transform hover:scale-125;
+
+  &.disabled {
+    @apply hidden;
   }
 }
 </style>

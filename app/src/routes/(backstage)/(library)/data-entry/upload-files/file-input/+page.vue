@@ -3,10 +3,15 @@ import { request, XBreadcrumb, XCard, XFileInput } from '@x/ui';
 import { reactive } from 'vue';
 
 const flux = reactive({
+  file: null as File | null,
   changeFile(event: Event) {
     const el = event.target as HTMLInputElement;
     const file = el?.files?.[0];
     console.log(file);
+    if (file) flux.file = file;
+  },
+  clearFile() {
+    flux.file = null;
   },
   async fileUploads(event: Event) {
     const el = event.target as HTMLInputElement;
@@ -51,7 +56,16 @@ const flux = reactive({
     <h2 class="text-3xl font-bold my-4">Basic</h2>
 
     <XCard>
-      <XFileInput label="Example label" @change="flux.changeFile" />
+      <div class="grid gap-4">
+        <XFileInput label="Example label" @change="flux.changeFile" />
+        <XFileInput
+          label="With clearable"
+          clearable
+          @change="flux.changeFile"
+          @clear="flux.clearFile"
+        />
+        <pre>File = {{ flux.file || 'null' }}</pre>
+      </div>
     </XCard>
   </section>
 
