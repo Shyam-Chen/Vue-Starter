@@ -12,6 +12,6 @@
     "e2e": "pnpm -C e2e e2e"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.3.10"
+    "@biomejs/biome": "2.4.15"
   }
 }

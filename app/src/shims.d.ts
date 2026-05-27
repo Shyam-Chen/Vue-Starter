@@ -1,7 +1,7 @@
 /// <reference types="vite-plugin-vue-routes/client" />
 
-import type { Router } from 'vue-router';
 import type { Localer } from 'vue-localer';
+import type { Router } from 'vue-router';
 
 declare global {
   interface Window {
