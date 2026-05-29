@@ -1,5 +1,5 @@
 <template>
-  <div class="animate-pulse bg-slate-300/90 dark:bg-slate-600/90 rounded">
+  <div class="animate-pulse bg-slate-300/90 dark:bg-slate-600/90 rounded-sm">
     <slot></slot>
   </div>
 </template>

@@ -198,7 +198,7 @@ useScrollParent(
         <div
           v-show="flux.show"
           ref="autocompletePane"
-          class="select-section shadow-lg rounded bg-white dark:bg-slate-800"
+          class="select-section shadow-lg rounded-sm bg-white dark:bg-slate-800"
           :class="{
             'select-section-up': flux.direction === 'up',
           }"

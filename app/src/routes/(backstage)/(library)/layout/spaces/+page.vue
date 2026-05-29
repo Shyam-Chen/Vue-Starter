@@ -15,7 +15,7 @@ import { XBreadcrumb, XCard, XCode } from '@x/ui';
         <div
           v-for="num in 5"
           :key="num"
-          class="inline-block px-4 py-2 rounded shadow bg-white dark:bg-slate-700"
+          class="inline-block px-4 py-2 rounded-sm shadow-sm bg-white dark:bg-slate-700"
         >
           {{ num }}
         </div>
@@ -31,7 +31,7 @@ import { XBreadcrumb, XCard, XCode } from '@x/ui';
         <div
           v-for="num in 5"
           :key="num"
-          class="px-4 py-2 rounded shadow bg-white dark:bg-slate-700"
+          class="px-4 py-2 rounded-sm shadow-sm bg-white dark:bg-slate-700"
         >
           {{ num }}
         </div>

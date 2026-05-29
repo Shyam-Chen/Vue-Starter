@@ -164,7 +164,7 @@ function keyboard(evt: KeyboardEvent) {
                 v-for="year in yearRange"
                 :key="year"
                 :value="year"
-                class="flex justify-center items-center hover:bg-slate-200 dark:hover:bg-slate-600 rounded text-sm cursor-pointer"
+                class="flex justify-center items-center hover:bg-slate-200 dark:hover:bg-slate-600 rounded-sm text-sm cursor-pointer"
                 :class="{
                   'ring-1 ring-primary-500': year === d.getYear(now),
                   'text-white bg-primary-600 !hover:bg-primary-700':

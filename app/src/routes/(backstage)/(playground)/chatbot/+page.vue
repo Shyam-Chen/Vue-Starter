@@ -149,7 +149,7 @@ function onScroll(evt: Event) {
 
 <style lang="scss" scoped>
 .Chatbot {
-  @apply p-4 lg:p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700;
+  @apply p-4 lg:p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700;
   @apply my-8 h-[calc(100dvh-15.25rem)] md:h-[calc(100dvh-16.25rem)] lg:h-[calc(100dvh-17.25rem)];
 }
 

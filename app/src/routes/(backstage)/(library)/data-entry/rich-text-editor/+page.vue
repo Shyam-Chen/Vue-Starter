@@ -35,7 +35,7 @@ function setContent() {
 
     <XCard>
       <XRichTextEditor v-model="content" />
-      <div class="border rounded p-4 my-4">{{ content }}</div>
+      <div class="border rounded-sm p-4 my-4">{{ content }}</div>
       <XButton @click="setContent">Set Content</XButton>
     </XCard>
   </section>

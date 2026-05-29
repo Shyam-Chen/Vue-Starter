@@ -19,7 +19,7 @@ import { XBreadcrumb, XCard } from '@x/ui';
       </p>
 
       <div class="relative inline-flex items-center justify-center w-full">
-        <hr class="w-64 h-1 my-8 bg-gray-200 border-0 rounded dark:bg-gray-700" />
+        <hr class="w-64 h-1 my-8 bg-gray-200 border-0 rounded-sm dark:bg-gray-700" />
 
         <div class="absolute px-4 -translate-x-1/2 bg-white left-1/2 dark:bg-gray-800">
           <div class="i-bi-quote w-5 h-5 text-gray-700 dark:text-gray-300"></div>

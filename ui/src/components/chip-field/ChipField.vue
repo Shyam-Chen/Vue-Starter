@@ -141,7 +141,7 @@ defineExpose({
           ref="input"
           v-model="flux.text"
           v-bind="$attrs"
-          class="ChipField-Input outline-none w-fit bg-inherit"
+          class="ChipField-Input outline-hidden w-fit bg-inherit"
           :class="{ 'cursor-not-allowed': disabled }"
           :placeholder
           :disabled
@@ -160,7 +160,7 @@ defineExpose({
 
 <style lang="scss" scoped>
 .ChipField {
-  @apply relative flex flex-wrap gap-1 bg-white dark:bg-slate-800 border border-slate-400 rounded w-full px-3 leading-tight;
+  @apply relative flex flex-wrap gap-1 bg-white dark:bg-slate-800 border border-slate-400 rounded-sm w-full px-3 leading-tight;
 
   &.focused {
     @apply ring-2 ring-primary-500/50 border-primary-400;

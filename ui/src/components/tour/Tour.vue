@@ -94,7 +94,7 @@ onUnmounted(() => {
   <div
     v-if="openModel"
     ref="tour"
-    class="fixed z-102 pointer-events-none rounded transition-all border-2 border-primary-600"
+    class="fixed z-102 pointer-events-none rounded-sm transition-all border-2 border-primary-600"
     style="box-shadow: rgba(100, 116, 139, 0.5) 0 0 0 3333px"
   ></div>
 

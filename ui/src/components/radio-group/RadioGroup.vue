@@ -65,7 +65,7 @@ const emit = defineEmits<(evt: 'change', val: unknown) => void>();
 .RadioGroup-Input {
   @apply appearance-none size-5 rounded-full border overflow-hidden;
   @apply bg-white dark:bg-slate-800 border-slate-500 dark:border-slate-400;
-  @apply focus:outline-none focus:ring-2 focus:ring-primary-500/40 focus:border-primary-400;
+  @apply focus:outline-hidden focus:ring-2 focus:ring-primary-500/40 focus:border-primary-400;
 
   &.invalid {
     @apply border-red-500 dark:border-red-500;

@@ -90,7 +90,7 @@ const performanceOption = computed<EChartsOption>(() => {
 
   <div class="grid grid-cols-4 md:grid-cols-8 gap-4 my-8">
     <div
-      class="col-span-4 md:col-span-2 relative flex flex-col min-w-0 break-words bg-white dark:bg-slate-800 rounded xl:mb-0 shadow-lg"
+      class="col-span-4 md:col-span-2 relative flex flex-col min-w-0 break-words bg-white dark:bg-slate-800 rounded-sm xl:mb-0 shadow-lg"
     >
       <div class="flex-auto p-4">
         <div class="flex flex-wrap">
@@ -117,7 +117,7 @@ const performanceOption = computed<EChartsOption>(() => {
     </div>
 
     <div
-      class="col-span-4 md:col-span-2 relative flex flex-col min-w-0 break-words bg-white dark:bg-slate-800 rounded xl:mb-0 shadow-lg"
+      class="col-span-4 md:col-span-2 relative flex flex-col min-w-0 break-words bg-white dark:bg-slate-800 rounded-sm xl:mb-0 shadow-lg"
     >
       <div class="flex-auto p-4">
         <div class="flex flex-wrap">
@@ -144,7 +144,7 @@ const performanceOption = computed<EChartsOption>(() => {
     </div>
 
     <div
-      class="col-span-4 md:col-span-2 relative flex flex-col min-w-0 break-words bg-white dark:bg-slate-800 rounded xl:mb-0 shadow-lg"
+      class="col-span-4 md:col-span-2 relative flex flex-col min-w-0 break-words bg-white dark:bg-slate-800 rounded-sm xl:mb-0 shadow-lg"
     >
       <div class="flex-auto p-4">
         <div class="flex flex-wrap">
@@ -171,7 +171,7 @@ const performanceOption = computed<EChartsOption>(() => {
     </div>
 
     <div
-      class="col-span-4 md:col-span-2 relative flex flex-col min-w-0 break-words bg-white dark:bg-slate-800 rounded xl:mb-0 shadow-lg"
+      class="col-span-4 md:col-span-2 relative flex flex-col min-w-0 break-words bg-white dark:bg-slate-800 rounded-sm xl:mb-0 shadow-lg"
     >
       <div class="flex-auto p-4">
         <div class="flex flex-wrap">
@@ -198,7 +198,7 @@ const performanceOption = computed<EChartsOption>(() => {
     </div>
 
     <div
-      class="col-span-4 md:col-span-5 relative flex flex-col min-w-0 break-words bg-white dark:bg-slate-800 w-full shadow-lg rounded"
+      class="col-span-4 md:col-span-5 relative flex flex-col min-w-0 break-words bg-white dark:bg-slate-800 w-full shadow-lg rounded-sm"
     >
       <div class="rounded-t mb-0 px-4 py-3 bg-transparent">
         <div class="flex flex-wrap items-center">
@@ -215,7 +215,7 @@ const performanceOption = computed<EChartsOption>(() => {
     </div>
 
     <div
-      class="col-span-4 md:col-span-3 relative flex flex-col min-w-0 break-words bg-white dark:bg-slate-800 w-full shadow-lg rounded"
+      class="col-span-4 md:col-span-3 relative flex flex-col min-w-0 break-words bg-white dark:bg-slate-800 w-full shadow-lg rounded-sm"
     >
       <div class="rounded-t mb-0 px-4 py-3 bg-transparent">
         <div class="flex flex-wrap items-center">
@@ -232,7 +232,7 @@ const performanceOption = computed<EChartsOption>(() => {
     </div>
 
     <div
-      class="col-span-4 md:col-span-5 relative flex flex-col min-w-0 break-words bg-white dark:bg-slate-800 w-full shadow-lg rounded"
+      class="col-span-4 md:col-span-5 relative flex flex-col min-w-0 break-words bg-white dark:bg-slate-800 w-full shadow-lg rounded-sm"
     >
       <div class="rounded-t mb-0 px-4 py-3 border-0">
         <div class="flex flex-wrap items-center">
@@ -243,7 +243,7 @@ const performanceOption = computed<EChartsOption>(() => {
             class="relative w-full px-4 max-w-full flex-grow flex-1 ltr:text-right rtl:text-left"
           >
             <button
-              class="bg-indigo-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+              class="bg-indigo-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded-sm outline-hidden focus:outline-hidden mr-1 mb-1 ease-linear transition-all duration-150"
               type="button"
             >
               See all
@@ -399,7 +399,7 @@ const performanceOption = computed<EChartsOption>(() => {
     </div>
 
     <div
-      class="col-span-4 md:col-span-3 relative flex flex-col min-w-0 break-words bg-white dark:bg-slate-800 w-full shadow-lg rounded"
+      class="col-span-4 md:col-span-3 relative flex flex-col min-w-0 break-words bg-white dark:bg-slate-800 w-full shadow-lg rounded-sm"
     >
       <div class="rounded-t mb-0 px-4 py-3 border-0">
         <div class="flex flex-wrap items-center">
@@ -410,7 +410,7 @@ const performanceOption = computed<EChartsOption>(() => {
             class="relative w-full px-4 max-w-full flex-grow flex-1 ltr:text-right rtl:text-left"
           >
             <button
-              class="bg-indigo-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+              class="bg-indigo-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded-sm outline-hidden focus:outline-hidden mr-1 mb-1 ease-linear transition-all duration-150"
               type="button"
             >
               See all
@@ -455,7 +455,7 @@ const performanceOption = computed<EChartsOption>(() => {
                 <div class="flex items-center">
                   <span class="mr-2">60%</span>
                   <div class="relative w-full">
-                    <div class="overflow-hidden h-2 text-xs flex rounded bg-red-200">
+                    <div class="overflow-hidden h-2 text-xs flex rounded-sm bg-red-200">
                       <div
                         style="width: 60%"
                         class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-red-500"
@@ -482,7 +482,7 @@ const performanceOption = computed<EChartsOption>(() => {
                 <div class="flex items-center">
                   <span class="mr-2">70%</span>
                   <div class="relative w-full">
-                    <div class="overflow-hidden h-2 text-xs flex rounded bg-emerald-200">
+                    <div class="overflow-hidden h-2 text-xs flex rounded-sm bg-emerald-200">
                       <div
                         style="width: 70%"
                         class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-emerald-500"
@@ -509,7 +509,7 @@ const performanceOption = computed<EChartsOption>(() => {
                 <div class="flex items-center">
                   <span class="mr-2">80%</span>
                   <div class="relative w-full">
-                    <div class="overflow-hidden h-2 text-xs flex rounded bg-purple-200">
+                    <div class="overflow-hidden h-2 text-xs flex rounded-sm bg-purple-200">
                       <div
                         style="width: 80%"
                         class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-purple-500"
@@ -536,7 +536,7 @@ const performanceOption = computed<EChartsOption>(() => {
                 <div class="flex items-center">
                   <span class="mr-2">75%</span>
                   <div class="relative w-full">
-                    <div class="overflow-hidden h-2 text-xs flex rounded bg-lightBlue-200">
+                    <div class="overflow-hidden h-2 text-xs flex rounded-sm bg-lightBlue-200">
                       <div
                         style="width: 75%"
                         class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-lightBlue-500"
@@ -563,7 +563,7 @@ const performanceOption = computed<EChartsOption>(() => {
                 <div class="flex items-center">
                   <span class="mr-2">30%</span>
                   <div class="relative w-full">
-                    <div class="overflow-hidden h-2 text-xs flex rounded bg-orange-200">
+                    <div class="overflow-hidden h-2 text-xs flex rounded-sm bg-orange-200">
                       <div
                         style="width: 30%"
                         class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-emerald-500"

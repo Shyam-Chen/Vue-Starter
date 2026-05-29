@@ -84,10 +84,10 @@ function onClear() {
 <style lang="scss" scoped>
 .FileInput-Input {
   @apply relative;
-  @apply w-full flex justify-between items-center border rounded px-3 py-2 leading-tight;
+  @apply w-full flex justify-between items-center border rounded-sm px-3 py-2 leading-tight;
   @apply bg-white dark:bg-slate-800 border-slate-500 dark:border-slate-400;
   @apply placeholder:text-slate-400 dark:placeholder:text-slate-500;
-  @apply focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-primary-400;
+  @apply focus:outline-hidden focus:ring-2 focus:ring-primary-500/50 focus:border-primary-400;
 
   &.invalid {
     @apply border-red-500 dark:border-red-500;

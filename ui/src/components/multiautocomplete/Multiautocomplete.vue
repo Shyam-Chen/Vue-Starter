@@ -90,7 +90,7 @@ onClickOutside(target, () => {
 
 <style lang="scss" scoped>
 .pane {
-  @apply fixed z-101 shadow-lg rounded;
+  @apply fixed z-101 shadow-lg rounded-sm;
   @apply bg-white dark:bg-slate-800;
 
   transform: translateY(0) translateY(8px) translateY(0);

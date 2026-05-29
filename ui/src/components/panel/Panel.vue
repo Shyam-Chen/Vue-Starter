@@ -60,7 +60,7 @@ const _status = computed(() =>
 
 .Panel-Header {
   @apply flex items-center px-4 lg:px-6 py-3 lg:py-4;
-  @apply text-zinc-600 dark:text-zinc-400 cursor-pointer shadow bg-white dark:bg-slate-800 transition rounded-md;
+  @apply text-zinc-600 dark:text-zinc-400 cursor-pointer shadow-sm bg-white dark:bg-slate-800 transition rounded-md;
 
   &.active {
     @apply bg-gray-200 dark:bg-gray-700 rounded-t-md rounded-b-0;
@@ -68,6 +68,6 @@ const _status = computed(() =>
 }
 
 .Panel-Body {
-  @apply rounded-b-md shadow bg-white dark:bg-slate-800;
+  @apply rounded-b-md shadow-sm bg-white dark:bg-slate-800;
 }
 </style>

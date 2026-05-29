@@ -40,7 +40,7 @@ const emit = defineEmits<(evt: 'close') => void>();
 
 <style lang="scss" scoped>
 .Alert {
-  @apply flex justify-between p-4 rounded-lg border border-current backdrop-blur-2xl;
+  @apply flex justify-between p-4 rounded-lg border border-current backdrop-blur-sm-2xl;
 
   &.primary {
     @apply text-primary-800 bg-primary-50/80;

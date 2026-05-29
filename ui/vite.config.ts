@@ -1,7 +1,7 @@
 import vue from '@vitejs/plugin-vue';
 import envify from 'process-envify';
 import tailwindColors from 'tailwindcss/colors';
-import { presetIcons, presetWind3, transformerDirectives } from 'unocss';
+import { presetIcons, presetWind4, transformerDirectives } from 'unocss';
 import unocss from 'unocss/vite';
 import { defineConfig } from 'vite';
 
@@ -10,7 +10,7 @@ export default defineConfig({
   plugins: [
     vue(),
     unocss({
-      presets: [presetWind3(), presetIcons()],
+      presets: [presetWind4(), presetIcons()],
       transformers: [transformerDirectives({ enforce: 'pre' })],
       theme: {
         colors: {

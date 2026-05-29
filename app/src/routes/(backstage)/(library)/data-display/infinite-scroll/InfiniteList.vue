@@ -56,7 +56,7 @@ async function loadMore(currentPage = 1, rowsPerPage = 20) {
       <div
         v-for="item in data"
         :key="item.title"
-        class="flex items-center px-4 py-2 hover:text-primary-500 dark:hover:text-primary-100 hover:bg-primary-100 dark:hover:bg-primary-600 hover:rounded"
+        class="flex items-center px-4 py-2 hover:text-primary-500 dark:hover:text-primary-100 hover:bg-primary-100 dark:hover:bg-primary-600 hover:rounded-sm"
       >
         {{ item.title }}
       </div>

@@ -8,7 +8,7 @@ defineProps<{
 <template>
   <div class="flex items-center">
     <div
-      class="border rounded text-xs px-2.5 py-0.5"
+      class="border rounded-sm text-xs px-2.5 py-0.5"
       :class="{
         'text-primary-500 border-primary-500 bg-primary-50': color === 'primary' || !color,
         'text-secondary-500 border-secondary-500': color === 'secondary',

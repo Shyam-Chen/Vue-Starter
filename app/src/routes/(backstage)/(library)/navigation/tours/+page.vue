@@ -61,7 +61,7 @@ const steps = computed<ComponentProps<typeof XTour>['steps']>(() => [
 
   <div
     ref="el2"
-    class="flex items-center justify-center w-full h-48 bg-gray-300 rounded dark:bg-gray-700 animate-pulse"
+    class="flex items-center justify-center w-full h-48 bg-gray-300 rounded-sm dark:bg-gray-700 animate-pulse"
   >
     <div class="i-bi-image-alt w-12 h-12 text-gray-200"></div>
   </div>

@@ -14,7 +14,7 @@ defineProps<{
 
 <template>
   <div
-    class="p-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md shadow"
+    class="p-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md shadow-sm"
     :class="{ '!border-primary-500 !dark:border-primary-400': selected }"
   >
     {{ data.label }}

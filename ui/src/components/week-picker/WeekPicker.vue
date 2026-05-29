@@ -174,7 +174,7 @@ useScrollParent(
       <div
         v-if="show"
         ref="picker"
-        class="week-picker-panel fixed z-101 p-2 shadow-lg rounded bg-white dark:bg-slate-800 border border-gray-200 dark:border-gray-700"
+        class="week-picker-panel fixed z-101 p-2 shadow-lg rounded-sm bg-white dark:bg-slate-800 border border-gray-200 dark:border-gray-700"
         :class="{ 'week-picker-panel-up': direction === 'up' }"
       >
         <div class="flex justify-between items-center mb-1">
@@ -185,7 +185,7 @@ useScrollParent(
             <div class="i-fa-chevron-left w-3 h-3"></div>
           </div>
 
-          <div class="cursor-pointer hover:bg-slate-200 dark:hover:bg-slate-600 px-2 rounded">
+          <div class="cursor-pointer hover:bg-slate-200 dark:hover:bg-slate-600 px-2 rounded-sm">
             {{ d.format(currentMoment, 'MMM yyyy') }}
           </div>
 

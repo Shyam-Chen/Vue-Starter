@@ -31,7 +31,7 @@ const flux = reactive({
   <div class="w-full max-w-sm">
     <form
       v-if="flux.flow === 1"
-      class="bg-white dark:bg-slate-800 shadow-md rounded px-8 pt-6 pb-8"
+      class="bg-white dark:bg-slate-800 shadow-md rounded-sm px-8 pt-6 pb-8"
     >
       <div class="mb-8">
         <div class="text-slate-900 dark:text-white font-bold text-xl mb-2">Forgot password?</div>
@@ -57,7 +57,7 @@ const flux = reactive({
 
     <form
       v-if="flux.flow === 2"
-      class="bg-white dark:bg-slate-800 shadow-md rounded px-8 pt-6 pb-8"
+      class="bg-white dark:bg-slate-800 shadow-md rounded-sm px-8 pt-6 pb-8"
     >
       <div class="mb-8">
         <div class="text-slate-900 dark:text-white font-bold text-xl mb-2">Check your email</div>
@@ -87,7 +87,7 @@ const flux = reactive({
 
     <form
       v-if="flux.flow === 3"
-      class="bg-white dark:bg-slate-800 shadow-md rounded px-8 pt-6 pb-8"
+      class="bg-white dark:bg-slate-800 shadow-md rounded-sm px-8 pt-6 pb-8"
     >
       <div class="w-12 h-12 i-lucide-check-circle text-green-500 mx-auto my-0 mb-6"></div>
 

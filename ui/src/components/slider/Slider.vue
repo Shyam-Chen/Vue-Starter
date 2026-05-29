@@ -95,8 +95,8 @@ watch(
 }
 
 .Slider-Input {
-  @apply appearance-none outline-none;
-  @apply absolute cursor-pointer h-2 bg-slate-400/60 rounded;
+  @apply appearance-none outline-hidden;
+  @apply absolute cursor-pointer h-2 bg-slate-400/60 rounded-sm;
   @apply bg-gradient-to-r from-primary-400 to-primary-600 bg-no-repeat;
 
   width: calc(100% + 1rem);
@@ -118,7 +118,7 @@ watch(
 
   &::-webkit-slider-thumb {
     @apply appearance-none cursor-ew-resize;
-    @apply w-4 h-4 bg-primary-600 rounded-full shadow transition;
+    @apply w-4 h-4 bg-primary-600 rounded-full shadow-sm transition;
 
     &:hover {
       @apply ring-5 ring-primary-500/50;
@@ -131,7 +131,7 @@ watch(
 
   &::-moz-range-thumb {
     @apply appearance-none cursor-ew-resize border-0;
-    @apply w-4 h-4 bg-primary-600 rounded-full shadow transition;
+    @apply w-4 h-4 bg-primary-600 rounded-full shadow-sm transition;
 
     &:hover {
       @apply ring-5 ring-primary-500/50;
@@ -146,7 +146,7 @@ watch(
 .Slider-Output {
   @apply hidden;
   @apply absolute bg-primary-500 -top-8 z-10 -translate-x-1/2;
-  @apply px-2 py-1 text-white rounded;
+  @apply px-2 py-1 text-white rounded-sm;
 }
 
 .Slider-Steps {

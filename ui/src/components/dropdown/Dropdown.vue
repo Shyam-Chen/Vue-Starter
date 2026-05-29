@@ -83,7 +83,7 @@ useScrollParent(
       <div
         v-if="flux.status"
         ref="dropdown"
-        class="fixed z-101 min-w-max bg-white dark:bg-slate-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700"
+        class="fixed z-101 min-w-max bg-white dark:bg-slate-800 rounded-lg shadow-lg border border-slate-200 dark:border-slate-600"
         :class="{
           'Dropdown-Panel-PlacementBottom': flux.direction === 'down',
           'Dropdown-Panel-PlacementTop': flux.direction === 'up',
@@ -99,7 +99,7 @@ useScrollParent(
                   {{ option }}
                 </div>
 
-                <div v-else class="border dark:border-slate-600 my-2"></div>
+                <div v-else class="border border-slate-200 dark:border-slate-600 my-2"></div>
               </template>
             </div>
           </slot>

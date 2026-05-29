@@ -111,7 +111,7 @@ const renderedMarkdown = computed(() => {
 
 /** code */
 :deep(code:not([class^='language'])) {
-  @apply mb-0.5 px-1.5 py-1 h-fit font-mono font-normal inline-block whitespace-nowrap text-gray-700 bg-gray-300 text-sm leading-none align-middle rounded overflow-auto;
+  @apply mb-0.5 px-1.5 py-1 h-fit font-mono font-normal inline-block whitespace-nowrap text-gray-700 bg-gray-300 text-sm leading-none align-middle rounded-sm overflow-auto;
 }
 
 /** code block */

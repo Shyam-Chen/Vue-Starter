@@ -129,8 +129,8 @@ function onClick(evt: MouseEvent) {
 
 <style lang="scss" scoped>
 .Button {
-  @apply flex justify-center items-center gap-2 px-6 py-2 border rounded uppercase text-sm font-medium;
-  @apply focus:outline-none focus:ring-2 focus:ring-primary-500/40;
+  @apply flex justify-center items-center gap-2 px-6 py-2 border rounded-sm uppercase text-sm font-medium;
+  @apply focus:outline-hidden focus:ring-2 focus:ring-primary-500/40;
 
   &.contained {
     @apply text-white hover:text-gray-100 active:text-gray-200 shadow-md hover:shadow-lg;

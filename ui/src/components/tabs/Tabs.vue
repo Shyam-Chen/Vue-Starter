@@ -128,7 +128,7 @@ watch(
 
       <div
         ref="tabSlider"
-        class="transition-all absolute bottom-0 h-0.5 bg-primary-500 rounded"
+        class="transition-all absolute bottom-0 h-0.5 bg-primary-500 rounded-sm"
       ></div>
     </div>
 

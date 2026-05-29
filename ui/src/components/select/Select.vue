@@ -249,7 +249,7 @@ if (popover.withinPopover) {
           <div
             v-if="show"
             ref="panel"
-            class="shadow-lg rounded bg-white dark:bg-slate-800 border border-gray-200 dark:border-gray-700"
+            class="shadow-lg rounded-sm bg-white dark:bg-slate-800 border border-gray-200 dark:border-gray-700"
           >
             <div v-if="filterable" class="px-2 pt-2">
               <TextField

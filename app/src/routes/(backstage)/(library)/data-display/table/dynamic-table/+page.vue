@@ -238,7 +238,7 @@ const flux = reactive({
   <div class="flex flex-col border p-4 mb-4">
     <div class="mb-2">Basic</div>
 
-    <div class="w-full bg-white dark:bg-slate-800 shadow-md rounded">
+    <div class="w-full bg-white dark:bg-slate-800 shadow-md rounded-sm">
       <XTable :columns="flux.columns1" :rows="flux.table" />
     </div>
   </div>
@@ -246,7 +246,7 @@ const flux = reactive({
   <div class="flex flex-col border p-4 mb-4">
     <div class="mb-2">Sticky Header</div>
 
-    <div class="w-full bg-white dark:bg-slate-800 shadow-md rounded">
+    <div class="w-full bg-white dark:bg-slate-800 shadow-md rounded-sm">
       <XTable stickyHeader :columns="flux.columns1" :rows="flux.dataTable1">
         <template #email="{ row }">
           <div class="w-50 truncate">{{ row.email }}</div>
@@ -262,7 +262,7 @@ const flux = reactive({
   <div class="flex flex-col border p-4 mb-4">
     <div class="mb-2">Paginable and Sortable</div>
 
-    <div class="w-full bg-white dark:bg-slate-800 shadow-md rounded">
+    <div class="w-full bg-white dark:bg-slate-800 shadow-md rounded-sm">
       <XTable
         :columns="flux.columns1"
         :rows="flux.table"
@@ -289,7 +289,7 @@ const flux = reactive({
   <div class="flex flex-col border p-4 mb-4">
     <div class="mb-2">Collapsible</div>
 
-    <div class="w-full bg-white dark:bg-slate-800 shadow-md rounded">
+    <div class="w-full bg-white dark:bg-slate-800 shadow-md rounded-sm">
       <XTable
         stickyHeader
         :columns="flux.collapsibleCols"
@@ -339,7 +339,7 @@ const flux = reactive({
   <div class="flex flex-col border p-4 mb-4">
     <div class="mb-2">Rowspan (key: `details`)</div>
 
-    <div class="w-full bg-white dark:bg-slate-800 shadow-md rounded">
+    <div class="w-full bg-white dark:bg-slate-800 shadow-md rounded-sm">
       <XTable :columns="flux.spanableCols" :rows="flux.spanableRows">
         <template #score="{ subrow }">
           {{ subrow.score || '-' }}
@@ -355,7 +355,7 @@ const flux = reactive({
   <div class="flex flex-col border p-4 mb-4">
     <div class="mb-2">Colspan</div>
 
-    <div class="w-full bg-white dark:bg-slate-800 shadow-md rounded">
+    <div class="w-full bg-white dark:bg-slate-800 shadow-md rounded-sm">
       <XTable :columns="flux.colspanCols" :rows="flux.colspanRows">
         <template #spanable>
           <XTable.Row>
@@ -371,7 +371,7 @@ const flux = reactive({
   <div class="flex flex-col border p-4 mb-4">
     <div class="mb-2">Colspan (thead)</div>
 
-    <div class="w-full bg-white dark:bg-slate-800 shadow-md rounded">
+    <div class="w-full bg-white dark:bg-slate-800 shadow-md rounded-sm">
       <XTable :columns="flux.colspanTheadCols" :rows="flux.colspanTheadRows">
         <template #thead>
           <XTable.Row>
@@ -399,7 +399,7 @@ const flux = reactive({
   <div class="flex flex-col border p-4 mb-4">
     <div class="mb-2">Colspan (thead + stickyHeader)</div>
 
-    <div class="w-full bg-white dark:bg-slate-800 shadow-md rounded">
+    <div class="w-full bg-white dark:bg-slate-800 shadow-md rounded-sm">
       <XTable
         stickyHeader
         :columns="flux.colspanTheadCols"
@@ -437,7 +437,7 @@ const flux = reactive({
   <div class="flex flex-col border p-4 mb-4">
     <div class="mb-2">Sticky Columns</div>
 
-    <div class="w-full bg-white dark:bg-slate-800 shadow-md rounded">
+    <div class="w-full bg-white dark:bg-slate-800 shadow-md rounded-sm">
       <XTable stickyHeader :columns="flux.columns2" :rows="flux.dataTable1" />
     </div>
   </div>

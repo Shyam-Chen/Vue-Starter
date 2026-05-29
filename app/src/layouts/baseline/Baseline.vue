@@ -189,7 +189,7 @@ function changeLang(lang: string) {
         @click="flux.searchDialog = true"
       />
 
-      <div class="hidden md:flex md:items-center shadow-sm dark:md:bg-slate-800 md:rounded-md">
+      <div class="hidden md:flex md:items-center shadow-xs dark:md:bg-slate-800 md:rounded-md">
         <XButton
           variant="text"
           size="small"
@@ -220,7 +220,7 @@ function changeLang(lang: string) {
                 <div class="text-sm">{{ flux.user.email }}</div>
               </div>
 
-              <div class="border dark:border-slate-600"></div>
+              <div class="border border-slate-200 dark:border-slate-600"></div>
 
               <XListbox>
                 <XListbox.Item prepend="i-material-symbols-account-circle-outline">
@@ -231,7 +231,7 @@ function changeLang(lang: string) {
                 </XListbox.Item>
               </XListbox>
 
-              <div class="border dark:border-slate-600"></div>
+              <div class="border border-slate-200 dark:border-slate-600"></div>
 
               <XListbox>
                 <XListbox.Item
@@ -260,7 +260,7 @@ function changeLang(lang: string) {
                 </XListbox.Item>
               </XListbox>
 
-              <div class="border dark:border-slate-600"></div>
+              <div class="border border-slate-200 dark:border-slate-600"></div>
 
               <XListbox>
                 <XListbox.Item prepend="i-material-symbols-logout-rounded" @click="flux.signOut">
@@ -388,13 +388,13 @@ function changeLang(lang: string) {
 .Header {
   @apply fixed top-0 z-100;
   @apply flex items-center gap-3 md:gap-4 w-full px-4 md:px-6 py-4;
-  @apply backdrop-blur bg-white/75 dark:bg-slate-900/75 border-b dark:border-slate-700 shadow;
+  @apply backdrop-blur-sm bg-white/75 dark:bg-slate-900/75 border-b border-slate-200 dark:border-slate-600 shadow-sm;
 }
 
 .Sider {
   @apply fixed start-0 top-18 bottom-0 z-99 overflow-y-auto;
   @apply transition-all hidden xl:block px-2 pt-4 pb-20;
-  @apply bg-white dark:bg-slate-900 border-e dark:border-slate-700 shadow;
+  @apply bg-white dark:bg-slate-900 border-e border-slate-200 dark:border-slate-600 shadow-sm;
 }
 
 .Content {
@@ -407,7 +407,7 @@ function changeLang(lang: string) {
 
 .Footer {
   @apply flex flex-col flex justify-center md:flex-row p-8 gap-2;
-  @apply bg-slate-50 dark:bg-slate-900 border-t dark:border-slate-700;
+  @apply bg-slate-50 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-600;
   @apply xl:ps-72;
 }
 </style>

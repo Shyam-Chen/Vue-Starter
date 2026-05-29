@@ -419,7 +419,7 @@ function onKeydown(evt: KeyboardEvent) {
         <template #content>
           <div
             v-if="flux.showDatePicker"
-            class="p-2 shadow-lg rounded bg-white dark:bg-slate-800 border border-gray-200 dark:border-gray-700"
+            class="p-2 shadow-lg rounded-sm bg-white dark:bg-slate-800 border border-gray-200 dark:border-gray-700"
           >
             <div class="flex justify-between items-center mb-1">
               <div
@@ -431,7 +431,7 @@ function onKeydown(evt: KeyboardEvent) {
 
               <div
                 v-if="flux.showWeeks"
-                class="cursor-pointer hover:bg-slate-200 dark:hover:bg-slate-600 px-2 rounded"
+                class="cursor-pointer hover:bg-slate-200 dark:hover:bg-slate-600 px-2 rounded-sm"
                 @click="flux.changeYearMonth"
               >
                 {{
@@ -488,7 +488,7 @@ function onKeydown(evt: KeyboardEvent) {
                 v-for="year in flux.yearRange"
                 :key="year"
                 :value="year"
-                class="flex justify-center items-center hover:bg-slate-200 dark:hover:bg-slate-600 rounded text-sm cursor-pointer"
+                class="flex justify-center items-center hover:bg-slate-200 dark:hover:bg-slate-600 rounded-sm text-sm cursor-pointer"
                 :class="{
                   'ring-1 ring-primary-500': year === d.getYear(flux.now),
                 }"
@@ -503,7 +503,7 @@ function onKeydown(evt: KeyboardEvent) {
                 v-for="(month, index) in _months"
                 :key="month"
                 :value="index"
-                class="flex justify-center items-center hover:bg-slate-200 dark:hover:bg-slate-600 rounded text-sm cursor-pointer"
+                class="flex justify-center items-center hover:bg-slate-200 dark:hover:bg-slate-600 rounded-sm text-sm cursor-pointer"
                 :class="{
                   'ring-1 ring-primary-500':
                     index === d.getMonth(flux.now) && flux.year === d.getYear(flux.now),

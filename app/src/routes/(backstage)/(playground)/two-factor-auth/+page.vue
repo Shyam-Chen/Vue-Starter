@@ -22,7 +22,7 @@ const flux = reactive({
       <div class="mt-3 mb-6">Get verification codes with Google Authenticator</div>
 
       <div
-        class="relative flex w-full bg-slate-50 dark:bg-slate-700 shadow rounded-t-xl p-3 transition-colors"
+        class="relative flex w-full bg-slate-50 dark:bg-slate-700 shadow-sm rounded-t-xl p-3 transition-colors"
       >
         <input
           id="radio-1"
@@ -82,7 +82,7 @@ const flux = reactive({
       <div class="mt-3 mb-6">Scan the QR code into your app.</div>
 
       <div
-        class="flex justify-center items-center bg-slate-50 dark:bg-slate-700 px-4 py-7 mb-6 rounded"
+        class="flex justify-center items-center bg-slate-50 dark:bg-slate-700 px-4 py-7 mb-6 rounded-sm"
       >
         <QrcodeImage
           value="otpauth://totp/Fastify%20Starter:shyam.chen?secret=CANACAIVIRPXM23E&period=30&digits=6&algorithm=SHA1&issuer=Fastify%20Starter"

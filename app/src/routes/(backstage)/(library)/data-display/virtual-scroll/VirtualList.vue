@@ -34,7 +34,7 @@ const { list, containerProps, wrapperProps } = useVirtualList(allItems, {
       <div
         v-for="{ index, data } in list"
         :key="index"
-        class="flex items-center px-4 py-2 hover:text-primary-500 dark:hover:text-primary-100 hover:bg-primary-100 dark:hover:bg-primary-600 hover:rounded"
+        class="flex items-center px-4 py-2 hover:text-primary-500 dark:hover:text-primary-100 hover:bg-primary-100 dark:hover:bg-primary-600 hover:rounded-sm"
         :style="{ height: `${data.height}px` }"
       >
         {{ data.title }}

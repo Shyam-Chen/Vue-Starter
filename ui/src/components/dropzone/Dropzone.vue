@@ -113,7 +113,7 @@ function onDragLeave() {
 <style lang="scss" scoped>
 .Dropzone {
   @apply flex flex-col justify-center items-center cursor-pointer;
-  @apply border-4 border-dashed rounded border-slate-400/75 hover:border-slate-400 bg-white dark:bg-slate-800 hover:bg-slate-200/75 dark:hover:bg-slate-700/75;
+  @apply border-4 border-dashed rounded-sm border-slate-400/75 hover:border-slate-400 bg-white dark:bg-slate-800 hover:bg-slate-200/75 dark:hover:bg-slate-700/75;
 
   &.invalid {
     @apply border-red-500 dark:border-red-500;

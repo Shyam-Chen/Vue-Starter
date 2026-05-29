@@ -21,7 +21,7 @@ withDefaults(
 
 <style lang="scss" scoped>
 .Divider {
-  @apply bg-gray-200 dark:bg-gray-700;
+  @apply bg-slate-200 dark:bg-slate-600;
 
   &.horizontal {
     @apply my-4 w-full h-1px;

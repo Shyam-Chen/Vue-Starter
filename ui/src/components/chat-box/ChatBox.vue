@@ -88,7 +88,7 @@ const fileInput = ref<HTMLInputElement>();
 const editorClass = computed(() => {
   if (props.viewonly) return '';
 
-  let clx = `focus:outline-none ${props.class}`;
+  let clx = `focus:outline-hidden ${props.class}`;
   if (props.editing) clx += `p-4 min-h-13`;
   else clx += `${props.hideUploadButton ? 'ps-4 pe-12' : 'px-12'} py-3 min-h-13`;
 

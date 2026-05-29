@@ -120,7 +120,7 @@ function onInput(evt: Event) {
 
   &::before {
     @apply content-[''] absolute left-0 top-1/2 -mt-1 w-full;
-    @apply h-2 bg-slate-400/60 rounded;
+    @apply h-2 bg-slate-400/60 rounded-sm;
 
     background-image: linear-gradient(
       to right,
@@ -134,7 +134,7 @@ function onInput(evt: Event) {
 
 .RangeSlider-Input {
   @apply pointer-events-none;
-  @apply appearance-none outline-none;
+  @apply appearance-none outline-hidden;
   @apply absolute top-1/2 -translate-y-1/2 bg-transparent;
 
   width: calc(100% + 1rem);
@@ -157,7 +157,7 @@ function onInput(evt: Event) {
   &::-webkit-slider-thumb {
     @apply pointer-events-auto;
     @apply appearance-none cursor-ew-resize;
-    @apply w-4 h-4 bg-primary-600 rounded-full shadow transition;
+    @apply w-4 h-4 bg-primary-600 rounded-full shadow-sm transition;
 
     &:hover {
       @apply ring-5 ring-primary-500/40;
@@ -171,7 +171,7 @@ function onInput(evt: Event) {
   &::-moz-range-thumb {
     @apply pointer-events-auto;
     @apply appearance-none cursor-ew-resize border-0;
-    @apply w-4 h-4 bg-primary-600 rounded-full shadow transition;
+    @apply w-4 h-4 bg-primary-600 rounded-full shadow-sm transition;
 
     &:hover {
       @apply ring-5 ring-primary-500/40;
@@ -189,7 +189,7 @@ function onInput(evt: Event) {
   &::before,
   &::after {
     @apply absolute -top-8 z-10 -translate-x-1/2;
-    @apply px-2 py-1 bg-primary-500 text-white rounded;
+    @apply px-2 py-1 bg-primary-500 text-white rounded-sm;
   }
 
   &::before {

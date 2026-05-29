@@ -6,7 +6,7 @@ import {
   presetIcons,
   presetTypography,
   presetWebFonts,
-  presetWind3,
+  presetWind4,
   transformerDirectives,
 } from 'unocss';
 import unocss from 'unocss/vite';
@@ -22,7 +22,7 @@ export default defineConfig({
     vueRoutes(),
     unocss({
       presets: [
-        presetWind3(),
+        presetWind4(),
         presetTypography(),
         presetIcons(),
         presetWebFonts({

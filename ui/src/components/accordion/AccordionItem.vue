@@ -64,7 +64,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div ref="self" class="w-full rounded shadow bg-white dark:bg-slate-800">
+  <div ref="self" class="w-full rounded-sm shadow-sm bg-white dark:bg-slate-800">
     <div
       class="flex px-4 py-3 cursor-pointer"
       :class="{

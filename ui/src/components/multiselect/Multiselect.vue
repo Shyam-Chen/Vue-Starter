@@ -363,7 +363,7 @@ watch(
             <div v-else class="Multiselect-Arrow i-material-symbols-arrow-drop-up-rounded"></div>
           </div>
 
-          <ProgressBar v-if="loading" class="absolute left-0 bottom-0 rounded" />
+          <ProgressBar v-if="loading" class="absolute left-0 bottom-0 rounded-sm" />
         </div>
 
         <Fade>
@@ -386,7 +386,7 @@ watch(
 
             <div
               v-if="flux.options?.length"
-              class="cursor-pointer bg-slate-200 dark:bg-slate-600 rounded"
+              class="cursor-pointer bg-slate-200 dark:bg-slate-600 rounded-sm"
               @click.stop="flux.onSelectAll"
             >
               <div class="flex items-center px-5">
@@ -434,7 +434,7 @@ watch(
 
 .Multiselect-Input {
   @apply relative flex items-center w-full px-3 cursor-pointer;
-  @apply border border-slate-400 bg-white dark:bg-slate-800 rounded leading-tight;
+  @apply border border-slate-400 bg-white dark:bg-slate-800 rounded-sm leading-tight;
   @apply focus:border-primary-400 focus:outline-0 focus:ring-2 focus:ring-primary-500/50;
 
   &.placeholder {
@@ -464,7 +464,7 @@ watch(
 }
 
 .Multiselect-Panel {
-  @apply fixed w-full z-101 border shadow-lg rounded;
+  @apply fixed w-full z-101 border shadow-lg rounded-sm;
   @apply bg-white dark:bg-slate-800 border-gray-200 dark:border-gray-700;
 }
 

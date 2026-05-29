@@ -171,7 +171,7 @@ useScrollParent(
       <div
         v-if="flux.show"
         ref="picker"
-        class="fixed z-101 p-2 shadow-lg rounded bg-white dark:bg-slate-800 border border-gray-200 dark:border-gray-700"
+        class="fixed z-101 p-2 shadow-lg rounded-sm bg-white dark:bg-slate-800 border border-gray-200 dark:border-gray-700"
         :class="{
           'TimePicker-PlacementBottom': direction === 'down',
           'TimePicker-PlacementTop': direction === 'up',

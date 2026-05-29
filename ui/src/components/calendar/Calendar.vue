@@ -212,7 +212,7 @@ flux.currentPeriodDates = createDays();
 </script>
 
 <template>
-  <div class="p-2 shadow-lg rounded bg-white dark:bg-slate-800 w-full">
+  <div class="p-2 shadow-lg rounded-sm bg-white dark:bg-slate-800 w-full">
     <div class="flex justify-between items-center mb-1">
       <div class="px-2 text-2xl font-bold">
         {{ d.format(flux.currentMoment, 'MMMM yyyy') }}
@@ -227,7 +227,7 @@ flux.currentPeriodDates = createDays();
         </div>
 
         <div
-          class="cursor-pointer hover:bg-slate-200 dark:hover:bg-slate-600 px-2 rounded"
+          class="cursor-pointer hover:bg-slate-200 dark:hover:bg-slate-600 px-2 rounded-sm"
           @click="flux.today"
         >
           Today
@@ -281,7 +281,7 @@ flux.currentPeriodDates = createDays();
                   <div
                     v-for="(event, eventIndex) in [val[0], val[1], null]"
                     :key="eventIndex"
-                    class="text-sm leading-tight p-1 rounded w-full truncate"
+                    class="text-sm leading-tight p-1 rounded-sm w-full truncate"
                     :class="event?.class ? event.class : ''"
                   >
                     <template v-if="event">{{ event?.title }}</template>
@@ -293,7 +293,7 @@ flux.currentPeriodDates = createDays();
                   <div
                     v-for="(event, eventIndex) in val"
                     :key="eventIndex"
-                    class="text-sm leading-tight p-1 rounded w-full truncate"
+                    class="text-sm leading-tight p-1 rounded-sm w-full truncate"
                     :class="[event.class ? event.class : 'bg-blue-600 text-white']"
                   >
                     {{ event.title }}

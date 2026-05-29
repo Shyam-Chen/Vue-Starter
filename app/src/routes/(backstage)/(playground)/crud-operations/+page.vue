@@ -70,7 +70,7 @@ onBeforeRouteLeave((to, from) => {
     </template>
   </XPanel>
 
-  <div class="w-full bg-white dark:bg-slate-800 shadow rounded-md">
+  <div class="w-full bg-white dark:bg-slate-800 shadow-sm rounded-md">
     <div class="flex justify-between p-4 lg:p-6">
       <h2 class="text-3xl font-bold">Todo List</h2>
 

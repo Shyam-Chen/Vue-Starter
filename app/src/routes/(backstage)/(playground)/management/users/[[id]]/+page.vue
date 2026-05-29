@@ -94,7 +94,7 @@ const options = ref({
 
   <h1 class="text-4xl font-extrabold my-4">Users</h1>
 
-  <div class="w-full bg-white dark:bg-slate-800 shadow rounded-md">
+  <div class="w-full bg-white dark:bg-slate-800 shadow-sm rounded-md">
     <div class="flex justify-between p-4">
       <XButton
         prepend="i-mdi-filter-outline"

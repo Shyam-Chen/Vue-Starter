@@ -218,7 +218,7 @@ function monthDisabled(index: number) {
       <div
         v-if="flux.showDatePicker"
         ref="picker"
-        class="fixed z-101 p-2 shadow-lg rounded bg-white dark:bg-slate-800 border border-gray-200 dark:border-gray-700"
+        class="fixed z-101 p-2 shadow-lg rounded-sm bg-white dark:bg-slate-800 border border-gray-200 dark:border-gray-700"
         :class="{
           'DatePicker-DatePane-PlacementBottom': flux.direction === 'down',
           'DatePicker-DatePane-PlacementTop': flux.direction === 'up',
@@ -251,7 +251,7 @@ function monthDisabled(index: number) {
             v-for="year in flux.yearRange"
             :key="year"
             :value="year"
-            class="flex justify-center items-center hover:bg-slate-200 dark:hover:bg-slate-600 rounded text-sm cursor-pointer"
+            class="flex justify-center items-center hover:bg-slate-200 dark:hover:bg-slate-600 rounded-sm text-sm cursor-pointer"
             :class="{
               'text-white bg-blue-400 important:hover:bg-blue-500': year === d.getYear(flux.now),
             }"
@@ -267,7 +267,7 @@ function monthDisabled(index: number) {
               v-for="(month, index) in months"
               :key="month"
               :value="index"
-              class="flex justify-center items-center hover:bg-slate-200 dark:hover:bg-slate-600 rounded text-sm cursor-pointer"
+              class="flex justify-center items-center hover:bg-slate-200 dark:hover:bg-slate-600 rounded-sm text-sm cursor-pointer"
               :class="{
                 'ring-1 ring-primary-500':
                   index === d.getMonth(flux.now) &&

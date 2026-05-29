@@ -68,7 +68,7 @@ const flux = reactive({
   <div class="flex flex-col border p-4 mb-4">
     <div class="mb-2">Draggable</div>
 
-    <div class="w-full bg-white dark:bg-slate-800 shadow-md rounded">
+    <div class="w-full bg-white dark:bg-slate-800 shadow-md rounded-sm">
       <XTable :columns="flux.draggableTableCols" :count="77">
         <template #tbody>
           <Draggable v-model="flux.draggableTableRows" tag="tbody" handle=".handle" itemKey="name">
