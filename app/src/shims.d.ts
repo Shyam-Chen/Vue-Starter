@@ -4,8 +4,6 @@ import type { Localer } from 'vue-localer';
 import type { Router } from 'vue-router';
 
 declare global {
-  interface Window {
-    router: Router;
-    localer: Localer;
-  }
+  var router: Router;
+  var localer: Localer;
 }
