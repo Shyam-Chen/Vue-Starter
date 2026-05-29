@@ -5,7 +5,6 @@
     "strictNullChecks": true,
 
     "allowImportingTsExtensions": true,
-    "baseUrl": ".",
     "module": "esnext",
     "moduleResolution": "node",
     "paths": {

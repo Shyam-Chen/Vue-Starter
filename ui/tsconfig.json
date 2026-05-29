@@ -5,11 +5,10 @@
     "strictNullChecks": true,
 
     "allowImportingTsExtensions": true,
-    "baseUrl": ".",
     "module": "esnext",
     "moduleResolution": "bundler",
     "paths": {
-      "~/*": ["src/*"]
+      "~/*": ["./src/*"]
     },
     "resolveJsonModule": true,
     "types": ["vite/client", "vitest/globals"],

@@ -92,18 +92,18 @@ state.listOfLinks.forEach((link) => {
 });
 
 // [!NOTE] If you don't use route guards, you must use `watch`.
-// onMounted(async () => {
-//   const response = await request('/auth/user', { method: 'GET' });
+onMounted(async () => {
+  const response = await request('/auth/user', { method: 'GET' });
 
-//   state.userLoading = false;
+  state.userLoading = false;
 
-//   if (response.ok) {
-//     flux.user = response._data;
-//   } else {
-//     flux.authDialog = true;
-//     flux.userError = response._data;
-//   }
-// });
+  if (response.ok) {
+    flux.user = response._data;
+  } else {
+    flux.authDialog = true;
+    flux.userError = response._data;
+  }
+});
 
 type MenuType = '' | 'appearance' | 'language';
 
