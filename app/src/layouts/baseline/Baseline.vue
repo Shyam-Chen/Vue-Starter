@@ -91,18 +91,19 @@ state.listOfLinks.forEach((link) => {
   setStatus(link, link.sub);
 });
 
-onMounted(async () => {
-  const response = await request('/auth/user', { method: 'GET' });
+// [!NOTE] If you don't use route guards, you must use `watch`.
+// onMounted(async () => {
+//   const response = await request('/auth/user', { method: 'GET' });
 
-  state.userLoading = false;
+//   state.userLoading = false;
 
-  if (response.ok) {
-    flux.user = response._data;
-  } else {
-    flux.authDialog = true;
-    flux.userError = response._data;
-  }
-});
+//   if (response.ok) {
+//     flux.user = response._data;
+//   } else {
+//     flux.authDialog = true;
+//     flux.userError = response._data;
+//   }
+// });
 
 type MenuType = '' | 'appearance' | 'language';
 
@@ -239,8 +240,8 @@ function changeLang(lang: string) {
                     colorMode === 'light'
                       ? 'i-material-symbols-light-mode-outline-rounded'
                       : colorMode === 'dark'
-                      ? 'i-material-symbols-dark-mode-outline-rounded'
-                      : 'i-material-symbols-desktop-windows-outline-rounded'
+                        ? 'i-material-symbols-dark-mode-outline-rounded'
+                        : 'i-material-symbols-desktop-windows-outline-rounded'
                   "
                   append="i-material-symbols-chevron-right-rounded"
                   @click="menu('appearance')"
