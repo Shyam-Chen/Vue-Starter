@@ -396,6 +396,10 @@ function changeLang(lang: string) {
   @apply fixed start-0 top-18 bottom-0 z-99 overflow-y-auto;
   @apply transition-all hidden xl:block px-2 pt-4 pb-20;
   @apply bg-white dark:bg-slate-900 border-e border-slate-200 dark:border-slate-600 shadow-sm;
+
+  & > :deep(div:first-child) {
+    @apply mt-0!;
+  }
 }
 
 .Content {
