@@ -35,7 +35,29 @@ export default defineConfig({
       transformers: [transformerDirectives({ enforce: 'pre' })],
       theme: {
         colors: {
-          primary: tailwindColors.indigo,
+          /**
+           * Defines a dynamic primary color palette based on Tailwind CSS's colors.
+           *
+           * ```ts
+           * import tailwindColors from 'tailwindcss/colors';
+           *
+           * type ColorPalette = (typeof tailwindColors)[keyof typeof tailwindColors];
+           *
+           * function setPrimaryPalette(palette: ColorPalette) {
+           *   for (const [shade, color] of Object.entries(palette)) {
+           *     document.documentElement.style.setProperty(`--color-primary-${shade}`, color);
+           *   }
+           * }
+           *
+           * setPrimaryPalette(tailwindColors.violet);
+           * ```
+           */
+          primary: Object.fromEntries(
+            Object.entries(tailwindColors.indigo).map(([shade, color]) => [
+              shade,
+              `var(--color-primary-${shade}, ${color})`,
+            ]),
+          ),
           secondary: tailwindColors.neutral,
           success: tailwindColors.emerald,
           danger: tailwindColors.rose,
